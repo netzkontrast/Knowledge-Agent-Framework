@@ -73,12 +73,24 @@ little-data/
 Phase 0    Pre-Build Setup (lokal)        ✅ done
 Phase 1    Extract (8 themed extractors)  ✅ done (T1-T8, 155 KB)
 Phase 1.5  Cross-validation               ✅ done (T0, 0 critical contradictions)
-Phase 0.5  Soul-Doc (Files 11 + 12)       ⏳ 11 recovered; 12 in-flight (Jules)
-Phase 2    Knowledge-File Synthesis       ⏳ 1/12 recovered (05); 10 in-flight (Jules)
+Phase 0.5  Soul-Doc (Files 11 + 12)       ⏳ 11 committed; 12 in-flight
+Phase 2    Knowledge-File Synthesis       ⏳ 4/12 committed (01, 04, 05*, 09*); 8 in-flight + 2 dups
 Phase 3    Lokale Integration             pending Phase 2 complete
 Phase 4    Validation                     ✅ tools ready (check_phase4.sh); awaits content
 Phase 5    Deployment Package             ✅ checklist ready (langdock-deploy/VALIDATION-CHECKLIST.md)
 ```
+
+`*` = committed but flagged in `QUALITY-NOTES.md`; will be improved in-place by a Jules improve-session (no work-done lost).
+
+## Fold-and-Finalize Pattern
+
+When a Jules session completes with a partial or low-quality file:
+
+1. **Commit the partial** to the branch as-is — work-done is preserved.
+2. **Dispatch a Jules improve-session** using `tools/jules-prompts/_improve-template.prompt.md`. The session pulls the existing file, fills in missing fields, and pushes a refined commit. It NEVER restarts from scratch.
+3. **Race-winner dup pattern**: if a dispatch hits SSL during retry and creates a duplicate session, both run; whichever lands first wins, the other is harmless.
+
+This means no Jules-hours are wasted and the branch always reflects the best-known content.
 
 ---
 
