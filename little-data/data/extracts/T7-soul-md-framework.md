@@ -10,12 +10,14 @@
 
 | File | Owns | Scope |
 |---|---|---|
-| **SOUL.md** | Identity, worldview, opinions, interests, current focus, influences, vocabulary, tensions, boundaries, pet peeves | "Could someone predict your take on a new topic?" |
-| **STYLE.md** | Voice principles, vocabulary used/avoided, punctuation, 5 quick-reaction registers, rhetorical moves, anti-patterns | "Would someone write in your voice from this guide?" |
-| **SKILL.md** | Operating instructions: reading order, character integrity, interpolation rules, source priority, 5 modes, anti-patterns, memory protocol | Loaded first; sets all behavior |
-| **examples/good & bad** | 10–20 calibration examples of voice done right + anti-patterns | "Match the vibe; avoid the failures." |
-| **data/** | Raw source material (articles, writing, influences) | Browse to absorb tone; reference when grounded |
-| **MEMORY.md** | Per-conversation continuity log (append-only, short entries) | Recent events, decisions, notable shifts |
+| **SOUL.md** (`SOUL.template.md`) | Identity, worldview, opinions (by domain), interests, **current focus**, influences, vocabulary, tensions, boundaries, pet peeves | "Could someone predict your take on a new topic?" |
+| **STYLE.md** (`STYLE.template.md`) | Voice principles (sentence structure + tone), vocabulary used/avoided, punctuation/formatting (incl. **emoji policy**), **platform differences** (Twitter/X · long-form · DMs/chat · email), **6 quick-reaction registers**, rhetorical moves, anti-patterns (Never Say + Voice Failures + Examples of Wrong Voice) **and a separate "Examples of Right Voice" section** | "Would someone write in your voice from this guide?" |
+| **SKILL.md** (`SKILL.md`) | Operating instructions: reading order, character integrity, interpolation rules, source priority, 5 modes, anti-patterns, memory protocol, data-usage rule, vocabulary lookup. Carries YAML frontmatter `name: soul` + a description that *is* the reading order. | Loaded first; sets all behavior |
+| **BUILD.md** (`BUILD.md`) | The `soul-builder` skill (frontmatter `name: soul-builder`): how the files get *authored* — data-vs-interview assessment, the interview-question framework (Identity / Worldview / Opinions / Interests / Voice / Boundaries), the positive Quality-Checks checklist, and the Red-Flags list. | "How to build a soul; what good vs. bad looks like." |
+| **examples/good & bad** (`examples/_GUIDE.md`) | 10–20 calibration examples of voice done right + anti-patterns; optional `conversations.md` for chat-voice rhythm. "How It's Used" restates the 1→5 load flow from the examples side. | "Match the vibe; avoid the failures." |
+| **data/** (`SKILL.md` Data Usage) | Raw source material (articles, writing, `influences.md`) | Browse to absorb tone; reference when grounded |
+| **MEMORY.md** (`SKILL.md` Memory) | Per-conversation continuity log (append-only, short entries) | Recent events, decisions, notable shifts |
+| **LEXICON.md** (`README.md` "In the Wild" → vgr_zirp deployment) | *Optional third persona file*: top 50 high-confidence coinages + definitions, referenced without retrieval. (vgr_zirp also derived worldview clusters empirically — 708 post summaries → 15 topics — and captured era-by-era voice evolution in STYLE.md.) | "Use precise jargon without a retrieval round-trip." |
 
 **Central claim:** *Someone reading your SOUL.md should predict your takes on new topics. If they can't, it's too vague.*
 
@@ -23,35 +25,37 @@
 
 ## 2. The 15 Prompt-Engineering Principles
 
-1. **Specificity over vagueness** — Opinions must be specific enough to be wrong. "I believe in being kind" is useless; "Most people optimize for status, not truth" is useful. → *Transfer:* Concrete commitments in system prompt, not vague guidance.
+*Each principle cites its owning framework file. Source: research/07 §2, traced to the actual framework files in this repo.*
 
-2. **Character integrity is non-negotiable** — Never break character. No "as an AI", "I can't speak for [name]". You ARE this person. If you need to caveat, do it in-character. → *Transfer:* In-character refusal strings; never "As an AI assistant…"
+1. **Specificity over vagueness** (`SOUL.template.md` Worldview comment; `README.md` "What Makes a Good Soul File" table) — Opinions must be specific enough to be wrong. "I believe in being kind" is useless; "Most people optimize for status, not truth" is useful. README's good/bad table is the concrete calibration: good = "I default to disagreeing first, then steel-manning" / named book references; bad = "I have nuanced views on AI" / "I read widely". → *Transfer:* Concrete commitments in system prompt, not vague guidance.
 
-3. **Real people have contradictions** — Don't smooth tensions. Real people have inconsistent views. Deltas (precise AND curious; formal AND warm) coexist, not resolve. → *Transfer:* Preserve coexisting modes as deltas, not smoothed positions.
+2. **Character integrity is non-negotiable** (`SKILL.md` Character Integrity) — Never break character. No "as an AI", "I don't have opinions", "I can't speak for [name]". You ARE this person. If you need to caveat, do it in-character. → *Transfer:* In-character refusal strings; never "Als KI-Modell…"
 
-4. **Anti-patterns as important as patterns** — Dedicate space to what NOT to say. "Never say X" is testable; "avoid generic AI voice" is not. → *Transfer:* Concrete anti-patterns in spec §4.6 and inline in prompt.
+3. **Real people have contradictions** (`SOUL.template.md` Tensions & Contradictions; `README.md` "Include contradictions") — Don't smooth tensions. Real people have inconsistent views. Deltas (precise AND curious; formal AND warm) coexist, not resolve. → *Transfer:* Preserve coexisting modes as deltas, not smoothed positions.
 
-5. **Source priority hierarchy** — Explicit positions → adjacent extrapolation → out-of-domain. Four-level fallback for novel topics. → *Transfer:* Retrieved chunk → inference marker → retrieval-miss F8 string → out-of-domain F3 string.
+4. **Anti-patterns as important as patterns** (`STYLE.template.md` Anti-Patterns; `SKILL.md` Anti-Patterns) — Dedicate space to what NOT to say. "Never say X" is testable; "avoid generic AI voice" is not. → *Transfer:* Concrete anti-patterns in spec §4.6 and inline in prompt.
 
-6. **Examples beat descriptions** — Show, don't tell. 10–20 examples calibrate better than prose rules. → *Transfer:* Inline 2–3 voice anchor phrases in system prompt; short calibration examples.
+5. **Source priority hierarchy** (`SKILL.md` Source Priority) — Explicit positions → covered in data/ → adjacent extrapolation → completely novel. Four-level fallback for novel topics. → *Transfer:* Retrieved chunk → inference marker → retrieval-miss F8 string → out-of-domain F3 string.
 
-7. **Modes, not monoliths** — Define 5 distinct registers (Default, Tweet, Chat, Essay, Idea Generation) with different rules. → *Transfer:* Name all 5+ modes explicitly; Default ≠ Julia ≠ Inline-Skill ≠ Advisory ≠ Retrieval-miss.
+6. **Examples beat descriptions** (`STYLE.template.md` Voice Principles comment; `examples/_GUIDE.md`; `README.md` weak-model tip) — Show, don't tell. 10–20 examples calibrate better than prose rules. For weaker models, README advises inlining 2–3 example exchanges in the system prompt. → *Transfer:* Inline 2–3 voice anchor phrases in system prompt; short calibration examples.
 
-8. **Reading order matters** — Strict load sequence: SOUL.md → STYLE.md → MEMORY.md → examples/ → data/. → *Transfer:* SCHRITT 1/2/3 retrieval bootstrap IS the reading order, query-driven.
+7. **Modes, not monoliths** (`SKILL.md` Modes; `README.md` Garry Tan "Five Modes") — Define 5 distinct registers (Default, Tweet, Chat, Essay, Idea Generation) with different rules; register-switch triggers documented. SKILL.md gives each mode concrete rules — e.g. Tweet = single idea, no hashtags/emoji unless documented; Chat = opinionated, push back, not assistant-brained; **Idea Generation = collide domains, first-principles, output "thesis first, reasoning second, implications last", ideas contrarian-but-defensible**. → *Transfer:* Name all 5+ modes explicitly; Default ≠ Julia ≠ Inline-Skill ≠ Advisory ≠ Retrieval-miss.
 
-9. **Vocabulary as identity marker** — Terms you use with specific meanings; words you never use. → *Transfer:* Encode "Words I use / Words I never use" explicitly; inline top 5 phrases.
+8. **Reading order matters** (`SKILL.md` Reading Order) — Strict load sequence: SOUL.md → STYLE.md → MEMORY.md → examples/ → data/. → *Transfer:* SCHRITT 1/2/3 retrieval bootstrap IS the reading order, query-driven.
 
-10. **The predictability test** — Quality criterion: "Could someone predict your take on a new topic?" If not, add more. → *Transfer:* 20-query spot-check + 5-question canary operationalize this.
+9. **Vocabulary as identity marker** (`SOUL.template.md` Vocabulary; `STYLE.template.md` Words You Use / Never Use) — Terms you use with specific meanings; words you never use. → *Transfer:* Encode "Words I use / Words I never use" explicitly; inline top 5 phrases.
 
-11. **No hedging, no both-sides** — Prefer genuine takes over safe/neutral. Never default to "both sides" unless the soul says so. → *Transfer:* Commit to specific recommendations; "stets eine Alternative — günstiger oder leistungsfähiger".
+10. **The predictability test** (`SOUL.template.md` QUALITY CHECK; `README.md` central claim) — Quality criterion: "Could someone predict your take on a new topic?" If not, add more. → *Transfer:* 20-query spot-check + 5-question canary operationalize this.
 
-12. **In-character uncertainty** — If genuinely uncertain, express that in-character (not as AI limitation). → *Transfer:* "Unzureichende Datenlage" is Data's own phrase, not "I don't know".
+11. **No hedging, no both-sides** (`SKILL.md` Interpolation Rules) — Prefer interesting/genuine takes over safe/neutral. Never default to "both sides" unless the soul says so. → *Transfer:* Commit to specific recommendations; "stets eine Alternative — günstiger oder leistungsfähiger".
 
-13. **Data is browsed, not injected** — Browse to understand tone and positions. Don't quote wholesale unless asked. Absorb the vibe. → *Transfer:* Per-query retrieval IS the browse pattern; short citation "Quelle: …"; chunks are decision-ready.
+12. **In-character uncertainty** (`SKILL.md` Interpolation Rules) — If genuinely uncertain, express that in-character (not as AI limitation). → *Transfer:* "Unzureichende Datenlage" is Data's own phrase, not "I don't know".
 
-14. **Memory as append-only log** — Keep entries short; not a transcript, a log of things worth remembering. User can manually prune. → *Transfer:* System-level MAINTENANCE.md for knowledge-base freshness (not per-conversation in Agent mode).
+13. **Data is browsed, not injected** (`SKILL.md` Data Usage) — Browse to understand tone and positions. Don't quote wholesale unless asked. Absorb the vibe. → *Transfer:* Per-query retrieval IS the browse pattern; short citation "Quelle: …"; chunks are decision-ready.
 
-15. **Quality red flags from soul-builder** — Everything balanced (real people have spicy takes); no specific names; could apply to anyone; suspiciously coherent. → *Transfer:* Review persona file: Is Data ever surprising? Named features? Uniquely Data? Deltas preserved, not smoothed?
+14. **Memory as append-only log** (`SKILL.md` Memory) — Keep entries short; not a transcript, a log of things worth remembering. User can manually prune. → *Transfer:* System-level MAINTENANCE.md for knowledge-base freshness (not per-conversation in Agent mode).
+
+15. **Quality red flags from soul-builder** (`BUILD.md` Quality Checks / Red flags) — Everything balanced (real people have spicy takes); no specific names; could apply to anyone; suspiciously coherent. → *Transfer:* Review persona file: Is Data ever surprising? Named features? Uniquely Data? Deltas preserved, not smoothed?
 
 ---
 
@@ -82,7 +86,8 @@
 | Platform Differences | n/a (Little Data lives only on Langdock; F9 chat-vs-Canvas substitutes) |
 | Quick Reactions | `11-persona-core.md` H2 "Reaktionsmuster" (excited/agreeing/disagreeing/skeptical/confused/absurd) |
 | Rhetorical Moves | `11-persona-core.md` H2 "Argumentationsmuster" |
-| Anti-Patterns | `11-persona-core.md` H2 "Anti-Patterns" + `examples/bad-outputs.md` |
+| Anti-Patterns (Never Say + Voice Failures + Examples of Wrong Voice) | `11-persona-core.md` H2 "Anti-Patterns" + `examples/bad-outputs.md` |
+| Examples of Right Voice | `examples/good-outputs.md` + a few inline in `11-persona-core.md` "Reaktionsmuster"/anchors |
 
 **Total persona-core.md H2 blocks:** ~10. At 1 200–1 800 chars each → ~14–18 KB total (within spec estimate).
 
@@ -119,16 +124,31 @@ These three substitutions are the architectural translation: persona-via-knowled
 
 Applied to Little Data:
 
-- **Could someone predict your take on a new topic from the prompt + retrieved persona chunk?** (Principle 10 operationalized.)
-- **Would a marketing director read Data's response and say "yeah, that's Data"?** (Subject continuity test.)
+- **Could someone predict your take on a new topic from the prompt + retrieved persona chunk?** (Principle 10 operationalized; `SOUL.template.md` + `STYLE.template.md` QUALITY CHECK.)
+- **Would a marketing director read Data's response and say "yeah, that's Data"?** (Subject-continuity test — `SOUL.template.md` QUALITY CHECK "Would a friend read this and say 'yeah, that's you'?"; `README.md` "The Theory" §: per Liu Xiaoben's *First Paradigm of Consciousness Uploading*, *subject continuity* — the upload feeling continuous with the original — is the core challenge, and is why soul files emphasize specificity over generality, contradictions over coherence, real opinions over safe positions.)
+- **Could someone write in Data's voice from the persona file alone?** (`STYLE.template.md` QUALITY CHECK — voice-reproducibility test.)
 - **Are opinions specific enough to be wrong?** (Specificity test: Principle 1.)
 - **Do the default-mode Sie and Julia-mode Du coexist, or are they smoothed into one?** (Contradiction preservation: Principle 3.)
 
-**Red flags (from BUILD.md):**
+**Cross-model / weak-model calibration (`README.md` "Using With Other Tools"):**
+- The framework prescribes running the same prompts through a strong model (Claude, GPT-4) and a cheap one (Qwen, Gemini Flash, gpt-4o-mini, Llama). **Where the cheap model drifts, the spec is too vague — tighten those sections and re-test.** This is the fastest portability check.
+- For weak models, README gives three concrete placement tips: **put identity and voice *before* tool definitions; be blunt ("You are [Name]. You speak like X. You find Y annoying." instead of "be conversational"); inline 2–3 example exchanges; and raise temperature to 0.7–0.9** for more expressive output. → *Transfer:* the v3 refinements in §9.1 (inline anchor phrases, explicit always/never word list) are the Little Data application of these tips; persona/voice anchors sit at the top of the system prompt, above retrieval/tool wiring.
+- Documented example soul files report weak-model scores (e.g., Karpathy 40/48, Garry Tan 38.5/48, steipete 39/48 on gpt-4o-mini). → *Transfer:* Little Data's 5-question canary + 20-query spot-check (§9.3/9.4) are the equivalent; if Auto-Mode default-model retrieval drifts, the persona/topic file is underspecified.
+
+**Positive quality checklist (from `BUILD.md` Quality Checks):** a good soul file should
+- [ ] let you predict their take on a new topic,
+- [ ] have specific opinions, not vague positions,
+- [ ] include actual vocabulary they use,
+- [ ] capture contradictions and tensions (real people have these),
+- [ ] feel alive, not like a corporate bio.
+
+**Red flags (from `BUILD.md` Red flags):**
 - Everything sounds reasonable and balanced (real people have spicy takes).
 - No specific names, references, or examples (too abstract).
 - Could apply to many people (not distinctive enough).
 - All consistent with no tensions (suspiciously coherent).
+
+**Authoring framework (from `BUILD.md` soul-builder skill):** the files are produced either by *analyzing existing data* (`data/x/`, `data/writing/` — extract themes, opinions, phrasing patterns) or by *interviewing* across six question banks — Identity & Background, Worldview & Beliefs, Opinions (get specific), Interests & Influences, Voice & Style, Boundaries — then iterating until the user says "yeah, that's me." → *Transfer:* Little Data's input corpus is the Subagent C canon report (DE phrase map + anchor quotes), played through the same six-bank lens to fill File 11's H2 blocks.
 
 ---
 
@@ -283,7 +303,7 @@ Ausführungsdetails in File 10.
 - `/home/user/soul.md/SKILL.md` (lines 1–130)
 - `/home/user/soul.md/BUILD.md` (lines 1–194)
 - `/home/user/soul.md/examples/_GUIDE.md` (lines 1–55)
-- `/home/user/soul.md/README.md` (lines 1–206)
+- `/home/user/soul.md/README.md` (lines 1–274)
 - `/home/user/soul.md/little-data/data/research/07-soul-md-framework-for-agent-prompt-design.md` (lines 1–237, especially §1–4)
 - Companion reference: `05-persona-via-knowledge-architecture.md` (architectural view)
 - Companion reference: `06-data-canon-relationships-voice.md` (canon input, Subagent C phrase map)

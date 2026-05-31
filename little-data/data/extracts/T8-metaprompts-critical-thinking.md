@@ -467,7 +467,9 @@ Optional preferences (MAY):
 
 ---
 
-## 5. Direct Transfer: 20 Metaprompt Templates for Marketing-Director
+## 5. Direct Transfer: 13 Metaprompt Templates for Marketing-Director
+
+> **Note on ID namespaces (do not confuse):** the critical-thinking methods are `M01`–`M13` (no hyphen); the Marketing metaprompt templates below are `M-01`–`M-13` (with hyphen). Each `M-NN` template *applies* one or more `M0N` methods, cited in its "Critical-Thinking-Method" line. The `M01`–`M13` method set itself remains invisible authoring scaffolding — it is never a visible field in delivered scenario output (see `little-data/README.md` canonical table and `data/research/50-advanced-scenarios-julia-lens.md`).
 
 Each follows this structure:
 - **Wann nutzen:** Trigger sentence (RAG-optimizable)
@@ -1400,4 +1402,4 @@ What Changes Next Time:
 
 **End of Extract**
 
-**Bytes:** 14,847 | **Lines:** 1,284
+**Lines:** ~1,400 (M01–M13 method set + 13 Marketing metaprompt templates M-01…M-13)
