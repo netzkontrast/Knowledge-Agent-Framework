@@ -895,6 +895,317 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 **Fallstricke (≥2 spezifisch):**
 - Zu viel auf einmal in Tag 1 → neue Personen brauchen einen schnellen Win; Tag 1 muss auf einen einzigen, vollständig abschließbaren Task beschränkt bleiben.
 - Onboarding-Dokument liegt nur im Wissensordner, wird aber nie gefunden → als Konversations-Starter im Willkommens-Agent prominent verlinken.
+**Anschluss-Szenario:** S-CP-046
+
+---
+
+### S-CP-046 Multi-Dokument-Synthese in einer einzigen Chat-Session
+
+**Wann nutzen (Trigger):** Die Direktorin erhält vor einem Strategie-Meeting vier verschiedene Berichte (Marktanalyse, Wettbewerbsreport, internes Kampagnen-Briefing, Agentur-Präsentation) und muss sie in einem einheitlichen Lagebild zusammenführen — ohne zwischen mehreren Fenstern zu wechseln. (Quelle: S-052, S-038)
+**Strategisches Ziel:** Vier disparate Dokumente in einem einzigen Chat-Kontext kohärent synthetisieren und widersprüchliche Aussagen explizit markieren.
+**Hands-on Ergebnis:** Eine einseitige Executive Summary mit den drei wichtigsten Übereinstimmungen, zwei Widersprüchen und einer priorisierten Handlungsempfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (direkte Anhänge), Dokument-Editor (Canvas)
+**Vorgehen (4 Schritte):**
+1. Alle vier Dokumente als direkte Anhänge in eine neue Chat-Session laden — nicht in den Wissensordner, um den vollständigen Kontext ohne RAG-Chunking zu nutzen.
+2. Prompt mit klarer Syntheseaufgabe abschicken: KI soll Übereinstimmungen und Widersprüche zwischen den Quellen explizit kennzeichnen.
+3. Ausgabe in den Dokument-Editor übertragen und die Executive Summary auf max. 400 Wörter kürzen.
+4. Abschließend im Chat per Follow-up fragen: „Welche Quelle ist für Behauptung X am stärksten belegt?" — zur Verifikation vor dem Meeting.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Strategieberaterin für Marketing-Direktionen. Synthetisiere die vier angehängten Dokumente zu einem Executive-Lagebild. Markiere explizit: drei Übereinstimmungen, zwei Widersprüche, eine Top-Handlungsempfehlung. Format: strukturierte Markdown-Tabelle plus ein Absatz Freitext-Empfehlung, max. 400 Wörter."
+**Erwartetes Artefakt:** Einseitiges Executive-Lagebild (Markdown) mit Quellen-Referenzen je Aussage, direkt für die Meeting-Vorbereitung nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- Zu große Anhänge sprengen das Kontextfenster — PDFs vorher auf relevante Kapitel kürzen oder komprimieren, falls über 80 Seiten.
+- KI benennt Widersprüche nicht explizit, wenn der Prompt es nicht erzwingt — immer „kennzeichne Widersprüche mit ⚠️" im Prompt fordern.
+**Anschluss-Szenario:** S-CP-047
+
+---
+
+### S-CP-047 Vertragsreview im Chat für Marketing-Vereinbarungen
+
+**Wann nutzen (Trigger):** Die Direktorin erhält einen Agenturvertrag oder einen Lieferanten-Rahmenvertrag zur Durchsicht und muss innerhalb von zwei Stunden wissen, welche Klauseln das Marketing-Budget, Nutzungsrechte oder Exklusivitätspflichten betreffen — bevor die Rechtsabteilung eingeschaltet wird. (Quelle: S-049 Langdock-FAQ Frage 52)
+**Strategisches Ziel:** Kritische Vertragsklauseln für das Marketing-Team verständlich aufbereiten und eine erste Prüfliste für die Rechtsabteilung liefern.
+**Hands-on Ergebnis:** Eine priorisierte Klauselliste mit Ampelbewertung (Rot/Gelb/Grün) und je einem Ein-Satz-Kommentar zum geschäftlichen Risiko.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (direkter PDF-Anhang statt Wissensordner, für vollständigen Kontext)
+**Vorgehen (3 Schritte):**
+1. Vertrag als direkte Dateianlage hochladen (nicht in Wissensordner, da vollständiger Vertragstext für korrekte Interpretation nötig ist).
+2. Prompt mit konkreten Suchkategorien: Budget-Caps, Nutzungsrechte, Kündigungsfristen, Haftungsausschlüsse, Exklusivität.
+3. Ampelliste aus der KI-Ausgabe exportieren und als Briefing-Dokument an die Rechtsabteilung weiterleiten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Vertragsanalystin mit Schwerpunkt Marketing-Recht. Analysiere den angehängten Vertrag. Extrahiere alle Klauseln zu: Budget-Freigaben, Nutzungsrechten, Kündigungsfristen und Exklusivität. Bewerte jede Klausel mit 🔴 (kritisch), 🟡 (prüfen), 🟢 (unproblematisch). Format: Tabelle mit Klauselnummer, Kurzfassung, Ampel, Ein-Satz-Risiko-Kommentar."
+**Erwartetes Artefakt:** Ampel-Klauselliste als Markdown-Tabelle — Briefing-Grundlage für die Rechtsabteilung, kein Ersatz für juristische Beratung.
+**Fallstricke (≥2 spezifisch):**
+- KI kann keine Rechtsmeinung abgeben — Ausgabe ist Vorprüfung, nicht Rechtsberatung; dies im Dokument immer explizit vermerken.
+- Scan-PDFs mit schlechter OCR-Qualität führen zu Extraktionsfehlern — Vertrag vorher in durchsuchbares PDF konvertieren.
+**Anschluss-Szenario:** S-CP-048
+
+---
+
+### S-CP-048 Preisstruktur-Analyse im Chat (Wettbewerbsvergleich)
+
+**Wann nutzen (Trigger):** Das Marketing-Team bereitet eine Repricing-Entscheidung vor und muss die eigene Preisstruktur mit drei bis fünf Wettbewerbern vergleichen — Daten liegen als Screenshots, PDFs und CSV-Exporte vor. (Quelle: S-036, S-056)
+**Strategisches Ziel:** Preispositionierung im Markt klären und Kommunikations-Argumente für die nächste Preis-Repositionierung vorbereiten.
+**Hands-on Ergebnis:** Vergleichstabelle mit eigenem Preis vs. Markt, Identifikation von Pricing-Gaps und drei Kommunikations-Argumenten für den Sales-Support.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage, Daten-Analyst (für CSV-Verarbeitung)
+**Vorgehen (4 Schritte):**
+1. Wettbewerbsdaten sammeln: Preisseiten als PDF-Screenshots plus eigenen Preiskatalog als CSV.
+2. Alle Dateien in eine Chat-Session laden; CSV über den Daten-Analysten-Modus einlesen lassen.
+3. Vergleichstabelle generieren: Produkt, Preismodell, Einstiegspreis, Top-Tier-Preis, Besonderheiten.
+4. Follow-up-Prompt: „Formuliere drei Preis-Kommunikations-Argumente, die unsere Positionierung als Premium-Anbieter untermauern."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Pricing-Strategin. Vergleiche die angehängten Preisstrukturen von fünf Wettbewerbern mit unserem Preiskatalog in der CSV. Erstelle eine Vergleichstabelle und identifiziere unsere zwei größten Preisvorteile sowie einen potenziellen Schwachpunkt. Format: Markdown-Tabelle plus drei Bullet-Kommunikationsargumente."
+**Erwartetes Artefakt:** Wettbewerbs-Preistabelle plus drei salesfähige Kommunikationsargumente — direkt für Sales-Enablement-Materialien verwendbar.
+**Fallstricke (≥2 spezifisch):**
+- Preisseiten ändern sich häufig — Screenshots immer mit Datum versehen und Analyse als Momentaufnahme kennzeichnen.
+- KI kann Bundle-Rabatte oder Volumenpreise übersehen, wenn sie nicht explizit im Prompt gefordert werden.
+**Anschluss-Szenario:** S-CP-049
+
+---
+
+### S-CP-049 Regulierungstext-Interpretation für Marketing-Compliance
+
+**Wann nutzen (Trigger):** Das Team muss eine neue EU-Verordnung, einen UWG-Paragraphen oder DSGVO-Abschnitt im Kontext einer geplanten Werbekampagne interpretieren — und braucht eine verständliche Handlungsempfehlung, bevor der Anwalt kontaktiert wird. (Quelle: Research-Datei A-11 bis A-20)
+**Strategisches Ziel:** Regulierungstext für Nicht-Juristen verständlich aufbereiten und konkrete Checkliste für die Kampagnenprüfung erzeugen.
+**Hands-on Ergebnis:** Kurzfassung des relevanten Regelwerks (max. 200 Wörter), Ampel-Checkliste für die Kampagne und Liste offener Fragen für den Anwalt.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Gesetzestext als PDF), Web Search (für aktuelle Auslegungshinweise)
+**Vorgehen (4 Schritte):**
+1. Relevanten Gesetzesabschnitt als PDF anhängen oder per Web Search die aktuelle Fassung abrufen lassen.
+2. KI bittet um Plain-Language-Zusammenfassung der für Marketing relevanten Pflichten.
+3. KI erstellt Checkliste mit Ja/Nein-Fragen für die geplante Kampagne.
+4. Offene Punkte als Frage-Katalog für die Rechtsabteilung exportieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Compliance-Beraterin für Marketing-Teams ohne juristisches Fachstudium. Fasse den angehängten Gesetzestext in max. 200 Wörtern zusammen. Erstelle dann eine Checkliste mit 5 Ja/Nein-Fragen, die unser Team vor Kampagnen-Launch beantworten muss. Format: Kurzfassung, dann nummerierte Checkliste, dann offene Fragen für den Anwalt."
+**Erwartetes Artefakt:** Dreistufiges Compliance-Dokument: Kurzfassung + Checkliste + Anwaltsfragen — kein Rechtsrat, aber strukturierte Grundlage für die Prüfung.
+**Fallstricke (≥2 spezifisch):**
+- KI kann veraltete Fassungen eines Gesetzes zitieren — immer die offizielle EUR-Lex-URL oder das BGBl. als Quelle anhängen und das Datum prüfen.
+- KI-Interpretationen dürfen nicht als Rechtsberatung kommuniziert werden — Disclaimer im Dokument zwingend einfügen.
+**Anschluss-Szenario:** S-CP-050
+
+---
+
+### S-CP-050 Agentur-Briefing-Review im Chat
+
+**Wann nutzen (Trigger):** Die Direktorin erhält ein Kreativ-Briefing von der externen Agentur und muss es vor der Freigabe strukturiert auf Vollständigkeit, strategische Konsistenz und Markentreue prüfen. (Quelle: S-039, S-075)
+**Strategisches Ziel:** Lücken und Widersprüche im Agentur-Briefing identifizieren, bevor die Agentur mit der Kreativarbeit beginnt, um Revisions-Schleifen zu reduzieren.
+**Hands-on Ergebnis:** Kommentiertes Briefing-Dokument mit Ampelbewertung je Abschnitt, konkreten Rückfragen an die Agentur und einer Freigabe-Empfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage, Wissensordner (Brand Guidelines als Referenz)
+**Vorgehen (4 Schritte):**
+1. Agentur-Briefing als PDF anhängen und Brand-Guidelines-Ordner per @-Mention verknüpfen.
+2. KI bewertet jede Sektion des Briefings gegen die Brand Guidelines: strategischer Fit, Zielgruppen-Definition, Tonalität, KPI-Klarheit.
+3. Ampel-Bewertung erzeugen: 🔴 = Rückgabe nötig, 🟡 = Klärungsbedarf, 🟢 = freigabebereit.
+4. Konkrete Rückfragen-Liste formulieren, die per E-Mail an die Agentur geht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Creative-Direktorin und strategische Markenhüterin. Reviewe das angehängte Agentur-Briefing gegen unsere Brand Guidelines im Ordner. Bewerte jeden der sechs Abschnitte mit 🔴/🟡/🟢 und formuliere je eine konkrete Rückfrage für Abschnitte mit 🔴 oder 🟡. Format: Tabelle Abschnitt / Bewertung / Rückfrage, dann Gesamt-Empfehlung in einem Satz."
+**Erwartetes Artefakt:** Strukturiertes Review-Dokument mit Ampelmatrix und Rückfragen-Liste — direkt als E-Mail-Anhang an die Agentur versendbar.
+**Fallstricke (≥2 spezifisch):**
+- KI bewertet Abschnitte zu nachsichtig, wenn Brand Guidelines zu vage formuliert sind — Guidelines müssen konkrete Dos-and-Don'ts enthalten.
+- Freigabe-Empfehlung der KI ist keine Entscheidung — die Direktorin muss final zeichnen; diesen Schritt nie delegieren.
+**Anschluss-Szenario:** S-CP-051
+
+---
+
+### S-CP-051 Wettbewerbs-Produkt-Teardown im Chat
+
+**Wann nutzen (Trigger):** Ein Wettbewerber hat ein neues Produkt oder Feature gelauncht und das Marketing-Team muss schnell verstehen: Was kann es? Wie positioniert es sich? Was fehlt im Vergleich zur eigenen Lösung? (Quelle: S-036, S-068)
+**Strategisches Ziel:** Strukturierten Wettbewerbsvergleich erstellen, der als Briefing-Grundlage für Sales Enablement und als Input für die Produktmarketing-Storyline dient.
+**Hands-on Ergebnis:** Teardown-Dokument mit Feature-Matrix, Positionierungs-Analyse und drei „So kontern wir"-Argumenten für den Vertrieb.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Web Search, Dateianlage (Screenshots, Produktseite-Exports)
+**Vorgehen (4 Schritte):**
+1. Web Search aktivieren und die Produkt-Landingpage, Changelog und G2/Capterra-Reviews des Wettbewerbers abrufen lassen.
+2. Screenshots der Feature-Übersicht als Bilddateien anhängen (Vision-Modus).
+3. Feature-Matrix erstellen: Wettbewerber vs. eigenes Produkt, Spalten: Feature, Wettbewerber, Eigene Lösung, Unser Vorteil.
+4. Drei Konter-Argumente formulieren lassen: direkte Antworten auf die stärksten Wettbewerbs-Claims.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Produktmarketing-Strategin. Analysiere das neue Produkt des Wettbewerbers via Web Search und den angehängten Screenshots. Erstelle eine Feature-Matrix (Wettbewerber vs. unsere Lösung) und formuliere drei direkte Konter-Argumente für unseren Vertrieb. Format: Markdown-Tabelle Feature-Matrix, dann nummerierte Konter-Argumente mit je einem Beweis-Satz."
+**Erwartetes Artefakt:** Teardown-Dokument mit Feature-Matrix und Sales-Konter-Argumenten — direkt in Battle-Cards überführbar.
+**Fallstricke (≥2 spezifisch):**
+- Web Search liefert veraltete Produktbeschreibungen, wenn der Cache nicht aktuell ist — immer das Erscheinungsdatum der Quellen prüfen.
+- Feature-Vergleiche können unausgewogen sein, wenn eigene Produktdaten nicht mitgegeben werden — stets das aktuelle Feature-Sheet als Anhang einreichen.
+**Anschluss-Szenario:** S-CP-052
+
+---
+
+### S-CP-052 Stellenbeschreibungen im Chat verfassen
+
+**Wann nutzen (Trigger):** Das Marketing-Team wächst und die Direktorin muss eine neue Stelle (z. B. Content Strategist, Performance Marketing Manager) ausschreiben — der Entwurf soll Anforderungen, Kultur-Fit und Bewerbungsaufruf umfassen und DSGVO-konform sein. (Quelle: FAQ-Datei, A-11)
+**Strategisches Ziel:** Eine präzise, inklusiv formulierte Stellenbeschreibung erstellen, die qualifizierte Bewerber anzieht und interne Kultur authentisch widerspiegelt.
+**Hands-on Ergebnis:** Fertige Stellenbeschreibung (400–600 Wörter) mit Pflichtanforderungen, Nice-to-haves, Kultur-Abschnitt und DSGVO-konformem Datenschutzhinweis.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (Kultur- und Employer-Branding-Dokument), Memory (Tonalitätspräferenzen)
+**Vorgehen (3 Schritte):**
+1. Rollen-Briefing eingeben: Tätigkeiten, Muss-Anforderungen, Team-Kontext, Gehaltsband (falls kommunizierbar).
+2. KI formuliert Entwurf unter Nutzung des Employer-Branding-Dokuments im Wissensordner.
+3. Review-Prompt: „Prüfe, ob die Sprache geschlechtsneutral und frei von Bias-Begriffen ist; schlage Alternativen vor."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Employer-Branding-Spezialistin. Verfasse eine Stellenbeschreibung für eine/n Content Strategist (B2B SaaS). Pflichtanforderungen: 3+ Jahre Erfahrung, SEO-Kenntnisse, Deutsch C2. Nutze unseren Kultur-Guide aus dem Wissensordner für den Kultur-Abschnitt. Format: Struktur mit Intro, Aufgaben, Anforderungen, Kultur, Datenschutzhinweis — max. 550 Wörter, geschlechtsneutrale Sprache."
+**Erwartetes Artefakt:** Stellenbeschreibung als Markdown-Dokument, direkt für LinkedIn und die Karriereseite nutzbar, inklusive DSGVO-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- KI neigt zu überlangen „Must-have"-Listen, die Bewerberinnen abschrecken — explizit max. fünf Muss-Anforderungen vorgeben.
+- Ohne Kultur-Dokument im Wissensordner entstehen generische Floskeln — eigene Employer-Branding-Grundsätze vorab einpflegen.
+**Anschluss-Szenario:** S-CP-053
+
+---
+
+### S-CP-053 Mitarbeiterbefragung im Chat auswerten
+
+**Wann nutzen (Trigger):** Nach einer internen Pulse-Survey liegen offene Textantworten (100–500 Freitextkommentare) vor und die Direktorin muss die Kernthemen und Stimmungsbilder für das Management-Meeting aufbereiten. (Quelle: S-052, Data-Analyst)
+**Strategisches Ziel:** Freitext-Feedback strukturiert kategorisieren, Sentiment-Verteilung ermitteln und drei priorisierte Handlungsfelder für das Leadership-Team ableiten.
+**Hands-on Ergebnis:** Auswertungs-Bericht mit Top-5-Themen, Sentiment-Überblick (positiv/neutral/negativ) und drei priorisierten Handlungsempfehlungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Daten-Analyst (CSV-Upload), Dateianlage
+**Vorgehen (4 Schritte):**
+1. Anonymisierten CSV-Export der Freitextantworten in den Daten-Analysten-Modus laden.
+2. KI kategorisiert Kommentare in Themen-Cluster (z. B. Kommunikation, Tools, Führung, Work-Life).
+3. Sentiment-Analyse pro Cluster: Anteil positiver, neutraler, negativer Nennungen.
+4. Drei Handlungsempfehlungen ableiten lassen, priorisiert nach Häufigkeit und Sentiment-Intensität.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist People-Analytics-Beraterin. Analysiere die angehängte CSV mit 200 anonymisierten Freitext-Kommentaren aus unserer Mitarbeiterbefragung. Kategorisiere in max. 6 Themen-Cluster, berechne den Sentiment-Anteil je Cluster und leite drei priorisierte Handlungsempfehlungen ab. Format: Tabelle Cluster/Anzahl/Sentiment-Anteil, dann nummerierte Empfehlungen."
+**Erwartetes Artefakt:** Auswertungs-Report mit Clustering-Tabelle, Sentiment-Übersicht und Empfehlungen — direkt als Management-Folie verwertbar.
+**Fallstricke (≥2 spezifisch):**
+- Datenschutz: Freitext-Kommentare dürfen keine Namen oder identifizierenden Details enthalten — Anonymisierung vor dem Upload ist Pflicht.
+- Sarkasmus wird oft als positiv eingestuft — auffällig positiv bewertete Kommentare manuell stichprobenartig prüfen.
+**Anschluss-Szenario:** S-CP-054
+
+---
+
+### S-CP-054 Förderantrag im Chat ausformulieren
+
+**Wann nutzen (Trigger):** Das Marketing-Team bewirbt sich für ein EU- oder Bundesförderprogramm (z. B. Digitalbonus, KMU-Innovationsförderung) und muss innerhalb kurzer Frist einen Projektbeschreibungstext nach dem vorgegebenen Antragsformular erstellen. (Quelle: Research A-11 bis A-20)
+**Strategisches Ziel:** Förderantrag so formulieren, dass Projektziele, Nutzenargumentation und Budgetlogik den Bewertungskriterien der Förderstelle entsprechen.
+**Hands-on Ergebnis:** Ausformulierter Antragstext für alle Pflichtabschnitte des Formulars (Projektbeschreibung, Ziele, Zielgruppe, Budget-Begründung), im Förder-Jargon der Ausschreibung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Ausschreibungs-PDF), Wissensordner (Unternehmensprofil, bisherige Projekte)
+**Vorgehen (4 Schritte):**
+1. Ausschreibungs-PDF und Bewertungskriterien anhängen; Unternehmensprofil aus dem Wissensordner verknüpfen.
+2. KI extrahiert die Bewertungskriterien und gewichtet sie nach Punktzahl.
+3. Für jeden Pflichtabschnitt einen dedizierten Prompt abschicken — Antragsabschnitte sequenziell erarbeiten.
+4. Konsistenz-Check: KI prüft, ob alle Abschnitte kohärent sind und kein Widerspruch zwischen Budget- und Zielformulierung besteht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Fördermittel-Beraterin mit Erfahrung in EU-Digital-Programmen. Formuliere den Abschnitt 'Projektbeschreibung und Innovationsgehalt' für unseren Förderantrag. Orientiere dich strikt an den Bewertungskriterien im angehängten Ausschreibungs-PDF. Nutze das Unternehmensprofil aus dem Wissensordner als Grundlage. Format: Fließtext, max. 600 Wörter, förderkonformer Sprachstil."
+**Erwartetes Artefakt:** Ausformulierter Antragsabschnitt im Förder-Jargon, formatiert nach Vorgabe der Förderstelle — bereit zur abschließenden manuellen Prüfung.
+**Fallstricke (≥2 spezifisch):**
+- KI kann Förderstellen-spezifischen Jargon verfehlen — Ausschreibungstext mit Schlüsselbegriffen als Anhang ist zwingend, nicht optional.
+- Zahlenwerte im Budget-Abschnitt müssen manuell validiert werden — KI kann Logikfehler in Kostenaufstellungen übersehen.
+**Anschluss-Szenario:** S-CP-055
+
+---
+
+### S-CP-055 Board-Präsentation im Chat vorbereiten
+
+**Wann nutzen (Trigger):** Die Direktorin muss in zwei Tagen dem Board eine Quartals-Marketing-Review präsentieren und braucht eine klare Storyline, Executive-taugliche Formulierungen und die Kernbotschaften je Folie. (Quelle: S-042, S-078)
+**Strategisches Ziel:** Komplexe Marketing-Performance-Daten in eine Board-gerechte, entscheidungsorientierte Narrative übersetzen, die keine operativen Details überfrachtet.
+**Hands-on Ergebnis:** Foliengliederung (7–10 Slides) mit je einer Kernbotschaft, drei Sprech-Leitpunkten und einem empfohlenen Visualisierungstyp pro Folie.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Quartalsdaten als CSV/PDF), Dokument-Editor (Canvas)
+**Vorgehen (4 Schritte):**
+1. Quartalsdaten und strategische Ziele als Anhänge laden; Board-Erwartungen kurz im Prompt beschreiben.
+2. KI entwirft Storyline-Struktur: Opening-Hook, Lage, Ergebnisse, Learnings, Ausblick, Call to Decision.
+3. Für jede Folie: Kernbotschaft in einem Satz, drei Sprech-Leitpunkte, Visualisierungsempfehlung.
+4. Sprechernotizen automatisch in Folgeabsatz ausgeben lassen (→ S-CP-060).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Executive-Kommunikationsberaterin für C-Level-Präsentationen. Entwirf eine Gliederung für eine 10-Folien-Board-Präsentation unserer Q2-Marketing-Ergebnisse. Für jede Folie: eine Kernbotschaft (max. 12 Wörter), drei Sprech-Leitpunkte, empfohlener Chart-Typ. Format: nummerierte Folienliste mit den drei Unterfeldern, kein Fließtext-Overhead."
+**Erwartetes Artefakt:** Präsentations-Blueprint (Markdown) mit Foliengliederung, Kernbotschaften und Visualisierungsempfehlungen — als Briefing für die Design-Agentur oder als Grundlage für die eigene Erstellung nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- KI produziert zu viele operative Details — Board-Präsentationen brauchen max. drei KPIs pro Folie; explizit auf „kein operatives Detail" bestehen.
+- Fehlende strategische Rahmung: KI listet nur Ergebnisse ohne Handlungsempfehlung — immer „Call to Decision" als eigene Folie einfordern.
+**Anschluss-Szenario:** S-CP-056
+
+---
+
+### S-CP-056 Technische Spezifikation in Marketing-Sprache übersetzen
+
+**Wann nutzen (Trigger):** Das Produktteam liefert ein technisches Feature-Spec-Dokument und das Marketing-Team muss daraus in wenigen Stunden einen nutzenzentrierten Produkttext für Website, Pressemitteilung und Sales Deck erstellen. (Quelle: S-073, S-075)
+**Strategisches Ziel:** Technische Komplexität auf Kunden-Nutzen herunterbrechen — ohne Fachjargon, ohne Informationsverlust der Kernfunktion.
+**Hands-on Ergebnis:** Drei Textmodule unterschiedlicher Länge: Tagline (1 Satz), Feature-Beschreibung (3 Sätze, nicht-technisch), ausführliche Nutzenargumentation (5 Bullet Points für Sales Deck).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Tech-Spec als PDF), Wissensordner (Brand-Voice-Guidelines)
+**Vorgehen (3 Schritte):**
+1. Tech-Spec-PDF anhängen und Brand-Voice-Wissensordner per @-Mention verknüpfen.
+2. Prompt: KI soll drei Textmodule in der Markensprache erzeugen — Tagline, Kurztext, Bullet-List.
+3. Review-Prompt: „Prüfe, ob alle drei Module dieselbe Kernbotschaft transportieren und kein technischer Jargon enthalten ist."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Product-Copywriterin. Übersetze das angehängte technische Feature-Spec-Dokument in drei Marketing-Textmodule in unserer Brand Voice (Wissensordner). Modul 1: Tagline (1 Satz, max. 12 Wörter). Modul 2: Feature-Beschreibung (3 Sätze, kein Fachjargon). Modul 3: 5 Nutzen-Bulletpoints für das Sales Deck. Format: drei benannte Abschnitte, direkt verwendbar."
+**Erwartetes Artefakt:** Drei fertige Textmodule im Marken-Ton — direkt in Website-CMS, Pressemitteilung und Sales-Deck einfügbar.
+**Fallstricke (≥2 spezifisch):**
+- KI vereinfacht Funktionen zu stark und schreibt technisch falsche Nutzenversprechen — Produktmanager muss die Faktenaussagen gegen-prüfen.
+- Ohne Brand-Voice-Wissensordner entstehen generische Texte — Guidelines vor dem Prompt-Aufruf immer einbinden.
+**Anschluss-Szenario:** S-CP-057
+
+---
+
+### S-CP-057 Sprechernotizen für Präsentationen generieren
+
+**Wann nutzen (Trigger):** Eine fertige Präsentation (Foliensatz als PDF oder Text-Outline) muss mit vollständigen Sprechernotizen ergänzt werden — die Referentin soll in der Lage sein, nach dem Dokument allein zu präsentieren, ohne auswendig zu lernen. (Quelle: S-055, S-078)
+**Strategisches Ziel:** Konsistente, klare Sprechernotizen erzeugen, die Übergangsformulierungen, Ankerstatements und Timing-Hinweise enthalten.
+**Hands-on Ergebnis:** Kompletter Satz Sprechernotizen (je 80–120 Wörter pro Folie) mit Öffnungssatz, zwei bis drei Kernpunkten und einem Übergangs-Satz zur nächsten Folie.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Folien-PDF oder Markdown-Gliederung), Dokument-Editor (Canvas)
+**Vorgehen (3 Schritte):**
+1. Folien-Gliederung (aus S-CP-055 oder als eigenständiges Dokument) als Anhang laden.
+2. KI generiert für jede Folie strukturierte Sprechernotizen: Öffnungssatz → Kernpunkte → Übergangs-Satz.
+3. Notizen in den Dokument-Editor übertragen und Tonalität per Inline-Edit an den Präsentationsstil anpassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Executive-Speech-Coach. Schreibe Sprechernotizen für jede der 10 Folien der angehängten Präsentation. Je Folie: ein Öffnungssatz (zieht die Aufmerksamkeit), zwei bis drei Kernpunkte (je ein Satz), ein Übergangs-Satz. Format: nummeriert nach Folienzahl, je Folie als separater Block, max. 120 Wörter."
+**Erwartetes Artefakt:** Vollständige Sprechernotizen-Datei (Markdown) — direkt in PowerPoint-Notizfeld oder als separates Teleprompter-Dokument nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- KI schreibt Notizen im Lese-Stil statt im Sprech-Stil — explizit „kurze Sätze, aktive Verben, keine Schachtelsätze" im Prompt fordern.
+- Ohne Foliengliederung als Kontext entstehen zu allgemeine Notizen — Folieninhalt muss als Anhang oder Inline-Text mitgegeben werden.
+**Anschluss-Szenario:** S-CP-058
+
+---
+
+### S-CP-058 Interne FAQ-Datenbank pflegen und erweitern
+
+**Wann nutzen (Trigger):** Das Marketing-Team erhält wiederkehrende Fragen von Vertrieb, HR oder anderen Abteilungen zu Kampagnen, Markenrichtlinien oder Tool-Nutzung — die Antworten sollen zentral und aktuell im Wissensordner stehen. (Quelle: S-048 Community Management, S-063 Welcome Series)
+**Strategisches Ziel:** Wissenssilos aufbrechen und eine lebendige interne FAQ-Datenbank schaffen, die selbstständig von Kollegen genutzt werden kann, ohne die Direktorin zu belasten.
+**Hands-on Ergebnis:** Aktualisierter FAQ-Katalog im Wissensordner mit neuen Einträgen im standardisierten Format (Frage / Antwort / Stand-Datum / Zuständige Person).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (FAQ-Dokument), Memory (wiederkehrende Kontextinfos)
+**Vorgehen (4 Schritte):**
+1. Neueste Fragen aus E-Mails oder Slack-Nachrichten kopieren und in eine Chat-Session einfügen.
+2. KI formuliert konsistente FAQ-Antworten basierend auf dem vorhandenen Wissensordner-Inhalt.
+3. Neue Einträge im standardisierten Format (Frage / Antwort / Stand-Datum) ausgeben lassen.
+4. Einträge in das FAQ-Dokument im Wissensordner kopieren und Dokument neu indizieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Wissensmanagerin für Marketing-Teams. Formuliere FAQ-Antworten für die folgenden 5 Fragen basierend auf dem Wissensordner. Je Eintrag: Frage (wörtlich), Antwort (max. 3 Sätze), Stand-Datum (heute), Zuständige Person (Platzhalter). Format: nummerierte Liste im Markdown-FAQ-Format."
+**Erwartetes Artefakt:** Fünf neue FAQ-Einträge im standardisierten Markdown-Format — direkt in das Wissensordner-Dokument einfügbar und für RAG-Abruf optimiert.
+**Fallstricke (≥2 spezifisch):**
+- Veraltete Einträge im FAQ-Dokument führen zu widersprüchlichen KI-Antworten — regelmäßige Review-Zyklen (monatlich) sind Pflicht.
+- KI formuliert Antworten zu ausführlich für eine FAQ — max. Wortanzahl je Antwort im Prompt explizit begrenzen.
+**Anschluss-Szenario:** S-CP-059
+
+---
+
+### S-CP-059 Interview-Fragen für Kandidaten-Gespräche erarbeiten
+
+**Wann nutzen (Trigger):** Das Marketing-Team führt Einstellungsinterviews und die Direktorin braucht strukturierte, rollenspezifische Fragen, die fachliche Tiefe, kulturellen Fit und kritisches Denken testen — ohne jedes Mal von Null anzufangen. (Quelle: S-052 Stellenbeschreibungen, FAQ C-Abschnitt)
+**Strategisches Ziel:** Einen konsistenten Interview-Leitfaden erstellen, der faire Vergleichbarkeit zwischen Kandidaten sicherstellt und rechtlich unbedenkliche Fragen verwendet.
+**Hands-on Ergebnis:** Interview-Leitfaden mit 12–15 Fragen, kategorisiert nach Fachkompetenz, Soft Skills und Kulturfit, mit je einem Beispiel für eine starke und eine schwache Antwort.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (Stellenbeschreibung, Kultur-Dokument), Memory (Interviewstandards des Unternehmens)
+**Vorgehen (4 Schritte):**
+1. Stellenbeschreibung und Kulturprofil aus dem Wissensordner per @-Mention einbinden.
+2. KI generiert 15 Fragen: fünf Fachkompetenz, fünf Soft Skills, fünf Kulturfit.
+3. Für jede Frage ein Beispiel für eine starke und eine schwache Antwort erstellen lassen (Kalibrierungshilfe für Interviewer).
+4. Review-Prompt: „Prüfe, ob alle Fragen DSGVO-konform sind und keine unzulässigen persönlichen Angaben abfragen."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist HR-Spezialistin und Interview-Design-Expertin. Erstelle einen Interview-Leitfaden für die Stelle Content Strategist (Beschreibung im Wissensordner). 15 Fragen: 5 Fachkompetenz, 5 Soft Skills, 5 Kulturfit. Je Frage: die Frage selbst, ein Beispiel starke Antwort, ein Beispiel schwache Antwort. Format: nummerierte Liste mit drei Unterfeldern je Frage."
+**Erwartetes Artefakt:** Strukturierter Interview-Leitfaden (Markdown) mit Kalibrierungsbeispielen — direkt als Briefing-Dokument für alle Interviewer nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- KI kann unzulässige Fragen (z. B. Familienstand, Nationalität) generieren — immer Compliance-Check-Prompt als letzten Schritt anhängen.
+- Zu ähnliche Fragen innerhalb einer Kategorie reduzieren die Aussagekraft — KI anweisen, Fragen pro Kategorie bewusst zu variieren (Verhalten, Wissen, Situation).
+**Anschluss-Szenario:** S-CP-060
+
+---
+
+### S-CP-060 Social Proof kuratieren und aufbereiten
+
+**Wann nutzen (Trigger):** Das Marketing-Team muss Kundenstimmen, G2-Reviews, Case-Study-Zitate und LinkedIn-Empfehlungen für Landingpages, Sales Decks und Newsletter-Snippets aufbereiten — verstreut über verschiedene Quellen. (Quelle: S-035 Retargeting, S-069 ABM-Outreach)
+**Strategisches Ziel:** Den stärksten verfügbaren Social Proof systematisch kuratieren, formatieren und auf spezifische Anwendungsfälle (Enterprise vs. KMU, technisch vs. nicht-technisch) zuschneiden.
+**Hands-on Ergebnis:** Kuratierter Social-Proof-Katalog mit 10–15 aufbereiteten Zitaten, kategorisiert nach Zielgruppe und Anwendungsfall, mit empfohlenem Einsatzort je Zitat.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Rohzitate als CSV oder Textdatei), Wissensordner (ICP-Definition, Persona-Profile), Dokument-Editor (Canvas)
+**Vorgehen (4 Schritte):**
+1. Rohzitate-CSV und ICP-/Persona-Profile aus dem Wissensordner einbinden.
+2. KI bewertet jedes Zitat nach Relevanz für definierte Personas und kürzt es auf das Wesentliche (max. 2 Sätze).
+3. Kategorisierung: Zielgruppe (Enterprise/KMU/Mittelstand), Anwendungsfall (ROI, Ease of Use, Support, Onboarding).
+4. Einsatzort-Empfehlung: Homepage Hero, Landingpage, Sales Deck, Newsletter, Anzeige.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Proof-Strategin. Kuratiere die angehängten 20 Rohzitate für unser Marketing. Kürze jedes Zitat auf max. 2 Sätze, kategorisiere nach Zielgruppe (Enterprise/KMU) und Anwendungsfall (ROI/UX/Support) und empfehle je einen optimalen Einsatzort. Format: Tabelle mit Spalten: Originalzitat (gekürzt), Zielgruppe, Anwendungsfall, Einsatzort-Empfehlung."
+**Erwartetes Artefakt:** Kuratierter Social-Proof-Katalog als Markdown-Tabelle — direkt als Referenz für Texter, Designer und Sales nutzbar; im Wissensordner ablegbar für zukünftige Abruf-Nutzung.
+**Fallstricke (≥2 spezifisch):**
+- Zitate ohne Namens- oder Unternehmensangabe wirken unglaubwürdig — KI immer anweisen, fehlende Attributionen als „[Quelle fehlt]" zu markieren.
+- KI kürzt manchmal den aussagekräftigsten Teil eines Zitats heraus — Rohdaten immer mitliefern und gekürztes Zitat gegen Original gegenchecken.
 **Anschluss-Szenario:** S-CP-001
 
 ## Hinweise & Quellen-Konflikte
