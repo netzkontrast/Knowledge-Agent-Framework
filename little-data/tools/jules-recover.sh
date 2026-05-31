@@ -22,6 +22,7 @@ DEFAULT_SIDS=(
   "1457972172489118101"   # 04-workflows
   "12663632701708472741"  # 05-integrationen-und-mcp
   "10547985932128837211"  # 06-api-und-deployment
+  "16019328910196999458"  # 06-api-und-deployment (dup — whichever completes first wins)
   "16838785051756306806"  # 07-modelle-und-kosten
   "16400278012158270047"  # 08-sicherheit-und-governance
   "6159499177946303116"   # 09-marketing-praxis
