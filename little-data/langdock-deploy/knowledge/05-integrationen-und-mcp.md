@@ -512,6 +512,382 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 - Keinen Owner je Meilenstein benennen → Ohne klare Verantwortlichkeit bleiben Integrationen halb fertig; je Meilenstein eine Person benennen, die den Abschluss bestätigt.
 **Anschluss-Szenario:** S-IM-026
 
+### S-IM-026 Notion als Content-Planungsdatenbank via nativer Integration anbinden
+
+**Wann nutzen (Trigger):** Das Content-Team plant Kampagnen und Redaktionspläne ausschließlich in Notion — die Marketing-Direktorin will, dass ein Content-Agent aktuelle Themen und Deadlines aus Notion liest, statt sie manuell in Prompts zu kopieren. (Quelle: sources/10 S-094, Quelle: 12 Q108)
+**Strategisches Ziel:** Notion als lebende Planungsquelle nativ anbinden, sodass der Content-Agent immer auf den aktuellen Redaktionsplan zugreift und keine veralteten Briefings in den Chat-Kontext eingebracht werden.
+**Hands-on Ergebnis:** Ein Konzept, das die native Notion-Integration in den Workspace einbindet, die relevanten Datenbanken (Redaktionsplan, Kampagnen-Board) benennt und einen Query-Rahmen definiert, der den Agenten auf Lesen beschränkt.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Notion-Integration, Wissensordner-RAG, Agent-Actions (Notion-Datenbank lesen).
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Notion-Datenbanken identifizieren, die für den Content-Agenten relevant sind: Redaktionsplan (Thema, Deadline, Status), Kampagnen-Board (Kampagnenname, Zielgruppe).
+2. Du lässt klären, dass der Agent ausschließlich Lese-Zugriff erhält — Notion-Einträge werden nie vom Agenten verändert; Statusänderungen bleiben bei den Redakteurinnen.
+3. Du lässt einen Query-Rahmen formulieren, der den Agenten anweist, beim Abfragen immer das heutige Datum als Filter zu nutzen, um nur aktuelle und anstehende Einträge zu laden.
+4. Du übergibst das Konzept und die benötigten Notion-API-Scopes (Datenbank lesen) an die IT zur Einrichtung der nativen Integration.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Content-Planungs-Berater (Persona). Entwirf ein Notion-Integrations-Konzept für unseren Content-Agenten, der den Redaktionsplan liest (Aufgabe). Kontext: zwei Notion-Datenbanken — Redaktionsplan mit Feldern Thema/Deadline/Status und Kampagnen-Board mit Feldern Name/Zielgruppe; Agent darf nie schreiben (Kontext). Format: Konzept mit Abschnitten Datenbank-Auswahl, benötigter API-Scope, Query-Rahmen mit Datum-Filter (Format)."
+**Erwartetes Artefakt:** Ein Notion-Integrations-Konzept mit Datenbank-Auswahl, Lese-Scope und Query-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Agent lädt alle Notion-Seiten ohne Filter → Einen strikten Datum- und Status-Filter vorgeben; ohne Filter lädt der Agent veraltete oder irrelevante Seiten und belegt unnötig Kontext-Fenster.
+- Notion-Integration an einen persönlichen User-Account binden → Einen dedizierten Notion-Integrations-Account empfehlen, damit die Verbindung bei Personalwechsel nicht abreißt.
+**Anschluss-Szenario:** S-IM-027
+
+### S-IM-027 Airtable als Content-Datenbank via MCP-Server erschließen
+
+**Wann nutzen (Trigger):** Das Marketing-Team pflegt Asset-Listen, Kampagnen-Varianten und Zielgruppen-Segmente in Airtable — für diese Plattform gibt es keine native Langdock-Integration; die Marketing-Direktorin fragt, wie ein Agent trotzdem auf Airtable-Daten zugreifen kann. (Quelle: sources/10 S-056, Quelle: A-08)
+**Strategisches Ziel:** Airtable via Airtable-MCP-Server als lesbare Content-Datenbank anbinden, ohne eine Custom-Integration bauen zu müssen, und dabei die Governance-Grenze (nur Lesen, kein Schreiben durch den Agenten) klar ziehen.
+**Hands-on Ergebnis:** Ein MCP-Anbindungs-Briefing für die IT, das den Airtable-MCP-Server, die benötigten API-Scopes (Base lesen, Record lesen), den Transport und die Bestätigungspflicht für schreibende Endpunkte benennt.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Airtable-MCP-Server, User-Confirmation für schreibende Tools, automatische Tool-Discovery.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, dass Airtable keinen nativen Langdock-Konnektor hat, aber einen offiziellen MCP-Server anbietet, über den Langdock als Client Airtable-Bases lesen kann.
+2. Du lässt die für den Content-Agenten relevanten Airtable-Bases und Felder bestimmen und den Lese-Scope auf genau diese Tables begrenzen.
+3. Du lässt im Briefing festschreiben, dass alle schreibenden Airtable-Tools (Record erstellen, Record löschen) in der Langdock-MCP-Konfiguration mit Pflicht-Nutzerbestätigung versehen werden.
+4. Du übergibst das Briefing an die IT; Little Data berät, konfiguriert den MCP-Server nicht selbst.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein MCP-Integrations-Berater (Persona). Erstelle ein Anbindungs-Briefing für einen Airtable-MCP-Server, der unsere Content-Asset-Datenbank lesbar macht (Aufgabe). Kontext: Airtable-Base mit Tables Asset-Liste und Kampagnen-Varianten; Agent darf nur lesen; schreibende Endpunkte müssen Nutzerbestätigung erfordern (Kontext). Format: Briefing mit Abschnitten MCP-Server-Quelle, Lese-Scope, Tabelle freigegebener vs. gesperrter Tools, Transport-Angabe (Format)."
+**Erwartetes Artefakt:** Ein MCP-Anbindungs-Briefing mit Tool-Freigabe-Tabelle und Bestätigungs-Policy.
+**Fallstricke (≥2 spezifisch):**
+- Alle auto-entdeckten Airtable-Tools freigeben → Airtable-MCP liefert auch Schreib- und Lösch-Endpunkte; nur explizit benötigte Lese-Tools kuratiert freigeben.
+- Airtable-API-Key direkt in der MCP-Konfiguration im Klartext hinterlegen → Dynamische Platzhalter in Custom Headern verwenden; der API-Key gehört ausschließlich in den Langdock-Admin-Secrets-Bereich.
+**Anschluss-Szenario:** S-IM-028
+
+### S-IM-028 Google Analytics 4 als MCP-Read-Only-Datenquelle für Kampagnen-Dashboards einrichten
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will einen Reporting-Agenten, der GA4-Daten direkt im Chat abfragen kann — die IT fragt nach einem klaren Read-Only-Konzept, um sicherzustellen, dass der Agent niemals GA4-Einstellungen oder Ziele verändern kann. (Quelle: 12 Q104, Quelle: A-36)
+**Strategisches Ziel:** Google Analytics 4 explizit als rein lesende Datenquelle konfigurieren, die Reporting-Abfragen über die native GA4-Integration unterstützt, und dabei dokumentieren, warum GA4 in Langdock strukturell keine Schreibrechte zulässt.
+**Hands-on Ergebnis:** Ein GA4-Read-Only-Konzept mit den benötigten GA4-API-Scopes, einer Erklärung der strukturellen Schreibbeschränkung und einem Prompt-Template, das jede Kennzahl mit Property, Metrik-Name und Zeitraum ausweist.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Google-Analytics-4-Integration (Read-Only), Agent-Actions, Quellenbindung im Prompt.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data erklären, dass GA4 in Langdock ausschließlich lesend integriert ist — es gibt strukturell keinen Schreib-Scope; dieser Punkt ist im IT-Briefing explizit zu dokumentieren, um Missverständnisse bei zukünftigen Audits zu vermeiden.
+2. Du lässt die benötigten GA4-Lese-Scopes (analytics.readonly auf eine bestimmte Property) und die sinnvollen Abfrage-Parameter (Metriken, Dimensionen, Zeitraum) für typische Reporting-Fragen bestimmen.
+3. Du lässt ein Prompt-Template ausarbeiten, das bei jeder GA4-Abfrage Property-ID, Metrik-Name und Zeitraum mitführt und fehlende Werte als "keine Daten verfügbar" — niemals als Schätzwert — ausweist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Analytics-Governance-Berater (Persona). Erstelle ein GA4-Read-Only-Konzept für unseren Reporting-Agenten sowie ein Prompt-Template für Kampagnen-Abfragen (Aufgabe). Kontext: GA4-Property unserer Unternehmenswebsite, wöchentliche Reporting-Fragen zu Traffic, Conversions und Cost-per-Lead (Kontext). Format: Konzept mit Abschnitten GA4-Scope, strukturelle Schreibbeschränkung, Prompt-Template als Code-Block mit Pflichtfeldern Property/Metrik/Zeitraum (Format)."
+**Erwartetes Artefakt:** Ein GA4-Read-Only-Konzept und ein einsatzbereites Prompt-Template für Kampagnen-Reporting.
+**Fallstricke (≥2 spezifisch):**
+- Agent gibt gerundete Schätzwerte aus, wenn GA4 keine Daten zurückliefert → Im Prompt explizit anweisen: "Fehlende oder leere GA4-Werte immer als 'keine Daten verfügbar' ausweisen; niemals interpolieren oder schätzen."
+- GA4-Property-ID nicht im Prompt verankern → Ohne explizite Property-ID kann der Agent auf die falsche Property zugreifen, wenn mehrere Properties im Workspace verbunden sind.
+**Anschluss-Szenario:** S-IM-029
+
+### S-IM-029 LinkedIn Ads API via MCP-Server für Performance-Reporting anbinden
+
+**Wann nutzen (Trigger):** Das Performance-Marketing-Team will Kampagnenkosten, Impressions und CTR aus LinkedIn Campaign Manager direkt im Langdock-Chat analysieren können, ohne täglich Exports herunterzuladen. (Quelle: sources/10 S-047, Quelle: A-36)
+**Strategisches Ziel:** LinkedIn Ads als lesende Datenquelle über einen MCP-Server anbinden und dabei sicherstellen, dass der Agent niemals Kampagneneinstellungen, Budgets oder Targeting-Parameter in LinkedIn verändert.
+**Hands-on Ergebnis:** Ein LinkedIn-Ads-MCP-Briefing mit den benötigten API-Scopes (r_ads, r_ads_reporting), einer Tool-Freigabe-Tabelle und einem Hinweis auf die LinkedIn-AGB-Konformität bei der Datennutzung.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, LinkedIn-Ads-MCP-Server, User-Confirmation für schreibende Endpunkte, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klarstellen, dass LinkedIn-Ads-Publishing und -Konfiguration nicht nativ in Langdock verfügbar ist; die Anbindung läuft über einen MCP-Server mit LinkedIn Ads API.
+2. Du lässt die benötigten OAuth-Scopes bestimmen: r_ads (Kampagnendaten lesen) und r_ads_reporting (Performance-Metriken lesen); rw_ads (schreiben) ist explizit auszuschließen.
+3. Du lässt einen LinkedIn-AGB-Hinweis einarbeiten: Rohe Insights-Daten dürfen nicht an Drittplattformen weitergegeben werden; die Nutzung ist auf interne Reporting-Zwecke zu beschränken.
+4. Du übergibst das Briefing an die IT und den Datenschutzbeauftragten; die OAuth-App-Registrierung in LinkedIn liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Performance-Integrations-Berater (Persona). Erstelle ein Briefing für die Anbindung von LinkedIn Ads via MCP-Server an unseren Reporting-Agenten (Aufgabe). Kontext: Ziel ist Lesen von Kampagnenkosten, Impressions, CTR; Schreiben auf LinkedIn ist verboten; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten benötigte OAuth-Scopes, Tool-Freigabe-Tabelle mit Bestätigungs-Spalte, LinkedIn-AGB-Hinweis (Format)."
+**Erwartetes Artefakt:** Ein LinkedIn-Ads-MCP-Briefing mit Scope-Definition, Tool-Freigabe-Tabelle und AGB-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- rw_ads-Scope versehentlich mitbeantragen → Dieser Scope erlaubt das Ändern von Kampagnenbudgets und Targeting; im Briefing als "explizit verboten" markieren und im OAuth-App-Setup ausschließen.
+- LinkedIn-Insights-Daten in externe Reports exportieren → LinkedIn AGB verbieten die Weitergabe von API-Daten an Dritte; die Nutzung im Briefing auf interne Reporting-Dashboards beschränken.
+**Anschluss-Szenario:** S-IM-030
+
+### S-IM-030 Marketo-Integration advisory einordnen und Anbindungsweg planen
+
+**Wann nutzen (Trigger):** Das Demand-Gen-Team nutzt Marketo als Marketing-Automation-Plattform und fragt, ob Langdock Kampagnen-Performance-Daten direkt aus Marketo lesen oder E-Mail-Sends auslösen kann. (Quelle: sources/10 S-061, Quelle: A-08)
+**Strategisches Ziel:** Realistische Erwartungen an eine Marketo-Anbindung setzen: Langdock ist kein MAP-Ersatz, sondern ein Intelligence-Layer; für Marketo gibt es keine native Integration, aber einen MCP- oder HTTP-Brücken-Weg für Lese-Reporting.
+**Hands-on Ergebnis:** Eine Marketo-Integrations-Einschätzung mit Anbindungsweg (MCP oder HTTP-Brücke), Lese-vs.-Schreib-Empfehlung und einem Hinweis, welche Marketo-Funktionen Langdock strukturell nicht übernehmen kann.
+**Eingesetzte Langdock-Fähigkeit(en):** Gap-Analyse native Integrationen, Langdock als MCP-Client, Advisory-Grenze, HTTP-Brücken-Verweis auf `04-workflows`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data bestätigen, dass Marketo nicht nativ in Langdock integriert ist; die Anbindung läuft über einen MCP-Server (falls verfügbar) oder eine HTTP-Brücke im Workflow-Builder.
+2. Du lässt den empfohlenen Weg für Lese-Reporting bewerten: MCP-Server für strukturierte API-Abfragen bevorzugen; HTTP-Brücke als Fallback, aber mit höherem Wartungsaufwand.
+3. Du lässt klar benennen, was Langdock bei Marketo strukturell nicht kann: E-Mail-Sends auslösen, Kampagnen-Flows konfigurieren oder Lead-Scoring-Regeln ändern — diese Aktionen verbleiben in Marketo.
+4. Du übergibst die Einschätzung an IT und Marketing-Ops als Entscheidungsgrundlage; die Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Marketing-Automation-Integrations-Berater (Persona). Erstelle eine Integrations-Einschätzung für die Anbindung von Marketo an unseren Langdock-Workspace (Aufgabe). Kontext: Ziel ist Lesen von Kampagnen-Performance und Lead-Zahlen; kein E-Mail-Versand über Langdock; DSGVO-konformes EU-Hosting (Kontext). Format: Einschätzung mit Abschnitten Anbindungsweg (MCP vs. HTTP-Brücke), Lese-Scope, was Langdock strukturell nicht übernimmt, Risiko je Pfad (Format)."
+**Erwartetes Artefakt:** Eine Marketo-Integrations-Einschätzung mit Anbindungsweg, Scope-Empfehlung und strukturellen Grenzen.
+**Fallstricke (≥2 spezifisch):**
+- Erwarten, dass Langdock Marketo-E-Mail-Sends auslöst → Kampagnen-Ausführung verbleibt in Marketo; Langdock liest Daten und generiert Analyse-Outputs, löst aber keine MAP-Aktionen aus.
+- HTTP-Brücke als gleichwertig zur nativen Integration behandeln → Auf höheres Bruchrisiko bei Marketo-API-Updates hinweisen und einen dedizierten Brücken-Owner in der IT benennen.
+**Anschluss-Szenario:** S-IM-031
+
+### S-IM-031 Zapier als Middleware-Brücke für nicht-native Tools einsetzen
+
+**Wann nutzen (Trigger):** Das Marketing-Team will Tools wie Mailchimp, Typeform oder Canva an Langdock anbinden, für die weder eine native Integration noch ein MCP-Server existiert — die IT schlägt Zapier als Middleware-Brücke vor. (Quelle: sources/10 S-049, Quelle: A-08)
+**Strategisches Ziel:** Zapier als pragmatische Middleware-Brücke für nicht-native Tools positionieren, dabei aber die DSGVO-Risiken (Datentransfer über Drittanbieter), die AGB-Konformität und den höheren Wartungsaufwand gegenüber nativen Integrationen transparent machen.
+**Hands-on Ergebnis:** Eine Zapier-Brücken-Bewertung mit einer Tabelle der geplanten Verbindungen, je einer Risiko-Einschätzung (DSGVO, AGB, Wartung) und einer Entscheidungsempfehlung, welche Tools via Zapier angebunden werden sollten und welche besser auf einen MCP-Weg warten.
+**Eingesetzte Langdock-Fähigkeit(en):** Gap-Analyse native Integrationen, MCP-Client, Advisory-Grenze; HTTP-Request-Anbindung via `04-workflows`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data für jedes geplante Tool klären, ob ein MCP-Server verfügbar ist — wenn ja, MCP bevorzugen; Zapier erst als Fallback, wenn kein MCP existiert.
+2. Du lässt je Verbindung das DSGVO-Risiko einschätzen: Zapier-Server liegen zum Teil außerhalb der EU; für PII-Daten (Kontaktdaten aus Typeform) ist ein EU-Zapier-Account oder eine Alternative zu prüfen.
+3. Du lässt den Wartungsaufwand realistisch benennen: Zapier-Brücken können bei API-Änderungen der angebundenen Tools still abreißen; einen Owner je Brücke benennen.
+4. Du übergibst die Bewertung an IT und Datenschutzbeauftragten; Little Data empfiehlt, konfiguriert aber keine Zapier-Zaps.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Middleware-Integrations-Berater (Persona). Bewerte den Einsatz von Zapier als Brücke für Mailchimp, Typeform und Canva in unserem Langdock-Workspace (Aufgabe). Kontext: keine nativen Konnektoren für diese Tools, DSGVO-konformes EU-Hosting Pflicht, Team ohne eigene Entwickler (Kontext). Format: Tabelle mit Tool, MCP-Alternative ja/nein, DSGVO-Risiko, Wartungsaufwand, Empfehlung (Format)."
+**Erwartetes Artefakt:** Eine Zapier-Brücken-Bewertungstabelle mit DSGVO-Risiko, Wartungsaufwand und Empfehlung je Tool.
+**Fallstricke (≥2 spezifisch):**
+- Zapier-Brücken für PII-Daten einrichten ohne DSGVO-Prüfung → Zapier-Server außerhalb der EU verarbeiten Daten; EU-Standort des Zapier-Accounts prüfen und Auftragsverarbeitungsvertrag abschließen.
+- Brücken ohne Owner einrichten → Bei API-Änderungen der angebundenen Tools reißen Zapier-Zaps still ab; je Brücke eine verantwortliche Person benennen, die monatliche Gesundheits-Checks durchführt.
+**Anschluss-Szenario:** S-IM-032
+
+### S-IM-032 Webhook-zu-Langdock-Muster für externe Event-Trigger konzipieren
+
+**Wann nutzen (Trigger):** Ein externes System (z. B. ein Formular-Tool, ein CRM-Event oder ein E-Commerce-Trigger) soll automatisch einen Langdock-Workflow starten — die Marketing-Direktorin fragt, wie Webhooks als Eingangspunkt für Langdock-Automatisierungen funktionieren. (Quelle: sources/10 S-049, Quelle: sources/10 S-072)
+**Strategisches Ziel:** Das Webhook-Trigger-Muster als universellen Eingang für externe Systeme verständlich machen und dabei die Abgrenzung zwischen der Payload-Authentifizierung (Sicherheit), dem Trigger-Empfang (Integration) und der Workflow-Logik (Workflow-Builder in `04-workflows`) klar ziehen.
+**Hands-on Ergebnis:** Ein Webhook-Architektur-Konzept mit drei typischen Marketing-Anwendungsfällen (Formular-Lead-Eingang, Intent-Signal, Kampagnen-Status-Change), Sicherheitsanforderungen an die Payload-Signatur und Verweis auf die Workflow-Beratung.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock Webhook-Trigger (empfangende Seite), Workflow-Builder (Trigger-Verarbeitung in `04-workflows`), Advisory-Grenze.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data das Webhook-Muster erklären: Ein externes System sendet eine HTTP-POST-Payload an einen Langdock-Webhook-Endpoint; der Workflow-Builder empfängt und verarbeitet das Ereignis.
+2. Du lässt drei konkrete Marketing-Anwendungsfälle skizzieren und je Fall die Payload-Felder, die Sicherheitsanforderung (HMAC-Signatur oder Shared Secret) und den nächsten Verarbeitungsschritt benennen.
+3. Du lässt die Grenze klar ziehen: Die Webhook-Endpoint-Konfiguration und Payload-Verarbeitungslogik gehören in die Workflow-Beratung (`04-workflows`); hier wird nur das Architektur-Konzept beraten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Architekt (Persona). Erstelle ein Webhook-Architektur-Konzept für drei Marketing-Anwendungsfälle in unserem Langdock-Workspace (Aufgabe). Kontext: Anwendungsfälle — Formular-Lead-Eingang, Intent-Signal aus Bombora, Kampagnen-Status-Change in HubSpot; Sicherheitspflicht: HMAC-Signatur oder Shared Secret (Kontext). Format: Tabelle mit Anwendungsfall, Payload-Felder, Sicherheitsanforderung, nächster Verarbeitungsschritt; plus zwei Sätze Abgrenzung zur Workflow-Beratung (Format)."
+**Erwartetes Artefakt:** Ein Webhook-Architektur-Konzept (Tabelle) mit drei Anwendungsfällen und Sicherheitsanforderungen.
+**Fallstricke (≥2 spezifisch):**
+- Webhook-Endpunkte ohne Signatur-Validierung öffnen → Ein nicht validierter Webhook-Endpoint kann von beliebigen Absendern beschickt werden; HMAC-Signatur oder Shared Secret ist Pflicht.
+- Webhook-Verarbeitung und Workflow-Logik in der Integrationsberatung mitlösen → Die Trigger-Verarbeitungslogik (Bedingungen, Schleifen, Agent-Aufrufe) gehört in die Workflow-Beratung (`04-workflows`), nicht hierher.
+**Anschluss-Szenario:** S-IM-033
+
+### S-IM-033 BigQuery als Read-Only Data-Warehouse-Quelle via MCP-Server anbinden
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will Kampagnen-Attribution-Daten aus dem zentralen BigQuery-Data-Warehouse direkt im Chat abfragen, ohne dass ein Analyst jedes Mal manuell SQL schreiben und Exporte erstellen muss. (Quelle: A-36, Quelle: 12 Q107)
+**Strategisches Ziel:** BigQuery als lesende, SQL-basierte Analysequelle via MCP-Server anbinden und dabei sicherstellen, dass der Agent nur auf freigegebene Datasets zugreift und niemals DDL- oder DML-Befehle ausführt.
+**Hands-on Ergebnis:** Ein BigQuery-MCP-Briefing mit Dataset-Freigabeliste, verbotenen SQL-Operationen (DDL, DML), benötigten IAM-Rollen (BigQuery Data Viewer + Job User) und einem Prompt-Rahmen für attributions-relevante Abfragen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, BigQuery-MCP-Server, User-Confirmation für Abfragen über einem Kostenschwellenwert, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die freigegebenen BigQuery-Datasets bestimmen (z. B. marketing_attribution, campaign_spend) und alle anderen Datasets explizit sperren.
+2. Du lässt die IAM-Rolle des Service Accounts auf BigQuery Data Viewer und BigQuery Job User beschränken; keine Owner- oder Editor-Rolle.
+3. Du lässt verbotene SQL-Operationen (DROP, DELETE, INSERT, UPDATE, CREATE) im MCP-Briefing als gesperrte Tool-Actions dokumentieren und eine Pflicht-Nutzerbestätigung für Abfragen über 1 TB Scan-Volumen vorsehen.
+4. Du übergibst das Briefing an den BigQuery-Administrator und die IT; Little Data berät, konfiguriert keine IAM-Rollen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Data-Warehouse-Integrations-Berater (Persona). Erstelle ein BigQuery-MCP-Briefing für einen Marketing-Agenten, der Kampagnen-Attribution-Daten liest (Aufgabe). Kontext: freigegebene Datasets: marketing_attribution, campaign_spend; kein DDL/DML; IAM-Prinzip der minimalen Berechtigung; Kostenschwelle 1 TB Scan (Kontext). Format: Briefing mit Abschnitten Dataset-Freigabe, IAM-Rolle, verbotene SQL-Operationen, Nutzerbestätigungs-Schwelle (Format)."
+**Erwartetes Artefakt:** Ein BigQuery-MCP-Briefing mit Dataset-Freigabe, IAM-Anforderungen, SQL-Verboten und Kostenschwelle.
+**Fallstricke (≥2 spezifisch):**
+- Service Account mit Owner-Rolle ausstatten → Principle of Least Privilege erzwingen; BigQuery Data Viewer und Job User sind die einzigen benötigten Rollen für lesende Agenten.
+- Unbegrenzte Scan-Abfragen ohne Kostenwarnung freigeben → BigQuery-Kosten entstehen pro gescanntem TB; eine Nutzerbestätigungs-Pflicht ab 1 TB Scan-Volumen verhindert unerwartete Kostenpitzen.
+**Anschluss-Szenario:** S-IM-034
+
+### S-IM-034 Snowflake als Read-Only Data-Warehouse-Quelle advisory planen
+
+**Wann nutzen (Trigger):** Das Unternehmen nutzt Snowflake als Data Warehouse für konsolidierte Marketing-Performance-Daten — die Marketing-Direktorin fragt, ob und wie Langdock Snowflake lesend anbinden kann, ohne dass der Agent Warehouse-Kosten durch unkontrollierte Queries verursacht. (Quelle: A-36, Quelle: 12 Q107)
+**Strategisches Ziel:** Snowflake als lesende Datenquelle via MCP-Server anbinden, den Snowflake-Warehouse-Verbrauch durch Query-Governance kontrollieren und die Rollen-Hierarchie (Marketing_Read-Only-Rolle) dokumentieren.
+**Hands-on Ergebnis:** Ein Snowflake-MCP-Anbindungs-Konzept mit dedizierter Read-Only-Rolle, Virtual-Warehouse-Zuweisung (XS-Größe für Marketing-Abfragen), zugelassenen Schemas und einem Governance-Hinweis zur Abfragekomplexität.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Snowflake-MCP-Server, Advisory-Grenze, User-Confirmation für ressourcenintensive Abfragen.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data eine dedizierte Snowflake-Rolle MARKETING_READ_ONLY skizzieren, die nur SELECT-Rechte auf freigegebene Schemas (MARKETING, CAMPAIGN_ANALYTICS) hat.
+2. Du lässt ein dediziertes Virtual Warehouse (XS-Größe, Auto-Suspend nach 60 Sekunden) für Marketing-Agenten-Abfragen vorsehen, damit Snowflake-Credits kontrolliert bleiben.
+3. Du lässt die Bestätigungspflicht für Abfragen definieren, die mehr als drei Joins oder keine WHERE-Klausel enthalten — diese laufen Gefahr, das Warehouse unverhältnismäßig zu belasten.
+4. Du übergibst das Konzept an den Snowflake-Administrator; die Rollenkonfiguration und Warehouse-Einrichtung liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Data-Warehouse-Governance-Berater (Persona). Erstelle ein Snowflake-Anbindungs-Konzept für einen Marketing-Agenten mit Read-Only-Zugriff (Aufgabe). Kontext: Schemas MARKETING und CAMPAIGN_ANALYTICS; XS-Warehouse; kein DML; Snowflake-Credit-Kontrolle Priorität (Kontext). Format: Konzept mit Abschnitten Rollen-Definition, Warehouse-Konfiguration, zugelassene Schemas, Abfrage-Governance-Regeln (Format)."
+**Erwartetes Artefakt:** Ein Snowflake-MCP-Anbindungs-Konzept mit Rollen-Definition, Warehouse-Konfiguration und Abfrage-Governance.
+**Fallstricke (≥2 spezifisch):**
+- ACCOUNTADMIN- oder SYSADMIN-Rolle für den Langdock-Service-User verwenden → Ausschließlich eine dedizierte MARKETING_READ_ONLY-Rolle mit minimalen Grants zuweisen; hohe Rollen würden dem Agenten Zugriff auf alle Datenbanken geben.
+- Virtual Warehouse ohne Auto-Suspend konfigurieren → Ohne Auto-Suspend läuft das Warehouse stundenlang und verbraucht Credits, auch wenn kein Agent aktiv abfragt.
+**Anschluss-Szenario:** S-IM-035
+
+### S-IM-035 Digital Asset Management (DAM) via MCP-Brücke für Content-Agenten erschließen
+
+**Wann nutzen (Trigger):** Das Unternehmen nutzt ein DAM-System (z. B. Bynder, Canto oder Brandfolder) für freigegebene Bild- und Video-Assets — die Marketing-Direktorin will, dass ein Content-Agent direkt nach freigegebenen Kampagnen-Assets suchen kann, ohne das DAM-UI öffnen zu müssen. (Quelle: A-08, Quelle: sources/10 S-055)
+**Strategisches Ziel:** Das DAM-System als lesbare Asset-Quelle über einen MCP-Server oder eine HTTP-Brücke in den Content-Agenten einbinden, damit freigegebene Assets mit Asset-ID, Metadaten und Download-URL im Chat abrufbar sind.
+**Hands-on Ergebnis:** Ein DAM-Anbindungs-Konzept mit empfohlenem Anbindungsweg (MCP-Server vs. HTTP-Brücke), benötigten API-Scopes (Asset-Suche, Metadaten lesen) und einer klaren Governance-Grenze: der Agent darf keine Assets löschen oder Freigaben ändern.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, DAM-MCP-Server oder HTTP-Brücke, Advisory-Grenze, User-Confirmation für schreibende Endpunkte.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den Anbindungsweg prüfen: Bietet das jeweilige DAM (Bynder, Canto, Brandfolder) einen offiziellen MCP-Server an? Falls nicht, ist eine HTTP-Brücke via Custom Integration Builder oder Zapier der nächste Weg.
+2. Du lässt die benötigten API-Scopes definieren: Asset suchen (Keyword, Tag, Kampagnenname), Metadaten lesen (Asset-ID, Format, Freigabe-Status), Download-URL abrufen — kein Löschen, kein Statusändern.
+3. Du lässt eine Governance-Regel festschreiben: Der Agent gibt im Chat immer nur Asset-ID und Download-URL aus — er lädt keine Binärdateien in den Kontext, da das Kontext-Fenster überlastet würde.
+4. Du übergibst das Konzept an IT und DAM-Administrator; Little Data berät, konfiguriert keine API-Verbindungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein DAM-Integrations-Berater (Persona). Erstelle ein Anbindungs-Konzept für unser Bynder-DAM an den Content-Agenten in Langdock (Aufgabe). Kontext: Agent soll nach freigegebenen Kampagnen-Assets suchen und Asset-ID plus Download-URL liefern; kein Löschen, keine Statusänderung (Kontext). Format: Konzept mit Abschnitten Anbindungsweg (MCP vs. HTTP-Brücke), API-Scopes, Governance-Regeln, Kontext-Fenster-Hinweis (Format)."
+**Erwartetes Artefakt:** Ein DAM-Anbindungs-Konzept mit Anbindungsweg, Scope-Definition und Kontext-Fenster-Governance.
+**Fallstricke (≥2 spezifisch):**
+- Binärdateien (JPEG, MP4) direkt in den Agenten-Kontext laden → Binärdateien überlasten das Kontext-Fenster und verursachen unnötige Kosten; ausschließlich Asset-ID und Download-URL in den Chat-Output übergeben.
+- DAM-Scopes ohne Freigabe-Status-Filter einrichten → Ohne Filter liefert der Agent auch nicht freigegebene Entwurfs-Assets; den Freigabe-Status (approved) als Pflicht-Filter in alle Abfragen einbauen.
+**Anschluss-Szenario:** S-IM-036
+
+### S-IM-036 Event-Plattform (Cvent oder Hopin) via MCP für Teilnehmer-Reporting anbinden
+
+**Wann nutzen (Trigger):** Das Event-Marketing-Team führt Webinare und Konferenzen über Cvent oder Hopin durch — nach jedem Event will die Marketing-Direktorin Teilnehmerzahlen, Registrierungsquoten und Session-Engagement-Daten direkt im Chat auswerten, ohne Excel-Exports. (Quelle: sources/10 S-049, Quelle: A-36)
+**Strategisches Ziel:** Eine Event-Plattform als lesbare Post-Event-Analytics-Quelle via MCP-Server anbinden und die gewonnenen Teilnehmerdaten DSGVO-konform (anonymisiert, aggregiert) in den Reporting-Agenten einbinden.
+**Hands-on Ergebnis:** Ein Event-Plattform-MCP-Briefing mit Lese-Scopes (Event-Metriken, aggregierte Teilnehmerzahlen), einer DSGVO-Governance-Regel (keine PII in den Agent-Kontext) und einem Post-Event-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Event-Plattform-MCP-Server, Advisory-Grenze, DSGVO-Datensparsamkeit.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data prüfen, ob Cvent oder Hopin einen MCP-Server oder eine offizielle API für Reporting-Daten anbieten; falls nicht, ist eine HTTP-Brücke über den Workflow-Builder der nächste Weg.
+2. Du lässt die Lese-Scopes auf aggregierte Event-Metriken beschränken: Gesamt-Registrierungen, Attend-Rate, Session-Engagement-Score — keine individuellen Teilnehmerdaten (Name, E-Mail) in den Agent-Kontext.
+3. Du lässt eine DSGVO-Governance-Regel formulieren: Individuelle Teilnehmerdaten bleiben im Event-System; der Agent erhält nur Aggregat-Zahlen, keine PII.
+4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die API-Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Event-Analytics-Berater (Persona). Erstelle ein MCP-Briefing für die Anbindung unserer Cvent-Event-Plattform an den Reporting-Agenten (Aufgabe). Kontext: Post-Event-Reporting für Webinare, aggregierte Metriken, keine PII im Agent-Kontext, DSGVO-Pflicht (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, Lese-Scopes, DSGVO-Governance-Regel, Post-Event-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein Event-Plattform-MCP-Briefing mit Lese-Scopes, DSGVO-Regel und Post-Event-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Individuelle Teilnehmerlisten (Name, E-Mail, Anwesenheitszeit) in den Agent-Kontext laden → DSGVO-Datensparsamkeit erfordert ausschließlich aggregierte Metriken; PII verbleibt im Event-System.
+- Event-API als dauerhaft stabile Verbindung behandeln → Event-Plattformen ändern ihre APIs häufig nach Major-Releases; einen IT-Owner für die Verbindungsüberwachung benennen.
+**Anschluss-Szenario:** S-IM-037
+
+### S-IM-037 Qualtrics-Feedback-Plattform für automatisierte VoC-Analyse anbinden
+
+**Wann nutzen (Trigger):** Das Marketing-Team führt quartalsweise Kundenbefragungen in Qualtrics durch — die Marketing-Direktorin will, dass Befragungs-Ergebnisse nach Abschluss automatisch in einen Analyse-Agenten fließen, ohne manuellen CSV-Export. (Quelle: sources/10 S-085, Quelle: 12 Q114)
+**Strategisches Ziel:** Qualtrics als lesende Feedback-Quelle anbinden, sodass ein VoC-Analyse-Agent nach jeder Befragung automatisch Aggregat-Ergebnisse (nicht individuelle Antworten) erhält und eine strukturierte Themen-Analyse liefert.
+**Hands-on Ergebnis:** Ein Qualtrics-Anbindungs-Konzept mit Anbindungsweg (MCP oder HTTP-Brücke), Aggregat-vs.-Individualantworten-Governance, DSGVO-Hinweis und einem VoC-Analyse-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Advisory-Grenze, DSGVO-Datensparsamkeit, Wissensordner für VoC-Analyse-Ergebnisse.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, ob Qualtrics einen offiziellen MCP-Server oder eine REST-API für Ergebnis-Exports anbietet, und den einfachsten Anbindungsweg benennen.
+2. Du lässt die Datenschutz-Governance definieren: Der Agent erhält ausschließlich aggregierte Antwortdaten (Durchschnittswerte, Themen-Cluster) — keine individuellen Antworten mit Respondenten-ID.
+3. Du lässt ein VoC-Analyse-Prompt-Template ausarbeiten, das den Agenten anweist, Top-3-Themen zu identifizieren, Sentiment je Thema auszuweisen und einen Handlungsvorschlag für das nächste Quartal zu formulieren.
+4. Du übergibst Konzept und Template an IT und Marketing-Ops; die API-Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein VoC-Integrations-Berater (Persona). Erstelle ein Anbindungs-Konzept für unsere Qualtrics-Befragungen an den Langdock-VoC-Analyse-Agenten (Aufgabe). Kontext: quartalsweise Kundenbefragung mit ca. 300 Antworten, nur aggregierte Daten in den Agenten-Kontext, DSGVO-konformes EU-Hosting (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Aggregat-Governance, DSGVO-Hinweis, VoC-Analyse-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein Qualtrics-Anbindungs-Konzept mit Aggregat-Governance, DSGVO-Hinweis und VoC-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Individuelle Befragungsantworten mit Respondenten-ID in den Agenten-Kontext laden → DSGVO-konform sind nur anonymisierte Aggregat-Daten; individuelle Antworten verbleiben in Qualtrics.
+- VoC-Analyse ohne Vergleichsperiode anfordern → Ohne Vorquartals-Vergleich fehlt der Trend; im Prompt-Template immer Vorperioden-Benchmark als Pflichtfeld vorgeben.
+**Anschluss-Szenario:** S-IM-038
+
+### S-IM-038 Typeform-Daten via Webhook automatisch in Langdock-Workflows einspeisen
+
+**Wann nutzen (Trigger):** Das Marketing-Team nutzt Typeform für Lead-Formulare und Produktfeedback-Umfragen — bei jeder neuen Typeform-Einreichung soll automatisch ein Langdock-Workflow gestartet werden, der die Antworten analysiert und ein personalisiertes Follow-up vorbereitet. (Quelle: sources/10 S-062, Quelle: 12 Q111)
+**Strategisches Ziel:** Typeform-Webhook-Events als Trigger für Langdock-Workflows nutzen, eine saubere Payload-Signatur-Validierung einbauen und die DSGVO-Datensparsamkeit bei der Übergabe von Formularfeldern (Name, E-Mail) sicherstellen.
+**Hands-on Ergebnis:** Ein Typeform-Webhook-Konzept mit Payload-Struktur, Signatur-Validierungsanforderung, DSGVO-Datensparsamkeits-Regel und einer Skizze des angeschlossenen Langdock-Workflows.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock Webhook-Trigger, Workflow-Builder (`04-workflows`), DSGVO-Datensparsamkeit, Advisory-Grenze.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die Typeform-Webhook-Payload-Struktur beschreiben und bestimmen, welche Formularfelder (Antworttext, Thema) in den Workflow-Kontext übergeben werden — PII-Felder (Name, E-Mail) nur wenn für das Follow-up zwingend nötig.
+2. Du lässt die Signatur-Validierung spezifizieren: Typeform sendet eine HMAC-SHA256-Signatur im Header; der Langdock-Webhook-Empfänger muss diese vor der Verarbeitung validieren.
+3. Du lässt die Workflow-Skizze ausarbeiten: Typeform-Webhook → Payload-Validierung → Agent analysiert Antworten → Draft Follow-up → Human-Approval-Gate vor Versand; und verweist für die detaillierte Workflow-Konfiguration auf `04-workflows`.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Webhook-Integrations-Berater (Persona). Erstelle ein Typeform-Webhook-Konzept für einen Langdock-Workflow, der Formular-Einreichungen analysiert und ein Follow-up vorbereitet (Aufgabe). Kontext: Typeform mit Feldern Thema, Frage, optional E-Mail; HMAC-Signatur-Pflicht; DSGVO-Datensparsamkeit; Human-Approval vor Versand (Kontext). Format: Konzept mit Abschnitten Payload-Felder, Signatur-Validierung, DSGVO-Regel, Workflow-Skizze als nummerierte Schritte (Format)."
+**Erwartetes Artefakt:** Ein Typeform-Webhook-Konzept mit Payload-Felder, Signatur-Validierung, DSGVO-Regel und Workflow-Skizze.
+**Fallstricke (≥2 spezifisch):**
+- Typeform-Webhook ohne Signatur-Validierung empfangen → Ohne HMAC-Validierung kann jeder beliebige HTTP-Sender den Workflow auslösen; Signatur-Check als erste Bedingung im Workflow erzwingen.
+- Alle Formularfelder inklusive E-Mail automatisch in den Agent-Kontext laden → Datensparsamkeit: Nur die für die Follow-up-Generierung nötigen Felder (Thema, Frage) übergeben; E-Mail nur wenn der Workflow sie für den Versand zwingend braucht.
+**Anschluss-Szenario:** S-IM-039
+
+### S-IM-039 Pardot-Integration advisory einordnen — Anbindung für B2B-Lead-Nurturing planen
+
+**Wann nutzen (Trigger):** Das B2B-Marketing-Team setzt Pardot (Salesforce Marketing Cloud Account Engagement) für Lead-Nurturing-Sequenzen ein — die Marketing-Direktorin fragt, ob Langdock Pardot-Performance-Daten lesen und personalisierte Nurturing-Inhalte generieren kann. (Quelle: sources/10 S-062, Quelle: A-08)
+**Strategisches Ziel:** Pardot advisory als lesbare Datenquelle für Nurturing-Content-Generierung positionieren; dabei klarstellen, dass Langdock keine Pardot-E-Mail-Sends auslöst und keine Engagement-Studio-Flows konfiguriert.
+**Hands-on Ergebnis:** Eine Pardot-Integrations-Einschätzung mit empfohlenem Anbindungsweg (Salesforce-native oder MCP), Lese-Scope-Empfehlung, Advisory-Grenze und einem Content-Generierungs-Anwendungsfall.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Salesforce-Integration (Pardot läuft auf Salesforce-API), Langdock als MCP-Client, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klarstellen, dass Pardot via Salesforce-API erreichbar ist und die bestehende native Salesforce-Langdock-Integration als Zugangspunkt dienen kann — eine separate Pardot-Integration ist nicht nötig.
+2. Du lässt die Lese-Scopes bestimmen: Prospect-Engagement-Score, Campaign-Performance (Opens, Clicks), List-Membership — keine Schreib-Scopes auf Prospect-Datensätze.
+3. Du lässt den Anwendungsfall skizzieren: Agent liest Pardot-Engagement-Daten → generiert personalisierten Nurturing-Content-Entwurf → Menschen in Marketing-Ops importieren den Entwurf in Pardot und konfigurieren den Send.
+4. Du übergibst die Einschätzung an IT und Salesforce-Admin; die CRM-Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein B2B-Marketing-Automation-Berater (Persona). Erstelle eine Pardot-Integrations-Einschätzung für unseren Langdock-Workspace (Aufgabe). Kontext: Pardot über Salesforce-API erreichbar; Ziel ist Lesen von Engagement-Scores und Generieren von Nurturing-Content-Entwürfen; kein automatischer E-Mail-Versand (Kontext). Format: Einschätzung mit Abschnitten Anbindungsweg, Lese-Scope, Anwendungsfall-Skizze, Advisory-Grenze was Langdock nicht übernimmt (Format)."
+**Erwartetes Artefakt:** Eine Pardot-Integrations-Einschätzung mit Anbindungsweg, Scope, Anwendungsfall und Advisory-Grenze.
+**Fallstricke (≥2 spezifisch):**
+- Erwarten, dass Langdock Pardot-E-Mail-Sends oder Engagement-Studio-Flows auslöst → Kampagnen-Ausführung verbleibt in Pardot; Langdock generiert Inhalte und Analysen, aber kein Send-Trigger.
+- Pardot-Prospect-PII (Name, E-Mail, Unternehmen) unnötig in den Agent-Kontext laden → Nur Engagement-Score und Kampagnen-Metriken übergeben; Datensparsamkeit gemäß DSGVO.
+**Anschluss-Szenario:** S-IM-040
+
+### S-IM-040 Tool-Konsolidierungsassessment mit Langdock als Bewertungsrahmen durchführen
+
+**Wann nutzen (Trigger):** Der CFO hat das Marketing-Team aufgefordert, den Tool-Stack auf Kosteneinsparungspotenzial zu prüfen — die Marketing-Direktorin will wissen, welche Tools durch Langdock-Integrationen teilweise ersetzt oder konsolidiert werden können und welche unersetzlich bleiben. (Quelle: A-08, Quelle: A-03, Quelle: A-01)
+**Strategisches Ziel:** Einen strukturierten Konsolidierungs-Assessment-Rahmen entwickeln, der für jedes Marketing-Tool bewertet: (a) ob Langdock die Kernfunktion abdeckt, (b) ob eine hybride Nutzung sinnvoll ist oder (c) das Tool unersetzlich bleibt.
+**Hands-on Ergebnis:** Ein Tool-Konsolidierungs-Assessment (Tabelle) mit Bewertungsdimensionen — Langdock-Abdeckung (0/50/100%), Kostenpotenzial, Abhängigkeiten, Empfehlung — und einem Executive-Summary für den CFO.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Integration-Abdeckung, Wissensordner für Tool-Inventar, Agent für Assessment-Erstellung.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data eine Tool-Inventar-Liste aus dem Wissensordner aufbauen: alle Marketing-Tools mit monatlichen Kosten und Hauptfunktionen.
+2. Du lässt je Tool bewerten, ob Langdock die Kernfunktion vollständig (100%), teilweise (50%) oder gar nicht (0%) abdeckt, und die Begründung dokumentieren.
+3. Du lässt Empfehlungen formulieren: Vollständig ersetzbar → Deaktivierung nach Migrationsplan; Hybride Nutzung → Beschränkung auf Kernfunktionen des Dritttools; Unersetzlich → Weiterführen und via MCP anbinden.
+4. Du übergibst das Assessment und den Executive-Summary an den CFO und die IT; Kündigungs- und Migrations-Entscheidungen liegen beim Management.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Tool-Konsolidierungs-Berater (Persona). Erstelle ein Tool-Konsolidierungs-Assessment für unseren Marketing-Tool-Stack auf Basis unseres Tool-Inventars im Wissensordner (Aufgabe). Kontext: CFO-Kostenziel, Bewertungsdimensionen Langdock-Abdeckung 0/50/100%, monatliche Kosten, Abhängigkeiten; fünf Tools im Inventar (Kontext). Format: Tabelle mit Tool, Monatkosten, Langdock-Abdeckung, Begründung, Empfehlung; plus drei Sätze Executive-Summary (Format)."
+**Erwartetes Artefakt:** Ein Tool-Konsolidierungs-Assessment (Tabelle) mit Executive-Summary für den CFO.
+**Fallstricke (≥2 spezifisch):**
+- Tools als vollständig ersetzbar einstufen, ohne Migrations-Risiko zu bewerten → Jede "vollständig ersetzbar"-Einschätzung muss einen Migrationsplan und einen Zeitpuffer beinhalten; überstürzte Kündigungen reißen laufende Kampagnen.
+- Assessment ohne Controlling-Validierung präsentieren → Tool-Kosten-Daten stammen aus Schätzungen; Controlling muss Vertragsdaten und Laufzeiten vor einer CFO-Präsentation validieren.
+**Anschluss-Szenario:** S-IM-041
+
+### S-IM-041 n8n als Self-Hosted Middleware-Alternative zu Zapier evaluieren
+
+**Wann nutzen (Trigger):** Das IT-Team schlägt n8n als DSGVO-konforme, self-hosted Middleware-Alternative zu Zapier vor — die Marketing-Direktorin will wissen, was sich für Langdock-Anbindungen ändert und welche Vorteile n8n gegenüber Zapier bietet. (Quelle: 12 Q108, Quelle: A-03)
+**Strategisches Ziel:** n8n als DSGVO-konforme, self-hosted Middleware einordnen, die als Brücke für nicht-native Tools fungiert, dabei aber unter voller IT-Kontrolle bleibt und keinen Drittanbieter-Datentransfer erzeugt.
+**Hands-on Ergebnis:** Ein Vergleichs-Assessment n8n vs. Zapier mit Bewertungsdimensionen DSGVO-Kontrolle, Wartungsaufwand, Kosten, verfügbare Konnektoren und eine Empfehlung, welche bestehenden Zapier-Brücken auf n8n migriert werden sollten.
+**Eingesetzte Langdock-Fähigkeit(en):** Gap-Analyse native Integrationen, Advisory-Grenze, Middleware-Bewertung.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die Kerneigenschaft von n8n hervorheben: self-hosted bedeutet, alle Daten verbleiben im eigenen Rechenzentrum — kein Drittanbieter-Datentransfer und volle DSGVO-Kontrolle, aber auch volle IT-Wartungsverantwortung.
+2. Du lässt den Vergleich entlang der Dimensionen DSGVO-Risiko, Wartungsaufwand, Lizenzkosten, Anzahl verfügbarer Konnektoren und Langdock-Webhook-Kompatibilität strukturieren.
+3. Du lässt eine priorisierte Migrations-Empfehlung formulieren: Zapier-Brücken mit PII-Transfer als erste Migrationskandidaten; Brücken ohne PII können bei Zapier verbleiben, wenn Wartungsaufwand für n8n zu hoch ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Middleware-Architektur-Berater (Persona). Erstelle einen Vergleich von n8n (self-hosted) versus Zapier als Middleware-Brücke für unsere Langdock-Integrationen (Aufgabe). Kontext: DSGVO-Kontrolle hat Priorität; IT kann n8n selbst betreiben; drei bestehende Zapier-Brücken sind im Einsatz (Kontext). Format: Tabelle mit Bewertungsdimension, n8n-Bewertung, Zapier-Bewertung, Gewichtung; plus Migrations-Empfehlung in drei Bulletpoints (Format)."
+**Erwartetes Artefakt:** Ein n8n-vs.-Zapier-Vergleichs-Assessment (Tabelle) mit priorisierter Migrations-Empfehlung.
+**Fallstricke (≥2 spezifisch):**
+- n8n als kostenlos einschätzen → n8n ist Open-Source, aber self-hosting erzeugt Server- und Wartungskosten; diese müssen in den Kostenvergleich eingerechnet werden.
+- n8n-Migration ohne IT-Ressourcen-Check planen → Self-hosting erfordert DevOps-Kapazität für Updates, Backups und Fehlerdiagnose; ohne ausreichende IT-Ressourcen ist Zapier trotz DSGVO-Nachteilen die praktikablere Wahl.
+**Anschluss-Szenario:** S-IM-042
+
+### S-IM-042 Vendor-Lock-in-Risiko bei Langdock-Integrationen bewerten und Ausstiegsplan entwickeln
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin hat vom CDO die Anforderung erhalten, für alle kritischen SaaS-Tools einen Ausstiegsplan zu dokumentieren — sie fragt Little Data, wie hoch das Vendor-Lock-in-Risiko bei Langdock-Integrationen ist und wie ein Notfallplan aussieht. (Quelle: A-03, Quelle: A-08)
+**Strategisches Ziel:** Das Vendor-Lock-in-Risiko bei Langdock transparent machen (Wissensordner exportierbar? Agenten-Prompts portierbar? Integrationen Standard-API-basiert?) und einen konkreten Ausstiegsplan skizzieren, der die wichtigsten Marketing-Workflows auch ohne Langdock am Laufen hält.
+**Hands-on Ergebnis:** Eine Vendor-Lock-in-Risikobewertung mit einer Tabelle (Langdock-Asset, Portierbarkeit, Ausstiegsaufwand, Alternativer) und einem dreistufigen Notfall-Ausstiegsplan.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Exportfähigkeit, Wissensordner-Export (Markdown), Agenten-Prompt-Dokumentation.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Langdock-Assets nach Portierbarkeit bewerten: Wissensordner (exportierbar als Markdown — geringes Lock-in), Agenten-Prompts (exportierbar als Text — geringes Lock-in), Workflow-Logik (plattformspezifisch — mittleres Lock-in), native Integrationen (API-Standard — geringes Lock-in).
+2. Du lässt den Ausstiegsaufwand je Asset-Kategorie einschätzen: Stunden für Wissensordner-Export, Tage für Agenten-Prompt-Migration, Wochen für Workflow-Neukonfiguration in einer alternativen Plattform.
+3. Du lässt einen dreistufigen Notfall-Ausstiegsplan skizzieren: (1) Wissensordner-Snapshot erstellen und extern sichern, (2) Agenten-Prompts dokumentieren und versionieren, (3) kritische Workflows in alternativer Notation festhalten.
+4. Du übergibst den Plan an CDO und IT als Governance-Dokument; Little Data berät, führt keine Exporte durch.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein SaaS-Vendor-Risiko-Berater (Persona). Erstelle eine Vendor-Lock-in-Risikobewertung für unsere Langdock-Nutzung und einen dreistufigen Ausstiegsplan (Aufgabe). Kontext: CDO-Anforderung an Ausstiegsfähigkeit für alle kritischen SaaS-Tools; drei Wissensordner, fünf Agenten, zwei aktive Workflows (Kontext). Format: Tabelle mit Asset, Portierbarkeit, Ausstiegsaufwand, Alternative; plus dreistufiger Notfall-Ausstiegsplan als nummerierte Liste (Format)."
+**Erwartetes Artefakt:** Eine Vendor-Lock-in-Risikobewertung (Tabelle) und ein dreistufiger Notfall-Ausstiegsplan.
+**Fallstricke (≥2 spezifisch):**
+- Workflow-Logik als leicht portierbar einschätzen → Langdock-Workflow-Konfigurationen sind plattformspezifisch; für jede kritische Workflow-Logik eine plattformunabhängige Beschreibung in Prosa oder BPMN-Notation anlegen.
+- Ausstiegsplan als einmalig behandeln → Jedes Quartal prüfen, ob neue Agenten oder Wissensordner zum Asset-Register hinzugefügt wurden; veraltete Ausstiegspläne sind keine Ausstiegspläne.
+**Anschluss-Szenario:** S-IM-043
+
+### S-IM-043 Gmail-Integration für automatisierte Lead-Antwort-Entwürfe advisory planen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will, dass ein Agent eingehende Lead-E-Mails in Gmail automatisch liest und einen personalisierten Antwort-Entwurf vorbereitet, der dann von einem Menschen freigegeben und gesendet wird. (Quelle: 12 Q114, Quelle: sources/10 S-062)
+**Strategisches Ziel:** Gmail als lesende Quelle und schreibende Entwurfs-Ablage (Draft) in einen Lead-Response-Workflow einbinden, dabei aber sicherstellen, dass kein Agent jemals ohne menschliche Freigabe eine E-Mail sendet.
+**Hands-on Ergebnis:** Ein Gmail-Integrations-Konzept mit Lese-Scope (E-Mail lesen), Schreib-Scope (Draft erstellen — kein Send), einem Human-Approval-Gate und einem Hinweis zur PII-Datensparsamkeit.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Gmail-Integration (Lesen + Draft erstellen), Agent-Actions, Human-in-the-Loop-Gate, DSGVO-Datensparsamkeit.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Gmail-Scopes definieren: gmail.readonly (E-Mail lesen) und gmail.compose (Draft erstellen) — gmail.send ist explizit auszuschließen.
+2. Du lässt den Workflow skizzieren: Gmail-Trigger (neue Lead-E-Mail) → Agent liest E-Mail → generiert personalisierten Draft → Draft landet in Gmail als Entwurf → Mensch prüft, editiert und sendet.
+3. Du lässt die DSGVO-Datensparsamkeits-Regel einarbeiten: Nur der E-Mail-Body und das Thema gehen in den Agent-Kontext; vollständige E-Mail-Header mit PII werden minimiert.
+4. Du übergibst das Konzept und den Gmail-Scope-Bedarf an die IT; Little Data berät, konfiguriert keine OAuth-Verbindungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein E-Mail-Integrations-Berater (Persona). Erstelle ein Gmail-Integrations-Konzept für einen automatisierten Lead-Antwort-Entwurf-Workflow (Aufgabe). Kontext: Agent liest eingehende Lead-E-Mails, erstellt Draft, sendet niemals selbst; DSGVO-Datensparsamkeit; Human-Approval vor Versand Pflicht (Kontext). Format: Konzept mit Abschnitten Gmail-Scopes, Workflow-Skizze als nummerierte Schritte, DSGVO-Datensparsamkeits-Regel, Human-Approval-Gate-Beschreibung (Format)."
+**Erwartetes Artefakt:** Ein Gmail-Integrations-Konzept mit Scopes, Workflow-Skizze, DSGVO-Regel und Human-Approval-Gate.
+**Fallstricke (≥2 spezifisch):**
+- gmail.send-Scope mitbeantragen → Dieser Scope erlaubt dem Agenten, E-Mails zu senden, ohne dass ein Mensch sie liest; explizit nur gmail.compose erlauben und gmail.send im IT-Briefing als verboten markieren.
+- Vollständige E-Mail-Header (CC-Liste, Reply-To, alle Empfänger) in den Agent-Kontext laden → Nur E-Mail-Body und Betreff sind für die Draft-Generierung nötig; vollständige Header erhöhen PII-Exposure ohne Mehrwert.
+**Anschluss-Szenario:** S-IM-044
+
+### S-IM-044 Integration-Governance-Playbook für den gesamten Marketing-Workspace erstellen
+
+**Wann nutzen (Trigger):** Nach mehreren Integrations-Projekten (HubSpot, SharePoint, MCP-Server, Zapier-Brücken) fragt die Marketing-Direktorin, wie sie sicherstellt, dass alle zukünftigen Integrationen konsistent nach denselben Governance-Regeln eingerichtet und dokumentiert werden. (Quelle: A-13, Quelle: A-35)
+**Strategisches Ziel:** Ein wiederverwendbares Integration-Governance-Playbook entwickeln, das für jede neue Anbindung die Mindeststandards (Dokumentation, Advisory-Grenze, Scope-Minimalität, Owner-Benennung, Rotation-Policy, Monitoring) als Checkliste vorschreibt.
+**Hands-on Ergebnis:** Ein Integration-Governance-Playbook als Checkliste (16 Prüfpunkte) und eine einseitige Zusammenfassung für das IT-Onboarding-Gespräch, die bei jeder neuen Integration als Briefing-Grundlage dient.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Governance-Standards, Wissensordner für Playbook-Ablage, Agent für Checklisten-Erstellung.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Mindeststandards aus allen bisherigen Integrations-Szenarien destillieren: Advisory-Grenze, Scope-Minimalität (nur was nötig), Owner-Benennung, Service-Account statt Personen-Account, API-Key-Rotation-Policy, Monitoring-Canary, Datenschutz-Governance.
+2. Du lässt diese Standards in eine 16-Punkte-Checkliste übersetzen, die für jede neue Integration abgearbeitet wird, bevor die IT die Verbindung produktiv schaltet.
+3. Du lässt eine einseitige Playbook-Zusammenfassung erstellen, die beim IT-Onboarding-Gespräch als gemeinsames Referenzdokument dient.
+4. Du übergibst das Playbook an IT, Marketing-Ops und Workspace-Admin; das Playbook wird im Wissensordner des Workspace-Admin-Agenten hinterlegt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integration-Governance-Berater (Persona). Erstelle ein Integration-Governance-Playbook mit einer 16-Punkte-Checkliste und einer einseitigen Onboarding-Zusammenfassung für alle zukünftigen Langdock-Integrationen (Aufgabe). Kontext: Mindeststandards aus Integrationen HubSpot, SharePoint, MCP-Server, Zapier-Brücken; DSGVO-konformes EU-Hosting; Advisory-Grenze ist nicht verhandelbar (Kontext). Format: Checkliste als nummerierte Liste mit Prüfpunkt und Begründung; Zusammenfassung als Absatz mit drei Schlüsselregeln (Format)."
+**Erwartetes Artefakt:** Ein Integration-Governance-Playbook (16-Punkte-Checkliste) und eine einseitige Onboarding-Zusammenfassung.
+**Fallstricke (≥2 spezifisch):**
+- Playbook als einmalig abgehaktes Dokument behandeln → Integrationsstandards müssen bei jedem neuen Tool erneut angewendet werden; das Playbook als lebende Checkliste im Wissensordner pflegen und bei neuen Erkenntnissen aktualisieren.
+- Advisory-Grenze im Playbook abschwächen → Die Regel "Little Data konfiguriert keine Integrationen" ist nicht verhandelbar; sie explizit als unveränderlichen Grundsatz in der Playbook-Einleitung verankern.
+**Anschluss-Szenario:** S-IM-045
+
+### S-IM-045 Integrationslandschaft für einen Audit vorbereiten und dokumentieren
+
+**Wann nutzen (Trigger):** Der Datenschutzbeauftragte oder ein externer Prüfer kündigt ein Audit der KI-gestützten Datenverarbeitungen an — die Marketing-Direktorin muss innerhalb von zwei Wochen eine vollständige Dokumentation aller aktiven Langdock-Integrationen und Datenflüsse vorlegen. (Quelle: A-13, Quelle: A-15, Quelle: 12 Q128)
+**Strategisches Ziel:** Alle aktiven Integrationen in einem Audit-tauglichen Verzeichnis dokumentieren, das für jeden Datenfluss Rechtsgrundlage, verarbeitete Datenkategorien, Löschfristen und Verantwortliche ausweist — als Grundlage für DSGVO-Artikel-30-Verzeichnis und AI-Act-Inventory.
+**Hands-on Ergebnis:** Ein Integrations-Audit-Verzeichnis (Tabelle) mit allen aktiven Verbindungen, je Eintrag: Systemname, Datenfluss-Richtung, verarbeitete Datenkategorie, DSGVO-Rechtsgrundlage, Löschfrist, Verantwortlicher, letzter Review-Zeitpunkt.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Dokumentationsstandards, Wissensordner für Audit-Ablage, Agent für Verzeichnis-Erstellung, Verweis auf `08-sicherheit-und-governance`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data alle aktiven Integrationen aus dem Wissensordner inventarisieren: native Integrationen, MCP-Server-Verbindungen, HTTP-Brücken, Synced Folder — jede Verbindung als eigener Eintrag.
+2. Du lässt je Eintrag die Audit-Pflichtfelder ausfüllen: Systemname, Datenfluss-Richtung (lesen/schreiben), verarbeitete Datenkategorie (anonym/PII/besondere Kategorie), DSGVO-Rechtsgrundlage (Art. 6 Abs. 1), Löschfrist, Verantwortlicher.
+3. Du lässt einen Hinweis einarbeiten, dass das Verzeichnis als lebendes Dokument im Wissensordner gepflegt wird und bei jeder neuen oder geänderten Integration aktualisiert werden muss.
+4. Du übergibst das Verzeichnis an den Datenschutzbeauftragten und die IT; tiefergehende Compliance-Fragen werden an die Schwesterdatei `08-sicherheit-und-governance` übergeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Datenschutz-Audit-Berater (Persona). Erstelle ein Integrations-Audit-Verzeichnis für alle aktiven Langdock-Integrationen unseres Marketing-Workspace auf Basis unseres Integrations-Inventars im Wissensordner (Aufgabe). Kontext: externer Audit in zwei Wochen, DSGVO-Artikel-30-konformes Format, EU AI Act Inventory als Ergänzungspflicht (Kontext). Format: Tabelle mit Spalten Systemname, Datenfluss-Richtung, Datenkategorie, Rechtsgrundlage, Löschfrist, Verantwortlicher, letzter Review; plus Hinweis zur Pflege als lebendes Dokument (Format)."
+**Erwartetes Artefakt:** Ein Integrations-Audit-Verzeichnis (Tabelle) nach DSGVO-Artikel-30-Struktur mit Pflegehinweis.
+**Fallstricke (≥2 spezifisch):**
+- Verzeichnis einmalig erstellen und nie aktualisieren → Ohne regelmäßige Aktualisierung ist das Verzeichnis beim nächsten Audit bereits veraltet; einen festen Quartals-Review-Termin im Kalender verankern und den Datenschutzbeauftragten einbeziehen.
+- Compliance-Detailfragen (DPIA-Pflicht, AI-Act-Risikoklassen) im Integrationsverzeichnis mitbeantworten → Diese Tiefe gehört in die Governance-Beratung in `08-sicherheit-und-governance`; hier wird das Verzeichnis erstellt, nicht das gesamte Compliance-Framework.
+**Anschluss-Szenario:** S-IM-001
+
 ## Hinweise & Quellen-Konflikte
 
 - Native-Integrations-Zahl: Das Feature-Overview nennt "55+", die Produktseite "57 Integrationen / 754 Actions", das deutsche Master-Inventar "60+". Belastbar ist "55+ native Integrationen mit rund 754 Actions"; die exakte Zahl ist offiziell nicht dokumentiert und sollte vor einem Rollout bei support@langdock.com bestätigt werden.
