@@ -522,6 +522,390 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 - Memory-Funktion des Onboarding-Agenten speichert vertrauliche Briefings des neuen Mitarbeiters → Memory für den Onboarding-Agenten auf anonyme Sprach-Feedback-Daten beschränken; keine Kampagneninhalte speichern.
 **Anschluss-Szenario:** S-MP-026
 
+### S-MP-026 Google Ads Copy-Varianten für B2B-Kampagnen skaliert erstellen
+
+**Wann nutzen (Trigger):** Das Performance-Marketing-Team muss für eine laufende Google-Ads-Kampagne innerhalb von 24 Stunden 30 Anzeigenvarianten in drei Anzeigengruppen liefern — mit verschiedenen Hooks (Nutzen, Dringlichkeit, Social Proof) und strikter Zeichenbegrenzung. (Quelle: sources/10 S-058)
+**Strategisches Ziel:** Den manuellen Copy-Aufwand von drei Stunden auf unter 30 Minuten reduzieren und gleichzeitig durch strukturierte Varianz die statistische Signifikanz des A/B-Tests sicherstellen.
+**Hands-on Ergebnis:** 30 Anzeigentexte (je 3 Headlines à max. 30 Zeichen, 2 Descriptions à max. 90 Zeichen) in einer Google-Sheets-kompatiblen Tabelle, nach Anzeigengruppe und Trigger-Typ strukturiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Workflows (Google Sheets Action), Prompt-Bibliothek
+**Vorgehen (4 Schritte):**
+1. Einen Copy-Agenten mit Prompt-Variablen für {{Anzeigengruppe}}, {{Trigger-Typ}} und {{USP}} konfigurieren; Zeichenlimits als harte Regel im System-Prompt verankern.
+2. Workflow mit Loop-Node starten: für jede der drei Anzeigengruppen zehn Varianten generieren, je zwei pro Trigger-Typ (Nutzen, Dringlichkeit, Social Proof, FOMO, Frage).
+3. Alle Varianten automatisch per Google-Sheets-Action in eine vorbereitete Tabelle mit Spalten: Anzeigengruppe, Trigger, Headline 1–3, Description 1–2 schreiben.
+4. Human-in-the-Loop-Checkpoint: Performance-Marketer prüft die Tabelle auf Policy-Verstöße (z.B. Superlative wie "Bestes Tool") vor dem Upload in Google Ads.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Performance-Marketing-Texter für ein DACH-B2B-SaaS-Unternehmen. Erstelle 10 Google-Responsive-Search-Ad-Varianten für die Anzeigengruppe '{{Anzeigengruppe}}'. Schreibe je 3 Headlines (max. 30 Zeichen) und 2 Descriptions (max. 90 Zeichen). Variiere den Trigger: je zwei Varianten für Nutzen, Dringlichkeit, Social Proof, FOMO und Frage. Nutze formelles Deutsch ohne Ausrufezeichen am Satzende. Liefere das Ergebnis als strukturierte Tabelle mit Spalten: Trigger | H1 | H2 | H3 | D1 | D2."
+**Erwartetes Artefakt:** Google-Sheets-Tabelle mit 30 validierten Anzeigentexten, direkt importierbar in Google Ads Editor.
+**Fallstricke (≥2 spezifisch):**
+- Agent überschreitet Zeichenlimits systematisch → Zeichenzählung explizit im System-Prompt erzwingen und im Workflow einen Validierungs-Node ergänzen, der Überschreitungen markiert.
+- Google-Policy-Verstöße (Clickbait, Großschreibung ganzer Wörter) bleiben unentdeckt → Human-Review-Step mit Checkliste aus den aktuellen Google-Ads-Richtlinien als Pflicht-Gate einbauen.
+**Anschluss-Szenario:** S-MP-027
+
+### S-MP-027 LinkedIn-Ads-Copy für DACH-B2B-Zielgruppen testen
+
+**Wann nutzen (Trigger):** Das Team launcht eine LinkedIn-Lead-Gen-Kampagne auf Entscheider-Ebene (C-Level, VP) in der DACH-Region und braucht fünf Anzeigenvarianten pro Zielgruppensegment — mit angepasster Tonalität je nach Jobtitel und Branche. (Quelle: sources/10 S-058; Quelle: A-07)
+**Strategisches Ziel:** Durch datengetriebenes Messaging-Testing die Cost-per-Lead auf LinkedIn unter die Branchenbase-Rate für DACH-B2B (ca. €80–120 CPL) drücken und gleichzeitig die Markenwahrnehmung bei Entscheidern stärken.
+**Hands-on Ergebnis:** Fünf LinkedIn-Single-Image-Ad-Texte pro Zielgruppensegment (max. 150 Zeichen Introtext, max. 70 Zeichen Headline) mit zugehörigen Visual-Briefings für den Designer.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Agenten, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Zielgruppensegmente (z.B. CFO Maschinenbau, CIO Retail, HR-Director Mittelstand) als Variablen im System-Prompt des Agenten definieren; Brand-Voice-Guidelines aus dem Wissensordner verknüpfen.
+2. Pro Segment fünf Anzeigenvarianten mit variierendem Aufhänger erzeugen: Pain-Point, Outcome-Fokus, Zahlen/Statistik, Social Proof, Frage.
+3. Varianten im Canvas nebeneinander anzeigen und auf DACH-Tonalität prüfen (formelles "Sie", keine Anglizismen, branchenspezifisches Vokabular).
+4. Pro Variante ein Visual-Briefing (ein Satz Bildkonzept) ergänzen; Paket an den Designer übergeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist LinkedIn-Ads-Texter für ein B2B-Enterprise-SaaS-Unternehmen. Erstelle 5 LinkedIn-Anzeigenvarianten für das Segment '{{Jobtitel}} in der {{Branche}}-Branche'. Jede Variante hat: einen Introtext (max. 150 Zeichen, formelles 'Sie'), eine Headline (max. 70 Zeichen) und einen Ein-Satz-Visual-Brief für den Designer. Variiere den Aufhänger: Pain-Point, Outcome, Statistik, Social Proof und Frage. Branchenspezifisches Deutsch, kein Marketinggeschwurbel."
+**Erwartetes Artefakt:** Fünf Anzeigen-Sets im Canvas (Introtext + Headline + Visual-Brief) — formatbereit für den LinkedIn-Campaign-Manager.
+**Fallstricke (≥2 spezifisch):**
+- Zu generische Ansprache übersieht Branchenspezifika → System-Prompt muss branchenspezifische Schmerzpunkte aus dem Wissensordner laden; niemals ein Einheitstext für alle Segmente.
+- Visual-Briefings zu vage für Designer → Prompt muss explizit "beschreibe ein konkretes Bild in einem Satz (Motiv, Stimmung, Farbraum)" verlangen, nicht nur "professionelles Bild".
+**Anschluss-Szenario:** S-MP-028
+
+### S-MP-028 E-Mail-Drip-Kampagne für SaaS-Onboarding-Lifecycle entwerfen
+
+**Wann nutzen (Trigger):** Das CRM-Team muss für neu registrierte Trial-Nutzer eine fünfteilige Onboarding-E-Mail-Sequenz aufsetzen, die in HubSpot als automatisierter Workflow läuft — mit verhaltensbasierten Verzögerungen und Segment-Splits. (Quelle: sources/10 S-057, S-063)
+**Strategisches Ziel:** Die Trial-to-Paid-Conversion innerhalb von 14 Tagen um mindestens 15 % steigern, indem neue Nutzer zur richtigen Zeit die richtige Hilfestellung und Aktivierungs-Nudge erhalten.
+**Hands-on Ergebnis:** Fünf fertige E-Mail-Entwürfe (Betreff, Preheader, Body, CTA) mit Delay-Logik, einem Condition-Split für aktive vs. inaktive Nutzer und einem Opt-out-konformen Footer.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Agenten
+**Vorgehen (5 Schritte):**
+1. Onboarding-Ziele und Key-Activation-Events (z.B. "erstes Dashboard erstellt", "erste Integration aktiviert") aus dem Wissensordner abrufen.
+2. Journey-Logik im Canvas entwerfen: Tag 0 (Welcome), Tag 2 (Feature-Spotlight), Tag 5 (Condition: aktiv vs. inaktiv), Tag 8 (Social Proof), Tag 13 (Trial-Endet-CTA).
+3. Für jeden Node einen E-Mail-Entwurf generieren lassen — max. 150 Wörter, formelles "Sie", DSGVO-konformer Abmeldelink als Pflicht.
+4. Condition-Branch für inaktive Nutzer (kein Login seit Tag 3) mit spezifischem Re-Engagement-Text bestücken.
+5. Alle Entwürfe im Canvas finalisieren; Zero-Fabrication-Policy sicherstellen — keine Produktfeatures erwähnen, die nicht im Wissensordner belegt sind.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist CRM-Lifecycle-Stratege für ein DACH-SaaS-Unternehmen. Entwirf eine 5-teilige Onboarding-E-Mail-Sequenz für neue Trial-Nutzer. Journey: Tag 0 (Willkommen + erster Schritt), Tag 2 (Feature-Spotlight aus Wissensordner), Tag 5 (Split: aktiv → Profi-Tipp / inaktiv → Re-Engagement), Tag 8 (Kundenstimme als Social Proof), Tag 13 (Trial läuft ab — Upgrade-CTA). Formelles 'Sie', max. 150 Wörter pro E-Mail, DSGVO-Abmeldelink. Liefere: Delay | Betreff | Preheader | Body | CTA."
+**Erwartetes Artefakt:** Fünf E-Mail-Entwürfe mit Delay-Logik und Condition-Hinweis im Canvas — direkt importierbar in HubSpot als Enrollment-Workflow.
+**Fallstricke (≥2 spezifisch):**
+- Agent halluziniert Produktfeatures in Feature-Spotlight-E-Mail → System-Prompt muss strikt auf Wissensordner-Inhalte limitiert werden; bei Unsicherheit F8-Refusal-Antwort ausgeben.
+- DSGVO-Abmeldelink fehlt in Entwürfen → Jede E-Mail-Vorlage muss als letzte Zeile zwingend "{{Abmeldelink}}-Platzhalter" enthalten; dies als Non-Negotiable im System-Prompt verankern.
+**Anschluss-Szenario:** S-MP-029
+
+### S-MP-029 Lead-Scoring-Modell für HubSpot kalibrieren und dokumentieren
+
+**Wann nutzen (Trigger):** RevOps und Marketing sind uneinig darüber, wann ein Lead als MQL gilt: Sales beklagt, dass zu viele unqualifizierte Leads übergeben werden, während Marketing zu wenige Leads als "ready" klassifiziert. Ein neu kalibriertes Scoring-Modell muss dokumentiert und in HubSpot implementiert werden. (Quelle: sources/10 S-066, S-096)
+**Strategisches Ziel:** Die MQL-to-SQL-Conversion-Rate von unter 20 % auf über 35 % steigern, indem ein präzises, von beiden Teams akzeptiertes Scoring-Modell die Lead-Übergabe regelt.
+**Hands-on Ergebnis:** Eine dokumentierte Lead-Scoring-Matrix (Markdown-Tabelle) mit Punktwerten pro Aktion, Decay-Rates und einer fertigen HubSpot-Property-Formel, bereit zur direkten CRM-Implementierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Data Analyst, Chat
+**Vorgehen (4 Schritte):**
+1. Export der letzten 90 Tage Closed-Won- und Closed-Lost-Daten aus HubSpot als CSV; Upload in den Data Analyst zur Identifikation der stärksten Conversion-Signale.
+2. Data Analyst wertet aus: Welche Aktionen (Pricing-Page-Besuch, Webinar-Teilnahme, Demo-Anfrage) korrelieren am stärksten mit Closed-Won?
+3. Scoring-Matrix im Canvas draften: positive Signale (0–100 Punkte), negative Signale (Disqualifikation), Zeitverfall (Punkte halbieren sich nach 30 Tagen Inaktivität).
+4. HubSpot-Property-Formel aus der Matrix generieren lassen (IF/THEN-Logik); gemeinsam mit Sales im Canvas finalisieren und als SLA-Dokument speichern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist RevOps-Analyst für ein DACH-B2B-SaaS-Unternehmen. Ich lade anonymisierte Closed-Won/Lost-Daten der letzten 90 Tage hoch. Identifiziere die fünf Aktionen mit der höchsten Korrelation zur Conversion. Erstelle eine Lead-Scoring-Matrix: weise Punktwerte (1–100) zu, definiere drei disqualifizierende Signale (z.B. Karriere-Seite-Besuch = -50 Punkte) und einen 30-Tage-Decay. Liefere die Matrix als Markdown-Tabelle und die entsprechende HubSpot-Formel im Code-Block."
+**Erwartetes Artefakt:** Lead-Scoring-Matrix (Markdown) plus HubSpot-Formel-Code — zur gemeinsamen Freigabe durch Marketing und Sales in einem Canvas-Dokument.
+**Fallstricke (≥2 spezifisch):**
+- CRM-Feldnamen im Prompt stimmen nicht mit HubSpot-API-Namen überein → Vor der Formel-Generierung alle Property-Namen aus HubSpot exportieren und als Referenz-Liste im Prompt bereitstellen.
+- Scoring-Modell berücksichtigt keine negativen Signale → Explizit nach Disqualifikations-Kriterien fragen; ein Modell ohne Minus-Punkte überflutet Sales mit unqualifizierten Leads.
+**Anschluss-Szenario:** S-MP-030
+
+### S-MP-030 Partner- und Channel-Marketing-Content-Paket erstellen
+
+**Wann nutzen (Trigger):** Julias Unternehmen gewinnt einen neuen Technologie-Distributor für die DACH-Region und muss innerhalb von zwei Wochen ein vollständiges Partner-Enablement-Paket liefern: Co-Branded Assets, Pitch-Deck-Anpassungen, FAQ-Dokument und Social-Media-Templates für den Partner. (Quelle: sources/10 S-071; Quelle: A-05)
+**Strategisches Ziel:** Den neuen Partner innerhalb von 30 Tagen befähigen, eigenständig Endkunden anzusprechen — ohne dass das eigene Marketing-Team jeden einzelnen Content-Ausgang kontrollieren muss.
+**Hands-on Ergebnis:** Ein Partner-Enablement-Kit bestehend aus: einem angepassten One-Pager (PDF-Vorlage), fünf LinkedIn-Post-Templates, einem FAQ-Dokument (10 Fragen) und einem Briefing für das Co-Branding.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas, Agenten
+**Vorgehen (4 Schritte):**
+1. Unternehmens-Boilerplate, aktuelle Produktbeschreibungen und Brand-Voice-Guidelines aus dem Wissensordner abrufen; Partner-Profil (Branche, Zielmarkt, eigene Tonalität) als Kontext-Input ergänzen.
+2. Co-Branded One-Pager im Canvas draften: Produktvorteile aus Partnerperspektive formuliert, mit Platzhaltern für Partner-Logo und -Kontakt.
+3. Fünf LinkedIn-Post-Templates generieren, die der Partner mit minimalen Anpassungen (Firmenname, Branche) sofort nutzen kann.
+4. FAQ-Dokument mit den zehn häufigsten Endkunden-Fragen und verifizierten Antworten aus dem Wissensordner erstellen; Zero-Fabrication-Policy durchsetzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Partner-Marketing-Manager für ein B2B-SaaS-Unternehmen im DACH-Raum. Wir haben einen neuen Distributor im Bereich {{Branche}} gewonnen. Erstelle: (1) Einen Co-Branded One-Pager (400 Wörter) aus Partnerperspektive mit Platzhaltern für Partner-Logo und -Kontakt. (2) Fünf LinkedIn-Post-Templates (je 120 Wörter, formelles 'Sie') für den Partner. (3) Ein FAQ-Dokument mit 10 Fragen und Antworten, die ausschließlich auf verifizierten Fakten aus dem Wissensordner basieren."
+**Erwartetes Artefakt:** Partner-Enablement-Kit als Canvas-Dokument: One-Pager, fünf LinkedIn-Templates, FAQ — sofort versandbereit als ZIP an den Partner.
+**Fallstricke (≥2 spezifisch):**
+- Partner-Tonalität weicht stark von eigener Brand Voice ab → Templates müssen bewusst neutraler formuliert werden; im System-Prompt definieren: "Schreibe aus Partner-Perspektive, nicht als [Unternehmensname]".
+- FAQ enthält halluzinierte Produktdetails → Zero-Fabrication-Policy im System-Prompt zwingend: "Beantworte nur Fragen, die durch den Wissensordner belegbar sind; sonst: 'Bitte direkt anfragen'."
+**Anschluss-Szenario:** S-MP-031
+
+### S-MP-031 Analysten-Briefing für Gartner/IDC vorbereiten
+
+**Wann nutzen (Trigger):** Julia wird gebeten, in vier Wochen ein 60-minütiges Briefing für einen Gartner-Analysten zum Thema Marktpositionierung und Produktstrategie vorzubereiten. Das letzte Briefing ist drei Jahre alt; der Markt hat sich fundamental verändert. (Quelle: A-07; Quelle: sources/10 S-078)
+**Strategisches Ziel:** In einem einzigen Briefing-Meeting die Grundlage für eine positive Berücksichtigung im nächsten Magic Quadrant oder MarketScape legen — durch präzises, belegbares Messaging ohne übertriebene Marketingsprache.
+**Hands-on Ergebnis:** Ein strukturiertes Briefing-Dokument (max. 15 Folien Äquivalent in Markdown) mit: Executive Summary, Marktpositionierung, drei Kunden-ROI-Nachweisen und einer vorbereiteten Q&A-Liste für kritische Analysten-Fragen.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Web Search: aktuellen Gartner/IDC-Report zum relevanten Marktsegment recherchieren; Analysten-Framing und Bewertungskriterien des letzten Berichts extrahieren.
+2. Interne Case Studies, ROI-Daten und Produktroadmap-Informationen aus dem Wissensordner abrufen; auf Gartner-Bewertungsdimensionen mappen.
+3. Briefing-Struktur im Canvas erstellen: Market-Vision → Product-Demo-Narrative → Customer-Evidence → Competitive-Differentiation → Roadmap (nur freigegebene Inhalte).
+4. Adversariale Q&A-Liste erstellen: die sieben kritischsten Fragen, die ein skeptischer Analyst stellen könnte, mit präzisen, belegbaren Antworten — keine Marketingfloskeln.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Analyst-Relations-Manager für ein DACH-B2B-Technologieunternehmen. Bereite ein 60-minütiges Gartner-Briefing vor. Recherchiere via Web Search den aktuellen Gartner-Report zum Segment '{{Markt}}' und extrahiere die Bewertungskriterien. Mappe unsere Positionierung aus dem Wissensordner auf diese Kriterien. Erstelle ein Briefing-Dokument mit: Executive Summary (1 Seite), 3 Kunden-ROI-Belegen mit konkreten Zahlen, und einer Q&A-Liste mit 7 kritischen Analysten-Fragen samt präzisen Antworten. Kein Marketinggeschwurbel — nur belegbare Fakten."
+**Erwartetes Artefakt:** Analysten-Briefing-Dokument im Canvas (Markdown, ca. 2.000 Wörter) mit Q&A-Sektion — bereit zur CEO-Freigabe.
+**Fallstricke (≥2 spezifisch):**
+- Roadmap-Informationen werden in das Briefing aufgenommen, die noch nicht öffentlich freigegeben sind → System-Prompt muss "NDA-Pflicht: keine unveröffentlichten Roadmap-Details" als harte Regel enthalten.
+- Analysten-Fragen werden zu moderat simuliert → Prompt muss explizit "sei ein extrem skeptischer, zahlengetriebener Analyst" erzwingen; weiche Fragen liefern keine Vorbereitungsqualität.
+**Anschluss-Szenario:** S-MP-032
+
+### S-MP-032 Analyst-Report-Response-Strategie entwickeln
+
+**Wann nutzen (Trigger):** Ein neuer Gartner- oder Forrester-Report positioniert das Unternehmen schlechter als erwartet — oder nennt einen direkten Wettbewerber als Leader. Julia muss innerhalb von 48 Stunden eine interne Reaktionsstrategie und externe Kommunikation vorbereiten. (Quelle: A-07; Quelle: sources/10 S-087)
+**Strategisches Ziel:** Den Report-Nachteil in eine strategische Kommunikationschance umwandeln: intern Klarheit schaffen, extern mit Kunden und Interessenten proaktiv und souverän kommunizieren.
+**Hands-on Ergebnis:** Ein internes Reaktions-Memo (1 Seite), drei E-Mail-Templates für verschiedene Zielgruppen (bestehende Kunden, Pipeline-Prospects, Presse) und ein aktualisiertes Competitive-Messaging-Dokument.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Canvas, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Den Report-Abschnitt zum eigenen Unternehmen und zu den genannten Wettbewerbern via Web Search und direktem PDF-Upload analysieren; zentrale Kritikpunkte extrahieren.
+2. Internes Reaktions-Memo draften: Fakten des Reports → eigene Interpretation → Gegennarrative mit belegten Stärken aus dem Wissensordner.
+3. Drei E-Mail-Templates erstellen: (a) Bestehende Kunden (beruhigend, Mehrwertfokus), (b) Prospects in der Pipeline (proaktiv, differenzierend), (c) Presse-Statement (neutral, faktenbasiert).
+4. Competitive-Messaging-Dokument im Wissensordner aktualisieren: Neue Gegenargumente zu den Report-Kritikpunkten ergänzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Stratege. Ein Gartner-Report hat uns im {{Quadrant}} schlechter als {{Wettbewerber}} eingestuft. Analysiere die Kritikpunkte aus dem hochgeladenen Report-Abschnitt. Erstelle: (1) Ein internes Memo (300 Wörter): Was sagt der Report, wie interpretieren wir es, was sind unsere Stärken dagegen? (2) Drei E-Mail-Templates für bestehende Kunden, Pipeline-Prospects und Presse. Bleibe sachlich — kein Analyst-Bashing, nur faktenbasierte Differenzierung aus dem Wissensordner."
+**Erwartetes Artefakt:** Reaktions-Paket im Canvas: internes Memo + drei E-Mail-Templates + aktualisiertes Competitive-Messaging — zur Freigabe durch Legal und CEO binnen 48 Stunden.
+**Fallstricke (≥2 spezifisch):**
+- E-Mail-Templates klingen defensiv oder klagen Analysten an → Prompt muss "sachlich, zuversichtlich, niemals den Report oder Analysten angreifen" erzwingen; Ton: "Wir sehen das anders und hier ist warum."
+- Neue Produktaussagen in Kunden-E-Mails ohne Verifikation → Zero-Fabrication-Policy; alle Produktclaims müssen aus dem Wissensordner belegt sein.
+**Anschluss-Szenario:** S-MP-033
+
+### S-MP-033 Fachmedien-Platzierungsstrategie für DACH-Publikationen
+
+**Wann nutzen (Trigger):** Julia will das Earned-Media-Profil des Unternehmens in relevanten DACH-Fachmedien (Horizont, W&V, t3n, Wirtschaftswoche, Produktion) systematisch aufbauen — und braucht eine Redaktionsplan-Logik, die Themen-Pitches mit dem Content-Kalender verknüpft. (Quelle: sources/10 S-077, S-080; Quelle: A-07)
+**Strategisches Ziel:** In einem Quartal mindestens drei Gastartikel oder Fachbeiträge in Tier-1-DACH-Publikationen platzieren und so die Markenbekanntheit bei Entscheidern ohne Paid-Media-Budget steigern.
+**Hands-on Ergebnis:** Eine Pitching-Strategie-Matrix (Medium × Thema × Aufhänger × Ziel-Redakteur) sowie drei fertige Pitch-E-Mails für verschiedene DACH-Fachmedien.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Canvas, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Web Search: für jedes Zielmedium die zuletzt veröffentlichten Artikel zum relevanten Themenfeld recherchieren; redaktionelle Schwerpunkte und häufige Autoren-Beats extrahieren.
+2. Themen-Matrix im Canvas erstellen: Welche eigenen Expertise-Themen matchen mit welchen Redaktions-Schwerpunkten? Priorisierung nach Relevanz und Platzierungswahrscheinlichkeit.
+3. Drei Pitch-E-Mails schreiben (max. 180 Wörter): Aufhänger am letzten Artikel des Ziel-Redakteurs, klare These des Gastartikels, Qualifikation des Autors (CEO oder Fachexperte).
+4. Pitching-Rhythmus im Content-Kalender verankern: ein Pitch pro Woche, Nachfass nach sieben Werktagen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist PR-Stratege für ein B2B-Tech-Unternehmen im DACH-Raum. Wir wollen Gastartikel in Horizont, t3n und der Wirtschaftswoche platzieren. Nutze Web Search, um für jedes Medium den letzten relevanten Artikel zum Thema '{{Kernthema}}' zu finden. Erstelle dann: (1) Eine Matrix (Medium | Thema | Aufhänger | Ziel-Redakteur-Beat). (2) Drei Pitch-E-Mails (je max. 180 Wörter, Deutsch, formelles 'Sie'), die am jüngsten Artikel des Redakteurs anknüpfen und eine konkrete These für den Gastbeitrag formulieren."
+**Erwartetes Artefakt:** Pitching-Matrix plus drei versandfertige Pitch-E-Mails im Canvas — inkl. Hinweis auf manuell zu verifizierende Redakteur-Kontaktdaten.
+**Fallstricke (≥2 spezifisch):**
+- Web Search halluziniert Redakteur-E-Mail-Adressen → Explizit anweisen: "Liefere ausschließlich Namen, Medium und URL; keine E-Mail-Adressen generieren" — Kontakte müssen manuell über XING/LinkedIn verifiziert werden.
+- Pitch klingt wie eine Pressemitteilung statt wie ein Editorial-Pitch → Prompt muss betonen: "Schreibe aus der Perspektive des Mehrwerts für die Leser, nicht aus Marketing-Sicht; vermeide Produktnennungen im Pitch."
+**Anschluss-Szenario:** S-MP-034
+
+### S-MP-034 ABM-Content-Personalisierung für Tier-1-Zielkunden
+
+**Wann nutzen (Trigger):** Das ABM-Team hat zehn Tier-1-Accounts identifiziert (z.B. Siemens, Bosch, Deutsche Telekom) und muss innerhalb von zwei Wochen für jeden Account individuelle Content-Pakete erstellen — ohne dass das Team für jeden Account manuell Stunden aufwenden kann. (Quelle: sources/10 S-068, S-073; Quelle: A-05)
+**Strategisches Ziel:** Für jeden der zehn Tier-1-Accounts ein maßgeschneidertes Content-Paket produzieren, das auf aktuelle strategische Initiativen des Zielunternehmens eingeht und die eigene Lösung als direkte Antwort positioniert.
+**Hands-on Ergebnis:** Pro Account: ein personalisierter One-Pager (400 Wörter), eine LinkedIn-Outreach-Nachricht (max. 300 Zeichen) und eine E-Mail-Sequenz (2 E-Mails) — jeweils mit Account-spezifischen Referenzen.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Agenten, Canvas
+**Vorgehen (4 Schritte):**
+1. Account-Research-Workflow: Web Search für jedes Zielunternehmen — aktuelle Pressemitteilungen, Earnings-Call-Highlights und Stellenausschreibungen der letzten 30 Tage als Signale für strategische Prioritäten.
+2. Jede Research-Zusammenfassung mit eigenen Lösungsbeschreibungen aus dem Wissensordner koppeln: Wo ist die direkte Relevanz-Brücke?
+3. Pro Account One-Pager, LinkedIn-Nachricht und E-Mail-Sequenz im Canvas generieren; Personalisierung auf die zwei bis drei stärksten Signale fokussieren.
+4. Human-in-the-Loop-Checkpoint: Account Executive prüft jeden One-Pager auf faktische Korrektheit der Account-Referenzen vor der Nutzung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ABM-Stratege für ein B2B-Technologieunternehmen. Zielkunde: {{Unternehmensname}}. Nutze Web Search, um die drei aktuellsten strategischen Initiativen von {{Unternehmensname}} zu identifizieren (Pressemitteilungen, Earnings, Stellenausschreibungen der letzten 30 Tage). Erstelle: (1) Einen personalisierten One-Pager (400 Wörter), der unsere Lösung direkt als Antwort auf diese Initiativen positioniert. (2) Eine LinkedIn-Outreach-Nachricht (max. 300 Zeichen, formelles 'Sie'). (3) Zwei Follow-up-E-Mails (je 120 Wörter). Nur belegbare Account-Fakten — keine Erfindungen."
+**Erwartetes Artefakt:** Personalisiertes Account-Paket (One-Pager + LinkedIn-Nachricht + 2 E-Mails) im Canvas — nach AE-Review sofort einsetzbar.
+**Fallstricke (≥2 spezifisch):**
+- Web Search liefert veraltete Informationen (ältere Pressemitteilungen) → Search-Query explizit auf "letzte 30 Tage" begrenzen und Quellen-Datum in der Zusammenfassung ausweisen lassen.
+- One-Pager klingt arrogant ("Sie haben dieses Problem, wir lösen es") → Ton als "kollaborativ und neugierig" im System-Prompt definieren; nie implizieren, dass das Zielunternehmen "versagt".
+**Anschluss-Szenario:** S-MP-035
+
+### S-MP-035 Produkt-Launch-Go-to-Market-Playbook erstellen
+
+**Wann nutzen (Trigger):** Ein neues Produkt-Feature oder eine neue Lösung wird in sechs Wochen gelauncht. Julia muss das vollständige Go-to-Market-Playbook koordinieren: Messaging-Architektur, Launch-Sequenz, Aktivierungs-Materialien für Sales und ein PR-Plan. (Quelle: sources/10 S-076; Quelle: A-05)
+**Strategisches Ziel:** Einen koordinierten, datumsgenauen Launch sicherstellen, bei dem alle Teams (Marketing, Sales, PR, Product) synchronisiert auf dieselben Botschaften einzahlen und die Pipeline innerhalb von 30 Tagen nach Launch messbar wächst.
+**Hands-on Ergebnis:** Ein vollständiges GTM-Playbook-Dokument mit: Messaging-Architektur (Positionierungs-Statement + 3 Kernbotschaften), Launch-Zeitplan (T-6 Wochen bis T+4 Wochen), Sales-Enablement-Checkliste und PR-Pitch-Paket.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Web Search
+**Vorgehen (5 Schritte):**
+1. Produktbeschreibung, ICP und Wettbewerbskontext aus dem Wissensordner laden; Web Search für aktuelles Markt-Framing und Wettbewerber-Positionierung nutzen.
+2. Messaging-Architektur im Canvas erarbeiten: ein übergreifendes Positionierungs-Statement, drei zielgruppenspezifische Kernbotschaften (für Endnutzer, Entscheider, Techniker).
+3. Launch-Zeitplan als Gantt-ähnliche Markdown-Tabelle: Milestone-Datum, verantwortliches Team, Deliverable.
+4. Sales-Enablement-Checkliste: Battlecard, objection-handling-Ergänzungen, Demo-Script-Update, Pricing-FAQ.
+5. PR-Pitch-Paket: Pressemitteilung-Entwurf, drei personalisierte Journalisten-Pitches basierend auf Web-Search-Research.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Go-to-Market-Stratege für ein DACH-B2B-SaaS-Unternehmen. Wir launchen '{{Feature-Name}}' in sechs Wochen. Erstelle ein GTM-Playbook-Dokument mit: (1) Messaging-Architektur: Positionierungs-Statement (2 Sätze) + 3 Kernbotschaften für Endnutzer, Entscheider und Techniker. (2) Launch-Zeitplan als Tabelle (T-6W bis T+4W, Milestone, Team, Deliverable). (3) Sales-Enablement-Checkliste (5 Punkte). (4) PR-Pitch-Entwurf (300 Wörter). Nur belegbare Produktaussagen aus dem Wissensordner."
+**Erwartetes Artefakt:** Vollständiges GTM-Playbook im Canvas (ca. 2.500 Wörter) — als Kickoff-Dokument für das Launch-Meeting mit allen Stakeholdern.
+**Fallstricke (≥2 spezifisch):**
+- Zeitplan zu optimistisch (alle Meilensteine in Woche 1 gehäuft) → Explizit realistischen Puffer einfordern: "Berücksichtige Freigabe-Zyklen von 3 Werktagen pro Deliverable."
+- Produktaussagen im PR-Material nicht mit Legal abgestimmt → GTM-Playbook muss einen expliziten "Legal-Review"-Meilenstein im Zeitplan enthalten; keine Produktclaims ohne Rechts-Freigabe publizieren.
+**Anschluss-Szenario:** S-MP-036
+
+### S-MP-036 Sales-Battlecard für Wettbewerbs-Situationen entwickeln
+
+**Wann nutzen (Trigger):** Das Sales-Team verliert wiederholt Deals gegen denselben Wettbewerber, weil Account Executives in Competitive-Situationen nicht souverän auf die Stärken des Konkurrenten antworten können. Julia muss innerhalb von einer Woche eine einsatzfertige Battlecard produzieren. (Quelle: sources/10 S-075; Quelle: A-05)
+**Strategisches Ziel:** Die Win-Rate in Competitive-Deals gegen den spezifischen Wettbewerber in einem Quartal von 25 % auf 40 % steigern, indem Sales mit einer kompakten, sofort anwendbaren Argumentations-Hilfe ausgestattet wird.
+**Hands-on Ergebnis:** Eine einseitige Battlecard (A4) mit: Stärken/Schwächen-Gegenüberstellung, den drei häufigsten Wettbewerber-Claims mit Konter-Argumenten, zwei Qualifying-Fragen zum Aufdecken von Wettbewerber-Schwächen und einem Landmine-Abschnitt (Fragen, die den Wettbewerber bei Prospects schlecht aussehen lassen).
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Web Search: aktuelle Produktseite, G2/Capterra-Reviews und LinkedIn-Posts des Wettbewerbers analysieren; die drei meistgenannten Stärken und Schwächen extrahieren.
+2. Interne Win/Loss-Analyse aus dem Wissensordner abrufen: Welche Argumente haben bisher in Competitive-Deals gewonnen?
+3. Battlecard-Struktur im Canvas aufbauen: Kopf (Logo, Key-Info), Stärken/Schwächen-Tabelle, Claim-Konter-Matrix, Qualifying-Fragen, Landmines.
+4. Battlecard vom Sales-Lead und Legal reviewen lassen: keine unbelegten Aussagen über den Wettbewerber; §6 UWG (Vergleichende Werbung) beachten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Analyst für ein DACH-B2B-SaaS-Unternehmen. Erstelle eine Battlecard gegen {{Wettbewerber}}. Nutze Web Search für aktuelle Produktseite, G2-Reviews und LinkedIn-Posts. Struktur: (1) Stärken/Schwächen-Tabelle (je 3 Punkte). (2) Die 3 häufigsten Wettbewerber-Claims mit unseren Konter-Argumenten aus dem Wissensordner. (3) 2 Qualifying-Fragen, die Wettbewerber-Schwächen aufdecken. (4) 2 Landmine-Fragen für Prospects. Nur belegbare, öffentlich zugängliche Fakten — kein Verleumden."
+**Erwartetes Artefakt:** Einseitige Battlecard im Canvas (Markdown-Tabellenformat) — nach Legal-Review als PDF für Sales exportierbar.
+**Fallstricke (≥2 spezifisch):**
+- Battlecard enthält irreführende oder unbelegte Wettbewerber-Aussagen → §6 UWG-Risiko: Vergleichende Werbung muss sachlich und belegbar sein; Legal-Review ist zwingend vor jeder Vertriebsnutzung.
+- G2-Reviews enthalten gefälschte Bewertungen als Datengrundlage → Explizit auf technisch spezifische, detaillierte Reviews fokussieren; allgemeine Lobeshymnen aus der Analyse ausschließen.
+**Anschluss-Szenario:** S-MP-037
+
+### S-MP-037 Pricing-Page-Copy für B2B-SaaS optimieren
+
+**Wann nutzen (Trigger):** Die Conversion-Rate der Pricing-Seite liegt unter 2 %, obwohl der Traffic stimmt. Julia vermutet, dass die Copy-Struktur, die Wertversprechen-Hierarchie oder die Einwandsbehandlung auf der Seite nicht optimal sind. (Quelle: sources/10 S-091; Quelle: A-07)
+**Strategisches Ziel:** Die Pricing-Page-Conversion-Rate durch optimierte Copy von unter 2 % auf über 3 % steigern — messbar über ein A/B-Test-Setup in den nächsten sechs Wochen.
+**Hands-on Ergebnis:** Drei alternative Pricing-Page-Copy-Varianten mit unterschiedlicher Wertversprechen-Hierarchie (Feature-First, Outcome-First, Proof-First) und einer überarbeiteten FAQ-Sektion, die die häufigsten Kaufhindernisse adressiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Data Analyst, Canvas
+**Vorgehen (4 Schritte):**
+1. Analyse der aktuellen Closed-Lost-Notizen auf Pricing-Einwände via Data Analyst (CSV-Upload aus Salesforce): Ist der Einwand "zu teuer" oder "unklarer ROI"?
+2. Web Search: Pricing-Pages der drei stärksten Wettbewerber analysieren — welche Wertversprechen-Hierarchie und FAQ-Struktur nutzen sie?
+3. Im Canvas drei Varianten der eigenen Pricing-Page-Copy entwickeln: (a) Feature-First, (b) Outcome-First (ROI-Fokus), (c) Proof-First (Kundenstimmen und Zahlen im Hero).
+4. FAQ-Sektion mit den fünf häufigsten Pricing-Einwänden aus der CRM-Analyse ergänzen; A/B-Test-Plan mit Erfolgskennzahl (Conversion-Rate) und Laufzeit (4 Wochen) dokumentieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Conversion-Rate-Optimierung-Experte für ein DACH-B2B-SaaS-Unternehmen. Ich lade anonymisierte Closed-Lost-Notizen aus dem CRM hoch. Identifiziere die häufigsten Pricing-Einwände. Erstelle drei Varianten unserer Pricing-Page-Hero-Section (je ca. 80 Wörter) mit unterschiedlichem Fokus: (a) Feature-Liste, (b) ROI/Outcome, (c) Social Proof. Schreibe außerdem eine FAQ-Sektion mit den 5 häufigsten Kaufhindernissen und direkten, ehrlichen Antworten. Formelles Deutsch, kein Werbejargon."
+**Erwartetes Artefakt:** Drei Hero-Copy-Varianten + überarbeitete FAQ-Sektion im Canvas — plus ein A/B-Test-Plan (Variante, KPI, Laufzeit, Stichprobengröße).
+**Fallstricke (≥2 spezifisch):**
+- Pricing-Copy-Varianten sind zu ähnlich für validen A/B-Test → Varianten müssen strukturell unterschiedlich sein (verschiedene Wertversprechen-Hierarchie, nicht nur Wortlaut-Variationen); im Prompt explizit "fundamental unterschiedlich" einfordern.
+- FAQ-Antworten versprechen ROI-Garantien, die das Unternehmen nicht halten kann → Legal-Review der FAQ zwingend; keine Performanceversprechen ohne Disclaimer.
+**Anschluss-Szenario:** S-MP-038
+
+### S-MP-038 Case-Study-Produktionspipeline standardisieren
+
+**Wann nutzen (Trigger):** Das Marketing-Team produziert Case Studies bisher ad-hoc in zwei bis drei Wochen pro Stück — weil die Interviewvorbereitung, Rohtext-Erstellung und Design-Briefing-Schritte nicht standardisiert sind. Julia will den Prozess auf unter fünf Tage komprimieren. (Quelle: sources/10 S-081, S-082; Quelle: A-05)
+**Strategisches Ziel:** Eine wiederholbare Case-Study-Produktionspipeline etablieren, die die Zeit von Interview bis veröffentlicherter Case Study von drei Wochen auf fünf Arbeitstage reduziert — ohne Qualitätseinbußen.
+**Hands-on Ergebnis:** Ein standardisierter Case-Study-Workflow mit: Interviewleitfaden-Vorlage, Rohtext-Erstellungs-Prompt, Design-Briefing-Vorlage und SEO-Optimierungs-Schritt — alles als wiederverwendbare Konversations-Starter im Agenten verankert.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Wissensordner, Canvas
+**Vorgehen (5 Schritte):**
+1. Tag 1: Interviewleitfaden-Agent generiert auf Basis von Unternehmensbranche und Produkt-Use-Case einen personalisierten Fragenkatalog (10 Fragen, auf ROI und konkrete Zahlen fokussiert).
+2. Tag 2: Interview-Transkript in den Agenten laden; Rohtext-Entwurf im inverted-pyramid-Format erstellen lassen (400 Wörter, Headline + Situation + Challenge + Solution + Results).
+3. Tag 3: Rohtext im Canvas mit Kunden-Zitaten anreichern; auf formelles Deutsch und Brand Voice aus dem Wissensordner prüfen.
+4. Tag 4: Design-Briefing generieren (Layout-Vorgaben, Bild-Konzept, Zitat-Highlight, Logo-Platzierung).
+5. Tag 5: SEO-Metadaten (Title Tag, Meta-Description, Keywords) und Distribution-Plan (LinkedIn, Newsletter, Website) automatisch generieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Case-Study-Autor für ein DACH-B2B-Unternehmen. Ich lade das Interview-Transkript mit unserem Kunden {{Kundenname}} hoch. Erstelle eine Case Study im inverted-pyramid-Format: Headline (max. 12 Wörter, outcome-fokussiert), Situation (60 Wörter), Challenge (60 Wörter), Solution (80 Wörter mit konkreten Produktreferenzen aus dem Wissensordner), Results (80 Wörter mit spezifischen Zahlen aus dem Transkript). Formelles 'Sie', keine halluzinierten Zahlen — nur Fakten aus dem Transkript."
+**Erwartetes Artefakt:** Fertige Case-Study-Texte (400 Wörter) + Design-Briefing + SEO-Metadaten im Canvas — bereit für Design und Veröffentlichung an Tag 5.
+**Fallstricke (≥2 spezifisch):**
+- Agent erfindet ROI-Zahlen, die im Transkript nicht erwähnt wurden → Zero-Fabrication-Policy zwingend: "Verwende ausschließlich Zahlen, die im Transkript explizit genannt wurden; keine Schätzungen oder Hochrechnungen."
+- Kunde muss Zitate und Zahlen vor Veröffentlichung genehmigen → Freigabe-Schritt mit dem Kunden als Pflicht-Milestone im Workflow-Zeitplan verankern; ohne schriftliche Genehmigung keine Publikation.
+**Anschluss-Szenario:** S-MP-039
+
+### S-MP-039 Video-Script für Produkt-Demo-Video schreiben
+
+**Wann nutzen (Trigger):** Das Unternehmen produziert ein zweiminütiges Produkt-Demo-Video für die Website und für LinkedIn-Paid-Ads. Julia braucht ein professionelles Script, das die wichtigsten Feature-Vorteile in eine packende, narrative Struktur bringt — ohne technischen Fachjargon. (Quelle: sources/10 S-054)
+**Strategisches Ziel:** Ein Video-Script erstellen, das Entscheider in 120 Sekunden von der Relevanz des Produkts überzeugt und sie zu einer Demo-Anfrage motiviert — messbar über die CTA-Klickrate nach dem Video.
+**Hands-on Ergebnis:** Ein vollständiges Video-Script (120 Sekunden, ca. 240–260 Wörter) mit: Hook (0–10 Sek.), Problem-Statement (10–30 Sek.), Solution-Demo-Narrative (30–100 Sek.), Social Proof (100–110 Sek.) und CTA (110–120 Sek.) — plus Regieanweisungen für Bildschnitt und Voice-Over-Tonalität.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Agenten
+**Vorgehen (4 Schritte):**
+1. Produktbeschreibung, Top-3-Use-Cases und ein Kunden-ROI-Beispiel aus dem Wissensordner laden; Zielgruppe (Jobtitel, Branche) als Kontext definieren.
+2. Script im Canvas nach der "Problem-Solution-Proof"-Struktur entwerfen; Hook muss eine Frage oder überraschende Statistik sein.
+3. Jede Script-Sektion mit einer Regieanweisung in eckigen Klammern versehen: [Screen zeigt Dashboard], [Voice-Over: ruhig, professionell], [Einblendung: Kunden-Logo].
+4. Script auf Lesbarkeit optimieren: max. 15 Wörter pro Satz, keine Passivkonstruktionen, keine Abkürzungen — alles muss im Voice-Over natürlich klingen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Video-Script-Autor für ein DACH-B2B-SaaS-Unternehmen. Schreibe ein 120-Sekunden-Produkt-Demo-Script für {{Produktname}}. Zielgruppe: {{Jobtitel}} im {{Branche}}-Segment. Nutze Fakten aus dem Wissensordner. Struktur: Hook (0–10 Sek., Frage oder Statistik), Problem (10–30 Sek.), Solution-Demo (30–100 Sek., 3 Feature-Vorteile mit je einem Screen-Hinweis in [Klammern]), Social Proof (100–110 Sek., reale Kunden-Zahl), CTA (110–120 Sek.). Max. 15 Wörter pro Satz, aktive Sprache, formelles 'Sie'."
+**Erwartetes Artefakt:** Vollständiges Video-Script (ca. 250 Wörter) mit Zeitmarkierungen und Regieanweisungen im Canvas — bereit für Produktion und Voice-Over-Aufnahme.
+**Fallstricke (≥2 spezifisch):**
+- Script ist zu lang für 120 Sekunden → Tempomessung: 130 Wörter pro Minute für deutschsprachigen Voice-Over ist Standard; Skript vor Produktion laut vorlesen und stoppen.
+- Halluzinierte Kunden-Zahlen im Social-Proof-Segment → Zero-Fabrication-Policy: Nur Zahlen aus dem Wissensordner oder dem vorliegenden Case-Study-Korpus nutzen; keine "typischen Ergebnisse" erfinden.
+**Anschluss-Szenario:** S-MP-040
+
+### S-MP-040 Webinar-Promotions-Sequenz für B2B-Event aufbauen
+
+**Wann nutzen (Trigger):** Das Marketing-Team plant ein Online-Webinar mit 300 Zielregistrierungen in vier Wochen. Julia braucht eine vollständige Promotions-Sequenz: E-Mail-Einladungen, LinkedIn-Posts, Reminder-Nachrichten und eine Post-Event-Follow-up-Serie. (Quelle: sources/10 S-062, S-063; Quelle: A-37)
+**Strategisches Ziel:** 300 qualifizierte Registrierungen erreichen und die Post-Webinar-Show-up-Rate über 50 % halten — durch eine zeitlich abgestimmte, multi-channel Promotions-Logik.
+**Hands-on Ergebnis:** Eine vollständige Webinar-Promotions-Matrix mit: vier E-Mail-Versionen (Ersteinladung T-21, Reminder T-7, Day-of T-0, Post-Event T+1), fünf LinkedIn-Posts und einer HubSpot-Workflow-Konfiguration mit Delay-Logik.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Agenten, Workflows (HubSpot Action)
+**Vorgehen (4 Schritte):**
+1. Webinar-Thema, Speaker-Credentials und Ziel-Kernbotschaft als Kontext in den Agenten laden; Zielgruppe (Jobtitel, Branche, Region) definieren.
+2. Vier E-Mail-Entwürfe generieren: Ersteinladung (Neugier + Nutzen), T-7-Reminder (Social Proof + Agenda), Day-of (Logistik + Vorfreude), Post-Event (Replay + CTA für nächsten Schritt).
+3. Fünf LinkedIn-Posts mit variierenden Formaten: Speaker-Vorstellung, Key-Insight-Teaser, Countdown-Post, Live-Zitat aus dem Webinar (Post-Event), Replay-Announcement.
+4. HubSpot-Workflow-Konfiguration dokumentieren: Enrollment-Trigger (Formular-Ausfüllung), Delay-Nodes, Condition-Split (erschienen vs. nicht erschienen) für Post-Event-Sequenz.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Event-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir veranstalten ein Webinar zum Thema '{{Webinar-Thema}}' mit Speaker {{Name}} in 21 Tagen. Zielgruppe: {{Jobtitel}} im {{Branche}}-Bereich. Erstelle: (1) Vier E-Mail-Entwürfe (T-21, T-7, T-0, T+1) — je max. 120 Wörter, Betreff, Preheader, Body, CTA. (2) Fünf LinkedIn-Posts (je 100 Wörter, variierend: Ankündigung, Speaker-Teaser, Reminder, Live-Zitat, Replay). DSGVO-Abmeldelink in allen E-Mails. Formelles 'Sie'."
+**Erwartetes Artefakt:** Webinar-Promotions-Paket im Canvas (4 E-Mails + 5 LinkedIn-Posts + HubSpot-Workflow-Skizze) — direkt als Briefing für das CRM-Team nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- Post-Event-E-Mail geht auch an nicht-erschienene Teilnehmer mit falschem Tonfall → HubSpot-Workflow muss Condition-Split "erschienen vs. nicht erschienen" zwingend enthalten; Prompt muss beide Varianten des T+1-Mails anfordern.
+- LinkedIn-Posts klingen wie E-Mails (zu lang, zu formal) → Explizit "social-media-nativ, conversational, max. 120 Wörter, kein 'Sehr geehrte Damen und Herren'" im Prompt verankern.
+**Anschluss-Szenario:** S-MP-041
+
+### S-MP-041 DACH-Markteintritts-Content-Strategie entwickeln
+
+**Wann nutzen (Trigger):** Ein US-amerikanisches oder nicht-DACH-europäisches Unternehmen expandiert in die DACH-Region und Julia wird beauftragt, innerhalb von acht Wochen die lokale Content-Strategie zu entwickeln — inklusive Lokalisierungs-Playbook, Kanal-Prioritäten und einem DSGVO-konformen First-Content-Package. (Quelle: sources/10 S-086; Quelle: A-17)
+**Strategisches Ziel:** Den Markteintrittsprozess in der DACH-Region strukturiert beschleunigen, indem sofort einsetzbare, lokal authentische Content-Assets entwickelt werden, die nicht nach "übersetztem Marketing" klingen.
+**Hands-on Ergebnis:** Eine DACH-Market-Entry-Content-Strategie mit: Lokalisierungs-Playbook (Do's & Don'ts für DE, AT, CH), Kanal-Priorisierungsmatrix (LinkedIn vs. XING, Printmedien, Events), einem Starter-Content-Paket (5 Assets) und einem DSGVO-Compliance-Checkliste.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Canvas, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Web Search: aktuelle Marktforschung zur DACH-B2B-Content-Nutzung recherchieren (Bitkom-Studien, BVDW-Daten); branchenspezifische Kanal-Präferenzen extrahieren.
+2. Lokalisierungs-Playbook im Canvas erstellen: sprachliche Do's & Don'ts (kein 'ß' für CH, 'Jänner' für AT, formelles 'Sie' im B2B), kulturelle Normen (Direktheit, Qualitätsfokus, Datenschutzsensibilität der DACH-Kunden).
+3. Kanal-Matrix entwickeln: LinkedIn als primärer Business-Kanal, XING für ältere Zielgruppen, Fachmedien (Horizont, Handelsblatt, Produktion) für Thought Leadership, Messen (Hannover Messe, embedded world) für persönliche Kontakte.
+4. DSGVO-Compliance-Checkliste für Content-Kampagnen: AVV-Pflicht für alle Tools, Opt-in-Dokumentation, Kennzeichnungspflicht für KI-generierte Werbeinhalte.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DACH-Market-Entry-Stratege für ein internationales B2B-Technologieunternehmen. Erstelle eine Content-Markteintritts-Strategie für die DACH-Region. Nutze Web Search für aktuelle DACH-Marktdaten. Liefere: (1) Lokalisierungs-Playbook: sprachliche und kulturelle Do's & Don'ts für DE, AT und CH. (2) Kanal-Matrix: welche Kanäle für welche Zielgruppen priorisieren (LinkedIn, XING, Fachmedien, Events)? (3) Starter-Content-Paket: 5 Asset-Ideen mit Briefing. (4) DSGVO-Compliance-Checkliste (5 Punkte) für internationale Unternehmen im DACH-Markt."
+**Erwartetes Artefakt:** DACH-Market-Entry-Content-Strategie im Canvas (ca. 1.500 Wörter) — als Kickoff-Dokument für das lokale Marketingteam.
+**Fallstricke (≥2 spezifisch):**
+- Lokalisierung reduziert sich auf reine Übersetzung statt Transkreation → Prompt muss "kulturelle Anpassung, nicht wörtliche Übersetzung" betonen; Schweizer, österreichische und deutsche Marktunterschiede explizit addressieren.
+- DSGVO-Checkliste zu generisch ohne DACH-spezifische Besonderheiten → Prompt muss Bundesländer-spezifische Regelungen (BDSG, DSG-AT, DSG-CH) und Betriebsrats-Mitbestimmungsrechte explizit einfordern.
+**Anschluss-Szenario:** S-MP-042
+
+### S-MP-042 Hannover Messe / embedded world Messevorbereitung
+
+**Wann nutzen (Trigger):** Sechs Wochen vor der Hannover Messe (oder embedded world in Nürnberg) fehlen noch: ein vollständiges Stand-Briefing für die Agentur, personalisierte Gesprächsleitfäden für fünf Mitarbeiter-Profile, ein Vorab-LinkedIn-Kampagnen-Plan und ein Nachfass-Workflow für die erwarteten 200 Messekontakte. (Quelle: S-MP-020; Quelle: A-02)
+**Strategisches Ziel:** Die Hannover-Messe-Präsenz von einem reinen Sichtbarkeits-Event zu einem systematischen Pipeline-Generator entwickeln — mit dem Ziel von mindestens 20 qualifizierten Follow-up-Gesprächen innerhalb von zwei Wochen nach der Messe.
+**Hands-on Ergebnis:** Ein vollständiges Messe-Vorbereitungspaket: Stand-Design-Briefing, fünf rollenspezifische Gesprächsleitfäden, ein LinkedIn-Vor-Messe-Kampagnen-Plan (3 Wochen, 6 Posts) und eine dreiteilige Post-Messe-E-Mail-Sequenz.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Web Search: aktuelle Hannover-Messe-Agenda und Themen-Schwerpunkte des aktuellen Jahres recherchieren; Top-3-Branchenthemen für das eigene Segment extrahieren.
+2. Stand-Design-Briefing im Canvas erstellen: Kernbotschaft, Layout-Konzept, Key-Visuals, Demonstration-Focus, technische Spezifikationen für Messebauer.
+3. Fünf rollenspezifische Gesprächsleitfäden (Sales, Pre-Sales, Technical, Marketing, CEO): je ein 30-Sekunden-Elevator-Pitch, drei häufige Einwände mit Antworten, zwei Qualifizierungsfragen.
+4. Post-Messe-Nachfass-Workflow: dreiteilige E-Mail-Sequenz (Tag 1 persönlicher Nachfass, Tag 5 weiterführender Content, Tag 12 Call-Einladung) mit HubSpot-Integration und DSGVO-Opt-in-Dokumentation.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Messe-Stratege für ein DACH-B2B-Industrieunternehmen. Wir nehmen an der Hannover Messe teil. Nutze Web Search, um die Top-3-Branchenthemen des aktuellen Jahrgangs zu identifizieren. Erstelle: (1) Stand-Design-Briefing (Kernbotschaft, 3 Key-Visuals, Demo-Fokus). (2) Gesprächsleitfaden für Account Executives (30-Sek.-Pitch + 3 Einwände + 2 Qualifizierungsfragen). (3) LinkedIn-Kampagnen-Plan für 3 Wochen vor der Messe (6 Posts mit Datumsangabe und Format). (4) Dreiteilige Nachfass-E-Mail-Sequenz mit Delay-Logik."
+**Erwartetes Artefakt:** Vollständiges Messe-Vorbereitungspaket im Canvas — verteilbar als Briefings an Agentur, Stand-Team und CRM-Verantwortliche.
+**Fallstricke (≥2 spezifisch):**
+- Web Search liefert Vorjahres-Programmdaten der Hannover Messe → Search-Query auf aktuelles Jahr einschränken und Quellen-Datum zwingend ausweisen lassen; offizielle Messe-Website als primäre Quelle vorschreiben.
+- Nachfass-E-Mails ohne DSGVO-Opt-in-Dokumentation verstoßen gegen §7 UWG → Workflow muss Opt-in-Status aus dem Messe-Kontaktformular als Enrollment-Bedingung enthalten; ohne nachgewiesene Einwilligung kein automatisierter Versand.
+**Anschluss-Szenario:** S-MP-043
+
+### S-MP-043 CFO-Sprachübersetzer: KI-ROI in Board-Sprache übersetzen
+
+**Wann nutzen (Trigger):** Julia muss im nächsten Quartalsbericht dem CFO und dem Aufsichtsrat den ROI des Langdock-Einsatzes erklären — in Zahlen, die für Finanzentscheider verständlich sind, nicht in KI-Fachbegriffen. Bisherige Versuche wurden als "nicht aussagekräftig" zurückgewiesen. (Quelle: A-01; Quelle: A-10)
+**Strategisches Ziel:** Den Business Case für den fortgesetzten KI-Einsatz im Marketing durch eine CFO-gerechte KPI-Sprache (Lohnkosten-Äquivalent, Opportunity-Cost, Payback-Period) so klar belegen, dass das Budget für das nächste Jahr gesichert wird.
+**Hands-on Ergebnis:** Ein einseitiger CFO-ROI-Bericht mit: drei monetarisierten KPIs (Zeitersparnis in €, Cost-per-Brief-Reduktion, Time-from-Brief-to-Draft-Verbesserung), einem Payback-Period-Chart und einer Slide-Vorlage für das Board-Deck.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Canvas, Chat
+**Vorgehen (4 Schritte):**
+1. Interne Zeittracking-Daten (Stunden pro Aufgabe vor/nach KI-Einführung) als CSV in den Data Analyst laden; durchschnittlichen Stundensatz des Marketing-Teams als Variablen-Input ergänzen.
+2. Data Analyst berechnet: Stunden-Ersparnis × Stundensatz = Lohnkosten-Äquivalent; Cost-per-Brief vor/nach; Anzahl der produzierten Assets im Zeitvergleich.
+3. Adversariale Simulation im Chat: "Spiele unseren skeptischen CFO — welche fünf Fragen stellst du zu diesem ROI-Report?" Antworten in den Bericht einbauen.
+4. Slide-Vorlage im Canvas erstellen: Executive Summary (3 KPIs), Payback-Period-Visualisierung, Kosten-Prognose für das nächste Jahr.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Financial-Analyst für eine DACH-B2B-Marketingabteilung. Ich lade Zeittracking-Daten vor und nach der KI-Einführung hoch. Berechne: (1) Lohnkosten-Äquivalent der Zeitersparnis (Stunden × {{Stundensatz}} €/h). (2) Cost-per-Brief-Reduktion in %. (3) Payback-Period in Monaten. Erstelle dann einen einseitigen CFO-Report mit diesen drei KPIs, einem Payback-Period-Chart (Python) und einer Prognose für das nächste Jahr. Keine KI-Fachbegriffe — nur Finanzsprache."
+**Erwartetes Artefakt:** Einseitiger CFO-ROI-Report (Markdown + Python-Chart) plus Board-Slide-Vorlage im Canvas — zur Präsentation im Quartalsbericht.
+**Fallstricke (≥2 spezifisch):**
+- Zeittracking-Daten enthalten Klarnamen von Mitarbeitern → Vor Data-Analyst-Upload zwingend pseudonymisieren; BetrVG §87(1)6 untersagt die Nutzung von personenbezogenen Leistungsdaten ohne Betriebsrats-Zustimmung.
+- ROI-Berechnung erscheint zu optimistisch und wird vom CFO als "Marketing-Zahlen" abgetan → Adversariale Simulation einbauen ("Wie würde der CFO diesen Wert angreifen?") und konservative Annahmen explizit ausweisen.
+**Anschluss-Szenario:** S-MP-044
+
+### S-MP-044 KI-Ethik-Kompass für das Marketing-Team entwickeln
+
+**Wann nutzen (Trigger):** Der Betriebsrat und das Legal-Team fordern ein verbindliches Dokument, das klar regelt, welche Marketing-Aufgaben durch KI erledigt werden dürfen, welche Human-Oversight erfordern und welche komplett ausgeschlossen bleiben. Ohne dieses Dokument droht eine Blockade des KI-Rollouts. (Quelle: A-50; Quelle: A-06; Quelle: A-18)
+**Strategisches Ziel:** Einen akzeptierten, rechtssicheren KI-Ethik-Kompass entwickeln, der sowohl den Betriebsrat überzeugt als auch den Arbeitsfluss des Marketing-Teams nicht unnötig einschränkt — und als lebendiges Dokument im Wissensordner verankert wird.
+**Hands-on Ergebnis:** Ein "KI-Ethik-Kompass für Marketing" (Markdown, 2 Seiten) mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit), einer Ampel-Matrix (grün = autonom, gelb = HITL erforderlich, rot = kein KI) und einem Prozess für jährliche Aktualisierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Web Search
+**Vorgehen (4 Schritte):**
+1. Web Search: aktuelle EU-AI-Act-Anforderungen (Art. 50 Transparenz), UWG-Kennzeichnungspflichten und Branchen-Selbstverpflichtungen (z.B. IAB Europe) recherchieren.
+2. Vier Säulen im Canvas ausarbeiten: Transparenz (KI-Kennzeichnung), Konsent (Opt-in für personalisierte Kommunikation), Reversibilität (jede KI-Entscheidung muss rückgängig machbar sein), Beweisbarkeit (Audit-Log für jede KI-Aktion).
+3. Ampel-Matrix erstellen: grün (Content-Drafts, Übersetzungen, Research-Zusammenfassungen), gelb (E-Mail-Kampagnen, Lead-Scoring, Personalisierung → HITL), rot (Mitarbeiterbewertungen, Preisgestaltung, rechtliche Erklärungen → kein KI).
+4. Prozess für jährliche Überprüfung dokumentieren: KI-Champions führen jährlichen Review durch; bei EU-AI-Act-Änderungen sofortige Ad-hoc-Aktualisierung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Ethik-Berater für eine DACH-B2B-Marketingabteilung. Erstelle einen 'KI-Ethik-Kompass für Marketing' basierend auf vier Säulen: Transparenz, Konsent, Reversibilität und Beweisbarkeit. Nutze Web Search für aktuelle EU-AI-Act-Art.-50-Anforderungen und UWG-Kennzeichnungspflichten. Liefere: (1) Die vier Säulen mit je einem Satz Definition und einem Marketing-Beispiel. (2) Eine Ampel-Matrix: grün (autonom OK), gelb (Human-Oversight erforderlich), rot (kein KI). (3) Einen Prozess für die jährliche Aktualisierung (3 Schritte). Sprache: juristisch präzise, aber für Nicht-Juristen verständlich."
+**Erwartetes Artefakt:** KI-Ethik-Kompass (Markdown, ca. 800 Wörter) mit Ampel-Matrix im Canvas — bereit zur gemeinsamen Überarbeitung mit Betriebsrat und Legal.
+**Fallstricke (≥2 spezifisch):**
+- Web Search halluziniert EU-AI-Act-Artikel-Nummern oder Inkrafttreten-Daten → Zero-Fabrication-Policy für regulatorische Angaben: alle Artikel-Nummern und Fristen müssen manuell gegen die offizielle EU-AI-Act-Quelle verifiziert werden (eur-lex.europa.eu).
+- Ampel-Matrix zu restriktiv und bremst die KI-Adoption aus → Betriebsrat und Marketing müssen die Matrix gemeinsam kalibrieren; der erste KI-generierte Entwurf ist ein Gesprächsstarter, kein fertiges Dokument.
+**Anschluss-Szenario:** S-MP-045
+
+### S-MP-045 KI-gestützte Krisenreaktion bei viralem negativem Content
+
+**Wann nutzen (Trigger):** Ein LinkedIn-Post oder ein Artikel in einem DACH-Fachmedium verbreitet sich viral mit negativen Behauptungen über das Unternehmen (fehlerhafte Produkt-Claims, Datenschutzverletzungs-Vorwürfe oder Mitarbeiterbeschwerden). Julia hat zwei Stunden, um zu reagieren, bevor der nächste Nachrichtenzyklus das Thema eskaliert. (Quelle: A-41; Quelle: sources/10 S-051, S-079)
+**Strategisches Ziel:** Den Reputationsschaden innerhalb von 24 Stunden begrenzen durch eine abgestimmte, cross-channel Krisenreaktion — ohne vorschnelle Aussagen, die den Schaden verschlimmern oder rechtliche Konsequenzen auslösen.
+**Hands-on Ergebnis:** Ein vollständiges Krisen-Reaktionspaket: ein internes Sofort-Memo (Facts-only), zwei Holding-Statements (LinkedIn + Pressekontakt), ein Eskalations-Entscheidungsbaum und ein Zero-Fabrication-Anweisungsset für alle weiteren KI-generierten Kommunikationen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner, Canvas
+**Vorgehen (5 Schritte):**
+1. Betroffenen Workflow und betroffene Agenten sofort pausieren; zuständige Rechts- und Kommunikationsabteilung informieren.
+2. Internes Fakten-Memo im Canvas erstellen: Was ist bekannt? Was ist ungeklärt? Was darf noch nicht kommuniziert werden?
+3. Zwei Holding-Statements draften: LinkedIn (empathisch, kurz, keine Schuldzuweisungen, max. 100 Wörter) und Pressekontakt-Statement (formal, auf Medienanfragen ausgerichtet, max. 150 Wörter).
+4. Eskalations-Entscheidungsbaum erstellen: Eskalationsstufe 1 (Holding Statement reicht), Stufe 2 (CEO-Statement nötig), Stufe 3 (Pressekonferenz/Krisenstab).
+5. Zero-Fabrication-Anweisungsset für alle weiteren KI-Outputs in der Krise: "Keine Aussagen über den Vorfall ohne explizite Faktengrundlage aus dem Legal-genehmigten Wissensordner-Dokument."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Krisenkommunikations-Direktor für ein DACH-B2B-Unternehmen. Ein viraler LinkedIn-Post behauptet, wir hätten {{falschen Claim}}. Wir haben 2 Stunden für die erste Reaktion. Erstelle: (1) Internes Fakten-Memo (Stichpunkte: bekannte Fakten, ungeklärte Fragen, was wir NICHT sagen dürfen). (2) LinkedIn-Holding-Statement (max. 100 Wörter, empathisch, keine Schuldzuweisungen, keine neuen Claims). (3) Pressekontakt-Statement (max. 150 Wörter, formal). (4) Eskalations-Entscheidungsbaum (3 Stufen). Kein KI-Optimismus — sachlich, vorsichtig, Legal-ready."
+**Erwartetes Artefakt:** Krisen-Reaktionspaket im Canvas (internes Memo + 2 Statements + Entscheidungsbaum) — zur sofortigen Freigabe durch Legal und Geschäftsführung.
+**Fallstricke (≥2 spezifisch):**
+- Holding Statements enthalten neue, ungeprüfte Gegenclaims → Prompt muss explizit verbieten, neue Produktbehauptungen in der Krisenreaktion zu machen; ausschließlich: "Wir nehmen das ernst und prüfen die Sachlage."
+- KI-generierte Krisenaussagen ohne Legal-Freigabe veröffentlicht → Krisenreaktion durch KI ist IMMER nur ein Entwurf; der Freigabe-Step durch Legal und Geschäftsführung darf nie übersprungen werden — dies als fette Warnung im Canvas-Dokument kennzeichnen.
+**Anschluss-Szenario:** S-MP-001
+
 ## Hinweise & Quellen-Konflikte
 
 Konflikt in Quellen: Extract T3 erwähnt, dass CSV-Dateien nicht im Ordner-RAG (Wissensordner) verarbeitet werden sollen, sondern durch den Data Analyst. Die Quellen 10 und 12 bestätigen diese strikte Trennung für strukturierte Daten. Die Szenarien und Beschreibungen wurden entsprechend formuliert, um die Data-Analyst-Fähigkeit für quantitative Auswertungen zu nutzen, während RAG auf unstrukturierte Textdokumente fokussiert bleibt. Ebenfalls wurde der Widerspruch bzgl. der Vision-Limits (Hex-Code vs Layout) aus T3 durch klare Einschränkungen in den Szenario-Fallstricken (z.B. Hex-Validierung nicht möglich) aufgelöst. Diese redaktionellen Entscheidungen basieren auf den tiefgreifenden Analysen der bereitgestellten Dokumente und gewährleisten, dass das hier dokumentierte Wissen direkt und fehlerfrei in der Praxis anwendbar ist. Es ist unerlässlich, dass bei zukünftigen Updates der Langdock-Plattform diese Unterscheidungen erneut evaluiert werden. Bis dahin stellt dieses Dokument den verifizierten Status Quo für die DACH-Region dar. Zusätzliche Überprüfungen der Langdock API-Limits bezüglich der maximalen Datei-Anzahl im Wissensordner ergaben keine direkten Widersprüche, jedoch wurde die Best Practice von 1000 Dateien konsequent in die Empfehlungen integriert, um optimale Suchergebnisse zu garantieren.
