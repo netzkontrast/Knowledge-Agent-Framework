@@ -27,8 +27,8 @@ TOTAL=0
 # Headings might be prefixed with the H2/H3 marker — we strip those.
 while IFS= read -r line; do
   # Skip header rows / separator rows
-  if [[ "$line" =~ ^\|[[:space:]]*[-A-Za-z0-9 _]+[[:space:]]*\|[[:space:]]*---* ]]; then continue; fi
-  if [[ ! "$line" =~ ^\| ]]; then continue; fi
+  if echo "$line" | grep -qE "^\|[[:space:]]*[-A-Za-z0-9 _]+\|[[:space:]]*---*"; then continue; fi
+  if ! echo "$line" | grep -qE "^\|"; then continue; fi
 
   # Extract owning-file (look for a column matching .md filename or filename-without-md)
   OWNING_FILE=$(echo "$line" | awk -F'|' '
