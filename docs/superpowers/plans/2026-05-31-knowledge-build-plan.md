@@ -67,39 +67,36 @@ Each step dispatches one `sc:sc-deep-research` subagent (model = haiku) that wri
 | 0.5.4 | Review both persona files; verify anchor strings ("Little Data Persona Anker", "Beziehungsmodus Julia Lenz") are verbatim in first chunk | Read + grep | pending |
 | 0.5.5 | Commit + push Phase-0.5 artifacts | Bash | pending |
 
-## Phase 2 — Knowledge File Synthesis (updated for 100+ scenarios per file)
+## Phase 2 — Knowledge File Scenarios (5 source-grounded scenarios per session)
 
-**Updated 2026-05-31 per user directives:**
-- Each knowledge file has **MINIMUM 100 H3 scenarios** under "Marketing-Szenarien".
-- Scenarios are anchored in T8 critical-thinking methods (M01-M13) as structural generators.
-- Audience: strategically working but hands-on Marketing-Direktorin (DACH).
-- Jules / synthesizer reads RESEARCH SOURCE FILES (not just extracts).
-- The Soul-Doc (Files 11 + 12 from Phase 0.5) is handed to every Phase-2 synthesizer.
+**Revised 2026-05-31 per user directive — quality over quantity:**
+- Each review session adds exactly **5 high-quality, source-grounded scenarios** per file.
+- Sources to draw from (in priority order): `data/research/50-advanced-scenarios-julia-lens.md`, `data/sources/10-langdock-marketing-scenarios-catalog.md`, `data/sources/12-marketingleiter-faq-wissensbasis-analyse.md`.
+- M01-M13 methods are **invisible authoring scaffolding** — never visible scenario fields.
+- **Template scenarios** (method-name titles, generic triggers) must be removed before new ones are added.
+- Target: ≥40 source-grounded scenarios per file, reached incrementally (5 per session).
+- No external AI tool dependency — all work done in-session by the assistant directly.
 
-**Substrate:** if Jules-Auth + connected repo confirmed, use Jules dispatch per file. Otherwise: local `general-purpose` subagents with the same prompt. Each session writes one file.
+| Step | File | Primary Sources | Scenarios target | Status |
+|---|---|---|---|---|
+| 2.00 | `00-langdock-uebersicht.md` | sources/10 A-01–A-10, sources/12 §A, 50-advanced A-44 | ≥40 | 10 source-grounded ✅ |
+| 2.01 | `01-chat-und-prompts.md` | sources/10 §A-B, 50-advanced A-46,A-47 | ≥40 | 10 source-grounded ✅ |
+| 2.02 | `02-agenten-konfiguration.md` | sources/10 S-039, sources/12 §C, 50-advanced A-31,A-34,A-35 | ≥40 | 5 rebuilt ✅, expand each session |
+| 2.03 | `03-wissensordner-und-rag.md` | sources/10 S-006,S-017,S-048, 50-advanced A-20 | ≥40 | 5 rebuilt ✅, expand each session |
+| 2.04 | `04-workflows.md` | sources/10 §F workflow triggers, 50-advanced A-24,A-28,A-32,A-40 | ≥40 | 10 source-grounded ✅ |
+| 2.05 | `05-integrationen-und-mcp.md` | sources/10 §F CRM, sources/12 §07a-07b, 50-advanced A-08 | ≥40 | 10 source-grounded ✅ |
+| 2.06 | `06-api-und-deployment.md` | sources/12 §08, 50-advanced A-03,A-26,A-36,A-44 | ≥40 | 10 source-grounded ✅ |
+| 2.07 | `07-modelle-und-kosten.md` | sources/12 §01/08, 50-advanced A-21–A-30,A-45 | ≥40 | 10 source-grounded ✅ |
+| 2.08 | `08-sicherheit-und-governance.md` | sources/12 §09, 50-advanced A-11–A-20 | ≥40 | 10 source-grounded ✅ |
+| 2.09 | `09-marketing-praxis.md` | sources/10 §A-G, 50-advanced A-01,A-02,A-07,A-10,A-37,A-39,A-41,A-50 | ≥40 | 10 source-grounded ✅ |
+| 2.10 | `10-prompts-und-skills.md` | sources/10 S-026, sources/12 §05, 50-advanced A-49 | ≥40 | 5 rebuilt ✅, expand each session |
+| 2.13 | `13-data-agent-anweisungen-pro-thema.md` | T4, T5, T7 + cross-ref all files 00-10 | 11 D-XX blocks | 11 ✅ (anweisung kind) |
 
-| Step | File | Inputs (Extracts + Sources + Soul-Doc) | Owner | Scenarios target | Status |
-|---|---|---|---|---|---|
-| 2.00 | `00-langdock-uebersicht.md` | T1, T2 + research/01, restructured/00, sources/01-06 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.01 | `01-chat-und-prompts.md` | T1, T7 + research/01, sources/01,05 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.02 | `02-agenten-konfiguration.md` | T1, T2 + research/01,04, sources/01,04 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.03 | `03-wissensordner-und-rag.md` | T1, T2 + research/04,10,12, sources/01,07, restructured/01 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.04 | `04-workflows.md` | T1, T3 + research/01,03, sources/02 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.05 | `05-integrationen-und-mcp.md` | T1 + research/01, sources/02 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.06 | `06-api-und-deployment.md` | T1 + research/01, sources/02,03 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.07 | `07-modelle-und-kosten.md` | T1, T6 + research/01,02, sources/02,03,06 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.08 | `08-sicherheit-und-governance.md` | T1, T6 + research/02, sources/03 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.09 | `09-marketing-praxis.md` | T3, T6 + research/03,09,02 + Soul-Doc | Jules / subagent | ≥100 | pending |
-| 2.10 | `10-prompts-und-skills.md` | T3, T8 + research/03,09 + Soul-Doc + T8 catalog | Jules / subagent | ≥100 | pending |
-| 2.13 | `13-data-agent-anweisungen-pro-thema.md` | T4, T5, T7 + Soul-Doc + cross-ref ALL completed files 00-10 | Jules / subagent | ≥100 | pending (last) |
+**Note:** Files 11 + 12 are persona files (built Phase 0.5). File 13 uses the `anweisung` kind validator (different schema).
 
-**Note:** Files 11 + 12 are built in Phase 0.5 (NOT in Phase 2) so they can serve as Soul-Doc inputs for the rest.
+**Per-session work pattern:** read the target file → identify gaps vs. source material → write exactly 5 new scenarios from named sources → verify with `check_schema.sh` → commit.
 
-**Per-session prompt template:** synthesizer receives Authoring-Spec + Agent-Design-Spec + Soul-Doc (Files 11+12) + Coverage-Matrix-Rows + 2-4 Extracts + 3-8 Research-Source-Files + T8 catalog. Embeds the M01-M13 method catalog as scenario-generation engine.
-
-**Parallelism:** 3-5 simultaneous. 12 files → 3-4 waves. File 13 runs LAST (depends on others).
-
-**Gate before Phase 3:** every file in `langdock-deploy/knowledge/` exists; each has ≥100 scenarios; `check_coverage.sh` passes.
+**Gate before Phase 3:** every content file ≥40 scenarios; persona files ≥20 scenarios; `check_schema.sh --all` PASS.
 
 ---
 

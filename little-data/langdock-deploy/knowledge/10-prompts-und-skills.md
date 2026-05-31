@@ -73,196 +73,94 @@ Ein Metaprompt wird hingegen zwingend herangezogen, wenn eine große konzeptione
 
 Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendbaren Szenarien. Jedes Szenario ist so konzipiert, dass es eine spezifische Herausforderung im Marketing-Alltag adressiert und durch den gezielten Einsatz von Langdock-Agenten zu einer signifikanten Effizienzsteigerung führt. Die Szenarien dienen als direkter Werkzeugkasten für die strategisch arbeitende, hands-on-orientierte Marketing-Direktorin. Die Methodik hinter diesen Prompts stellt sicher, dass höchste Qualitätsstandards eingehalten werden und die Ausgabe unmittelbar in operative Prozesse überführt werden kann. Diese Sammlung bildet das operative Rückgrat für den täglichen Umgang mit künstlicher Intelligenz in der Abteilung.
 
-### S-PS-001 Redaktionsplanung Q3 unter Risiko-Identifikation
+### S-PS-001 RSA-Copy-Prompt-Bibliothek in der Library anlegen
 
-**Wann nutzen (Trigger):** Das C-Level zweifelt stark an den Ressourcen für die Q3-Planung und verlangt ein exaktes Mapping auf kommende Launches.
-**Strategisches Ziel:** Einen tabellarischen Redaktionsplan generieren, der Meilensteine und Engpässe aufzeigt.
-**Hands-on Ergebnis:** Ein tabellarischer 90-Tage Redaktionsplan für Management-Präsentationen.
-**Eingesetzte Langdock-Fähigkeit(en):** Agents / Folders / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Navigiere in den Langdock-Wissensordner und verknüpfe das Q3-Strategie-Dokument.
-2. Füge den spezifischen PTCF-Prompt in den Chat ein und weise der KI die Rolle des kritischen Strategen zu.
-3. Lass den Agenten den Output direkt im Canvas aufbauen.
-4. Nutze die Split-Screen-Ansicht, um die Spalten für das Ressourcen-Mapping im Team zu ergänzen und iterativ zu verfeinern.
+**Wann nutzen (Trigger):** Das Performance-Team erstellt monatlich 30–50 Anzeigen-Varianten manuell; Julia will Copy-Prompts standardisieren, damit jedes Teammitglied mit demselben PTCF-Gerüst arbeitet. (Quelle: sources/10 S-026)
+**Strategisches Ziel:** Einen wiederverwendbaren PTCF-RSA-Prompt als Library-Dokument hinterlegen, sodass Headlines und Descriptions konsistent im Brand-Voice generiert werden.
+**Hands-on Ergebnis:** Eine Markdown-Datei `rsa-prompt-template.md` in der Langdock Library mit befüllbaren Platzhaltern für Produkt, USP und Zielgruppe, direkt einsetzbar im Chat.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Canvas
+**Vorgehen (3 Schritte):**
+1. Erstelle `rsa-prompt-template.md` lokal mit PTCF-Struktur: Persona (Senior Performance Manager), Task (15 RSA-Headlines + 4 Descriptions), Context ({{Produkt}}, {{USP}}, {{Zielgruppe}}, {{CPA-Ziel}}), Format (Markdown-Tabelle mit Zeichenzählung).
+2. Lade die Datei in den Library Folder (Langdock → Knowledge → Library → Upload).
+3. Rufe die Datei im Chat auf (`@rsa-prompt-template`) und befülle die {{Platzhalter}} für die aktuelle Kampagne, dann lass Canvas die finale Tabelle aufbauen.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du agierst als Senior Content-Stratege. Erstelle einen 90-Tage-Redaktionsplan basierend auf dem Q3-Fahrplan. Nutze Falsifikation: Finde 3 messbare Gründe, warum dieser Plan aufgrund unserer aktuellen Ressourcen völlig scheitern wird, und füge diese als Warnungen hinzu. Strukturiere die Antwort in einer professionellen B2B-Tonalität und vermeide Buzzwords. Liefere das Ergebnis als Tabelle: Datum, Thema, Format, Zielgruppe, Risiko-Faktor."
-**Erwartetes Artefakt:** Ein tabellarischer 90-Tage Content-Kalender mit integrierten Risikobewertungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent schätzt Ressourcen-Engpässe oft zu optimistisch ein.
-- Ohne exakte Formatvorgaben resultiert oft unstrukturierter Fließtext.
+> "Du bist Senior Performance Manager bei einem B2B-SaaS-Unternehmen im DACH-Raum. Erstelle 15 Google Ads RSA-Headlines (max. 30 Zeichen) und 4 Descriptions (max. 90 Zeichen) für {{Produkt}}. Unser zentraler USP: {{USP}}. Zielgruppe: {{Zielgruppe}}, CPA-Ziel: {{CPA-Ziel}} €. Alle Headlines auf Deutsch, kein Superlativ, kein Ausrufezeichen. Ausgabe als Tabelle: Nr | Headline | Zeichenzahl | Hook-Typ."
+**Erwartetes Artefakt:** Markdown-Tabelle mit 15 Headlines (geprüfte Zeichenzahl) + 4 Descriptions, exportierbar als CSV für den Google-Ads-Editor.
+**Fallstricke (≥2 spezifisch):**
+- Ohne explizite Zeichenzahl-Spalte überschreitet der Agent regelmäßig 30/90 Zeichen – Tabellenspalte ist Pflicht.
+- Library-Dateien werden nicht automatisch aktualisiert; nach jedem Kampagnen-Relaunch die Platzhalter-Datei neu hochladen.
 **Anschluss-Szenario:** S-PS-002
 
-### S-PS-002 Wettbewerbs-Simulation für Responsive Search Ads
+### S-PS-002 {{Variablen}}-System für wiederkehrende Kampagnen-Prompts einführen
 
-**Wann nutzen (Trigger):** Die Google Ads CTR für die Hauptkampagne ist auf unter 1,5% gefallen. Julia bemerkt, dass der härteste Konkurrent seine Copy stark überarbeitet hat und massiv Klicks abzieht.
-**Strategisches Ziel:** Die Argumentation der Konkurrenz dekonstruieren und darauf basierend 15 überlegene RSA-Headlines entwerfen, die den CPA senken.
-**Hands-on Ergebnis:** Eine detaillierte Google Ads Copy-Tabelle (RSA) mit klaren, nutzenorientierten Hooks.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Öffne einen neuen Agenten-Chat und aktiviere zwingend die Web-Search für tagesaktuelle Marktdaten.
-2. Kopiere die Landingpage-URL des Konkurrenten in den Chat.
-3. Setze den Metaprompt ein und fordere die KI auf, die Perspektive des Wettbewerbers einzunehmen.
-4. Exportiere die finale Headline-Matrix direkt aus dem Canvas als CSV-Datei für den Ads-Import.
+**Wann nutzen (Trigger):** Dasselbe Prompt-Gerüst wird für 6 Produktlinien monatlich kopiert und manuell angepasst – Fehler durch Copy-Paste häufen sich. (Quelle: sources/12 Tabelle 05 – Prompt-Management-Praktiken)
+**Strategisches Ziel:** Einen Single-Template-Ansatz mit klar benannten {{Variablen}} etablieren, der Fehler eliminiert und Prompts auf Knopfdruck auf neue Produkte oder Märkte skaliert.
+**Hands-on Ergebnis:** Ein Team-Prompt-Dokument mit ≥5 Variablen-Feldern, das als Konversations-Starter konfiguriert und für alle Teammitglieder verfügbar ist.
+**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter / Library Folder / Chat
+**Vorgehen (4 Schritte):**
+1. Identifiziere die 5 häufigsten manuellen Anpassungen im bestehenden Prompt-Set (Produkt, Zielgruppe, Tonalität, Format, Markt/Region).
+2. Schreibe das Template mit {{PRODUKTNAME}}, {{ZIELGRUPPE}}, {{TONALITAET}} (sachlich/inspirierend/provokant), {{FORMAT}} (Tabelle/Bullets/Fließtext), {{MARKT}} (DE/AT/CH).
+3. Speichere das Template als Konversations-Starter im Agenten (Langdock → Agent → Einstellungen → Konversations-Starter).
+4. Dokumentiere Füll-Regeln in einem Library-Dokument `prompt-variablen-glossar.md`, damit neue Teammitglieder die Variablen korrekt befüllen.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Senior Performance-Manager. Unser Hauptkonkurrent hat seine Ads-Strategie geändert. Konstruiere das absolut stärkste Argument, warum Kunden zu ihm wechseln sollten (Steelmanning). Entwickle danach 15 Google Ads Headlines und 4 Descriptions für unser Produkt, die dieses Argument präzise und elegant aushebeln. Bleibe absolut sachlich, fokussiere dich auf harte B2B-Fakten und vermeide plumpe Superlative."
-**Erwartetes Artefakt:** Eine sofort exportierbare CSV-Struktur mit 15 Headlines und 4 Descriptions.
-**Fallstricke (mind. 2 spezifisch):**
-- Ohne aktivierte Web-Search greift die KI auf veraltete Daten zurück.
-- Die Tonalität gerät oft zu werblich oder enthusiastisch ('Das beste Produkt!').
+> "Du bist Senior Content-Stratege. Erstelle einen LinkedIn-Post für {{PRODUKTNAME}}. Zielgruppe: {{ZIELGRUPPE}}. Tonalität: {{TONALITAET}}. Markt: {{MARKT}}. Format: {{FORMAT}}. Länge: max. 1300 Zeichen, kein Emoji, kein Hashtag-Spam (max. 3 relevante Tags)."
+**Erwartetes Artefakt:** Ausgefüllter LinkedIn-Draft + ein gespeicherter Konversations-Starter, der das Template für Folge-Kampagnen vorhält.
+**Fallstricke (≥2 spezifisch):**
+- Variablen ohne Glossar führen zu inkonsistenten Befüllungen (z.B. {{TONALITAET}} = "gut" statt "sachlich") – Glossar ist Pflicht.
+- Konversations-Starter sind agent-gebunden; bei Agenten-Wechsel Template neu eintragen.
 **Anschluss-Szenario:** S-PS-003
 
-### S-PS-003 Fehleranalyse im Vorfeld der DMEXCO-Planung
+### S-PS-003 Team-Prompt-Katalog über Konversations-Starter aufbauen
 
-**Wann nutzen (Trigger):** Das sechsstellige Budget für die nächste große Branchen-Messe wurde soeben freigegeben. Julia will sicherstellen, dass nicht wieder Leads im Nachgang verloren gehen.
-**Strategisches Ziel:** Präventive Maßnahmen definieren, um die typischen Fehler in der Event-Planung und im Follow-up von Anfang an auszuschließen.
-**Hands-on Ergebnis:** Ein priorisiertes Pre-Mortem-Dokument mit konkreten Gegenmaßnahmen für das Event-Team.
-**Eingesetzte Langdock-Fähigkeit(en):** Chat / Document Editor
-**Vorgehen (3-5 Schritte):**
-1. Starte einen dedizierten Event-Chat und lade das aktuelle Standkonzept als PDF hoch.
-2. Triggere den Pre-Mortem-Prompt und zwinge den Agenten, in die Zukunft zu springen.
-3. Werte die aufgelisteten Schwachstellen im Team-Meeting aus.
-4. Nutze den Canvas-Editor, um die identifizierten Gegenmaßnahmen direkt in Action-Items umzuwandeln und Aufgaben zuzuweisen.
+**Wann nutzen (Trigger):** Onboarding neuer Teammitglieder dauert 2–3 Wochen, weil bewährte Prompts nur in privaten Chats existieren und nicht geteilt werden. (Quelle: sources/12 Q32 – Team-Onboarding mit Langdock)
+**Strategisches Ziel:** Einen strukturierten Prompt-Katalog via Konversations-Starter bereitstellen, sodass neue Kolleginnen ab Tag 1 mit geprüften Prompts arbeiten und keine Prompts neu erfinden müssen.
+**Hands-on Ergebnis:** Ein dedizierter „Team-Prompts"-Agent mit ≥10 Konversations-Startern für die häufigsten Marketing-Aufgaben (Briefing, SEO-Text, E-Mail, Report, Social Post).
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten-Konfiguration / Konversations-Starter / Library Folder
+**Vorgehen (4 Schritte):**
+1. Sammle die 10 meistgenutzten Prompts aus bestehenden Team-Chats (Export via Chat-History oder Befragung).
+2. Normiere alle Prompts auf PTCF-Struktur und benenne sie nach Aufgabentyp (z.B. „SEO-Blogpost erstellen", „Kampagnen-Briefing ausfüllen").
+3. Lege einen neuen Agenten „Marketing-Prompt-Starter" an; trage alle 10 Prompts als Konversations-Starter ein (Langdock-Limit: 255 Zeichen pro Starter-Label → Label kurz halten, vollständiger Prompt im Starter-Body).
+4. Verlinke den Agenten in der Team-Dokumentation und trainiere das Team in einer 30-Minuten-Session.
 **Beispiel-Prompt (DE, PTCF):**
-> "Agiere als Senior Event-Manager. Stell dir vor, unsere Teilnahme an der Leitmesse im Q3 war ein kompletter Fehlschlag. Das Budget wurde verbrannt und wir haben keine SQLs (Sales Qualified Leads) generiert. Führe ein Pre-Mortem durch: Liste 5 detaillierte, strategische Fehler auf, die wir in der Konzeption und im Follow-Up gemacht haben. Leite für jeden Fehler eine konkrete Präventivmaßnahme in Tabellenform ab."
-**Erwartetes Artefakt:** Ein detailliertes Pre-Mortem Audit mit verknüpften Präventivmaßnahmen.
-**Fallstricke (mind. 2 spezifisch):**
-- Die KI verfällt oft in banale operative Fehler (z.B. 'Kaffee war alle').
-- Der Agent neigt zu unprofessionellen Anglizismen.
+> "Du bist Marketing-Assistent. Erstelle ein strukturiertes Kampagnen-Briefing für [Kampagnenname]. Pflichtfelder: Ziel (SMART), Zielgruppe (Persona), Kanal-Mix, Budget, KPIs, Timeline, Verantwortliche. Format: ausgefüllte Markdown-Tabelle, eine Zeile pro Feld."
+**Erwartetes Artefakt:** Befülltes Briefing-Dokument im Canvas + persistenter Konversations-Starter für das gesamte Team.
+**Fallstricke (≥2 spezifisch):**
+- Konversations-Starter-Labels haben 255-Zeichen-Limit: Label muss Aufgabe eindeutig benennen, nicht den vollen Prompt enthalten.
+- Ohne regelmäßige Pflege veralten Starter-Prompts; Quartals-Review als Kalender-Event anlegen.
 **Anschluss-Szenario:** S-PS-004
 
-### S-PS-004 Kategorien-Abgleich für ein neues Value Proposition Design
+### S-PS-004 Prompt-Versionierung in der Library: Prompt-Lifecycle tracken
 
-**Wann nutzen (Trigger):** Ein neues Enterprise-Modul steht kurz vor dem Launch. Das aktuelle Messaging klingt extrem trocken und ist austauschbar mit jedem anderen SaaS-Anbieter.
-**Strategisches Ziel:** Völlig neue, unkonventionelle Messaging-Winkel finden, die sich deutlich vom Branchenstandard abheben und Aufmerksamkeit erzeugen.
-**Hands-on Ergebnis:** Ein Messaging-Framework mit drei radikal unterschiedlichen Positionierungs-Ansätzen.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas
-**Vorgehen (3-5 Schritte):**
-1. Öffne den Chat und wähle die Persona des Brand-Managers aus.
-2. Füge das bisherige, generische Value Proposition Statement in den Chat ein.
-3. Triggere den Contrast-Classes-Prompt, um branchenfremde Vergleiche zu forcieren.
-4. Verfeinere die generierten Ansätze im Canvas, um sicherzustellen, dass sie trotzdem seriös und B2B-kompatibel bleiben.
+**Wann nutzen (Trigger):** Ein Prompt, der drei Monate lang funktioniert hat, produziert plötzlich schlechte Ergebnisse nach einem Modell-Update – niemand weiß, welche Version davor verwendet wurde. (Quelle: 50-advanced A-49 – Prompt-Lifecycle-Management)
+**Strategisches Ziel:** Einen einfachen Versionierungs-Standard für Marketing-Prompts in der Langdock Library einführen, der Rollbacks ermöglicht und Modell-Drift sichtbar macht.
+**Hands-on Ergebnis:** Eine `prompt-changelog.md` in der Library mit Versions-Tags (v1.0, v1.1 …), Datum, Änderungsgrund und Testergebnis für jeden Schlüssel-Prompt.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Lege `prompt-changelog.md` mit Tabellen-Schema an: Version | Datum | Prompt-Titel | Änderung | Testergebnis (PASS/FAIL) | Modell.
+2. Trage die aktuelle Version aller kritischen Prompts (RSA, Briefing, Persona-Match) als v1.0 ein.
+3. Bei jedem Prompt-Update: neue Zeile in der Tabelle, alten Prompt-Text in einem auskommentierten Block (`<!-- v1.0 ... -->`) bewahren.
+4. Nach Modell-Updates: einen Canary-Test mit 3 Standard-Inputs fahren; Testergebnis in die Tabelle eintragen.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du agierst als Senior Brand-Manager. Unser aktuelles Messaging lautet: [Füge aktuelles generisches Messaging ein]. Vergleiche unseren Ansatz mit völlig branchenfremden Kategorien. Wie würde ein Luxusauto-Hersteller oder eine schnelle Fast-Food-Kette unseren Service verkaufen? Generiere 3 unkonventionelle Messaging-Ansätze, die herausstechen, aber den B2B-Kontext respektieren. Keine Floskeln."
-**Erwartetes Artefakt:** Ein strukturiertes Messaging-Dokument mit drei alternativen Positionierungs-Routen.
-**Fallstricke (mind. 2 spezifisch):**
-- Das Modell kann bei diesem kreativen Prompt zu verspielt werden.
-- Ohne Formatvorgaben liefert der Agent oft zusammenhängende Textblöcke.
+> "Du bist Prompt-Engineer. Ich zeige dir zwei Versionen eines RSA-Copy-Prompts. Bewerte, welche Version bei [Modell] konsistentere Ergebnisse liefert: Version A = [Prompt A], Version B = [Prompt B]. Testkriterien: Einhaltung Zeichenlimit, Brand-Voice-Konformität, Varianten-Diversität. Ausgabe: strukturierte Bewertungstabelle + Empfehlung."
+**Erwartetes Artefakt:** Ausgefüllte `prompt-changelog.md` mit eingetragenem Vergleichs-Testergebnis; klare Empfehlung, welche Prompt-Version weiter genutzt wird.
+**Fallstricke (≥2 spezifisch):**
+- Library-Dateien sind nicht versioniert wie Git; bei jedem Update die alte Datei vor dem Upload umbenennen (z.B. `prompt-changelog-2026-04.md`), sonst gehen ältere Versionen verloren.
+- Canary-Tests ohne feste Eingabe-Fixtures sind nicht reproduzierbar – Testinputs in einer separaten Datei speichern.
 **Anschluss-Szenario:** S-PS-005
 
-### S-PS-005 Bias-Korrektur bei B2B Buyer Personas
+### S-PS-005 PTCF als Team-Standard in Onboarding und Konversations-Startern verankern
 
-**Wann nutzen (Trigger):** Das Sales-Team beklagt, dass die Marketing-Leads keine Kaufintention haben. Julia vermutet, dass die alten Persona-Profile die tatsächliche Marktdynamik ignorieren.
-**Strategisches Ziel:** Bestehende Annahmen über die Zielgruppe radikal hinterfragen und mit echten Markttrends abgleichen, um Fehlallokationen im Budget zu stoppen.
-**Hands-on Ergebnis:** Ein fundiertes Persona-Update-Briefing für das Content- und Performance-Team.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Exportiere die letzten verlorenen Deals (Lost Deals) aus dem CRM als CSV und lade sie hoch.
-2. Aktiviere den Data Analyst und füttere ihn mit dem bisherigen Persona-Dokument.
-3. Triggere die Bayesian-Prior-Analyse, um die kognitive Verzerrung der alten Profile zu entlarven.
-4. Aktualisiere das Persona-Template im Canvas auf Basis der neu gewonnenen Erkenntnisse.
+**Wann nutzen (Trigger):** Audit der letzten 50 Team-Prompts zeigt: 60% fehlt eine klare Persona, 40% kein Format – Ausgabequalität variiert stark je nach Verfasser. (Quelle: sources/10 S-026 + T8-Metaprompts-Critical-Thinking)
+**Strategisches Ziel:** PTCF als verbindlichen Prompt-Standard im Marketing-Team einführen: Persona, Task, Context, Format sind Pflichtfelder in jedem nicht-trivialen Prompt.
+**Hands-on Ergebnis:** Ein PTCF-Leitfaden als Library-Dokument + ein PTCF-Checker-Prompt der jeden Draft-Prompt gegen das Schema prüft.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Konversations-Starter
+**Vorgehen (3 Schritte):**
+1. Schreibe `ptcf-leitfaden.md` mit Definition der vier Felder, je 2 Gut/Schlecht-Beispielen aus dem eigenen Marketing-Kontext und einer Checkliste (4 Punkte: P ✓ T ✓ C ✓ F ✓).
+2. Konfiguriere einen PTCF-Checker-Konversations-Starter: Prompt-Draft einfügen → Agent prüft die vier Felder und gibt Missing-Fields als Bullet-Liste zurück.
+3. Integriere den PTCF-Leitfaden als Pflichtlektüre ins Onboarding-Dokument (1 Seite, Link zum Library-Dokument).
 **Beispiel-Prompt (DE, PTCF):**
-> "Agiere als Senior Product-Marketer. Wir gehen seit zwei Jahren davon aus, dass unsere Haupt-Persona primär wegen des Features X kauft. Analysiere die hochgeladenen CRM-Daten der verlorenen Deals. Wo liegen kognitive Verzerrungen (Bayesian Priors) in unserer Annahme? Welche echten Trends entkräften diese Prämisse? Liefere eine knallharte Auswertung und drei sofortige Anpassungsempfehlungen für unser Targeting."
-**Erwartetes Artefakt:** Ein analytisches Persona-Audit-Dokument inklusive Anpassungsempfehlungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Die KI interpretiert CRM-Spalten manchmal falsch.
-- Der Data Analyst vergisst oft die strategische Einordnung.
-**Anschluss-Szenario:** S-PS-006
-
-### S-PS-006 Datenquellen-Verifikation bei Content-Gap-Analysen
-
-**Wann nutzen (Trigger):** Für einen wichtigen Pillar-Artikel liegen widersprüchliche Suchvolumen und Trends aus zwei verschiedenen SEO-Tools (z.B. Ahrefs und Semrush) vor.
-**Strategisches Ziel:** Eine valide und verlässliche Keyword-Datenbasis schaffen, bevor massiv Budget in die Content-Produktion investiert wird.
-**Hands-on Ergebnis:** Ein konsolidiertes, priorisiertes Keyword-Set in tabellarischer Form.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search / Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Lade beide Keyword-Exporte als separate CSV-Dateien in den Chat hoch.
-2. Instruiere den Data Analyst, die Listen zusammenzuführen und Metriken abzugleichen.
-3. Fordere die KI auf, bei starken Diskrepanzen die Web-Suche für eine dritte Einschätzung (z.B. Google Trends) heranzuziehen.
-4. Lass dir die bereinigte Liste direkt im Chat als Markdown-Tabelle ausgeben.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist Senior SEO-Analyst. Zwei Keyword-Exporte sind hochgeladen, die sich bei Suchvolumen und Keyword-Difficulty widersprechen. Führe eine Source Triangulation durch: Gleiche die Listen ab, identifiziere Ausreißer und ermittle einen realistischen Konsens-Wert für unsere Top 10 Keywords. Begründe deine Entscheidung bei starken Abweichungen. Strukturiere die finale Liste als Tabelle, aufsteigend sortiert nach Priorität."
-**Erwartetes Artefakt:** Eine bereinigte, konsolidierte Keyword-Matrix als Markdown-Tabelle.
-**Fallstricke (mind. 2 spezifisch):**
-- Wenn Datensätze sehr groß sind, bricht die Auswertung manchmal ab.
-- Der Agent erfindet manchmal Durchschnittswerte.
-**Anschluss-Szenario:** S-PS-007
-
-### S-PS-007 Widerspruchs-Analyse in Lead-Nurturing Workflows
-
-**Wann nutzen (Trigger):** Eine neue 12-stufige Drip-Kampagne wurde entworfen, aber die Logik der Segmentierung wirkt extrem komplex und fehleranfällig.
-**Strategisches Ziel:** Logische Brüche und Dead-Ends im E-Mail-Workflow auflösen, bevor die Kampagne live im CRM geschaltet wird.
-**Hands-on Ergebnis:** Ein fehlerbereinigtes Automations-Schema, das direkt ins Marketing-Automation-Tool übertragen werden kann.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3-5 Schritte):**
-1. Öffne einen Chat und wähle die Persona des CRM-Spezialisten.
-2. Füge das textliche Konzept des aktuellen Drip-Workflows inklusive aller Wenn-Dann-Bedingungen ein.
-3. Triggere die Widerspruchs-Analyse.
-4. Nutze den Canvas, um das optimierte Workflow-Mapping als Baumstruktur oder strukturierte Liste zu speichern.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du agierst als Senior CRM-Spezialist. Hier ist das Konzept für einen 12-stufigen Lead-Nurturing Workflow. Analysiere das gesamte Dokument ausschließlich auf logische Widersprüche (Contradiction Log). Wo gibt es Endlosschleifen? Welche Segmente erhalten doppelte E-Mails? Welche Bedingungen schließen sich gegenseitig aus? Erstelle ein Fehlerprotokoll und präsentiere eine korrigierte Logik-Struktur."
-**Erwartetes Artefakt:** Ein Workflow-Fehlerprotokoll und ein korrigiertes Drip-Kampagnen-Schema.
-**Fallstricke (mind. 2 spezifisch):**
-- Die KI verliert sich gerne in inhaltlichen Text-Korrekturen (Copywriting).
-- Ohne Format-Template liefert das Modell unübersichtliche Ergebnisse.
-**Anschluss-Szenario:** S-PS-008
-
-### S-PS-008 Schwellenwert-Definition für den Start eines TikTok-Kanals
-
-**Wann nutzen (Trigger):** Das Management drängt auf einen eigenen TikTok-Kanal für das B2B-Produkt, aber Julia sieht darin eine reine Ressourcen-Verbrennung ohne Zielgruppen-Fit.
-**Strategisches Ziel:** Objektive, harte Metriken und Schwellenwerte definieren, unter denen das Projekt sofort abgebrochen oder als Erfolg bewertet wird.
-**Hands-on Ergebnis:** Ein datenbasiertes Entscheidungs-Framework für den C-Level-Pitch.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Aktiviere die Web-Search-Fähigkeit, um aktuelle B2B-Fallstudien zu diesem Kanal zu recherchieren.
-2. Füge den spezifischen Schwellenwert-Prompt ein.
-3. Übertrage das Framework ins Canvas.
-4. Teile das Dokument mit dem Management, um die Abnahmekriterien vor dem ersten Drehbuch festzuzurren.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist Senior Social-Media-Manager. Das Management will einen B2B-TikTok-Kanal starten. Wir sind extrem skeptisch. Erarbeite ein Framework nach dem Prinzip 'What Would Change My Mind'. Definiere exakte, messbare Schwellenwerte für die ersten 3 Monate (Views, Engagement, Qualifizierte Leads). Was muss genau passieren, damit wir diesen Kanal als validen Hebel akzeptieren, und bei welchen Werten brechen wir das Projekt hart ab?"
-**Erwartetes Artefakt:** Ein konkretes Entscheidungs-Framework mit harten Go/No-Go Metriken.
-**Fallstricke (mind. 2 spezifisch):**
-- Das Modell schlägt oft weiche Metriken (wie 'Brand Awareness') vor.
-- Die KI generiert manchmal unrealistische Vanity-Metriken.
-**Anschluss-Szenario:** S-PS-009
-
-### S-PS-009 Fundamentalanalyse von Krisen-Kommunikations-Statements
-
-**Wann nutzen (Trigger):** Ein technischer Ausfall der Software hat massive Kundenbeschwerden ausgelöst. Der aktuelle PR-Entwurf klingt nach juristischen Ausreden und nicht nach Verantwortungsübernahme.
-**Strategisches Ziel:** Das Statement auf die absolut unumstößlichen Wahrheiten reduzieren und Vertrauen durch radikale Transparenz zurückgewinnen.
-**Hands-on Ergebnis:** Ein klares, empathisches und faktenbasiertes Krisen-Statement.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas
-**Vorgehen (3-5 Schritte):**
-1. Öffne den Chat und wähle die Persona des Brand-Managers.
-2. Füge den bisherigen PR-Entwurf und die technischen Fakten des Ausfalls ein.
-3. Fordere die Reduktion auf First-Principles.
-4. Nutze den Canvas, um den Text gemeinsam mit der Rechtsabteilung minimalinvasiv zu verfeinern.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du agierst als Senior Brand-Manager. Unser aktueller Entwurf für ein Krisen-Statement lautet: [PR-Entwurf]. Dieser Text klingt nach Ausreden. Reduziere die Kommunikation auf First-Principles. Was ist das fundamentale, technische Problem, das passiert ist? Was tun wir genau jetzt dagegen? Schreibe ein neues, extrem ehrliches Statement, das auf Marketing-Floskeln verzichtet, volle Verantwortung übernimmt und Vertrauen schafft."
-**Erwartetes Artefakt:** Ein veröffentlichungsreifes, faktenbasiertes PR-Statement.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent schreibt oft dramatische und übermäßig emotionale Entschuldigungen.
-- Die KI formuliert oft unvorsichtige Haftungs-Zusagen.
-**Anschluss-Szenario:** S-PS-010
-
-### S-PS-010 Historischer Abgleich von Lead-Erwartungen bei E-Books
-
-**Wann nutzen (Trigger):** Ein E-Book aus dem US-Markt wird lokalisiert. Das Sales-Team erwartet Tausende Leads im DACH-Raum, da es in den USA gut performt hat.
-**Strategisches Ziel:** Erwartungshaltungen erden und realistische Benchmarks für den DACH-Markt etablieren, um spätere Enttäuschungen zu vermeiden.
-**Hands-on Ergebnis:** Eine Benchmark-Analyse mit realistischen Lead-Prognosen für die DACH-Lokalisierung.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search / Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Lade historische Kampagnendaten vergangener DACH-Whitepapers als Referenz hoch.
-2. Triggere die Base-Rate-Analyse, um die US-Zahlen zu entkräften.
-3. Lass die KI die Marktdifferenzen strukturieren.
-4. Präsentiere die realistische Prognose im nächsten Alignment-Meeting.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist Senior Content-Stratege. Das US-Team hat mit dem E-Book [Titel] 5.000 Leads generiert und erwartet dasselbe für den DACH-Markt. Nutze Base-Rate-Analyse: Vergleiche diese Erwartung mit typischen Benchmarks für B2B-Lead-Gen im DACH-Raum sowie unseren historischen Daten. Erkläre die Unterschiede (z.B. Marktgröße, DSGVO-Opt-In Raten) und berechne eine fundierte, realistische Lead-Prognose. Liefere das Ergebnis als strukturiertes Briefing."
-**Erwartetes Artefakt:** Ein detaillierter Benchmark-Report zur realistischen Kampagnen-Prognose.
-**Fallstricke (mind. 2 spezifisch):**
-- Die KI verwechselt oft DACH-Raten mit globalen Durchschnitten.
-- Prognosen bleiben ohne DSGVO-Kontext oft viel zu hoch.
-**Anschluss-Szenario:** S-PS-001
-
-## Hinweise & Quellen-Konflikte
-
-Keine Quellen-Widersprüche festgestellt.
+> "Du bist Prompt-Reviewer. Prüfe den folgenden Prompt auf PTCF-Vollständigkeit: [Prompt-Draft einfügen]. Bewerte jeden der vier Bereiche (Persona, Task, Context, Format): vorhanden (✓) oder fehlend (✗). Für fehlende Bereiche: formuliere einen konkreten Ergänzungsvorschlag. Ausgabe: 4-Zeilen-Tabelle + überarbeiteter Prompt-Entwurf."
+**Erwartetes Artefakt:** PTCF-Analyse-Tabelle des Draft-Prompts + überarbeiteter Prompt mit allen vier Feldern befüllt.
+**Fallstricke (≥2 spezifisch):**
+- PTCF ist kein Allheilmittel für einfache Mikro-Tasks (Rechtschreib-Check, kurze Umformulierung) – den Leitfaden auf Prompts mit >2 Sätzen Erwartung beschränken.
+- Der Checker-Prompt neigt dazu, „Context" zu weit auszulegen; im Leitfaden klarstellen: Context = spezifische Hintergrunddaten, NICHT die Aufgabe selbst.

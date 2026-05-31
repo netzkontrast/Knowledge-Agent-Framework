@@ -53,204 +53,94 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 
 ## Marketing-Szenarien aus dieser Domäne
 
-### S-WR-001 Aufdeckung toxischer Content-Hypothesen
+### S-WR-001 Brand Guidelines zentralisieren: Library Folder als Single Source of Truth
 
-**Wann nutzen (Trigger):** Julia kommt aus dem Q3-Review mit dem Auftrag, den extremen organischen Traffic-Einbruch bei den Leitfäden zu erklären.
-**Strategisches Ziel:** Systematische Widerlegung der internen Annahme, dass extrem lange SEO-Texte nach dem neuesten Google-Update noch konvertieren.
-**Hands-on Ergebnis:** Ein hartes Audit-Dokument, das unsere bisherige Längen-Metrik als Conversion-Killer entlarvt und dem Redaktionsteam vorgelegt wird.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner + Canvas
-**Vorgehen (3-5 Schritte):**
-1. Agent durchsucht alle alten SEO-Pillars im Wissensordner nach strikten Wortzahl-Vorgaben.
-2. Manueller Abgleich mit aktuellen Performance-CSV-Daten aus dem direkten Anhang.
-3. Generierung eines dedizierten Falsifikations-Reports für das Content-Team.
+**Wann nutzen (Trigger):** Der Brand-Guardian-Agent zitiert veraltete Tone-of-Voice-Regeln, weil die aktuellen Brand Guidelines in drei verschiedenen Drive-Ordnern und zwei PDFs verteilt liegen — kein Agent greift auf dieselbe Version zu.
+**Strategisches Ziel:** Einen Library Folder als einzige, verbindliche Brand-Wissensquelle für alle Agenten aufsetzen, sodass Aktualisierungen einmal gemacht werden und überall wirken.
+**Hands-on Ergebnis:** Ein strukturierter Library Folder mit separierten MD-Dateien pro Brand-Regelkategorie, der als zentraler Wissensordner aller Marketing-Agenten dient.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder + Wissensordner-Upload + Agent-Anbindung
+**Vorgehen (4 Schritte):**
+1. Sammle alle Brand-Dokumente (Tone-of-Voice, Tabu-Wörter, Do's and Don'ts, Beispieltexte) und konvertiere jedes Thema in eine separate MD-Datei — eine Datei pro Regelkategorie, nicht ein Sammel-PDF; Dateinamen beschreibend (z.B. `brand-tonalitaet.md`, `brand-vokabular.md`).
+2. Erstelle einen Library Folder "Brand Guidelines" im Workspace und lade alle MD-Dateien hoch; prüfe dass keine Datei >10 MB und keine einzelne Datei >8M Zeichen hat.
+3. Binde diesen Library Folder an alle relevanten Agenten (Brand-Guardian, Briefing-Agent, Social-Planer) — jeder Agent zeigt auf denselben Ordner statt auf separate Kopien.
+4. Dokumentiere im Ordner eine "README-folder.md" die erklärt welche Datei welche Regelkategorie enthält und wann sie zuletzt aktualisiert wurde.
 **Beispiel-Prompt (DE, PTCF):**
-> "Such in unseren alten SEO-Guidelines nach der strikten Vorgabe 'Texte müssen 2000 Wörter lang sein'. Finde dann in den angehängten Analytics-Daten Beweise, warum diese Regel heute unseren Traffic zerstört. Ignoriere alle Erfolgsfälle, suche aktiv nach dem Bruch in den KPIs."
-**Erwartetes Artefakt:** Kritischer SEO-Fehler-Report im Markdown-Format.
-**Fallstricke (mind. 2 spezifisch):**
-- Analytics-Daten im Anhang sind nicht sauber als CSV formatiert, sodass der Data Analyst sie ignoriert.
-- Der Agent weigert sich wegen allgemeiner Tonalitätsvorgaben, die bestehenden Unternehmens-Guidelines scharf zu kritisieren.
+> "Du bist Brand-Berater [Persona]. Prüfe ob der folgende Entwurf unserer Kampagnen-Headline unserer Brand Voice entspricht [Task]. Kontext: Brand Voice ist sachlich-souverän, kein Konjunktiv, keine Superlative, kein Slang [Context]. Format: Bullet-Liste mit je 'OK' oder 'Problem: [Regelverstoß]' pro Satz [Format]."
+**Erwartetes Artefakt:** Ein Library Folder mit 4-6 separaten MD-Dateien pro Regelkategorie, verbunden mit allen Brand-Agenten des Workspaces.
+**Fallstricke (≥2 spezifisch):**
+- Gesamtes Brand-Manual als einzelnes 80-seitiges PDF hochladen → Per-Document-Cap (1 Chunk/Query) liefert pro Anfrage nur einen zufälligen 2000-Zeichen-Block; aufteilen in atomare Dateien ist Pflicht.
+- Veraltete PDFs im selben Ordner belassen → Agent zieht widersprüchliche alte und neue Guidelines gleichzeitig; gelöschte Dateien aus dem Ordner müssen physisch entfernt werden, nicht nur überschrieben.
 **Anschluss-Szenario:** S-WR-002
 
-Um die Qualität dieser Analyse zu gewährleisten, muss die RAG-Mechanik Zugriff auf unzensierte, historische Fehlschläge haben. Die Speicherung von reinen Erfolgs-Cases im Wissensordner führt bei Falsifizierungs-Aufgaben unweigerlich zu Bestätigungsfehlern durch das Modell.
+### S-WR-002 Interne Verlinkung via Wissensordner-Semantiksuche beschleunigen
 
-### S-WR-002 Wettbewerbsanalyse des gegnerischen Redaktionsteams
-
-**Wann nutzen (Trigger):** Ein direkter Wettbewerber hat in der letzten Woche drei große B2B-Content-Awards gewonnen und dominiert plötzlich Social Media.
-**Strategisches Ziel:** Objektive Analyse der gegnerischen Content-Qualität, komplett befreit vom internen Unternehmens-Ego und Schönfärberei.
-**Hands-on Ergebnis:** Eine schonungslose Präsentation über die gegnerische Redaktionsstrategie für das nächste große All-Hands-Meeting.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent (Wissensabruf)
-**Vorgehen (3-5 Schritte):**
-1. Die fünf Gewinner-Artikel des Konkurrenten als PDFs in den direkten Chat-Anhang hochladen.
-2. Agent formuliert das stärkste inhaltliche Argument für genau deren spezifischen Redaktions-Ansatz.
-3. Härtetest und schonungsloser Vergleich mit unserer eigenen Tone-of-Voice aus dem Wissensordner.
+**Wann nutzen (Trigger):** Eine neue Pillar-Page zum Thema "Workflow-Automatisierung" ist live — das Team soll 15+ interne Links aus dem bestehenden Blog-Archiv setzen, durchsucht aber manuell 200 Artikel.
+**Strategisches Ziel:** Den Wissensordner mit dem Blog-Archiv nutzen, um per semantischer Suche exakte Ankertexte und Quellartikel für interne Verlinkung zu finden — Zeitaufwand von 4 Stunden auf 30 Minuten reduzieren.
+**Hands-on Ergebnis:** Eine Tabelle mit 10-15 internen Link-Möglichkeiten (Quellartikel, Ankertext, Satzkontext), direkt verwendbar für die CMS-Implementierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (Blog-Archiv) + Chat (semantische Suche)
+**Vorgehen (3 Schritte):**
+1. Lade die Top-Traffic-Blogposts als Text-Dateien in einen Wissensordner "Blog-Archiv" (MD-Format für beste Chunk-Qualität, eine Datei pro Artikel mit H1 als erstem Element).
+2. Stelle im Chat eine semantische Suchanfrage: "Suche in den Dokumenten nach Passagen, die das Thema Workflow-Automatisierung, Prozessoptimierung oder Event-basierte Triggerung erwähnen — nenne Dateiname, den exakten Satz und einen möglichen Ankertext unter 5 Wörtern."
+3. Exportiere die Tabelle aus dem Canvas in eine Google-Sheet-kompatible CSV für das CMS-Team.
 **Beispiel-Prompt (DE, PTCF):**
-> "Ignoriere unseren internen Stolz vollständig. Mach eine Tiefenanalyse der angehängten Konkurrenz-Texte: Warum sind diese Texte unserer eigenen Brand-Voice (siehe Wissensordner) in Sachen Emotionalität und Hook haushoch überlegen? Mach ihre Argumente noch stärker."
-**Erwartetes Artefakt:** Wettbewerbsanalyse-Matrix mit klaren Defiziten unserer eigenen Brand.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent lobt den Konkurrenten nicht stark genug und verfällt stattdessen in beschwichtigendes Marketing-Sprech.
-- Die eigene Brand-Voice im Wissensordner ist zu abstrakt formuliert für einen harten, metrikbasierten Vergleich.
+> "Du bist SEO-Spezialist [Persona]. Finde interne Verlinkungsmöglichkeiten für unsere neue Pillar-Page zu 'Workflow-Automatisierung' [Task]. Durchsuche die Dokumente im Wissensordner nach Absätzen, die Workflow, Automatisierung, Trigger oder ähnliche Synonyme enthalten [Context]. Liefere eine Tabelle mit Spalten: Quelldokument, Ankertext-Vorschlag, exakter Satz im Original [Format]."
+**Erwartetes Artefakt:** Eine Tabelle mit 10-15 internen Link-Möglichkeiten inkl. Quelldokument, vorgeschlagenem Ankertext und Originalzitat.
+**Fallstricke (≥2 spezifisch):**
+- Artikel als Sammel-PDF hochladen statt als einzelne Dateien → Per-Document-Cap liefert pro Artikel nur einen Chunk; jeder Artikel braucht eine eigene Datei damit alle Abschnitte erreichbar sind.
+- Ankertext zu generisch formulieren (z.B. "hier klicken") → Im Prompt explizit fordern: "Ankertext muss das Keyword und max. 5 Wörter lang sein, keine Floskeln".
 **Anschluss-Szenario:** S-WR-003
 
-Ein effektives Steelmanning der Konkurrenz gelingt nur, wenn das eigene Brand-Voice-Dokument im Langdock-Wissensordner von Pronomen befreit ist. Wenn die KI den Kontext des eigenen Markenauftritts im 2.000-Zeichen-Chunk verliert, wird die Matrix wertlos.
+### S-WR-003 Community-FAQ im Wissensordner für schnelle Support-Antworten nutzen
 
-### S-WR-003 Risikomanagement für das interaktive Messe-Whitepaper
-
-**Wann nutzen (Trigger):** Das Team plant ein massives, interaktives Whitepaper für die kommende DMEXCO-Messe, das das halbe Quartalsbudget verschlingt.
-**Strategisches Ziel:** Frühe Identifikation von versteckten Produktions- und Distributionsfehlern lange vor dem eigentlichen Launch-Datum.
-**Hands-on Ergebnis:** Eine Fehler-Präventions-Checkliste, die vom gesamten Redaktionsteam vor der Freigabe strikt abgearbeitet werden muss.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Die fixe Prämisse setzen: Das Whitepaper wurde nach dem Launch von der Zielgruppe komplett ignoriert.
-2. Agent checkt historische Flop-Assets im Langdock-Archiv auf strukturelle Ähnlichkeiten.
-3. Ableitung einer spezifischen, datenbasierten No-Go-Liste für das aktuelle Messe-Projekt.
+**Wann nutzen (Trigger):** Ein viraler LinkedIn-Post generiert 60+ Kommentare mit spezifischen Produktfragen — der Community-Manager antwortet 3 Stunden lang manuell und macht dabei inhaltliche Fehler.
+**Strategisches Ziel:** Einen Wissensordner mit FAQs, Produktdaten und Preisen aufsetzen, damit der Community-Manager via Chat sofort akkurate Antwortvorlagen für Kommentare generieren kann.
+**Hands-on Ergebnis:** 5-10 sofort postbare Antwortvorlagen auf die häufigsten Kommentartypen, tonalitätskonsistent und faktisch korrekt aus dem Wissensordner abgeleitet.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (FAQ + Produktdaten) + Chat
+**Vorgehen (3 Schritte):**
+1. Erstelle einen Wissensordner "Community FAQ" mit separaten MD-Dateien pro Thema (Preise, Features, Support-Prozesse, Häufige Einwände) — jede Datei beginnt mit einem beschreibenden H1 als Retrieval-Anker.
+2. Öffne Chat mit dem Wissensordner; paste die ersten 5-10 Kommentare als Block; frage: "Generiere für jeden Kommentar eine 2-Satz-Antwort basierend ausschließlich auf dem FAQ-Wissensordner, Tonalität: freundlich aber sachlich, kein Marketing-Sprech."
+3. Prüfe manuell ob jede Antwort eine Quellenangabe aus dem Wissensordner hat — wenn nicht, ist die Antwort möglicherweise halluziniert; nur Antworten mit Quellennachweis verwenden.
 **Beispiel-Prompt (DE, PTCF):**
-> "Stell dir vor, unser neues Whitepaper für die Messe ist live und absolut niemand lädt es herunter. Was waren die drei Hauptgründe für dieses Desaster? Analysiere dafür zwingend unsere historischen 'Failed Campaigns' Dokumente im Wissensordner."
-**Erwartetes Artefakt:** Präventions-Checkliste für B2B-Whitepapers.
-**Fallstricke (mind. 2 spezifisch):**
-- Failed Campaigns sind nicht im Wissensordner dokumentiert, weil das Team aus Scham immer nur Best-Practices hochlädt.
-- Der Agent erfindet Gründe, die absolut nicht zu unserer B2B-Branche passen, weil die Quelldokumente zu klein gechunkt wurden.
+> "Du bist Community-Manager [Persona]. Erstelle Antworten auf die folgenden LinkedIn-Kommentare [Task]. Stütze jede Antwort ausschließlich auf Informationen aus dem FAQ-Wissensordner; wenn du eine Frage nicht beantworten kannst, schreibe 'Ich leite das weiter' [Context]. Max. 2 Sätze pro Antwort, freundlich und auf-Du-Basis [Format]."
+**Erwartetes Artefakt:** 5-10 qualitätsgesicherte Antwortvorlagen, je mit Quellennachweis aus dem Wissensordner.
+**Fallstricke (≥2 spezifisch):**
+- FAQ-Dokument mit veralteten Preisen nicht aktualisieren → Agent antwortet mit falschen Zahlen; Library Folder erfordert manuelles Update, Synced Folder (Google Drive) wäre besser für häufig aktualisierte FAQs.
+- Agent gibt Antworten zu Themen außerhalb des Wissensordners → im Prompt explizit einfügen: "Erfinde keine Informationen; wenn kein Treffer im Wissensordner, antworte mit 'Ich leite das weiter'".
 **Anschluss-Szenario:** S-WR-004
 
-Pre-Mortem-Szenarien entfalten in Vektordatenbanken ihre maximale Wirkung, wenn die historischen Projekt-Post-Mortems konsequent mit sprechenden H2-Headings versehen wurden. Unstrukturierte Meeting-Notizen führen zu retrievalbedingten Halluzinationen.
+### S-WR-004 Content-Gap-Analyse: Eigener Wissensordner vs. Konkurrenz-Inhalte
 
-### S-WR-004 Strukturelle Entschlüsselung von High-Performer-Blogs
-
-**Wann nutzen (Trigger):** Einige unserer Blog-Kategorien verzeichnen eine Verweildauer von 4 Minuten, andere liegen bei fast null, ohne offensichtliches Muster.
-**Strategisches Ziel:** Herausfinden des exakten strukturellen Unterschieds zwischen unseren High-Performern und den extremen Flops.
-**Hands-on Ergebnis:** Eine evidenzbasierte, harte Schreib-Guideline für alle zukünftigen Blog-Artikel der Redaktion.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent (Wissensabruf)
-**Vorgehen (3-5 Schritte):**
-1. Drei Top- und drei Flop-Artikel manuell aus dem Langdock-Ordner in den Kontext ziehen.
-2. Direkter technischer Kontrast der Text-Einleitungen durch die KI anfordern.
-3. Synthese der wahren, ungeschönten Erfolgsformel jenseits der behandelten Thematik.
+**Wann nutzen (Trigger):** Drei Konkurrenten ranken auf Page 1 für das Keyword "Marketing-Automatisierung Mittelstand" — das Team hat eigene Inhalte zu diesem Thema, aber offensichtlich unvollständige Abdeckung der relevanten Subtopics.
+**Strategisches Ziel:** Den eigenen Wissensordner mit Konkurrenz-Inhalten vergleichen und eine priorisierte Gap-Liste erstellen, die das Redaktionsteam direkt in den Content-Plan überführen kann.
+**Hands-on Ergebnis:** Eine Gap-Analyse-Tabelle mit Subtopics, die Konkurrenten abdecken und die eigene Content-Bibliothek nicht — als direkte Input-Liste für das nächste Redaktionsmeeting.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (eigene Inhalte) + Agent + Web Search
+**Vorgehen (4 Schritte):**
+1. Binde den Wissensordner mit den eigenen Blog-Artikeln an den Agent; aktiviere Web Search.
+2. Lasse den Agent die Top-3-Konkurrenz-Artikel per Web Search abrufen und deren H2-Strukturen extrahieren.
+3. Lasse den Agent die Konkurrenz-H2s gegen den eigenen Wissensordner prüfen: "Welche Subtopics decken die Konkurrenten ab, die in meinem Wissensordner nicht vorkommen?"
+4. Ausgabe als priorisierte Gap-Tabelle im Canvas: Spalten "Subtopic", "Konkurrent", "Priorität (Hoch/Mittel/Niedrig)", "Empfohlenes Format".
 **Beispiel-Prompt (DE, PTCF):**
-> "Vergleiche die Einleitungen unserer Top-3 und Flop-3 Artikel im Wissensordner. Was machen die Gewinner strukturell grundlegend anders? Fokussiere dich auf Satzlänge, Hook-Platzierung und Aktiv/Passiv-Konstruktionen. Keine inhaltlichen Themenvergleiche."
-**Erwartetes Artefakt:** Neue, rein datengetriebene Schreib-Guideline für Copywriter.
-**Fallstricke (mind. 2 spezifisch):**
-- Das RAG-Chunking zerreißt die Artikel genau in der Mitte, sodass die Einleitungen für den Vergleich komplett fehlen.
-- Die KI behauptet fälschlicherweise, die Unterschiede lägen im Thema, und ignoriert die Anweisung zur rein strukturellen Analyse.
+> "Du bist SEO-Stratege [Persona]. Führe eine Content-Gap-Analyse für das Keyword 'Marketing-Automatisierung Mittelstand' durch [Task]. Nutze Web Search für die Top-3-Ergebnisse und vergleiche deren H2-Strukturen mit unseren Dokumenten im Wissensordner [Context]. Liefere eine Gap-Tabelle mit Spalten: Fehlendes Subtopic, Welcher Konkurrent deckt es ab, Priorität 1-3 [Format]."
+**Erwartetes Artefakt:** Eine Gap-Analyse-Tabelle mit 5-15 priorisierten Subtopics als direkter Content-Plan-Input.
+**Fallstricke (≥2 spezifisch):**
+- Web Search ruft Sidebar-Inhalte oder Werbebanner der Konkurrenz-Seiten ab statt der Artikelstruktur → im Prompt präzisieren "Extrahiere nur die H2-Überschriften des Hauptartikels, ignoriere Navigation und Ads".
+- Eigene Inhalte im Wissensordner sind nicht alle themenrelevant hochgeladen → vor der Analyse sicherstellen, dass alle Blog-Artikel zu "Automatisierung" und verwandten Themen im Ordner liegen.
 **Anschluss-Szenario:** S-WR-005
 
-Der Schlüssel zu diesem Contrast-Class-Szenario ist die saubere Trennung der Texte im Wissensordner. Wenn Top- und Flop-Artikel in ein und demselben PDF hochgeladen wurden, vermischt das Embedding-Modell die Vektoren. Ein Artikel pro Datei ist hier Pflicht.
+### S-WR-005 DSGVO-Check: Was passiert mit Embeddings aus Kunden-Texten?
 
-### S-WR-005 Anpassung der Briefings an neue Mobile-UX-Studien
-
-**Wann nutzen (Trigger):** Externe UX-Studien zeigen plötzlich, dass unsere B2B-Zielgruppe auf mobilen Endgeräten keine langen Intros mehr liest.
-**Strategisches Ziel:** Sofortige Aktualisierung der internen Redaktions-Prioritäten an diese neue, unumstößliche Markt-Realität.
-**Hands-on Ergebnis:** Ein geupdatetes, sofort einsetzbares Briefing-Template für alle externen Freelancer und Agenturen.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner + Canvas
-**Vorgehen (3-5 Schritte):**
-1. Das alte, bisher bewährte Freelancer-Template als Basis laden.
-2. Die neue externe UX-Studie als absolute Fakten-Annahme im Chat integrieren.
-3. Das Template radikal und ohne Rücksicht auf alte Prozesse umschreiben lassen.
+**Wann nutzen (Trigger):** Der Datenschutzbeauftragte fragt, ob die Embeddings aus dem Kunden-Feedback-Wissensordner personenbezogene Daten im Sinne der DSGVO sind und ob ein AV-Vertrag vorliegen muss.
+**Strategisches Ziel:** Klären ob Langdock-Wissensordner-Embeddings DSGVO-relevant sind, welche Schutzmaßnahmen greifen (EU-Hosting, Verschlüsselung, AV-Vertrag), und eine schriftliche Antwort für den DSB vorbereiten.
+**Hands-on Ergebnis:** Ein DSB-Memo (1 Seite) das die DSGVO-Einstufung der Embeddings begründet und auf die konkreten Langdock-Schutzmaßnahmen verweist.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (Memo-Erstellung) — Advisory-Modus (Beratung, nicht Ausführung)
+**Vorgehen (3 Schritte):**
+1. Öffne Chat; stelle die Frage: "Sind Langdock-Wissensordner-Embeddings personenbezogene Daten wenn die Quelltexte Kundennamen und -aussagen enthalten?"
+2. Lass den Agent die relevanten Punkte strukturieren: (a) Embedding-Natur (Vektor ≠ Klartext, aber Rückschluss möglich wenn PII in Quelltext), (b) EU-Hosting (Microsoft Azure, EU-Region), (c) Verschlüsselung at-rest, (d) Kein Training der Foundation Models, (e) AV-Vertrag-Prüfung empfohlen.
+3. Überführe die Strukturierung in ein Canvas-Memo für den DSB mit Abschnitt "Risikoeinstufung", "Bestehende Schutzmaßnahmen", "Empfohlene Maßnahmen".
 **Beispiel-Prompt (DE, PTCF):**
-> "Unsere bisherige interne Annahme war 'Setze viel Kontext im Intro'. Die neue UX-Studie (Anhang) widerlegt das komplett. Aktualisiere unser Freelancer-Template aus dem Wissensordner radikal auf einen 'Straight to the point' Ansatz. Lösche alle alten Vorgaben dazu restlos."
-**Erwartetes Artefakt:** Aktualisiertes Freelancer-Briefing-Template im Editor.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent behält aus Vorsicht alte, lange Absätze bei, was zu inhaltlichen Paradoxien im neuen Template führt.
-- Das benötigte Freelancer-Template wird im Ordner nicht gefunden, weil es von einem Mitarbeiter fälschlicherweise 'Draft_v3.md' genannt wurde.
-**Anschluss-Szenario:** S-WR-006
-
-Bayesian Prior Updates erfordern im Nachgang eine zwingende Bereinigung des Langdock Library Folders. Wenn das alte Template nicht physisch aus dem Ordner gelöscht wird, wird der Agent bei künftigen Anfragen beide sich widersprechenden Dokumente abrufen.
-
-### S-WR-006 Auflösung des Abteilungsstreits bei Content-Frameworks
-
-**Wann nutzen (Trigger):** PR, Social Media und SEO streiten in jedem Status-Meeting über den perfekten, abteilungsübergreifenden Artikel-Aufbau.
-**Strategisches Ziel:** Konsolidierung der verschiedenen, isolierten Abteilungs-Guidelines in ein einziges, bindendes Dokument.
-**Hands-on Ergebnis:** Ein abteilungsübergreifendes Master-Content-Framework, das von allen Stakeholdern akzeptiert werden muss.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent (Wissensabruf)
-**Vorgehen (3-5 Schritte):**
-1. Alle drei unterschiedlichen Abteilungs-Guidelines gleichzeitig aus dem Ordner ziehen.
-2. Harte Schnittmengen und absolut unvereinbare Differenzen isolieren.
-3. Ein neues Framework synthetisieren, das die Widersprüche logisch auflöst.
-**Beispiel-Prompt (DE, PTCF):**
-> "Analysiere die SEO-Guidelines, PR-Guidelines und Social-Guidelines in deinem Wissensordner. Wo genau überschneiden sich die harten Anforderungen an die Textstruktur? Baue daraus ein Master-Framework, das alle drei Disziplinen zufriedenstellt."
-**Erwartetes Artefakt:** Master-Content-Framework für die übergreifende Content-Creation.
-**Fallstricke (mind. 2 spezifisch):**
-- Das Per-Document-Cap blockiert den zeitgleichen Abruf aller drei Files, sodass die PR-Guideline einfach ignoriert wird.
-- Der Agent priorisiert SEO-Aspekte unverhältnismäßig stark, weil SEO-Dokumente öfter im Wissensordner vorkommen als PR-Dokumente.
-**Anschluss-Szenario:** S-WR-007
-
-Source Triangulation ist die Königsdisziplin der Agenten-Arbeit. Damit das System die drei Quelldokumente zuverlässig abruft, müssen diese im ersten Absatz zwingend ähnliche Anchor-Strings aufweisen. Sonst fällt ein Dokument aus den Top-50 des k-Retrievals heraus.
-
-### S-WR-007 Säuberung des Redaktions-Ordners von toxischen Altlasten
-
-**Wann nutzen (Trigger):** Neue Autoren beschweren sich im Onboarding massiv über völlig unlogische und widersprüchliche Content-Regeln in Langdock.
-**Strategisches Ziel:** Bereinigung des gesamten Redaktions-Ordners von gefährlichen Altlasten und veralteten Weisheiten.
-**Hands-on Ergebnis:** Ein Audit-Report aller logischen Brüche und Fehler in den aktuell gültigen Schreibregeln.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Abfrage sämtlicher Grammatik- und Stil-Regeln im Langdock-System.
-2. Agent sucht systematisch nach direkten inhaltlichen Widersprüchen in den Texten.
-3. Ausgabe der Konflikte als übersichtliche Markdown-Tabelle zur manuellen Prüfung durch den Head of Content.
-**Beispiel-Prompt (DE, PTCF):**
-> "Lies alle Stil-Guides im Wissensordner. Protokolliere jeden einzelnen Fall, wo Guideline A etwas vorschreibt (z.B. 'immer Du'), was Guideline B streng verbietet (z.B. 'immer Sie im B2B'). Zitiere die Quelldateien und den genauen fehlerhaften Satz."
-**Erwartetes Artefakt:** Widerspruchs-Tabelle zur sofortigen Bereinigung.
-**Fallstricke (mind. 2 spezifisch):**
-- Die Widersprüche sind über mehrere Chunks hinweg formuliert und bleiben für den Vektor-basierten Agenten daher unsichtbar.
-- Der Agent versucht, die Widersprüche philosophisch zu erklären und zu rechtfertigen, anstatt sie hart als Fehler zu loggen.
-**Anschluss-Szenario:** S-WR-008
-
-Das Contradiction Log ist für MarketingOps-Teams ein essenzielles Tool. Es funktioniert jedoch nur, wenn die Option 'Source Tracking' aktiv genutzt wird, damit die Tabelle die korrekten Dateinamen auflistet, andernfalls ist die manuelle Bereinigung im Anschluss unmöglich.
-
-### S-WR-008 Erzwingung einer Stop-Loss-Entscheidung für den Newsletter
-
-**Wann nutzen (Trigger):** Der wöchentliche Branchen-Newsletter verliert seit acht Monaten kontinuierlich Abonnenten, aber das Team will ihn nicht aufgeben.
-**Strategisches Ziel:** Festlegung harter, datenbasierter Kriterien für die sofortige Einstellung des Formats, um Budget zu retten.
-**Hands-on Ergebnis:** Ein Stop-Loss-Dokument für das Content-Marketing-Team, das vom CMO abgezeichnet wird.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent (Wissensabruf)
-**Vorgehen (3-5 Schritte):**
-1. Analyse der ursprünglichen Newsletter-Ziele aus dem Strategiepapier von 2024.
-2. Definition von Metrik-Schwellen basierend auf internen Unternehmens-Benchmarks.
-3. Dokumentation der endgültigen, schmerzvollen Exit-Strategie.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Newsletter-Strategie liegt im Wissensordner. Was müsste mit den Öffnungsraten und Unsubscribes in harten Zahlen passieren, damit wir dieses Format sofort stoppen müssen? Definiere drei knallharte Exit-Kriterien basierend auf unseren historischen Flops."
-**Erwartetes Artefakt:** Stop-Loss-Dokument für CRM und Content.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent wählt zu weiche Kriterien (z.B. 'wenn Nutzer unzufrieden wirken') statt echter, knallharter KPIs.
-- Es gibt keine echten historischen Benchmark-Daten im Ordner, weshalb die berechneten Schwellenwerte völlig aus der Luft gegriffen sind.
-**Anschluss-Szenario:** S-WR-009
-
-Das 'What Would Change My Mind' Framework zwingt das Marketing-Team, über den Tellerrand der aktuellen KPIs hinauszudenken. Die RAG-Mechanik benötigt hierfür tabellarische Benchmarks im Ordner, idealerweise in Markdown-Formatierung, um die Schwellen mathematisch korrekt zu extrapolieren.
-
-### S-WR-009 Zerstörung des internen Planungs-Bias beim Content-Plan
-
-**Wann nutzen (Trigger):** Der neue Jahres-Content-Plan wird intern von allen Abteilungen überschwänglich und ohne kritische Rückfragen gefeiert.
-**Strategisches Ziel:** Zerstörung von gefährlichem Confirmation-Bias durch eine simulierte, externe Antagonisten-Sicht.
-**Hands-on Ergebnis:** Ein Angriffs-Dossier gegen den hochgelobten Content-Plan, das auf dem nächsten Meeting präsentiert wird.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent (Wissensabruf) + Canvas
-**Vorgehen (3-5 Schritte):**
-1. Upload des Jahres-Plans in den direkten Anhang des Chats.
-2. Agent agiert auf Anweisung als extrem zynischer Branchen-Analyst.
-3. Schonungslose Kritik basierend auf unseren eigenen historischen Brand-Fails aus Langdock.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein extrem kritischer, zynischer Branchen-Analyst. Zerreiße unseren neuen Content-Plan (Anhang). Nutze unsere interne Dokumentation über historische Content-Fails (Wissensordner), um zu beweisen, dass wir absolut nichts gelernt haben."
-**Erwartetes Artefakt:** Red-Team-Kritik-Dossier zur zwingenden Überarbeitung.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent weigert sich wegen zu strenger Tonalitäts-Vorgaben im globalen System-Prompt, das Dokument wirklich hart zu kritisieren.
-- Historische Content-Fails wurden nie als Text im System gespeichert, wodurch der Angriff zahnlos und oberflächlich bleibt.
-**Anschluss-Szenario:** S-WR-010
-
-Red Teaming erfordert in Langdock eine sorgfältige Prompt-Konstruktion. Wenn das System-Prompt des Agenten auf 'Hilfsbereitschaft' geeicht ist, wird er den kritischen Analysten nicht überzeugend spielen. Marketing-Direktoren sollten für diesen Task einen dedizierten, antagonistisch konfigurierten Agenten nutzen.
-
-### S-WR-010 Radikale Verschlankung der Content-Freigabe-Schleifen
-
-**Wann nutzen (Trigger):** Die Content-Produktion dauert wegen endloser, verschachtelter Freigaben durch Legal und PR mittlerweile vier Wochen pro Post.
-**Strategisches Ziel:** Rückführung des ausufernden Prozesses auf die absoluten, physikalischen und rechtlichen Notwendigkeiten.
-**Hands-on Ergebnis:** Ein radikal verschlankter Freigabe-Workflow für das gesamte Marketing, der die Durchlaufzeit halbiert.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Abruf der aktuellen, extrem komplexen Freigabe-Protokolle aus dem Wissensordner.
-2. Dekonstruktion der Pflicht-Schritte nach harten rechtlichen Notwendigkeiten.
-3. Neues, agiles Workflow-Design konzipieren und im Canvas ausgeben.
-**Beispiel-Prompt (DE, PTCF):**
-> "Betrachte unseren 10-stufigen Content-Freigabe-Prozess im Wissensordner. Streiche alle Stufen, die nicht zwingend rechtlich oder für die absolute Kern-Botschaft nötig sind. Baue einen radikal simplen 3-Stufen-Prozess, der nur das Nötigste abdeckt."
-**Erwartetes Artefakt:** Neuer Content-Workflow im Markdown-Format.
-**Fallstricke (mind. 2 spezifisch):**
-- Das essentielle Legal-Review wird vom Agenten versehentlich als 'nicht notwendig' wegrationalisiert, was zu enormen Compliance-Risiken führt.
-- Der Agent versteht die komplexe Freigabe-Hierarchie im Marketing-Team nicht und setzt Praktikanten als finale Approver ein.
+> "Du bist Datenschutz-Berater für Langdock-Deployments [Persona]. Beantworte: Sind Embeddings aus einem Langdock-Wissensordner, der Kunden-Feedback mit Namen enthält, personenbezogene Daten gemäß DSGVO Art. 4 Nr. 1? [Task]. Kontext: Wir nutzen EU-Hosting Frankfurt, kein Modell-Training auf unseren Daten laut AVV [Context]. Format: DSB-Memo mit Abschnitten Risikoeinstufung, Schutzmaßnahmen, Handlungsempfehlungen [Format]."
+**Erwartetes Artefakt:** Ein einseitiges DSB-Memo mit DSGVO-Einstufung der Embeddings und konkreten Maßnahmenempfehlungen.
+**Fallstricke (≥2 spezifisch):**
+- Agent gibt eine abschließende Rechtsmeinung statt einer beratenden Einschätzung → im Prompt klarstellen "Dies ist eine Ersteinschätzung, kein Rechtsrat; finale Prüfung durch externen Datenschutzberater"; Little Data berät, ersetzt nicht den DSB.
+- AV-Vertrag mit Langdock nicht geprüft → die DSGVO-Einstufung hängt vom AV-Vertrag ab; im Memo als offene Handlungsempfehlung festhalten: "AVV auf Embedding-Klausel prüfen lassen".
 **Anschluss-Szenario:** S-WR-001
-
-## Hinweise & Quellen-Konflikte
-
-Keine Quellen-Konflikte identifiziert. Gemäß User-Direktive wurden exakt 10 extrem hochwertige, einzigartige Szenarien kuratiert (Qualität > Quantität). Alle 8 Pflichtfelder wurden strikt eingehalten, und die Critical-Thinking-Methoden dienten ausschließlich als unsichtbare Konstruktionslinse.

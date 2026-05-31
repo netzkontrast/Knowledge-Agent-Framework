@@ -98,12 +98,10 @@ check_one() {
     fail=1
   fi
 
-  # H3 scenario count: ≥10 (pivot 2026-05-31: quality > quantity; was ≥100).
-  # Files with ≥10 high-quality scenarios PASS; templated 100+ are folded
-  # and later trimmed/improved via review + improve sessions.
+  # H3 scenario count: ≥40 (pivot 2026-05-31: full source-grounded rebuild).
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
-  if [ "$szen_count" -lt 10 ]; then
-    echo "[FAIL] $name: scenario count = $szen_count (expected ≥10)"
+  if [ "$szen_count" -lt 40 ]; then
+    echo "[FAIL] $name: scenario count = $szen_count (expected ≥40)"
     fail=1
   fi
 

@@ -101,196 +101,95 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ## Marketing-Szenarien aus dieser Domäne
 
-### S-AK-001 Diskonfirmations-Analyse für Corporate Identity
+### S-AK-001 Brand-Guardian-Agent mit Tone-of-Voice-Wissensordner konfigurieren
 
-**Wann nutzen (Trigger):** Der Vorstand hat die neue Corporate Identity intern freigegeben, aber die Marketing-Direktorin befürchtet, dass B2B-Kunden den Ansatz als zu verspielt wahrnehmen.
-**Strategisches Ziel:** Systematisches Aufspüren von Marktdaten, die der neuen visuellen Ausrichtung widersprechen.
-**Hands-on Ergebnis:** Ein umfassender Falsifikations-Report, der die drei größten Risiken des Designs benennt.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Web Search
-**Vorgehen (3-5 Schritte):**
-1. Öffne den spezialisierten Brand-Agenten und stelle sicher, dass die Web-Suche aktiv ist.
-2. Lade das PDF-Deck der neuen Corporate Identity als Kontextdatei in den Chat.
-3. Beauftrage die KI gezielt damit, nach Fallstudien gescheiterter B2B-Rebrandings zu suchen, die eine ähnliche Designsprache nutzten.
-4. Besprich die gefundenen Schwachstellen mit der Lead-Agentur vor dem endgültigen Rollout.
+**Wann nutzen (Trigger):** Freelance-Texte für den B2B-Blog kommen konsistent off-brand zurück — falsche Tonalität, falsche Terminologie — und die Marketing-Direktorin will einen dedizierten Prüf-Agenten statt manueller Review-Schleifen.
+**Strategisches Ziel:** Einen "Brand Guardian"-Agenten aufsetzen, der dauerhaft an den Brand-Guidelines-Wissensordner angebunden ist und Textentwürfe automatisch auf Markenkonformität prüft.
+**Hands-on Ergebnis:** Ein konfigurierter Brand-Guardian-Agent mit System-Prompt, Wissensordner-Anbindung und 3 Konversations-Startern für den täglichen Content-Review-Betrieb.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Brand Guidelines) + Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Erstelle einen neuen Agenten im Agent Builder; System-Prompt: "Du bist Brand Guardian. Prüfe jeden eingehenden Text gegen die Brand Guidelines im Wissensordner. Identifiziere off-brand Passagen und erkläre, welche Regel verletzt wird. Schlage direkte Umformulierungen vor."
+2. Binde den Wissensordner mit den Brand Guidelines (Tone-of-Voice, Do's and Don'ts, Beispieltexte) als Library Folder an — separierte MD-Dateien pro Thema (Tonalität, Vokabular, Tabu-Wörter) für bessere Chunk-Präzision.
+3. Lege 3 Konversations-Starter an: "Prüfe diesen LinkedIn-Post auf Markenkonformität", "Überarbeite diesen Textentwurf auf Brand Voice", "Zeige mir die 3 häufigsten Markenfehler im letzten Monat".
+4. Teste mit 2 absichtlich off-brand Texten (ein zu informeller, ein zu technischer) — prüfe ob der Agent die richtigen Regeln zitiert.
 **Beispiel-Prompt (DE, PTCF):**
-> "Als kritischer Markenstratege, nimm das hochgeladene Corporate-Identity-Deck [Context]. Suche im Internet nach empirischen Studien oder Berichten über B2B-Unternehmen, die durch ein zu spielerisches Rebranding Marktanteile verloren haben. Erstelle eine Liste der drei stärksten Argumente, warum unser aktueller Entwurf scheitern könnte [Format]."
-**Erwartetes Artefakt:** Ein strukturiertes Markdown-Dokument mit überprüfbaren Marktdaten und Gegenargumenten.
-**Fallstricke (mind. 2 spezifisch):**
-- Die Suchfunktion greift auf B2C-Beispiele zurück, weil der B2B-Fokus im Prompt nicht stark genug gewichtet wurde.
-- Die externe Design-Agentur fasst die datengetriebene Kritik als persönlichen Angriff auf und blockiert konstruktive Änderungen.
+> "Du bist Brand Guardian für unsere Marke [Persona]. Prüfe den folgenden LinkedIn-Post-Entwurf auf Übereinstimmung mit unserer Brand Voice [Task]. Kontext: Wir sind ein B2B-SaaS-Unternehmen, Ton ist sachlich-souverän, kein 'du', keine Emojis, keine Superlative [Context]. Markiere off-brand Passagen fett und liefere Umformulierungsvorschläge als Tabelle mit Spalten 'Original', 'Problem', 'Korrektur' [Format]."
+**Erwartetes Artefakt:** Ein konfigurierter, sofort nutzbarer Brand-Guardian-Agent mit Wissensordner-Anbindung und 3 funktionierenden Konversations-Startern.
+**Fallstricke (≥2 spezifisch):**
+- Brand Guidelines als ein einziges PDF hochladen → Per-Document-Cap (1 Chunk/Query) zieht nur einen zufälligen Abschnitt; stattdessen in separierte MD-Dateien aufteilen (eine pro Regelkategorie).
+- Zu viele Fähigkeiten aktivieren (Web Search, Data Analyst, Image Gen) → Prompt-Bloat verlangsamt den Agenten und erhöht Fehlerrate; Brand Guardian braucht nur Wissensordner-Suche.
 **Anschluss-Szenario:** S-AK-002
 
-### S-AK-002 Steelmanning der Content-Marketing-Konkurrenz
+### S-AK-002 Input-Formular erzwingen: Kampagnen-Briefing mit strukturiertem Form-Input
 
-**Wann nutzen (Trigger):** Ein Hauptwettbewerber hat ein Whitepaper veröffentlicht, das branchenweit extrem hohe Aufmerksamkeit und Lead-Zahlen generiert.
-**Strategisches Ziel:** Neutrale Extraktion der strategischen Erfolgsfaktoren des gegnerischen Contents ohne interne Beißreflexe.
-**Hands-on Ergebnis:** Ein detailliertes Reverse-Engineering-Profil des Konkurrenz-Dokuments.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Starte den Content-Agenten und wechsle in den kollaborativen Canvas-Modus.
-2. Füge den vollständigen Text des fremden Whitepapers in den Kontext ein.
-3. Fordere den Agenten auf, die stärksten psychologischen und fachlichen Argumente des Textes herauszuarbeiten.
-4. Nutze die extrahierten Erkenntnisse, um das eigene Redaktions-Briefing für das nächste Quartal zu schärfen.
+**Wann nutzen (Trigger):** Der Content-Agent liefert unbrauchbare Ergebnisse, weil Nutzer vage Prompts wie "schreib einen Post über unser Produkt" eingeben — Kanal, Budget, Zielgruppe und Tonalität fehlen systematisch.
+**Strategisches Ziel:** Über den Form-Input (Eingabeformular) im Agent Builder sicherstellen, dass kein Kampagnen-Brief gestartet werden kann, ohne alle Pflichtfelder auszufüllen.
+**Hands-on Ergebnis:** Ein Agent mit 5-Felder-Formular (Kampagnenname, Zielgruppe, Kanal, Kernnachricht, Budget-Klasse), der Inputs strukturiert vor dem KI-Aufruf sammelt.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent + Form-Input (Eingabeformular mit Variablen-Blöcken)
+**Vorgehen (3 Schritte):**
+1. Öffne den bestehenden Content-Agenten im Agent Builder und aktiviere den "Form"-Modus in den Eingabe-Einstellungen; definiere 5 Pflichtfelder: `{{kampagnenname}}`, `{{zielgruppe}}`, `{{kanal}}`, `{{kernnachricht}}`, `{{budget_klasse}}` (Dropdown: Klein/Mittel/Groß).
+2. Passe den System-Prompt an, damit er die Variablen explizit referenziert: "Erstelle ein Kampagnen-Briefing für {{kampagnenname}}. Zielgruppe: {{zielgruppe}}. Kanal: {{kanal}}. Budget: {{budget_klasse}}."
+3. Teste mit 3 verschiedenen Kampagnentypen; prüfe ob der Form die KI-Ausgabe-Qualität messbar verbessert gegenüber freiem Chat.
 **Beispiel-Prompt (DE, PTCF):**
-> "Als neutraler Content-Analyst, betrachte das beigefügte Whitepaper unseres schärfsten Konkurrenten [Context]. Konstruiere das bestmögliche Argument dafür, warum dieser Text so extrem überzeugend auf Einkaufsleiter wirkt. Verfasse eine objektive Übersicht der strukturellen und inhaltlichen Stärken [Format]."
-**Erwartetes Artefakt:** Eine Pro-Argumentation für den gegnerischen Ansatz, aufgeschlüsselt nach Methodik und Leseransprache.
-**Fallstricke (mind. 2 spezifisch):**
-- Das interne Team nutzt den Agenten unbewusst so, dass er die Konkurrenz doch abwertet, wenn die Persona nicht neutral genug ist.
-- Es werden lediglich oberflächliche Formatierungs-Tricks analysiert, während die tieferliegende psychologische Argumentation übersehen wird.
+> "Du bist Briefing-Assistent [Persona]. Erstelle ein strukturiertes Kampagnen-Briefing für {{kampagnenname}} [Task]. Zielgruppe: {{zielgruppe}}, Kanal: {{kanal}}, Kernnachricht: {{kernnachricht}}, Budget: {{budget_klasse}} [Context]. Format: Gliederung mit Sections Ziel, Zielgruppe, Kernbotschaft, Tonalität, KPIs, 3 Beispiel-Headlines [Format]."
+**Erwartetes Artefakt:** Ein Agent mit erzwungenem 5-Felder-Formular, das unstrukturierte Prompts systematisch verhindert.
+**Fallstricke (≥2 spezifisch):**
+- Form-Input und Freitext-Chat können nicht für denselben Startpunkt kombiniert werden — wer Variabilität braucht, muss zwei separate Agenten konfigurieren (Form-Agent für Standard-Briefings, Chat-Agent für explorative Aufgaben).
+- Dropdown-Optionen für `{{budget_klasse}}` zu breit definieren (z.B. nur "Klein/Groß") → Team ordnet alle Budgets in "Groß" ein; konkrete Euro-Bereiche als Labels verwenden.
 **Anschluss-Szenario:** S-AK-003
 
-### S-AK-003 Pre-Mortem für die Marketing-Automatisierung
+### S-AK-003 Mega-Agent vs. Spezialisten-Agenten: Architektur-Entscheidung treffen
 
-**Wann nutzen (Trigger):** Das Budget für die komplexe Migration auf ein neues Marketing-Automatisierungs-Tool ist bewilligt, aber die technischen Hürden wirken unkalkulierbar.
-**Strategisches Ziel:** Präventive Identifikation und Mitigation interner Management- und Prozessfehler vor dem Systemwechsel.
-**Hands-on Ergebnis:** Ein priorisiertes Risikoregister für die Software-Migration.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Öffne den spezialisierten MarketingOps-Agenten.
-2. Übergib den aktuellen Projektplan und die Zeitachse für die Tool-Migration.
-3. Lass die KI ein Szenario entwickeln, in dem das gesamte Vorhaben katastrophal gescheitert ist.
-4. Erarbeite auf Basis dieser fiktiven Katastrophe echte Gegenmaßnahmen für das IT- und Marketing-Team.
+**Wann nutzen (Trigger):** Das Team diskutiert, ob ein einziger "Marketing-Alles-Könner"-Agent oder 5 spezialisierte Agenten (Brand, SEO, Performance, CRM, Social) besser skalieren — Technologie-Entscheidung steht diese Woche an.
+**Strategisches Ziel:** Anhand konkreter Langdock-Limits (System-Prompt-Limit 40.000 Zeichen, Retrieval-Konfusion bei breiten Wissensordnern) eine begründete Entscheidung treffen.
+**Hands-on Ergebnis:** Eine Entscheidungsmatrix mit Empfehlung, welche Use Cases einen eigenen Agenten rechtfertigen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (Entscheidungsmatrix)
+**Vorgehen (4 Schritte):**
+1. Liste alle Marketing-Use-Cases des Teams auf; markiere welche ähnliche Wissensordner teilen (→ Kandidaten für Zusammenlegung) und welche gegensätzliche Tonalitäten brauchen (→ Kandidaten für Trennung).
+2. Öffne Canvas; erstelle eine Matrix mit Spalten: Use-Case, Wissensordner-Bedarf, Tonalitäts-Konflikt, Nutzungsfrequenz, Empfehlung (eigen/gemeinsam).
+3. Prüfe für jeden geplanten Mega-Agent: Würde der System-Prompt 40.000 Zeichen überschreiten? Würde ein Wissensordner >500 Dateien mit gemischten Themen entstehen? Beides → Spezialisten.
+4. Dokumentiere die Entscheidung im Wissensordner als "Agent-Architektur-Rationale" für zukünftige Wartung.
 **Beispiel-Prompt (DE, PTCF):**
-> "Als Risiko-Manager, nimm an, unsere Migration auf das neue Automatisierungs-Tool ist in sechs Monaten zu einem absoluten Desaster geworden [Context]. Schreibe einen Post-Mortem-Bericht, der detailliert erklärt, welche internen Fehlentscheidungen und Prozesslücken zu diesem Scheitern geführt haben. Dokumentiere die Fehlerquellen im Canvas [Format]."
-**Erwartetes Artefakt:** Ein Post-Mortem-Bericht, der zukünftige Fehler in der Gegenwart analysiert.
-**Fallstricke (mind. 2 spezifisch):**
-- Der Agent schiebt die Schuld ausschließlich auf den Software-Anbieter, statt interne organisatorische Versäumnisse zu beleuchten.
-- Die abgeleiteten Gegenmaßnahmen sind zu abstrakt formuliert, um vom Projektmanagement in konkrete Tasks übersetzt zu werden.
+> "Du bist Langdock-Architektur-Berater [Persona]. Analysiere die folgende Liste unserer 12 Marketing-Use-Cases [Task]. Kontext: Wir haben ein 5-köpfiges Marketing-Team, ca. 200 Brand- und Content-Dokumente, keine Entwickler im Team [Context]. Erstelle im Canvas eine Entscheidungsmatrix, die für jeden Use-Case begründet empfiehlt ob er einen eigenen Agenten rechtfertigt oder in einem Shared-Agent laufen soll — mit konkreten Langdock-Limit-Begründungen [Format]."
+**Erwartetes Artefakt:** Eine Canvas-Entscheidungsmatrix mit konkreter Empfehlung und Langdock-Limit-Begründung pro Use-Case.
+**Fallstricke (≥2 spezifisch):**
+- Mega-Agent mit 15+ Tools aktiviert → jede Anfrage evaluiert alle Tool-Optionen, Antwortzeit steigt, Qualität sinkt; Faustregel: max. 3 aktive Tools pro Agent.
+- Alle Agenten auf denselben Wissensordner zeigen lassen → bei breitem Wissensordner zieht die semantische Suche oft irrelevante Chunks; jeder Agent braucht seinen eigenen kuratierten Ordner.
 **Anschluss-Szenario:** S-AK-004
 
-### S-AK-004 Alternativen-Kontrastierung im Analytics-Setup
+### S-AK-004 Agent-Quality-Drift messen: Monatliches Canary-Prompt-Spotcheck-Set
 
-**Wann nutzen (Trigger):** Die Abteilung diskutiert hitzig, ob man beim fehleranfälligen Google Analytics bleiben oder auf eine teure Enterprise-Lösung wie Adobe Analytics wechseln soll.
-**Strategisches Ziel:** Vermeidung eines False-Dilemma-Fehlers durch den strukturierten, objektiven Vergleich aller Handlungsoptionen.
-**Hands-on Ergebnis:** Eine multidimensionale Entscheidungsmatrix zur Webanalyse.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aktiviere die Data-Analyst-Fähigkeit, um komplexe Vergleichstabellen generieren zu lassen.
-2. Lade die internen Anforderungsprofile und die Preisblätter der Anbieter als CSV hoch.
-3. Beauftrage den Agenten, die Optionen nicht nur untereinander, sondern zwingend auch mit der Option 'Gar nichts ändern' zu vergleichen.
-4. Werte die erstellte Matrix im nächsten Strategie-Meeting aus.
+**Wann nutzen (Trigger):** Ein Briefing-Agent, der vor 3 Monaten einwandfreie Outputs lieferte, produziert jetzt auffällig generischere Texte — niemand weiß ob das am Modell-Update, am Wissensordner-Veralterung oder am Prompt-Drift liegt.
+**Strategisches Ziel:** Ein Monitoring-System aufsetzen, das Agent-Qualitätsdrift monatlich mit 5 fixen Canary-Prompts misst und Abweichungen von der Erwartung dokumentiert.
+**Hands-on Ergebnis:** Ein Canary-Set (5 Prompts + erwartete Antwortmuster) als Wissensordner-Dokument, das jeden Monat gegen den Agenten ausgeführt wird.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent + Konversations-Starter (als Canary-Trigger) + Wissensordner (Canary-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Definiere 5 Canary-Prompts: je einer für Tonalität, Faktentreue, Formatierung, Wissensordner-Retrieval und Scope-Abgrenzung; dokumentiere die erwartete Ausgabe für jeden.
+2. Lege diese 5 Canary-Prompts als dedizierte Konversations-Starter im Agenten an (Prefix: "[CANARY]") — so sind sie sofort ausführbar ohne manuelles Eintippen.
+3. Führe monatlich alle 5 Canary-Starters aus; bewerte Outputs gegen die dokumentierten Erwartungen auf einer 1-3-Skala; ab 2 Misses → Ursachenanalyse (Modell-Update? Wissensordner-Inhalt veraltet? Prompt-Drift?).
+4. Protokolliere Ergebnisse in einem "Agent-Health-Log" im Wissensordner mit Datum und Score.
 **Beispiel-Prompt (DE, PTCF):**
-> "Als neutraler Evaluator, nutze die hochgeladenen Anforderungen und Kostentabellen für die neuen Webanalyse-Tools [Context]. Kontrastiere die Alternativen systematisch und füge zwingend die Option 'Beibehaltung des Status Quo' hinzu. Erstelle eine Entscheidungsmatrix, die Kosten, Implementierungsdauer und DSGVO-Risiken gegenüberstellt [Format]."
-**Erwartetes Artefakt:** Eine tabellarische Gegenüberstellung mit klaren Scoring-Werten für jede Alternative.
-**Fallstricke (mind. 2 spezifisch):**
-- Wenn Datenpunkte für bestimmte Tools in den Dokumenten fehlen, neigt das System dazu, Durchschnittswerte zu erfinden.
-- Die Kontrastklassen sind zu oberflächlich definiert, wodurch am Ende doch wieder subjektive Bauchentscheidungen den Ausschlag geben.
+> "[CANARY] Du bist Briefing-Agent [Persona]. Erstelle ein LinkedIn-Post-Briefing für das Feature 'Workflow-Builder' [Task]. Tonalität: sachlich-souverän, kein Marketingsprech, max. 3 Bulletpoints, kein Emoji [Context+Format]."
+**Erwartetes Artefakt:** Ein Canary-Set (Markdown-Dokument im Wissensordner) + monatliches Agent-Health-Log mit Qualitäts-Scores.
+**Fallstricke (≥2 spezifisch):**
+- Canary-Prompts zu spezifisch auf aktuellen Wissensordner-Inhalt ausrichten → bei Wissensordner-Updates schlagen Canaries falsch an; Canary-Tests müssen Grundfähigkeiten des Agenten messen, nicht den aktuellen Content.
+- Monatlichen Spotcheck vergessen → in Kalender als Recurring-Task eintragen; ohne strukturiertes Monitoring bleibt Quality-Drift unbemerkt bis ein Kunde es meldet.
 **Anschluss-Szenario:** S-AK-005
 
-### S-AK-005 Basisraten-Abgleich für LinkedIn Ads
+### S-AK-005 RACI-Ownership für Agenten in der Marketing-Org definieren
 
-**Wann nutzen (Trigger):** Die Performance-Agentur legt einen Plan vor, der für das nächste Quartal eine Verdreifachung der Click-Through-Rate (CTR) bei LinkedIn Ads verspricht.
-**Strategisches Ziel:** Erdung von völlig überzogenen Agentur-Prognosen durch den Abgleich mit harten B2B-Industriestandards.
-**Hands-on Ergebnis:** Ein Kalibrierungs-Memo, das die Agentur-Zahlen in Relation zum Marktdurchschnitt setzt.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Web Search
-**Vorgehen (3-5 Schritte):**
-1. Rufe den Performance-Agenten mit aktiver Internetverbindung auf.
-2. Füttere das System mit den Prognosen und Zielgruppen-Parametern der Agentur.
-3. Lass die KI gezielt nach aktuellen Benchmark-Studien zur LinkedIn-B2B-Werbung suchen.
-4. Konfrontiere den Dienstleister mit den ermittelten Basisraten in der nächsten Quartalsbesprechung.
+**Wann nutzen (Trigger):** Nach dem letzten Wissensordner-Update waren 3 Agenten plötzlich mit veralteten Daten — niemand hatte eine klare Verantwortung für die Pflege, und das Team hat 45 Minuten damit verbracht, den Schuldigen zu suchen.
+**Strategisches Ziel:** Eine RACI-Matrix einführen, die für jeden Agenten Owner (Konfiguration), Approver (Brand-Compliance), Consulted (Wissensordner-Inhalt) und Informed (Team) festlegt.
+**Hands-on Ergebnis:** Ein RACI-Dokument im Wissensordner, das pro Agent die Verantwortlichkeiten, Review-Zyklen und Eskalationspfade benennt.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (RACI-Tabelle) + Wissensordner (Governance-Dokumentation)
+**Vorgehen (3 Schritte):**
+1. Liste alle aktiven Agenten des Workspaces auf; für jeden: identifiziere Owner (wer ändert den System-Prompt?), Approver (wer gibt Outputs frei?), Consulted (wer liefert Wissensordner-Updates?), Informed (wer nutzt den Agenten nur?).
+2. Öffne Canvas; erstelle RACI-Tabelle mit Spalten: Agent-Name, Owner, Approver, Consulted, Informed, Review-Zyklus (monatlich/quartalsweise), Eskalationspfad bei Qualitätsproblemen.
+3. Speichere die RACI-Matrix als "Agent-Governance.md" im zentralen Wissensordner und verlinke sie in der Agent-Beschreibung jedes Agenten.
 **Beispiel-Prompt (DE, PTCF):**
-> "Als Senior Media Buyer, prüfe die Agentur-Prognose einer 3% CTR auf LinkedIn [Context]. Recherchiere aktuelle, verlässliche Benchmarks (Base Rates) für B2B-SaaS-Kampagnen im DACH-Raum. Vergleiche unsere Prognosen mit diesen Durchschnitten und schreibe ein hartes Memo zur statistischen Plausibilität des Agentur-Pitches [Format]."
-**Erwartetes Artefakt:** Ein datengestütztes Memo, das Abweichungen vom Branchenstandard quantifiziert.
-**Fallstricke (mind. 2 spezifisch):**
-- Die Web-Suche findet veraltete Benchmarks aus Zeiten, in denen der LinkedIn-Algorithmus grundlegend anders funktionierte.
-- Der Dienstleister behauptet, die Benchmarks seien für seine hochspezialisierten 'Proprietären Methoden' nicht anwendbar.
-**Anschluss-Szenario:** S-AK-006
-
-### S-AK-006 Fakten-Triangulierung im Social-Listening
-
-**Wann nutzen (Trigger):** Ein einzelner viraler LinkedIn-Post behauptet, das Flaggschiff-Produkt des Unternehmens hätte massive Sicherheitsprobleme, was im Vorstand Panik auslöst.
-**Strategisches Ziel:** Schnelle, emotionale Deeskalation durch die Verifizierung oder Falsifizierung der Behauptung anhand mehrerer Datenpunkte.
-**Hands-on Ergebnis:** Ein Triangulations-Report zur tatsächlichen Bedrohungslage.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Web Search
-**Vorgehen (3-5 Schritte):**
-1. Aktiviere den Social-Agenten und schalte die Echtzeit-Suche ein.
-2. Gib den Inhalt des kritischen Posts als Ausgangsbasis ein.
-3. Fordere das System auf, Foren, Fachmagazine und Bewertungsportale parallel nach dieser spezifischen Sicherheitslücke abzusuchen.
-4. Werte aus, ob es sich um einen isolierten Einzelfall oder ein strukturelles Problem handelt.
-**Beispiel-Prompt (DE, PTCF):**
-> "Als Krisen-Analyst, nimm die Behauptung aus diesem LinkedIn-Post über angebliche Sicherheitslücken unseres Produkts [Context]. Suche gezielt in Tech-Foren, G2-Reviews und IT-Fachmagazinen, um diese Einzelbehauptung zu triangulieren. Fasse zusammen, ob sich die Beschwerde in drei unabhängigen Quellen bestätigt oder ein Einzelfall ist [Format]."
-**Erwartetes Artefakt:** Ein prägnanter One-Pager zur Kriseneinschätzung für den Vorstand.
-**Fallstricke (mind. 2 spezifisch):**
-- Das Modell wertet Retweets oder Kopien des originalen Posts fälschlicherweise als "unabhängige Quellen".
-- Die Zusammenfassung formuliert Entwarnung, obwohl in Nischen-Foren bereits ein Hacker-Thread dazu existiert, den die Suche übersehen hat.
-**Anschluss-Szenario:** S-AK-007
-
-### S-AK-007 Widerspruchs-Klärung in SEO-Reports
-
-**Wann nutzen (Trigger):** Der monatliche SEO-Report zeigt stark steigende Rankings für das Haupt-Keyword, aber das Web-Analytics-Dashboard verzeichnet gleichzeitig fallenden organischen Traffic.
-**Strategisches Ziel:** Auflösung logischer Diskrepanzen zwischen Silo-Datenquellen zur Identifikation der wahren Performance.
-**Hands-on Ergebnis:** Ein Contradiction-Log mit getesteten Hypothesen zur Traffic-Abweichung.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Öffne den SEO-Agenten und wechsle in die Data-Analyst-Umgebung.
-2. Lade den Ranking-Export (CSV) und den Analytics-Traffic-Export (CSV) parallel hoch.
-3. Lass das Modell die Datensätze mergen und nach zeitlichen Brüchen suchen.
-4. Identifiziere die Suchintention oder technische Probleme als mögliche Ursache.
-**Beispiel-Prompt (DE, PTCF):**
-> "Als technischer SEO-Spezialist, vergleiche die steigenden Ranking-Daten mit dem sinkenden Google-Analytics-Traffic [Context]. Protokolliere die direkten Widersprüche zwischen den Datensätzen in einem Contradiction-Log. Formuliere drei überprüfbare technische oder inhaltliche Hypothesen (z.B. geänderte SERP-Features), die dieses Paradoxon erklären [Format]."
-**Erwartetes Artefakt:** Ein Logbuch der Widersprüche samt priorisierten Lösungsansätzen.
-**Fallstricke (mind. 2 spezifisch):**
-- Unterschiedliche Datumsformate in den beiden CSV-Dateien lassen das Python-Skript des Data Analysts abstürzen.
-- Das Modell fokussiert sich zu stark auf irrelevante Long-Tail-Keywords, statt den massiven Traffic-Einbruch auf der Hauptseite zu erklären.
-**Anschluss-Szenario:** S-AK-008
-
-### S-AK-008 Kill-Switches für Lead-Nurturing-Kampagnen
-
-**Wann nutzen (Trigger):** Das Team entwirft eine extrem aufwändige, 12-stufige E-Mail-Drip-Kampagne für kalte Leads, verliebt sich in das Konzept und verliert den Blick für den ROI.
-**Strategisches Ziel:** Festlegung harter, unumstößlicher Abbruchkriterien vor Kampagnenstart zur Vermeidung des Sunk-Cost-Effekts.
-**Hands-on Ergebnis:** Ein offizielles Schwellenwert-Dokument mit definierten Notausstiegen.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Nutze den CRM-Agenten im geteilten Canvas-Fenster.
-2. Erläutere die Zielsetzung und die bereits investierten Ressourcen der Nurturing-Strecke.
-3. Lass das Modell drei Ereignisse definieren, bei denen die Kampagne als gescheitert gilt.
-4. Integriere diese Kill-Switches direkt in das Marketing-Automation-Tool.
-**Beispiel-Prompt (DE, PTCF):**
-> "Als kritischer Controller, betrachte unser neues, teures 12-stufiges Lead-Nurturing-Konzept [Context]. Definiere drei extrem spezifische Metrik-Ereignisse (z.B. Unsubscribe-Rate über X Prozent in Woche zwei), die uns zwingen würden, diese Kampagne sofort zu stoppen. Dokumentiere diese harten Schwellenwerte übersichtlich im Canvas [Format]."
-**Erwartetes Artefakt:** Eine Tabelle mit Metriken, Schwellenwerten und den exakten Aktionen bei Überschreitung.
-**Fallstricke (mind. 2 spezifisch):**
-- Die vom Agenten vorgeschlagenen Schwellenwerte sind zu lasch, sodass die Kampagne trotz schlechter Performance weiterlaufen würde.
-- Das operative CRM-Team weigert sich, die harten Abbruchkriterien technisch einzurichten, aus Angst vor dem sofortigen Projektabbruch.
-**Anschluss-Szenario:** S-AK-009
-
-### S-AK-009 Red-Team-Audit für Pitch-Präsentationen
-
-**Wann nutzen (Trigger):** Das Team hat das finale Investoren-Deck für die Skalierung des B2B-Marketingbudgets fertiggestellt, aber es fehlen kritische Gegenfragen.
-**Strategisches Ziel:** Simulation eines feindlichen Audits, um die Argumentationskette vor dem echten Board-Meeting zu härten.
-**Hands-on Ergebnis:** Ein Audit-Protokoll mit den unangenehmsten Fragen und Verteidigungsstrategien.
-**Eingesetzte Langdock-Fähigkeit(en):** Subagents / Canvas
-**Vorgehen (3-5 Schritte):**
-1. Öffne den Hauptagenten und aktiviere die Subagent-Funktionalität für parallele Analysen.
-2. Lade das gesamte Pitch-Deck als Kontext hoch.
-3. Weise die Subagents an, in die Rolle des CFOs und des Vertriebsleiters zu schlüpfen und den Plan zu attackieren.
-4. Spiele die Antworten im Team durch und passe das Pitch-Deck an.
-**Beispiel-Prompt (DE, PTCF):**
-> "Als feindlicher Auditor (Red Team), zerlege unser Budget-Pitch-Deck für das nächste Jahr [Context]. Attackiere die CAC-Kalkulation, die Lead-Annahmen und den Zeitplan mit maximaler Strenge. Erstelle eine Liste der zehn unangenehmsten Fragen, die der Vorstand stellen wird, und formatiere sie im Canvas [Format]."
-**Erwartetes Artefakt:** Ein Q&A-Katalog für das Executive-Meeting.
-**Fallstricke (mind. 2 spezifisch):**
-- Die Subagents verlieren bei Decks über 50 Folien den Kontext und stellen irrelevante Fragen zu Nebensächlichkeiten.
-- Das Marketing-Team lässt sich von der Härte des simulierten Audits demotivieren und verwirft gute Ideen vorschnell.
-**Anschluss-Szenario:** S-AK-010
-
-### S-AK-010 First-Principles im B2B-Eventmarketing
-
-**Wann nutzen (Trigger):** Das Unternehmen bucht seit fünf Jahren denselben teuren Messe-Stand, ohne messbaren ROI, aber "weil man dort sein muss".
-**Strategisches Ziel:** Radikale Dekonstruktion der Lead-Generierung auf fundamentale Wahrheiten zur Entwicklung völlig neuer Formate.
-**Hands-on Ergebnis:** Ein Innovations-Briefing ohne jegliche historische Altlasten.
-**Eingesetzte Langdock-Fähigkeit(en):** Agent / Web Search
-**Vorgehen (3-5 Schritte):**
-1. Rufe den Innovations-Agenten auf.
-2. Beschreibe das Kernproblem der Kundenakquise im Enterprise-Sektor, ohne das Wort "Messe" zu erwähnen.
-3. Lass den Agenten die ökonomischen Grundregeln des Vertrauensaufbaus im B2B-Markt extrahieren.
-4. Entwickle aus diesen Axiomen ein radikal neues, budgetschonendes Event-Format.
-**Beispiel-Prompt (DE, PTCF):**
-> "Als Fundamental-Analyst, ignoriere unsere bisherige Messe-Historie komplett [Context]. Dekonstruiere das physische B2B-Networking auf seine absoluten Grundwahrheiten (Zeit, Vertrauen, Informationsaustausch). Baue einen radikal neuen Lösungsansatz auf [Format]."
-**Erwartetes Artefakt:** Ein Konzept-Papier für alternative Touchpoints abseits traditioneller Messen.
-**Fallstricke (mind. 2 spezifisch):**
-- Die Dekonstruktion wird zu einer philosophischen Abhandlung, aus der sich keine konkreten Event-Formate ableiten lassen.
-- Der radikale Neuentwurf ignoriert branchenspezifische Compliance-Regeln für das Einladen von Geschäftskunden.
+> "Du bist Governance-Berater für KI-Systeme [Persona]. Erstelle eine RACI-Matrix für unsere 5 Marketing-Agenten [Task]. Kontext: 30-Personen-Marketing-Org, 3 Teams (Content, Performance, Brand), Agenten: Brand-Guardian, Briefing-Agent, SEO-Agent, Performance-Report-Agent, Social-Planer [Context]. Format: Canvas-Tabelle mit RACI-Spalten + Spalte 'Review-Zyklus' + Spalte 'Eskalation bei Qualitätsproblem' [Format]."
+**Erwartetes Artefakt:** Eine RACI-Governance-Matrix als "Agent-Governance.md" im Wissensordner, direkt verlinkbar aus jedem Agent-Profil.
+**Fallstricke (≥2 spezifisch):**
+- Owner-Rolle an eine Person binden, die das Unternehmen verlassen könnte → immer eine Rolle (z.B. "Head of Content"), nicht eine Einzelperson, als Owner definieren; bei Personalwechsel automatisch mitgepflegt.
+- RACI-Matrix nie aktualisieren → Review-Zyklus in das Canary-Spotcheck-Set aus S-AK-004 integrieren; wer monatlich die Agenten prüft, prüft auch ob das RACI noch stimmt.
 **Anschluss-Szenario:** S-AK-001
-
-## Hinweise & Quellen-Konflikte
-
-Es wurden keine direkten inhaltlichen Konflikte zwischen den übergebenen Extrakten (T1, T2) und den Source-Dateien (01, 04, 08) festgestellt. Die Spezifikation bezüglich Agent vs Workflow aus Source 04 wurde wie gefordert priorisiert.
