@@ -18,6 +18,7 @@ DEFAULT_SIDS=(
   "13929873387924290336"  # 00-langdock-uebersicht
   "12110095044646860814"  # 01-chat-und-prompts
   "10925420439855356541"  # 02-agenten-konfiguration
+  "10999694651575973712"  # 02-agenten-konfiguration (dup — first session had empty patch)
   "378386566962702816"    # 03-wissensordner-und-rag
   "1457972172489118101"   # 04-workflows
   "12663632701708472741"  # 05-integrationen-und-mcp
