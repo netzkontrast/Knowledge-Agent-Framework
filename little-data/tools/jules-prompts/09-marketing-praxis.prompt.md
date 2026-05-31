@@ -23,7 +23,7 @@ Lies VOR dem Schreiben jede dieser Quellen einmal vollständig. Bei Konflikten z
 
 ### Critical-Thinking-Katalog (für Szenarien-Generierung)
 
-6. `little-data/data/extracts/T8-metaprompts-critical-thinking.md` — die 13 M01-M13 Methoden. **JEDES deiner 100+ Szenarien muss auf einer dieser Methoden aufbauen.** Methoden:
+6. `little-data/data/extracts/T8-metaprompts-critical-thinking.md` — die 13 M01-M13 Methoden. **Du nutzt diese Methoden als KONSTRUKTIONS-LINSE während du Szenarien generierst (interne Authoring-Technik) UND als TEST-LINSE während deiner Selbst-Review-Runden. Sie erscheinen NICHT als Feld im Szenario-Output.** Methoden:
    - M01 Falsification
    - M02 Steelmanning
    - M03 Pre-Mortem
@@ -46,9 +46,9 @@ Lies VOR dem Schreiben jede dieser Quellen einmal vollständig. Bei Konflikten z
 
 ### Research-Source-Files (Ground Truth — bei Konflikt gewinnen diese über Extracts)
 
-- little-data/data/research/03-langdock-marketing-scenarios-catalog.md
-- little-data/data/research/09-marketingleiter-faq-wissensbasis-analyse.md
-- little-data/data/research/02-dach-marketing-ai-adoption.md
+- little-data/data/sources/10-langdock-marketing-scenarios-catalog.md
+- little-data/data/sources/12-marketingleiter-faq-wissensbasis-analyse.md
+- little-data/data/sources/09-dach-marketing-ai-adoption.md
 
 
 ## Datei-Spezifikation
@@ -93,7 +93,6 @@ Lies VOR dem Schreiben jede dieser Quellen einmal vollständig. Bei Konflikten z
 
 ### S-MP-001 [Szenario-Titel auf Deutsch]
 
-**Critical-Thinking-Method:** [M01-M13]
 **Wann nutzen (Trigger):** [Eine Situation, in der die Marketing-Direktorin steckt]
 **Strategisches Ziel:** [Was sie strategisch erreichen will]
 **Hands-on Ergebnis:** [Was konkret produziert wird]
@@ -110,6 +109,8 @@ Lies VOR dem Schreiben jede dieser Quellen einmal vollständig. Bei Konflikten z
 - [Zweiter Fallstrick]
 **Anschluss-Szenario:** [optional: das nächste S-XXX, das passend wäre]
 
+**WICHTIG:** Das Szenario enthält KEIN sichtbares "Critical-Thinking-Method:" Feld. Du nutzt die Methoden M01-M13 als KONSTRUKTIONS-LINSE während der Generierung (für Variation), aber sie verlassen deinen Notizblock nicht. Der Reviewer testet anhand der Methoden, aber das Output bleibt clean.
+
 [... weitere 99+ Szenarien ...]
 
 ## Hinweise & Quellen-Konflikte
@@ -119,13 +120,25 @@ Lies VOR dem Schreiben jede dieser Quellen einmal vollständig. Bei Konflikten z
 
 ## Szenarien-Generierungs-Strategie (Pflicht)
 
-Verteile die 100+ Szenarien systematisch über die 13 Critical-Thinking-Methoden × die für deine Datei relevanten Marketing-Funktionen:
+Du verwendest die 13 Critical-Thinking-Methoden (M01-M13 aus T8) als KONSTRUKTIONS-LINSE — nicht als Output-Feld:
 
-- 13 Methoden × 8 Funktionen = 104+ natürliche Szenarien
-- Jede Methoden-Funktion-Kombination produziert ein distinct Szenario (z.B. "Pre-Mortem für Q4-Performance-Kampagne", "Steelman gegen Verzicht auf SEO", "Falsifizier deine Buyer-Persona")
-- Keine zwei Szenarien sollen plausibel für dieselbe Query retrieven — unique Trigger-Noun + unique Method + unique Goal
-- Beispiel-Prompts in den Szenarien nutzen Du als Default-Anrede für die Marketing-Direktorin
-- Erkennbar Strategic-AND-Hands-on: jedes Szenario hat sowohl ein strategisches Ziel ALS AUCH ein konkretes hands-on-Artefakt
+- Pro Marketing-Funktion durchläufst du gedanklich die 13 Methoden und konstruierst pro Schnittpunkt ein passendes Szenario. So entstehen 13 × ~8 Funktionen = 104+ natürliche Szenarien.
+- Beispiel-Konstruktion (M03 Pre-Mortem × Content-Marketing): "Trigger = Direktorin will Q4-Kampagne starten. Methode-Linse Pre-Mortem = 'Stell dir vor, sie ist gescheitert — warum?'. Daraus konstruiere ich das Szenario 'Q4-Pre-Mortem für eine Performance-Kampagne'."
+- Beispiel-Konstruktion (M09 Red Team × Brand): "Trigger = Direktorin feiert neue Brand Voice. Methode-Linse Red Team = strongest opposing argument. Szenario 'Red-Team-Brand-Audit'."
+- **Das fertige Szenario enthält keine M-Markierung.** Es liest sich wie ein eigenständiges, actionable Pattern — präzise Trigger, klares strategisches Ziel, konkretes hands-on Artefakt.
+- Keine zwei Szenarien sollen plausibel für dieselbe Query retrieven — unique Trigger-Noun + unique Mechanic + unique Goal.
+- Beispiel-Prompts in den Szenarien nutzen Du als Default-Anrede für die Marketing-Direktorin.
+- Erkennbar Strategic-AND-Hands-on: jedes Szenario hat sowohl ein strategisches Ziel ALS AUCH ein konkretes hands-on-Artefakt.
+
+## Selbst-Test während der Generierung (Pflicht)
+
+Nach jedem Block von 10 Szenarien führst du intern eine schnelle Test-Runde aus mit den Methoden M01-M13 als Test-Linse:
+- M01 Falsification: "Welches Szenario im Block ließe sich am leichtesten falsifizieren? Ist seine Annahme korrekt?"
+- M02 Steelmanning: "Welches Szenario hätte einen schlechten Gegen-Use-Case? Adressiere ihn im Fallstrick."
+- M09 Red Team: "Welche Trigger sind zu vage formuliert?"
+- M13 Adversarial Query Expansion: "Welche zwei Szenarien retrieven plausibel für dieselbe Query? — Wenn ja, einen umformulieren."
+
+Diese Selbst-Tests verbessern das Output. Sie tauchen NICHT im Output auf.
 
 ## Tonalität (Pflicht)
 
@@ -139,8 +152,8 @@ Verteile die 100+ Szenarien systematisch über die 13 Critical-Thinking-Methoden
 ## Validierung vor Speichern (Pflicht)
 
 - [ ] ≥100 H3-Szenarien unter "Marketing-Szenarien aus dieser Domäne"
-- [ ] Jedes Szenario folgt §6.2 Template (alle Felder ausgefüllt)
-- [ ] Jedes Szenario auf eine M01-M13 Methode gemappt
+- [ ] Jedes Szenario folgt §6.2 Template (8 Pflichtfelder ohne Critical-Thinking-Method-Feld)
+- [ ] KEIN sichtbares "Critical-Thinking-Method:" Feld in den Szenarien — die Methoden M01-M13 wurden als KONSTRUKTIONS-LINSE genutzt, nicht als Output-Inhalt
 - [ ] Jeder H2/H3-Block 1 200-1 800 chars
 - [ ] Keine zwei Szenarien retrieven plausibel für dieselbe Query
 - [ ] Kein "siehe Abschnitt X" Cross-Ref

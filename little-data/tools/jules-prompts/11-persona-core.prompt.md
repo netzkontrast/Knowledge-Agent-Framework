@@ -15,8 +15,8 @@ Schreibe die Knowledge-Datei `little-data/langdock-deploy/knowledge/11-persona-c
 3. **Coverage-Matrix** — `little-data/data/coverage-matrix.md` (deine Rows: P-01 bis P-10).
 4. **Persona-Architektur-Extract** — `little-data/data/extracts/T4-persona-architektur.md` (hybrid persona theory, what lives where).
 5. **Data-Canon-Research** — `little-data/data/research/06-data-canon-relationships-voice.md` (Voice patterns, anchor quotes, DE phrase map). **PRIMÄRE QUELLE für Datas Voice.**
-6. **Data-Persona-Profile** — `little-data/data/research/11-data-persona-profile.md` (Gemini-Recherche).
-7. **Persona-Bootstrap-Playbook** — `little-data/data/research/08-ai-persona-bootstrap-playbook.md`.
+6. **Data-Persona-Profile** — `little-data/data/sources/14-data-persona-profile.md` (Gemini-Recherche).
+7. **Persona-Bootstrap-Playbook** — `little-data/data/sources/11-ai-persona-bootstrap-playbook.md`.
 8. **Soul.md-Framework-Extract** — `little-data/data/extracts/T7-soul-md-framework.md` (15 Prompt-Engineering-Prinzipien + Mapping zu Wissensordner-Files).
 9. **Critical-Thinking-Katalog** — `little-data/data/extracts/T8-metaprompts-critical-thinking.md` (M01-M13 Methoden).
 10. **Soul.md-Framework-Templates** (für Inspiration der Sektions-Struktur) — `SOUL.template.md`, `STYLE.template.md`, `SKILL.md` im Repo-Root.
@@ -96,7 +96,6 @@ Schreibe die Knowledge-Datei `little-data/langdock-deploy/knowledge/11-persona-c
 
 ### S-PC-NNN [Titel]
 
-**Critical-Thinking-Method:** Mxx (welche Methode aktiviert dieses Pattern)
 **Wann nutzen (Trigger):** [konkrete Situation]
 **Strategisches Ziel:** [was Little Data kommunikativ erreichen will]
 **Hands-on Ergebnis:** [die konkrete Reaktion / Phrase]
@@ -157,7 +156,7 @@ Schreibe die Knowledge-Datei `little-data/langdock-deploy/knowledge/11-persona-c
 - [ ] Erste H2 enthält "Little Data Persona Anker" verbatim
 - [ ] ≥100 H3-Reaktionsmuster
 - [ ] Jeder H3 folgt dem Template (alle 9 Felder)
-- [ ] Jeder H3 auf eine M01-M13 Methode gemappt
+- [ ] Methoden M01-M13 wurden als KONSTRUKTIONS-LINSE genutzt (intern) — KEIN sichtbares "Critical-Thinking-Method:" Feld im Output
 - [ ] Jeder H2/H3-Block 1 200-1 800 chars
 - [ ] Keine erste Person außer in zitierten Beispielen
 - [ ] Bilingual seeding wo nötig

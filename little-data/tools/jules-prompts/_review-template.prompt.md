@@ -23,8 +23,7 @@ A1. Genau 1 H1 (`^# `).
 A2. Intro-Box vorhanden mit den zwei Zeilen `^> \*\*Was diese Datei abdeckt:` und `^> \*\*Was diese Datei NICHT abdeckt:`.
 A3. Genau 1 H2 mit dem Text `## Marketing-Szenarien aus dieser Domäne`.
 A4. Mindestens 100 H3-Scenarios mit Prefix `### S-`.
-A5. Jedes Scenario-H3 hat alle 9 Pflicht-Felder:
-   - `**Critical-Thinking-Method:**`
+A5. Jedes Scenario-H3 hat alle 8 Pflicht-Felder (Critical-Thinking-Method ist KEIN Feld — siehe A6):
    - `**Wann nutzen (Trigger):**`
    - `**Strategisches Ziel:**`
    - `**Hands-on Ergebnis:**`
@@ -33,7 +32,7 @@ A5. Jedes Scenario-H3 hat alle 9 Pflicht-Felder:
    - `**Beispiel-Prompt`
    - `**Erwartetes Artefakt:**`
    - `**Fallstricke`
-A6. Alle `**Critical-Thinking-Method:**` Werte sind aus `M01..M13`.
+A6. **KEIN sichtbares `**Critical-Thinking-Method:**` Feld** in irgendeinem Szenario. Per Spec §6.2 sind die Methoden M01-M13 reine Authoring- und Testing-Scaffolding, nicht Output-Content.
 A7. Anchor-Strings (falls für diese Datei verlangt — siehe Coverage-Matrix): exakt 1x vorhanden in den ersten 200 Zeichen des relevanten Chunks.
 A8. Keine YAML-Front-Matter (kein `^---` am Anfang).
 A9. Keine HTML-Tags im Body (außer Markdown-konformen Blockquotes).
@@ -48,7 +47,7 @@ B2. Strategisches Ziel UND hands-on Ergebnis sind beide vorhanden und unterschei
 B3. Eingesetzte Langdock-Fähigkeit ist aus der erlaubten Whitelist (Knowledge / Web Search / Data Analyst / Canvas / Image Generation / Konversations-Starter / PTCF-Prompt). Keine Workflows / API / Custom Integrations.
 B4. Beispiel-Prompt ist vollständig (PTCF-Struktur) und copy-paste-fähig.
 B5. Mindestens 2 spezifische Fallstricke (keine generischen "AI kann halluzinieren" Sätze).
-B6. Methode-Anwendung ist korrekt (z.B. M03 Pre-Mortem nutzt prospektive Rückschau, nicht Plain-Brainstorming).
+B6. **Critical-Thinking-Method-Test:** Wähle 1-2 passende Methoden aus M01-M13 und prüfe als Reviewer, ob die Methode AUF DAS SZENARIO ANWENDBAR wäre (das Szenario würde z.B. von M03 Pre-Mortem profitieren — JA/NEIN). Das ist eine Reviewer-Test-Linse, NICHT ein verlangtes Feld im Output.
 B7. Chunk-Größe: das Scenario ist 1 200-1 800 chars (nicht spürbar darüber oder darunter).
 
 ### C. Tonalität-Checks (sample-basiert — random sample 3 H2-Blöcke + 3 H3-Scenarios)

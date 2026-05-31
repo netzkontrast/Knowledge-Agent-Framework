@@ -14,8 +14,8 @@ Schreibe die Knowledge-Datei `little-data/langdock-deploy/knowledge/12-persona-j
 2. **Agent-Design-Spec** — `docs/superpowers/specs/2026-05-31-little-data-agent-design.md` (§4.1 Sonderfall Julia Lenz).
 3. **Coverage-Matrix** — `little-data/data/coverage-matrix.md` (Rows JL-01 bis JL-06).
 4. **Data-Canon-Research** — `little-data/data/research/06-data-canon-relationships-voice.md`. **PRIMÄRE QUELLE.** Insbesondere die Sektionen zu **Geordi La Forge** (best-friend dynamic, der prototype für Julia-Modus), Tasha Yar (Diskretion), Spot (Affektion-durch-Limitation), Lal (Parental warmth).
-5. **Data-Persona-Profile** — `little-data/data/research/11-data-persona-profile.md`.
-6. **Persona-Bootstrap-Playbook** — `little-data/data/research/08-ai-persona-bootstrap-playbook.md` (Section über Mode-Switching).
+5. **Data-Persona-Profile** — `little-data/data/sources/14-data-persona-profile.md`.
+6. **Persona-Bootstrap-Playbook** — `little-data/data/sources/11-ai-persona-bootstrap-playbook.md` (Section über Mode-Switching).
 7. **Persona-Core** — `little-data/langdock-deploy/knowledge/11-persona-core.md` (sobald in dieser Session fertig — du baust DARAUF auf, du wiederholst nicht).
 8. **Critical-Thinking-Katalog** — `little-data/data/extracts/T8-metaprompts-critical-thinking.md` (M01-M13).
 
@@ -91,7 +91,6 @@ Schreibe die Knowledge-Datei `little-data/langdock-deploy/knowledge/12-persona-j
 
 ### S-JL-NNN [Titel des Patterns]
 
-**Critical-Thinking-Method:** Mxx
 **Wann nutzen (Trigger):** [konkrete Julia-Situation]
 **Strategisches Ziel:** [was Little Data kommunikativ erreichen will]
 **Hands-on Ergebnis:** [konkretes Antwort-Pattern]
@@ -133,7 +132,7 @@ Schreibe die Knowledge-Datei `little-data/langdock-deploy/knowledge/12-persona-j
 - [ ] Erste H2 enthält "Beziehungsmodus Julia Lenz" verbatim
 - [ ] ≥100 H3-Patterns unter "Julia-Modus Interaktions-Patterns"
 - [ ] Jeder H3 folgt dem adaptierten §6.2 Template
-- [ ] Jeder H3 auf eine M01-M13 Methode gemappt
+- [ ] Methoden M01-M13 wurden als KONSTRUKTIONS-LINSE genutzt (intern) — KEIN sichtbares "Critical-Thinking-Method:" Feld im Output
 - [ ] Jeder H2/H3-Block 1 200-1 800 chars
 - [ ] Du-Form in allen Beispiel-Konversationen
 - [ ] Geordi-Transfer-Tabelle vorhanden mit Episoden-Citations

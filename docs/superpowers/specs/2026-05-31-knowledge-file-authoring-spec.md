@@ -136,7 +136,7 @@ Each scenario MUST be:
 - **Unique** — different trigger noun, different mechanism, different output. No two scenarios should plausibly retrieve for the same query.
 - **Actionable** — the marketing director can act on it within the same workday. No abstract "consider doing X" — concrete prompts, exact steps, concrete deliverable.
 - **Data-esque** in form — precise, structured, evidence-flagged (not Data SPEAKING — see §4).
-- **Anchored in a critical-thinking method** — drawn from the T8 catalog (Falsification, Steelmanning, Pre-Mortem, Contrast Classes, Bayesian Prior, Source Triangulation, Contradiction Log, "What Would Change My Mind", Red Team, First-Principles, Assumption Decay, Base-Rate, Adversarial Query Expansion). Using methods as **structural generators** ensures natural scenario variation. 13 methods × ~8-10 marketing functions per file = 100+ natural scenarios per file.
+- **Constructed using a critical-thinking method from the T8 catalog** (Falsification, Steelmanning, Pre-Mortem, Contrast Classes, Bayesian Prior, Source Triangulation, Contradiction Log, "What Would Change My Mind", Red Team, First-Principles, Assumption Decay, Base-Rate, Adversarial Query Expansion). The author (Jules / synthesizer) uses these methods INTERNALLY as structural generators to ensure variation and quality. Reviewers use them to TEST scenario quality. **The final scenario MUST NOT expose the method as a visible field — methods are an authoring + testing technique, not output content.** 13 methods × ~8-10 marketing functions per file = 100+ natural scenarios per file.
 
 **Trade-off:** more H2/H3 blocks = more retrievable chunks per file. The per-document cap still applies (only one chunk per file wins per query) — so authoring discipline focuses on **making each chunk maximally distinct** (different trigger phrases, different nouns, different scenario specifics). With high chunk distinctiveness, a large file becomes a high-coverage retrieval surface, not a single point of failure.
 
@@ -152,12 +152,11 @@ The reader of every scenario is a **strategically-working but hands-on-oriented 
 
 Scenarios are written to her. Voice is third-person reference prose (NOT Data speaking — per §4), but the recommendations and examples target her workflow.
 
-## 6.2 Scenario Template (mandatory)
+## 6.2 Scenario Template (mandatory — Critical-Thinking-Method NOT a visible field)
 
 ```markdown
 ### S-XYZ [Scenario short title in DE]
 
-**Critical-Thinking-Method:** [one of M01-M13 from T8 catalog, named explicitly]
 **Wann nutzen (Trigger):** [Eine Situation, in der die Marketing-Direktorin steckt]
 **Strategisches Ziel:** [Was sie strategisch erreichen will]
 **Hands-on Ergebnis:** [Was konkret produziert wird — ein Briefing, eine Liste, ein Schemavergleich, etc.]
@@ -172,6 +171,8 @@ Scenarios are written to her. Voice is third-person reference prose (NOT Data sp
 **Fallstricke (mind. 2):** [Spezifisch — z.B. "AI tendiert zu Anglizismen → Anti-Anglizismus-Klausel im Prompt", nicht "AI kann halluzinieren"]
 **Anschluss-Szenario:** [optional: das nächste S-XYZ, das diese Marketing-Direktorin als Folgeschritt nutzen würde]
 ```
+
+**Note on the critical-thinking method:** The author uses one of M01-M13 from the T8 catalog as a structural generator to construct this scenario (e.g., "I'll use M03 Pre-Mortem as the lens — what's the trigger when a Marketing-Direktorin wants to validate a campaign idea?"). The reviewer uses the methods as TEST criteria: "Does this scenario sufficiently apply Pre-Mortem reasoning to the trigger?" **But the M-tag is NEVER written into the final scenario field.** The output is a clean, actionable artifact; the method is invisible authoring scaffolding.
 
 ---
 

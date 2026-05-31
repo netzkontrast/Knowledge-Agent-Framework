@@ -65,8 +65,10 @@ check_one() {
   fi
 
   # Mandatory field lines per scenario
+  # NOTE: Critical-Thinking-Method is intentionally NOT a visible field —
+  # per spec §6.2, methods M01-M13 are used as authoring + testing scaffolding,
+  # not output content.
   local fields=(
-    "Critical-Thinking-Method:"
     "Wann nutzen (Trigger):"
     "Strategisches Ziel:"
     "Hands-on Ergebnis:"
@@ -84,11 +86,12 @@ check_one() {
     fi
   done
 
-  # Critical-Thinking-Method references must be M01-M13
-  local invalid_m; invalid_m=$(grep -oE '\*\*Critical-Thinking-Method:\*\*[[:space:]]*M[0-9]+' "$file" | \
-    awk -F 'M' '{m=$NF; if (m+0 < 1 || m+0 > 13) print m}' | wc -l)
-  if [ "$invalid_m" -gt 0 ]; then
-    echo "[WARN] $name: $invalid_m scenarios reference method outside M01-M13"
+  # NEW: ensure NO Critical-Thinking-Method field leaked into scenarios
+  # (per spec §6.2 — method is internal authoring scaffolding only)
+  local leaked_ct; leaked_ct=$(grep -cF '**Critical-Thinking-Method:' "$file")
+  if [ "$leaked_ct" -gt 0 ]; then
+    echo "[FAIL] $name: $leaked_ct scenarios leak the Critical-Thinking-Method field (per §6.2 it must be removed from output)"
+    fail=1
   fi
 
   # Stats summary

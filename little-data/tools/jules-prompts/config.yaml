@@ -22,7 +22,7 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
       - little-data/data/extracts/T2-rag-mechanik.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
       - little-data/data/restructured/00-langdock-master-feature-inventory.md
       - little-data/data/sources/01-langdock-agent-and-knowledge-structuring.md
 
@@ -42,7 +42,7 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
       - little-data/data/extracts/T7-soul-md-framework.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
       - little-data/data/sources/01-langdock-agent-and-knowledge-structuring.md
       - little-data/data/sources/05-langdock-tipps-tricks-anwendungsfaelle.md
 
@@ -65,7 +65,7 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
       - little-data/data/extracts/T2-rag-mechanik.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
       - little-data/data/sources/01-langdock-agent-and-knowledge-structuring.md
       - little-data/data/sources/04-langdock-agent-spec-development.md
 
@@ -89,8 +89,8 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
     source_list: |
       - little-data/data/research/04-rag-bootstrap-session-start-patterns.md
-      - little-data/data/research/10-langdock-knowledge-file-methodology.md
-      - little-data/data/research/12-langdock-knowledge-file-authoring-methodology.md
+      - little-data/data/sources/13-langdock-knowledge-file-methodology.md
+      - little-data/data/sources/15-langdock-knowledge-file-authoring-methodology-gemini.md
       - little-data/data/restructured/01-knowledge-authoring-methodology.md
       - little-data/data/sources/07-langdock-knowledge-authoring-methodology.md
 
@@ -113,7 +113,7 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
       - little-data/data/extracts/T3-marketing-praxis.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
       - little-data/data/sources/02-langdock-developer-overview-and-integrations.md
       - little-data/data/sources/04-langdock-agent-spec-development.md
 
@@ -135,7 +135,7 @@ knowledge_files:
     extract_list: |
       - little-data/data/extracts/T1-langdock-features.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
       - little-data/data/sources/02-langdock-developer-overview-and-integrations.md
 
   - file_name: 06-api-und-deployment
@@ -155,7 +155,7 @@ knowledge_files:
     extract_list: |
       - little-data/data/extracts/T1-langdock-features.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
       - little-data/data/sources/02-langdock-developer-overview-and-integrations.md
       - little-data/data/sources/03-langdock-developer-best-practices-guide.md
 
@@ -181,8 +181,8 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
       - little-data/data/extracts/T6-dach-kontext-kosten.md
     source_list: |
-      - little-data/data/research/01-langdock-platform-feature-inventory.md
-      - little-data/data/research/02-dach-marketing-ai-adoption.md
+      - little-data/data/sources/08-langdock-platform-feature-inventory.md
+      - little-data/data/sources/09-dach-marketing-ai-adoption.md
       - little-data/data/sources/02-langdock-developer-overview-and-integrations.md
       - little-data/data/sources/03-langdock-developer-best-practices-guide.md
       - little-data/data/sources/06-langdock-playbook.md
@@ -207,7 +207,7 @@ knowledge_files:
       - little-data/data/extracts/T1-langdock-features.md
       - little-data/data/extracts/T6-dach-kontext-kosten.md
     source_list: |
-      - little-data/data/research/02-dach-marketing-ai-adoption.md
+      - little-data/data/sources/09-dach-marketing-ai-adoption.md
       - little-data/data/sources/03-langdock-developer-best-practices-guide.md
 
   - file_name: 09-marketing-praxis
@@ -229,9 +229,9 @@ knowledge_files:
       - little-data/data/extracts/T3-marketing-praxis.md
       - little-data/data/extracts/T6-dach-kontext-kosten.md
     source_list: |
-      - little-data/data/research/03-langdock-marketing-scenarios-catalog.md
-      - little-data/data/research/09-marketingleiter-faq-wissensbasis-analyse.md
-      - little-data/data/research/02-dach-marketing-ai-adoption.md
+      - little-data/data/sources/10-langdock-marketing-scenarios-catalog.md
+      - little-data/data/sources/12-marketingleiter-faq-wissensbasis-analyse.md
+      - little-data/data/sources/09-dach-marketing-ai-adoption.md
 
   - file_name: 10-prompts-und-skills
     file_prefix: PS
@@ -253,8 +253,8 @@ knowledge_files:
       - little-data/data/extracts/T3-marketing-praxis.md
       - little-data/data/extracts/T8-metaprompts-critical-thinking.md
     source_list: |
-      - little-data/data/research/03-langdock-marketing-scenarios-catalog.md
-      - little-data/data/research/09-marketingleiter-faq-wissensbasis-analyse.md
+      - little-data/data/sources/10-langdock-marketing-scenarios-catalog.md
+      - little-data/data/sources/12-marketingleiter-faq-wissensbasis-analyse.md
 
   - file_name: 13-data-agent-anweisungen-pro-thema
     file_prefix: DA
@@ -279,6 +279,6 @@ knowledge_files:
       - little-data/data/extracts/T8-metaprompts-critical-thinking.md
     source_list: |
       - little-data/data/research/06-data-canon-relationships-voice.md
-      - little-data/data/research/11-data-persona-profile.md
+      - little-data/data/sources/14-data-persona-profile.md
       - little-data/data/research/07-soul-md-framework-for-agent-prompt-design.md
       - alle finalen Files 00-10 (für Konsistenz-Check während des Schreibens)

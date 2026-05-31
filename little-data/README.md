@@ -92,9 +92,11 @@ Phase 5    Deployment Package             pending Phase 4 complete
 
 ---
 
-## Critical-thinking-embedded scenarios
+## Critical-thinking-driven scenario construction
 
-Every scenario in every knowledge file is anchored in one of 13 critical-thinking methods (M01-M13 from `data/extracts/T8-metaprompts-critical-thinking.md`):
+Authors and reviewers use 13 critical-thinking methods (M01-M13 from `data/extracts/T8-metaprompts-critical-thinking.md`) as a **construction lens** during scenario generation and as a **test lens** during review. **The methods do NOT appear as a visible field in the scenarios themselves** — they are invisible scaffolding that ensures variety, quality, and rigor.
+
+The 13 methods:
 
 | ID | Method | German pattern |
 |---|---|---|
@@ -112,7 +114,7 @@ Every scenario in every knowledge file is anchored in one of 13 critical-thinkin
 | M12 | Base-Rate | "Wie häufig kommt das wirklich vor?" |
 | M13 | Adversarial Query Expansion | "Welche Edge-Cases triggert diese Definition?" |
 
-Each scenario references its method explicitly in the `**Critical-Thinking-Method:**` line.
+Each scenario is CONSTRUCTED using one (or more) of these methods as a structural lens. The method-tag does NOT appear in the output — it is invisible authoring scaffolding.
 
 ---
 
