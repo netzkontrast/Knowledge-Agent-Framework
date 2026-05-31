@@ -904,6 +904,293 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 **Fallstricke (≥2 spezifisch):**
 - Holding Statements enthalten neue, ungeprüfte Gegenclaims → Prompt muss explizit verbieten, neue Produktbehauptungen in der Krisenreaktion zu machen; ausschließlich: "Wir nehmen das ernst und prüfen die Sachlage."
 - KI-generierte Krisenaussagen ohne Legal-Freigabe veröffentlicht → Krisenreaktion durch KI ist IMMER nur ein Entwurf; der Freigabe-Step durch Legal und Geschäftsführung darf nie übersprungen werden — dies als fette Warnung im Canvas-Dokument kennzeichnen.
+**Anschluss-Szenario:** S-MP-046
+
+### S-MP-046 Award-Bewerbung für den Deutschen Marketing Award vorbereiten
+
+**Wann nutzen (Trigger):** Der Einsendeschluss für den Deutschen Marketing Award (oder einen vergleichbaren DACH-Branchenpreis wie den Effie, den BCP oder den PR Report Award) rückt näher. Julia muss Fallstudien, ROI-Belege und Kampagnenbeschreibungen aus internen Quellen zu einer überzeugenden Jurybewerbung verdichten — ohne dass das Team wochenlang gebunden ist. (Quelle: sources/10 S-082)
+**Strategisches Ziel:** Eine struktur- und kriteriengerechte Bewerbung einreichen, die die Jury mit harten Zahlen und einer klaren Wirkungsgeschichte überzeugt, um Markenbekanntheit und Employer-Branding-Wert durch die Auszeichnung zu steigern.
+**Hands-on Ergebnis:** Vollständige, juryfähige Bewerbungsantworten (max. 300 Wörter je Kriterium) als Canvas-Dokument, inklusive Executive Summary, Impact-Kennzahlen und aussagekräftiger Zitate aus Kundenstimmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas, Chat
+**Vorgehen (4 Schritte):**
+1. Alle relevanten Case Studies, Kampagnenberichte und ROI-Nachweise als PDFs in einen dedizierten Wissensordner laden.
+2. Jurybewertungskriterien des jeweiligen Awards als Prompt-Kontext einfügen; Agent mappt jedes Kriterium auf die stärksten Belege im Ordner.
+3. Im Canvas je Kriterium einen Entwurf mit spezifischen Kennzahlen (Conversion Rates, Reichweiten, CLV-Steigerungen) generieren; Zitate aus Kundenstimmen werden wörtlich eingebettet.
+4. Faktencheck: Alle Zahlen manuell gegen Quelldokumente prüfen, bevor die Bewerbung eingereicht wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist PR-Stratege für eine DACH-B2B-Marke. Wir bewerben uns beim Deutschen Marketing Award in der Kategorie 'Digitale Transformation'. Nutze die Case Studies im verknüpften Ordner. Belege jedes der drei Jurybewertungskriterien (Innovation, Messbarkeit, Relevanz) mit konkreten Kennzahlen. Schreibe pro Kriterium maximal 300 Wörter — sachlich, überzeugend, ohne Marketing-Floskeln."
+**Erwartetes Artefakt:** Druckfertiges Canvas-Dokument mit drei Antwortblöcken (je ≤300 Wörter) plus einer 150-Wort-Executive-Summary für die Jury.
+**Fallstricke (≥2 spezifisch):**
+- KI kombiniert Kennzahlen aus zwei verschiedenen Kampagnen zu einer fiktiven Zahl → Jede Ziffer muss direkt gegen das Quelldokument im Ordner verifiziert werden; im Prompt explizit fordern: "Keine Zahlen ohne Quellenangabe."
+- Bewerbungstext klingt nach Unternehmens-Eigenlob ohne Nachweis → Juryanforderungen explizit als Kontext mitliefern; Prompt muss die Falsifizierungs-Hürde einbauen: "Streiche jede Aussage, die du nicht mit einem konkreten Datum und einer Kennzahl belegen kannst."
+**Anschluss-Szenario:** S-MP-047
+
+### S-MP-047 Marktforschungssynthese aus heterogenen Quellen
+
+**Wann nutzen (Trigger):** Julia erhält gleichzeitig Ergebnisse aus einer Primärbefragung (n=200 DACH-Unternehmen), einem Branchenreport von Bitkom, einem internen NPS-Export und drei Wettbewerber-Pressemitteilungen. Diese Daten müssen zu einem kohärenten Marktbild verdichtet werden, das die Budgetentscheidungen für das nächste Quartal trägt. (Quelle: sources/10 S-084–S-093; sources/12 F-Marketing Use Cases)
+**Strategisches Ziel:** Aus heterogenen quantitativen und qualitativen Quellen einen belastbaren strategischen Marktüberblick extrahieren, der Widersprüche zwischen den Quellen explizit ausweist statt verbirgt.
+**Hands-on Ergebnis:** Ein dreiseitiger Synthese-Report mit: (1) konsistenten Marktaussagen inkl. Quellenangaben, (2) explizit markierten Quellkonflikten, (3) drei abgeleiteten strategischen Handlungsempfehlungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Data Analyst, Deep Research
+**Vorgehen (4 Schritte):**
+1. Qualitative Dokumente (Branchenreport, Pressemitteilungen, Interview-Transkripte) in den Wissensordner laden; quantitative Daten (NPS-CSV, Befragungsexport) in den Data Analyst übergeben.
+2. Agent synthetisiert Kernaussagen aus dem Wissensordner und mappt sie gegen die quantitativen Befunde — mit Auftrag, Widersprüche explizit zu flaggen.
+3. Deep Research ergänzt fehlende Marktdaten (z. B. Gesamtmarktgröße, aktuelle Branchenwachstumsraten) via Web Search.
+4. Finalen Report im Canvas zusammenstellen; Quellkonflikte in einem separaten Abschnitt "Datenwidersprüche — Interpretationshinweise" dokumentieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Senior Market Analyst für ein DACH-B2B-Unternehmen. Synthetisiere die Dokumente im Wissensordner und die hochgeladenen CSV-Daten zu einem Marktüberblick. Wichtig: Wenn Quellen sich widersprechen, dokumentiere dies explizit unter 'Quellkonflikte' — vertusche nichts. Leite am Ende drei strategische Handlungsempfehlungen ab. Format: dreiseitiger Report mit Executive Summary, Hauptbefunde und Empfehlungen."
+**Erwartetes Artefakt:** Dreiseitiger Synthese-Report im Canvas mit Quellenverweisen, einem dedizierten Quellkonflikte-Abschnitt und drei priorisierten Empfehlungen.
+**Fallstricke (≥2 spezifisch):**
+- KI glättet Quellwidersprüche statt sie zu benennen → Prompt muss explizit fordern: "Wenn Quellen A und B sich widersprechen, schreibe: 'Laut [Quelle A] …, während [Quelle B] …' — keine eigene Auflösung ohne Kennzeichnung."
+- Strukturierte CSV-Daten (Befragungsexport) im Wissensordner statt im Data Analyst abgelegt → Ordner kann Tabellen nicht zuverlässig auswerten; CSV immer direkt in den Data Analyst laden.
+**Anschluss-Szenario:** S-MP-048
+
+### S-MP-048 Influencer-Vertragscheck mit KI-Unterstützung
+
+**Wann nutzen (Trigger):** Das Marketing-Team möchte einen neuen Influencer-Kooperationsvertrag mit einem DACH-Creator (Instagram, YouTube oder LinkedIn) abschließen. Der Vertragsentwurf liegt als PDF vor; bevor er an Legal geht, soll eine erste strukturierte Prüfung auf fehlende oder risikoreiche Klauseln erfolgen, um den Legal-Review-Aufwand zu minimieren. (Quelle: sources/10 S-075, S-103)
+**Strategisches Ziel:** Vertragliche Risiken für Markenschäden, Exklusivitätskonflikte und fehlende UWG-Kennzeichnungspflichten frühzeitig erkennen, bevor das Legal-Team Zeit investiert — und eine klare Checkliste für die Vertragsverhandlung erzeugen.
+**Hands-on Ergebnis:** Eine strukturierte Risiko-Checkliste mit markierten Klauseln, empfohlenen Ergänzungen (z. B. Kennzeichnungspflicht nach §5a UWG, Exklusivitätsfenster, Rücktrittsrecht bei Reputationsschaden) und einer priorisierten "Was fehlt?"-Liste.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianhang, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Influencer-Vertragsentwurf als PDF direkt als Dateianhang hochladen (nicht in den Wissensordner — für vollständiges Kontext-Parsing).
+2. Interne Compliance-Guidelines und Influencer-Marketing-Richtlinien aus dem Wissensordner als Referenzrahmen einbinden.
+3. Agent prüft den Vertrag gegen die Checkliste kritischer Klauseln: Kennzeichnungspflicht, Exklusivität, Content-Freigabeprozess, Haftungsausschluss, Rücktrittsrecht.
+4. Risiko-Checkliste im Canvas strukturieren; klare "An Legal übergeben"-Markierungen für strittige Klauseln setzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Legal-Analyst mit Schwerpunkt Influencer-Marketing-Recht in der DACH-Region. Ich lade dir den Vertragsentwurf hoch. Prüfe ihn auf: (1) fehlende Kennzeichnungspflicht nach §5a UWG, (2) Exklusivitätskonflikte mit Wettbewerbern, (3) fehlendes Rücktrittsrecht bei Reputationsschäden, (4) unklare Content-Freigabeprozesse. Erstelle eine strukturierte Risiko-Tabelle: Klausel | Risikostufe (Hoch/Mittel/Niedrig) | Empfohlene Änderung."
+**Erwartetes Artefakt:** Risiko-Tabelle mit allen geprüften Klauseln, Risikostufe und Handlungsempfehlung — als Briefing-Unterlage für den Legal-Review.
+**Fallstricke (≥2 spezifisch):**
+- KI-Output ersetzt keinen Rechtsanwalt → Checkliste ist ein Vorprüfungswerkzeug; Prompt muss einen expliziten Disclaimer im Output erzwingen: "Dieses Dokument ist keine Rechtsberatung."
+- Vertrag im Wissensordner statt als Dateianhang geladen → RAG liefert nur Auszüge; für vollständige Vertragsanalyse immer den direkten Dateianhang nutzen, damit das gesamte Dokument im Kontext bleibt.
+**Anschluss-Szenario:** S-MP-049
+
+### S-MP-049 Produktrückruf-Kommunikation koordinieren
+
+**Wann nutzen (Trigger):** Ein Qualitätsproblem erfordert einen Produktrückruf oder eine dringende Produktwarnung. Julia muss innerhalb weniger Stunden DSGVO-konform alle betroffenen Kundengruppen informieren — segmentiert nach Kaufdatum, Kanal und Kundenstatus — und gleichzeitig Medienanfragen beantworten, ohne rechtliche Haftungsrisiken zu erzeugen. (Quelle: sources/10 S-079, S-083)
+**Strategisches Ziel:** Transparente, rechtlich sichere Rückruf-Kommunikation über alle Kanäle koordinieren — mit einheitlichem Messaging, das Vertrauen erhält und Haftungsrisiken minimiert.
+**Hands-on Ergebnis:** Ein vollständiges Rückruf-Kommunikationspaket: Kundenemail (segmentiert nach Betroffenheitsgrad), Pressemitteilung, FAQ-Dokument für den Kundendienst und ein internes Statusupdate für die Geschäftsführung.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Data Analyst
+**Vorgehen (5 Schritte):**
+1. Betroffene Produktcharge und Kundendaten (anonymisiert) als CSV in den Data Analyst laden — Segmentierung nach Kaufdatum und Kundenstatus ermitteln.
+2. Legal-Boilerplate und Rückruf-Kommunikationsrichtlinien aus dem Wissensordner als Pflicht-Referenz einbinden.
+3. Kunden-E-Mail in zwei Varianten draften: direkt Betroffene (klarer Handlungsaufruf + Rückgabeweg) und möglicherweise Betroffene (Informations-Mail ohne Panikerzeugung).
+4. Pressemitteilung im inverted-pyramid-Format erstellen; FAQ für den Kundendienst mit den häufigsten Fragen (Rückgabe, Erstattung, Gesundheitsrisiken) zusammenstellen.
+5. Internes Status-Memo für die Geschäftsführung im Canvas zusammenführen — alle Dokumente in einem einzigen Revisions-Pass durch Legal freigeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Krisenkommunikations-Manager für ein DACH-Konsumgüterunternehmen. Wir müssen {{Produkt}} zurückrufen. Erstelle: (1) Kunden-E-Mail für direkt Betroffene (max. 200 Wörter, klarer CTA: Rückgabe, Erstattung), (2) Pressemitteilung (klassisches Format, sachlich, kein Schuldeingeständnis), (3) FAQ für den Kundendienst (8 Fragen mit Antworten). Ton: transparent, empathisch, kein Marketingsprech. Keine ungesicherten Ursachenbehauptungen."
+**Erwartetes Artefakt:** Canvas-Dokument mit allen vier Kommunikationsformaten (Kunden-Email, Pressemitteilung, FAQ, internes Memo) — strukturiert für parallele Legal-Freigabe.
+**Fallstricke (≥2 spezifisch):**
+- KI baut Schuldeingeständnisse oder Ursachenbehauptungen in die Pressemitteilung ein → Prompt muss explizit anweisen: "Keine kausalen Aussagen über die Fehlerursache, bevor die interne Untersuchung abgeschlossen ist."
+- Kundensegmentierungs-CSV in den Wissensordner statt in den Data Analyst geladen → Segmentierung schlägt fehl; strukturierte Daten immer über den Data Analyst verarbeiten.
+**Anschluss-Szenario:** S-MP-050
+
+### S-MP-050 Preiserhöhungs-Kommunikationsstrategie entwickeln
+
+**Wann nutzen (Trigger):** Das Unternehmen plant eine Preiserhöhung von durchschnittlich 8–12 % für Bestandskunden in der DACH-Region, ausgelöst durch gestiegene Rohstoff- oder Lizenzkosten. Julia muss eine Kommunikationsstrategie entwickeln, die die Kundenabwanderung minimiert und die Erhöhung als Qualitäts- und Investitionssignal positioniert. (Quelle: sources/10 S-087, S-091)
+**Strategisches Ziel:** Die Preiserhöhung durch proaktive, wertorientierte Kommunikation so vorbereiten, dass die Churn-Rate unter dem Branchen-Benchmark bleibt und Bestandskunden die Erhöhung als logische Konsequenz des Mehrwerts akzeptieren.
+**Hands-on Ergebnis:** Eine segmentierte Kommunikationsstrategie mit Botschaftsarchitektur (Key Messages nach Kundensegment), einem E-Mail-Sequenz-Entwurf (3 Touchpoints: Ankündigung, Erinnerung, Dankeschön) und einem Argument-Leitfaden für den Vertrieb.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Canvas, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Kundensegmente definieren (z. B. Strategische Partner, Mid-Market, SMB) und spezifische Mehrwert-Argumente pro Segment aus dem Wissensordner (Case Studies, Feature-Updates) abrufen.
+2. Botschaftsarchitektur im Canvas entwickeln: Was kommuniziert man zuerst — den Preis oder den Mehrwert? Für jedes Segment eine Kernbotschaft formulieren.
+3. Drei-Touchpoint-E-Mail-Sequenz draften: 6 Wochen vor Wirksamkeit (Ankündigung + Begründung), 2 Wochen vorher (Erinnerung + Upgrade-Angebot für Strategische Partner), 1 Woche danach (Dankeschön + Feedback-Einholung).
+4. Vertriebs-Argument-Leitfaden erstellen: Die häufigsten Einwände ("Zu teuer", "Mitbewerber ist günstiger") mit vorbereiteten Brückenantworten versehen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Chief Customer Officer eines DACH-B2B-SaaS-Unternehmens. Wir erhöhen die Preise um 10 % ab dem 1. Januar. Entwickle eine Kommunikationsstrategie für das Segment 'Strategische Partner' (Enterprise, >500 Mitarbeiter). Schwerpunkt: Wertpositionierung vor Preisnennung. Erstelle die Ankündigungs-E-Mail (max. 250 Wörter, formelles Sie), einen Einwand-Leitfaden für den Vertrieb (5 Einwände + Antworten) und eine Botschaftshierarchie für die drei Touchpoints."
+**Erwartetes Artefakt:** Canvas-Dokument mit Botschaftsarchitektur (pro Segment), drei E-Mail-Entwürfen und dem Vertriebsleitfaden als separate Abschnitte.
+**Fallstricke (≥2 spezifisch):**
+- KI formuliert die Preiserhöhung als erste Information statt als letzte → Prompt muss die Kommunikationsreihenfolge vorgeben: Mehrwert → Investitionsreferenz → Preisanpassung.
+- Generische Formulierungen ohne Bezug zum konkreten Kundennutzen → Wissensordner mit aktuellen Release Notes und Case Studies als Pflichtquelle einbinden, damit jede Botschaft mit einem spezifischen Feature oder ROI-Beleg untermauert wird.
+**Anschluss-Szenario:** S-MP-051
+
+### S-MP-051 Loyalty-Programm-Engagement-Content erstellen
+
+**Wann nutzen (Trigger):** Das Loyalty-Programm des Unternehmens (Punkte, Stufen oder Subscription-Modell) zeigt sinkende Engagement-Raten: Punkte werden nicht eingelöst, Tier-Upgrades werden ignoriert, E-Mail-Öffnungsraten für Loyalty-Kommunikation sind unter 18 %. Julia braucht einen Content-Mix, der die aktiven Mitglieder reaktiviert und den Programmwert erlebbar macht. (Quelle: sources/10 S-067, S-092)
+**Strategisches Ziel:** Die Loyalty-Engagement-Rate (Einlösungsquote, Tier-Upgrade-Klicks) innerhalb eines Quartals um mindestens 20 % steigern durch emotionalisierenden, statusorientierten Content, der den exklusiven Charakter des Programms betont.
+**Hands-on Ergebnis:** Ein Quarterly Loyalty Content Calendar mit 12 Content-Pieces (E-Mails, Push-Notifications, In-App-Nachrichten) gegliedert nach Stufen-Segmenten, inklusive Betreffzeilen-Varianten für A/B-Tests.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Aktuelle Loyalty-Programmstruktur und Mitglieder-Segmente als Kontext einlesen; Wissensordner mit bisherigen Top-Performer-E-Mails und Engagement-Benchmarks befüllen.
+2. Content-Strategie nach Engagement-Hebeln strukturieren: Gamification ("Du bist 200 Punkte vom Gold-Status entfernt"), Exklusivitätssignale ("Nur für Platin-Mitglieder"), Ablauf-Erinnerungen ("Deine Punkte verfallen am …").
+3. 12 Content-Pieces im Canvas ausformulieren — nach Kanal (E-Mail, Push, In-App) und Mitgliedersegment differenziert; Betreffzeilen-Paare für A/B-Tests einbauen.
+4. Prüfung: Kein Content darf generische "Belohnungs-Marketingsprache" verwenden; jedes Piece muss einen konkreten Mehrwert oder eine Dringlichkeit transportieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist CRM-Content-Stratege für ein DACH-Handelsunternehmen mit einem dreistufigen Loyalty-Programm (Bronze, Silber, Gold). Die Einlösungsquote liegt bei nur 12 %. Erstelle für das Gold-Segment drei E-Mails: (1) Punkte-Ablauf-Erinnerung, (2) Exklusiv-Angebot nur für Gold-Mitglieder, (3) Tier-Upgrade-Anreiz für Platin. Ton: persönlich, statusbewusst, keine Werbeklischees. Liefere je zwei Betreffzeilen-Varianten für A/B-Tests."
+**Erwartetes Artefakt:** Quarterly Loyalty Content Calendar als Canvas-Dokument mit 12 ausformulierten Content-Pieces, Kanal-Zuweisung und A/B-Betreffzeilen.
+**Fallstricke (≥2 spezifisch):**
+- Content klingt wie generische Massen-E-Mail statt exklusiv → Prompt muss Statusorientierung hard-coden: "Jedes Piece muss explizit die Stufe des Empfängers nennen und einen Vorteil kommunizieren, den andere Stufen nicht erhalten."
+- Fehlende Dringlichkeit führt zu Prokrastination → Ablaufdaten und konkrete Zeitfenster müssen in jeden relevanten Content-Piece eingebaut werden; KI neigt zu vagen Formulierungen ohne Deadline.
+**Anschluss-Szenario:** S-MP-052
+
+### S-MP-052 Channel-Partner-Enablement-Materialien entwickeln
+
+**Wann nutzen (Trigger):** Das Unternehmen erweitert sein Reseller- oder Distributor-Netzwerk in der DACH-Region. Neue Partner brauchen innerhalb von zwei Wochen vollständige Enablement-Unterlagen: Produktübersicht, Verkaufsleitfaden, Preisargumentations-Guide und Co-Branding-Richtlinien. Das interne Team hat kaum Kapazität für die Erstellung. (Quelle: sources/10 S-075, S-099)
+**Strategisches Ziel:** Neue Channel-Partner innerhalb von 30 Tagen so enablen, dass sie eigenständig qualifizierte Opportunities generieren können — durch strukturierte, markengerechte Vertriebsunterlagen, die keine Rückfragen an das Marketing erzeugen.
+**Hands-on Ergebnis:** Ein Channel-Partner-Enablement-Kit bestehend aus: (1) Produktone-Pager (DE, adaptierbar für AT/CH), (2) Objection-Handling-Guide (10 häufigste Einwände), (3) Co-Branding-Richtlinien-Zusammenfassung, (4) Onboarding-Checkliste für neue Partner.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Produktdokumentationen, Brand Guidelines und vorhandene Vertriebsmaterialien in den Wissensordner laden; DACH-Marktbesonderheiten als Kontext definieren.
+2. Produktone-Pager im Canvas erstellen: Value Proposition, USPs, Top-3-Use-Cases, Preisrahmen — in B2B-Sprache ohne interne Jargon-Begriffe.
+3. Objection-Handling-Guide aus typischen Vertriebsgesprächen ableiten: 10 Einwände (Preis, Komplexität, Mitbewerber, DSGVO, Support) mit strukturierten Brückenantworten.
+4. Onboarding-Checkliste generieren: Woche 1–4 mit konkreten Meilensteinen (Produktschulung, erste Pipeline-Opportunity, erstes Co-Marketing-Event).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Channel-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir onboarden nächsten Monat 12 neue Reseller. Erstelle aus den Materialien im Wissensordner: (1) Einen Produktone-Pager (max. 400 Wörter, formelles Sie, Value Proposition an erster Stelle), (2) einen Objection-Handling-Guide für die 10 häufigsten Partner-Einwände, (3) eine 4-Wochen-Onboarding-Checkliste. Keine interne Abkürzungen — Partner kennen unsere Systeme nicht."
+**Erwartetes Artefakt:** Channel-Partner-Enablement-Kit als strukturiertes Canvas-Dokument in vier Abschnitten, exportierbar als PDF für die Partnerübergabe.
+**Fallstricke (≥2 spezifisch):**
+- Materialien enthalten interne Fachbegriffe, die Partner nicht verstehen → Prompt muss explizit fordern: "Kein interner Jargon — teste jeden Begriff: Würde ein Reseller ohne Produktvorkenntnis das verstehen?"
+- Co-Branding-Richtlinien zu restriktiv oder zu vage formuliert → Wissensordner muss die aktuelle Brand-Guidelines-PDF enthalten; KI darf keine eigenen Logoregeln erfinden, sondern nur aus dem Quelldokument zitieren.
+**Anschluss-Szenario:** S-MP-053
+
+### S-MP-053 Messestand-Konzept für Fachmessen entwickeln
+
+**Wann nutzen (Trigger):** Das Unternehmen nimmt an einer bedeutenden DACH-Fachmesse teil (Hannover Messe, CeBIT-Nachfolger, DMEXCO, embedded world). Julia muss innerhalb von zwei Wochen ein kohärentes Standkonzept entwickeln: Thema, Botschaftshierarchie, Demo-Szenarien, Lead-Capture-Strategie und Nachfassstrategie — bevor die Messebauer das Briefing erhalten. (Quelle: sources/10 S-114; sources/12 S-042)
+**Strategisches Ziel:** Einen Messestand konzipieren, der qualifizierte Leads generiert statt nur Besucher anzuziehen — durch eine klare thematische Leitidee, die sich nahtlos in die übergeordnete Kampagnenstrategie des Quartals einfügt.
+**Hands-on Ergebnis:** Ein vollständiges Messebriefing-Dokument: Standthema mit Tagline, Botschaftshierarchie (Hero Message → 3 Supporting Messages), 3 Demo-Szenarien, Lead-Capture-Kriterien und eine 5-touchpoint-Nachfassstrategie.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Web Search
+**Vorgehen (4 Schritte):**
+1. Aktuelle Kampagnenthemen, Produktneuheiten und Zielgruppendefinition als Kontext bereitstellen; Web Search für aktuelle Messeschwerpunkte und Wettbewerber-Standkonzepte der letzten Ausgabe nutzen.
+2. Standthema und Tagline entwickeln: Muss die Hero Message des Quartals verkörpern und in unter 3 Sekunden verständlich sein.
+3. Drei Demo-Szenarien ausformulieren: je nach Besucherprofil (technischer Entscheider vs. kaufmännischer Entscheider vs. Endnutzer) mit spezifischen Gesprächseinstiegen.
+4. Nachfassstrategie im Canvas strukturieren: 5 Touchpoints (Dankes-E-Mail am Messetag, LinkedIn-Connect am Tag 2, inhaltliche Follow-up-E-Mail nach 3 Tagen, Sales-Call-Einladung nach 7 Tagen, Nurture-Eintritt nach 14 Tagen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Field-Marketing-Stratege für ein DACH-Industrieunternehmen. Wir präsentieren auf der Hannover Messe in der Halle Digitale Ökosysteme. Entwickle ein Standkonzept mit: (1) Standthema und Tagline (max. 7 Wörter), (2) Botschaftshierarchie (1 Hero Message + 3 Supporting Messages), (3) drei Demo-Szenarien für unterschiedliche Besucherprofile, (4) Lead-Qualifizierungs-Kriterien für das Standpersonal, (5) Nachfassstrategie mit 5 Touchpoints. Fokus auf Pipeline-Generierung, nicht auf Besucheranzahl."
+**Erwartetes Artefakt:** Messebriefing-Dokument im Canvas (ca. 4 Seiten), direkt übergabefähig an Messebauer, Standpersonal und den Vertrieb.
+**Fallstricke (≥2 spezifisch):**
+- Standthema wird zu abstrakt oder zu produktgetrieben → Hero Message muss immer aus einem Kundenproblem heraus formuliert werden, nicht aus Produktfeatures; im Prompt erzwingen: "Formuliere das Thema aus der Perspektive des Messebesuchers, nicht aus Unternehmenssicht."
+- Web Search liefert Konzepte vergangener Messen ohne Jahr-Filter → Immer aktuelles Jahr und Messeedition im Search-Query spezifizieren, um nicht veraltete Wettbewerber-Infos zu verwenden.
+**Anschluss-Szenario:** S-MP-054
+
+### S-MP-054 Analyst-Relations-Briefing für Gartner/Forrester vorbereiten
+
+**Wann nutzen (Trigger):** Ein Briefing mit einem Gartner- oder Forrester-Analysten steht in zwei Wochen an. Julia muss die Positionierung des Unternehmens im jeweiligen Magic Quadrant oder Wave vorbereiten, Kernbotschaften schärfen und ein durchgängiges Narrativ entwickeln, das Differenzierung gegenüber den im Report enthaltenen Wettbewerbern belegt. (Quelle: sources/10 S-082, S-087)
+**Strategisches Ziel:** Das Briefing so vorbereiten, dass das Unternehmen im nächsten Analystenbericht in eine stärkere Positionsklasse eingestuft wird — durch faktenbasierte Differenzierungsargumente, konkrete Kundennachweise und eine kohärente Produkt-Vision.
+**Hands-on Ergebnis:** Ein Analyst-Briefing-Deck-Entwurf (8–10 Folien, Gliederung vorgegeben) mit Kernaussagen je Bewertungsdimension (Completeness of Vision, Ability to Execute), belegten Differenzierungsargumenten und vorbereitetem Q&A-Dokument.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas, Web Search
+**Vorgehen (4 Schritte):**
+1. Letzten Analystenbericht des relevanten Reports als PDF in den Wissensordner laden; relevante Case Studies und Produkt-Release-Notes ergänzen.
+2. Web Search: Aktuelle Positionierung von Top-3-Wettbewerbern im betreffenden Analystensegment recherchieren; Differenzierungslücken identifizieren.
+3. Briefing-Deck im Canvas strukturieren: Executive Summary → Marktpositionierung → Produktvision → Kundennachweise (3 Case Studies mit messbarem ROI) → Roadmap-Preview.
+4. Q&A-Dokument erstellen: Die 10 kritischsten Fragen, die Analysten typischerweise stellen, mit vorbereiteten, belegten Antworten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Analyst-Relations-Manager für ein DACH-Enterprise-Software-Unternehmen. Wir briefen Gartner in 14 Tagen für den Magic Quadrant im Segment 'Cloud ERP'. Erstelle: (1) Gliederung des Briefing-Decks (8 Folien mit Titelvorschlägen), (2) Key Messages je Bewertungsdimension (Vision + Execution), (3) die 10 kritischsten Analyst-Fragen mit vorbereiteten Antworten. Alle Aussagen müssen mit konkreten Kunden-KPIs oder Feature-Releases belegt sein — keine Marketingversprechen ohne Nachweis."
+**Erwartetes Artefakt:** Briefing-Deck-Gliederung mit Kernbotschaften (Canvas) und ein separates Q&A-Dokument mit 10 Fragen und belegten Antworten.
+**Fallstricke (≥2 spezifisch):**
+- Briefing enthält ungesicherte Roadmap-Ankündigungen → Prompt muss explizit untersagen, Features zu nennen, die noch nicht öffentlich kommuniziert wurden; Legal-Freigabe für Roadmap-Aussagen ist Pflicht.
+- Differenzierungsargumente sind generisch ("führend in Innovation") → Wissensordner muss aktuelle Release Notes und messbare Customer-Success-Daten enthalten; jede Kernbotschaft muss mit einer Zahl oder einem Kundenzitat belegt sein.
+**Anschluss-Szenario:** S-MP-055
+
+### S-MP-055 B2B-Podcast-Episode planen und vorbereiten
+
+**Wann nutzen (Trigger):** Das Unternehmen betreibt einen DACH-B2B-Podcast und Julia muss die nächste Episode (Interview-Format oder Solo-Episode) von der Themenrecherche bis zum Recording-Briefing vollständig vorbereiten — inklusive Gastrecherche, Fragen-Framework, Intro-Skript und Shownotes-Vorlage. (Quelle: sources/10 S-081, S-088)
+**Strategisches Ziel:** Eine Podcast-Episode produzieren, die organischen Traffic auf spezifische Landingpages lenkt, das Thought-Leadership-Profil des Unternehmens in der DACH-Region stärkt und gleichzeitig als Basis für LinkedIn-Snippets und einen Blog-Artikel wiederverwendet werden kann.
+**Hands-on Ergebnis:** Ein vollständiges Episode-Briefing-Dokument: Themenframe mit SEO-Keyword-Bezug, 12 Interviewfragen (3 warm-up, 6 Kern, 3 Abschluss), Intro-Skript (60 Sek.), Outro mit CTA und eine Shownotes-Vorlage mit Zeitmarken-Struktur.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Canvas, Chat
+**Vorgehen (4 Schritte):**
+1. Web Search: Aktuell diskutierte Themen im Ziel-Segment recherchieren; überprüfen, ob das gewählte Thema von Wettbewerber-Podcasts bereits abgedeckt wurde (Differenzierungscheck).
+2. Gastprofil recherchieren (falls Interview): Letzten drei Veröffentlichungen, LinkedIn-Posts und bekannte Positionen des Gastes; Fragen auf dessen spezifische Expertise zuschneiden.
+3. 12 Interviewfragen im Canvas entwickeln: Von allgemeinen Kontextfragen über provokative Kernfragen bis zu handlungsorientierten Abschlussfragen.
+4. Intro-Skript, Outro mit CTA und Shownotes-Vorlage im selben Canvas-Dokument zusammenführen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Podcast-Produzent für ein DACH-B2B-Tech-Unternehmen. Wir planen eine Episode über 'KI-Adoption in mittelständischen Industrieunternehmen'. Der Gast ist ein CDO eines mittelständischen Maschinenbauers. Erstelle: (1) 12 Interviewfragen (3 Warm-up, 6 Kern, 3 Abschluss), (2) ein 60-Sekunden-Intro-Skript für den Host, (3) ein Outro mit zwei CTAs (Shownotes + Demo-Anfrage), (4) eine Shownotes-Vorlage mit Zeitmarken. Ton: professionell, aber nicht trocken — kein Unternehmens-PR-Sprecher-Stil."
+**Erwartetes Artefakt:** Episode-Briefing-Dokument im Canvas (ca. 3 Seiten) mit allen vier Komponenten, direkt verwendbar für Recording-Vorbereitung und Post-Production.
+**Fallstricke (≥2 spezifisch):**
+- Interviewfragen zu produktnah formuliert → Podcast-Inhalte mit offensichtlichem Verkaufsinteresse verlieren Hörer; Prompt muss fordern: "Mindestens 8 der 12 Fragen dürfen keinen direkten Produktbezug haben — Fokus auf Branchenerkenntnisse."
+- Thema bereits von führenden Branchenpodcasts erschöpfend behandelt → Web Search muss explizit auf Duplikat-Check ausgerichtet werden: "Suche nach den letzten 5 Podcast-Episoden zu diesem Thema und identifiziere den noch nicht besetzten Blickwinkel."
+**Anschluss-Szenario:** S-MP-056
+
+### S-MP-056 Customer-Success-Story-Pipeline aufbauen
+
+**Wann nutzen (Trigger):** Das Marketing hat zu wenige aktuelle Kundenstimmen und Case Studies für Vertrieb, Website und Award-Bewerbungen. Julia muss systematisch eine Pipeline von Kandidaten identifizieren, priorisieren und den Produktionsprozess von der Anfrage bis zur freigegebenen Case Study strukturieren. (Quelle: sources/10 S-084, S-092)
+**Strategisches Ziel:** Innerhalb eines Quartals sechs neue, vertikal differenzierte Customer Success Stories in Produktion bringen — nach klaren Auswahlkriterien priorisiert und mit einem schlanken, kundenfreundlichen Produktionsprozess, der die Interviewbereitschaft erhöht.
+**Hands-on Ergebnis:** Ein Customer-Story-Pipeline-Dokument mit: (1) priorisierter Kandidatenliste (nach Branche, ROI-Stärke und strategischem Wert), (2) Interview-Leitfaden mit 10 Fragen, (3) Story-Template für die Textproduktion, (4) Freigabe-Workflow-Checkliste.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. CRM-Export der Bestandskunden (Branche, NPS-Score, ARR, Produkt-Adoption) als CSV in den Data Analyst laden; KI-gestützte Priorisierung nach definierten Story-Kriterien (hoher NPS, messbaree ROI, Branchenrelevanz, fehlende Vertical-Abdeckung).
+2. Top-10-Kandidatenliste mit Begründung je Kandidat erstellen; Customer-Success-Manager erhält diese als Anfrage-Priorisierungsgrundlage.
+3. Interview-Leitfaden mit 10 Fragen generieren: Vor-Situation → Entscheidungsmoment → Implementierungserfahrung → messbare Ergebnisse → Empfehlungsbereitschaft.
+4. Story-Template im Canvas erstellen: Headline → Challenge → Solution → Results (mit Kennzahlen-Platzhaltern) → Quote → CTA; Freigabe-Workflow-Checkliste mit Verantwortlichkeiten anhängen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Customer-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Erstelle: (1) Auswahlkriterien für Story-Kandidaten (5 Kriterien mit Gewichtung), (2) einen Interview-Leitfaden mit 10 Fragen für ein 30-minütiges Gespräch, (3) ein Story-Template (Headline + 4 Abschnitte mit Schreibanweisungen und Kennzahlen-Platzhaltern), (4) eine Freigabe-Checkliste (Schritte: Entwurf → Kundenfreigabe → Legal-Check → Veröffentlichung). Ton des Templates: konkret, kennzahlengetrieben, keine Adjektiv-Wüste."
+**Erwartetes Artefakt:** Pipeline-Dokument im Canvas mit allen vier Komponenten; priorisierte Kandidatentabelle als separates CSV aus dem Data Analyst.
+**Fallstricke (≥2 spezifisch):**
+- KI-generiertes Story-Template klingt nach Werbepros statt nach echtem Kundenbericht → Prompt muss fordern: "Das Template muss so gestaltet sein, dass der Leser vergisst, dass es ein Unternehmensmedium ist — Kundenstimme steht immer vor Produktbeschreibung."
+- Kandidatenliste basiert nur auf NPS ohne wirtschaftliche Relevanz → Data-Analyst-Priorisierung muss ARR und strategische Vertikalabdeckung als Gewichtungsfaktoren enthalten, damit die Stories tatsächlich für Sales-Situationen brauchbar sind.
+**Anschluss-Szenario:** S-MP-057
+
+### S-MP-057 Internes Marketing-Team-Newsletter erstellen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktion will alle zwei Wochen einen internen Newsletter ("Marketing Pulse") herausgeben, der das verteilte Marketing-Team (Content, Performance, Events, PR, Operations) über Kampagnenergebnisse, Learnings, neue Ressourcen und strategische Prioritäten informiert — ohne dass Julia jedes Mal stundenlang Einzelinformationen zusammensucht. (Quelle: sources/10 S-083, S-099)
+**Strategisches Ziel:** Den Informationsstand und das strategische Alignment im Marketing-Team erhöhen und gleichzeitig eine Lernkultur etablieren, in der Best Practices und Fails systematisch geteilt werden — bei minimalem Redaktionsaufwand für die Marketing-Direktion.
+**Hands-on Ergebnis:** Eine wiederverwendbare Newsletter-Vorlage im Canvas plus ein Workflow, der die relevanten Performance-Daten (aus GA4, HubSpot, Google Ads) automatisch als Rohentwurf aufbereitet, der nur noch redigiert werden muss.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Workflows, Data Analyst
+**Vorgehen (4 Schritte):**
+1. Newsletter-Template im Canvas definieren: Feste Rubriken (Kampagnen-Highlight, Zahl der Woche, Tool-Tipp, Team-Lernen, Nächste Prioritäten) mit Schreibanweisungen pro Rubrik.
+2. Scheduled Workflow einrichten: Jede zweite Woche automatisch Performance-Daten (GA4-Export, HubSpot-Metriken) via HTTP-Request abrufen und in den Data Analyst zur Zusammenfassung senden.
+3. Agent fasst die Rohdaten in die passenden Rubriken des Templates zusammen; der Entwurf landet im Canvas zur Revision durch Julia.
+4. Human-in-the-Loop-Schritt definieren: Julia fügt "Team-Lernen" und "Nächste Prioritäten" manuell ein — diese Rubriken nicht durch KI befüllen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Redakteur des internen Marketing-Newsletters 'Marketing Pulse'. Erstelle eine Vorlage für eine zweiwöchige Ausgabe mit fünf Rubriken: (1) Kampagnen-Highlight der Woche (max. 80 Wörter), (2) Zahl der Woche (eine Kennzahl mit Kontext), (3) Tool-Tipp (150 Wörter), (4) Was haben wir gelernt? (anonymisierter Erfahrungsbericht, 100 Wörter), (5) Nächste Prioritäten (3 Bulletpoints). Ton: kollegial, direkt, kein Unternehmens-PR-Stil. Jede Rubrik enthält eine Schreibanweisung in Klammern."
+**Erwartetes Artefakt:** Wiederverwendbares Newsletter-Template im Canvas mit Schreibanweisungen pro Rubrik, plus Workflow-Beschreibung für die automatisierte Datenbefüllung.
+**Fallstricke (≥2 spezifisch):**
+- Alle Rubriken durch KI befüllen lassen → Der Newsletter verliert Authentizität und wird zur reinen Datenliste; strategische Rubriken (Learnings, Prioritäten) müssen immer durch die Marketing-Direktion persönlich befüllt werden.
+- Workflow liest veraltete Daten, weil Report-URLs sich geändert haben → HTTP-Request-URLs im Workflow müssen versioniert und quartalsweise geprüft werden; Fallback-Schritt einbauen, der auf fehlende Daten mit einem Platzhalter-Hinweis reagiert.
+**Anschluss-Szenario:** S-MP-058
+
+### S-MP-058 Budget-Umverteilungsmemo für die Geschäftsführung erstellen
+
+**Wann nutzen (Trigger):** Mitte des Quartals zeigen Performance-Daten, dass ein oder mehrere Kanäle (z. B. Paid Social, Events) deutlich unter Plan laufen, während ein anderer Kanal (z. B. SEO-generierter Content, Performance Max) überperformt. Julia muss einen datengestützten Antrag für eine Budgetumverteilung erstellen, der den CFO überzeugt und innerhalb von 48 Stunden genehmigt werden kann. (Quelle: sources/10 S-109, S-113)
+**Strategisches Ziel:** Eine fundierte, schnell verständliche Entscheidungsvorlage erstellen, die die Budgetumverteilung mit Ist-Daten, Prognosen und einer Risikobewertung belegt — so dass die Geschäftsführung ohne weitere Rückfragen entscheiden kann.
+**Hands-on Ergebnis:** Ein einseitiges Budget-Umverteilungsmemo für die Geschäftsführung mit: aktueller Ist-Situation (Kanal-Performance vs. Plan), Umverteilungsvorschlag mit Beträgen und Begründung, Prognose-Szenario (Best/Base/Worst Case) und einer Empfehlung mit Risikobewertung.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Canvas, Chat
+**Vorgehen (4 Schritte):**
+1. Aktuellen Kanal-Performance-Report (CSV aus Google Ads, Meta, HubSpot) in den Data Analyst laden; KI berechnet Ist vs. Plan je Kanal und identifiziert die stärksten Abweichungen.
+2. Umverteilungsvorschlag entwickeln: Welche Kanäle werden reduziert, welche aufgestockt? Data Analyst erstellt eine lineare Prognose für den verbleibenden Quartalszeitraum unter dem neuen Budget-Mix.
+3. Drei Szenarien (Best/Base/Worst Case) für den neuen Mix im Canvas strukturieren — mit erwarteten Pipeline-Auswirkungen je Szenario.
+4. Einseitiges Memo im CFO-Stil verfassen: Fakten zuerst, Empfehlung klar markiert, Risikobewertung am Ende — kein Marketingsprech.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Head of Marketing Finance. Ich lade dir den aktuellen Performance-Report hoch. Erstelle ein einseitiges Budget-Umverteilungsmemo für den CFO: (1) Ist-Performance der vier Hauptkanäle vs. Plan (Tabelle), (2) Umverteilungsvorschlag (konkrete Euro-Beträge), (3) drei Szenarien (Best/Base/Worst Case) mit erwarteter Pipeline-Auswirkung, (4) Empfehlung in einem Satz mit Risikobewertung (Niedrig/Mittel/Hoch). Stil: Executive Summary, kein Marketingsprech, kein Passiv."
+**Erwartetes Artefakt:** Einseitiges Budget-Umverteilungsmemo (Canvas) mit Ist-Tabelle, Umverteilungsvorschlag, Drei-Szenarien-Übersicht und klarer Empfehlung — zur direkten Vorlage beim CFO.
+**Fallstricke (≥2 spezifisch):**
+- Lineare Prognose unterschätzt saisonale Effekte → Data Analyst muss explizit auf Saisonalität hingewiesen werden (z. B. Weihnachtsgeschäft, Messesaison); Prompt muss fordern: "Erkenne und dokumentiere, wenn die linearen Projektionen durch bekannte saisonale Muster verzerrt sein könnten."
+- Memo überfrachtet mit Details statt auf eine Seite zu destillieren → Längenrestriktion im Prompt hard-coden: "Das gesamte Dokument darf nicht länger als 400 Wörter sein — priorisiere Entscheidungsrelevanz über Vollständigkeit."
+**Anschluss-Szenario:** S-MP-059
+
+### S-MP-059 Marketing-Team-OKR-Dokumentation erstellen
+
+**Wann nutzen (Trigger):** Beginn eines neuen Quartals oder Halbjahres: Julia muss die OKRs des Marketing-Teams aus strategischen Unternehmenszielen ableiten, mit messbaren Key Results hinterlegen und in einem Format dokumentieren, das für alle Stakeholder (GF, HR, Team) transparent und nachvollziehbar ist. (Quelle: sources/12 FAQ-Analyse; sources/10 S-098, S-097)
+**Strategisches Ziel:** Klare, kaskadierte Marketing-OKRs entwickeln, die direkt auf Unternehmens-OKRs einzahlen, SMART-Kriterien erfüllen und als lebendiges Steuerungsinstrument für das Quartal dienen — nicht als einmalige Dokumentationsübung.
+**Hands-on Ergebnis:** Ein vollständiges OKR-Dokument für das Marketing-Team mit: (1) 3 Objectives mit je 3–4 Key Results, (2) Gewichtung und Ownership-Zuweisung je Key Result, (3) Weekly-Check-in-Template, (4) Ampelbewertungs-Rubrik für den Quartalsabschluss.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Unternehmens-OKRs und Marketing-Strategie-Dokument in den Wissensordner laden; aus diesen Quellen die Top-3-strategischen Prioritäten für Marketing ableiten lassen.
+2. Für jede Priorität ein Objective formulieren: ambitioniert, qualitativ, inspirierend — kein Prozessziel, sondern ein Ergebnisziel.
+3. Je Objective 3–4 Key Results mit numerischen Zielwerten, Baselines, Messmethoden und klarer Ownership entwickeln.
+4. Weekly-Check-in-Template und Ampelbewertungs-Rubrik (Grün: ≥70 % Zielerreichung; Gelb: 40–69 %; Rot: <40 %) im Canvas als wiederverwendbare Vorlage anhängen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist OKR-Coach für das Marketing-Team eines DACH-B2B-Unternehmens. Das übergeordnete Unternehmensziel ist Umsatzwachstum von 25 % im kommenden Jahr. Entwickle 3 Marketing-Objectives, die direkt auf dieses Ziel einzahlen. Je Objective: 3 Key Results mit SMART-Zielwerten (Baseline und Target), Messmethode und Owner-Rolle. Anschließend: ein Weekly-Check-in-Template (max. 5 Fragen) und eine Ampelbewertungs-Rubrik. Kein Prozessdenkmal — alle Key Results müssen einen messbaren Outcome benennen."
+**Erwartetes Artefakt:** OKR-Dokument im Canvas (3 Objectives × 3–4 Key Results mit Ownership und Messmethode), Weekly-Check-in-Template und Ampelrubrik — zum direkten Start des Quartals.
+**Fallstricke (≥2 spezifisch):**
+- Key Results beschreiben Aktivitäten statt Ergebnisse ("X Blogposts erstellen" statt "organischer Traffic um 30 % steigern") → Prompt muss Aktivitäts-KRs explizit zurückweisen: "Ein Key Result ist nur valide, wenn es den Zustand des Unternehmens beschreibt, nicht die Handlung des Teams."
+- OKRs werden zu ambitioniert gesetzt und erzeugen demotivierende Frustration → Im Prompt den Benchmark einfordern: "Kalibriere jeden Zielwert so, dass er bei 70 % Erreichung als Erfolg gilt — Stretch Goals müssen erreichbar-anspruchsvoll sein, nicht illusorisch."
+**Anschluss-Szenario:** S-MP-060
+
+### S-MP-060 DACH-Feiertagskampagnen-Kalender erstellen
+
+**Wann nutzen (Trigger):** Das Marketing-Team plant die Kampagnenaktivitäten für das kommende Quartal oder Jahr und muss berücksichtigen, dass in der DACH-Region die Feiertage zwischen Deutschland, Österreich und der Schweiz erheblich abweichen — sowohl in Datum als auch in kommerzieller Relevanz. Fehlt ein DACH-spezifischer Feiertags-Kampagnenkalender, werden Kampagnen entweder an falschen Tagen oder komplett ohne regionale Differenzierung ausgespielt. (Quelle: sources/12 D-Wissensordner & RAG; sources/10 S-086, S-088)
+**Strategisches Ziel:** Einen vollständigen, länderspezifisch differenzierten DACH-Feiertagskampagnen-Kalender erstellen, der Kampagnenzeitfenster, inhaltliche Schwerpunkte und kanalspezifische Ausspielungsfenster je Land vordefiniert — als operative Grundlage für die gesamte Kampagnenplanung des Teams.
+**Hands-on Ergebnis:** Ein DACH-Feiertagskampagnen-Kalender als tabellarisches Canvas-Dokument: alle relevanten Feiertage je Land (DE/AT/CH) mit Kampagnenrelevanz-Bewertung (Hoch/Mittel/Niedrig), empfohlenem Content-Typ, vorgeschlagenem Ausspielungsfenster (Vorlauf + Peak + Nachklang) und einer Spalte für geplante Kampagnen-Verknüpfung.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Canvas, Chat
+**Vorgehen (5 Schritte):**
+1. Web Search: Vollständige Liste der gesetzlichen und kommerziell relevanten Feiertage für DE, AT und CH für das relevante Jahr abrufen — inklusive regionaler Varianten (z. B. Fronleichnam nur in bestimmten deutschen Bundesländern).
+2. Feiertage nach kommerzieller Kampagnenrelevanz bewerten: Hoch (Weihnachten, Ostern, Muttertag, Black Friday, Nationalfeiertage AT/CH), Mittel (Tag der Deutschen Einheit, Mariä Himmelfahrt AT), Niedrig oder nicht relevant.
+3. Je Feiertag Kampagnenparameter definieren: empfohlener Vorlauf (Tage vor Feiertag), Peak-Phase (Feiertag ±1 Tag), Nachklang (3–7 Tage danach), bevorzugte Kanäle (E-Mail, Social, Paid).
+4. Länderspezifische Differenzierungen dokumentieren: Österreichische und Schweizer Feiertage, die in Deutschland nicht existieren (z. B. Nationalfeiertag CH am 1. August, Stefanitag AT am 26. Dezember); Hinweis auf sprachlich-kulturelle Anpassungspflicht (kein "ß" in CH).
+5. Kalender im Canvas als Tabelle zusammenstellen; Export-Hinweis für Google Calendar oder Notion ergänzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DACH-Kampagnenplaner für ein B2B-Unternehmen mit Kunden in Deutschland, Österreich und der Schweiz. Erstelle einen vollständigen Feiertagskampagnen-Kalender für das Jahr 2026. Tabellenstruktur: Datum | Feiertag | Land (DE/AT/CH/alle) | Kampagnenrelevanz (Hoch/Mittel/Niedrig) | empfohlener Content-Typ | Vorlauf-Tage | Peak-Phase | Nachklang-Tage | Kanal-Empfehlung. Nutze Web Search für vollständige und korrekte Feiertage je Land. Markiere Feiertage, die nur in bestimmten Bundesländern gelten, explizit."
+**Erwartetes Artefakt:** Vollständiger DACH-Feiertagskampagnen-Kalender 2026 als strukturierte Tabelle im Canvas — direkt nutzbar als Planungsgrundlage für alle Kanal-Teams.
+**Fallstricke (≥2 spezifisch):**
+- Feiertage ohne regionalen Differenzierungshinweis → Fronleichnam, Allerheiligen und andere Feiertage gelten nur in ausgewählten Bundesländern; Prompt muss fordern: "Markiere alle bundesland- oder kantonsabhängigen Feiertage explizit — keine gesamtdeutsche Verallgemeinerung."
+- Kampagnenkalender ignoriert die unterschiedliche Bedeutung von Feiertagen für B2B vs. B2C → Im B2B-DACH-Kontext sind Feiertage vor allem als Ausspiel-Pausen (keine Mails an Feiertagen) und als Themen-Anlässe für inhaltlich passende Content-Pieces relevant, nicht als Sales-Push-Momente; Prompt muss diese B2B-Perspektive explizit einfordern.
 **Anschluss-Szenario:** S-MP-001
 
 ## Hinweise & Quellen-Konflikte

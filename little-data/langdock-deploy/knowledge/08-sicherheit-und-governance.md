@@ -907,3 +907,288 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 - Das Maturity-Assessment wird zu optimistisch ausgefüllt, weil die Bewertenden auch die Implementierenden sind — Mitigation: einen externen Reviewer (CISO oder unabhängigen Berater) als Gegenperspektive einbeziehen und Belege für jede Stufen-Einstufung verlinken.
 - Die 12-Monats-Roadmap enthält zu viele Maßnahmen und wird unrealistisch — Mitigation: auf maximal drei Maßnahmen je Dimension beschränken und jede mit einem realistischen Budget-Rahmen versehen, damit der Vorstand priorisieren kann.
 **Anschluss-Szenario:** S-SG-046
+
+### S-SG-046 PII in Marketing-Prompts erkennen und maskieren, bevor sie das Modell erreichen
+
+**Wann nutzen (Trigger):** Das Marketing-Team kopiert routinemäßig CRM-Exporte mit echten Kundennamen, E-Mail-Adressen und Telefonnummern in Langdock-Prompts, um Personalisierungs-Vorlagen zu testen — der Datenschutzbeauftragte moniert, dass die PII-Verarbeitung nicht als Verarbeitungszweck im AVV steht. (Quelle: sources/12 Q128, A-14)
+**Strategisches Ziel:** Einen PII-Erkennungs-und-Maskierungs-Workflow etablieren, der personenbezogene Daten vor dem Modell-Aufruf pseudonymisiert — damit Kampagnen-Prompts DSGVO-konform bleiben, ohne den Personalisierungsnutzen zu verlieren.
+**Hands-on Ergebnis:** Eine PII-Maskierungs-Richtlinie mit Erkennungs-Checkliste, Pseudonymisierungs-Konventionen und einem Langdock-Workflow-Schritt zur automatisierten Maskierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow Builder (Preprocessing-Schritt mit Regex/LLM-PII-Filter vor dem eigentlichen Agent-Aufruf); Canvas / Document Editor für die Richtlinie; Knowledge (Wissensordner) für DSGVO-Art.-4-PII-Definition und interne Datenklassifikation.
+**Vorgehen (4 Schritte):**
+1. PII-Kategorien im Marketing-Kontext inventarisieren: direkte Identifikatoren (Name, E-Mail, Telefon, Kundennummer) und indirekte (Kaufverhalten-Kombination, IP-Adressen in Analytics-Exporten).
+2. Maskierungs-Konventionen festlegen: Namen → "{{KUNDE_01}}", E-Mails → "{{EMAIL_01}}", Telefon → "{{TEL_01}}"; konsistente Platzhalter, damit die Prompt-Logik erhalten bleibt.
+3. Einen Workflow-Preprocessing-Schritt konfigurieren: Eingehender Text wird durch einen LLM-PII-Detektions-Aufruf (z. B. mit niedrig-temperiertem Flash-Modell) geleitet, der PII durch Platzhalter ersetzt, bevor der Haupt-Agent den Prompt erhält.
+4. Die Richtlinie im Wissensordner ablegen und als Pflicht-Onboarding-Modul für das Champion-Programm (S-SG-042) verankern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Datenschutz-Workflow-Berater. Erstelle eine PII-Maskierungs-Richtlinie für Marketing-Prompts in Langdock. Kontext: CRM-Exporte mit echten Kundendaten werden in Prompts kopiert, AVV deckt diese Verarbeitung nicht ab. Format: Richtlinie mit PII-Kategorienliste, Maskierungs-Konventionen (Platzhaltertabelle) und Workflow-Preprocessing-Schritt-Beschreibung. Nutze die DSGVO-Art.-4-Definition und interne Datenklassifikation aus dem Wissensordner."
+**Erwartetes Artefakt:** PII-Maskierungs-Richtlinie mit Kategorienliste, Platzhalter-Konventionen und beschriebenem Workflow-Preprocessing-Schritt.
+**Fallstricke (≥2 spezifisch):**
+- Der PII-Erkennungs-Schritt selbst verarbeitet die Rohdaten mit PII im Modell und erzeugt so den Datenschutzproblem, das er lösen soll — Mitigation: den Maskierungs-Schritt regelbasiert (Regex) oder lokal (on-premise NER-Modell) ausführen, nicht über einen Cloud-LLM-Aufruf mit PII.
+- Pseudonymisierte Platzhalter werden nicht in Ausgaben rückverfolgt, sodass personalisierte Ergebnisse nicht den richtigen Empfängern zugeordnet werden können — Mitigation: ein Mapping-Dokument (Platzhalter ↔ Originalwert) sicher und getrennt vom Prompt-Flow aufbewahren.
+**Anschluss-Szenario:** S-SG-047
+
+### S-SG-047 Datenklassifikations-Framework für Marketing-Daten einführen
+
+**Wann nutzen (Trigger):** Der CISO stellt fest, dass Marketing-Mitarbeitende unveröffentlichte Kampagnen-Strategien, öffentliche Wettbewerber-Analysen und Kundenlisten alle gleich behandeln und in denselben Wissensordner laden — ein fehlendes Klassifikations-Framework führt zu unkontrolliertem Datenzugriff. (Quelle: sources/12 Q126, ISO 27001 A.8)
+**Strategisches Ziel:** Ein praxistaugliches Datenklassifikations-Framework für Marketing-Daten einführen, das vier Schutzklassen definiert, die zulässigen Langdock-Verarbeitungsschritte je Klasse festlegt und die Wissensordner-Struktur neu ordnet.
+**Hands-on Ergebnis:** Ein Datenklassifikations-Framework-Dokument mit vier Schutzklassen, Beispielen aus dem Marketing-Alltag und einer Wissensordner-Strukturvorlage je Klasse.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Framework; Knowledge (Wissensordner) für ISO-27001-A.8-Anforderungen, bestehende IT-Datenklassifikationsrichtlinie und RBAC-Konfiguration (S-SG-005).
+**Vorgehen (4 Schritte):**
+1. Vier Schutzklassen mit Marketing-Beispielen definieren: Öffentlich (veröffentlichte Pressemitteilungen, Public-Case-Studies), Intern (Agentur-Briefings, Styleguides), Vertraulich (unveröffentlichte Kampagnen-Strategien, Budgetpläne), Streng vertraulich (M&A-relevante Kommunikation, Personalentscheidungen).
+2. Je Schutzklasse die zulässigen Langdock-Operationen festlegen: Öffentlich = alle Agenten, keine Einschränkung; Intern = nur genehmigte Mitarbeiter-Gruppen; Vertraulich = Owner/Editor-Rollen, kein Viewer-Zugriff für externe Parteien; Streng vertraulich = kein Upload in Langdock ohne explizite CISO-Freigabe.
+3. Die Wissensordner-Struktur neu definieren: je Schutzklasse ein separater Ordner mit entsprechendem RBAC-Zugriffsmodell.
+4. Den Klassifikations-Entscheidungsbaum als Onboarding-Pflichtlektüre im Champion-Curriculum (S-SG-042) verankern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Information-Security-Berater. Erstelle ein Datenklassifikations-Framework für Marketing-Daten in Langdock. Kontext: Vier Schutzklassen erforderlich, Wissensordner-Struktur muss neu geordnet werden. Format: Dokument mit Klassifikationstabelle (Klasse, Beschreibung, Marketing-Beispiele, erlaubte Langdock-Operationen) und Wissensordner-Strukturvorlage. Stütze dich auf ISO-27001-A.8 und die IT-Datenklassifikationsrichtlinie im Wissensordner."
+**Erwartetes Artefakt:** Datenklassifikations-Framework mit vier Schutzklassen, Marketing-Beispielen und Wissensordner-Strukturvorlage je Klasse.
+**Fallstricke (≥2 spezifisch):**
+- Mitarbeitende klassifizieren Dokumente zu niedrig, um Zugangsbeschränkungen zu umgehen — Mitigation: die Klassifikation stichprobenartig durch Champion-Reviews prüfen und Fehlklassifikationen als Lernfall kommunizieren, nicht als Disziplinarmaßnahme.
+- Die vier Klassen werden zu feinkörnig und der Aufwand lähmt die tägliche Arbeit — Mitigation: zwei klare Entscheidungsfragen für den Alltag formulieren ("Würde mich dieser Inhalt belasten, wenn er öffentlich wird?" und "Enthält er unveröffentlichte Unternehmensstrategien?") als schnellen Filter.
+**Anschluss-Szenario:** S-SG-048
+
+### S-SG-048 Privacy-by-Design-Nachweis für neue KI-Features erbringen
+
+**Wann nutzen (Trigger):** Das Produktteam will eine neue Personalisierungs-Funktion auf Basis von Langdock-Agenten einführen, die Nutzungsverhalten aus dem CRM auswertet — der Datenschutzbeauftragte verlangt einen Privacy-by-Design-Nachweis (Art. 25 DSGVO), bevor die Feature-Entwicklung beginnt. (Quelle: sources/12 Q128, A-13)
+**Strategisches Ziel:** Privacy-by-Design nicht als nachträglichen Audit-Schritt, sondern als integralen Bestandteil des Feature-Entwicklungsprozesses etablieren — mit einer standardisierten Vorlage, die das Team vor der ersten Codezeile durchläuft.
+**Hands-on Ergebnis:** Eine Privacy-by-Design-Checkliste für neue KI-Features mit acht Prinzipien, Ampel-Bewertung und dokumentiertem Nachweis je Prinzip.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Checkliste; Knowledge (Wissensordner) für die sieben Privacy-by-Design-Prinzipien nach Cavoukian, Art.-25-DSGVO-Anforderungen und die DSFA-Vorlage (S-SG-002).
+**Vorgehen (4 Schritte):**
+1. Die acht Bewertungsdimensionen definieren: die sieben Cavoukian-Prinzipien (Proaktivität, Datenschutz als Standard, Datenschutz eingebettet, volle Funktionalität, End-to-end-Sicherheit, Sichtbarkeit, Nutzerorientierung) plus als achtes die Langdock-spezifische Dimension "Modell-Trainingsausschluss nachgewiesen".
+2. Je Dimension die konkrete Umsetzung im geplanten Feature beschreiben: z. B. "Datenschutz als Standard = segmentierte Kundendaten werden vor Übergabe an Agent pseudonymisiert (vgl. S-SG-046)".
+3. Die Ampel-Bewertung vornehmen: grün = vollständig implementiert und belegt; gelb = implementiert, Nachweis noch ausstehend; rot = nicht implementiert, Blocker vor Feature-Launch.
+4. Die ausgefüllte Checkliste als Pflicht-Anhang an das DSFA-Dokument (S-SG-002) knüpfen und vom Datenschutzbeauftragten gegenzeichnen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Privacy-by-Design-Berater. Erstelle eine PbD-Checkliste für unser neues KI-Personalisierungs-Feature. Kontext: Feature wertet CRM-Nutzungsverhalten aus, Art.-25-DSGVO-Nachweis erforderlich. Format: Checkliste mit acht Dimensionen (sieben Cavoukian-Prinzipien plus Langdock-Trainingsausschluss), je Dimension Ampel und Nachweis-Feld. Stütze die Prinzipien auf Art. 25 und die DSFA-Vorlage aus dem Wissensordner."
+**Erwartetes Artefakt:** Privacy-by-Design-Checkliste mit acht Dimensionen, Ampel-Bewertung und dokumentiertem Nachweis-Feld je Prinzip.
+**Fallstricke (≥2 spezifisch):**
+- Privacy-by-Design wird als einmaliger Stempel behandelt, obwohl sich das Feature-Design während der Entwicklung ändert — Mitigation: einen Re-Review-Trigger bei wesentlichen Design-Änderungen in die Checkliste aufnehmen.
+- Die Checkliste wird intern als Bürde wahrgenommen und sabotiert, indem alle Punkte pauschal auf "grün" gesetzt werden — Mitigation: die Checkliste durch den Datenschutzbeauftragten stichprobenartig im Review prüfen lassen und Gegensignatur als Pflicht verankern.
+**Anschluss-Szenario:** S-SG-049
+
+### S-SG-049 Zugriffs-Review-Kadenz für den Langdock-Workspace einrichten
+
+**Wann nutzen (Trigger):** Das ISO-27001-Audit zeigt, dass seit dem Go-live vor zwölf Monaten keine systematische Überprüfung der Workspace-Zugriffsrechte stattgefunden hat — mehrere ausgeschiedene Mitarbeitende haben noch aktive Viewer-Rollen auf sensiblen Wissensordnern, obwohl ihr SCIM-Account deaktiviert ist. (Quelle: ISO 27001 A.9, S-SG-005)
+**Strategisches Ziel:** Eine wiederkehrende Zugriffs-Review-Kadenz etablieren, die RBAC-Konfigurationen quartalsweise mit dem aktuellen SCIM-Stand abgleicht und Über-Berechtigungen systematisch bereinigt — bevor sie im nächsten Audit auffallen.
+**Hands-on Ergebnis:** Ein Zugriffs-Review-Protokoll mit Schritt-für-Schritt-Vorgehen, Verantwortlichkeits-Matrix und Eskalationspfad für gefundene Anomalien.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Protokoll; Knowledge (Wissensordner) für den RBAC-Ist-Zustand-Export, SCIM-Konfigurationsdokumentation (S-SG-007) und ISO-27001-A.9-Anforderungen.
+**Vorgehen (4 Schritte):**
+1. Den Review-Scope definieren: alle Ressourcen-Ebenen (Workspace, Folder, Agent, Workflow) und alle Rollen-Typen (Owner, Editor, Viewer, Admin); Frequenz quartalsweise plus ad hoc nach größeren Personalwechseln.
+2. Den Abgleich-Prozess beschreiben: SCIM-Gruppenmitgliedschaft aus Entra ID exportieren → Langdock-Rollen-Export → Delta-Vergleich → Anomalie-Liste (Benutzer in Langdock ohne aktiven SCIM-Account; höhere Rolle als Gruppen-Mapping vorsieht).
+3. Die Verantwortlichkeits-Matrix erstellen: Review-Durchführung (IT-Admin), Freigabe-Entscheidung bei Anomalien (CISO), Kommunikation an Betroffene (Marketing-Direktion).
+4. Den Eskalationspfad für kritische Anomalien definieren: aktiver Langdock-Account ohne SCIM-Eintrag → sofortige Deaktivierung ohne Wartezeit auf regulären Review-Zyklus.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein IAM-Governance-Berater. Erstelle ein Zugriffs-Review-Protokoll für unseren Langdock-Marketing-Workspace. Kontext: ISO-Audit hat veraltete Rollen aufgedeckt, quartalsweiser Review erforderlich. Format: Protokoll mit Schritten (Review-Scope, Abgleich-Prozess, Verantwortlichkeits-Matrix, Eskalationspfad) und einer Anomalie-Klassifikationstabelle. Nutze SCIM-Konfigurationsdokumentation und ISO-27001-A.9 aus dem Wissensordner."
+**Erwartetes Artefakt:** Zugriffs-Review-Protokoll mit Abgleich-Prozess, Verantwortlichkeits-Matrix und Eskalationspfad für Anomalie-Klassen.
+**Fallstricke (≥2 spezifisch):**
+- Der Review wird nur auf Workspace-Ebene durchgeführt und lässt Agenten- und Folder-spezifische Berechtigungen aus — Mitigation: alle vier Ressourcen-Ebenen explizit im Protokoll als Pflicht-Scope verankern.
+- Deaktivierte SCIM-Accounts erscheinen nicht im Langdock-Rollen-Export, wenn die SCIM-Provisionierung fehlerhaft konfiguriert war — Mitigation: den Abgleich sowohl von Langdock aus (aktive Rollen) als auch von Entra ID aus (aktive Accounts) bidirektional durchführen.
+**Anschluss-Szenario:** S-SG-050
+
+### S-SG-050 Insider-Bedrohungsrisiken für KI-Admin-Accounts bewerten
+
+**Wann nutzen (Trigger):** Der CISO fragt nach einer strukturierten Bewertung des Insider-Bedrohungsrisikos für die Langdock-Workspace-Administratoren im Marketing — ein Workspace-Admin könnte im Worst Case alle Agenten-System-Prompts exportieren, RBAC deaktivieren oder den AVV kündigen, ohne dass ein Gegencheck existiert. (Quelle: ISO 27001 A.7, A-36)
+**Strategisches Ziel:** Das privilegierte Zugangsrisiko für Workspace-Admins durch das Vier-Augen-Prinzip, minimale Admin-Accounts und Audit-Log-Alarme auf Admin-Aktionen auf ein akzeptables Niveau reduzieren.
+**Hands-on Ergebnis:** Ein Insider-Threat-Mitigation-Dokument für KI-Admin-Accounts mit Vier-Augen-Regelung, minimaler Admin-Zahl und konfigurierten Audit-Alarm-Szenarien.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Mitigation-Dokument; Knowledge (Wissensordner) für die Audit-Logs-Dokumentation (S-SG-008), RBAC-Konfiguration und ISO-27001-A.9.2-Anforderungen (privilegierter Zugang).
+**Vorgehen (4 Schritte):**
+1. Das Admin-Aktions-Spektrum inventarisieren: Rechnungsverwaltung, SSO-Konfiguration ändern, API-Schlüssel erstellen/löschen, Workspace-weite Modell-Limits setzen, AVV kündigen — je Aktion das Schadenpotenzial einschätzen.
+2. Das Vier-Augen-Prinzip für kritische Admin-Aktionen definieren: Änderungen an SSO/SCIM-Konfiguration und Kündigung des AVV erfordern Bestätigung durch zweiten benannten Admin.
+3. Minimale Admin-Zahl festlegen: maximal zwei natürliche Personen als Workspace-Admin, eine davon als Funktions-Account der IT-Abteilung; kein Marketing-Champion darf Admin-Rechte haben.
+4. Audit-Alarm-Szenarien im SIEM konfigurieren (vgl. S-SG-008): Alarm bei jeder API-Schlüssel-Erstellung durch Admin außerhalb der Geschäftszeiten; Alarm bei Massenlöschung von Wissensordner-Inhalten innerhalb von 10 Minuten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Privileged-Access-Management-Berater. Erstelle ein Insider-Threat-Mitigation-Dokument für unsere Langdock-Workspace-Admins. Kontext: Zwei Admins haben uneingeschränkte Kontrolle über alle Sicherheitseinstellungen. Format: Dokument mit Admin-Aktions-Inventar (Schadenpotenzial-Tabelle), Vier-Augen-Regelung, minimaler Admin-Zahl und fünf konfigurierten Audit-Alarm-Szenarien. Stütze dich auf Audit-Logs-Dokumentation und ISO-27001-A.9.2 im Wissensordner."
+**Erwartetes Artefakt:** Insider-Threat-Mitigation-Dokument mit Schadenpotenzial-Tabelle für Admin-Aktionen, Vier-Augen-Regelung und konfigurierten Audit-Alarmen.
+**Fallstricke (≥2 spezifisch):**
+- Das Vier-Augen-Prinzip wird nur für die Plattform definiert, nicht für den zugehörigen BYOK-API-Schlüssel-Manager — Mitigation: die Vier-Augen-Regelung explizit auf alle Systeme ausweiten, die Admin-Zugriff auf Langdock-Funktionalität ermöglichen (Passwort-Manager, API-Konsole des Providers).
+- Die minimale Admin-Zahl wird unterschritten, wenn ein Admin das Unternehmen verlässt und der Account deaktiviert wird, bevor ein Nachfolger ernannt ist — Mitigation: eine Nachfolge-Benennungspflicht als Teil des Offboarding-Prozesses (S-SG-019) verankern.
+**Anschluss-Szenario:** S-SG-051
+
+### S-SG-051 NDA-Compliance-Check für KI-assistierte Inhalte sicherstellen
+
+**Wann nutzen (Trigger):** Das Marketing-Team nutzt Langdock, um Pressemitteilungen und Fallstudien für einen Kooperationspartner zu erstellen — der Rechtsanwalt des Partners weist darauf hin, dass das bestehende NDA den Einsatz von KI-Tools für partnerschaftliche Inhalte nicht explizit regelt und fragt, ob vertrauliche Partner-Informationen in KI-Modelle geflossen sind. (Quelle: sources/12 Q127, A-43)
+**Strategisches Ziel:** Einen NDA-Compliance-Prozess für KI-assistierte Inhalte aufbauen, der vor dem Einsatz von Langdock für partnerschaftliche oder kundenvertrauliche Projekte prüft, ob das NDA den KI-Einsatz erlaubt, und bei Lücken eine Ergänzungsklausel vorschlägt.
+**Hands-on Ergebnis:** Eine NDA-KI-Compliance-Checkliste mit Prüffragen, einer Muster-Ergänzungsklausel für KI-Einsatz und einem Freigabe-Dokumentationsschritt.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Checkliste und Musterklausel; Knowledge (Wissensordner) für das bestehende NDA-Muster, die Datenhaltungsgarantien (Trainingsausschluss) und die Acceptable-Use-Policy (S-SG-027).
+**Vorgehen (4 Schritte):**
+1. Die Prüffragen für den NDA-Review definieren: Erlaubt das NDA die Weitergabe vertraulicher Informationen an Sub-Verarbeiter? Enthält es Klauseln zu KI-Tools? Ist der Trainingsausschluss von Langdock für den Partner ausreichend belegt?
+2. Wenn das NDA keine KI-Regelung enthält: eine Muster-Ergänzungsklausel formulieren ("Einsatz von KI-Verarbeitungsdiensten ist gestattet, sofern (a) keine Daten für Modell-Training verwendet werden, (b) Datenresidenz in der EU sichergestellt ist und (c) ein AVV nach Art. 28 DSGVO vorliegt").
+3. Den Freigabe-Dokumentationsschritt definieren: bevor vertrauliche Partner-Informationen in einen Langdock-Wissensordner geladen werden, Freigabe durch Rechtsabteilung und Dokumentation im Projekt-Log.
+4. Den Prozess als Checklisten-Pflichtschritt in den Kampagnen-Intake-Workflow (vgl. S-SG-021 HITL-Gate) integrieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Vertragsrecht-Berater. Erstelle eine NDA-KI-Compliance-Checkliste für Marketing-Projekte mit Kooperationspartnern. Kontext: Bestehendes NDA enthält keine KI-Regelung, Langdock soll für partnerschaftliche Inhalte genutzt werden. Format: Checkliste mit Prüffragen (NDA-Review), Muster-Ergänzungsklausel und Freigabe-Dokumentationsschritt. Stütze die Klausel auf die Datenhaltungsgarantien und AUP im Wissensordner."
+**Erwartetes Artefakt:** NDA-KI-Compliance-Checkliste mit Prüffragen, Muster-Ergänzungsklausel und dokumentiertem Freigabe-Schritt.
+**Fallstricke (≥2 spezifisch):**
+- Die Muster-Ergänzungsklausel wird ohne Rechtsanwalt direkt an den Partner geschickt, was den NDA-Verhandlungsprozess verkompliziert — Mitigation: die Klausel explizit als internen Entwurf markieren und die Freigabe durch die eigene Rechtsabteilung vor Versand vorschreiben.
+- Das NDA-Review wird nur einmalig beim Vertragsabschluss durchgeführt, aber nicht bei jeder neuen KI-Kampagne wiederholt — Mitigation: den NDA-Review-Schritt als Pflicht-Gate in den Kampagnen-Intake-Workflow einbauen, nicht nur als einmaligen Vertragsschritt.
+**Anschluss-Szenario:** S-SG-052
+
+### S-SG-052 Content-Rights-Clearance-Workflow vor Wissensordner-Upload etablieren
+
+**Wann nutzen (Trigger):** Das Content-Team lädt externe Marktforschungsberichte, Agentur-Studien und lizenzierte Branchenreports in den Langdock-Wissensordner, ohne zu prüfen, ob die Lizenz die Nutzung als Trainings- oder Retrieval-Grundlage für KI-Systeme erlaubt — das IP-Team warnt vor vertraglichen Verletzungen. (Quelle: S-SG-036, A-43)
+**Strategisches Ziel:** Einen verpflichtenden Content-Rights-Clearance-Schritt vor jedem Wissensordner-Upload einführen, der lizenzrechtliche Nutzungserlaubnisse für KI-Retrieval und Embedding-Erzeugung prüft und dokumentiert.
+**Hands-on Ergebnis:** Eine Content-Rights-Clearance-Checkliste mit Prüffragen je Inhaltstyp, einem Ampel-Schema und einem Upload-Genehmigungsprotokoll.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Checkliste und das Protokoll; Knowledge (Wissensordner) für die IP-Richtlinie (S-SG-036), bestehende Lizenzverträge und die Embedding-Datenschutz-Analyse (S-SG-014).
+**Vorgehen (4 Schritte):**
+1. Die relevanten Inhaltstypen für den Wissensordner klassifizieren: selbst erstellte Dokumente (kein Clearance-Bedarf), intern lizenzierte Reports (Clearance erforderlich), öffentlich lizenzierte Quellen (CC-Lizenz prüfen), extern eingekaufte Marktforschung (Lizenzvertrag prüfen).
+2. Für lizenzpflichtige Dokumente drei Prüffragen definieren: (a) Erlaubt die Lizenz maschinelles Lesen und Indexierung? (b) Ist die Nutzung für interne Recherche-Systeme abgedeckt? (c) Enthält die Lizenz Ausschlussklauseln für KI-Systeme?
+3. Das Ampel-Schema festlegen: grün = Nutzung explizit erlaubt oder Selbst-erstelltes; gelb = Lizenz unklar, Rückfrage beim Lizenzgeber; rot = Nutzung ausgeschlossen, kein Upload.
+4. Das Upload-Genehmigungsprotokoll definieren: jedes hochgeladene Dokument erhält einen Metadata-Tag (Lizenzstatus, Prüfdatum, Prüfer-Name) und wird im Content-Rechts-Register verzeichnet.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein IP-Compliance-Berater. Erstelle eine Content-Rights-Clearance-Checkliste für Langdock-Wissensordner-Uploads. Kontext: Externe Berichte und Studien werden ohne Lizenz-Review hochgeladen, KI-Nutzungsrechte oft unklar. Format: Checkliste mit Inhaltstypen-Klassifikation, drei Prüffragen je Typ, Ampel-Schema und Upload-Genehmigungsprotokoll. Stütze dich auf die IP-Richtlinie und Lizenzverträge im Wissensordner."
+**Erwartetes Artefakt:** Content-Rights-Clearance-Checkliste mit Inhaltstypen-Klassifikation, Ampel-Schema und Upload-Genehmigungsprotokoll.
+**Fallstricke (≥2 spezifisch):**
+- Lizenzverträge enthalten keine explizite KI-Klausel, was als stillschweigende Erlaubnis interpretiert wird — Mitigation: das Fehlen einer KI-Klausel als "gelb/unklar" einstufen und Rückfrage beim Lizenzgeber als Standardprozess vorschreiben, nicht als Ausnahme.
+- Das Content-Rechts-Register wird nicht gepflegt, wenn das Team unter Zeitdruck steht — Mitigation: das Protokoll als Ein-Klick-Formular in den Workflow-Builder integrieren, damit der Upload ohne ausgefülltes Formular technisch blockiert wird.
+**Anschluss-Szenario:** S-SG-053
+
+### S-SG-053 SLA für Compliance-Team-Review von KI-Outputs definieren
+
+**Wann nutzen (Trigger):** Das Compliance-Team beklagt, dass KI-generierte Kampagnen-Texte mit Preisangaben und regulatorischen Aussagen häufig zu spät zur Prüfung eingereicht werden — der Review erfolgt im Nachhinein oder gar nicht, was Haftungsrisiken erzeugt. Eine klare Service-Level-Vereinbarung fehlt. (Quelle: A-32, A-21 analog)
+**Strategisches Ziel:** Eine verbindliche Review-SLA zwischen Marketing und Compliance etablieren, die Einreichungs-Fristen, maximale Review-Zeiten und Eskalationspfade für dringende Kampagnen definiert — sodass KI-Outputs nie ohne Compliance-Freigabe bei Hochrisiko-Inhalten publiziert werden.
+**Hands-on Ergebnis:** Eine Marketing-Compliance-Review-SLA mit Inhaltstypen-Klassifikation, Fristen-Matrix und Eskalationsprotokoll für Eilfälle.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die SLA; Knowledge (Wissensordner) für die HITL-Gate-Matrix (S-SG-021), AI-Risiko-Register (S-SG-028) und interne Freigabe-Richtlinie.
+**Vorgehen (4 Schritte):**
+1. Die Inhaltstypen nach Review-Dringlichkeit klassifizieren: Hochrisiko (Preisangaben, rechtliche Aussagen, Wettbewerber-Vergleiche) = Review vor Veröffentlichung Pflicht; Mittelrisiko (Produkt-Features, Testimonials) = Review empfohlen; Niedrigrisiko (allgemeine Blog-Inhalte, Social-Media-Floskeln) = Stichproben-Review ausreichend.
+2. Die Fristen-Matrix definieren: Hochrisiko = Einreichung ≥72 h vor Publish, Review-Frist 48 h; Mittelrisiko = Einreichung ≥24 h vor Publish, Review-Frist 24 h; Eilfälle = Einreichung mit Begründung, Compliance-Response ≤4 h.
+3. Den Eskalationspfad für Fristversäumnisse dokumentieren: fehlende Einreichung bei Hochrisiko → automatisches Publish-Verbot durch HITL-Node im Workflow.
+4. Die SLA als gegenseitige Vereinbarung von Marketing-Direktion und Compliance-Leitung unterzeichnen lassen und im Wissensordner ablegen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Operations-Governance-Berater. Erstelle eine Review-SLA zwischen Marketing und Compliance für KI-generierte Kampagneninhalte. Kontext: Compliance-Reviews erfolgen zu spät oder gar nicht, Haftungsrisiken entstehen. Format: SLA-Dokument mit Inhaltstypen-Klassifikation, Fristen-Matrix, Eilfall-Protokoll und Eskalationsklausel. Stütze die Risikoklassen auf die HITL-Gate-Matrix und das AI-Risiko-Register im Wissensordner."
+**Erwartetes Artefakt:** Marketing-Compliance-Review-SLA mit Fristen-Matrix, Eilfall-Protokoll und dokumentiertem Eskalationspfad.
+**Fallstricke (≥2 spezifisch):**
+- Die SLA wird eingeführt, aber die Fristen werden nicht im Workflow-Builder als automatische Deadlines konfiguriert, sodass Fristversäumnisse unbemerkt bleiben — Mitigation: Publish-Blockierung für Hochrisiko-Inhalte ohne Compliance-Freigabe als technische Workflow-Bedingung, nicht nur als organisatorische Regel umsetzen.
+- Der Eilfall-Kanal wird zur Norm, weil das Marketing-Team immer zu spät einreicht — Mitigation: die Eilfall-Nutzung monatlich auswerten und bei mehr als drei Eilfällen pro Monat eine Ursachen-Analyse mit dem Team durchführen.
+**Anschluss-Szenario:** S-SG-054
+
+### S-SG-054 Grenzüberschreitende Datentransfer-Dokumentation (SCCs) für Marketing-Daten erstellen
+
+**Wann nutzen (Trigger):** Die Holding verlangt, dass für alle Datentransfers zwischen der DACH-Einheit und US-basierten Marketing-Tools (z. B. HubSpot US-Rechenzentrum, Salesforce Marketing Cloud) Standardvertragsklauseln (SCCs) dokumentiert und dem Datenschutzbeauftragten vorgelegt werden — Langdock ist als EU-gehosteter Hub betroffen, weil es Daten an US-Modell-Provider überträgt. (Quelle: sources/12 Q126, S-SG-009)
+**Strategisches Ziel:** Alle relevanten Datentransfer-Pfade im Marketing-Ökosystem kartieren, die SCCs-Dokumentation vollständig aufsetzen und sicherstellen, dass Langdocks EU-Hosting und Zero-Retention korrekt in der Transfer-Impact-Assessment-Logik abgebildet sind.
+**Hands-on Ergebnis:** Eine Datentransfer-Kartierung mit SCC-Status je Transfer-Pfad, einer Transfer-Impact-Assessment-Zusammenfassung für die Langdock-Anbindung und einer Lückenliste für ausstehende SCCs.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Kartierung und TIA-Zusammenfassung; Knowledge (Wissensordner) für den bestehenden AVV, Sub-Prozessor-Liste, Datenresidenz-Dokumentation (S-SG-009) und SCC-Musterklauseln der EU-Kommission.
+**Vorgehen (4 Schritte):**
+1. Alle Datentransfer-Pfade aus dem Marketing-Ökosystem kartieren: EU-Workspace → Langdock (EU-Azure, kein Transfer); Langdock → Modell-Provider OpenAI/Anthropic (US-Transfer, Zero-Retention + SCC erforderlich); Langdock-HubSpot-Sync → HubSpot US (US-Transfer, SCCs prüfen).
+2. Den SCC-Status je Transfer-Pfad bewerten: unterzeichnete SCCs vorhanden / vorhanden aber veraltet (post-Schrems-II-Version) / fehlend.
+3. Für den kritischen Transfer Langdock → US-Modell-Provider eine Transfer-Impact-Assessment-Zusammenfassung erstellen: EU-Azure-Verarbeitung, Zero-Retention-Zusage als ergänzende Schutzmaßnahme, Art.-46-Abs.-2-c-SCC-Rechtsgrundlage.
+4. Eine Lückenliste für ausstehende oder veraltete SCCs erstellen und Fristen zur Nachverhandlung setzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein internationaler Datenschutz-Berater. Erstelle eine Datentransfer-Kartierung für unser Marketing-Ökosystem mit SCC-Status je Transfer-Pfad. Kontext: Langdock als EU-Hub mit US-Modell-Provider-Anbindungen und HubSpot-Sync. Format: Kartierungs-Tabelle (Transfer-Pfad, Datenart, Rechtsgrundlage, SCC-Status) plus TIA-Zusammenfassung für Langdock-Provider-Transfer. Stütze dich auf AVV, Sub-Prozessor-Liste und SCC-Musterklauseln im Wissensordner."
+**Erwartetes Artefakt:** Datentransfer-Kartierung mit SCC-Status-Tabelle, TIA-Zusammenfassung und priorisierter Lückenliste.
+**Fallstricke (≥2 spezifisch):**
+- SCCs aus der Zeit vor dem Schrems-II-Urteil (2020) werden als ausreichend behandelt — Mitigation: nur die überarbeiteten EU-Kommissions-SCC-Klauseln von 2021 als gültig akzeptieren und Altklagen systematisch ersetzen.
+- Der Zero-Retention-Mechanismus des Modell-Providers wird ohne Rücksicht auf Ausnahmen (z. B. Abuse-Monitoring-Ausnahmen in den AGB) als absolut angesehen — Mitigation: die Zero-Retention-Zusage im Provider-DPA auf Ausnahmen prüfen und diese im TIA explizit dokumentieren.
+**Anschluss-Szenario:** S-SG-055
+
+### S-SG-055 AI-Vendor-Due-Diligence-Checkliste für neue KI-Tools erstellen
+
+**Wann nutzen (Trigger):** Das Marketing-Team möchte ein neues KI-Tool (z. B. einen KI-basierten SEO-Analyzer oder ein KI-Video-Generierungs-Tool) neben Langdock einführen — der Procurement-Prozess hat kein standardisiertes KI-spezifisches Due-Diligence-Framework, sodass jede Evaluierung von Grund auf neu beginnt. (Quelle: S-SG-039, sources/12 Q129)
+**Strategisches Ziel:** Ein wiederverwendbares AI-Vendor-Due-Diligence-Framework erstellen, das alle neuen KI-Tool-Evaluierungen auf denselben standardisierten Prüfdimensionen basiert und das Procurement-Komitee in die Lage versetzt, begründete Freigabe- oder Ablehnungsentscheidungen zu treffen.
+**Hands-on Ergebnis:** Eine AI-Vendor-Due-Diligence-Checkliste mit sieben Prüfdimensionen, einem Scoring-Modell und einer Entscheidungs-Matrix (Freigabe / Freigabe mit Auflagen / Ablehnung).
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Checkliste; Knowledge (Wissensordner) für das Provider-Security-Review-Template (S-SG-039), die NDA-Compliance-Checkliste (S-SG-051) und das Datenklassifikations-Framework (S-SG-047).
+**Vorgehen (4 Schritte):**
+1. Die sieben Prüfdimensionen definieren: (1) Zertifizierungen (ISO 27001, SOC 2), (2) Datenresidenz, (3) Trainingsausschluss/Zero-Retention, (4) Breach-Notification-Pflicht und -History, (5) Vertragliche Grundlage (DPA, SCCs), (6) Funktionale Notwendigkeit vs. Langdock-Abdeckung, (7) Lizenzmodell und Exit-Klausel.
+2. Das Scoring-Modell festlegen: je Dimension 0–3 Punkte; Gesamtscore ≥18 = Freigabe; 13–17 = Freigabe mit Auflagen (DPA nachfordern, Retention prüfen); <13 = Ablehnung.
+3. Die Entscheidungs-Matrix mit Verantwortlichkeiten festlegen: Score-Ermittlung durch IT-Security, Freigabe durch CISO, Kommunikation der Entscheidung durch Marketing-Direktion.
+4. Das Framework im Wissensordner als Pflicht-Template für alle Neubeschaffungen ablegen und den Procurement-Prozess daran koppeln.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Procurement-Governance-Berater. Erstelle eine AI-Vendor-Due-Diligence-Checkliste für neue KI-Tools im Marketing. Kontext: Kein standardisiertes KI-spezifisches Evaluierungs-Framework vorhanden. Format: Checkliste mit sieben Prüfdimensionen, Scoring-Skala (0–3 je Dimension), Entscheidungs-Matrix (Freigabe/Auflagen/Ablehnung) und Verantwortlichkeits-Matrix. Stütze die Dimensionen auf das Provider-Security-Review-Template und das Datenklassifikations-Framework im Wissensordner."
+**Erwartetes Artefakt:** AI-Vendor-Due-Diligence-Checkliste mit sieben Dimensionen, Scoring-Modell und Entscheidungs-Matrix.
+**Fallstricke (≥2 spezifisch):**
+- Die Prüfung wird nur auf Sicherheitsdimensionen fokussiert und die funktionale Dimension "Warum wird dieses Tool gebraucht, wenn Langdock diese Funktion bereits abdeckt?" wird ausgelassen — Mitigation: die funktionale Notwendigkeit als eigene Dimension mit dem gleichen Gewicht wie Sicherheit führen, um Tool-Proliferation zu verhindern.
+- Ein bestandenes Due-Diligence-Review wird als dauerhaft gültig behandelt — Mitigation: eine Wiederholungs-Pflicht (jährlich oder bei Major-Updates des Vendors) in die Entscheidungs-Matrix als Bedingung aufnehmen.
+**Anschluss-Szenario:** S-SG-056
+
+### S-SG-056 Marketing-AI-Ethics-Committee einrichten und operationalisieren
+
+**Wann nutzen (Trigger):** Die Unternehmensführung verlangt nach einem publizierten Bericht über AI-Washing in der Branche eine institutionelle Antwort: ein internes AI-Ethics-Committee soll sicherstellen, dass alle KI-Initiativen im Marketing ethisch vertretbar sind und der AI-Governance-1-Pager (S-SG-023) gelebt wird — nicht nur auf dem Papier steht. (Quelle: A-50, sources/12 Q132)
+**Strategisches Ziel:** Ein schlankes, handlungsfähiges AI-Ethics-Committee für das Marketing aufbauen, das mit klarem Mandat, definierten Entscheidungskompetenzen und einem quartalsweisen Review-Rhythmus konkrete Governance-Entscheidungen trifft — und nicht als zahnloses Feigenblatt endet.
+**Hands-on Ergebnis:** Ein AI-Ethics-Committee-Charter mit Mandat, Zusammensetzung, Entscheidungskompetenzen, Meeting-Rhythmus und Eskalationspfad zur Unternehmensführung.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Charter; Knowledge (Wissensordner) für den AI-Governance-1-Pager (S-SG-023), die KI-Ethik-Positionierung (S-SG-043), das AI-Risiko-Register (S-SG-028) und das Champion-Programm (S-SG-042).
+**Vorgehen (4 Schritte):**
+1. Das Mandat des Committees formulieren: (a) Review neuer KI-Use-Cases gegen die vier Governance-Säulen (S-SG-023), (b) quartalsweiser Review des AI-Risiko-Registers, (c) Entscheidung über Hochrisiko-Use-Cases, die HITL allein nicht abdeckt, (d) jährliche Überprüfung der KI-Ethik-Positionierung.
+2. Die Zusammensetzung definieren: Marketing-Direktion (Vorsitz), Datenschutzbeauftragter, Rechtsabteilung, IT-Security (CISO), ein Mitarbeitenden-Vertreter (Champion-Netzwerk), externes Ethics-Advisory als optionale Einladung.
+3. Die Entscheidungskompetenzen abgrenzen: beratend für niedrig-/mittel-Risiko-Use-Cases; bindend für Hochrisiko-Entscheidungen (z. B. Einsatz synthetischer Identitäten, Profiling außerhalb bestehender DSFA).
+4. Den Meeting-Rhythmus und den Eskalationspfad festlegen: quartalsweises ordentliches Meeting; außerordentliches Treffen bei AI-Incident (S-SG-020); Eskalation an Vorstand bei ungeklärten Ethik-Konflikten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Corporate-Governance-Berater. Erstelle eine AI-Ethics-Committee-Charter für unsere Marketing-Abteilung. Kontext: Institutionelle Antwort auf AI-Washing-Vorwürfe, Committee soll handlungsfähig und nicht symbolisch sein. Format: Charter mit Abschnitten Mandat, Zusammensetzung, Entscheidungskompetenzen (beratend/bindend), Meeting-Rhythmus und Eskalationspfad. Stütze das Mandat auf AI-Governance-1-Pager und AI-Risiko-Register im Wissensordner."
+**Erwartetes Artefakt:** AI-Ethics-Committee-Charter mit Mandat, Zusammensetzung, differenzierten Entscheidungskompetenzen und Eskalationspfad.
+**Fallstricke (≥2 spezifisch):**
+- Das Committee hat kein bindendes Entscheidungsrecht und kann von der Marketing-Direktion übergangen werden — Mitigation: mindestens eine Kategorie bindender Entscheidungen (Hochrisiko-Use-Cases) explizit in der Charter verankern und in den Workflow-Freigabe-Prozess integrieren.
+- Das Committee trifft sich quartalsweise, aber AI-Incidents erfordern Entscheidungen innerhalb von Stunden — Mitigation: ein außerordentliches Treffen (virtuell, 1 Stunde) als explizite Charter-Option für Incident-Situationen definieren und den Einberufungsprozess vorab festlegen.
+**Anschluss-Szenario:** S-SG-057
+
+### S-SG-057 KI-Incident-War-Game-Übung für das Marketing-Team durchführen
+
+**Wann nutzen (Trigger):** Nach der Erstellung des KI-Incident-Response-Playbooks (S-SG-020) und der Responsible-Disclosure-Policy (S-SG-034) fragt die Marketing-Direktorin, ob das Team im Ernstfall wirklich handlungsfähig wäre — ein ungeplanter Echtfall würde die Lücken erst zeigen, wenn der Schaden bereits eingetreten ist. (Quelle: S-SG-079 analog PR-Tabletop, A-41)
+**Strategisches Ziel:** Das Incident-Response-Playbook in einer simulierten Krisensituation testen, Reaktionsgeschwindigkeit und Entscheidungsqualität des Teams unter Druck messen und konkrete Verbesserungspunkte für das Playbook ableiten.
+**Hands-on Ergebnis:** Ein War-Game-Übungsprotokoll mit drei eskalierten Szenarien, einem Beobachtungsleitfaden für den Moderator und einem strukturierten After-Action-Review-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Übungsprotokoll; Knowledge (Wissensordner) für das KI-Incident-Response-Playbook (S-SG-020), die Breach-Notification-Vorlage (S-SG-035) und die HITL-Gate-Matrix (S-SG-021).
+**Vorgehen (4 Schritte):**
+1. Drei eskalierte Szenarien entwickeln: (a) Halluzinations-Incident (Agent verbreitet falsche Produktpreise in automatisiertem Newsletter), (b) Datenpanne (Wissensordner mit Kundendaten durch Fehlkonfiguration für externe Agentur zugänglich), (c) Prompt-Injection-Angriff (externer Akteur manipuliert Agent über injizierten Wissensordner-Inhalt).
+2. Den Übungsablauf strukturieren: je Szenario 20 Minuten Echtzeit-Reaktion → Moderator liefert eskalierendes Update → Team entscheidet → 10 Minuten Debriefing pro Szenario.
+3. Den Beobachtungsleitfaden für den Moderator erstellen: welche Playbook-Schritte wurden befolgt? Wer hat die Führung übernommen? Wo entstanden Entscheidungs-Blockaden?
+4. Das After-Action-Review-Template befüllen: Was lief gut? Was fehlte im Playbook? Welche drei Sofort-Maßnahmen werden vor der nächsten Übung umgesetzt?
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Crisis-Simulation-Moderator. Erstelle ein War-Game-Übungsprotokoll für KI-Incidents im Marketing. Kontext: Drei eskalierte Szenarien — Halluzination, Datenpanne, Prompt-Injection. Format: Protokoll mit drei Szenario-Beschreibungen (Ausgangs-Inject + zwei Eskalationsstufen je), Beobachtungsleitfaden und After-Action-Review-Template. Stütze die Szenarien auf das Incident-Playbook und die Breach-Notification-Vorlage im Wissensordner."
+**Erwartetes Artefakt:** War-Game-Übungsprotokoll mit drei Szenarien, Beobachtungsleitfaden und After-Action-Review-Template.
+**Fallstricke (≥2 spezifisch):**
+- Die Übung wird zu realistisch gestellt und löst echte Compliance-Meldepflichten aus — Mitigation: alle Teilnehmenden vor Beginn schriftlich bestätigen lassen, dass es sich um eine Simulation handelt, und keine echten Kundendaten oder Live-Systeme in die Übung einbeziehen.
+- Das After-Action-Review mündet in einer To-do-Liste, die niemand umsetzt — Mitigation: maximal drei Sofort-Maßnahmen aus dem Review ableiten, je eine verantwortliche Person benennen und die Umsetzung als Agenda-Punkt des nächsten AI-Ethics-Committee-Treffens (S-SG-056) verankern.
+**Anschluss-Szenario:** S-SG-058
+
+### S-SG-058 Key-Person-Dependency-Risiko für KI-Admins dokumentieren und mitigieren
+
+**Wann nutzen (Trigger):** Der einzige Langdock-Workspace-Admin im Marketing-Team kündigt — sein Nachfolger kennt weder die SCIM-Konfiguration noch die BYOK-Schlüsselverwaltung, noch die System-Prompts der kritischen Agenten. Das Unternehmen steht vor einem Wissensmonopol-Risiko. (Quelle: A-35, A-44)
+**Strategisches Ziel:** Das Key-Person-Dependency-Risiko für die KI-Admin-Rolle durch Wissens-Dokumentation, einen zweiten benannten Admin und einen strukturierten Übergabe-Prozess auf ein beherrschbares Niveau reduzieren — bevor der nächste ungeplante Abgang eintritt.
+**Hands-on Ergebnis:** Ein KI-Admin-Wissenstransfer-Dokument mit Konfigurations-Dokumentation, Zweitmandats-Regelung und einem 5-Tage-Onboarding-Plan für den Nachfolger.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Wissenstransfer-Dokument; Knowledge (Wissensordner) für SSO/SCIM-Konfigurationscheckliste (S-SG-007), RBAC-Mapping (S-SG-005), BCP-Abschnitt (S-SG-044) und Vendor-Lock-in-Assessment (S-SG-017).
+**Vorgehen (4 Schritte):**
+1. Die kritischen Wissens-Domänen des Admin-Accounts inventarisieren: SSO/SCIM-Konfiguration (Entra-Quirk, S-SG-007), BYOK-Schlüssel-Speicherorte und Rotation-Kalender, Agenten-System-Prompts der Tier-1-Workflows, Wissensordner-Struktur und Zugriffsberechtigungen, Audit-Log-API-Schlüssel und SIEM-Anbindung.
+2. Je Wissens-Domäne den aktuellen Dokumentationsgrad bewerten (vollständig dokumentiert / teilweise / nicht dokumentiert) und Lücken priorisieren.
+3. Die Zweitmandats-Regelung definieren: ein zweiter benannter Admin (IT-Funktions-Account) erhält Zugriff auf alle Admin-Konfigurationen und wird vierteljährlich auf Aktualität geschult.
+4. Den 5-Tage-Onboarding-Plan strukturieren: Tag 1 (Zugänge und Schlüssel), Tag 2 (SSO/SCIM-Konfiguration), Tag 3 (Agenten- und Workflow-Architektur), Tag 4 (Audit-Log-Monitoring), Tag 5 (Eskalationspfade und Notfallprotokoll).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Knowledge-Management-Berater. Erstelle ein KI-Admin-Wissenstransfer-Dokument für unseren Langdock-Workspace. Kontext: Einziger Admin verlässt das Unternehmen, sein Nachfolger hat keinen Wissensstand. Format: Dokument mit Wissens-Domänen-Inventar (Dokumentationsgrad-Tabelle), Zweitmandats-Regelung und 5-Tage-Onboarding-Plan. Stütze die Domänen auf SSO/SCIM-Checkliste, BYOK-Dokumentation und BCP-Abschnitt im Wissensordner."
+**Erwartetes Artefakt:** KI-Admin-Wissenstransfer-Dokument mit Domänen-Inventar, Dokumentationsgrad-Tabelle, Zweitmandats-Regelung und 5-Tage-Onboarding-Plan.
+**Fallstricke (≥2 spezifisch):**
+- Das Wissenstransfer-Dokument enthält BYOK-Schlüssel im Klartext — Mitigation: Schlüssel niemals im Dokument hinterlegen, sondern nur den Speicherort (Passwort-Manager-Eintrag) und den Zugriffsprozess beschreiben.
+- Der zweite Admin wird benannt, aber nicht aktiv in die Konfiguration eingeführt, sodass er im Ernstfall trotzdem nicht handlungsfähig ist — Mitigation: eine jährliche "Admin-Drill"-Session einplanen, bei der der zweite Admin alle kritischen Konfigurationen selbst durchführt und das Protokoll im Wissenstransfer-Dokument aktualisiert.
+**Anschluss-Szenario:** S-SG-059
+
+### S-SG-059 KI-Tool-Succession-Plan für strategische Abhängigkeiten aufbauen
+
+**Wann nutzen (Trigger):** Der Vorstand fragt im Rahmen der strategischen Planung, was passiert, wenn Langdock als Plattform aufgekauft, eingestellt oder für die DACH-Region nicht mehr verfügbar wäre — ein strukturierter Succession-Plan fehlt. (Quelle: S-SG-017, A-44)
+**Strategisches Ziel:** Einen KI-Tool-Succession-Plan erstellen, der die strategischen Abhängigkeiten von Langdock kartiert, alternative Plattformen vorevaluiert und einen Migrations-Playbook-Rahmen definiert — damit der Vorstand eine informierte "Build / Buy / Switch"-Entscheidung treffen kann, ohne in Krisenpanik zu verfallen.
+**Hands-on Ergebnis:** Ein KI-Tool-Succession-Plan mit Abhängigkeits-Kartierung, Alternativ-Plattform-Shortlist (bewertet nach fünf Kriterien) und einem Migrations-Playbook-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für den Succession-Plan; Knowledge (Wissensordner) für das Vendor-Lock-in-Assessment (S-SG-017), das BCP (S-SG-044), das AI-Vendor-Due-Diligence-Template (S-SG-055) und die Daten-Portabilitäts-Dokumentation.
+**Vorgehen (4 Schritte):**
+1. Die strategischen Abhängigkeiten von Langdock kartieren: Wissensordner-Inhalte (Portabilitäts-Status aus S-SG-017), Agenten-Konfigurationen (exportierbar als Markdown?), Workflow-Definitionen (JSON-Export?), SCIM/SSO-Integration (re-konfigurierbar in 1–2 Tagen?).
+2. Drei bis fünf alternative Plattformen nach den fünf Due-Diligence-Kriterien aus S-SG-055 vorevaluieren: EU-Hosting, Zero-Retention, Zertifizierungen, Multi-Model-Support, Migration-Unterstützung.
+3. Den Migrations-Playbook-Rahmen skizzieren: Phase 1 Daten-Export und -Bereinigung (1–2 Wochen), Phase 2 Pilot-Import in Alternativplattform (2 Wochen), Phase 3 Parallelbetriebs-Phase mit Qualitäts-Vergleich (4 Wochen), Phase 4 Go-live und Langdock-Deaktivierung.
+4. Den Plan als jährlich zu reviewendes Dokument im AI-Risiko-Register (S-SG-028) verankern und den Wechsel-Drill (aus S-SG-017) als praktischen Test des Succession-Plans definieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein IT-Strategie-Berater. Erstelle einen KI-Tool-Succession-Plan für unsere strategische Langdock-Abhängigkeit. Kontext: Vorstand verlangt Notfallplan für Plattform-Ausfall oder Einstellung. Format: Plan mit Abhängigkeits-Kartierung (Portabilitäts-Tabelle), Alternativ-Plattform-Shortlist (Bewertungsmatrix) und Migrations-Playbook-Phasenplan. Stütze dich auf Vendor-Lock-in-Assessment, BCP und Due-Diligence-Template aus dem Wissensordner."
+**Erwartetes Artefakt:** KI-Tool-Succession-Plan mit Abhängigkeits-Kartierung, Alternativ-Plattform-Bewertungsmatrix und vierphasigem Migrations-Playbook-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Der Succession-Plan wird mit dem BCP (S-SG-044) verwechselt — Mitigation: klar unterscheiden: BCP adressiert temporäre Ausfälle (Stunden bis Tage), Succession-Plan adressiert permanente Plattform-Ablösung (Wochen bis Monate); beide Dokumente aufeinander verweisen, aber nicht zusammenführen.
+- Alternativplattformen werden nur nach Sicherheitskriterien bewertet und die Migrations-Komplexität der bestehenden 200+ Wissensordner-Dokumente und 12 Agenten wird unterschätzt — Mitigation: die Migrationskomplexität als eigenes Bewertungskriterium in die Shortlist-Matrix aufnehmen und einen Proof-of-Concept-Import als Teil der Vorevaluierung einplanen.
+**Anschluss-Szenario:** S-SG-060
+
+### S-SG-060 Mitarbeitende schulen, KI-Halluzinationen zu erkennen und zu melden
+
+**Wann nutzen (Trigger):** Zwei Marketing-Manager haben KI-generierte Statistiken ohne Verifikation in externe Präsentationen übernommen — die Zahlen waren halluziniert. Der CISO und die Rechtsabteilung verlangen ein Schulungsprogramm, das alle Langdock-Nutzer befähigt, Halluzinationen zu erkennen, bevor sie Schaden anrichten. (Quelle: sources/12 Q147, A-34, A-41)
+**Strategisches Ziel:** Ein praxisorientiertes Halluzinations-Erkennungs-Schulungsprogramm aufbauen, das konkrete Erkennungsstrategien, einen Verifikations-Workflow und einen niedrigschwelligen Melde-Kanal etabliert — damit jeder Nutzer zur ersten Verteidigungslinie gegen falsche KI-Outputs wird.
+**Hands-on Ergebnis:** Ein Schulungs-Leitfaden "KI-Halluzinationen erkennen und melden" mit fünf Erkennungsstrategien, einem 3-Schritte-Verifikations-Workflow und einer integrierten Melde-Checkliste.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für den Leitfaden; Knowledge (Wissensordner) für das KI-Incident-Response-Playbook (S-SG-020), die Responsible-Disclosure-Policy (S-SG-034), die HITL-Gate-Matrix (S-SG-021) und die AUP (S-SG-027).
+**Vorgehen (4 Schritte):**
+1. Die fünf häufigsten Halluzinations-Muster im Marketing-Kontext beschreiben: (a) erfundene Statistiken und Quellen (plausibel klingende Zahlen ohne Beleg), (b) falsche Zitate realer Personen, (c) nicht existierende Gerichtsurteile oder Gesetze, (d) veraltete Fakten mit aktuellem Präsens formuliert, (e) korrekt klingende Produktbehauptungen, die nicht mit dem Wissensordner übereinstimmen.
+2. Den 3-Schritte-Verifikations-Workflow entwickeln: (1) Primärquellencheck (jede Zahl mit Originalquelle belegen, nicht nur KI-Output zitieren), (2) Wissensordner-Abgleich (Stimmt die Aussage mit den hochgeladenen Quelldokumenten überein?), (3) Web-Search-Verifikation bei sensiblen Fakten (Modell bei niedrigem Confidence-Level explizit um Quellenangabe bitten).
+3. Die Melde-Checkliste erstellen: wann melden (bei Hochrisiko-Output mit falschen Fakten, die bereits kommuniziert wurden), wie melden (Champion informieren → Incident-Playbook S-SG-020 auslösen), warum melden (Root-Cause-Fix verhindert denselben Fehler beim nächsten Nutzer).
+4. Den Leitfaden als interaktives Onboarding-Modul im Champion-Curriculum (S-SG-042) integrieren und mit zwei praktischen Erkennungs-Übungen ergänzen (Nutzer erhalten einen halluzinierten Text und müssen die Fehler finden).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein KI-Literacy-Trainer. Erstelle einen Schulungs-Leitfaden 'KI-Halluzinationen erkennen und melden' für unser Marketing-Team. Kontext: Halluzinierte Statistiken wurden ohne Verifikation extern kommuniziert. Format: Leitfaden mit fünf Halluzinations-Muster-Beschreibungen, 3-Schritte-Verifikations-Workflow und Melde-Checkliste (wann/wie/warum). Ergänze zwei kurze Erkennungs-Übungen. Stütze den Melde-Kanal auf das Incident-Playbook und die AUP im Wissensordner."
+**Erwartetes Artefakt:** Schulungs-Leitfaden mit fünf Halluzinations-Mustern, 3-Schritte-Verifikations-Workflow, Melde-Checkliste und zwei praktischen Erkennungs-Übungen.
+**Fallstricke (≥2 spezifisch):**
+- Der Leitfaden erzeugt übermäßiges Misstrauen gegenüber KI-Outputs und lähmt die Produktivität, weil Mitarbeitende jede Ausgabe exzessiv nachprüfen — Mitigation: den Verifikations-Workflow nach Inhaltsrisiko skalieren: Niedrigrisiko-Texte (interne Notizen) ohne Vollverifikation; Hochrisiko-Outputs (externe Präsentationen, Pressemitteilungen) mit vollständigem 3-Schritte-Check.
+- Mitarbeitende melden Halluzinationen nicht aus Angst, als unproduktiv oder technophoob zu gelten — Mitigation: eine explizite "False-Positive-Welcome"-Kultur im Leitfaden kommunizieren und Halluzinations-Meldungen als wertvolle Qualitäts-Beiträge öffentlich anerkennen (z. B. im monatlichen Champion-Meeting).
+**Anschluss-Szenario:** S-SG-001

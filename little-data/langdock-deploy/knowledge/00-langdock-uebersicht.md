@@ -911,4 +911,288 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Fallstricke (≥2 spezifisch):**
 - Ein "ungenutzter" Agent wird gelöscht, aber eine automatisierte Workflow-Komponente hat ihn still im Hintergrund gerufen → Vor Deaktivierung im Workflow-Builder nach Referenzen auf den Agenten suchen; Workflow-Abhängigkeiten sind unsichtbar im Nutzungs-Dashboard.
 - Das Archiv-Snapshot-Verfahren wird übersprungen und das Wissen geht verloren → Kein Agent wird ohne exportierten System-Prompt und Wissensordner-Backup deaktiviert; Pre-Retirement-Export ist Pflichtschritt in der Checkliste.
+**Anschluss-Szenario:** S-LU-046
+
+### S-LU-046 KI-Adoptionsrate teamübergreifend messen und steuern
+
+**Wann nutzen (Trigger):** Nach drei Monaten Langdock-Betrieb fragt die Geschäftsführung: "Wie viele Teams nutzen KI wirklich produktiv — und wie messen wir den Fortschritt?" Bisherige Zahlen basieren auf Gefühl, nicht auf Daten. (Quelle: A-04; sources/12 Q-004)
+**Strategisches Ziel:** Ein standardisiertes Adoptionsmessmodell einführen, das monatlich die aktive Nutzung über Teams hinweg erfasst, Stagnation sichtbar macht und gezielte Interventionen ermöglicht.
+**Hands-on Ergebnis:** Ein monatliches Adoptions-Dashboard-Template im Canvas mit vier Metriken (Aktive-Nutzer-Rate, Sessions-pro-Person, Agenten-Aktivierungstiefe, Prompt-Library-Beiträge) pro Team-Einheit.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin / Data Analyst / Canvas
+**Vorgehen (4 Schritte):**
+1. Exportiere monatlich aus dem Langdock-Admin-Dashboard die Nutzungsstatistik auf Team-Ebene: Anzahl aktiver Nutzer (mind. 1 Session/Woche), Sessions pro Kopf, genutzte Agenten-Typen und Library-Beiträge.
+2. Lade den Export in den Data Analyst und berechne die vier Adoptionsmetriken pro Team-Einheit; visualisiere als Heatmap (Team × Metrik).
+3. Definiere Ampel-Schwellenwerte: Grün = Aktive-Nutzer-Rate ≥ 70 %; Gelb = 40–69 %; Rot = unter 40 % — und verbinde jeden Rot-Eintrag automatisch mit einer Champion-Intervention (S-LU-014).
+4. Veröffentliche das Dashboard monatlich im Team-Wiki und nutze es als Steuerungsinstrument für das CMO-Reporting.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Transformations-Controllerin. Erstelle ein Adoptionsmessmodell für Langdock in einem 30-köpfigen Marketing-Team. Kontext: 5 Team-Einheiten (Content, Performance, Social, Brand, Analytics), monatlicher Reporting-Zyklus. Format: Tabelle mit Metrik-Name, Definition, Messmethode, Zielwert und Ampel-Schwellenwert."
+**Erwartetes Artefakt:** Ein Canvas-Dashboard-Template mit vier Adoptionsmetriken, Team-Heatmap-Vorlage und einem Ampel-Handlungsplan für Rot-Einheiten.
+**Fallstricke (≥2 spezifisch):**
+- Nutzungsstatistiken werden als Leistungsbeurteilung missverstanden → Kommuniziere ausdrücklich: Das Dashboard misst Werkzeugnutzung, nicht individuelle Performance; Datenschutz-Hinweis (S-LU-032) voranstellen.
+- Hohe Session-Zahlen ohne Output-Qualität gelten als Erfolg → Ergänze mindestens eine Output-Qualitäts-Metrik (z. B. Anteil der Agenten-Outputs, die ohne Revision freigegeben werden).
+**Anschluss-Szenario:** S-LU-047
+
+### S-LU-047 Abteilungsübergreifendes KI-Champion-Netzwerk aufbauen
+
+**Wann nutzen (Trigger):** Das Marketing-Champion-Programm (S-LU-014) läuft gut, aber andere Abteilungen (Sales, HR, Legal) fragen nach KI-Unterstützung — ohne eigene Struktur und ohne Schnittstelle zur bestehenden Langdock-Infrastruktur. (Quelle: A-35; A-04)
+**Strategisches Ziel:** Das bestehende Marketing-Champions-Programm auf ein abteilungsübergreifendes Netzwerk ausweiten, das Best-Practice-Transfer ermöglicht und die Gesamt-Adoption im Unternehmen beschleunigt.
+**Hands-on Ergebnis:** Ein Champion-Netzwerk-Handbuch im Canvas mit Rollen-Definition, monatlichem Format (Cross-Department AI Roundtable), geteiltem Prompt-Katalog und einem Eskalationspfad für departmentspezifische Bedarfe.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Identifiziere in jedem relevanten Department einen Champion: dieselben Kriterien wie in S-LU-014 (aktivste Nutzer, Bereitschaft zur Wissensweitergabe, Führungskraft-Unterstützung).
+2. Definiere die Netzwerk-Rollen: Marketing-Champion = Moderator und Wissens-Hub; Abteilungs-Champions = Übersetzer zwischen Team-Bedarf und Plattform-Fähigkeiten.
+3. Etabliere ein monatliches 45-Minuten-Format: 15 Minuten Demo eines neuen Use-Cases, 20 Minuten Cross-Department-Problem-Solving, 10 Minuten Ankündigung neuer Features.
+4. Lege einen gemeinsamen Wissensordner "Champion-Network-Resources" an: Prompt-Katalog aller Departments, Best-Practice-Protokolle, Onboarding-Materialien für neue Champions.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Organisationsentwicklungs-Expertin für KI-Transformation. Erstelle ein Handbuch für ein abteilungsübergreifendes KI-Champion-Netzwerk. Kontext: 5 Departments, je 1 Champion, monatlicher Roundtable, Langdock als gemeinsame Plattform. Format: Handbuch mit Rollen-Beschreibung, Meeting-Agenda-Template und Wissensordner-Struktur."
+**Erwartetes Artefakt:** Ein Canvas-Handbuch mit Rollen-Definition, Meeting-Agenda-Template für den monatlichen Roundtable und einer dokumentierten Wissensordner-Struktur für das Netzwerk.
+**Fallstricke (≥2 spezifisch):**
+- Abteilungs-Champions werden nominiert, ohne dass ihre Führungskraft Zeit freigibt → Verbindliche Ressourcen-Zusage (2 Stunden/Monat) muss vor der Nominierung schriftlich vorliegen — dieselbe Bedingung wie in S-LU-014.
+- Der gemeinsame Prompt-Katalog enthält sensible Marketing-Insights, die nicht alle Departments sehen sollen → Berechtigungsstruktur im Wissensordner vorab definieren: öffentliche Prompts vs. department-interne Prompts.
+**Anschluss-Szenario:** S-LU-048
+
+### S-LU-048 KI-Ideation-Workshop für neue Marketing-Use-Cases moderieren
+
+**Wann nutzen (Trigger):** Das Team hat die offensichtlichen Quick-Win-Use-Cases abgedeckt — aber der Vorrat an Ideen versiegt. Der nächste Schritt ist ein strukturierter Workshop, um verborgene Automatisierungspotenziale zu heben. (Quelle: A-07; A-39)
+**Strategisches Ziel:** Einen halbtägigen KI-Ideation-Workshop mit dem Marketing-Team durchführen, der systematisch neue Use-Cases generiert, nach Business-Impact priorisiert und direkt in das Agenten-Backlog überführt.
+**Hands-on Ergebnis:** Ein priorisiertes Use-Case-Backlog im Canvas mit 10–15 neuen Szenarien, bewertet nach Impact, Machbarkeit und Dringlichkeit (ICE-Score), mit je einem zugewiesenen Owner.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Eröffne den Workshop mit einem strukturierten "Pain-Point-Dump" im Chat: Jedes Teammitglied nennt drei wiederkehrende Aufgaben, die zeitintensiv, fehleranfällig oder inkonsistent sind — KI gibt eine erste Machbarkeitseinschätzung.
+2. Führe den PTCF-Prompt aus, um jeden Pain-Point in einen Use-Case-Vorschlag zu überführen: Beschreibung, benötigte Langdock-Funktion, geschätzte Zeitersparnis.
+3. Bewerte alle Vorschläge im Canvas nach ICE-Score (Impact 1–10, Confidence 1–10, Ease 1–10) und sortiere das Backlog absteigend nach Gesamt-Score.
+4. Weise den Top-5-Use-Cases je einen Owner aus dem Champions-Netzwerk zu und setze ein 30-Tage-Implementierungsziel.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Workshop-Moderatorin. Überführe die folgende Liste von Marketing-Pain-Points in priorisierte Langdock-Use-Cases. Kontext: B2B-Marketing-Team mit 15 Personen, Langdock seit 3 Monaten im Einsatz. Format: Tabelle mit Use-Case-Titel, Pain-Point, benötigter Langdock-Funktion, ICE-Score (Impact/Confidence/Ease) und vorgeschlagenem Owner."
+**Erwartetes Artefakt:** Ein priorisiertes Use-Case-Backlog im Canvas mit 10–15 Szenarien, ICE-Scores, Owner-Zuweisung und einem 30-Tage-Implementierungsplan für die Top-5-Prioritäten.
+**Fallstricke (≥2 spezifisch):**
+- Alle Use-Cases landen im "Workflow-Automatisierung"-Bereich und ignorieren strategische Chat-Anwendungen → Workshop-Moderation muss explizit auch Formate wie Deep-Research, Canvas-Kollaboration und Agent-Beratung adressieren.
+- ICE-Scores werden subjektiv vergeben und Lieblingsideen gewinnen → Ease-Score muss technisch validiert werden; Champion schätzt Implementierungsaufwand, nicht der Use-Case-Einreicher.
+**Anschluss-Szenario:** S-LU-049
+
+### S-LU-049 Langdock-Feature-Request-Prozess strukturieren und an den Anbieter kommunizieren
+
+**Wann nutzen (Trigger):** Das Team sammelt Feature-Wünsche per Slack-Kanal — aber es gibt keinen Prozess, der populäre Anfragen konsolidiert, priorisiert und strukturiert an den Langdock-Support kommuniziert. (Quelle: sources/12 Q-036; A-35)
+**Strategisches Ziel:** Einen internen Feature-Request-Prozess etablieren, der Nutzerfeedback systematisch erfasst, nach Häufigkeit und Business-Impact clustert und monatlich als konsolidiertes Dokument an den Anbieter übermittelt.
+**Hands-on Ergebnis:** Ein Feature-Request-Log-Template im Canvas mit Erfassungsformular, Cluster-Methodik und einem standardisierten Anbieter-Kommunikations-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Richte im Canvas ein Feature-Request-Log mit Spalten an: Datum, Melder, Beschreibung, betroffene Funktion, Business-Impact (hoch/mittel/niedrig), Häufigkeit (wie viele Nutzer haben dasselbe gemeldet) und Status (offen/kommuniziert/umgesetzt).
+2. Führe monatlich einen PTCF-Prompt aus: "Clustere alle offenen Feature-Requests nach Funktionsbereich und priorisiere nach Häufigkeit × Business-Impact — erstelle eine Top-5-Liste."
+3. Verfasse mit dem Output ein einseitiges Anbieter-Kommunikations-Template: Top-5-Requests mit Use-Case-Kontext, geschätzter Nutzeranzahl und erwünschtem Umsetzungsdatum — und sende es an den zuständigen Customer-Success-Manager.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Product-Feedback-Managerin. Clustere die folgende Liste von 18 Feature-Requests für Langdock nach Funktionsbereich und Business-Impact. Kontext: 25 Marketing-Nutzer, häufigste Kategorien: Workflow-Erweiterungen, Agent-UI, Wissensordner-Performance. Format: Top-5-Priorisierungsliste mit Cluster-Name, Anzahl Meldungen, Impact-Begründung und vorgeschlagenem Kommunikations-Wording."
+**Erwartetes Artefakt:** Ein strukturiertes Feature-Request-Log im Canvas plus ein fertiges Anbieter-Kommunikations-Dokument mit Top-5-Priorisierung, direkt versandbereit an den Langdock-Customer-Success-Manager.
+**Fallstricke (≥2 spezifisch):**
+- Feature-Requests werden als Produktversprechen missverstanden → Das Kommunikations-Template muss explizit formulieren: "Dies sind interne Nutzerwünsche, keine vertraglichen Anforderungen."
+- Das Log wird nie aktualisiert, weil der Prozess zu aufwändig ist → Quartalsweise 30-minütige Log-Hygiene-Session im Champion-Netzwerk-Roundtable (S-LU-047) einplanen; nicht jeden Monat neu starten.
+**Anschluss-Szenario:** S-LU-050
+
+### S-LU-050 Workspace-Backup- und Export-Strategie implementieren
+
+**Wann nutzen (Trigger):** Die IT-Abteilung fragt nach einer Datensicherungsstrategie für Langdock — und niemand im Marketing-Team kann erklären, welche Daten wie exportiert werden können und wo die Grenzen liegen. (Quelle: A-03; S-LU-021)
+**Strategisches Ziel:** Eine dokumentierte Backup-Routine einrichten, die alle exportierbaren Langdock-Assets quartalsweise sichert und dabei klar zwischen portablen Daten (Quelldateien, Prompts) und nicht-portablen Daten (Embeddings, Chat-Historien) unterscheidet.
+**Hands-on Ergebnis:** Ein Backup-Protokoll im Wissensordner mit Exportcheckliste, Speicherort-Struktur (Git für Prompts, Cloud-Drive für Wissensordner-Dateien) und einem jährlichen Wiederherstellungs-Drill-Termin.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin / Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Inventarisiere alle exportierbaren Langdock-Assets: System-Prompts (Markdown), Konversations-Starter-Texte (Markdown), Wissensordner-Quelldateien (Original-PDFs/DOCX), Workflow-Konfigurationen (JSON-Export falls verfügbar).
+2. Definiere die Backup-Methodik pro Asset-Typ: System-Prompts und Konversations-Starter → Git-Repository (S-LU-043); Wissensordner-Quelldateien → Google Drive mit Versionierung; Workflow-Logik → Dokumentation im Canvas.
+3. Etabliere einen quartalsweisen Backup-Rhythmus: Fester Termin im Teamkalender, 30 Minuten, Owner ist der Workspace-Admin; Backup-Protokoll im Wissensordner aktualisieren.
+4. Plane einen jährlichen Wiederherstellungs-Drill: Stelle einen archivierten Agenten aus dem Backup wieder her und prüfe, ob er ohne Qualitätsverlust funktioniert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist IT-Risikomanagerin für SaaS-Plattformen. Erstelle eine Backup-Strategie für einen Langdock-Workspace mit 12 Agenten, 5 Wissensordnern und 35 Prompts. Kontext: Keine nativen Backup-Funktionen verfügbar; manuelle Exportroutine erforderlich. Format: Tabelle mit Asset-Typ, Exportmethode, Speicherort, Backup-Rhythmus und Wiederherstellungstest-Verfahren."
+**Erwartetes Artefakt:** Ein Backup-Protokoll im Canvas mit Asset-Inventar, Export-Methodik pro Typ, Quartalsroutine und einem dokumentierten Wiederherstellungs-Drill-Verfahren.
+**Fallstricke (≥2 spezifisch):**
+- Embeddings werden als "gesichert" betrachtet, obwohl nur die Quelldateien portierbar sind → Im Backup-Protokoll explizit festhalten: Embeddings sind plattformspezifisch und müssen nach einer Migration neu generiert werden.
+- Der Backup-Termin wird immer wieder verschoben → Backup-Aufgabe als wiederkehrendes Kalender-Event mit dem Workspace-Admin als Pflicht-Teilnehmer und dem CMO als eskalierender Empfänger bei Nicht-Durchführung.
+**Anschluss-Szenario:** S-LU-051
+
+### S-LU-051 KI-gestützte Meeting-Moderation und Protokollierung einführen
+
+**Wann nutzen (Trigger):** Strategie-Meetings dauern zu lang, Entscheidungen bleiben unklar und Protokolle werden oft erst Tage später fertiggestellt — oder gar nicht. Das Team verliert Follow-up-Disziplin. (Quelle: sources/10 S-008; A-39)
+**Strategisches Ziel:** Langdock als aktives Meeting-Moderationswerkzeug einsetzen: strukturierte Agenda-Generierung vor dem Meeting, Live-Protokollierung als Canvas-Dokument während des Meetings und automatische Action-Item-Extraktion danach.
+**Hands-on Ergebnis:** Ein Meeting-Moderation-Workflow-Template mit drei Komponenten: Pre-Meeting-Agenda-Agent, Live-Protokoll-Canvas-Template und Post-Meeting-Action-Item-Extraktor.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Canvas / Chat / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Konfiguriere einen Meeting-Prep-Agenten mit Konversations-Starter "Bereite die Agenda für dieses Meeting vor" — Input: Thema, Teilnehmer, Ziel, Dauer; Output: strukturierte Agenda mit Zeitblöcken und vorbereitenden Fragen.
+2. Erstelle ein Live-Protokoll-Canvas-Template: Abschnitte für Entscheidungen (mit Datum und Entscheidungsträger), offene Fragen und Action Items (wer, was, bis wann).
+3. Definiere den Post-Meeting-Konversations-Starter: "Extrahiere alle Action Items aus diesem Protokoll" → Output: nummerierte Liste mit Owner und Deadline, bereit für Slack-Versand.
+4. Trainiere das Team in einem 20-minütigen Workshop auf das Format; der erste Champion moderiert das erste Live-Meeting mit dem neuen Prozess.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Meeting-Effizienz-Beraterin. Erstelle ein Langdock-Canvas-Template für strukturierte Marketing-Meetings. Kontext: Wöchentliches 60-Minuten-Team-Meeting, 8 Teilnehmer, häufige Nacharbeit durch fehlende Protokolle. Format: Canvas-Template mit Abschnitten Agenda (mit Zeitblöcken), Entscheidungen (Tabelle), Action Items (wer/was/bis wann) und offenen Fragen."
+**Erwartetes Artefakt:** Ein Canvas-Meeting-Template mit drei Abschnitten plus ein fertiger System-Prompt für den Meeting-Prep-Agenten und ein Post-Meeting-Konversations-Starter.
+**Fallstricke (≥2 spezifisch):**
+- Das Canvas-Protokoll wird live nicht gepflegt, weil alle im Meeting-Fluss sind → Dedizierte Protokollantin für jedes Meeting festlegen; rotierend, 10-Minuten-Nachbearbeitung ist Pflichtbestandteil der Meeting-Kultur.
+- Action-Item-Extraktion übersieht implizite Zusagen ("ich schaue das mal an") → Im Konversations-Starter explizit: "Markiere auch implizite Zusagen als Action Items und frage nach Owner und Deadline."
+**Anschluss-Szenario:** S-LU-052
+
+### S-LU-052 Langdock als Wissensmanagement-Layer für das Marketing-Team etablieren
+
+**Wann nutzen (Trigger):** Wissen über Kampagnen-Learnings, Brand-Entscheidungen und Agentur-Briefings ist über E-Mail, Google Drive, Confluence und Slack verstreut — neue Mitarbeitende finden wichtige Informationen nicht und wiederholen Fehler der Vergangenheit. (Quelle: sources/12 Q-038; A-35)
+**Strategisches Ziel:** Langdock als zentrale Wissensmanagement-Schicht einsetzen, die strukturierte Wissensordner mit einem Retrieval-Agenten verbindet — sodass das Team Fragen an die eigene Wissenshistorie stellen kann statt endlos zu suchen.
+**Hands-on Ergebnis:** Eine dreistufige Wissensarchitektur im Canvas: Tier 1 (immer aktuell: Brand-Dokumente), Tier 2 (quartalsweise aktualisiert: Kampagnen-Learnings), Tier 3 (archiviert: abgeschlossene Projekte) — plus ein "Ask-the-Archive"-Agent.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner / Agents / Canvas / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Definiere die Wissensarchitektur: Tier-1-Ordner (Brand, Personas, Tone-of-Voice — Owner: CMO, Update-Rhythmus: bei Änderung), Tier-2-Ordner (Kampagnen-Retros, Agentur-Briefings — Owner: Team-Leads, Update-Rhythmus: quartalsweise), Tier-3-Ordner (archivierte Projekte — schreibgeschützt, read-only).
+2. Migriere die wichtigsten Dokumente aus Google Drive und Confluence in die jeweiligen Tier-Ordner; lege klare Namenskonventionen (S-LU-018) fest.
+3. Konfiguriere den "Ask-the-Archive"-Agenten: System-Prompt "Du beantwortest Fragen aus dem Marketing-Wissensarchiv und gibst immer die Quell-Datei an"; Konversations-Starter "Was haben wir beim letzten LinkedIn-Kampagnen-Launch gelernt?"
+4. Kommuniziere im Team: Neue Kampagnen-Learnings werden ab sofort als 1-seitige Retro-Datei im Tier-2-Ordner abgelegt — nicht mehr als Slack-Thread.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Wissensmanagement-Architektin. Entwickle eine dreistufige Wissensordner-Architektur für ein 15-köpfiges Marketing-Team in Langdock. Kontext: Aktuell 300 Dokumente verstreut auf Google Drive und Confluence; Ziel: retrieval-fähige Wissensbasis mit klarem Update-Rhythmus. Format: Tabelle mit Tier, Inhaltstyp, Owner, Update-Rhythmus und Zugriffsregel."
+**Erwartetes Artefakt:** Eine dreistufige Wissensarchitektur-Tabelle im Canvas, ein System-Prompt für den "Ask-the-Archive"-Agenten und eine Migrations-Checkliste für die wichtigsten 50 Dokumente.
+**Fallstricke (≥2 spezifisch):**
+- Tier-3-Archivordner wächst unkontrolliert auf über 1.000 Dateien und beeinträchtigt die Retrieval-Qualität → Archivordner quartalsweise auf maximal 200 Dateien begrenzen; ältere Dateien in ein externes Drive auslagern.
+- Das Team nutzt den Agenten nicht, weil sie ihn nicht kennen → Onboarding-Konversations-Starter ist Pflichtbestandteil des 14-Tage-Onboarding-Plans (S-LU-041).
+**Anschluss-Szenario:** S-LU-053
+
+### S-LU-053 KI-Reife-Assessment für das Marketing-Team durchführen
+
+**Wann nutzen (Trigger):** Vor einer neuen Investitionsrunde in KI-Tools oder vor dem Aufsetzen eines neuen Langdock-Piloten fragt das Management: "Wo stehen wir eigentlich im Vergleich zu Best Practice — und wo sind unsere größten Lücken?" (Quelle: A-04; A-10; sources/12 Q-004)
+**Strategisches Ziel:** Einen strukturierten KI-Reife-Assessment-Prozess einführen, der die aktuelle Nutzungsreife in fünf Dimensionen bewertet und einen priorisierten Entwicklungsplan ableitet.
+**Hands-on Ergebnis:** Ein Reife-Assessment-Report im Canvas mit Scoring in fünf Dimensionen (Strategie, Tooling, Kompetenz, Governance, Output-Qualität), Benchmark-Vergleich und einem 90-Tage-Entwicklungsplan.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Deep Research
+**Vorgehen (4 Schritte):**
+1. Definiere die fünf Assessment-Dimensionen: (1) KI-Strategie & Vision, (2) Tool-Integration & Infrastruktur, (3) Team-Kompetenz & Adoption, (4) Governance & Compliance, (5) messbare Output-Qualität.
+2. Bewerte jede Dimension auf einer 1–5-Skala: (1) nicht vorhanden, (3) selektiv implementiert, (5) systematisch und messbar; nutze konkrete Evidenz aus dem Workspace (Nutzungsdaten, Governance-Dokumente, Canary-Check-Protokolle).
+3. Aktiviere den Deep Research Modus, um den aktuellen KI-Reife-Benchmark für Marketing-Teams im B2B-SaaS-Segment zu recherchieren; identifiziere die drei größten Lücken zum Best Practice.
+4. Erstelle den 90-Tage-Entwicklungsplan: Top-3-Maßnahmen pro Lücke, Owner, KPI und Checkpoint-Datum.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Strategie-Beraterin für B2B-Marketing-Teams. Erstelle ein KI-Reife-Assessment-Framework in fünf Dimensionen. Kontext: Marketing-Team mit 6 Monaten Langdock-Erfahrung, 12 Personen, 8 aktive Agenten, Governance-Dokument vorhanden. Format: Bewertungsmatrix mit Dimension, Score (1–5), Evidenz, Lücke zum Best Practice und Top-Maßnahme."
+**Erwartetes Artefakt:** Ein Reife-Assessment-Report im Canvas mit Bewertungsmatrix (5 Dimensionen × Score), Benchmark-Vergleich und einem priorisierten 90-Tage-Entwicklungsplan.
+**Fallstricke (≥2 spezifisch):**
+- Das Assessment wird zu positiv, weil das Team die eigene Arbeit bewertet → Mindestens einen externen Champion (aus S-LU-047) oder einen Langdock-Customer-Success-Manager als neutrale Perspektive einbinden.
+- Das Assessment endet ohne Konsequenzen → 90-Tage-Entwicklungsplan muss innerhalb von 7 Tagen nach dem Assessment finalisiert und vom CMO freigegeben sein; sonst verliert es seine Steuerungswirkung.
+**Anschluss-Szenario:** S-LU-054
+
+### S-LU-054 Langdock-Onboarding für externe Agenturen und Freelancer strukturieren
+
+**Wann nutzen (Trigger):** Externe Texter, Designer und Agenturen sollen auf Langdock-Agenten und Wissensordner zugreifen — aber es gibt keinen sicheren, strukturierten Onboarding-Prozess für externe Nutzer. (Quelle: A-06; sources/12 Q-042; sources/10 S-002)
+**Strategisches Ziel:** Einen sicheren, effizienten Onboarding-Prozess für externe Partner entwickeln, der Zugriffsrechte klar regelt, nur relevante Wissensordner freigibt und externe Nutzer in maximal zwei Stunden produktionsfähig macht.
+**Hands-on Ergebnis:** Ein externes Onboarding-Kit im Canvas: Zugriffsrechte-Matrix, ein schreibgeschützter Onboarding-Agent für externe Nutzer und ein 2-Stunden-Schnell-Einstiegs-Guide.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Wissensordner / Canvas / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Definiere die Zugriffsrechte-Matrix: Externe Nutzer erhalten Lese-Zugriff auf freigegebene Wissensordner (Brand-Guide, aktuelle Kampagnenbriefings), können aber keine Agenten konfigurieren oder Wissensordner bearbeiten.
+2. Konfiguriere einen dedizierten "External Partner Agent": System-Prompt mit expliziten Grenzen ("Du kannst nur auf die freigegebenen Ordner zugreifen"), Konversations-Starter für die häufigsten externen Aufgaben (Brand-Voice-Check, Briefing-Frage, Asset-Format-Anfrage).
+3. Erstelle den 2-Stunden-Schnell-Einstiegs-Guide im Canvas: Schritt 1 Account-Aktivierung, Schritt 2 die drei wichtigsten Agenten kennenlernen, Schritt 3 erste echte Aufgabe mit dem Brand-Voice-Agenten erledigen.
+4. Definiere den Offboarding-Prozess: Zugriffsentzug nach Projektende, Audit welche Daten der externe Nutzer gesehen hat.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist IT-Security-Beraterin für kollaborative KI-Plattformen. Erstelle eine Zugriffsrechte-Matrix für externe Agentur-Mitarbeitende in Langdock. Kontext: 3 externe Nutzer, Zugriff auf Brand-Guide und aktuelle Briefings, kein Zugriff auf CRM-Daten oder interne Analysen. Format: Tabelle mit Nutzer-Typ, freigegebene Wissensordner, erlaubte Aktionen, verbotene Aktionen und Offboarding-Prozess."
+**Erwartetes Artefakt:** Eine Zugriffsrechte-Matrix im Canvas, ein konfigurierter External-Partner-Agent und ein 2-Stunden-Onboarding-Guide für externe Partner.
+**Fallstricke (≥2 spezifisch):**
+- Externe Nutzer erhalten versehentlich Zugriff auf interne Governance-Dokumente oder CRM-verknüpfte Wissensordner → Separate Wissensordner-Struktur für externe Partner anlegen; nie denselben Ordner intern und extern freigeben.
+- Externer Nutzer verlässt die Agentur, der Zugang bleibt aktiv → Offboarding-Prozess mit Ablaufdatum bei Projektvergabe als Standard festlegen; Workspace-Admin prüft monatlich aktive externe Zugänge.
+**Anschluss-Szenario:** S-LU-055
+
+### S-LU-055 Multi-Workspace-Governance für größere Marketing-Organisationen aufbauen
+
+**Wann nutzen (Trigger):** Das Unternehmen hat mehrere Business-Units oder Regionen, jede mit einem eigenen Langdock-Workspace — und es gibt keine übergreifenden Standards für Agenten-Konfiguration, Prompt-Qualität oder Sicherheitsrichtlinien. (Quelle: A-35; A-36; sources/12 Q-036)
+**Strategisches Ziel:** Ein Multi-Workspace-Governance-Modell einführen, das gemeinsame Standards definiert, ohne die Autonomie der einzelnen Teams zu beschneiden — nach dem Prinzip "Global Standards, Local Execution".
+**Hands-on Ergebnis:** Ein Multi-Workspace-Governance-Rahmen im Canvas mit drei Schichten: zwingende Standards (Sicherheit, DSGVO, Brand), empfohlene Richtlinien (Prompt-Qualität, Namenskonventionen) und freie lokale Entscheidungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Inventarisiere alle bestehenden Workspaces: Teams, Nutzeranzahl, aktive Agenten, Wissensordner, aktuelle Governance-Stand.
+2. Definiere die drei Governance-Schichten: Schicht 1 (zwingend) — DSGVO-Konformität, Brand-Voice-Standard-Agent, Budget-Eskalationsplan; Schicht 2 (empfohlen) — Namenskonventionen, RACI-Modell, Canary-Check-Prozess; Schicht 3 (lokal frei) — spezifische Agenten, Workflow-Logik, Prompt-Katalog.
+3. Etabliere einen Cross-Workspace-Champions-Roundtable (quartalsweise, 60 Minuten): Workspace-Admins aller Business-Units tauschen Best Practices aus und koordinieren Schicht-1-Updates.
+4. Erstelle einen zentralen "Governance-Hub"-Wissensordner, der für alle Workspaces lesbar ist: zwingende Standards, aktuelle Compliance-Dokumente, Änderungsprotokoll.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Enterprise-KI-Governance-Beraterin. Entwickle ein Multi-Workspace-Governance-Modell für 4 Langdock-Workspaces in verschiedenen Business-Units. Kontext: DACH-Region, unterschiedliche Team-Größen (8–30 Nutzer), gemeinsame Brand-Standards aber unterschiedliche Use-Cases. Format: Drei-Schichten-Modell mit zwingenden Standards, Empfehlungen und lokalen Freiheiten — als Tabelle mit Maßnahme, Schicht, Verantwortlichkeit und Durchsetzungs-Mechanismus."
+**Erwartetes Artefakt:** Ein Multi-Workspace-Governance-Dokument im Canvas mit Drei-Schichten-Modell, einem Governance-Hub-Wissensordner-Plan und einer Quartals-Roundtable-Agenda-Vorlage.
+**Fallstricke (≥2 spezifisch):**
+- Zwingende Standards werden von lokalen Teams als Bevormundung empfunden und ignoriert → Co-Creation der Schicht-1-Standards mit je einem Vertreter pro Business-Unit; keine Standards ohne lokalen Input.
+- Der Governance-Hub-Wissensordner veraltet, weil keine klare Ownership → CMO oder Head of Marketing Ops ist Owner; Änderungen an Schicht-1-Standards erfordern explizite Freigabe und Update-Protokoll im Hub.
+**Anschluss-Szenario:** S-LU-056
+
+### S-LU-056 KI-Content-Kennzeichnungsstrategie teamweit umsetzen
+
+**Wann nutzen (Trigger):** Nach der Erstellung der Disclosure-Strategie (S-LU-039) muss das Team nun operativ sicherstellen, dass alle mit KI produzierten Assets konsistent und korrekt gekennzeichnet werden — ohne dabei jeden Mitarbeitenden manuell zu kontrollieren. (Quelle: A-09; A-19; A-50)
+**Strategisches Ziel:** Die KI-Content-Kennzeichnung von einer Richtlinie in eine automatische, im Produktionsprozess verankerte Praxis überführen — so dass Kennzeichnung kein Extra-Schritt ist, sondern im Workflow eingebaut.
+**Hands-on Ergebnis:** Ein Kennzeichnungs-Workflow mit drei Komponenten: automatisches Labeling-Flag in jedem KI-Output-Agenten, eine Freigabe-Checkliste mit Kennzeichnungs-Pflichtfeld und ein monatliches Stichproben-Audit.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Workflows / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Ergänze jeden Content-Agenten mit einer Standard-Ausgabe-Zeile im System-Prompt: "Füge am Ende jedes Outputs einen Disclosure-Hinweis ein: '[KI-assistiert, redaktionell geprüft]' — sofern der Content für externe Kanäle bestimmt ist."
+2. Integriere ein Kennzeichnungs-Pflichtfeld in die Content-Freigabe-Checkliste (S-LU-040): Kein Asset geht live ohne ausgefülltes Feld "KI-Anteil: voll generiert / assistiert / nicht genutzt" und "Disclosure angewendet: Ja/Nein".
+3. Baue einen monatlichen Stichproben-Audit-Workflow: Ziehe 10 zufällige veröffentlichte Assets aus dem CMS und prüfe via Agent, ob Disclosure korrekt angewendet wurde — Abweichungen werden direkt an den Asset-Owner kommuniziert.
+4. Dokumentiere das Kennzeichnungs-Setup im Governance-Wissensordner als Nachweis für eventuelle Compliance-Prüfungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Compliance-Managerin für KI-Content-Produktion. Erstelle einen operativen Kennzeichnungs-Workflow für ein 15-köpfiges Marketing-Team, das täglich KI-Inhalte produziert. Kontext: EU AI Act Art. 50 relevant, Produktion von Blogs, Social Posts und Newslettern. Format: Prozess-Checkliste mit Schritten, Verantwortlichkeiten, Tool-Integration und Audit-Mechanismus."
+**Erwartetes Artefakt:** Ein Kennzeichnungs-Workflow-Dokument im Canvas mit Agent-System-Prompt-Ergänzung, Freigabe-Checkliste und Audit-Prozess-Beschreibung.
+**Fallstricke (≥2 spezifisch):**
+- Die Disclosure-Zeile im Agent-Output wird vom Redakteur beim Copy-Paste-Schritt gelöscht, ohne es zu bemerken → Disclosure als Pflichtfeld im CMS-Upload-Formular einrichten — unabhängig von der Langdock-Integration.
+- Stichproben-Audit ohne klare Konsequenz bei Nicht-Einhaltung ist zahnlos → Im Governance-Dokument definieren: Erster Verstoß = Erinnerung, zweiter Verstoß = Eskalation an Teamlead, dritter Verstoß = Compliance-Review.
+**Anschluss-Szenario:** S-LU-057
+
+### S-LU-057 Langdock in den bestehenden Martech-Stack integrieren
+
+**Wann nutzen (Trigger):** Das Marketing-Team nutzt HubSpot, Google Analytics, Slack und Canva parallel zu Langdock — aber die Werkzeuge sind nicht verbunden, sodass KI-Outputs immer manuell in die anderen Systeme übertragen werden müssen. (Quelle: sources/12 Q-117; sources/10 S-002)
+**Strategisches Ziel:** Langdock als KI-Schicht in den bestehenden Martech-Stack einbetten — mindestens drei automatisierte Verbindungspunkte schaffen, die manuelle Übertragunsschritte eliminieren.
+**Hands-on Ergebnis:** Eine Martech-Integrations-Karte im Canvas mit drei implementierten Workflows (HubSpot → Langdock → HubSpot, Google Analytics → Langdock → Slack, CMS → Langdock → Freigabe-Workflow) und einer Priorisierung weiterer Integrations-Kandidaten.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows / Integrations / Canvas / Agents
+**Vorgehen (4 Schritte):**
+1. Kartiere den aktuellen Martech-Stack: Welche Tools werden täglich genutzt? Wo entstehen manuelle Übergabeschritte zwischen Langdock und anderen Systemen (z. B. Langdock-Output → manuell in HubSpot)?
+2. Priorisiere die drei vielversprechendsten Integrationspunkte nach Zeitersparnis und technischer Machbarkeit; nutze die native Langdock-Integrations-Liste (über 60 Konnektoren) als Ausgangspunkt.
+3. Baue Workflow 1 (Quick Win): Wenn HubSpot ein neues Lead-Formular-Submission erhält → Langdock generiert automatisch eine personalisierte Follow-up-E-Mail → zurück in HubSpot als Draft.
+4. Dokumentiere alle Integrationen im Canvas als Martech-Stack-Karte: Tool, Verbindungstyp (native/MCP/Webhook), Trigger, Langdock-Aktion, Output-Ziel, Owner und Wartungsaufwand.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Martech-Integrationsarchitektin. Entwickle eine Integrations-Strategie für Langdock in einem Marketing-Stack mit HubSpot, Google Analytics und Slack. Kontext: Aktuell alle Übergaben manuell, Team will Automatisierung ohne IT-Ressourcen. Format: Integrations-Karte mit Tool-Kombination, Trigger, Langdock-Funktion, Output-Ziel, geschätzter Zeitersparnis/Monat und Implementierungsaufwand (h)."
+**Erwartetes Artefakt:** Eine Martech-Integrations-Karte im Canvas mit drei implementierten Verbindungen, Priorisierungsliste für weitere Integrationen und einer Wartungs-RACI-Tabelle.
+**Fallstricke (≥2 spezifisch):**
+- Native HubSpot-Integration überträgt sensible Kontaktdaten nach Langdock → DSGVO-Prüfung (S-LU-031) vor jeder CRM-Integration zwingend; nur anonymisierte oder aggregierte Daten in KI-Layer übertragen.
+- Workflow-Automatisierung bricht bei API-Änderungen des Tool-Anbieters → Monatlichen Integration-Health-Check in den Governance-Review (S-LU-025) aufnehmen; bei Bruch des Workflows wird sofort der Workflow-Owner benachrichtigt.
+**Anschluss-Szenario:** S-LU-058
+
+### S-LU-058 KI-Strategie-Präsentation für das Board vorbereiten
+
+**Wann nutzen (Trigger):** Die Geschäftsführung hat KI als strategische Priorität ausgerufen und der CMO soll im nächsten Board-Meeting eine KI-Strategie-Präsentation halten — aber es gibt noch keine konsolidierte Darstellung. (Quelle: A-10; A-01; sources/12 Q-004)
+**Strategisches Ziel:** Eine überzeugende, datengestützte KI-Strategie-Präsentation für das Board entwickeln, die Ist-Zustand, Potenzial, Investitionsbedarf und ROI-Projektion in einem kohärenten Narrativ verbindet.
+**Hands-on Ergebnis:** Ein Board-Ready-Präsentations-Deck im Canvas (10–12 Slides) mit sechs Kernbotschaften: Ist-Zustand, strategische Vision, Quick Wins (realisiert), nächste Investitionen, Risiken und Governance.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Data Analyst / Deep Research
+**Vorgehen (4 Schritte):**
+1. Sammle alle relevanten Datenpunkte im Chat: Adoption-Rate (S-LU-046), ROI-KPIs (S-LU-012), Reife-Assessment-Score (S-LU-053), Pipeline-Attribution (S-LU-040) und CO₂-Fußabdruck (S-LU-044).
+2. Aktiviere den Deep Research Modus für den Markt-Kontext: Wie hoch ist die KI-Adoptionsrate im B2B-Marketing-Segment? Was investieren vergleichbare Unternehmen? Welche regulatorischen Entwicklungen sind relevant?
+3. Entwickle das Deck-Narrativ im Canvas: Folie 1 (Executive Summary), Folien 2–4 (Ist-Zustand + Quick Wins mit Daten), Folien 5–7 (strategische Vision + nächste Schritte + Investitionsbedarf), Folien 8–10 (Risiken + Governance + ROI-Projektion), Folien 11–12 (Entscheidungsaufruf + Anhang).
+4. Teste die Präsentation mit dem Steel-Manning-Test (S-LU-002): "Was ist das stärkste Gegenargument gegen diese KI-Investition?" — und baue die Antwort in Folie 8 ein.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Board-Kommunikations-Expertin für digitale Transformation. Erstelle eine Gliederung für eine 20-minütige KI-Strategie-Präsentation für das Board. Kontext: CMO präsentiert nach 6 Monaten KI-Pilot im Marketing; Board will Investitionsgrundlage für den Vollrollout. Format: Slide-Struktur mit Folientitel, Kernbotschaft (1 Satz), empfohlene Visualisierung und wichtigste Daten-/Quellenangabe pro Folie."
+**Erwartetes Artefakt:** Eine 10–12-Slide-Präsentationsgliederung im Canvas mit Folientitel, Kernbotschaft, Visualisierungsempfehlung und Datenquellen — bereit für die Umsetzung in PowerPoint oder Google Slides.
+**Fallstricke (≥2 spezifisch):**
+- Die Präsentation enthält zu viele operative Details und verliert das Board → Faustregel: Pro Folie eine Kernbotschaft, maximal drei Datenpunkte; alles andere in den Anhang.
+- ROI-Projektion basiert auf zu optimistischen Annahmen und verliert Glaubwürdigkeit → Projiziere konservativ (unteres Drittel der realistischen Bandbreite) und kommuniziere die Annahmen transparent auf der Folie.
+**Anschluss-Szenario:** S-LU-059
+
+### S-LU-059 Kontinuierlicher Verbesserungskreislauf für KI-Prozesse einrichten
+
+**Wann nutzen (Trigger):** Langdock ist im Einsatz und die erste Aufbauphase ist abgeschlossen — aber es gibt keinen systematischen Prozess, der sicherstellt, dass Agenten, Prompts und Workflows kontinuierlich verbessert werden statt zu veralten. (Quelle: A-34; A-33; A-39)
+**Strategisches Ziel:** Einen strukturierten Continuous-Improvement-Loop für alle KI-Prozesse etablieren, der monatliche Feedback-Sammlung, quartalsweises Review und jährliche Strategie-Neubewertung verbindet.
+**Hands-on Ergebnis:** Ein CI-Prozess-Dokument im Canvas mit drei Zyklen (monatlich: Canary-Checks + Nutzungs-Feedback; quartalsweise: Governance-Review + Backlog-Priorisierung; jährlich: Reife-Assessment + Board-Update) und klaren Ownership-Zuweisungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Agents / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Definiere die drei CI-Zyklen mit Aktivitäten: Monatszyklus (Canary-Checks S-LU-033, Adoptions-Dashboard S-LU-046, Feature-Request-Clustering S-LU-049), Quartalszyklus (Governance-Review S-LU-025, Use-Case-Backlog-Priorisierung S-LU-048, Wissensordner-Hygiene S-LU-018), Jahreszyklus (Reife-Assessment S-LU-053, Board-Präsentation S-LU-058, Wechsel-Drill S-LU-050).
+2. Erstelle für jeden Zyklus eine Aktivitätscheckliste mit Dauer, Owner und Output-Artefakt; integriere alle Termine in den Teamkalender als Wiederkehrende Events.
+3. Konfiguriere einen CI-Loop-Agenten als Moderation-Unterstützung: Konversations-Starter "Erstelle die Agenda für unseren monatlichen KI-Review" → Output: vorausgefüllte Meeting-Agenda mit Datenpunkten aus dem letzten Zyklus.
+4. Verankere die CI-Philosophie im Team-Onboarding (S-LU-041): Neue Mitarbeitende lernen ab Tag 7, wie sie Verbesserungsvorschläge einreichen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prozess-Exzellenz-Beraterin mit KI-Fokus. Erstelle einen Continuous-Improvement-Loop für KI-Prozesse in einem Marketing-Team. Kontext: 15 Personen, Langdock seit 6 Monaten, Champions-Programm aktiv. Format: Drei-Zyklen-Tabelle (monatlich/quartalsweise/jährlich) mit Aktivität, Dauer, Owner, Input-Artefakt und Output-Artefakt."
+**Erwartetes Artefakt:** Ein CI-Prozess-Dokument im Canvas mit Drei-Zyklen-Tabelle, Wiederkehrenden-Termin-Liste und einem CI-Loop-Agenten-System-Prompt.
+**Fallstricke (≥2 spezifisch):**
+- Der monatliche Zyklus wird im operativen Stress übersprungen → Monatszyklus auf maximal 60 Minuten begrenzen; wenn es länger dauert, wird das Format sofort vereinfacht — nicht der Termin gestrichen.
+- Die jährliche Strategie-Neubewertung findet statt, aber keine Konsequenzen werden gezogen → Das Reife-Assessment (S-LU-053) schreibt vor, dass innerhalb von 14 Tagen ein aktualisierter 90-Tage-Plan vorliegen muss.
+**Anschluss-Szenario:** S-LU-060
+
+### S-LU-060 Community of Practice für Marketing-KI aufbauen und verstetigen
+
+**Wann nutzen (Trigger):** Das interne Champion-Netzwerk (S-LU-047) funktioniert gut, aber das Team wünscht sich mehr Austausch mit anderen Marketing-Teams, die ähnliche Herausforderungen mit KI haben — über Unternehmensgrenzen hinaus. (Quelle: A-39; A-07; A-48)
+**Strategisches Ziel:** Eine nachhaltige Community of Practice für Marketing-KI aufbauen, die internen Wissenstransfer mit externem Austausch verbindet und das Team als Thought Leader im DACH-KI-Marketing-Ökosystem positioniert.
+**Hands-on Ergebnis:** Ein Community-of-Practice-Konzept im Canvas mit drei Formaten (internem monatlichem Showcase, halbjährlichem externem Event, Public-Content-Beitrag), Governance-Regeln und einem ersten Jahresplan.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Deep Research / Agents
+**Vorgehen (4 Schritte):**
+1. Definiere die drei Community-Formate: (1) Interner monatlicher Showcase — 30 Minuten, ein Use-Case-Demo, offen für alle Langdock-Nutzer im Unternehmen; (2) Halbjährliches externes Event — 2 Stunden, 2–3 externe Referenten aus anderen DACH-Unternehmen, kein Sales-Pitch; (3) Public-Content-Beitrag — quartalsweise einen anonymisierten Use-Case als LinkedIn-Post oder Blog-Artikel publizieren.
+2. Aktiviere den Deep Research Modus: Welche bestehenden KI-Marketing-Communities gibt es im DACH-Raum (Slack-Groups, LinkedIn-Gruppen, Verbände)? Identifiziere Kooperationspartner für das externe Event.
+3. Erstelle den ersten Jahresplan im Canvas: 12 interne Showcases, 2 externe Events, 4 Public-Content-Beiträge — mit Themenvorschlägen, die auf dem Use-Case-Backlog (S-LU-048) basieren.
+4. Konfiguriere einen Community-Content-Agenten: System-Prompt "Du hilfst dabei, interne Use-Cases für die externe Kommunikation zu anonymisieren und publikationsreif aufzubereiten"; Konversations-Starter "Bereite diesen internen Use-Case als LinkedIn-Artikel auf."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Community-Building-Expertin für Technologie-Ökosysteme. Entwickle ein Community-of-Practice-Konzept für Marketing-KI im DACH-Raum. Kontext: Ausgangspunkt ist ein internes Champion-Netzwerk mit 6 Personen; Ziel ist schrittweise Öffnung nach außen. Format: Konzept mit drei Community-Formaten, Governance-Regeln (wer darf was teilen), erstem Jahresplan und KPIs für Community-Erfolg."
+**Erwartetes Artefakt:** Ein Community-of-Practice-Konzept im Canvas mit drei Formaten, Governance-Regeln, Jahresplan und einem System-Prompt für den Community-Content-Agenten.
+**Fallstricke (≥2 spezifisch):**
+- Externe Teilnehmende erwarten Exklusivwissen und sind enttäuscht von zu allgemeinen Inhalten → Jedes externe Event braucht mindestens einen konkreten, anonymisierten Praxisfall mit echten Zahlen — keine reinen Tool-Demos.
+- Public-Content-Beiträge enthalten versehentlich sensible Business-Daten → Jeder externe Content-Beitrag muss den Community-Content-Agenten zur Anonymisierung durchlaufen und dann von der Rechtsabteilung (10 Minuten Durchsicht) freigegeben werden.
 **Anschluss-Szenario:** S-LU-001
