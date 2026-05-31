@@ -32,14 +32,14 @@ Each step dispatches one `sc:sc-deep-research` subagent (model = haiku) that wri
 
 | Step | Theme | Inputs (Research-Files) | Output | Status |
 |---|---|---|---|---|
-| 1.T1 | Langdock Platform Features & Limits | research/01, restructured/00, sources/01-06 | `extracts/T1-langdock-features.md` | ✅ done (463 L / 6.8 KB) |
-| 1.T2 | RAG & Retrieval Mechanics | research/04, 10, 12, restructured/01, sources/07 | `extracts/T2-rag-mechanik.md` | ✅ done (233 L / 16 KB) |
-| 1.T3 | Marketing-Praxis & Use Cases | research/03, 09 | `extracts/T3-marketing-praxis.md` | running |
-| 1.T4 | AI Persona Architecture | research/05, 07, 08 | `extracts/T4-persona-architektur.md` | ✅ done (13 KB) |
-| 1.T5 | Lt. Cmdr. Data Canon | research/06, 11 | `extracts/T5-data-canon.md` | running |
-| 1.T6 | DACH Context + Costs | research/02, 01 + restructured/00 §7-8 | `extracts/T6-dach-kontext-kosten.md` | running |
-| 1.T7 | Soul.md Framework | research/07 + local SOUL/STYLE/SKILL/BUILD | `extracts/T7-soul-md-framework.md` | ✅ done (17 KB) |
-| 1.T8 | Critical-Thinking + Prompt Patterns | `/tmp/agency-backups-clone/skills/research-prompt-optimizer/`, `/skills/prompt-optimizer/`, related | `extracts/T8-metaprompts-critical-thinking.md` | running (corrected after wrong-repo detection) |
+| 1.T1 | Langdock Platform Features & Limits | sources/08, restructured/00, sources/01-06 | `extracts/T1-langdock-features.md` | ✅ done (289 L / 15 KB) |
+| 1.T2 | RAG & Retrieval Mechanics | research/04, sources/13, sources/15, restructured/01, sources/07 | `extracts/T2-rag-mechanik.md` | ✅ done (233 L / 13 KB) |
+| 1.T3 | Marketing-Praxis & Use Cases | sources/10, sources/12 | `extracts/T3-marketing-praxis.md` | ✅ done (145 L / 9 KB) |
+| 1.T4 | AI Persona Architecture | research/05, research/07, sources/11 | `extracts/T4-persona-architektur.md` | ✅ done (225 L / 13 KB) |
+| 1.T5 | Lt. Cmdr. Data Canon | research/06, sources/14 | `extracts/T5-data-canon.md` | ✅ done (357 L / 10 KB) |
+| 1.T6 | DACH Context + Costs | sources/09, sources/08, restructured/00 §7-8 | `extracts/T6-dach-kontext-kosten.md` | ✅ done (240 L / 9 KB) |
+| 1.T7 | Soul.md Framework | research/07 + local SOUL/STYLE/SKILL/BUILD | `extracts/T7-soul-md-framework.md` | ✅ done (293 L / 17 KB) |
+| 1.T8 | Critical-Thinking + Prompt Patterns | `/tmp/agency-backups-clone/skills/research-prompt-optimizer/`, `/skills/prompt-optimizer/` | `extracts/T8-metaprompts-critical-thinking.md` | ✅ done (1403 L / 68 KB) | running (corrected after wrong-repo detection) |
 
 **Gate before Phase 1.5:** all 8 extract files exist with non-trivial content.
 
@@ -61,8 +61,8 @@ Each step dispatches one `sc:sc-deep-research` subagent (model = haiku) that wri
 
 | Step | Action | Owner | Status |
 |---|---|---|---|
-| 0.5.1 | Wait for T5 (Data Canon) extract to complete | (background) | pending |
-| 0.5.2 | Dispatch persona-builder local subagent for `11-persona-core.md` — inputs: T4, T5, T7, T8 + research/05,06,07,08,11 sources + Authoring-Spec | Agent | pending |
+| 0.5.1 | Wait for T5 (Data Canon) extract to complete | (background) | ✅ done |
+| 0.5.2 | Dispatched Jules + recovered patch locally for `11-persona-core.md` — inputs: T4, T5, T7, T8 + research/05,06,07,08,11 sources + Authoring-Spec | Agent | pending |
 | 0.5.3 | Dispatch persona-builder local subagent for `12-persona-julia-modus.md` — inputs: T5 + research/06,11 sources + Authoring-Spec | Agent | pending |
 | 0.5.4 | Review both persona files; verify anchor strings ("Little Data Persona Anker", "Beziehungsmodus Julia Lenz") are verbatim in first chunk | Read + grep | pending |
 | 0.5.5 | Commit + push Phase-0.5 artifacts | Bash | pending |
