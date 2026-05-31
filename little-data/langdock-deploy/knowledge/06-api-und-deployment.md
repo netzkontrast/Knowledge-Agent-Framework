@@ -11,7 +11,7 @@
 
 ## Wann eine Marketing-Direktorin überhaupt mit API in Berührung kommt
 
-Die meisten Marketing-Aktivitäten innerhalb von Langdock erfordern keine Programmierkenntnisse. Eine Marketing-Direktorin nutzt primär die Chat-Oberfläche, vorkonfigurierte Agenten und den Wissensordner. Dennoch gibt es strategische Wendepunkte, an denen das Wissen über die API (Application Programming Interface) und deren Bereitstellung (Deployment) geschäftskritisch wird. Dies geschieht typischerweise an der Grenze zwischen manuellem Output und skalierter Automatisierung.
+Die meisten Marketing-Aktivitäten innerhalb von Langdock erfordern keine Programmierkenntnisse. Eine Marketing-Direktorin nutzt primär die Chat-Oberfläche, vorkonfigurierte Agenten und den Wissensordner. Dennoch gibt es strategische Wendepunkte, an denen das Wissen über die API (Application Programming Interface) und deren Bereitstellung (Deployment) geschäftskritisch wird. Dieser Berührungspunkt entsteht typischerweise an der Grenze zwischen manuellem Output und skalierter Automatisierung.
 
 Der erste Berührungspunkt entsteht oft, wenn Content-Produktion das Stadium einzelner Social-Media-Posts verlässt und in Massen-Workflows übergeht. Wenn Tausende von Produktbeschreibungen automatisiert über das PIM (Product Information Management) System aktualisiert oder Kunden-Feedback-Datenbanken in Echtzeit klassifiziert werden sollen, ist die UI-Grenze erreicht. Hier orchestriert die API die Datenströme unsichtbar im Hintergrund.
 
@@ -41,23 +41,23 @@ Sofort profitiert die bestehende Infrastruktur von Langdocks Enterprise-Sicherhe
 
 Die Sicherheit von API-Schlüsseln hat oberste Priorität, da kompromittierte Keys nicht nur zu massiven, unkontrollierten Kosten (durch Token-Verbrauch) führen, sondern auch Einfallstore in die sensible Daten-Infrastruktur des Unternehmens öffnen. Langdock erzwingt hier eine kompromisslose Zero-Trust-Architektur, die sich stark in der Handhabung von CORS (Cross-Origin Resource Sharing) manifestiert.
 
-Langdock blockiert rigoros alle direkten Client-Side-Aufrufe an seine API. Das bedeutet, es ist architektonisch unmöglich, eine Anfrage direkt aus dem Webbrowser einer Nutzerin (via JavaScript/Frontend) an Langdock zu senden. Dies ist kein Fehler, sondern ein absichtlicher Schutzmechanismus, um zu verhindern, dass die wertvollen API-Schlüssel im Quelltext der Website sichtbar sind und von Dritten ausgelesen werden können.
+Langdock blockiert rigoros alle direkten Client-Side-Aufrufe an seine API. Das bedeutet, es ist architektonisch unmöglich, eine Anfrage direkt aus dem Webbrowser einer Nutzerin (via JavaScript/Frontend) an Langdock zu senden. Diese CORS-Blockierung ist kein Fehler, sondern ein absichtlicher Schutzmechanismus, um zu verhindern, dass die wertvollen API-Schlüssel im Quelltext der Website sichtbar sind und von Dritten ausgelesen werden können.
 
 Für Marketing-Initiativen – wie zum Beispiel die Integration eines Langdock-gestützten Chatbots auf der Landingpage – erzwingt diese CORS-Posture ein sogenanntes Backend-for-Frontend (BFF) Pattern. Entwickler müssen zwingend einen eigenen Zwischen-Server (Proxy-Server oder Backend) aufsetzen.
 
-Der Flow sieht dann so aus: Der Webbrowser des Kunden kommuniziert mit dem unternehmenseigenen Server (dem BFF). Dieser Server authentifiziert den Nutzer, hält den Langdock-API-Key sicher in seinen geschützten Umgebungsvariablen (Environment Variables) verborgen, und leitet die Anfrage erst dann stellvertretend an Langdock weiter. Dies garantiert höchste Sicherheit und erlaubt es dem Marketing-Team, eigene Filter, Rate Limits und Business-Logik vor die Langdock-Plattform zu schalten.
+Der Flow sieht dann so aus: Der Webbrowser des Kunden kommuniziert mit dem unternehmenseigenen Server (dem BFF). Dieser Server authentifiziert den Nutzer, hält den Langdock-API-Key sicher in seinen geschützten Umgebungsvariablen (Environment Variables) verborgen, und leitet die Anfrage erst dann stellvertretend an Langdock weiter. Dieses Architekturmuster garantiert höchste Sicherheit und erlaubt es dem Marketing-Team, eigene Filter, Rate Limits und Business-Logik vor die Langdock-Plattform zu schalten.
 
 ## 4 Deployment-Modelle (Multi-tenant SaaS / Single-tenant / BYOC / On-Prem)
 
 Langdock passt sich den regulatorischen und technologischen Anforderungen an, indem es vier Bereitstellungsmodelle anbietet. Die Marketing-Direktorin muss diese Modelle kennen, da sie Budget, Geschwindigkeit und Compliance-Risiken direkt beeinflussen.
 
-Das Standard-Modell ist **Multi-tenant SaaS**. Hierbei läuft Langdock auf geteilten Cloud-Ressourcen, garantiert aber EU-Hosting und DSGVO-Konformität. Dies ist der schnellste Weg, um Workflows auszurollen, ideal für Agilitäts-fokussierte Teams.
+Das Standard-Modell ist **Multi-tenant SaaS**. Hierbei läuft Langdock auf geteilten Cloud-Ressourcen, garantiert aber EU-Hosting und DSGVO-Konformität. Dieses SaaS-Setup ist der schnellste Weg, um Workflows auszurollen, ideal für Agilitäts-fokussierte Teams.
 
 Für Organisationen mit strengeren Isolations-Bedürfnissen gibt es **Single-tenant SaaS**. Hier erhält das Unternehmen eine dedizierte Instanz auf einer eigenen Subdomain. Daten und Rechenleistung sind physisch von anderen Kunden getrennt.
 
 Besonders flexibel ist das **BYOC-Modell** (Bring Your Own Cloud / Key). Das Frontend läuft bei Langdock, aber das Unternehmen nutzt eigene Cloud-Verträge und API-Keys (z. B. auf Microsoft Azure). So behält man die volle Kontrolle über die Datenverarbeitung auf Modell-Ebene.
 
-Für absolute maximale Kontrolle, typisch im Banking-Sektor, existiert das **On-Premises / VPC-Deployment**. Hier wird Langdock vollständig innerhalb der Firewall installiert. Dies erlaubt komplette Air-Gapped-Umgebungen, ist aber mit erheblichem IT-Aufwand verbunden.
+Für absolute maximale Kontrolle, typisch im Banking-Sektor, existiert das **On-Premises / VPC-Deployment**. Hier wird Langdock vollständig innerhalb der Firewall installiert. Diese On-Premises Isolation erlaubt komplette Air-Gapped-Umgebungen, ist aber mit erheblichem IT-Aufwand verbunden. Jedes dieser Deployment-Modelle wird durch den Enterprise-Support von Langdock aktiv begleitet, um einen reibungslosen Übergang zwischen den verschiedenen Infrastruktur-Ebenen zu gewährleisten. Die finale Entscheidung zwischen SaaS und On-Premises sollte immer in enger Abstimmung zwischen dem Marketing-Vorstand, dem Chief Information Security Officer (CISO) und dem IT-Operations-Team getroffen werden, um sowohl Agilität als auch maximale Compliance sicherzustellen.
 
 ## Static IP für Egress-Whitelisting
 
@@ -65,7 +65,7 @@ Ein häufiger Stolperstein in der Zusammenarbeit zwischen Marketing-Innovation u
 
 Hier kommt die sogenannte "Static IP" (Statische IP-Adresse) ins Spiel. Langdock bietet Enterprise-Kunden eine dedizierte, garantierte und unveränderliche IP-Adresse an (z. B. `4.185.103.44`), von der aus sämtlicher ausgehender Datenverkehr (Egress) der Plattform – wie API-Calls oder Webhook-Requests – gesendet wird.
 
-Dies ermöglicht das sogenannte "Egress-Whitelisting". Die Firewall-Administratoren des Unternehmens können eine hochpräzise Ausnahmeregel (Access Control List) erstellen: Die internen Systeme weisen alle Anfragen aus dem Internet ab, außer sie stammen exakt von dieser einen statischen Langdock-IP-Adresse.
+Dieses Setup ermöglicht das sogenannte "Egress-Whitelisting". Die Firewall-Administratoren des Unternehmens können eine hochpräzise Ausnahmeregel (Access Control List) erstellen: Die internen Systeme weisen alle Anfragen aus dem Internet ab, außer sie stammen exakt von dieser einen statischen Langdock-IP-Adresse.
 
 So entsteht eine hochsichere, engmaschig überwachte Daten-Brücke. Das Marketing-Team kann modernste Cloud-KI-Workflows nutzen und nahtlos auf tiefe, On-Premises gelagerte Unternehmensdaten zugreifen, ohne dass die IT-Sicherheit eine Verwundbarkeit der Perimeter-Verteidigung befürchten muss. Dieses architektonische Feature ist oft das ausschlaggebende Argument, um Freigaben für komplexe Integrations-Szenarien zu erhalten.
 
@@ -77,17 +77,17 @@ Standardmäßig gelten harte Limits auf Workspace-Ebene, insbesondere für den A
 
 Zudem gibt es finanzielle Limits (Budgets). Workflows sind standardmäßig auf 25 Euro pro Lauf und Workspaces auf 500 Euro pro Monat limitiert. Ebenso existieren funktionale Grenzen, wie eine maximale Dateigröße von 256 MB für API-Uploads oder ein 100-Sekunden-Timeout für Non-Streaming-API-Antworten.
 
-Wenn eine große Kampagne ansteht, muss das Team proaktiv handeln. Rate Limits sind keine unveränderlichen Naturgesetze. Über den Langdock-Enterprise-Support oder den zugewiesenen Customer Success Manager können temporäre oder permanente Erhöhungen (Quota Increases) angefragt werden. Dies erfordert meist einen kurzen Business Case ("Wir verarbeiten in KW 42 unser PIM-Archiv") und die Bestätigung der Kostenübernahme, woraufhin die Limits im Backend entsprechend hochgesetzt werden.
+Wenn eine große Kampagne ansteht, muss das Team proaktiv handeln. Rate Limits sind keine unveränderlichen Naturgesetze. Über den Langdock-Enterprise-Support oder den zugewiesenen Customer Success Manager können temporäre oder permanente Erhöhungen (Quota Increases) angefragt werden. Dieser Prozess erfordert meist einen kurzen Business Case ("Wir verarbeiten in KW 42 unser PIM-Archiv") und die Bestätigung der Kostenübernahme, woraufhin die Limits im Backend entsprechend hochgesetzt werden.
 
 ## Advisory-Grenze (Little Data ruft KEINE APIs auf — beratet nur)
 
 Bei der Planung von API-Integrationen und dem Entwurf komplexer Systemarchitekturen ist es essenziell, die operativen Grenzen des Langdock-Beraters "Little Data" zu verstehen. Die Marketing-Direktorin kann von "Little Data" wertvolle strategische Führung, konzeptionelle Schaltpläne und Best-Practice-Empfehlungen erwarten, aber keine aktive Code-Ausführung oder System-Veränderungen.
 
-Dies definiert die Advisory-Grenze (Beratungsgrenze): "Little Data" verfasst keine Produktions-Skripte für die IT, richtet keine Server ein und sendet niemals selbständig API-Anfragen an externe Systeme oder an die Langdock-Infrastruktur. Der Agent fungiert ausschließlich als strategischer Sparringspartner und Übersetzer zwischen den Business-Anforderungen des Marketings und der technischen Umsetzung.
+Dieses Rollenverständnis definiert die Advisory-Grenze (Beratungsgrenze): "Little Data" verfasst keine Produktions-Skripte für die IT, richtet keine Server ein und sendet niemals selbständig API-Anfragen an externe Systeme oder an die Langdock-Infrastruktur. Der Agent fungiert ausschließlich als strategischer Sparringspartner und Übersetzer zwischen den Business-Anforderungen des Marketings und der technischen Umsetzung.
 
 Wenn beispielsweise ein Backend-for-Frontend (BFF) Pattern implementiert werden muss, wird "Little Data" die Architektur erklären, die CORS-Risiken benennen und ein High-Level-Briefing für das Entwicklerteam formulieren. Die eigentliche Programmierung und das Konfigurieren der Umgebungsvariablen müssen jedoch von den Ingenieuren des Unternehmens übernommen werden.
 
-Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von Rate Limits, das Hinzufügen von BYOK-API-Schlüsseln oder das Whitelisting von IPs) über die Administrationsebene vornehmen. Der Agent liefert das "Warum" und das "Wie", strukturiert den Prozess für das Change Management und bereitet die Stakeholder-Kommunikation vor. Die exekutive Umsetzung bleibt stets beim menschlichen Operator. Dies garantiert höchste Sicherheit und verhindert, dass beratende KI unbeabsichtigt kritische Systemänderungen durchführt.
+Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von Rate Limits, das Hinzufügen von BYOK-API-Schlüsseln oder das Whitelisting von IPs) über die Administrationsebene vornehmen. Der Agent liefert das "Warum" und das "Wie", strukturiert den Prozess für das Change Management und bereitet die Stakeholder-Kommunikation vor. Die exekutive Umsetzung bleibt stets beim menschlichen Operator. Dieses Architekturmuster garantiert höchste Sicherheit und verhindert, dass beratende KI unbeabsichtigt kritische Systemänderungen durchführt.
 
 ## Marketing-Szenarien aus dieser Domäne
 
@@ -270,3 +270,182 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 - Die KI verwechselt Audit-Logs (Wer hat das System konfiguriert?) mit Usage-Logs (Wer hat welche Tokens verbraucht?).
 - Der Datenschutzaspekt (PII-Daten in Logs) wird in der Risikoanalyse vergessen.
 **Anschluss-Szenario:** S-API-011
+### S-API-011 Rate Limit Timeout im SEO-Batch Prozess
+**Wann nutzen (Trigger):** Das SEO-Team übersetzt an jedem Wochenende 2.000 Blog-Artikel. Der Custom Script Workflow bricht regelmäßig mittendrin ab und gibt einen HTTP 524 (Timeout) Fehler zurück. Das Team ist frustriert, da die Hälfte der Artikel fehlt.
+**Strategisches Ziel:** Einen stabilen asynchronen Prozess entwerfen, der das 100-Sekunden-Timeout von Langdock bei langen LLM-Prompts elegant umgeht.
+**Hands-on Ergebnis:** Ein technisches Lösungs-Memo für das Data-Engineering-Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory
+**Vorgehen (3-5 Schritte):**
+1. Analysiere das Timeout-Szenario gemeinsam mit Little Data.
+2. Identifiziere den Engpass: Non-Streaming-Antworten über 100 Sekunden Dauer.
+3. Fordere ein architektonisches Konzept an, das auf Server-Sent Events (SSE) Streaming oder asynchrone Webhooks setzt.
+4. Formuliere das Memo für das IT-Team, das die exakten Langdock-Limitierungen aufschlüsselt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Backend-Architekt. Unser SEO-Team hat ein Skript geschrieben, das lange Blog-Übersetzungen über die Langdock API anfragt. Das Skript bricht nach 100 Sekunden mit 'HTTP 524' ab. Erkläre in einem Memo an unsere Entwickler, warum dieser Timeout bei Langdock greift. Skizziere eine Lösung, bei der die Entwickler entweder das SSE (Server-Sent Events) Streaming der API nutzen oder den Prompt zerkleinern müssen. Bleib konzeptionell, kein Code."
+**Erwartetes Artefakt:** Ein technisches Lösungs-Memo (Architektur-Blueprint).
+**Fallstricke (≥2 spezifisch):**
+- Die KI rät fälschlicherweise dazu, das Timeout-Limit im Admin-Panel hochzusetzen, was bei Langdock (Hard Limit 100s) nicht möglich ist.
+- Der Unterschied zwischen Rate Limit (500 RPM) und Latenz-Timeout (100s) wird in der Erklärung vermischt.
+**Anschluss-Szenario:** S-API-012
+
+### S-API-012 Key-Rotation Panik im Event-Marketing
+**Wann nutzen (Trigger):** Ein Praktikant hat versehentlich einen Langdock API-Key auf einem öffentlichen Trello-Board gepostet. Die InfoSec-Abteilung fordert die sofortige Löschung des Keys, was aber die Lead-Scoring Automatisierung auf der laufenden Leitmesse lahmlegen würde.
+**Strategisches Ziel:** Eine Downtime-freie Key-Rotation (Schlüsselerneuerung) planen, um die Security-Vorgaben zu erfüllen und gleichzeitig die Live-Automatisierung am Laufen zu halten.
+**Hands-on Ergebnis:** Ein Incident Response Runbook für den Notfall.
+**Eingesetzte Langdock-Fähigkeit(en):** Deployment Advisory, API Governance
+**Vorgehen (3-5 Schritte):**
+1. Beauftrage Little Data mit der Erstellung eines Best-Practice Key-Rotation Plans.
+2. Definiere die Schritte zur Generierung eines zweiten (parallelen) Keys.
+3. Skizziere den Rollout des neuen Keys auf dem Middleware-Server, bevor der alte gelöscht wird.
+4. Verfasse die beruhigende Rückmeldung an InfoSec.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Incident Response Manager. Unser API-Key ist geleakt. InfoSec will den Key sofort löschen, aber dann bricht unser Messe-Lead-System zusammen. Schreibe ein Runbook für einen 'Zero-Downtime Key Rollover'. Erkläre den Entwicklern in 3 Schritten: 1. Neuen Key in Langdock generieren, 2. Environment Variables im Proxy-Server updaten, 3. Erst dann den kompromittierten Key in Langdock widerrufen. Verfasse zudem eine kurze, formelle Statusmeldung an InfoSec."
+**Erwartetes Artefakt:** Incident Response Runbook.
+**Fallstricke (≥2 spezifisch):**
+- Das Runbook fordert das Verschlüsseln von Keys im Frontend, was bei Web-Apps keinen Sinn ergibt und das CORS-Konzept von Langdock ignoriert.
+- Die Statusmeldung an InfoSec klingt zu flapsig und untergräbt das Vertrauen der IT.
+**Anschluss-Szenario:** S-API-013
+
+### S-API-013 CSV-Export über 30 MB (Data Analyst Absturz)
+**Wann nutzen (Trigger):** Der CFO möchte das Q3-Usage-Export-CSV analysieren. Die Datei ist 85 MB groß (über eine Million Zeilen). Der Upload in den Langdock Data Analyst Agent schlägt fehl, da das File-Limit bei 30 MB liegt.
+**Strategisches Ziel:** Eine Vorverarbeitungs-Pipeline definieren, um Big Data in Langdock-kompatible Häppchen zu zerlegen, ohne den Kontext zu verlieren.
+**Hands-on Ergebnis:** Ein Preprocessing-Protokoll für das Data-Engineering Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage Export API, Data Analyst Advisory
+**Vorgehen (3-5 Schritte):**
+1. Erkläre Little Data das 30-MB-File-Limit Problem beim Data Analyst.
+2. Lass ein Konzept für Python/Pandas Preprocessing außerhalb von Langdock erarbeiten (z. B. Filterung nach Monat oder Team).
+3. Entwirf ein Dashboard-Datenfluss-Diagramm.
+4. Leite die Anleitung an den Daten-Analysten weiter.
+**Beispiel-Prompt (DE, PTCF):**
+> "Unser Langdock Usage-Export ist 85 MB groß und crasht den Data Analyst (30 MB Limit). Du bist ein Data Engineer Berater. Schreibe ein Preprocessing-Protokoll für unser Analytics-Team. Skizziere (ohne Code), wie sie die CSV-Datei lokal via Python Pandas nach Monaten stückeln oder unnötige Audit-Spalten entfernen sollten, bevor wir die Daten zur finalen Finanz-Analyse in den Langdock Agenten laden. Erkläre das 30-MB Limit klipp und klar."
+**Erwartetes Artefakt:** Data Preprocessing Protokoll.
+**Fallstricke (≥2 spezifisch):**
+- Die KI empfiehlt, die Daten einfach über den Knowledge Folder (RAG) hochzuladen, obwohl XLSX/CSV-Dateien dort blockiert werden und nicht für tabellarische Analysen taugen.
+- Das 60-Sekunden-Timeout des internen Python-Environments im Data Analyst wird bei der Analyse-Empfehlung ignoriert.
+**Anschluss-Szenario:** S-API-014
+
+### S-API-014 Salesforce-Schatten-IT stoppen
+**Wann nutzen (Trigger):** Ein übereifriges Sales-Team hat Zapier genutzt, um Kundendaten direkt an die OpenAI-API zu senden. Der Betriebsrat (Compliance) schlägt Alarm wegen Daten-Exfiltration in die USA.
+**Strategisches Ziel:** Den API-Traffic sofort in die EU-gehostete Langdock-Infrastruktur umleiten und die Vorteile der Langdock Integrations API als sichere "Zero-Retention" Alternative pitchen.
+**Hands-on Ergebnis:** Eine Compliance-Entscheidungsvorlage für den Sales-Director.
+**Eingesetzte Langdock-Fähigkeit(en):** Deployment Advisory, Integrations API
+**Vorgehen (3-5 Schritte):**
+1. Lege Little Data die Schatten-IT-Architektur (Salesforce -> Zapier -> OpenAI) dar.
+2. Identifiziere die DSGVO- und Daten-Retention-Verstöße.
+3. Skizziere die saubere Langdock-Architektur (Salesforce -> Langdock Integration Endpoint -> EU-Modell).
+4. Erstelle ein Pitch-Deck Script, das Sicherheit mit besseren AI-Fähigkeiten kombiniert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Enterprise-Compliance-Berater. Unser Sales-Team schickt Kundendaten via Zapier an OpenAI (USA) – ein massiver DSGVO-Verstoß. Schreibe eine Entscheidungsvorlage für den Sales Director. Mache deutlich, dass wir diesen Flow stoppen müssen. Erkläre als Alternative die Langdock Integrations API: Wir hosten in der EU, haben Zero-Data-Retention und können trotzdem das neueste GPT-4o Modell nutzen. Der Ton muss bestimmend, aber lösungsorientiert sein."
+**Erwartetes Artefakt:** Compliance-Entscheidungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Das Memo vergisst das "Zero-Data-Retention" Argument, welches für den Betriebsrat essenziell ist (Langdock-Modelle trainieren nicht auf Kundendaten).
+- Die KI rät fälschlicherweise dazu, Langdock als CRM-Ersatz zu nutzen, statt als Integrations-Layer.
+**Anschluss-Szenario:** S-API-015
+
+### S-API-015 Multi-Agent Delegation Architektur
+**Wann nutzen (Trigger):** Das E-Commerce Team möchte eine Pipeline bauen: Ein Agent soll Produkt-Reviews aus dem Shop lesen, ein zweiter Agent analysiert das Sentiment, ein dritter schreibt automatisiert Reply-Entwürfe ins Zendesk.
+**Strategisches Ziel:** Das Konzept der Multi-Agent-Orchestrierung via API zu strukturieren, ohne Endlosschleifen (Infinite Loops) zu provozieren.
+**Hands-on Ergebnis:** Ein Multi-Agent Architektur-Diagramm als Text.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent API, Integrations API
+**Vorgehen (3-5 Schritte):**
+1. Beschreibe das 3-stufige Agenten-Set-up an Little Data.
+2. Beauftrage eine Risikoanalyse hinsichtlich "Agent-Calling-Agent" Endlosschleifen.
+3. Skizziere die Übergabe-Punkte (JSON Payloads) zwischen den Agenten.
+4. Formuliere das Blueprint-Dokument für das Marketing-Ops Team.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lead Architect für AI. Wir wollen drei Langdock-Agenten hintereinanderschalten: Review-Reader -> Sentiment-Analyst -> Reply-Writer. Skizziere ein Architektur-Diagramm als Text. Wie geben die Agenten via API die Daten über strukturierten JSON-Output weiter? Erkläre unbedingt das Risiko von Endlosschleifen bei autonomen Agenten und wie wir ein 2.000-Step Limit in den Workflows konfigurieren, um Kosten-Explosionen zu verhindern."
+**Erwartetes Artefakt:** Systemarchitektur-Diagramm als Markdown.
+**Fallstricke (≥2 spezifisch):**
+- Die KI schlägt vor, die Memory-Funktion von Langdock zu nutzen, ignoriert aber, dass Memory in der Agent API standardmäßig deaktiviert ist (Context muss im Payload übergeben werden).
+- Das Risiko von API-Rate-Limits (500 RPM) bei parallel eintreffenden hunderten Reviews wird nicht im Design berücksichtigt.
+**Anschluss-Szenario:** S-API-016
+
+### S-API-016 Knowledge Folder File-Limit Error
+**Wann nutzen (Trigger):** Die PR-Abteilung lädt jeden Tag 50 Presseclippings per API in den Wissensordner hoch. Nach 20 Tagen stoppt die API mit einem "Limit Exceeded" Fehler, weil der Ordner sein 1.000-Dateien-Limit erreicht hat.
+**Strategisches Ziel:** Eine automatisierte Datei-Rotation (Lifecycle Management) etablieren, die alte Dateien per Delete-Endpoint entfernt.
+**Hands-on Ergebnis:** Eine Knowledge Lifecycle Spezifikation.
+**Eingesetzte Langdock-Fähigkeit(en):** Knowledge Folder API
+**Vorgehen (3-5 Schritte):**
+1. Analysiere das 1.000-Dateien Limit pro RAG-Ordner mit Little Data.
+2. Fordere eine konzeptionelle Architektur für einen täglichen Bereinigungs-Job (CRON) an.
+3. Spezifiziere, dass die List-API genutzt werden muss, um Dateien älter als X Tage zu finden und via Delete-API zu löschen.
+4. Verfasse die Spezifikation für das Entwicklerteam.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein RAG-Operations Spezialist. Unsere PR-Abteilung hat das Limit von 1.000 Dateien im Wissensordner erreicht, unsere API-Uploads schlagen nun fehl. Schreibe eine Knowledge Lifecycle Spezifikation für die IT. Skizziere einen nächtlichen CRON-Job, der über die Knowledge Folder API alle Dokumente auflistet, die älter als 30 Tage sind, und sie über den Delete-Endpoint löscht. Liefere keinen Code, sondern erkläre die API-Logik."
+**Erwartetes Artefakt:** Knowledge Lifecycle Spezifikation.
+**Fallstricke (≥2 spezifisch):**
+- Die KI empfiehlt, einfach einen zweiten Ordner anzulegen, was langfristig die Suche (Retrieval) verschlechtert und das Problem nur verschiebt.
+- Die Asynchronität der Knowledge Folder API wird vergessen (Löschen/Uploaden triggert ein Re-Indexing, was Minuten dauern kann).
+**Anschluss-Szenario:** S-API-017
+
+### S-API-017 Custom Integration: Sandbox Timeout
+**Wann nutzen (Trigger):** Das Ops-Team hat im "Custom Integration Builder" ein JavaScript-Snippet geschrieben, um ein gigantisches Excel-File von einer externen URL zu laden und zu verarbeiten. Das Skript bricht immer nach exakt 60 Sekunden ab.
+**Strategisches Ziel:** Den Entwicklern das harte Runtime-Limit der Langdock JavaScript Sandbox erklären und eine Middleware-Lösung erzwingen.
+**Hands-on Ergebnis:** Ein Integrations-Review-Memo.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Integration Builder Advisory
+**Vorgehen (3-5 Schritte):**
+1. Erkläre das Timeout-Problem (60s) in der Custom Integration Sandbox.
+2. Lass Little Data das Sandbox-Konzept (isolierte V8-Engine ohne langes Polling) dekonstruieren.
+3. Erarbeite eine Architektur, bei der das Ops-Team die schweren Berechnungen auf einen eigenen Server (z. B. AWS Lambda) auslagert und Langdock nur noch das Resultat fetcht.
+4. Schreibe das Review-Memo.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist System-Auditor. Unser Ops-Team versucht, riesige Excel-Dateien im Custom Integration Builder zu parsen. Das Skript stirbt regelmäßig nach exakt 60 Sekunden. Schreibe ein Review-Memo an das Team. Erkläre das harte 60-Sekunden Sandbox-Timeout von Langdock. Zeige auf, dass schwere Datenverarbeitung (Heavy Lifting) auf eine eigene Middleware ausgelagert werden muss und die Langdock Integration nur den fertigen JSON-Payload abrufen sollte."
+**Erwartetes Artefakt:** Integrations-Review-Memo.
+**Fallstricke (≥2 spezifisch):**
+- Die KI rät dazu, `setTimeout` Schleifen in JavaScript zu nutzen, was in serverlosen Sandbox-Umgebungen nicht funktioniert.
+- Die Größenbeschränkungen für externe Payload-Downloads (max MB) werden in der Empfehlung vergessen.
+**Anschluss-Szenario:** S-API-018
+
+### S-API-018 Egress-Routing: Interne API hinter VPN
+**Wann nutzen (Trigger):** Eine neue Markenstimmen-API der Holding liegt hinter einem strengen Corporate VPN. Langdock kann die API nicht über das offene Internet erreichen (Connection Refused).
+**Strategisches Ziel:** Die Netzwerkkonfiguration (Egress-Whitelisting) als Projekt definieren und das IT-Netzwerkteam beauftragen.
+**Hands-on Ergebnis:** Ein Netzwerk-Konfigurations Ticket (Jira).
+**Eingesetzte Langdock-Fähigkeit(en):** Deployment Advisory
+**Vorgehen (3-5 Schritte):**
+1. Schildere das VPN-Verbindungsproblem mit der internen API.
+2. Nutze Little Data, um das Egress-Whitelisting der Langdock Static IP zu erklären.
+3. Formuliere eine präzise Firewall-Anweisung für die Netzwerker.
+4. Generiere den Ticket-Inhalt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Netzwerk-Architekt. Langdock muss mit unserer internen Brand-Voice-API sprechen, die hinter der Unternehmens-Firewall liegt und das VPN blockiert alle Anfragen. Erstelle ein präzises Jira-Ticket für unser Netzwerk-Team. Fordere das Egress-Whitelisting an. Erkläre, dass sie den Inbound HTTPS-Traffic auf Port 443 exakt für die garantierte Langdock Static IP öffnen müssen, um eine sichere Brücke zu schlagen."
+**Erwartetes Artefakt:** Ein netzwerktechnisches Jira-Ticket.
+**Fallstricke (≥2 spezifisch):**
+- Verwechslung von Langdock API (wir rufen Langdock an) mit Langdock Egress (Langdock ruft uns an).
+- Die KI schlägt ein unsicheres IPsec VPN vor, obwohl Langdock dieses Feature (außer bei vollständigem VPC/On-Prem) nicht nativ anbietet.
+**Anschluss-Szenario:** S-API-019
+
+### S-API-019 A/B Testing von LLMs über die Completion API
+**Wann nutzen (Trigger):** Die Marketing-Direktorin ist unsicher, ob für die neue SEO-Kampagne das teure GPT-4o oder das günstigere Gemini Flash Modell genutzt werden soll.
+**Strategisches Ziel:** Eine A/B-Testing Architektur entwerfen, bei der die Completion API dynamisch 50% der Anfragen an Modell A und 50% an Modell B routet.
+**Hands-on Ergebnis:** Ein A/B Testing Architektur-Blueprint.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API
+**Vorgehen (3-5 Schritte):**
+1. Definiere das Ziel: Kosten vs. Qualitäts-Analyse durch A/B Testing.
+2. Fordere von Little Data ein Konzept für ein Routing-Skript (BFF), das Langdocks Completion API nutzt.
+3. Spezifiziere die Datenauswertung über die Usage Export API.
+4. Dokumentiere das Setup.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Data Science Berater. Wir wollen für eine SEO-Massengenerierung testen, ob Gemini Flash ausreicht oder wir GPT-4o benötigen. Skizziere einen A/B-Testing Blueprint. Erkläre unseren Entwicklern, wie sie ihren Proxy (BFF) bauen müssen, um 50% der Calls via Langdock Completion API mit dem Parameter 'model=gemini-flash' und 50% mit 'model=gpt-4o' zu routen. Zeige, wie wir den ROI danach via Usage Export API analysieren."
+**Erwartetes Artefakt:** A/B Testing Blueprint.
+**Fallstricke (≥2 spezifisch):**
+- Die KI schlägt vor, den Parameter "service_tier" zu verwenden, welcher bei Langdock durch das interne Routing ignoriert wird.
+- Kosten für Embeddings (falls RAG involviert ist) werden im A/B-Test-Budget nicht berücksichtigt.
+**Anschluss-Szenario:** S-API-020
+
+### S-API-020 Token-Effizienz Audit für Agent Prompts
+**Wann nutzen (Trigger):** Das Controlling meldet, dass Agent 'A' extrem hohe Input-Kosten erzeugt. Eine kurze Prüfung zeigt, dass der System-Prompt von Agent 'A' 12.000 Wörter lang ist, die bei jedem API-Aufruf als Input-Token berechnet werden.
+**Strategisches Ziel:** Die Kosten durch eine konzeptionelle Prompt-Architektur-Änderung (Wissensordner vs. Inline-Prompting) drastisch senken.
+**Hands-on Ergebnis:** Ein Prompt-Refactoring Guide.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, Usage Export API
+**Vorgehen (3-5 Schritte):**
+1. Identifiziere den Kostentreiber (überlanger System-Prompt in der API).
+2. Nutze Little Data, um das Konzept des "Context Window Managements" zu erläutern.
+3. Erarbeite eine Empfehlung: Statische Brand-Guidelines aus dem Prompt löschen und stattdessen via Knowledge Folder (RAG) anbinden, wo nur die relevanten Chunks Kosten verursachen.
+4. Erstelle den Refactoring Guide für die Prompt-Ingenieure.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein KI-Kostenoptimierer. Ein Marketing-Team hat 12.000 Wörter an Markenrichtlinien fest in den System-Prompt eines Agenten geschrieben. Jeder API-Call ist extrem teuer. Schreibe einen Prompt-Refactoring Guide. Erkläre das Konzept von Input-Tokens. Begründe strategisch, warum sie diese Richtlinien aus dem Prompt löschen und stattdessen in den Langdock Wissensordner laden müssen, damit das RAG-System nur die benötigten 2.000-Zeichen-Chunks abruft."
+**Erwartetes Artefakt:** Prompt-Refactoring Guide.
+**Fallstricke (≥2 spezifisch):**
+- Die KI empfiehlt fälschlicherweise das Caching-Feature der OpenAI-API, welches bei ständig wechselnden Chats kaum greift.
+- Das Risiko, dass das RAG-System die Brand-Guidelines im Gegensatz zum harten Prompt manchmal nicht sauber abruft (Retrieval Miss), wird im Dokument verschwiegen.
+**Anschluss-Szenario:** S-API-001
