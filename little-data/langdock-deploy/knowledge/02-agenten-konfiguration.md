@@ -850,4 +850,4 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 **Fallstricke (≥2 spezifisch):**
 - Alt-Texte für dekorative Bilder (reine Design-Elemente ohne Informationsgehalt) generieren lassen → dekorative Bilder müssen ein leeres alt="" erhalten, keinen beschreibenden Text; der System-Prompt muss explizit unterscheiden zwischen informativen und dekorativen Bildern.
 - KI-generierten Alt-Text ohne Human-Review direkt in das CMS übertragen → bei komplexen Infografiken oder Bildern mit Text interpretiert das Modell den Inhalt; kritische Inhalte (Preisangaben, medizinische Informationen) immer manuell prüfen.
-**Anschluss-Szenario:** S-AK-001
+**Anschluss-Szenario:** S-AK-041
