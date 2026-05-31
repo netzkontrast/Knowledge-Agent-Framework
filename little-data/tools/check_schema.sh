@@ -31,6 +31,12 @@ check_one() {
   local fail=0
   local name; name=$(basename "$file")
 
+  # Detect file kind by basename prefix: 11/12 are persona files (different H2/fields).
+  local kind="content"
+  case "$name" in
+    11-persona-core*|12-persona-julia-modus*) kind="persona" ;;
+  esac
+
   # H1: exactly one
   local h1_count; h1_count=$(grep -c '^# ' "$file")
   if [ "$h1_count" -ne 1 ]; then
@@ -50,10 +56,18 @@ check_one() {
     fail=1
   fi
 
-  # H2 Marketing-Szenarien section
-  local szen_h2; szen_h2=$(grep -c '^## Marketing-Szenarien aus dieser Domäne' "$file")
+  # Scenario-H2 section — name varies by kind
+  local szen_h2_re
+  if [ "$kind" = "persona" ]; then
+    # 11 → "Sprachpatterns und Beispiel-Reaktionen"
+    # 12 → "Julia-Modus Interaktions-Patterns"
+    szen_h2_re='^## (Sprachpatterns und Beispiel-Reaktionen|Julia-Modus Interaktions-Patterns)'
+  else
+    szen_h2_re='^## Marketing-Szenarien aus dieser Domäne'
+  fi
+  local szen_h2; szen_h2=$(grep -cE "$szen_h2_re" "$file")
   if [ "$szen_h2" -lt 1 ]; then
-    echo "[FAIL] $name: 'Marketing-Szenarien aus dieser Domäne' H2 missing"
+    echo "[FAIL] $name: scenario H2 missing (expected match for: $szen_h2_re)"
     fail=1
   fi
 
@@ -68,13 +82,12 @@ check_one() {
   # NOTE: Critical-Thinking-Method is intentionally NOT a visible field —
   # per spec §6.2, methods M01-M13 are used as authoring + testing scaffolding,
   # not output content.
+  # Vorgehen step-count is flexible: spec says "3-5" but authors emit e.g. "(4 Schritte)".
   local fields=(
     "Wann nutzen (Trigger):"
     "Strategisches Ziel:"
     "Hands-on Ergebnis:"
     "Eingesetzte Langdock-Fähigkeit"
-    "Vorgehen (3-5 Schritte):"
-    "Beispiel-Prompt"
     "Erwartetes Artefakt:"
     "Fallstricke"
   )
@@ -85,6 +98,18 @@ check_one() {
       # Warning, not hard fail — some scenarios may use the field in prose
     fi
   done
+
+  # Example field — accept either Beispiel-Prompt or Beispiel-Konversation
+  local example_count; example_count=$(grep -cE '^\*\*Beispiel-(Prompt|Konversation)' "$file")
+  if [ "$example_count" -lt "$szen_count" ]; then
+    echo "[WARN] $name: 'Beispiel-Prompt/Konversation' appears $example_count times (expected ≥$szen_count)"
+  fi
+
+  # Vorgehen field — accept any step count, e.g. "Vorgehen (3 Schritte):", "Vorgehen (3-5 Schritte):"
+  local vorgehen_count; vorgehen_count=$(grep -cE '^\*\*Vorgehen \([0-9]+(-[0-9]+)? Schritte?\):\*\*' "$file")
+  if [ "$vorgehen_count" -lt "$szen_count" ]; then
+    echo "[WARN] $name: 'Vorgehen (N Schritte):' appears $vorgehen_count times (expected ≥$szen_count)"
+  fi
 
   # NEW: ensure NO Critical-Thinking-Method field leaked into scenarios
   # (per spec §6.2 — method is internal authoring scaffolding only)
