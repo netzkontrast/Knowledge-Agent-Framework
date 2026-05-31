@@ -536,4 +536,379 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Fallstricke (≥2 spezifisch):**
 - Das RACI-Modell wird einmalig erstellt und nie gepflegt → Jeder neue Agent bekommt das RACI-Template als Pflicht-Schritt in der Konfigurations-Checkliste; kein Agent ohne Owner.
 - Token-Budget-Limits werden zu restriktiv gesetzt und bremsen produktive Nutzung → Starte mit einem großzügigen Limit (120 % des erwarteten Verbrauchs) und justiere nach drei Monaten Nutzungsdaten.
+**Anschluss-Szenario:** S-LU-026
+
+### S-LU-026 Token-Verbrauch der teuersten Prompts identifizieren und senken
+
+**Wann nutzen (Trigger):** Der monatliche Workspace-Usage-Report zeigt, dass 5 % der Prompts mehr als 50 % des Token-Budgets verbrauchen — ohne erkennbaren Mehrwert. (Quelle: A-21)
+**Strategisches Ziel:** Die kostentreibenden "Heavy-Hitter-Prompts" identifizieren, refaktorieren und das Monatsbudget ohne Qualitätseinbußen um 20–40 % senken.
+**Hands-on Ergebnis:** Eine priorisierte Refactor-Liste der Top-5 Token-Fresser mit konkreten Kürzungsvorschlägen und geschätzter Einsparung in Euro.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin-Dashboard / Data Analyst / Chat
+**Vorgehen (4 Schritte):**
+1. Öffne im Langdock-Admin-Bereich den Usage-Report und sortiere nach Token-Verbrauch pro Agent und pro User — exportiere als CSV.
+2. Lade die CSV in den Data Analyst und identifiziere die Top-5 Token-Verbraucher: Agenten-Name, durchschnittliche Prompt-Länge, Häufigkeit und Kosten in Euro.
+3. Analysiere pro Heavy-Hitter: Ist der System-Prompt unnötig lang? Wird ein teures Modell (Opus) für eine Routine-Aufgabe genutzt? Könnte ein Flash-Modell denselben Output liefern?
+4. Erstelle die Refactor-Liste im Canvas: Alter Prompt (Zeichenanzahl), neuer kürzerer Prompt, Modell-Downgrade-Empfehlung und geschätzte monatliche Ersparnis.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Kostenoptimiererin. Analysiere die angehängte Usage-CSV unseres Langdock-Workspace. Identifiziere die 5 kostenintensivsten Agenten und schlage konkrete Kürzungsmaßnahmen vor. Kontext: Unser Monatsbudget beträgt 600 Euro, aktuell verbrauchen wir 920 Euro. Format: Tabelle mit Agent-Name, aktuellen Kosten, Einsparpotenzial und Maßnahme."
+**Erwartetes Artefakt:** Eine Refactor-Prioritätsliste im Canvas mit fünf Einträgen, geschätzter Ersparnis pro Maßnahme und einer Gesamteinsparungsprojektion für den Folgemonat.
+**Fallstricke (≥2 spezifisch):**
+- Token-Kosten werden mit Modell-Provider-Listenpreisen verwechselt, ohne den Langdock-Aufschlag (10 %) einzurechnen → Immer den Brutto-Betrag aus dem Admin-Export als Basis nehmen, nicht die Provider-API-Preisliste.
+- Das günstigste Modell liefert für Brand-Voice-kritische Texte schlechte Qualität → Für jeden Refactor-Schritt eine Qualitätsprüfung mit drei Canary-Prompts durchführen, bevor der Rollout erfolgt.
+**Anschluss-Szenario:** S-LU-027
+
+### S-LU-027 Auto-Modus vs. explizite Modellwahl: Operative Entscheidungsregel einführen
+
+**Wann nutzen (Trigger):** Das Team nutzt ausschließlich den Auto-Modus und weiß nicht, wann eine bewusste Modellwahl (z. B. Flash vs. Sonnet) zu besseren Ergebnissen oder niedrigeren Kosten führt. (Quelle: A-23)
+**Strategisches Ziel:** Eine einfache Daumenregel etablieren, die das Team befähigt, bei mehr als 100 täglichen Requests eigenständig zwischen Auto-Modus und expliziter Modellwahl zu entscheiden.
+**Hands-on Ergebnis:** Eine laminierte Entscheidungskarte (1-Pager) mit Task-Typ-Zuordnung zu Modell-Tier, die im Team-Wiki und als Konversations-Starter hinterlegt wird.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Konversations-Starter
+**Vorgehen (3 Schritte):**
+1. Kategorisiere alle wiederkehrenden Marketing-Tasks nach zwei Dimensionen: Komplexität (Routine vs. Strategie) und Brand-Criticality (generisch vs. markenprägend).
+2. Führe den PTCF-Prompt aus, um die Modell-Zuordnungsregel zu generieren: Flash für Routine-Drafts, Übersetzungen und Klassifikation; Sonnet für Strategie-Reviews, Brand-Voice-kritische Texte und komplexe Argumentation.
+3. Überführe die Regel in den Canvas als 1-Pager und hinterlege sie als Konversations-Starter "Welches Modell für diese Aufgabe?" in allen relevanten Agenten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Modell-Stratege. Erstelle eine Daumenregel für unser Marketing-Team: Wann nutzen wir Flash, wann Sonnet, wann Opus? Kontext: 15 Personen, täglich ca. 200 Requests, Budget-Limit 500 Euro/Monat. Format: Tabelle mit Task-Typ, empfohlenem Modell, Begründung und geschätzten Kosten pro 1 000 Requests."
+**Erwartetes Artefakt:** Ein 1-Pager im Canvas mit Modell-Zuordnungstabelle (Task-Typ → Modell → Begründung → Kostenschätzung), direkt einsetzbar als Team-Referenzkarte.
+**Fallstricke (≥2 spezifisch):**
+- Die Regel wird als starr verstanden und Team-Mitglieder wechseln auch bei Ausnahmefällen nicht vom Flash-Modell ab → Die Karte muss explizit eine "Eskalations-Regel" enthalten: Wenn drei Iterationen keinen zufriedenstellenden Output liefern, Modell upgraden.
+- Auto-Modus-Kosten sind schwer vorherzusagen, weil das System selbst zwischen Modellen wechselt → Ab 100 Requests/Tag lohnt explizite Wahl, da der Auto-Modus tendenziell zum höherwertigen Modell neigt.
+**Anschluss-Szenario:** S-LU-028
+
+### S-LU-028 BYOK-Rentabilitätsschwelle berechnen und Entscheidung herbeiführen
+
+**Wann nutzen (Trigger):** Der CFO fragt, ob "Bring Your Own Key" (BYOK) bei aktuellem Nutzungsvolumen Kosten spart — das Marketing-Team hat keine Antwort. (Quelle: A-26; sources/12 Q-117)
+**Strategisches Ziel:** Einen datenbasierten Break-even-Vergleich erstellen: Langdock-Inklusivangebot vs. BYOK-Modell mit direktem Provider-Zugang, um die Entscheidung für den nächsten Vertragszyklus zu fundieren.
+**Hands-on Ergebnis:** Eine Canvas-Tabelle mit Break-even-Punkt in Euro/Monat, Aufwandsschätzung für API-Key-Management und einer klaren Go/No-Go-Empfehlung für BYOK.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Exportiere den aktuellen monatlichen Token-Verbrauch nach Modell (Sonnet, Flash, Opus) aus dem Langdock-Admin-Dashboard als CSV.
+2. Lade die CSV in den Data Analyst: Berechne die Kosten im Inklusivangebot vs. direktem Provider-Preis (Anthropic/OpenAI) + 10 % Langdock-Aufschlag entfällt bei BYOK.
+3. Ergänze im Chat den operativen Aufwand für BYOK: API-Key-Rotation, Billing-Reconciliation, Security-Overhead — schätzungsweise 2–4 Stunden/Monat IT-Zeit.
+4. Erstelle im Canvas die Go/No-Go-Empfehlung: BYOK lohnt ab ca. 5 000 Euro/Monat Verbrauch; darunter überwiegt der Verwaltungsaufwand.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist SaaS-Beschaffungsanalystin. Vergleiche für unser Langdock-Nutzungsprofil die Kosten von Inklusivangebot vs. BYOK. Kontext: Monatlicher Verbrauch laut CSV anbei, IT-Ressource für API-Management: 3 h/Monat à 90 Euro. Format: Break-even-Tabelle mit Monatsschwelle, Jahresersparnis ab Break-even und Empfehlung."
+**Erwartetes Artefakt:** Eine Break-even-Tabelle im Canvas mit Monatsschwelle, Jahresersparnis-Projektion und einer eindeutigen Empfehlung (BYOK Ja/Nein) mit Begründung.
+**Fallstricke (≥2 spezifisch):**
+- Provider-Preise ändern sich quartalsweise — die Rechnung veraltet schnell → Datum der Preisgrundlage im Dokument vermerken und bei jedem Vertragsverlängerungsgespräch aktualisieren.
+- BYOK-Entscheidung wird nur auf Basis der Token-Kosten getroffen, ohne Sicherheits-Overhead zu berücksichtigen → API-Key-Kompromittierung kann bei BYOK direkten Provider-Schaden verursachen; CISO vorab konsultieren.
+**Anschluss-Szenario:** S-LU-029
+
+### S-LU-029 Token-Budget-Eskalationsplan bei Monatsende-Explosion einrichten
+
+**Wann nutzen (Trigger):** In der letzten Woche des Monats explodiert der Token-Verbrauch wegen intensiver Kampagnenproduktion — das Workspace-Budget wird überschritten und Workflows brechen ab. (Quelle: A-25; sources/12 Q-122)
+**Strategisches Ziel:** Ein dreistufiges Eskalationsmodell einrichten, das Token-Überschreitungen antizipiert, das Team automatisch warnt und eine klare Handlungskette bis zum CMO auslöst.
+**Hands-on Ergebnis:** Ein dokumentierter Budget-Eskalationsplan im Wissensordner mit drei Schwellenwerten (60 %, 80 %, 100 %), definierten Aktionen pro Stufe und einer Notfall-Fallback-Prozedur.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin / Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Setze im Langdock-Workspace-Admin drei Budget-Alarmstufen: 60 % (Info-Mail an Workspace-Admin), 80 % (Warnung an CMO + Modell-Downgrade auf Flash für Routine-Tasks), 100 % (automatischer Stopp non-kritischer Workflows).
+2. Definiere im Chat eine "Prioritätsliste der Workflows": Welche Prozesse dürfen bei Budget-Engpass weiterlaufen (Lead-Scoring, Krisen-PR), welche werden pausiert (Content-Volumen-Produktion)?
+3. Überführe den Plan in den Canvas und dokumentiere die Eskalationskette: Admin → Team-Lead → CMO → CFO mit Reaktionszeit-SLA pro Stufe.
+4. Speichere das Dokument im zentralen Governance-Wissensordner als Pflichtdokument für den monatlichen Budget-Review.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Infrastruktur-Managerin. Erstelle einen dreistufigen Token-Budget-Eskalationsplan für einen 20-köpfigen Marketing-Workspace. Kontext: Monatsbudget 800 Euro, häufige Überschreitungen in Kampagnen-Hochphasen. Format: Tabelle mit Stufe, Schwellenwert in %, auslösende Aktion, Verantwortliche und Reaktionszeit."
+**Erwartetes Artefakt:** Ein Canvas-Dokument mit Eskalationstabelle (drei Stufen), Priorisierungsliste der Workflows und einer Notfall-Fallback-Prozedur bei vollständigem Budget-Stop.
+**Fallstricke (≥2 spezifisch):**
+- Die 80-%-Warnung kommt zu spät, weil in der letzten Woche oft 30–40 % des Budgets verbraucht werden → Setze den zweiten Schwellenwert auf 70 % statt 80 % in Hochphasen (Q4, Launch-Wochen).
+- Workflow-Stopps lösen Daten-Inkonsistenzen aus, wenn ein Multi-Step-Prozess mitten unterbrochen wird → Für kritische Workflows "Graceful Shutdown"-Logik im Workflow-Builder konfigurieren, die laufende Schritte abschließt.
+**Anschluss-Szenario:** S-LU-030
+
+### S-LU-030 EU AI Act: Marketing-Use-Cases klassifizieren und Risiko-Inventar anlegen
+
+**Wann nutzen (Trigger):** Der Rechtsberater weist darauf hin, dass der EU AI Act ab 2027 für Marketing-Anwendungen relevant wird — das Team hat keine Übersicht, welche Use-Cases betroffen sind. (Quelle: A-13)
+**Strategisches Ziel:** Ein vollständiges AI-Use-Case-Inventar mit Risikoeinstufung (unacceptable / high / limited / minimal) nach EU-AI-Act-Kategorien erstellen, das als Compliance-Grundlage dient.
+**Hands-on Ergebnis:** Ein Canvas-Dokument mit einer Klassifikationstabelle aller aktiven Langdock-Use-Cases, Human-Oversight-Anforderungen pro Kategorie und einem 6-Monats-Aktionsplan für Hoch-Risiko-Fälle.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Deep Research
+**Vorgehen (4 Schritte):**
+1. Erstelle im Chat eine vollständige Liste aller aktiven KI-Marketing-Anwendungen: Content-Erstellung, Lead-Scoring, Wettbewerbs-Analyse, Personalisierung, Sentiment-Analyse auf Kundendaten.
+2. Aktiviere den Deep Research Modus und recherchiere die aktuellen EU-AI-Act-Kategorien (Stand 2026) für Marketing-spezifische Anwendungen; fokussiere auf Art. 5 (verbotene Praktiken) und Annex III (Hoch-Risiko-Systeme).
+3. Klassifiziere jeden Use-Case in der Tabelle: Risikostufe, ob Human-Oversight-Log erforderlich ist, ob eine DPIA nötig wird, und welche Dokumentationspflichten gelten.
+4. Erstelle einen 6-Monats-Aktionsplan für alle als "limited" oder höher eingestuften Use-Cases: Verantwortlicher, Maßnahme und Deadline.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist EU-AI-Act-Compliance-Beraterin für ein B2B-Marketing-Team. Klassifiziere unsere 8 KI-Anwendungen nach EU-AI-Act-Risikokategorien. Kontext: Anwendungen umfassen Content-Erstellung, Lead-Scoring, Personalisierung und Wettbewerbs-Monitoring. Format: Tabelle mit Use-Case, Risikostufe, Human-Oversight-Pflicht (Ja/Nein) und nächster Maßnahme."
+**Erwartetes Artefakt:** Eine Klassifikationstabelle im Canvas mit allen Use-Cases, EU-AI-Act-Risikostufen und einem priorisierten Aktionsplan für compliance-relevante Anwendungen.
+**Fallstricke (≥2 spezifisch):**
+- Rechtliche Einschätzungen der KI werden ohne Anwaltsprüfung als verbindlich behandelt → Das Inventar ist eine Arbeitsgrundlage für das Gespräch mit dem Datenschutzbeauftragten; keine eigenständige Rechtsauskunft.
+- Der Aktionsplan wird erstellt, aber nie umgesetzt, weil kein Owner definiert ist → Jede Zeile bekommt eine namentliche Verantwortliche und ein verbindliches Reviewdatum im Canvas-Dokument.
+**Anschluss-Szenario:** S-LU-031
+
+### S-LU-031 DSGVO-Konflikt bei KI-gestützter Sentiment-Analyse auf Kundendaten prüfen
+
+**Wann nutzen (Trigger):** Das CRM-Team möchte Langdock nutzen, um Kundenfeedback-Texte automatisch auf Sentiment zu analysieren — die Datenschutzbeauftragte fragt nach der Rechtsgrundlage. (Quelle: A-14)
+**Strategisches Ziel:** Den Unterschied zwischen datenschutzkonformer aggregierter Sentiment-Analyse und unzulässigem individuellem Profiling klar herausarbeiten und die interne Entscheidungslinie definieren.
+**Hands-on Ergebnis:** Ein 1-seitiges Entscheidungsblatt für das CRM-Team: Wann ist Sentiment-Analyse mit Langdock DSGVO-konform, wann braucht es eine explizite Rechtsgrundlage nach Art. 6 DSGVO.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas
+**Vorgehen (3 Schritte):**
+1. Definiere im Chat die zwei Analyse-Szenarien: (A) aggregierte Auswertung von 5 000 anonymisierten Feedbacks → Trend-Report ohne Personenbezug; (B) individuelle Sentiment-Bewertung pro Kontakt-ID → Profiling mit möglichem Personenbezug.
+2. Führe den PTCF-Prompt aus, um den datenschutzrechtlichen Unterschied zu erläutern: Szenario A ist bei korrekter Pseudonymisierung unbedenklich; Szenario B erfordert Rechtsgrundlage (Art. 6 (1) f DSGVO) plus Information an die betroffene Person.
+3. Erstelle das Entscheidungsblatt im Canvas mit einer "Ampel-Regel": Grün (aggregiert + pseudonymisiert), Gelb (individuell + Rechtsgrundlage vorhanden + DSB informiert), Rot (individuell + keine Rechtsgrundlage = STOP).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DSGVO-Beraterin für Marketing-Teams. Erkläre den datenschutzrechtlichen Unterschied zwischen aggregierter Sentiment-Analyse und individuellem Sentiment-Profiling. Kontext: Wir verarbeiten Kundenfeedback-Texte in Langdock, Daten sind pseudonymisiert (nur Kontakt-IDs). Format: Ampel-Entscheidungsblatt mit drei Szenarien (Grün/Gelb/Rot), Rechtsgrundlage und empfohlener Maßnahme."
+**Erwartetes Artefakt:** Ein Canvas-Entscheidungsblatt mit Ampel-Regel (drei Szenarien), konkreter DSGVO-Rechtsgrundlage pro Szenario und einem empfohlenen Handlungspfad für das CRM-Team.
+**Fallstricke (≥2 spezifisch):**
+- "Pseudonymisiert" wird mit "anonym" verwechselt, obwohl re-Identifizierung via CRM-ID möglich ist → Im Dokument explizit festhalten: Pseudonyme Daten sind weiterhin personenbezogen nach DSGVO; nur echte Anonymisierung hebt den Schutzstatus auf.
+- Das Entscheidungsblatt wird ohne Abstimmung mit dem Datenschutzbeauftragten als Policy behandelt → Verbindliche interne Leitlinie erfordert DSB-Freigabe und sollte im Team-Wiki mit Status "DSB-geprüft am [Datum]" markiert werden.
+**Anschluss-Szenario:** S-LU-032
+
+### S-LU-032 Langdock-Nutzungsanalysen dem Betriebsrat gegenüber transparent machen
+
+**Wann nutzen (Trigger):** Der Betriebsrat fragt, ob die Workspace-Nutzungsanalysen (welche Mitarbeiterin welche Agenten wie oft nutzt) eine unzulässige Verhaltens- oder Leistungsüberwachung nach BetrVG § 87 (1) Nr. 6 darstellen. (Quelle: A-18; sources/12 Q-132)
+**Strategisches Ziel:** Eine klare, belegte Antwort für den Betriebsrat vorbereiten, die zeigt, welche Nutzungsdaten zu welchem Zweck erhoben werden — und eine Vereinbarung vorschlagen, die KI-Adoption fördert, ohne Mitbestimmungsrechte zu verletzen.
+**Hands-on Ergebnis:** Ein Briefing-Dokument für das Betriebsratsgespräch mit einer Übersicht der Langdock-Analytics-Datenfelder, einer RACI-Tabelle (wer darf was sehen) und einem Vorschlag für eine Betriebsvereinbarung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Exportiere aus dem Langdock-Admin-Bereich die vollständige Liste der erfassten Analytics-Datenpunkte: User-ID, Zeitstempel, Agent-ID, Token-Verbrauch pro Session.
+2. Kategorisiere im Chat jeden Datenpunkt: Dient er der System-Optimierung (zulässig ohne Mitbestimmung) oder ermöglicht er Rückschlüsse auf individuelle Arbeitsleistung (mitbestimmungspflichtig nach BetrVG § 87 (1) Nr. 6)?
+3. Erstelle im Canvas einen RACI-Vorschlag: Workspace-Admin sieht aggregierte Team-Statistiken; individuelle User-Daten nur für den User selbst sichtbar; CMO erhält nur Team-Level-Reports.
+4. Formuliere einen Betriebsvereinbarungs-Entwurf (1 Seite): Zweck der Nutzungsanalyse, Datenzugriffs-RACI, Aufbewahrungsfrist und Mitbestimmungs-Vorbehalt bei Änderungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Arbeitsrechtsberaterin mit Fokus auf Digitalisierung. Erstelle ein Briefing für ein Betriebsratsgespräch über KI-Nutzungsanalysen. Kontext: Langdock erfasst anonymisierte Nutzungsdaten auf User-Ebene; Betriebsrat besorgt wegen Leistungsüberwachung (BetrVG § 87 (1) Nr. 6). Format: Zwei-seitiges Dokument mit Datenpunkt-Übersicht, RACI-Tabelle und Betriebsvereinbarungs-Entwurf."
+**Erwartetes Artefakt:** Ein zweiseitiges Canvas-Dokument mit Datenpunkt-Kategorisierung, RACI-Vorschlag und Betriebsvereinbarungs-Entwurf für das Gespräch mit dem Betriebsrat.
+**Fallstricke (≥2 spezifisch):**
+- Der Betriebsvereinbarungs-Entwurf wird ohne Rechtsanwalt als fertige Vereinbarung behandelt → Das Dokument ist ein Verhandlungs-Startpunkt; der finale Text muss durch einen Fachanwalt für Arbeitsrecht geprüft werden.
+- Nutzungsdaten werden für inoffizielle Leistungsbeurteilungen genutzt, obwohl dies nicht vereinbart ist → RACI-Restriktion technisch im Admin-Dashboard umsetzen, nicht nur dokumentarisch.
+**Anschluss-Szenario:** S-LU-033
+
+### S-LU-033 Agent-Qualitätsdrift monatlich mit Canary-Prompts erkennen
+
+**Wann nutzen (Trigger):** Ein konfigurierter Agent liefert seit Wochen schleichend schlechtere Outputs — das Team bemerkt es erst, wenn Kunden-Briefings fehlerhaft sind. (Quelle: A-34)
+**Strategisches Ziel:** Einen monatlichen Spot-Check-Prozess einrichten, der Agent-Qualitätsdrift frühzeitig erkennt und eine definierte Eskalationsschwelle auslöst, bevor der Fehler produktiv wirkt.
+**Hands-on Ergebnis:** Ein Canary-Prompt-Set mit fünf Testfragen pro Agent, einer Erwartungs-Benchmark-Tabelle und einem Eskalationsprotokoll bei zwei oder mehr Abweichungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Definiere für jeden kritischen Agenten fünf Canary-Prompts: einfache Fragen, deren korrekte Antwort klar und stabil sein sollte (z. B. "Wie lang ist unser Standard-Blogpost laut Brand-Guide?").
+2. Führe den Spot-Check einmal monatlich durch: Führe alle fünf Canary-Prompts aus und dokumentiere die Antworten in einer Tabelle (Datum, Prompt, Erwarteter Output, Tatsächlicher Output, Abweichung Ja/Nein).
+3. Definiere die Eskalationsschwelle: Zwei oder mehr Abweichungen von fünf → Agent-Owner wird benachrichtigt und hat 48 Stunden, um Wissensordner und System-Prompt zu prüfen.
+4. Archiviere alle Spot-Check-Protokolle im Governance-Wissensordner als Audit-Trail.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Qualitätssicherungsmanagerin. Erstelle ein Canary-Prompt-Set für unseren Brand-Voice-Agenten. Kontext: Der Agent soll Texte im formellen, direkten B2B-Ton ausgeben; Benchmark ist unser Tone-of-Voice-Guide. Format: Tabelle mit 5 Canary-Fragen, erwartetem Output (Schlüsselwort oder Stil-Merkmal) und Bewertungskriterium (bestanden/nicht bestanden)."
+**Erwartetes Artefakt:** Eine Canary-Prompt-Tabelle mit fünf Testfragen pro Agent, Bewertungskriterien und einem Eskalationsprotokoll-Template für den monatlichen Spot-Check-Prozess.
+**Fallstricke (≥2 spezifisch):**
+- Canary-Prompts testen nur Fakten, nicht Ton — und der Ton-Drift wird übersehen → Mindestens zwei der fünf Prompts müssen explizit Stil und Tonalität testen, nicht nur Fakten abrufen.
+- Der Spot-Check wird wegen Zeitdruck übersprungen → Canary-Check als monatliche Workflow-Automation konfigurieren, die die fünf Prompts automatisch ausführt und eine Ergebnis-Mail an den Agent-Owner sendet.
+**Anschluss-Szenario:** S-LU-034
+
+### S-LU-034 Pilot auf Company-wide Rollout skalieren: 30-Tage-Skalierungsplan
+
+**Wann nutzen (Trigger):** Der 90-Tage-Pilot (S-LU-016) war erfolgreich. Das Go für den Vollrollout auf das gesamte Unternehmen (100+ Nutzer) ist gegeben — aber ein strukturierter Skalierungsplan fehlt. (Quelle: A-04; sources/12 Q-136)
+**Strategisches Ziel:** Den Übergang vom Marketing-Piloten zur unternehmensweiten Nutzung in 30 Tagen strukturiert vollziehen, ohne die Qualität der bestehenden Marketing-Agenten zu gefährden.
+**Hands-on Ergebnis:** Ein 30-Tage-Skalierungsplan im Canvas mit Phasen (Infrastruktur, Onboarding, Stabilisierung), KPIs und einem Kommunikationsplan für alle Abteilungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Workflows
+**Vorgehen (4 Schritte):**
+1. Inventarisiere im Chat alle Pilot-Artefakte, die skaliert werden müssen: Agenten-Konfigurationen, Wissensordner, Governance-Dokument (S-LU-025), KI-Ethik-Leitfaden (S-LU-023).
+2. Erstelle den 30-Tage-Plan in drei Phasen: Phase 1 (Tage 1–10) Infrastruktur — neue Nutzer anlegen, RACI aktualisieren, Budget-Limits anpassen; Phase 2 (Tage 11–20) Onboarding — Abteilungs-Champions aus dem Pilot briefen neue Teams; Phase 3 (Tage 21–30) Stabilisierung — erste Canary-Checks (S-LU-033), Feedback-Sammlung, Optimierungen.
+3. Definiere Kommunikations-Meilensteine: Kick-off-Mail an alle Abteilungen (Tag 1), Mid-Point-Update (Tag 15), Go-Live-Confirmation (Tag 30).
+4. Lege drei Skalierungs-KPIs fest: Adoption-Rate nach 30 Tagen (Ziel: 60 % aktive Nutzer), durchschnittliche Onboarding-Zeit pro neuer Abteilung und Anzahl kritischer Incidents.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Skalierungsstrategin für KI-Plattform-Rollouts. Erstelle einen 30-Tage-Plan für die unternehmensweite Ausweitung unseres Langdock-Piloten. Kontext: Pilot mit 20 Marketing-Nutzern war erfolgreich, Skalierung auf 120 Nutzer in 5 Abteilungen. Format: Tabelle mit Phase, Tage, Hauptaktivität, Verantwortlicher und KPI."
+**Erwartetes Artefakt:** Ein 30-Tage-Skalierungsplan im Canvas mit drei Phasen, Kommunikationsplan und drei messbaren Skalierungs-KPIs für den Vollrollout-Report an die Geschäftsführung.
+**Fallstricke (≥2 spezifisch):**
+- Neue Abteilungen erhalten denselben Agenten wie Marketing, obwohl ihre Use-Cases völlig verschieden sind → Jede Abteilung bekommt einen dedizierten Onboarding-Champion, der den Marketing-Agenten als Vorlage anpasst, nicht 1:1 übernimmt.
+- Das Budget-Limit aus dem Pilot wird unverändert übernommen und reicht für 120 Nutzer nicht aus → Token-Budget für den Vollrollout auf Basis der Pilot-Nutzungsdaten hochrechnen und vor Tag 1 mit dem CFO abstimmen.
+**Anschluss-Szenario:** S-LU-035
+
+### S-LU-035 Mehrsprachiges Team-Setup: DACH-Lokalisierung plus internationale Arbeitsteilung
+
+**Wann nutzen (Trigger):** Das Marketing-Team arbeitet in Deutschland, Österreich und der Schweiz — und soll bald internationale Kollegen einbinden. Agenten antworten inkonsistent auf DE-AT-CH-Nuancen und Englisch-Inputs. (Quelle: A-46; sources/12 Q-077)
+**Strategisches Ziel:** Agenten und Prompt-Templates so konfigurieren, dass sie DACH-spezifische Sprachvarianten (DE-DE, DE-AT, DE-CH-Hochdeutsch) sowie englische Inputs korrekt verarbeiten und konsistente Outputs liefern.
+**Hands-on Ergebnis:** Eine Lokalisierungs-Konfiguration für die drei wichtigsten Team-Agenten mit sprachspezifischen Konversations-Startern und einem Eskalationspfad für Dialekt-Anfragen.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Konversations-Starter / Wissensordner / Chat
+**Vorgehen (4 Schritte):**
+1. Definiere im Chat für jeden Agenten die gewünschten Output-Sprachen und lege im System-Prompt explizite Sprachregeln fest: "Antworte immer auf Hochdeutsch; wenn der Input auf Englisch ist, antworte auf Englisch; vermeide Dialektausdrücke."
+2. Erstelle sprachspezifische Konversations-Starter: "Erstelle einen LinkedIn-Post für die Schweizer Zielgruppe (DE-CH-Hochdeutsch, kein 'ss' durch 'ß')" vs. "Create a LinkedIn post for our UK audience (EN-GB)".
+3. Lade ein Glossar mit DACH-spezifischen Marketing-Begriffen (z. B. "Mwst." vs. "MwSt." vs. "MWST.") als Wissensordner-Dokument an alle relevanten Agenten an.
+4. Dokumentiere den Eskalationspfad: Dialekt-Anfragen (z. B. Schwiizerdütsch) werden mit dem Hinweis "Manuell überarbeiten: Dialekt nicht zuverlässig" flagged und an einen Human-Editor weitergeleitet.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lokalisierungsexpertin für DACH-Marketing. Erstelle einen System-Prompt für unseren Content-Agenten, der korrekt zwischen DE-DE, DE-AT und DE-CH-Hochdeutsch unterscheidet. Kontext: Team in Frankfurt, Wien und Zürich; gelegentliche englische Inputs von internationalen Kollegen. Format: Fertiger System-Prompt (max. 400 Zeichen) plus Tabelle mit sprachspezifischen Konversations-Startern."
+**Erwartetes Artefakt:** Ein überarbeiteter System-Prompt für den Content-Agenten plus eine Tabelle mit sprachspezifischen Konversations-Startern und Eskalationspfad für Dialekt-Anfragen.
+**Fallstricke (≥2 spezifisch):**
+- De-CH-Hochdeutsch wird mit Schwiizerdütsch verwechselt, das Modell liefert unzuverlässige Dialekt-Texte → Im System-Prompt explizit: "DE-CH bedeutet schweizerisches Standardhochdeutsch ohne Dialekt; für Mundart-Texte immer Human-Review-Flag setzen."
+- Das Glossar-Dokument wird zu groß und beeinträchtigt die Retrieval-Qualität → Maximal 50 Einträge pro Glossar-Datei; nach Themenbereich (Produkt, Recht, Zahlen) trennen.
+**Anschluss-Szenario:** S-LU-036
+
+### S-LU-036 Modell-agnostische Prompt-Strategie: Prompts zwischen GPT und Claude portieren
+
+**Wann nutzen (Trigger):** Das IT-Management erwägt, von Anthropic-Modellen auf OpenAI-Modelle umzustellen (oder umgekehrt). Das Team befürchtet, alle gespeicherten Prompts neu schreiben zu müssen. (Quelle: A-30; sources/12 Q-084)
+**Strategisches Ziel:** Eine modell-agnostische Prompt-Strategie entwickeln, die sicherstellt, dass 80 % der bestehenden Prompts ohne vollständiges Rewriting auf einem anderen Modell-Provider funktionieren.
+**Hands-on Ergebnis:** Eine Portierungsrichtlinie im Wissensordner mit einer Checkliste der modell-spezifischen Eigenheiten (Claude vs. GPT), einem Test-Framework und einer Schätzung des Anpassungsaufwands.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner / Agents
+**Vorgehen (4 Schritte):**
+1. Exportiere alle gespeicherten System-Prompts aus der Langdock-Prompt-Library als Markdown-Dateien und kategorisiere sie nach: modell-neutral (keine Modell-spezifischen Anweisungen), Claude-spezifisch (z. B. XML-Tags, "thinking"-Anweisungen), GPT-spezifisch (z. B. "act as"-Stil).
+2. Führe einen A/B-Test mit den 10 wichtigsten Prompts durch: Führe jeden Prompt auf beiden Modellen aus und vergleiche Output-Qualität nach drei Dimensionen (Ton, Vollständigkeit, Format).
+3. Erstelle die Portierungsrichtlinie im Canvas: Welche Prompt-Muster funktionieren universell, welche müssen angepasst werden (Schätzung: 15–20 % der Prompts brauchen geringfügige Anpassung).
+4. Versioniere alle Prompts in Git (eine Markdown-Datei pro Prompt) als zukunftssichere Basis für Modell-Wechsel.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Engineering-Spezialistin. Analysiere die angehängten 10 Prompt-Texte auf Modell-spezifische Abhängigkeiten. Kontext: Wir erwägen Wechsel von Claude Sonnet auf GPT-4o. Format: Tabelle mit Prompt-Name, modell-spezifischen Elementen, Portierungsaufwand (gering/mittel/hoch) und konkretem Änderungsvorschlag."
+**Erwartetes Artefakt:** Eine Portierungsrisiko-Tabelle mit allen Prompts, Aufwandseinschätzung und einer Schritt-für-Schritt-Anleitung für den Modell-Wechsel ohne Qualitätsverlust.
+**Fallstricke (≥2 spezifisch):**
+- Das Team nimmt an, dass PTCF-Prompts automatisch modell-agnostisch sind — das stimmt für einfache Tasks, aber nicht für komplexe mehrstufige Anweisungen → Mehrstufige Prompts (mehr als drei Anweisungsblöcke) immer manuell testen, bevor ein Modell-Wechsel produktiv geht.
+- Versionshistorie der Prompts fehlt, sodass nach einem fehlgeschlagenen Wechsel kein Rollback möglich ist → Git-Versionierung der Prompts ist kein Luxus, sondern Pflicht ab mehr als 20 aktiven Prompt-Templates.
+**Anschluss-Szenario:** S-LU-037
+
+### S-LU-037 Wettbewerber-KI-Landschaft monitoren: Competitive AI Intelligence aufbauen
+
+**Wann nutzen (Trigger):** Wettbewerber setzen zunehmend sichtbar auf KI-generierte Inhalte, neue Chatbots und automatisierte Kampagnen — das Team hat keine strukturierte Übersicht über die KI-Strategie der Konkurrenz. (Quelle: A-07; sources/10 S-036)
+**Strategisches Ziel:** Ein vierteljährliches Competitive-AI-Intelligence-Format aufbauen, das die KI-Reife der drei Hauptwettbewerber bewertet und Differenzierungshebel für die eigene Strategie ableitet.
+**Hands-on Ergebnis:** Ein quartalsweiser AI-Competitive-Report im Canvas mit Bewertung der KI-Reife jedes Wettbewerbers (Skala 1–5), identifizierten Lücken und drei strategischen Differenzierungsempfehlungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Deep Research Modus / Canvas / Chat
+**Vorgehen (4 Schritte):**
+1. Aktiviere den Deep Research Modus und recherchiere pro Wettbewerber: Öffentlich sichtbare KI-Tools im Marketing (Chatbots, generierte Inhalte, automatisierte Werbekanäle), Job-Ausschreibungen mit KI-Bezug (Indikator für interne Investitionen) und offizielle Statements zur KI-Strategie.
+2. Bewerte jeden Wettbewerber nach einem 5-Punkte-KI-Reife-Scoring: (1) keine sichtbare KI-Nutzung, (3) selektiver Einsatz in einzelnen Kanälen, (5) vollintegrierte KI-First-Strategie.
+3. Identifiziere die strategischen Lücken: Wo nutzen Wettbewerber KI, wo tun wir es nicht (und umgekehrt)? Welche Differenzierung entsteht durch First-Party-Daten + KI-Komposition?
+4. Formuliere drei Differenzierungsempfehlungen als Aktionsplan und überführe den Report in den Canvas.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Strategin. Bewerte die KI-Reife unserer drei Hauptwettbewerber im DACH-SaaS-Markt. Kontext: Wettbewerber A, B, C; Deep-Research-Quellen: Karriereseiten, Pressemitteilungen, LinkedIn-Posts, G2-Reviews. Format: Tabelle mit Wettbewerber, KI-Reife-Score (1–5), sichtbare KI-Anwendungen und strategische Implikation für uns."
+**Erwartetes Artefakt:** Ein quartalsweiser AI-Competitive-Report im Canvas mit Reife-Scoring-Tabelle, Lückenanalyse und drei priorisierten Differenzierungsempfehlungen.
+**Fallstricke (≥2 spezifisch):**
+- Deep Research wertet Selbst-PR der Wettbewerber als Beweis für echte KI-Reife — überschätzt den Fortschritt → Jobanzeigen und Kundenbeschwerden (G2/Capterra) als Gegenindikator explizit in den Recherche-Scope aufnehmen.
+- Der Report wird produziert, aber keine Konsequenzen gezogen → Jeder Report muss mit einer "Was ändert sich an unserer Strategie nächstes Quartal?"-Sektion enden; sonst hat er keinen geschäftlichen Wert.
+**Anschluss-Szenario:** S-LU-038
+
+### S-LU-038 Langdock-Ausfall-Fallback: 2-Stunden-Notfall-Playbook aufstellen
+
+**Wann nutzen (Trigger):** Langdock ist unerwartet nicht erreichbar — in einer Kampagnenhochphase oder Krisenreaktion. Das Team steht ohne Werkzeug da und verliert wertvolle Zeit. (Quelle: A-44)
+**Strategisches Ziel:** Ein praxistaugliches 2-Stunden-Notfall-Playbook erstellen, das die wichtigsten KI-Aufgaben ohne Langdock überbrückt und das Team handlungsfähig hält.
+**Hands-on Ergebnis:** Ein ausgedrucktes (oder lokal gespeichertes) Notfall-Playbook mit den drei wichtigsten Konversations-Startern als Markdown, direkten Links zu Anthropic/OpenAI/Gemini-Web-Interfaces und einem SLA-Eskalationspfad.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Wissensordner (Vorbereitung vor dem Ausfall)
+**Vorgehen (4 Schritte):**
+1. Identifiziere die drei zeitkritischsten Marketing-Aufgaben, die bei einem Ausfall sofort eingeschränkt sind: z. B. Krisen-PR-Entwurf, tägliches Newsletter-Mailing, Lead-Scoring-Workflow.
+2. Exportiere die System-Prompts dieser drei kritischen Agenten als lokale Markdown-Dateien (offline verfügbar auf dem Laptop des Team-Leads).
+3. Erstelle das Notfall-Playbook: Link zu status.langdock.com für Statusprüfung, direkte URLs zu Claude.ai, ChatGPT und Gemini als Alternativ-Interfaces, Schritt-für-Schritt-Anleitung zum manuellen Ausführen der drei kritischen Prompts.
+4. Plane einen jährlichen "Fallback-Drill" (15 Minuten): Team-Lead simuliert einen Ausfall und führt alle drei kritischen Prompts manuell über ein Alternativ-Interface aus.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Business-Continuity-Planerin für ein Marketing-Team. Erstelle ein 2-Stunden-Notfall-Playbook für den Fall eines vollständigen KI-Plattform-Ausfalls. Kontext: 3 kritische Aufgaben (Krisen-PR, Newsletter-Draft, Lead-Scoring), Team hat Zugang zu Claude.ai und ChatGPT. Format: Checkliste mit Schritt-für-Schritt-Anleitung, Alternativ-Links und Eskalationsplan."
+**Erwartetes Artefakt:** Ein 1-seitiges Notfall-Playbook im Canvas, das lokal als PDF gespeichert wird, mit den drei kritischen Prompts als Markdown und einem Fallback-Drill-Termin im Jahreskalender.
+**Anschluss-Szenario:** S-LU-039
+
+### S-LU-039 AI-Disclosure-Strategie für KI-assistierten Content entwickeln
+
+**Wann nutzen (Trigger):** Die Rechtsabteilung fragt nach einer einheitlichen Policy: Muss KI-assistierter Content in Werbemitteln, auf der Website und in Social-Media-Posts offengelegt werden? (Quelle: A-09; A-19)
+**Strategisches Ziel:** Eine praxistaugliche Disclosure-Strategie entwickeln, die EU-AI-Act-Transparenzpflichten (Art. 50) und UWG-Anforderungen erfüllt, ohne die Kreativfreiheit des Teams einzuschränken.
+**Hands-on Ergebnis:** Ein 1-Pager mit drei Disclosure-Szenarien (Pflicht, empfohlen, nicht nötig), fertigem Disclosure-Wording auf Deutsch und einem Entscheidungsbaum für das Content-Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Deep Research
+**Vorgehen (4 Schritte):**
+1. Aktiviere den Deep Research Modus und recherchiere den aktuellen Stand der EU-AI-Act-Transparenzpflichten für Deepfakes und synthetische Medien (Art. 50) sowie das UWG § 5a zu irreführenden Unterlassungen im DACH-Raum.
+2. Kategorisiere im Chat alle Content-Typen des Teams nach Disclosure-Pflicht: (A) KI-generierter Text mit Faktenaussagen zu Produkten → Pflicht; (B) KI-assistiertes Redigieren → empfohlen; (C) KI-generierte Übersetzungen → nicht nötig.
+3. Erstelle das Disclosure-Wording für Szenario A: kurze, authentische Formulierungen, die Vertrauen aufbauen statt rechtliche Angst auszustrahlen (z. B. "Dieser Text wurde mit KI-Unterstützung erstellt und redaktionell geprüft.").
+4. Visualisiere den Entscheidungsbaum im Canvas: Wenn [Content-Typ] → dann [Disclosure-Stufe] → dann [Wording-Vorschlag].
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Medienrechtsspezialistin im DACH-Raum. Erstelle einen Entscheidungsbaum für KI-Disclosure in Marketing-Content. Kontext: Wir produzieren Blogposts, Social-Media-Posts, Produktbeschreibungen und Newsletter; EU AI Act Art. 50 und UWG § 5a sind relevant. Format: Entscheidungsbaum mit drei Pfaden (Pflicht/Empfohlen/Nicht nötig), fertigem Disclosure-Wording (DE) und Beispiel pro Pfad."
+**Erwartetes Artefakt:** Ein Canvas-Dokument mit Entscheidungsbaum (drei Pfade), fertigem Disclosure-Wording auf Deutsch und einer Zusammenfassung der relevanten Rechtsgrundlagen als Referenz für die Rechtsabteilung.
+**Fallstricke (≥2 spezifisch):**
+- KI-generiertes Wording zur Disclosure wird selbst von der KI geschrieben und klingt unnatürlich → Das Disclosure-Wording muss redaktionell überarbeitet werden; der Mensch schreibt die finale Formulierung, die KI liefert Entwürfe.
+- Die Policy wird ohne Einbindung der Rechtsabteilung als verbindlich kommuniziert → Klarer Hinweis im Dokument: "Entwurf, erfordert Rechtsprüfung vor Veröffentlichung"; Freigabe-Datum im Dateinamen vermerken.
+**Anschluss-Szenario:** S-LU-040
+
+### S-LU-040 Langdock-ROI mit Business-KPIs verknüpfen: Pipeline-Attribution für KI-Assets
+
+**Wann nutzen (Trigger):** Das CMO-Team hat S-LU-012 umgesetzt, aber der CFO fragt weiter: "Welche dieser KI-generierten Assets haben tatsächlich zu Umsatz beigetragen?" Die Effizienz-KPIs reichen dem Board nicht mehr aus. (Quelle: A-01; A-10)
+**Strategisches Ziel:** Einen Attributions-Mechanismus entwickeln, der KI-produzierte Marketing-Assets mit konkreten Pipeline-Beiträgen (Opportunities, Closed-Won-Deals) in Verbindung bringt.
+**Hands-on Ergebnis:** Ein Canvas-Template für den monatlichen Pipeline-Attribution-Report mit einer Tracking-Methodik, die Langdock-Assets mit CRM-Opportunities verknüpft.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Chat / Canvas / Workflows
+**Vorgehen (4 Schritte):**
+1. Definiere im Chat eine einfache Tracking-Methodik: Jedes mit Langdock produzierte Asset erhält ein UTM-Tag oder ein internes Label (z. B. "AI-generated-Q2-2026"), das beim Upload ins CMS/CRM mitgeführt wird.
+2. Exportiere nach 30 Tagen die CRM-Daten: Welche Opportunities wurden durch Assets mit dem KI-Label beeinflusst (Touchpoint vorhanden)? Welche dieser Deals wurden zu Closed-Won?
+3. Lade den Export in den Data Analyst: Berechne den Pipeline-Beitrag (Summe der Opportunity-Values mit KI-Asset-Touchpoint) und den Closed-Won-Anteil als konkreten Umsatzbeitrag.
+4. Erstelle das Canvas-Template: KPI 1 = Pipeline-Beitrag KI-Assets in Euro; KPI 2 = Closed-Won-Deals mit KI-Asset-Touchpoint; KPI 3 = Anteil KI-Assets an gesamtem Content-Output.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Revenue-Marketing-Analystin. Erstelle ein Attribution-Template, das KI-generierte Marketing-Assets mit CRM-Pipeline-Daten verknüpft. Kontext: Wir nutzen Salesforce als CRM, Langdock für Content-Produktion, UTM-Labels für Asset-Tracking. Format: Tabelle mit KPI-Name, Tracking-Methode, Datenquelle, Berechnungsformel und Berichtszyklus."
+**Erwartetes Artefakt:** Ein Canvas-Template für den monatlichen Pipeline-Attribution-Report mit drei KPIs, Tracking-Methodik und einer Datenfluss-Übersicht (Langdock → UTM-Labels → CRM → Report).
+**Fallstricke (≥2 spezifisch):**
+- Multi-Touch-Attribution überschätzt den letzten KI-Asset-Touchpoint und ignoriert frühere Berührungspunkte → Im Prompt explizit festlegen, ob First-Touch, Last-Touch oder lineares Attributionsmodell genutzt wird; Modell-Wahl mit dem Revenue-Team abstimmen.
+- CRM-Daten sind unvollständig, weil nicht alle Assets konsequent gelabelt werden → Labeling-Pflicht als Schritt in die Inhaltsfreigabe-Checkliste aufnehmen; kein Asset geht ohne Label live.
+**Anschluss-Szenario:** S-LU-041
+
+### S-LU-041 Neuen Marketing-Manager in 14 Tagen auf KI-Workflows onboarden
+
+**Wann nutzen (Trigger):** Eine neue Marketing-Managerin beginnt am Montag. Das Team hat keine Zeit für ausgedehnte KI-Schulungen — sie soll innerhalb von 14 Tagen produktiv mit Langdock arbeiten. (Quelle: A-37; sources/12 Q-042)
+**Strategisches Ziel:** Einen strukturierten 14-Tage-Onboarding-Plan entwickeln, der neue Teammitglieder schrittweise mit den wichtigsten Agenten, Workflows und Prompts vertraut macht, ohne sie zu überfordern.
+**Hands-on Ergebnis:** Ein 14-Tage-Onboarding-Plan im Canvas mit täglichen Mini-Aufgaben, einem Starter-Prompts-Katalog und einem Day-14-Self-Check zur Kompetenzmessung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Agents / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Strukturiere den Plan in vier Phasen: Tag 1 — drei Konversations-Starter im Standard-Chat ausprobieren; Tag 3 — einen bestehenden Agenten für eine echte Aufgabe nutzen; Tag 7 — eigene Variante eines Konversations-Starters erstellen und mit dem Team teilen; Tag 14 — einen einfachen Workflow nachstellen und dokumentieren.
+2. Erstelle im Canvas den täglichen Mini-Aufgaben-Kalender: Jede Aufgabe dauert max. 20 Minuten, hat ein konkretes Artefakt als Output und einen Ansprechpartner aus dem Champions-Programm (S-LU-014).
+3. Kuratiere einen Starter-Prompts-Katalog: fünf Prompts aus dem Team-Prompt-Library, die für den jeweiligen Aufgabenbereich der neuen Person am relevantesten sind.
+4. Erstelle den Day-14-Self-Check: fünf Fragen, die die Neue selbst beantwortet, um ihren Kompetenzstand einzuschätzen (z. B. "Welches Modell würdest du für einen Routine-Draft wählen?").
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Onboarding-Designerin. Erstelle einen 14-Tage-Onboarding-Plan für eine neue Marketing-Managerin bei Langdock-Einführung. Kontext: Sie hat keine KI-Vorerfahrung, ihr Fokus liegt auf Content-Marketing und Newsletter. Format: Tabelle mit Tag, Aufgabe, Dauer (max. 20 min), erwartetes Artefakt und Ansprechperson."
+**Erwartetes Artefakt:** Ein 14-Tage-Onboarding-Kalender im Canvas mit täglichen Mini-Aufgaben, einem kuratierten Starter-Prompts-Katalog und einem Day-14-Self-Check-Fragebogen.
+**Fallstricke (≥2 spezifisch):**
+- Der Plan ist zu ambitiös und neue Mitarbeitende fühlen sich überfordert → Jeder Tag hat maximal eine Hauptaufgabe; Abweichungen von der Reihenfolge sind erlaubt, die Reihenfolge ist ein Vorschlag, keine Pflicht.
+- Der Onboarding-Plan wird einmalig erstellt und für jede neue Person ohne Anpassung kopiert → Plan quartalsweise mit den neuesten Agenten und Prompts aktualisieren; veraltete Starter-Prompts raus, neue Champions-Erkenntnisse rein.
+**Anschluss-Szenario:** S-LU-042
+
+### S-LU-042 Bulk-Lokalisierungsjob für 50 Produktbeschreibungen kostenoptimiert durchführen
+
+**Wann nutzen (Trigger):** 50 Produktbeschreibungen müssen für den Launch in drei Sprachen (DE, EN, FR) übersetzt werden — im Standard-Chat-Modus würde das 150 manuelle Einzelanfragen bedeuten. (Quelle: A-24; sources/10 S-025)
+**Strategisches Ziel:** Den Lokalisierungsjob über einen Workflow mit einem kosteneffizienten Flash-Modell und JSON-Array-Input durchführen — Ziel: Faktor 5–10 Kostensenkung gegenüber synchronem Chat-Modus.
+**Hands-on Ergebnis:** Drei CSV-Dateien (DE/EN/FR) mit allen 50 übersetzten Produktbeschreibungen, produziert durch einen einzigen Workflow-Run mit dokumentierten Kosten pro Übersetzung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows / Data Analyst / Agents
+**Vorgehen (4 Schritte):**
+1. Bereite die Eingabedaten vor: Eine CSV mit 50 Zeilen (Produkt-ID, Originalbeschreibung auf DE), exportiert aus dem CMS.
+2. Baue im Workflow-Builder einen Loop-Workflow: Input = CSV-Zeile, Agent-Step = Übersetzung in EN und FR mit Flash-Modell + Glossar-Wissensordner, Output = JSON mit Produkt-ID + Übersetzungen.
+3. Aktiviere den Workflow und lass ihn asynchron im Hintergrund laufen (ca. 10–15 Minuten für 50 Zeilen).
+4. Exportiere das JSON-Ergebnis als drei separate CSVs (eine pro Sprache) und importiere sie direkt ins CMS; dokumentiere die Gesamtkosten im monatlichen Budget-Report.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lokalisierungsworkflow-Architektin. Beschreibe den optimalen Workflow-Aufbau für die Bulk-Übersetzung von 50 Produktbeschreibungen in drei Sprachen mit Langdock. Kontext: Flash-Modell für Kosteneffizienz, Glossar als Wissensordner, Ausgabe als JSON. Format: Schritt-für-Schritt-Workflow-Beschreibung mit Node-Typen, geschätzten Kosten pro Übersetzung und Qualitätsprüfungs-Schritt."
+**Erwartetes Artefakt:** Eine Workflow-Konfigurationsbeschreibung plus drei übersetzte CSVs als Output des Workflow-Runs, mit dokumentierten Kosten pro Übersetzung für den Budget-Report.
+**Fallstricke (≥2 spezifisch):**
+- Das Flash-Modell übersetzt Fachbegriffe ohne Glossar-Anbindung falsch → Glossar-Wissensordner mit Produktterminologie muss vor dem Workflow-Start angebunden sein; ohne Glossar qualitative Stichproben aus 10 % der Outputs machen.
+- JSON-Output enthält Sonderzeichen, die beim CSV-Export korrumpiert werden → Encoding im Workflow explizit auf UTF-8 setzen; insbesondere für Französisch (é, à, ç) und Deutsche Umlaute (ä, ö, ü).
+**Anschluss-Szenario:** S-LU-043
+
+### S-LU-043 Prompt-Bibliothek versionieren und zwischen Modellen portieren
+
+**Wann nutzen (Trigger):** Das Team hat über 30 bewährte Prompts in der Langdock-Prompt-Library gespeichert, aber keine Versionshistorie — Änderungen werden einfach überschrieben, Rückwärts-Kompatibilität ist nicht gewährleistet. (Quelle: A-49; sources/12 Q-080)
+**Strategisches Ziel:** Alle produktiven Prompts in ein Git-Repository überführen, mit Pull-Request-Prozess für Änderungen, sodass jede Prompt-Version nachvollziehbar ist und bei einem Modell-Wechsel gezielt portiert werden kann.
+**Hands-on Ergebnis:** Ein Git-Repository mit allen Prompt-Markdown-Dateien, einer Namenskonvention, einem PR-Review-Prozess und einem Build-Step, der die freigegebenen Prompts automatisch in Langdock-Konversations-Starter überführt.
+**Eingesetzte Langdock-Fähigkeit(en):** Prompt Library / Agents / Konversations-Starter / Chat
+**Vorgehen (4 Schritte):**
+1. Exportiere alle bestehenden Prompts aus der Langdock-Prompt-Library als Markdown-Dateien und lege sie in einem Git-Repository ab (eine Datei pro Prompt, Namensschema: "YYYY-MM_Domäne_Aufgabe.md").
+2. Definiere den PR-Review-Prozess: Prompt-Änderung → Branch anlegen → PR erstellen → Review durch Agent-Owner → Merge in Main → automatisches Update des Konversations-Starters in Langdock.
+3. Ergänze in jeder Prompt-Datei einen Header mit Metadaten: Zielmodell, letztes Testdatum, Qualitätsbewertung (1–5), Ansprechpartner.
+4. Führe einmal im Quartal einen "Prompt-Audit": Alle Prompts mit Qualitätsbewertung unter 3 oder Testdatum älter als 90 Tage werden überarbeitet oder archiviert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Engineering-Governerin. Erstelle eine Namenskonvention und einen Review-Prozess für unsere 35-Prompts-Bibliothek in Git. Kontext: Team von 15 Personen, monatlich 5–10 neue Prompts, Wechsel zwischen Claude und GPT möglich. Format: Namenskonvention-Regel, Markdown-Header-Template und 4-Schritte-PR-Prozess."
+**Erwartetes Artefakt:** Eine Namenskonventions-Regel, ein Markdown-Header-Template für Prompt-Metadaten und eine dokumentierte 4-Schritte-PR-Review-Prozessbeschreibung, direkt einsetzbar im Team-Git-Repository.
+**Fallstricke (≥2 spezifisch):**
+- Git-Kenntnisse fehlen bei nicht-technischen Team-Mitgliedern → Für nicht-technische Nutzer eine vereinfachte GitHub-Web-UI-Anleitung erstellen; der Git-Prozess läuft primär über den Champion, nicht alle Teammitglieder müssen Git beherrschen.
+- Der automatische Build-Step zur Langdock-Integration existiert noch nicht → Bis zur Automatisierung: Manueller Copy-Paste-Prozess nach jedem PR-Merge; Automatisierung als Milestone für Quartal 2 einplanen.
+**Anschluss-Szenario:** S-LU-044
+
+### S-LU-044 KI-Carbon-Footprint messen und ins Nachhaltigkeits-Reporting integrieren
+
+**Wann nutzen (Trigger):** Die Sustainability-Abteilung fragt, ob der KI-Einsatz im Marketing zum CO₂-Fußabdruck des Unternehmens beiträgt — und ob dies im Nachhaltigkeitsbericht ausgewiesen werden muss. (Quelle: A-45)
+**Strategisches Ziel:** Eine nachvollziehbare Methodik entwickeln, die den Token-Verbrauch des Langdock-Workspace in eine CO₂-Schätzung übersetzt, die im Nachhaltigkeitsbericht unter "Scope 3 — digitale Dienstleistungen" veröffentlicht werden kann.
+**Hands-on Ergebnis:** Eine jährliche CO₂-Schätzungstabelle im Canvas mit Berechnungsmethodik, Quellenangaben (ML.energy, Hugging Face Public Estimates) und einem Hinweis auf Unsicherheitsfaktoren.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Exportiere den Jahres-Token-Verbrauch aus dem Langdock-Admin-Dashboard (aufgeschlüsselt nach Modell: Flash, Sonnet, Opus).
+2. Recherchiere im Chat die aktuellen CO₂-Faktoren pro 1 000 Token für die eingesetzten Modelle (Basis: ML.energy und Hugging Face-Schätzungen, Stand 2026); dokumentiere Quellen und Unsicherheitsranges.
+3. Lade den Token-Verbrauch als CSV in den Data Analyst: Berechne die Gesamt-CO₂-Schätzung (Token-Verbrauch × CO₂-Faktor pro Modell) und vergleiche sie mit Referenzwerten (z. B. CO₂ einer Transatlantik-Flugreise: ca. 1,8 t CO₂).
+4. Erstelle die Reporting-Tabelle im Canvas mit Methodikbeschreibung, Quellenangaben, Schätzwert und einer Einschränkungsklausel ("Schätzung basiert auf öffentlichen Durchschnittswerten; tatsächliche Werte können abweichen").
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Nachhaltigkeits-Reportingspezialistin. Erstelle eine CO₂-Schätzungsmethodik für unseren KI-Verbrauch in Langdock. Kontext: Jahresverbrauch laut CSV anbei, eingesetzte Modelle: Claude Sonnet, Flash; Basis: öffentliche ML.energy-Schätzwerte. Format: Tabelle mit Modell, Jahres-Token-Verbrauch, CO₂-Faktor, Gesamt-CO₂-Schätzung in kg und Quellenangabe."
+**Erwartetes Artefakt:** Eine CO₂-Schätzungstabelle im Canvas mit vollständiger Methodikbeschreibung, Quellenangaben und einer Einschränkungsklausel, direkt einsetzbar im Nachhaltigkeitsbericht unter Scope 3.
+**Fallstricke (≥2 spezifisch):**
+- CO₂-Faktoren aus 2024 werden für 2026 verwendet, ohne zu prüfen, ob aktuellere Werte vorliegen → Quelldaten jährlich zum Reporting-Zeitpunkt aktualisieren; Veröffentlichungsdatum der verwendeten Studie im Dokument vermerken.
+- Die Schätzung wird als exakter Wert kommuniziert und erzeugt bei kritischen Stakeholdern Vertrauensverlust → Im Nachhaltigkeitsbericht immer als "Schätzung ±40 % Unsicherheitsrange" kommunizieren und die Methodik vollständig transparent darstellen.
+**Anschluss-Szenario:** S-LU-045
+
+### S-LU-045 Agent-Rentenplan: Veraltete Agenten systematisch stilllegen
+
+**Wann nutzen (Trigger):** Der Workspace-Governance-Review (S-LU-025) zeigt, dass vier Agenten seit mehr als 90 Tagen nicht genutzt wurden — aber niemand traut sich, sie zu löschen, ohne zu wissen, ob jemand auf sie angewiesen ist. (Quelle: A-33)
+**Strategisches Ziel:** Einen strukturierten Agenten-Retirement-Prozess einführen, der veraltete Agenten sicher identifiziert, archiviert und deaktiviert — ohne produktive Nutzung zu unterbrechen.
+**Hands-on Ergebnis:** Ein Retirement-Protokoll im Canvas mit Checkliste für jeden zu deaktivierenden Agenten, einem Archiv-Snapshot-Verfahren und einem Sunset-Memo an alle Nutzer.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin / Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Exportiere aus dem Langdock-Admin-Dashboard die Nutzungsstatistik aller Agenten: letzte Nutzung, Anzahl Sessions in den letzten 90 Tagen, Owner.
+2. Identifiziere Retirement-Kandidaten nach drei Kriterien: (a) 0 Sessions in 90 Tagen, (b) Wissensordner-Quelldaten veraltet (letztes Update > 6 Monate), (c) Use-Case durch neueren Agenten abgelöst.
+3. Führe für jeden Kandidaten den Pre-Retirement-Check durch: System-Prompt und Wissensordner-Dateien als Markdown exportieren und in einem "Archiv"-Ordner ablegen; Sunset-Memo an alle bisherigen Nutzer senden mit 14-Tage-Vorlauffrist.
+4. Deaktiviere den Agenten nach der Vorlauffrist und aktualisiere das RACI-Governance-Dokument (S-LU-025).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Workplace-Governerin. Erstelle ein Retirement-Protokoll für die Stilllegung veralteter Langdock-Agenten. Kontext: Vier Agenten mit 0 Sessions in 90 Tagen, Workspace mit 25 Nutzern. Format: Checkliste mit Schritten (Nutzungscheck, Owner-Konsultation, Archiv-Snapshot, Sunset-Memo, Deaktivierung), Zeitplan und Archivierungs-Vorlage."
+**Erwartetes Artefakt:** Ein Retirement-Protokoll im Canvas mit Schritt-für-Schritt-Checkliste, Archiv-Snapshot-Vorlage und einem Sunset-Memo-Template, das für jeden zu deaktivierenden Agenten angepasst wird.
+**Fallstricke (≥2 spezifisch):**
+- Ein "ungenutzter" Agent wird gelöscht, aber eine automatisierte Workflow-Komponente hat ihn still im Hintergrund gerufen → Vor Deaktivierung im Workflow-Builder nach Referenzen auf den Agenten suchen; Workflow-Abhängigkeiten sind unsichtbar im Nutzungs-Dashboard.
+- Das Archiv-Snapshot-Verfahren wird übersprungen und das Wissen geht verloren → Kein Agent wird ohne exportierten System-Prompt und Wissensordner-Backup deaktiviert; Pre-Retirement-Export ist Pflichtschritt in der Checkliste.
 **Anschluss-Szenario:** S-LU-001
