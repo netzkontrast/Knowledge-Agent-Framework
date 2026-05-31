@@ -939,4 +939,4 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Fallstricke (≥2 spezifisch):**
 - Jahresbudgets ohne Wachstumspuffer werden bereits im ersten Quartal gesprengt, wenn die KI-Adoption wie geplant steigt — Mitigation: mindestens 30 % Wachstumspuffer einplanen und diesen explizit als "Adoption-Reserve" benennen, nicht als Sicherheitspuffer.
 - Eine Budget-Anfrage ohne ROI-Aussage wird vom Vorstand als reiner Kostenpunkt behandelt, nicht als Investition — Mitigation: die ROI-Aussage (Lohnkosten-Äquivalent) immer als erste Zahl im Deck präsentieren, bevor die Kostenaufstellung folgt.
-**Anschluss-Szenario:** S-MK-001
+**Anschluss-Szenario:** S-MK-046
