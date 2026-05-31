@@ -1,7 +1,7 @@
 # Sicherheit und Governance für Marketing-Direktoren
 
 > **Was diese Datei abdeckt:**
-> - Governance-Strukturen und DSGVO-Konformität
+> - DSGVO und EU-Hosting (Azure EU-Region)
 > - Zertifizierungen und Datenresidenz
 > - Berechtigungsmodelle und Automatisierung
 >
@@ -11,7 +11,7 @@
 
 ## DSGVO und EU-Hosting (Azure EU-Region)
 
-Für Marketing-Teams in der DACH-Region bildet die DSGVO-Konformität das fundamentale Kriterium für die Einführung generativer KI. Die unkontrollierte Nutzung von Consumer-Tools führt unausweichlich zu unkontrollierten Datenabflüssen — dem sogenannten "Shadow AI". Die Architektur von Langdock eliminiert dieses kritische Risiko durch eine strikte Infrastruktur. Das absolute Fundament dieser Compliance ist das garantierte EU-Hosting. Alle essenziellen Systemkomponenten, Datenbanken und Vektor-Indizes werden exklusiv in der Microsoft Azure EU-Region betrieben. Dies stellt sicher, dass hochsensible Marketing-Daten, seien es unveröffentlichte Strategiepapiere, granulare Zielgruppendefinitionen oder Kampagnen-Drafts, den europäischen Rechtsraum zu keinem Zeitpunkt verlassen. Das Konzept rund um DSGVO und EU-Hosting ist explizit so strukturiert, dass Marketing-Direktorinnen ihren Rechtsabteilungen sofort einen klaren, auditierbaren Standard vorlegen können. Anstelle von undurchsichtigen, global verteilten Server-Strukturen greift ein zentralisiertes Bereitstellungsmodell. Ein entscheidender nächster Schritt für die saubere Implementierung ist der Abschluss eines Auftragsverarbeitungsvertrags (AVV). Dieser rechtliche Rahmen ist direkt über die Administrationsoberfläche der Plattform abschließbar. Die strikte Einhaltung der Vorgaben rund um DSGVO und EU-Hosting schützt das Unternehmen vor empfindlichen regulatorischen Strafen und verhindert gleichzeitig den unautorisierten Abfluss von proprietärem Markenwissen in externe Sprachmodelle.
+Für Marketing-Teams in der DACH-Region bildet die DSGVO-Konformität das fundamentale Kriterium für die Einführung generativer KI. Die unkontrollierte Nutzung von Consumer-Tools führt unausweichlich zu unkontrollierten Datenabflüssen — dem sogenannten "Shadow AI". Die Architektur von Langdock eliminiert dieses kritische Risiko durch eine strikte Infrastruktur. Das absolute Fundament dieser Compliance ist das garantierte EU-Hosting. Alle essenziellen Systemkomponenten, Datenbanken und Vektor-Indizes werden exklusiv in der Microsoft Azure EU-Region betrieben. Dies stellt sicher, dass hochsensible Marketing-Daten, seien es unveröffentlichte Strategiepapiere, granulare Zielgruppendefinitionen oder Kampagnen-Drafts, den europäischen Rechtsraum zu keinem Zeitpunkt verlassen. Das Konzept rund um DSGVO und EU-Hosting ist explizit so strukturiert, dass Marketing-Direktorinnen ihren Rechtsabteilungen sofort einen klaren, auditierbaren Standard vorlegen können. Anstelle von undurchsichtigen, global verteilten Server-Strukturen greift ein zentralisiertes Bereitstellungsmodell. Worauf muss ich bei DSGVO achten? Es geht im Kern um Transparenz und den Abschluss eines Auftragsverarbeitungsvertrags (AVV). Dieser rechtliche Rahmen ist direkt über die Administrationsoberfläche der Plattform abschließbar. Die strikte Einhaltung der Vorgaben rund um DSGVO und EU-Hosting schützt das Unternehmen vor empfindlichen regulatorischen Strafen und verhindert den unautorisierten Abfluss von proprietärem Wissen.
 
 ## ISO 27001 und SOC 2 Type II Zertifizierungen
 
@@ -19,11 +19,11 @@ Die technische und organisatorische Sicherheit der Langdock-Plattform wird durch
 
 ## Datenresidenz und Trainings-Opt-out
 
-Ein kritischer Einwand bei der Nutzung großer Sprachmodelle (Large Language Models) betrifft die unerwünschte Weiternutzung von proprietären Unternehmensinformationen. Langdock löst dieses Problem durch kompromisslose Datenresidenz und Trainings-Opt-out Verträge. Es gilt der absolute Grundsatz: Langdock und die angebundenen Modell-Provider (wie OpenAI oder Anthropic) nutzen Kundendaten zu keinem Zeitpunkt für das Training ihrer Modelle. Diese Zusicherung ist für Marketing-Abteilungen von höchster Relevanz, da sie häufig mit unreleased Produktinformationen oder sensiblen Kommunikationsstrategien arbeiten. Die strikte Durchsetzung von Datenresidenz und Trainings-Opt-out wird über dedizierte Enterprise-Agreements (Zero-Data-Retention-Policies) mit den KI-Anbietern realisiert. Jeder Prompt, jedes generierte Briefing und jede hochgeladene Marktforschung bleibt das exklusive intellektuelle Eigentum des Kunden. Die Datenresidenz stellt zudem sicher, dass alle Informationen physisch in definierten, sicheren Rechenzentren verbleiben. Für Unternehmen mit extremen Sicherheitsanforderungen ermöglicht Langdock zusätzlich das "Bring Your Own Key" (BYOK) Verfahren. Hierbei behält die eigene IT-Abteilung die vollständige Kontrolle über die API-Schlüssel und die zugrunde liegende Modellabrechnung. Der nächste Schritt zur Absicherung besteht darin, diese Zero-Training-Garantie explizit in die internen KI-Nutzungsrichtlinien aufzunehmen, um den Marketing-Teams die Angst vor dem Kontrollverlust zu nehmen.
+Ein kritischer Einwand bei der Nutzung großer Sprachmodelle (Large Language Models) betrifft die unerwünschte Weiternutzung von proprietären Unternehmensinformationen. Geben wir Daten an OpenAI weiter, wenn wir Langdock nutzen? Die klare Antwort lautet: Nein, weder für das Training noch für eine dauerhafte Speicherung. Langdock löst dieses Problem durch kompromisslose Datenresidenz und Trainings-Opt-out Verträge. Es gilt der absolute Grundsatz: Langdock und die angebundenen Modell-Provider nutzen Kundendaten zu keinem Zeitpunkt für das Training ihrer Modelle. Diese Zusicherung ist für Marketing-Abteilungen von höchster Relevanz, da sie häufig mit unreleased Produktinformationen oder sensiblen Kommunikationsstrategien arbeiten. Die strikte Durchsetzung von Datenresidenz und Trainings-Opt-out wird über dedizierte Enterprise-Agreements mit den KI-Anbietern realisiert. Jeder Prompt, jedes generierte Briefing und jede hochgeladene Marktforschung bleibt das exklusive Eigentum des Kunden. Die Datenresidenz stellt sicher, dass Informationen physisch in definierten, sicheren Rechenzentren verbleiben. Für Unternehmen mit extremen Sicherheitsanforderungen ermöglicht Langdock zusätzlich das "Bring Your Own Key" (BYOK) Verfahren. Hierbei behält die eigene IT-Abteilung die vollständige Kontrolle über die API-Schlüssel und die Modellabrechnung. Der nächste Schritt zur Absicherung besteht darin, diese Garantie explizit in die internen Richtlinien aufzunehmen.
 
 ## SAML SSO (Entra/Google/Okta)
 
-Die dezentrale Verwaltung von Passwörtern stellt ein erhebliches Sicherheitsrisiko und einen massiven administrativen Overhead dar. Aus diesem Grund unterstützt Langdock die nahtlose Integration von SAML SSO (Security Assertion Markup Language Single Sign-On). Diese Technologie ermöglicht es Marketing-Mitarbeitern, sich mit ihren bestehenden Unternehmenszugängen (beispielsweise über Microsoft Entra, Google Workspace oder Okta) bei der Plattform anzumelden. Durch die Implementierung von SAML SSO (Entra/Google/Okta) entfällt die Notwendigkeit für separate Langdock-Passwörter. Dies reduziert nicht nur Support-Anfragen an die IT-Abteilung wegen vergessener Zugangsdaten drastisch, sondern eliminiert auch die Gefahr schwacher, mehrfach verwendeter Passwörter. Für die Administration bedeutet SAML SSO (Entra/Google/Okta) eine zentrale Kontrolle: Sobald ein Mitarbeiter das Unternehmen verlässt und sein Account im zentralen Verzeichnisdienst deaktiviert wird, erlischt augenblicklich auch der Zugriff auf alle Langdock-Agenten und Wissensordner. Dies ist besonders für Agenturen oder Teams mit hoher Fluktuation entscheidend. Der konkrete nächste Schritt zur Einrichtung erfordert die Zusammenarbeit mit der IT-Administration, um die entsprechenden Metadaten aus dem Identity Provider zu exportieren und in den Workspace-Einstellungen von Langdock zu hinterlegen. Diese Einmal-Konfiguration garantiert ein reibungsloses und sicheres Onboarding für hunderte von Nutzern gleichzeitig.
+Die dezentrale Verwaltung von Passwörtern stellt ein erhebliches Sicherheitsrisiko und einen massiven administrativen Overhead dar. Aus diesem Grund unterstützt Langdock die nahtlose Integration von SAML SSO (Security Assertion Markup Language Single Sign-On). Diese Technologie ermöglicht es Marketing-Mitarbeitern, sich mit ihren bestehenden Unternehmenszugängen (beispielsweise über Microsoft Entra, Google Workspace oder Okta) bei der Plattform anzumelden. Durch die Implementierung von SAML SSO (Entra/Google/Okta) entfällt die Notwendigkeit für separate Langdock-Passwörter. Dies reduziert nicht nur Support-Anfragen an die IT-Abteilung wegen vergessener Zugangsdaten drastisch, sondern eliminiert auch die Gefahr schwacher, mehrfach verwendeter Passwörter. Für die Administration bedeutet SAML SSO (Entra/Google/Okta) eine zentrale Kontrolle: Sobald ein Mitarbeiter das Unternehmen verlässt und sein Account im zentralen Verzeichnisdienst deaktiviert wird, erlischt augenblicklich auch der Zugriff auf alle Langdock-Agenten und Wissensordner. Dies ist besonders für Agenturen oder Teams mit hoher Fluktuation entscheidend. Der konkrete nächste Schritt zur Einrichtung erfordert die Zusammenarbeit mit der IT-Administration, um die entsprechenden Metadaten aus dem Identity Provider zu exportieren und in den Workspace-Einstellungen von Langdock zu hinterlegen. Diese Einmal-Konfiguration garantiert ein reibungsloses Onboarding für hunderte von Nutzern gleichzeitig.
 
 ## SCIM für User-Provisioning + Entra-ID ?aadOptscim062020 Quirk
 
@@ -51,2290 +51,222 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ## Marketing-Szenarien aus dieser Domäne
 
-### S-SG-001 Content-Marketing Governance Check
+### S-SG-001 Falsifikation der SCIM-Konfiguration
 
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Content-Marketing (1). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Content-Marketing (1).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-002 für die weiterführende Validierung.
-
-### S-SG-002 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Performance-Marketing (2). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Performance-Marketing (2).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-003 für die weiterführende Validierung.
-
-### S-SG-003 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Social-Media (3). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Social-Media (3).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-004 für die weiterführende Validierung.
-
-### S-SG-004 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich Brand-Management (4). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich Brand-Management (4).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-005 für die weiterführende Validierung.
-
-### S-SG-005 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich CRM-und-Loyalty (5). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich CRM-und-Loyalty (5).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-006 für die weiterführende Validierung.
-
-### S-SG-006 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich PR-und-Kommunikation (6). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich PR-und-Kommunikation (6).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-007 für die weiterführende Validierung.
-
-### S-SG-007 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Event-Marketing (7). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Event-Marketing (7).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-008 für die weiterführende Validierung.
-
-### S-SG-008 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (8). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Julia muss die DSGVO-Compliance der HubSpot-Synchronisation nach Inkonsistenzen bei ausgeschiedenen Mitarbeitern verifizieren.
+**Strategisches Ziel:** Eliminierung von unautorisiertem Zugriff (Shadow AI) vor dem Compliance-Audit.
+**Hands-on Ergebnis:** Ein Falsifikations-Report, der aufschlüsselt, welche User-Provisioning-Konfigurationen fehlerhaft sind.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Extraktion der SCIM-Konfigurationsprotokolle aus dem internen IT-Verzeichnis.
+2. Überprüfung gegen die Vorgabe des Entra-ID Quirks (Parameter `?aadOptscim062020`).
+3. Zusammenfassung der Schwachstellen für die IT-Administration.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (8).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Angenommen, unsere HubSpot-Synchronisation über Entra ID ist fehlerhaft.
+[Kontext]: Es gibt Inkonsistenzen beim Entzug von Lizenzen von Ex-Mitarbeitern.
+[Aufgabe]: Prüfe die SCIM-Richtlinien auf bekannte Implementierungsfehler bei Microsoft Entra ID.
+[Format]: Tabellarischer Report ('Fehlerquelle' und 'Lösung').
+[Constraints]: Nutze ausschließlich technische Dokumentationen."
+**Erwartetes Artefakt:** Ein technischer Report, der System-Parameter und Fehlerursachen auflistet.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-009 für die weiterführende Validierung.
+- Fokus auf generische SCIM-Protokolle: Die AI verpasst den spezifischen Entra-ID-Parameter.
+- Zu wenig Kontext: Ohne IT-Fehlermeldungen bleibt die Analyse theoretisch.
+**Anschluss-Szenario:** S-SG-002 für die Freigabe des Berechtigungsmodells.
 
-### S-SG-009 Content-Marketing Governance Check
+### S-SG-002 Pre-Mortem für Agentur-API-Freigabe
 
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Content-Marketing (9). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
+**Wann nutzen (Trigger):** Eine Performance-Agentur fordert API-Vollzugriff, um Meta-Ads direkt aus Langdock generieren zu lassen.
+**Strategisches Ziel:** Proaktive Vermeidung von Kostenexplosionen und DSGVO-Datenabflüssen.
+**Hands-on Ergebnis:** Ein Pre-Mortem-Assessment, das Worst-Case-Szenarien und Präventivmaßnahmen dokumentiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Data Analyst
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Definition des Worst-Case-Szenarios (z.B. Kosten steigen um 500%).
+2. Entwicklung von Gegenmaßnahmen wie striktem Scoping der API-Schlüssel.
+3. Generierung der Richtlinie, die der Agentur zur Unterschrift vorgelegt wird.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Content-Marketing (9).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Wir simulieren ein Pre-Mortem für die API-Freigabe an eine Agentur. Das Projekt ist nach sechs Monaten katastrophal gescheitert.
+[Kontext]: Die Agentur benötigt Zugriff auf Meta-Ads-Generierung.
+[Aufgabe]: Identifiziere technische Schwachstellen in unserer API-Vergabe.
+[Format]: Liste der 5 größten Risiken mit konkreter Präventivmaßnahme.
+[Constraints]: Beziehe dich explizit auf die Langdock-Architektur."
+**Erwartetes Artefakt:** Ein Assessment mit Handlungsanweisungen zur API-Schlüssel-Konfiguration.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-010 für die weiterführende Validierung.
+- Nicht-technische Fokusverschiebung: Fokus auf Kommunikation statt auf API-Sicherheitsfeatures.
+- Fehlende Kosten-Dimension: Das Budget-Limit-Feature wird nicht explizit geprüft.
+**Anschluss-Szenario:** S-SG-003 zur Etablierung eines automatisierten Audit-Logs.
 
-### S-SG-010 Performance-Marketing Governance Check
+### S-SG-003 Steelmanning des EU-Hosting-Einwands
 
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (10). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (10).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-011 für die weiterführende Validierung.
-
-### S-SG-011 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich Social-Media (11). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich Social-Media (11).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-012 für die weiterführende Validierung.
-
-### S-SG-012 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich Brand-Management (12). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich Brand-Management (12).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-013 für die weiterführende Validierung.
-
-### S-SG-013 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich CRM-und-Loyalty (13). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich CRM-und-Loyalty (13).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-014 für die weiterführende Validierung.
-
-### S-SG-014 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich PR-und-Kommunikation (14). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich PR-und-Kommunikation (14).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-015 für die weiterführende Validierung.
-
-### S-SG-015 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich Event-Marketing (15). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich Event-Marketing (15).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-016 für die weiterführende Validierung.
-
-### S-SG-016 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich MarketingOps (16). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich MarketingOps (16).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-017 für die weiterführende Validierung.
-
-### S-SG-017 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich Content-Marketing (17). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich Content-Marketing (17).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-018 für die weiterführende Validierung.
-
-### S-SG-018 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich Performance-Marketing (18). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich Performance-Marketing (18).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-019 für die weiterführende Validierung.
-
-### S-SG-019 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Social-Media (19). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Der CISO blockiert den Rollout mit dem Argument, dass cloudbasierte Modelle unsicher für europäische Kundendaten seien.
+**Strategisches Ziel:** Beschleunigung der rechtlichen Freigabe durch eine Argumentationskette, die Bedenken der IT-Sicherheit auflöst.
+**Hands-on Ergebnis:** Ein Executive-Memo, das Sicherheitsbedenken anhand der Langdock-Infrastruktur systematisch widerlegt.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Rekonstruktion der CISO-Argumentation in stärkster Form (Steelmanning).
+2. Zuordnung der Langdock-Sicherheits-Features (ISO 27001, Azure EU-Region).
+3. Erstellung des kompakten Memos zur direkten Weiterleitung an das C-Level.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Social-Media (19).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Rekonstruiere die Argumentation unseres CISOs gegen cloudbasierte KI-Modelle.
+[Kontext]: Wir wollen Langdock ausrollen, aber die IT fürchtet Datenabfluss.
+[Aufgabe]: Nimm jeden Einwand ernst und setze ihm die Sicherheitszertifizierungen von Langdock entgegen.
+[Format]: Ein Executive-Memo mit 'Stärkster Einwand' und 'Gegenmaßnahme'.
+[Constraints]: Vermeide Marketing-Sprech. Nutze harte technische Fakten."
+**Erwartetes Artefakt:** Ein Executive-Memo als fundierte Entscheidungsgrundlage.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-020 für die weiterführende Validierung.
+- Schwaches Steelmanning: Die AI baut einen "Strohmann" auf, was die Glaubwürdigkeit zerstört.
+- Vermischung von Providern: Unklare Trennung zwischen Langdock-Hosting und Trainings-Opt-out.
+**Anschluss-Szenario:** S-SG-004 für den Entwurf des Auftragsverarbeitungsvertrags.
 
-### S-SG-020 Brand-Management Governance Check
+### S-SG-004 Prior Update für Markenstimmen-Agenten
 
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Brand-Management (20). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Das Brand-Management meldet, dass Teams widersprüchliche Markenstimmen-Agenten nutzen, was externe Kommunikation verwässert.
+**Strategisches Ziel:** Etablierung eines auditsicheren Freigabeprozesses durch das Group-Sharing-Modell.
+**Hands-on Ergebnis:** Eine Zugriffs-Policy, die definiert, wie Brand-Assets über SCIM-Gruppen verwaltet werden.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Erfassung des Status Quo der dezentralen Nutzung in den Teams.
+2. Abgleich mit dem zentralen Berechtigungsmodell (RBAC) der Plattform.
+3. Generierung der Policy zur internen Kommunikation an Marketing-Leiter.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Brand-Management (20).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Die Annahme, dass jedes Team eigene Agenten baut, führt zu Markeninkonsistenzen. Wir müssen diese Strategie updaten.
+[Kontext]: Abteilungen nutzen abweichende Brand-Voice-Prompt-Sets.
+[Aufgabe]: Erstelle eine Governance-Policy basierend auf Langdocks Group-Sharing und RBAC.
+[Format]: Zugriffs-Policy mit klaren Rollendefinitionen (Admin, Editor, Member).
+[Constraints]: Berücksichtige die Integration von SCIM-Gruppen."
+**Erwartetes Artefakt:** Eine Zugriffs-Policy, die Wildwuchs bei Agenten unterbindet.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-021 für die weiterführende Validierung.
+- Überregulierung: Die Policy blockiert legitime Ad-hoc-Anfragen der Teams.
+- Fehlende SCIM-Integration: Die AI vergisst die Verbindung zum Active Directory.
+**Anschluss-Szenario:** S-SG-005 zur Überprüfung bestehender Audit Logs.
 
-### S-SG-021 CRM-und-Loyalty Governance Check
+### S-SG-005 Source Triangulation für Expansionsrechte
 
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich CRM-und-Loyalty (21). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich CRM-und-Loyalty (21).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-022 für die weiterführende Validierung.
-
-### S-SG-022 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich PR-und-Kommunikation (22). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Bei einer internationalen Expansion müssen die Zugriffsrechte auf sensible Kampagnendaten strikt nach Regionen getrennt werden.
+**Strategisches Ziel:** Aufbau einer granularen RBAC-Struktur, die lokale Compliance-Vorgaben berücksichtigt.
+**Hands-on Ergebnis:** Eine RBAC-Matrix, die alle Regionen, Rollen und den Zugriff auf Workflows abbildet.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Sammlung der regionalen Datenschutzanforderungen (z.B. EU-DSGVO vs. US-CCPA).
+2. Mapping der Anforderungen auf Langdock-Rollen (Workspace-Admin, Editor).
+3. Synthese der Matrix zur finalen Überprüfung durch die globale IT.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich PR-und-Kommunikation (22).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Trianguliere die Zugriffsanforderungen für unsere Marketing-Infrastruktur.
+[Kontext]: Wir expandieren in die USA. Die Teams dürfen keinen Zugriff auf Rohdaten der anderen Regionen haben.
+[Aufgabe]: Entwirf ein Berechtigungsmodell basierend auf Langdocks RBAC.
+[Format]: RBAC-Matrix mit 'Region', 'Plattform-Rolle', 'SCIM-Gruppe' und 'Zugriff'.
+[Constraints]: Der Workspace-Admin muss zentral in der DACH-Region bleiben."
+**Erwartetes Artefakt:** Eine Matrix, die als Blueprint für die IT-Provisionierung dient.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-023 für die weiterführende Validierung.
+- Regionale Silobildung: Die Matrix blockiert den globalen Best-Practice-Austausch.
+- Verwechslung der Rollen: Lesezugriff (Viewer) und Nutzungsrecht (Member) werden nicht getrennt.
+**Anschluss-Szenario:** S-SG-006 für die SSO-Konfiguration der Regionen.
 
-### S-SG-023 Event-Marketing Governance Check
+### S-SG-006 Contradiction Log für Workflow-Audit
 
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Event-Marketing (23). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
+**Wann nutzen (Trigger):** Workflows zur Content-Generierung verarbeiten Kunden-Feedback ohne "KI-generiert"-Disclaimer, was gegen das UWG verstößt.
+**Strategisches Ziel:** Identifikation und Eliminierung von rechtlichen Widersprüchen in der Automatisierungs-Architektur.
+**Hands-on Ergebnis:** Ein Contradiction Log, das alle rechtswidrigen Workflows priorisiert auflistet.
+**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Canvas / Document Editor
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Erfassung der Workflow-Dokumentationen und rechtlichen Rahmenbedingungen.
+2. Evaluierung der Workflow-Nodes (z.B. Integrations-Nodes) auf fehlende Disclaimer.
+3. Generierung des finalen Audit-Dokuments für das MarketingOps-Team.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Event-Marketing (23).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Erstelle ein Contradiction Log für unsere Automatisierungen.
+[Kontext]: Workflows verwandeln Kundenfeedback in Posts. Legal warnt vor UWG-Verstößen.
+[Aufgabe]: Identifiziere technische Diskrepanzen zwischen dem Setup und den Compliance-Vorgaben.
+[Format]: Tabelle der Widersprüche und notwendigen Anpassungen (z.B. Human-in-the-Loop).
+[Constraints]: Fokus auf DACH-spezifische Gesetzgebung."
+**Erwartetes Artefakt:** Ein Contradiction Log als direkte Arbeitsanweisung für Entwickler.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-024 für die weiterführende Validierung.
+- Fehlende technische Lösung: Das Artefakt schlägt keine konkrete Workflow-Node vor.
+- Juristische Überinterpretation: Die AI formuliert abstrakte Rechtsrisiken statt belegbarer UWG-Verstöße.
+**Anschluss-Szenario:** S-SG-007 zur Neukonfiguration der Integrations-Trigger.
 
-### S-SG-024 MarketingOps Governance Check
+### S-SG-007 WWCMM zum Shadow AI Risiko
 
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich MarketingOps (24). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich MarketingOps (24).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-025 für die weiterführende Validierung.
-
-### S-SG-025 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich Content-Marketing (25). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich Content-Marketing (25).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-026 für die weiterführende Validierung.
-
-### S-SG-026 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Performance-Marketing (26). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Ein Teammitglied nutzt private Consumer-Tools für offizielle Übersetzungen, da ihm die Enterprise-Plattform "zu langsam" ist.
+**Strategisches Ziel:** Eliminierung von Shadow-AI-Praktiken durch faktenbasierte Risikokommunikation.
+**Hands-on Ergebnis:** Ein Governance-Briefing, das die Risiken des Datenabflusses bei Consumer-Tools präzise darlegt.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Definition der Haltung des Mitarbeiters (Consumer-Tools sind harmlos).
+2. Strukturierung der Argumente rund um garantierte Langdock-Datenresidenz.
+3. Erstellung des Briefings, das Produktivitätsgewinne und Compliance-Risiken gegenüberstellt.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Performance-Marketing (26).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Wir müssen darlegen, warum private Consumer-KIs ein massives Compliance-Risiko darstellen.
+[Kontext]: Ein Event-Manager umgeht unsere Architektur.
+[Aufgabe]: Erstelle ein Governance-Briefing, das erklärt, welche Daten abfließen und wie Langdock dies durch Zero-Data-Retention-Agreements löst.
+[Format]: Ein Dokument, strukturiert als 'Risiko Consumer-Tool' vs. 'Enterprise-Garantie'.
+[Constraints]: Keine Vorwürfe formulieren. Die Tonalität muss faktenbasiert sein."
+**Erwartetes Artefakt:** Ein Governance-Briefing, einsetzbar als Schulungsmaterial.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-027 für die weiterführende Validierung.
+- Zu aggressive Tonalität: Das Briefing klingt nach Abmahnung statt Enablement.
+- Fehlende Alternativen: Ohne Hinweis auf Langdock-Effizienz bleibt der Mitarbeiter frustriert.
+**Anschluss-Szenario:** S-SG-008 zur Initiierung eines Onboarding-Workflows.
 
-### S-SG-027 Social-Media Governance Check
+### S-SG-008 Red Team Audit der Rollout-Policy
 
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich Social-Media (27). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich Social-Media (27).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-028 für die weiterführende Validierung.
-
-### S-SG-028 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Brand-Management (28). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Brand-Management (28).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-029 für die weiterführende Validierung.
-
-### S-SG-029 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich CRM-und-Loyalty (29). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich CRM-und-Loyalty (29).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-030 für die weiterführende Validierung.
-
-### S-SG-030 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich PR-und-Kommunikation (30). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich PR-und-Kommunikation (30).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-031 für die weiterführende Validierung.
-
-### S-SG-031 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Event-Marketing (31). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Event-Marketing (31).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-032 für die weiterführende Validierung.
-
-### S-SG-032 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich MarketingOps (32). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich MarketingOps (32).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-033 für die weiterführende Validierung.
-
-### S-SG-033 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Content-Marketing (33). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Content-Marketing (33).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-034 für die weiterführende Validierung.
-
-### S-SG-034 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Performance-Marketing (34). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Performance-Marketing (34).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-035 für die weiterführende Validierung.
-
-### S-SG-035 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich Social-Media (35). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich Social-Media (35).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-036 für die weiterführende Validierung.
-
-### S-SG-036 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich Brand-Management (36). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Die Direktion hat eine neue KI-Nutzungsrichtlinie entworfen. Diese muss vor Rollout auf Lücken geprüft werden.
+**Strategisches Ziel:** Erhöhung der Robustheit der Compliance durch einen simulierten Angriff auf die internen Richtlinien.
+**Hands-on Ergebnis:** Ein Audit-Report, der die Schwachstellen der geplanten Policy schonungslos offenlegt.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Einspeisung der Rollout-Policy als Kontext-Dokument.
+2. Anwendung der Red-Team-Perspektive: Wie würden Mitarbeiter Regeln umgehen?
+3. Zusammenfassung der Schwachstellen mit sofort anwendbaren Korrekturvorschlägen.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich Brand-Management (36).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Nimm die Rolle eines Red Teams ein und attackiere unsere KI-Nutzungsrichtlinie.
+[Kontext]: Wir stehen kurz vor dem Rollout einer neuen Governance-Policy.
+[Aufgabe]: Finde Schlupflöcher in SSO, SCIM und RBAC Vorgaben.
+[Format]: Audit-Report, der die 3 größten Schwachstellen aufzeigt und Anpassungen vorschlägt.
+[Constraints]: Nutze unsere Langdock-Architektur als Basis für die Analyse."
+**Erwartetes Artefakt:** Ein Sicherheits-Audit-Report zur Überarbeitung der Policy.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-037 für die weiterführende Validierung.
+- Unrealistische Angriffe: Fokus auf komplexe Hacker-Angriffe statt auf Prompt-Injection durch Mitarbeiter.
+- Demotivierende Ergebnisse: Die Analyse bietet keine konstruktiven Lösungen an.
+**Anschluss-Szenario:** S-SG-009 zur Einarbeitung der Korrekturen.
 
-### S-SG-037 CRM-und-Loyalty Governance Check
+### S-SG-009 First-Principles Budget-Analyse
 
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich CRM-und-Loyalty (37). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
+**Wann nutzen (Trigger):** OpenAI-Kosten sind explodiert. Die Geschäftsführung fordert einen Business Case für die Enterprise-Lizenz.
+**Strategisches Ziel:** Dokumentation der Systemkosten und Sicherung des Budgets durch Aufzeigen des ROI (Compliance & Effizienz).
+**Hands-on Ergebnis:** Ein Entscheidungs-Memo, das Plattformkosten auf fundamentale Geschäftswerte zurückführt.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
+1. Dekonstruktion der Kostenstruktur: Welche Agenten verursachen die meisten API-Calls?
+2. Quantifizierung des Wertes der DSGVO-Konformität (Trainings-Opt-out).
+3. Generierung des Memos, das Ausgaben in geschäftliche Risikominimierung übersetzt.
 **Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich CRM-und-Loyalty (37).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
+> "Führe eine First-Principles-Analyse unserer explodierenden KI-Kosten durch.
+[Kontext]: Die Geschäftsführung hinterfragt die Langdock-Kosten.
+[Aufgabe]: Breche die Kosten auf die fundamentalen Werte herunter (Sicherheit, DSGVO). Argumentiere, warum der Einsatz von Consumer-Tools langfristig teurer wäre.
+[Format]: Entscheidungs-Memo mit klarer ROI-Argumentation.
+[Constraints]: Nutze eine rein betriebswirtschaftliche Sprache."
+**Erwartetes Artefakt:** Ein Memo, das die Investition in Langdock rechtfertigt.
 **Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-038 für die weiterführende Validierung.
+- Rechtfertigungs-Haltung: Das Memo klingt defensiv anstatt den strategischen Mehrwert zu positionieren.
+- Fehlende Maßnahmen: Keine internen Limits (BYOK-Budgets) vorgeschlagen.
+**Anschluss-Szenario:** S-SG-010 zur technischen Implementierung von Token-Limits.
 
-### S-SG-038 PR-und-Kommunikation Governance Check
+### S-SG-010 Base-Rate Analyse des Freigabeprozesses
 
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich PR-und-Kommunikation (38). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich PR-und-Kommunikation (38).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-039 für die weiterführende Validierung.
-
-### S-SG-039 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Freigabe-Prozess für Kampagnen dauert zu lange im Bereich Event-Marketing (39). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
+**Wann nutzen (Trigger):** Der Freigabeprozess für Kampagnen dauert extrem lange. Legal ist durch KI-Checks überlastet.
+**Strategisches Ziel:** Beschleunigung der Freigabe durch klare Compliance-Parameter, ohne Sicherheit (ISO 27001) zu gefährden.
+**Hands-on Ergebnis:** Eine Compliance-Checkliste für Editoren, die Standard-Freigaben automatisiert.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
 **Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Freigabe-Prozess für Kampagnen dauert zu lange im Bereich Event-Marketing (39).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-040 für die weiterführende Validierung.
-
-### S-SG-040 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich MarketingOps (40). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich MarketingOps (40).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-041 für die weiterführende Validierung.
-
-### S-SG-041 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Content-Marketing (41). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Content-Marketing (41).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-042 für die weiterführende Validierung.
-
-### S-SG-042 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich Performance-Marketing (42). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich Performance-Marketing (42).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-043 für die weiterführende Validierung.
-
-### S-SG-043 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Social-Media (43). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Social-Media (43).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-044 für die weiterführende Validierung.
-
-### S-SG-044 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Brand-Management (44). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Brand-Management (44).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-045 für die weiterführende Validierung.
-
-### S-SG-045 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich CRM-und-Loyalty (45). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich CRM-und-Loyalty (45).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-046 für die weiterführende Validierung.
-
-### S-SG-046 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich PR-und-Kommunikation (46). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich PR-und-Kommunikation (46).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-047 für die weiterführende Validierung.
-
-### S-SG-047 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Event-Marketing (47). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Event-Marketing (47).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-048 für die weiterführende Validierung.
-
-### S-SG-048 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich MarketingOps (48). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich MarketingOps (48).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-049 für die weiterführende Validierung.
-
-### S-SG-049 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Content-Marketing (49). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Content-Marketing (49).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-050 für die weiterführende Validierung.
-
-### S-SG-050 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Performance-Marketing (50). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Performance-Marketing (50).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-051 für die weiterführende Validierung.
-
-### S-SG-051 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Social-Media (51). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Social-Media (51).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-052 für die weiterführende Validierung.
-
-### S-SG-052 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Brand-Management (52). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Brand-Management (52).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-053 für die weiterführende Validierung.
-
-### S-SG-053 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich CRM-und-Loyalty (53). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich CRM-und-Loyalty (53).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-054 für die weiterführende Validierung.
-
-### S-SG-054 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich PR-und-Kommunikation (54). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich PR-und-Kommunikation (54).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-055 für die weiterführende Validierung.
-
-### S-SG-055 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Event-Marketing (55). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Event-Marketing (55).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-056 für die weiterführende Validierung.
-
-### S-SG-056 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich MarketingOps (56). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich MarketingOps (56).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-057 für die weiterführende Validierung.
-
-### S-SG-057 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Content-Marketing (57). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Content-Marketing (57).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-058 für die weiterführende Validierung.
-
-### S-SG-058 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Performance-Marketing (58). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Performance-Marketing (58).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-059 für die weiterführende Validierung.
-
-### S-SG-059 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Social-Media (59). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Social-Media (59).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-060 für die weiterführende Validierung.
-
-### S-SG-060 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Brand-Management (60). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Brand-Management (60).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-061 für die weiterführende Validierung.
-
-### S-SG-061 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich CRM-und-Loyalty (61). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich CRM-und-Loyalty (61).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-062 für die weiterführende Validierung.
-
-### S-SG-062 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich PR-und-Kommunikation (62). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich PR-und-Kommunikation (62).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-063 für die weiterführende Validierung.
-
-### S-SG-063 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Internationale Teams benötigen Zugriff im Bereich Event-Marketing (63). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Internationale Teams benötigen Zugriff im Bereich Event-Marketing (63).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-064 für die weiterführende Validierung.
-
-### S-SG-064 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich MarketingOps (64). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich MarketingOps (64).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-065 für die weiterführende Validierung.
-
-### S-SG-065 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich Content-Marketing (65). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich Content-Marketing (65).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-066 für die weiterführende Validierung.
-
-### S-SG-066 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich Performance-Marketing (66). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich Performance-Marketing (66).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-067 für die weiterführende Validierung.
-
-### S-SG-067 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich Social-Media (67). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich Social-Media (67).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-068 für die weiterführende Validierung.
-
-### S-SG-068 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich Brand-Management (68). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich Brand-Management (68).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-069 für die weiterführende Validierung.
-
-### S-SG-069 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich CRM-und-Loyalty (69). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich CRM-und-Loyalty (69).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-070 für die weiterführende Validierung.
-
-### S-SG-070 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich PR-und-Kommunikation (70). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich PR-und-Kommunikation (70).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-071 für die weiterführende Validierung.
-
-### S-SG-071 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Event-Marketing (71). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Event-Marketing (71).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-072 für die weiterführende Validierung.
-
-### S-SG-072 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich MarketingOps (72). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich MarketingOps (72).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-073 für die weiterführende Validierung.
-
-### S-SG-073 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich Content-Marketing (73). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich Content-Marketing (73).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-074 für die weiterführende Validierung.
-
-### S-SG-074 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (74). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (74).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-075 für die weiterführende Validierung.
-
-### S-SG-075 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Social-Media (75). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Social-Media (75).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-076 für die weiterführende Validierung.
-
-### S-SG-076 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Brand-Management (76). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Brand-Management (76).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-077 für die weiterführende Validierung.
-
-### S-SG-077 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich CRM-und-Loyalty (77). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich CRM-und-Loyalty (77).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-078 für die weiterführende Validierung.
-
-### S-SG-078 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Freigabe-Prozess für Kampagnen dauert zu lange im Bereich PR-und-Kommunikation (78). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Freigabe-Prozess für Kampagnen dauert zu lange im Bereich PR-und-Kommunikation (78).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-079 für die weiterführende Validierung.
-
-### S-SG-079 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich Event-Marketing (79). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich Event-Marketing (79).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-080 für die weiterführende Validierung.
-
-### S-SG-080 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich MarketingOps (80). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich MarketingOps (80).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-081 für die weiterführende Validierung.
-
-### S-SG-081 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Content-Marketing (81). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Content-Marketing (81).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-082 für die weiterführende Validierung.
-
-### S-SG-082 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (82). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (82).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-083 für die weiterführende Validierung.
-
-### S-SG-083 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Freigabe-Prozess für Kampagnen dauert zu lange im Bereich Social-Media (83). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Freigabe-Prozess für Kampagnen dauert zu lange im Bereich Social-Media (83).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-084 für die weiterführende Validierung.
-
-### S-SG-084 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich Brand-Management (84). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich Brand-Management (84).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-085 für die weiterführende Validierung.
-
-### S-SG-085 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Legal fordert eine Überprüfung des Workflows im Bereich CRM-und-Loyalty (85). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Legal fordert eine Überprüfung des Workflows im Bereich CRM-und-Loyalty (85).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-086 für die weiterführende Validierung.
-
-### S-SG-086 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich PR-und-Kommunikation (86). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich PR-und-Kommunikation (86).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-087 für die weiterführende Validierung.
-
-### S-SG-087 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Event-Marketing (87). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Event-Marketing (87).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-088 für die weiterführende Validierung.
-
-### S-SG-088 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (88). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (88).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-089 für die weiterführende Validierung.
-
-### S-SG-089 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Content-Marketing (89). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Content-Marketing (89).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-090 für die weiterführende Validierung.
-
-### S-SG-090 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Performance-Marketing (90). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Performance-Marketing (90).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-091 für die weiterführende Validierung.
-
-### S-SG-091 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Social-Media (91). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Social-Media (91).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-092 für die weiterführende Validierung.
-
-### S-SG-092 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich Brand-Management (92). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich Brand-Management (92).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-093 für die weiterführende Validierung.
-
-### S-SG-093 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich CRM-und-Loyalty (93). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich CRM-und-Loyalty (93).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-094 für die weiterführende Validierung.
-
-### S-SG-094 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Datenabfluss bei Konkurrenten als Warnsignal im Bereich PR-und-Kommunikation (94). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Sicherheits-Audit-Report. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Sicherheits-Audit-Report zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Datenabfluss bei Konkurrenten als Warnsignal im Bereich PR-und-Kommunikation (94).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Sicherheits-Audit-Report mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-095 für die weiterführende Validierung.
-
-### S-SG-095 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Event-Marketing (95). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Event-Marketing (95).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-096 für die weiterführende Validierung.
-
-### S-SG-096 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (96). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Rollout-Policy. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Rollout-Policy zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (96).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Rollout-Policy mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-097 für die weiterführende Validierung.
-
-### S-SG-097 Content-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Ein neues LLM-Modell soll getestet werden im Bereich Content-Marketing (97). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Sicherstellung der Compliance-Vorgaben. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Sicherstellung der Compliance-Vorgaben.
-[Kontext]: Ein neues LLM-Modell soll getestet werden im Bereich Content-Marketing (97).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-098 für die weiterführende Validierung.
-
-### S-SG-098 Performance-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (98). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Mitarbeiter nutzen unautorisierte Tools im Bereich Performance-Marketing (98).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-099 für die weiterführende Validierung.
-
-### S-SG-099 Social-Media Governance Check
-
-**Wann nutzen (Trigger):** Budget-Review für Langdock-Lizenzen steht an im Bereich Social-Media (99). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Budget-Review für Langdock-Lizenzen steht an im Bereich Social-Media (99).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-100 für die weiterführende Validierung.
-
-### S-SG-100 Brand-Management Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich Brand-Management (100). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Aufbau einer RBAC-Berechtigungsstruktur. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner)
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Aufbau einer RBAC-Berechtigungsstruktur.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich Brand-Management (100).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-101 für die weiterführende Validierung.
-
-### S-SG-101 CRM-und-Loyalty Governance Check
-
-**Wann nutzen (Trigger):** Der CISO verlangt einen System-Audit im Bereich CRM-und-Loyalty (101). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Eliminierung von Shadow-AI-Nutzung. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge, Integrations
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Eliminierung von Shadow-AI-Nutzung.
-[Kontext]: Der CISO verlangt einen System-Audit im Bereich CRM-und-Loyalty (101).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-102 für die weiterführende Validierung.
-
-### S-SG-102 PR-und-Kommunikation Governance Check
-
-**Wann nutzen (Trigger):** Eine Agentur bittet um Vollzugriff im Bereich PR-und-Kommunikation (102). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Risiko-Matrix. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner), Web-Search
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Risiko-Matrix zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Eine Agentur bittet um Vollzugriff im Bereich PR-und-Kommunikation (102).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Risiko-Matrix mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-103 für die weiterführende Validierung.
-
-### S-SG-103 Event-Marketing Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich Event-Marketing (103). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Optimierung der Audit-Trail-Transparenz. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Compliance-Checkliste. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Compliance-Checkliste zum Thema: Optimierung der Audit-Trail-Transparenz.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich Event-Marketing (103).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Compliance-Checkliste mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-104 für die weiterführende Validierung.
-
-### S-SG-104 MarketingOps Governance Check
-
-**Wann nutzen (Trigger):** Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (104). In dieser Situation benötigt die Führungskraft eine sofortige Einordnung der Lage.
-**Strategisches Ziel:** Minimierung von rechtlichen Risiken. Dies stellt sicher, dass Ressourcen effizient allokiert und Risiken minimiert werden.
-**Hands-on Ergebnis:** Governance-Briefing. Dieses Dokument dient als unveränderliche Grundlage für die Besprechung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
-**Vorgehen (3 Schritte):**
-1. Erfassung der Anforderungen und Prüfung der vorliegenden internen Dokumentation.
-2. Abgleich mit den DSGVO-Richtlinien und den unternehmensinternen Security-Vorgaben.
-3. Strukturierte Aufbereitung der Ergebnisse zur direkten internen Weiterverwendung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Erstelle ein(e) Governance-Briefing zum Thema: Minimierung von rechtlichen Risiken.
-[Kontext]: Compliance warnt vor DSGVO-Risiken im Bereich MarketingOps (104).
-[Aufgabe]: Detaillierte Analyse und Erstellung einer belastbaren Entscheidungsgrundlage.
-[Format]: Kompakte, tabellarische Struktur mit klaren Zuständigkeiten.
-[Constraints]: Nutze ausschließlich die Dokumente im Wissensordner. Erfinde keine Daten."
-**Erwartetes Artefakt:** Governance-Briefing mit klaren, messbaren KPIs und eindeutigen Anweisungen.
-**Fallstricke (mind. 2 spezifisch):**
-- Allgemeine Vorgaben: KI liefert zu generische Richtlinien, wenn die spezifische Unternehmensarchitektur nicht im Prompt erwähnt wird.
-- Fehlende Metriken: Ohne klare Messgrößen ist die Policy nicht durchsetzbar.
-**Anschluss-Szenario:** S-SG-105 für die weiterführende Validierung.
+1. Analyse der Base-Rate: Wie viele Kampagnen verletzen Compliance-Regeln (z.B. UWG-Kennzeichnung)?
+2. Entwicklung einer Checkliste für grundlegende Sicherheitsfragen.
+3. Standardisierung für die Integration in den Erstellungs-Workflow.
+**Beispiel-Prompt (DE, PTCF):**
+> "Entwickle eine priorisierte Compliance-Checkliste für den Freigabeprozess.
+[Kontext]: Die Rechtsabteilung ist überlastet. Die Base-Rate echter Verstöße ist gering.
+[Aufgabe]: Erstelle Kriterien, die ein Marketing-Editor zwingend abhaken muss (z.B. Trainings-Opt-out aktiv), bevor Legal prüft.
+[Format]: Compliance-Checkliste im Tabellenformat.
+[Constraints]: Fokussiere dich auf integrierte Langdock-Sicherheitsmechanismen."
+**Erwartetes Artefakt:** Eine Compliance-Checkliste, die den operativen Workflow entlastet.
+**Fallstricke (mind. 2 spezifisch):**
+- Juristische Unschärfe: Die Checkliste ersetzt rechtliche Beratung, anstatt die Baseline zu filtern.
+- Überkomplexität: Die Liste ist zu lang und blockiert den Workflow.
+**Anschluss-Szenario:** S-SG-001 für regelmäßige Evaluation der Wirksamkeit.
