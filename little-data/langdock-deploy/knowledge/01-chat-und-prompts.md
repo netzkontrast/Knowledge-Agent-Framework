@@ -46,11 +46,11 @@ Custom Skills bieten die höchste Flexibilität. Sie erlauben es, individuelle I
 
 ## Memory in Chat vs Agents (kritischer Unterschied)
 
-Ein kritischer Aspekt bei der Nutzung von Langdock ist das Verständnis von Memory (Gedächtnis) im Standard-Chat im Vergleich zu Agenten. Im Standard-Chat ist das Memory strikt an die jeweilige Konversations-Sitzung gebunden. Die KI erinnert sich an alle vorherigen Nachrichten innerhalb desselben Chats, aber dieses aggregierte Wissen geht sofort verloren, sobald ein neuer, leerer Chat gestartet wird. Dieser Weg ist das Mittel der Wahl für isolierte Aufgaben (z.B. eine E-Mail entwerfen).
+Ein kritischer Aspekt bei der Nutzung von Langdock ist das Verständnis von Memory (Gedächtnis) im Standard-Chat im Vergleich zu Agenten. Im Standard-Chat verfügt der Nutzer über ein persönliches, sitzungsübergreifendes Memory mit bis zu 50 gespeicherten Präferenzen. Die KI greift auf diese Präferenzen automatisch in jedem neuen Chat zu — Tonalität, bevorzugte Modelle, wiederkehrender Kontext bleiben verfügbar, ohne dass die Marketing-Direktorin sie pro Session neu setzen muss. Memory ist damit das Mittel der Wahl, wenn persönliche, individualisierte Konversationskontinuität über viele eigenständige Aufgaben hinweg gewünscht ist.
 
-Agenten hingegen können über ein persistentes Gedächtnis verfügen, das über einzelne Chat-Sitzungen hinausgeht. Ein Agent kann über System-Anweisungen so instruiert werden, dass er relevante Informationen aus vergangenen Interaktionen speichert und in völlig neuen Sessions wieder abruft. Diese Persistenz ist absolut entscheidend für langfristige strategische Projekte, bei denen Kontext (z.B. Zielgruppen-Insights) über Monate hinweg konsistent abrufbar bleiben muss.
+Agenten hingegen haben Memory NICHT aktiviert — diese Eigenschaft ist plattformseitig deaktiviert, um die Bidirektionalität zwischen Workspace-geteilten Agenten und privaten Nutzer-Präferenzen zu vermeiden. Stattdessen tragen Agenten ihren persistenten Kontext über drei Kanäle: (a) System-Anweisungen im Agent-Prompt, (b) angehängte Wissensordner für strukturiertes Domänen-Wissen, und (c) Konversations-Starter für wiederkehrende Use-Cases. Für langfristige strategische Projekte, bei denen Kontext (z.B. Zielgruppen-Insights) über Monate hinweg konsistent abrufbar bleiben muss, ist ein dedizierter Wissensordner — verknüpft mit einem Agent — die korrekte Architektur.
 
-Die Unterscheidung ist essenziell für das Architektur-Design von Arbeitsabläufen. Wenn Kontext dauerhaft über Sitzungen hinweg erhalten bleiben muss, ist ein Agent (oder ein dedizierter Wissensordner) die korrekte Wahl. Wenn es um schnelle, in sich abgeschlossene Tasks geht, reicht der ad-hoc Standard-Chat völlig aus. Die falsche Wahl führt unweigerlich zu massivem Kontextverlust oder zu völlig überdimensioniertem Konfigurationsaufwand für simple Aufgaben.
+Die Unterscheidung ist essenziell für das Architektur-Design von Arbeitsabläufen. Wenn nutzer-spezifische Präferenzen über Chats hinweg automatisch greifen sollen, ist das Standard-Chat-Memory richtig. Wenn organisations-weite Domänen-Logik (Brand Voice, Compliance-Regeln) in einem geteilten Asset abgebildet werden soll, ist ein Agent mit Wissensordner die korrekte Wahl. Die falsche Wahl führt entweder zu Konfusion (Memory-Drift im Agent erwartet, aber nicht vorhanden) oder zu überdimensioniertem Aufbau für persönliche Routine-Tasks.
 
 ## Custom Instructions vs Memory
 
@@ -139,10 +139,10 @@ Für eine exzellente Nutzung sollten beide Konzepte strategisch kombiniert werde
 2. Justiere diese mit deinen spezifischen, eigenen historischen Daten (Bayesian Update).
 3. Definiere die KPIs für das Dashboard.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein Data-Driven E-Mail-Marketer. Aufgabe: Kalibriere unsere Erwartungen für den neuen SaaS-Newsletter. Kontext: Unser 'Bayesian Prior' (unsere bisherige Liste) hatte 18% Öffnungsrate. Wir starten nun eine hoch-spezifische Nischen-Liste. Suche aktuelle 2024 Base-Rates für B2B-SaaS Newsletter. Update unsere Erwartung logisch. Format: Eine kurze Kalkulation und 3 realistische KPI-Ziele für Monat 1."
+> "Du bist ein Data-Driven E-Mail-Marketer. Aufgabe: Kalibriere unsere Erwartungen für den neuen SaaS-Newsletter. Kontext: Unser 'Bayesian Prior' (unsere bisherige Liste) hatte 18% Öffnungsrate. Wir starten nun eine hoch-spezifische Nischen-Liste. Suche aktuelle Base-Rates für B2B-SaaS Newsletter (jüngste verfügbare Veröffentlichungen, mit Datum). Update unsere Erwartung logisch. Format: Eine kurze Kalkulation und 3 realistische KPI-Ziele für Monat 1."
 **Erwartetes Artefakt:** Kalkulation mit Branchen-Benchmark und angepasstem Ziel-Korridor.
 **Fallstricke (mind. 2 spezifisch):**
-- KI halluziniert Base-Rates → "Nutze die Websuche für echte 2024 Mailchimp/Hubspot Benchmarks."
+- KI halluziniert Base-Rates → "Nutze die Websuche für aktuelle Mailchimp/Hubspot Benchmarks mit explizitem Veröffentlichungs-Datum."
 - Zu komplexe Mathematik → "Erkläre die Anpassung in simplen Marketing-Begriffen."
 
 ### S-CP-006 Source Triangulation für Thought-Leadership Content
@@ -165,10 +165,10 @@ Für eine exzellente Nutzung sollten beide Konzepte strategisch kombiniert werde
 **Wann nutzen (Trigger):** Euer Corporate Blog existiert seit 5 Jahren und du vermutest, dass ihr euch mittlerweile selbst widersprecht.
 **Strategisches Ziel:** Sicherung der inhaltlichen Kohärenz der Marke über lange Zeiträume.
 **Hands-on Ergebnis:** Ein Logbuch inhaltlicher Widersprüche zur Bereinigung.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Wissensordner
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (Text-Inhalte), Data Analyst (Metadaten)
 **Vorgehen (3-5 Schritte):**
-1. Exportiere die Top 50 Blogpost-Texte als CSV oder lade sie in den Wissensordner.
-2. Triggere die Widerspruchs-Suche.
+1. Exportiere die Top 50 Blogpost-Texte als Markdown oder PDF in den Wissensordner. CSVs mit Metadaten (Datum, Tags) gehen separat an den Data Analyst — tabellarische Dateien gehören NICHT in den Wissensordner.
+2. Triggere die Widerspruchs-Suche im Chat mit dem Wissensordner verknüpft.
 3. Gib das Logbuch an die Redaktion zur Überarbeitung.
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist ein scharfsinniger Content-Auditor. Aufgabe: Erstelle ein Contradiction Log aus dem angehängten Dokument unserer alten Blog-Beiträge. Kontext: Ich suche nach expliziten Widersprüchen. Haben wir 2021 behauptet, Methode A sei die beste, und 2023 behauptet, Methode A sei tot? Format: Eine Tabelle mit Spalten: Datum 1, Aussage 1, Datum 2, Aussage 2, Schweregrad des Widerspruchs (1-5)."
@@ -1517,7 +1517,7 @@ Für eine exzellente Nutzung sollten beide Konzepte strategisch kombiniert werde
 2. Erkläre den technischen Unterschied zwischen offenen LLMs und geschlossenem RAG (Retrieval-Augmented Generation).
 3. Entkräfte das Anwalts-Beispiel.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein KI-Compliance-Spezialist. Aufgabe: Validierung einer Extrem-Angst. Kontext: Unsere Legal-Abteilung will Langdock verbieten, weil ein US-Anwalt mit ChatGPT falsche Fälle zitiert hat. Suche (Websuche) nach diesem Vorfall und der Base-Rate von Halluzinationen. Format: Ein 1-Pager für Legal. Erkläre den massiven Architektur-Unterschied: Warum hat der Anwalt versagt (offenes Prompting) und warum ist unser Setup (Langdock mit striktem RAG auf eigene gesicherte Wissensordner, BYOK, Zero-Training-Opt-Out) eine völlig andere Risikoklasse? Wie machen wir Halluzinationen technisch fast unmöglich?"
+> "Du bist ein KI-Compliance-Spezialist. Aufgabe: Validierung einer Extrem-Angst, ohne Risiko zu beschönigen. Kontext: Unsere Legal-Abteilung will Langdock verbieten, weil ein US-Anwalt mit ChatGPT falsche Fälle zitiert hat. Suche (Websuche) nach diesem Vorfall und nach belegten Base-Rates von Halluzinationen in RAG-Setups (mit Quelle und Datum). Format: Ein 1-Pager für Legal. Erkläre den Architektur-Unterschied: Warum hat der Anwalt versagt (offenes Prompting, keine Source-Bindung) und warum reduziert unser Setup (Langdock mit striktem RAG auf eigene gesicherte Wissensordner, BYOK, Zero-Training-Opt-Out) die Halluzinations-Wahrscheinlichkeit deutlich. Sei explizit über das verbleibende Restrisiko: RAG eliminiert Halluzinationen nicht vollständig, sondern verankert Antworten an Quellen — Source-Verifikation und Human-in-the-Loop vor jeder externen Veröffentlichung bleiben Pflicht. Schlage konkrete Editorial-Checks vor (Zitat-Verifikation, Fakten-Cross-Check, juristisches Vier-Augen-Prinzip)."
 **Erwartetes Artefakt:** Ein technisches, aber für Anwälte verständliches Dokument, das den Unterschied zwischen Consumer-KI und Enterprise-KI erklärt.
 **Fallstricke (mind. 2 spezifisch):**
 - KI behauptet 0% Risiko → "Bleibe realistisch. Erkläre, dass der 'Human-in-the-Loop' vor Veröffentlichung immer zwingend bleibt."
