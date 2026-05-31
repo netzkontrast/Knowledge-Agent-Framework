@@ -906,4 +906,4 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 **Fallstricke (≥2 spezifisch):**
 - Das Maturity-Assessment wird zu optimistisch ausgefüllt, weil die Bewertenden auch die Implementierenden sind — Mitigation: einen externen Reviewer (CISO oder unabhängigen Berater) als Gegenperspektive einbeziehen und Belege für jede Stufen-Einstufung verlinken.
 - Die 12-Monats-Roadmap enthält zu viele Maßnahmen und wird unrealistisch — Mitigation: auf maximal drei Maßnahmen je Dimension beschränken und jede mit einem realistischen Budget-Rahmen versehen, damit der Vorstand priorisieren kann.
-**Anschluss-Szenario:** S-SG-001
+**Anschluss-Szenario:** S-SG-046
