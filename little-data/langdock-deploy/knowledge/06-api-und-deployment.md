@@ -937,4 +937,291 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Fallstricke (≥2 spezifisch):**
 - Das Modell liefert einen einzelnen CO₂-Punktwert ohne Unsicherheitsbereich — dies vermittelt eine Scheingenauigkeit, die methodisch nicht vertretbar ist und im Nachhaltigkeitsbericht angreifbar wäre.
 - Die Quelle der CO₂-Faktoren wird nicht dokumentiert — ohne Quellenangabe ist die Schätzung im nächsten Jahr nicht reproduzierbar und der Vergleich mit dem Vorjahr nicht möglich.
+**Anschluss-Szenario:** S-API-046
+
+### S-API-046 API-Gateway-Muster für Multi-Tenant Marketing-SaaS
+
+**Wann nutzen (Trigger):** Ein Marketing-SaaS-Anbieter im DACH-Raum betreibt Langdock im Hintergrund seiner Plattform und muss sicherstellen, dass jeder Mandant (Tenant) nur auf seine eigenen Daten und Budgets zugreift — ohne gegenseitige Isolation durch teure Einzel-Deployments zu erkaufen. (Quelle: S-API-004, S-API-013, sources/06 Deployment-Modelle)
+**Strategisches Ziel:** Ein API-Gateway-Architekturmuster konzeptionieren, das auf einem einzigen Langdock-Workspace mehrere Mandanten sicher isoliert — mit getrennten Token-Budgets, Wissensordnern und Audit-Logs pro Tenant.
+**Hands-on Ergebnis:** Ein Architekturkonzept: Gateway-Layer-Design, Tenant-Routing-Logik, Token-Budget-Enforcement und Isolationsnachweis für Sales-Pitches an Enterprise-Kunden.
+**Eingesetzte Langdock-Fähigkeit(en):** API Gateway Advisory, Multi-Tenant Architecture Advisory
+**Vorgehen (5 Schritte):**
+1. Definiere den Gateway-Layer: ein unternehmenseigener Reverse-Proxy (z. B. AWS API Gateway, Kong oder Traefik) sitzt vor der Langdock-API; er authentifiziert eingehende Mandanten-Requests via Tenant-spezifische JWT-Tokens und leitet sie mit dem gemeinsamen Langdock-API-Key weiter.
+2. Implementiere Tenant-Routing: der Gateway fügt jedem Request einen eindeutigen `X-Tenant-ID`-Header hinzu; Langdock-Wissensordner werden pro Tenant mit restriktiven Zugriffskontrollen konfiguriert, sodass jeder Agent nur seinen Tenant-Ordner lesen darf.
+3. Setze Token-Budget-Enforcement im Gateway um: der Gateway trackt Token-Verbrauch pro Tenant in einer eigenen Datenbank (z. B. Redis); überschreitet ein Tenant sein Monatsbudget, blockiert der Gateway weitere Requests mit HTTP 429 — bevor sie Langdock erreichen.
+4. Trenne Audit-Logs: jeder Gateway-Request wird mit Tenant-ID, Timestamp und Token-Zahl in ein zentrales Log-System (z. B. Elasticsearch) geschrieben; Mandanten-Administratoren erhalten nur Zugriff auf ihre eigenen Log-Einträge via rollenbasierter Log-Filterung.
+5. Teste die Isolation: Penetrationstest-Szenario — versuche von Tenant A aus, auf Wissensordner von Tenant B zuzugreifen; Erwartung: HTTP 403; dokumentiere das Ergebnis als Isolationsnachweis für den SaaS-Sicherheits-Fragebogen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Cloud-Architekt. Wir betreiben ein Marketing-SaaS mit 50 Mandanten, alle auf demselben Langdock-Workspace. Erkläre das API-Gateway-Muster: (1) Gateway-Layer-Design mit Tenant-Routing, (2) Token-Budget-Enforcement pro Tenant, (3) Wissensordner-Isolation, (4) getrennte Audit-Logs. Liefere ein Architekturkonzept mit Komponentendiagramm-Beschreibung und Isolationsnachweis-Prozedur."
+**Erwartetes Artefakt:** Ein Architekturkonzept (Gateway-Layer, Tenant-Routing, Budget-Enforcement, Log-Trennung, Isolationsnachweis).
+**Fallstricke (≥2 spezifisch):**
+- Der API-Key wird im Gateway-Code als Plaintext hinterlegt statt als verschlüsseltes Secret in einem Secret-Manager — bei einem Code-Leak sind alle Mandanten exponiert.
+- Token-Budget-Enforcement wird in Langdock selbst statt im Gateway erwartet — Langdock bietet kein natives Mandanten-Budget-Splitting; die Enforcement-Logik muss zwingend im eigenen Gateway liegen.
+**Anschluss-Szenario:** S-API-047
+
+### S-API-047 GraphQL vs. REST — Abwägung für Langdock-Integrationen
+
+**Wann nutzen (Trigger):** Das Entwicklungsteam diskutiert, ob eine neue Marketing-Daten-Plattform die Langdock-API über REST oder GraphQL ansprechen soll. Die Marketing-Direktorin wird in ein Architektur-Review einbezogen und muss die strategische Abwägung verstehen. (Quelle: S-API-001, S-API-046, sources/06 REST-Endpoints)
+**Strategisches Ziel:** Die strategische Abwägung zwischen REST und GraphQL für Langdock-Integrationen nachvollziehbar machen — mit Marketing-relevanten Entscheidungskriterien wie Abrufeffizienz, Entwicklungsaufwand und Toolchain-Kompatibilität.
+**Hands-on Ergebnis:** Eine Entscheidungsmatrix (REST vs. GraphQL) mit konkreten Empfehlungen für typische Marketing-Automatisierungs-Use-Cases.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, API Architecture Advisory
+**Vorgehen (4 Schritte):**
+1. Erkläre den fundamentalen Unterschied: REST liefert feste Ressourcen-Endpunkte (z. B. `POST /completions`); GraphQL erlaubt flexible Abfragen, bei denen der Client exakt bestimmt, welche Felder er braucht — vorteilhaft, wenn unterschiedliche Marketing-Clients unterschiedliche Datentiefen benötigen.
+2. Bewerte REST-Vorteile für Langdock-Integrationen: Langdock bietet nativ eine REST-API mit OpenAI-Kompatibilität; REST-Bibliotheken (Python OpenAI SDK, Axios) sind in jedem Tech-Stack vorhanden; Debugging über Browser-DevTools und Postman ist einfach.
+3. Erkläre, wann GraphQL einen Mehrwert hätte: wenn eine eigene Abstraktionsschicht über der Langdock-API gebaut wird, die mehreren internen Consumers (Dashboard, Mobile App, Chatbot) unterschiedliche Antwortformate liefern soll — dann reduziert GraphQL Over-Fetching.
+4. Gib eine klare Empfehlung: Für direkte Langdock-Integrationen ist REST die richtige Wahl — Langdock exponiert keine GraphQL-API; GraphQL ist erst relevant, wenn ein eigener API-Layer über Langdock gebaut wird und mehr als drei verschiedene Consumer-Typen bedient werden müssen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein API-Architekt. Wir integrieren Langdock in unsere Marketing-Daten-Plattform. Unser Team diskutiert REST vs. GraphQL. Erkläre: (1) den grundlegenden Unterschied, (2) warum REST für direkte Langdock-Integrationen vorzuziehen ist, (3) in welchem Szenario GraphQL einen eigenen Abstraktions-Layer rechtfertigt. Liefere eine Entscheidungsmatrix mit Empfehlung für unsere Marketing-Use-Cases."
+**Erwartetes Artefakt:** Eine Entscheidungsmatrix (REST vs. GraphQL) mit konkreter Empfehlung für Marketing-Automatisierungs-Szenarien.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell empfiehlt GraphQL als generell moderner und besser — ohne zu berücksichtigen, dass Langdock keine native GraphQL-API hat; GraphQL muss als eigener Layer entwickelt und gewartet werden.
+- Die Entscheidung basiert auf Technologie-Präferenzen des Entwicklerteams statt auf Marketing-Anforderungen — Over-Fetching-Probleme existieren bei den meisten Marketing-Automatisierungs-Calls schlicht nicht.
+**Anschluss-Szenario:** S-API-048
+
+### S-API-048 API-Dokumentation automatisch generieren
+
+**Wann nutzen (Trigger):** Das Marketing-Ops-Team hat über mehrere Monate eine interne Langdock-Integrations-Schicht gebaut (Completion-Endpoint, Agent-Endpoint, Knowledge-Folder-Sync). Die Dokumentation wurde nie geschrieben. Neue Entwickler stoßen auf einen undurchdringlichen Code-Dschungel. (Quelle: S-API-001, S-API-047, research/50 A-36)
+**Strategisches Ziel:** Eine vollständige, wartbare API-Dokumentation für die interne Langdock-Integrationsschicht generieren lassen — OpenAPI-Spec-kompatibel, mit Beispiel-Requests und Fehler-Codes.
+**Hands-on Ergebnis:** Eine OpenAPI 3.0-Spezifikation (YAML) plus ein lesbares Markdown-Referenz-Dokument für das interne Entwicklerteam.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Code-Analyse Advisory
+**Vorgehen (4 Schritte):**
+1. Sammle Eingabematerial: Code-Snippets der internen API-Endpoints, bestehende Postman-Collections, Beispiel-Requests und -Responses sowie bekannte Fehler-Codes.
+2. Lass die KI eine OpenAPI 3.0-Spezifikation in YAML ableiten: für jeden Endpoint definiert die Spec `paths`, `operationId`, `parameters`, `requestBody`, `responses` inklusive HTTP-Status-Codes (200, 400, 401, 429, 500) und Fehler-Schemas.
+3. Generiere das menschenlesbare Markdown-Dokument: für jeden Endpoint ein Abschnitt mit Beschreibung, cURL-Beispiel-Request, Beispiel-Response und typischen Fehler-Szenarien.
+4. Integriere Dokumentations-Maintenance in den Entwicklungsprozess: neue Endpoints werden vor dem Merge via Pull-Request-Template mit einer Mindest-Dokumentation (1 Beispiel-Request + 1 Fehler-Code) verknüpft.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein technischer Dokumentationsexperte. Ich gebe dir Code-Snippets unserer internen Langdock-Integrationsschicht. Erstelle: (1) eine OpenAPI 3.0-Spezifikation in YAML mit Paths, Parameters, Request/Response-Schemas und HTTP-Status-Codes, (2) ein Markdown-Referenzdokument mit cURL-Beispielen pro Endpoint. Liefere beide Artefakte vollständig — auch wenn du Annahmen treffen musst, kennzeichne diese."
+**Erwartetes Artefakt:** Eine OpenAPI 3.0-Spezifikation (YAML) und ein Markdown-Referenz-Dokument mit Beispiel-Requests und Fehler-Codes.
+**Fallstricke (≥2 spezifisch):**
+- Die generierte OpenAPI-Spec wird nicht gegen einen Validator (z. B. Swagger Editor) geprüft — ungültige YAML-Syntax oder fehlende Pflichtfelder (`info`, `openapi`-Version) machen die Spec für Code-Generatoren unbrauchbar.
+- Das Modell dokumentiert Happy-Path-Responses, vergisst aber Fehler-Schemas für 4xx-Codes — ein Entwickler, der auf Rate-Limit-Fehler (429) trifft, findet keinen Hinweis auf den Retry-After-Header.
+**Anschluss-Szenario:** S-API-049
+
+### S-API-049 API Consumer Onboarding Guide erstellen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin hat drei externe Agenturen und zwei interne Entwicklungsteams, die alle auf die interne Langdock-Integrationsschicht zugreifen sollen. Es gibt keinen strukturierten Onboarding-Prozess; jedes Team stellt dieselben Fragen. (Quelle: S-API-048, research/50 A-37, sources/12 Q148)
+**Strategisches Ziel:** Einen strukturierten API Consumer Onboarding Guide entwickeln, der neue Entwickler und Agenturteams in weniger als einem Arbeitstag produktionsfähig macht — ohne wiederholte 1:1-Betreuung durch das interne Team.
+**Hands-on Ergebnis:** Ein Onboarding-Guide-Dokument: Getting-Started-Checkliste, Authentication-Setup, erste API-Calls mit Beispielen, Fehler-Debugging-Abschnitt und Eskalationspfad.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Strukturiere den Guide in vier Kapitel: (1) Voraussetzungen und Zugangsdaten-Beantragung, (2) Authentication (Bearer Token Setup), (3) erster Test-Call mit cURL/Postman, (4) häufige Fehler und deren Behebung.
+2. Baue eine "Zeit-bis-erster-Call"-Garantie ein: ziel auf unter 30 Minuten vom Erhalt der Zugangsdaten bis zum ersten erfolgreichen API-Response; dokumentiere jeden Schritt mit Screenshots oder kopierbaren Code-Snippets.
+3. Füge einen Fehler-Debugging-Entscheidungsbaum hinzu: HTTP 401 → API-Key prüfen; HTTP 403 → Wissensordner-Berechtigungen prüfen; HTTP 429 → Rate-Limit-Dokumentation lesen; HTTP 500 → Langdock-Status-Page checken.
+4. Definiere den Eskalationspfad: wenn der Guide nicht reicht, wen kontaktieren (Slack-Channel, E-Mail, SLA für Antwortzeit) — verhindert, dass der Guide zur veralteten Einweg-Ressource wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein technischer Writer. Erstelle einen API Consumer Onboarding Guide für externe Entwicklungsteams, die auf unsere interne Langdock-Integrationsschicht zugreifen. Der Guide muss in unter 30 Minuten zum ersten erfolgreichen API-Call führen. Strukturiere ihn mit: Voraussetzungen, Authentication, erstem Test-Call (cURL-Snippet), Fehler-Debugging-Entscheidungsbaum und Eskalationspfad. Liefere ein Dokument im Markdown-Format."
+**Erwartetes Artefakt:** Ein Markdown-Onboarding-Guide (Getting-Started-Checkliste, Auth-Setup, Test-Call, Debugging-Entscheidungsbaum, Eskalationspfad).
+**Fallstricke (≥2 spezifisch):**
+- Der Guide dokumentiert nur die Happy Path und ignoriert häufige Onboarding-Fehler (falsches Token-Format, fehlende CORS-Konfiguration) — neue Consumer verlieren Stunden beim Debugging vermeidbarer Fehler.
+- Der Guide wird einmalig geschrieben und nie aktualisiert — nach dem nächsten API-Update sind Beispiel-Responses veraltet und der Guide erzeugt mehr Verwirrung als er löst.
+**Anschluss-Szenario:** S-API-050
+
+### S-API-050 Load-Testing der Langdock-API für Kampagnen-Spitzenlast
+
+**Wann nutzen (Trigger):** Das Marketing-Team plant eine Black-Friday-Kampagne mit erwartetem 10x-Traffic-Peak auf dem KI-gestützten Produktberatungs-Chatbot. Bevor die Kampagne live geht, will die Technikleitung wissen, ob die Langdock-API und der eigene Backend-Layer diese Last tragen. (Quelle: S-API-004, S-API-046, sources/06 Rate Limits)
+**Strategisches Ziel:** Eine Load-Testing-Strategie für die Langdock-API-Integration konzeptionieren, die Engpässe unter Spitzenlast identifiziert und Skalierungsmaßnahmen vor dem Kampagnenstart ermöglicht.
+**Hands-on Ergebnis:** Ein Load-Testing-Konzept: Test-Szenarien, Toolauswahl, Metriken, Langdock Rate-Limit-Berücksichtigung und Skalierungsempfehlungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, API Rate-Limit Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere die Test-Szenarien: (a) Baseline — 10 gleichzeitige User, erwartete Latenz unter 3 Sekunden; (b) Normallast — 100 gleichzeitige User; (c) Spitzenlast — 1.000 gleichzeitige User (10x Black-Friday-Schätzung); (d) Soak-Test — 50 User konstant über 4 Stunden.
+2. Wähle das passende Load-Testing-Tool: k6 (JavaScript, Cloud-fähig) oder Locust (Python) für API-Last; wichtig ist, dass das Tool HTTP-Streaming (Server-Sent Events) für den Completion-Endpoint simulieren kann.
+3. Berücksichtige Langdock Rate Limits: Langdock begrenzt API-Calls pro Minute pro Workspace; ein Burst von 1.000 gleichzeitigen Requests ohne Backoff-Logik erzeugt sofort HTTP 429-Fehler; das Load-Testing-Skript muss exponentielles Retry-Backoff simulieren.
+4. Definiere Skalierungsmaßnahmen basierend auf Testergebnissen: horizontales Skalieren des eigenen BFF-Layers (mehr Instanzen); Request-Queuing vor dem Langdock-Call; Caching häufig gefragter Antworten (Cache-Control für identische Produktfragen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Performance-Engineer. Wir erwarten am Black Friday einen 10x-Traffic-Peak auf unserem Langdock-gestützten Chatbot. Erstelle ein Load-Testing-Konzept: (1) vier Test-Szenarien (Baseline bis Spitzenlast), (2) Tool-Empfehlung (k6 vs. Locust) mit Begründung, (3) Umgang mit Langdock Rate Limits im Test, (4) Skalierungsmaßnahmen bei identifizierten Engpässen. Liefere ein praxistaugliches Konzept mit konkreten Schwellenwerten."
+**Erwartetes Artefakt:** Ein Load-Testing-Konzept (Szenarien, Tool, Rate-Limit-Handling, Skalierungsmaßnahmen).
+**Fallstricke (≥2 spezifisch):**
+- Das Load-Testing-Skript sendet echte Produktanfragen mit realen Nutzerdaten — Load-Tests gegen Produktionssysteme mit Echtdaten verstoßen gegen DSGVO und verursachen reale Kosten; Testdaten müssen synthetisch sein.
+- Der Test ignoriert die Langdock Rate Limits und wertet 429-Fehler als Backend-Fehler des eigenen Systems — das Ergebnis ist eine falsch-negative Performance-Bewertung, die echte Engpässe verdeckt.
+**Anschluss-Szenario:** S-API-051
+
+### S-API-051 API-Mocking für parallele Entwicklung
+
+**Wann nutzen (Trigger):** Das Frontend-Team entwickelt den neuen Kampagnen-Chatbot parallel zum Backend-Team, das die Langdock-Integration noch nicht fertig hat. Ohne produktionsfähige API blockiert das Frontend-Team seine eigene Arbeit — und echte Langdock-Calls in der Entwicklung kosten Token-Budgets. (Quelle: S-API-048, S-API-049)
+**Strategisches Ziel:** Eine API-Mocking-Strategie konzeptionieren, die parallele Frontend- und Backend-Entwicklung ermöglicht, ohne Langdock-Token zu verbrauchen und ohne Produktionsdaten in Entwicklungsumgebungen zu exponieren.
+**Hands-on Ergebnis:** Ein Mocking-Konzept: Mock-Server-Aufbau, Response-Fixtures für typische Marketing-Szenarien und Integration in die CI/CD-Pipeline.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, API Development Advisory
+**Vorgehen (4 Schritte):**
+1. Wähle den Mock-Server-Ansatz: für statische Mocks eignet sich Mockoon (Desktop-Tool, kein Code) oder MSW (Mock Service Worker, für Browser-/Node-Tests); für dynamische Mocks, die Streaming-Responses (Server-Sent Events) simulieren, ist ein einfacher Express.js-Mock-Server der pragmatischste Weg.
+2. Erstelle Response-Fixtures für typische Marketing-Szenarien: (a) kurze Produktbeschreibung (< 100 Tokens, schnelle Antwort), (b) langer Blogartikel-Draft (> 800 Tokens, simuliertes Streaming), (c) Fehlerfall HTTP 429 (Rate Limit), (d) Fehlerfall HTTP 500 (Server-Fehler) — alle vier Fixtures müssen das echte Langdock-Response-Schema replizieren.
+3. Integriere den Mock in die CI/CD-Pipeline: in der Test-Umgebung (`NODE_ENV=test`) zeigt die `BASE_URL`-Konfiguration auf den Mock-Server statt auf `api.langdock.com`; so laufen alle Integrationstests ohne echte API-Calls.
+4. Definiere die Synchronisations-Pflicht: sobald die echte Langdock-API eine Response-Schema-Änderung erfährt, muss der Mock innerhalb von 24 Stunden aktualisiert werden — andernfalls testen Entwickler gegen ein veraltetes Interface.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Backend-Entwickler. Unser Frontend-Team entwickelt parallel zu uns und braucht einen Langdock-API-Mock. Erkläre: (1) passende Mock-Server-Optionen (Mockoon, MSW, Express.js) mit Vor-/Nachteilen, (2) welche vier Response-Fixtures wir für Marketing-Szenarien brauchen (inkl. Fehlerszenarien), (3) wie wir den Mock in unsere CI/CD-Pipeline integrieren. Liefere ein Mocking-Konzept mit Empfehlung."
+**Erwartetes Artefakt:** Ein Mocking-Konzept (Tool-Empfehlung, vier Response-Fixtures, CI/CD-Integration, Synchronisationsprozess).
+**Fallstricke (≥2 spezifisch):**
+- Der Mock repliziert nur den Happy Path und hat keinen Fehlerfall — beim ersten echten 429-Fehler in Produktion ist das Frontend unvorbereitet, weil es diesen Fall nie getestet hat.
+- Der Mock-Server bleibt nach API-Schema-Änderungen unaktualisiert — Entwickler testen monatelang gegen ein veraltetes Interface und merken den Fehler erst beim Produktions-Deployment.
+**Anschluss-Szenario:** S-API-052
+
+### S-API-052 Canary-Deployment für API-Updates
+
+**Wann nutzen (Trigger):** Das Team will die Langdock-Integration auf ein neues Sprachmodell migrieren (z. B. von GPT-4o auf Claude Sonnet 4.6). Statt alle 10.000 täglichen Chatbot-Interaktionen auf einmal umzustellen, soll das neue Modell schrittweise getestet werden — Fehler sollen frühzeitig erkannt werden, bevor sie alle Nutzer betreffen. (Quelle: S-API-004, S-API-050, sources/06 Deployment-Modelle)
+**Strategisches Ziel:** Ein Canary-Deployment-Muster für Langdock-Modell- oder API-Endpoint-Updates konzeptionieren, das Risiken bei Produktionsupdates minimiert und datenbasierte Rollback-Entscheidungen ermöglicht.
+**Hands-on Ergebnis:** Ein Canary-Deployment-Konzept: Traffic-Split-Strategie, Monitoring-Metriken, Rollout-Schwellenwerte und Rollback-Playbook.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, API Deployment Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere die Traffic-Split-Strategie: Phase 1 — 5 % des Traffics auf das neue Modell (Canary), 95 % auf das bestehende (Stable); Phase 2 — nach 48 Stunden fehlerfreiem Betrieb auf 25 %; Phase 3 — nach weiteren 48 Stunden auf 100 % (Full Rollout); Routing-Entscheidung im eigenen BFF-Layer über Feature-Flag.
+2. Definiere die Monitoring-Metriken für die Canary-Gruppe: (a) Response-Latenz (p95), (b) Fehlerrate (HTTP 4xx/5xx), (c) Output-Qualitäts-Proxy (Nutzer-Abbruchrate oder Daumen-hoch/runter-Feedback), (d) Token-Verbrauch pro Antwort (Kostenvergleich).
+3. Lege Rollout-Schwellenwerte fest: Fortschreiten zu Phase 2 nur, wenn: Fehlerrate Canary ≤ Fehlerrate Stable + 0,5 %; Latenz Canary ≤ Latenz Stable × 1,2; kein kritischer Output-Qualitäts-Einbruch.
+4. Schreibe ein Rollback-Playbook: Rollback-Entscheidung durch welche Rolle (DevOps-Lead + Marketing-Direktorin), Rollback-Mechanismus (Feature-Flag auf 0 % Canary), Kommunikationstemplate für betroffene Teams, Post-Mortem-Vorlage.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein DevOps-Architekt. Wir wollen unsere Langdock-Integration schrittweise auf ein neues Sprachmodell migrieren. Erkläre das Canary-Deployment-Muster: (1) Traffic-Split-Phasen (5 % → 25 % → 100 %), (2) Monitoring-Metriken für die Canary-Gruppe, (3) quantitative Rollout-Schwellenwerte, (4) Rollback-Playbook mit Entscheidungspfad. Liefere ein vollständiges Deployment-Konzept."
+**Erwartetes Artefakt:** Ein Canary-Deployment-Konzept (Traffic-Split-Phasen, Monitoring-Metriken, Rollout-Schwellenwerte, Rollback-Playbook).
+**Fallstricke (≥2 spezifisch):**
+- Das Canary-Deployment wird ohne Feature-Flag im BFF-Layer implementiert und stattdessen direkt in der Langdock-Konfiguration gesteuert — ein Rollback erfordert dann ein Code-Deployment statt eines Konfigurations-Toggles.
+- Die Canary-Gruppe ist zu klein (< 1 % Traffic) und liefert keine statistisch belastbaren Daten — nach 48 Stunden gibt es noch keine aussagekräftigen Qualitätsmetriken für die Rollout-Entscheidung.
+**Anschluss-Szenario:** S-API-053
+
+### S-API-053 API-Nutzungs-Dashboard für Marketing-Ops
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin hat fünf Teams, die Langdock über die API nutzen: Content, Performance, CRM, PR und Research. Das monatliche Token-Budget wird überschritten, aber niemand weiß, welches Team der Hauptverursacher ist. Der Finance-Controller fordert eine verursachergerechte Kostenzuordnung. (Quelle: S-API-020, S-API-043, sources/12 Q120, Q124)
+**Strategisches Ziel:** Ein API-Nutzungs-Dashboard konzeptionieren, das Token-Verbrauch und Kosten in Echtzeit pro Team, Agent und Kampagne visualisiert — als Grundlage für verursachergerechte Kostenzuordnung und Budget-Steuerung.
+**Hands-on Ergebnis:** Ein Dashboard-Konzept: Datenquellen, Metriken, Visualisierungsebenen, Alert-Logik und Integration in das bestehende BI-System.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage Export API, Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere die Datengrundlage: Langdock Usage Export API liefert CSV mit Feldern wie `user_id`, `agent_id`, `model`, `input_tokens`, `output_tokens`, `timestamp`; täglicher Export-Job lädt die Daten in ein Data Warehouse (z. B. BigQuery oder Snowflake).
+2. Entwerfe die Metriken-Hierarchie: (a) Workspace-Ebene — Gesamtkosten vs. Budget; (b) Team-Ebene — Token-Kosten pro Team (via User-Gruppen-Mapping); (c) Agent-Ebene — teuerste Agenten nach Output-Tokens; (d) Kampagnen-Ebene — Kosten pro Kampagne via `conversation_tag`-Konvention.
+3. Baue die Alert-Logik: Budget-Alert bei 70 % Verbrauch (Frühwarnung), bei 90 % (Eskalation an Marketing-Direktorin), bei 100 % (automatischer Stopp neuer API-Calls für den teuersten Team-Account).
+4. Integriere in das bestehende BI-System: Power BI oder Looker Dashboard mit Refresh alle 4 Stunden; monatlicher PDF-Export für Finance-Controller automatisiert via geplanter Report-Versand.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Marketing-Ops-Analyst. Wir brauchen ein API-Nutzungs-Dashboard für unsere fünf Marketing-Teams. Erkläre: (1) welche Daten die Langdock Usage Export API liefert, (2) wie wir Kosten pro Team und Agent aufschlüsseln, (3) Alert-Logik bei Budget-Schwellenwerten, (4) Integration in Power BI oder Looker. Liefere ein Dashboard-Konzept mit Metrikenhierarchie und Alert-Konfiguration."
+**Erwartetes Artefakt:** Ein Dashboard-Konzept (Datenquellen, Metrikhierarchie, Alert-Logik, BI-Integration).
+**Fallstricke (≥2 spezifisch):**
+- Das Dashboard zeigt nur Gesamt-Token-Kosten ohne Team-Attribution — es ist weiterhin unmöglich, den Budget-Überschreiter zu identifizieren; das ist das ursprüngliche Problem, ungelöst.
+- Die Alert-Schwellenwerte sind nicht mit dem monatlichen Budget-Zyklus synchronisiert — ein Alert bei 70 % des Tagesverbrauchs ist nicht dasselbe wie 70 % des Monatsbudgets; die Berechnungslogik muss explizit definiert werden.
+**Anschluss-Szenario:** S-API-054
+
+### S-API-054 Dynamische System-Prompt-Injektion zur Laufzeit
+
+**Wann nutzen (Trigger):** Das Marketing-Team betreibt einen einzigen Produktberatungs-Chatbot für 12 Länder. Jedes Land braucht einen leicht anderen Ton, andere Produktverfügbarkeiten und andere rechtliche Disclaimers. Statt 12 separate Agenten zu pflegen, soll ein einziger Chatbot seinen System-Prompt dynamisch basierend auf dem Nutzer-Locale anpassen. (Quelle: S-API-002, S-API-046, sources/06 OpenAI-Kompatibilität)
+**Strategisches Ziel:** Das Muster der dynamischen System-Prompt-Injektion zur Laufzeit konzeptionieren — ein einziger Agent passt sein Verhalten kontextsensitiv an, ohne für jede Variante einen separaten Agent zu benötigen.
+**Hands-on Ergebnis:** Ein Architekturkonzept für dynamische System-Prompt-Injektion: Prompt-Template-Struktur, Variablen-Injection-Mechanismus, Locale-Mapping und Sicherheits-Guardrails.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere die Prompt-Template-Struktur: ein Master-System-Prompt mit Platzhaltern (`{{locale}}`, `{{disclaimer}}`, `{{available_products}}`) wird im BFF-Layer gespeichert; das Template enthält den stabilen Kern (Persona, Aufgabe, Format) und variable Slots für locale-spezifische Inhalte.
+2. Baue den Injection-Mechanismus: beim API-Call liest der BFF-Layer das Nutzer-Locale aus dem JWT-Token; mappt es auf die passende Konfigurationsdatei (z. B. `de-DE.json`, `fr-FR.json`); füllt die Template-Variablen aus; sendet den fertigen System-Prompt als `system`-Feld im API-Request.
+3. Definiere das Locale-Mapping: ein zentrales `locale-config`-Repository mit Feldern: `tone` (formal/informal), `legal_disclaimer` (Länder-spezifischer Text), `available_products` (Array von Produkt-IDs), `currency` — gepflegt von Marketing, nicht von Entwicklung.
+4. Implementiere Sicherheits-Guardrails: Injection-Variablen werden serverseitig escapet, bevor sie in den Prompt eingesetzt werden; Nutzer-Input darf niemals direkt in den System-Prompt einfließen — nur in den User-Turn; maximale Länge der Injection-Variablen begrenzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Backend-Architekt. Wir betreiben einen Chatbot für 12 Länder und wollen dynamische System-Prompt-Injektion statt 12 separater Agenten. Erkläre: (1) Prompt-Template-Struktur mit Platzhaltern, (2) Injection-Mechanismus im BFF-Layer, (3) Locale-Mapping-Struktur für Marketing-Pflege, (4) Sicherheits-Guardrails gegen Prompt-Injection via Variablen. Liefere ein Architekturkonzept."
+**Erwartetes Artefakt:** Ein Architekturkonzept für dynamische System-Prompt-Injektion (Template-Struktur, Injection-Mechanismus, Locale-Mapping, Sicherheits-Guardrails).
+**Fallstricke (≥2 spezifisch):**
+- Nutzer-Input wird direkt als Injection-Variable in den System-Prompt eingesetzt — das öffnet ein direktes Prompt-Injection-Angriffsvector; Variablen dürfen ausschließlich aus serverseitigen, validierten Konfigurationsdateien kommen.
+- Das Locale-Mapping wird direkt in den Anwendungscode eingepflegt statt in separate Konfigurationsdateien — Marketing kann legale Disclaimers nur noch durch ein Code-Deployment aktualisieren, was wochenlange Verzögerungen verursacht.
+**Anschluss-Szenario:** S-API-055
+
+### S-API-055 Multimodale API-Anfragen (Text + Bild) für Campaign Asset Review
+
+**Wann nutzen (Trigger):** Das Marketing-Team bekommt täglich 20–30 Werbebanner von der Designagentur. Jeder Banner muss gegen den Brand Guide geprüft werden: korrekte Schriftarten, Farbpalette, Textanteil unter 20 %. Dieser Review-Prozess kostet drei Stunden täglich. (Quelle: sources/12 Q99, S-API-002, research/50 A-47)
+**Strategisches Ziel:** Eine automatisierte Campaign-Asset-Review-Pipeline konzeptionieren, die multimodale API-Anfragen (Text + Bild) nutzt, um eingehende Werbebanner gegen Brand-Guide-Kriterien zu prüfen und strukturierte Review-Reports zu generieren.
+**Hands-on Ergebnis:** Ein Integrationskonzept für automatisierten Bild-Review: API-Request-Struktur für Vision-Modelle, Review-Prompt-Template, Ausgabeformat und Human-Review-Eskalationsschwelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Multimodal (Vision) API, Advisory
+**Vorgehen (4 Schritte):**
+1. Erkläre die multimodale API-Request-Struktur: im Langdock-Completion-Endpoint wird das Bild als Base64-kodierter String oder URL im `content`-Array des User-Turns mitgesendet (OpenAI Vision-kompatibel); jeder Request enthält Bild + strukturierter Review-Prompt.
+2. Definiere den Review-Prompt-Template: "Prüfe diesen Werbebanner gegen folgende Kriterien: (1) Schriftart: nur Inter oder Helvetica Neue, (2) Primärfarbe: #E63946 ± 10 %, (3) Textanteil: unter 20 % der Bildfläche, (4) Logo: sichtbar und unverzerrt. Liefere für jedes Kriterium: PASS/FAIL + Begründung in maximal einem Satz."
+3. Strukturiere den Output: die API antwortet mit einem JSON-Objekt (vier Kriterien, je PASS/FAIL + Begründung + Gesamt-Score); bei zwei oder mehr FAILs wird der Banner automatisch in eine "Human-Review"-Queue verschoben.
+4. Integriere in den Asset-Workflow: die Agentur lädt Banner in einen freigegebenen Google Drive-Ordner; ein n8n-Workflow triggert bei neuen Dateien, ruft die multimodale API auf und schreibt das Review-Ergebnis als Kommentar in das Slack-Thread des Design-Koordinators.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Brand-Compliance-Automatisierer. Wir wollen täglich eingehende Werbebanner automatisch gegen unseren Brand Guide prüfen. Erkläre: (1) wie multimodale API-Anfragen (Text + Bild) technisch aufgebaut sind, (2) ein Review-Prompt-Template für vier Brand-Kriterien, (3) strukturiertes JSON-Ausgabeformat mit PASS/FAIL, (4) Integration in unseren Asset-Workflow via n8n. Liefere ein vollständiges Integrationskonzept."
+**Erwartetes Artefakt:** Ein Integrationskonzept (API-Request-Struktur, Review-Prompt-Template, JSON-Ausgabeformat, Workflow-Integration).
+**Fallstricke (≥2 spezifisch):**
+- Das Vision-Modell wird für pixelgenaue Farbmessung eingesetzt — LLM-Vision-Modelle können keine präzisen Hex-Farbwerte messen; Farbprüfungen müssen durch ein dedizierten Bildverarbeitungs-Tool (z. B. PIL/Pillow) ergänzt werden.
+- Bilder werden als URL statt als Base64 gesendet, aber die URL liegt hinter einem Unternehmens-Proxy — das Vision-Modell kann die URL nicht abrufen; entweder Base64-Encoding oder öffentlich erreichbare URLs verwenden.
+**Anschluss-Szenario:** S-API-056
+
+### S-API-056 API-Kostenzuordnung pro Kampagne (FinOps)
+
+**Wann nutzen (Trigger):** Die Marketingleitung plant, den ROI einzelner Kampagnen ganzheitlich zu messen — inklusive der KI-Produktionskosten. Aktuell landen alle API-Kosten in einem einzigen Budget-Topf; eine Zuordnung zu Kampagne A vs. Kampagne B ist unmöglich. Der CFO will eine Kostenrechnung pro Kampagne. (Quelle: S-API-053, S-API-043, sources/12 Q124, research/50 A-22)
+**Strategisches Ziel:** Ein Kostenzuordnungs-Konzept (FinOps) entwickeln, das API-Token-Kosten auf einzelne Kampagnen aufschlüsselt — als Eingabe für den Kampagnen-ROI-Kalkulator und die interne Leistungsverrechnung.
+**Hands-on Ergebnis:** Ein Kostenzuordnungs-Konzept: Tagging-Strategie, Usage-Export-Auswertung, Kampagnen-ROI-Formel und Reporting-Template für Finance.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage Export API, Advisory
+**Vorgehen (4 Schritte):**
+1. Implementiere eine Kampagnen-Tagging-Strategie: jeder API-Call trägt im `user`-Feld oder im Conversation-Metadaten-Tag eine Kampagnen-ID (z. B. `campaign:blackfriday-2026`); Langdock-Usage-Export enthält dieses Feld, das dann als Grouping-Key dient.
+2. Baue die Kostenauswertung: Langdock Usage Export CSV → Aggregation nach `campaign_tag` → Multiplikation mit aktuellen Token-Preisen (Input-Token-Preis × Input-Tokens + Output-Token-Preis × Output-Tokens) → Kampagnen-KI-Kosten in Euro.
+3. Integriere KI-Kosten in den Kampagnen-ROI-Kalkulator: KI-Produktionskosten werden als Linie im Campaign-Cost-Breakdown neben Media-Spend, Agentur-Fees und Toolkosten aufgeführt; ROI = (Umsatzattribution − Gesamtkosten inkl. KI) / Gesamtkosten.
+4. Erstelle das monatliche Finance-Reporting-Template: Tabelle mit Kampagnenname, KI-Kosten (EUR), Anteil am Gesamt-Token-Budget (%), Vergleich Budget vs. Ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Marketing-FinOps-Berater. Unser CFO will KI-API-Kosten pro Kampagne zugeordnet sehen. Erkläre: (1) Kampagnen-Tagging-Strategie im API-Call, (2) Auswertung des Langdock Usage Exports nach Kampagnen-Tag, (3) Integration der KI-Kosten in den Kampagnen-ROI-Kalkulator, (4) monatliches Finance-Reporting-Template. Liefere ein vollständiges FinOps-Konzept."
+**Erwartetes Artefakt:** Ein FinOps-Konzept (Tagging-Strategie, Kostenauswertung, ROI-Integration, Finance-Reporting-Template).
+**Fallstricke (≥2 spezifisch):**
+- Das Tagging wird nachträglich als optionales Feld eingeführt — Teams taggen inkonsistent, und 40 % der Kosten verbleiben in einer unzuordenbaren "Sonstiges"-Kategorie; Tagging muss Pflichtfeld im API-Wrapper sein, nicht optional.
+- Token-Preise werden einmalig konfiguriert und nie aktualisiert — bei Modell-Preisupdates (die zwei- bis dreimal jährlich vorkommen) werden Kosten systematisch falsch berechnet; Preis-Lookup muss automatisiert aus der Langdock-Billing-API oder einer gepflegten Preistabelle erfolgen.
+**Anschluss-Szenario:** S-API-057
+
+### S-API-057 Long-Polling für asynchrone Workflow-Status-Abfragen
+
+**Wann nutzen (Trigger):** Das Marketing-Team hat lange laufende KI-Workflows (z. B. Deep-Research-Läufe, die 5–20 Minuten dauern). Die Frontend-Applikation fragt alle fünf Sekunden per HTTP-Polling, ob der Workflow fertig ist — das erzeugt unnötige Last und führt zu Timeout-Fehlern bei langen Laufzeiten. (Quelle: S-API-004, S-API-050, sources/06 Workflow-Endpoints)
+**Strategisches Ziel:** Das Long-Polling-Muster für asynchrone Langdock-Workflow-Status-Abfragen konzeptionieren, das unnötige Polling-Last eliminiert und Timeout-Probleme bei langen KI-Jobs löst.
+**Hands-on Ergebnis:** Ein Architekturkonzept für asynchrone Workflow-Status-Abfragen: Job-Submission-Pattern, Polling-Strategie, Timeout-Handling und Frontend-UX-Empfehlungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows API, Advisory
+**Vorgehen (4 Schritte):**
+1. Erkläre das asynchrone Job-Pattern: anstatt auf das Ergebnis zu warten (synchrones HTTP), gibt der Langdock-Workflow-Endpoint sofort eine `job_id` zurück; der Client fragt periodisch den Status-Endpoint mit dieser `job_id` ab bis der Job `COMPLETED` oder `FAILED` ist.
+2. Implementiere exponentielles Backoff-Polling: erster Poll nach 2 Sekunden, dann 4 Sekunden, 8 Sekunden, maximal alle 30 Sekunden; nach 20 Minuten ohne `COMPLETED` wird ein Timeout-Fehler an den Nutzer gemeldet.
+3. Designe die Frontend-UX für lange laufende Jobs: (a) sofortiges Progress-Feedback ("KI recherchiert — ca. 10 Minuten"); (b) nicht-blockierender UI-Zustand (Nutzer kann andere Aufgaben erledigen); (c) Push-Benachrichtigung oder E-Mail wenn der Job fertig ist (für Jobs über 5 Minuten).
+4. Behandle Fehler-Zustände: `FAILED`-Job → klare Fehlermeldung mit Job-ID für den Support; Network-Fehler während Polling → automatischer Retry ohne User-Eingriff; Browser-Tab-Wechsel → Polling läuft im Background-Worker weiter.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Frontend-Architekt. Unsere KI-Workflows dauern 5–20 Minuten. Einfaches HTTP-Polling alle 5 Sekunden erzeugt Last und Timeouts. Erkläre: (1) das asynchrone Job-Submission-Pattern mit `job_id`, (2) exponentielles Backoff-Polling mit Timeout-Logik, (3) Frontend-UX für lange laufende Jobs, (4) Fehlerbehandlung für FAILED-Jobs und Network-Fehler. Liefere ein Architekturkonzept."
+**Erwartetes Artefakt:** Ein Architekturkonzept (Job-Submission-Pattern, Polling-Strategie, Frontend-UX, Fehlerbehandlung).
+**Fallstricke (≥2 spezifisch):**
+- Das Polling-Intervall bleibt konstant bei 5 Sekunden statt exponentiell zu wachsen — bei 100 gleichzeitigen aktiven Jobs macht das 1.200 überflüssige API-Calls pro Minute, die das Rate Limit belasten.
+- Der Polling-Loop wird im Haupt-Thread implementiert und blockiert die UI — der Nutzer kann während eines laufenden Deep-Research-Jobs keine anderen Aktionen in der Anwendung ausführen.
+**Anschluss-Szenario:** S-API-058
+
+### S-API-058 API-Changelog-Benachrichtigungs-Workflow
+
+**Wann nutzen (Trigger):** Langdock hat in den letzten sechs Monaten drei API-Updates veröffentlicht. Jedes Mal erfuhr das Team davon durch Produktionsfehler, nicht durch proaktive Benachrichtigung. Das letzte Update hat einen Breaking Change im Response-Schema mitgebracht, der einen einstündigen Ausfall verursachte. (Quelle: S-API-048, S-API-052, research/50 A-33)
+**Strategisches Ziel:** Einen automatisierten API-Changelog-Benachrichtigungs-Workflow aufbauen, der das Entwicklungsteam proaktiv über Langdock-API-Updates informiert und Zeit für geordnete Migration gibt — bevor Breaking Changes im Produktionsbetrieb ankommen.
+**Hands-on Ergebnis:** Ein automatisierter Benachrichtigungs-Workflow: Changelog-Monitoring, Alert-Klassifikation (Breaking Change vs. Minor Update), Team-Benachrichtigung und Migrations-Checkliste.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Advisory
+**Vorgehen (4 Schritte):**
+1. Setze das Changelog-Monitoring auf: ein täglicher Cron-Workflow ruft die Langdock-Changelog-Seite (oder RSS-Feed) ab; ein Diff-Vergleich mit dem letzten bekannten Stand identifiziert neue Einträge.
+2. Klassifiziere Updates automatisch: ein KI-Schritt analysiert den neuen Changelog-Text und klassifiziert: `BREAKING_CHANGE` (Response-Schema-Änderung, Deprecation, Endpoint-Entfernung), `FEATURE_ADD` (neuer Endpoint, neues Feld), `BUGFIX` (keine Migrations-Aktion nötig).
+3. Leite Team-Benachrichtigungen ab: `BREAKING_CHANGE` → sofortige Slack-Benachrichtigung an DevOps-Channel + Jira-Ticket-Erstellung mit 30-Tage-Migrations-Deadline; `FEATURE_ADD` → wöchentliche Zusammenfassung im Tech-Newsletter; `BUGFIX` → Log ohne Benachrichtigung.
+4. Generiere eine Migrations-Checkliste: für `BREAKING_CHANGE`-Einträge erstellt der Workflow automatisch eine Checkliste: (a) API-Mock aktualisieren (S-API-051), (b) Integrationstests ausführen, (c) Canary-Deployment vorbereiten (S-API-052), (d) Rollback-Plan dokumentieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein DevOps-Automatisierer. Wir wollen proaktiv über Langdock-API-Updates informiert werden, bevor Breaking Changes unsere Produktion treffen. Beschreibe einen automatisierten Workflow: (1) tägliches Changelog-Monitoring, (2) KI-basierte Update-Klassifikation (Breaking/Feature/Bugfix), (3) differenzierte Team-Benachrichtigung pro Klasse, (4) automatisch generierte Migrations-Checkliste für Breaking Changes. Liefere ein vollständiges Workflow-Konzept."
+**Erwartetes Artefakt:** Ein automatisierter Benachrichtigungs-Workflow (Changelog-Monitoring, Update-Klassifikation, Team-Benachrichtigung, Migrations-Checkliste).
+**Fallstricke (≥2 spezifisch):**
+- Jedes API-Update — egal wie klein — löst eine Slack-Benachrichtigung aus; das Team entwickelt Alert-Fatigue und ignoriert auch kritische Breaking-Change-Alerts; die Klassifikation ist zwingend, um Signalrauschen zu reduzieren.
+- Der Workflow monitort nur die Changelog-Seite, nicht die tatsächliche API-Response-Schema; ein stilles Breaking Change (Schema-Änderung ohne Changelog-Eintrag) wird nicht entdeckt; ein wöchentlicher Smoke-Test gegen ein Response-Fixture (S-API-051) ist als Ergänzung empfohlen.
+**Anschluss-Szenario:** S-API-059
+
+### S-API-059 API-Sandbox-Umgebung für sicheres Experimentieren
+
+**Wann nutzen (Trigger):** Das Marketing-Team will neue KI-Prompt-Strategien und Agenten-Konfigurationen ausprobieren, ohne das Produktions-Setup zu beeinflussen oder echte Token-Budgets zu verbrauchen. Jede Experimentier-Session in der Produktion verursacht ungewollte Kosten und Risiken für laufende Kampagnen. (Quelle: S-API-051, S-API-052, sources/06 Deployment-Modelle)
+**Strategisches Ziel:** Ein Sandbox-Umgebungs-Konzept für die Langdock-API-Integration aufbauen, das Marketing-Teams und Entwickler frei experimentieren lässt — mit kostengünstigen Flash-Modellen, synthetischen Testdaten und vollständiger Isolation von der Produktionsumgebung.
+**Hands-on Ergebnis:** Ein Sandbox-Setup-Konzept: Umgebungstrennung, Modell-Konfiguration für die Sandbox, Testdaten-Strategie und Promotions-Prozess von Sandbox nach Produktion.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, API Deployment Advisory
+**Vorgehen (4 Schritte):**
+1. Trenne Umgebungen konsequent: separater Langdock-Workspace für Sandbox (kein Zugriff auf Produktions-Wissensordner, kein Zugriff auf echte CRM-Daten); separate API-Keys; `BASE_URL`-Konfiguration in `.env.sandbox` vs. `.env.production`.
+2. Konfiguriere die Sandbox für günstige Experimente: Standard-Modell in der Sandbox ist ein Flash-/Haiku-Modell (10× günstiger als Sonnet); Token-Budget-Limit pro Entwickler bei 5 USD/Tag, um unkontrollierte Kosten zu verhindern; kein Streaming (einfacheres Debugging).
+3. Definiere die Testdaten-Strategie: keine echten Kundendaten in der Sandbox; synthetische Testprodukte, fiktive Kampagnennamen und generierte Nutzerprofile; ein `test-data-generator`-Skript erstellt konsistente Testdatensätze, die alle Entwickler verwenden.
+4. Standardisiere den Promotions-Prozess: bevor ein experimentell entwickelter Agent oder Prompt in die Produktion übernommen wird — (a) drei Spot-Tests mit Canary-Prompts (S-API-034-Methodik), (b) Review durch Brand-Verantwortlichen, (c) Dokumentation im Wissensordner.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein DevOps-Architekt. Wir wollen eine sichere Sandbox-Umgebung für KI-Experimente aufbauen, die von unserer Produktion vollständig isoliert ist. Erkläre: (1) wie wir Langdock-Workspaces für Sandbox vs. Produktion trennen, (2) Modell- und Budget-Konfiguration für die Sandbox, (3) Testdaten-Strategie ohne echte Kundendaten, (4) Promotions-Prozess von Sandbox nach Produktion. Liefere ein vollständiges Setup-Konzept."
+**Erwartetes Artefakt:** Ein Sandbox-Setup-Konzept (Umgebungstrennung, Modell-Konfiguration, Testdaten-Strategie, Promotions-Prozess).
+**Fallstricke (≥2 spezifisch):**
+- Die Sandbox teilt denselben Langdock-Workspace wie die Produktion — ein fehlerhafter Experiment-Prompt kann versehentlich Produktions-Wissensordner modifizieren oder durch exzessive Token-Nutzung das Produktions-Budget aufbrauchen.
+- Sandbox-Experimente werden mit echten Kundendaten durchgeführt (aus Bequemlichkeit) — das verstößt gegen DSGVO-Grundsätze der Datenvermeidung und riskiert, dass sensible Daten in Sandbox-Logs ungeschützt verbleiben.
+**Anschluss-Szenario:** S-API-060
+
+### S-API-060 OpenAI-Kompatibilitäts-Layer — Migrationsmuster und Fallstricke
+
+**Wann nutzen (Trigger):** Ein Dienstleister hat für das Marketing-Team eine Automatisierungs-Lösung auf Basis der OpenAI-API gebaut. Das Unternehmen möchte aus Datenschutzgründen auf Langdock wechseln (EU-Hosting, Zero-Data-Retention), aber ohne das gesamte System neu zu entwickeln. Die IT-Leitung fragt, ob der "Drop-in-Replacement"-Ansatz wirklich so einfach ist wie versprochen. (Quelle: sources/06 OpenAI-Kompatibilität, S-API-001, research/50 A-03)
+**Strategisches Ziel:** Die OpenAI-Kompatibilitäts-Layer von Langdock vollständig durchleuchten — Migrationsmuster, tatsächliche Kompatibilitätsgrenzen, bekannte Fallstricke und ein praxistaugliches Migrations-Playbook für IT und Dienstleister.
+**Hands-on Ergebnis:** Ein Migrations-Playbook: Drop-in-Replacement-Schritt-für-Schritt-Anleitung, Kompatibilitätsgrenzen-Checkliste, bekannte Fallstricke und Validierungs-Testplan.
+**Eingesetzte Langdock-Fähigkeit(en):** OpenAI-kompatibler Completion-Endpoint, Advisory
+**Vorgehen (5 Schritte):**
+1. Erkläre den Drop-in-Replacement-Kern: zwei Änderungen im Dienstleister-Code — `base_url` von `https://api.openai.com/v1` auf `https://api.langdock.com/openai/eu/v1` und `api_key` auf den Langdock-Bearer-Token; der Rest des Codes bleibt unverändert (OpenAI Python SDK, Axios, etc.).
+2. Kartiere die Kompatibilitätsgrenzen: was funktioniert nahtlos (Chat Completions, Embeddings, grundlegende Parameter wie `temperature`, `max_tokens`, `stream`); was erfordert Anpassung (OpenAI-proprietäre Features wie `assistants`-API, `fine-tuning`-Endpoint, `realtime`-API haben kein Langdock-Äquivalent).
+3. Dokumentiere bekannte Fallstricke: (a) Modell-Namen unterscheiden sich — `gpt-4o` heißt in Langdock anders; eine Modell-Name-Mapping-Tabelle ist Pflicht; (b) OpenAI-Funktionsaufruf-Syntax (`tools`-Parameter) ist kompatibel, aber Langdock-spezifische Agenten-Features sind über den Standard-Endpoint nicht zugänglich; (c) Rate-Limit-Headers können sich unterscheiden — Retry-Logik muss gegen Langdocks 429-Response getestet werden.
+4. Baue den Validierungs-Testplan: nach der Migration führt das Team 10 Referenz-Prompts aus (zuvor mit OpenAI getestet), vergleicht Response-Qualität, Latenz und Token-Zählung; bei mehr als 20 % Qualitätsabweichung ist eine Prompt-Anpassung nötig.
+5. Kommuniziere den Compliance-Gewinn: nach erfolgter Migration profitiert die bestehende Infrastruktur sofort von EU-Hosting, Zero-Data-Retention und Audit-Logs — der Dienstleister kann dieselbe ISO-27001-konforme Umgebung für alle seine DACH-Kunden nutzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Migrations-Berater. Wir wollen unsere OpenAI-basierte Marketing-Automatisierung auf Langdock migrieren und den Kompatibilitäts-Layer nutzen. Erkläre: (1) die zwei Kernschritte des Drop-in-Replacements, (2) welche OpenAI-Features nicht kompatibel sind, (3) die drei häufigsten Fallstricke bei der Migration (Modell-Namen, Rate-Limits, Agenten-Features), (4) einen Validierungs-Testplan nach der Migration. Liefere ein praxistaugliches Migrations-Playbook."
+**Erwartetes Artefakt:** Ein Migrations-Playbook (Drop-in-Replacement-Schritte, Kompatibilitätsgrenzen-Checkliste, Fallstricke, Validierungs-Testplan).
+**Fallstricke (≥2 spezifisch):**
+- Das Team migriert blind, ohne Kompatibilitätsgrenzen zu prüfen — die Migration schlägt fehl, weil der Dienstleister die OpenAI Assistants-API nutzt, die Langdock nicht repliziert; vor der Migration muss ein Feature-Audit des bestehenden Systems stehen.
+- Nach der Migration wird die Response-Qualität als "automatisch gleich" angenommen — verschiedene Modelle hinter demselben Endpoint können unterschiedliche Output-Qualitäten für spezifische Marketing-Tasks liefern; ein Validierungs-Testplan mit Referenz-Prompts ist unverzichtbar.
 **Anschluss-Szenario:** S-API-001
