@@ -556,4 +556,4 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Fallstricke (≥2 spezifisch):**
 - Der Audit-Bericht listet Risiken auf, ohne zwischen "akzeptablem Restrisiko bei Standardkonfiguration" und "kritischem Risiko ohne Sofortmaßnahme" zu unterscheiden — damit ist er für den CISO nicht entscheidungsfähig.
 - Das Dokument behandelt die Zero-Data-Retention Policy als absolute Garantie, ohne darauf hinzuweisen, dass diese Policy modellabhängig ist und bei BYOC/BYOM separat mit dem jeweiligen Provider verifiziert werden muss.
-**Anschluss-Szenario:** S-API-001
+**Anschluss-Szenario:** S-API-026

@@ -520,7 +520,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 **Fallstricke (≥2 spezifisch):**
 - Onboarding-Plan ist zu theoretisch ohne praktische Hands-on-Aufgaben → Jeder Tag muss mit einer konkreten Langdock-Aktion enden, die das Ergebnis in Canvas oder Google Sheets dokumentiert.
 - Memory-Funktion des Onboarding-Agenten speichert vertrauliche Briefings des neuen Mitarbeiters → Memory für den Onboarding-Agenten auf anonyme Sprach-Feedback-Daten beschränken; keine Kampagneninhalte speichern.
-**Anschluss-Szenario:** S-MP-001
+**Anschluss-Szenario:** S-MP-026
 
 ## Hinweise & Quellen-Konflikte
 
