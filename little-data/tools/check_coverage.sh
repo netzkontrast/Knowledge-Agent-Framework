@@ -26,8 +26,8 @@ TOTAL=0
 # Match pipe-delimited rows where columns look like (id, ..., owning-file, owning-heading, ...).
 # Headings might be prefixed with the H2/H3 marker — we strip those.
 while IFS= read -r line; do
-  # Skip header rows / separator rows
-  if [[ "$line" =~ ^\|[[:space:]]*[-A-Za-z0-9 _]+[[:space:]]*\|[[:space:]]*---* ]]; then continue; fi
+  # Skip header rows / separator rows like "| --- | --- |"
+  if [[ "$line" =~ ^\|[[:space:]]*-+[[:space:]]*\| ]]; then continue; fi
   if [[ ! "$line" =~ ^\| ]]; then continue; fi
 
   # Extract owning-file (look for a column matching .md filename or filename-without-md)
