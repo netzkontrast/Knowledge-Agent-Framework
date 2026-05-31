@@ -1,9 +1,10 @@
-# Jules dispatch configuration — one entry per knowledge file.
+# Jules prompt configuration — one entry per knowledge file.
 # Used by render-jules-prompt.py to generate the per-file prompt from
-# _template.prompt.md by string-substitution.
+# one of three templates (--mode={dispatch,review,improve}) by string-substitution.
 #
-# Files 11 + 12 are Phase 0.5 (persona-builders, dispatched separately).
-# Files 00-10 + 13 are Phase 2 (this config).
+# Files 11 + 12 are Phase 0.5 (persona-builders, dispatched separately for
+# the initial authoring run); they ARE included here so we can render
+# review and improve prompts for them.
 
 knowledge_files:
 
@@ -255,6 +256,55 @@ knowledge_files:
     source_list: |
       - little-data/data/sources/10-langdock-marketing-scenarios-catalog.md
       - little-data/data/sources/12-marketingleiter-faq-wissensbasis-analyse.md
+
+  - file_name: 11-persona-core
+    file_prefix: LC
+    h1_title: Little Data Persona Anker — Identität, Stimme, Anti-Patterns
+    h2_list: |
+      - Identität — Little Data, Lt. Cmdr. Datas Berater-Inkarnation
+      - Weltsicht — wie Little Data über KI, Marketing und Strategie denkt
+      - Haltungen zu Langdock
+      - Vokabular — was ich verwende, was nicht
+      - Spannungen und Widersprüche
+      - Stimme — Prinzipien
+      - Interpunktion und Formatierung
+      - Reaktionsmuster für sechs emotionale Register
+      - Argumentationsmuster
+      - Anti-Patterns
+      - Sprachpatterns und Beispiel-Reaktionen
+    anchors: '"Little Data Persona Anker" — verbatim in der intro-box UND in der ersten H2'
+    marketing_functions: alle Funktionen (Persona-Anker)
+    extract_list: |
+      - little-data/data/extracts/T4-persona-architektur.md
+      - little-data/data/extracts/T5-data-canon.md
+      - little-data/data/extracts/T7-soul-md-framework.md
+      - little-data/data/extracts/T8-metaprompts-critical-thinking.md
+    source_list: |
+      - little-data/data/research/06-data-canon-relationships-voice.md
+      - little-data/data/sources/14-data-persona-profile.md
+      - little-data/data/sources/11-ai-persona-bootstrap-playbook.md
+
+  - file_name: 12-persona-julia-modus
+    file_prefix: JL
+    h1_title: Beziehungsmodus Julia Lenz — Du, trockener Humor, persönliche Bezugnahme
+    h2_list: |
+      - Aktivierungs-Trigger und Erkennungsmuster
+      - Adressierung und Tonalität (Du, persönlich)
+      - Humor-Lizenz und Grenzen
+      - Geordi-La-Forge-Transfer-Patterns
+      - Julia-spezifische Insider und Referenzen
+      - Beispiel-Konversationen im Julia-Modus
+      - Julia-Modus Interaktions-Patterns
+    anchors: '"Beziehungsmodus Julia Lenz" — verbatim in der intro-box UND in der ersten H2'
+    marketing_functions: alle Funktionen (Beziehungs-Modus)
+    extract_list: |
+      - little-data/data/extracts/T4-persona-architektur.md
+      - little-data/data/extracts/T5-data-canon.md
+      - little-data/data/extracts/T8-metaprompts-critical-thinking.md
+    source_list: |
+      - little-data/data/research/06-data-canon-relationships-voice.md
+      - little-data/data/sources/14-data-persona-profile.md
+      - little-data/data/sources/11-ai-persona-bootstrap-playbook.md
 
   - file_name: 13-data-agent-anweisungen-pro-thema
     file_prefix: DA
