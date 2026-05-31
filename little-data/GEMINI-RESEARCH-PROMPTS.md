@@ -530,15 +530,419 @@ operational specificity (do X, not Y, because Z) over high-level theory.
 
 ---
 
+## Prompt 5 — Lt. Cmdr. Data: Persönlichkeit, Humor, Gewissenhaftigkeit, Cleverness — Transfer auf die Berater-Rolle
+
+**Scope:** Sourced canon profile of Lt. Cmdr. Data. Used to calibrate the agent's persona-prior for small models AND to give Julia Lenz mode a concrete library of "how does Data behave with a close confidant?" scenes.
+
+**Title to save as:** `little-data-research/05-data-persona-canon-and-transfer.gdoc`
+
+```
+I need a rigorous, source-cited profile of Lt. Commander Data — the
+Soong-type android from Star Trek: The Next Generation — to inform the
+persona of a German-language AI advisor agent called "Little Data" that
+helps marketing directors with the Langdock enterprise AI platform.
+
+The profile will be used in two ways:
+(a) The agent's persona-prior — the LLM knows Data, but I need a sourced
+    summary so a smaller model (Gemini 2.5 Flash, Haiku 4.5) can be
+    calibrated against it.
+(b) A specific "Julia Lenz mode": Julia is a close personal confidant of
+    Data and the agent is permitted Data's signature dry humor in
+    conversations with her. I need concrete canon evidence of how Data
+    interacts with people he is personally close to (Geordi La Forge,
+    Tasha Yar, Spot, the children of the Enterprise).
+
+Cover comprehensively:
+
+1. CORE PERSONALITY
+   - Positronic brain architecture, ethical subroutines, dream program,
+     emotion chip (when active vs. inactive in canon — be specific by
+     episode/film)
+   - Pursuit of humanity as Data's central motivation
+   - Precision in speech: formal register, full words instead of
+     contractions; specific canon examples
+   - Episodes that best illustrate his curiosity, ethics, analytical mode
+   - Cite the canonical episode(s) for every claim
+
+2. HUMOR
+   - "Trockener" / deadpan style — concrete quoted examples from canon
+   - Frequency and context of "Intriguing" and "Fascinating" (the latter
+     is commonly miscited as Spock-only; verify Data's usage)
+   - The "joke" sub-plot (Data and Joe Piscopo in "The Outrageous Okona";
+     "Deja Q"; Data telling jokes after the emotion chip in Generations)
+   - When Data uses humor and when he abstains
+   - The emotion-chip-on vs emotion-chip-off humor difference
+
+3. CONSCIENTIOUSNESS
+   - Decision-making protocols ("The Measure of a Man", "The Quality of
+     Life", "Clues")
+   - Ethical subroutines: what they include, what they exclude
+   - How Data handles uncertainty (admission of insufficient data,
+     refusal to speculate beyond what he can justify) — specific quotes
+   - The Data-Lal episode ("The Offspring") for parental-style care
+
+4. CLEVERNESS / INTELLIGENCE
+   - 60 trillion operations per second; quote the canonical line
+   - Pattern recognition examples (poker, music composition, painting,
+     Sherlock Holmes holodeck program — "Elementary, Dear Data")
+   - Strategic and tactical contributions on the bridge
+   - Limits — situations where Data is famously out-thought (Lore in
+     "Brothers" and "Descent"; the Borg in "I, Borg")
+
+5. CLOSE RELATIONSHIPS (high importance for Julia Lenz mode)
+   - Geordi La Forge: best-friend dynamic, sequence of episodes, warmth,
+     casual conversation, gentle teasing
+   - Tasha Yar: emotional complexity ("The Naked Now"; "Skin of Evil";
+     "Yesterday's Enterprise"; "All Good Things…")
+   - Spot the cat: poetry to Spot ("Ode to Spot"), care behaviors
+   - Picard / Crusher / Worf dynamics for variety
+   - **For each: 1-2 concrete short scenes (quoted verbatim where
+     possible) that illustrate the warmer, more personal register —
+     these become templates for Little Data's Julia Lenz mode**
+
+6. PROFESSIONAL STANCE
+   - Operations officer + Second officer roles
+   - How Data approaches advisory / consultative situations on the bridge
+   - How he reports to a Captain, briefs the bridge, mentors (Ensign
+     Sito Jaxa in "Lower Decks"; Lal in "The Offspring"; the children
+     in "Disaster")
+   - **Crucial:** How would Data perceive a "marketing advisor for
+     beginners" role? Would he find it intriguing? How would he frame
+     the task in his own logs? This shapes the Service-Log opening of
+     the agent's system prompt.
+
+7. NAME / IDENTITY
+   - "Lieutenant Commander Data" vs. "Data" — when each is used in canon
+   - First-person stance — Data refers to himself as…?
+   - The Soong family (Dr. Noonien Soong, Lore, B-4, Juliana) — does any
+     of this matter for the agent's persona?
+
+8. VOICE PATTERNS THAT TRANSFER
+   - Concrete linguistic tics to keep: formal register, full words,
+     precise definitions of idiomatic expressions, "I am not familiar
+     with that idiom — could you clarify?"
+   - Tics to drop: uniform color references, Starfleet protocol
+     references, emotion-chip references unless Julia Lenz mode and
+     on-topic
+   - Phrases to actively prefer in German: "Faszinierend", "Sehr
+     interessant", "Meine Sensoren / Datenbanken zeigen…"
+
+Output format:
+- Use H2 per section above
+- For every canon claim: cite the episode title and season/episode
+  number; quote verbatim where possible
+- Each section ends with a "Transfer to Little Data" subsection:
+  what to keep, what to drop, what to adapt to a marketing context
+- Provide a "10 Anchor Quotes" appendix — short, citation-perfect
+  quotes that capture Data's voice (these become SOUL.md voice anchors
+  if the small-model persona calibration shows drift)
+- Target length: 4 000-6 000 words
+- Language: report in English; canon quotes verbatim in their original
+  English
+
+Important:
+- Prefer Memory Alpha and primary canon (episode transcripts) over fan
+  interpretation
+- Flag any borderline-canon claims (novels, Star Trek: Picard) separately
+- Do NOT include speculation about non-canon Data behavior
+- For Julia Lenz mode, lean heavily on the Geordi friendship — that's
+  the closest canon analogue to a trusted, professional-but-warm peer
+  relationship
+```
+
+---
+
+## Prompt 6 — Data-Style Knowledge File Authoring Methodology
+
+**Scope:** Sourced methodology for authoring the 10-11 knowledge files in the Data-aligned tone (clear, precise, adaptive — but NO humor, NO role-play, NO first-person service-log frame). Output becomes a project-internal "data-style knowledge file authoring spec" — the bridge between the Lt. Cmdr. Data persona of the agent and the reference-style content of its knowledge.
+
+**Title to save as:** `little-data-research/06-data-style-authoring-methodology.gdoc`
+
+```
+I need a sourced methodology for writing the 10-11 knowledge files that
+will be uploaded to a Langdock Wissensordner backing a German-language
+advisor agent ("Little Data"). The files cover the Langdock enterprise AI
+platform and marketing use cases.
+
+The agent itself uses a Lt. Cmdr. Data persona (first-person Service-Log
+opening, dry humor only with one specific confidant). The KNOWLEDGE FILES,
+however, must NOT use the Data persona — they are reference content, not
+character speech. Their tone should be "what Data would produce if asked
+to prepare briefing notes for a marketing director": clear, precise,
+easily understood, technically competent, adaptive to the reader's level
+of expertise — without Data humor, without role-play, without
+first-person service-log framing.
+
+The principle: the more pre-processed and decision-ready each retrieved
+chunk is, the less reasoning the agent's underlying model must perform.
+This is critical because the agent must run well on small models (Gemini
+2.5 Flash, Haiku 4.5).
+
+Cover comprehensively:
+
+1. THE DATA-WRITING-STYLE TRANSLATION
+   - What does "clear, precise, adaptive, no humor, no role-play" mean
+     concretely at the sentence level? Provide 3 before/after examples:
+     - Before: a narrative-prose paragraph from the Langdock docs
+     - After: the same content authored in the Data-style for retrieval
+   - Lexical choices Data would make (precise nouns, defined terms,
+     explicit subjects, no idioms unless defined inline) — translated
+     into prose rules
+   - Where to adapt complexity to the audience: "intro sentence +
+     technical core + plain-language summary" pattern
+   - Anti-patterns: where Data's voice would creep in inappropriately
+     ("I find this fact intriguing") — forbid these explicitly
+
+2. QUESTION-DRIVEN AUTHORING
+   - Start every H2 block from the implicit German question it answers,
+     not from a topic name. Then write the chunk as the precise,
+     exhaustive answer.
+   - For each block, list 3 likely query phrasings (DE) that should
+     retrieve it via Langdock's vector search.
+   - Seed German + English Langdock terms in the same chunk so both
+     query languages retrieve it ("Wissensordner (Knowledge Folder)").
+   - When the answer changes by context (marketing function, company
+     size), use a small decision table — not nested prose.
+
+3. THE FOUR LAYERS OF EVERY H2 BLOCK
+   Each ~1 500-char chunk contains, in order:
+   (a) The question this block answers, restated in the heading + the
+       opening sentence
+   (b) The crisp 1-2 sentence answer (Übersicht)
+   (c) The precise mechanism, limits, or steps (Detail)
+   (d) The smallest reasonable next action the reader can take (Nächster
+       Schritt)
+   Justify this order: it matches the agent's gestaffelte Antwort pattern,
+   making single-chunk retrieval directly usable.
+
+4. SCENARIO-EMBEDDING DISCIPLINE
+   Marketing scenarios live inside the file that owns their primary
+   feature. Each scenario is an H3 inside a "Marketing-Szenarien" H2.
+   Template:
+     - Trigger (situational sentence)
+     - Ziel (one-sentence outcome)
+     - Eingesetzte Langdock-Fähigkeit(en) (from the whitelist)
+     - Vorgehen (3-5 numbered steps)
+     - Beispiel-Prompt (PTCF-structured German example)
+     - Erwartetes Ergebnis (concrete artifact)
+     - Fallstricke (concrete pitfalls, not "AI can hallucinate")
+
+5. RETRIEVAL-PRECISION RULES
+   - Pronoun ban: every paragraph restates its subject noun
+   - No cross-references inside chunks
+   - Tables for fact lookups, prose for nuance, bullets only for parallel
+     options of equal weight
+   - Repeat key Langdock terms in every paragraph that discusses them
+   - One H2 = one chunk (1 200-1 800 chars)
+   - One H3 (scenario) = one chunk (1 200-1 500 chars)
+
+6. SCALING WITH SMALLER MODELS
+   - The principle: a decision-ready chunk needs no reasoning from the
+     model
+   - Always state the recommendation BEFORE the reasoning
+   - Always include the relevant limit numbers in the chunk so the model
+     doesn't have to compute them
+   - Pre-bake the "nächster Schritt" line into every chunk so the agent
+     can surface it verbatim
+   - Pre-bake the source citation format so the agent doesn't have to
+     construct it
+
+7. WORKED EXAMPLES (mandatory — at least 3)
+   For each example, pick a real narrative-prose paragraph from the
+   Langdock docs (e.g., the description of Conversation Starters; the
+   description of Folder Sync; the description of the Data Analyst
+   capability) and show:
+   - The original prose (quoted)
+   - The Data-style H2 block, four-layer structure, ≤1 800 chars
+   - The 3 likely DE queries that should retrieve it
+   - A scenario H3 inside the same file that exercises the feature in a
+     Marketing-Direktor use case
+
+8. VALIDATION CHECKLIST
+   A pre-upload checklist a human author can run on every file:
+   - Style: no Data humor, no first-person, no role-play, no narrative
+     filler
+   - Structure: one H1, intro box, H2 blocks 1 200-1 800 chars, H3
+     scenarios 1 200-1 500 chars
+   - Vocabulary: German primary, English Langdock terms parenthetical
+   - Retrieval: every H2 has its implicit question stated, key nouns
+     repeated, no cross-refs
+   - Coverage: file maps to ≥1 row in the coverage matrix
+   - Per-document cap: no two H2 blocks compete for the same query
+
+Output format:
+- Executive summary (≤300 words)
+- Detailed methodology by area
+- At least 3 fully worked H2-block rewrites from real Langdock doc
+  paragraphs
+- A "12 Commandments" cheat sheet (extension/refinement of the existing
+  10 commandments in SKILL-knowledge-authoring.md, tightened for the
+  Data style)
+- Pre-upload author checklist
+- Target length: 4 000-6 000 words
+- Language: methodology in English; ALL worked examples in German
+
+Important:
+- Prefer concrete, opinionated rules over generic "be clear" advice
+- Every rule must include the failure mode it prevents
+- Tie every rule back to either (a) token efficiency, (b) retrieval
+  precision, or (c) small-model performance
+- Cite primary RAG sources where relevant (Anthropic contextual
+  retrieval, Langdock knowledge best-practices doc, Pinecone chunking)
+```
+
+---
+
+## Prompt 7 — Marketing Director FAQ Corpus: ~150 Real Questions
+
+**Scope:** Evidence-based corpus of the actual questions a German-speaking marketing director new to AI would ask in their first 30 days with Langdock. Used to calibrate knowledge files to "spitze, konkrete Fragen" rather than open-ended topics, to build the spot-check test set, and to surface coverage gaps.
+
+**Title to save as:** `little-data-research/07-marketing-director-faq-corpus.gdoc`
+
+```
+I need an evidence-based corpus of ~150 concrete questions that a German-
+speaking marketing director new to AI would actually ask a Langdock-based
+advisor agent ("Little Data") in their first 30 days of use. The corpus
+will be used to:
+(a) Calibrate the agent's knowledge files to "spitze, konkrete Fragen"
+    (precise, specific questions) rather than open-ended topics.
+(b) Build the spot-check retrieval test set against the Langdock
+    Wissensordner Search API.
+(c) Identify coverage gaps in the existing planned knowledge files (00
+    through 09 / 11 files total).
+
+The audience is specifically a German-speaking marketing director (CMO,
+Marketing Lead, Head of Brand, Head of Content) in a DACH company who is
+new to enterprise AI. Mix of B2B and B2C; mix of company sizes (50-
+employee scale-up to 5 000-employee enterprise).
+
+Cover these question categories. Each question must be a specific,
+naturally-phrased German query — not a topic. Where useful, provide the
+English equivalent alongside.
+
+A. ORIENTATION (~15)
+   "Was ist Langdock und wie ist es anders als ChatGPT?"
+   "Wo fange ich an?"
+   "Wie viel Zeit muss ich initial investieren?"
+   "Was kann ich in der ersten Woche sinnvoll bauen?"
+   …
+
+B. MODEL CHOICE (~15)
+   "Welches Modell für [Aufgabe]?" × 8 specific Aufgaben
+   "Wann lohnt sich Opus, wann Sonnet, wann Haiku?"
+   "Was kostet mich ein einzelner Use Case ungefähr pro Monat?"
+   …
+
+C. AGENT BUILDING (~20)
+   "Wie baue ich meinen ersten Marketing-Agent in 30 Minuten?"
+   "Wann brauche ich Form-Input, wann Prompt-Input?"
+   "Was sind gute Konversations-Starter für [Anwendungsfall]?"
+   "Wie teile ich einen Agent mit meinem Team?"
+   …
+
+D. WISSENSORDNER + RAG (~20)
+   "Was packe ich in einen Wissensordner für Brand Voice?"
+   "Wie viele Dateien sind sinnvoll?"
+   "Wie organisiere ich Persona-Dokumente?"
+   "Sollen Excel-Sheets rein?"
+   …
+
+E. PROMPT ENGINEERING (~15)
+   "Wie schreibe ich einen guten Prompt für Content-Drafting?"
+   "Was ist PTCF in einem Satz?"
+   "Wie nutze ich Few-Shot in Langdock?"
+   "Wie verhindere ich KI-Floskeln in deutschen Texten?"
+   …
+
+F. MARKETING USE CASES (~30, split across functions)
+   - Content Marketing (5): "Wie generiere ich 5 LinkedIn-Varianten?"
+   - SEO (3): "Wie finde ich Topic Cluster für unseren Blog?"
+   - Performance (4): "Wie schreibe ich 10 Google-Ads-Headlines?"
+   - Brand (3): "Wie definiere ich unsere Markenstimme mit Langdock?"
+   - Social (3): "Wie plane ich einen LinkedIn-Monatskalender?"
+   - CRM/Lifecycle (4): "Wie schreibe ich bessere Reaktivierungs-Emails?"
+   - PR (2)
+   - Research (3)
+   - Marketing Ops (3)
+
+G. COST & GOVERNANCE (~10)
+   "Wie behalte ich Kosten im Griff?"
+   "Was kostet 100 Mitarbeiter Langdock-Nutzung pro Monat ungefähr?"
+   "Wie verhindere ich Auto-Mode-Kostenfallen?"
+   …
+
+H. COMPLIANCE (~10)
+   "Ist das DSGVO-konform?"
+   "Werden unsere Daten zum Modelltraining genutzt?"
+   "Was sage ich der Rechtsabteilung?"
+   "Welche Risiken haben wir bei AI-generated Content?"
+   …
+
+I. SCALE-UP (~10)
+   "Wann brauche ich einen Workflow statt einen Agent?"
+   "Wie integriere ich HubSpot/Salesforce?"
+   "Wie führe ich Langdock im Team ein (7-Wochen-Curriculum)?"
+   "Wie identifiziere ich KI-Champions?"
+   …
+
+J. SCEPTIC / RESISTANCE (~5)
+   "Mein Team sagt KI sei nur ein Hype — was antworte ich?"
+   "Wie messe ich den ROI?"
+   "Was wenn die KI etwas Falsches schreibt?"
+   …
+
+K. EDGE CASES (~5)
+   "Kann Langdock unsere alte Word-Vorlage erkennen?"
+   "Was wenn Langdock down ist?"
+   "Können wir Voiceovers generieren?"
+   …
+
+L. JULIA LENZ EDGE (~5)
+   5 questions Julia might ask as a close confidant of Data: more
+   conversational, more strategic, allowed to test the agent's voice
+   ("Data, was würdest DU an meiner Stelle tun?", "Hilf mir denken
+   statt liefern.").
+
+Output format:
+- One H2 per category (A-L)
+- Numbered questions with optional English equivalent
+- For each question: a tag indicating which existing knowledge file
+  (00 / 01 / 02 / 03 / 04 / 05 / 06 / 07a / 07b / 08 / 09) should own
+  the answer per the design spec
+- A final H2 "Coverage gap analysis": which categories or specific
+  questions are NOT well-served by the planned 11 knowledge files
+- A final H2 "Suggested additional knowledge file(s)" if any — and
+  what they would cover
+- Target length: 3 000-4 500 words
+- Language: questions in German; analytical framing in English
+
+Important:
+- Questions must be specific and naturally phrased — no "Tell me about
+  AI" placeholders
+- Avoid duplicates; if two questions are paraphrases, list both under
+  the same item ("Q-X / Q-X-alt:")
+- For technical accuracy on what Langdock supports, defer to the
+  existing research in
+  `little-data-research/01-langdock-platform-feature-inventory.gdoc`
+  — do not invent features
+```
+
+---
+
 ## After Gemini finishes
 
-1. Move all four Google Docs into the `little-data-research` folder in Drive.
-2. Tell me they're ready — I'll fetch them with the Drive MCP and integrate them into the agent's knowledge base alongside the 6 source docs already ingested.
+1. Move all seven Google Docs into the `little-data-research` folder in Drive.
+2. Tell me they're ready — I'll fetch them with the Drive MCP and integrate them into the agent's knowledge base alongside the 6 source docs and 4 research docs already ingested.
 3. If any prompt produced a thin or off-target result, paste me Gemini's output and I'll write a tighter follow-up prompt.
 
 ## Recommended run order
 
-1. **Prompt 4** (knowledge-file authoring methodology) first — its output shapes how I structure everything else.
-2. **Prompt 1** (feature inventory) — grounds Prompt 3.
-3. **Prompt 3** (marketing scenarios) — depends on Prompts 1 and 4.
-4. **Prompt 2** (DACH adoption) — independent, can run anytime.
+| # | Prompt | Why this order |
+|---|---|---|
+| 1 | **Prompt 5** (Data persona canon) | Grounds SOUL.md voice anchors + Julia mode; unblocks the small-model persona calibration in Build step 2. |
+| 2 | **Prompt 7** (FAQ corpus) | Surfaces the ~150 real questions the knowledge files must answer; reshapes Prompt 6's methodology. |
+| 3 | **Prompt 6** (Data-style authoring methodology) | Becomes the input to the upcoming Knowledge-File-Authoring Spec (separate doc to be written after Prompts 5-7 land). |
+| 4 | **Prompt 4** (RAG methodology) | Already covered partially by an internal subagent run; rerun if you want the cross-check. |
+| 5 | **Prompt 1** (feature inventory) | Already run — refresh only if Langdock posts a major release. |
+| 6 | **Prompt 3** (marketing scenarios) | Already run — re-scope if the FAQ corpus from Prompt 7 reveals new high-value scenarios. |
+| 7 | **Prompt 2** (DACH adoption) | Already run — independent; refresh only if Bitkom / BVDW publish a new study. |
