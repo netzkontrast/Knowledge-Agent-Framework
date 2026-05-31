@@ -523,6 +523,380 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 - Starter werden ohne Test direkt eingesetzt → immer mindestens einen Trockenlauf im Chat-Sandbox durchführen, bevor der Agent für das Team freigegeben wird.
 **Anschluss-Szenario:** S-CP-026
 
+### S-CP-026 Chain-of-Thought für komplexe strategische Analyse aktivieren
+
+**Wann nutzen (Trigger):** Eine mehrstufige Aufgabe — z. B. Priorisierung von vier Kampagnen-Optionen nach ROI, Machbarkeit und Brand-Fit — liefert oberflächliche Antworten, weil das Modell direkt zum Ergebnis springt.
+**Strategisches Ziel:** Das Modell zwingen, seinen Denkweg sichtbar zu machen, damit die Direktorin den Schluss nachvollziehen und bei Bedarf an einem bestimmten Schritt eingreifen kann.
+**Hands-on Ergebnis:** Eine strukturierte Analyse mit sichtbarem Schritt-für-Schritt-Reasoning und einem begründeten Endergebnis.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Instruktions-Formulierung), Chat-Branching (alternative Denkwege)
+**Vorgehen (4 Schritte):**
+1. Im Prompt explizit anweisen: "Denke laut und zeige jeden Bewertungsschritt, bevor du eine Empfehlung gibst."
+2. Die Bewertungsdimensionen (ROI, Machbarkeit, Brand-Fit) mit Gewichtung vorab benennen, damit das Modell nicht selbst eine Hierarchie erfindet.
+3. Das Reasoning lesen und bei einem fehlerhaften Zwischenschritt direkt dort einhaken: "Schritt 2 ist falsch — korrigiere ab hier."
+4. Das Endergebnis als separaten Absatz vom Reasoning trennen lassen, damit die Präsentation ans C-Level sauber bleibt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Strategie-Analytikerin. Analysiere die vier Kampagnen-Optionen unten. Bewerte jede Dimension (ROI-Potenzial, Zeit-to-Market, Brand-Fit) nacheinander und zeige deine Überlegung je Schritt. Erst dann nenne die Empfehlung. Format: nummeriertes Reasoning je Option, darunter ein Fazit-Absatz."
+**Erwartetes Artefakt:** Eine nachvollziehbare Schritt-für-Schritt-Analyse mit begründetem Fazit, geeignet als Entscheidungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell schreibt pro forma "Schritt 1, Schritt 2", aber das Reasoning ist nicht tiefer als ohne CoT → explizit nach Widersprüchen und Trade-offs innerhalb jedes Schritts fragen.
+- CoT-Prompts bei trivialen Aufgaben → der Overhead lohnt nur bei mehrstufiger Logik; für einfache Listen PTCF verwenden.
+**Anschluss-Szenario:** S-CP-027
+
+### S-CP-027 Brand Voice Audit eines bestehenden Content-Korpus im Chat
+
+**Wann nutzen (Trigger):** Neue Agenturmaterialien oder Freelancer-Texte sollen vor der Freigabe auf Übereinstimmung mit der Markensprache geprüft werden — schnell, ohne manuelles Durchlesen. (Quelle: sources/10 S-038, S-039)
+**Strategisches Ziel:** Den Chat als automatisierten "Brand-Guardian-Prüfschritt" einsetzen, der Off-Brand-Stellen identifiziert und direkte Korrekturvorschläge liefert.
+**Hands-on Ergebnis:** Eine annotierte Liste der Off-Brand-Passagen mit konkreten Alternativformulierungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (File-Attachment), Wissensordner (Brand-Voice-Guidelines als Anker)
+**Vorgehen (4 Schritte):**
+1. Den zu prüfenden Text als Anhang oder Einfügung in den Chat laden.
+2. Den @-Mention auf den Wissensordner mit den Brand-Voice-Guidelines setzen, damit das Modell gegen den offiziellen Standard prüft.
+3. Das Modell anweisen, Off-Brand-Stellen mit Zeilennummer und Begründung auszugeben — nicht pauschal umzuformulieren.
+4. Nur die markierten Stellen gezielt überarbeiten lassen; das Restdokument nicht ohne Grund anfassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Brand-Auditorin. Prüfe den angehängten Text gegen unsere Brand-Voice-Guidelines im @Wissensordner. Markiere jede Off-Brand-Passage mit Zeilennummer, erkläre in einem Satz warum, und schlage eine regelkonforme Alternativformulierung vor. Format: Tabelle mit Spalten Zeile, Original, Problem, Korrektur."
+**Erwartetes Artefakt:** Eine Audit-Tabelle mit Off-Brand-Stellen, Begründung und Korrekturen — direkt für das Freigabe-Meeting nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell überarbeitet den gesamten Text, obwohl nur wenige Stellen off-brand sind → explizit anweisen "nur markierte Passagen, kein Gesamtrewrite".
+- Ohne verankerten Wissensordner erfindet das Modell eine Brand Voice → @Mention auf den Ordner ist Pflicht, kein optionales Nice-to-have.
+**Anschluss-Szenario:** S-CP-028
+
+### S-CP-028 Dokument-Analyse per Chat-Attachment: Vertragsklauseln extrahieren
+
+**Wann nutzen (Trigger):** Ein Agentur- oder Medienvertrag (PDF) soll vor dem internen Meeting auf für Marketing relevante Klauseln durchsucht werden — Laufzeiten, Exklusivitäten, Nutzungsrechte — ohne den Rechtstext vollständig zu lesen.
+**Strategisches Ziel:** Relevante Klauseln schnell isolieren und in ein handlungsorientiertes Übersichtsdokument verdichten, ohne juristische Eigeninterpretation zu erzeugen.
+**Hands-on Ergebnis:** Eine Klauseln-Tabelle mit Fundstelle, Kurzinhalt und einem Hinweis auf eventuelle Rückfragen ans Rechtsteam.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (File-Attachment, PDF-Volltext-Modus statt RAG)
+**Vorgehen (3 Schritte):**
+1. Das PDF als direkte Dateianlage in den Chat laden — nicht in den Wissensordner, damit das Modell den vollständigen Text liest statt Chunks zu retrieven.
+2. Die gesuchten Klausel-Kategorien explizit benennen (Laufzeit, Exklusivität, Nutzungsrechte, Haftung, Kündigungsfristen).
+3. Das Modell anweisen, fehlende oder unklare Klauseln explizit als "nicht gefunden — bitte Rechtsteam fragen" zu kennzeichnen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Vertragsanalystin für Marketing-Einkauf. Lies den angehängten Vertrag vollständig. Extrahiere alle Klauseln zu: Laufzeit, Exklusivität, Nutzungsrechte, Haftungsobergrenzen, Kündigungsfrist. Format: Tabelle mit Spalten Klausel-Typ, Fundstelle (Abschnitt/Seite), Kurzinhalt (max. 2 Sätze), Hinweis für Rechtsteam."
+**Erwartetes Artefakt:** Eine strukturierte Klauseln-Übersicht für das Meeting-Briefing, mit expliziten "Bitte prüfen"-Markierungen für unklare Stellen.
+**Fallstricke (≥2 spezifisch):**
+- PDF in den Wissensordner statt als Attachment laden → RAG-Chunking zerstört die Dokumentstruktur; für Volltext-Analyse immer als Direktanlage im Chat verwenden.
+- Das Modell gibt rechtliche Einschätzungen als Fakten aus → die Klauseln-Tabelle enthält Zusammenfassungen, keine Rechtsberatung; Rückfragen ans Rechtsteam explizit einfordern.
+**Anschluss-Szenario:** S-CP-029
+
+### S-CP-029 Chat-Export und Konversations-Wiederverwendung als Projekt-Gedächtnis
+
+**Wann nutzen (Trigger):** Ein mehrtägiges Strategieprojekt (z. B. Rebranding-Sprint) erzeugt wertvolle Konversationsverläufe, die das Team in der nächsten Session nicht neu aufbauen will. (Quelle: A-10, sources/12 Q80)
+**Strategisches Ziel:** Exportierte Chat-Inhalte als strukturiertes Projekt-Gedächtnis recyceln, um Kontext zwischen Sessions nicht zu verlieren.
+**Hands-on Ergebnis:** Ein komprimiertes Briefing-Dokument aus dem vorherigen Chat-Verlauf, das als Einstieg für die nächste Session dient.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Cmd-K Omni-Search, File-Attachment), Wissensordner (für langlebige Projekt-Snapshots)
+**Vorgehen (4 Schritte):**
+1. Den wichtigsten Chat-Verlauf über Cmd-K suchen und den Inhalt als Text exportieren oder kopieren.
+2. In einem neuen Chat das Exportdokument anhängen und ein Projekt-Briefing generieren lassen: Entscheidungen, offene Punkte, nächste Schritte.
+3. Das Briefing in den Projekt-Wissensordner laden, damit es für alle Teammitglieder abrufbar ist.
+4. Zukünftige Sessions mit "@Projekt-Ordner — hier ist der Stand" starten statt den Kontext mündlich zu wiederholen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Projektkoordinatorin. Lies den folgenden exportierten Chat-Verlauf unseres Rebranding-Sprints [eingefügt]. Erstelle ein strukturiertes Projekt-Briefing mit: getroffenen Entscheidungen (nummeriert), offenen Fragen (priorisiert), nächsten Schritten mit Verantwortlichen. Format: max. eine A4-Seite, Markdown."
+**Erwartetes Artefakt:** Ein Projekt-Briefing-Dokument im Wissensordner, das als Session-Einstieg für das gesamte Team dient.
+**Fallstricke (≥2 spezifisch):**
+- Zu viele Chat-Verläufe auf einmal → das Kontextfenster läuft voll; maximal zwei bis drei Verläufe pro Komprimierungs-Session einbringen.
+- Das Briefing ersetzt das originale Chat-Protokoll → das Original immer archivieren; das Briefing ist eine Verdichtung, kein vollständiges Protokoll.
+**Anschluss-Szenario:** S-CP-030
+
+### S-CP-030 Prompt-Debugging: Schlechte Outputs systematisch reparieren
+
+**Wann nutzen (Trigger):** Ein Prompt liefert wiederholt Ergebnisse, die nicht dem gewünschten Standard entsprechen — aber unklar ist, welches der vier PTCF-Elemente das Problem verursacht. (Quelle: sources/12 Q76, Q79)
+**Strategisches Ziel:** Schlechte KI-Outputs nicht durch blindes Neuformulieren, sondern durch systematisches Eingrenzen des Fehlers effizient verbessern.
+**Hands-on Ergebnis:** Ein reparierter Prompt mit dokumentierter Fehlerursache und Lösung für die Team-Prompt-Bibliothek.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Antwort neu generieren, Modell wechseln), Chat-Branching (Varianten testen)
+**Vorgehen (4 Schritte):**
+1. Den schlechten Prompt und seine Ausgabe kopieren und das Modell bitten zu diagnostizieren, welches PTCF-Element fehlt oder falsch ist.
+2. Die Diagnose auf einen einzigen Fehler eingrenzen: fehlende Persona, unklarer Task, zu wenig Kontext oder fehlendes Format.
+3. Nur das identifizierte Element ändern und die Ausgabe im selben Chat vergleichen — nicht mehrere Elemente gleichzeitig ändern.
+4. Den reparierten Prompt mit Fehlerursache als Notiz in der Prompt-Bibliothek ablegen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Debugging-Expertin. Analysiere den folgenden Prompt [Prompt einfügen] und seine fehlerhafte Ausgabe [Ausgabe einfügen]. Identifiziere das schwächste PTCF-Element. Schlage nur eine gezielte Verbesserung vor — keine Komplett-Neufassung. Format: Diagnose (1 Satz), Schwaches Element (P/T/C/F), Korrektur-Vorschlag (max. 3 Sätze)."
+**Erwartetes Artefakt:** Ein reparierter Prompt mit dokumentierter Fehlerursache, abgelegt in der Prompt-Bibliothek als Lernbeispiel.
+**Fallstricke (≥2 spezifisch):**
+- Mehrere Elemente gleichzeitig ändern → unklar, welche Änderung den Unterschied gemacht hat; immer eine Variable nach der anderen testen.
+- Das Modell gibt eine Komplett-Neufassung statt einer gezielten Korrektur → explizit auf "eine Änderung" beschränken, sonst ist der Lerneffekt verloren.
+**Anschluss-Szenario:** S-CP-031
+
+### S-CP-031 Wettbewerber-Sentiment-Analyse aus öffentlichen Quellen im Chat
+
+**Wann nutzen (Trigger):** Vor einem Strategie-Update möchte die Direktorin wissen, wie Kunden und Marktbeobachter die wichtigsten Wettbewerber wahrnehmen — anhand öffentlicher Rezensionen, LinkedIn-Posts und Fachmedien. (Quelle: sources/10 S-052, A-43)
+**Strategisches Ziel:** Öffentliche Stimmungsbilder zu Wettbewerbern verdichten, um eigene Positionierungslücken zu identifizieren — ohne proprietäre Social-Listening-Daten.
+**Hands-on Ergebnis:** Eine Sentiment-Übersicht je Wettbewerber (positiv/negativ/neutral) mit den meistgenannten Themen und einer Differenzierungsempfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Web Search aktiviert), Data Analyst (bei CSV-Export aus Rezensions-Tools)
+**Vorgehen (3 Schritte):**
+1. Web Search aktivieren und das Modell nach G2/Capterra-Rezensionen, LinkedIn-Kommentaren und Fachmedien-Artikeln zu den Wettbewerbern suchen lassen.
+2. Das Modell die Quellen nach Sentiment kategorisieren lassen: Lob, Kritik, Neutral — und die meistgenannten Themen je Kategorie extrahieren.
+3. Eine "Differenzierungslücke"-Analyse anfordern: Wo kritisieren Kunden die Wettbewerber konsistent, wo sind wir stärker?
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marktforscherin. Recherchiere via Web Search die öffentlichen Kundenstimmen zu [Wettbewerber A] auf G2, Capterra und LinkedIn (letzte 6 Monate). Kategorisiere nach Sentiment (positiv/negativ/neutral). Identifiziere die drei häufigsten Kritikpunkte. Format: Tabelle Wettbewerber | Top-3-Lob | Top-3-Kritik | Differenzierungsansatz für uns."
+**Erwartetes Artefakt:** Eine Sentiment-Tabelle je Wettbewerber mit konkreten Differenzierungsempfehlungen für die eigene Positionierung.
+**Fallstricke (≥2 spezifisch):**
+- Web Search liefert nur aktuelle Top-Ergebnisse, keine vollständigen Datensätze → als Stichprobe kommunizieren, nicht als repräsentative Studie verkaufen.
+- Sarkasmus und ironische Kommentare werden als positives Sentiment klassifiziert → das Modell explizit auf den Sarkasmus-Bias hinweisen und ambivalente Quellen manuell prüfen lassen.
+**Anschluss-Szenario:** S-CP-032
+
+### S-CP-032 Mehrsprachige Prompt-Strategie für DACH-Teams
+
+**Wann nutzen (Trigger):** Das Marketing-Team arbeitet mit Kolleginnen in Deutschland, Österreich und der Schweiz; Prompts werden gemischt auf Deutsch und Englisch verfasst, was zu inkonsistenten Outputs führt. (Quelle: A-46, sources/12 Q77)
+**Strategisches Ziel:** Eine klare Sprachstrategie für Prompts im DACH-Team etablieren, die Konsistenz erhöht und regionalen Tonalitäts-Anforderungen gerecht wird.
+**Hands-on Ergebnis:** Eine ein-seitige Sprachpolitik für Prompts mit Entscheidungsbaum und Beispiel-Prompts für drei häufige Aufgabentypen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Custom Instructions (Sprachpräferenz), Prompt Library (DE/AT/CH-Varianten)
+**Vorgehen (4 Schritte):**
+1. Die häufigsten Aufgabentypen sammeln (Brand-Text DE, E-Mail AT/CH, Übersetzung EN→DE) und für jeden die optimale Prompt-Sprache testen.
+2. Regel-Empfehlung ableiten: Fachterminologie auf Englisch in Klammern, Ausgabe immer auf Deutsch, Prompt-Sprache = Ausgabe-Sprache.
+3. Für CH-spezifische Inhalte eine Variante mit Schweizer Orthografie (kein ß, "ss") und CH-Hochdeutsch-Ton testen.
+4. Den Entscheidungsbaum und die validierten Beispiel-Prompts in der Prompt-Bibliothek unter "Sprachstrategie DACH" ablegen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DACH-Sprachstratege. Analysiere, ob ein Prompt auf Deutsch oder Englisch besser formuliert werden sollte für folgende Aufgabe: [Aufgabe]. Berücksichtige: Modell-Präferenz, Ziel-Tonalität, Ausgabe-Sprache. Format: Empfehlung (DE/EN) mit Begründung (max. 3 Sätze) und einem Beispiel-Prompt in der empfohlenen Sprache."
+**Erwartetes Artefakt:** Ein Entscheidungsbaum "Wann prompt ich auf Deutsch, wann auf Englisch" plus drei Beispiel-Prompts für Kerntasks, abgelegt in der Prompt-Bibliothek.
+**Fallstricke (≥2 spezifisch):**
+- Englische Prompts für deutsche Brand-Texte führen zu englisch eingefärbter Syntax → Ausgabe-Sprache immer explizit im Prompt erzwingen, auch wenn der Prompt auf Englisch ist.
+- Schweizer Hochdeutsch wird mit Österreichischem Deutsch verwechselt → regionalen Kontext immer explizit benennen und Few-Shot-Beispiele aus der Zielregion beifügen.
+**Anschluss-Szenario:** S-CP-033
+
+### S-CP-033 Inline-Datenvisualisierung aus Kampagnenzahlen im Chat anfordern
+
+**Wann nutzen (Trigger):** Die Direktorin hat Kampagnen-Performance-Zahlen als Tabelle im Chat und möchte sofort eine verständliche Visualisierung für das Management-Meeting — ohne in ein Reporting-Tool zu wechseln. (Quelle: sources/12 Q107)
+**Strategisches Ziel:** Rohdaten direkt im Chat in ein präsentationsfähiges Diagramm überführen, das als PNG oder in Canvas exportiert werden kann.
+**Hands-on Ergebnis:** Ein Python-generiertes Diagramm (Balken-, Linien- oder Tortendiagramm) aus den eingefügten Kampagnendaten.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Data Analyst für Python-Code-Ausführung)
+**Vorgehen (3 Schritte):**
+1. Die Daten als Tabelle oder CSV-Text in den Chat einfügen und zum Data Analyst wechseln.
+2. Den gewünschten Diagrammtyp und die Achsen explizit benennen (Zeitachse, Metrik, Farb-Encoding für Kanäle).
+3. Das generierte Diagramm herunterladen und mit einem Alt-Text versehen lassen (Barrierefreiheit, WCAG-konform, max. 125 Zeichen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Data-Analyst. Erstelle aus der folgenden Tabelle [Tabelle einfügen] ein Balkendiagramm mit Python (matplotlib). X-Achse: Monate, Y-Achse: Leads, Farbkodierung nach Kanal (Blau=SEO, Orange=Paid, Grün=Social). Titel: 'Lead-Entwicklung Q1–Q2 2026'. Exportiere als PNG. Erstelle zusätzlich einen WCAG-konformen Alt-Text (max. 125 Zeichen)."
+**Erwartetes Artefakt:** Ein PNG-Diagramm zum Download und ein barrierefreier Alt-Text, direkt für Präsentationen und E-Mails nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- Mehr als 200 Datenpunkte im Standard-Chat eingefügt → Kontextüberlastung; ab dieser Größe CSV hochladen und Data Analyst nutzen.
+- Das Modell wählt eigenständig einen unpassenden Diagrammtyp → Diagrammtyp und Achsen-Belegung immer explizit vorgeben.
+**Anschluss-Szenario:** S-CP-034
+
+### S-CP-034 Prompt-Template mit Pflichtfeldern für das Team standardisieren
+
+**Wann nutzen (Trigger):** Neue Teammitglieder schicken unvollständige Prompts ab, weil sie vergessen, Zielgruppe, Tonalität oder Format zu füllen — was zu Nachfragen und Iterationsrunden führt. (Quelle: sources/12 Q78, Q35)
+**Strategisches Ziel:** Pflichtfelder im Prompt-Template erzwingen, sodass unvollständige Prompts gar nicht erst abgesendet werden können.
+**Hands-on Ergebnis:** Mindestens drei Prompt-Templates mit Pflicht-Platzhaltern (`{{Zielgruppe}}`, `{{Tonalität}}`, `{{Format}}`) in der Team-Prompt-Bibliothek.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Prompt Library mit Variable-System), Agent-Form (für strukturierte Pflichtfelder)
+**Vorgehen (4 Schritte):**
+1. Die häufigsten Pflichtfelder identifizieren, die bei Routinetasks immer ausgefüllt werden müssen.
+2. Die Templates mit geschweiften Klammern und aussagekräftigen Platzhalter-Texten versehen: `{{Zielgruppe: z.B. "DACH-Marketing-Entscheider"}}`.
+3. Für besonders fehleranfällige Workflows auf Agent-Forms umstellen: Pflichtfelder als separate Eingabemasken konfigurieren, die vor dem Absenden ausgefüllt sein müssen.
+4. Die fertigen Templates in der Bibliothek unter dem jeweiligen Team-Ordner ablegen und beim Onboarding einführen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Architektin. Erstelle ein wiederverwendbares Prompt-Template für LinkedIn-Posts mit Pflicht-Platzhaltern für: {{Thema}}, {{Zielgruppe}}, {{Kernbotschaft}}, {{CTA}}. Ergänze hilfreiche Beispielwerte in jedem Platzhalter. Format: fertiges Template mit Anleitung für das Team in max. 5 Sätzen."
+**Erwartetes Artefakt:** Drei abgelegte Templates mit Platzhaltern und Ausfüll-Anleitung, bereit für den Team-Rollout.
+**Fallstricke (≥2 spezifisch):**
+- Zu viele Pflichtfelder → das Template wird als Bürde empfunden und umgangen; maximal vier bis fünf kritische Felder erzwingen.
+- Beispielwerte in den Platzhaltern werden ohne Anpassung abgesendet → bei der Einführung explizit darauf hinweisen, dass Beispielwerte ersetzt werden müssen.
+**Anschluss-Szenario:** S-CP-035
+
+### S-CP-035 Tagline-Ideation mit kategorisierten Varianten im Chat
+
+**Wann nutzen (Trigger):** Ein Produkt-Relaunch oder eine Submarke benötigt einen neuen Claim; die erste Chat-Runde liefert generische Vorschläge ohne echte Differenzierung. (Quelle: sources/10 S-040)
+**Strategisches Ziel:** Durch kategorisierte Ideation einen breiten Variantenraum aufspannen und die stärksten Kandidaten systematisch selektieren.
+**Hands-on Ergebnis:** 30 Tagline-Varianten in fünf Kategorien (Direkt, Metaphorisch, Provokant, Aspirational, Wortspiel), plus drei ausgearbeitete Favoriten mit Begründung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Chat-Branching (für Tiefenentwicklung der Top-3)
+**Vorgehen (4 Schritte):**
+1. Die Kernbotschaft auf einen Satz komprimieren und das Modell anweisen, 30 Varianten in exakt fünf Kategorien zu liefern — keine Selbstzensur.
+2. Die Ergebnisse bewerten lassen nach: Einprägsamkeit, Differenzierung, Übersetzbarkeit ins Englische.
+3. Die Top-3 per Chat-Branching tiefer ausarbeiten: je zwei Variationen, eine Long- und eine Short-Version.
+4. Den finalen Kandidaten einer kurzen Plagiats-Prüfung unterziehen lassen (Web Search aktivieren, bekannte Slogans ausschließen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Copywriter für Marken-Claims. Generiere 30 Taglines für [Produkt], Kernbotschaft: [ein Satz]. Teile auf in fünf Kategorien: Direkt/Klar, Metaphorisch, Provokant, Aspirational, Wortspiel — je 6 Varianten. Keine Bewertung in diesem Schritt. Format: nummerierte Liste nach Kategorie."
+**Erwartetes Artefakt:** Eine kategorisierte Liste von 30 Taglines plus drei ausgearbeitete Favoriten mit Begründung und Übersetzbarkeits-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell kämpft mit echten Wortspielen in der deutschen Sprache → für die Wortspiel-Kategorie zwei Referenz-Beispiele als Few-Shot voranstellen.
+- Tagline klingt in der Bewertungsrunde stark, ist aber ein bekannter Slogan → Web Search explizit auf bekannte Werbe-Claims prüfen lassen, bevor der Favorit kommuniziert wird.
+**Anschluss-Szenario:** S-CP-036
+
+### S-CP-036 CEO-Ghostwriting über einen Langdock-Chat-Workflow
+
+**Wann nutzen (Trigger):** Die Geschäftsführerin gibt Stichpunkte für einen LinkedIn-Thought-Leadership-Post — aber hat keine Zeit für mehrere Abstimmungsrunden, und der Ton muss authentisch wirken. (Quelle: sources/10 S-053, A-48)
+**Strategisches Ziel:** Aus rohen Stichpunkten einen authentisch klingenden CEO-Post entwickeln, der die persönliche Stimme der Führungskraft bewahrt und nicht nach KI-generiertem "Broetry" klingt.
+**Hands-on Ergebnis:** Ein fertiger LinkedIn-Post (250–400 Wörter), der die Stimme der CEO trifft und keine generischen Phrasen enthält.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Memory für CEO-Voice-Präferenzen), Wissensordner (CEO-Redestil-Referenztexte)
+**Vorgehen (4 Schritte):**
+1. Im Memory oder Wissensordner mindestens drei Referenztexte der CEO hinterlegen: frühere Posts, Reden oder Interviews, die den echten Stil zeigen.
+2. Die Stichpunkte in den Chat eingeben und das Modell anweisen, streng im Stil der Referenzen zu bleiben.
+3. Den ersten Entwurf auf generische Phrasen ("Ich freue mich sehr...", "In der heutigen schnelllebigen Zeit...") prüfen lassen und diese eliminieren.
+4. Maximal eine Überarbeitungsrunde mit konkreten Einzel-Instruktionen ("Erster Satz ist zu weich — stärker formulieren").
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Ghostwriter für unsere CEO. Formuliere aus diesen Stichpunkten [einfügen] einen LinkedIn-Post. Stil-Referenzen sind in @CEO-Voice-Ordner. Regeln: keine Emojis, kurze Absätze (max. 3 Sätze), konträrer Hook im ersten Satz, offene Frage am Ende. Verbiete Phrasen wie 'Ich freue mich' und 'In der heutigen Zeit'. Format: Post-Text, max. 350 Wörter."
+**Erwartetes Artefakt:** Ein LinkedIn-Post-Entwurf, der die CEO-Stimme authentisch trifft und ohne weitere Abstimmungsrunde abgesendet werden kann.
+**Fallstricke (≥2 spezifisch):**
+- Ohne Stil-Referenzen imitiert das Modell generisches LinkedIn-"Broetry" → mindestens drei Referenztexte sind keine Option, sondern Voraussetzung.
+- Zu viele Stichpunkte auf einmal → der Post verliert Fokus; maximal drei Kernpunkte pro Post eingeben, den Rest für folgende Posts reservieren.
+**Anschluss-Szenario:** S-CP-037
+
+### S-CP-037 Antwort-Regenerierung und Modell-Wechsel gezielt einsetzen
+
+**Wann nutzen (Trigger):** Die erste Antwort eines Modells trifft die Tonalität nicht — zu formell, zu kreativ, zu kurz — und unklar ist, ob eine Prompt-Änderung oder ein Modell-Wechsel das Problem löst. (Quelle: sources/12 Q79, Q84)
+**Strategisches Ziel:** Zwischen Prompt-Problem und Modell-Problem unterscheiden, bevor Zeit mit unnötigen Prompt-Variationen verschwendet wird.
+**Hands-on Ergebnis:** Eine dokumentierte Daumenregel: welche Tonalitätsprobleme durch Prompt-Änderung, welche durch Modell-Wechsel gelöst werden.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Antwort neu generieren, Modell-Selektor), Chat-Branching
+**Vorgehen (3 Schritte):**
+1. Den gleichen Prompt in zwei Chat-Branches parallel mit zwei verschiedenen Modellen testen (z. B. Sonnet 4.6 vs. GPT-5.2).
+2. Wenn beide Modelle denselben Fehler machen → Prompt-Problem; wenn nur eines fehlt → Modell-Problem.
+3. Die Diagnose und den validierten Fix als Notiz im Wissensordner festhalten: Wann welches Modell für welchen Ton.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Qualitätsprüferin für KI-Outputs. Vergleiche die zwei angehängten Antworten auf denselben Prompt. Diagnostiziere: Ist der Fehler im Prompt (falscher Kontext/Format) oder modell-spezifisch (Tonalitäts-Tendenz)? Format: Diagnose (Prompt-Problem / Modell-Problem / beides), ein konkreter Lösungsvorschlag."
+**Erwartetes Artefakt:** Eine Diagnose-Notiz im Wissensordner: welche Tonalitätsprobleme Modell-Wechsel erfordern und welche Prompt-Reparaturen.
+**Fallstricke (≥2 spezifisch):**
+- Modell und Prompt gleichzeitig ändern → unklar, was geholfen hat; immer nur eine Variable pro Test ändern.
+- Immer das teuerste Modell zu wechseln, um Probleme zu lösen → Tonalitätsprobleme sind meist Prompt-Probleme; erster Schritt ist immer Prompt-Diagnose.
+**Anschluss-Szenario:** S-CP-038
+
+### S-CP-038 Krisenkommunikation im Chat mit Playbook-Wissensordner
+
+**Wann nutzen (Trigger):** Eine negative Schlagzeile oder ein viraler Shitstorm erfordert innerhalb von zwei Stunden eine abgestimmte Holding-Statement-Reaktion auf mehreren Kanälen. (Quelle: sources/10 S-051, A-44)
+**Strategisches Ziel:** Geschwindigkeit und Ton-Konsistenz im Krisenfall sicherstellen, indem ein vorbereiteter Krisenordner die Reaktion rahmt statt von Null zu starten.
+**Hands-on Ergebnis:** Drei kanalspezifische Holding Statements (LinkedIn, Pressemitteilung, Interne E-Mail) innerhalb von 30 Minuten, abgestimmt auf das Krisenplaybook.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Wissensordner @Krisenplaybook), Canvas (für simultane Ausarbeitung mehrerer Formate)
+**Vorgehen (4 Schritte):**
+1. Den @Krisenplaybook-Wissensordner aktivieren, der vorab genehmigte Reaktionsmuster und Sperrwörter enthält.
+2. Die Fakten der Krise in einem Satz zusammenfassen und das Modell anweisen, ausschließlich auf diesen Fakten aufzubauen — keine spekulativen ETAs oder Versprechen.
+3. Parallel in Canvas drei Formate generieren: kurzes LinkedIn-Statement, Presseentwurf, interne Mitarbeiter-E-Mail.
+4. Alle drei Entwürfe vor dem Versand vom Rechtsteam und dem C-Level freigeben lassen — KI-Output nie ungecheckt in der Krise versenden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Krisenkommunikations-Managerin. Fakten: [ein Satz]. Nutze den @Krisenplaybook-Ordner als Rahmen. Erstelle drei Statements: (1) LinkedIn-Post max. 300 Zeichen, (2) Presseentwurf max. 150 Wörter, (3) Interne E-Mail max. 100 Wörter. Verboten: geschätzte Lösungszeiten, Schuldeingeständnisse, Superlative."
+**Erwartetes Artefakt:** Drei kanalgerechte Krisenstatements im Canvas, freigabe-fertig für das Rechtsteam.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell erfindet eine Ursache oder einen Lösungszeitpunkt → explizit anweisen: "Nenne niemals eine Ursache oder ETA, die nicht in den Fakten steht."
+- Kein Krisenplaybook-Ordner vorhanden → in der Krise ist es zu spät; den Ordner mit Reaktionsmustern, Sperrwörtern und Freigabe-Checkliste vorab anlegen.
+**Anschluss-Szenario:** S-CP-039
+
+### S-CP-039 Influencer-Briefing-Qualitätsprüfung im Chat
+
+**Wann nutzen (Trigger):** Ein Influencer-Briefing ist fertig, soll aber vor dem Versand auf Vollständigkeit, rechtliche Pflichtinformationen und Ton geprüft werden — besonders UWG-Kennzeichnungspflicht und Markenkonformität. (Quelle: A-19, sources/10 S-050)
+**Strategisches Ziel:** Das Briefing in einem Chat-Schritt auf Inhaltsvollständigkeit, Brand-Voice-Konsistenz und DACH-rechtliche Pflichten (UWG § 5a Kennzeichnung) prüfen.
+**Hands-on Ergebnis:** Eine Prüftabelle mit Status "OK / Fehlt / Korrektur nötig" für jede Pflicht-Dimension des Briefings.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (File-Attachment), Wissensordner (Brand-Guidelines, Rechtliche-Checkliste)
+**Vorgehen (3 Schritte):**
+1. Das Briefing als Anhang laden und den @Wissensordner mit der rechtlichen Checkliste verknüpfen.
+2. Das Modell anweisen, gegen drei Dimensionen zu prüfen: inhaltliche Vollständigkeit (Produktbeschreibung, Do's/Don'ts, Deadlines), Brand-Voice (Tonalität, Sperrwörter), Rechtliches (Kennzeichnungspflicht-Hinweis, DSGVO-Datenschutzhinweis).
+3. Für jede Dimension den Status ausgeben lassen und bei "Fehlt" einen konkreten Ergänzungsvorschlag generieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Influencer-Marketing-Compliance-Prüferin. Prüfe das angehängte Briefing gegen drei Dimensionen: (1) Inhalt vollständig, (2) Brand-Voice konform (@Brand-Ordner), (3) DACH-Rechtliches (UWG § 5a Kennzeichnungspflicht, DSGVO-Datenschutzhinweis). Format: Tabelle mit Spalten Dimension, Status (OK/Fehlt/Korrektur), Ergänzungsvorschlag."
+**Erwartetes Artefakt:** Eine Compliance-Tabelle für das Briefing, die als Checkliste vor dem Versand abgehakt wird.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell gibt einen allgemeinen "sieht gut aus"-Status → explizit nach fehlenden Pflichtfeldern und konkreten Lücken fragen, nicht nach Gesamturteil.
+- Rechtliche Prüfung ersetzt keine Anwaltsmeinung → die Tabelle dient als erster Filter; bei unklaren Kennzeichnungsfällen immer Rechtsrat einholen.
+**Anschluss-Szenario:** S-CP-040
+
+### S-CP-040 Produkt-Naming-Workshop im Chat mit Namenskonventions-Ordner
+
+**Wann nutzen (Trigger):** Eine neue Produktfunktion benötigt einen Namen, der in die bestehende Produktarchitektur passt — und das Team hat keine Zeit für einen externen Naming-Workshop. (Quelle: sources/10 S-041)
+**Strategisches Ziel:** Naming-Kandidaten systematisch gegen interne Konventionen und externe Verfügbarkeit prüfen, ohne den kreativen Prozess zu überadministrieren.
+**Hands-on Ergebnis:** 15 Namenskandidaten mit Begründung, einer Bewertungsmatrix und einer klaren Empfehlung — plus Hinweis auf notwendige Markenrechtsprüfung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (bestehende Produktnamen und Namenskonvention)
+**Vorgehen (4 Schritte):**
+1. Den @Wissensordner mit bestehenden Produktnamen und der Namensphilosophie verknüpfen.
+2. Das Modell 15 Kandidaten generieren lassen, die zur Architektur passen: Kürze, Aussprechbarkeit, Strukturlogik (z. B. Verb-Substantiv, Adjektiv-Noun).
+3. Die Kandidaten gegen ein Bewertungs-Framework prüfen lassen: Passung zur Architektur, Einprägsamkeit, Übersetzbarkeit, keine bestehenden Domain-Konflikte (Web Search).
+4. Einen expliziten Hinweis einfordern, dass die finale Wahl eine DPMA/EUIPO-Markenrecherche erfordert — vor jeder internen Kommunikation.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Naming-Expertin. Generiere 15 Namenskandidaten für die neue Funktion [Kurzbeschreibung]. Nutze @Namenskonventions-Ordner als Ankerpunkt. Bewerte jeden Namen nach: Architektur-Passung, Einprägsamkeit (1–5), Übersetzbarkeit ins Englische (ja/nein). Format: Tabelle Name | Begründung | Score | Englische Version. Hinweis am Ende: Markenrechtsprüfung erforderlich."
+**Erwartetes Artefakt:** Eine bewertete Kandidaten-Tabelle mit klarer Empfehlung und explizitem Markenrechts-Vorbehalt.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell kann keine Markenverfügbarkeit prüfen → immer explizit als "nicht ersetzt DPMA-Recherche" kennzeichnen; Markenrecht ist Pflicht vor Rollout.
+- Namenskandidaten klingen isoliert gut, passen aber nicht ins Portfolio → den @Namenskonventions-Ordner immer verknüpfen, sonst ignoriert das Modell die Architekturlogik.
+**Anschluss-Szenario:** S-CP-041
+
+### S-CP-041 No-KI-Liste für sensible Marketing-Aufgaben aktualisieren
+
+**Wann nutzen (Trigger):** Die Unternehmensrichtlinie für KI-Einsatz soll für das neue Geschäftsjahr aktualisiert werden — bestehende "No-KI"-Grenzen werden hinterfragt und neue Risikobereiche identifiziert. (Quelle: A-06, A-24)
+**Strategisches Ziel:** Eine regelmäßig überprüfte "No-KI"-Liste pflegen, die zwischen echten Verboten und Aufgaben mit "menschliche Endfreigabe Pflicht" unterscheidet.
+**Hands-on Ergebnis:** Eine aktualisierte "No-KI"-Liste mit ≥5 Kategorien, je einer Begründung und einem klaren Prozesshinweis (Verbot vs. menschliche Freigabe).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Web Search für regulatorische Updates), Wissensordner (aktuelle Policy-Datei)
+**Vorgehen (4 Schritte):**
+1. Die bestehende Policy aus dem Wissensordner laden und das Modell auf neue regulatorische Entwicklungen seit der letzten Version prüfen lassen (EU AI Act Meilensteine, BetrVG-Updates).
+2. Das Modell für jede bestehende Kategorie bewerten lassen: noch relevant, veraltet, neu klassifizieren.
+3. Neue Risikobereiche ergänzen, die durch veränderte Technologie entstanden sind (z. B. KI-generierte Deepfakes in Kampagnen, autonome Personalisierung ohne menschliche Kontrolle).
+4. Die Formulierung "verboten" auf "menschliche Endfreigabe Pflicht" kalibrieren, wo möglich — restriktive Verbote ohne Begründung werden umgangen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Policy-Beraterin. Aktualisiere unsere bestehende No-KI-Liste [aus @Policy-Ordner]. Prüfe auf regulatorische Neuerungen (EU AI Act 2027-Meilensteine, BetrVG § 87). Ergänze neue Risikobereiche. Format: nummerierte Liste mit Kategorie, Begründung (max. 2 Sätze), Prozess (Verbot / menschliche Endfreigabe), Änderung seit letzter Version (neu/aktualisiert/unverändert)."
+**Erwartetes Artefakt:** Eine versionierte "No-KI"-Policy-Liste im Wissensordner, mit Änderungs-Tracking für das nächste interne Review.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell nennt nur offensichtliche Verbote (Rechtsberatung) → explizit nach DACH-spezifischen Graubereichen fragen: Mitarbeiterfeedback-Auswertung (BetrVG § 87), Influencer-Disclosure (UWG § 5a).
+- Eine zu restriktive Liste blockiert sinnvollen KI-Einsatz → die Formulierung "menschliche Endfreigabe Pflicht" gibt mehr Nutzbarkeit als pauschale Verbote.
+**Anschluss-Szenario:** S-CP-042
+
+### S-CP-042 Prompt für ein schriftliches Board-Reporting zur KI-Nutzung
+
+**Wann nutzen (Trigger):** Der CFO oder die Geschäftsführung fragt nach dem konkreten ROI des Langdock-Einsatzes; die Direktorin braucht eine strukturierte, zahlenbasierte Darstellung für das nächste Board-Deck. (Quelle: A-01, A-10)
+**Strategisches Ziel:** KI-Effekte in CFO-verständliche Metriken übersetzen: Time-savings, Cost-per-Brief, Iteration-Qualität — ohne Floskeln.
+**Hands-on Ergebnis:** Ein Board-Ready KPI-Block (max. eine Folie) mit drei bis vier Metriken, je einer Bezugsgröße und einem Trend-Indikator.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Data Analyst (wenn Verbrauchsdaten als CSV vorliegen), Canvas (für Folie)
+**Vorgehen (4 Schritte):**
+1. Die verfügbaren Nutzungsdaten zusammentragen: Langdock-Workspace-Dashboard-Export (Token-Verbrauch, aktive User, Deep-Research-Runs).
+2. Das Modell die Rohdaten in drei KPI-Kategorien übersetzen lassen: Effizienz (Time-to-Brief), Qualität (Iterationen pro Entwurf), Kosten (Cost-per-Artefakt in EUR).
+3. Jeden KPI mit einem Vor-KI-Benchmark vergleichen lassen — ohne Benchmark ist der Wert bedeutungslos.
+4. Den KPI-Block in Canvas als Folie formatieren: Titel, Metrik, Delta, Daten-Quelle, Vorbehalt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Management-Consultant. Übersetze die folgenden Langdock-Nutzungsdaten [einfügen] in einen Board-Reporting-KPI-Block. Wähle max. 4 Metriken, die ein CFO versteht. Forme jede Metrik als: Bezeichnung | Wert | Vergleich Vorquartal | Interpretation (1 Satz). Füge einen Daten-Vorbehalt hinzu. Format: Markdown-Tabelle."
+**Erwartetes Artefakt:** Ein KPI-Block (max. eine Folie) mit vier Metriken in CFO-Sprache, Trend-Indikator und Daten-Vorbehalt, exportfertig für das Board-Deck.
+**Fallstricke (≥2 spezifisch):**
+- Metriken ohne Benchmark → eine isolierte Zahl ("wir haben 4.000 Prompts gesendet") sagt dem CFO nichts; immer Vorquartal oder Vor-KI-Baseline vergleichen.
+- Zu viele KPIs → Board-Slides mit mehr als vier Metriken verlieren die Botschaft; weniger ist mehr.
+**Anschluss-Szenario:** S-CP-043
+
+### S-CP-043 Visuelles Design-Briefing aus Text-Konzept im Chat generieren
+
+**Wann nutzen (Trigger):** Die Direktorin hat ein Konzept für eine Infografik oder ein Social-Bild im Kopf, kann es aber nicht in ein Designer-Briefing übersetzen — und der Designer fragt nach Spezifikationen. (Quelle: sources/10 S-043)
+**Strategisches Ziel:** Einen Text-Konzept-Input in ein strukturiertes, fachsprachliches Design-Briefing überführen, das den Designprozess beschleunigt und Revisions-Runden reduziert.
+**Hands-on Ergebnis:** Ein Design-Briefing-Dokument mit Layout-Struktur, Farb-Mood, Typografie-Hinweisen und exaktem Copy-Text — fertig für die Übergabe ans Grafik-Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Canvas (für Briefing-Dokument), Wissensordner (Corporate Design Guidelines)
+**Vorgehen (3 Schritte):**
+1. Die Rohdaten einfügen: Zweck des Visuals, Plattform (LinkedIn, Infografik, Print), Zielgruppe, die drei bis fünf Kernaussagen.
+2. Das Modell das Briefing in Designersprache übersetzen lassen — Layout-Logik (F-Pattern, Z-Pattern), Farb-Mood (warm/kalt, Energie-Level), Schrift-Hierarchie, Icon-Stil.
+3. Den Copy-Text für jedes visuelle Element verbindlich festlegen — so dass der Designer keinen inhaltlichen Spielraum mehr hat, nur gestalterischen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Creative Director. Übersetze das folgende Konzept [einfügen] in ein Grafiker-Briefing für eine LinkedIn-Infografik. Berücksichtige @Corporate-Design-Ordner. Format: Abschnitte — Ziel & Zielgruppe, Layout-Logik (Leserichtung), Farb-Mood (3 Adjektive), Typografie-Hierarchie, Icon-Stil, exakter Copy-Text je Element."
+**Erwartetes Artefakt:** Ein vollständiges Design-Briefing-Dokument im Canvas, das das Grafik-Team ohne Rückfragen umsetzen kann.
+**Fallstricke (≥2 spezifisch):**
+- Zu viel kreative Freiheit im Briefing → der Designer interpretiert, was eigentlich festgelegt war; Copy-Texte immer verbindlich ausformulieren.
+- Corporate Design Guidelines nicht verknüpft → das Modell erfindet Farben und Schriften; den @Wissensordner immer als Anker setzen.
+**Anschluss-Szenario:** S-CP-044
+
+### S-CP-044 Retargeting-Texte in einer sequentiellen Chat-Session entwickeln
+
+**Wann nutzen (Trigger):** Eine dreistufige Retargeting-Sequenz (Social Proof → Einwandbehandlung → Dringlichkeit) soll kohärent und tonkonsistent entwickelt werden, ohne dass die Stufen inhaltlich auseinanderdriften. (Quelle: sources/10 S-035)
+**Strategisches Ziel:** Den Chat-Verlauf als Kontinuitätspuffer nutzen, damit alle drei Retargeting-Stufen eine gemeinsame Erzähllinie behalten.
+**Hands-on Ergebnis:** Drei Ad-Copies (je Primary Text und Headline) für Facebook/Instagram, klar nach Funnel-Stufe differenziert.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Konversationsverlauf für Ton-Kontinuität), Canvas (für simultane Drei-Stufen-Ansicht)
+**Vorgehen (4 Schritte):**
+1. Die strategische Basis in einer Eröffnungsnachricht festlegen: Produkt-USP, Zielgruppe, maximale Dringlichkeit der Stufe 3.
+2. Stufe 1 (Social Proof) allein anfragen und Ton sowie Frame festlegen — dieser Ton wird für alle drei Stufen verbindlich.
+3. Stufen 2 und 3 im selben Chat anschließen mit explizitem Eskalationshinweis ("mehr Dringlichkeit als Stufe 2, aber kein Spam-Ton").
+4. Alle drei Texte in Canvas nebeneinander stellen und auf Ton-Konsistenz sowie Dringlichkeits-Eskalation prüfen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Funnel-Copywriter. Schreibe die erste Stufe unserer Retargeting-Sequenz für [Produkt]. Stufe 1 = Social Proof (Kundenstimmen + Vertrauen). Zielgruppe: [Segment], die die Produktseite besucht, aber nicht gekauft haben. Tonalität: warm, empathisch, kein Druck. Format: Primary Text (max. 125 Zeichen), Headline (max. 40 Zeichen)."
+**Erwartetes Artefakt:** Drei aufeinander aufbauende Ad-Copy-Sets mit konsistentem Ton und klar gestaffelter Dringlichkeit, importfertig für Meta Ads Manager.
+**Fallstricke (≥2 spezifisch):**
+- Stufe 3 klingt identisch mit Stufe 1, weil das Modell die Eskalation vergisst → explizit anweisen "20 % mehr Dringlichkeit als die vorige Stufe".
+- Dringlichkeits-Formulierungen lösen Meta-Richtlinien-Flags aus → Begriffe wie "Letzter Tag!" oder "Nur noch heute!" vermeiden und das Modell auf Meta-konforme Alternativen hinweisen.
+**Anschluss-Szenario:** S-CP-045
+
+### S-CP-045 Onboarding neuer Teammitglieder auf KI-Workflows über Chat-Starter
+
+**Wann nutzen (Trigger):** Eine neue Marketing-Managerin fängt an und soll innerhalb der ersten zwei Wochen die wichtigsten KI-Workflows eigenständig nutzen können — ohne die Direktorin mit Einzel-Erklärungen zu belasten. (Quelle: A-37, A-04)
+**Strategisches Ziel:** Einen strukturierten 14-Tage-Chat-Onboarding-Pfad etablieren, der die neue Person Schritt für Schritt an die KI-Workflows heranführt.
+**Hands-on Ergebnis:** Ein Onboarding-Plan mit vier konkreten Meilensteinen und je einem Konversations-Starter pro Meilenstein — abgelegt als Dokument im Wissensordner.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (Onboarding-Dokument), Agent-Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Die vier wichtigsten Workflows für eine neue Marketing-Managerin priorisieren (z. B. PTCF-Prompting, Prompt-Bibliothek, Brand-Guardian-Agent, Briefing-Workflow).
+2. Für jeden Workflow einen konkreten Konversations-Starter entwerfen, der in einem Durchgang bearbeitbar ist (max. 30 Minuten).
+3. Die Meilensteine zeitlich staffeln: Tag 1 (erster Chat), Tag 3 (Agenten testen), Tag 7 (Workflow nachbauen), Tag 14 (eigenen Starter beitragen).
+4. Den Plan als Dokument im Onboarding-Wissensordner ablegen und als erster Konversations-Starter des Willkommens-Agents hinterlegen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Onboarding-Designerin. Erstelle einen 14-Tage-Onboarding-Plan für eine neue Marketing-Managerin, die Langdock noch nicht kennt. Meilensteine: Tag 1, 3, 7, 14. Je Meilenstein: eine Aufgabe (max. 30 min), ein konkreter Konversations-Starter, ein Erfolgskriterium. Format: strukturierte Tabelle, Markdown."
+**Erwartetes Artefakt:** Ein 14-Tage-Onboarding-Dokument im Wissensordner mit vier Meilensteinen, je einem Konversations-Starter und einem messbaren Erfolgskriterium.
+**Fallstricke (≥2 spezifisch):**
+- Zu viel auf einmal in Tag 1 → neue Personen brauchen einen schnellen Win; Tag 1 muss auf einen einzigen, vollständig abschließbaren Task beschränkt bleiben.
+- Onboarding-Dokument liegt nur im Wissensordner, wird aber nie gefunden → als Konversations-Starter im Willkommens-Agent prominent verlinken.
+**Anschluss-Szenario:** S-CP-001
+
 ## Hinweise & Quellen-Konflikte
 
 - Keine Konflikte zwischen Extracts und Sources festgestellt. Modellnamen sind auf Stand Mai 2026; die Prompting-Logik bleibt bei neuen Releases gültig.
