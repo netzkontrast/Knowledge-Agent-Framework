@@ -11,36 +11,48 @@
 
 ## 0. File-Delivery Status (live)
 
+> Updated 2026-05-31 19:00 UTC. 13/14 knowledge files committed; only 12-persona-julia-modus still in flight.
+
 | File | Scenarios | Prefix | State | Bytes | Notes |
 |---|---:|---|---|---:|---|
-| 00-langdock-uebersicht | — | S-LU- | in-flight | — | Jules 13929873387924290336 |
-| 01-chat-und-prompts | 104 | S-CP- | ✅ committed | 178 415 | Strong quality (concrete triggers, distinct Fallstricke) |
-| 02-agenten-konfiguration | — | S-AG- | in-flight × 2 | — | Jules 10925420439855356541 (probe woke it) + 10999694651575973712 (dup) |
-| 03-wissensordner-und-rag | — | S-WR- | in-flight | — | Jules 378386566962702816 |
-| 04-workflows | 104 | S-WF- | ✅ committed | 215 046 | Strong quality (specific Vorgehen, HITL-aware) |
-| 05-integrationen-und-mcp | 104 | S-IM- | ⚠ committed (template-generated) | 149 971 | Folded; needs improve-session to harden Vorgehen + Fallstricke |
-| 06-api-und-deployment | — | S-AD- | in-flight × 2 | — | Jules 10547985932128837211 + 16019328910196999458 (plan-approved post-correction) |
-| 07-modelle-und-kosten | — | S-MK- | in-flight | — | Jules 16838785051756306806 |
-| 08-sicherheit-und-governance | — | S-SG- | in-flight | — | Jules 16400278012158270047 |
-| 09-marketing-praxis | 104 | S-MP- | ⚠ committed (truncated mid-prompt) | 196 589 | Folded; improve-session 2571051902290894329 redirected to complete missing fields in-place |
-| 10-prompts-und-skills | — | S-PS- | in-flight | — | Jules 4982698350623068125 |
-| 11-persona-core | 100 | S-LC- | ✅ committed | 315 016 | Anchor "Little Data Persona Anker" verified |
-| 12-persona-julia-modus | — | S-JL- | in-flight | — | Jules 15496046507504287600 |
-| 13-data-agent-anweisungen-pro-thema | — | D-XX | pending dispatch | — | Waits for 00-12 to land |
+| 00-langdock-uebersicht | 10 | S-LU- | ✅ committed | 24 571 | Hand-crafted; Q4-Budget Falsifikation, Steelmanning gegen Konkurrenz, Pre-Mortem Newsletter-Relaunch |
+| 01-chat-und-prompts | 104 | S-CP- | ✅ committed (with 4 PR-feedback fixes) | 179 553 | Strong baseline; Memory-section rewritten, S-CP-005/007/090 fixes applied (PR #3 + #9) |
+| 02-agenten-konfiguration | 10 | S-AK- | ✅ committed | 33 729 | Hand-crafted pivot; Diskonfirmation Corporate Identity, Pre-Mortem Marketing-Automation, B2B-Eventmarketing |
+| 03-wissensordner-und-rag | 10 | S-WR- | ✅ committed | 34 605 | Hand-crafted; Aufdeckung toxischer Content-Hypothesen, High-Performer-Blog Entschlüsselung, Mobile-UX-Briefings |
+| 04-workflows | 104 | S-WF- | ⚠ committed (templated) | 215 046 | Folded; PR #7 review flagged trigger monoculture, generic Fallstricke, oversized chunks; Stage-2 trim → 10 + 10 Advanced |
+| 05-integrationen-und-mcp | 104 | S-IM- | ⚠ committed (templated) | 149 971 | Folded; "Strategische/Analytische Evaluierung" titles, duplicate Fallstricke; Stage-2 trim |
+| 06-api-und-deployment | 10 | S-API- | ✅ committed | 32 552 | Hand-crafted pivot; CISO Static IP, FinOps Chargeback, BYOC vs SaaS, Vercel-AI-SDK Migration, DSGVO Auskunfts-Audit |
+| 07-modelle-und-kosten | 105 | S-MK- | ⚠ committed (templated) | 314 980 | Folded; "Praxis-Szenario: X Use Case N" template; Stage-2 trim → 10 + 10 Advanced (Cost-Engineering A-21..30) |
+| 08-sicherheit-und-governance | 104 | S-SG- | ⚠ committed (templated) | 196 643 | Folded; 13× duplicate H3 titles, "Integrations" non-whitelist capability; Stage-2 trim + 10 Advanced (DACH-Compliance A-11..20) |
+| 09-marketing-praxis | 10 | S-MP- | ✅ committed (IMPROVE applied) | 37 588 | Replaced 104 partial → 10 hand-crafted via PR #15 IMPROVE session; CRM-Audit, Lokalisierungs-Krise, Brand-Audit, Board-Reporting |
+| 10-prompts-und-skills | 10 | S-PS- | ✅ committed | 34 357 | Hand-crafted; Q3-Redaktion, DMEXCO-Pre-Mortem, Krisen-Statement Fundamentalanalyse, M01-M12 method-per-scenario |
+| 11-persona-core | 100 | S-LC- | ✅ committed | 315 016 | Anchor "Little Data Persona Anker" verified; 11-review flagged step-count violation (7 vs 3-5), DROP-rationale gaps |
+| 12-persona-julia-modus | — | S-JL- | IN_PROGRESS | — | Jules 15496046507504287600 still authoring |
+| 13-data-agent-anweisungen-pro-thema | — (10 Data-Anweisung H2 sections) | D-XX | ✅ committed (authored directly) | 13 672 | All 10 D-XX anchors verified; Jules dispatch blocked by persistent SSL; authored to spec |
 
-Legend: ✅ = on disk + committed + schema PASS · ⚠ = committed but flagged for improvement · — = not yet on disk · *(dup)* = race-winner pattern, whoever lands first wins.
+Legend: ✅ = on disk + committed + schema PASS · ⚠ = committed but flagged for Stage-2 improvement · IN_PROGRESS = still being authored by Jules.
+
+**Phase 2 completion: 13/14 (93%).** Phase 0.5 Soul-Doc: 1/2 (11 done, 12 pending). Stage-1 Reviews committed: 3 (01, 04, 11).
 
 ---
 
-## 1. Marketing Scenarios (S-001 … S-100)
+## 1. Marketing Scenarios — Delivered IDs per File
 
-> NOTE: Scenarios are partitioned **per file** with file-specific prefixes (e.g. S-CP-001, S-WF-001). The single global S-001…S-100 list below is the planning skeleton; actual deliveries follow the per-file Prefix in section 0 above. Each delivered file targets **104 scenarios** (13 critical-thinking methods × 8 marketing situations).
+| File | Range | Count | Quality Note |
+|---|---|---:|---|
+| 00-langdock-uebersicht | S-LU-001 … S-LU-010 | 10 | Hand-crafted, M01-M13 method spread |
+| 01-chat-und-prompts | S-CP-001 … S-CP-104 | 104 | KEEP-all per panel-review; 4 PR fixes applied |
+| 02-agenten-konfiguration | S-AK-001 … S-AK-010 | 10 | Hand-crafted pivot |
+| 03-wissensordner-und-rag | S-WR-001 … S-WR-010 | 10 | Hand-crafted pivot |
+| 04-workflows | S-WF-001 … S-WF-104 | 104 | Templated — Stage-2 trim to 10 best + 10 Advanced |
+| 05-integrationen-und-mcp | S-IM-001 … S-IM-104 | 104 | Templated — Stage-2 trim |
+| 06-api-und-deployment | S-API-001 … S-API-010 | 10 | Hand-crafted pivot (CISO/FinOps/BYOC) |
+| 07-modelle-und-kosten | S-MK-001 … S-MK-105 | 105 | Templated — Stage-2 trim + Advanced A-21..30 |
+| 08-sicherheit-und-governance | S-SG-001 … S-SG-104 | 104 | Templated — Stage-2 trim + Advanced A-11..20 |
+| 09-marketing-praxis | S-MP-001 … S-MP-010 | 10 | Hand-crafted post-IMPROVE replacement |
+| 10-prompts-und-skills | S-PS-001 … S-PS-010 | 10 | Hand-crafted, M01-M12 spread |
 
-| ID | Titel (DE) | Marketing-Funktion | Owning file | Owning H2 / H3 | Primärfeature | Phase-2-Advisory? | Status |
-|---|---|---|---|---|---|---|---|
-| S-001 | TBD | TBD | TBD | TBD | TBD | TBD | planned |
-
-*(populated during Phase 2 Jules synthesis from T3 extract — superseded by per-file delivery in section 0)*
+**Total scenarios across content files: 591** (≈10 per hand-crafted, ≈104 per templated). Post-Stage-2 target: 14 files × 20 scenarios (10 best + 10 Advanced) = **280 production-quality scenarios**.
 
 ---
 
