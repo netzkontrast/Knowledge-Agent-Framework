@@ -26,7 +26,8 @@ DEFAULT_SIDS=(
   "16019328910196999458"  # 06-api-und-deployment (dup — whichever completes first wins)
   "16838785051756306806"  # 07-modelle-und-kosten
   "16400278012158270047"  # 08-sicherheit-und-governance
-  "6159499177946303116"   # 09-marketing-praxis
+  "6159499177946303116"   # 09-marketing-praxis (first — broken, scenarios truncated)
+  "2571051902290894329"   # 09-marketing-praxis (dup — re-dispatched after truncation)
   "4982698350623068125"   # 10-prompts-und-skills
 )
 

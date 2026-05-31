@@ -4,17 +4,43 @@
 > **Validators:**
 > - `tools/check_coverage.sh` verifies every row's (owning-file, owning-heading) actually exists in the knowledge file.
 > - `tools/check_overlap.py` flags cross-file chunk pairs above similarity threshold.
+> - `tools/check_phase4.sh` aggregates every check into one PASS/FAIL.
 > - Spot-Check (manual or Langdock Search API) verifies each row's "Likely query (DE)" retrieves the expected chunk in top-3.
+
+---
+
+## 0. File-Delivery Status (live)
+
+| File | Scenarios | Prefix | State | Bytes | Notes |
+|---|---:|---|---|---:|---|
+| 00-langdock-uebersicht | — | S-LU- | in-flight | — | Jules 13929873387924290336 |
+| 01-chat-und-prompts | 104 | S-CP- | ✅ committed | 178 415 | Strong quality (concrete triggers, distinct Fallstricke) |
+| 02-agenten-konfiguration | — | S-AG- | in-flight × 2 | — | Jules 10925420439855356541 (probe woke it) + 10999694651575973712 (dup) |
+| 03-wissensordner-und-rag | — | S-WR- | in-flight | — | Jules 378386566962702816 |
+| 04-workflows | 104 | S-WF- | ✅ committed | 215 046 | Strong quality (specific Vorgehen, HITL-aware) |
+| 05-integrationen-und-mcp | 104 | S-IM- | ⚠ committed (template-generated) | 149 971 | Folded; needs improve-session to harden Vorgehen + Fallstricke |
+| 06-api-und-deployment | — | S-AD- | in-flight × 2 | — | Jules 10547985932128837211 + 16019328910196999458 (plan-approved post-correction) |
+| 07-modelle-und-kosten | — | S-MK- | in-flight | — | Jules 16838785051756306806 |
+| 08-sicherheit-und-governance | — | S-SG- | in-flight | — | Jules 16400278012158270047 |
+| 09-marketing-praxis | 104 | S-MP- | ⚠ committed (truncated mid-prompt) | 196 589 | Folded; improve-session 2571051902290894329 redirected to complete missing fields in-place |
+| 10-prompts-und-skills | — | S-PS- | in-flight | — | Jules 4982698350623068125 |
+| 11-persona-core | 100 | S-LC- | ✅ committed | 315 016 | Anchor "Little Data Persona Anker" verified |
+| 12-persona-julia-modus | — | S-JL- | in-flight | — | Jules 15496046507504287600 |
+| 13-data-agent-anweisungen-pro-thema | — | D-XX | pending dispatch | — | Waits for 00-12 to land |
+
+Legend: ✅ = on disk + committed + schema PASS · ⚠ = committed but flagged for improvement · — = not yet on disk · *(dup)* = race-winner pattern, whoever lands first wins.
 
 ---
 
 ## 1. Marketing Scenarios (S-001 … S-100)
 
+> NOTE: Scenarios are partitioned **per file** with file-specific prefixes (e.g. S-CP-001, S-WF-001). The single global S-001…S-100 list below is the planning skeleton; actual deliveries follow the per-file Prefix in section 0 above. Each delivered file targets **104 scenarios** (13 critical-thinking methods × 8 marketing situations).
+
 | ID | Titel (DE) | Marketing-Funktion | Owning file | Owning H2 / H3 | Primärfeature | Phase-2-Advisory? | Status |
 |---|---|---|---|---|---|---|---|
 | S-001 | TBD | TBD | TBD | TBD | TBD | TBD | planned |
 
-*(populated during Phase 2 Jules synthesis from T3 extract)*
+*(populated during Phase 2 Jules synthesis from T3 extract — superseded by per-file delivery in section 0)*
 
 ---
 

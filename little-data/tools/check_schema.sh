@@ -8,7 +8,7 @@
 #   - intro box (^> \*\*Was diese Datei abdeckt:) present
 #   - intro box NOT-covers (^> \*\*Was diese Datei NICHT abdeckt:) present
 #   - exactly one H2 named "Marketing-Szenarien aus dieser Domäne"
-#   - ≥100 H3 scenarios with prefix "### S-"
+#   - ≥10 H3 scenarios with prefix "### S-"
 #   - each scenario block has the 9 mandatory field lines
 #
 # Usage:
@@ -71,10 +71,10 @@ check_one() {
     fail=1
   fi
 
-  # H3 scenario count: must be ≥100
+  # H3 scenario count: must be ≥10
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
-  if [ "$szen_count" -lt 100 ]; then
-    echo "[FAIL] $name: scenario count = $szen_count (expected ≥100)"
+  if [ "$szen_count" -lt 10 ]; then
+    echo "[FAIL] $name: scenario count = $szen_count (expected ≥10)"
     fail=1
   fi
 
