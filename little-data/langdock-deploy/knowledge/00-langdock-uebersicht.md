@@ -253,4 +253,287 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Fallstricke (mind. 2 spezifisch):**
 - Deep Research liefert B2C-Trends, obwohl wir B2B agieren → Den Kontext im Prompt glasklar auf 'B2B Software-Einkäufer' einschränken.
 - Die KI findet keine aktuellen Studien und erfindet Trends → Strikte Anweisung: 'Gib nur Quellen an, die du mit einer URL belegen kannst, ansonsten markiere die Annahme als ungeprüft'.
+**Anschluss-Szenario:** S-LU-011
+
+### S-LU-011 Langdock-Workspace für eine neue Kampagnen-Saison strukturieren
+
+**Wann nutzen (Trigger):** Zu Beginn eines neuen Quartals oder vor einem großen Launch startet das Team mit leeren, unstrukturierten Chat-Historien und verliert schnell den Überblick über verschiedene Produktlinien und Kampagnen. (Quelle: sources/12 Q-001)
+**Strategisches Ziel:** Eine saubere, themenbasierte Workspace-Struktur aufbauen, bevor die operative Hektik beginnt, um den gesamten Kampagnenzyklus nachvollziehbar zu halten.
+**Hands-on Ergebnis:** Ein vollständig konfigurierter Workspace mit benannten Projekten pro Kampagne, angepinnten Priority-Chats und einem geteilten Einstiegs-Guide für das Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Library Folder / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Öffne Langdock und lege für jede aktive Kampagne oder Produktlinie ein eigenes Projekt an (z.B. "Q3-Launch-ProductX", "Brand-Refresh-2026").
+2. Lade das Kampagnen-Briefing und den Redaktionsplan als PDF in einen Library Folder, der dem Projekt zugeordnet ist.
+3. Pinne die wichtigsten laufenden Chats in der Sidebar, damit das Team ohne Suche direkten Zugriff hat.
+4. Erstelle zwei bis drei Konversations-Starter pro Projekt (z.B. "Erstelle einen Post-Entwurf für dieses Kampagnen-Thema"), damit neue Teammitglieder sofort produktiv einsteigen können.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Workspace-Administratorin für ein 15-köpfiges Marketing-Team. Schlage eine logische Projektstruktur für unsere drei parallelen Q3-Kampagnen vor. Kontext: Wir arbeiten mit LinkedIn-Content, Newsletter und bezahlten Anzeigen gleichzeitig. Format: Tabelle mit Projekt-Name, Zweck und empfohlenen Konversations-Startern."
+**Erwartetes Artefakt:** Eine Tabelle mit empfohlener Projekt-Architektur und fertigen Konversations-Starter-Texten, die direkt in die Agent-Konfiguration kopiert werden können.
+**Fallstricke (≥2 spezifisch):**
+- Zu viele Projekte angelegt, sodass der Überblick verloren geht → Maximal ein Projekt pro laufender Kampagne; thematisch übergreifende Daueraufgaben (z.B. Brand Voice) als eigenen Agenten, nicht als Projekt.
+- Konversations-Starter sind zu generisch formuliert → Jeder Starter muss Produkt, Kanal und gewünschtes Output-Format enthalten, damit er echten Mehrwert bringt.
+**Anschluss-Szenario:** S-LU-012
+
+### S-LU-012 ROI des Langdock-Setups für den CFO aufbereiten
+
+**Wann nutzen (Trigger):** Das CMO muss im nächsten Quartalsbericht dem CFO den Mehrwert des Langdock-Einsatzes in CFO-Sprache belegen — Aktivitätszahlen allein reichen nicht. (Quelle: A-01)
+**Strategisches Ziel:** KI-Effekte in finanzielle Kennzahlen übersetzen, um das Budget für die Plattform im nächsten Planungszyklus zu sichern.
+**Hands-on Ergebnis:** Ein einseitiges Canvas-Dokument mit drei bis fünf KPIs, die den Langdock-ROI in Euro und Stunden belegen, fertig für den Quartalsbericht.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Data Analyst
+**Vorgehen (4 Schritte):**
+1. Exportiere den Workspace-Usage-Report (Token-Verbrauch pro User, Anzahl Agent-Ausführungen, Workflow-Runs) aus dem Langdock-Admin-Bereich.
+2. Lade den Export als CSV in den Data Analyst und berechne das Lohnkosten-Äquivalent: Token-Verbrauch je Task × durchschnittlicher Stundensatz des Teams = eingesparte Arbeitszeit in Euro.
+3. Ergänze qualitative KPIs: Time-to-First-Draft (vor vs. nach Langdock), Anzahl Revisionsrunden pro Asset, Iterations-Geschwindigkeit.
+4. Überführe die Ergebnisse in den Canvas Editor und formatiere ein einseitiges Executive-Summary-Slide.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist CFO-Kommunikations-Expertin. Übersetze die angehängten Langdock-Nutzungsdaten in drei CFO-relevante KPIs. Kontext: Unser Team hat 12 Personen, durchschnittlicher Stundensatz 85 Euro. Format: Tabelle mit KPI-Name, Messmethode, Ist-Wert und monetärer Bewertung."
+**Erwartetes Artefakt:** Ein Canvas-Dokument mit ROI-Tabelle (Lohnkosten-Äquivalent, Time-to-Draft-Reduktion, Cost-per-Brief) als Quartalsbericht-Anhang.
+**Fallstricke (≥2 spezifisch):**
+- Token-Verbrauch wird mit tatsächlicher Zeitersparnis gleichgesetzt, ohne die Qualitäts-Review-Zeit zu berücksichtigen → Im Prompt explizit nach Netto-Ersparnis (Drafting minus Review-Aufwand) fragen.
+- Der CFO akzeptiert keine Hochrechnungen ohne Baseline-Daten → Lege vor der Langdock-Einführung einen Benchmark-Wert für "Stunden pro Asset" fest, um einen echten Vorher/Nachher-Vergleich zu ermöglichen.
+**Anschluss-Szenario:** S-LU-013
+
+### S-LU-013 Entscheidungs-Matrix: Agentur beauftragen oder intern mit Langdock lösen
+
+**Wann nutzen (Trigger):** Ein neues Content-Projekt landet auf dem Tisch. Das Team diskutiert, ob eine externe Agentur beauftragt oder die Aufgabe intern mit Langdock umgesetzt werden soll — ohne klares Kriterium. (Quelle: A-02)
+**Strategisches Ziel:** Eine objektive Entscheidungsgrundlage schaffen, die Agentureinsatz auf strategische Aufgaben konzentriert und Routineproduktion intern skaliert.
+**Hands-on Ergebnis:** Eine Entscheidungs-Matrix mit konkreten Schwellenwerten (Volumen, Komplexität, Brand-Criticality), die für zukünftige Briefings wiederverwendet werden kann.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas
+**Vorgehen (3 Schritte):**
+1. Liste im Chat alle aktuellen Marketing-Aufgaben auf und kategorisiere sie nach: Volumen (einmalig vs. wiederkehrend), strategischer Tiefe (Konzept vs. Ausführung) und Brand-Criticality (Krisenkommunikation vs. Routine-Content).
+2. Führe den PTCF-Prompt aus, um eine Entscheidungs-Matrix zu generieren, die für jede Kombination aus Volumen und Komplexität eine klare Empfehlung (Agentur/intern/hybrid) gibt.
+3. Speichere die Matrix im Canvas als wiederverwendbares Entscheidungs-Template, das bei jeder neuen Anfrage als Wissensordner-Referenz dient.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist strategische Marketing-Beraterin. Entwickle eine Entscheidungs-Matrix: Wann lösen wir Content-Aufgaben intern mit KI, wann beauftragen wir eine Agentur? Kontext: Wir haben 3 interne Texter und Langdock-Zugang. Format: 2x2-Matrix (Volumen vs. Strategische Tiefe) mit konkreten Schwellenwerten und Beispielen."
+**Erwartetes Artefakt:** Eine 2×2-Matrix im Canvas mit vier Quadranten (Intern/KI, Agentur, Hybrid, Führungs-Entscheidung) und konkreten Trigger-Kriterien pro Quadrant.
+**Fallstricke (≥2 spezifisch):**
+- Die Matrix ist zu abstrakt und gibt keine Zahlen → Verlange konkrete Schwellenwerte (z.B. "ab 20 Assets/Monat intern; unter 5 Assets mit hoher strategischer Tiefe → Agentur").
+- Brand-Crisis-Szenarien werden fälschlicherweise als intern lösbar eingestuft → Ergänze im Prompt: "Krisen-PR und Investor-Kommunikation sind immer Agentur-Pflichtig."
+**Anschluss-Szenario:** S-LU-014
+
+### S-LU-014 KI-Champions-Programm für das Marketing-Team aufsetzen
+
+**Wann nutzen (Trigger):** Die Langdock-Adoption im Team stagniert bei 30 % aktiver Nutzer. Vereinzelte Power-User nutzen das Tool intensiv, während der Rest abwartet. (Quelle: A-04)
+**Strategisches Ziel:** Interne Multiplikatoren (Champions) identifizieren und strukturiert befähigen, um die Flächenakzeptanz im Team in 60 Tagen auf über 70 % zu steigern.
+**Hands-on Ergebnis:** Ein 30-Tage-Onboarding-Plan für 5 Champions mit wöchentlichem Format, geteiltem Konversations-Starter-Katalog und einem monatlichen Demo-Ritual.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Identifiziere im Chat anhand von Nutzungsdaten die fünf aktivsten Langdock-User (je einen pro Team-Bereich: Content, Performance, Social, Brand, Analytics).
+2. Lass die KI einen 30-Tage-Aktivierungsplan für die Champions erstellen: Woche 1 Onboarding, Woche 2-3 eigene Use-Case-Erprobung, Woche 4 erstes Team-Demo.
+3. Erstelle im Canvas einen gemeinsamen Konversations-Starter-Katalog, in den jeder Champion seinen besten Prompt einbringt.
+4. Plane ein monatliches 30-Minuten-Format (AI-Office-Hour): 1 Demo, 2 offene Fragen, 1 Ankündigung neuer Starter.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Change-Management-Expertin für KI-Adoption. Erstelle einen 30-Tage-Plan für unser KI-Champions-Programm. Kontext: 5 Champions aus verschiedenen Marketing-Teams, alle bereits Langdock-Nutzer. Format: Tabelle mit Woche, Aktivität, Verantwortlichem und erwartetes Ergebnis."
+**Erwartetes Artefakt:** Ein 30-Tage-Aktivierungsplan im Canvas mit Wochenzielen, Rollenzuweisungen und einem Template für den gemeinsamen Konversations-Starter-Katalog.
+**Fallstricke (≥2 spezifisch):**
+- Champions werden ohne Freistellung nominiert und haben keine Zeit → Commitment von 2 Stunden/Woche muss vor Programmstart schriftlich von der Führungskraft bestätigt werden.
+- Der Konversations-Starter-Katalog wird nie aktualisiert → Quartalsweise Pflege-Ritual als festes Agenda-Item in der AI-Office-Hour einplanen.
+**Anschluss-Szenario:** S-LU-015
+
+### S-LU-015 Drei Quick-Win-Agenten für Marketing-Einsteiger konfigurieren
+
+**Wann nutzen (Trigger):** Das Team hat Langdock-Zugang, aber niemand weiß, womit anfangen. Der erste Eindruck entscheidet über die langfristige Adoption. (Quelle: sources/12 Q-031; sources/10 S-039)
+**Strategisches Ziel:** Drei sofort nutzbare, fehlerverzeihende Agenten bereitstellen, die ohne Vorkenntnisse echten Mehrwert liefern und die Angst vor dem leeren Eingabefeld nehmen.
+**Hands-on Ergebnis:** Drei konfigurierte Agenten (Brand Voice Check, Content-Kürzer, Meeting-Protokoll-Konverter) mit je drei Konversations-Startern, bereit zum Teilen mit dem Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Wissensordner / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Konfiguriere Agent 1 "Brand Voice Check": System-Prompt mit Tone-of-Voice-Regeln, angebundener Library Folder mit Corporate Design Manual, Konversations-Starter "Prüfe diesen Text auf Brand Voice".
+2. Konfiguriere Agent 2 "Content-Kürzer": System-Prompt für Verdichtung auf 50 % ohne Inhaltsverlust, keine Wissensordner nötig, Konversations-Starter "Kürze diesen LinkedIn-Post auf 300 Zeichen".
+3. Konfiguriere Agent 3 "Meeting-Protokoll-Konverter": System-Prompt für Action-Item-Extraktion aus Fließtext, Konversations-Starter "Extrahiere alle To-dos aus diesem Protokoll".
+4. Teile alle drei Agenten mit der Marketing-Benutzergruppe und dokumentiere die Starter-Liste im Team-Wiki.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Langdock-Onboarding-Spezialistin. Schreibe einen präzisen System-Prompt für einen Brand-Voice-Check-Agenten. Kontext: Unser Tone of Voice ist professionell, direkt, ohne Floskeln. Format: Fertiger System-Prompt unter 500 Zeichen plus drei Konversations-Starter-Texte."
+**Erwartetes Artefakt:** Drei fertige System-Prompts und neun Konversations-Starter-Texte, direkt einsetzbar in der Langdock-Agent-Konfiguration.
+**Fallstricke (≥2 spezifisch):**
+- Der Brand-Voice-Agent gibt zu vage Feedback → System-Prompt muss konkrete Beispiele für "verboten" und "erwünscht" enthalten, nicht nur abstrakte Adjektive.
+- Zu viele Konversations-Starter überfordern Anfänger → Maximal drei pro Agent; der wichtigste Anwendungsfall kommt als erster Starter.
+**Anschluss-Szenario:** S-LU-016
+
+### S-LU-016 AI-Pilot-Strategie für die ersten 90 Tage planen
+
+**Wann nutzen (Trigger):** Die Führungsebene hat das Go für Langdock gegeben. Jetzt braucht das Marketing-Team einen strukturierten 90-Tage-Rollout-Plan, bevor die operative Arbeit die Planung überholt. (Quelle: A-04; sources/12 Q-004)
+**Strategisches Ziel:** Einen messbaren Piloten mit definierten Meilensteinen, Erfolgsmetriken und einem Go/No-Go-Kriterium für den Vollrollout aufsetzen.
+**Hands-on Ergebnis:** Ein 90-Tage-Projektplan im Canvas mit drei Phasen (Onboarding, Quick Wins, Skalierung), KPIs pro Phase und einem Pre-Commitment-Log für den Vollrollout.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Definiere im Chat die drei Pilot-Ziele: Adoption-Rate, erste messbare Zeitersparnis und ein dokumentierter Use-Case für den CFO-Report.
+2. Lass die KI einen 90-Tage-Plan in drei Phasen entwickeln: Phase 1 (Tage 1-30) Onboarding der Champions, Phase 2 (Tage 31-60) Rollout der Quick-Win-Agenten, Phase 3 (Tage 61-90) Skalierung auf das Gesamt-Team.
+3. Ergänze pro Phase harte Erfolgsmetriken und einen Pre-Commitment-Checkpoint (Szenario S-LU-008).
+4. Exportiere den Plan als PDF und verteile ihn als offizielles Kick-off-Dokument.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Rollout-Strategin. Erstelle einen 90-Tage-Pilotplan für die Langdock-Einführung in einem 20-köpfigen Marketing-Team. Kontext: Budget genehmigt, 3 Champions identifiziert, kein technisches IT-Team verfügbar. Format: Tabelle mit Phase, Tage, Hauptaktivität, KPI und Go/No-Go-Kriterium."
+**Erwartetes Artefakt:** Ein 90-Tage-Projektplan im Canvas mit drei Phasen, KPI-Tabelle und einem Pre-Commitment-Log, der als offizielles Kick-off-Dokument dient.
+**Fallstricke (≥2 spezifisch):**
+- Phase 1 dauert zu lange und das Team verliert die Motivation → Quick Wins müssen innerhalb der ersten 14 Tage erlebbar sein; mindestens einen Agenten in Woche 2 aktivieren.
+- Der Plan wird nie wieder angeschaut → Wöchentliches 15-Minuten-Standup für Pilot-Status als festes Format in Teamkalender verankern.
+**Anschluss-Szenario:** S-LU-017
+
+### S-LU-017 Dateianhänge im Chat für schnelle Kampagnen-Recherche nutzen
+
+**Wann nutzen (Trigger):** Das Team erhält kurz vor einem Strategie-Meeting einen Stapel PDFs (Marktberichte, Wettbewerbsanalysen, alte Kampagnenauswertungen) und hat keine Zeit für eine manuelle Zusammenfassung. (Quelle: sources/10 S-003; sources/10 S-006)
+**Strategisches Ziel:** Große Informationsmengen in Minuten statt Stunden synthetisieren, ohne sofort komplexe Wissensordner-Strukturen aufbauen zu müssen.
+**Hands-on Ergebnis:** Eine strukturierte Zusammenfassung der wichtigsten Erkenntnisse aus bis zu 20 Dokumenten, fertig für das Strategie-Meeting.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / direkter Dateianhang
+**Vorgehen (3 Schritte):**
+1. Öffne einen neuen Chat und lade alle relevanten Dateien als direkte Anhänge hoch (maximal 20 Dateien pro Session).
+2. Führe den PTCF-Prompt aus, der die KI zur Synthese und Priorisierung der wichtigsten Erkenntnisse zwingt.
+3. Kopiere die Zusammenfassung in die Meeting-Agenda oder sende sie als Slack-Nachricht an das Team.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Senior Marketing-Analytikerin. Lies alle angehängten Dokumente und identifiziere die drei wichtigsten strategischen Erkenntnisse für unsere Q3-Kampagnenplanung. Kontext: Wir fokussieren auf B2B-Software-Käufer in der DACH-Region. Format: Drei nummerierte Punkte mit je einer konkreten Handlungsempfehlung."
+**Erwartetes Artefakt:** Eine nummerierte Liste mit drei bis fünf priorisierten Erkenntnissen und konkreten Handlungsempfehlungen, fertig für den Meeting-Einsatz.
+**Fallstricke (≥2 spezifisch):**
+- Bei mehr als 10 Dateien verliert die KI den Überblick und zitiert falsche Quellen → Priorisiere die wichtigsten fünf Dateien, wenn der Zeitdruck hoch ist; für Vollanalysen auf Wissensordner-Agenten (S-LU-015) wechseln.
+- Das 20-Datei-Limit pro Chat-Session wird übersehen → Bei größeren Dokumentenmengen einen Library Folder anlegen statt direkte Anhänge zu nutzen.
+**Anschluss-Szenario:** S-LU-018
+
+### S-LU-018 Wissensordner als Single Source of Truth für Kampagnen-Briefings einrichten
+
+**Wann nutzen (Trigger):** Briefings für Freelancer und Agenturen existieren in verschiedenen Versionen auf Google Drive, im E-Mail-Postfach und auf Sharepoint — niemand weiß, welches die aktuelle Version ist. (Quelle: sources/10 S-002; sources/12 Q-038)
+**Strategisches Ziel:** Einen einzigen, versionierten Wissensordner als verbindliche Referenz für alle Kampagnen-Briefings etablieren, auf den Agenten und das Team zugreifen.
+**Hands-on Ergebnis:** Ein strukturierter Library Folder mit aktuellem Briefing-Template, Brand-Voice-Dokument und Kampagnen-Styleguide, angebunden an den Haupt-Content-Agenten.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner / Library Folder / Agents
+**Vorgehen (4 Schritte):**
+1. Lege einen neuen Library Folder "Kampagnen-Briefings 2026" an und definiere eine klare Namenskonvention für alle Dateien (z.B. "YYYY-MM_Kampagne_Briefing_v1.pdf").
+2. Lade die aktuellen Masterdokumente hoch: Briefing-Template, Tone-of-Voice-Guide, Zielgruppen-Persona und aktuellen Kampagnenplan.
+3. Binde den Folder an den primären Content-Agenten an und teste mit einem Konversations-Starter, ob die KI korrekte Briefing-Inhalte abruft.
+4. Kommuniziere im Team: Dieser Folder ist die einzige autorisierte Quelle; alle anderen Versionen werden archiviert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Content-Operations-Managerin. Erstelle eine Namenskonvention und Ordner-Struktur für unsere Kampagnen-Briefings in Langdock. Kontext: 3 parallele Kampagnen, 5 Freelancer, quartalsweiser Update-Rhythmus. Format: Checkliste mit Dateinamen-Muster, Pflicht-Dateien pro Ordner und Update-Prozess."
+**Erwartetes Artefakt:** Eine dokumentierte Ordnerstruktur mit Namenskonvention, Pflicht-Dateiliste und einem Update-Prozess, der im Team-Wiki veröffentlicht wird.
+**Fallstricke (≥2 spezifisch):**
+- Der Folder wird schnell veraltet, weil kein Update-Owner definiert ist → Jedes Briefing-Dokument bekommt einen namentlichen Verantwortlichen und ein Verfallsdatum im Dateinamen.
+- Zu viele Dokumente (über 200) machen die Retrieval-Qualität schlechter → Archiviere Dokumente älter als 12 Monate in einem separaten "Archiv"-Folder; aktiver Folder bleibt unter 100 Dateien.
+**Anschluss-Szenario:** S-LU-019
+
+### S-LU-019 Redaktionskalender für 90 Tage mit dem Content-Agenten erstellen
+
+**Wann nutzen (Trigger):** Das Content-Team benötigt zu Quartalsstart einen vollständigen 90-Tage-Redaktionsplan, der Produkt-Launches, Branchen-Events und Content-Formate koordiniert — bisher ein 4-Stunden-Workshop. (Quelle: sources/10 S-001)
+**Strategisches Ziel:** Den Planungsaufwand für den Redaktionskalender von mehreren Stunden auf unter 30 Minuten reduzieren und dabei eine höhere strategische Kohärenz sicherstellen.
+**Hands-on Ergebnis:** Ein vollständiger 90-Tage-Redaktionskalender als Canvas-Tabelle mit Datum, Thema, Format, Zielgruppe und Funnel-Stufe.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Wissensordner / Canvas
+**Vorgehen (4 Schritte):**
+1. Öffne den Content-Agenten, der den Produkt-Roadmap-Folder und den Kampagnenplan angebunden hat.
+2. Gib Eckdaten ein: Quartals-Themen, geplante Produkt-Launches und externe Events (Messen, Feiertage).
+3. Führe den PTCF-Prompt aus, um den Kalender zu generieren, und überführe ihn direkt in den Canvas Editor.
+4. Passe im Canvas-Split-Screen Engpässe (z.B. zu viele High-Effort-Assets in einer Woche) kollaborativ mit dem Team an.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Content-Strategin. Erstelle einen 90-Tage-Redaktionsplan für ein B2B-Software-Unternehmen. Kontext: Produkt-Launch am 15. des zweiten Monats, zwei Messen im Quartal, Team hat 3 Content-Produzierende. Format: Canvas-Tabelle mit Spalten Datum, Thema, Format (Blog/Social/Newsletter), Zielgruppe und Funnel-Stufe."
+**Erwartetes Artefakt:** Eine Canvas-Tabelle mit 90 Tagen, die alle Kampagnen-Themen, Formate und Ressourcen-Zuweisungen enthält und direkt als Basis für das Team-Briefing dient.
+**Fallstricke (≥2 spezifisch):**
+- Die KI häuft aufwändige Assets (Whitepapers, Videos) in einer einzigen Woche — Produktionskapazitäten ignoriert → Im Prompt explizit eine wöchentliche Kapazitätsgrenze angeben (z.B. "max. 1 Long-Form-Asset pro Woche").
+- Nationale Feiertage und Urlaubszeiten werden nicht berücksichtigt → Füge einen Kontext-Block mit DACH-Feiertagen und Urlaubs-Perioden des Teams ein.
+**Anschluss-Szenario:** S-LU-020
+
+### S-LU-020 Deep Research für Wettbewerbs-Monitoring automatisieren
+
+**Wann nutzen (Trigger):** Das Team beobachtet Wettbewerber manuell über Google Alerts, was zeitaufwändig und inkonsistent ist. Neue Kampagnen der Konkurrenz werden oft erst Wochen später bemerkt. (Quelle: sources/10 S-006; sources/10 S-021)
+**Strategisches Ziel:** Ein strukturiertes, wiederholbares Wettbewerbs-Monitoring aufbauen, das monatlich aktuelle Erkenntnisse liefert, ohne manuellen Rechercheaufwand.
+**Hands-on Ergebnis:** Ein strukturierter Monitoring-Report (monatlich) mit den wichtigsten Wettbewerber-Aktivitäten, neuen Kampagnen und identifizierten Lücken als Canvas-Dokument.
+**Eingesetzte Langdock-Fähigkeit(en):** Deep Research Modus / Canvas / Web Search
+**Vorgehen (4 Schritte):**
+1. Aktiviere den Deep Research Modus und definiere die drei bis fünf Hauptwettbewerber als feste Recherche-Scope.
+2. Führe den strukturierten Recherche-Prompt aus: neue Kampagnen, Positionierungs-Änderungen, neue Produkt-Features, Pressemitteilungen der letzten 30 Tage.
+3. Überführe die Ergebnisse in den Canvas Editor und formatiere sie als monatlichen Monitoring-Report mit H2-Abschnitten pro Wettbewerber.
+4. Teile den Report mit dem strategischen Marketing-Team als Grundlage für die monatliche Strategie-Runde.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Analystin. Recherchiere die letzten 30 Tage der Wettbewerber-Aktivitäten für [Wettbewerber A, B, C] via Deep Research. Kontext: Wir sind im B2B-SaaS-Markt für HR-Software tätig. Format: Bericht mit H2 pro Wettbewerber, je drei Bullet Points zu neuen Kampagnen, Positioning-Änderungen und identifizierten Schwächen."
+**Erwartetes Artefakt:** Ein monatlicher Monitoring-Report im Canvas mit je drei Erkenntnissen pro Wettbewerber und einer abschließenden "Strategische Implikationen für uns"-Sektion.
+**Fallstricke (≥2 spezifisch):**
+- Deep Research liefert PR-Selbstdarstellung statt kritischer Analyse → Den Prompt explizit auf "identifiziere auch Schwächen und Kundenbeschwerden" ausrichten und Bewertungsplattformen (G2, Capterra) als Quelle nennen.
+- Der monatliche Report wird produziert, aber niemand liest ihn → Report immer mit einer "Top-3-Handlungsempfehlungen"-Box beginnen; diese Box ist das einzige Pflichtstück für die Strategie-Runde.
+**Anschluss-Szenario:** S-LU-021
+
+### S-LU-021 Vendor-Lock-in-Risiko bei Langdock strukturiert bewerten
+
+**Wann nutzen (Trigger):** Die IT oder der CFO fragt: "Was passiert, wenn wir Langdock wechseln wollen?" Das Marketing-Team hat keine Antwort und keine Exit-Strategie. (Quelle: A-03)
+**Strategisches Ziel:** Das Vendor-Lock-in-Risiko systematisch bewerten und präventive Maßnahmen (Export-Routine, Multi-Provider-Fallback) in die Governance einbauen.
+**Hands-on Ergebnis:** Ein einseitiges Risiko-Assessment mit konkreten Maßnahmen zur Lock-in-Reduktion (BYOK-Option, Wissensordner-Export-Routine, Markdown-Archivierung).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Liste im Chat alle Langdock-Abhängigkeiten auf: Wissensordner-Inhalte, Agent-Konfigurationen, Workflow-Logiken, gespeicherte Prompts.
+2. Führe einen Pre-Mortem-Prompt aus (Quelle: S-LU-003): "Was verlieren wir, wenn Langdock morgen nicht mehr verfügbar ist?"
+3. Definiere pro Abhängigkeitstyp eine Gegenstrategie: Wissensordner quartalsweise als Markdown exportieren, Agent-System-Prompts in Git versionieren, Workflow-Logik dokumentieren.
+4. Erstelle einen jährlichen "Wechsel-Drill-Kalender" als Canvas-Eintrag, der die Export-Routine und einen Fallback-Test auf einem alternativen Provider enthält.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist IT-Risiko-Beraterin mit Fokus auf SaaS-Abhängigkeiten. Bewerte unser Langdock-Lock-in-Risiko. Kontext: Wir haben 12 konfigurierte Agenten, 5 Wissensordner und 8 aktive Workflows. Format: Tabelle mit Abhängigkeitstyp, Risiko-Level (hoch/mittel/niedrig), Export-Möglichkeit und Gegenstrategie."
+**Erwartetes Artefakt:** Eine Risiko-Tabelle mit Gegenstrategie pro Abhängigkeitstyp und einem konkreten Aktionsplan für den jährlichen Wechsel-Drill.
+**Fallstricke (≥2 spezifisch):**
+- Wissensordner-Inhalte werden als exportiert angenommen, obwohl nur die Rohdateien (nicht die Embeddings) portierbar sind → Klarstellen: Embeddings sind plattformspezifisch; nur die Quelldateien sichern.
+- Der Wechsel-Drill wird nie durchgeführt → Konkrete Person und Datum im Pre-Commitment-Log (S-LU-008) festhalten; ohne Datum bleibt es eine Absicht.
+**Anschluss-Szenario:** S-LU-022
+
+### S-LU-022 Sales-Enablement-Übergabe mit Langdock strukturieren
+
+**Wann nutzen (Trigger):** Marketing produziert Briefings und Kampagnen-Assets, aber Sales nutzt sie nicht — weil die Übergabe unstrukturiert per E-Mail oder Slack passiert und der Kontext fehlt. (Quelle: A-05)
+**Strategisches Ziel:** Eine standardisierte Übergabe-Routine etablieren, die Sales-Mitarbeitende in unter 5 Minuten in jede neue Kampagne einbindet und Einwand-Handling direkt mitliefert.
+**Hands-on Ergebnis:** Ein Briefing-Template im Wissensordner und ein dedizierter Konversations-Starter für den Sales-Agent, der Q&A-Format mit Objection-Handling ausgibt.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Wissensordner / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Erstelle ein standardisiertes Kampagnen-Übergabe-Template: Kampagnenziel, Kernbotschaft, Zielgruppen-Persona, Top-3-Argumente und häufigste Einwände mit Antworten.
+2. Lade das Template als Masterdokument in den Sales-Enablement-Wissensordner.
+3. Konfiguriere einen Sales-Agenten mit Konversations-Starter: "Erkläre mir die aktuelle Kampagne in 5 Minuten" → Output: kompakte Briefing-Zusammenfassung mit Einwand-Handling.
+4. Teste den Agenten mit drei echten Sales-Fragen und überarbeite das Template auf Basis der Lücken.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Sales-Enablement-Expertin. Erstelle ein Kampagnen-Briefing-Template, das Sales-Mitarbeitende in unter 5 Minuten auf eine neue Marketing-Kampagne vorbereitet. Kontext: B2B-Software, Sales-Cycle 3-6 Monate, Haupteinwände sind Preis und Implementierungsaufwand. Format: Strukturiertes Template mit Abschnitten Kampagnenziel, Kernbotschaft, Top-3-Argumente und Einwand-Handling-Tabelle."
+**Erwartetes Artefakt:** Ein standardisiertes Briefing-Template plus ein fertiger Konversations-Starter-Text für den Sales-Agenten, direkt einsetzbar in der Langdock-Konfiguration.
+**Fallstricke (≥2 spezifisch):**
+- Das Einwand-Handling ist zu generisch und deckt nicht die echten Kundenfragen ab → Interview vorher drei Sales-Mitarbeitende und integriere die Top-5 echten Einwände aus CRM-Notizen.
+- Sales nutzt den Agenten nicht, weil sie nicht wissen, dass er existiert → Onboarding-Ritual: Jede neue Kampagne wird mit einem Slack-Link zum Agenten-Konversations-Starter an den Sales-Kanal kommuniziert.
+**Anschluss-Szenario:** S-LU-023
+
+### S-LU-023 AI-Ethik-Leitlinien für das Marketing-Team erstellen
+
+**Wann nutzen (Trigger):** Das Team setzt KI zunehmend für Content-Erstellung, Personalisierung und Wettbewerbs-Analyse ein — ohne klare interne Regeln, was erlaubt ist und was nicht. (Quelle: A-06; A-50)
+**Strategisches Ziel:** Einen praxistauglichen KI-Ethik-Kompass entwickeln, der klar definiert, welche Marketing-Aufgaben nie durch KI gehen dürfen, und der EU-AI-Act-Anforderungen vorwegnimmt.
+**Hands-on Ergebnis:** Ein einseitiger KI-Ethik-Leitfaden für das Marketing-Team mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit) und einer konkreten "Nie-KI"-Liste.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas
+**Vorgehen (4 Schritte):**
+1. Erstelle im Chat eine erste Rohversion der "Nie-KI"-Liste: Strategie-Entscheidungen, Brand-Krisenkommunikation, Mitarbeiter-Feedback, Kompensations-Verhandlungen, Investor-Kommunikation.
+2. Führe einen Falsifikations-Prompt aus: "Welche dieser Verbote sind übertrieben und warum könnten sie die Effizienz unnötig einschränken?" — um die Liste zu schärfen.
+3. Ergänze die vier Ethik-Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit) mit je einem konkreten Marketing-Beispiel pro Säule.
+4. Formuliere den finalen Leitfaden im Canvas als einseitigen 1-Pager, der im Team-Wiki und im Onboarding-Material verankert wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Ethik-Beraterin für ein B2B-Marketing-Team. Erstelle einen praxistauglichen KI-Ethik-Kompass. Kontext: Team nutzt KI für Content, Analyse und Personalisierung; EU AI Act tritt 2026-2027 in Kraft. Format: 1-Pager mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit), je einem Praxis-Beispiel und einer Nie-KI-Liste mit fünf Punkten."
+**Erwartetes Artefakt:** Ein einseitiger KI-Ethik-Leitfaden im Canvas mit vier Säulen, Praxis-Beispielen und einer verbindlichen "Nie-KI"-Liste für das Marketing-Team.
+**Fallstricke (≥2 spezifisch):**
+- Der Leitfaden ist zu abstrakt und gibt dem Team keine Handlungssicherheit → Jede Säule muss mit einem "Wenn ... dann ..."-Beispiel konkretisiert sein, das direkt aus dem eigenen Marketing-Alltag stammt.
+- Die "Nie-KI"-Liste wird nie aktualisiert → Quartalsweise Review als festes Agenda-Item in der AI-Office-Hour (S-LU-014) einplanen; EU-AI-Act-Fristen sind im Kalender zu verankern.
+**Anschluss-Szenario:** S-LU-024
+
+### S-LU-024 Wöchentliche AI-Nutzungs-Kennzahlen für das Board-Deck aufbereiten
+
+**Wann nutzen (Trigger):** Das Board fragt in jedem Meeting nach dem Stand der KI-Transformation — das Marketing-Team liefert bisher nur qualitative Eindrücke statt messbarer KPIs. (Quelle: A-10)
+**Strategisches Ziel:** Drei Board-taugliche AI-KPIs etablieren, die monatlich automatisch aus dem Langdock-Workspace gezogen und in einem standardisierten Slide-Template aufbereitet werden.
+**Hands-on Ergebnis:** Ein Canvas-Template für das monatliche Board-Slide mit drei KPIs (AI-Assisted-Output-Ratio, Cost-per-Brief, Time-from-Brief-to-Draft) und einer Trend-Tabelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Canvas / Workflows
+**Vorgehen (4 Schritte):**
+1. Definiere die drei KPIs mit Messlogik: AI-Assisted-Output-Ratio (Anteil KI-gestützter Assets an Gesamt-Output), Cost-per-Brief (Gesamtkosten Langdock ÷ Anzahl produzierter Briefings), Time-from-Brief-to-Draft (Durchschnittliche Stunden von Briefing-Erstellung bis erstem Entwurf).
+2. Exportiere die Langdock-Nutzungsdaten monatlich als CSV und lade sie in den Data Analyst.
+3. Lass den Data Analyst die drei KPIs berechnen und als Trend-Tabelle (Monat-über-Monat) ausgeben.
+4. Überführe die Ergebnisse in ein Canvas-Board-Slide-Template, das mit jeder monatlichen Aktualisierung nur die Zahlen erfordert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marketing-Analytics-Expertin mit Board-Reporting-Erfahrung. Berechne die drei AI-KPIs aus der angehängten CSV. Kontext: Monat Mai 2026, 12 Team-Mitglieder, 45 produzierte Assets, Langdock-Kosten 480 Euro. Format: Tabelle mit KPI-Name, Formel, Ist-Wert Mai, Vormonat-Vergleich und Trend-Pfeil."
+**Erwartetes Artefakt:** Eine Canvas-Slide-Vorlage mit drei berechneten KPIs, Trend-Tabelle und einem Platzhalter-Text für die Board-Interpretation.
+**Fallstricke (≥2 spezifisch):**
+- Die KPIs werden ohne Baseline-Daten gestartet und der Trend ist nichtssagend → KPI-Messung beginnt am ersten Tag der Langdock-Nutzung; rückwirkende Erhebung ist meist unmöglich.
+- Das Board akzeptiert nur Umsatz-relevante Kennzahlen → Ergänze optional eine vierte Metrik: "Durch KI-beschleunigte Assets, die zu X Euro Umsatz-Pipeline beigetragen haben" — nur wenn Attribution sauber messbar ist.
+**Anschluss-Szenario:** S-LU-025
+
+### S-LU-025 Langdock-Governance-Rahmen für den Workspace-Admin aufsetzen
+
+**Wann nutzen (Trigger):** Der Workspace wächst auf 20+ Nutzer und 10+ Agenten. Ohne klare Governance entstehen doppelte Agenten, veraltete Wissensordner und unkontrollierter Token-Verbrauch. (Quelle: A-35; A-36; sources/12 Q-036)
+**Strategisches Ziel:** Einen schlanken Governance-Rahmen einführen, der Verantwortlichkeiten für Agenten, Wissensordner und Budget klar regelt, ohne die Agilität des Teams einzuschränken.
+**Hands-on Ergebnis:** Ein Governance-Dokument mit RACI-Modell für Agenten-Ownership, Quartals-Review-Prozess für Wissensordner und einem Budget-Eskalationsplan bei Token-Überschreitung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Erstelle im Chat ein Inventar aller bestehenden Agenten und Wissensordner: Name, Zweck, letztes Update, aktueller Owner.
+2. Führe den PTCF-Prompt aus, um ein RACI-Modell für jeden Agenten zu generieren: Owner (Konfiguration), Approver (Brand-Compliance), Consulted (Wissens-Quelle), Informed (Team-Nutzung).
+3. Definiere einen Quartals-Review-Prozess für Wissensordner: Prüfe Aktualität, archiviere veraltete Dokumente, aktualisiere System-Prompts bei Produkt-Änderungen.
+4. Lege Budget-Schwellenwerte fest: 80-%-Warnschwelle im Workspace-Admin, Eskalationsplan bei Überschreitung, monatlicher Token-Report an den CMO.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Workspace-Governance-Beraterin für ein 25-köpfiges Marketing-Team. Erstelle ein RACI-Modell für unsere 12 Langdock-Agenten. Kontext: Team-Struktur ist Content (5 Personen), Performance (4), Social (3), Brand (3), Analytics (2). Format: Tabelle mit Agent-Name, Owner, Approver, Consulted, Informed und Quartals-Review-Datum."
+**Erwartetes Artefakt:** Ein vollständiges Governance-Dokument im Canvas mit RACI-Tabelle für alle Agenten, Quartals-Review-Checkliste für Wissensordner und Budget-Eskalationsplan.
+**Fallstricke (≥2 spezifisch):**
+- Das RACI-Modell wird einmalig erstellt und nie gepflegt → Jeder neue Agent bekommt das RACI-Template als Pflicht-Schritt in der Konfigurations-Checkliste; kein Agent ohne Owner.
+- Token-Budget-Limits werden zu restriktiv gesetzt und bremsen produktive Nutzung → Starte mit einem großzügigen Limit (120 % des erwarteten Verbrauchs) und justiere nach drei Monaten Nutzungsdaten.
 **Anschluss-Szenario:** S-LU-001
