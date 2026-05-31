@@ -851,3 +851,385 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 - Alt-Texte für dekorative Bilder (reine Design-Elemente ohne Informationsgehalt) generieren lassen → dekorative Bilder müssen ein leeres alt="" erhalten, keinen beschreibenden Text; der System-Prompt muss explizit unterscheiden zwischen informativen und dekorativen Bildern.
 - KI-generierten Alt-Text ohne Human-Review direkt in das CMS übertragen → bei komplexen Infografiken oder Bildern mit Text interpretiert das Modell den Inhalt; kritische Inhalte (Preisangaben, medizinische Informationen) immer manuell prüfen.
 **Anschluss-Szenario:** S-AK-041
+
+### S-AK-041 Saisonaler Kampagnen-Agent: Black-Friday- und Weihnachtskampagnen systematisch vorbereiten
+
+**Wann nutzen (Trigger):** Es ist Anfang Oktober, und die Marketing-Direktorin stellt fest, dass die Agentur jedes Jahr dieselben generischen Briefings für Black Friday und Weihnachten bekommt — ohne konsistente Tonalität, ohne Vorjahres-Lernkurve, mit vier überflüssigen Review-Runden. (Quelle: S-046, julia-lens A-38)
+**Strategisches Ziel:** Einen saisonalen Kampagnen-Agenten konfigurieren, der ein dediziertes Wissensordner-Set (Vorjahres-Ergebnisse, saisonale Tonalitätsvorgaben, Kanal-Checklisten) nutzt und Briefings ab Anfang Oktober deterministisch produziert.
+**Hands-on Ergebnis:** Ein Saisonkampagnen-Agent mit Wissensordner-Set (Vorjahres-Briefs + Saisonkalender + Tonalitätsvorgaben) und 3 Konversations-Startern je Saison.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Saisonkampagnen-Set) + Konversations-Starter + Form-Input (Kampagnenparameter)
+**Vorgehen (4 Schritte):**
+1. Lege einen Wissensordner "Saisonkampagnen" an; lade drei Dokumente hoch: (a) Vorjahres-Kampagnen-KPIs (anonymisiert, CSV → Markdown konvertiert), (b) Saisonale Tonalitätsvorgaben (Black Friday: Dringlichkeit + Knappheit; Weihnachten: Wärme + Dankbarkeit), (c) Kanal-Checkliste pro Format.
+2. Konfiguriere Form-Input mit Pflichtfeldern: `{{saison}}` (Dropdown: Black-Friday / Weihnachten / Neujahr), `{{kanal}}`, `{{kernbotschaft}}`, `{{budget_klasse}}`.
+3. Erstelle 3 Konversations-Starter: "[BF] Black-Friday-Briefing starten", "[XMAS] Weihnachtskampagne planen", "[Q1] Neujahrs-Reaktivierung aufsetzen".
+4. Teste mit dem Vorjahres-Brief als Eingabe; prüfe ob der Agent die dokumentierten Lernkurven (was hat funktioniert, was nicht) aus dem Wissensordner korrekt einbezieht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Saisonkampagnen-Stratege [Persona]. Erstelle ein vollständiges Kampagnen-Briefing für unsere Black-Friday-Aktion [Task]. Kontext: B2B-SaaS, Zielgruppe IT-Entscheider Mittelstand, Kanal LinkedIn + E-Mail, Budget mittel — nutze die Vorjahresergebnisse und saisonalen Richtlinien aus dem Wissensordner [Context]. Format: Briefing mit Sections Ziel, Kernbotschaft, Tonalität, 3 Headline-Varianten, KPI-Ziele [Format]."
+**Erwartetes Artefakt:** Ein vollständiges, wissensordner-gestütztes Kampagnen-Briefing mit dokumentierten Vorjahres-Lernkurven in unter 10 Minuten.
+**Fallstricke (≥2 spezifisch):**
+- Saisonkalender als ein einziges langes PDF hochladen → Chunks werden zu groß und enthalten gemischte Saisons; jede Saison in eine separate MD-Datei aufteilen.
+- Form-Dropdown für `{{saison}}` mit mehr als 5 Optionen → Team wählt falsche Saison und erhält falsches Tonalitätsprofil; maximal 4 klare Saison-Optionen verwenden.
+**Anschluss-Szenario:** S-AK-042
+
+### S-AK-042 Juristischer Review-Agent für Marketing-Texte: Internes Legal-Clearance-Protokoll
+
+**Wann nutzen (Trigger):** Die Rechtsabteilung blockiert regelmäßig Kampagnen-Launch, weil Marketing-Texte Superlative wie "Europas führende Lösung", ungeprüfte Garantieversprechen oder DSGVO-Verweise enthalten — ein koordinierter Pre-Launch-Check fehlt. (Quelle: 12 Q44, julia-lens A-13)
+**Strategisches Ziel:** Einen Legal-Review-Agenten konfigurieren, der Marketing-Texte auf wettbewerbsrechtliche Risiken (UWG § 5, Irreführung), ungeprüfte Superlative und DSGVO-Hinweispflichten vorprüft, bevor die Rechtsabteilung formal involviert wird.
+**Hands-on Ergebnis:** Ein Legal-Pre-Check-Agent mit Risiko-Score-Ausgabe (Grün/Gelb/Rot) und einem konkreten Kommentar pro markierter Passage, der die Zahl der Rechtsabteilungs-Zyklen messbar reduziert.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (UWG-Risikoregeln, DSGVO-Pflichten, firmeneigene Do's-and-Don'ts-Liste) + Form-Input (Texttyp, Zielmarkt)
+**Vorgehen (4 Schritte):**
+1. Erstelle Wissensordner "Legal-Marketing-Richtlinien" mit 3 Dokumenten: (a) UWG-Risikokatalog (verbotene Superlative, Irreführungsfälle), (b) DSGVO-Pflichten in Werbetexten (Cookie-Hinweise, Datenschutzerklärungen), (c) firmeneigene Liste sensibler Begriffe (mit Rechtsabteilung abgestimmt).
+2. Konfiguriere System-Prompt mit Risiko-Score-Logik: "Gib für jede markierte Passage einen Status: GRÜN (kein Risiko), GELB (Formulierung anpassen), ROT (Rechtsabteilung einbeziehen). Begründe jeden Eintrag mit Paragrafenreferenz aus dem Wissensordner."
+3. Ergänze Form-Input mit Pflichtfeldern: `{{texttyp}}` (Anzeige / E-Mail / Landingpage / PR), `{{zielmarkt}}` (DE / AT / CH / EU).
+4. Teste mit 3 Texten: (a) einem sauberen Text (Erwartung: alles GRÜN), (b) einem Text mit Superlativ (Erwartung: GELB mit Korrekturvorschlag), (c) einem Text mit falscher Garantie (Erwartung: ROT mit Verweis auf UWG § 5).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Legal-Pre-Check-Spezialist für Marketing-Kommunikation [Persona]. Prüfe den folgenden Werbetext auf wettbewerbsrechtliche und datenschutzrechtliche Risiken [Task]. Kontext: Text für LinkedIn-Anzeige, Zielmarkt Deutschland, nutze den UWG-Risikokatalog und die DSGVO-Richtlinien aus dem Wissensordner [Context]. Format: Tabelle mit Spalten 'Passage', 'Status (GRÜN/GELB/ROT)', 'Risiko', 'Empfohlene Korrektur' [Format]."
+**Erwartetes Artefakt:** Eine Risiko-Tabelle (GRÜN/GELB/ROT) mit Paragrafenreferenzen pro markierter Passage, bereit zur Vorlage bei der Rechtsabteilung.
+**Fallstricke (≥2 spezifisch):**
+- Den Legal-Agent als verbindliche Rechtsberatung positionieren → er ist ein Pre-Screening-Tool, kein Ersatz für Rechtsanwälte; Disclaimer im System-Prompt und in der Agent-Beschreibung sind Pflicht.
+- Firmeneigene Verbotsliste nicht von der Rechtsabteilung gegenlesen lassen → Eigeninterpretation von UWG-Risiken kann falsch sein; die Liste muss initial und quartalsweise von Legal freigegeben werden.
+**Anschluss-Szenario:** S-AK-043
+
+### S-AK-043 Mehrsprachiger Agent-Stack: Konfiguration für DE/EN/FR ohne Qualitätsverlust
+
+**Wann nutzen (Trigger):** Das Marketing-Team bespielt drei Märkte (DACH, UK/US, Frankreich), nutzt aber denselben deutschen Agenten für alle drei Sprachen — die englischen und französischen Outputs sind off-brand, weil der System-Prompt nur deutsche Tonalitätsvorgaben enthält. (Quelle: S-009, julia-lens A-46)
+**Strategisches Ziel:** Drei dedizierte Sprach-Instanzen desselben Basisagenten konfigurieren (DE, EN, FR), die jeweils einen sprachspezifischen Wissensordner nutzen und als zusammenhängende Subagenten-Familie funktionieren.
+**Hands-on Ergebnis:** Drei konfigurierte Sprach-Agenten (DE/EN/FR) mit eigenem System-Prompt und Wissensordner sowie einem Orchestrator-Agenten, der Anfragen an die richtige Sprachinstanz delegiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent (×4) + Subagents-Fähigkeit + Wissensordner (je Sprache) + Konversations-Starter
+**Vorgehen (5 Schritte):**
+1. Erstelle drei Wissensordner: "Brand-Voice-DE", "Brand-Voice-EN", "Brand-Voice-FR" — je mit Tonalitätsdokument, 5 Beispieltexten und einer Liste kultureller Tabu-Themen pro Markt.
+2. Konfiguriere drei Basis-Agenten (Content-DE, Content-EN, Content-FR) mit identischer Struktur aber sprachspezifischem System-Prompt und Wissensordner; jeder Agent darf ausschließlich in seiner Zielsprache antworten.
+3. Erstelle einen Orchestrator-Agenten "Multilingual-Content-Dispatcher"; aktiviere die Subagents-Fähigkeit; System-Prompt: "Erkenne die gewünschte Ausgabesprache aus der Anfrage und delegiere an Content-DE, Content-EN oder Content-FR."
+4. Teste Delegation: schreibe drei identische Briefings auf Deutsch, Englisch und Französisch; prüfe ob der Dispatcher korrekt delegiert und ob jeder Sprach-Agent den lokalen Wissensordner nutzt.
+5. Definiere Fallback-Regel für unklare Sprachen: "Bei unklarer Sprache: immer auf Deutsch zurückfragen."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Multilingual-Content-Dispatcher [Persona]. Erstelle eine LinkedIn-Post-Reihe zu unserem Produkt-Launch für alle drei Märkte [Task]. Kontext: DACH (formell-souverän), UK (conversational-professional), France (nuancé, moins direct) — delegiere an die jeweiligen Sprach-Agenten [Context]. Format: Drei getrennte Blöcke mit Sprachkennzeichnung [Format]."
+**Erwartetes Artefakt:** Drei marktgerechte Posts (DE/EN/FR) vom Dispatcher-Agenten, korrekt aus den Sprach-Subagenten zusammengeführt.
+**Fallstricke (≥2 spezifisch):**
+- Alle drei Sprachvarianten in einen einzigen Wissensordner laden → bei Retrieval zieht die semantische Suche DE-Chunks für eine FR-Anfrage; separate Ordner pro Sprache sind technisch nicht optional.
+- Französischen Agenten ohne Kenntnis der kulturellen Direktheitsnorm konfigurieren → FR-Marketing ist sprachlich indirekter als DE; ohne explizite kulturelle Kalibrierung klingt der Output wie schlechtes Übersetzungsdeutsch.
+**Anschluss-Szenario:** S-AK-044
+
+### S-AK-044 Bildunterschriften-Agent: Automatische Caption-Generierung für Social-Media-Assets
+
+**Wann nutzen (Trigger):** Das Social-Media-Team produziert täglich 5–10 Bilder für LinkedIn, Instagram und die Website, verbringt aber im Schnitt 20 Minuten pro Bild mit der Formulierung von plattformgerechten Bildunterschriften — ein skalierbarer Agent fehlt. (Quelle: S-047, S-293 Vision-Agent)
+**Strategisches Ziel:** Einen Caption-Agenten konfigurieren, der ein hochgeladenes Bild via Vision analysiert, den Kampagnenkontext aus dem Form-Input aufnimmt und plattformspezifische Captions (LinkedIn, Instagram, Alt-Text) in einem Durchgang liefert.
+**Hands-on Ergebnis:** Ein Caption-Agent mit Vision-Fähigkeit, Form-Input (Plattform, Ton, Kampagnenkontext) und drei Ausgabe-Blöcken pro Bild (LinkedIn-Caption, Instagram-Caption, Alt-Text).
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Image Generation (Vision-Analyse) + Form-Input + Wissensordner (Plattform-Richtlinien)
+**Vorgehen (4 Schritte):**
+1. Binde Wissensordner mit Plattform-Caption-Richtlinien an: LinkedIn (max. 1.300 Zeichen, professionell, 3 Hashtags), Instagram (max. 150 Zeichen Hook + 3–5 Hashtags + CTA), Alt-Text (max. 125 Zeichen, WCAG-konform aus S-AK-040).
+2. Konfiguriere Form-Input: `{{plattform}}` (Mehrfachauswahl: LinkedIn / Instagram / Alt-Text), `{{kampagnenkontext}}` (1 Satz), `{{tonalitaet}}` (Dropdown: Sachlich / Inspirierend / Humorvoll).
+3. System-Prompt: "Analysiere das angehängte Bild mit Vision. Nutze den Kampagnenkontext und die Plattform-Richtlinien aus dem Wissensordner. Generiere für jede gewählte Plattform einen separaten Ausgabe-Block."
+4. Teste mit 4 Bildtypen (Event-Foto, Produktscreenshot, Infografik, Abstract); prüfe ob die Caption das tatsächlich Sichtbare beschreibt und nicht den Kampagnenkontext halluziniert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Media-Caption-Spezialist [Persona]. Analysiere das angehängte Bild und erstelle passende Bildunterschriften [Task]. Kontext: Q3-Launch-Kampagne für unser neues Analyse-Dashboard, Tonalität sachlich-professionell, Zielgruppe IT-Entscheider [Context]. Format: Drei getrennte Blöcke — LinkedIn-Caption (inkl. 3 Hashtags), Instagram-Caption (inkl. Hook + CTA), Alt-Text (max. 125 Zeichen) [Format]."
+**Erwartetes Artefakt:** Drei plattformgerechte Ausgabe-Blöcke pro Bild (LinkedIn / Instagram / Alt-Text) in unter 60 Sekunden.
+**Fallstricke (≥2 spezifisch):**
+- Caption-Agent ohne Negativbeispiele im Wissensordner konfigurieren → das Modell neigt zu generischen Sätzen wie "Entdecke unsere Lösung"; 5 konkrete "So nicht"-Beispiele im Wissensordner sind Pflicht.
+- Vision-Fähigkeit aktivieren, ohne sie im System-Prompt explizit anzuweisen → der Agent generiert Captions aus dem Kampagnenkontext-Text, ohne das Bild tatsächlich zu analysieren; die Anweisung "Analysiere das angehängte Bild" ist im Prompt zwingend erforderlich.
+**Anschluss-Szenario:** S-AK-045
+
+### S-AK-045 Human-Handoff via Slack-Notification: Agent eskaliert an menschlichen Reviewer
+
+**Wann nutzen (Trigger):** Der Legal-Pre-Check-Agent aus S-AK-042 markiert einen Text als ROT — aber niemand bemerkt die Eskalation, weil der Output im Langdock-Chat verschwindet und der Rechtsberater kein Langdock-Account hat. (Quelle: Deployment-Surfaces-Kapitel, julia-lens A-32)
+**Strategisches Ziel:** Einen Handoff-Mechanismus einrichten, bei dem der Agent nach einer ROT-Markierung automatisch eine strukturierte Slack-Benachrichtigung an den zuständigen Reviewer sendet — ohne dass die nutzende Person manuell eskalieren muss.
+**Hands-on Ergebnis:** Ein Agenten-Workflow mit Slack-Notification-Trigger bei ROT-Eskalation, der dem Reviewer alle relevanten Informationen (Text-Auszug, Risiko-Begründung, Ansprechpartner) in einer einzigen Slack-Nachricht liefert.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Slack-Integration (Deployment-Surface) + Wissensordner (Eskalations-Matrix)
+**Vorgehen (4 Schritte):**
+1. Konfiguriere die Slack-Integration im Langdock-Workspace: verbinde den Workspace mit dem dedizierten Slack-Kanal "#legal-marketing-escalation"; teste die Verbindung mit einer manuellen Test-Nachricht.
+2. Ergänze den System-Prompt des Legal-Agents um eine Eskalations-Anweisung: "Wenn der Status einer Passage ROT ist, formatiere eine Slack-Eskalationsnachricht: '@legal-team ROT-Eskalation: [Text-Auszug max. 50 Zeichen], Risiko: [1 Satz], Anfrager: [Nutzerin], Dringlichkeit: [hoch/mittel]."
+3. Lege im Wissensordner eine Eskalations-Matrix an: welche ROT-Typen erfordern sofortige Reaktion (<2h), welche können bis zum nächsten Werktag warten; verknüpfe mit konkreten Slack-User-Tags.
+4. Teste End-to-End: reiche einen Text mit einem bewussten UWG-§5-Verstoß ein; prüfe ob die Slack-Nachricht im richtigen Kanal mit korrektem Inhalt erscheint.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Legal-Eskalations-Koordinator [Persona]. Sende nach diesem ROT-Fund eine strukturierte Slack-Eskalation an #legal-marketing-escalation [Task]. Kontext: Markierter Text enthält Superlativ 'Europas beste Lösung' — UWG § 5 Risiko hoch, Anfragerin Julia Lenz, Launch-Deadline in 48h [Context]. Format: Slack-Block mit Feldern Risikotyp, Text-Auszug, Begründung, Deadline, Anfrager — kein Fließtext [Format]."
+**Erwartetes Artefakt:** Eine strukturierte Slack-Eskalationsnachricht im richtigen Kanal mit allen für den Reviewer nötigen Informationen ohne manuelle Weiterleitung.
+**Fallstricke (≥2 spezifisch):**
+- Slack-Notification für alle GELB-Markierungen aktivieren → Reviewer-Kanal wird mit Low-Priority-Meldungen überflutet; ausschließlich ROT-Status triggert automatische Notifications; GELB bleibt im Langdock-Output.
+- Slack-Integration mit persönlichem Token statt Bot-Token konfigurieren → bei Personalwechsel bricht die Integration; immer einen dedizierten Slack-Bot-Account für Langdock-Integrationen anlegen.
+**Anschluss-Szenario:** S-AK-046
+
+### S-AK-046 UTM-Parameter-Agent: Automatisch getaggte Kampagnen-URLs generieren
+
+**Wann nutzen (Trigger):** Das Performance-Team beklagt sich wöchentlich über fehlende oder inkonsistent aufgebaute UTM-Tags in Kampagnen-Links — utm_source, utm_medium und utm_campaign sind mal gross, mal klein, mal komplett falsch, was das GA4-Reporting zerstört. (Quelle: S-056, 10 S-046)
+**Strategisches Ziel:** Einen UTM-Builder-Agenten konfigurieren, der auf Basis einer firmeneigenen UTM-Taxonomie (Konvention für utm_source, utm_medium, utm_campaign, utm_content, utm_term) getaggte URLs generiert und gleichzeitig eine Dokumentations-Tabelle für das Kampagnen-Tracking pflegt.
+**Hands-on Ergebnis:** Ein UTM-Builder-Agent mit Form-Input (Basis-URL + Kampagnenparameter), einer im Wissensordner hinterlegten UTM-Taxonomie und einer CSV-kompatiblen Ausgabetabelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Form-Input (UTM-Parameter) + Wissensordner (UTM-Taxonomie + Naming-Convention)
+**Vorgehen (4 Schritte):**
+1. Erstelle ein "UTM-Taxonomie.md"-Dokument im Wissensordner mit vollständiger Naming-Convention: erlaubte utm_source-Werte (linkedin, email, google, direct), erlaubte utm_medium-Werte (cpc, organic, social, newsletter), Konvention für utm_campaign (lowercase, Bindestriche statt Leerzeichen, Format: YYYY-MM-[Kampagnenname]).
+2. Konfiguriere Form-Input mit Feldern: `{{basis_url}}`, `{{utm_source}}` (Dropdown aus Taxonomie), `{{utm_medium}}` (Dropdown), `{{kampagnenname}}` (Freitext), `{{utm_content}}` (optional), `{{utm_term}}` (optional).
+3. System-Prompt: "Generiere die UTM-getaggte URL exakt nach der Taxonomie im Wissensordner. Gib zusätzlich eine Zeile für die Dokumentationstabelle aus (CSV-Format: Datum, Kampagne, URL, Kanal)."
+4. Teste mit 5 verschiedenen Kampagnentypen; prüfe ob alle URLs valide sind (korrekte Kodierung von Sonderzeichen) und ob die CSV-Dokumentationszeile korrekt formatiert ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist UTM-Tracking-Spezialist [Persona]. Generiere eine UTM-getaggte URL für unsere LinkedIn-Kampagne zum Q3-Launch [Task]. Basis-URL: https://unsere-seite.de/demo, Kanal: LinkedIn (Paid Social), Kampagne: q3-launch-2026, Content: header-banner-v1 — nutze die UTM-Taxonomie aus dem Wissensordner [Context]. Format: (1) Fertige URL, (2) Auflistung der Parameter einzeln, (3) CSV-Dokumentationszeile [Format]."
+**Erwartetes Artefakt:** Eine valide UTM-getaggte URL, Parameter-Auflistung zur Kontrolle und eine CSV-Dokumentationszeile für das Kampagnen-Tracking-Sheet.
+**Fallstricke (≥2 spezifisch):**
+- UTM-Taxonomie nicht im Wissensordner verankern und Parameter freitextlich eingeben lassen → inkonsistente Schreibweisen (LinkedIn vs. linkedin vs. LinkedIn-Paid) zerbrechen GA4-Segmente; die Taxonomie als einzige erlaubte Quelle im System-Prompt erzwingen.
+- utm_campaign-Werte mit Leerzeichen oder Großbuchstaben generieren → GA4 behandelt "Q3 Launch" und "q3-launch" als unterschiedliche Kampagnen; Naming-Convention explizit im System-Prompt als Pflicht definieren.
+**Anschluss-Szenario:** S-AK-047
+
+### S-AK-047 Dynamischer System-Prompt via API: Kontextinjektion für personalisierte Agenten
+
+**Wann nutzen (Trigger):** Das CRM-Team will Langdock-Agenten nutzen, die bei jedem Aufruf den Namen des Kundenbetreuers, den Account-Namen und die aktuelle Deal-Stage aus dem CRM in den System-Prompt injizieren — statische Konfiguration reicht dafür nicht aus. (Quelle: Deployment-Surfaces API-Kapitel, julia-lens A-08)
+**Strategisches Ziel:** Die API-Deployment-Surface von Langdock nutzen, um bei jedem Agenten-Aufruf dynamische Kontextparameter (Account-Name, Deal-Stage, Betreuer-Name) programmatisch in den System-Prompt zu injizieren, ohne den Agenten manuell umkonfigurieren zu müssen.
+**Hands-on Ergebnis:** Ein dokumentiertes API-Aufruf-Schema mit Beispiel-Payload, das zeigt wie dynamische System-Prompt-Variablen sicher über die Langdock-API übergeben werden, plus ein Test-Skript für das Entwicklungsteam.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock API (Programmatic Agent Calls) + Custom Agent (API-Deployment) + Wissensordner (API-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Konfiguriere den Agenten im Agent Builder für API-Deployment; identifiziere im System-Prompt die Stellen, an denen dynamische Variablen injiziert werden sollen: "Du bist Betreuer für {{account_name}} (Deal-Stage: {{deal_stage}}). Dein Name: {{betreuer_name}}."
+2. Dokumentiere das API-Aufruf-Schema: der Langdock-API-Endpunkt nimmt im Request-Body ein `system_prompt_override`-Feld entgegen; die Entwicklerinnen ersetzen die Platzhalter serverseitig mit echten CRM-Werten vor dem API-Aufruf.
+3. Beachte Rate-Limit (500 Anfragen/Minute); für CRM-intensive Nutzung Queue-Management einbauen; Authentifizierung über API-Key im Authorization-Header.
+4. Teste mit 3 verschiedenen Account-Konstellationen; prüfe ob die injizierte Kontextinformation im Agenten-Output sichtbar berücksichtigt wird ohne dass der statische Agenten-System-Prompt überschrieben bleibt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Account-Spezialist für {{account_name}} [Persona]. Erstelle ein personalisiertes Follow-up-E-Mail nach dem letzten Demo-Call [Task]. Kontext: Deal-Stage {{deal_stage}}, Haupteinwand des Kunden: {{einwand}}, Betreuer: {{betreuer_name}} [Context]. Format: E-Mail mit Betreff, max. 150 Wörter, persönlich-professionell, keine Marketingphrasen [Format]."
+**Erwartetes Artefakt:** Ein dokumentiertes API-Payload-Schema mit Variablen-Injektions-Beispiel und ein Test-Protokoll für 3 Account-Konstellationen, bereit für die Übergabe an das Entwicklungsteam.
+**Fallstricke (≥2 spezifisch):**
+- CRM-Daten ungefiltert in den System-Prompt injizieren → personenbezogene Daten (Telefonnummern, E-Mail-Adressen) dürfen nicht in Prompts gelangen; CRM-Export serverseitig auf notwendige Felder reduzieren (Datensparsamkeit nach DSGVO Art. 5 Abs. 1 c).
+- API-Key im Frontend-Code exposen → API-Keys ausschließlich serverseitig (Backend/Serverless-Function) verwenden; niemals im Browser oder in Client-seitigen Apps.
+**Anschluss-Szenario:** S-AK-048
+
+### S-AK-048 Interner FAQ-Agent: Selbstkonfigurierender Wissens-Assistent für Marketing-Operations
+
+**Wann nutzen (Trigger):** Neue Kolleginnen stellen täglich dieselben 20 Fragen an erfahrene Teammitglieder — "Wo ist die Brand-Guideline?", "Wer ist für LinkedIn verantwortlich?", "Was ist unser Prozess für Agentur-Briefings?" — und binden Senior-Ressourcen für Triviales. (Quelle: 12 Q32, julia-lens A-37)
+**Strategisches Ziel:** Einen FAQ-Agenten konfigurieren, der auf einen kuratierten Wissensordner (Prozesshandbuch, RACI-Matrix, Tool-Übersicht) zugreift und wiederkehrende Operations-Fragen in unter 30 Sekunden beantwortet — ohne Senior-Mitarbeiter zu involvieren.
+**Hands-on Ergebnis:** Ein FAQ-Agent mit 10 kuratierten Konversations-Startern (häufigste Fragen), einem gepflegten Wissensordner und einer klaren Eskalations-Anweisung für Fragen außerhalb des Scope.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Marketing-Operations-Handbuch) + Konversations-Starter (Top-10-FAQ) + Scope-Abgrenzung im System-Prompt
+**Vorgehen (4 Schritte):**
+1. Sammle die 20 häufigsten Fragen aus dem letzten Quartal (Slack-History, Onboarding-Notizen); konsolidiere zu 10 Kategorien; erstelle pro Kategorie eine strukturierte MD-Datei im Wissensordner.
+2. Konfiguriere System-Prompt mit strikter Scope-Abgrenzung: "Beantworte nur Fragen zu Marketing-Operations unseres Teams. Bei Fragen zu Strategie, Personal oder Finanzen antworte: 'Diese Frage liegt außerhalb meines Scope — wende dich bitte an [Eskalationskontakt].'"
+3. Lege 10 Konversations-Starter an (eine pro FAQ-Kategorie): "Wo finde ich unsere aktuellen Brand-Guidelines?", "Wie läuft unser Agentur-Briefing-Prozess ab?", "Wer ist für welchen Social-Kanal verantwortlich?", usw.
+4. Teste mit 5 In-Scope- und 3 Out-of-Scope-Fragen; prüfe ob die Eskalation korrekt ausgelöst wird und ob In-Scope-Fragen aus dem Wissensordner (nicht halluziniert) beantwortet werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marketing-Operations-Assistent [Persona]. Beantworte die folgende Frage zu unseren internen Prozessen [Task]. Kontext: Nutze ausschließlich das Marketing-Operations-Handbuch im Wissensordner; halte Antworten präzise und verwende direkte Zitate aus dem Handbuch wenn möglich [Context]. Format: Antwort in max. 3 Sätzen + Quellenangabe (Dateiname + Abschnitt) [Format]."
+**Erwartetes Artefakt:** Ein FAQ-Agent mit 10 Konversations-Startern, kuratiertem Wissensordner und getesteter Scope-Abgrenzung, der Senior-Mitglieder von wiederkehrenden Operations-Fragen entlastet.
+**Fallstricke (≥2 spezifisch):**
+- Wissensordner mit rohen Prozess-PDFs füllen, die nie aktualisiert werden → nach 3 Monaten sind 30 % der Antworten veraltet; Wissensordner-Pflege in den RACI aus S-AK-005 integrieren mit quartalsweisem Review-Zyklus.
+- Konversations-Starter mit Fragen formulieren, die der Agent nicht sicher beantworten kann → falsche Antworten beschädigen das Vertrauen; nur Fragen als Starter aufnehmen, für die eine Antwort im Wissensordner explizit dokumentiert ist.
+**Anschluss-Szenario:** S-AK-049
+
+### S-AK-049 A/B-Test-Varianten-Agent: Automatisierte Generierung getesteter Content-Alternativen
+
+**Wann nutzen (Trigger):** Die E-Mail-Kampagne zur Produkteinführung braucht 5 Subject-Line-Varianten und 3 CTA-Varianten für den A/B-Test im ESP — das Team generiert sie manuell und erreicht nie die statistisch notwendige Varianz zwischen den Varianten. (Quelle: S-058, S-047)
+**Strategisches Ziel:** Einen A/B-Test-Agenten konfigurieren, der für einen gegebenen Content-Typ systematisch Varianten entlang verschiedener psychologischer Trigger (Neugier, Dringlichkeit, Nutzen, FOMO, Frage) generiert und dabei sicherstellt, dass sich die Varianten tatsächlich voneinander unterscheiden.
+**Hands-on Ergebnis:** Ein A/B-Varianten-Agent, der für jede Anfrage 5 Subject-Lines (je einem anderen Trigger zugeordnet), 3 CTA-Texte und 2 Headline-Varianten mit einem Varianz-Score pro Variante liefert.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Konversations-Starter + Wissensordner (Trigger-Bibliothek + Varianz-Kriterien)
+**Vorgehen (4 Schritte):**
+1. Erstelle Wissensordner-Dokument "A/B-Trigger-Bibliothek.md" mit 5 psychologischen Triggern, je 3 Beispielformulierungen und einem Differenzierungs-Kriterium (was macht Variante A eindeutig anders als B).
+2. Konfiguriere System-Prompt: "Für jede Variante: (1) weise einen Trigger zu, (2) bewerte Varianz zur vorherigen Variante auf einer 1-3-Skala (1=zu ähnlich), (3) markiere Varianten mit Varianz-Score 1 als 'Überarbeiten erforderlich'."
+3. Lege Konversations-Starter an: "[AB-TEST] Subject Lines (5 Varianten)", "[AB-TEST] CTA-Texte (3 Varianten)", "[AB-TEST] Headlines (2 Varianten + Begründung)".
+4. Teste: sende denselben Brief zweimal und prüfe ob die generierten Varianten tatsächlich unterschiedliche Trigger adressieren; setze Temperatur auf 0,8 (aus S-AK-007) für maximale Kreativvarianz.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist A/B-Test-Copywriter [Persona]. Generiere 5 Subject-Line-Varianten für unsere Produkt-Launch-E-Mail [Task]. Kontext: Zielgruppe IT-Entscheider, Kernbotschaft 'neues Dashboard spart 3h/Woche', kein Spam-Trigger-Wörter, max. 55 Zeichen — nutze die Trigger-Bibliothek aus dem Wissensordner [Context]. Format: Tabelle mit Spalten 'Variante', 'Trigger-Typ', 'Varianz-Score (1-3)', 'Preheader-Vorschlag' [Format]."
+**Erwartetes Artefakt:** Eine Tabelle mit 5 Subject-Line-Varianten (je einem psychologischen Trigger + Varianz-Score), 3 CTA-Texten und 2 Headlines, direkt für den ESP-A/B-Test nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- Temperatur bei A/B-Test-Agent auf niedrigem Wert lassen → bei Temperatur 0,2 generiert der Agent 5 nahezu identische Subject Lines mit minimaler Variation; A/B-Tests brauchen echte Varianz, Temperatur 0,7–0,9 empfohlen.
+- Mehr als 5 Varianten pro Test verlangen → statistische Signifikanz für >5 Varianten erfordert überproportional große Stichproben; 2–3 Varianten sind für die meisten B2B-E-Mail-Listen statistisch ausreichend.
+**Anschluss-Szenario:** S-AK-050
+
+### S-AK-050 Persona-Layered Agent: Kanalspezifische Tonalität in einem einzigen Agenten
+
+**Wann nutzen (Trigger):** Der Content-Agent produziert LinkedIn-Posts und E-Mail-Newsletters mit identischer Tonalität — sachlich auf beiden Kanälen — obwohl LinkedIn-Audience und Newsletter-Abonnenten völlig unterschiedliche Register erwarten; separate Agenten für jeden Kanal fehlen. (Quelle: S-AK-007, S-047)
+**Strategisches Ziel:** Einen Persona-Layered-Agenten konfigurieren, der über einen Kanal-Parameter im Form-Input automatisch die passende Ton-Persona aktiviert (LinkedIn: sachlich-souverän, Newsletter: persönlich-warm, Twitter/X: prägnant-direkt) ohne dass separate Agenten nötig sind.
+**Hands-on Ergebnis:** Ein Persona-Layered-Agent mit einem Wissensordner (Kanal-Tonalitäts-Matrix), Form-Input (Kanal-Auswahl) und einem Testprotokoll, das für denselben Input drei kanalspezifisch verschiedene Outputs beweist.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Form-Input (Kanal-Selektion) + Wissensordner (Kanal-Tonalitäts-Matrix)
+**Vorgehen (4 Schritte):**
+1. Erstelle "Kanal-Tonalitäts-Matrix.md" im Wissensordner: für LinkedIn, Newsletter, Twitter/X und Instagram je eine Zeile mit Ton-Beschreibung, 2 Positivbeispielen und 2 Verboten (z.B. Twitter: keine Aufzählungslisten, max. 280 Zeichen).
+2. Konfiguriere Form-Input mit Pflichtfeld `{{kanal}}` (Dropdown: LinkedIn / Newsletter / Twitter-X / Instagram); der System-Prompt referenziert die Kanal-Zeile aus dem Wissensordner.
+3. System-Prompt-Logik: "Lade für den gewählten Kanal `{{kanal}}` die entsprechende Ton-Persona aus der Kanal-Tonalitäts-Matrix. Wende diese Persona für den gesamten Output an. Beginne nie mit dem Kanal-Namen."
+4. Teste mit demselben Inhalt (Produkt-Feature-Ankündigung) für alle 4 Kanäle; prüfe ob die Outputs deutlich unterschiedliche Tonalität aufweisen (lies sie laut vor — klingen sie wirklich verschieden?).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Channel-Persona-Autor [Persona]. Verfasse einen Beitrag zur Ankündigung unseres neuen Reporting-Features für den Kanal {{kanal}} [Task]. Kontext: Feature-Kern — Reporting in 3 Klicks statt 20 Minuten, Zielgruppe Operations-Teams [Context]. Format: Nur den fertigen Post ausgeben, keine Erklärung der Ton-Entscheidung [Format]."
+**Erwartetes Artefakt:** Ein Persona-Layered-Agent mit dokumentierter Kanal-Tonalitäts-Matrix und einem Testprotokoll (4 Kanäle × selber Input = 4 unterschiedliche Outputs).
+**Fallstricke (≥2 spezifisch):**
+- Tonalitäts-Matrix zu abstrakt formulieren ("warm", "direkt") → das Modell interpretiert diese Adjektive inkonsistent; konkrete Verbots- und Erlaubt-Beispiele pro Kanal sind effektiver als Adjektiv-Beschreibungen.
+- Zu viele Kanäle in einer einzigen Matrix zusammenfassen → bei >6 Kanälen überschreitet die Matrix-Datei ein sinnvolles Chunk-Limit; 4–5 Kanäle pro Agenten-Instanz sind das sinnvolle Maximum.
+**Anschluss-Szenario:** S-AK-051
+
+### S-AK-051 DSGVO-Datensparsamkeits-Agent: Personenbezogene Daten aus Prompts entfernen
+
+**Wann nutzen (Trigger):** Das Marketing-Team gibt regelmäßig CRM-Daten in Langdock ein — vollständige Namen, E-Mail-Adressen, Telefonnummern — weil niemand die DSGVO-Relevanz dieser Praxis kennt; der Datenschutzbeauftragte fordert ein sofortiges Gegenmittel. (Quelle: julia-lens A-14, A-20, S-056)
+**Strategisches Ziel:** Einen Datensparsamkeits-Agenten als Pre-Processing-Schicht konfigurieren, der Prompts vor der eigentlichen KI-Verarbeitung auf personenbezogene Daten (Namen, E-Mails, IDs) scannt und diese pseudonymisiert, bevor das eigentliche Marketing-Modell sie erhält.
+**Hands-on Ergebnis:** Ein Pseudonymisierungs-Agent, der für jeden eingehenden Prompt eine geschwärzte Version ausgibt (Mustermann statt Klarname, [EMAIL] statt E-Mail-Adresse) und eine Mapping-Tabelle für die Rück-Pseudonymisierung erstellt.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + System-Prompt (PII-Erkennungsregeln) + Canvas (Pseudonymisierungstabelle)
+**Vorgehen (4 Schritte):**
+1. Konfiguriere System-Prompt mit PII-Erkennungsregeln: "Identifiziere in jedem eingehenden Text: Personennamen, E-Mail-Adressen, Telefonnummern, Kundennummern, IBAN. Ersetze sie durch Platzhalter: [PERSON-1], [PERSON-2], [EMAIL-1], [TEL-1], [ID-1]."
+2. Ausgabe-Schema im System-Prompt: "(1) Pseudonymisierter Text, (2) Mapping-Tabelle: Original → Platzhalter, mit Hinweis 'Diese Tabelle lokal speichern, nicht erneut in Langdock eingeben'."
+3. Füge im Wissensordner ein DSGVO-Hinweis-Dokument ein, das erklärt warum Pseudonymisierung DSGVO-konform ist (Art. 5 Abs. 1 c Datensparsamkeit) und den Nutzern zeigt wie sie mit der Mapping-Tabelle umgehen.
+4. Teste mit 5 realen-ähnlichen Beispielprompten (anonymisierte Testnamen); prüfe ob alle PII-Kategorien erkannt und konsequent ersetzt werden; teste Grenzfall: Vornamen wie "Anna" im Fließtext.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DSGVO-Datensparsamkeits-Filter [Persona]. Scanne den folgenden Text auf personenbezogene Daten und pseudonymisiere sie [Task]. Kontext: Der Text soll anschließend an einen Marketing-Agenten weitergegeben werden; alle DSGVO-relevanten Datenpunkte müssen vor der Weitergabe entfernt sein [Context]. Format: (1) Pseudonymisierter Text im Code-Block, (2) Mapping-Tabelle als Markdown-Tabelle [Format]."
+**Erwartetes Artefakt:** Ein Pseudonymisierungs-Agent mit Mapping-Tabelle plus ein Kurzprotokoll (5 Testfälle) das die Erkennungsgenauigkeit dokumentiert.
+**Fallstricke (≥2 spezifisch):**
+- Darauf vertrauen, dass der Agent 100 % der PII erkennt → LLMs erkennen Personennamen im Kontext nicht immer zuverlässig (z.B. Nachnamen, die auch Substantive sind); der Agent ist eine erste Schutzschicht, kein vollständiger Ersatz für technische PII-Scanner.
+- Mapping-Tabelle in Langdock speichern oder erneut hochladen → die Mapping-Tabelle verbindet Pseudonyms mit Echtdaten und ist selbst personenbezogen; ausschließlich lokal beim Nutzer speichern, niemals in den Wissensordner hochladen.
+**Anschluss-Szenario:** S-AK-052
+
+### S-AK-052 Agent-Deprecation-Automatisierung: Veraltete Agenten systematisch identifizieren und ablösen
+
+**Wann nutzen (Trigger):** Die Workspace-Bibliothek hat nach einem Jahr 34 Agenten — 12 davon werden seit 90 Tagen nicht mehr genutzt, referenzieren veraltete Wissensordner und verursachen Verwirrung im Team beim @-Mention-Lookup. (Quelle: S-AK-016, julia-lens A-33)
+**Strategisches Ziel:** Einen monatlich ausführbaren Deprecation-Review-Prozess konfigurieren, der auf Basis von Usage-Insights automatisch Deprecation-Kandidaten identifiziert, Archiv-Snapshots erstellt und einen Sunset-Zeitplan plant.
+**Hands-on Ergebnis:** Ein Deprecation-Review-Protokoll (Markdown-Template im Wissensordner) mit Entscheidungsbaum (Behalten / Archivieren / Löschen) und einer ersten Anwendung auf alle aktuellen Agenten.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (Entscheidungsbaum + Sunset-Tabelle) + Wissensordner (Deprecation-Protokoll) + Agent-Usage-Insights
+**Vorgehen (4 Schritte):**
+1. Exportiere monatlich Usage-Insights aus dem Workspace-Admin-Dashboard; erstelle eine Tabelle: Agent-Name, Sessions letzter 30 Tage, Sessions letzter 90 Tage, Letzter Wissensordner-Update.
+2. Wende Deprecation-Kriterien an: (a) <5 Sessions/30 Tage UND >6 Monate kein Wissensordner-Update → Archiv-Kandidat; (b) 0 Sessions/90 Tage → sofort archivieren; (c) Negatives Feedback >30 % → Überarbeitungs-Kandidat.
+3. Erstelle für jeden Archiv-Kandidaten einen Snapshot: exportiere System-Prompt als "Archiv/[Name]-[Datum].md" in den Wissensordner; setze Sharing-Status auf Individual; warte 14 Tage auf Widersprüche vom Team.
+4. Dokumentiere den Deprecation-Entscheid im "Agent-Health-Dashboard.md" aus S-AK-013 mit Datum, Begründung und verantwortlicher Person.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Agent-Lifecycle-Manager [Persona]. Analysiere die folgende Liste unserer 12 Marketing-Agenten anhand der Usage-Daten und Wissensordner-Update-Daten [Task]. Kontext: Wende die drei Deprecation-Kriterien an (Sessions, Alter, Feedback); erstelle eine priorisierte Empfehlungsliste [Context]. Format: Canvas-Tabelle mit Spalten Agent-Name, Status (Behalten/Archivieren/Überarbeiten), Begründung, Nächste Aktion, Deadline [Format]."
+**Erwartetes Artefakt:** Eine priorisierte Deprecation-Tabelle im Canvas mit klaren Handlungsempfehlungen (Behalten / Archivieren / Überarbeiten) pro Agent.
+**Fallstricke (≥2 spezifisch):**
+- Agenten sofort löschen anstatt zu archivieren → ein gelöschter Agent kann nicht wiederhergestellt werden; selbst inaktive Agenten enthalten möglicherweise bewährte System-Prompt-Muster, die für neue Agenten wertvoll sind; immer Archiv-Snapshot zuerst.
+- Deprecation-Review ohne Team-Kommunikation durchführen → ein Mitarbeiterin, die einen "scheinbar inaktiven" Agenten nur monatlich nutzt, verliert ihren Workflow; 7-Tage-Ankündigung in Slack vor jedem Archivierungs-Schritt.
+**Anschluss-Szenario:** S-AK-053
+
+### S-AK-053 Agent-Performance-Benchmarking: Neue Konfiguration gegen Baseline messen
+
+**Wann nutzen (Trigger):** Der Briefing-Agent wird mit einem neuen Modell (z.B. Wechsel von GPT-4o auf Claude Sonnet) oder einem überarbeiteten System-Prompt umgestellt — niemand weiß ob die neue Version tatsächlich besser ist, oder ob sich das Team nur einbildet, dass es besser ist. (Quelle: S-AK-004, S-AK-010, julia-lens A-34)
+**Strategisches Ziel:** Einen strukturierten Benchmarking-Prozess einrichten, der neue Agenten-Konfigurationen gegen eine dokumentierte Baseline (5 Referenz-Outputs aus der Vorgänger-Version) bewertet — quantitativ (Länge, Format-Treue) und qualitativ (Tonalität, Vollständigkeit).
+**Hands-on Ergebnis:** Ein Benchmarking-Protokoll (Tabelle: 5 Prompts × alte Version vs. neue Version × 3 Qualitätskriterien) mit einer klaren Empfehlung: Rollout oder Rollback.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent (Sandbox-Duplikat) + Canvas (Benchmark-Tabelle) + Wissensordner (Baseline-Outputs)
+**Vorgehen (5 Schritte):**
+1. Speichere vor jeder Konfigurationsänderung 5 repräsentative Outputs der aktuellen Version als "Baseline-[Datum].md" im Wissensordner; diese sind die Vergleichsmaßstäbe.
+2. Erstelle eine Sandbox-Version (aus S-AK-010) mit der neuen Konfiguration; führe dieselben 5 Prompts aus und speichere die Outputs.
+3. Bewerte beide Versionen nach 3 Kriterien: (a) Format-Treue (entspricht der Output dem geforderten Format 1-3), (b) Tonalitäts-Match (entspricht Brand Voice 1-3), (c) Vollständigkeit (werden alle Pflichtfelder im Brief ausgefüllt 1-3).
+4. Berechne Gesamt-Score pro Version (Summe 15 Punkte max.); Schwelle für Rollout: neue Version muss ≥13/15 erreichen UND besser als Baseline sein.
+5. Dokumentiere Entscheid (Rollout / Rollback / Weitere Tests nötig) mit Begründung im Agent-Health-Dashboard.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Agent-Qualitätsbewerter [Persona]. Vergleiche die folgenden zwei Versionen eines Briefing-Agent-Outputs anhand der drei Kriterien Format-Treue, Tonalitäts-Match und Vollständigkeit [Task]. Kontext: Baseline ist Versionen vor dem Modellwechsel; neue Version nutzt Claude Sonnet statt GPT-4o [Context]. Format: Bewertungstabelle (3 Kriterien × 2 Versionen × Score 1-3) + Rollout-Empfehlung mit 2-Satz-Begründung [Format]."
+**Erwartetes Artefakt:** Eine Benchmark-Tabelle (3×2 Score-Matrix) mit einer begründeten Rollout-Empfehlung, dokumentiert im Agent-Health-Dashboard.
+**Fallstricke (≥2 spezifisch):**
+- Benchmarking mit nur einem oder zwei Prompts durchführen → einzelne Prompts sind nicht repräsentativ für die Breite der Agenten-Nutzung; mindestens 5 diverse Testfälle (Standard, Edge-Case, Out-of-Scope) verwenden.
+- Benchmark-Ergebnis rein subjektiv bewerten → ohne dokumentierte Bewertungskriterien (1-3 Skala mit Definitionen) urteilt das Team nach Bauchgefühl; die Kriterien-Definitionen vor dem Test schriftlich festlegen.
+**Anschluss-Szenario:** S-AK-054
+
+### S-AK-054 Konkurrenz-Newsletter-Agent: Wettbewerber-Kommunikation wöchentlich auswerten
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin abonniert manuell 6 Konkurrenz-Newsletter und verbringt freitags 45 Minuten damit, Positioning-Änderungen, neue Features und Tonalitätstrends der Wettbewerber zu identifizieren — eine Automatisierung fehlt. (Quelle: S-087, S-088, 10 S-049)
+**Strategisches Ziel:** Einen Konkurrenz-Newsletter-Agenten konfigurieren, der eingefügte Newsletter-Texte strukturiert analysiert (Positioning, neue Claims, Tonalitätswechsel, Feature-Ankündigungen) und einen wöchentlichen Wettbewerbs-Brief mit Delta-Analyse liefert.
+**Hands-on Ergebnis:** Ein Wettbewerbs-Analyse-Agent mit standardisiertem Analyse-Framework im Wissensordner, Form-Input (Wettbewerber-Name + Newsletter-Text) und einer wöchentlichen 1-Pager-Ausgabe.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Wettbewerbs-Analyse-Framework + Vorwoche-Baseline) + Form-Input
+**Vorgehen (4 Schritte):**
+1. Erstelle "Wettbewerbs-Analyse-Framework.md" im Wissensordner mit 5 Analysekategorien: (a) Positioning-Statement, (b) Feature-Ankündigungen, (c) Tonalität (formell/casual/aggresiv), (d) Preis-Signale, (e) Zielgruppen-Shift.
+2. Konfiguriere Form-Input: `{{wettbewerber}}` (Freitext), `{{newsletter_text}}` (Texteingabe), `{{vergleichswoche}}` (optional: letzte Woche Baseline).
+3. System-Prompt: "Analysiere den Newsletter entlang der 5 Kategorien aus dem Framework. Wenn eine Baseline aus der Vorwoche übergeben wurde, identifiziere Deltas (was ist neu? was ist weggefallen?). Halte Spekulationen als solche gekennzeichnet."
+4. Pilotiere mit 3 echten Konkurrenz-Newslettern aus den letzten 2 Wochen; prüfe ob die Delta-Analyse bei der zweiten Woche tatsächlich Unterschiede identifiziert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Wettbewerbs-Analyst [Persona]. Analysiere den folgenden Newsletter unseres Wettbewerbers {{wettbewerber}} [Task]. Kontext: Nutze das Wettbewerbs-Analyse-Framework aus dem Wissensordner; wenn eine Vorwoche-Baseline beigefügt ist, identifiziere alle Deltas explizit [Context]. Format: 1-Pager mit 5 Abschnitten (je Kategorie max. 3 Bulletpoints) + Delta-Box ganz oben [Format]."
+**Erwartetes Artefakt:** Ein wöchentlicher 1-Pager pro Wettbewerber (5 Kategorien + Delta-Box) der in unter 5 Minuten manuelle 45-Minuten-Lektüre ersetzt.
+**Fallstricke (≥2 spezifisch):**
+- Newsletter-Text ohne Scrubbing direkt eingeben → manche Newsletter enthalten Tracking-Pixel-URLs und HTML-Artefakte, die das Modell verwirren; Text zuerst in Plaintext konvertieren, bevor er in den Agent eingebracht wird.
+- Wettbewerbs-Analyse ohne Disclaimer als strategische Grundlage verwenden → KI-Analyse kann Tonalität fehlinterpretieren; als Hypothesen-Generator nutzen, nicht als Fakten-Quelle; finale Entscheidungen mit Primärquelle abgleichen.
+**Anschluss-Szenario:** S-AK-055
+
+### S-AK-055 Internes Wiki-Update-Agent: Produktänderungen automatisch in Marketing-Dokumentation reflektieren
+
+**Wann nutzen (Trigger):** Nach jedem Produkt-Release veralten Marketing-Dokumente (Pitch-Decks, FAQ-Seiten, Agenten-Wissensordner) innerhalb von Tagen — das Product-Team schreibt Release-Notes, aber niemand übersetzt sie in Marketing-relevante Updates. (Quelle: S-AK-005, S-AK-055 RACI)
+**Strategisches Ziel:** Einen Wiki-Update-Agenten konfigurieren, der Release-Notes als Input nimmt und für jedes betroffene Marketing-Dokument (identifiziert aus einem Dokument-Inventar im Wissensordner) konkrete Update-Vorschläge liefert — mit Textentwurf und Verweis auf die betroffene Stelle.
+**Hands-on Ergebnis:** Ein Release-zu-Marketing-Update-Agent, der für jede Release-Note eine priorisierte Liste der zu aktualisierenden Marketing-Dokumente mit konkreten Text-Änderungsvorschlägen liefert.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Dokument-Inventar + aktuelle Marketing-Texte) + Canvas (Update-Plan)
+**Vorgehen (4 Schritte):**
+1. Erstelle "Marketing-Dokument-Inventar.md" im Wissensordner: Liste aller Marketing-Dokumente (Name, Typ, Zuletzt aktualisiert, betroffene Produktbereiche) — maximal 2–3 Sätze pro Eintrag.
+2. Konfiguriere System-Prompt: "Wenn eine Release-Note eingereicht wird, identifiziere aus dem Dokument-Inventar alle betroffenen Marketing-Dokumente. Erstelle für jedes Dokument: (1) betroffener Abschnitt, (2) aktueller Text (aus Wissensordner), (3) vorgeschlagener neuer Text."
+3. Ergänze Canvas-Output: der Agent öffnet ein Canvas mit einer Update-Plan-Tabelle (Dokument | Priorität | Vorgeschlagene Änderung | Verantwortliche Person aus RACI).
+4. Teste mit einer echten Release-Note aus dem letzten Sprint; prüfe ob alle betroffenen Dokumente identifiziert werden und ob die Textvorschläge sinnvoll sind.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marketing-Wiki-Redakteur [Persona]. Analysiere die folgende Produkt-Release-Note und erstelle einen strukturierten Update-Plan für unsere Marketing-Dokumentation [Task]. Kontext: Nutze das Dokument-Inventar und die aktuellen Marketing-Texte im Wissensordner; priorisiere nach Außenwirkung (externe Dokumente zuerst) [Context]. Format: Canvas-Tabelle Dokument | Priorität | Betroffener Abschnitt | Update-Vorschlag | Verantwortlich [Format]."
+**Erwartetes Artefakt:** Ein Canvas-Update-Plan mit priorisierten Dokumenten, konkreten Änderungsvorschlägen und zugeordneten Verantwortlichen aus der RACI-Matrix.
+**Fallstricke (≥2 spezifisch):**
+- Alle Marketing-Texte vollständig in den Wissensordner laden → Pitch-Decks und Whitepapers als PPTX/PDF sind schwer chunkbar; Texte in Markdown konvertieren oder zumindest als Textkopie im Wissensordner ergänzen.
+- Agent-Output direkt ohne Review einpflegen → der Agent schlägt vor, nicht entscheidet; jeden Update-Vorschlag vor der Übernahme durch die Dokumenten-Verantwortliche Person (aus RACI) gegenlesen lassen.
+**Anschluss-Szenario:** S-AK-056
+
+### S-AK-056 Trainingsunterlagen-Agent: Interne Schulungsmaterialien aus Wissensordner generieren
+
+**Wann nutzen (Trigger):** Eine neue Kollegin soll in die Langdock-Agenten-Nutzung eingeführt werden, aber das Onboarding-Material ist veraltet, die erfahrene Kollegin hat keine Zeit, und die aktuellen Best-Practice-Dokumente sind über 5 verschiedene Wissensordner verteilt. (Quelle: julia-lens A-37, S-AK-048)
+**Strategisches Ziel:** Einen Trainingsunterlagen-Agenten konfigurieren, der auf Basis der aktuellen Agenten-Dokumentation, RACI-Matrix und Best-Practice-Sammlung strukturierte Lernmaterialien (Schritt-für-Schritt-Guide, Quiz-Fragen, Checkliste) für verschiedene Erfahrungsstufen generiert.
+**Hands-on Ergebnis:** Ein Trainingsunterlagen-Agent, der aus den bestehenden Wissensordnern einen rollenspezifischen Onboarding-Guide (Beginner / Fortgeschritten) mit Lernzielen, Übungsaufgaben und FAQ generiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Agent-Dokumentation, RACI, Best-Practices) + Canvas (Lernmaterial-Layout)
+**Vorgehen (4 Schritte):**
+1. Definiere 3 Lernrollen im System-Prompt: (a) Einsteigerin (nutzt Konversations-Starter, kein Agent-Builder), (b) Power-User (baut eigene Agenten, pflegt Wissensordner), (c) Admin (Governance, Rollout, Deprecation).
+2. System-Prompt: "Generiere für die angegebene Lernrolle: (1) Lernziele (3 Bulletpoints), (2) Schritt-für-Schritt-Guide (max. 5 Schritte), (3) 3 Übungsaufgaben mit Musterlösung, (4) 5 Quiz-Fragen mit Antworten."
+3. Verbinde alle relevanten Wissensordner-Dokumente: RACI-Matrix, Agent-Governance, Canary-Protokoll, FAQ-Dokument — der Agent zieht die Inhalte aus diesen Quellen statt sie zu halluzinieren.
+4. Teste für alle 3 Rollen; prüfe ob Übungsaufgaben mit realen Langdock-Funktionen übereinstimmen (kein halluziniertes Feature-Wissen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lerndesigner für interne KI-Schulungen [Persona]. Erstelle ein Onboarding-Lernmodul für eine neue Power-User-Kollegin [Task]. Kontext: Sie hat 3 Jahre Marketing-Erfahrung, aber noch nie Langdock-Agenten konfiguriert — nutze unsere dokumentierten Best-Practices und die RACI-Matrix aus dem Wissensordner als Quelldokumente [Context]. Format: Canvas mit 4 Sektionen: Lernziele, Guide, Übungsaufgaben, Quiz [Format]."
+**Erwartetes Artefakt:** Ein rollenspezifisches Onboarding-Lernmodul im Canvas (Lernziele + Guide + 3 Übungen + 5 Quiz-Fragen) basierend auf echten Wissensordner-Inhalten.
+**Fallstricke (≥2 spezifisch):**
+- Trainingsunterlagen auf veralteten Wissensordner-Inhalten basieren → die Qualität des Trainings ist direkt abhängig von der Aktualität der Quell-Dokumente; den Trainingsunterlagen-Agent erst aufsetzen, nachdem die Wissensordner aus S-AK-005 und S-AK-055 aktuell sind.
+- Übungsaufgaben ohne Musterlösung generieren → neue Nutzerinnen ohne Feedback-Loop lernen aus falschen Selbstversuchen; jede Übungsaufgabe muss eine erwartete Ausgabe als Musterlösung enthalten.
+**Anschluss-Szenario:** S-AK-057
+
+### S-AK-057 Onboarding-E-Mail-Sequenz-Agent: Neukunden-Journey in 30 Tagen automatisieren
+
+**Wann nutzen (Trigger):** Neue SaaS-Trial-Nutzer erhalten nach der Anmeldung eine generische Welcome-Mail und danach nichts — die Aktivierungsrate liegt bei 23 %, weil kein strukturierter 30-Tage-Onboarding-Flow existiert. (Quelle: S-057, S-063)
+**Strategisches Ziel:** Einen Onboarding-Sequenz-Agenten konfigurieren, der basierend auf der User-Persona (ICP-Typ: Technik-Entscheider, Marketing-Manager, Operations-Leiter) eine auf 30 Tage verteilte 7-E-Mail-Journey mit adaptiver Logik entwirft und textfertige Entwürfe liefert.
+**Hands-on Ergebnis:** Eine 30-Tage-Onboarding-Sequenz (7 E-Mails) mit Subject Lines, Preheadern und Body-Text für drei ICP-Personas, direkt in den ESP importierbar.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (ICP-Profile, Produkt-Feature-Matrix, Onboarding-Ziele) + Canvas (Sequenz-Architektur)
+**Vorgehen (4 Schritte):**
+1. Binde Wissensordner an mit 3 Dokumenten: (a) ICP-Profile (Persona-Beschreibungen mit Jobs-to-be-Done), (b) Feature-Onboarding-Matrix (welches Feature ist für welchen ICP-Typ wertrelevant in Woche 1, 2, 3, 4), (c) Tonalitäts-Guide pro Persona.
+2. Konfiguriere Form-Input: `{{kundenpersona}}` (Dropdown: Technik-Entscheider / Marketing-Manager / Operations-Leiter), `{{produkt_tier}}` (Dropdown: Trial / Starter / Pro).
+3. System-Prompt: "Erstelle eine 7-E-Mail-Sequenz für die gewählte Persona. E-Mail 1: Welcome (Tag 0), E-Mail 2: Erster Quick-Win (Tag 2), E-Mails 3-5: Feature-Deep-Dives (Tage 5, 10, 15), E-Mail 6: Social Proof (Tag 22), E-Mail 7: Upgrade-Nudge (Tag 29)."
+4. Prüfe die Sequenz auf Überschneidungen mit Transaktions-E-Mails (z.B. automatische Zahlungs-Erinnerungen); dokumentiere im Canvas welche ESP-Trigger für welche E-Mail aktiviert werden müssen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lifecycle-Marketing-Architekt [Persona]. Erstelle eine 30-Tage-Onboarding-E-Mail-Sequenz für einen neuen Trial-Nutzer mit Persona 'Marketing-Manager' [Task]. Kontext: Nutze die ICP-Profile und Feature-Matrix aus dem Wissensordner; fokussiere auf Aktivierungs-Milestones in Woche 1 und Upgrade-Vorbereitung in Woche 4 [Context]. Format: Canvas-Tabelle mit Spalten Tag, E-Mail-Typ, Subject Line, Preheader, Body-Entwurf (max. 150 Wörter), ESP-Trigger [Format]."
+**Erwartetes Artefakt:** Eine vollständige 30-Tage-Onboarding-Sequenz (7 E-Mails) im Canvas mit Subject Lines, Body-Entwürfen und ESP-Trigger-Dokumentation.
+**Fallstricke (≥2 spezifisch):**
+- Sequenz für alle Personas identisch generieren und nur den Namen austauschen → Persona-spezifische Onboarding-Journeys müssen unterschiedliche Feature-Prioritäten und Tonalitäten aufweisen; ein reines Namenswechsel-Mailing zerstört die Aktivierungs-Logik.
+- E-Mail 7 (Upgrade-Nudge) zu früh im Flow platzieren → Nutzer, die ihre ersten 3 Wochen noch nicht vollständig durchlaufen haben, sollen keinen Upgrade-Druck erhalten; Timing-Logik mit dem CRM-Team abstimmen.
+**Anschluss-Szenario:** S-AK-058
+
+### S-AK-058 Social-Proof-Extraktions-Agent: Testimonials strukturiert für Marketing nutzen
+
+**Wann nutzen (Trigger):** Die Sales-Abteilung sammelt monatlich Kundenfeedback in einem 200-Zeilen-Google-Sheet — aber Marketing nutzt davon maximal 3 Quotes, weil das manuelle Suchen nach starken Testimonials zu aufwändig ist und die Quotes nicht formatiert vorliegen. (Quelle: S-084, S-089)
+**Strategisches Ziel:** Einen Social-Proof-Agenten konfigurieren, der Rohfeedback (CSV oder Texteingabe) analysiert, die stärksten Testimonials nach Kanaltauglichkeit (LinkedIn-Quote, Case-Study-Einstieg, Website-Hero, Sales-Deck) klassifiziert und medienfertige Versionen liefert.
+**Hands-on Ergebnis:** Ein Social-Proof-Agent mit Data-Analyst-Fähigkeit, der aus einem Feedback-Export die Top-10-Testimonials extrahiert, bewertet und in vier kanalgerechte Formate aufbereitet.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Data Analyst (CSV-Verarbeitung) + Wissensordner (Social-Proof-Framework) + Canvas
+**Vorgehen (4 Schritte):**
+1. Erstelle "Social-Proof-Bewertungsmatrix.md" im Wissensordner: Scoring-Kriterien für Testimonials (Spezifität +2, Messbares Ergebnis +3, Glaubwürdige Quelle +2, Emotional +1, Generisch -2, Kürzer als 150 Zeichen +1).
+2. Aktiviere Data-Analyst-Fähigkeit; System-Prompt: "Lade die angehängte CSV, berechne Scoring-Punkte pro Zeile anhand der Bewertungsmatrix, sortiere nach Score, zeige Top-10."
+3. Für jedes Top-10-Testimonial: generiere vier Varianten — (a) Direkt-Quote für LinkedIn (max. 220 Zeichen), (b) Paraphrase für Case-Study-Intro, (c) Headline-Version für Website-Hero (max. 8 Wörter), (d) Bullet für Sales-Deck.
+4. Prüfe Legal-Freigabe: ergänze im Canvas eine Spalte "Freigabe erteilt (Ja/Nein/Ausstehend)" — nur freigegebene Testimonials dürfen veröffentlicht werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Proof-Spezialist [Persona]. Analysiere die angehängte CSV mit 150 Kundenfeedbacks und identifiziere die 10 stärksten Testimonials [Task]. Kontext: Nutze die Social-Proof-Bewertungsmatrix aus dem Wissensordner; zeige nur Testimonials mit Score ≥6 [Context]. Format: Canvas-Tabelle mit Spalten: Original, Score, LinkedIn-Quote, Case-Study-Intro, Website-Hero, Freigabe-Status [Format]."
+**Erwartetes Artefakt:** Eine Canvas-Tabelle mit Top-10-Testimonials, Score und vier kanalgerechten Formatierungen plus einer Freigabe-Status-Spalte.
+**Fallstricke (≥2 spezifisch):**
+- Testimonials ohne explizite Kundengenehmigung veröffentlichen → DSGVO Art. 6 Abs. 1 a erfordert Einwilligung für namentliche Veröffentlichung; immer Freigabe-Tracking in die Tabelle integrieren, nicht als nachgelagerter Schritt.
+- CSV mit mehr als 30 MB hochladen → Data-Analyst-Limit ist 30 MB; bei größeren Feedback-Exports zuerst auf relevante Spalten reduzieren (Quote-Text + Kundenprofil) und als kleines CSV exportieren.
+**Anschluss-Szenario:** S-AK-059
+
+### S-AK-059 Canary-Monitoring-Agent: Qualitätssicherung als geplanter Hintergrundprozess
+
+**Wann nutzen (Trigger):** Das manuelle Canary-Spotcheck-Set aus S-AK-004 wird monatlich vergessen, weil kein automatischer Trigger existiert — der monatliche Kalender-Eintrag wird wegen Sprint-Abschlüssen immer wieder verschoben. (Quelle: S-AK-004, S-AK-013, julia-lens A-34)
+**Strategisches Ziel:** Den Canary-Monitoring-Prozess von einer manuellen Kalenderaufgabe in einen geplanten, regelmäßig ausgeführten Hintergrundprozess überführen, der automatisch ausgelöst wird und Ergebnisse per Slack-Nachricht liefert.
+**Hands-on Ergebnis:** Ein Canary-Monitoring-Setup, das monatlich (oder nach jedem Agent-Update) die 5 Canary-Prompts ausführt, die Ergebnisse mit der Baseline vergleicht und einen strukturierten Health-Report in den Slack-Kanal sendet.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Slack-Integration (Notification) + Wissensordner (Canary-Set + Baseline-Outputs) + Konversations-Starter (manueller Auslöser als Backup)
+**Vorgehen (4 Schritte):**
+1. Stelle sicher, dass der Wissensordner "Canary-Set.md" aus S-AK-004 vollständig ist: 5 Prompts + erwartete Antwortmuster + Bewertungsskala (1-3) + Eskalationsschwelle (≥2 Misses).
+2. Konfiguriere den Canary-Agent mit einem Slack-Output-Schema: "Nach Ausführung aller 5 Canary-Prompts sende eine Slack-Nachricht an #marketing-ai-health mit: Datum, Agent-Name, 5× (Prompt-ID, Score, Pass/Fail), Gesamt-Status (GRÜN/GELB/ROT), Empfehlung."
+3. Lege einen manuellen Konversations-Starter "[CANARY-RUN] Monatlichen Qualitäts-Check starten" als Backup-Trigger an — für Wochen wo der geplante Prozess ausnahmsweise manuell ausgelöst werden muss.
+4. Simuliere einen Quality-Drift: verändere den Agenten bewusst (Temperatur erhöhen) und führe den Canary-Run durch; prüfe ob ROT korrekt erkannt und die Slack-Benachrichtigung korrekt ausgelöst wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Canary-Monitoring-Assistent [Persona]. Führe alle 5 Canary-Prompts aus dem Wissensordner für den Briefing-Agenten aus und bewerte jeden Output gegen die dokumentierte Baseline [Task]. Kontext: Monatlicher Qualitäts-Check; Bewertungsskala 1 (schlecht) bis 3 (wie erwartet) [Context]. Format: Slack-Nachricht mit: Agent, Datum, 5 Zeilen (Prompt-ID, Score, Pass/Fail), Gesamt-Status, Empfehlung [Format]."
+**Erwartetes Artefakt:** Eine strukturierte Slack-Nachricht mit 5-Prompt-Health-Scores, Gesamt-Status (GRÜN/GELB/ROT) und einer konkreten Empfehlung (Alles OK / Ursachenanalyse / Rollback starten).
+**Fallstricke (≥2 spezifisch):**
+- Canary-Run als einmaligen manuellen Prozess konfigurieren → bei jedem Modell-Update oder Wissensordner-Update kann sich die Qualität ändern; Canary-Run muss auch nach jeder Konfigurationsänderung des Agenten ausgelöst werden, nicht nur monatlich.
+- Canary-Prompts nie aktualisieren → nach 6 Monaten testen veraltete Canaries möglicherweise nicht mehr die aktuellen Kernfunktionen des Agenten; Canary-Set quartalsweise reviewen und an aktuelle Nutzungspatterns anpassen.
+**Anschluss-Szenario:** S-AK-060
+
+### S-AK-060 Angebots- und Rechnungs-Assistent: Kaufmännische Dokumente für Marketing-Operations aufbereiten
+
+**Wann nutzen (Trigger):** Das Marketing-Team erhält monatlich 15–20 Angebote von Agenturen, Tool-Anbietern und Freelancern — der Vergleich, das Extrahieren von Konditionen und das Erstellen von Entscheidungsvorlagen für den CFO verschlingt 4–6 Stunden pro Monat. (Quelle: julia-lens A-01, S-056)
+**Strategisches Ziel:** Einen Angebots-Analyse-Agenten konfigurieren, der hochgeladene Angebots-PDFs oder eingefügte Angebotstexte strukturiert auswertet (Preisstruktur, Konditionen, Laufzeit, Kündigungsfristen) und eine CFO-taugliche Entscheidungsvorlage generiert.
+**Hands-on Ergebnis:** Ein Angebots-Assistent, der aus einem Angebots-Dokument eine strukturierte Vergleichstabelle (bis zu 5 Angebote), eine Risiko-Bewertung und eine 1-Satz-Empfehlung pro Angebot erstellt.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Bewertungskriterien + Vendor-Anforderungs-Template) + Canvas (Vergleichstabelle) + Data Analyst (bei CSV-basierten Preislisten)
+**Vorgehen (4 Schritte):**
+1. Erstelle "Vendor-Bewertungskriterien.md" im Wissensordner: Pflichtkriterien (Preis, Laufzeit, Kündigungsfrist, Datenschutz-Zertifizierung, SLA) und Gewichtung (z.B. Datenschutz = Knock-out-Kriterium, kein EU-Hosting → sofort ausschließen).
+2. Konfiguriere System-Prompt: "Extrahiere aus jedem eingereichten Angebot die 5 Pflichtkriterien. Wenn ein Knock-out-Kriterium nicht erfüllt ist, markiere das Angebot als 'Ausgeschlossen' mit Begründung."
+3. Ergänze Canvas-Output mit Vergleichstabelle (Zeilen: Anbieter, Spalten: Kriterien + Score 1-5 + Gewichteter Gesamt-Score) und einer 1-Satz-Empfehlung pro Anbieter.
+4. Teste mit 2–3 realen (anonymisierten) Angeboten; prüfe ob Kündigungsfristen und versteckte Kosten (Setup-Fees, Overage-Charges) korrekt identifiziert werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Vendor-Evaluations-Analyst [Persona]. Analysiere das folgende Angebot einer Marketing-Agentur und bewerte es anhand unserer Vendor-Kriterien [Task]. Kontext: Nutze die Bewertungskriterien aus dem Wissensordner; prüfe insbesondere Datenschutz-Zertifizierung, Laufzeit und versteckte Kosten [Context]. Format: Strukturierte Tabelle (Kriterium | Angebots-Wert | Bewertung 1-5 | Kommentar) + 1-Satz-Empfehlung für CFO-Vorlage [Format]."
+**Erwartetes Artefakt:** Eine Canvas-Vergleichstabelle (bis zu 5 Angebote × 5 Kriterien × Score) mit Knock-out-Markierungen und einer CFO-tauglichen 1-Satz-Empfehlung pro Anbieter.
+**Fallstricke (≥2 spezifisch):**
+- Angebots-PDFs mit eingebetteten Grafiken (keine selektierbaren Texte) direkt hochladen → der Agent kann aus grafik-basierten PDFs keine strukturierten Daten extrahieren; Angebote zuerst als Text kopieren oder ein OCR-Tool nutzen, bevor sie in den Agenten eingegeben werden.
+- Agent-Output ohne kaufmännische Prüfung direkt als CFO-Entscheidungsgrundlage verwenden → KI kann Fußnoten, Anlagen und juristische Klauseln übersehen; die Tabelle ist ein Vorbereitungs-Tool, die finale Entscheidung liegt beim kaufmännischen Team.
+**Anschluss-Szenario:** S-AK-001
