@@ -823,4 +823,377 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Fallstricke (≥2 spezifisch):**
 - Ohne Nutzungsrate-Daten aus dem Langdock-Workspace-Dashboard ist die Nutzungsrate-Dimension rein subjektiv; immer Dashboard-Export als objektive Datenbasis einbeziehen, bevor Deprecation-Entscheidungen getroffen werden.
 - Der Report verliert seinen Wert, wenn er nicht konsequent quartalsweise durchgeführt wird — einmalige Durchführung reicht nicht; einen festen Kalender-Termin (z.B. letzter Freitag im Quartal) als unverrückbares Team-Ritual etablieren.
+**Anschluss-Szenario:** S-PS-041
+
+### S-PS-041 Persona-Stacking: Mehrschichtige Rollen-Instruktionen in System-Prompts
+
+**Wann nutzen (Trigger):** Ein Briefing-Agent liefert inhaltlich korrekte, aber tonell flache Outputs — weil der System-Prompt nur eine Rollen-Ebene ("du bist Marketing-Manager") enthält, fehlen strategische Tiefe und stilistische Konsistenz. (Quelle: sources/12 Q75 + A-31)
+**Strategisches Ziel:** Durch Persona-Stacking (Kombination aus Fach-Rolle, Unternehmenskontext und Kommunikations-Stil in geschichteten Instruktions-Blöcken) deutlich reichhaltigere, kontextsensitivere Outputs erzielen — ohne die Prompt-Länge unkontrolliert aufzublähen.
+**Hands-on Ergebnis:** Ein `persona-stacking-template.md` in der Library mit einem 3-Schicht-Gerüst (Fach-Persona → Unternehmenskontext → Stil-Restriktionen) und zwei ausgearbeiteten Beispielen für Briefing- und Analyse-Agenten.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten-Konfiguration (System-Prompt) / Library Folder / Chat
+**Vorgehen (4 Schritte):**
+1. Definiere Schicht 1 (Fach-Persona): Rolle + Spezialisierungstiefe, z.B. "Du bist Senior B2B-Content-Stratege mit 10 Jahren SaaS-Erfahrung im DACH-Raum."
+2. Definiere Schicht 2 (Unternehmenskontext): Branche, Zielgruppe, strategische Prioritäten, z.B. "Unser Unternehmen adressiert CFOs mittelständischer Produktionsbetriebe mit einem Fokus auf Prozessautomatisierung."
+3. Definiere Schicht 3 (Stil-Restriktionen): Verbotene Phrasen, Tonfall, Länge, z.B. "Schreibe nie in der Wir-Form, vermeide Superlative, jeder Absatz max. 3 Sätze."
+4. Teste den gestapelten System-Prompt mit 3 Canary-Prompts und vergleiche Output-Qualität gegen die einschichtige Baseline.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Senior B2B-Content-Stratege mit 10 Jahren SaaS-Erfahrung im DACH-Raum [Schicht 1]. Unser Unternehmen adressiert CFOs in mittelständischen Produktionsbetrieben mit Fokus auf Prozessautomatisierung [Schicht 2]. Schreibe nie in der Wir-Form, vermeide Superlative, jeder Absatz max. 3 Sätze [Schicht 3]. Aufgabe: Erstelle einen LinkedIn-Post zu unserem neuen ROI-Kalkulator. Format: Hook (1 Satz) + 3 kurze Absätze + CTA."
+**Erwartetes Artefakt:** Gestapelter System-Prompt-Block in `persona-stacking-template.md`; dokumentierter Qualitäts-Vergleich (einschichtig vs. dreischichtig) mit konkreten Output-Beispielen.
+**Fallstricke (≥2 spezifisch):**
+- Widersprüche zwischen Schichten (z.B. "Sei kreativ" in Schicht 1 vs. "Keine Metaphern" in Schicht 3) erzeugen inkonsistente Outputs — jede Schicht muss vor dem Einsatz auf Konflikte geprüft werden.
+- System-Prompts über 1 500 Wörter erhöhen die Latenz und können den Agenten dazu bringen, frühe Schichten zu "vergessen"; Schicht 1–3 zusammen sollten 400 Wörter nicht überschreiten.
+**Anschluss-Szenario:** S-PS-042
+
+### S-PS-042 Multimodale Prompts: Screenshot + Text für Design-Feedback
+
+**Wann nutzen (Trigger):** Das Team erhält Agentur-Layouts als Screenshot-PDF — die Diskussion im Meeting bleibt vage, weil niemand das Feedback systematisch gegen die Brand Guidelines strukturiert hat. (Quelle: sources/10 S-036 + S-042 + sources/12 Q30)
+**Strategisches Ziel:** Einen reproduzierbaren multimodalen Prompt-Workflow einrichten, bei dem ein Screenshot des Layouts direkt mit einem Text-Kontext (Brand Guidelines, Checkliste) kombiniert wird, um in einem einzigen Pass präzises, schriftliches Design-Feedback zu generieren.
+**Hands-on Ergebnis:** Ein ausgefülltes Feedback-Dokument mit einer nummerierten Punkte-Liste: Element | Befund | Empfehlung — bereit für den E-Mail-Versand an die Agentur innerhalb von 15 Minuten nach dem Meeting.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Vision aktiviert) / Library Folder (Brand Guidelines) / Canvas
+**Vorgehen (3 Schritte):**
+1. Lade den Agentur-Screenshot direkt in den Chat und füge `@brand-guidelines` (Wissensordner) als Kontext hinzu.
+2. Sende den multimodalen Feedback-Prompt: Vision analysiert das Bild, RAG zieht die relevanten Brand-Regeln, der Agent synthetisiert das strukturierte Feedback.
+3. Übertrage die Ausgabe per "Open in Canvas" in ein bearbeitbares Dokument, füge ggf. Prioritäts-Tags (Pflicht / Empfohlen / Nice-to-have) hinzu und exportiere als PDF für die Agentur.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Art Director. Analysiere den angehängten Agentur-Layout-Screenshot. Prüfe ihn gegen unsere Brand Guidelines in [@brand-guidelines]. Erstelle eine Feedback-Tabelle mit 3 Spalten: Element (was genau), Befund (konform / abweichend), Empfehlung (konkrete Änderung). Priorisiere jeden Punkt: Pflicht / Empfohlen / Nice-to-have. Maximal 10 Zeilen. Format: Markdown-Tabelle."
+**Erwartetes Artefakt:** Markdown-Tabelle mit strukturiertem Design-Feedback; als PDF exportierbar für Agentur-Briefing ohne zusätzliche Aufbereitung.
+**Fallstricke (≥2 spezifisch):**
+- Vision-Modelle können keine exakten HEX-Farbcodes aus komprimierten Screenshots ablesen; Farbabweichungen müssen manuell mit einem Color-Picker-Tool bestätigt werden, bevor sie reklamiert werden.
+- Screenshots mit sehr kleiner Typografie (unter 10pt) werden vom Vision-Modell unscharf interpretiert; für Typo-Checks immer hochauflösende PNG-Exports (≥150 dpi) verwenden.
+**Anschluss-Szenario:** S-PS-043
+
+### S-PS-043 Wettbewerbs-Benchmarking-Tabelle aus Web-Recherche generieren
+
+**Wann nutzen (Trigger):** Die Produktmarketerin muss vor einem Strategie-Meeting eine aktuelle Wettbewerbs-Feature-Matrix vorlegen — bisher wird die Tabelle manuell aus Websites zusammengeklickt, was 4–6 Stunden kostet. (Quelle: sources/10 S-021 + S-029 + sources/12 Q18)
+**Strategisches Ziel:** Einen Agenten-Prompt entwickeln, der mit Web Search strukturiert 3–5 Wettbewerber analysiert und eine vergleichbare, sofort präsentierbare Benchmarking-Tabelle mit definierten Bewertungsdimensionen generiert.
+**Hands-on Ergebnis:** Eine Markdown-Tabelle (Wettbewerber × Dimensionen) mit Bewertung 1–3 und Quellenangaben je Zelle; exportierbar als CSV für die Präsentation.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent (Web Search aktiviert) / Canvas / Data Analyst
+**Vorgehen (4 Schritte):**
+1. Definiere vorab die 5–7 Bewertungsdimensionen (z.B. Preismodell, Integrationen, DACH-Lokalisierung, Support-Tier, KI-Features) und hinterlege sie im Prompt als feste Spalten.
+2. Lass den Agenten via Web Search für jeden Wettbewerber gezielt die Pricing-Seite, Feature-Übersicht und Kundenbewertungen (G2/Capterra) scannen.
+3. Strukturiere den Output als Tabelle: Wettbewerber (Zeilen) × Dimensionen (Spalten) + Bewertung 1 (schwach) / 2 (mittel) / 3 (stark) + kurze Evidenz-Quelle.
+4. Importiere die Tabelle in Canvas für finale Annotation und Export.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Analyst. Analysiere via Web Search die folgenden 4 Wettbewerber: {{Wettbewerber-Liste}}. Bewerte jeden in diesen 6 Dimensionen: Preismodell, DACH-Lokalisierung, CRM-Integrationen, KI-Features, Support-Reaktionszeit, Kundenbewertungsscore (G2). Bewertung: 1 = schwach / 2 = mittel / 3 = stark. Format: Markdown-Tabelle mit Spalte 'Quelle/Evidenz' je Zelle. Abschließend: 1-Satz-Fazit pro Wettbewerber."
+**Erwartetes Artefakt:** Benchmarking-Tabelle (4 Wettbewerber × 6 Dimensionen) mit Bewertungen und Quellennachweisen; direkt in Strategie-Deck einbettbar.
+**Fallstricke (≥2 spezifisch):**
+- Web Search ruft öffentliche Preisseiten ab, nicht Vertragspreise; Preismodell-Bewertungen sind immer mit "Stand: Datum" zu versehen und vor Kundenpräsentationen manuell verifiziert werden.
+- Wettbewerber mit schlechter Web-Präsenz werden systematisch schlechter bewertet als sie sind — explizit anweisen: "Falls keine Daten verfügbar, trage 'Keine öffentlichen Daten' ein, nicht 1."
+**Anschluss-Szenario:** S-PS-044
+
+### S-PS-044 Vertragsklauseln aus PDFs extrahieren und kategorisieren
+
+**Wann nutzen (Trigger):** Vor Unterzeichnung eines Agentur-Rahmenvertrags oder SaaS-MSA soll das Marketing-Team die wichtigsten Klauseln (Kündigungsfristen, Haftung, IP-Übertragung) schnell verstehen — ohne auf die überlastete Rechtsabteilung zu warten. (Quelle: sources/12 Q52 + A-06)
+**Strategisches Ziel:** Einen Prompt entwickeln, der aus einem angehängten Vertrags-PDF die Marketing-relevanten Klauseln extrahiert, in Kategorien ordnet und eine Management-Summary mit Ampel-Bewertung (grün / gelb / rot) generiert — als Ersteinschätzung vor dem Juristengespräch.
+**Hands-on Ergebnis:** Ein strukturiertes Klausel-Extrakt mit Kategorien (Kündigung, Haftung, IP, Datenschutz, Zahlungsbedingungen), direkten Zitaten aus dem Dokument und einer Ampel-Risikobewertung pro Kategorie.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Dateianlage) / Canvas / Library Folder
+**Vorgehen (3 Schritte):**
+1. Lade das Vertrags-PDF direkt als Dateianlage in den Chat (kein Upload in Wissensordner — Direktanhang für vollständiges Context-Parsing, vgl. S-PS-052-Logik).
+2. Sende den Extraktions-Prompt mit vordefinierten Kategorien und Zitat-Pflicht — der Agent darf keine Klauseln umformulieren, nur zitieren.
+3. Öffne den Output in Canvas, füge die Ampel-Tags manuell hinzu und teile das Dokument mit der Rechtsabteilung als Vorprüfungs-Basis.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Contract-Analyst mit Fokus auf Marketing-Beschaffung. Analysiere das angehängte Vertrags-PDF. Extrahiere alle Klauseln aus diesen Kategorien: (1) Kündigungsfristen, (2) Haftungsbeschränkungen, (3) IP-Übertragung und Nutzungsrechte, (4) Datenschutz/DSGVO-Pflichten, (5) Zahlungsbedingungen. Für jede Klausel: direktes Zitat + Seitenzahl + 1-Satz-Erklärung in einfacher Sprache. Bewertung: 🟢 Standard / 🟡 Prüfen / 🔴 Risiko. Format: Tabelle je Kategorie. Keine Rechtsberatung — nur Informationsextraktion."
+**Erwartetes Artefakt:** Klausel-Extrakt-Tabelle (5 Kategorien, direkte Zitate, Seitenzahlen, Ampel-Bewertung) als Gesprächsgrundlage für die Rechtsabteilung; in Canvas exportierbar als DOCX.
+**Fallstricke (≥2 spezifisch):**
+- Der Prompt muss explizit "Keine Rechtsberatung" verankern und im Output sichtbar machen — KI-Vertragsanalyse ersetzt keine juristische Prüfung und darf nicht als solche kommuniziert werden.
+- Bei Verträgen über 50 Seiten kann das Kontextfenster des Modells überlastet werden; lange Verträge in Abschnitte splitten (je ~30 Seiten) und Extrakte zusammenführen.
+**Anschluss-Szenario:** S-PS-045
+
+### S-PS-045 Meeting-Transkript zu Action-Items und Entscheidungsprotokoll verarbeiten
+
+**Wann nutzen (Trigger):** Nach einem 60-minütigen Strategie-Meeting mit 8 Teilnehmenden liegt ein rohes Transkript vor — Zusagen, Verantwortlichkeiten und Deadlines sind im Gesprächsstrom vergraben und niemand will das Protokoll schreiben. (Quelle: sources/10 S-058 + Quick-Structuring-Abschnitt + A-05)
+**Strategisches Ziel:** Einen Prompt entwickeln, der aus einem rohen Meeting-Transkript in einem einzigen Pass ein vollständiges Entscheidungsprotokoll (Beschlüsse), eine priorisierte Action-Item-Liste (Owner + Deadline) und eine 3-Sätze-Executive-Summary generiert.
+**Hands-on Ergebnis:** Ein `meeting-protokoll-[datum].md` mit drei Blöcken: Executive-Summary (3 Sätze), Beschlüsse (nummeriert), Action-Items (Tabelle: Was | Wer | Bis wann | Priorität).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Dateianlage oder Text-Paste) / Canvas / Library Folder
+**Vorgehen (3 Schritte):**
+1. Füge das Transkript als Text-Block in den Chat ein (oder lade die Transkript-Datei als Anhang); füge `@meeting-protokoll-vorlage` aus der Library hinzu, falls eine Standardvorlage existiert.
+2. Sende den Protokoll-Prompt; der Agent durchsucht den Text nach Signalwörtern für Beschlüsse ("wir entscheiden", "vereinbart", "bis [Datum]") und Action-Items ("kümmert sich", "übernimmt", "sendet bis").
+3. Öffne den Output in Canvas, ergänze fehlende Owner manuell und sende das Protokoll per Slack/E-Mail an alle Teilnehmenden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Meeting-Protokollant. Analysiere das folgende Transkript: [Transkript einfügen]. Erstelle: (1) Executive-Summary in 3 Sätzen, (2) nummerierte Liste aller Beschlüsse (nur explizit getroffene Entscheidungen), (3) Action-Item-Tabelle mit Spalten: Was | Wer | Bis wann | Priorität (Hoch/Mittel/Niedrig). Falls Owner oder Deadline unklar: trage '[Klären]' ein — keine Vermutungen. Format: drei nummerierte Blöcke."
+**Erwartetes Artefakt:** Fertig formatiertes `meeting-protokoll-[datum].md` mit Executive-Summary, Beschlüssen und Action-Item-Tabelle; versandbereit innerhalb von 5 Minuten nach Ende des Meetings.
+**Fallstricke (≥2 spezifisch):**
+- Der Agent tendiert dazu, Diskussionspunkte als Beschlüsse zu werten — im Prompt explizit fordern: "Nur Beschlüsse, die mit 'wir einigen uns', 'entschieden' oder ähnlichen Formulierungen eindeutig getroffen wurden."
+- Automatisch generierte Deadlines aus vagen Aussagen ("nächste Woche") sind fehleranfällig; der Output muss immer von einer verantwortlichen Person vor dem Versand gegengelesen werden.
+**Anschluss-Szenario:** S-PS-046
+
+### S-PS-046 Produkt-Changelog in nutzerorientierte Release-Notes umwandeln
+
+**Wann nutzen (Trigger):** Entwicklung liefert einen technischen Changelog (Git-Commit-Messages oder Jira-Release-Notes) — das Marketing-Team muss daraus nutzerorientierte Release-Notes für Blog, In-App und Newsletter erstellen, ohne die technischen Details zu verfälschen. (Quelle: sources/10 S-059 + A-05)
+**Strategisches Ziel:** Einen Konversions-Prompt entwickeln, der technischen Changelog-Text in drei nutzerspezifische Formate übersetzt: kurze In-App-Benachrichtigung (max. 80 Wörter), Newsletter-Abschnitt (max. 200 Wörter) und Blog-Teaser (max. 400 Wörter) — ohne Fakten hinzuzufügen oder wegzulassen.
+**Hands-on Ergebnis:** Drei fertige Textvarianten im Canvas, bereit für direkte Übergabe an CMS, E-Mail-Tool und In-App-Messaging-System.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Library Folder (Brand Voice)
+**Vorgehen (3 Schritte):**
+1. Füge den technischen Changelog als Text-Block in den Chat ein; referenziere `@brand-voice-guide` für Tonalitätskonsistenz.
+2. Sende den Konversions-Prompt mit expliziter Längen- und Faktentreue-Restriktion — kein Feature darf hinzuerfunden werden.
+3. Öffne alle drei Varianten in Canvas, prüfe sie gegen die originalen Changelog-Punkte (1:1-Abgleich) und exportiere für das CMS.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Produkt-Copywriter. Konvertiere den folgenden technischen Changelog in nutzerfreundliche Sprache: [Changelog einfügen]. Erstelle drei Varianten: (1) In-App-Benachrichtigung max. 80 Wörter — fokussiert auf den unmittelbaren Nutzen, (2) Newsletter-Abschnitt max. 200 Wörter — mit konkretem Use-Case-Beispiel, (3) Blog-Teaser max. 400 Wörter — mit H2 und einem CTA. Regel: Kein Feature erfinden oder weglassen. Tonalität: aktiv, nutzerorientiert, kein Tech-Jargon. Format: drei klar getrennte Blöcke."
+**Erwartetes Artefakt:** Drei fertige Release-Notes-Varianten (In-App / Newsletter / Blog) im Canvas; direkt ins jeweilige Zielsystem kopierbar ohne weitere Redaktion.
+**Fallstricke (≥2 spezifisch):**
+- Wenn der technische Changelog mehrdeutige Formulierungen enthält ("improved performance"), tendiert der Agent zu Übertreibungen; im Prompt fordern: "Bei vagen Begriffen schreibe wörtlich 'verbesserte Performance' — keine Zahlen erfinden."
+- Drei Formate in einem einzigen Prompt können dazu führen, dass Variante 3 (Blog) die Länge von Variante 1 (In-App) ignoriert; Längenrestriktionen in der Format-Sektion wiederholen und nach Generierung mit Wort-Count prüfen.
+**Anschluss-Szenario:** S-PS-047
+
+### S-PS-047 Social-Media-Compliance-Check vor Veröffentlichung
+
+**Wann nutzen (Trigger):** Ein fertig verfasster Social-Media-Post soll veröffentlicht werden — das Team ist unsicher, ob Claims, Superlative oder Preisangaben dem UWG, der DSGVO-Werbepflicht oder plattformspezifischen Richtlinien entsprechen. (Quelle: A-09 + A-12 + A-19 + sources/10 S-051)
+**Strategisches Ziel:** Einen Pre-Publish-Compliance-Prompt entwickeln, der Social-Media-Content systematisch auf drei Risikodimensionen prüft: rechtliche Claims (UWG/DSGVO), Plattform-Policy-Verstöße (Meta/LinkedIn-Richtlinien) und Marken-Disclosure-Pflichten (gesponsert, KI-generiert).
+**Hands-on Ergebnis:** Ein Compliance-Check-Report mit Ampel-Status (grün/gelb/rot) pro Dimension, konkreten Beanstandungen mit Zeilenverweis und direkt einsetzbaren Korrekturvorschlägen.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder (Compliance-Richtlinien) / Chat / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Hinterlege eine `social-compliance-checkliste.md` in der Library mit den plattformspezifischen Regeln (Meta-Advertising-Policies, LinkedIn-Community-Policies, UWG §5/§6) und DACH-Disclosure-Standards.
+2. Erstelle einen Compliance-Check-Konversations-Starter im Brand-Guardian-Agenten, der `@social-compliance-checkliste` automatisch einbindet.
+3. Füge den fertigen Post-Text in den Chat ein und starte den Check; der Agent prüft jeden Satz gegen die Checkliste.
+4. Überarbeite den Post anhand der roten und gelben Punkte vor dem Scheduling.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Media-Compliance-Prüfer. Prüfe den folgenden Post-Text gegen die Checkliste in [@social-compliance-checkliste]: [Post-Text einfügen]. Bewerte in 3 Dimensionen: (1) Rechtliche Claims — UWG-konforme Formulierungen?, (2) Plattform-Policy — Meta/LinkedIn-Richtlinien eingehalten?, (3) Disclosure — Sponsoring oder KI-Generierung korrekt gekennzeichnet? Format: Ampel-Tabelle (Dimension | Status | Befund | Korrekturvorschlag). Keine Rechtsberatung — Ersteinschätzung."
+**Erwartetes Artefakt:** Compliance-Ampel-Tabelle (3 Dimensionen) mit Befunden und direkten Textkorrektur-Vorschlägen; Entscheidungsgrundlage für den finalen Freigabe-Step.
+**Fallstricke (≥2 spezifisch):**
+- Plattform-Policies ändern sich mehrfach jährlich; die `social-compliance-checkliste.md` muss mit einem Datum und einer Versionsnummer versehen und mindestens quartalsweise aktualisiert werden.
+- Der Compliance-Check ist keine rechtssichere Prüfung — bei Kampagnen mit Preisangaben oder Gesundheitsbezug muss immer ein Jurist oder Compliance-Officer gegenlesen, bevor der Post geht.
+**Anschluss-Szenario:** S-PS-048
+
+### S-PS-048 DACH-spezifische Headline-Varianten testen
+
+**Wann nutzen (Trigger):** Eine Kampagnen-Headline, die im US- oder UK-Markt stark performt, soll für den DACH-Markt adaptiert werden — direkte Übersetzungen wirken oft flach oder kulturell unpassend. (Quelle: sources/12 Q77 + A-07)
+**Strategisches Ziel:** Einen Prompt entwickeln, der 8–10 DACH-spezifische Headline-Varianten generiert, die kulturelle Kommunikationspräferenzen (Sachlichkeit, Nutzenargumentation, DSGVO-Bewusstsein) berücksichtigen und für A/B-Tests im Performance-Marketing einsetzbar sind.
+**Hands-on Ergebnis:** Eine Tabelle mit 10 Headline-Varianten, kategorisiert nach psychologischem Trigger (Nutzen, Sicherheit, Effizienz, Neugier, Sozial-Beweis) mit Zeichenanzahl und empfohlener Plattform.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Library Folder (Brand Voice) / Canvas
+**Vorgehen (4 Schritte):**
+1. Stelle der Original-Headline den DACH-Kontext gegenüber: Zielgruppe, Branche, kulturelle Sensibilitäten (z.B. Skepsis gegenüber übertriebenen Versprechen).
+2. Lass den Agenten 10 Varianten in 5 psychologischen Trigger-Kategorien generieren (2 je Kategorie).
+3. Prüfe alle Varianten mit dem Anti-Cliché-Scrub (vgl. Text-Refinement-Abschnitt) auf abgedroschene deutsche Marketing-Phrasen.
+4. Bewerte die Top-3 in Canvas mit den Performance-Marketing-Kollegen und leite A/B-Test-Setup ab.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DACH-Conversion-Copywriter. Adaptiere die folgende Headline für den deutschsprachigen Markt: '{{Original-Headline}}'. Zielgruppe: {{Zielgruppe}}, Branche: {{Branche}}. Erstelle 10 Varianten in 5 Kategorien (je 2): Nutzen-fokussiert, Sicherheit/Vertrauen, Effizienz/Zeit, Neugier/Frage, Sozial-Beweis. DACH-Regel: Keine Superlative wie 'best' oder 'revolutionär', keine unbelegten Versprechen. Format: Tabelle: Nr | Kategorie | Headline | Zeichen | Empfohlene Plattform."
+**Erwartetes Artefakt:** Tabelle mit 10 DACH-adaptierten Headlines (kategorisiert, mit Zeichenanzahl und Plattform-Empfehlung); bereit für A/B-Test-Setup im Performance-Tool.
+**Fallstricke (≥2 spezifisch):**
+- DACH-Nutzer reagieren sensibel auf Datenschutz-Implikationen in Werbetexten; Headlines die implizit Tracking suggerieren ("Wir wissen, was du brauchst") müssen gefiltert werden — explizit in die Negativ-Restriktionen aufnehmen.
+- Direkte Übersetzungen von englischen Idiomen ("game-changer") klingen auf Deutsch unnatürlich; den Agenten anweisen, ausschließlich idiomatisches Deutsch zu verwenden, keine Anglizismen in Claims.
+**Anschluss-Szenario:** S-PS-049
+
+### S-PS-049 OKR-Dokumentation für das Marketing-Team generieren
+
+**Wann nutzen (Trigger):** Das Quartal-OKR-Planning-Meeting ist in zwei Tagen — die Marketing-Direktorin muss strukturierte OKR-Dokumente vorlegen, aber das Team verbringt mehr Zeit mit dem Format als mit der inhaltlichen Diskussion. (Quelle: A-10 + A-04)
+**Strategisches Ziel:** Einen Prompt entwickeln, der aus einer unstrukturierten Input-Liste mit strategischen Zielen vollständige OKR-Dokumente (1 Objective + 3–4 Key Results je Objective) generiert, die den SMART-Kriterien entsprechen und sofort für Board-Präsentationen nutzbar sind.
+**Hands-on Ergebnis:** Ein `okr-marketing-q[X]-[Jahr].md` mit 3 Objectives und je 3–4 messbaren Key Results, inkl. Baseline-Wert, Zielwert und Messmethode — exportierbar als Vorlage für OKR-Tools (Asana, Notion, Jira).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Library Folder
+**Vorgehen (4 Schritte):**
+1. Sammle strategische Ziele als rohe Stichpunkte (5–10 Punkte reichen) und füge aktuelle KPI-Baseline-Daten hinzu (Conversion Rate, MQL-Volumen, etc.).
+2. Lass den Agenten aus den Stichpunkten 3 priorisierte Objectives formulieren (ambitiös, qualitativ, inspirierend — kein Zahlen in Objectives).
+3. Generiere je Objective 3–4 Key Results nach SMART-Schema: spezifisch, messbar (mit Baseline → Zielwert), erreichbar, relevant, zeitgebunden (bis Quartalsende).
+4. Überarbeite im Canvas: prüfe Ambitions-Level (zu leicht = Punktabzug im OKR-Review), füge Owner je Key Result hinzu.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist OKR-Coach für Marketing-Teams. Konvertiere diese strategischen Prioritäten in OKRs: [Stichpunkte einfügen]. Erstelle 3 Objectives (ambitiös, qualitativ, kein Zahlen) und je 3–4 Key Results (SMART: Baseline → Zielwert bis {{Datum}}). Regel: Jedes Key Result muss messbar sein — kein 'verbessern' ohne Zahl. Format: pro Objective ein nummerierter Block mit Objective-Statement + Key-Results-Liste. Sprache: professionelles Deutsch, keine OKR-Buzzword-Inflation."
+**Erwartetes Artefakt:** `okr-marketing-q[X]-[Jahr].md` mit 3 Objectives + je 3–4 SMART Key Results; direkt in OKR-Tool importierbar und als Board-Folie nutzbar.
+**Fallstricke (≥2 spezifisch):**
+- Modelle neigen dazu, Key Results als Aufgaben (Tasks) statt als Ergebnisse zu formulieren; im Prompt explizit fordern: "Key Results beschreiben den Zustand am Ende des Quartals, nicht die Aktivität."
+- Zu ambitionierte Key Results (Moonshots) ohne realistische Baseline demotivieren das Team; immer aktuelle Baseline-Daten mitgeben, damit das Modell Zielwerte realistisch kalibrieren kann.
+**Anschluss-Szenario:** S-PS-050
+
+### S-PS-050 FAQ aus Support-Tickets automatisch generieren
+
+**Wann nutzen (Trigger):** Der Kundensupport häuft 200+ Tickets über drei Monate an — das Produktmarketing-Team soll daraus FAQ-Content für die Website generieren, hat aber keinen strukturierten Prozess, um die häufigsten Fragen zu identifizieren. (Quelle: Quick-Structuring-Abschnitt + sources/10 S-048 + A-05)
+**Strategisches Ziel:** Einen zweistufigen Prompt-Workflow entwickeln, der (1) Cluster häufig gestellter Fragen aus rohen Support-Ticket-Texten identifiziert und (2) für die Top-10-Fragen markenkonforme Antworten im FAQ-Format generiert — bereit für CMS-Import.
+**Hands-on Ergebnis:** Ein `faq-[produktname]-v[X].md` mit 10 Frage-Antwort-Paaren, kategorisiert nach Thema (Onboarding, Preise, Integrationen, Sicherheit), mit Quellenhinweis auf Ticket-Cluster.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Chat / Canvas / Library Folder (Brand Voice)
+**Vorgehen (4 Schritte):**
+1. Exportiere Ticket-Texte als anonymisiertes CSV (kein PII — nur Ticket-ID, Kategorie, Freitext) und lade es in den Data Analyst.
+2. Schritt 1 — Clustering: Data Analyst führt Python-Clustering aus (TF-IDF oder semantische Ähnlichkeit) und identifiziert die Top-10 Frage-Cluster nach Häufigkeit.
+3. Schritt 2 — FAQ-Generierung: Übergib die Cluster-Zusammenfassung an den Chat-Agenten mit `@brand-voice-guide` und generiere für jede Frage eine markenkonforme Antwort (max. 150 Wörter).
+4. Importiere die 10 Paare in Canvas, füge Kategorie-Tags hinzu und exportiere als strukturiertes JSON für den CMS-Import.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist FAQ-Redakteur. Ich übergebe dir die Top-10 Frage-Cluster aus unserem Support-Ticket-Clustering (Schritt 1). Erstelle für jeden Cluster: (1) Eine präzise FAQ-Frage (Nutzer-Perspektive, du-Anrede), (2) Eine markenkonforme Antwort max. 150 Wörter (nutzerorientiert, kein Tech-Jargon, CTA am Ende). Referenziere Brand Voice aus [@brand-voice-guide]. Format: nummerierte Paare Frage / Antwort, Kategorie-Tag je Paar."
+**Erwartetes Artefakt:** `faq-[produktname]-v[X].md` mit 10 FAQ-Paaren (kategorisiert, CTA-versehen); als JSON für CMS-Import und als Markdown für Wissensordner-Update exportierbar.
+**Fallstricke (≥2 spezifisch):**
+- Support-Tickets enthalten oft kundenseitige Missverständnisse als "Fragen" — nicht alle Cluster ergeben gültige FAQs; im Review-Schritt explizit prüfen, ob die Frage ein reales, wiederkehrendes Nutzer-Bedürfnis abbildet.
+- Ticket-Texte enthalten häufig PII (Namen, E-Mails); CSV muss vor dem Upload pseudonymisiert werden — kein Klartext-PII in den Data Analyst laden (vgl. DSGVO-Hinweise S-PS-039).
+**Anschluss-Szenario:** S-PS-051
+
+### S-PS-051 Gehalts-Benchmark-Recherche für Marketing-Stellenausschreibungen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin muss eine neue Stelle (z.B. Senior Content Manager, Performance Marketing Lead) ausschreiben und benötigt aktuelle DACH-Gehaltskorridore für eine wettbewerbsfähige Positionierung — ohne HR-Budget für teure Vergütungsberichte. (Quelle: A-02 + sources/12 FAQ-Abschnitt)
+**Strategisches Ziel:** Einen Recherche-Prompt mit Web Search entwickeln, der öffentlich verfügbare Gehaltsdaten (Glassdoor, Kununu, StepStone, LinkedIn Salary Insights) für eine spezifische Marketing-Rolle im DACH-Raum aggregiert und einen vertretbaren Gehalts-Korridor mit Quartil-Angaben generiert.
+**Hands-on Ergebnis:** Eine Gehalts-Benchmark-Tabelle (Rolle × Erfahrungsniveau × Region: D / AT / CH) mit Median, P25 und P75 sowie Datenquellen-Angaben — als Grundlage für die HR-Abstimmung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent (Web Search aktiviert) / Canvas / Chat
+**Vorgehen (3 Schritte):**
+1. Definiere die Rolle präzise (Titel, Senioritätsstufe, Industrie, Unternehmensgrößenklasse) und die Zielregionen (DACH + Splitting D / AT / CH).
+2. Lass den Agenten via Web Search Glassdoor DE, Kununu, StepStone Gehaltsreport und LinkedIn Salary für die Rolle abfragen und die Daten aggregieren.
+3. Strukturiere die Ausgabe als Quartil-Tabelle im Canvas und ergänze manuell die Unternehmens-spezifischen Faktoren (Remote-Policy, Equity, Benefits).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist HR-Research-Analyst. Recherchiere via Web Search aktuelle Gehalts-Benchmarks für die Rolle '{{Rollenbezeichnung}}' im DACH-Raum. Quellen: Glassdoor DE, Kununu, StepStone Gehaltsreport, LinkedIn Salary Insights. Erstelle eine Tabelle: Region (D / AT / CH) × Erfahrungsniveau (Junior / Mid / Senior) mit Median-Gehalt, P25 und P75 in EUR brutto/Jahr. Datum der Quelle angeben. Format: Markdown-Tabelle mit Quellenzeile."
+**Erwartetes Artefakt:** Gehalts-Benchmark-Tabelle (Region × Senioritätsstufe, Median + Quartile) mit Quellenangaben; Grundlage für HR-Abstimmung und Stellenausschreibungs-Formulierung.
+**Fallstricke (≥2 spezifisch):**
+- Öffentliche Gehaltsdatenbanken haben oft eine 12–18-monatige Datenverzögerung; immer das Erhebungsdatum der Quelle angeben und Daten nicht älter als 18 Monate verwenden.
+- Schweizer Gehaltskorridore liegen strukturell 30–50% über deutschen Werten; AT und CH nie mit D aggregieren — immer als separate Spalten ausweisen, um Fehlinterpretationen zu vermeiden.
+**Anschluss-Szenario:** S-PS-052
+
+### S-PS-052 Award-Bewerbung für Marketing-Kampagnen verfassen
+
+**Wann nutzen (Trigger):** Eine erfolgreiche Kampagne soll für einen Branchenpreis (z.B. German Brand Award, Effie DACH, Digital Communication Award) eingereicht werden — das Team hat die Daten, aber kein strukturiertes Format für die Award-Einreichung. (Quelle: A-07 + sources/10 S-044)
+**Strategisches Ziel:** Einen Prompt entwickeln, der aus Kampagnen-KPIs, Kreativ-Briefing und Ergebnisberichten eine award-konforme Einreichung generiert, die die typischen Bewertungsdimensionen (Strategie, Kreativität, Messbarkeit, Impact) überzeugend abdeckt.
+**Hands-on Ergebnis:** Ein strukturiertes Award-Einreichungsdokument (max. 1 500 Wörter) mit den Pflicht-Sektionen: Executive Summary, Herausforderung, Strategie, Kreative Idee, Ergebnisse (mit Zahlen), Relevanz für die Jury.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Dateianlage) / Canvas / Library Folder
+**Vorgehen (4 Schritte):**
+1. Sammle alle Kampagnen-Assets: Briefing-Dokument, KPI-Report (CSV oder PDF), Kreativ-Screenshots, Medienplan-Auszug — lade relevante Dokumente als Anhang.
+2. Recherchiere die spezifischen Award-Bewertungskriterien (oft öffentlich auf der Award-Website) und hinterlege sie als Kontext im Prompt.
+3. Lass den Agenten das Einreichungsdokument in der vorgegebenen Sektion-Struktur generieren; betone Daten-Dichte (konkrete Zahlen, % Verbesserung, Benchmarks).
+4. Überarbeite im Canvas: Kürze auf das Word-Limit, schärfe die Formulierungen für die Jury-Perspektive (Strategierichtigkeit > Kreativität).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Award-Bewerbungs-Autor mit Fokus auf Marketing-Excellence-Preise im DACH-Raum. Verfasse eine Award-Einreichung für den '{{Award-Name}}' basierend auf den angehängten Kampagnen-Materialien. Struktur (Pflicht): (1) Executive Summary 100 Wörter, (2) Ausgangslage & Herausforderung, (3) Strategie & Konzept, (4) Kreative Idee, (5) Ergebnisse mit konkreten KPIs + Branchen-Benchmark-Vergleich, (6) Warum verdient diese Kampagne den Award? Regel: Jede Behauptung mit einer Zahl belegen. Max. 1 500 Wörter gesamt."
+**Erwartetes Artefakt:** Award-Einreichungsdokument (1 500 Wörter, 6 Sektionen) mit datengestützten Argumenten; direkt in das Einreichungsformular übertragbar oder als PDF exportierbar.
+**Fallstricke (≥2 spezifisch):**
+- Awards-Jurys erkennen generische Superlative ("bahnbrechend", "einzigartig") sofort — im Prompt explizit verbieten und durch konkrete Benchmark-Vergleiche ersetzen ("28% über Branchen-CTR-Durchschnitt").
+- Unterschiedliche Awards haben unterschiedliche Wortlimits und Sektion-Strukturen; niemals eine Einreichung für mehrere Awards ohne Award-spezifische Anpassung verwenden.
+**Anschluss-Szenario:** S-PS-053
+
+### S-PS-053 Interne Kommunikation: Tonalitäts-Standardisierung für das Marketing-Team
+
+**Wann nutzen (Trigger):** Interne Marketing-Updates (Team-Newsletter, Slack-Ankündigungen, All-Hands-Folien) kommen von verschiedenen Teammitgliedern in sehr unterschiedlichen Tonfällen — mal formal, mal salopp — und das schwächt die Professionalität der Abteilung. (Quelle: sources/10 S-038 + S-059 + A-37)
+**Strategisches Ziel:** Einen Tonalitäts-Standardisierungs-Prompt entwickeln, der bestehende interne Kommunikations-Entwürfe auf einen definierten "Internal Voice" kalibriert — professionell und klar, ohne formell-steif zu klingen — und dabei Plattform-spezifische Längenkonventionen einhält.
+**Hands-on Ergebnis:** Ein `internal-voice-guide.md` in der Library + ein Standardisierungs-Prompt, der jeden internen Text in ≤3 Minuten auf den Internal Voice trimmt und dabei Slack (max. 5 Zeilen), E-Mail (max. 200 Wörter) und Slide-Bullet (max. 12 Wörter) unterscheidet.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Definiere den "Internal Voice" in `internal-voice-guide.md`: 5 Do's (z.B. "kurze Sätze, aktive Verbformen, konkrete Handlungsaufforderungen") und 5 Don'ts (z.B. "kein Passiv, keine Füllwörter wie 'natürlich', keine Anglizismen ohne Erklärung").
+2. Hinterlege 3 Vorher/Nachher-Beispiele je Kanal (Slack / E-Mail / Slide) als Few-Shot-Referenzen im Guide.
+3. Erstelle einen "Internal Voice Check"-Konversations-Starter, der `@internal-voice-guide` einbindet und den Text-Kanal als Pflicht-Input abfragt.
+4. Validiere den Guide mit 3 echten Team-Mitgliedern: Erkennen sie den Unterschied zwischen vorher und nachher als Verbesserung?
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Internal-Communications-Editor. Überarbeite den folgenden Text für den Kanal '{{Kanal: Slack / E-Mail / Slide}}' entsprechend unserem Internal Voice Guide in [@internal-voice-guide]. Längenregel: Slack max. 5 Zeilen, E-Mail max. 200 Wörter, Slide-Bullet max. 12 Wörter je Punkt. Entferne Passiv-Konstruktionen, Füllwörter und überflüssige Höflichkeitsfloskeln. Format: überarbeiteter Text + Liste der vorgenommenen Änderungen."
+**Erwartetes Artefakt:** Überarbeiteter interner Kommunikations-Text im definierten Internal Voice; Liste der Änderungen als transparente Dokumentation für das Lerneffekt des Einsenders.
+**Fallstricke (≥2 spezifisch):**
+- Ein zu rigider Internal Voice kann den persönlichen Ausdruck von Teammitgliedern unterdrücken und Widerstand erzeugen; den Guide als Orientierung, nicht als Zensur positionieren — Abweichungen erlaubt, wenn sie begründet sind.
+- Slide-Bullets kürzen und gleichzeitig inhaltlich vollständig halten ist eine echte Optimierungs-Herausforderung; der Prompt sollte explizit erlauben: "Wenn eine 12-Wörter-Limitation den Inhalt verfälscht, halte den Inhalt und markiere die Stelle mit [⚠️ zu lang]."
+**Anschluss-Szenario:** S-PS-054
+
+### S-PS-054 UTM-Parameter-Schema für Kampagnen-Tracking generieren
+
+**Wann nutzen (Trigger):** Vor einem Multi-Channel-Kampagnenstart hat das Team keine konsistente UTM-Nomenklatur — verschiedene Team-Mitglieder verwenden verschiedene Schreibweisen (utm_source=linkedin vs. LinkedIn vs. LI), was das Analytics-Reporting fragmentiert. (Quelle: A-10 + sources/10 S-031)
+**Strategisches Ziel:** Einen Prompt entwickeln, der für eine neue Kampagne ein vollständiges, konsistentes UTM-Parameter-Schema generiert — mit definierten Werten je Parameter (source, medium, campaign, content, term) und einer Export-tabelle für alle geplanten Touchpoints.
+**Hands-on Ergebnis:** Eine `utm-schema-[kampagnenname].csv` mit allen UTM-Kombinationen für die Kampagne sowie ein `utm-naming-guide.md` in der Library als dauerhafter Referenz-Standard.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Data Analyst
+**Vorgehen (4 Schritte):**
+1. Definiere die Kampagnen-Parameter: Name, Kanäle (z.B. LinkedIn, Google Ads, Newsletter, Webinar), Content-Typen (Banner, Textanzeige, E-Mail), Zielgruppen-Segmente.
+2. Lege UTM-Konventionen fest: Kleinschreibung, Bindestrich statt Leerzeichen, keine Sonderzeichen, max. 50 Zeichen je Wert.
+3. Lass den Agenten alle UTM-Kombinationen als Tabelle generieren (utm_source × utm_medium × utm_campaign × utm_content) mit fertigen UTM-URLs.
+4. Exportiere als CSV für direkten Import ins Tracking-Setup und UTM-Builder-Tool.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marketing-Analytics-Spezialist. Generiere ein vollständiges UTM-Parameter-Schema für die Kampagne '{{Kampagnenname}}'. Kanäle: {{Kanal-Liste}}. Konventionen: nur Kleinbuchstaben, Bindestriche statt Leerzeichen, keine Sonderzeichen, max. 50 Zeichen je Wert. Erstelle eine Tabelle mit Spalten: utm_source | utm_medium | utm_campaign | utm_content | utm_term | Fertige UTM-URL (https://{{domain}}/?utm_...). Alle Kombinationen der definierten Kanäle × Content-Typen. Format: Markdown-Tabelle + CSV-Export-Block."
+**Erwartetes Artefakt:** Vollständiges UTM-Schema als Markdown-Tabelle und CSV-Block (copy-paste-ready); `utm-naming-guide.md` als dauerhafter Standard in der Library.
+**Fallstricke (≥2 spezifisch):**
+- Modelle neigen dazu, UTM-Werte zu lang zu formulieren (>50 Zeichen), was in manchen Analytics-Tools abgeschnitten wird; Längenbeschränkung in der Format-Sektion explizit wiederholen und nach Generierung manuell prüfen.
+- UTM-Parameter unterscheiden Groß- und Kleinschreibung in Google Analytics 4 — "LinkedIn" und "linkedin" erscheinen als separate Quellen; die Konvention "ausschließlich Kleinbuchstaben" ist nicht optional, sondern kritisch für sauberes Reporting.
+**Anschluss-Szenario:** S-PS-055
+
+### S-PS-055 API-Dokumentations-Entwurf für Marketing-Integrationen
+
+**Wann nutzen (Trigger):** Das Marketing-Team hat eine interne Langdock-Integration (z.B. Webhook für CRM-Sync) gebaut und muss die Nutzung für andere Teams dokumentieren — aber niemand im Marketing hat Erfahrung im Schreiben technischer Dokumentation. (Quelle: sources/10 S-022 + A-08)
+**Strategisches Ziel:** Einen Prompt entwickeln, der aus einem informellen technischen Beschrieb (Stichpunkte, Code-Schnipsel, Beispiel-Requests) eine strukturierte API-Dokumentation im OpenAPI-kompatiblen Format generiert, die auch nicht-technische Stakeholder verstehen.
+**Hands-on Ergebnis:** Ein `api-doku-[integration-name].md` mit Sektionen: Überblick, Authentifizierung, Endpoints (Methode + URL + Parameter-Tabelle + Beispiel-Request/Response), Fehlerbehandlung, Häufige Fragen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Code-Generation) / Canvas / Library Folder
+**Vorgehen (3 Schritte):**
+1. Sammle alle verfügbaren technischen Informationen: Endpoint-URLs, Authentifizierungsmethode (API-Key / OAuth), Beispiel-Requests (curl oder JSON), bekannte Fehlercodes.
+2. Füge die Informationen strukturiert in den Prompt ein (kein unformatierter Textwust) und spezifiziere die Zielgruppe ("Nicht-Entwickler mit Basis-JSON-Kenntnissen").
+3. Überarbeite den Output im Canvas: Überprüfe Code-Blöcke auf Syntaxfehler, ergänze echte Beispielwerte für Parameter.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Technical Writer für Marketing-Tech-Integrationen. Erstelle eine Entwickler-Dokumentation für die folgende Integration: [technische Beschreibung einfügen]. Zielgruppe: Marketing-Operations-Manager mit Basis-JSON-Kenntnissen. Struktur: (1) Überblick (2 Sätze), (2) Authentifizierung, (3) Endpoints (Methode | URL | Parameter-Tabelle | Beispiel-Request im Code-Block | Beispiel-Response), (4) Fehlerbehandlung (HTTP-Codes + Erklärung), (5) FAQ (3 häufige Fragen). Format: Markdown mit Code-Blöcken."
+**Erwartetes Artefakt:** `api-doku-[integration-name].md` mit allen Pflicht-Sektionen; direkt in internes Wiki (Confluence, Notion) importierbar ohne weitere Formatierung.
+**Fallstricke (≥2 spezifisch):**
+- Modelle erfinden gelegentlich plausibel klingende aber falsche Beispiel-Responses; alle generierten Code-Blöcke müssen vor Veröffentlichung gegen die echte Integration getestet werden.
+- API-Dokumentation veraltet schnell bei Versionsupdates; das Dokument mit einem `Version: X.X | Stand: Datum`-Header versehen und den Update-Prozess im internen Wiki definieren.
+**Anschluss-Szenario:** S-PS-056
+
+### S-PS-056 Kunden-Onboarding-E-Mail-Sequenz erstellen
+
+**Wann nutzen (Trigger):** Ein neues Produkt oder Feature wird lanciert und der Onboarding-Prozess ist bisher nur als Checkliste im Wiki dokumentiert — eine strukturierte E-Mail-Sequenz fehlt, was zu hoher Churn-Rate in den ersten 30 Tagen führt. (Quelle: sources/10 S-057 + S-063 + A-05)
+**Strategisches Ziel:** Einen Prompt entwickeln, der eine 5-teilige Kunden-Onboarding-E-Mail-Sequenz generiert, die neue User von der Aktivierung bis zur ersten messbaren Erfolgserfahrung (Aha-Moment) führt — mit konkreten Use-Cases, internen Links und adaptiven Bedingungen.
+**Hands-on Ergebnis:** Fünf fertige E-Mail-Texte (Subject + Preheader + Body + CTA) mit Sende-Timing (Tag 0 / 2 / 5 / 10 / 20), exportierbar als Vorlage für HubSpot, Klaviyo oder Salesforce Marketing Cloud.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Library Folder (Brand Voice + Produkt-Features)
+**Vorgehen (4 Schritte):**
+1. Definiere den Aha-Moment des Produkts (z.B. "erster erfolgreich erstellter Report") und die 4 häufigsten Hürden auf dem Weg dahin.
+2. Mappe die 5 E-Mails auf die Customer-Journey-Phase: Willkommen → Erste Schritte → Hürde überwinden → Fortschritt zeigen → Nächsten Schritt aktivieren.
+3. Lass den Agenten alle 5 E-Mails in einem Pass generieren (Brand Voice aus `@brand-voice-guide`); Subject und Preheader je E-Mail separat ausweisen.
+4. Überarbeite im Canvas: prüfe CTA-Konsistenz (jede E-Mail hat genau einen CTA), Personalisierungs-Variablen ({{first_name}}, {{product_name}}) und Länge (max. 200 Wörter Body).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lifecycle-Marketing-Spezialist. Erstelle eine 5-teilige Onboarding-E-Mail-Sequenz für {{Produkt}}. Aha-Moment: {{Aha-Moment-Beschreibung}}. Sequenz: E-Mail 1 (Tag 0): Willkommen + erster Schritt, E-Mail 2 (Tag 2): Quick Win zeigen, E-Mail 3 (Tag 5): Häufige Hürde ansprechen + Lösung, E-Mail 4 (Tag 10): Fortschritt bestätigen + Tipp, E-Mail 5 (Tag 20): Nächsten Feature-Schritt aktivieren. Je E-Mail: Subject (max. 50 Zeichen) | Preheader (max. 90 Zeichen) | Body (max. 200 Wörter) | CTA (1 Button). Platzhalter {{first_name}} verwenden."
+**Erwartetes Artefakt:** 5 vollständige Onboarding-E-Mails (Subject + Preheader + Body + CTA) mit Sende-Timing; direkt in E-Mail-Automation-Tool importierbar.
+**Fallstricke (≥2 spezifisch):**
+- Onboarding-E-Mails ohne produktspezifische Screenshots oder In-App-Links sind weniger effektiv; den Agenten anweisen, `[SCREENSHOT_PLACEHOLDER: ...]`-Tags einzufügen, die das Design-Team später befüllt.
+- Zu viele CTAs in einer E-Mail verwässern die Zielaktion; der Prompt muss "genau 1 CTA je E-Mail" als harte Regel verankern, nicht als Empfehlung.
+**Anschluss-Szenario:** S-PS-057
+
+### S-PS-057 Rechtliche Disclaimer-Texte für Marketing-Materialien generieren
+
+**Wann nutzen (Trigger):** Vor dem Launch einer Kampagne mit Preisangaben, Gewinnspiel-Elementen oder Finanz-/Gesundheitsclaims fehlen DACH-konforme Disclaimer-Texte — die Rechtsabteilung ist ausgelastet und braucht eine gut vorbereitete Vorlage als Ausgangspunkt. (Quelle: A-09 + A-13 + S-PS-039)
+**Strategisches Ziel:** Einen Prompt entwickeln, der für spezifische Marketing-Kontexte (Preisangaben, Gewinnspiele, Finanzprodukte, Gesundheitsclaims, Cookie-Hinweise) DACH-konforme Disclaimer-Textentwürfe generiert — als Vorlage für die juristische Endprüfung, nicht als Ersatz dafür.
+**Hands-on Ergebnis:** Ein `disclaimer-vorlagen-bibliothek.md` in der Library mit 5 Disclaimer-Typen (Preis-Disclaimer, Gewinnspiel-Teilnahmebedingungen, Finanz-Disclaimer, Gesundheitsclaim-Hinweis, Cookie-Hinweis) in kompakter DE-Fassung.
+**Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Canvas
+**Vorgehen (3 Schritte):**
+1. Identifiziere den Disclaimer-Typ für den konkreten Marketing-Kontext und die relevante Rechtsgrundlage (UWG, PAngV, AMG, DSGVO, MiCA).
+2. Lass den Agenten einen Disclaimer-Entwurf in einfachem Deutsch generieren (max. 80 Wörter für Standard-Fälle, max. 200 Wörter für komplexe Fälle).
+3. Leite den Entwurf an die Rechtsabteilung als "Redaktionellen Ausgangspunkt" weiter — immer mit dem Hinweis "Keine Rechtsberatung — zur juristischen Prüfung vorgelegt."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Legal-Copywriter für Marketing-Compliance im DACH-Raum. Erstelle einen Disclaimer-Entwurf für folgenden Kontext: '{{Kontext-Beschreibung}}'. Disclaimer-Typ: {{Preis-Disclaimer / Gewinnspiel / Finanz / Gesundheit / Cookie}}. Rechtsrahmen: {{relevante Gesetze, z.B. PAngV §1, UWG §4}}. Anforderungen: max. 80 Wörter, einfaches Deutsch, keine juristische Fachsprache, am Ende 'Stand: {{Datum}} — zur juristischen Prüfung'. Format: fertiger Disclaimer-Text + 1-Satz-Erklärung, was der Text abdeckt."
+**Erwartetes Artefakt:** Disclaimer-Entwurf (max. 80 Wörter) mit Rechtsrahmen-Referenz und Datum; `disclaimer-vorlagen-bibliothek.md` mit 5 Standard-Typen für zukünftige Kampagnen.
+**Fallstricke (≥2 spezifisch):**
+- KI-generierte Disclaimer sind niemals ohne juristische Prüfung publikationsfertig — AT und CH haben abweichende Anforderungen zu DE; den Output immer als "Entwurf zur Prüfung" kennzeichnen, nie als "fertig".
+- Disclaimer-Texte dürfen nicht zu lang sein (Lesbarkeit / Transparenz-Pflicht); Modelle neigen zu Absicherungs-Inflation mit langen Klausel-Listen — explizit ein Wortlimit setzen und einhalten.
+**Anschluss-Szenario:** S-PS-058
+
+### S-PS-058 Media-Kit-Content für Partner und Presse zusammenstellen
+
+**Wann nutzen (Trigger):** Eine Partnerin oder ein Journalist fragt nach einem Media Kit — das Team hat alle Inhalte (Logos, Fact Sheet, Biografie, Pressemitteilungen), aber kein strukturiertes, aktuelles Dokument für den schnellen Versand. (Quelle: sources/10 S-038 + S-044 + A-09)
+**Strategisches Ziel:** Einen Prompt entwickeln, der aus vorhandenen Unternehmens- und Kampagnen-Informationen einen vollständigen Media-Kit-Text-Inhalt generiert (Unternehmens-Boilerplate, Führungskräfte-Kurzbiografien, Key-Facts, Zitate, Kontaktdaten) — bereit für die Design-Übergabe.
+**Hands-on Ergebnis:** Ein `media-kit-text-[version].md` mit allen Text-Komponenten des Media Kits in druckfertigem Standard-Format; aktualisierbar in ≤30 Minuten vor jedem größeren Event oder Launch.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Library Folder (Brand Voice + Unternehmens-Fakten)
+**Vorgehen (4 Schritte):**
+1. Sammle Rohquellen: aktueller Fact Sheet, LinkedIn-Profile der Führungskräfte, letzte Pressemitteilung, aktuelles Unternehmens-Leitbild.
+2. Hinterlege sie als Dateianlage oder verweise auf `@unternehmensfakten`-Ordner im Prompt.
+3. Lass den Agenten alle Text-Komponenten in einem Pass generieren; Boilerplate max. 100 Wörter, Kurzbiografien max. 80 Wörter je Person.
+4. Überarbeite im Canvas: prüfe alle Zahlen auf Aktualität (Mitarbeiterzahl, Umsatz, Gründungsjahr), füge finale Medienkontakt-Daten hinzu.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist PR-Redakteur. Erstelle den Text-Inhalt für ein Media Kit basierend auf den angehängten Unternehmens-Unterlagen. Komponenten: (1) Unternehmens-Boilerplate max. 100 Wörter (für alle Pressemitteilungen), (2) Kurzbiografien je Führungskraft max. 80 Wörter (3rd-Person-Stil), (3) 5 Key-Facts als Bullet-Points (Gründungsjahr, Mitarbeiter, Kunden, Märkte, Mission), (4) 2 Zitate (CEO + Gründer — falls verfügbar), (5) Medienkontakt-Platzhalter. Format: nummerierte Sektionen, presseübliches Deutsch."
+**Erwartetes Artefakt:** `media-kit-text-[version].md` mit allen 5 Text-Komponenten im presseüblichen Format; übergabefertig für Design-Team zur visuellen Aufbereitung.
+**Fallstricke (≥2 spezifisch):**
+- KI-generierte Führungskräfte-Biografien enthalten gelegentlich plausible aber falsche Karrierestationen; jede Biografie muss von der betroffenen Person oder HR freigegeben werden — kein direkter Versand ohne Personenfreigabe.
+- Boilerplate-Texte veralten schnell bei Fusionen, Expansionen oder Pivot; das `media-kit-text.md` muss mit einem Gültigkeitsdatum versehen und bei Änderungen versioniert werden.
+**Anschluss-Szenario:** S-PS-059
+
+### S-PS-059 Marktgrößen-Schätzung (TAM/SAM/SOM) prompt-gestützt erarbeiten
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin muss für ein Investor-Deck oder eine Strategie-Präsentation eine TAM/SAM/SOM-Schätzung für einen neuen Markt vorlegen — aber das Research-Budget für einen Marktforschungsbericht fehlt. (Quelle: A-10 + A-07 + sources/12 Q18)
+**Strategisches Ziel:** Einen Web-Search-gestützten Prompt entwickeln, der aus öffentlichen Quellen (Statista, IDC, Gartner-Pressemitteilungen, Branchenverbands-Berichte) eine belastbare Bottom-up-TAM/SAM/SOM-Schätzung mit Quellennachweisen generiert — transparent als Schätzung, nicht als Primärforschung.
+**Hands-on Ergebnis:** Ein Marktgrößen-Dokument mit drei Ebenen (TAM / SAM / SOM), je mit Berechnungsmethodik, Quellen, Annahmen und einer Sensitivitätsanalyse (konservativ / Base Case / optimistisch).
+**Eingesetzte Langdock-Fähigkeit(en):** Agent (Web Search) / Canvas / Data Analyst
+**Vorgehen (4 Schritte):**
+1. Definiere den Markt präzise: Produktkategorie, Geografie (DACH / Europa / Global), Kundensegment (KMU / Enterprise), Zeithorizont (2025–2028).
+2. Lass den Agenten via Web Search Marktgrössen-Reports, Branchenverbands-Statistiken und Analysten-Pressemitteilungen sammeln.
+3. Berechne TAM (Gesamtmarkt), SAM (adressierbarer Markt für das Produkt) und SOM (realistisch erreichbarer Marktanteil) in einer Bottom-up-Logik mit expliziten Annahmen.
+4. Erstelle im Canvas eine Sensitivitätstabelle (3 Szenarien) und Quellen-Anhang.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Market-Research-Analyst. Schätze die Marktgröße für '{{Produktkategorie}}' im DACH-Markt für den Zeitraum 2025–2028. Recherchiere via Web Search: Statista, IDC, Gartner-Pressemitteilungen, Branchenverbands-Berichte. Berechne: TAM (Gesamtmarkt EUR), SAM (unser adressierbares Segment), SOM (realistischer Marktanteil Jahr 3). Für jede Ebene: Berechnungsmethodik + Quellen + Kernannahmen. Sensitivitätsanalyse: konservativ / Base Case / optimistisch. Hinweis: als Schätzung auf Basis öffentlicher Quellen kennzeichnen. Format: 3 nummerierte Blöcke + Quellen-Tabelle."
+**Erwartetes Artefakt:** TAM/SAM/SOM-Schätzungsdokument (3 Ebenen, Methodik, Quellen, 3 Szenarien) als Investor-Deck-Grundlage; transparent als Schätzung gekennzeichnet.
+**Fallstricke (≥2 spezifisch):**
+- Web Search findet keine kostenpflichtigen Vollberichte (z.B. vollständige Gartner-Studien) — nur Pressemitteilungen und Zusammenfassungen; immer transparent machen, dass keine Primärquelle im Volltext analysiert wurde.
+- SOM-Schätzungen ohne interne Vertriebskapazitäts-Daten sind nicht belastbar; SOM immer als "abhängig von Go-to-Market-Kapazität — intern zu validieren" kennzeichnen.
+**Anschluss-Szenario:** S-PS-060
+
+### S-PS-060 Wettbewerbs-Gap-Analyse aus PDF-Wettbewerbsberichten
+
+**Wann nutzen (Trigger):** Das Team hat mehrere heruntergeladene Analyst-Reports, Wettbewerbs-Whitepaper und eigene Positionierungs-Dokumente als PDFs — aber niemand hat Zeit, alle Dokumente zu lesen und systematisch Lücken in der eigenen Positionierung zu identifizieren. (Quelle: sources/10 S-021 + S-029 + A-07)
+**Strategisches Ziel:** Einen Multi-Dokument-Analyse-Prompt entwickeln, der aus mehreren angehängten PDFs (Wettbewerbs-Whitepaper, Analyst-Reports, eigenes Positionierungsdokument) die kritischsten Positionierungs-Lücken (Gaps) und ungenutzten Differenzierungspotenziale identifiziert und priorisiert.
+**Hands-on Ergebnis:** Ein `gap-analyse-[datum].md` mit einer Gap-Matrix (eigene Stärken × Wettbewerber-Stärken), Top-5-Positionierungslücken mit Priorisierung und 3 konkreten strategischen Empfehlungen zur Lückenschließung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Dateianlage, mehrere PDFs) / Canvas / Library Folder
+**Vorgehen (4 Schritte):**
+1. Bereite die Dokumente vor: eigenes Positionierungsdokument als Referenz + 2–4 Wettbewerber-PDFs (Whitepapers, Analyst-Reports, Produktseiten-Screenshots) — Gesamtumfang max. 300 Seiten.
+2. Lade alle PDFs als Dateianhänge in einen Chat (kein Wissensordner — Direktanhang für strukturierten Cross-Dokument-Vergleich).
+3. Sende den Gap-Analyse-Prompt; der Agent analysiert zuerst das eigene Dokument (Stärken-Extraktion), dann die Wettbewerber-Dokumente (deren Stärken), und bildet dann die Gap-Matrix.
+4. Überarbeite die strategischen Empfehlungen im Canvas mit dem Leadership-Team: priorisiere nach Quick Win (≤3 Monate umsetzbar) vs. Strategic Initiative (>6 Monate).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Strategy-Analyst. Analysiere die angehängten Dokumente: Dokument 1 = unser eigenes Positionierungsdokument, Dokumente 2–4 = Wettbewerber-Whitepaper/Analyst-Reports. Schritt 1: Extrahiere unsere Top-5-Positionierungs-Stärken (mit Textzitat + Seitenzahl). Schritt 2: Extrahiere je Wettbewerber die Top-3-Stärken. Schritt 3: Identifiziere die 5 kritischsten Positionierungs-Gaps (Bereiche, in denen Wettbewerber stärker positioniert sind). Schritt 4: Formuliere 3 priorisierte strategische Empfehlungen zur Lückenschließung (Quick Win / Strategic Initiative). Format: Gap-Matrix als Tabelle + 3 Empfehlungs-Blöcke mit Rationale."
+**Erwartetes Artefakt:** `gap-analyse-[datum].md` mit Gap-Matrix (eigene Stärken × Wettbewerber-Stärken × Lücken), Top-5-Gaps mit Priorisierung und 3 strategischen Empfehlungen; Grundlage für Positionierungs-Workshop.
+**Fallstricke (≥2 spezifisch):**
+- Bei mehr als 5 angehängten PDFs kann das Kontextfenster des Modells erschöpft werden und frühe Dokumente "vergessen" werden; Dokumente auf die 4 relevantesten beschränken und weniger relevante erst in einem zweiten Pass einbeziehen.
+- Wettbewerber-Whitepapers sind Marketingmaterialien — sie beschreiben Stärken, nicht Schwächen; den Agenten explizit anweisen: "Interpretiere Wettbewerber-Materialien kritisch — was verschweigen sie? Welche Lücken zwischen Claim und Evidenz sind sichtbar?"
 **Anschluss-Szenario:** S-PS-001

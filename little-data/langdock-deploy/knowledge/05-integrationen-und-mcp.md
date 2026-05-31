@@ -886,6 +886,286 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 **Fallstricke (≥2 spezifisch):**
 - Verzeichnis einmalig erstellen und nie aktualisieren → Ohne regelmäßige Aktualisierung ist das Verzeichnis beim nächsten Audit bereits veraltet; einen festen Quartals-Review-Termin im Kalender verankern und den Datenschutzbeauftragten einbeziehen.
 - Compliance-Detailfragen (DPIA-Pflicht, AI-Act-Risikoklassen) im Integrationsverzeichnis mitbeantworten → Diese Tiefe gehört in die Governance-Beratung in `08-sicherheit-und-governance`; hier wird das Verzeichnis erstellt, nicht das gesamte Compliance-Framework.
+**Anschluss-Szenario:** S-IM-046
+
+### S-IM-046 Confluence MCP-Server für interne Wissensabfragen anbinden
+
+**Wann nutzen (Trigger):** Das Produktmarketing pflegt detaillierte Positionierungs-Seiten, Release-Notes und Competitive-Battlecards in Confluence — die Marketing-Direktorin will, dass ein interner Berater-Agent diese Seiten live abfragen kann, ohne dass jemand manuell Inhalte in Wissensordner kopiert. (Quelle: sources/10 S-057, Quelle: 12 Q92)
+**Strategisches Ziel:** Confluence als primäre interne Wissensquelle über einen MCP-Server anbinden, sodass der Agent stets aktuelle Seiteninhalte abruft und keine veralteten Kopien aus Synced-Folder-Zyklen zitiert.
+**Hands-on Ergebnis:** Ein Confluence-MCP-Anbindungs-Briefing mit Space-Freigabeliste, benötigten Scopes (Read Page Content, Search Spaces), Authentifizierungsweg (API-Token oder OAuth) und einer Governance-Regel: keine Wiki-Seiten schreiben oder löschen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Confluence-MCP-Server, User-Confirmation für Space-übergreifende Suchen, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die relevanten Confluence-Spaces bestimmen (z. B. PRODUCT, MARKETING, COMPETITIVE) und alle anderen Spaces explizit aus der MCP-Freigabe ausschließen.
+2. Du lässt den Anbindungsweg klären: Atlassian bietet offizielle MCP-Server für Confluence an; Authentifizierung über ein Service-Account-API-Token (nicht über persönliche Mitarbeiter-Tokens).
+3. Du lässt verbotene Operationen explizit sperren: Seiten erstellen, bearbeiten, löschen und Kommentare hinterlassen sind für den Marketing-Agenten nicht nötig — nur Read- und Search-Tools freigeben.
+4. Du übergibst das Briefing an den Confluence-Administrator und die IT; Little Data berät, konfiguriert keine MCP-Verbindungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Confluence-Integrations-Berater (Persona). Erstelle ein MCP-Anbindungs-Briefing für unseren Marketing-Agenten, der Confluence-Seiten lesen und durchsuchen soll (Aufgabe). Kontext: freigegebene Spaces PRODUCT und MARKETING; kein Schreibzugriff; Atlassian Cloud; Service-Account-API-Token (Kontext). Format: Briefing mit Abschnitten Space-Freigabeliste, freigegebene MCP-Tools, gesperrte Operationen, Authentifizierungsweg (Format)."
+**Erwartetes Artefakt:** Ein Confluence-MCP-Anbindungs-Briefing mit Space-Freigabeliste, zugelassenen Tools und Authentifizierungsweg.
+**Fallstricke (≥2 spezifisch):**
+- Alle Confluence-Spaces pauschal freigeben → Spaces wie HR oder Finance enthalten sensible Mitarbeiterdaten; immer eine explizite Positivliste freigegebener Spaces dokumentieren.
+- Persönliche Mitarbeiter-API-Tokens verwenden → Bei Kündigung oder Passwort-Rotation bricht die MCP-Verbindung ab; immer einen dedizierten Service-Account mit eigenem API-Token als Verbindungsinhaber benennen.
+**Anschluss-Szenario:** S-IM-047
+
+### S-IM-047 Trello- und Asana-Projektmanagement-Integration für Kampagnenplanung advisory einordnen
+
+**Wann nutzen (Trigger):** Das Marketing-Team plant Kampagnen in Trello, das Content-Team nutzt Asana für Redaktionspläne — die Marketing-Direktorin will, dass ein Koordinations-Agent offene Tasks und Deadlines abfragen kann, ohne zwischen zwei Tools wechseln zu müssen. (Quelle: A-08, Quelle: 12 Q113)
+**Strategisches Ziel:** Trello und Asana als lesbare Projektmanagement-Quellen in den Koordinations-Agenten einbinden, sodass offene Kampagnen-Tasks, Deadlines und Verantwortliche im Chat zusammengeführt werden — ohne dass der Agent Tasks verschiebt oder Status ändert.
+**Hands-on Ergebnis:** Eine Projektmanagement-Anbindungs-Einschätzung (Trello vs. Asana) mit empfohlenem Anbindungsweg je Tool, benötigten Read-Scopes und einer klaren Governance-Regel: der Agent liest, Menschen schreiben.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Trello-MCP-Server oder HTTP-Brücke, Asana-MCP-Server, Advisory-Grenze, Read-Only-Prinzip.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data den Anbindungsweg je Tool prüfen: Trello bietet eine REST-API (HTTP-Brücke via Custom Integration Builder); Asana verfügt über einen offiziellen MCP-Server — je Tool den einfachsten Weg benennen.
+2. Du lässt die Read-Scopes definieren: Boards und Karten lesen (Trello), Tasks und Projekte lesen (Asana) — keine Schreib-, Verschiebbe- oder Lösch-Operationen.
+3. Du lässt die Governance-Regel einarbeiten: Der Agent meldet offene Tasks und Deadlines, aber Status-Updates und Priorisierungen verbleiben ausschließlich bei den Projektverantwortlichen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Projektmanagement-Integrations-Berater (Persona). Erstelle eine Anbindungs-Einschätzung für Trello und Asana an unseren Koordinations-Agenten in Langdock (Aufgabe). Kontext: Kampagnenplanung in Trello, Redaktionsplan in Asana; Agent soll nur lesen, nie schreiben; DSGVO-konformes Hosting (Kontext). Format: Tabelle mit Tool, Anbindungsweg, benötigte Read-Scopes, gesperrte Operationen, Governance-Regel (Format)."
+**Erwartetes Artefakt:** Eine Projektmanagement-Anbindungs-Einschätzung (Tabelle) mit Anbindungsweg, Read-Scopes und Governance-Regel je Tool.
+**Fallstricke (≥2 spezifisch):**
+- Schreib-Scopes mitbeantragen "für spätere Erweiterungen" → Scope-Creep erhöht das Risiko versehentlicher Task-Änderungen durch den Agenten; nur die heute benötigten Read-Scopes beantragen.
+- Trello und Asana gleichzeitig als vollwertige Quellen anbinden ohne Source-of-Truth-Klärung → Widersprüchliche Task-Zustände in beiden Systemen erzeugen inkonsistente Agent-Antworten; pro Kampagnen-Phase das führende System festlegen.
+**Anschluss-Szenario:** S-IM-048
+
+### S-IM-048 Microsoft-Teams-Benachrichtigungs-Integration für Kampagnen-Alerts konzipieren
+
+**Wann nutzen (Trigger):** Das Unternehmen nutzt Microsoft Teams als primäre Kommunikationsplattform — die Marketing-Direktorin will, dass Langdock-Agenten Kampagnen-Alerts, Freigabe-Hinweise und Performance-Zusammenfassungen direkt in Teams-Kanäle posten, statt separate Slack-Benachrichtigungen aufzubauen. (Quelle: 12 Q109, Quelle: sources/10 S-049)
+**Strategisches Ziel:** Microsoft Teams als Benachrichtigungs-Kanal für Langdock-Agenten einrichten, sodass Kampagnen-Milestones und Freigabe-Requests in den richtigen Teams-Kanälen erscheinen — mit klarer Abgrenzung zwischen der Integrations-Konfiguration (diese Datei) und der Trigger-Logik (Workflow-Builder in `04-workflows`).
+**Hands-on Ergebnis:** Ein Teams-Benachrichtigungs-Konzept mit Nachrichtenformat-Vorlage (Adaptive Card oder Text), OAuth-App-Registrierung im Azure-AD-Tenant und einer Schnittstellen-Abgrenzung Integration vs. Workflow.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke für Microsoft Graph API, Teams-Webhook oder Bot-Framework, Advisory-Grenze; Trigger-Logik in `04-workflows`.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data den Anbindungsweg klären: Teams-Benachrichtigungen laufen über Microsoft Graph API (Kanal-Nachrichten posten) oder über Incoming Webhooks — Incoming Webhooks sind der einfachere Einstieg ohne App-Registrierung.
+2. Du lässt das Nachrichtenformat entwerfen: Kampagnen-Name, Status-Update, Verantwortlicher, nächste Deadline — maximal drei Sätze, kein Marketing-Jargon.
+3. Du lässt die Schnittstellengrenze klar benennen: Die Integrations-Konfiguration (Webhook-URL, Auth) ist IT-Aufgabe; wann und durch welches Ereignis die Nachricht ausgelöst wird, ist Workflow-Thema.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Microsoft-Teams-Integrations-Berater (Persona). Entwirf ein Teams-Benachrichtigungs-Konzept für Kampagnen-Alerts aus unserem Langdock-Workspace (Aufgabe). Kontext: Ziel-Kanal #marketing-kampagnen; Incoming Webhook als Einstieg; DSGVO-konformes EU-Hosting; Trigger-Logik gehört in die Workflow-Beratung (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Nachrichtenformat-Vorlage, Authentifizierungs-Hinweis, Schnittstellengrenze zu Workflows (Format)."
+**Erwartetes Artefakt:** Ein Teams-Benachrichtigungs-Konzept mit Nachrichtenformat-Vorlage und Schnittstellengrenze zu Workflows.
+**Fallstricke (≥2 spezifisch):**
+- Trigger-Logik ("wann posten") in der Integrationsberatung mitlösen → Die Auslöse-Bedingungen gehören in den Workflow-Builder (`04-workflows`); sie hier zu spezifizieren erzeugt Governance-Konflikte.
+- Incoming Webhook ohne Ablauf-Monitoring einrichten → Teams-Webhooks können ohne Vorwarnung deaktiviert werden; einen IT-Owner für die Webhook-Gesundheitsprüfung benennen und einen monatlichen Canary-Test einplanen.
+**Anschluss-Szenario:** S-IM-049
+
+### S-IM-049 YouTube-Analytics-MCP für Performance-Reporting des Video-Kanals einrichten
+
+**Wann nutzen (Trigger):** Das Content-Team bespielt aktiv den Unternehmens-YouTube-Kanal — die Marketing-Direktorin will Aufrufe, Watch-Time, Click-Through-Rate und Top-Videos direkt im Chat abfragen können, ohne YouTube-Studio manuell zu öffnen. (Quelle: sources/10 S-052, Quelle: 12 Q104)
+**Strategisches Ziel:** YouTube Analytics als lesende Reporting-Quelle via MCP-Server oder Google-APIs in den Performance-Agenten einbinden, dabei ausschließlich Lese-Scopes (Analytics-Daten, keine Video-Uploads oder Kommentar-Management) beantragen.
+**Hands-on Ergebnis:** Ein YouTube-Analytics-Anbindungs-Briefing mit den benötigten Google-API-Scopes (youtube.readonly, yt-analytics.readonly), einem Prompt-Rahmen für Video-Performance-Berichte und einer Governance-Regel: kein Upload, kein Community-Management.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Google-YouTube-Analytics-API (read-only), Custom Integration Builder oder HTTP-Brücke, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, ob ein offizieller YouTube-MCP-Server existiert; falls nicht, ist eine HTTP-Brücke via Custom Integration Builder mit Google-OAuth der empfohlene Weg.
+2. Du lässt die API-Scopes auf das Minimum beschränken: `youtube.readonly` für Kanal-Metadaten und `yt-analytics.readonly` für Performance-Metriken — kein Upload- oder Management-Scope.
+3. Du lässt einen Prompt-Rahmen für wöchentliche Video-Performance-Berichte ausarbeiten, der jede Kennzahl mit Video-Titel und Messzeitraum belegt.
+4. Du übergibst Briefing und Prompt-Rahmen an die IT; Little Data berät, konfiguriert keine Google-API-Verbindungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Video-Analytics-Berater (Persona). Erstelle ein YouTube-Analytics-Anbindungs-Briefing und einen wöchentlichen Reporting-Prompt-Rahmen für unseren Performance-Agenten (Aufgabe). Kontext: Unternehmens-YouTube-Kanal mit 50 Videos; Metriken: Aufrufe, Watch-Time, CTR; kein Upload-Scope; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, API-Scopes, verbotene Scopes; Prompt-Rahmen separat als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein YouTube-Analytics-Anbindungs-Briefing (Scopes und Anbindungsweg) und ein wöchentlicher Reporting-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- `youtube` (vollständigen Management-Scope) statt `youtube.readonly` beantragen → Der vollständige Scope erlaubt Video-Uploads und Kanalverwaltung; ausschließlich Read-Only-Scopes im IT-Briefing dokumentieren.
+- Agent erfindet Aufrufe wenn ein Video noch nicht genug Daten hat → Im Prompt-Rahmen anweisen, Videos mit weniger als 100 Aufrufen als "zu wenig Daten für Auswertung" auszuflaggen statt Trends zu erfinden.
+**Anschluss-Szenario:** S-IM-050
+
+### S-IM-050 Pinterest-API für visuelle Content-Planung als Read-Only-Quelle anbinden
+
+**Wann nutzen (Trigger):** Das Kreativteam recherchiert regelmäßig Trend-Pins und Audience-Insights auf Pinterest — die Marketing-Direktorin will, dass ein Trend-Analyse-Agent Pinterest-Daten (populäre Pins, Kategorien, Audience-Interessen) lesen kann, um Kampagnen-Visuals zu inspirieren. (Quelle: sources/10 S-054, Quelle: A-08)
+**Strategisches Ziel:** Pinterest als lesbare Trend- und Inspirationsquelle via Pinterest-API einbinden, dabei ausschließlich öffentliche Analytics- und Suchdaten abrufen und keinerlei Pins posten oder Boards verwalten.
+**Hands-on Ergebnis:** Ein Pinterest-API-Anbindungs-Konzept mit OAuth-App-Registrierung, benötigten Scopes (boards:read, pins:read, user_accounts:read), einer DSGVO-Governance-Regel (keine personalisierten Nutzerdaten) und einem Trend-Analyse-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Pinterest-API (read-only), Custom Integration Builder, Advisory-Grenze.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die Pinterest-API-Scopes auf das Minimum beschränken: `boards:read`, `pins:read` und `user_accounts:read` für das eigene Business-Konto — kein `boards:write` oder `pins:write`.
+2. Du lässt eine DSGVO-Governance-Regel formulieren: Nur aggregierte Trend-Daten und öffentliche Pin-Metadaten in den Agent-Kontext; keine personalisierten Zielgruppen-Profile oder individuellen Nutzer-Daten.
+3. Du lässt ein Trend-Analyse-Prompt-Template ausarbeiten, das den Agenten anweist, Top-Trend-Kategorien, Farbpaletten und Content-Formate der Woche zu identifizieren und als Inspirations-Brief aufzubereiten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Visual-Content-Strategie-Berater (Persona). Erstelle ein Pinterest-API-Anbindungs-Konzept für einen Trend-Analyse-Agenten und ein wöchentliches Inspirations-Prompt-Template (Aufgabe). Kontext: Fashion- und Lifestyle-Brand; nur öffentliche Trend-Daten; kein Pin-Posting; DSGVO-konforme Nutzung (Kontext). Format: Konzept mit Abschnitten API-Scopes, gesperrte Operationen, DSGVO-Regel; Prompt-Template separat als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein Pinterest-API-Anbindungs-Konzept mit Scopes und DSGVO-Governance sowie ein Trend-Analyse-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Schreib-Scopes "für spätere direkte Pin-Planung" mitbeantragen → Pinterest-Publishing bleibt in Pinterest oder einem dedizierten Social-Scheduling-Tool; der Agent ist ein Analyse-, kein Publishing-Tool.
+- Pinterest-Trends als repräsentativ für alle Zielgruppen interpretieren → Pinterest hat eine spezifische Demographie (überwiegend weiblich, Lifestyle-affin); im Prompt-Template explizit auf die Plattform-Bias hinweisen.
+**Anschluss-Szenario:** S-IM-051
+
+### S-IM-051 TikTok Business API advisory einordnen — Möglichkeiten und Grenzen für Marketing-Agenten
+
+**Wann nutzen (Trigger):** Das Social-Team fragt, ob ein Langdock-Agent TikTok-Performance-Daten (Video-Views, Engagement-Rate, Follower-Wachstum) direkt abfragen und Posting-Empfehlungen generieren kann — die Marketing-Direktorin will eine realistische Einschätzung vor einer Investitionsentscheidung. (Quelle: sources/10 S-054, Quelle: A-08)
+**Strategisches Ziel:** Die TikTok Business API advisory realistisch einordnen: Was ist über offizielle API-Endpunkte erreichbar (Analytics lesen), was ist nicht erreichbar (direktes Posting via API in vielen Märkten eingeschränkt) und wo liegt das DSGVO-Risiko bei TikTok-Daten (US-Eigentümerschaft von ByteDance).
+**Hands-on Ergebnis:** Eine TikTok-Business-API-Einschätzung mit erreichbaren Endpunkten (Analytics Read, Research API), nicht erreichbaren Funktionen (direktes Organic-Posting), DSGVO-Risikoeinschätzung und einer Handlungsempfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Grenze, Gap-Analyse native vs. nicht-native Integrationen, DSGVO-Risikobewertung für Drittanbieter.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die TikTok Business API auf verfügbare Endpunkte prüfen: Analytics-Daten (Video-Performance, Follower-Statistiken) sind über die Business API lesbar; organisches Posting ist über die API in vielen Märkten nicht verfügbar oder erfordert spezifische Partnerschafts-Zertifizierungen.
+2. Du lässt das DSGVO-Risiko einschätzen: TikTok (ByteDance) ist ein US-amerikanisches Unternehmen mit chinesischer Eigentümerschaft; Datentransfers aus EU-Kampagnendaten unterliegen besonderen Prüfpflichten — DSB und Datenschutzbeauftragten vor Anbindung konsultieren.
+3. Du lässt eine Handlungsempfehlung formulieren: TikTok-Analytics über eine Drittanbieter-Analytics-Plattform (z. B. Brandwatch) aggregieren statt direkt via API anbinden; so reduziert sich der Datentransfer-Footprint.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Social-API-Berater (Persona). Erstelle eine TikTok-Business-API-Einschätzung für unsere Marketing-Direktorin vor einer Investitionsentscheidung (Aufgabe). Kontext: B2B-Unternehmen in der EU, DSGVO-Pflicht, Interesse an Analytics-Integration und Posting-Automatisierung (Kontext). Format: Einschätzung mit Abschnitten erreichbare API-Funktionen, nicht erreichbare Funktionen, DSGVO-Risikoeinschätzung, Handlungsempfehlung (Format)."
+**Erwartetes Artefakt:** Eine TikTok-Business-API-Einschätzung mit Funktionsumfang, DSGVO-Risikoeinschätzung und Handlungsempfehlung.
+**Fallstricke (≥2 spezifisch):**
+- TikTok-API-Möglichkeiten mit Instagram-API-Erfahrungen gleichsetzen → TikTok hat eigene Restriktionen und Zertifizierungsanforderungen; keine Annahmen übertragen, sondern die aktuelle TikTok-Developer-Dokumentation als Grundlage nutzen.
+- DSGVO-Risikoeinschätzung durch Little Data als rechtliche Freigabe interpretieren → Little Data liefert eine strategische Ersteinschätzung; die Datenschutzbehörde und der unternehmenseigene DSB müssen vor einer Anbindung formell konsultiert werden.
+**Anschluss-Szenario:** S-IM-052
+
+### S-IM-052 Intercom- oder Zendesk-Kundendaten als Read-Only-Quelle für Content-Insights nutzen
+
+**Wann nutzen (Trigger):** Der Customer-Success-Bereich nutzt Intercom oder Zendesk für Support-Tickets — die Marketing-Direktorin will, dass ein Insights-Agent häufige Kundenfragen, Schmerzpunkte und Feature-Requests aus Ticket-Daten aggregiert und daraus Content-Ideen ableitet. (Quelle: sources/10 S-092, Quelle: 12 Q115)
+**Strategisches Ziel:** Intercom- oder Zendesk-Ticket-Daten als aggregierte, anonymisierte Insight-Quelle für den Content-Agenten erschließen — kein Zugriff auf individuelle Kundenkommunikation, nur thematische Cluster und Häufigkeitsverteilungen.
+**Hands-on Ergebnis:** Ein Intercom/Zendesk-Read-Only-Anbindungs-Konzept mit Datenschutz-Governance (aggregiert, anonymisiert), benötigten API-Scopes (Ticket-Kategorien lesen, kein individueller Kontaktzugriff) und einem Content-Insights-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Intercom/Zendesk-API (read-only), DSGVO-Datensparsamkeit, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den Datenzugriff auf Ticket-Kategorien und Themen-Tags beschränken: keine individuellen Kundennamen, E-Mails oder Gesprächsinhalte in den Agent-Kontext.
+2. Du lässt die Aggregationsstufe definieren: Der Agent erhält nur Häufigkeitsverteilungen pro Themen-Cluster (z. B. "Top-10-Fragen diese Woche") — keine Einzeltickets.
+3. Du lässt ein Content-Insights-Prompt-Template ausarbeiten, das den Agenten anweist, aus den Top-Fragen drei Content-Ideen (FAQ-Artikel, Video-Tutorial, Onboarding-Tipp) abzuleiten.
+4. Du übergibst Konzept und Template an IT und Customer-Success; die API-Konfiguration liegt bei der IT, die DSGVO-Freigabe beim DSB.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Customer-Insights-Integrations-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Konzept für unsere Intercom-Ticket-Daten zur Content-Insights-Gewinnung (Aufgabe). Kontext: Marketing-Agent soll häufigste Kundenfragen aggregieren; keine PII; DSGVO-Pflicht; Ergebnisse als Content-Ideen-Brief (Kontext). Format: Konzept mit Abschnitten Datenzugriff-Governance, API-Scopes, Aggregationsstufe, Content-Insights-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein Intercom/Zendesk-Read-Only-Anbindungs-Konzept mit Datenschutz-Governance und Content-Insights-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Einzelne Kundengespräche für "tiefere Analyse" in den Agent-Kontext laden → Individuelle Support-Gespräche enthalten PII und vertragliche Kommunikation; ausschließlich aggregierte, anonymisierte Themen-Cluster übergeben.
+- Support-Insights direkt ohne Customer-Success-Review als Content-Briefing verwenden → Customer-Success versteht den Ticketkontext besser als ein Agent; ein Feedback-Gate einbauen, bei dem CS die generierten Content-Ideen vor der Produktion validiert.
+**Anschluss-Szenario:** S-IM-053
+
+### S-IM-053 PIM-System (Akeneo) für Produkt-Content-Agenten als Datenquelle einbinden
+
+**Wann nutzen (Trigger):** Das Unternehmen nutzt Akeneo als Product Information Management (PIM)-System — die Marketing-Direktorin will, dass ein Produkt-Content-Agent aktuelle Produktbeschreibungen, Attributwerte und Kategorisierungen direkt aus Akeneo liest, statt veraltete Excel-Exporte im Wissensordner zu nutzen. (Quelle: A-08, Quelle: 12 Q91)
+**Strategisches Ziel:** Akeneo als führende Produktdaten-Quelle via MCP-Server oder HTTP-Brücke in den Produkt-Content-Agenten einbinden, sodass Beschreibungen, Attributwerte und Kategorisierungen immer die aktuelle PIM-Version widerspiegeln — ohne manuelle Sync-Zyklen.
+**Hands-on Ergebnis:** Ein Akeneo-Anbindungs-Konzept mit Anbindungsweg (offizielle Akeneo-REST-API oder MCP-Server), benötigten Scopes (Produkte lesen, Kategorien lesen), Governance-Regel (kein Schreiben in Akeneo) und einem Content-Generierungs-Prompt-Template für Produktbeschreibungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Akeneo-REST-API (read-only), Custom Integration Builder, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, ob Akeneo einen offiziellen MCP-Server anbietet; falls nicht, ist die Akeneo-REST-API über den Custom Integration Builder die empfohlene Brücke.
+2. Du lässt die Lese-Scopes definieren: Produkte, Produktmodelle, Kategorien und Attribute lesen — kein Schreibzugriff auf Produktdaten.
+3. Du lässt ein Content-Generierungs-Prompt-Template ausarbeiten, das den Agenten anweist, Produktattribute aus Akeneo als strukturierten Input für SEO-optimierte Beschreibungen zu nutzen.
+4. Du übergibst das Konzept an PIM-Administrator und IT; die API-Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein PIM-Integrations-Berater (Persona). Erstelle ein Akeneo-Anbindungs-Konzept für einen Produkt-Content-Agenten, der Produktbeschreibungen auf Basis aktueller PIM-Daten generiert (Aufgabe). Kontext: Akeneo Cloud, ca. 500 aktive Produkte, kein Schreibzugriff, SEO-optimierte Beschreibungen als Ziel (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Lese-Scopes, Governance-Regel, Content-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein Akeneo-Anbindungs-Konzept mit Anbindungsweg, Lese-Scopes, Governance-Regel und Content-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Akeneo als Schreibziel für KI-generierte Beschreibungen planen → KI-generierter Content muss von Produktmarketing-Redakteurinnen validiert werden, bevor er in Akeneo eingetragen wird; der Agent generiert Entwürfe, Humans führen die PIM-Pflege durch.
+- Alle Produktattribute pauschal in den Agent-Kontext laden → Bei 500 Produkten mit je 30 Attributen übersteigt das Kontext-Fenster schnell die Grenze; gezielt nur die für die Beschreibung relevanten Attribute (Name, Hauptmerkmale, USP) übergeben.
+**Anschluss-Szenario:** S-IM-054
+
+### S-IM-054 Translation-Management-System (Phrase oder Lokalise) für Lokalisierungs-Workflows anbinden
+
+**Wann nutzen (Trigger):** Das Unternehmen nutzt Phrase oder Lokalise als Translation Management System (TMS) für mehrsprachige Marketing-Inhalte — die Marketing-Direktorin will, dass Langdock Übersetzungsprojekte lesen, Fortschritte abfragen und fertige Übersetzungen direkt in den Content-Agenten einbinden kann. (Quelle: sources/10 S-005, Quelle: 12 Q77)
+**Strategisches Ziel:** Das TMS als lesbare Lokalisierungsquelle und als Ablageziel für AI-generierte Übersetzungs-Pre-Drafts einbinden — mit klarer Governance: AI-Entwürfe gehen ins TMS als Draft-Status, finale Freigabe verbleibt bei menschlichen Übersetzern.
+**Hands-on Ergebnis:** Ein TMS-Anbindungs-Konzept (Phrase oder Lokalise) mit Anbindungsweg, Lese-Scopes (Projekt-Status, Translation-Memory, Glossar), optionalem Draft-Write-Scope (nur Draft-Status) und einem Lokalisierungs-Workflow-Skizze.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Phrase/Lokalise-API, native DeepL-Integration für Erst-Entwürfe, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den Anbindungsweg je TMS klären: Phrase und Lokalise bieten REST-APIs; für einfache Read-Abfragen ist eine HTTP-Brücke via Custom Integration Builder ausreichend.
+2. Du lässt die Lese-Scopes bestimmen: Projekt-Status, Translation-Memory (abgleichen für Konsistenz), Glossar (für Terminologie-Kontrolle) — das TMS-Glossar ersetzt oder ergänzt den Langdock-Wissensordner-Glossar.
+3. Du lässt den optionalen Draft-Write-Scope einordnen: Falls AI-Entwürfe direkt ins TMS als Draft hinterlegt werden sollen, ist ein eingeschränkter Write-Scope notwendig — aber nur für Draft-Status, kein direktes Publishen.
+4. Du übergibst das Konzept und die Workflow-Skizze an IT und Lokalisierungs-Management; Übersetzerinnen validieren alle AI-Entwürfe im TMS.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Lokalisierungs-Integrations-Berater (Persona). Erstelle ein TMS-Anbindungs-Konzept für Phrase an unseren Langdock-Lokalisierungs-Workflow (Aufgabe). Kontext: 4 Zielsprachen, Glossar in Phrase als führende Terminologie, AI-Entwürfe als Draft in Phrase hinterlegen, Übersetzer validieren final (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Lese-Scopes, Draft-Write-Governance, Workflow-Skizze als nummerierte Schritte (Format)."
+**Erwartetes Artefakt:** Ein TMS-Anbindungs-Konzept mit Anbindungsweg, Scopes, Draft-Write-Governance und Lokalisierungs-Workflow-Skizze.
+**Fallstricke (≥2 spezifisch):**
+- AI-Entwürfe direkt als finale Übersetzung ins TMS publishen → TMS-basierte Lokalisierungen sind oft rechtlich und markenrechtlich relevant; ein Draft-Status mit Pflicht-Übersetzer-Review als unveränderliches Gate einbauen.
+- TMS-Glossar und Langdock-Wissensordner-Glossar parallel pflegen → Doppelpflege erzeugt Terminologie-Inkonsistenzen; das TMS-Glossar zur führenden Quelle erklären und den Langdock-Wissensordner nur als schreibgeschützte Referenz verwenden.
+**Anschluss-Szenario:** S-IM-055
+
+### S-IM-055 Digital-Signage-System-Integration für automatisierte Content-Belieferung advisory planen
+
+**Wann nutzen (Trigger):** Das Unternehmen betreibt Digital-Signage-Screens in Filialen oder auf Messen — die Marketing-Direktorin fragt, ob Langdock Content-Texte und Kampagnenmotive automatisch in das Digital-Signage-System (z. B. Screenly, Yodeck oder ein proprietäres System) einspielen kann. (Quelle: A-08, Quelle: sources/10 S-055)
+**Strategisches Ziel:** Langdock als Content-Generator für Digital-Signage positionieren, der Texte und Beschreibungen liefert, aber explizit klären, dass das Einspielen von Content in Signage-Systeme ein IT-gesteuerter Publikations-Schritt ist — kein direktes Veröffentlichen durch den Agenten.
+**Hands-on Ergebnis:** Eine Digital-Signage-Integrations-Einschätzung mit Workflow-Skizze (Agent generiert → Human genehmigt → IT spielt ein), Anbindungsweg (proprietäre API oder MCP-Brücke) und einer Governance-Regel: kein autonomes Signage-Einspielen durch KI.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Content-Lieferketten, Wissensordner für Kampagnen-Templates, Agent für Content-Generierung, HTTP-Brücke für Signage-API, Advisory-Grenze.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data den Workflow klar definieren: Langdock generiert Screen-Texte und Kampagnen-Copy auf Basis von Kampagnen-Briefings — die Outputs werden als Entwürfe im Wissensordner oder per HTTP-Übergabe an das Signage-System geliefert.
+2. Du lässt den Anbindungsweg für das Signage-System prüfen: Die meisten Signage-Plattformen bieten REST-APIs für Content-Upload; eine HTTP-Brücke via Custom Integration Builder ist der empfohlene Weg.
+3. Du lässt die Governance-Regel als unveränderlich einarbeiten: Kein KI-Agent darf Content ohne menschliche Freigabe auf öffentlich sichtbare Signage-Screens einspielen — das Publikations-Gate verbleibt bei Marketing-Ops oder IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Digital-Signage-Content-Berater (Persona). Erstelle eine Integrations-Einschätzung für die Anbindung unseres Yodeck-Signage-Systems an Langdock für automatisierte Content-Lieferung (Aufgabe). Kontext: 15 Screens in drei Filialen; Kampagnen-Content wöchentlich wechselnd; kein autonomes KI-Einspielen; Human-Approval-Pflicht (Kontext). Format: Einschätzung mit Abschnitten Workflow-Skizze, Anbindungsweg, Governance-Regel, Risiken (Format)."
+**Erwartetes Artefakt:** Eine Digital-Signage-Integrations-Einschätzung mit Workflow-Skizze, Anbindungsweg und Governance-Regel.
+**Fallstricke (≥2 spezifisch):**
+- KI-generierten Content ohne Bildrechte-Prüfung auf Signage-Screens einspielen → Signage-Content in öffentlichen Räumen unterliegt Urheberrecht und Wettbewerbsrecht; jeder KI-Output muss vor dem Einspielen rechtlich geprüft sein.
+- Signage-System-API als stabiles Interface behandeln → Proprietäre Signage-Systeme ändern ihre APIs häufig; einen IT-Owner für die HTTP-Brücken-Wartung benennen und einen Canary-Test einplanen.
+**Anschluss-Szenario:** S-IM-056
+
+### S-IM-056 Eventbrite-Integration für Event-Marketing-Reporting und Ticket-Analytics anbinden
+
+**Wann nutzen (Trigger):** Das Event-Marketing-Team verkauft Tickets über Eventbrite für Webinare, Roadshows und Kundenveranstaltungen — die Marketing-Direktorin will Ticket-Verkaufszahlen, Registrierungs-Quoten und Revenue-Daten direkt im Chat abfragen, ohne Eventbrite manuell zu öffnen. (Quelle: sources/10 S-049, Quelle: A-36)
+**Strategisches Ziel:** Eventbrite als lesende Event-Analytics-Quelle via Eventbrite-API anbinden, aggregierte Event-Performance-Daten in den Reporting-Agenten einspeisen und DSGVO-konforme Datensparsamkeit bei Teilnehmerdaten gewährleisten.
+**Hands-on Ergebnis:** Ein Eventbrite-API-Anbindungs-Briefing mit benötigten OAuth-Scopes (event:read, order:read — aggregiert), DSGVO-Governance-Regel (keine individuellen Käuferdaten in den Agent-Kontext) und einem Event-Performance-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Eventbrite-API (read-only), DSGVO-Datensparsamkeit, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Eventbrite-OAuth-Scopes auf das Minimum beschränken: `event:read` für Event-Metadaten und Kapazitätsdaten, `order:read` für aggregierte Verkaufszahlen — keine individuellen Käuferprofile.
+2. Du lässt die DSGVO-Governance-Regel formulieren: Individuelle Ticketkäufer-Daten (Name, E-Mail, Adresse) bleiben in Eventbrite; der Agent erhält nur Aggregat-Metriken (Gesamtverkäufe, Auslastungsgrad, Revenue-Summe).
+3. Du lässt ein Event-Performance-Prompt-Template ausarbeiten, das nach jedem Event automatisch eine Post-Event-Zusammenfassung mit KPI-Vergleich (Ziel vs. Ist) generiert.
+4. Du übergibst Briefing und Template an IT und Event-Marketing; die Datenschutz-Freigabe liegt beim DSB.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Event-Analytics-Berater (Persona). Erstelle ein Eventbrite-API-Anbindungs-Briefing und ein Post-Event-Prompt-Template für unseren Reporting-Agenten (Aufgabe). Kontext: 3–5 Events pro Quartal, aggregierte Ticket-Metriken, keine Käufer-PII im Agent-Kontext, DSGVO-Pflicht (Kontext). Format: Briefing mit Abschnitten OAuth-Scopes, gesperrte Daten, DSGVO-Governance-Regel; Post-Event-Prompt-Template als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein Eventbrite-API-Anbindungs-Briefing mit DSGVO-Governance und ein Post-Event-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Individuelle Ticket-Order-Daten für "tiefere Analyse" in den Agent-Kontext laden → Käufer-Kontaktdaten sind DSGVO-relevant und erfordern Zweckbindung; ausschließlich aggregierte Metriken ohne PII übergeben.
+- Eventbrite-Anbindung als dauerhaft stabil betrachten → Eventbrite hat in der Vergangenheit API-Versionen ohne lange Vorlaufzeit geändert; einen IT-Owner für die Verbindungsüberwachung benennen.
+**Anschluss-Szenario:** S-IM-057
+
+### S-IM-057 Marketing-Analytics-Plattform (Mixpanel oder Amplitude) via MCP für Funnel-Analyse anbinden
+
+**Wann nutzen (Trigger):** Das Wachstums-Team analysiert Nutzer-Funnel in Mixpanel oder Amplitude — die Marketing-Direktorin will, dass ein Performance-Agent Conversion-Rates, Drop-Off-Punkte und Segment-Vergleiche direkt im Chat abfragen kann, ohne manuell Cohort-Berichte zu exportieren. (Quelle: sources/10 S-084, Quelle: A-36)
+**Strategisches Ziel:** Mixpanel oder Amplitude als lesende Funnel-Analytics-Quelle via MCP-Server oder HTTP-Brücke einbinden, dabei nur aggregierte Cohort-Metriken abrufen und individuelles User-Tracking aus dem Agent-Kontext ausschließen.
+**Hands-on Ergebnis:** Ein Mixpanel/Amplitude-Anbindungs-Briefing mit empfohlenem Anbindungsweg, Service-Account-Authentifizierung, Datenprinzip (aggregiert statt individuell), Query-Governance (keine unbegrenzten Full-Scan-Abfragen) und einem Funnel-Analyse-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Mixpanel/Amplitude-REST-API oder MCP-Server, User-Confirmation für ressourcenintensive Queries, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den Anbindungsweg klären: Amplitude bietet eine offizielle Chart-API und Data-Export-API; Mixpanel hat eine Query-API — je nach Plattform ist eine HTTP-Brücke via Custom Integration Builder oder ein offizieller MCP-Server der richtige Weg.
+2. Du lässt das Datenprinzip einarbeiten: Aggregierte Cohort-Metriken (Conversion-Rate, Median-Time-to-Convert, Drop-Off-Rate je Funnel-Schritt) statt individueller User-Events in den Agent-Kontext.
+3. Du lässt eine Query-Governance-Regel definieren: Abfragen ohne Zeitbereichs-Filter oder über alle historischen Daten erfordern eine Nutzerbestätigung, da sie ressourcenintensiv sein können.
+4. Du übergibst das Briefing an IT und Analytics-Team; Little Data berät, konfiguriert keine API-Verbindungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Product-Analytics-Integrations-Berater (Persona). Erstelle ein Amplitude-Anbindungs-Briefing für einen Marketing-Performance-Agenten, der Funnel-Conversion-Rates abfragt (Aufgabe). Kontext: B2B-SaaS-Funnel mit 5 Schritten; aggregierte Metriken, keine User-IDs; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, Datenprinzip, Query-Governance-Regel, Funnel-Analyse-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein Mixpanel/Amplitude-Anbindungs-Briefing mit Datenprinzip, Query-Governance und Funnel-Analyse-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Individuelle User-Event-Streams in den Agent-Kontext laden → Individuelle Nutzerdaten in Mixpanel/Amplitude sind oft DSGVO-relevant (User-IDs als pseudonyme Daten); ausschließlich aggregierte Cohort-Metriken übergeben.
+- Full-Historical-Data-Abfragen ohne Kostenwarnung freigeben → Amplitude-Abfragen über große Zeiträume können teuer sein; Zeitbereichs-Filter als Pflichtfeld im Prompt-Template einbauen und ressourcenintensive Abfragen mit Nutzerbestätigung versehen.
+**Anschluss-Szenario:** S-IM-058
+
+### S-IM-058 Data-Lake-Read-Only-Zugriff via MCP für Marketing-Daten-Analysten planen
+
+**Wann nutzen (Trigger):** Das Unternehmen betreibt einen Data Lake (z. B. auf AWS S3 / Athena oder Azure Data Lake) mit konsolidierten Marketing-Daten — die Marketing-Direktorin will, dass ein Analyse-Agent gezielt Marketing-Datensätze abfragen kann, ohne dass IT für jeden Report einen manuellen Export vorbereiten muss. (Quelle: A-36, Quelle: sources/10 S-089)
+**Strategisches Ziel:** Den Data Lake als lesende Quelle via MCP-Server mit strikter Governance (definierte Schemas, verbotene Tabellen, Query-Kostengrenze) für Marketing-Abfragen öffnen — keine schreibenden Operationen, kein Zugriff auf Finanz- oder HR-Daten.
+**Hands-on Ergebnis:** Ein Data-Lake-Read-Only-Anbindungs-Konzept mit freigegebenen Schemas, verbotenen Schemas (Finance, HR), IAM/Zugriffsrollen-Empfehlung, Query-Kostengrenze und einem Governance-Hinweis zu unkontrollierten Full-Table-Scans.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Data-Lake-MCP-Server oder AWS Athena / Azure Synapse HTTP-Brücke, User-Confirmation für kostenintensive Abfragen, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data eine klare Schema-Freigabeliste erstellen: Freigegebene Schemas für Marketing-Agenten (z. B. `marketing_events`, `campaign_spend`, `attribution`) und explizit gesperrte Schemas (Finance, HR, Legal).
+2. Du lässt die IAM-Rolle für den Marketing-Service-Account auf minimale Read-Only-Rechte beschränken: nur SELECT-Rechte auf freigegebene Schemas, keine DDL/DML-Operationen.
+3. Du lässt eine Query-Kostengrenze definieren: Abfragen, die mehr als 1 TB scannen (Athena) oder mehr als 100 DTUs verbrauchen (Synapse), erfordern eine Nutzerbestätigung im Chat.
+4. Du übergibst das Konzept an Data-Engineer und IT; die IAM- und Schema-Konfiguration liegt bei der IT, nicht bei Little Data.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Data-Lake-Governance-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Konzept für unseren AWS-Athena-Data-Lake für einen Marketing-Analyse-Agenten (Aufgabe). Kontext: freigegebene Schemas marketing_events und campaign_spend; Finance und HR sind gesperrt; Query-Kostengrenze 1 TB Scan; DSGVO-konformes EU-Hosting (Kontext). Format: Konzept mit Abschnitten Schema-Freigabeliste, gesperrte Schemas, IAM-Empfehlung, Query-Kostengrenze, verbotene SQL-Operationen (Format)."
+**Erwartetes Artefakt:** Ein Data-Lake-Read-Only-Anbindungs-Konzept mit Schema-Freigabeliste, IAM-Empfehlung und Query-Kostengrenze.
+**Fallstricke (≥2 spezifisch):**
+- Full-Table-Scans ohne WHERE-Klausel auf große Data-Lake-Tabellen erlauben → Unkontrollierte Scans auf einem Data Lake können schnell hohe Kosten verursachen; Abfragen ohne Zeitbereichs-Filter als Pflichtfeld im Prompt-Rahmen erzwingen und mit Nutzerbestätigung versehen.
+- Freigegebene Schemas zu weit fassen (z. B. gesamte Unternehmens-Datenbank) → Immer eine explizite Positivliste freigegebener Schemas anlegen; nicht freigegebene Schemas sind per IAM-Policy zu sperren, nicht durch Vertrauen in den Agent-Prompt.
+**Anschluss-Szenario:** S-IM-059
+
+### S-IM-059 ERP-System (SAP oder Microsoft Dynamics) read-only für Preis- und Produktdaten anbinden
+
+**Wann nutzen (Trigger):** Das Marketing-Team erstellt regelmäßig Kampagnenangebote und Preis-Übersichten, muss dafür aber jedes Mal die IT um aktuelle Preislisten bitten — die Marketing-Direktorin will, dass ein Content-Agent aktuelle Listenpreise und Produktkonfigurationen direkt aus dem ERP-System lesen kann. (Quelle: A-08, Quelle: 12 Q112)
+**Strategisches Ziel:** Das ERP-System (SAP oder Microsoft Dynamics) als lesende Preislistenquelle via MCP-Server oder OData-API einbinden, dabei ausschließlich öffentliche Listenpreise und Produktstammdaten freigeben — kein Zugriff auf Einkaufspreise, Margen, Buchhaltung oder Mitarbeiterdaten.
+**Hands-on Ergebnis:** Ein ERP-Read-Only-Anbindungs-Briefing mit freigegebenen API-Endpunkten (Produktkatalog, Listenpreise), gesperrten Bereichen (Einkaufspreise, Finanzbuchhaltung), Service-Account-Empfehlung und einem Preis-Lookup-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, SAP OData-API oder Dynamics 365 REST-API (read-only), HTTP-Brücke, Advisory-Grenze, User-Confirmation für sensitive Preisabfragen.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die freigegebenen ERP-Endpunkte bestimmen: Produktstammdaten (Produktnummer, Name, Beschreibung) und Listenpreise (öffentliche Verkaufspreise) — kein Zugriff auf Einkaufspreise, Kundenspezifische Rabatte oder Buchhaltungsdaten.
+2. Du lässt die Service-Account-Empfehlung formulieren: Ein dedizierter ERP-Lese-Service-Account mit minimalen Berechtigungen auf die freigegebenen Tabellen/Entitäten — kein Vollzugriff auf das ERP-System.
+3. Du lässt eine User-Confirmation-Regel für sensitive Preisabfragen einbauen: Abfragen, die mehr als 100 Produkte gleichzeitig liefern, erfordern eine Bestätigung, um unbeabsichtigte Massenexporte zu verhindern.
+4. Du übergibst das Briefing an ERP-Administrator und IT; die API-Konfiguration und Berechtigungsvergabe liegt ausschließlich bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein ERP-Integrations-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Briefing für unser SAP-System an einen Marketing-Content-Agenten, der Listenpreise und Produktstammdaten abfragt (Aufgabe). Kontext: SAP S/4HANA Cloud, freigegebene Daten: Produktnamen, Beschreibungen, Listenpreise; gesperrt: Einkaufspreise, Finanzbuchhaltung, HR; Service-Account-Prinzip (Kontext). Format: Briefing mit Abschnitten freigegebene Endpunkte, gesperrte Bereiche, Service-Account-Empfehlung, Preis-Lookup-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein ERP-Read-Only-Anbindungs-Briefing mit freigegebenen Endpunkten, gesperrten Bereichen und Preis-Lookup-Prompt-Template.
+**Fallstricke (≥2 spezifisch):**
+- Einkaufspreise oder Margen versehentlich freigeben → Einkaufspreise sind vertrauliche Geschäftsinformationen; im IT-Briefing explizit als gesperrte Felder dokumentieren und technisch per API-Berechtigungen sperren.
+- ERP-Preisdaten als immer aktuell behandeln → ERP-Listenpreise können durch Preisänderungs-Transaktionen unregelmäßig aktualisiert werden; im Prompt-Template einen Zeitstempel der letzten Preisänderung als Pflichtfeld ausgeben lassen.
+**Anschluss-Szenario:** S-IM-060
+
+### S-IM-060 Integration-Sicherheits-Review-Checkliste vor Go-Live jeder neuen Anbindung nutzen
+
+**Wann nutzen (Trigger):** Eine neue Langdock-Integration (MCP-Server, native Anbindung oder HTTP-Brücke) ist konfiguriert und soll produktiv geschaltet werden — die Marketing-Direktorin will vor dem Go-Live sicherstellen, dass Sicherheits- und Datenschutz-Mindeststandards eingehalten wurden. (Quelle: A-13, Quelle: A-15, Quelle: 12 Q129)
+**Strategisches Ziel:** Einen standardisierten Sicherheits-Review-Prozess vor jedem Integration-Go-Live etablieren, der die kritischsten Risiken (Scope-Creep, fehlende Rotation-Policy, PII-Exposure, fehlender Owner) in einem kurzen strukturierten Review von 30 Minuten identifiziert.
+**Hands-on Ergebnis:** Eine Integration-Sicherheits-Review-Checkliste (12 Prüfpunkte, drei Kategorien: Zugriffsminimalität, Datenschutz, Betrieb) und eine einseitige Go/No-Go-Entscheidungsvorlage für die Marketing-Direktorin.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Sicherheitsstandards, Wissensordner für Checklisten-Ablage, Verweis auf `08-sicherheit-und-governance` für tiefergehende DSGVO-Prüfung.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die 12 Prüfpunkte in drei Kategorien destillieren: (A) Zugriffsminimalität — sind nur die nötigen Scopes beantragt? Ist ein Service-Account statt Personen-Account konfiguriert? Sind verbotene Operationen technisch gesperrt? (B) Datenschutz — ist PII-Minimierung sichergestellt? Ist die DSGVO-Rechtsgrundlage dokumentiert? (C) Betrieb — ist ein Owner benannt? Ist eine Rotation-Policy definiert? Ist ein Canary-Test eingeplant?
+2. Du lässt die Checkliste als Go/No-Go-Entscheidungsformat aufbereiten: Jeder Prüfpunkt ist mit "bestanden / offen / nicht anwendbar" bewertbar; bei mehr als zwei offenen Punkten → kein Go-Live.
+3. Du lässt den Hinweis einarbeiten: Diese Checkliste ersetzt keine vollständige DSGVO-DPIA — bei Hochrisiko-Verarbeitungen verweist sie an `08-sicherheit-und-governance`.
+4. Du übergibst die Checkliste an IT und Workspace-Admin als Standard-Go-Live-Gate; sie wird im Integration-Governance-Playbook (S-IM-044) als Pflicht-Schritt verankert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integration-Sicherheits-Berater (Persona). Erstelle eine 12-Punkte-Sicherheits-Review-Checkliste für den Go-Live jeder neuen Langdock-Integration und eine einseitige Go/No-Go-Entscheidungsvorlage (Aufgabe). Kontext: drei Kategorien Zugriffsminimalität, Datenschutz, Betrieb; bei mehr als zwei offenen Punkten kein Go-Live; Verweis auf tiefergehende DSGVO-Prüfung in Schwesterdatei (Kontext). Format: Checkliste als nummerierte Liste mit Kategorie, Prüfpunkt, Bewertungsoptionen; Go/No-Go-Vorlage als Absatz (Format)."
+**Erwartetes Artefakt:** Eine 12-Punkte-Integration-Sicherheits-Review-Checkliste (drei Kategorien) und eine einseitige Go/No-Go-Entscheidungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Checkliste als Formalität ohne echte Prüfung abhaken → Jeder Prüfpunkt muss mit einem konkreten Nachweis belegt werden (z. B. Screenshot der API-Scope-Konfiguration, Name des Service-Accounts); reine Selbstauskunft ohne Nachweis ist kein Security-Review.
+- Sicherheits-Review nur bei neuen Integrationen durchführen → Bestehende Integrationen können durch Konfigurationsänderungen oder API-Versionsupdates Sicherheitslücken entwickeln; die Checkliste einmal jährlich auch auf bestehende Verbindungen anwenden.
 **Anschluss-Szenario:** S-IM-001
 
 ## Hinweise & Quellen-Konflikte
