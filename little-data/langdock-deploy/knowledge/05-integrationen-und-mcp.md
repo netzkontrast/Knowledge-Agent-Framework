@@ -230,7 +230,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 **Fallstricke (≥2 spezifisch):**
 - Stille Abhängigkeiten übersehen → Auch Synced Folder und MCP-Verbindungen einbeziehen, nicht nur offensichtliche CRM-Agenten, sonst fehlt im Register ein abreißender Datenfluss.
 - Migration als reines IT-Thema behandeln → Die fachliche Priorisierung (welcher Reporting-Pfad zuerst, welcher zuletzt) im Register verankern, damit kein laufendes Kampagnen-Reporting unkoordiniert ausfällt.
-**Anschluss-Szenario:** S-IM-001
+**Anschluss-Szenario:** S-IM-011
 
 ## Hinweise & Quellen-Konflikte
 

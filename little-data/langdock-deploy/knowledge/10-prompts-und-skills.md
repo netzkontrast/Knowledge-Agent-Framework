@@ -146,7 +146,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Fallstricke (≥2 spezifisch):**
 - Library-Dateien sind nicht versioniert wie Git; bei jedem Update die alte Datei vor dem Upload umbenennen (z.B. `prompt-changelog-2026-04.md`), sonst gehen ältere Versionen verloren.
 - Canary-Tests ohne feste Eingabe-Fixtures sind nicht reproduzierbar – Testinputs in einer separaten Datei speichern.
-**Anschluss-Szenario:** S-PS-005
+**Anschluss-Szenario:** S-PS-006
 
 ### S-PS-005 PTCF als Team-Standard in Onboarding und Konversations-Startern verankern
 

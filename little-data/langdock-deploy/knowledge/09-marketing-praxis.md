@@ -237,7 +237,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 **Fallstricke (mind. 2 spezifisch):**
 - KI erzeugt generische 'Best Practices' statt technischer Abbruch-Kriterien → Prompt muss explizit harte, messbare Quality-Gates einfordern.
 - Wissensordner-Limit → Sicherstellen, dass die Briefings nicht in einem Ordner mit >1000 Dateien liegen, um Retrieval-Ungenauigkeiten zu vermeiden.
-**Anschluss-Szenario:** (Ende der Matrix)
+**Anschluss-Szenario:** S-MP-011
 
 ## Hinweise & Quellen-Konflikte
 

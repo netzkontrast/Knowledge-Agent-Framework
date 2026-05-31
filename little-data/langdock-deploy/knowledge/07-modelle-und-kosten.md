@@ -273,4 +273,4 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Fallstricke (≥2 spezifisch):**
 - Rohdaten direkt durch ein 24x-Modell zu jagen ist Geldverschwendung — Mitigation: deterministische Vorverarbeitung per Code Node, Frontier-Modell nur für die finale Synthese.
 - Ein 24x-Lauf ohne dedizierten Cap kann das Workspace-Limit allein sprengen — Mitigation: einmaligen Lauf-Cap setzen und nach Abschluss zurücknehmen.
-**Anschluss-Szenario:** S-MK-006
+**Anschluss-Szenario:** S-MK-011

@@ -242,7 +242,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 **Fallstricke (≥2 spezifisch):**
 - Das Modell erfindet eine plausible Quelle → nur über Web Search oder Wissensordner verifizierte Belege akzeptieren.
 - RAG wird als Garantie gegen Fehler missverstanden → Retrieval reduziert Halluzinationen, eliminiert sie nicht; kritische Zahlen menschlich gegenprüfen.
-**Anschluss-Szenario:** S-CP-005
+**Anschluss-Szenario:** S-CP-011
 
 ## Hinweise & Quellen-Konflikte
 
