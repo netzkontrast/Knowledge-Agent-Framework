@@ -521,7 +521,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 **Fallstricke (≥2 spezifisch):**
 - Zu generische Starter ("Hilf mir mit Marketing") geben dem Agent keine Richtung → jeder Starter muss den Kontext und den erwarteten Output benennen.
 - Starter werden ohne Test direkt eingesetzt → immer mindestens einen Trockenlauf im Chat-Sandbox durchführen, bevor der Agent für das Team freigegeben wird.
-**Anschluss-Szenario:** S-CP-001
+**Anschluss-Szenario:** S-CP-026
 
 ## Hinweise & Quellen-Konflikte
 

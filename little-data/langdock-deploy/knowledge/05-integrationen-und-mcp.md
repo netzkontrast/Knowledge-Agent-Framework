@@ -510,7 +510,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 **Fallstricke (≥2 spezifisch):**
 - Alle Integrationen gleichzeitig starten wollen → Sequenziell vorgehen und mit dem Governance-Fundament (SSO/SCIM) beginnen; parallele Setups erhöhen Fehlerrisiko und erschweren die Fehlersuche.
 - Keinen Owner je Meilenstein benennen → Ohne klare Verantwortlichkeit bleiben Integrationen halb fertig; je Meilenstein eine Person benennen, die den Abschluss bestätigt.
-**Anschluss-Szenario:** S-IM-001
+**Anschluss-Szenario:** S-IM-026
 
 ## Hinweise & Quellen-Konflikte
 

@@ -239,6 +239,289 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 - Wissensordner-Limit → Sicherstellen, dass die Briefings nicht in einem Ordner mit >1000 Dateien liegen, um Retrieval-Ungenauigkeiten zu vermeiden.
 **Anschluss-Szenario:** S-MP-011
 
+### S-MP-011 Brand-Voice-Leitfaden aus bestehendem Content reverse-engineeren
+
+**Wann nutzen (Trigger):** Das Marketing-Team wächst schnell und Freelancer produzieren Texte in inkonsistenten Tonalitäten — weil ein formales Tone-of-Voice-Dokument schlicht fehlt. Julia muss kurzfristig eine verlässliche Grundlage für alle Agenturen und internen Autoren schaffen. (Quelle: sources/10 S-038)
+**Strategisches Ziel:** Aus vorhandenem High-Performance-Content eine dokumentierte Brand Voice destillieren, die dauerhaft im Wissensordner verankert ist und als Goldstandard für alle KI-Agenten gilt.
+**Hands-on Ergebnis:** Ein strukturiertes Tone-of-Voice-Dokument mit konkreten Do's & Don'ts sowie drei Vorher/Nachher-Beispielen, direkt im Wissensordner gespeichert.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Zehn leistungsstarke, markenkonforme Content-Stücke (Blogposts, Case Studies, E-Mails) in einen dedizierten Wissensordner hochladen.
+2. Den Agenten anweisen, Tonalität, Satzlänge, bevorzugte Vokabeln und rhetorische Muster aus dem Korpus zu extrahieren.
+3. Draft des Leitfadens im Canvas erstellen und iterativ mit dem Brand-Team verfeinern.
+4. Finales Dokument als "Brand Voice v1.0" in den Wissensordner zurückspeichern und alle bestehenden Agenten darauf verlinken.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Brand-Stratege für ein DACH-B2B-SaaS-Unternehmen. Analysiere die Dokumente im verknüpften Ordner und extrahiere unsere Brand Voice. Achte auf Tonalität (formell vs. direkt), durchschnittliche Satzlänge und Fachsprache. Erstelle einen Leitfaden mit 'Do's and Don'ts' sowie drei Vorher/Nachher-Beispielen als Markdown-Dokument."
+**Erwartetes Artefakt:** Ein Tone-of-Voice-Leitfaden (Markdown, ca. 800 Wörter) mit Beispielen, bereit zur Ablage im Wissensordner und Einbettung in System-Prompts.
+**Fallstricke (≥2 spezifisch):**
+- Wenn die hochgeladenen Texte selbst inkonsistent sind, produziert der Agent einen widersprüchlichen Leitfaden → Nur nachweislich erfolgreichen, manuell kuratierten Content uploaden.
+- LLMs neigen zu generischen Anglizismen und Cheerleader-Tonfall → Prompt muss explizit "direkte, nutzenorientierte B2B-Sprache" und "kein Marketinggeschwurbel" einfordern.
+**Anschluss-Szenario:** S-MP-012
+
+### S-MP-012 Content-Kalender-Generierung für LinkedIn und XING
+
+**Wann nutzen (Trigger):** Monatsbeginn: Der Social-Media-Manager braucht innerhalb von zwei Stunden einen vollständigen 4-Wochen-Plan für LinkedIn (und ggf. XING) — mit datierten Posts, variierenden Formaten und direktem Export in Google Sheets. (Quelle: sources/10 S-046)
+**Strategisches Ziel:** Den manuellen Planungsaufwand von durchschnittlich fünf Stunden pro Monat auf unter eine Stunde reduzieren und gleichzeitig Konsistenz und Kanalvielfalt sicherstellen.
+**Hands-on Ergebnis:** Ein befüllter Google-Sheets-Redaktionsplan mit Datum, Format (Text-Post / Video-Teaser / Umfrage), Entwurfstext und zugewiesenem Owner.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows (Google Sheets Action), Agenten
+**Vorgehen (4 Schritte):**
+1. Liste der verfügbaren Content-Assets (URLs, Whitepapers, Event-Ankündigungen) als Input in den Workflow übergeben.
+2. Agent verteilt Assets auf 30 Tage mit einem Rhythmus von drei Posts pro Woche und variiert dabei Formate.
+3. Für jeden Post einen kurzen Entwurfstext generieren lassen, der die DACH-Feiertage (z.B. Tag der Deutschen Einheit, Nationalfeiertag AT/CH) berücksichtigt.
+4. Google-Sheets-Action-Node schreibt Plan, Datum, Entwurf und Formattyp direkt in das Team-Sheet.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Media-Stratege für ein B2B-SaaS-Unternehmen im DACH-Raum. Erstelle einen Monats-Content-Plan für LinkedIn aus den übergebenen Asset-URLs. Sorge für einen Rhythmus von 3 Posts pro Woche, variiere zwischen Text-Posts, Kurzvideos und Umfragen und berücksichtige deutsche Feiertage im Oktober. Liefere das Ergebnis als strukturierte Tabelle mit Spalten: Datum, Format, Entwurfstext, Hashtags."
+**Erwartetes Artefakt:** Befülltes Google Sheet mit 12–15 datierten Posts, Entwurfstexten und Formatvorgaben, direkt exportbereit.
+**Fallstricke (≥2 spezifisch):**
+- Der Agent kennt nationale Feiertage nicht automatisch → Feiertage für DE, AT und CH explizit im Prompt oder als Liste im Wissensordner hinterlegen.
+- Google-Sheets-Action schlägt fehl, wenn die Sheet-ID falsch konfiguriert ist → Workflow-Verbindung vor dem ersten Live-Run in der Sandbox testen.
+**Anschluss-Szenario:** S-MP-013
+
+### S-MP-013 Plattform-native Post-Varianten aus einer Quelle erzeugen
+
+**Wann nutzen (Trigger):** Ein neues Kundenreferenz-Video oder eine Case Study soll auf LinkedIn, Instagram und im Intranet-Newsletter erscheinen — mit je unterschiedlicher Länge, Hashtag-Logik und Tonalität. Alles manuell zu adaptieren kostet das Team täglich wertvolle Zeit. (Quelle: sources/10 S-047)
+**Strategisches Ziel:** Aus einem einzigen Content-Asset automatisch drei plattformgerechte Varianten erzeugen und dadurch die Distributionsgeschwindigkeit verdreifachen, ohne Qualität zu opfern.
+**Hands-on Ergebnis:** Drei sofort publizierbare Post-Varianten: ein langer LinkedIn-Post mit Bullet-Points, ein prägnanter Twitter/X-Hook sowie eine Community-orientierte Instagram-Caption mit Hashtag-Block.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Canvas
+**Vorgehen (3 Schritte):**
+1. URL oder Dateianhang des Quell-Assets in den Agenten laden; Kernbotschaft in einem Satz als Kontext ergänzen.
+2. Agent generiert drei Varianten in einem Durchlauf, jeweils mit Plattform-Label und passendem Hashtag-Vorschlag.
+3. Varianten im Canvas nebeneinander prüfen und per Split-Screen iterativ anpassen, bevor sie an die Publish-Queue übergeben werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Media-Manager für ein mittelständisches Industrieunternehmen in München. Adaptiere die Kernbotschaft des angehängten Case-Study-PDFs für drei Kanäle. LinkedIn: tiefgründiger Fachbeitrag mit Bullet-Points, ca. 250 Wörter, formelles 'Sie' gegenüber Entscheidern. Instagram: Community-fokussiert, max. 150 Wörter, 5 relevante Hashtags. Internes Newsletter-Snippet: neutral-informativ, max. 80 Wörter. Liefere alle drei Varianten klar getrennt."
+**Erwartetes Artefakt:** Drei fertige Post-Entwürfe mit Plattform-Label, Zeichenzahl-Angabe und Hashtag-Vorschlägen, im Canvas zur finalen Freigabe.
+**Fallstricke (≥2 spezifisch):**
+- Instagram-Captions ohne Bildvorgabe sind für Designer nutzlos → Prompt muss explizit nach einem begleitenden Visual-Konzept fragen ("beschreibe ein passendes Bild in einem Satz").
+- Tonalität driftet zwischen Varianten → System-Prompt muss die Brand Voice aus dem Wissensordner verankern, nicht nur den Einzelprompt.
+**Anschluss-Szenario:** S-MP-014
+
+### S-MP-014 Community-Management bei viralem Beitrags-Ansturm
+
+**Wann nutzen (Trigger):** Ein LinkedIn-Post oder eine Pressemitteilung geht viral und innerhalb von Stunden treffen 50+ Kommentare ein — von Produkt-Fragen bis hin zu kritischen Einwänden. Das Team ist für manuelle Antworten zu klein. (Quelle: sources/10 S-048)
+**Strategisches Ziel:** Reaktionszeit auf Community-Kommentare auf unter zwei Stunden senken und dabei markenkonforme, inhaltlich korrekte Antworten sicherstellen, ohne die FAQ-Datenbank zu verlassen.
+**Hands-on Ergebnis:** Fünf bis zehn sofort publizierbare Antwort-Entwürfe, die spezifische Produktfragen aus dem FAQ-Wissensordner beantworten und kritische Kommentare deeskalierend adressieren.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Kommentare gebündelt in den Chat kopieren (max. zehn pro Batch), Wissensordner mit aktueller FAQ-Datenbank verknüpfen.
+2. Agenten anweisen, für jeden Kommentar eine individuelle Antwort zu entwerfen — sachlich korrekt, max. zwei Sätze, freundlicher Ton.
+3. Negative oder trollige Kommentare explizit als solche markieren lassen; dafür Eskalationshinweis statt Direktantwort generieren.
+4. Entwürfe vom Social-Media-Manager im 4-Augen-Prinzip freigeben, bevor sie gepostet werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Community-Manager für ein B2B-SaaS-Unternehmen. Verfasse Antworten auf die folgenden 8 LinkedIn-Kommentare. Nutze den verknüpften FAQ-Ordner, um Produktfragen korrekt zu beantworten. Bleibe stets freundlich und professionell. Wenn ein Kommentar negativ oder trolli ist, schreibe statt einer Antwort nur: 'ESKALATION — bitte manuell prüfen'. Liefere für jeden Kommentar einen nummerierten Antwort-Entwurf von maximal 2 Sätzen."
+**Erwartetes Artefakt:** Nummerierte Antwort-Entwürfe (je max. 2 Sätze) plus Eskalations-Flags für problematische Kommentare, bereit zur manuellen Freigabe.
+**Fallstricke (≥2 spezifisch):**
+- Bei negativem Sentiment produziert das Modell übermäßig entschuldigende Antworten, die das Problem verschlimmern → Explizit anweisen: "Keine Entschuldigung ohne vorherige Eskalation an HR/Legal."
+- FAQ-Ordner veraltet → Monatliche Pflicht-Aktualisierung des FAQ-Ordners als Recurring Task im Team-Kalender festlegen.
+**Anschluss-Szenario:** S-MP-015
+
+### S-MP-015 CEO-Ghostwriting für LinkedIn-Thought-Leadership
+
+**Wann nutzen (Trigger):** Die Geschäftsführung will Julias Unternehmen als Thought-Leader positionieren, aber der CEO hat keine Zeit für das wöchentliche Schreiben. Julia bekommt nur drei Stichpunkte per Slack und muss daraus einen authentischen, nicht-generischen LinkedIn-Post destillieren. (Quelle: sources/10 S-053)
+**Strategisches Ziel:** Den LinkedIn-Kanal des CEO zu einem verlässlichen Wachstumsmotor für Employer Branding und Pipeline-Generierung ausbauen — mit mindestens einem hochwertigen Post pro Woche.
+**Hands-on Ergebnis:** Ein sofort publizierbarer LinkedIn-Post (ca. 200–250 Wörter) in der authentischen Stimme des CEO, beginnend mit einem konträren Hook, endend mit einer offenen Frage.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Memory
+**Vorgehen (4 Schritte):**
+1. Einen dedizierten "CEO-Ghostwriter"-Agenten mit Memory-Funktion anlegen; darin Sprach-Präferenzen des CEO fest verankern (z.B. keine Emojis, kurze Absätze, direkte Sprache, DACH-B2B-Tonalität).
+2. Die drei rohen Stichpunkte des CEO als Input übergeben.
+3. Agent expandiert Stichpunkte zu einem vollständigen Post, der mit einer provokanten These öffnet und mit einer Frage ans Netzwerk schließt.
+4. Post im Canvas final abstimmen und ggf. per Workflow direkt an den LinkedIn-Scheduling-Tool übergeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Ghostwriter für den CEO eines mittelständischen DACH-Tech-Unternehmens. Formuliere diese drei Stichpunkte in einen LinkedIn-Post um: [Stichpunkte]. Der Ton ist direkt, ohne Emojis, mit kurzen Absätzen. Beginne mit einer konträren These, die die gängige Branchenansicht herausfordert. Schließe mit einer offenen Frage ans Netzwerk. Maximal 250 Wörter."
+**Erwartetes Artefakt:** Fertiger LinkedIn-Post (250 Wörter), im CEO-Tonfall, mit Hook und Abschlussfrage — zur unmittelbaren Freigabe durch den CEO per kurzer Slack-Bestätigung.
+**Fallstricke (≥2 spezifisch):**
+- Memory-Funktion speichert irrtümlich alte Kampagneninhalte und färbt den CEO-Tonfall → Memory für diesen Agenten auf reine Sprach-Präferenzen beschränken und niemals automatisch auf frühere Posts zugreifen lassen.
+- Generischer "LinkedIn-Broetry"-Tonfall entsteht, wenn die Persona nicht hart genug definiert ist → Drei konkrete Negativ-Beispiele ("Das klingt NICHT wie unser CEO") im System-Prompt verankern.
+**Anschluss-Szenario:** S-MP-016
+
+### S-MP-016 Visuelle Kampagnenbriefings für externe Designer erstellen
+
+**Wann nutzen (Trigger):** Julia muss für die Hannover Messe oder DMEXCO schnell ein vollständiges Design-Briefing an eine externe Agentur übergeben — aber der Marketing-Manager fehlt die Sprache, um Layout, Farb-Mood und Typografie-Hierarchie präzise zu beschreiben. (Quelle: sources/10 S-043)
+**Strategisches Ziel:** Die Revisions-Zyklen mit externen Designern von durchschnittlich drei auf maximal zwei Runden reduzieren, indem das Briefing von Anfang an präzise und vollständig ist.
+**Hands-on Ergebnis:** Ein professionelles visuelles Briefing-Dokument mit Vorgaben zu Layout-Struktur, Farb-Mood, Icon-Stil, Typografie-Hierarchie und exaktem Copy-Text — bereit zum direkten E-Mail-Versand an die Agentur.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Canvas
+**Vorgehen (3 Schritte):**
+1. Die zu kommunizierenden Datenpunkte und die Zielplattform (z.B. Roll-up für Hannover Messe, LinkedIn-Banner, DMEXCO-Standbeschriftung) als rohen Text eingeben.
+2. Agent übersetzt die Informationen in ein strukturiertes Design-Briefing mit allen technisch relevanten Feldern.
+3. Briefing im Canvas kollaborativ mit dem Brand-Verantwortlichen finalisieren und als PDF exportieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Creative Director eines B2B-Tech-Unternehmens. Übersetze diese 5 Kernaussagen unserer Hannover-Messe-Kampagne in ein vollständiges visuelles Briefing für unsere externe Designagentur. Wir benötigen ein 2×1-m-Roll-up und einen LinkedIn-Event-Banner. Erstelle ein Briefing mit den Feldern: Format & Maße, Layout-Struktur (Aufbau des Sichtfelds), Farb-Mood, Typografie-Empfehlung, Icon-Stil, exakter Copy-Text und Hinweise zur Bildwelt."
+**Erwartetes Artefakt:** Strukturiertes Design-Briefing (Markdown, ca. 600 Wörter) mit allen technischen Feldern, direkt versendbar an die externe Agentur.
+**Fallstricke (≥2 spezifisch):**
+- Vision-Capability kann keine exakten HEX-Codes aus Referenzbildern auslesen → HEX-Werte aus dem offiziellen Corporate-Design-Guide manuell eintragen, niemals aus Screenshots übernehmen.
+- Zu detaillierte Vorgaben engen Kreativraum der Designer ein → Briefing explizit mit "Interpretationsspielraum erwünscht" für ästhetische Entscheidungen kennzeichnen.
+**Anschluss-Szenario:** S-MP-017
+
+### S-MP-017 Lead-Segmentierung mit RFM-Analyse
+
+**Wann nutzen (Trigger):** Die Open-Rates des monatlichen B2B-Newsletters fallen unter 18 %, weil alle Kontakte — vom Neukunden bis zum langjährigen Enterprise-Partner — identische Inhalte erhalten. Das CRM-Team hat keine Zeit für manuelle Segmentierungsarbeit. (Quelle: sources/10 S-056)
+**Strategisches Ziel:** Die Datenbank in verhaltensbasierte Segmente aufteilen und für jedes Segment individualisierte Kommunikationspfade vorbereiten, die nachweislich höhere Engagement-Raten erzielen.
+**Hands-on Ergebnis:** Eine segmentierte Lead-Liste (CSV) mit drei Clustern — "Loyal", "Gefährdet", "Inaktiv" — sowie einer kurzen Beschreibung der empfohlenen Kommunikationsstrategie pro Segment.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
+**Vorgehen (4 Schritte):**
+1. Anonymisierten CRM-Export (nur User-IDs, keine PII) als CSV in den Data Analyst laden.
+2. RFM-Analyse (Recency, Frequency, Monetary Value) via Python-Script ausführen lassen.
+3. Ergebnis-Cluster mit Handlungsempfehlungen pro Segment annotieren lassen.
+4. Segmentierte CSV für den direkten Import in HubSpot oder Salesforce exportieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist CRM-Data-Scientist für ein DACH-B2B-Unternehmen. Führe eine RFM-Analyse auf der angehängten, anonymisierten Kundendatenbank durch. Clustere alle Kontakte in drei Segmente: 'Loyal' (hohe Recency, Frequenz und Value), 'Gefährdet' (sinkende Aktivität) und 'Inaktiv' (kein Engagement seit 90+ Tagen). Gib eine Zusammenfassung der Segmentgrößen, die aktualisierte CSV mit Segment-Label sowie je eine Kommunikationsempfehlung pro Gruppe zurück."
+**Erwartetes Artefakt:** Segmentierte CSV mit Spalte "Segment-Label" plus ein kurzes Summary-Dokument mit Segmentgrößen und strategischen Empfehlungen.
+**Fallstricke (≥2 spezifisch):**
+- Upload von Klardaten (echte E-Mail-Adressen, Namen) verletzt DSGVO-Grundsätze → Vor jedem Upload zwingend pseudonymisieren; nur User-IDs dürfen in den Data Analyst.
+- Multi-Sheet-Excels im normalen Wissensordner-RAG verarbeiten → Strukturierte Daten immer über den Data Analyst, nie über den Wissensordner.
+**Anschluss-Szenario:** S-MP-018
+
+### S-MP-018 Personalisierte Nurturing-Sequenz für warme Leads
+
+**Wann nutzen (Trigger):** Aus der DMEXCO oder Hannover Messe kommen 150 qualifizierte Visitenkarten zurück ins CRM. Das Team braucht innerhalb von 48 Stunden eine mehrstufige Follow-up-Sequenz, die auf die konkreten Messgespräche Bezug nimmt — ohne generische Massenmail-Optik. (Quelle: sources/10 S-063; Quelle: 12 Q31)
+**Strategisches Ziel:** Aus Event-Leads innerhalb von 14 Tagen qualifizierte Sales-Gespräche generieren und dabei die DSGVO-konforme Einwilligung (Opt-in aus dem Messekontakt) als rechtliche Grundlage konsequent dokumentieren.
+**Hands-on Ergebnis:** Eine dreiteilige E-Mail-Sequenz (Tag 1 / Tag 4 / Tag 10) mit variablen Personalisierungs-Feldern und einem abschließenden Soft-Pitch auf ein Discovery-Call-Angebot.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Gesprächsnotizen und Lead-Informationen aus dem CRM-Export in den Agenten laden (pseudonymisiert als Vorlage mit Variablen wie {{Name}}, {{Unternehmen}}, {{Gesprächsthema}}).
+2. Agent generiert drei E-Mail-Entwürfe mit skalierbaren Personalisierungsfeldern; E-Mail 1 Bezug auf das Messegespräch, E-Mail 2 weiterführender Content, E-Mail 3 Call-to-Action.
+3. Entwürfe im Canvas finalisieren und auf formelles "Sie" (B2B-Standard DACH) prüfen.
+4. Sequenz in HubSpot oder Mailjet als automatisierten Workflow einrichten; Delay-Logik und Opt-out-Mechanismus gemäß DSGVO konfigurieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Senior CRM-Manager für ein Enterprise-SaaS-Unternehmen. Erstelle eine 3-teilige E-Mail-Nurturing-Sequenz für Leads, die wir auf der DMEXCO in Köln getroffen haben. E-Mail 1 (Tag 1): Persönlicher Nachfass mit Bezug auf das Messegespräch zu {{Gesprächsthema}}. E-Mail 2 (Tag 4): Weiterführender Fachartikel oder Case Study zum Thema. E-Mail 3 (Tag 10): Einladung zu einem 30-minütigen Discovery-Call. Durchgehend formelles 'Sie', max. 150 Wörter pro E-Mail."
+**Erwartetes Artefakt:** Drei E-Mail-Entwürfe mit Betreffzeilen, Variablen-Platzhaltern und Delay-Empfehlungen — direkt importierbar in das E-Mail-Automation-Tool.
+**Fallstricke (≥2 spezifisch):**
+- Agent halluziniert Produktfeatures im Soft-Pitch → Zero-Fabrication-Policy im System-Prompt durchsetzen; nur Inhalte aus dem Wissensordner dürfen als Faktengrundlage dienen.
+- DSGVO-Opt-out fehlt in der Sequenz → Jede E-Mail muss einen funktionierenden Abmeldelink enthalten; dies als zwingende Anforderung im Prompt verankern.
+**Anschluss-Szenario:** S-MP-019
+
+### S-MP-019 Churn-Signale aus CRM-Daten identifizieren
+
+**Wann nutzen (Trigger):** Das Customer-Success-Team meldet, dass drei Enterprise-Kunden ihren Vertrag nicht verlängert haben — ohne Vorwarnung. Julia will künftig Frühwarnsignale aus dem CRM automatisiert erkennen, bevor Kunden abspringen. (Quelle: sources/10 S-056; Quelle: A-10)
+**Strategisches Ziel:** Ein operatives Churn-Signal-Dashboard etablieren, das Retention-gefährdete Accounts frühzeitig markiert und automatisiert eine Slack-Benachrichtigung an den zuständigen Account Manager sendet.
+**Hands-on Ergebnis:** Eine priorisierte Liste von Accounts mit Churn-Risiko-Score (hoch/mittel/niedrig), ergänzt durch die jeweils ausschlaggebenden Aktivitätssignale.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Workflows (Slack Action)
+**Vorgehen (4 Schritte):**
+1. Anonymisierten CRM-Aktivitäts-Export (Login-Frequenz, Support-Ticket-Volumen, Feature-Nutzung) als CSV in den Data Analyst laden.
+2. Churn-Indikatoren via Python-Skript berechnen lassen (z.B. >30 Tage kein Login + gestiegene Support-Tickets = Risikosignal).
+3. Risiko-Score-Tabelle im Data Analyst generieren und als strukturierte Ausgabe exportieren.
+4. Workflow einrichten: Bei Score "Hoch" automatische Slack-Nachricht an den verantwortlichen Account Manager mit Kontext-Summary.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Customer-Retention-Analyst. Ich lade einen anonymisierten Export unserer SaaS-Kundendatenbank hoch. Berechne für jeden Account einen Churn-Risiko-Score auf Basis folgender Signale: (1) letzte Login-Aktivität > 30 Tage, (2) Support-Ticket-Volumen gestiegen, (3) Feature-Nutzung unter 20% des Vormonats. Klassifiziere jeden Account als 'Hoch', 'Mittel' oder 'Niedrig'. Liefere eine sortierte Tabelle mit Account-ID, Score und den ausschlaggebenden Signalen."
+**Erwartetes Artefakt:** Priorisierte Churn-Risiko-Tabelle (CSV/Markdown) plus ein Python-Chart der Score-Verteilung — als Grundlage für die wöchentliche Retention-Review.
+**Fallstricke (≥2 spezifisch):**
+- PII im CRM-Export → Vor dem Data-Analyst-Upload zwingend alle Klarnamen und E-Mail-Adressen durch pseudonyme Account-IDs ersetzen.
+- Churn-Score-Logik berücksichtigt keine saisonalen Nutzungspausen (z.B. Sommerurlaub im August) → Saisonale Baseline im Skript als Parameter definieren.
+**Anschluss-Szenario:** S-MP-020
+
+### S-MP-020 DMEXCO-Vorbereitung: Gesprächsleitfaden und Hotspot-Briefing
+
+**Wann nutzen (Trigger):** Drei Wochen vor der DMEXCO in Köln muss Julias Team für jeden Stand-Mitarbeiter einen personalisierten Gesprächsleitfaden parat haben — inklusive der Top-Themen der Branche und Gegenargumenten zu den häufigsten Einwänden von potenziellen Partnern. (Quelle: A-02; Quelle: sources/10 S-068)
+**Strategisches Ziel:** Stand-Mitarbeiter so ausstatten, dass sie in Messegesprächen überzeugend, konsistent und on-brand auftreten und qualifizierte Leads direkt in das CRM überführen können.
+**Hands-on Ergebnis:** Ein Gesprächsleitfaden-PDF pro Mitarbeiter-Profil (Account Executive, Pre-Sales, Marketing), bestehend aus: Elevator Pitch (30 Sek.), drei häufigen Einwänden mit Antworten und einem QR-Code-Verweis auf digitale Assets.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Web Search nutzen, um die aktuellen Top-Themen der DMEXCO-Agenda und Trend-Reports der Branche zu recherchieren.
+2. Interne Verkaufsargumente, Case Studies und Einwands-Handling-Playbooks aus dem Wissensordner abrufen.
+3. Pro Mitarbeiterprofil einen individuellen Gesprächsleitfaden im Canvas erstellen: Elevator Pitch, Einwände, Asset-Verweise.
+4. PDFs exportieren und zwei Wochen vor der Messe ans Team verteilen; Feedback-Loop nach der Messe für die nächste Iteration einplanen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Sales-Enablement-Manager für ein B2B-SaaS-Unternehmen. Wir nehmen an der DMEXCO in Köln teil. Nutze Web Search, um die drei dominierenden Branchenthemen der diesjährigen DMEXCO zu identifizieren. Verknüpfe diese mit unseren Produktvorteilen aus dem Wissensordner. Erstelle einen kompakten Gesprächsleitfaden für Account Executives mit: 30-Sekunden-Elevator-Pitch, 3 häufigen Einwänden mit Antworten und 2 Anker-Fragen zur Lead-Qualifizierung."
+**Erwartetes Artefakt:** Ein zweiseitiger Gesprächsleitfaden pro Mitarbeiterprofil (Markdown/PDF), mit Elevator Pitch, Einwand-Antwort-Matrix und Qualifizierungsfragen.
+**Fallstricke (≥2 spezifisch):**
+- Web Search liefert veraltete DMEXCO-Programmdaten → Recherche auf die offizielle DMEXCO-Website und aktuelle Fachmedien (Horizont, W&V) beschränken.
+- Elevator Pitch klingt nach generischer Produktbeschreibung → Prompt muss "konkrete Kunden-Outcome in Zahlen" als zwingendes Element einfordern.
+**Anschluss-Szenario:** S-MP-021
+
+### S-MP-021 Wettbewerbsanalyse für Quartalsplanung
+
+**Wann nutzen (Trigger):** Vor dem Q-Planning-Workshop muss Julia innerhalb von zwei Stunden einen strukturierten Überblick über die aktuellen Marktpositionen der drei wichtigsten Wettbewerber liefern — inklusive Messaging-Shifts und neuer Produkt-Features. (Quelle: A-07; Quelle: 12 Q18)
+**Strategisches Ziel:** Eine datengestützte Wettbewerbslandschaft als Entscheidungsgrundlage für Budgetallokation und Differenzierungs-Messaging im kommenden Quartal bereitstellen.
+**Hands-on Ergebnis:** Eine strukturierte Wettbewerbs-Matrix (3 Konkurrenten × 5 Dimensionen: Positionierung, Messaging, Preishinweise, neue Features, Social-Media-Präsenz) mit strategischen Implikationen für die eigene Planung.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat
+**Vorgehen (4 Schritte):**
+1. Web Search mit gezielten Queries für jeden Wettbewerber starten: aktuelle Pressemitteilungen, Produktseiten, LinkedIn-Posts der letzten 30 Tage.
+2. Gefundene Informationen in eine 3×5-Vergleichsmatrix überführen lassen.
+3. Für jede Dimension strategische Implikationen ableiten: Wo differenzieren wir uns, wo besteht Handlungsbedarf?
+4. Matrix und Empfehlungen als Canvas-Dokument für den Workshop aufbereiten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Stratege für ein B2B-SaaS-Unternehmen im DACH-Markt. Recherchiere via Web Search die aktuellen Marktpositionen der Wettbewerber [Wettbewerber A], [B] und [C]. Analysiere für jeden: (1) Kern-Positionierung, (2) Messaging-Schwerpunkte der letzten 30 Tage, (3) neue Produkt-Features, (4) Preissignale, (5) Social-Media-Aktivität. Erstelle eine vergleichende Markdown-Tabelle und leite drei strategische Handlungsempfehlungen für unsere eigene Positionierung ab."
+**Erwartetes Artefakt:** Wettbewerbs-Matrix als Markdown-Tabelle (3 × 5) plus drei prägnante strategische Implikationen — direkt nutzbar als Workshop-Folie.
+**Fallstricke (≥2 spezifisch):**
+- Web Search findet vorrangig US-amerikanische Quellen → Explizit DACH-Markt und deutschsprachige Fachmedien im Prompt spezifizieren.
+- Wettbewerbsdaten können veraltet sein → Jede Quelle mit Datum ausweisen lassen; Informationen älter als 60 Tage als "ungesichert" markieren.
+**Anschluss-Szenario:** S-MP-022
+
+### S-MP-022 Podcast-to-Content-Repurposing-Pipeline
+
+**Wann nutzen (Trigger):** Das Unternehmen produziert monatlich zwei B2B-Podcast-Episoden, aber deren Reichweite ist gering, weil kein Budget für manuelle Content-Derivate vorhanden ist. Julia will aus jeder Episode automatisch Blog-Posts, Social-Media-Posts und Newsletter-Snippets erzeugen. (Quelle: sources/10 S-054; Quelle: A-37)
+**Strategisches Ziel:** Den Content-Output pro produzierter Podcast-Episode verfünffachen, ohne das Redaktionsbudget zu erhöhen — und dabei eine konsistente Brand Voice über alle Derivate hinweg sicherstellen.
+**Hands-on Ergebnis:** Pro Episode: ein SEO-optimierter Blog-Post (800 Wörter), drei LinkedIn-Posts, ein Newsletter-Snippet (150 Wörter) und fünf Social-Media-Zitate als Grafik-Vorlage.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Canvas, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Podcast-Transkript (aus Riverside, Descript oder manuell erstellt) in den Workflow als Trigger-Input laden.
+2. Workflow weist verschiedene Derivate sequenziell zu: Blog-Post via Sonnet (für Tiefe), Social-Posts via Flash (für Volumen), Newsletter via Flash.
+3. Alle Derivate im Canvas nebeneinander anzeigen und auf Brand Voice aus dem Wissensordner prüfen.
+4. Freigabe-Loop mit einem Human-in-the-Loop-Checkpoint vor der Publikation; anschließend automatischer Export in Google Drive oder CMS.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Content-Repurposing-Spezialist für einen B2B-Tech-Podcast. Ich lade das Transkript der aktuellen Episode hoch. Erstelle daraus: (1) Einen SEO-optimierten Blog-Post von 800 Wörtern mit H2-Überschriften und einem Call-to-Action am Ende. (2) Drei LinkedIn-Posts (je 150 Wörter) mit unterschiedlichen Aufhängern: Zitat, Statistik, Frage. (3) Ein Newsletter-Snippet von 120 Wörtern. Halte durchgehend den formellen B2B-Tonfall aus unserem Wissensordner."
+**Erwartetes Artefakt:** Vier Content-Derivate (Blog, 3× LinkedIn, Newsletter) in einem Canvas-Dokument — mit Formatbezeichnung, Wortanzahl und Tonalitäts-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- Flash-Modell produziert bei Blog-Posts flache Argumentationstiefe → Blog-Post explizit dem Sonnet-Modell zuweisen, Social-Posts können via Flash laufen.
+- Transkript enthält Eigennahmen oder Markennamen mit Tippfehlern aus der automatischen Transkription → Vor dem Upload kurzes Korrekturlesing des Transkripts einplanen.
+**Anschluss-Szenario:** S-MP-023
+
+### S-MP-023 Pressemitteilung und Journalisten-Pitch für DACH-Medien
+
+**Wann nutzen (Trigger):** Eine wichtige Produktankündigung, Partnerschaft oder Studien-Veröffentlichung steht bevor. Julia braucht innerhalb von vier Stunden eine fertige Pressemitteilung im inverted-pyramid-Format sowie personalisierte Pitch-E-Mails für zehn relevante DACH-Fachjournalisten. (Quelle: sources/10 S-076, S-080)
+**Strategisches Ziel:** Eine Earned-Media-Platzierung in mindestens drei DACH-Fachmedien (z.B. Horizont, W&V, t3n, Handelsblatt) erzielen und den PR-Prozess von der Rohinfo bis zum versandfertigen Paket auf unter einen Tag komprimieren.
+**Hands-on Ergebnis:** Eine Pressemitteilung im DPA-konformen Format mit Dateline, CEO-Zitat und Boilerplate sowie zehn individualisierte Pitch-E-Mails mit Bezug auf den jeweiligen Journalisten-Beat.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Web Search, Canvas
+**Vorgehen (4 Schritte):**
+1. Fact-Sheet (Kernfakten, Zitate, Zahlen) und Boilerplate-Text aus dem Wissensordner abrufen; Pressemitteilung im inverted-pyramid-Format im Canvas draften.
+2. Web Search nutzen, um für zehn Zieljournalisten den letzten veröffentlichten Artikel mit Relevanz zum Thema zu finden.
+3. Pro Journalist eine kurze, personalisierte Pitch-E-Mail (max. 150 Wörter) erstellen, die an deren jüngsten Artikel anknüpft.
+4. Alle Entwürfe im Canvas finalisieren; CEO-Zitate zur Freigabe an die Geschäftsführung weiterleiten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist PR-Manager eines DACH-B2B-Unternehmens. Verfasse eine Pressemitteilung zur Ankündigung unserer neuen KI-Partnerschaft. Nutze das inverted-pyramid-Format, integriere ein CEO-Zitat ('KI ist kein Werkzeug, sondern ein Wettbewerbsvorteil') und füge den Boilerplate-Text aus dem Wissensordner an. Halte dich an deutsche Pressestandards mit Dateline und Ansprechpartner am Ende. Anschließend: Schreibe via Web Search-Recherche eine personalisierte Pitch-E-Mail für den Journalisten [Name] von [Medium], der zuletzt über [Thema] geschrieben hat."
+**Erwartetes Artefakt:** Eine fertige Pressemitteilung (ca. 400 Wörter, DPA-Format) plus zehn personalisierte Pitch-E-Mails (je max. 150 Wörter) — versandbereit nach CEO-Freigabe der Zitate.
+**Fallstricke (≥2 spezifisch):**
+- Agent erfindet Journalisten-E-Mail-Adressen → Web Search darf nur Namen, Medium und URL liefern; E-Mail-Adressen müssen manuell über XING oder LinkedIn verifiziert werden.
+- CEO-Zitate klingen roboterhaft → Zitate zwingend als Entwurf kennzeichnen und vom CEO persönlich freigeben lassen — nie ohne menschliche Genehmigung veröffentlichen.
+**Anschluss-Szenario:** S-MP-024
+
+### S-MP-024 KI-Fehler-Korrektur bei falschen Wettbewerbs-Claims im Newsletter
+
+**Wann nutzen (Trigger):** Der monatliche B2B-Newsletter wurde bereits versendet. Julia entdeckt, dass der KI-Agent eine falsche Aussage über ein Wettbewerber-Feature als Fakt dargestellt hat — ein klassischer UWG-kritischer Vorfall, der rechtliche Konsequenzen haben könnte. (Quelle: A-41; Quelle: A-50)
+**Strategisches Ziel:** Den Schaden sofort begrenzen, eine DSGVO- und UWG-konforme Korrektur an alle betroffenen Empfänger senden und langfristig technische Leitplanken einführen, die solche Fehler systemisch verhindern.
+**Hands-on Ergebnis:** Eine sofort versandfertige Korrektur-E-Mail, ein internes Incident-Report-Dokument sowie ein aktualisierter Agent-System-Prompt mit Zero-Fabrication-Policy für Wettbewerbs-Claims.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Fehlerhaften Newsletter sofort als Beweisstück sichern und betroffenen Workflow pausieren; zuständige Rechtsabteilung informieren.
+2. Korrektur-E-Mail verfassen: transparent, entschuldigend, mit klarer Richtigstellung — ohne weitere Produktbehauptungen; im Canvas finalisieren.
+3. Incident-Report draften: Quelle des Fehlers (Wissensordner-Eintrag? Halluzination?), Reichweite (wie viele Empfänger?), geplante Gegenmaßnahmen.
+4. System-Prompt des verursachenden Agenten um Zero-Fabrication-Policy ergänzen: "Mache keine Aussagen über Wettbewerber, die nicht explizit im Wissensordner mit Quellenangabe belegt sind."
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Krisenkommunikations-Manager für ein B2B-SaaS-Unternehmen. Unser letzter Newsletter enthält eine nachweislich falsche Aussage über das Feature-Set eines Wettbewerbers. Verfasse eine Korrektur-E-Mail: transparent, direkt, ohne übertriebene Entschuldigung, mit klarer Richtigstellung in einem Satz. Maximal 120 Wörter. Tone: professionell, verantwortungsvoll. Kein Marketing-Tonfall. Schreibe außerdem einen kurzen Incident-Report (Stichpunkte): Fehlerquelle, Empfängerkreis, Sofortmaßnahme, Systemänderung."
+**Erwartetes Artefakt:** Versandfertige Korrektur-E-Mail (120 Wörter) plus ein Incident-Report (Stichpunkte, max. eine Seite) — beide zur Freigabe durch Legal und Geschäftsführung.
+**Fallstricke (≥2 spezifisch):**
+- Korrektur-E-Mail enthält neue, ungeprüfte Claims → Prompt muss explizit verbieten, Produktaussagen in der Korrektur zu machen; ausschließlich Richtigstellung und Entschuldigung.
+- UWG-Risiko wird unterschätzt → Jede Aussage über Wettbewerber gilt als vergleichende Werbung (§ 6 UWG); Legal muss Korrektur vor Versand prüfen.
+**Anschluss-Szenario:** S-MP-025
+
+### S-MP-025 Neuen Marketing-Manager in KI-Workflows onboarden
+
+**Wann nutzen (Trigger):** Ein neuer Marketing-Manager tritt seine Stelle an. Julia will sicherstellen, dass er innerhalb der ersten zwei Wochen produktiv mit den wichtigsten Langdock-Workflows arbeitet — ohne dass das KI-Champions-Team jeden Schritt einzeln begleiten muss. (Quelle: A-37; Quelle: A-39)
+**Strategisches Ziel:** Einen strukturierten 14-Tage-Onboarding-Pfad für KI-Workflows etablieren, der neue Mitarbeiter schnell selbstständig macht und die Einarbeitungszeit des KI-Champions-Teams halbiert.
+**Hands-on Ergebnis:** Ein Onboarding-Plan mit tagesgenau zugeordneten Hands-on-Aufgaben, Konversations-Starter-Empfehlungen und einem Self-Check am Tag 14.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Wissensordner, Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Onboarding-Agenten mit System-Prompt konfigurieren: Persona "KI-Onboarding-Coach", Wissensordner mit allen internen Playbooks und Prompt-Bibliotheken verknüpfen.
+2. Für Tag 1–3 drei einfache Konversations-Starter vorbereiten, die der neue Mitarbeiter selbst durchklickt (z.B. Brand-Voice-Check, Social-Post-Varianten, E-Mail-Betreffzeilen).
+3. Tag 7-Aufgabe: Mitarbeiter kalibriert eigenständig einen bestehenden Agenten auf einen neuen Use-Case und dokumentiert seine Änderungen.
+4. Tag-14-Self-Check: Mitarbeiter reicht drei selbst erstellte Konversations-Starter ein; KI-Champion gibt kurzes schriftliches Feedback im Canvas.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Onboarding-Coach für das Marketing-Team eines DACH-B2B-Unternehmens. Ein neuer Marketing-Manager startet heute. Erstelle einen strukturierten 14-Tage-Onboarding-Plan für unsere wichtigsten Langdock-Workflows. Tag 1–3: drei einfache Hands-on-Aufgaben mit Konversations-Starter. Tag 7: eine eigenständige Agent-Kalibrierung. Tag 14: Self-Check mit drei eigenen Konversations-Startern. Liefere den Plan als tabellarische Wochenübersicht mit Aufgabe, Ziel und Zeitaufwand."
+**Erwartetes Artefakt:** Ein 14-Tage-Onboarding-Plan als Markdown-Tabelle (Tag, Aufgabe, Ziel, Zeitaufwand) — direkt nutzbar als Confluence-Seite oder Notion-Dokument für neue Mitarbeiter.
+**Fallstricke (≥2 spezifisch):**
+- Onboarding-Plan ist zu theoretisch ohne praktische Hands-on-Aufgaben → Jeder Tag muss mit einer konkreten Langdock-Aktion enden, die das Ergebnis in Canvas oder Google Sheets dokumentiert.
+- Memory-Funktion des Onboarding-Agenten speichert vertrauliche Briefings des neuen Mitarbeiters → Memory für den Onboarding-Agenten auf anonyme Sprach-Feedback-Daten beschränken; keine Kampagneninhalte speichern.
+**Anschluss-Szenario:** S-MP-001
+
 ## Hinweise & Quellen-Konflikte
 
 Konflikt in Quellen: Extract T3 erwähnt, dass CSV-Dateien nicht im Ordner-RAG (Wissensordner) verarbeitet werden sollen, sondern durch den Data Analyst. Die Quellen 10 und 12 bestätigen diese strikte Trennung für strukturierte Daten. Die Szenarien und Beschreibungen wurden entsprechend formuliert, um die Data-Analyst-Fähigkeit für quantitative Auswertungen zu nutzen, während RAG auf unstrukturierte Textdokumente fokussiert bleibt. Ebenfalls wurde der Widerspruch bzgl. der Vision-Limits (Hex-Code vs Layout) aus T3 durch klare Einschränkungen in den Szenario-Fallstricken (z.B. Hex-Validierung nicht möglich) aufgelöst. Diese redaktionellen Entscheidungen basieren auf den tiefgreifenden Analysen der bereitgestellten Dokumente und gewährleisten, dass das hier dokumentierte Wissen direkt und fehlerfrei in der Praxis anwendbar ist. Es ist unerlässlich, dass bei zukünftigen Updates der Langdock-Plattform diese Unterscheidungen erneut evaluiert werden. Bis dahin stellt dieses Dokument den verifizierten Status Quo für die DACH-Region dar. Zusätzliche Überprüfungen der Langdock API-Limits bezüglich der maximalen Datei-Anzahl im Wissensordner ergaben keine direkten Widersprüche, jedoch wurde die Best Practice von 1000 Dateien konsequent in die Empfehlungen integriert, um optimale Suchergebnisse zu garantieren.

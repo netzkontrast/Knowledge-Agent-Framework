@@ -474,4 +474,4 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 **Fallstricke (≥2 spezifisch):**
 - Sales-Appendix zu lang gestalten (>1 Seite) → Sales-Manager lesen ihn nicht vor dem Gespräch; strikt auf 3 Einwände + 1 Gesprächs-Einstieg limitieren, der Briefing-Text bleibt separat.
 - Marketing-Briefing und Sales-Appendix im selben Textblock ohne Trennung ausgeben → Sales kann nicht auf einen Blick den Appendix finden; klare visuelle Trennung (Überschriften, Canvas-Spalten) ist Pflicht.
-**Anschluss-Szenario:** S-AK-001
+**Anschluss-Szenario:** S-AK-021
