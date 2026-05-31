@@ -49,1440 +49,195 @@ Ein unstrukturierter KI-Rollout führt unweigerlich zu Ineffizienz und Frustrati
 ## Marketing-Szenarien aus dieser Domäne
 
 Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock-Implementierung in der täglichen Praxis. Sie adressieren konkrete Herausforderungen und nutzen KI-Fähigkeiten für spürbare Effizienzgewinne. Die Balance zwischen Automatisierung und strategischer Steuerung steht im Fokus. Durch die strukturierte Analyse werden kognitive Verzerrungen minimiert. In der DACH-Region hat sich dieser Ansatz bewährt, da er Effizienz mit hohen Qualitätsstandards verbindet. Die konsequente Dokumentation im Wissensordner schafft Transparenz für alle Stakeholder. Wichtig bleibt die abschließende Prüfung durch Fachexperten. So werden operative Prozesse beschleunigt und strukturell verbessert. Die Integration von spezifischen Tools wie HubSpot oder Piwik in Kombination mit der rigorosen Anwendung rechtlicher Standards wie DSGVO oder UWG macht diese Playbooks essenziell für jede Marketing-Direktion im deutschsprachigen Raum. Ein wesentlicher Vorteil liegt in der Skalierbarkeit, da wiederkehrende Aufgaben standardisiert an das System übergeben werden können, ohne an Nuancen zu verlieren. Darüber hinaus schützen diese rigorosen Abläufe vor den gängigen Anti-Patterns, wie der Halluzination von Fakten oder der Verletzung von Datenschutzrichtlinien, die in unkontrollierten Setups häufig auftreten. Es ist der Unterschied zwischen experimenteller KI-Nutzung und verlässlicher, umsatztreibender Produktionstechnik.
+### S-MP-001 CRM-Performance-Audit nach Integrationseinbruch
 
-### S-MP-001 CRM: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Inxmail-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der CRM-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im CRM-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende CRM-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Data Analyst
+**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Inxmail-Integration-Setup um 30% eingebrochen sind. Eine sofortige, datengestützte Ursachenanalyse ist gefordert, um das Setup zu korrigieren.
+**Strategisches Ziel:** Identifikation der exakten Sollbruchstellen in der CRM-Lead-Übergabe und sofortige Implementierung von Gegenmaßnahmen, um das Vertrauen des Managements wiederherzustellen.
+**Hands-on Ergebnis:** Ein detaillierter Root-Cause-Analysis-Report mit drei priorisierten Handlungsempfehlungen für das CRM-Team.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat
 **Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Inxmail als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der CRM-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
+1. Export der Inxmail-Performance-Rohdaten als CSV und Upload in den Langdock Data Analyst.
+2. Ausführung einer Anomalie-Erkennung via Python-Skript im Data Analyst.
+3. Übergabe der isolierten Fehlerquellen an den Chat-Agenten zur strategischen Bewertung.
+4. Formulierung der finalen Handlungsempfehlungen im Canvas.
 **Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich CRM zu triangulieren.
+> "Du agierst als Senior CRM-Analyst. Ich lade dir den aktuellen Inxmail-Performance-Export hoch. Analysiere den Lead-Einbruch der letzten drei Wochen. Nutze das Prinzip der Falsifizierung: Suche aktiv nach Datenpunkten, die unserer Annahme widersprechen, dass das Inxmail-Update schuld sei. Welche anderen Variablen könnten den 30% Einbruch erklären? Erstelle eine priorisierte Liste der drei wahrscheinlichsten Ursachen."
+**Erwartetes Artefakt:** Ein zweiseitiges PDF-Memorandum mit den isolierten Fehlerquellen und einer tabellarischen Übersicht der sofortigen Gegenmaßnahmen.
+**Fallstricke (mind. 2 spezifisch):**
+- Das Hochladen von Multi-Sheet-Excels in den normalen RAG-Wissensordner anstatt in den Data Analyst führt zu Lesefehlern → Immer Data Analyst für tabellarische Daten nutzen.
+- Agent tendiert zu generischen Tipps → Im Prompt zwingend die Falsifizierung interner Annahmen fordern.
+**Anschluss-Szenario:** S-MP-002
 
-### S-MP-002 Localization: Strategische Evaluierung durch Pre-Mortem-Prinzipien
+### S-MP-002 Lokalisierungs-Krisenmanagement bei B2B-Kampagnen
 
-**Wann nutzen (Trigger):** Das Team für Localization klagt über 'Memory Pollution': Der Agent liefert plötzlich B2C-Tonalität ('Du') in B2B-Sales-Briefings ('Sie'). Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen Localization-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Localization-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Wissensordner
+**Wann nutzen (Trigger):** Das Lokalisierungs-Team klagt über unpassende Tonalität: Der KI-Agent liefert plötzlich B2C-Tonalität ('Du') in hochformellen B2B-Sales-Briefings ('Sie') für die Schweiz.
+**Strategisches Ziel:** Systematischer Abgleich der eingesetzten Prompts mit den DACH-spezifischen Tonalitäts-Guidelines, um Peinlichkeiten bei Enterprise-Kunden sofort zu stoppen.
+**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen (z.B. Schweizer 'ss') zwingend vorschreibt.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
 **Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Mailjet als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Localization-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
+1. Temporäres Pausieren der betroffenen Mailjet-Workflows.
+2. Retrieval der fehlerhaften Briefings und Abgleich mit den Brand-Voice-Guidelines im Wissensordner.
+3. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem), was passiert wäre, wenn die Mails unbemerkt rausgegangen wären.
+4. Iteratives Finetuning des System-Prompts im Canvas.
 **Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Localization-Kampagne europaweit zu skalieren.
+> "Du bist unser Head of Localization für die DACH-Region. Wir stehen kurz davor, diese Kampagne an unsere wichtigsten Enterprise-Kunden in der Schweiz auszurollen. Stell dir vor, die Kampagne scheitert monumental (Pre-Mortem), weil wir die formelle 'Sie'-Form und spezifische Schweizer Begriffe ignoriert haben. Überarbeite den Text so, dass er absolut wasserdicht für C-Level-Entscheider in Zürich ist."
+**Erwartetes Artefakt:** Ein sofort einsatzbereites, formelles B2B-E-Mail-Template im Canvas, das alle DACH-Formalitäten berücksichtigt.
+**Fallstricke (mind. 2 spezifisch):**
+- 'Memory Pollution' durch vorherige B2C-Chats → Memory-Funktion für diese Aufgabe zwingend deaktivieren.
+- Modell halluziniert deutsche Rechtschreibung für Schweizer Texte → Prompt muss das explizite Verbot des 'ß' enthalten.
+**Anschluss-Szenario:** S-MP-003
 
-### S-MP-003 MarketingOps: Strategische Evaluierung durch Contrast Classes-Prinzipien
+### S-MP-003 MarketingOps-Stresstest für neue Tool-Initiativen
 
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue MarketingOps-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (DeepSeek v3.1) gegen die Transkreation (Schweizerdeutsch 'ss') verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für MarketingOps, das zukünftige Skalierung über Mailjet ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen MarketingOps-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Wissensordner
+**Wann nutzen (Trigger):** Das Legal-Team droht, eine neue MarketingOps-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell für automatisierte Transkreationen rechtlich sicher ist.
+**Strategisches Ziel:** Etablierung eines robusten, compliance-geprüften Playbooks für MarketingOps, das zukünftige Skalierungen ermöglicht, ohne rechtliche Leitplanken zu verletzen.
+**Hands-on Ergebnis:** Ein Audit-Report, der die verwundbarsten Stellen der Kampagne in Bezug auf Datenschutz und Transparenz offenlegt.
+**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Wissensordner
 **Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen MarketingOps-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
+1. Retrieval der aktuellen Legal-Richtlinien aus dem Wissensordner.
+2. Infragestellung der Kernannahmen des MarketingOps-Prozesses durch gezielte Kontrastierung.
+3. Konsolidierung der Gegenargumente in einer Matrix.
+4. Ableitung von harten Abbruch-Kriterien für den Workflow.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du agierst als unser strengster Compliance-Officer. Wir wollen diesen neuen MarketingOps-Kanal für vollautomatisierte Transkreationen nutzen. Kontrastiere unser Vorgehen mit den striktesten Auslegungen des EU AI Acts und der DSGVO, die du in unserem Wissensordner findest. Zeige mir schonungslos die drei größten rechtlichen Logiklöcher in unserem aktuellen Setup."
+**Erwartetes Artefakt:** Eine Risiko-Matrix (Markdown-Tabelle), die rechtliche Schwachstellen und entsprechende Mitigationen gegenüberstellt.
+**Fallstricke (mind. 2 spezifisch):**
+- KI zitiert veraltete oder halluzinierte DSGVO-Artikel → Zero-Fabrication-Policy im Prompt durchsetzen und auf den Wissensordner limitieren.
+- Zu abstrakte Risikoanalyse → Prompt muss zwingend nach 'den drei größten Logiklöchern' fragen.
+**Anschluss-Szenario:** S-MP-004
+
+### S-MP-004 Social-Media-ROI durch Triangulation validieren
+
+**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Adobe-Analytics-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen, anstatt Kampagnen zu optimieren.
+**Strategisches Ziel:** Strategische Neuausrichtung der Social-Ressourcen auf Basis harter, anonymisierter Daten, um den ROI kurzfristig zu sichern und gleichzeitig die Vorgaben des Betriebsrats einzuhalten.
+**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle, die anzeigt, welche Social-Workflows sofort gestoppt, angepasst oder skaliert werden müssen.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Web Search
+**Vorgehen (3-5 Schritte):**
+1. Aussetzen aller kritischen Social-Workflows zur Deeskalation.
+2. Anonymisierung der Token-Verbräuche und Performance-Metriken aus Adobe als CSV.
+3. Upload in den Data Analyst zur aggregierten, nicht-personenbezogenen Auswertung.
+4. Triangulation dieser Daten mit aktuellen Branchen-Benchmarks via Web Search.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist unser Social Media Lead Analyst. Ich lade anonymisierte Kampagnen-Daten hoch. Nutze Web Search, um aktuelle Branchen-Benchmarks für B2B-Social-Kampagnen im DACH-Raum zu triangulieren. Vergleiche unsere aggregierte Performance mit diesen Benchmarks und identifiziere Ineffizienzen in den Workflows, ohne auf individuelle Mitarbeiter-Leistungen einzugehen."
+**Erwartetes Artefakt:** Ein Management-Summary (PDF), das die Kampagnen-Performance anonymisiert darstellt und datengetriebene Handlungsempfehlungen liefert.
+**Fallstricke (mind. 2 spezifisch):**
+- Versehentlicher Upload von Klardaten (Namen der Copywriter) → Strikte Anonymisierung der CSV vor dem Upload erforderlich.
+- Web Search findet irrelevante US-Benchmarks → Expliziter Fokus auf 'DACH-Raum' im Prompt notwendig.
+**Anschluss-Szenario:** S-MP-005
+
+### S-MP-005 Brand-Guidelines-Audit via Red Teaming
+
+**Wann nutzen (Trigger):** Ein ungeplantes Dynamics-Update hat bestehende Content-Workflows zerschossen und es wurden inkonsistente Brand-Botschaften publiziert. Ein strategischer Notfall-Plan ist zwingend.
+**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Konsistenz-Bruch im Brand-Segment und sofortige Ableitung von Härtungsmaßnahmen für Workflows.
+**Hands-on Ergebnis:** Ein Notfall-Playbook zur Risikominimierung, das die Schwachstellen in den automatisierten Brand-Checks behebt.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Agenten
+**Vorgehen (3-5 Schritte):**
+1. Setup eines Red-Team-Agenten, der ausschließlich darauf trainiert ist, Brand-Voice-Verstöße aufzudecken.
+2. Fütterung des Agenten mit den fehlerhaften Dynamics-Outputs.
+3. Identifikation der operativen Sollbruchstellen, warum der ursprüngliche Check versagt hat.
+4. Kollaborative Überarbeitung der Quality-Gates im Canvas.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein adversarieller Brand-Auditor (Red Team). Deine einzige Aufgabe ist es, unsere neuesten Publikationen schonungslos auf Inkonsistenzen zu unseren Brand-Guidelines zu prüfen. Welche Tonalitäts-Brüche, verbotenen Anglizismen oder falschen Formulierungen fallen dir auf? Sei extrem pedantisch und liefere eine tabellarische Auflistung der Fehler."
+**Erwartetes Artefakt:** Eine tabellarische Fehleranalyse im Canvas, die Brand-Voice-Verstöße präzise benennt und Korrekturvorschläge liefert.
+**Fallstricke (mind. 2 spezifisch):**
+- Der Agent ist zu 'höflich' bei der Fehlersuche → Die Rolle 'adversarieller Brand-Auditor (Red Team)' muss hart erzwungen werden.
+- Fokus auf reine Rechtschreibung statt Markenstimme → Prompt muss explizit nach 'Tonalitäts-Brüchen' verlangen.
+**Anschluss-Szenario:** S-MP-006
+
+### S-MP-006 Content-Performance-Reset durch First-Principles
+
+**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Content-Conversion-Rate in Österreich fordert der Country-Manager eine grundlegende strategische Neuausrichtung abseits bisheriger Annahmen.
+**Strategisches Ziel:** Schaffung einer völlig neuen, datengestützten Content-Strategie für Österreich, die auf First-Principles basiert und alte Denkmuster aufbricht.
+**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den neuen, radikal geänderten Content-Ansatz verteidigt.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat
+**Vorgehen (3-5 Schritte):**
+1. Bereinigung der bisherigen KPI-Dashboards und Rückkehr zu den rohen Verkaufszahlen (CSV).
+2. Upload in den Data Analyst für eine unvoreingenommene Neuanalyse.
+3. Dekonstruktion der bisherigen Content-Annahmen auf ihre fundamentalsten Wahrheiten (First Principles).
+4. Ableitung einer neuen Distributions-Logik im Canvas.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Senior Content Strategist. Wir müssen unsere Österreich-Strategie von Grund auf neu denken (First-Principles). Vergiss alle bisherigen Annahmen über 'Best Practices'. Basierend auf dem hochgeladenen Datensatz: Was ist die absolut grundlegendste Wahrheit über das Kaufverhalten dieser Zielgruppe, die wir ignorieren? Baue daraus drei radikal neue Content-Ansätze."
+**Erwartetes Artefakt:** Ein dreiteiliges Konzept-Papier, das die grundlegenden Wahrheiten definiert und daraus frische Content-Formate ableitet.
+**Fallstricke (mind. 2 spezifisch):**
+- Agent reproduziert alte Agentur-Platitüden → Prompt muss 'Vergiss alle bisherigen Annahmen' stark betonen.
+- Fehlende lokale Nuancen für Österreich → Manuelle Überprüfung von Begriffen wie 'Jänner' oder 'Offert' ist weiterhin nötig.
+**Anschluss-Szenario:** S-MP-007
+
+### S-MP-007 Research-Budget-Optimierung bei veralteten Annahmen
+
+**Wann nutzen (Trigger):** Eine teure Outbound-Research-Kampagne über Brevo ist spektakulär gefloppt, weil die zugrunde liegenden Zielgruppen-Personas völlig veraltet waren.
+**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Research-Strategie, indem verfallende Annahmen (Assumption Decay) aktiv aufgedeckt werden.
+**Hands-on Ergebnis:** Ein Audit-Report, der die verwundbarsten Annahmen der aktuellen Zielgruppen-Definition offenlegt und aktualisiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat
+**Vorgehen (3-5 Schritte):**
+1. Stopp der laufenden Brevo-Workflows zur Budget-Schonung.
+2. Gegenüberstellung der alten Personas mit topaktuellen Branchen-Insights via Web Search.
+3. Analyse des 'Assumption Decay': Welche unserer Kernannahmen über den Markt sind im letzten Jahr nicht mehr wahr?
+4. Neudefinition der Targeting-Kriterien für die nächste Kampagne.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du agierst als kritischer Market-Researcher. Unsere letzte Kampagne basierte auf Personas aus dem Vorjahr und ist gefloppt. Nutze Web Search, um nach aktuellen Trend-Shifts und Marktveränderungen in unserer Branche im DACH-Raum zu suchen. Identifiziere den 'Assumption Decay': Welche drei unserer damaligen Kernannahmen sind heute schlichtweg falsch?"
+**Erwartetes Artefakt:** Eine aktualisierte Persona-Definition im Markdown-Format, die alte Annahmen explizit durch neue, belegte Datenpunkte ersetzt.
+**Fallstricke (mind. 2 spezifisch):**
+- Web Search liefert nur oberflächliche PR-Artikel → Gezielte Anweisung, nach Primärstudien oder harten Statistiken zu suchen.
+- Bestätigungsfehler des LLMs → Prompt fordert aktiv die Identifikation falscher Kernannahmen.
+**Anschluss-Szenario:** S-MP-008
+
+### S-MP-008 ABM-Strategie-Kalibrierung mittels Base-Rates
+
+**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den organischen Traffic halbiert. Das ABM-Team ist in Panik und will sofort alle KI-generierten Inhalte löschen, ohne Evidenz.
+**Strategisches Ziel:** Rationale Neuausrichtung der ABM-Ressourcen basierend auf branchenweiten Base-Rates, um Überreaktionen zu vermeiden und den ROI zu sichern.
+**Hands-on Ergebnis:** Eine priorisierte Roadmap, die anzeigt, welche ABM-Workflows wirklich angepasst werden müssen und welche pausiert werden.
+**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Data Analyst
+**Vorgehen (3-5 Schritte):**
+1. Einsatz von Deep Research, um die branchenweiten Auswirkungen (Base-Rate) des Google-Updates zu ermitteln.
+2. Upload der internen Matomo-Daten in den Data Analyst.
+3. Abgleich: Ist unser Traffic-Verlust außergewöhnlich hoch oder entspricht er exakt der branchenweiten Base-Rate?
+4. Beruhigung des Teams durch datengetriebenes Reporting.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lead Data Scientist. Unser Team gerät in Panik wegen eines 50% Traffic-Drops nach dem Core-Update. Führe einen Deep Research durch, um die durchschnittliche branchenweite Base-Rate für diesen Drop zu ermitteln. Analysiere anschließend unsere hochgeladenen Matomo-Daten. Überreagieren wir, oder liegen wir signifikant unter der Benchmark? Liefere eine unaufgeregte Analyse."
+**Erwartetes Artefakt:** Ein nüchternes, einseitiges Executive Summary (PDF), das interne Metriken der globalen Base-Rate gegenüberstellt.
+**Fallstricke (mind. 2 spezifisch):**
+- Deep Research braucht bis zu 30 Minuten → Team muss wissen, dass dieses Szenario Geduld erfordert.
+- Komplexe Multi-Sheet-Excels überfordern das Context-Window → Dateien vorher bereinigen (nur relevante Sheets behalten, max 30MB).
+**Anschluss-Szenario:** S-MP-009
+
+### S-MP-009 CRM-Reporting-Verteidigung vor dem Board
+
+**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter, unangreifbarer Erfolgsnachweis inklusive Adobe-Metriken muss bis morgen früh vorliegen.
+**Strategisches Ziel:** Schaffung einer 'Single-Source-of-Truth' für das CRM-Reporting, die von allen Stakeholdern bedingungslos akzeptiert wird, durch proaktive Vorwegnahme von Gegenargumenten.
+**Hands-on Ergebnis:** Ein fertiges, wasserdichtes Präsentations-Script für das Board-Meeting, das den Business-Case der KI-Tools im CRM verteidigt.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Web Search
+**Vorgehen (3-5 Schritte):**
+1. Aggregation der positiven Effizienz-Gewinne im CRM-Bereich.
+2. Anwendung einer 'Adversarial Query Expansion': Wir bitten die KI, die extremsten Gegenargumente eines skeptischen CFOs zu simulieren.
+3. Einbau präventiver Entkräftungen in die Präsentation.
+4. Finalisierung des Scripts im Canvas.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du spielst unseren extrem skeptischen, zahlengetriebenen CFO. Ich stelle dir gleich unseren ROI-Report zur Langdock-Einführung im CRM vor. Zerreiß ihn in der Luft (Adversarial Query). Finde die kleinsten methodischen Schwächen, greife die Adobe-Metriken an und zweifle jede Effizienzsteigerung an. Liefere mir die 5 härtesten Fragen, die du im Board-Meeting stellen würdest."
+**Erwartetes Artefakt:** Ein strukturiertes Q&A-Dokument, das die fünf wahrscheinlichsten CFO-Einwände mit datengestützten Antworten (inkl. Token-Kosten-Ersparnis) entkräftet.
+**Fallstricke (mind. 2 spezifisch):**
+- Das Modell simuliert einen zu weichen Gegner → Die Persona 'extrem skeptischer, zahlengetriebener CFO' muss hart verankert sein.
+- Ignorieren der Modellkosten → CFO wird nach den konkreten Kosten für Opus vs. Flash fragen; diese müssen im Report zwingend ausgewiesen sein.
+**Anschluss-Szenario:** S-MP-010
+
+### S-MP-010 ABM-Kampagnen-Stresstest nach Workflow-Crash
+
+**Wann nutzen (Trigger):** Ein neues Inxmail-Update hat essenzielle Workflows im Account-Based-Marketing (ABM) zerschossen. Die Kernannahmen der Kampagne müssen unter extremem Zeitdruck validiert werden.
+**Strategisches Ziel:** Rigorose Identifikation der technischen und inhaltlichen Root-Cause für den ABM-Ausfall und sofortige Ableitung resilienter Gegenmaßnahmen.
+**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das strukturelle Fehler beim nächsten Versand ausschließt.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
+**Vorgehen (3-5 Schritte):**
+1. Retrieval der originalen ABM-Briefings aus dem Wissensordner.
+2. Strukturierte Infragestellung der Kernannahmen durch gezielte Kontrollfragen (Falsifikation).
 3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen MarketingOps-Kanal erden.
-
-### S-MP-004 Localization: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Marketo-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die Localization-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen AVV) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Localization-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Localization-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Haiku 4.5-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Localization-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-005 Social: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Adobe-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Social-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Social-Workflows in Adobe sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Social-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten DeepSeek v3.1-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Social-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem).
-
-### S-MP-006 Social: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für DeepSeek v3.1 im letzten Monat um 400% überschritten wurde. Ein sofortiges Social-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Social, das zukünftige Skalierung über Eloqua ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Social-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Eloqua als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Social-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Social-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-007 Social: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen Social-Gegenangriff über Adobe orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die Social-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen DSGVO) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Social-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Adobe als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Social-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Social-Kampagne europaweit zu skalieren.
-
-### S-MP-008 Brand: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Dynamics-Update hat alle bestehenden Workflows im Brand-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Brand-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Brand-Workflows in Dynamics sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den EU AI Act Transparenzpflichten-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Brand-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen EU AI Act Transparenzpflichten. Optimiere dieses Brand-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-009 Content: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige Content-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das Content-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Content-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Mailchimp als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Content-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Content-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-010 Research: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Eine teure Outbound-Kampagne über Brevo ist spektakulär gefloppt. Die Marketing-Direktorin initiiert eine harte Research-Ursachenforschung. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Research-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Research-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Research-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten GPT-5.2-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere Research-Daten aus Brevo.
-
-### S-MP-011 ABM: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das ABM-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der ABM-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche ABM-Workflows in Matomo sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren ABM-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Matomo-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser ABM-Ressort. Ignoriere unsere bisherigen Annahmen komplett. Zerreiß unseren letzten Matomo-Report in der Luft und zeige mir die drei größten Logiklöcher.
-
-### S-MP-012 CRM: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter CRM-Erfolgsnachweis inklusive Adobe-Metriken muss bis morgen früh vorliegen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das CRM-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im CRM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der CRM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Adobe als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der CRM-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen CRM-Kanal erden.
-
-### S-MP-013 ABM: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Inxmail-Update hat alle bestehenden Workflows im ABM-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im ABM-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der ABM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen ABM-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen Du-Form im B2C. Optimiere dieses ABM-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-014 SEO: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter SEO-Erfolgsnachweis inklusive Inxmail-Metriken muss bis morgen früh vorliegen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der SEO-Ausgaben und des Mistral Large 3-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen SEO-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren SEO-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Inxmail-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen SEO-Kanal erden.
-
-### S-MP-015 Content: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen Content-Gegenangriff über Salesforce MC orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen Content-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Content-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den UWG-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Content-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Content-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-016 Brand: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue Brand-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (Gemini 2.5 Flash) gegen die DSGVO verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das Brand-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Brand-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Brand-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen DSGVO. Optimiere dieses Brand-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-017 Research: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Eloqua-Update hat alle bestehenden Workflows im Research-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Research-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Research-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Research-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Eloqua-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Research-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem). Schreibe mir auf, was genau im Setup mit Eloqua und Sonnet 4.
-
-### S-MP-018 ABM: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Mailchimp-Update hat alle bestehenden Workflows im ABM-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der ABM-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der ABM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren ABM-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Mailchimp-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere ABM-Performance stagniert, während Konkurrent X wächst. Welchen fundamentalen Kontrast übersehen wir in unserer Mailchimp-Nutzung? Vergleiche unsere Herangehensweise und identifiziere den blinden Fleck.
-
-### S-MP-019 Social: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Dynamics-Update hat alle bestehenden Workflows im Social-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die Social-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen Du-Form im B2C) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Social-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Dynamics als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Social-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen Du-Form im B2C. Optimiere dieses Social-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-020 SEO: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Brevo-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im SEO-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche SEO-Workflows in Brevo sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Brevo als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der SEO-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere SEO-Daten aus Brevo.
-
-### S-MP-021 MarketingOps: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für Gemini 3.5 Flash im letzten Monat um 400% überschritten wurde. Ein sofortiges MarketingOps-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen MarketingOps-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche MarketingOps-Workflows in Piwik PRO sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Du-Form im B2C-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den MarketingOps-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen MarketingOps-Kanal erden.
-
-### S-MP-022 ABM: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete ABM-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im ABM-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der ABM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den AI Washing-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den ABM-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese ABM-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem).
-
-### S-MP-023 Localization: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen LoyJoy-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Localization, das zukünftige Skalierung über LoyJoy ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Localization-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Localization-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten GPT-5.2-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen UWG. Optimiere dieses Localization-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-024 CRM: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige CRM-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der CRM-Ausgaben und des DeepSeek v3.1-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im CRM-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im CRM-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen CRM-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere CRM-Daten aus GA4.
-
-### S-MP-025 MarketingOps: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue MarketingOps-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (Opus 4.8) gegen die Transkreation (Schweizerdeutsch 'ss') verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der MarketingOps-Ausgaben und des Opus 4.8-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche MarketingOps-Workflows in Inxmail sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Inxmail als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der MarketingOps-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-
-### S-MP-026 ABM: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Mailchimp-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für ABM, das zukünftige Skalierung über Mailchimp ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im ABM-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Sie-Form im B2B-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den ABM-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser ABM-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-027 Performance: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen etomite-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Performance-Ausgaben und des GPT-5.2-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das Sie-Form im B2B-Verstöße bei Performance-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Performance-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Performance-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-028 SEO: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter SEO-Erfolgsnachweis inklusive Mailjet-Metriken muss bis morgen früh vorliegen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die SEO-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen UWG) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der SEO-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren SEO-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Mailjet-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen SEO-Kanal erden.
-
-### S-MP-029 SEO: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das SEO-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der SEO-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende SEO-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen SEO-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-
-### S-MP-030 Social: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Dynamics-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Social-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Social-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Dynamics als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Social-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Social-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-031 MarketingOps: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Matomo-Update hat alle bestehenden Workflows im MarketingOps-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das MarketingOps-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das Betriebsrat-Verstöße bei MarketingOps-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen MarketingOps-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales.
-
-### S-MP-032 Content: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue Content-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (GPT-5.2) gegen die AVV verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Content-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Content-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus etomite als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Content-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen AVV. Optimiere dieses Content-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-033 Content: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für Haiku 4.5 im letzten Monat um 400% überschritten wurde. Ein sofortiges Content-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das Content-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Content-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Content-Taktiken.
-2. Triangulation dieser Daten mit unseren internen GA4-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Content-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-034 CRM: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete CRM-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen CRM-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im CRM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der CRM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen CRM-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Opus 4.8-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen Du-Form im B2C. Optimiere dieses CRM-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-035 Localization: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das Localization-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Localization, das zukünftige Skalierung über Piwik PRO ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Localization-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Localization-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten DeepSeek v3.1-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-
-### S-MP-036 Content: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für Opus 4.8 im letzten Monat um 400% überschritten wurde. Ein sofortiges Content-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Content, das zukünftige Skalierung über HubSpot ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Content-Workflows in HubSpot sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus HubSpot als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Content-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Content-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-037 SEO: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues HubSpot-Update hat alle bestehenden Workflows im SEO-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der SEO-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche SEO-Workflows in HubSpot sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus HubSpot als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der SEO-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich SEO zu triangulieren.
-
-### S-MP-038 Brand: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue Brand-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (Llama 3.3 70B) gegen die AI Washing verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Brand-Ausgaben und des Llama 3.3 70B-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Brand-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Brand-Taktiken.
-2. Triangulation dieser Daten mit unseren internen etomite-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Brand-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem).
-
-### S-MP-039 SEO: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue LoyJoy-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für SEO, das zukünftige Skalierung über LoyJoy ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im SEO-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen SEO-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen SEO-Kanal erden.
-
-### S-MP-040 Performance: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue GA4-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen Performance-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Performance-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus GA4 als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Performance-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Performance-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem).
-
-### S-MP-041 ABM: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das ABM-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im ABM-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der ABM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus HubSpot als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der ABM-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen UWG. Optimiere dieses ABM-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-042 SEO: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter SEO-Erfolgsnachweis inklusive etomite-Metriken muss bis morgen früh vorliegen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im SEO-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das UWG-Verstöße bei SEO-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den UWG-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den SEO-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese SEO-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem).
-
-### S-MP-043 Social: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das Social-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Social-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das EU AI Act Transparenzpflichten-Verstöße bei Social-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus HubSpot als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Social-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere Social-Daten aus HubSpot.
-
-### S-MP-044 Content: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Eine teure Outbound-Kampagne über GA4 ist spektakulär gefloppt. Die Marketing-Direktorin initiiert eine harte Content-Ursachenforschung. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen Content-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Content-Workflows in GA4 sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Content-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Content zu triangulieren.
-
-### S-MP-045 ABM: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen ABM-Gegenangriff über Mailchimp orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der ABM-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen ABM-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren ABM-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Mailchimp-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere ABM-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-046 Social: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige Social-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das Social-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Social-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Transkreation (Schweizerdeutsch 'ss')-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Social-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales.
-
-### S-MP-047 Content: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Das Vertriebsteam eskaliert: Die letzten 50 Leads aus der neuen GA4-Automatisierung waren absolut unqualifiziert. Ein sofortiges Audit des Setups ist gefordert. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Content-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Content-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Content-Taktiken.
-2. Triangulation dieser Daten mit unseren internen GA4-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere Content-Daten aus GA4.
-
-### S-MP-048 ABM: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Das Team für ABM klagt über 'Memory Pollution': Der Agent liefert plötzlich B2C-Tonalität ('Du') in B2B-Sales-Briefings ('Sie'). Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im ABM-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche ABM-Workflows in Marketo sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen ABM-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere ABM-Daten aus Marketo.
-
-### S-MP-049 Content: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue Content-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (GPT-5.4 Mini) gegen die AI Washing verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die Content-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen AI Washing) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das AI Washing-Verstöße bei Content-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Content-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Brevo-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen AI Washing. Optimiere dieses Content-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-050 Content: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Eine teure Outbound-Kampagne über Inxmail ist spektakulär gefloppt. Die Marketing-Direktorin initiiert eine harte Content-Ursachenforschung. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Content-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das Transkreation (Schweizerdeutsch 'ss')-Verstöße bei Content-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Content-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Inxmail-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen Transkreation (Schweizerdeutsch 'ss'). Optimiere dieses Content-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-051 MarketingOps: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue MarketingOps-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (Gemini 2.5 Flash) gegen die EU AI Act Transparenzpflichten verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für MarketingOps, das zukünftige Skalierung über Salesforce MC ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der MarketingOps-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen MarketingOps-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen EU AI Act Transparenzpflichten.
-
-### S-MP-052 Research: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue GA4-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Research-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Research-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Research-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Llama 3.3 70B-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Research-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-053 Performance: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen Performance-Gegenangriff über Pardot orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Performance-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Performance-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den EU AI Act Transparenzpflichten-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Performance-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen Performance-Kanal erden.
-
-### S-MP-054 Social: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige Social-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Social-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Social-Workflows in Make.com sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Social-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Social-Kampagne europaweit zu skalieren.
-
-### S-MP-055 Social: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue Social-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (Haiku 4.5) gegen die EU AI Act Transparenzpflichten verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Social-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Social-Workflows in Dynamics sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Social-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Haiku 4.5-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Social-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-056 MarketingOps: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Das Team für MarketingOps klagt über 'Memory Pollution': Der Agent liefert plötzlich B2C-Tonalität ('Du') in B2B-Sales-Briefings ('Sie'). Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen MarketingOps-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im MarketingOps-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen MarketingOps-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten GPT-5.4 Mini-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere MarketingOps-Daten aus Piwik PRO.
-
-### S-MP-057 Research: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das Research-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Research-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Research-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Research-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales.
-
-### S-MP-058 Research: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter Research-Erfolgsnachweis inklusive Salesforce MC-Metriken muss bis morgen früh vorliegen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Research-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Research-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Research-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Opus 4.8-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Research-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-059 Performance: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen HubSpot-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Performance-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Performance-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Performance-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Gemini 3.5 Flash-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Performance-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-060 Performance: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete Performance-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Performance-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Performance-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Transkreation (Schweizerdeutsch 'ss')-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Performance-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen Transkreation (Schweizerdeutsch 'ss').
-
-### S-MP-061 Content: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Mailjet-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Content-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Content-Workflows in Mailjet sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Sie-Form im B2B-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Content-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-
-### S-MP-062 Performance: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues etomite-Update hat alle bestehenden Workflows im Performance-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Performance-Ausgaben und des GPT-5.2-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Performance-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Performance-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten GPT-5.2-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Performance zu triangulieren.
-
-### S-MP-063 Research: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete Research-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Research-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Research-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Transkreation (Schweizerdeutsch 'ss')-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Research-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Research zu triangulieren.
-
-### S-MP-064 Research: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete Research-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das Research-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das UWG-Verstöße bei Research-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Research-Taktiken.
-2. Triangulation dieser Daten mit unseren internen GA4-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-
-### S-MP-065 CRM: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter CRM-Erfolgsnachweis inklusive Dynamics-Metriken muss bis morgen früh vorliegen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die CRM-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen Sie-Form im B2B) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im CRM-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das Sie-Form im B2B-Verstöße bei CRM-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Sie-Form im B2B-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den CRM-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-
-### S-MP-066 Localization: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das Localization-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Localization-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Localization-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Localization-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Mistral Large 3-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales.
-
-### S-MP-067 Performance: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Eine teure Outbound-Kampagne über Pardot ist spektakulär gefloppt. Die Marketing-Direktorin initiiert eine harte Performance-Ursachenforschung. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Performance-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Performance-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Performance-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Performance zu triangulieren.
-
-### S-MP-068 CRM: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das CRM-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen CRM-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im CRM-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das DSGVO-Verstöße bei CRM-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Marketo als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der CRM-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere CRM-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-069 ABM: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete ABM-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die ABM-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen DSGVO) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche ABM-Workflows in HubSpot sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus HubSpot als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der ABM-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-
-### S-MP-070 SEO: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue SEO-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (GPT-5.4 Mini) gegen die UWG verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das SEO-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das UWG-Verstöße bei SEO-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den UWG-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den SEO-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen SEO-Kanal erden.
-
-### S-MP-071 Performance: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen etomite-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Performance, das zukünftige Skalierung über etomite ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Performance-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Performance-Taktiken.
-2. Triangulation dieser Daten mit unseren internen etomite-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-
-### S-MP-072 Social: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Das Team für Social klagt über 'Memory Pollution': Der Agent liefert plötzlich B2C-Tonalität ('Du') in B2B-Sales-Briefings ('Sie'). Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Social-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Social-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Social-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Adobe-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Das Legal-Team ist nervös wegen Du-Form im B2C. Optimiere dieses Social-Briefing so, dass es absolut wasserdicht ist.
-
-### S-MP-073 SEO: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Das Team für SEO klagt über 'Memory Pollution': Der Agent liefert plötzlich B2C-Tonalität ('Du') in B2B-Sales-Briefings ('Sie'). Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für SEO, das zukünftige Skalierung über Eloqua ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende SEO-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Web Search
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Transkreation (Schweizerdeutsch 'ss')-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den SEO-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-
-### S-MP-074 Brand: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für Llama 3.3 70B im letzten Monat um 400% überschritten wurde. Ein sofortiges Brand-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Brand-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Brand-Workflows in Adobe sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Adobe als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Brand-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Brand zu triangulieren.
-
-### S-MP-075 ABM: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für Opus 4.8 im letzten Monat um 400% überschritten wurde. Ein sofortiges ABM-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das ABM-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der ABM-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren ABM-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Piwik PRO-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen ABM-Kanal erden.
-
-### S-MP-076 SEO: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen SEO-Gegenangriff über Adobe orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der SEO-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen SEO-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren SEO-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Adobe-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere SEO-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-077 MarketingOps: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen MarketingOps-Gegenangriff über Mailchimp orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der MarketingOps-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche MarketingOps-Workflows in Mailchimp sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren MarketingOps-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Mailchimp-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese MarketingOps-Kampagne europaweit zu skalieren.
-
-### S-MP-078 Localization: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Matomo-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Localization-Ausgaben und des Llama 3.3 70B-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das Betriebsrat-Verstöße bei Localization-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Localization-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Localization-Kampagne europaweit zu skalieren.
-
-### S-MP-079 Content: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das Content-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Content, das zukünftige Skalierung über Make.com ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Content-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Content-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten GPT-5.2-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere Content-Daten aus Make.com.
-
-### S-MP-080 ABM: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Das Team für ABM klagt über 'Memory Pollution': Der Agent liefert plötzlich B2C-Tonalität ('Du') in B2B-Sales-Briefings ('Sie'). Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im ABM-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen ABM-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Wissensordner
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren ABM-Taktiken.
-2. Triangulation dieser Daten mit unseren internen LoyJoy-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser ABM-Ressort. Ignoriere unsere bisherigen Annahmen komplett. Zerreiß unseren letzten LoyJoy-Report in der Luft und zeige mir die drei größten Logiklöcher. Sei präzise, quantifizierbar und schonungslos.
-
-### S-MP-081 Research: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Brevo-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen Research-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das AI Washing-Verstöße bei Research-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den AI Washing-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Research-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen Research-Kanal erden.
-
-### S-MP-082 MarketingOps: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige MarketingOps-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das MarketingOps-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im MarketingOps-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen MarketingOps-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Haiku 4.5-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese MarketingOps-Kampagne europaweit zu skalieren.
-
-### S-MP-083 Brand: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Make.com-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Brand-Ausgaben und des Sonnet 4.6-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Brand-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Brand-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Sonnet 4.6-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Brand zu triangulieren.
-
-### S-MP-084 Performance: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das Performance-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Performance-Ausgaben und des Llama 3.3 70B-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Performance-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Salesforce MC als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Performance-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere Performance-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-085 MarketingOps: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das MarketingOps-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der MarketingOps-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche MarketingOps-Workflows in Brevo sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Betriebsrat-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den MarketingOps-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere MarketingOps-Performance stagniert, während Konkurrent X wächst.
-
-### S-MP-086 Performance: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Eloqua-Update hat alle bestehenden Workflows im Performance-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Performance-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Performance-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Initialer Retrieval-Vorgang im Wissensordner, um die originalen Performance-Briefings mit dem Outcome abzugleichen.
-2. Strukturierte Infragestellung der Kernannahmen durch eine gezielte Adversarial Query.
-3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
-4. Ableitung von harten Abbruch-Kriterien (What Would Change My Mind).
-
-### S-MP-087 ABM: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige ABM-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der ABM-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende ABM-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus HubSpot als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der ABM-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-
-### S-MP-088 Brand: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das Brand-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Brand-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Brand-Workflows in Inxmail sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Brand-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Llama 3.3 70B-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Brand-Kampagne europaweit zu skalieren. Angenommen, wir tun das und scheitern monumental (Pre-Mortem).
-
-### S-MP-089 Brand: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Conversion-Rate in Österreich fordert der Country-Manager eine sofortige Brand-Analyse der verwendeten Dialekte und Begriffe. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Brand-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das EU AI Act Transparenzpflichten-Verstöße bei Brand-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den EU AI Act Transparenzpflichten-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Brand-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Brand zu triangulieren.
-
-### S-MP-090 Brand: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Mailjet-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Brand-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Brand-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Brand-Workflows in Mailjet sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus Mailjet als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Brand-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Brand-Kampagne europaweit zu skalieren.
-
-### S-MP-091 Localization: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Das Legal-Team droht, die neue Localization-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell (Gemini 3.5 Flash) gegen die EU AI Act Transparenzpflichten verstößt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Localization-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Localization-Umfeld.
-**Hands-on Ergebnis:** Ein Red-Team-Audit-Report, der die verwundbarsten Stellen der aktuellen Localization-Kampagne schonungslos offenlegt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Localization-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Make.com-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir stehen kurz davor, diese Localization-Kampagne europaweit zu skalieren.
-
-### S-MP-092 Performance: Strategische Evaluierung durch Steelmanning-Prinzipien
-
-**Wann nutzen (Trigger):** Eine teure Outbound-Kampagne über Brevo ist spektakulär gefloppt. Die Marketing-Direktorin initiiert eine harte Performance-Ursachenforschung. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Performance-Ausgaben und des GPT-5.4 Mini-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Performance-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Deep Research
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Sie-Form im B2B-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Performance-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere Performance-Daten aus Brevo.
-
-### S-MP-093 MarketingOps: Strategische Evaluierung durch Pre-Mortem-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete MarketingOps-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der MarketingOps-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im MarketingOps-Umfeld.
-**Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das EU AI Act Transparenzpflichten-Verstöße bei MarketingOps-Aufgaben strukturell ausschließt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren MarketingOps-Taktiken.
-2. Triangulation dieser Daten mit unseren internen etomite-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser MarketingOps-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-094 Research: Strategische Evaluierung durch Contrast Classes-Prinzipien
-
-**Wann nutzen (Trigger):** Die Konkurrenz hat soeben ein massives KI-Feature gelauncht. Die Marketing-Direktorin muss innerhalb von 2 Stunden einen Research-Gegenangriff über GA4 orchestrieren. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strategische Neuausrichtung der Research-Ressourcen, basierend auf harten Daten statt auf Bauchgefühl, um den ROI kurzfristig zu sichern. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im Research-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Export der betroffenen Rohdaten aus GA4 als CSV und Upload in den Langdock Data Analyst.
-2. Ausführung eines Python-Skripts zur Identifikation von Ausreißern in der Research-Performance.
-3. Übergabe der verdichteten Daten an einen spezialisierten Agenten zur strategischen Einordnung.
-4. Kollaboratives Finetuning der Gegenmaßnahmen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
-> "Nutze deine Web-Search-Fähigkeit, um diesen neuen Hype im Bereich Research zu triangulieren.
-
-### S-MP-095 Performance: Strategische Evaluierung durch Bayesian Prior-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den Traffic halbiert. Das Performance-Team muss sofort herausfinden, ob unsere KI-generierten Inhalte das Problem sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Performance-Strategie durch den gezielten Einsatz konträrer Perspektiven. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Performance-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Performance-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Pardot-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Performance-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-096 Research: Strategische Evaluierung durch Source Triangulation-Prinzipien
-
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Matomo-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Research-Ausgaben und des Llama 3.3 70B-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Research-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Research-Workflows in Matomo sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat, Agenten
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Research-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Llama 3.3 70B-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Research-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-097 ABM: Strategische Evaluierung durch Contradiction Log-Prinzipien
-
-**Wann nutzen (Trigger):** Die Marketing-Direktorin stellt fest, dass das Budget für GPT-5.2 im letzten Monat um 400% überschritten wurde. Ein sofortiges ABM-Audit der Workflows ist fällig. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Validierung der Compliance-Vorgaben für die ABM-Automatisierung, um rechtliche Risiken (z.B. Abmahnungen wegen Du-Form im B2C) komplett zu eliminieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im ABM-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende ABM-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den Du-Form im B2C-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den ABM-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser ABM-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-098 Social: Strategische Evaluierung durch What Would Change My Mind-Prinzipien
-
-**Wann nutzen (Trigger):** Eine teure Outbound-Kampagne über GA4 ist spektakulär gefloppt. Die Marketing-Direktorin initiiert eine harte Social-Ursachenforschung. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Social-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Social-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den EU AI Act Transparenzpflichten-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Social-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen Social-Kanal erden.
-
-### S-MP-099 SEO: Strategische Evaluierung durch Red Team-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das SEO-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Schaffung einer Single-Source-of-Truth für das SEO-Reporting, die von allen Stakeholdern (inkl. Legal und Sales) akzeptiert wird. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im SEO-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen SEO-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Opus 4.8-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere SEO-Daten aus Salesforce MC.
-
-### S-MP-100 Content: Strategische Evaluierung durch First-Principles-Prinzipien
-
-**Wann nutzen (Trigger):** Das Vertriebsteam eskaliert: Die letzten 50 Leads aus der neuen Inxmail-Automatisierung waren absolut unqualifiziert. Ein sofortiges Audit des Setups ist gefordert. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Etablierung eines robusten, fehlerresistenten Playbooks für Content, das zukünftige Skalierung über Inxmail ermöglicht, ohne an Qualität einzubüßen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Content-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Content-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Content-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Inxmail-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen Content-Kanal erden.
-
-### S-MP-101 SEO: Strategische Evaluierung durch Assumption Decay-Prinzipien
-
-**Wann nutzen (Trigger):** Die geplante Expansion in den Schweizer Markt erfordert eine komplett überarbeitete SEO-Strategie, die tiefgreifendes Schweizerdeutsch-Wissen voraussetzt. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen SEO-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im SEO-Umfeld.
-**Hands-on Ergebnis:** Ein 2-seitiges Executive-Summary-Dokument (PDF), das die exakten Fehlerquellen im SEO-Setup benennt und Lösungswege aufzeigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat, Data Analyst
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren SEO-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Dynamics-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser SEO-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-102 Performance: Strategische Evaluierung durch Base-Rate-Prinzipien
-
-**Wann nutzen (Trigger):** Ein PR-Desaster droht: Eine lokalisierte Kampagne in der Schweiz enthielt deutsches 'ß' und falsche Vokabeln, was zu negativer Presse führte. Das Performance-Setup muss komplett überholt werden. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Strukturierte Vorbereitung einer Verteidigungslinie für das nächste Board-Meeting bezüglich der Performance-Ausgaben und des DeepSeek v3.1-Einsatzes. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle im Langdock Data Analyst, die anzeigt, welche Performance-Workflows in Mailchimp sofort gestoppt oder skaliert werden müssen. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat, Workflows
-**Vorgehen (3-5 Schritte):**
-1. Aggregation aktueller Wettbewerbsdaten via Web Search mit Fokus auf deren Performance-Taktiken.
-2. Triangulation dieser Daten mit unseren internen Mailchimp-Metriken.
-3. Herausarbeitung des entscheidenden strategischen Kontrasts (Contrast Classes).
-4. Überführung der Erkenntnisse in ein actionable Redaktions-Briefing.
-**Beispiel-Prompt (DE, PTCF):**
-> "Wir müssen unsere Erwartungen für den neuen Performance-Kanal erden.
-
-### S-MP-103 Social: Strategische Evaluierung durch Adversarial Query Expansion-Prinzipien
-
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Pardot-Integration-Setup um 30% eingebrochen sind. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Systematischer Abgleich der aktuellen Social-KPIs mit den historischen Base-Rates der Branche, um interne Erwartungshaltungen zu kalibrieren. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Social-Umfeld.
-**Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den Business-Case für die Beibehaltung der Social-Strategie verteidigt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Konversations-Starter
-**Vorgehen (3-5 Schritte):**
-1. Aussetzen der aktuellen Social-Workflows in Langdock, um weitere Budget-Verbrennung zu stoppen.
-2. Tiefenanalyse der Token-Verbräuche der verwendeten Llama 3.3 70B-Modelle.
-3. Neukalkulation des Business Cases unter Anwendung einer konservativen Base-Rate.
-4. Präsentation der korrigierten Prognose vor dem Management-Team.
-**Beispiel-Prompt (DE, PTCF):**
-> "Du bist der Lead-Analyst für unser Social-Ressort. Ignoriere unsere bisherigen Annahmen komplett.
-
-### S-MP-104 Performance: Strategische Evaluierung durch Falsification-Prinzipien
-
-**Wann nutzen (Trigger):** Ein neues Marketo-Update hat alle bestehenden Workflows im Performance-Bereich zerschossen. Ein strategischer Notfall-Plan muss her. Diese kritische Situation erfordert sofortige, datengestützte Handlungsfähigkeit abseits der üblichen Routinen. Die Marketing-Direktorin muss hierbei sicherstellen, dass emotionale Reaktionen des Teams durch kühle Analytik ersetzt werden.
-**Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Performance-Einbruch im Performance-Segment und sofortige Ableitung von Gegenmaßnahmen. Eine erfolgreiche Bewältigung stärkt nicht nur das Vertrauen des Managements, sondern etabliert auch Langdock als unverzichtbares Instrument für das Krisenmanagement im Performance-Umfeld.
-**Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen für kommende Performance-Rollouts zwingend vorschreibt. Dieses Artefakt dient direkt als Entscheidungsgrundlage für das anstehende Sprint-Planning und schützt vor Compliance-Risiken.
-**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Chat, Canvas
-**Vorgehen (3-5 Schritte):**
-1. Setup eines temporären Agenten, der exklusiv mit den AI Washing-Richtlinien des Unternehmens gebrieft wird.
-2. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem) für den Performance-Prozess.
-3. Identifikation der wahrscheinlichsten rechtlichen oder operativen Sollbruchstellen.
-4. Erstellung eines Notfall-Playbooks zur Risikominimierung.
-**Beispiel-Prompt (DE, PTCF):**
-> "Unsere KPIs widersprechen sich: Hoher Traffic, null Sales. Erstelle ein Contradiction Log für unsere Performance-Daten aus Marketo.
+4. Festlegung harter Abbruch-Kriterien (What Would Change My Mind) für künftige Workflows.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du agierst als ABM-Notfall-Manager. Unser Inxmail-Workflow ist gecrasht. Lade die Original-Briefings aus dem Wissensordner. Wir müssen unsere Annahmen falsifizieren: Warum war das Setup von vornherein anfällig? Erstelle eine Fehler-Matrix und definiere drei harte Abbruch-Kriterien (What Would Change My Mind), bei denen der nächste Agent-Workflow sofort stoppen muss."
+**Erwartetes Artefakt:** Ein technisches Fehler-Protokoll (Markdown) inklusive drei präziser Quality-Gates, die vor dem nächsten Rollout zwingend im Agenten verankert werden müssen.
+**Fallstricke (mind. 2 spezifisch):**
+- KI erzeugt generische 'Best Practices' statt technischer Abbruch-Kriterien → Prompt muss explizit harte, messbare Quality-Gates einfordern.
+- Wissensordner-Limit → Sicherstellen, dass die Briefings nicht in einem Ordner mit >1000 Dateien liegen, um Retrieval-Ungenauigkeiten zu vermeiden.
+**Anschluss-Szenario:** (Ende der Matrix)
 
 ## Hinweise & Quellen-Konflikte
 
