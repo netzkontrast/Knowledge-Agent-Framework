@@ -31,10 +31,13 @@ check_one() {
   local fail=0
   local name; name=$(basename "$file")
 
-  # Detect file kind by basename prefix: 11/12 are persona files (different H2/fields).
+  # Detect file kind by basename prefix:
+  #   - 11/12 are persona files (different H2/fields).
+  #   - 13 is the per-Thema "Data-Anweisung" file (no scenarios; H2 anchor blocks).
   local kind="content"
   case "$name" in
     11-persona-core*|12-persona-julia-modus*) kind="persona" ;;
+    13-data-agent-anweisungen*) kind="anweisung" ;;
   esac
 
   # H1: exactly one
@@ -54,6 +57,30 @@ check_one() {
   if [ "$not_covers" -lt 1 ]; then
     echo "[FAIL] $name: intro 'Was diese Datei NICHT abdeckt' box missing"
     fail=1
+  fi
+
+  # Anweisung kind (file 13): validates per-Thema "Data-Anweisung" H2 anchor blocks
+  # instead of scenarios. Each block must carry the literal "**Data-Anweisung" anchor
+  # on its first content line (per AGENT_PROMPT.md SCHRITT 3 deterministic retrieval).
+  if [ "$kind" = "anweisung" ]; then
+    local anw_h2; anw_h2=$(grep -cE '^## Data-Anweisung ' "$file")
+    local anw_anchor; anw_anchor=$(grep -cE '^\*\*Data-Anweisung ' "$file")
+    if [ "$anw_h2" -lt 10 ]; then
+      echo "[FAIL] $name: Data-Anweisung H2 blocks = $anw_h2 (expected ≥10)"
+      fail=1
+    fi
+    if [ "$anw_anchor" -lt "$anw_h2" ]; then
+      echo "[WARN] $name: anchor line '**Data-Anweisung ...' appears $anw_anchor times (expected ≥$anw_h2)"
+    fi
+    local file_lines; file_lines=$(wc -l < "$file")
+    local file_bytes; file_bytes=$(wc -c < "$file")
+    if [ "$fail" -eq 0 ]; then
+      echo "[PASS] $name: $file_lines lines / $file_bytes bytes / $anw_h2 Data-Anweisungen"
+      return 0
+    else
+      echo "[FAIL] $name: $file_lines lines / $file_bytes bytes / $anw_h2 Data-Anweisungen"
+      return 1
+    fi
   fi
 
   # Scenario-H2 section — name varies by kind
