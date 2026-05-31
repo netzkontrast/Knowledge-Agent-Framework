@@ -118,15 +118,60 @@ lookups. Synonym seeding on first mention: "Markenstimme (Brand Voice)".]
 
 ---
 
-## 6. Sizing Budget per File
+## 6. Sizing Budget per Chunk (no per-file limit) — Updated 2026-05-31
+
+**Knowledge files have NO file-size limit beyond Langdock's hard caps (10 MB / 8M chars per .md). The discipline lives at the chunk level, not the file level. Bigger files with more decision-ready chunks are better than smaller files with thin coverage.**
 
 | Element | Target Size | Hard Limit |
 |---|---|---|
 | Intro box (chunk 1) | 400-600 chars | 1 800 chars (= 1 chunk) |
 | Feature H2 block | 1 200-1 800 chars | 1 800 chars (= 1 chunk) |
-| Scenario H3 block | 1 200-1 500 chars | 1 800 chars (= 1 chunk) |
-| Max H2 blocks per file | 12 | hard: 14 (above that, split file) |
-| Max H3 blocks under "Marketing-Szenarien" per file | 14 | hard: 18 (above that, per-doc-cap risk) |
+| Scenario H3 block | 1 200-1 800 chars | 1 800 chars (= 1 chunk) |
+| Max H2 blocks per file | **no soft limit** — driven by topic coverage | hard: bounded only by 10 MB / 8M chars |
+| Max H3 scenarios per file | **MINIMUM 100 per file** (per user directive 2026-05-31) | hard: same as above |
+
+**The 100-scenarios-per-file mandate.** Every knowledge file (00-13) MUST contain at least 100 distinct, actionable, decision-ready scenarios under its "Marketing-Szenarien" section. Across the 14 files this yields 1 400+ retrievable scenario chunks — the marketing-director's lookup library.
+
+Each scenario MUST be:
+- **Unique** — different trigger noun, different mechanism, different output. No two scenarios should plausibly retrieve for the same query.
+- **Actionable** — the marketing director can act on it within the same workday. No abstract "consider doing X" — concrete prompts, exact steps, concrete deliverable.
+- **Data-esque** in form — precise, structured, evidence-flagged (not Data SPEAKING — see §4).
+- **Anchored in a critical-thinking method** — drawn from the T8 catalog (Falsification, Steelmanning, Pre-Mortem, Contrast Classes, Bayesian Prior, Source Triangulation, Contradiction Log, "What Would Change My Mind", Red Team, First-Principles, Assumption Decay, Base-Rate, Adversarial Query Expansion). Using methods as **structural generators** ensures natural scenario variation. 13 methods × ~8-10 marketing functions per file = 100+ natural scenarios per file.
+
+**Trade-off:** more H2/H3 blocks = more retrievable chunks per file. The per-document cap still applies (only one chunk per file wins per query) — so authoring discipline focuses on **making each chunk maximally distinct** (different trigger phrases, different nouns, different scenario specifics). With high chunk distinctiveness, a large file becomes a high-coverage retrieval surface, not a single point of failure.
+
+## 6.1 Audience and Tone for Scenarios
+
+The reader of every scenario is a **strategically-working but hands-on-oriented female Marketing Director** in a DACH company. She:
+- Thinks strategically (looks for leverage, prioritizes high-impact moves)
+- Acts hands-on (needs concrete prompts she can paste, exact next steps)
+- Has limited time per AI interaction (≤120 word chat replies; depth lives in Canvas)
+- Distrusts AI hype (wants evidence-grounded recommendations, not vibes)
+- Mixes German with English Langdock loan-terms ("Workflow", "Agent", "Briefing", "Touchpoint")
+- Switches between Du and Sie depending on company culture
+
+Scenarios are written to her. Voice is third-person reference prose (NOT Data speaking — per §4), but the recommendations and examples target her workflow.
+
+## 6.2 Scenario Template (mandatory)
+
+```markdown
+### S-XYZ [Scenario short title in DE]
+
+**Critical-Thinking-Method:** [one of M01-M13 from T8 catalog, named explicitly]
+**Wann nutzen (Trigger):** [Eine Situation, in der die Marketing-Direktorin steckt]
+**Strategisches Ziel:** [Was sie strategisch erreichen will]
+**Hands-on Ergebnis:** [Was konkret produziert wird — ein Briefing, eine Liste, ein Schemavergleich, etc.]
+**Eingesetzte Langdock-Fähigkeit(en):** [aus der Whitelist im Agent-Design-Spec §4.4]
+**Vorgehen (3-5 Schritte):**
+1. [Schritt 1 — konkret, mit Tool-Nennung wo relevant]
+2. [Schritt 2]
+3. [Schritt 3]
+**Beispiel-Prompt (DE, PTCF):**
+> "[Vollständiger, copy-paste-fähiger Prompt mit Persona-Task-Context-Format-Struktur.]"
+**Erwartetes Artefakt:** [Konkret, mit Format-Spec.]
+**Fallstricke (mind. 2):** [Spezifisch — z.B. "AI tendiert zu Anglizismen → Anti-Anglizismus-Klausel im Prompt", nicht "AI kann halluzinieren"]
+**Anschluss-Szenario:** [optional: das nächste S-XYZ, das diese Marketing-Direktorin als Folgeschritt nutzen würde]
+```
 
 ---
 
@@ -148,56 +193,116 @@ File 13 carries **per-Thema anchor strings**: each H2 ("Data-Anweisung [Thema]")
 
 ---
 
-## 8. Phase-2 Synthesizer Prompt Template
+## 8. Phase-2 Synthesizer Prompt Template — Updated 2026-05-31
 
-This is the exact prompt structure passed to each Phase-2 worker (Jules session or local subagent) per file. Variables in `${...}`.
+This is the exact prompt structure passed to each Phase-2 worker (Jules session or local subagent) per file. **Per user directive 2026-05-31:**
+- Jules / synthesizer reads the RESEARCH SOURCE FILES (not just extracts) — extracts are guides, sources are ground truth.
+- The pre-finalized "Soul-Doc" (files 11 + 12, prepared in Phase 0.5) is handed to every synthesizer as the persona reference.
+- Critical-thinking methods (T8 M01-M13) are embedded into the prompt as the scenario-generation engine.
+- 100 scenarios minimum per file.
 
 ```
 Aufgabe: Schreibe die Knowledge-Datei `${FILE_PATH}` für den Langdock-
-Wissensordner des "Little Data" Agents.
+Wissensordner des "Little Data" Agents — einen Berater-Agenten für eine
+strategisch arbeitende, hands-on-orientierte Marketing-Direktorin (DACH).
 
 Repo-Pfad: ${REPO_ROOT}
+Branch: ${BRANCH}
 
-LESEN (ausschließlich):
-- Agent-Design-Spec: docs/superpowers/specs/2026-05-31-little-data-agent-design.md
-  (§9.2 file template, §4.3 file taxonomy row for ${FILE_NAME})
-- Authoring-Spec: docs/superpowers/specs/2026-05-31-knowledge-file-authoring-spec.md
-  (this file — discipline summary, the 12 Commandments, the file skeleton)
-- Coverage-Matrix-Rows für ${FILE_NAME}: little-data/data/coverage-matrix.md
-- Relevante Extracts:
-  ${EXTRACT_LIST}
-- (Optional) SKILL-knowledge-authoring.md für die Schnellreferenz
-
-NICHT LESEN: data/sources/, data/research/, data/restructured/ — diese sind
-bereits in den Extracts kondensiert. Lesen überfließt deinen Kontext.
+LESEN (Reihenfolge ist Empfehlung, nicht zwingend):
+1. Authoring-Spec: docs/superpowers/specs/2026-05-31-knowledge-file-authoring-spec.md
+   (DIESES Dokument — die 12 Commandments, das Scenario-Template §6.2,
+   die Audience §6.1, die Tonalitäts-Discipline §4)
+2. Agent-Design-Spec: docs/superpowers/specs/2026-05-31-little-data-agent-design.md
+   (§4.3 file taxonomy, §9.2 file template)
+3. Soul-Doc (fertig vorbereitet in Phase 0.5):
+   - little-data/langdock-deploy/knowledge/11-persona-core.md
+   - little-data/langdock-deploy/knowledge/12-persona-julia-modus.md
+4. Coverage-Matrix-Rows für ${FILE_NAME}: little-data/data/coverage-matrix.md
+5. Critical-Thinking-Katalog (M01-M13): little-data/data/extracts/T8-metaprompts-critical-thinking.md
+   — JEDES Szenario in dieser Datei muss auf einer M01-M13 Methode aufbauen
+6. Relevante Themen-Extracts (guides, not ground truth):
+   ${EXTRACT_LIST}
+7. Relevante Research-Source-Files (ground truth — alle Details validieren gegen diese):
+   ${SOURCE_LIST}
+   z.B.: little-data/data/research/01-langdock-platform-feature-inventory.md
+         little-data/data/research/03-langdock-marketing-scenarios-catalog.md
+         little-data/data/research/09-marketingleiter-faq-wissensbasis-analyse.md
+         little-data/data/sources/01-langdock-agent-and-knowledge-structuring.md
+         ...
+   Wenn ein Extract und eine Source widersprechen: Source gewinnt. Flag im Datei-Output.
 
 SCHREIBEN: ${FILE_PATH}
 
-INHALT (zu beachten):
+INHALT — zwingend:
 - H1: "${H1_TITLE}"
 - Intro-Box mit "Was diese Datei abdeckt" und "Was diese Datei NICHT abdeckt"
 - H2-Sub-Topics: ${H2_LIST}
-- (Falls Marketing-Szenarien-Sektion erforderlich): H3-Liste aus Coverage-Matrix
-- Anchor-Strings (falls für diese Datei mandantory): ${ANCHORS}
-- Größe: ${EST_SIZE} ± 20%
-- Sprache: Deutsch primary; Englisch für etablierte Langdock-Loanwords
-  ("Workflow", "Agent", "Briefing"); offizielle deutsche Langdock-Begriffe
-  ("Wissensordner", "Konversations-Starter") wo vorhanden
-- Tonalität: Data-aligned, **aber NICHT Data sprechend** — siehe N9 in der
-  Agent-Design-Spec. Kein "Faszinierend", kein "ich", kein Service-Log-Frame.
-  Klare, präzise Referenz-Prosa in adaptiver Komplexität.
+  Jeder H2-Block 1 200-1 800 chars, single-topic, decision-ready.
+- Anchor-Strings (falls mandatory): ${ANCHORS}
+- H2 "Marketing-Szenarien aus dieser Domäne"
+  Darunter MINIMUM 100 H3-Szenarien (S-XXX-001 bis S-XXX-100+).
+  Jedes Szenario folgt strikt dem §6.2 Template:
+    - Critical-Thinking-Method (eine aus M01-M13)
+    - Wann nutzen (Trigger)
+    - Strategisches Ziel
+    - Hands-on Ergebnis
+    - Eingesetzte Langdock-Fähigkeit(en)
+    - Vorgehen (3-5 Schritte)
+    - Beispiel-Prompt (DE, PTCF, copy-paste-fähig)
+    - Erwartetes Artefakt
+    - Fallstricke (≥2 spezifisch)
+    - Anschluss-Szenario (optional)
+  Jedes Szenario 1 200-1 800 chars (= 1 Chunk).
+  Jedes Szenario UNIQUE — distincter Trigger-Noun, distincte Methode-
+  Anwendung. Keine zwei Szenarien sollen plausibel für dieselbe Query
+  retrieven.
+
+SZENARIO-GENERIERUNG — Methode (zwingend):
+- Nutze die 13 Critical-Thinking-Methoden (M01-M13 aus T8) als STRUKTURELLE
+  Variation. Pro Methode 8-10 Szenarien-Anwendungen für deine Domäne.
+  Das produziert natürlich 100+ Szenarien ohne Repetition.
+- Verteile auf die Marketing-Funktionen die für deine Datei relevant sind
+  (Content / SEO / Performance / Brand / Social / CRM / ABM / PR /
+  Research / MarketingOps / Analytics / Events / Localization / Internal-
+  Enablement — wähle die für deine Datei passenden).
+- Beispiel-Pattern: "Pre-Mortem für ${szenario-spec}", "Steelman gegen
+  ${konkurrenz-arg}", "Falsifizier ${persona-hypothese}", "First-Principles
+  für ${markenbotschaft}", etc.
+
+SPRACHE & TONALITÄT:
+- Deutsch primary; Englisch für etablierte Langdock-Loanwords
+  ("Workflow", "Agent", "Briefing", "Touchpoint"); offizielle deutsche
+  Langdock-Begriffe ("Wissensordner", "Konversations-Starter", "Agenten")
+  wo vorhanden
+- Tonalität: Data-aligned, **aber NICHT Data sprechend** — siehe §4.
+  Kein "Faszinierend", kein "ich", kein Service-Log-Frame.
+  Klare, präzise Referenz-Prosa in adaptiver Komplexität für die
+  strategisch-arbeitende-hands-on Marketing-Direktorin (siehe §6.1).
+- Du oder Sie? — Reference-Prose ist neutral (kein direkter Anrede-Modus,
+  da der Agent selbst Du/Sie spiegelt). Beispiel-Prompts (innerhalb der
+  Szenarien) nutzen Du als Default für die Marketing-Direktorin als
+  hands-on-Adressat.
 
 VALIDIERUNG vor dem Speichern:
-- Jeder H2-Block 1 200–1 800 chars
-- Jeder H3-Block 1 200–1 500 chars
+- ≥100 H3-Szenarien in der "Marketing-Szenarien" Sektion
+- Jedes Szenario folgt dem §6.2 Template (alle Felder ausgefüllt)
+- Jedes Szenario auf eine M01-M13 Methode gemappt
+- Jeder H2/H3-Block 1 200-1 800 chars
 - Kein "siehe Abschnitt X" Cross-Ref
 - Keine Pronoun-Bound-References ("dies", "es", "darüber")
 - Bilingual seeding wo English Loanword + DE existieren
 - Intro-Box vorhanden
 - Anchor-Strings verbatim wo erforderlich
+- Keine Quellen-Widersprüche (Sources gewinnen über Extracts)
+- Tonalität-Check: keine erste Person, kein "Faszinierend" im Body
 
-OUTPUT: schreibe die Datei direkt mit Write-Tool. Antworte mir am Ende mit:
-"Done. ${FILE_NAME}: [lines], [bytes]. Validation: PASS/FAIL [reason]."
+OUTPUT: schreibe die Datei direkt mit Write-Tool. Bei Conflicts: dokumentiere
+sie als kurze Notiz am Ende der Datei unter "## Hinweise & Quellen-Konflikte".
+
+Antworte am Ende mit:
+"Done. ${FILE_NAME}: [lines], [bytes], [scenarios_count] scenarios.
+ Validation: PASS/FAIL [reason]."
 
 Kein Erklären, kein Zusammenfassen, kein Markdown-Diff. Nur die finale Datei
 und eine 1-Zeilen-Status-Antwort.

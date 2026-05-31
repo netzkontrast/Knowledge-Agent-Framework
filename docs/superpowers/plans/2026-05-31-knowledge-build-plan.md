@@ -55,32 +55,51 @@ Each step dispatches one `sc:sc-deep-research` subagent (model = haiku) that wri
 
 ---
 
-## Phase 2 — Knowledge File Synthesis
+## Phase 0.5 — Soul-Doc Preparation (vorab, vor Phase 2)
 
-**Substrate decision:** if Jules-Auth + connected repo confirmed, use Jules dispatch per file (per `agency:jules-dispatch` skill discipline). If not, fall back to local `general-purpose` subagents (each writes one file to `langdock-deploy/knowledge/`). The structure of the per-file prompt is the same; only the dispatcher changes.
+**Per user directive 2026-05-31:** the persona files (files 11 + 12) are prepared BEFORE Phase 2 starts. They become the "Soul-Doc" handed to every Phase-2 synthesizer as the persona reference. Without them, Jules sessions for files 00-09, 10, 13 would lack consistent persona grounding.
 
-| Step | File | Inputs | Owner | Status |
-|---|---|---|---|---|
-| 2.00 | `00-langdock-uebersicht.md` | T1, T2 | Jules or local-subagent | pending |
-| 2.01 | `01-chat-und-prompts.md` | T1, T7 | Jules or local-subagent | pending |
-| 2.02 | `02-agenten-konfiguration.md` | T1, T2 | Jules or local-subagent | pending |
-| 2.03 | `03-wissensordner-und-rag.md` | T1, T2 | Jules or local-subagent | pending |
-| 2.04 | `04-workflows.md` | T1, T3 | Jules or local-subagent | pending |
-| 2.05 | `05-integrationen-und-mcp.md` | T1 | Jules or local-subagent | pending |
-| 2.06 | `06-api-und-deployment.md` | T1 | Jules or local-subagent | pending |
-| 2.07 | `07-modelle-und-kosten.md` (α-fusion) | T1, T6 | Jules or local-subagent | pending |
-| 2.08 | `08-sicherheit-und-governance.md` | T1, T6 | Jules or local-subagent | pending |
-| 2.09 | `09-marketing-praxis.md` | T3, T6 | Jules or local-subagent | pending |
-| 2.10 | `10-prompts-und-skills.md` (γ-fusion) | T3, T8 | Jules or local-subagent | pending |
-| 2.11 | `11-persona-core.md` | T4, T5, T7 | Jules or local-subagent | pending |
-| 2.12 | `12-persona-julia-modus.md` | T5 | Jules or local-subagent | pending |
-| 2.13 | `13-data-agent-anweisungen-pro-thema.md` | T4, T5, T7 + cross-ref T1/T3 | Jules or local-subagent | pending |
+| Step | Action | Owner | Status |
+|---|---|---|---|
+| 0.5.1 | Wait for T5 (Data Canon) extract to complete | (background) | pending |
+| 0.5.2 | Dispatch persona-builder local subagent for `11-persona-core.md` — inputs: T4, T5, T7, T8 + research/05,06,07,08,11 sources + Authoring-Spec | Agent | pending |
+| 0.5.3 | Dispatch persona-builder local subagent for `12-persona-julia-modus.md` — inputs: T5 + research/06,11 sources + Authoring-Spec | Agent | pending |
+| 0.5.4 | Review both persona files; verify anchor strings ("Little Data Persona Anker", "Beziehungsmodus Julia Lenz") are verbatim in first chunk | Read + grep | pending |
+| 0.5.5 | Commit + push Phase-0.5 artifacts | Bash | pending |
 
-**Per-session prompt template:** the synthesizer receives Authoring-Spec + 2-4 extracts + Coverage-Matrix-Row + the §9.2 file template + the per-file H2 list. Output: PR (if Jules) or direct Write (if local-subagent).
+## Phase 2 — Knowledge File Synthesis (updated for 100+ scenarios per file)
 
-**Parallelism:** 3-5 simultaneous. 14 files → 3 waves.
+**Updated 2026-05-31 per user directives:**
+- Each knowledge file has **MINIMUM 100 H3 scenarios** under "Marketing-Szenarien".
+- Scenarios are anchored in T8 critical-thinking methods (M01-M13) as structural generators.
+- Audience: strategically working but hands-on Marketing-Direktorin (DACH).
+- Jules / synthesizer reads RESEARCH SOURCE FILES (not just extracts).
+- The Soul-Doc (Files 11 + 12 from Phase 0.5) is handed to every Phase-2 synthesizer.
 
-**Gate before Phase 3:** every file in `langdock-deploy/knowledge/` exists and matches its Coverage-Matrix-Row entries (run `check_coverage.sh`).
+**Substrate:** if Jules-Auth + connected repo confirmed, use Jules dispatch per file. Otherwise: local `general-purpose` subagents with the same prompt. Each session writes one file.
+
+| Step | File | Inputs (Extracts + Sources + Soul-Doc) | Owner | Scenarios target | Status |
+|---|---|---|---|---|---|
+| 2.00 | `00-langdock-uebersicht.md` | T1, T2 + research/01, restructured/00, sources/01-06 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.01 | `01-chat-und-prompts.md` | T1, T7 + research/01, sources/01,05 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.02 | `02-agenten-konfiguration.md` | T1, T2 + research/01,04, sources/01,04 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.03 | `03-wissensordner-und-rag.md` | T1, T2 + research/04,10,12, sources/01,07, restructured/01 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.04 | `04-workflows.md` | T1, T3 + research/01,03, sources/02 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.05 | `05-integrationen-und-mcp.md` | T1 + research/01, sources/02 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.06 | `06-api-und-deployment.md` | T1 + research/01, sources/02,03 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.07 | `07-modelle-und-kosten.md` | T1, T6 + research/01,02, sources/02,03,06 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.08 | `08-sicherheit-und-governance.md` | T1, T6 + research/02, sources/03 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.09 | `09-marketing-praxis.md` | T3, T6 + research/03,09,02 + Soul-Doc | Jules / subagent | ≥100 | pending |
+| 2.10 | `10-prompts-und-skills.md` | T3, T8 + research/03,09 + Soul-Doc + T8 catalog | Jules / subagent | ≥100 | pending |
+| 2.13 | `13-data-agent-anweisungen-pro-thema.md` | T4, T5, T7 + Soul-Doc + cross-ref ALL completed files 00-10 | Jules / subagent | ≥100 | pending (last) |
+
+**Note:** Files 11 + 12 are built in Phase 0.5 (NOT in Phase 2) so they can serve as Soul-Doc inputs for the rest.
+
+**Per-session prompt template:** synthesizer receives Authoring-Spec + Agent-Design-Spec + Soul-Doc (Files 11+12) + Coverage-Matrix-Rows + 2-4 Extracts + 3-8 Research-Source-Files + T8 catalog. Embeds the M01-M13 method catalog as scenario-generation engine.
+
+**Parallelism:** 3-5 simultaneous. 12 files → 3-4 waves. File 13 runs LAST (depends on others).
+
+**Gate before Phase 3:** every file in `langdock-deploy/knowledge/` exists; each has ≥100 scenarios; `check_coverage.sh` passes.
 
 ---
 
