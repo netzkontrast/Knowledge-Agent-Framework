@@ -235,16 +235,33 @@ Important:
 
 ---
 
-## Prompt 3 — 100+ Marketing Scenarios Mapped to Langdock Features
+## Prompt 3 — 100+ Marketing Scenarios for a Default Langdock Agent (Agent + Knowledge ONLY)
+
+**Scope:** Default Langdock Agent with Knowledge attachments (Folders + ad-hoc) and the standard default capabilities (Web Search, Data Analyst, Canvas/Document Editor, Image Generation). **NOT** Workflows, **NOT** API consumption, **NOT** custom integrations or native action triggers (HubSpot/Salesforce/etc.), **NOT** MCP, **NOT** BFF. Those are postponed for a later phase.
 
 **Title to save as:** `little-data-research/03-marketing-scenarios-langdock-mapping.gdoc`
 
 ```
-I need a comprehensive catalog of 120+ concrete marketing scenarios where the
-Langdock enterprise AI platform delivers measurable value, organized by
-marketing function, and mapped to the specific Langdock features that enable
-each scenario. This output will feed a German-language advisor agent for
-marketing directors.
+I need a comprehensive catalog of 100+ concrete marketing scenarios where a
+DEFAULT Langdock Agent — using only its system instructions, attached
+Knowledge (Folders + direct attachments), Conversation Starters, and the
+default capability toggles (Web Search, Data Analyst, Canvas/Document Editor,
+Image Generation) — delivers measurable value to a marketing director.
+
+EXPLICITLY EXCLUDED from this catalog (these are postponed to a later phase
+and must NOT appear as scenarios):
+- Langdock Workflows (visual builder, triggers, conditions, code nodes, loops)
+- Native action integrations (HubSpot, Salesforce, Slack write-actions, etc.)
+  — read-only attachment / file selection via integration is fine if it
+  happens inside the Chat / Agent surface
+- Langdock API / programmatic consumption
+- Custom JavaScript integrations
+- MCP servers / MCP setup
+- Subagents
+- Any scenario that requires admin to configure workflow budgets, BYOK,
+  custom integrations, or anything beyond agent-level configuration
+
+Output will feed a German-language advisor agent for marketing directors.
 
 For EACH scenario, structure it like this:
 
@@ -265,6 +282,23 @@ For EACH scenario, structure it like this:
 **Pitfalls:** [What can go wrong, what to watch for]
 **Estimated time saved:** [Hours/week or per-asset]
 ---
+
+For EACH scenario, the "Langdock feature(s)" field must be drawn ONLY from
+this allowed list:
+- Agent system instructions (PTCF prompt)
+- Knowledge Folder (persistent, up to 1,000 files)
+- Direct file attachment in chat (up to 20 files per session)
+- Conversation Starters
+- Web Search (default capability)
+- Data Analyst (default capability, Python sandbox over CSV/XLSX)
+- Canvas / Document Editor (default capability)
+- Image Generation (default capability)
+- Custom Instructions / Memory (chat-level; note Memory is disabled inside
+  Agents — use Custom Instructions when persistence is needed)
+
+If a scenario you considered NATURALLY requires a Workflow or a write-action
+integration, EITHER (a) rewrite it to use only the allowed list, OR (b) drop
+it from the catalog. Do not slip workflow/integration scenarios in.
 
 Cover these marketing functions, at least 8-12 scenarios per function:
 
@@ -360,22 +394,151 @@ Important constraints:
   case study, via an Agent with conversation starters" is a scenario.
 - Sample prompts must demonstrate the PTCF structure (Persona, Task, Context,
   Format)
-- Where a scenario uses Workflows, sketch the node graph in plain text
-  (e.g., "Webhook (HubSpot new MQL) → Agent (qualify + segment, structured
-  output) → Condition (score ≥ 70) → Integration action (HubSpot update +
-  Slack notification)")
+- No Workflow node graphs — scenarios are single-Agent interactions
+  (possibly multi-turn) the marketer drives from the chat surface.
 - Pitfalls must be concrete (not "AI can hallucinate") — e.g., "Subject
   line generator will overuse exclamation marks unless prompt explicitly
   bans them"
-- Favor scenarios that exploit Langdock's distinct strengths (EU hosting +
-  GDPR + Knowledge Folders + native integrations + Workflows) rather than
-  generic LLM use cases
+- Favor scenarios that exploit Langdock's distinct strengths AT THE AGENT
+  LEVEL: EU hosting + GDPR posture + persistent Knowledge Folders (brand
+  voice, style guides, persona docs, product info) + default capabilities,
+  rather than generic LLM use cases
+- Mark each scenario with a "Future expansion (postponed)" line if it would
+  obviously benefit from Workflows or native action integrations in a later
+  phase — this lets us prioritize what to unlock next
+```
+
+---
+
+---
+
+## Prompt 4 — Authoring Knowledge Files for Langdock RAG (Methodology)
+
+**Title to save as:** `little-data-research/04-knowledge-file-authoring-methodology.gdoc`
+
+```
+I need a rigorous, source-cited methodology for authoring Knowledge files
+that will be uploaded to a Langdock Knowledge Folder and consumed by a
+single advisor Agent. The goal is to write a small number (target: 10
+files) of markdown documents that together cover EVERY Langdock feature
+and topic, AND that retrieve cleanly against a corpus of ~100 specific
+marketing scenarios via Langdock's RAG pipeline.
+
+This output will be used to build a project-internal "writing knowledge
+files" skill (analogous to a style guide for documentation engineers
+optimizing for vector retrieval).
+
+Cover the following:
+
+1. HARD CONSTRAINTS (from Langdock + general RAG)
+   - Langdock Knowledge Folder hard limits (files per folder, max chars per
+     file, supported MIME types, sync cadence)
+   - Per-file size caps for each format (MD/TXT/JSON vs PDF/DOCX/PPTX)
+   - Embedding model and dimensions if known (publicly documented or
+     reasonably inferred)
+   - Chunking strategy Langdock uses (chunk size in chars/tokens, overlap,
+     boundary detection — cite the docs that confirm this)
+   - Retrieval mechanics: k value, ranking model, anything about re-ranking
+   - Direct-attachment "full document push" vs Folder "chunked retrieval"
+     — when each is preferred
+   - Cite primary sources (docs.langdock.com, Langdock blog) for every
+     constraint
+
+2. DOCUMENT ENGINEERING PRINCIPLES FOR RAG
+   - Single-topic-per-chunk discipline: how to author so each ~2000-char
+     chunk stands alone
+   - Hierarchical heading taxonomy (H1/H2/H3) as algorithmic chunk boundaries
+   - Avoiding pronoun-bound references that fail after chunking (rules)
+   - When to use Markdown tables vs prose vs bulleted lists for embedding
+     density and retrieval precision
+   - Repeating key nouns explicitly in every chunk where they apply
+   - Cross-document deduplication rules (single source of truth, conflict
+     resolution)
+   - Anti-patterns: narrative filler, ambiguous intros, vague disclaimers,
+     "see section X" cross-refs
+   - Citing or grounding within the file itself so the model knows the
+     source authority
+
+3. FILE TAXONOMY DESIGN
+   - How to choose the right number of files (the case for 5 vs 10 vs 30
+     vs 100 — what drives the optimum)
+   - One-topic-per-file vs multi-topic files with strong H2 boundaries
+   - Avoiding cross-file contradiction
+   - How to name files for retrieval (does the filename matter for Langdock?
+     verify)
+   - How to use a "platform overview / router" file as a semantic backbone
+
+4. ALIGNING KNOWLEDGE TO RETRIEVAL SCENARIOS
+   - "Scenario-driven authoring": starting from the queries you expect, then
+     writing the chunks they should retrieve
+   - Vocabulary alignment: matching the user's likely query language (German
+     marketing director vocabulary) to the chunk text
+   - Synonym seeding inside chunks (German marketing terms + English
+     technical Langdock terms in the same chunk)
+   - Coverage matrix: scenario → expected top-3 retrieved chunks → source file
+   - When you should write a dedicated "scenario index" file vs scattering
+     scenario hooks across topical files
+
+5. METADATA, FRONT MATTER, AND STRUCTURE
+   - Does Langdock parse YAML front matter? Verify from docs.
+   - Recommended H1 conventions (one H1 per file, matching file purpose)
+   - Section anchors / IDs — useful?
+   - Inclusion of small "What this file covers / What it does NOT cover"
+     headers at the top to set retrieval scope
+
+6. TESTING METHODOLOGY
+   - How to evaluate retrieval quality before deploying to users
+   - Manual "spot-check" protocol: pick 20 likely queries, query the folder
+     via Search API, verify expected chunks rank in top-3
+   - Coverage gaps: how to detect topics that fail to retrieve
+   - Iteration loop: rewrite under-retrieving chunks (vocabulary alignment,
+     explicit nouns, stronger H2 anchors)
+
+7. MULTI-LANGUAGE CONSIDERATIONS
+   - When source content is mixed German + English: keep separate files vs
+     mixed in one chunk
+   - Should German queries reliably retrieve English-source chunks via
+     embedding (and vice versa) — what does the embedding model handle well
+   - Best practice for terms that are loaned (e.g., "Workflow", "Conversation
+     Starter") that exist identically in both languages
+
+8. CASE STUDIES OR PRIMARY SOURCES
+   - Langdock's own "Best Practices for Knowledge" doc (
+     https://docs.langdock.com/resources/knowledge/best-practices )
+   - Langdock cheat sheet ( https://docs.langdock.com/resources/cheat-sheet )
+   - Astera Software, Regal.ai, Pinecone, Anthropic, OpenAI RAG playbooks —
+     anything cite-worthy on chunking and retrieval
+   - Cite each claim with a URL
+
+9. OUTPUT FORMAT
+   - Executive summary (one page)
+   - "10 commandments" cheat sheet for authors
+   - Detailed methodology by area
+   - A working example: given a fictional "Brand Voice" topic with 4 sub-
+     topics and 2 expected query patterns, demonstrate the resulting
+     markdown file structure (H1, H2s, opening "what this file covers"
+     box, table, prose)
+   - End with a checklist a human author can use before approving a file
+     for upload
+
+Target length: 4000-6000 words of substance. Prefer concrete, sourced
+guidance over generic AI-writing advice.
+
+The deliverable feeds a project-internal authoring skill, so prioritize
+operational specificity (do X, not Y, because Z) over high-level theory.
 ```
 
 ---
 
 ## After Gemini finishes
 
-1. Move all three Google Docs into the `little-data-research` folder in Drive.
+1. Move all four Google Docs into the `little-data-research` folder in Drive.
 2. Tell me they're ready — I'll fetch them with the Drive MCP and integrate them into the agent's knowledge base alongside the 6 source docs already ingested.
 3. If any prompt produced a thin or off-target result, paste me Gemini's output and I'll write a tighter follow-up prompt.
+
+## Recommended run order
+
+1. **Prompt 4** (knowledge-file authoring methodology) first — its output shapes how I structure everything else.
+2. **Prompt 1** (feature inventory) — grounds Prompt 3.
+3. **Prompt 3** (marketing scenarios) — depends on Prompts 1 and 4.
+4. **Prompt 2** (DACH adoption) — independent, can run anytime.
