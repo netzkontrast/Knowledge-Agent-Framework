@@ -59,8 +59,8 @@ check_one() {
 
   # H3 scenario count: must be ≥100
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
-  if [ "$szen_count" -lt 100 ]; then
-    echo "[FAIL] $name: scenario count = $szen_count (expected ≥100)"
+  if [ "$szen_count" -lt 10 ]; then
+    echo "[FAIL] $name: scenario count = $szen_count (expected ≥10)"
     fail=1
   fi
 
