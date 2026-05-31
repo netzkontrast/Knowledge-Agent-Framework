@@ -232,6 +232,286 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 - Migration als reines IT-Thema behandeln → Die fachliche Priorisierung (welcher Reporting-Pfad zuerst, welcher zuletzt) im Register verankern, damit kein laufendes Kampagnen-Reporting unkoordiniert ausfällt.
 **Anschluss-Szenario:** S-IM-011
 
+### S-IM-011 SharePoint als Synced-Folder-Quelle für Marken-Dokumente einrichten
+
+**Wann nutzen (Trigger):** Das Brand-Team pflegt Richtlinien, Tone-of-Voice-Dokumente und Kampagnen-Briefings in Microsoft SharePoint — der Brand-Agent zieht aber noch statische Uploads und hat veraltete Inhalte geliefert. (Quelle: sources/10 S-057, Quelle: 12 Q91)
+**Strategisches Ziel:** Den Brand-Agenten dauerhaft mit dem SharePoint-Master-Ordner verbinden, sodass aktualisierte Marken-Dokumente innerhalb von 24 Stunden automatisch im Agent-Retrieval verfügbar sind.
+**Hands-on Ergebnis:** Ein SharePoint-Synced-Folder-Konzept mit Taxonomie-Empfehlung, Dateiformat-Ausschlussliste und Briefing für den SharePoint-Administrator.
+**Eingesetzte Langdock-Fähigkeit(en):** Native SharePoint-Integration (Synced Folder), Wissensordner-RAG, 24-Stunden-Sync-Zyklus (max. 200 Dateien).
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den SharePoint-Zielordner auf Dateianzahl und -typen prüfen — die harte Grenze sind 200 Dateien; XLSX und Bilddateien werden nicht indexiert.
+2. Du lässt eine flache Ordner-Taxonomie vorschlagen, die Brand-Dokumente, Tone-of-Voice und Kampagnen-Briefings sauber trennt, ohne die Dateigrenze zu überschreiten.
+3. Du lässt das Admin-Briefing formulieren, das die OAuth-Verbindung an einen technischen Service-Account (nicht an einen Mitarbeiter-Account) bindet.
+4. Du übergibst Konzept und Briefing an den SharePoint-Administrator zur Umsetzung — Little Data berät, konfiguriert nicht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Wissensarchitektur-Berater (Persona). Entwirf ein SharePoint-Synced-Folder-Konzept für unseren Brand-Agenten (Aufgabe). Kontext: ca. 120 Dokumente, teils PPTX und XLSX, SharePoint Online, Microsoft-365-Tenant (Kontext). Format: Baumstruktur mit Ordner-Namen, Ausschlussliste nicht indexierbarer Formate, drei Sätze Admin-Briefing zu Service-Account und OAuth (Format)."
+**Erwartetes Artefakt:** Ein SharePoint-Synced-Folder-Konzept mit Taxonomie, Ausschlussliste und Admin-Briefing.
+**Fallstricke (≥2 spezifisch):**
+- PPTX und XLSX in den Synced Folder legen → Diese Formate werden von Langdock nicht indexiert; nur DOCX, PDF und MD gehören in den Sync-Ordner.
+- OAuth-Token an einen Mitarbeiter-Account binden → Bei Kündigung oder Passwort-Änderung bricht der Sync ab; immer einen Service-Account als Verbindungsinhaber empfehlen.
+**Anschluss-Szenario:** S-IM-012
+
+### S-IM-012 Google Analytics 4 direkt im Chat für Kampagnen-Reporting abfragen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will vor einem Jour-fixe wissen, welche Kampagne im letzten Monat den besten Cost-per-Lead geliefert hat, ohne manuell GA4-Berichte zu exportieren. (Quelle: 12 Q104)
+**Strategisches Ziel:** Den Marketing-Agenten über die native GA4-Integration berechtigen, Echtzeit-Metriken direkt im Chat abzurufen und sie in eine entscheidungsreife Zusammenfassung zu übersetzen.
+**Hands-on Ergebnis:** Ein GA4-Zugriffs-Briefing mit den benötigten Read-Scopes und ein Prompt-Rahmen, der den Agenten zwingt, jede Zahl mit Zeitraum und Metrik-Quelle zu belegen.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Google-Analytics-4-Integration, Agent-Actions, Quellenbindung im Prompt.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die konkreten GA4-Metriken (z. B. Sessions, Cost-per-Lead, Conversion-Rate) benennen, die für den Jour-fixe tatsächlich nötig sind — nicht mehr.
+2. Du lässt ein Zugriffs-Briefing formulieren, das der IT nur Lese-Scopes auf die relevante GA4-Property übergibt und den Zeitraum (rollierende 30 Tage) vorschreibt.
+3. Du lässt einen Prompt-Rahmen ausarbeiten, der jede Zahl mit Metrik-Name, Property und Zeitraum ausweist, damit die Direktorin vor dem Jour-fixe sofort Belege hat.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Performance-Berater (Persona). Erstelle ein GA4-Zugriffs-Briefing für einen Marketing-Agenten und einen Muster-Prompt für die Kampagnen-Zusammenfassung (Aufgabe). Kontext: Kampagnen-Vergleich letzter Monat vs. Vormonat, Zielgruppe Marketing-Direktorin, keine technischen Begriffe (Kontext). Format: Briefing als Tabelle mit Metrik, GA4-Scope, Begründung; Muster-Prompt separat als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein GA4-Zugriffs-Briefing (Tabelle) und ein einsatzbereiter Muster-Prompt für das Kampagnen-Reporting.
+**Fallstricke (≥2 spezifisch):**
+- Agent erfindet Zahlen, wenn ein GA4-Bericht leere Zellen zurückgibt → Im Prompt explizit anweisen: "Fehlende Werte als 'keine Daten verfügbar' ausweisen, niemals schätzen."
+- Schreib-Scopes mitbeantragen → GA4 hat in Langdock ausschließlich lesenden Zugriff; im Briefing klarstellen, dass kein Datenpunkt verändert werden darf.
+**Anschluss-Szenario:** S-IM-013
+
+### S-IM-013 HubSpot-Lead-Anreicherung via MCP für Personalisierungs-Kampagne planen
+
+**Wann nutzen (Trigger):** Das Demand-Gen-Team will eingehende Webinar-Leads automatisch mit HubSpot-Feldern (Branche, Unternehmensgröße, bisherige Touchpoints) anreichern, bevor eine personalisierte Follow-up-Mail generiert wird. (Quelle: sources/10 S-062, Quelle: 12 Q110)
+**Strategisches Ziel:** Einen Lese-Workflow entwerfen, der HubSpot-Kontaktdaten als Kontext in den Agenten speist, ohne dass der Agent jemals schreibend auf das CRM zugreift.
+**Hands-on Ergebnis:** Ein Architektur-Skizze (Lese-Pfad: HubSpot → Agent → Mail-Draft; Schreib-Pfad: bleibt bei Marketing-Operations) plus ein IT-Briefing für die HubSpot-API-Konfiguration.
+**Eingesetzte Langdock-Fähigkeit(en):** Native HubSpot-Integration (Read-Only), Agent-Actions, Advisory-Grenze (kein CRM-Write durch Little Data).
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Felder bestimmen, die der Agent für die Personalisierung wirklich braucht (Branche, Company-Size, letzter Touchpoint) — kein Vollzugriff.
+2. Du lässt die Architektur skizzieren: Agent liest HubSpot-Felder → generiert personalisierten Mail-Draft → Menschen im Marketing-Ops schreiben den CRM-Datensatz nach Freigabe.
+3. Du lässt das IT-Briefing formulieren, das die benötigten HubSpot-Read-Scopes und den Service-Account benennt.
+4. Du übergibst Architektur und Briefing an die IT; der Schreib-Pfad verbleibt bei Marketing-Operations — Beratung, keine Ausführung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein CRM-Integrations-Berater (Persona). Entwirf eine Lese-Architektur für HubSpot-Datenanreicherung in einem Webinar-Follow-up-Workflow (Aufgabe). Kontext: 50 Leads pro Webinar, Felder: Branche, Unternehmensgröße, letzter Touchpoint; Agent darf nie schreiben (Kontext). Format: Architektur-Skizze als nummerierter Datenpfad plus Tabelle mit Feld, HubSpot-Scope, Begründung (Format)."
+**Erwartetes Artefakt:** Eine Lese-Architektur-Skizze und ein HubSpot-Scope-Briefing für die IT.
+**Fallstricke (≥2 spezifisch):**
+- Agent erhält versehentlich Schreib-Scope → Im Briefing alle Write-Scopes explizit ausschließen und dies im IT-Ticket als "Muss-Bedingung" markieren.
+- PII (Name, E-Mail) unnötig in den Agent-Kontext laden → Nur die für Personalisierung nötigen anonymisierbaren Felder (Branche, Size) anfordern; personenbezogene Daten auf das Minimum begrenzen.
+**Anschluss-Szenario:** S-IM-014
+
+### S-IM-014 Slack-Kanal-Benachrichtigung für freigabereife Inhalte konzipieren
+
+**Wann nutzen (Trigger):** Kampagnen-Entwürfe landen heute per E-Mail bei der Direktorin — sie will, dass ein Agent fertige Drafts automatisch in den Slack-Kanal #marketing-freigabe postet, inklusive kurzem Kontext-Absatz. (Quelle: 12 Q109, Quelle: sources/10 S-049)
+**Strategisches Ziel:** Den Freigabeprozess von E-Mail auf Slack verlagern und dabei klar die Grenze zwischen der nativen Slack-Integration (was Langdock kann) und der Trigger-Logik (was im Workflow-Builder liegt) ziehen.
+**Hands-on Ergebnis:** Ein Slack-Benachrichtigungs-Konzept mit Nachrichtenformat-Vorlage und einer klaren Abgrenzung, welche Teile die Integration und welche der Workflow verantworten.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Slack-Integration (Action: Nachricht posten), Agent-Actions; Trigger-Logik gehört in `04-workflows`.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data das Nachrichtenformat für den Slack-Post entwerfen: Kampagnen-Name, Entwurfs-Link, kurze Kontext-Zusammenfassung, Freigabe-Deadline.
+2. Du lässt die Integrations-Grenze klar benennen: Die native Slack-Action postet die Nachricht; wann sie ausgelöst wird (Status-Wechsel, Cron, manuell), ist Workflow-Thema.
+3. Du übergibst das Format und die Schnittstellenbeschreibung an Marketing-Ops; die Workflow-Konfiguration wird separat in `04-workflows` beraten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Berater (Persona). Entwirf ein Slack-Benachrichtigungsformat für freigabereife Kampagnen-Entwürfe und beschreibe die Abgrenzung zur Workflow-Logik (Aufgabe). Kontext: Zielkanal #marketing-freigabe, Zielgruppe Marketingleitung, maximale Nachrichtenlänge drei kurze Sätze plus Link (Kontext). Format: Nachrichtenvorlage in Markdown plus zwei Sätze Schnittstellenbeschreibung Integration vs. Workflow (Format)."
+**Erwartetes Artefakt:** Eine Slack-Nachrichtenvorlage und eine Schnittstellen-Abgrenzung Integration vs. Workflow.
+**Fallstricke (≥2 spezifisch):**
+- Trigger-Bedingung in der Integrationsberatung mitlösen → Die Auslöselogik ("wann posten") gehört in die Workflow-Beratung (`04-workflows`); sie hier zu spezifizieren erzeugt Governance-Konflikte.
+- Slack-Action an persönlichen Account binden → Einen Bot-Token oder Team-Account verwenden, damit Benachrichtigungen bei Personalwechsel nicht abreißen.
+**Anschluss-Szenario:** S-IM-015
+
+### S-IM-015 Salesforce-Daten für personalisierte Kampagnen lesen (Advisory)
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin plant eine ABM-Kampagne und möchte, dass der Agent Account-Felder aus Salesforce (Branche, ARR-Band, offene Opportunities) als Kontext nutzt — die Salesforce-Admins fragen nach einem Berechtigungs-Konzept. (Quelle: 12 Q112, Quelle: 12 Q115)
+**Strategisches Ziel:** Einen governance-konformen Lese-Zugriff auf Salesforce-Account-Daten etablieren, der Personalisierung ermöglicht, ohne der KI Schreibzugriff auf produktive CRM-Daten zu geben.
+**Hands-on Ergebnis:** Ein Salesforce-Berechtigungs-Konzept mit den minimal notwendigen API-Scopes, einer Trennung von Lese- und Schreib-Pfad und einem Datenschutz-Hinweis zu PII in CRM-Feldern.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Salesforce-Integration (Read-Only), Agent-Actions, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die für die ABM-Kampagne benötigten Salesforce-Objekte bestimmen (Account, Opportunity — kein Contacts mit PII, wenn vermeidbar).
+2. Du lässt das Berechtigungs-Konzept formulieren: Connected App mit Lese-Profil, Ausschluss von PII-schweren Feldern wie persönliche E-Mails und Mobilnummern.
+3. Du lässt den Datenschutz-Hinweis einarbeiten: Salesforce-Einträge mit personenbezogenen Daten dürfen den Agent-Kontext nur anonymisiert (User-IDs statt Namen) verlassen.
+4. Du übergibst das Konzept an Salesforce-Admin und Datenschutzbeauftragten; die Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein CRM-Datenschutz-Berater (Persona). Erstelle ein Salesforce-Berechtigungs-Konzept für einen Lese-Agenten in unserer ABM-Kampagne (Aufgabe). Kontext: Felder Account-Branche, ARR-Band, offene Opportunities; keine personenbezogenen Kontaktdaten; DSGVO-Konformität ist Pflicht (Kontext). Format: Tabelle mit Salesforce-Objekt, benötigtem Scope, PII-Risiko und Maßnahme; plus drei Sätze Datenschutz-Hinweis (Format)."
+**Erwartetes Artefakt:** Ein Salesforce-Berechtigungs-Konzept (Tabelle) mit PII-Risikobewertung und Datenschutz-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- Contacts-Objekt mit E-Mail und Mobilnummer in den Agent-Kontext laden → Nur anonymisierbare Felder wie Account-ID und ARR-Band übergeben; personenbezogene Daten minimieren gemäß DSGVO-Datensparsamkeit.
+- Salesforce-Verbindung über ein Admin-Profil einrichten → Einen dedizierten Read-Only-Profile-User für die Langdock-Integration empfehlen, damit kein Privilege-Escalation-Risiko entsteht.
+**Anschluss-Szenario:** S-IM-016
+
+### S-IM-016 Tool-Stack-Konsolidierung mit Langdock als Orchestrator planen
+
+**Wann nutzen (Trigger):** Das Unternehmen nutzt gleichzeitig HubSpot, Marketo und Klaviyo — die Marketing-Direktorin fragt, ob Langdock eines davon ersetzen oder alle drei zusammenführen kann. (Quelle: A-08)
+**Strategisches Ziel:** Langdock nicht als CRM-/MAP-Ersatz positionieren, sondern als Orchestrator-Layer, der via MCP und nativer Integrationen über den bestehenden Tool-Stacks agiert und Daten-Silos überbrückt.
+**Hands-on Ergebnis:** Eine Orchestrator-Architektur-Skizze, die für jeden Stack den MCP-Anbindungsweg, die Lese-/Schreib-Grenzen und die Governance-Verantwortung benennt.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, native HubSpot-Integration, native Salesforce-Integration; Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klarstellen, dass Langdock kein MAP (Marketing Automation Platform) ersetzt, sondern als Intelligence-Layer über den Stacks operiert.
+2. Du lässt für jeden Stack bestimmen, ob eine native Integration oder ein MCP-Server der geeignete Anbindungsweg ist und welche Lese-Scopes nötig sind.
+3. Du lässt die Governance-Grenze benennen: Schreib-Aktionen (z. B. Lead-Status in HubSpot ändern) verbleiben bei Marketing-Operations, nicht beim Agent.
+4. Du übergibst die Architektur-Skizze an IT und Marketing-Ops als Entscheidungsgrundlage für die Konsolidierung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Architekt (Persona). Entwirf eine Orchestrator-Architektur für Langdock über unseren drei Tool-Stacks HubSpot, Marketo und Klaviyo (Aufgabe). Kontext: Langdock ersetzt keinen Stack, soll aber Daten aus allen dreien für Personalisierung und Reporting lesend nutzen können (Kontext). Format: Tabelle mit Stack, Anbindungsweg (nativ/MCP), Lese-Scope, Governance-Verantwortung; plus zwei Sätze Abgrenzung was Langdock NICHT übernimmt (Format)."
+**Erwartetes Artefakt:** Eine Orchestrator-Architektur-Tabelle mit Anbindungswegen, Scopes und Governance-Grenzen.
+**Fallstricke (≥2 spezifisch):**
+- Langdock als MAP-Ersatz framen → Klar kommunizieren, dass Kampagnen-Ausführung (E-Mail-Versand, A/B-Tests) im jeweiligen Stack verbleibt; Langdock übernimmt Analyse und Content-Generierung.
+- MCP-Server für alle Stacks gleichzeitig aufsetzen wollen → Priorisieren nach Business-Impact und einen Stack nach dem anderen anbinden, um Komplexität und Fehlerrisiko zu begrenzen.
+**Anschluss-Szenario:** S-IM-017
+
+### S-IM-017 API-Key-Management für MCP-Verbindungen governance-konform aufsetzen
+
+**Wann nutzen (Trigger):** Die IT hat drei MCP-Server für Kampagnen-Datenbank, GA4 und Jira bereitgestellt — die Marketing-Direktorin fragt, wie API-Keys sicher verwaltet werden, damit kein Zugangsdaten-Leak entsteht. (Quelle: sources/10 S-061, Quelle: 12 Q115)
+**Strategisches Ziel:** API-Keys für alle MCP-Verbindungen über dynamische Platzhalter in Custom Headern verwalten, sodass keine Zugangsdaten im Klartext in Agenten-Konfigurationen erscheinen.
+**Hands-on Ergebnis:** Ein API-Key-Management-Konzept mit Rotation-Policy, Platzhalter-Syntax für Custom Header und einer Zuständigkeitsmatrix (wer rotiert wann).
+**Eingesetzte Langdock-Fähigkeit(en):** MCP-Client mit Custom-Header-Auth, dynamische API-Key-Platzhalter, Admin-Secrets-Management.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data erklären, wie dynamische Platzhalter in Custom Headern funktionieren und warum Keys nie im Klartext in der Agenten-Konfiguration stehen dürfen.
+2. Du lässt eine Rotation-Policy definieren: API-Keys für MCP-Verbindungen alle 90 Tage rotieren, Zugangsdaten ausschließlich im Langdock-Admin-Secrets-Bereich hinterlegen.
+3. Du lässt eine Zuständigkeitsmatrix formulieren: IT rotiert und hinterlegt Keys; Marketing-Direktorin gibt Anforderungen vor; Marketing-Ops meldet Verbindungsfehler.
+4. Du übergibst das Konzept an IT-Security zur Umsetzung und Dokumentation.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein IT-Security-Berater für Langdock-Integrationen (Persona). Erstelle ein API-Key-Management-Konzept für unsere drei MCP-Verbindungen (Aufgabe). Kontext: Verbindungen zu Kampagnen-DB, GA4 und Jira; DSGVO-konformes EU-Hosting; keine Keys im Klartext (Kontext). Format: Konzept mit Abschnitten Platzhalter-Syntax, Rotation-Policy, Zuständigkeitsmatrix (Format)."
+**Erwartetes Artefakt:** Ein API-Key-Management-Konzept mit Rotation-Policy und Zuständigkeitsmatrix.
+**Fallstricke (≥2 spezifisch):**
+- API-Keys direkt im MCP-Server-Setup als Klartext eintragen → Ausschließlich dynamische Platzhalter nutzen, die auf im Langdock-Admin gespeicherte Secrets verweisen.
+- Keys nie rotieren → Mindestens 90-Tage-Rotation vorschreiben und im IT-Ticket-System als wiederkehrende Aufgabe verankern; abgelaufene Keys führen zu stillen Verbindungsabbrüchen.
+**Anschluss-Szenario:** S-IM-018
+
+### S-IM-018 Integration-Monitoring-Konzept für laufende MCP-Verbindungen aufsetzen
+
+**Wann nutzen (Trigger):** Ein MCP-Server für die Kampagnen-Datenbank ist still abgerissen — der Agent hat es nicht gemeldet und drei Tage lang veraltete Daten geliefert. Die Direktorin will ein Frühwarnsystem. (Quelle: sources/10 S-062)
+**Strategisches Ziel:** Einen einfachen Monitoring-Rahmen definieren, der Verbindungsabbrüche und Qualitätsdrift bei MCP- und nativen Integrationen sichtbar macht, bevor sie operative Schäden anrichten.
+**Hands-on Ergebnis:** Ein Monitoring-Konzept mit Canary-Prompts, Eskalations-Schwellen und einer Verantwortlichkeitsmatrix für die regelmäßige Integration-Gesundheitsprüfung.
+**Eingesetzte Langdock-Fähigkeit(en):** MCP-Client-Verbindungen, Langdock-Audit-Logs, Agent-Spot-Check-Routine.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data fünf Canary-Prompts je MCP-Verbindung definieren — einfache Abfragen mit erwartbarem Ergebnis, die wöchentlich manuell oder über einen Workflow ausgeführt werden.
+2. Du lässt Eskalations-Schwellen festlegen: Bei zwei von fünf Canary-Fehlern → sofortige IT-Meldung; bei Verbindungsabbruch → Fallback auf gecachte Wissensordner-Inhalte.
+3. Du lässt eine Verantwortlichkeitsmatrix erstellen: Marketing-Ops führt wöchentliche Spot-Checks durch; IT behebt Verbindungsfehler innerhalb von 24 Stunden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integration-Reliability-Berater (Persona). Erstelle ein Monitoring-Konzept für unsere drei aktiven MCP-Verbindungen (Aufgabe). Kontext: stiller Verbindungsabbruch ist dreimal aufgetreten, kein Alert-System vorhanden (Kontext). Format: Konzept mit Abschnitten Canary-Prompts-Beispiele, Eskalations-Schwellen, Verantwortlichkeitsmatrix (Format)."
+**Erwartetes Artefakt:** Ein Integration-Monitoring-Konzept mit Canary-Prompts, Eskalations-Schwellen und Zuständigkeitsmatrix.
+**Fallstricke (≥2 spezifisch):**
+- Monitoring rein reaktiv betreiben → Wöchentliche Canary-Runs proaktiv im Kalender als feste Routine verankern, nicht erst auf Beschwerden warten.
+- Fallback-Strategie vergessen → Für jede kritische Verbindung definieren, was der Agent tut, wenn der MCP-Server nicht antwortet (z. B. gecachten Wissensordner nutzen und den Nutzer auf veraltete Daten hinweisen).
+**Anschluss-Szenario:** S-IM-019
+
+### S-IM-019 SSO-Einrichtung für den Marketing-Workspace beraten
+
+**Wann nutzen (Trigger):** Die IT-Abteilung soll Single Sign-On (SSO) für den Langdock-Marketing-Workspace einrichten — die Marketing-Direktorin wird um eine Anforderungs-Liste gebeten und fragt Little Data, was sie konkret formulieren muss. (Quelle: 12 Q115)
+**Strategisches Ziel:** Den Marketing-Workspace mit dem unternehmenseigenen Identity-Provider (IdP) verbinden, um Passwort-Ärger zu eliminieren, Offboarding-Risiken zu schließen und SCIM-Provisionierung für neue Teammitglieder zu vereinfachen.
+**Hands-on Ergebnis:** Eine SSO-Anforderungs-Liste für die IT mit SAML-2.0- bzw. OIDC-Angaben, SCIM-Sync-Empfehlung und einem Hinweis auf den Onboarding-Verzug bei Konto-Provisionierung.
+**Eingesetzte Langdock-Fähigkeit(en):** SSO (SAML 2.0 / OIDC), SCIM-Provisionierung, Workspace-Admin-Berechtigungen.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die SSO-Kernangaben sammeln, die die IT braucht: IdP-Typ (z. B. Azure AD, Okta), Assertion Consumer Service URL, SCIM-Endpoint und Attribut-Mapping für Marketing-Gruppen.
+2. Du lässt den SCIM-Nutzen klar machen: Neue Mitarbeiter werden automatisch in die Marketing-Gruppe provisioniert; ausscheidende Mitarbeiter verlieren sofort den Workspace-Zugang.
+3. Du lässt das IT-Briefing formulieren und dabei betonen, dass Little Data berät aber nicht konfiguriert — die Umsetzung liegt bei IT und Workspace-Admin.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Workspace-Governance-Berater (Persona). Erstelle eine SSO-Anforderungs-Liste für unseren Langdock-Marketing-Workspace (Aufgabe). Kontext: Identity-Provider Azure AD, ca. 25 Marketing-Mitarbeiter, DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Angabe, benötigtem Wert, Begründung; plus Abschnitt SCIM-Empfehlung mit drei Bulletpoints (Format)."
+**Erwartetes Artefakt:** Eine SSO-Anforderungs-Liste (Tabelle) und eine SCIM-Empfehlung für die IT.
+**Fallstricke (≥2 spezifisch):**
+- SSO-Verbindung an einen persönlichen Admin-Account binden → Immer einen Service-Account oder technischen Owner benennen, damit der Workspace-Zugang bei Personalwechsel nicht unterbrochen wird.
+- SCIM-Provisionierung weglassen → Ohne SCIM müssen neue Teammitglieder manuell im Workspace angelegt werden; das erzeugt Onboarding-Verzüge und vergessene Offboarding-Schritte.
+**Anschluss-Szenario:** S-IM-020
+
+### S-IM-020 Jira-Integration für Marketing-IT-Tickets aus dem Chat nutzen
+
+**Wann nutzen (Trigger):** Im Chat entdeckt die Marketing-Direktorin, dass ein Tracking-Link fehlerhaft ist — sie will aus dem laufenden Chat-Kontext heraus ein Jira-Ticket für die IT erstellen, ohne das Fenster zu wechseln. (Quelle: 12 Q113)
+**Strategisches Ziel:** Die native Jira-Integration als Action-Baustein einsetzen, um aus Chat-Kontext heraus strukturierte IT-Tickets zu erzeugen und damit den Weg von Fehler-Entdeckung zu IT-Bearbeitung zu verkürzen.
+**Hands-on Ergebnis:** Ein Jira-Ticket-Template für Marketing-Fehler-Meldungen und ein Briefing, das der IT erklärt, welche Jira-Felder der Agent befüllen soll.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Jira-Integration (Action: Ticket erstellen), Agent-Actions.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die Jira-Felder bestimmen, die für ein Marketing-Fehler-Ticket sinnvoll sind: Summary, Description mit Kontext aus dem Chat, Priority, Komponente (Tracking/Analytics) und Reporter.
+2. Du lässt ein Ticket-Template formulieren, das der Agent anhand des Chat-Kontexts befüllen soll, ohne Informationen hinzuzuerfinden.
+3. Du übergibst Template und Scope-Briefing (Issue-Create-Permission für Marketing-Projekt) an die IT; Little Data berät, erstellt keine Tickets.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Workflow-Integrations-Berater (Persona). Entwirf ein Jira-Ticket-Template für Marketing-Fehler-Meldungen, die aus einem Langdock-Chat heraus erstellt werden (Aufgabe). Kontext: Fehler betreffen Tracking-Links, UTMs und Analytics-Pixel; Reporter ist immer das Marketing-Team (Kontext). Format: Template mit Jira-Feldern als Tabelle plus drei Sätze IT-Briefing zu benötigter Jira-Permission (Format)."
+**Erwartetes Artefakt:** Ein Jira-Ticket-Template (Tabelle) und ein Permission-Briefing für die IT.
+**Fallstricke (≥2 spezifisch):**
+- Agent erfindet Ticket-Details, wenn der Chat-Kontext lückenhaft ist → Im Prompt anweisen, fehlende Felder explizit als "offen — bitte ergänzen" zu markieren, statt zu raten.
+- Jira-Permission zu breit erteilen → Nur Issue-Create-Rechte für das Marketing-Projekt anfragen; kein Admin-Zugang, keine Project-Konfiguration.
+**Anschluss-Szenario:** S-IM-021
+
+### S-IM-021 MCP vs. native Integration entscheiden — Entscheidungsrahmen für neue Tools
+
+**Wann nutzen (Trigger):** Das Marketing-Team will ein neues Analytics-Tool anbinden und ist unsicher, ob eine native Integration, ein MCP-Server oder ein Custom Integration Builder der richtige Weg ist. (Quelle: sources/10 S-049, Quelle: A-08)
+**Strategisches Ziel:** Einen wiederverwendbaren Entscheidungsrahmen entwickeln, der für jedes neue Marketing-Tool schnell den governance-konformen Anbindungsweg bestimmt und unnötige Custom-Entwicklung verhindert.
+**Hands-on Ergebnis:** Ein Entscheidungsbaum (native Integration → MCP-Server → Custom Builder → HTTP-Brücke) mit Kriterien und Risikobewertung je Pfad.
+**Eingesetzte Langdock-Fähigkeit(en):** Überblick native Integrationen, MCP-Client, Custom Integration Builder (JavaScript-Sandbox).
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die vier Anbindungspfade (nativ, MCP, Custom Builder, HTTP-Brücke) mit ihren Voraussetzungen und typischen Einsatzfällen beschreiben.
+2. Du lässt Entscheidungskriterien formulieren: Gibt es eine native Integration? Bietet der Anbieter einen MCP-Server an? Ist eigene JavaScript-Entwicklung vorhanden? Ist eine Drittanbieter-Brücke DSGVO-konform?
+3. Du lässt den Entscheidungsbaum als Tabelle mit Kriterium, empfohlenem Weg, Vorteil und Risiko ausarbeiten.
+4. Du übergibst den Rahmen an Marketing-Ops und IT als Orientierung für künftige Tool-Evaluierungen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Architekt (Persona). Erstelle einen Entscheidungsrahmen für die Auswahl des Anbindungswegs neuer Marketing-Tools an Langdock (Aufgabe). Kontext: vier Pfade — nativ, MCP, Custom Builder, HTTP-Brücke; DSGVO-Konformität ist Pflichtkriterium (Kontext). Format: Entscheidungsbaum als Tabelle mit Kriterium, empfohlenem Pfad, Hauptvorteil, Risiko (Format)."
+**Erwartetes Artefakt:** Ein Entscheidungsbaum (Tabelle) für die Wahl des Anbindungswegs neuer Marketing-Tools.
+**Fallstricke (≥2 spezifisch):**
+- Direkt zum Custom Builder greifen, weil er flexibel wirkt → Custom-Entwicklung schafft Wartungsaufwand; zuerst prüfen, ob eine native Integration oder ein verfügbarer MCP-Server die Anforderung bereits erfüllt.
+- HTTP-Brücken als gleichwertig zu nativen Integrationen behandeln → Auf das höhere Bruchrisiko bei API-Änderungen und den Drittanbieter-Datentransfer hinweisen; DSGVO-Konformität des Brücken-Anbieters prüfen lassen.
+**Anschluss-Szenario:** S-IM-022
+
+### S-IM-022 Integration-ROI für den CFO berechnen und kommunizieren
+
+**Wann nutzen (Trigger):** Der CFO fragt vor der Budgetfreigabe für drei neue MCP-Integrationen, welchen messbaren Nutzen sie bringen — die Marketing-Direktorin braucht ein ROI-Argument in CFO-Sprache. (Quelle: A-01, Quelle: A-08)
+**Strategisches Ziel:** Den Nutzen von Langdock-Integrationen in betriebswirtschaftliche Kennzahlen übersetzen: eingesparte Manualstunden, verkürzte Time-to-Brief, reduzierter CSV-Export-Aufwand.
+**Hands-on Ergebnis:** Ein einseitiges ROI-Kalkulationsblatt für drei Integrationen (HubSpot-Read, SharePoint-Synced, Jira-Ticket) mit Lohnkosten-Äquivalent und Break-even-Zeitraum.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Integrationsnutzen, Wissensordner für ROI-Template, Agent für Kalkulationshilfe.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die heutigen manuellen Aufwände je Integration schätzen: Wochenstunden für CSV-Export (HubSpot), Dokumentenpflege (SharePoint), IT-Ticket-Erstellung (Jira).
+2. Du lässt die Einsparung je Integration in Stunden/Monat und Lohnkosten-Äquivalent übersetzen (Durchschnittssatz Marketingleitung × eingesparte Stunden).
+3. Du lässt den Break-even-Zeitraum berechnen: Einrichtungsaufwand (IT-Stunden) ÷ monatliche Einsparung = Break-even in Monaten.
+4. Du übergibst das Kalkulationsblatt an den CFO als Entscheidungsgrundlage; die Zahlen sind Schätzwerte und müssen vom Controlling validiert werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-ROI-Berater (Persona). Erstelle ein ROI-Kalkulationsblatt für drei Langdock-Integrationen (Aufgabe). Kontext: HubSpot-Daten-Export heute 3h/Woche, SharePoint-Dokumentenpflege 2h/Woche, Jira-Ticket-Erstellung 1h/Woche; Durchschnittssatz Marketingleitung 120 EUR/h (Kontext). Format: Tabelle mit Integration, heutigem Aufwand, prognostizierter Einsparung, Break-even in Monaten; plus ein Satz Validierungshinweis (Format)."
+**Erwartetes Artefakt:** Ein ROI-Kalkulationsblatt (Tabelle) mit Break-even-Zeitraum und Validierungshinweis.
+**Fallstricke (≥2 spezifisch):**
+- ROI-Zahlen als präzise Garantie präsentieren → Explizit als Schätzwerte kennzeichnen und Controlling um Validierung mit echten Zeiterfassungsdaten bitten.
+- Einrichtungsaufwand unterschätzen → IT-Stunden für Setup, Testen und Dokumentation in die Break-even-Rechnung einbeziehen, nicht nur die laufenden Einsparungen.
+**Anschluss-Szenario:** S-IM-023
+
+### S-IM-023 HubSpot vs. Salesforce — Integrations-Entscheidung für einen Stack-Wechsel beraten
+
+**Wann nutzen (Trigger):** Das Unternehmen diskutiert, ob es von HubSpot auf Salesforce wechseln soll — die Marketing-Direktorin will wissen, wie sich dieser Wechsel auf die bestehenden Langdock-Integrationen und Agenten-Workflows auswirkt. (Quelle: sources/10 S-010, Quelle: A-08)
+**Strategisches Ziel:** Die Integrations-Konsequenzen eines CRM-Wechsels realistisch bewerten: welche Agenten und Workflows müssen angepasst werden, welche native Integration fällt weg, welche ist sofort verfügbar.
+**Hands-on Ergebnis:** Eine CRM-Wechsel-Impact-Analyse mit einer Tabelle der betroffenen Agenten, dem jeweils nötigen Umbau und einer Empfehlung zur Migrationspriorisierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Überblick native CRM-Integrationen (HubSpot, Salesforce), Agent-Inventar, Advisory-Beratung.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data alle Agenten und Workflows inventarisieren, die heute auf HubSpot-Felder oder -Actions zugreifen.
+2. Du lässt je Eintrag prüfen, ob eine direkt äquivalente Salesforce-Integration in Langdock nativ verfügbar ist oder ob ein Umbau via MCP-Server nötig wird.
+3. Du lässt das Migrationsrisiko je Eintrag einschätzen: niedriges Risiko (1:1-native-Ersatz), mittleres Risiko (Scope-Anpassung nötig), hohes Risiko (kein direkter Ersatz).
+4. Du übergibst die Impact-Analyse an IT, Marketing-Ops und die CRM-Entscheidungsgruppe; die Migration selbst liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Berater (Persona). Erstelle eine CRM-Wechsel-Impact-Analyse für den Umstieg von HubSpot auf Salesforce in unserem Langdock-Workspace (Aufgabe). Kontext: drei Reporting-Agenten, ein Lead-Anreicherungs-Workflow und ein Synced-Folder-Alias hängen an HubSpot-Daten (Kontext). Format: Tabelle mit Agent/Workflow, heutiger HubSpot-Abhängigkeit, Salesforce-Äquivalent, Migrationsrisiko niedrig/mittel/hoch (Format)."
+**Erwartetes Artefakt:** Eine CRM-Wechsel-Impact-Analyse (Tabelle) mit Migrationsrisiko je Agent und Workflow.
+**Fallstricke (≥2 spezifisch):**
+- Annehmen, Salesforce und HubSpot hätten identische API-Feldnamen → Salesforce nutzt andere Objekt-Bezeichner (z. B. "Opportunity" statt "Deal"); alle Agenten-Prompts, die Feldnamen hartcodiert haben, müssen angepasst werden.
+- Migration als reines IT-Thema behandeln → Die fachliche Priorisierung (welcher Reporting-Pfad läuft weiter, welcher hat Übergangsfristen) muss die Marketing-Direktorin vorgeben, nicht die IT.
+**Anschluss-Szenario:** S-IM-024
+
+### S-IM-024 Custom Integration Builder für proprietäres Lead-Scoring-Tool planen
+
+**Wann nutzen (Trigger):** Das Unternehmen hat eine selbst entwickelte Lead-Scoring-Engine, für die weder eine native Integration noch ein MCP-Server existiert — die Marketing-Direktorin fragt, ob und wie Langdock dennoch Daten daraus lesen kann. (Quelle: sources/10 S-061)
+**Strategisches Ziel:** Den Custom Integration Builder als Lösung für proprietäre Systeme ohne Standard-Integration positionieren und dabei die Sicherheits- und Governance-Anforderungen an die JavaScript-Sandbox klar benennen.
+**Hands-on Ergebnis:** Ein Anforderungs-Brief für das Entwicklungs-Team, der die JavaScript-Sandbox-Architektur erklärt, Input-/Output-Schemata definiert und die Sicherheitsgrenzen der isolierten Ausführungsumgebung benennt.
+**Eingesetzte Langdock-Fähigkeit(en):** Custom Integration Builder (JavaScript-Sandbox), Input-/Output-Schema-Definition, isolierte Containerausführung.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data erklären, was der Custom Integration Builder kann: isolierte JavaScript-Sandbox, klar definierte Input-/Output-Schemata, kein Netzwerk- oder Host-Zugriff außerhalb der Sandbox.
+2. Du lässt die konkret benötigten API-Endpunkte der Lead-Scoring-Engine, die Input-Parameter (Lead-ID, Segment) und das erwartete Output-Format (Score 0–100, Reasoning-String) spezifizieren.
+3. Du lässt die Sicherheitsanforderungen formulieren: Sandbox läuft in abgeschottetem Container; keine Langtext-Einbindung von Drittbibliotheken ohne IT-Freigabe.
+4. Du übergibst den Anforderungs-Brief an das Entwicklungs-Team; die Implementierung liegt bei den Entwicklern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Custom-Integration-Berater (Persona). Erstelle einen Anforderungs-Brief für den Langdock Custom Integration Builder, der unsere interne Lead-Scoring-API anbindet (Aufgabe). Kontext: Die API gibt Score (0–100) und Reasoning-String zurück; Auth per Bearer-Token; kein nativer Konnektor vorhanden (Kontext). Format: Anforderungs-Brief mit Abschnitten API-Endpunkt, Input-Schema, Output-Schema, Sicherheitsanforderungen (Format)."
+**Erwartetes Artefakt:** Ein Anforderungs-Brief für den Custom Integration Builder mit Input-/Output-Schemata und Sicherheitsanforderungen.
+**Fallstricke (≥2 spezifisch):**
+- Externe Bibliotheken unkontrolliert in die Sandbox laden → Drittbibliotheken müssen vor Einbindung durch die IT-Security geprüft werden; die Sandbox schützt zwar das Langdock-System, aber unkontrollierte Abhängigkeiten erhöhen das Supply-Chain-Risiko.
+- Output-Schema vage lassen → Ein schlecht definiertes Output-Schema führt dazu, dass das KI-Modell die Rückgabe falsch interpretiert; Score als Integer und Reasoning als String explizit typisieren.
+**Anschluss-Szenario:** S-IM-025
+
+### S-IM-025 Integrations-Strategie für einen neuen Langdock-Workspace in 30 Tagen planen
+
+**Wann nutzen (Trigger):** Das Unternehmen startet frisch mit Langdock — die Marketing-Direktorin will in den ersten 30 Tagen die wichtigsten Integrationen in Betrieb nehmen und fragt nach einem priorisierten Rollout-Plan. (Quelle: A-04, Quelle: A-08)
+**Strategisches Ziel:** Einen 30-Tage-Integrationsplan entwickeln, der mit den schnell umsetzbaren und höchsten Business-Impact-Verbindungen startet und Governance-Anforderungen (SSO, SCIM, Advisory-Grenze) von Tag 1 einbaut.
+**Hands-on Ergebnis:** Ein priorisierter 30-Tage-Rollout-Plan mit Woche-1- bis Woche-4-Meilensteinen, je Integration benanntem Owner und klarer Unterscheidung zwischen was Langdock nativ bietet und was MCP oder Custom Builder braucht.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Integrationen (HubSpot, Google Drive, Slack, DeepL), SSO/SCIM, MCP-Client, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die Integrationen nach Business-Impact priorisieren: Woche 1 SSO+SCIM (Governance-Fundament), Woche 2 Google Drive Synced Folder (Wissensquelle), Woche 3 HubSpot Read (Reporting), Woche 4 Slack-Action (Freigabe).
+2. Du lässt je Meilenstein einen Owner benennen: IT verantwortet SSO/SCIM und CRM-Scopes; Marketing-Ops verantwortet Synced-Folder-Taxonomie und Slack-Kanal.
+3. Du lässt die Advisory-Grenze explizit einbauen: Little Data liefert Briefings und Konzepte je Meilenstein; die Konfiguration übernehmen IT und Operations.
+4. Du übergibst den Rollout-Plan als Kick-off-Dokument an IT, Marketing-Ops und Workspace-Admin.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrationsplanungs-Berater für einen neuen Langdock-Workspace (Persona). Erstelle einen 30-Tage-Rollout-Plan für die wichtigsten Marketing-Integrationen (Aufgabe). Kontext: Team mit 20 Personen, Stack: Google Workspace, HubSpot, Slack, keine Salesforce-Anbindung geplant; DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Woche, Integration, Owner, erwartetes Ergebnis, Abhängigkeit; plus zwei Sätze zur Advisory-Grenze (Format)."
+**Erwartetes Artefakt:** Ein 30-Tage-Rollout-Plan (Tabelle) mit Meilensteinen, Ownern und Advisory-Grenze-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- Alle Integrationen gleichzeitig starten wollen → Sequenziell vorgehen und mit dem Governance-Fundament (SSO/SCIM) beginnen; parallele Setups erhöhen Fehlerrisiko und erschweren die Fehlersuche.
+- Keinen Owner je Meilenstein benennen → Ohne klare Verantwortlichkeit bleiben Integrationen halb fertig; je Meilenstein eine Person benennen, die den Abschluss bestätigt.
+**Anschluss-Szenario:** S-IM-001
+
 ## Hinweise & Quellen-Konflikte
 
 - Native-Integrations-Zahl: Das Feature-Overview nennt "55+", die Produktseite "57 Integrationen / 754 Actions", das deutsche Master-Inventar "60+". Belastbar ist "55+ native Integrationen mit rund 754 Actions"; die exakte Zahl ist offiziell nicht dokumentiert und sollte vor einem Rollout bei support@langdock.com bestätigt werden.
