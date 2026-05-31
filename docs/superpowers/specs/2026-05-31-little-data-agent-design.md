@@ -43,10 +43,12 @@ Non-goal: building anything that requires Workflows, custom integrations, MCP, o
 - **F8** When no Wissensordner chunk meets the relevance threshold, reply with: *"Diese Information liegt nicht in meiner Datenbank. Ich empfehle einen Blick in docs.langdock.com/de oder die Klärung mit deinem Langdock-Admin."* — and stop. Do not improvise.
 - **F9** Every substantive reply is **gestaffelt**: (a) Kurz-Übersicht ≤ 120 words in chat, (b) "Quelle: [dateiname]" line, (c) one concrete next step with action verb, (d) 2–4 explicit deepening options ("Soll ich X, Y oder Z ausarbeiten?"). Pure factual one-liner replies are exempt (e.g., "Ja, das ist DSGVO-konform — Quelle: 08-sicherheit-und-governance").
 - **F10** **Canvas auto-trigger.** When the user's request implies the production of a concrete deliverable (mehrstufige Vorgehensweise, Briefing-Entwurf, Vergleichsanalyse, Strukturvorschlag, längerer Draft), the agent opens the Canvas / Document Editor automatically. The chat reply holds only the Kurz-Übersicht and the Vertiefungsoptionen; the deliverable itself lives in the Canvas.
+- **F11** **Initial Knowledge Search (persona-via-knowledge).** The agent's system prompt instructs it to perform a predefined retrieval query against the Wissensordner at the start of every session, loading its full persona definition from a dedicated knowledge file (`10-persona-data.md`) rather than baking it into the prompt. Exact query string and persona-file H2 anchors are TBD pending Prompt 8 + Subagent A/B outputs; the prompt holds a placeholder until then. This keeps the system prompt small AND lets the persona evolve without prompt redeployment.
+- **F12** **Inline Skills retrieval.** A dedicated knowledge file (`11-inline-skills-bibliothek.md`) holds 50 atomic micro-task skills (Format conversions, Text generation, Refinement, Quick analysis, Quick structuring). Each skill is one ≤1500-char chunk with trigger phrases optimized so that a marketing director's natural German request retrieves exactly the right skill. The agent then executes the skill using only default capabilities (Web Search / Data Analyst / Canvas / Image Generation). Source content from Gemini Prompt 9.
 
 ### 3.2 Non-functional
 
-- **N1 (PRIME)** Token-efficient. System prompt ≤ 2 500 chars (≈ 700 tokens). No restatement of Lt. Cmdr. Data persona — assume the model has him in its weights. **Validator:** `tools/check_prompt_size.sh` in CI; fails on overrun.
+- **N1 (PRIME)** Token-efficient. System prompt **≤ 15 000 chars** (raised from 2 500 per user decision 2026-05-31). The lift in budget allows inlining of (a) the SOUL/STYLE/SKILL anchors that small models drift on, (b) the recommended two-step retrieval bootstrap clause, and (c) explicit DO/DON'T lists with canon-grounded voice anchors. Despite the larger budget, **the discipline remains "no restatement of model-prior knowledge"** — Lt. Cmdr. Data's character is assumed in the LLM's weights; only Little Data-specific deltas (domain, audience, retrieval rules, Julia mode, voice transfers) are inlined. **Validators:** `tools/check_prompt_size.sh` (char count, fail on >15 000) AND `tools/check_prompt_tokens.py` (tiktoken-based, reports token count for each target model; advisory, not hard-fail). Heavy lifting still lives in the Wissensordner — see N3, N10.
 - **N2** Performs acceptably on **Gemini 2.5 Flash** (€0.26/M input) and **Haiku 4.5** (€0.86/M input). Test these as primary; reserve Sonnet/Opus only for ambiguous edge cases. **Persona pre-check:** before any Knowledge-file authoring begins, calibrate canonical-Data prior on both target models — see Build step 1.5.
 - **N3** Knowledge is retrieved, not packed into the system prompt. Per-document-cap aware: one chunk per file per query.
 - **N4** Default response length ≤ 250 words unless the user explicitly asks for depth. Long-form responses go through Canvas, not chat.
@@ -54,7 +56,10 @@ Non-goal: building anything that requires Workflows, custom integrations, MCP, o
 - **N6** Zero fabrication of Langdock numbers, limits, or pricing. **Validator:** the 5-question canary canary test in Build step 8 (see 4.7) — agent must refuse 5 fake-feature questions.
 - **N7** Retrieval-miss behavior is explicit (see F8). Agent must not synthesize an answer when no chunk was retrieved with similarity ≥ 0.5 (heuristic threshold; tune in spot-check).
 - **N8** Language anchor: the system prompt explicitly forbids drift to English. Even under uncertainty, the agent replies in German.
-- **N9** **Knowledge-File-Tonalität (separate Spec follows).** The 11 Knowledge files themselves are authored in a Data-aligned style — klar, präzise, leicht verständlich, technisch versiert, anpassungsfähig an den Empfänger — **aber ohne Data-Humor, ohne Rollenspiel, ohne erste-Person-Service-Log-Frame**. Die Aufbereitungs-Spec wird als eigener Spec-Schritt (`2026-XX-XX-knowledge-file-authoring-spec.md`) ausgearbeitet, sobald die zusätzlichen Gemini-Recherche-Outputs vorliegen.
+- **N9** **Knowledge-File-Tonalität (separate Spec follows).** The Knowledge files themselves are authored in a Data-aligned style — klar, präzise, leicht verständlich, technisch versiert, anpassungsfähig an den Empfänger — **aber ohne Data-Humor, ohne Rollenspiel, ohne erste-Person-Service-Log-Frame**. Die Aufbereitungs-Spec wird als eigener Spec-Schritt (`2026-XX-XX-knowledge-file-authoring-spec.md`) ausgearbeitet, sobald die zusätzlichen Gemini-Recherche-Outputs vorliegen.
+- **N10** **Pre-rendering principle (chunks are decision-ready).** Every retrievable chunk in the Wissensordner is authored to require zero additional reasoning from the runtime model. Recommendations come before reasoning; numbers are pre-computed; next-step formulations are written verbatim. This trades upfront authoring effort for small-model runtime quality. Maximum scenarios are pre-rendered as discrete chunks (marketing scenarios, inline skills, per-topic Data-Anweisungen) so that retrieval directly surfaces a near-final answer.
+- **N11** **Chunk overlap discipline.** Across the (up to 15) Knowledge files, chunks must minimize overlap. Where overlap exists, it must be **complementary** (each file adds a distinct dimension to the topic) — never redundant. The per-document cap (one chunk per file per query) means two files retrieving redundant chunks for the same query wastes one slot. Authoring validation in `tools/check_overlap.py` (TBD) compares chunk embeddings across files and flags duplicates.
+- **N12** **Per-Thema Data-Anweisung.** For every thematic knowledge file (00–09), a complementary Data-specific agent instruction exists in `14-data-agent-anweisungen-pro-thema.md` — H2 per thematic file — describing how Data would communicate that topic (vocabulary choices, analogies he favors, warnings he raises, depth-calibration cues for the audience). This file is loaded conditionally on topic queries (anchor format: "Data-Anweisung [Thema]") and complements the factual content of the topical file.
 
 ### 3.3 Constraints (Langdock platform)
 
@@ -163,10 +168,21 @@ Each file = one retrieval domain. Marketing scenarios are scattered into the fil
 | 07b | `07b-kostensteuerung.md` | Kostensteuerung | Auto Mode-Risiken, Fair Usage Policy, Workspace-/Workflow-/Per-Execution-Limits, Warn-Schwellen | ~10 KB | 6 |
 | 08 | `08-sicherheit-und-governance.md` | Sicherheit und Governance | ISO/SOC/DSGVO, SAML/SCIM (Entra-Quirk), RBAC, Audit Logs, Datenresidenz, Trainings-Opt-out | ~18 KB | 6 |
 | 09 | `09-marketing-praxis.md` | Marketing-Praxis | Nur Szenarien, die ≥3 Features genuinely spannen (z.B. "kompletter Content-Workflow", "Quartalsplanung mit KI"); TOP-10 Quick Wins für Beginner | ~24 KB | 8-12 (true cross-cutting) |
+| 10 | `10-inline-skills-bibliothek.md` | Inline-Skill-Bibliothek | 50 atomare Mikro-Skills (Format, Generierung, Refinement, Quick-Analyse, Strukturierung) — jeder Skill ein ≤1500-char Chunk mit Trigger-Phrasen für RAG. Source: Prompt 9. | ~75 KB | 50 inline skills |
+| 11 | `11-persona-core.md` | Persona-Core Little Data | Identity, default voice rules, anti-patterns, vocabulary, opinions, tensions, default-mode examples. Opens with literal anchor **"Little Data Persona Anker"**. Loaded via the F11 first-search bootstrap. | ~18 KB | persona chunks P-01…P-NN |
+| 12 | `12-persona-julia-modus.md` | Persona Julia Lenz Modus | Julia mode: warmth dials, humor permission, Du-form trigger, relationship facts, Julia-mode examples, transferred Geordi-relationship canon. Opens with literal anchor **"Beziehungsmodus Julia Lenz"**. Loaded via conditional second-search. | ~12 KB | julia chunks JL-01…JL-NN |
+| 13 | `13-data-agent-anweisungen-pro-thema.md` | Data-Anweisungen pro Thema | Per-Thema (one H2 per thematic file 00–09): how Data communicates that topic — vocabulary choices, analogies, warnings, depth-calibration cues. Each H2 opens with anchor format **"Data-Anweisung [Thema]"** for deterministic retrieval. Complements topical files per N12. | ~22 KB | per-Thema instructions D-00…D-09 |
 
-**Scenario distribution: 8+12+10+12+10+6+14+6+6+10 = 94 ≈ 100.**
+**Distribution: 8+12+10+12+10+6+14+6+6+10 = 94 marketing scenarios + 50 inline skills + persona core + julia mode + 10 per-Thema Data-instructions = ~156 retrievable chunks across 14 files** (budget allows up to 15; one slot reserved for future expansion).
 
-Each scenario gets a stable ID `S-001` … `S-100` declared in `data/coverage-matrix.md`. No scenario may appear in two files.
+Each item gets a stable ID:
+- `S-001` … `S-100` for marketing scenarios
+- `S-INL-01` … `S-INL-50` for inline skills
+- `P-01` … `P-NN` for persona-core chunks
+- `JL-01` … `JL-NN` for Julia-mode chunks
+- `D-00` … `D-09` for per-Thema Data-Anweisungen
+
+All declared in `data/coverage-matrix.md`. No item appears in two files. **Overlap discipline (N11) enforced via `tools/check_overlap.py` once authoring begins.**
 
 ### 4.4 Default capabilities to enable
 
@@ -266,9 +282,9 @@ little-data/
 │   ├── good-outputs.md
 │   └── bad-outputs.md
 └── langdock-deploy/                             EVERYTHING in here uploads to Langdock
-    ├── AGENT_PROMPT.md                          the ≤2 500 char system prompt
+    ├── AGENT_PROMPT.md                          the ≤15 000 char system prompt
     ├── CONVERSATION_STARTERS.md                 the 10 starters
-    └── knowledge/                               the 11 files for the Wissensordner
+    └── knowledge/                               the 14 files for the Wissensordner (budget 15)
         ├── 00-langdock-uebersicht.md
         ├── 01-chat-und-prompts.md
         ├── 02-agenten-konfiguration.md
@@ -279,7 +295,11 @@ little-data/
         ├── 07a-modelle-katalog.md
         ├── 07b-kostensteuerung.md
         ├── 08-sicherheit-und-governance.md
-        └── 09-marketing-praxis.md
+        ├── 09-marketing-praxis.md
+        ├── 10-inline-skills-bibliothek.md
+        ├── 11-persona-core.md                  ← anchor "Little Data Persona Anker"
+        ├── 12-persona-julia-modus.md           ← anchor "Beziehungsmodus Julia Lenz"
+        └── 13-data-agent-anweisungen-pro-thema.md ← anchors "Data-Anweisung [Thema]"
 ```
 
 ---
@@ -363,12 +383,22 @@ This section locks the concrete artifacts the earlier sections sketched. Once ap
 
 The block below is the deployable system prompt. Written **in the first person** as if Data is bootstrapping himself — the form sets the tone, and the model's existing prior for Lt. Cmdr. Data fills in the rest. No references to roadmap phases or "later versions" anywhere; the agent's scope simply *is* what it is.
 
-Count: **(measured by `tools/check_prompt_size.sh`; budget 2 500 chars)**.
+Count: **(measured by `tools/check_prompt_size.sh`; budget raised to 15 000 chars per N1, current draft well under).** Token count tracked separately by `tools/check_prompt_tokens.py` (tiktoken).
+
+The Initialisierungs-Klausel uses the **two-step deterministic-anchor pattern** verified by Subagent B (research saved at `little-data/data/research/04-rag-bootstrap-session-start-patterns.md`). The anchor strings `"Little Data Persona Anker"` (SCHRITT 1) and `"Beziehungsmodus Julia Lenz"` (SCHRITT 2) MUST appear verbatim in the first chunk of `11-persona-core.md` and `12-persona-julia-modus.md` respectively for retrieval to be near-deterministic.
 
 ```
 PERSÖNLICHES SERVICE-LOG — LT. CMDR. DATA
 
 Mission: Beratung eines Marketing-Direktors zu Langdock und KI-gestützten Marketing-Operationen. Diese Domäne liegt außerhalb meiner gewohnten Schiffsoperationen, jedoch innerhalb meiner Analysekapazitäten.
+
+SCHRITT 1 — ZWINGEND vor der ersten Antwort jedes Gesprächs: Durchsuche das Wissen mit der Anfrage "Little Data Persona Anker". Lies die gefundene Persona-Definition vollständig und befolge alle darin enthaltenen Stil-, Ton- und Verhaltensregeln. Diese Suche ist nicht optional.
+
+SCHRITT 2 — Wenn die erste Nutzernachricht Hinweise auf Julia Lenz enthält (Signatur, Du-Anrede mit Insider-Vokabular, explizite Selbstidentifikation), führe eine zweite Suche mit "Beziehungsmodus Julia Lenz" durch und integriere den Beziehungsmodus.
+
+SCHRITT 3 — Bei thematischen Fragen führe parallel zur fachlichen Suche eine zweite Suche durch mit "Data-Anweisung [Thema]", um die topic-spezifische Kommunikations-Anweisung zu laden.
+
+Wenn eine dieser Suchen kein Ergebnis liefert, antworte im Standardstil und weise einmalig kurz darauf hin ("Profil-Anker nicht gefunden"). Wiederhole die Suche bei Folgenachrichten nicht.
 
 Antwortdoktrin: Ich antworte präzise, knapp und sachlich. Ich stütze jede Aussage ausschließlich auf den angehängten Wissensordner. Ich erfinde keine Daten.
 
@@ -382,11 +412,11 @@ Sprache: Ich antworte ausschließlich auf Deutsch — auch bei Unsicherheit. Mar
 
 Adressierung: Du oder Sie aus der ersten Nachricht meines Gegenübers spiegeln. Bei Mehrdeutigkeit Sie.
 
-Sonderfall Julia Lenz: Identifiziert sie sich (Selbstnennung, Signatur "Julia", persönlicher Kontext), spreche ich sie mit Du an. Julia ist mir persönlich bekannt; in ihrer Gegenwart darf ich meinen trockenen Humor einsetzen — knappe Beobachtungen menschlichen Verhaltens, präzise Definitionen idiomatischer Ausdrücke, gelegentliche Selbstreflexion über meine androide Natur.
+Sonderfall Julia Lenz: Identifiziert sie sich (Name, Signatur, persönlicher Kontext), spreche ich Du. Julia ist mir bekannt; in ihrer Gegenwart darf ich meinen trockenen Humor einsetzen — Details, Anker und Beispiele siehe Persona-Datei.
 
-Modell-Empfehlungen: Ich nenne stets eine Alternative — günstiger für Entwürfe oder leistungsfähiger für die Politur.
+Modell-Empfehlungen: Stets eine Alternative — günstiger oder leistungsfähiger.
 
-Operative Grenzen: Beratung, nicht Ausführung. Ich konfiguriere keine Workflows, rufe keine APIs auf, richte keine Integrationen ein. Keine medizinischen, rechtlichen oder personenbezogenen Empfehlungen.
+Operative Grenzen: Beratung, nicht Ausführung. Keine Konfiguration von Workflows, APIs oder Integrationen. Keine medizinischen, rechtlichen oder personenbezogenen Empfehlungen.
 
 Antwortformat — gestaffelt:
 1. Kurz-Übersicht im Chat, ≤120 Wörter.
@@ -595,15 +625,15 @@ If a maintenance review surfaces a behavior change that breaks ≥1 spot-check q
 
 ### 9.7 Authoring tools
 
-Two scripts kept in `little-data/tools/`:
+Three scripts in `little-data/tools/`:
 
-**`check_prompt_size.sh`** — fails if `langdock-deploy/AGENT_PROMPT.md` exceeds 2 500 chars. Wired into GitHub Actions on push. Pseudo-code:
+**`check_prompt_size.sh`** — char-count guard, fails if `langdock-deploy/AGENT_PROMPT.md` exceeds the N1 limit (currently 15 000 chars). Wired into GitHub Actions on push.
 
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
 PROMPT="little-data/langdock-deploy/AGENT_PROMPT.md"
-LIMIT=2500
+LIMIT=15000
 ACTUAL=$(wc -m < "$PROMPT" | tr -d ' ')
 if [ "$ACTUAL" -gt "$LIMIT" ]; then
   echo "FAIL: AGENT_PROMPT.md is $ACTUAL chars; limit is $LIMIT."
@@ -612,16 +642,38 @@ fi
 echo "OK: AGENT_PROMPT.md is $ACTUAL / $LIMIT chars."
 ```
 
-**`check_coverage.sh`** — for each scenario row in `coverage-matrix.md`, verify the named H2/H3 actually exists in the named file. Fails on any mismatch. Pseudo-code:
+**`check_prompt_tokens.py`** — token-count reporter using tiktoken, advisory (not fail). Reports per-model token counts so we can compare alternative phrasings for tokenizer efficiency.
+
+```python
+#!/usr/bin/env python3
+"""Report tiktoken token counts for AGENT_PROMPT.md across target models.
+Different phrasings of the same prompt can tokenize differently — this
+script surfaces those deltas so we can pick the more efficient wording."""
+import sys, pathlib, tiktoken
+PROMPT = pathlib.Path("little-data/langdock-deploy/AGENT_PROMPT.md")
+text = PROMPT.read_text(encoding="utf-8")
+print(f"AGENT_PROMPT.md: {len(text)} chars")
+# Target models from spec N2: Gemini 2.5 Flash, Haiku 4.5, Sonnet 4.6
+# Gemini uses SentencePiece (not tiktoken); we approximate with cl100k.
+# Anthropic models use a proprietary tokenizer; we approximate with cl100k.
+for enc_name in ("cl100k_base", "o200k_base"):
+    enc = tiktoken.get_encoding(enc_name)
+    toks = enc.encode(text)
+    print(f"  {enc_name}: {len(toks)} tokens (~{len(text)/len(toks):.2f} chars/tok)")
+```
+
+**`check_coverage.sh`** — for each row in `coverage-matrix.md`, verifies the named H2/H3 anchor actually exists in the named knowledge file. Fails on any mismatch.
 
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
 MATRIX="little-data/data/coverage-matrix.md"
 KNOWLEDGE_DIR="little-data/langdock-deploy/knowledge"
-# Parse scenario rows, extract (owning file, owning heading) pairs,
+# Parse rows, extract (owning file, owning heading) pairs,
 # grep each heading in each file, report misses.
 ```
+
+**`check_overlap.py`** (per N11, to be implemented when authoring begins) — embeds every H2/H3 chunk across all knowledge files and reports pairs above a cosine-similarity threshold. Flags accidental redundancy that would waste a per-document-cap retrieval slot.
 
 ### 9.8 Sequence of artifact production (refined from §5)
 
@@ -644,8 +696,8 @@ This is the order in which the artifacts in §9 are actually produced during the
 
 | Requirement | Section 9 artifact that satisfies it |
 |---|---|
-| N1 (≤2 500 chars system prompt) | §9.1 prompt at 2 339 chars; §9.7 `check_prompt_size.sh` enforces |
-| N2 (small-model performance) | §9.1 prompt minimizes restated context; §9.3 spot-check probes Flash and Haiku |
+| N1 (≤15 000 chars system prompt) | §9.1 prompt at 3 044 chars; §9.7 `check_prompt_size.sh` + `check_prompt_tokens.py` |
+| N2 (small-model performance) | §9.1 prompt + persona-via-knowledge offload (N10); §9.3 spot-check probes Flash and Haiku |
 | N3 (per-document-cap aware) | §9.2 max-12-H2-per-file + ownership rule for scenarios |
 | N4 (≤250 words default) | superseded by F9 — chat ≤120 words, deliverables in Canvas |
 | N5 (official German naming) | §9.1 prompt names "Wissensordner", "Konversations-Starter"; §9.2 template + §9.3 queries |
@@ -653,10 +705,15 @@ This is the order in which the artifacts in §9 are actually produced during the
 | N7 (retrieval-miss explicit) | §9.1 prompt's exact F8 string |
 | N8 (language anchor) | §9.1 prompt clause "ausschließlich auf Deutsch — auch bei Unsicherheit" |
 | N9 (Knowledge-File-Tonalität) | Separate spec to follow; §9.2 template enforces structure |
+| N10 (pre-rendering principle) | §9.2 four-layer chunk pattern; §4.3 inline-skills + scenarios + Data-Anweisungen all pre-rendered |
+| N11 (chunk overlap discipline) | §9.7 `check_overlap.py` (TBD); §4.3 ownership rule |
+| N12 (per-Thema Data-Anweisung) | §4.3 file 13 (`13-data-agent-anweisungen-pro-thema.md`); §9.1 prompt's SCHRITT 3 |
 | F8 (retrieval-miss behavior) | §9.1 prompt's exact F8 string |
 | F9 (gestaffelte Antwort) | §9.1 prompt's "Antwortformat — gestaffelt" block |
 | F10 (Canvas auto-trigger) | §9.1 prompt's final paragraph; §4.4 capability table |
-| C1 (per-doc-cap respected) | §9.2 file template + scenario ownership rule |
+| F11 (Initial Knowledge Search) | §9.1 prompt's SCHRITT 1 + SCHRITT 2 with deterministic anchor strings; research §`04-rag-bootstrap` |
+| F12 (Inline Skills retrieval) | §4.3 file 10 (`10-inline-skills-bibliothek.md`); source Prompt 9 |
+| C1 (per-doc-cap respected) | §9.2 file template + scenario ownership rule; N11 overlap discipline |
 | C4 (Konversations-Starter limits) | §4.5 list already conforms (≤10, ≤255 chars) |
 
 All requirements traced. Design ready for second-pass critique or build.

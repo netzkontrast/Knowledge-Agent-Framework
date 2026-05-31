@@ -1035,6 +1035,133 @@ Important:
 
 ---
 
+## Prompt 9 — 50 Atomic Inline-Skills für tägliche Mikro-Tasks
+
+**Scope:** A curated library of 50 atomic micro-skills that the "Little Data" agent can retrieve inline from its Wissensordner and execute directly. These are **shorter and more atomic** than the marketing scenarios from Prompt 3 — each is a single small task with a tight, predictable output. The library complements the larger scenarios as a layer of immediate, daily-driver utility for a marketing director. Every entry MUST be RAG-optimized for Langdock's per-document-cap retrieval (one chunk per file per query).
+
+**Title to save as:** `little-data-research/09-inline-skills-bibliothek.gdoc`
+
+```
+I need a curated library of 50 atomic "inline skills" for a German-language
+Langdock advisor agent ("Little Data") serving a marketing director. An
+inline skill is a small, single-purpose recipe that the agent retrieves
+from its Wissensordner and executes directly — using only default
+Langdock Agent capabilities (system instructions + Knowledge + Web Search
++ Data Analyst + Canvas + Image Generation).
+
+These are atomic. They differ from the 120-scenario marketing catalog
+(Prompt 3) in three ways:
+- Atomic: one input → one output, no multi-step decision tree.
+- Predictable: the output format is fixed and known in advance.
+- Daily-driver: a marketing director should reach for one of these every
+  day or two.
+
+Examples to anchor the level: "convert this bullet list into a 3-column
+table"; "generate 5 LinkedIn ad headlines from this brief"; "extract the
+three USPs from this product description"; "translate this slogan into
+DE/EN/FR variants while preserving rhyme"; "cut this paragraph to 50
+words without losing the key claim"; "rewrite this passage at a Flesch
+score of 70".
+
+CATEGORIES (target counts):
+
+A. Format conversions (10): list ↔ table, CSV ↔ JSON, prose → bullets,
+   bullets → prose, markdown → plaintext, headline → tweet thread,
+   chronological list → timeline, FAQ → flowchart description, etc.
+
+B. Text generation micro-tasks (15): LinkedIn headlines, Google Ads
+   headlines, Meta Ads primary text, email subject lines, push
+   notification copy, hashtag bundles, CTAs, taglines, slogans, ALT
+   text, meta descriptions, paid social captions, organic social
+   captions, video hooks, hero-section copy.
+
+C. Text refinement (10): tone shift (formal ↔ casual), length cut
+   (50%/75%/90%), reading-level adjustment, jargon removal, active
+   voice rewrite, anti-cliche scrub, regionalize DE↔AT↔CH, add
+   buzzword-free version, depoliticize, brand-voice align.
+
+D. Quick analysis (8): sentiment of a snippet, USP extraction, persona
+   match score, keyword density check, missing-from-brief detector,
+   ad-policy flag scan (Google/Meta basics), explicit-CTA detector,
+   tone-consistency check across 3+ snippets.
+
+E. Quick structuring (7): briefing-template auto-fill from notes, FAQ
+   from email thread, agenda from goals, action items from meeting
+   notes, structure outline from raw idea dump, lookalike-persona
+   sketch from one anchor persona, before/after comparison table.
+
+OUTPUT STRUCTURE FOR EACH SKILL (mandatory template):
+
+### S-INL-XX [Short title in DE]
+
+**Wann nutzen:** [One-sentence trigger description]
+**Drei typische Anfragen (DE):**
+- "[verbatim 1]"
+- "[verbatim 2]"
+- "[verbatim 3]"
+**Eingesetzte Langdock-Fähigkeit(en):** [from the whitelist: Knowledge,
+Web Search, Data Analyst, Canvas, Image Generation]
+**Input-Erwartung:** [What the user must provide]
+**Vorgehen (max. 4 Schritte):**
+1. …
+2. …
+3. …
+4. …
+**Beispiel-Prompt (PTCF, DE):**
+> "[Beispiel]"
+**Erwarteter Output:** [Concrete format, e.g. "Markdown-Tabelle mit 3
+Spalten und 5 Zeilen"]
+**Fallstricke (mindestens einer, konkret):** [Concrete pitfall]
+**Canvas-Trigger?:** [Yes/No — applies F10 if the output is a deliverable]
+
+CONSTRAINTS:
+
+- Total length per skill: 1 200-1 500 chars including the header
+  (one Langdock chunk = one inline skill). Per-document-cap means
+  one skill wins per query; making each skill atomic and tightly
+  scoped means the right one wins reliably.
+- Triggers must be REAL phrasings a marketing director uses, not
+  abstract topic names.
+- "Eingesetzte Fähigkeit(en)" must come from the whitelist —
+  no Workflows, no API, no custom integrations, no MCP.
+- Use the gestaffelte F9 framing where output >120 words: Canvas
+  auto-triggers; chat reply only confirms with Übersicht + next
+  step + Vertiefungsoptionen.
+- All examples and outputs in German. Methodology framing in
+  English is fine.
+- Anti-pattern: do NOT include skills that require human
+  judgement beyond what's stated in the brief (e.g., "decide
+  if this campaign is on-brand" — too subjective for an inline
+  skill; that belongs in a larger scenario).
+
+DELIVERABLE STRUCTURE:
+
+1. Executive summary (≤200 words) — what this library is and how
+   the agent retrieves from it.
+2. Section per category (A-E) with all 50 skills in the template
+   above.
+3. A coverage table at the end mapping S-INL-01 through S-INL-50
+   to: category, trigger keyword(s), Canvas-trigger Y/N,
+   recommended model tier (light/balanced for cost).
+4. A "vocabulary index" at the end listing the German query
+   keywords that should retrieve each skill, so I can do a
+   spot-check against the Search API.
+
+Target total length: 7 000-10 000 words. Don't compress: completeness
+over brevity. Every skill must be useful, specific, and immediately
+actionable.
+
+Important:
+- These will live in ONE knowledge file (`10-inline-skills-
+  bibliothek.md` in the agent's Wissensordner) — so they share a
+  per-document cap. Make each skill's vocabulary distinct enough
+  that the right one wins per query.
+- Bias toward German marketing vocabulary; include English Langdock
+  / marketing-tool loan-terms where they're standard.
+```
+
+---
+
 ## After Gemini finishes
 
 1. Move all seven Google Docs into the `little-data-research` folder in Drive.
