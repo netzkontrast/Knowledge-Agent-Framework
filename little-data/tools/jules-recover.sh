@@ -84,10 +84,19 @@ try:
 except json.JSONDecodeError as e:
     print(f"  JSON parse failed: {e}")
     sys.exit(1)
+# Skip stray helper files from prior templated-generation patches.
+# These are Jules scripts that don't belong in our repo.
+SKIP_PATHS = {
+    'fix_h2_lengths.py',
+    'fix_lengths.py',
+    'generate_file.py',
+}
 written = []
 for op in j.get('ops', []):
     if op.get('tool') == 'mcp__github__push_files':
         for f in op.get('args', {}).get('files', []):
+            if f['path'] in SKIP_PATHS:
+                continue  # silently skip stray Jules scripts
             p = repo_root / f['path']
             if p.exists():
                 # Already on disk — skip
