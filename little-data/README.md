@@ -71,13 +71,13 @@ little-data/
 
 ```
 Phase 0    Pre-Build Setup (lokal)        ✅ done
-Phase 1    Extract (8 themed extractors)  in progress (5/8 done; T3/T5/T6 running)
-Phase 1.5  Cross-validation               pending Phase 1 complete
-Phase 0.5  Soul-Doc (Files 11 + 12)       pending T5 complete
-Phase 2    Knowledge-File Synthesis       pending Phase 0.5 complete
+Phase 1    Extract (8 themed extractors)  ✅ done (T1-T8, 155 KB)
+Phase 1.5  Cross-validation               ✅ done (T0, 0 critical contradictions)
+Phase 0.5  Soul-Doc (Files 11 + 12)       ⏳ 11 recovered; 12 in-flight (Jules)
+Phase 2    Knowledge-File Synthesis       ⏳ 1/12 recovered (05); 10 in-flight (Jules)
 Phase 3    Lokale Integration             pending Phase 2 complete
-Phase 4    Validation                     pending Phase 3 complete
-Phase 5    Deployment Package             pending Phase 4 complete
+Phase 4    Validation                     ✅ tools ready (check_phase4.sh); awaits content
+Phase 5    Deployment Package             ✅ checklist ready (langdock-deploy/VALIDATION-CHECKLIST.md)
 ```
 
 ---
