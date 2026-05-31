@@ -929,6 +929,112 @@ Important:
 
 ---
 
+## Prompt 8 — Initial Knowledge Search & Persona-via-Knowledge for RAG Agents
+
+**Scope:** How to instruct an AI agent (in its system prompt) to perform a predefined first knowledge search at session start, so that the agent's persona definition lives in a knowledge file and is retrieved on demand rather than baked into the prompt. Token-efficient hybrid pattern.
+
+**Title to save as:** `little-data-research/08-initial-knowledge-search-patterns.gdoc`
+
+```
+I need a sourced playbook for the "persona-via-knowledge + first-search
+bootstrap" pattern: storing an AI agent's full persona (voice, opinions,
+relationship modes, anti-patterns) in a knowledge file rather than the
+system prompt, and instructing the agent to load it via a forced first
+retrieval at session start.
+
+Concrete target: a Langdock Agent ("Little Data", Lt. Cmdr. Data persona,
+German marketing-director audience). System prompt budget 2 500 chars.
+Small target models (Gemini 2.5 Flash, Haiku 4.5). Two distinct modes
+(default formal-Data, "Julia Lenz" warm-Data-with-humor). The exact
+search query string will be defined later once the knowledge file is
+written — for now, the system prompt holds a placeholder.
+
+Cover:
+
+1. WHY THIS PATTERN
+   - Token economics: inline persona (paid every turn) vs. retrieved
+     persona (paid once per session, cached). Show the math for a
+     2 000-char persona block over 10 turns on Gemini 2.5 Flash.
+   - Editability: persona evolves without prompt deployment.
+   - Multi-persona reuse: same agent body, different persona knowledge
+     for different deployments.
+
+2. PRODUCTION EXAMPLES
+   - OpenAI Custom GPTs — how is the GPT's "knowledge" used at runtime?
+     Is there a forced first-load or is it lazy?
+   - Anthropic Claude Projects — how do "Project Knowledge" files load?
+   - Anthropic Skills (recently released) — file-based skill discovery.
+   - Cursor Rules — file-based personality/style.
+   - Langdock specifically — does it support an "init action"? Verify
+     against docs.langdock.com. If not, what's the closest mechanism
+     (Konversations-Starter, system-prompt instruction)?
+   - n8n AI / LangGraph "before reply" hooks.
+
+3. FIRST-SEARCH QUERY DESIGN
+   - What makes a good "load my persona" query for vector retrieval?
+     Length, specificity, vocabulary, the H1/H2 anchor strategy.
+   - Single fixed query vs. multiple alternatives vs. tag-based vs.
+     filename-anchored.
+   - How to ensure the persona chunk wins under the per-document cap
+     (one chunk per file per query) — e.g. dedicate one file purely to
+     persona, ensure the persona chunk's opening 200 chars contain all
+     likely retrieval-tokens.
+
+4. SYSTEM-PROMPT PHRASING
+   - 3 candidate phrasings that instruct an LLM to perform a search
+     before composing its first reply. Score each on:
+     - Reliability on small models (does Gemini Flash / Haiku actually
+       execute the instruction?)
+     - Token cost
+     - Failure-mode behavior when search returns 0
+   - Recommended single phrasing for Little Data's prompt (German).
+
+5. FAILURE-MODE HANDLING
+   - What happens if the persona-search miss happens?
+   - Should the agent have a "minimum viable persona" stub in the
+     system prompt as fallback?
+   - How to detect the miss at runtime?
+   - Logging / observability recommendations.
+
+6. USER-IDENTITY DETECTION WITHOUT BUILT-IN VARIABLES
+   - The Julia Lenz case: agent must detect a specific user is talking.
+     Langdock does NOT document a {{user.*}} system variable (verify
+     this current state) and Memory is disabled inside Agents.
+   - Patterns for text-based detection: self-naming, signature,
+     contextual cues, Konversations-Starter-specific entry-point.
+   - Pattern for "second-search-on-detection": after detecting Julia,
+     the agent fires a second knowledge search for "Julia Lenz
+     interaction patterns" and integrates that chunk.
+   - Show 2-3 documented production systems doing analogous
+     "context-conditional retrieval".
+
+7. RECOMMENDED ARCHITECTURE FOR LITTLE DATA
+   - Persona-file structure (one knowledge file holds the SOUL +
+     STYLE + Julia-mode anchors, sized for one-chunk retrieval).
+   - System-prompt init clause (German, exact phrasing recommendation).
+   - Konversations-Starter design that nudges the init search.
+   - Cost estimate per session and per turn under this architecture.
+
+Output format:
+- Executive summary (≤250 words)
+- Detailed sections per area above
+- A "system-prompt init clause" appendix with the 3 candidate German
+  phrasings, scored
+- Target length: 3 000-4 500 words
+- Language: methodology in English; recommended phrasings in German
+- Cite primary sources (vendor docs, production case studies). Flag
+  uncertain claims explicitly.
+
+Important:
+- Do NOT recommend Langdock features that don't exist — verify against
+  docs.langdock.com first
+- Be specific about what works on small models vs. what only works on
+  flagship models
+- Prefer evidence over speculation; flag where evidence is thin
+```
+
+---
+
 ## After Gemini finishes
 
 1. Move all seven Google Docs into the `little-data-research` folder in Drive.
