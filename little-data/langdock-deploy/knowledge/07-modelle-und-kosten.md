@@ -20,7 +20,7 @@ Für Marketing-Aufgaben bietet Langdock eine breite Palette an KI-Modellen. Die 
 | **Balanced** | GPT-5.2 | 1.0x | €0,26 | Parsing, Standard-Coding, Kontext |
 | **Step up** | GPT-5.4 | 1.5x | €0,45 | Reasoning, nuancierte Instruktionen |
 | **Strong Generalist** | Sonnet 4.6 | 3.1x | €2,75 | Problemlösung, Deduktion |
-| **Frontier Reasoning** | Opus 4.7 | 8.0x | €14,00 | Strategische Planung, komplexe Cases |
+| **Frontier Reasoning** | Opus 4.8 | 8.0x | €14,00 | Strategische Planung, komplexe Cases |
 | **Rare Top Runs** | GPT-5.2 Pro | 24.0x | €55,00 | Maximale Tiefe für extreme Edge-Cases |
 
 Die gezielte Zuweisung dieser Modelle ist die Grundlage für ein effektives Cost Engineering im Marketing. Nutzen Sie diese Übersicht bei der Konfiguration von Agenten oder der Planung von Automatisierungen.
@@ -39,7 +39,7 @@ Für strategisch anspruchsvollere Briefings, die umfangreiches Research-Material
 
 ## Modell-Empfehlungen für strategische Analyse
 
-Strategische Analysen im Marketing — wie die Auswertung von Wettbewerbsbewegungen, das Zusammenführen von Markttrends aus unstrukturierten Daten oder die Entwicklung langfristiger Go-to-Market-Strategien — erfordern die höchste Stufe an kognitiver Verarbeitungstiefe. Für diese komplexen Deduktionsaufgaben müssen Marketing-Direktoren auf Modelle der Kategorie "Frontier Reasoning" zurückgreifen. Das primäre Modell für diese Anforderungen ist **Opus 4.7**. Mit einem Multiplikator von 8.0x (circa €14,00 pro 1M Input-Tokens) ist es kostenintensiv, bietet aber unübertroffene Fähigkeiten in der logischen Analyse und der Synthese von heterogenen Informationen aus dem Wissensordner.
+Strategische Analysen im Marketing — wie die Auswertung von Wettbewerbsbewegungen, das Zusammenführen von Markttrends aus unstrukturierten Daten oder die Entwicklung langfristiger Go-to-Market-Strategien — erfordern die höchste Stufe an kognitiver Verarbeitungstiefe. Für diese komplexen Deduktionsaufgaben müssen Marketing-Direktoren auf Modelle der Kategorie "Frontier Reasoning" zurückgreifen. Das primäre Modell für diese Anforderungen ist **Opus 4.8**. Mit einem Multiplikator von 8.0x (circa €14,00 pro 1M Input-Tokens) ist es kostenintensiv, bietet aber unübertroffene Fähigkeiten in der logischen Analyse und der Synthese von heterogenen Informationen aus dem Wissensordner.
 
 Für extreme Edge-Cases, bei denen tiefgehende quantitative und qualitative Daten für geschäftskritische Entscheidungen aggregiert und neu kombiniert werden müssen, steht die Kategorie "Rare Top Runs" zur Verfügung, repräsentiert durch **GPT-5.2 Pro** (Multiplikator 24.0x, circa €55,00 pro 1M Input-Tokens). Diese Modelle durchlaufen eine interne, iterative Lösungsfindung, bevor sie eine Antwort generieren, was sie für hochkomplexe Problemlösungen prädestiniert. Aufgrund der enormen Kosten sollten diese Modelle jedoch strikt limitiert und niemals für alltägliche Aufgaben oder automatisierte Workflows eingesetzt werden. Der Einsatzbereich beschränkt sich idealerweise auf vierteljährliche Strategie-Reviews, komplexe Jahresplanungen oder die Auswertung groß angelegter Customer-Insights-Studien. Eine klare interne Policy sollte regeln, wann Marketing-Teams diese Frontier-Modelle aktivieren dürfen, um das Budget nicht überzustrapazieren.
 
@@ -51,7 +51,7 @@ Langdock ist modellagnostisch, was bedeutet, dass Nutzer flexibel zwischen versc
 
 ## Auto Mode
 
-Der "Auto Mode" in Langdock ist eine Funktion, bei der die Plattform automatisch das vermeintlich am besten geeignete Modell für die aktuelle Anfrage auswählt. Für Marketing-Beginner, die sich noch nicht mit den Unterschieden zwischen den Providern und Tiers auseinandergesetzt haben, mag dies verlockend erscheinen. Es birgt jedoch ein erhebliches Risiko für unkontrolliertes Cost-Leakage. Wenn der Auto Mode aktiv ist, kann das System bei einer simplen Frage nach einer Headline versehentlich ein "Frontier Reasoning"-Modell wie Opus 4.7 ansteuern, wodurch die Kosten für eine triviale Aufgabe um den Faktor 30 bis 50 explodieren.
+Der "Auto Mode" in Langdock ist eine Funktion, bei der die Plattform automatisch das vermeintlich am besten geeignete Modell für die aktuelle Anfrage auswählt. Für Marketing-Beginner, die sich noch nicht mit den Unterschieden zwischen den Providern und Tiers auseinandergesetzt haben, mag dies verlockend erscheinen. Es birgt jedoch ein erhebliches Risiko für unkontrolliertes Cost-Leakage. Wenn der Auto Mode aktiv ist, kann das System bei einer simplen Frage nach einer Headline versehentlich ein "Frontier Reasoning"-Modell wie Opus 4.8 ansteuern, wodurch die Kosten für eine triviale Aufgabe gegenüber einem Light-Modell um eine ganze Größenordnung (Faktor ~25–30) explodieren.
 
 Dies ist besonders kritisch bei der Erstellung von automatisierten Workflows oder langlaufenden Agenten. Innerhalb von programmatischen Konfigurationen oder Workflows ist die Nutzung des Auto Mode daher strikt zu vermeiden. Für jede Automatisierung muss eine manuelle Modellzuweisung (z.B. fest auf "Efficient Default" / Haiku 4.5) erfolgen, um die Kosten vorhersehbar zu halten. Marketing-Direktoren sollten ihr Team schulen, den Auto Mode standardmäßig zu deaktivieren und stattdessen bewusst das günstigste Modell zu wählen, das die Aufgabe zuverlässig lösen kann. Die bewusste Modellwahl ist der effektivste Hebel zur Kostenkontrolle in der täglichen Nutzung. Sensibilisieren Sie Ihr Team dafür, dass Bequemlichkeit hier direkt zu Lasten des Abteilungsbudgets geht.
 
@@ -87,7 +87,7 @@ Für fortgeschrittene Anwendungsfälle gibt es den **Max-Tarif (€99 pro Nutzer
 
 ## Cost-Saving-Patterns für Marketing-Teams
 
-Um den Return on Investment (ROI) von KI im Marketing zu maximieren, müssen Teams proaktiv Cost-Saving-Patterns implementieren. Der effektivste Hebel ist die Etablierung einer Modell-Hierarchie: Die Nutzung von Opus 4.7 oder GPT-5 Pro sollte genehmigungspflichtig sein, während Haiku 4.5 und Gemini 2.5 Flash als Standard für 80% der täglichen Aufgaben (wie E-Mail-Drafting oder SEO-Meta-Tags) vorgegeben werden. Ein weiterer entscheidender Faktor ist die effiziente Nutzung des Wissensordners (RAG). Anstatt riesige Dokumente in jedem Prompt neu hochzuladen (was immense Token-Kosten verursacht), sollten Informationen einmalig im Wissensordner strukturiert abgelegt werden.
+Um den Return on Investment (ROI) von KI im Marketing zu maximieren, müssen Teams proaktiv Cost-Saving-Patterns implementieren. Der effektivste Hebel ist die Etablierung einer Modell-Hierarchie: Die Nutzung von Opus 4.8 oder GPT-5.2 Pro sollte genehmigungspflichtig sein, während Haiku 4.5 und Gemini 2.5 Flash als Standard für 80% der täglichen Aufgaben (wie E-Mail-Drafting oder SEO-Meta-Tags) vorgegeben werden. Ein weiterer entscheidender Faktor ist die effiziente Nutzung des Wissensordners (RAG). Anstatt riesige Dokumente in jedem Prompt neu hochzuladen (was immense Token-Kosten verursacht), sollten Informationen einmalig im Wissensordner strukturiert abgelegt werden.
 
 Auch das Prompt-Design beeinflusst die Kosten direkt. Präzise, gut strukturierte Prompts (z.B. nach dem Persona-Task-Context-Format) reduzieren die Notwendigkeit für teure, iterative Nachbesserungen. Zudem sollten repetitive Massenaufgaben niemals manuell im Chat, sondern über Workflows abgewickelt werden, bei denen explizit günstige Modelle zugewiesen sind. Schließlich ist die Schulung von "KI-Champions" im Team essenziell. Diese Experten überwachen die Nutzung, identifizieren ineffiziente Agenten und verbreiten Best Practices zur Token-Optimierung. Ein bewusster Umgang mit der Ressource "Compute" unterscheidet erfolgreiche KI-Transformationen von teuren Experimenten.
 
@@ -283,7 +283,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Eingesetzte Langdock-Fähigkeit(en):** Workspace-Dashboard (Token-Verbrauch-Sortierung), per-User- und per-Agent-Filter, Usage-Export-CSV.
 **Vorgehen (4 Schritte):**
 1. Öffne das Workspace-Dashboard und sortiere nach Token-Verbrauch absteigend; filtere getrennt nach Nutzer und nach Agent, um zu sehen, wo die Ausreißer liegen.
-2. Exportiere die Top-10-Einträge als CSV und prüfe, welches Modell jeweils aktiv war — ein einzelner Frontier-Agent auf Opus 4.7 (~8x) treibt die Kosten oft mehr als zwanzig Standard-Prompts zusammen.
+2. Exportiere die Top-10-Einträge als CSV und prüfe, welches Modell jeweils aktiv war — ein einzelner Frontier-Agent auf Opus 4.8 (~8x) treibt die Kosten oft mehr als zwanzig Standard-Prompts zusammen.
 3. Klassifiziere jeden Heavy-Hitter: Ist die Komplexität des Prompts durch den Multiplikator gerechtfertigt, oder wurde ein zu teures Modell für eine Routine-Aufgabe eingesetzt?
 4. Baue die Top-3-Problemprompts um: entweder Modell-Downgrade (z.B. von Sonnet auf Haiku), Kontext-Komprimierung (Wissensordner statt Inline-Upload) oder Splitting in eine günstige Vorverarbeitungs- und eine gezielte Synthese-Phase.
 **Beispiel-Prompt (DE, PTCF):**
@@ -467,17 +467,17 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-021 Sonnet auf Opus upgraden: ROI-Schwelle messen statt intuitiv wechseln
 
-**Wann nutzen (Trigger):** Ein Strategieprojekt läuft seit vier Wochen auf Sonnet 4.6, die Outputs sind solide aber nicht überzeugend — jemand schlägt Opus 4.7 vor, aber der 8x-Multiplikator ist schwer zu rechtfertigen ohne harte Evidenz. (Quelle: A-30)
+**Wann nutzen (Trigger):** Ein Strategieprojekt läuft seit vier Wochen auf Sonnet 4.6, die Outputs sind solide aber nicht überzeugend — jemand schlägt Opus 4.8 vor, aber der 8x-Multiplikator ist schwer zu rechtfertigen ohne harte Evidenz. (Quelle: A-30)
 **Strategisches Ziel:** Den Upgrade-Entscheid von Sonnet auf Opus auf messbare Qualitäts-Evidenz stützen statt auf Bauchgefühl, und eine ROI-Schwelle definieren, ab der der Aufpreis vertretbar ist.
 **Hands-on Ergebnis:** Ein A/B-Vergleich derselben fünf Aufgaben auf Sonnet vs. Opus plus eine dokumentierte ROI-Entscheidung mit Rückwechsel-Bedingung.
 **Eingesetzte Langdock-Fähigkeit(en):** Manuelle Modellwahl, Wissensordner für Bewertungskriterien, Modell-Katalog (Multiplikatoren).
 **Vorgehen (4 Schritte):**
-1. Wähle fünf repräsentative Aufgaben aus dem laufenden Projekt (unterschiedliche Komplexität) und führe sie parallel mit Sonnet 4.6 und Opus 4.7 durch.
+1. Wähle fünf repräsentative Aufgaben aus dem laufenden Projekt (unterschiedliche Komplexität) und führe sie parallel mit Sonnet 4.6 und Opus 4.8 durch.
 2. Bewerte die Outputs strukturiert: Argumentation, Quellenbindung, strategische Tiefe — dokumentiere, wo Opus einen messbaren Mehrwert zeigt und wo die Outputs gleichwertig sind.
 3. Berechne den Upgrade-Kosteneffekt: wenn 60 % der Aufgaben Opus-Qualität benötigen und Opus 8x kostet, steigen die Gesamtkosten für das Projekt auf 5,2x des Sonnet-Niveaus — ist der Mehrwert das wert?
 4. Lege eine Rückwechsel-Bedingung fest: wenn das Projekt in die Überarbeitungs- und Formatierungsphase wechselt, zurück auf Sonnet.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist mein Modell-Evaluierungs-Berater. Ich habe fünf Aufgaben je auf Sonnet 4.6 und Opus 4.7 durchgeführt. Die Ergebnisse sind im Wissensordner. Bewerte den Qualitätsunterschied strukturiert nach: Argumentation, Quellenbindung, strategische Tiefe. Empfiehl, ob der Upgrade auf Opus für dieses Projekt gerechtfertigt ist. Begründung in Zahlen, Sie-Form."
+> "Du bist mein Modell-Evaluierungs-Berater. Ich habe fünf Aufgaben je auf Sonnet 4.6 und Opus 4.8 durchgeführt. Die Ergebnisse sind im Wissensordner. Bewerte den Qualitätsunterschied strukturiert nach: Argumentation, Quellenbindung, strategische Tiefe. Empfiehl, ob der Upgrade auf Opus für dieses Projekt gerechtfertigt ist. Begründung in Zahlen, Sie-Form."
 **Erwartetes Artefakt:** Eine Vergleichstabelle (Aufgabe / Sonnet-Output-Qualität / Opus-Output-Qualität / Mehrwert ja/nein) plus eine ROI-Entscheidung mit Rückwechsel-Bedingung.
 **Fallstricke (≥2 spezifisch):**
 - Einen Upgrade nach einem schlechten Einzelergebnis auf Sonnet zu entscheiden ist kein valider Test — Mitigation: mindestens fünf verschiedene Aufgaben vergleichen, um ein repräsentatives Bild zu erhalten.
@@ -701,7 +701,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog (Provider-Diversität), manuelle Modellwahl, Wissensordner für Fallback-Policy.
 **Vorgehen (4 Schritte):**
 1. Baue die Fallback-Strategie auf Provider-Diversität: Anthropic-Ausfall → OpenAI-Äquivalent; Google-Ausfall → Anthropic oder OpenAI; nutze Langdocks modellagnostische Architektur als Absicherung gegen Single-Provider-Abhängigkeit.
-2. Definiere aufgabenspezifische Fallbacks: Brand-Voice-Content (Sonnet 4.6 → GPT-5.4, ~1,5x, mit expliziter Brand-Voice-Anweisung im Prompt); Bulk-Drafts (Gemini 2.5 Flash → Haiku 4.5, ~0,8x); Synthese (Opus 4.7 → Sonnet 4.6, mit akzeptiertem Qualitätsabstrich).
+2. Definiere aufgabenspezifische Fallbacks: Brand-Voice-Content (Sonnet 4.6 → GPT-5.4, ~1,5x, mit expliziter Brand-Voice-Anweisung im Prompt); Bulk-Drafts (Gemini 2.5 Flash → Haiku 4.5, ~0,8x); Synthese (Opus 4.8 → Sonnet 4.6, mit akzeptiertem Qualitätsabstrich).
 3. Dokumentiere Einschränkungen des Fallback-Modells explizit: GPT-5.4 hält Brand-Voice-Nuancen weniger präzise als Claude — das Team muss bei einem Fallback mit erhöhtem Redaktionsaufwand rechnen.
 4. Lege das Fallback-Protokoll im Wissensordner ab und referenziere es im Team-Onboarding, damit bei einem Ausfall kein zeitraubendes Suchen beginnt.
 **Beispiel-Prompt (DE, PTCF):**
@@ -757,7 +757,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Hands-on Ergebnis:** Eine Latenz-Qualitäts-Kosten-Matrix für drei Modellklassen (Flash, Sonnet, GPT-5.2) mit einer begründeten Empfehlung für den Messestand-Agenten.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, manuelle Modellwahl, Agenten-Konfiguration, Wissensordner für FAQ-Basis.
 **Vorgehen (4 Schritte):**
-1. Miss die tatsächliche Time-to-First-Token (TTFT) für die drei Kandidaten auf typischen Messe-Fragen — Light-Modelle (Flash/Haiku) liefern typischerweise TTFT unter 1 Sekunde; Sonnet 4.6 typisch 3–5 Sekunden; Opus 4.7 oft 8–15 Sekunden.
+1. Miss die tatsächliche Time-to-First-Token (TTFT) für die drei Kandidaten auf typischen Messe-Fragen — Light-Modelle (Flash/Haiku) liefern typischerweise TTFT unter 1 Sekunde; Sonnet 4.6 typisch 3–5 Sekunden; Opus 4.8 oft 8–15 Sekunden.
 2. Bewerte die Qualitätsanforderungen für den Use Case: Messefragen sind oft FAQ-artig und gut durch den Wissensordner abgedeckt — ein Haiku 4.5-Modell mit reichem Wissensordner-Kontext kann hier qualitativ besser sein als Sonnet ohne Kontext.
 3. Kalkuliere den Kostenvorteil: tausend Messe-Interaktionen auf Haiku 4.5 (0,8x) kosten ca. ein Siebentel von Sonnet 4.6 (3,1x) — die Latenz-Optimierung ist hier gleichzeitig eine Kosten-Optimierung.
 4. Reserviere Sonnet für komplexe Folgefragen oder Eskalations-Pfade (z.B. technische Detail-Anfragen), die der Haiku-Agent mit "Weitere Details finden Sie beim Fachberater" weitergeleitet hat.
@@ -904,17 +904,17 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-044 Frontier-Modell-Nutzung genehmigungspflichtig machen: Governance-Prozess aufsetzen
 
-**Wann nutzen (Trigger):** Zwei Senior-Strategen nutzen Opus 4.7 täglich für Aufgaben, die auch Sonnet 4.6 lösen könnte — zusammen verursachen sie 40 % des gesamten Workspace-Budgets, und keine Policy hindert sie daran, weil Frontier-Modelle für alle zugänglich sind. (Quelle: A-30)
+**Wann nutzen (Trigger):** Zwei Senior-Strategen nutzen Opus 4.8 täglich für Aufgaben, die auch Sonnet 4.6 lösen könnte — zusammen verursachen sie 40 % des gesamten Workspace-Budgets, und keine Policy hindert sie daran, weil Frontier-Modelle für alle zugänglich sind. (Quelle: A-30)
 **Strategisches Ziel:** Einen leichtgewichtigen Genehmigungsprozess für Frontier-Modell-Nutzung aufsetzen, der Budget-Disziplin ohne bürokratischen Overhead sicherstellt und die richtigen Ausnahmen ermöglicht.
 **Hands-on Ergebnis:** Ein Genehmigungsprotokoll (wer darf was, wie beantragen, wie dokumentieren) plus eine technische Absicherung (Workspace-Admin-Restriktion für Frontier-Modelle).
 **Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin (Modell-Zugriffsbeschränkung per Gruppe), Modell-Katalog, Usage-Export für Überwachung.
 **Vorgehen (4 Schritte):**
-1. Konfiguriere im Workspace-Admin, dass Opus 4.7 und GPT-5.2 Pro nur für eine dedizierte "Frontier-Approved"-Gruppe zugänglich sind — Standard-User sehen diese Modelle nicht in ihrer Auswahl.
+1. Konfiguriere im Workspace-Admin, dass Opus 4.8 und GPT-5.2 Pro nur für eine dedizierte "Frontier-Approved"-Gruppe zugänglich sind — Standard-User sehen diese Modelle nicht in ihrer Auswahl.
 2. Definiere den Genehmigungsprozess: eine kurze Anfrage (Use Case + Begründung + Zeitraum) per E-Mail oder Slack an den Marketing-Operations-Lead; Genehmigung dauert maximal 1 Werktag.
 3. Lege die Ausnahme-Kriterien fest: Frontier-Modell ist genehmigt für (a) geschäftskritische Synthesen aus heterogenen Quellen, (b) Quartals-Strategiepapiere, (c) komplexe Marktanalysen mit zehntausenden Datenpunkten — nicht für iterative Entwurfsprozesse.
 4. Überprüfe die "Frontier-Approved"-Gruppe quartalsweise: wer ist noch berechtigt, wer kann wieder auf Standard zurückgestuft werden?
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist mein KI-Governance-Berater. Erstelle einen Genehmigungsprozess für Frontier-Modell-Nutzung (Opus 4.7, GPT-5.2 Pro) in unserem Marketing-Team. Definiere: Genehmigungskriterien, Antragsformat (max. 3 Felder), Genehmigungspfad, maximale Bearbeitungszeit und Quartals-Review. Policy-Dokument, max. 1 Seite, Sie-Form."
+> "Du bist mein KI-Governance-Berater. Erstelle einen Genehmigungsprozess für Frontier-Modell-Nutzung (Opus 4.8, GPT-5.2 Pro) in unserem Marketing-Team. Definiere: Genehmigungskriterien, Antragsformat (max. 3 Felder), Genehmigungspfad, maximale Bearbeitungszeit und Quartals-Review. Policy-Dokument, max. 1 Seite, Sie-Form."
 **Erwartetes Artefakt:** Ein Frontier-Modell-Genehmigungsprotokoll (Kriterien / Antragsformat / Genehmigungspfad / Review-Zyklus) plus eine technische Umsetzungsanweisung für den Workspace-Admin.
 **Fallstricke (≥2 spezifisch):**
 - Zu strikte Einschränkungen, die auch legitime Frontier-Aufgaben blockieren, erzeugen Umgehungsversuche (z.B. API-Direktzugriff außerhalb Langdock) — Mitigation: Genehmigungsprozess leichtgewichtig und schnell halten (max. 1 Werktag), damit der Weg des geringsten Widerstands durch den Prozess führt, nicht um ihn herum.
@@ -949,7 +949,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog (Latenz-Profile), Workflow-Builder (asynchrone Zeitplan-Trigger), manuelle Modellwahl, Agenten-Konfiguration.
 **Vorgehen (4 Schritte):**
 1. Trenne Aufgaben nach Latenz-Toleranz: echtzeit-kritisch (Antwort in <2 Sekunden erwartet) → Light/Efficient-Modelle (Haiku 4.5, Gemini 2.5 Flash); latenz-tolerant (Batch, nächtlich, asynchron) → auch mittlere und starke Modelle akzeptabel, da Wartezeit keine UX-Rolle spielt.
-2. Halte fest: ein Frontier-Modell wie Opus 4.7 hat typischerweise TTFT von 8–15 Sekunden — für einen interaktiven Messestand-Chat ist das eine akzeptanzgefährdende Wartezeit, nicht ein Qualitätsproblem.
+2. Halte fest: ein Frontier-Modell wie Opus 4.8 hat typischerweise TTFT von 8–15 Sekunden — für einen interaktiven Messestand-Chat ist das eine akzeptanzgefährdende Wartezeit, nicht ein Qualitätsproblem.
 3. Definiere einen Hybrid-Ansatz: der Echtzeit-Agent verwendet Haiku 4.5 (TTFT <1 Sek., Multiplikator 0,8x) gestützt durch einen reichhaltigen Wissensordner; der Nacht-Agent verwendet Sonnet 4.6 (Multiplikator 3,1x) für tiefere Synthesen, da Nutzer schlafen.
 4. Dokumentiere die Latenz-Klassifikation im Wissensordner als Teil der Agenten-Übersicht, damit neue Kolleginnen den Echtzeit-vs.-Async-Unterschied sofort sehen.
 **Beispiel-Prompt (DE, PTCF):**

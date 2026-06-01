@@ -51,8 +51,8 @@ Ein unstrukturierter KI-Rollout führt unweigerlich zu Ineffizienz und Frustrati
 Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock-Implementierung in der täglichen Praxis. Sie adressieren konkrete Herausforderungen und nutzen KI-Fähigkeiten für spürbare Effizienzgewinne. Die Balance zwischen Automatisierung und strategischer Steuerung steht im Fokus. Durch die strukturierte Analyse werden kognitive Verzerrungen minimiert. In der DACH-Region hat sich dieser Ansatz bewährt, da er Effizienz mit hohen Qualitätsstandards verbindet. Die konsequente Dokumentation im Wissensordner schafft Transparenz für alle Stakeholder. Wichtig bleibt die abschließende Prüfung durch Fachexperten. So werden operative Prozesse beschleunigt und strukturell verbessert. Die Integration von spezifischen Tools wie HubSpot oder Piwik in Kombination mit der rigorosen Anwendung rechtlicher Standards wie DSGVO oder UWG macht diese Playbooks essenziell für jede Marketing-Direktion im deutschsprachigen Raum. Ein wesentlicher Vorteil liegt in der Skalierbarkeit, da wiederkehrende Aufgaben standardisiert an das System übergeben werden können, ohne an Nuancen zu verlieren. Darüber hinaus schützen diese rigorosen Abläufe vor den gängigen Anti-Patterns, wie der Halluzination von Fakten oder der Verletzung von Datenschutzrichtlinien, die in unkontrollierten Setups häufig auftreten. Es ist der Unterschied zwischen experimenteller KI-Nutzung und verlässlicher, umsatztreibender Produktionstechnik.
 ### S-MP-001 CRM-Performance-Audit nach Integrationseinbruch
 
-**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Inxmail-Integration-Setup um 30% eingebrochen sind. Eine sofortige, datengestützte Ursachenanalyse ist gefordert, um das Setup zu korrigieren.
-**Strategisches Ziel:** Identifikation der exakten Sollbruchstellen in der CRM-Lead-Übergabe und sofortige Implementierung von Gegenmaßnahmen, um das Vertrauen des Managements wiederherzustellen.
+**Wann nutzen (Trigger):** Julia kommt gerade aus dem Q3-Review. Der CFO verlangt eine Erklärung, warum die Leads aus dem neuen Inxmail-Integration-Setup um 30 % eingebrochen sind. Eine sofortige, datengestützte Ursachenanalyse ist gefordert, um das Setup zu korrigieren. (Quelle: sources/10 S-031; Quelle: 12 Q105)
+**Strategisches Ziel:** Identifikation der exakten Sollbruchstellen in der CRM-Lead-Übergabe und Wiederherstellung der Lead-Volumina auf das Vor-Integrations-Niveau innerhalb von zwei Wochen. Baseline: Eine manuelle Ursachenanalyse durch das CRM-Team dauert erfahrungsgemäß zwei bis drei Tage; der Data Analyst verkürzt dies auf wenige Stunden.
 **Hands-on Ergebnis:** Ein detaillierter Root-Cause-Analysis-Report mit drei priorisierten Handlungsempfehlungen für das CRM-Team.
 **Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat
 **Vorgehen (3-5 Schritte):**
@@ -70,7 +70,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-002 Lokalisierungs-Krisenmanagement bei B2B-Kampagnen
 
-**Wann nutzen (Trigger):** Das Lokalisierungs-Team klagt über unpassende Tonalität: Der KI-Agent liefert plötzlich B2C-Tonalität ('Du') in hochformellen B2B-Sales-Briefings ('Sie') für die Schweiz.
+**Wann nutzen (Trigger):** Das Lokalisierungs-Team klagt über unpassende Tonalität: Der KI-Agent liefert plötzlich B2C-Tonalität ('Du') in hochformellen B2B-Sales-Briefings ('Sie') für die Schweiz. (Quelle: sources/10 S-012; Quelle: 12 Q77)
 **Strategisches Ziel:** Systematischer Abgleich der eingesetzten Prompts mit den DACH-spezifischen Tonalitäts-Guidelines, um Peinlichkeiten bei Enterprise-Kunden sofort zu stoppen.
 **Hands-on Ergebnis:** Ein revidiertes Lokalisierungs-Playbook im Wissensordner, das die spezifischen sprachlichen Nuancen (z.B. Schweizer 'ss') zwingend vorschreibt.
 **Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
@@ -89,7 +89,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-003 MarketingOps-Stresstest für neue Tool-Initiativen
 
-**Wann nutzen (Trigger):** Das Legal-Team droht, eine neue MarketingOps-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell für automatisierte Transkreationen rechtlich sicher ist.
+**Wann nutzen (Trigger):** Das Legal-Team droht, eine neue MarketingOps-Initiative zu stoppen, weil unklar ist, ob das verwendete Modell für automatisierte Transkreationen rechtlich sicher ist. (Quelle: A-13; Quelle: A-09)
 **Strategisches Ziel:** Etablierung eines robusten, compliance-geprüften Playbooks für MarketingOps, das zukünftige Skalierungen ermöglicht, ohne rechtliche Leitplanken zu verletzen.
 **Hands-on Ergebnis:** Ein Audit-Report, der die verwundbarsten Stellen der Kampagne in Bezug auf Datenschutz und Transparenz offenlegt.
 **Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter, Wissensordner
@@ -108,7 +108,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-004 Social-Media-ROI durch Triangulation validieren
 
-**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Adobe-Analytics-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen, anstatt Kampagnen zu optimieren.
+**Wann nutzen (Trigger):** Der Betriebsrat interveniert: Es gibt den Verdacht, dass die neue Adobe-Analytics-Anbindung genutzt wird, um die Performance einzelner Copywriter zu messen, anstatt Kampagnen zu optimieren. (Quelle: A-18; Quelle: A-14)
 **Strategisches Ziel:** Strategische Neuausrichtung der Social-Ressourcen auf Basis harter, anonymisierter Daten, um den ROI kurzfristig zu sichern und gleichzeitig die Vorgaben des Betriebsrats einzuhalten.
 **Hands-on Ergebnis:** Eine priorisierte Roadmap-Tabelle, die anzeigt, welche Social-Workflows sofort gestoppt, angepasst oder skaliert werden müssen.
 **Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Web Search
@@ -127,7 +127,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-005 Brand-Guidelines-Audit via Red Teaming
 
-**Wann nutzen (Trigger):** Ein ungeplantes Dynamics-Update hat bestehende Content-Workflows zerschossen und es wurden inkonsistente Brand-Botschaften publiziert. Ein strategischer Notfall-Plan ist zwingend.
+**Wann nutzen (Trigger):** Ein ungeplantes Dynamics-Update hat bestehende Content-Workflows zerschossen und es wurden inkonsistente Brand-Botschaften publiziert. Ein strategischer Notfall-Plan ist zwingend. (Quelle: sources/10 S-039; Quelle: A-07)
 **Strategisches Ziel:** Rigorose Identifikation der Root-Cause für den Konsistenz-Bruch im Brand-Segment und sofortige Ableitung von Härtungsmaßnahmen für Workflows.
 **Hands-on Ergebnis:** Ein Notfall-Playbook zur Risikominimierung, das die Schwachstellen in den automatisierten Brand-Checks behebt.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas, Agenten
@@ -146,7 +146,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-006 Content-Performance-Reset durch First-Principles
 
-**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Content-Conversion-Rate in Österreich fordert der Country-Manager eine grundlegende strategische Neuausrichtung abseits bisheriger Annahmen.
+**Wann nutzen (Trigger):** Nach einem dramatischen Einbruch der Content-Conversion-Rate in Österreich fordert der Country-Manager eine grundlegende strategische Neuausrichtung abseits bisheriger Annahmen. (Quelle: A-04; Quelle: sources/10 S-031)
 **Strategisches Ziel:** Schaffung einer völlig neuen, datengestützten Content-Strategie für Österreich, die auf First-Principles basiert und alte Denkmuster aufbricht.
 **Hands-on Ergebnis:** Ein fertiges Präsentations-Script für das Management, das den neuen, radikal geänderten Content-Ansatz verteidigt.
 **Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Chat

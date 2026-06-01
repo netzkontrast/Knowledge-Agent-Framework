@@ -92,8 +92,8 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 ## Marketing-Szenarien aus dieser Domäne
 
 ### S-API-001 Architektur-Review für die PIM-Massenanbindung
-**Wann nutzen (Trigger):** Julia Lenz (Marketing-Direktorin) kommt aus dem Q3-Review. Das Content-Team hat manuell 300 Produktbeschreibungen im UI generiert, aber für Q4 müssen 15.000 Artikel im PIM (Product Information Management) aktualisiert werden. Die IT warnt vor API-Kosten und Rate Limits.
-**Strategisches Ziel:** Das manuelle Copy-Paste-Bottleneck auflösen und eine automatisierte Architektur skizzieren, die weder die 500 RPM (Requests Per Minute) Langdock-Grenze sprengt, noch das Budget explodieren lässt.
+**Wann nutzen (Trigger):** Julia Lenz (Marketing-Direktorin) kommt aus dem Q3-Review. Das Content-Team hat manuell 300 Produktbeschreibungen im UI generiert, aber für Q4 müssen 15.000 Artikel im PIM (Product Information Management) via Completion API aktualisiert werden. Die IT warnt vor API-Kosten und Rate Limits beim Batch-Lauf. (Quelle: sources/10 S-066, sources/12 Q119)
+**Strategisches Ziel:** Das manuelle Copy-Paste-Bottleneck auflösen und eine automatisierte Architektur skizzieren, die weder die zum Planungszeitpunkt geltende Workspace-RPM-Grenze (Stand 2026-06 typischerweise rund 500 Requests/Minute — vor dem Lauf beim Customer Success Manager verifizieren) sprengt, noch das Budget explodieren lässt.
 **Hands-on Ergebnis:** Ein technisches Architektur-Briefing (Backend-for-Frontend Konzept) für den Lead Developer.
 **Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory, Usage Export API
 **Vorgehen (3-5 Schritte):**
@@ -102,7 +102,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 3. Lass eine Kostenschätzung auf Basis der aktuellen Workspace-Budgets erstellen.
 4. Formuliere ein Briefing, das der IT glasklar die Advisory-Grenze aufzeigt (Marketing liefert Konzept, IT schreibt Python-Code).
 **Beispiel-Prompt (DE, PTCF):**
-> "Little Data, wir haben ein massives Skalierungsproblem. Für den Q4-Launch müssen wir 15.000 Produkttexte via API aus Langdock generieren und ins PIM pushen. Die IT hat Angst vor Rate Limits und CORS-Problemen, wenn wir das direkt aus dem CMS triggern. Schreibe mir ein Architektur-Briefing für unseren Lead Developer. Erkläre das Backend-for-Frontend Pattern, wie wir die 500 RPM Grenze (pro Workspace und Modell) durch Batching umgehen und füge eine Warnung zum 100-Sekunden Non-Streaming-Timeout (HTTP 524) bei langen Prompts hinzu — empfiehl Streaming als Gegenmaßnahme."
+> "Little Data, wir haben ein massives Skalierungsproblem. Für den Q4-Launch müssen wir 15.000 Produkttexte via API aus Langdock generieren und ins PIM pushen. Die IT hat Angst vor Rate Limits und CORS-Problemen, wenn wir das direkt aus dem CMS triggern. Schreibe mir ein Architektur-Briefing für unseren Lead Developer. Erkläre das Backend-for-Frontend Pattern, wie wir die aktuell geltende Workspace-RPM-Grenze (ca. 500 Requests/Minute, vorab verifizieren) durch Batching respektieren und füge eine Warnung zum Non-Streaming-Timeout (ca. 100 Sekunden) bei langen Prompts hinzu — empfiehl Streaming als Gegenmaßnahme."
 **Erwartetes Artefakt:** Technisches Briefing-Dokument (Markdown).
 **Fallstricke (≥2 spezifisch):**
 - Die Kostenschätzung verwechselt Langdock-Plattformkosten mit OpenAI-Inferenzkosten, was den CFO verärgern würde.
@@ -110,13 +110,13 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-002
 
 ### S-API-002 CISO-Abwehr: Static IP und Egress-Whitelisting
-**Wann nutzen (Trigger):** Der Chief Information Security Officer (CISO) blockiert im IT-Board die geplante Langdock-Anbindung an die interne Kundendatenbank. Seine Begründung: "Wir öffnen unsere Datenbanken nicht für Cloud-Dienste aus dem Internet."
+**Wann nutzen (Trigger):** Der Chief Information Security Officer (CISO) blockiert im IT-Board die geplante Langdock-Anbindung (Egress-Whitelisting / Static IP) an die interne Kundendatenbank. Seine Begründung: "Wir öffnen unsere Datenbanken nicht für Cloud-Dienste aus dem Internet." (Quelle: sources/12 Q115, sources/12 Q126)
 **Strategisches Ziel:** Die Compliance-Bedenken des CISO durch architektonische Fakten entkräften und den Go-Live der CRM-Integration sichern.
 **Hands-on Ergebnis:** Ein Security-Dossier (One-Pager) zur Vorlage beim CISO.
 **Eingesetzte Langdock-Fähigkeit(en):** Integrations API, Deployment Advisory
 **Vorgehen (3-5 Schritte):**
 1. Analysiere das Veto des CISO und isoliere das Kernproblem (Angst vor Ingress aus dem offenen Web).
-2. Nutze Little Data, um das Konzept des Langdock Egress-Whitelisting und der dedizierten Static IP (z.B. 4.185.103.44) zu dekonstruieren.
+2. Nutze Little Data, um das Konzept des Langdock Egress-Whitelisting und der dedizierten Static IP zu dekonstruieren (die konkrete IP-Adresse wird vom Langdock-Enterprise-Support pro Workspace zugewiesen — niemals eine erfundene Adresse in der ACL hinterlegen).
 3. Erarbeite eine Argumentationskette, die beweist, dass die Firewall nur für diese einzige IP geöffnet werden muss.
 4. Verfasse ein hochgradig formelles, Compliance-zentriertes Dossier.
 **Beispiel-Prompt (DE, PTCF):**
@@ -128,7 +128,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-003
 
 ### S-API-003 FinOps-Audit: Chargeback für 5 Marketing-Teams
-**Wann nutzen (Trigger):** Die Marketing-Direktorin wird vom CFO in die Pflicht genommen, weil die monatlichen KI-Kosten explodieren. Fünf verschiedene Abteilungen (SEO, PR, Social, Event, Content) nutzen Langdock, aber niemand weiß, wer wie viel Budget verbrennt.
+**Wann nutzen (Trigger):** Die Marketing-Direktorin wird vom CFO in die Pflicht genommen, weil die monatlichen KI-Kosten explodieren. Fünf verschiedene Abteilungen (SEO, PR, Social, Event, Content) nutzen Langdock, aber niemand weiß, wer wie viel Budget verbrennt — gefragt ist ein Chargeback über die Usage Export API. (Quelle: sources/12 Q124, research/50 A-01)
 **Strategisches Ziel:** Ein datengetriebenes Chargeback-Modell (Verursachergerechte Kostenumlage) etablieren, um die Budgets der Teams fair zu belasten.
 **Hands-on Ergebnis:** Ein FinOps-Dashboard Konzept und eine Prozessanweisung.
 **Eingesetzte Langdock-Fähigkeit(en):** Usage Export API, Data Analyst
@@ -146,14 +146,14 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-004
 
 ### S-API-004 Legacy-Migration: OpenAI Drop-In Strategie
-**Wann nutzen (Trigger):** Eine externe Digitalagentur hat vor zwei Jahren ein teures Python-Skript für automatisiertes Keyword-Clustering gebaut. Es nutzt die OpenAI API. Die Direktion will das Skript nun aus Datenschutzgründen in die Langdock-Umgebung (EU-Hosting) überführen, ohne die Agentur für ein Rework bezahlen zu müssen.
+**Wann nutzen (Trigger):** Eine externe Digitalagentur hat vor zwei Jahren ein teures Python-Skript für automatisiertes Keyword-Clustering gebaut. Es nutzt die OpenAI API. Die Direktion will das Skript nun aus Datenschutzgründen via OpenAI-kompatiblem Drop-in-Replacement in die Langdock-Umgebung (EU-Hosting) überführen, ohne die Agentur für ein Rework bezahlen zu müssen. (Quelle: sources/12 Q117, research/50 A-03)
 **Strategisches Ziel:** Den Entwicklern beweisen, dass die Migration auf Langdock ein triviales "Drop-In Replacement" ist und kein Budget-intensives Refactoring erfordert.
 **Hands-on Ergebnis:** Ein Migrations-Guide für die Agentur.
 **Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory
 **Vorgehen (3-5 Schritte):**
 1. Kläre die Kompatibilität der Langdock Completion API mit dem OpenAI-Standard.
 2. Erstelle einen kurzen Guide, der die zwei notwendigen Code-Änderungen (Base-URL und API-Key) visualisiert.
-3. Weise auf Parameter hin, die von Langdock absichtlich ignoriert werden (z.B. parallel_tool_calls in alten Setups).
+3. Weise darauf hin, dass einzelne OpenAI-proprietäre Parameter und Endpoints (z. B. die Assistants- oder Fine-Tuning-API) im Kompatibilitäts-Layer kein Äquivalent haben — diese Stellen müssen vor der Migration in einem Feature-Audit identifiziert werden.
 4. Sende den Guide als klares Mandat an die Agentur.
 **Beispiel-Prompt (DE, PTCF):**
 > "Wir kündigen unseren direkten OpenAI-Vertrag und ziehen unser Python-Clustering-Skript zu Langdock um. Die Agentur behauptet, das dauert zwei Wochen. Erstelle einen prägnanten Migrations-Guide, der beweist, dass es sich um ein Drop-In Replacement handelt. Zeige auf, dass sie nur die Base-URL auf 'api.langdock.com/openai/eu/v1/chat/completions' ändern und den Bearer Token tauschen müssen. Sei höflich, aber lass keinen Zweifel daran, dass dieser Task maximal 30 Minuten dauern darf."
@@ -164,7 +164,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-005
 
 ### S-API-005 RAG-Hygiene: Automatisierter Lifecycle für den Wissensordner
-**Wann nutzen (Trigger):** Ein kürzlich gelaunchter Produkt-Agent liefert Kunden falsche technische Spezifikationen. Eine Analyse zeigt: Im Wissensordner liegen 500 veraltete PDFs aus dem Vorjahr, weil das Marketing-Team vergessen hat, sie manuell zu löschen.
+**Wann nutzen (Trigger):** Ein kürzlich gelaunchter Produkt-Agent liefert Kunden falsche technische Spezifikationen. Eine Analyse zeigt: Im Wissensordner liegen 500 veraltete PDFs aus dem Vorjahr, weil das Marketing-Team vergessen hat, sie via Knowledge Folder API zu löschen. (Quelle: sources/12 Q124, research/50 A-20)
 **Strategisches Ziel:** Den manuellen Upload/Delete-Prozess eliminieren und eine Sync-Pipeline definieren, die den Langdock Wissensordner automatisch mit dem SharePoint der Produktentwicklung spiegelt.
 **Hands-on Ergebnis:** Ein Architekturentwurf für eine Knowledge-Folder Synchronisation.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge Folder API
@@ -182,7 +182,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-006
 
 ### S-API-006 BYOC vs. SaaS Entscheidungsvorlage
-**Wann nutzen (Trigger):** Der neue CTO möchte alle KI-Projekte auf Microsoft Azure konsolidieren. Die Marketing-Direktorin befürchtet, dass sie dadurch die komfortable Langdock-UI verliert und wieder auf langsame interne IT-Projekte angewiesen ist.
+**Wann nutzen (Trigger):** Der neue CTO möchte alle KI-Projekte auf Microsoft Azure konsolidieren. Die Marketing-Direktorin befürchtet, dass sie dadurch die komfortable Langdock-UI verliert und wieder auf langsame interne IT-Projekte angewiesen ist — der BYOC-Mittelweg ist die Steelman-Antwort auf das CTO-Anliegen. (Quelle: sources/12 Q117, research/50 A-26)
 **Strategisches Ziel:** Einen Kompromiss aushandeln: Die Langdock-UI für das Marketing behalten, aber die Inferenz-Kosten und Verträge über Azure laufen lassen (BYOC).
 **Hands-on Ergebnis:** Eine Pitch-Präsentation (Textform) für den CTO.
 **Eingesetzte Langdock-Fähigkeit(en):** Deployment Advisory
@@ -200,7 +200,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-007
 
 ### S-API-007 Web-Agentur Audit: Frontend-Key-Leak verhindern
-**Wann nutzen (Trigger):** Eine externe Web-Agentur schickt das Konzept für den neuen Lead-Gen Chatbot auf der Website. Im Architektur-Diagramm steht: `Browser -> fetch('api.langdock.com') -> Return`.
+**Wann nutzen (Trigger):** Eine externe Web-Agentur schickt das Konzept für den neuen Lead-Gen Chatbot auf der Website. Im Architektur-Diagramm steht: `Browser -> fetch('api.langdock.com') -> Return` — ein direkter Frontend-Aufruf, der gegen die CORS-Posture verstößt und den API-Key offenlegt. (Quelle: sources/12 Q115, sources/10 S-072)
 **Strategisches Ziel:** Das katastrophale Sicherheitsrisiko (API-Key im Klartext im Browser) sofort stoppen und die Agentur auf die CORS-Posture von Langdock hinweisen.
 **Hands-on Ergebnis:** Eine formelle Mängelrüge und Architekturanweisung.
 **Eingesetzte Langdock-Fähigkeit(en):** API Security Advisory

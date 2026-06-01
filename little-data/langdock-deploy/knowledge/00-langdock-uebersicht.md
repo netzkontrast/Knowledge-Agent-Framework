@@ -1388,4 +1388,4 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Fallstricke (≥2 spezifisch):**
 - Nur Effizienz wird gemessen, weil sie am leichtesten quantifizierbar ist → Mindestens eine Qualitäts- und eine Geschäftswert-Metrik sind pro Initiative Pflicht, sonst werden reine Vielnutzer fälschlich als Erfolg gewertet.
 - Zielwerte werden ohne Baseline gesetzt und sind willkürlich → Jeder Zielwert braucht einen dokumentierten Ist-Wert als Ausgangspunkt; ohne Baseline gilt das erste Quartal als Messphase, nicht als Bewertung.
-**Anschluss-Szenario:** S-LU-001
+**Anschluss-Szenario:** S-LU-071

@@ -1364,4 +1364,4 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 **Fallstricke (≥2 spezifisch):**
 - Memory pauschal für alle Agenten aktivieren → Agenten vermischen Kontext aus unzusammenhängenden Sitzungen und produzieren irritierende Outputs; Memory ist die Ausnahme, nicht der Standard.
 - Memory bei Agenten mit personenbezogenen Daten aktivieren ohne Datenschutz-Prüfung → sitzungsübergreifend gespeicherte PII verletzt die Datenminimierung; Datenschutzbeauftragten vor Aktivierung einbeziehen.
-**Anschluss-Szenario:** S-AK-001
+**Anschluss-Szenario:** S-AK-068
