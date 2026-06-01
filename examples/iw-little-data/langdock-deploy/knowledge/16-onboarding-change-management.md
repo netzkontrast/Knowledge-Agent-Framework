@@ -21,7 +21,7 @@ Der KI-Einsatz in der Instituts-Kommunikation orientiert sich an zwei Leitdokume
 
 ## Marketing-Szenarien aus dieser Domäne
 
-Die folgenden zwanzig Szenarien (Präfix S-OC) bilden den Einführungs- und Veränderungs-Pfad für den "Little Data"-Langdock-Advisor am IW Köln ab. Sie führen von einem eng umrissenen Pilot mit einem einzelnen Kompetenzfeld über die Befähigung von KI-Champions je Wissenschaftsbereich, die Governance-Freigabe durch Datenschutz, Recht und CISO, die Schulung in Wissenschaftskommunikation mit KI bis hin zur kontrollierten Skalierung auf weitere Bereiche. Jedes Szenario respektiert die institutionelle Realität des IW: die strikte sachlich-evidenzbasierte Tonalität, die ordnungspolitische Ausrichtung, den redaktionellen Workflow von der Forschung über iwd und IW Medien bis zur Distribution sowie den fundamentalen Neutralitätsanspruch eines arbeitgebernahen Forschungsinstituts. Alle Artefakte sind Beratungsgrundlagen; jede Governance-Entscheidung und jede externe Handlung bleibt menschlich verantwortet (Human-in-the-Loop). Die Kette schließt sich bewusst: S-OC-020 führt zurück zu S-OC-001, weil Skalierung nach IW-Logik stets ein neuer, sauber pilotierter Anlauf ist.
+Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- und Veränderungs-Pfad für den "Little Data"-Langdock-Advisor am IW Köln ab. Sie führen von einem eng umrissenen Pilot mit einem einzelnen Kompetenzfeld über die Befähigung von KI-Champions je Wissenschaftsbereich, die Governance-Freigabe durch Datenschutz, Recht und CISO, die Schulung in Wissenschaftskommunikation mit KI bis hin zur kontrollierten Skalierung auf weitere Bereiche; die letzten Szenarien verankern die Alltagsroutinen des Kommunikationsteams (Studien-Briefing, Rollen-Onboarding, Change-Resistance, Prompt-Bibliothek, Qualitäts-Gate, Feedback-Schleife). Jedes Szenario respektiert die institutionelle Realität des IW: die strikte sachlich-evidenzbasierte Tonalität, die ordnungspolitische Ausrichtung, den redaktionellen Workflow von der Forschung über iwd und IW Medien bis zur Distribution sowie den fundamentalen Neutralitätsanspruch eines arbeitgebernahen Forschungsinstituts. Alle Artefakte sind Beratungsgrundlagen; jede Governance-Entscheidung und jede externe Handlung bleibt menschlich verantwortet (Human-in-the-Loop). Die Kette schließt sich bewusst: das Schluss-Szenario führt zurück zu S-OC-001, weil Skalierung nach IW-Logik stets ein neuer, sauber pilotierter Anlauf ist.
 
 ### S-OC-001 Pilot mit einem einzelnen Kompetenzfeld aufsetzen
 
@@ -435,4 +435,119 @@ Die folgenden zwanzig Szenarien (Präfix S-OC) bilden den Einführungs- und Ver�
 **Fallstricke (≥2 spezifisch):**
 - Halluzinierte Zahlen werden übersehen → jede Studienzahl gegen die Originalquelle prüfen; ohne Beleg nicht veröffentlichen.
 - KI-Bilder werden ohne Kennzeichnung genutzt → §50 EU AI Act beachten; KI-Bilder nie als empirischen Beleg verwenden.
+**Anschluss-Szenario:** S-OC-023
+
+### S-OC-023 Studien-Briefing (1-Pager) pro neuer Studie fürs Kommunikationsteam erstellen
+
+**Wann nutzen (Trigger):** Eine Ökonomin hat einen IW-Kurzbericht oder IW-Report finalisiert; bevor das Kommunikationsteam in die Aufbereitung (iwd, Pressemitteilung) geht, fehlt ein knappes internes Briefing mit Kernaussagen, Sprachregelung und No-Go-Formulierungen — der Übergabepunkt Forschung → Kommunikation. (Quelle: research/10 §7 — Aufbereitung/Übersetzung als eigene Workflow-Stufe, "Kernbotschaften" extrahieren; Quelle: 14 — Registerunterschied iwd allgemeinverständlich vs. IW-Report/Gutachten wissenschaftlich-empirisch)
+**Strategisches Ziel:** Den Research-Comms-Handoff standardisieren, sodass jede Studie konsistent, neutralitätskonform und ohne Rückfrage-Schleifen in die Kanäle übersetzt wird.
+**Hands-on Ergebnis:** Ein einseitiges Studien-Briefing mit drei Kernaussagen, einer Sprachregelung und einer No-Go-Liste je Studie.
+**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) für die finalisierte Studie und die Brand-Voice-Standards; Canvas / Document Editor für das Briefing-Template.
+**Vorgehen (4 Schritte):**
+1. Die finalisierte Studie und die Format-/Brand-Voice-Vorgaben in den Wissensordner legen.
+2. Im Canvas die drei wichtigsten, datenbelegten Kernaussagen extrahieren (je mit Fundstelle in der Studie).
+3. Eine Sprachregelung (zentrale Begriffe, ordnungspolitischer Rahmen) und eine No-Go-Liste (Alarmismus, Werbe-Superlative, kausale Überdehnung) ergänzen.
+4. Das Briefing der Studienautorin zur fachlichen Freigabe vorlegen, bevor es das Team nutzt (menschliche Bestätigung).
+**Beispiel-Prompt (DE):**
+> "Du bist mein Research-Comms-Berater. Erstelle aus der Studie im Wissensordner ein einseitiges internes Studien-Briefing fürs IW-Kommunikationsteam. Format: drei Kernaussagen (je mit Seitenbeleg), Sprachregelung (zentrale Begriffe), No-Go-Liste. Ton: sachlich, evidenzbasiert. Erfinde keine Zahlen; markiere nicht belegbare Aussagen als '[unsicher]'."
+**Erwartetes Artefakt:** Studien-Briefing (Canvas, ca. 1 Seite) mit drei belegten Kernaussagen, Sprachregelung und No-Go-Liste.
+**Fallstricke (≥2 spezifisch):**
+- Das Briefing glättet akademische Unsicherheiten zu früh und überträgt sie nicht ins iwd-Register → Konfidenz-/Vorbehaltsmarker der Autorin im Briefing ausdrücklich vermerken, statt sie zu streichen.
+- Eine Kernaussage wird ohne Seitenbeleg übernommen → jede Kernaussage zwingend an eine Fundstelle in der Studie binden, sonst droht ein Zahlenfehler in der späteren Pressearbeit.
+**Anschluss-Szenario:** S-OC-024
+
+### S-OC-024 Rollen-Onboarding: neue Teammitglieder an den Little-Data-Agenten heranführen
+
+**Wann nutzen (Trigger):** Ein neues Mitglied kommt ins Kommunikationsteam oder zu IW Medien und soll den Little-Data-Advisor erstmals nutzen; es braucht einen Erstkontakt-Leitfaden mit den ersten drei sinnvollen Anfragen und den geltenden Leitplanken, statt unstrukturiert auszuprobieren. (Quelle: research/10 §7 — Aufbereitungs-Workflow und wiederkehrende Aufgaben des Kommunikationsteams; Quelle: research/11 §6 — verpflichtende KI-Literacy, unteilbare redaktionelle Verantwortung)
+**Strategisches Ziel:** Time-to-Value für Neuzugänge verkürzen und von der ersten Minute an neutralitäts- und compliance-konforme Nutzung verankern, ohne Shadow AI entstehen zu lassen.
+**Hands-on Ergebnis:** Ein Erstkontakt-Leitfaden mit drei erprobten Einstiegs-Anfragen, den wichtigsten Leitplanken und dem Verweis auf Policy und Prompt-Bibliothek.
+**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) für KI-Nutzungs-Policy und Prompt-Bibliothek; Canvas / Document Editor für den Leitfaden.
+**Vorgehen (4 Schritte):**
+1. Policy, Prompt-Bibliothek und Brand-Voice-Standards als Bezugsdokumente im Wissensordner verlinken.
+2. Im Canvas drei sinnvolle Erst-Anfragen formulieren (z. B. iwd-Zusammenfassung eines Kurzberichts, Glossar-Begriff nachschlagen, Social-Atomisierung testen).
+3. Die nicht verhandelbaren Leitplanken kompakt auflisten (keine unveröffentlichten Gutachten, Sie-Form, Faktencheck-Pflicht, kein Außenversand ohne Freigabe).
+4. Den Leitfaden mit dem zuständigen KI-Champion durchgehen und beim ersten realen Use-Case begleiten (menschliche Begleitung).
+**Beispiel-Prompt (DE):**
+> "Du bist mein Onboarding-Berater. Erstelle aus Policy und Prompt-Bibliothek im Wissensordner einen Erstkontakt-Leitfaden für ein neues IW-Teammitglied am Little-Data-Advisor. Format: drei erste sinnvolle Anfragen mit Beispiel-Prompt, kompakte Leitplanken-Liste, Verweis auf Policy. Betone die Sie-Form und die Faktencheck-Pflicht vor jedem Außenversand."
+**Erwartetes Artefakt:** Erstkontakt-Leitfaden mit drei Einstiegs-Anfragen, Leitplanken-Liste und Policy-Verweis.
+**Fallstricke (≥2 spezifisch):**
+- Neuzugänge laden zum Üben echte vertrauliche Inhalte (embargobehaftete Studie) hoch → schon im Leitfaden ein unkritisches, bereits veröffentlichtes Beispieldokument für die ersten Versuche vorgeben.
+- Der Leitfaden vermittelt Tool-Bedienung, aber nicht die redaktionelle Verantwortung → die Faktencheck-Pflicht und das Verbot des automatischen Außenversands als erste Lektion setzen, nicht als Fußnote.
+**Anschluss-Szenario:** S-OC-025
+
+### S-OC-025 Change-Resistance: Skeptiker mit belegbarem Vorher/Nachher-Zeitgewinn überzeugen
+
+**Wann nutzen (Trigger):** Erfahrene Teammitglieder lehnen den Advisor ab ("kostet mehr Zeit als es bringt"); die Leitung will keine Hype-Argumentation, sondern einen ehrlichen, an einer realen IW-Aufgabe gemessenen Vorher/Nachher-Vergleich, der auch die Grenzen offenlegt. (Quelle: research/10 §7 — Übersetzung dichter Studien unter extremem Zeitdruck als realer Engpass; Quelle: research/11 §6 — KI als Assistenz, nicht Autor; menschliche Faktenprüfung bleibt Pflicht)
+**Strategisches Ziel:** Akzeptanz über belegte Evidenz statt über Marketing gewinnen, indem ein messbarer Zeitgewinn an einem echten Workflow demonstriert und der verbleibende Aufwand (Faktencheck) ehrlich ausgewiesen wird.
+**Hands-on Ergebnis:** Ein Vorher/Nachher-Vergleich für eine konkrete Aufgabe (z. B. iwd-Übersetzung eines Kurzberichts) mit Zeit-Schätzung, Qualitätsschritten und benannten Grenzen.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für den Vergleich; Knowledge (Wissensordner) für die Format-Vorgaben und einen realen Beispiel-Kurzbericht.
+**Vorgehen (4 Schritte):**
+1. Eine konkrete, wiederkehrende Aufgabe des Skeptikers wählen (z. B. 400-Wort-iwd-Text aus einem Kurzbericht).
+2. Im Canvas den manuellen Ablauf und den Advisor-gestützten Ablauf Schritt für Schritt gegenüberstellen.
+3. Den ehrlichen Netto-Zeitgewinn schätzen und den Pflicht-Faktencheck als verbleibenden menschlichen Aufwand ausdrücklich einrechnen.
+4. Die Grenzen klar benennen (keine Zahlen-Erfindung, kein automatischer Versand) und den Vergleich gemeinsam mit dem Skeptiker an einem echten Fall testen.
+**Beispiel-Prompt (DE):**
+> "Du bist mein Change-Berater. Erstelle aus den Format-Vorgaben im Wissensordner einen ehrlichen Vorher/Nachher-Vergleich für die iwd-Übersetzung eines IW-Kurzberichts mit dem Little-Data-Advisor. Format: zwei Spalten (manuell / mit Advisor), Schrittliste, geschätzter Netto-Zeitgewinn, ausdrücklich benannte Grenzen. Keine Werbe-Superlative; rechne den menschlichen Faktencheck mit ein."
+**Erwartetes Artefakt:** Vorher/Nachher-Vergleich (zwei Spalten) mit Schrittliste, geschätztem Netto-Zeitgewinn und benannten Grenzen.
+**Fallstricke (≥2 spezifisch):**
+- Der Zeitgewinn wird ohne den Faktencheck-Aufwand gerechnet und wirkt unglaubwürdig → den menschlichen Prüfschritt immer in die Nachher-Schätzung aufnehmen, sonst verhärtet sich die Skepsis.
+- Eine erfundene Prozentzahl ("70 Prozent schneller") wird als Beleg genutzt → nur am realen Fall geschätzte, als Schätzung gekennzeichnete Werte verwenden; keine Marktstudien-Zahlen erfinden.
+**Anschluss-Szenario:** S-OC-026
+
+### S-OC-026 Prompt-Bibliothek: die fünf häufigsten IW-Kommunikationsaufgaben als geteilte Vorlagen etablieren
+
+**Wann nutzen (Trigger):** Das Team nutzt den Advisor produktiv, erfindet aber für dieselben fünf wiederkehrenden Aufgaben jedes Mal neue Prompts in schwankender Qualität; die Leitung will diese Top-5-Aufgaben als getestete, geteilte Vorlagen festschreiben. (Quelle: research/10 §7 — wiederkehrende High-Volume-Tasks: Übersetzung, Audience-Rewriting, Grafik-Konzeption, DE-EN-Übersetzung, Media-Monitoring; Quelle: 14 — Format-/Registerunterschiede als Grundlage tonal korrekter Vorlagen)
+**Strategisches Ziel:** Konsistenz und Geschwindigkeit bei den fünf häufigsten Aufgaben sichern, indem geprüfte PTCF-Vorlagen das wiederholte Neuformulieren ersetzen.
+**Hands-on Ergebnis:** Fünf getestete, freigegebene PTCF-Vorlagen (iwd-Übersetzung, Audience-Rewriting, Grafik-Konzeption aus Tabelle, DE-EN-Übersetzung ordnungspolitischer Begriffe, Media-Monitoring-Auswertung) mit Anwendungshinweis.
+**Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) als Ablage der Vorlagen; Canvas / Document Editor für Aufbau, Test-Notiz und Freigabe-Status.
+**Vorgehen (5 Schritte):**
+1. Die fünf häufigsten IW-Aufgaben aus dem Workflow benennen und je Aufgabe das Zielformat festlegen.
+2. Im Canvas je Aufgabe eine PTCF-Vorlage (Persona, Task, Context, Format) entwerfen.
+3. Jede Vorlage an einem realen Beispiel testen und das Ergebnis gegen die Brand-Voice-Standards prüfen.
+4. Anwendungshinweis und Freigabe-Status ("getestet/freigegeben") je Vorlage ergänzen.
+5. Die fünf Vorlagen im geteilten Wissensordner ablegen und dem Team als Standard kommunizieren (menschliche Freigabe der Inhalte).
+**Beispiel-Prompt (DE):**
+> "Du bist mein Vorlagen-Kurator. Entwirf aus den Format-Vorgaben im Wissensordner fünf getestete PTCF-Vorlagen für die häufigsten IW-Kommunikationsaufgaben (iwd-Übersetzung, Audience-Rewriting, Grafik-Konzeption aus Tabelle, DE-EN-Übersetzung ordnungspolitischer Begriffe, Media-Monitoring). Format: je Vorlage Persona/Task/Context/Format, Anwendungshinweis, Freigabe-Status. Markiere ungetestete Vorlagen als 'Test offen'."
+**Erwartetes Artefakt:** Fünf PTCF-Vorlagen (Wissensordner) mit Anwendungshinweis und Freigabe-Status je häufiger Aufgabe.
+**Fallstricke (≥2 spezifisch):**
+- Die Vorlagen duplizieren die bestehende Prompt-Bibliothek aus S-OC-008 und es entstehen widersprüchliche Versionen → die Top-5-Vorlagen als kuratierten Kern in die bestehende Bibliothek einhängen, nicht parallel führen.
+- Eine ungetestete Vorlage wird als "freigegeben" verbreitet und trägt Tone-Drift ins ganze Team → nur am realen Beispiel getestete, brand-voice-geprüfte Vorlagen freigeben.
+**Anschluss-Szenario:** S-OC-027
+
+### S-OC-027 Qualitäts-Gate: HITL-Freigabe und Faktencheck vor jedem Außenversand verankern
+
+**Wann nutzen (Trigger):** Mit steigender Nutzung wächst das Risiko, dass ein KI-gestützter Text ohne abschließende Prüfung nach außen geht; die Leitung will ein verbindliches Qualitäts-Gate (menschliche Freigabe plus Faktencheck) als festen Schritt vor jedem Außenversand. (Quelle: research/11 §6 — unteilbare redaktionelle Verantwortung, jede KI-Ausgabe braucht menschliche Faktenprüfung; Quelle: research/10 §6 — methodische Unangreifbarkeit als Glaubwürdigkeitsbasis des IW)
+**Strategisches Ziel:** Die empirische Glaubwürdigkeit des IW schützen, indem kein KI-gestützter Inhalt ohne dokumentierte menschliche Freigabe und Faktencheck publiziert oder versendet wird.
+**Hands-on Ergebnis:** Eine verbindliche Qualitäts-Gate-Checkliste mit Faktencheck-Punkten, Freigabe-Rolle und Dokumentationsfeld vor jedem Außenversand.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Checkliste; Knowledge (Wissensordner) für Guardrails und KI-Nutzungs-Policy.
+**Vorgehen (4 Schritte):**
+1. Die prüfpflichtigen Außen-Artefakte erfassen (Pressetext, iwd-Artikel, Social-Post, EN-Übersetzung).
+2. Im Canvas je Artefakt die Faktencheck-Punkte festlegen (jede Zahl gegen Originalquelle, Neutralität, Kennzeichnung).
+3. Eine benannte Freigabe-Rolle und ein Dokumentationsfeld (wer hat wann freigegeben) ergänzen.
+4. Das Gate als Pflichtschritt vor dem Versand in den Editorial-Workflow einhängen; ohne Freigabe kein Außenversand.
+**Beispiel-Prompt (DE):**
+> "Du bist mein Qualitäts-Gate-Berater. Erstelle aus Guardrails und Policy im Wissensordner eine verbindliche Freigabe-Checkliste vor jedem Außenversand KI-gestützter IW-Inhalte. Format: je Artefakttyp Faktencheck-Punkte, Freigabe-Rolle, Dokumentationsfeld. Verankere: jede Zahl gegen die Originalquelle prüfen; kein Versand ohne menschliche Freigabe."
+**Erwartetes Artefakt:** Qualitäts-Gate-Checkliste mit Faktencheck-Punkten, Freigabe-Rolle und Dokumentationsfeld je Außen-Artefakt.
+**Fallstricke (≥2 spezifisch):**
+- Das Gate wird als unverbindliche Empfehlung formuliert und unter Zeitdruck übersprungen → die Freigabe als technisch/organisatorisch erzwungenen Pflichtschritt verankern, nicht als optionalen Hinweis; nie "vollautomatisch" versenden.
+- Geprüft wird nur Stil, nicht die Faktentreue → jede Studienzahl muss namentlich gegen die Originalquelle abgeglichen sein, sonst gefährdet ein Zahlenfehler die IW-Glaubwürdigkeit.
+**Anschluss-Szenario:** S-OC-028
+
+### S-OC-028 Feedback-Schleife: falsche oder unsichere Agent-Ausgaben melden und die Wissensbasis nachschärfen
+
+**Wann nutzen (Trigger):** Teammitglieder stoßen im Alltag auf falsche, unsichere oder neutralitäts-driftende Agent-Ausgaben, aber es fehlt ein einfacher Meldeweg, über den diese Fälle erfasst und in die Wissensbasis zurückgespielt werden; die Leitung will eine geschlossene Feedback-Schleife. (Quelle: research/11 §6 — Halluzination/Faktentreue und Tone Drift als Kernrisiken, redaktionelle Verantwortung; Quelle: research/10 §7 — Kommunikationsteam als zentrale Aufbereitungs- und Qualitätsinstanz)
+**Strategisches Ziel:** Die Wissensbasis und Vorlagen kontinuierlich verbessern, indem Fehlausgaben niederschwellig gemeldet, klassifiziert und in konkrete Korrekturen (Knowledge-Anpassung, Prompt-Schärfung) überführt werden.
+**Hands-on Ergebnis:** Ein Feedback-Schleifen-Konzept mit Meldevorlage, Klassifikation und Rückspielweg in Wissensordner und Prompt-Bibliothek.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für Meldevorlage und Prozess; Knowledge (Wissensordner) als Ziel der nachgeschärften Inhalte.
+**Vorgehen (4 Schritte):**
+1. Eine kurze Meldevorlage definieren (Anfrage, fehlerhafte Ausgabe, Fehlerart, erwartete Ausgabe).
+2. Im Canvas die Fehlerarten klassifizieren (Faktenfehler, veraltete Quelle, Tone-/Neutralitäts-Drift, Wissenslücke).
+3. Je Fehlerart den Rückspielweg festlegen (Knowledge-Datei korrigieren, Prompt-Vorlage schärfen, an Champion eskalieren).
+4. Eine regelmäßige Sichtung in der Community of Practice verankern; Korrekturen werden menschlich entschieden und dokumentiert.
+**Beispiel-Prompt (DE):**
+> "Du bist mein Berater für Feedback-Prozesse. Entwirf aus Guardrails und Policy im Wissensordner eine Feedback-Schleife für falsche oder unsichere Ausgaben des IW-Advisors. Format: Meldevorlage (Anfrage, Fehlausgabe, Fehlerart, erwartete Ausgabe), Klassifikation, Rückspielweg in Wissensordner/Prompt-Bibliothek. Halte fest, dass Korrekturen menschlich entschieden und dokumentiert werden."
+**Erwartetes Artefakt:** Feedback-Schleifen-Konzept mit Meldevorlage, Fehler-Klassifikation und dokumentiertem Rückspielweg.
+**Fallstricke (≥2 spezifisch):**
+- Gemeldete Fehler versickern ohne festen Rückspielweg → je Fehlerart eine konkrete Korrekturaktion und eine verantwortliche Rolle festschreiben, sonst wiederholt sich derselbe Fehler.
+- Eine veraltete Quelle (z. B. überholte Modell-/Frist-Angabe) wird nur lokal korrigiert, nicht in der Wissensbasis → die Korrektur verbindlich in die betroffene Knowledge-Datei zurückführen, damit alle Nutzer profitieren.
 **Anschluss-Szenario:** S-OC-001
