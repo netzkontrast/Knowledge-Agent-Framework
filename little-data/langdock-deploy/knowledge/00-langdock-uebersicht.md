@@ -1389,3 +1389,193 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 - Nur Effizienz wird gemessen, weil sie am leichtesten quantifizierbar ist → Mindestens eine Qualitäts- und eine Geschäftswert-Metrik sind pro Initiative Pflicht, sonst werden reine Vielnutzer fälschlich als Erfolg gewertet.
 - Zielwerte werden ohne Baseline gesetzt und sind willkürlich → Jeder Zielwert braucht einen dokumentierten Ist-Wert als Ausgangspunkt; ohne Baseline gilt das erste Quartal als Messphase, nicht als Bewertung.
 **Anschluss-Szenario:** S-LU-071
+
+### S-LU-071 KI-Vendor-Vertragsverlängerung mit Faktenbasis verhandeln
+
+**Wann nutzen (Trigger):** Die Langdock-Vertragsverlängerung steht in wenigen Monaten an, und Finance fragt, ob das Abrechnungsmodell (AI Models Included vs. BYOK) und der Lizenzpreis noch zu Volumen und Nutzung passen — bisher fehlt eine verhandlungsfähige Faktenbasis. (Quelle: sources/12 Q-117; sources/12 Q-118)
+**Strategisches Ziel:** Die Verlängerung von einer reflexhaften Zustimmung in eine datenbelegte Verhandlung überführen, die Abrechnungsmodell, Volumenrabatt-Stufe und Konditionen am realen Verbrauch ausrichtet.
+**Hands-on Ergebnis:** Ein Verhandlungs-Briefing im Canvas mit Ist-Verbrauch, Modell-Vergleich (Included vs. BYOK), erreichbarer Rabattstufe und drei priorisierten Verhandlungsforderungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Exportiere die 12-Monats-Nutzungsdaten (aktive Seats, Token-Verbrauch, Workflow-Läufe) aus dem Workspace-Admin als CSV.
+2. Lade die CSV in den Data Analyst und berechne den jährlichen Ist-Verbrauch sowie den Break-even zwischen AI Models Included und BYOK.
+3. Gleiche die aktive Seat-Zahl mit den Volumenrabatt-Stufen ab und ermittle, wie viele Seats bis zur nächsten Rabattschwelle fehlen.
+4. Formuliere im Canvas drei priorisierte Verhandlungsforderungen (z.B. Wechsel auf BYOK ab Break-even, Rabattstufe bei Seat-Bündelung, fixierter Preis über die Laufzeit).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist SaaS-Einkaufs-Analystin. Erstelle aus den angehängten Langdock-Nutzungsdaten ein Verhandlungs-Briefing für die Vertragsverlängerung. Kontext: 15 aktive Seats, aktuelles Modell AI Models Included, Verlängerung in 4 Monaten. Format: Tabelle mit Ist-Verbrauch, Break-even Included vs. BYOK, fehlende Seats bis zur nächsten Rabattstufe und drei priorisierten Verhandlungsforderungen."
+**Erwartetes Artefakt:** Ein Verhandlungs-Briefing im Canvas mit Verbrauchs-Ist, Modell-Break-even, Rabattstufen-Abstand und drei Verhandlungsforderungen, vorlagefertig für das Renewal-Gespräch.
+**Fallstricke (≥2 spezifisch):**
+- Der BYOK-Break-even wird ohne den Verwaltungsaufwand (API-Key-Management, Billing-Abgleich) gerechnet und wirkt zu attraktiv → Den Mehraufwand als Stundenwert in die Vergleichsrechnung aufnehmen, sonst kippt die Empfehlung in der Praxis.
+- Verhandlungsforderungen ohne Priorität verwässern das Gespräch → Maximal drei Forderungen, klar nach Hebelwirkung sortiert; alles Weitere nur als Verhandlungsmasse vermerken.
+**Anschluss-Szenario:** S-LU-072
+
+### S-LU-072 Build-vs-Buy-Memo: eigener Langdock-Workflow oder zugekauftes Spezial-Tool
+
+**Wann nutzen (Trigger):** Für eine wiederkehrende Aufgabe (z.B. Lokalisierung, Lead-Scoring) liegt ein zukaufbares Spezial-Tool auf dem Tisch — gleichzeitig könnte ein eigener Langdock-Workflow dieselbe Aufgabe lösen. Es fehlt ein nüchternes Entscheidungsmemo statt Bauchgefühl. (Quelle: A-08; A-26)
+**Strategisches Ziel:** Eine wiederverwendbare Build-vs-Buy-Entscheidung treffen, die Eigenbau und Zukauf über Gesamtkosten, Time-to-Value und Wartungslast vergleicht und so Tool-Wildwuchs verhindert.
+**Hands-on Ergebnis:** Ein Build-vs-Buy-Memo im Canvas mit Kosten- und Aufwandsvergleich, einer klaren Empfehlung und definierten Bedingungen, unter denen die Empfehlung kippt.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Workflows
+**Vorgehen (4 Schritte):**
+1. Beschreibe die Aufgabe präzise: Volumen pro Monat, Wiederholungsfrequenz, geforderte Output-Qualität und Integrationsbedarf.
+2. Schätze für "Build" (Langdock-Workflow) den einmaligen Bau-Aufwand, die laufenden Run-Kosten und die Wartungslast; für "Buy" Lizenzkosten, Einführungsaufwand und Lock-in-Risiko.
+3. Stelle beide Optionen in einer Tabelle gegenüber (Jahres-Gesamtkosten, Time-to-Value, Wartung, Abhängigkeit) und leite eine begründete Empfehlung ab.
+4. Definiere im Memo die Kipp-Bedingungen: ab welchem Volumen oder welcher Komplexität die Empfehlung wechselt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist nüchterne MarketingOps-Beraterin. Erstelle ein Build-vs-Buy-Memo für eine wiederkehrende Lokalisierungs-Aufgabe. Kontext: ca. 200 Texte/Monat, ein Langdock-Workflow wäre baubar, ein Spezial-Tool kostet 6.000 Euro/Jahr. Format: Vergleichstabelle (Build vs. Buy) mit Jahres-Gesamtkosten, Time-to-Value, Wartungslast und Lock-in, plus Empfehlung und Kipp-Bedingungen."
+**Erwartetes Artefakt:** Ein Build-vs-Buy-Memo im Canvas mit Vergleichstabelle, begründeter Empfehlung und expliziten Kipp-Bedingungen als Entscheidungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Der Bau-Aufwand des Workflows wird unterschätzt, weil nur die Erstkonfiguration, nicht die Wartung gerechnet wird → Eine jährliche Wartungs-Pauschale (Tests, Anpassung an Modell-/API-Änderungen) verbindlich einplanen.
+- Das Memo entscheidet rein über den Preis und ignoriert strategische Abhängigkeit → Lock-in und Exit-Aufwand als eigene Vergleichszeile führen, nicht im Preis verstecken.
+**Anschluss-Szenario:** S-LU-073
+
+### S-LU-073 KI-Reife extern benchmarken statt nur intern bewerten
+
+**Wann nutzen (Trigger):** Das interne Reife-Assessment (S-LU-053) zeigt einen Score, aber die Leitung fragt: "Ist das gut oder schlecht im Vergleich zu vergleichbaren Marketing-Teams?" — ohne externen Referenzwert bleibt die Selbstbewertung im luftleeren Raum. (Quelle: A-10; sources/12 Q-145)
+**Strategisches Ziel:** Den internen Reife-Score gegen recherchierte externe Referenzwerte vergleichbarer B2B-Marketing-Teams einordnen und so die größten relativen Rückstände sichtbar machen.
+**Hands-on Ergebnis:** Ein Benchmark-Vergleich im Canvas, der den eigenen Score je Dimension einem recherchierten Referenzkorridor gegenüberstellt und die drei größten Lücken priorisiert.
+**Eingesetzte Langdock-Fähigkeit(en):** Deep Research / Canvas / Chat
+**Vorgehen (4 Schritte):**
+1. Übernimm die fünf Dimensionen und Scores aus dem internen Assessment (S-LU-053) als Ausgangsbasis.
+2. Aktiviere den Deep Research Modus und recherchiere öffentlich belegbare Referenzwerte zur KI-Reife vergleichbarer B2B-SaaS-Marketing-Teams (Studien, Reports); markiere unbelegbare Werte als Schätzung.
+3. Stelle je Dimension den eigenen Score dem externen Referenzkorridor gegenüber und berechne den relativen Abstand.
+4. Priorisiere die drei Dimensionen mit dem größten Rückstand und ordne ihnen je eine konkrete Aufholmaßnahme zu.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Benchmarking-Analystin. Vergleiche unseren internen KI-Reife-Score mit externen Referenzwerten vergleichbarer B2B-SaaS-Marketing-Teams. Kontext: Fünf Dimensionen mit Eigenscores liegen vor; nur Quellen mit belegbarer URL gelten, sonst als Schätzung markieren. Format: Tabelle mit Dimension, Eigenscore, externem Referenzkorridor, relativem Abstand und Aufholmaßnahme für die drei größten Lücken."
+**Erwartetes Artefakt:** Ein Benchmark-Vergleich im Canvas mit Eigenscore vs. Referenzkorridor je Dimension und drei priorisierten Aufholmaßnahmen.
+**Fallstricke (≥2 spezifisch):**
+- Deep Research erfindet plausibel klingende Benchmark-Zahlen ohne belastbare Quelle → Jeden Referenzwert mit URL belegen lassen; unbelegte Werte ausdrücklich als Schätzung kennzeichnen und nicht für Entscheidungen nutzen.
+- Externe Benchmarks aus anderen Branchen werden 1:1 übernommen → Den Vergleichskorridor strikt auf B2B-SaaS-Marketing in vergleichbarer Teamgröße einschränken, sonst täuscht der Abstand.
+**Anschluss-Szenario:** S-LU-074
+
+### S-LU-074 Quartals-KI-Business-Review-Paket als erzählendes Deck schnüren
+
+**Wann nutzen (Trigger):** Das ROI-Dashboard (S-LU-061) liefert Zahlen, aber das Quartals-Business-Review braucht ein erzählendes Paket, das Zahlen, Entscheidungen, Risiken und nächste Schritte zusammenführt — bisher wird das Deck jedes Quartal mühsam von Hand gebaut. (Quelle: A-10; A-01)
+**Strategisches Ziel:** Ein wiederverwendbares Quarterly-Business-Review-Paket etablieren, das den KI-Wertbeitrag als zusammenhängende Geschichte (Ergebnis, Entscheidung, Risiko, Ausblick) erzählt statt als isolierte Kennzahlen.
+**Hands-on Ergebnis:** Ein QBR-Deck-Gerüst im Canvas mit fünf festen Abschnitten (Highlights, KPI-Entwicklung, getroffene Entscheidungen, offene Risiken, Quartalsziele), je mit Kernaussage.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas / Data Analyst / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Ziehe die Quartals-Kennzahlen aus dem ROI-Dashboard (S-LU-061) und die Metrik-Werte aus dem Erfolgs-Framework (S-LU-070) als Datengrundlage zusammen.
+2. Strukturiere das Deck in fünf feste Abschnitte und formuliere pro Abschnitt eine einzige Kernaussage (eine Zeile), bevor Details ergänzt werden.
+3. Ergänze pro Abschnitt nur die belegenden Daten und maximal eine Visualisierung; halte das Narrativ vor den Zahlen.
+4. Speichere das Gerüst als Template im Governance-Wissensordner, das im Folgequartal nur neue Aussagen und Zahlen erfordert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Executive-Storytelling-Beraterin. Baue aus den angehängten Quartalszahlen ein erzählendes KI-Business-Review-Deck-Gerüst. Kontext: Empfänger ist die Geschäftsführung, Vorquartals-Vergleich liegt vor. Format: Fünf Abschnitte (Highlights, KPI-Entwicklung, getroffene Entscheidungen, offene Risiken, Quartalsziele) mit je einer Kernaussage in einer Zeile plus belegenden Daten."
+**Erwartetes Artefakt:** Ein QBR-Deck-Gerüst im Canvas mit fünf Abschnitten, je einer Kernaussage und belegenden Daten, als wiederverwendbares Quartals-Template.
+**Fallstricke (≥2 spezifisch):**
+- Das Deck wird zur Zahlenwüste ohne roten Faden → Jeder Abschnitt beginnt mit genau einer Kernaussage; Zahlen dienen nur als Beleg, nicht als Ersatz für die Aussage.
+- Risiken werden geschönt oder weggelassen, um gut dazustehen → Der Abschnitt "offene Risiken" ist Pflicht und nennt mindestens ein konkretes, ungelöstes Problem mit Verantwortlichem.
+**Anschluss-Szenario:** S-LU-075
+
+### S-LU-075 Wissens-Kurations-Ritual für saubere Wissensordner verankern
+
+**Wann nutzen (Trigger):** Die Wissensordner sind über Monate gewachsen, enthalten veraltete Briefings, Dubletten und Dateien nahe am Zeichen-Limit — die Retrieval-Qualität der Agenten sinkt spürbar, weil niemand für die Pflege zuständig ist. (Quelle: sources/12 Q-154; sources/10 S-005)
+**Strategisches Ziel:** Ein festes, leichtgewichtiges Kurations-Ritual etablieren, das Wissensordner aktuell, dublettenfrei und unter den Limits hält und so die Antwortqualität der Agenten dauerhaft stabilisiert.
+**Hands-on Ergebnis:** Ein Kurations-Ritual im Canvas mit Monats-Checkliste, klaren Archivierungs-Regeln und benanntem Folder-Owner pro Wissensordner.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner / Data Analyst / Canvas
+**Vorgehen (4 Schritte):**
+1. Exportiere je Wissensordner die Datei-Inventarliste (Name, Datum, Größe) und lade sie in den Data Analyst, um veraltete Dateien, Dubletten und Limit-Nähe (8-Mio-Zeichen-Grenze) zu identifizieren.
+2. Definiere Archivierungs-Regeln: Dateien älter als 12 Monate oder als überholt markiert wandern in einen separaten Archiv-Folder; aktiver Folder bleibt unter der vereinbarten Dateizahl.
+3. Lege eine Monats-Checkliste fest (Dubletten prüfen, Verfallsdaten kontrollieren, ein Canary-Retrieval-Test pro Agent) und benenne pro Folder einen Owner.
+4. Dokumentiere das Ritual im Governance-Wissensordner und verankere den Termin als festes Kalender-Item.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Knowledge-Operations-Managerin. Entwirf ein monatliches Kurations-Ritual für unsere Langdock-Wissensordner. Kontext: Fünf aktive Folder, Retrieval-Qualität sinkt, kein definierter Owner. Format: Monats-Checkliste mit Prüfschritten, Archivierungs-Regeln (Alter, Dubletten, Limit-Nähe) und einer Owner-Zuordnung pro Folder."
+**Erwartetes Artefakt:** Ein Kurations-Ritual im Canvas mit Monats-Checkliste, Archivierungs-Regeln und Folder-Owner-Zuordnung, abgelegt im Governance-Wissensordner.
+**Fallstricke (≥2 spezifisch):**
+- Alte Dateien werden gelöscht statt archiviert und gehen als Nachweis verloren → Überholte Dokumente immer in einen Archiv-Folder verschieben, nie löschen; das aktive Retrieval bleibt trotzdem sauber.
+- Das Ritual wird nach zwei Monaten vergessen, weil kein Owner verantwortlich ist → Pro Folder einen namentlichen Owner mit fixem Monatstermin festschreiben; ohne Owner gilt der Folder als nicht freigegeben.
+**Anschluss-Szenario:** S-LU-076
+
+### S-LU-076 Wissensordner-Governance über Regionen: zentral vs. lokal abgrenzen
+
+**Wann nutzen (Trigger):** DACH und internationale Einheiten arbeiten mit eigenen Wissensordnern, aber Brand-Kerndokumente liegen mehrfach in unterschiedlichen Versionen vor — es fehlt eine Regel, welche Inhalte zentral verbindlich sind und welche regional ergänzt werden dürfen. (Quelle: A-17; sources/12 Q-128)
+**Strategisches Ziel:** Eine Folder-Governance aufbauen, die zentrale Pflicht-Inhalte (Brand, Compliance) eindeutig von regional erlaubten Ergänzungen trennt und Datenresidenz pro Region respektiert.
+**Hands-on Ergebnis:** Ein Folder-Governance-Modell im Canvas mit Klassifizierung jeder Inhaltskategorie als zentral-verbindlich, regional-ergänzbar oder rein-lokal, plus Datenresidenz-Hinweis.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner / Canvas / Deep Research
+**Vorgehen (4 Schritte):**
+1. Inventarisiere die bestehenden Wissensordner je Region mit Inhaltskategorien (Brand, Compliance, Kampagnen, lokale Marktdaten).
+2. Klassifiziere jede Kategorie: zentral-verbindlich (eine Master-Quelle, regional nur lesbar), regional-ergänzbar (Master plus lokaler Zusatz) oder rein-lokal.
+3. Prüfe mit Deep Research die Datenresidenz-Anforderungen je Region und ordne jeder Kategorie einen Hosting-/Ablage-Hinweis zu; Ergebnisse vom Datenschutzbeauftragten bestätigen lassen.
+4. Lege fest, wer zentrale Master-Folder pflegt und wie regionale Einheiten Änderungswünsche einbringen; dokumentiere alles im Governance-Hub.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Enterprise-Knowledge-Governance-Beraterin. Entwickle ein Folder-Governance-Modell für Wissensordner in DACH und zwei internationalen Regionen. Kontext: Brand-Kerndokumente existieren mehrfach, unterschiedliche Datenschutz-Regime, gemeinsame Marke. Format: Tabelle mit Inhaltskategorie, Klassifizierung (zentral-verbindlich/regional-ergänzbar/rein-lokal), Datenresidenz-Hinweis und Pflege-Verantwortlichem."
+**Erwartetes Artefakt:** Ein Folder-Governance-Modell im Canvas mit Inhalts-Klassifizierung, Datenresidenz-Hinweisen und Pflege-Verantwortlichen je Kategorie.
+**Fallstricke (≥2 spezifisch):**
+- Datenresidenz-Aussagen der KI werden ohne juristische Prüfung übernommen → Die Deep-Research-Ergebnisse sind nur Arbeitsgrundlage; jede Ablage-Regel muss der Datenschutzbeauftragte bestätigen.
+- Zentrale Master-Folder werden als Bevormundung empfunden und regional umgangen → Einen verbindlichen Änderungs-Einbringungsweg definieren, damit Regionen Master-Inhalte mitgestalten statt Schatten-Kopien anzulegen.
+**Anschluss-Szenario:** S-LU-077
+
+### S-LU-077 Einwand-Playbook gegen wiederkehrende KI-Skepsis erstellen
+
+**Wann nutzen (Trigger):** In jeder Teamrunde tauchen dieselben Einwände gegen Langdock auf ("KI ist generisch", "kostenlose Chatbots reichen", "halluziniert bei rechtlichen Aussagen") — und jede Führungskraft beantwortet sie improvisiert und inkonsistent. (Quelle: sources/12 Q-146; sources/12 Q-150)
+**Strategisches Ziel:** Ein wiederverwendbares Einwand-Playbook schaffen, das die häufigsten Skepsis-Argumente mit ehrlichen, faktenbasierten Antworten kontert und so die Change-Kommunikation konsistent macht.
+**Hands-on Ergebnis:** Ein Einwand-Playbook im Canvas mit den Top-Einwänden, je einer Kernsorge, einer ehrlichen Antwort und einem konkreten Beleg oder Quick-Win.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Sammle im Chat die real geäußerten Einwände aus dem Team und gruppiere sie (Qualität, Kosten/kostenlose Tools, Datensicherheit, Jobangst, Halluzination).
+2. Formuliere pro Einwand die dahinterliegende echte Sorge und eine ehrliche Antwort, die nichts verspricht, was nicht haltbar ist.
+3. Hinterlege pro Antwort einen konkreten Beleg (z.B. EU-Hosting-Nachweis, Brand-Voice-Agent als Anti-Generisch-Beispiel) oder einen sichtbaren Quick-Win.
+4. Lege das Playbook im Governance-Wissensordner ab und mache es zum Standard-Werkzeug für alle Führungskräfte in Adoptions-Gesprächen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Change-Kommunikations-Beraterin für KI-Adoption. Erstelle ein Einwand-Playbook gegen wiederkehrende Langdock-Skepsis. Kontext: Häufige Einwände sind Generik, kostenlose Chatbots, Halluzination und Jobangst; ehrliche, nicht beschönigende Antworten gefordert. Format: Tabelle mit Einwand, dahinterliegender Kernsorge, ehrlicher Antwort und konkretem Beleg oder Quick-Win."
+**Erwartetes Artefakt:** Ein Einwand-Playbook im Canvas mit Top-Einwänden, Kernsorgen, ehrlichen Antworten und Belegen, ablagefertig im Governance-Wissensordner.
+**Fallstricke (≥2 spezifisch):**
+- Die Antworten beschönigen oder versprechen "kein Stellenabbau", was nicht garantiert werden kann → Nur kommunizieren, was die Führung tatsächlich zusichern kann; falsche Beruhigung zerstört Vertrauen dauerhaft.
+- Das Playbook bleibt abstrakt und überzeugt niemanden → Jede Antwort braucht einen nachprüfbaren Beleg oder einen erlebbaren Quick-Win, keine reinen Behauptungen.
+**Anschluss-Szenario:** S-LU-078
+
+### S-LU-078 Selbstlern-Agent als KI-Literacy-Trainingsspur bereitstellen
+
+**Wann nutzen (Trigger):** Einsteiger trauen sich nicht, in Schulungen Fragen zu stellen, und vergessen Gelerntes bis zum nächsten Termin — sie brauchen einen jederzeit verfügbaren, geduldigen Übungspartner statt eines weiteren Schulungstermins. (Quelle: sources/12 Q-148; A-37)
+**Strategisches Ziel:** Eine selbstgesteuerte KI-Literacy-Spur bereitstellen, die Einsteiger über einen dedizierten Lern-Agenten an echten Aufgaben übt und so die Hemmschwelle ohne zusätzliche Schulungstermine senkt.
+**Hands-on Ergebnis:** Ein konfigurierter Lern-Agent mit gestuften Konversations-Startern (Grundlagen, erste eigene Aufgabe, Selbstcheck) und einem kurzen Begleit-Leitfaden.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Konversations-Starter / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Konfiguriere einen Lern-Agenten mit geduldigem, erklärendem System-Prompt und binde die team-eigenen Grundlagen-Dokumente (diese Übersicht, Quick-Win-Agenten-Liste) als Wissensordner an.
+2. Lege drei gestufte Konversations-Starter an: "Erkläre mir Langdock in 5 Minuten", "Begleite mich durch meine erste echte Aufgabe", "Stelle mir 3 Selbstcheck-Fragen".
+3. Lass den Agenten jede Übung an einer realen, anstehenden Aufgabe des Lernenden ansetzen, nicht an erfundenen Beispielen.
+4. Ergänze einen 1-seitigen Begleit-Leitfaden, der den Einstieg und den Übergang zum Fortgeschrittenen-Track (S-LU-066) beschreibt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Learning-Designerin. Schreibe einen System-Prompt für einen geduldigen Langdock-Lern-Agenten für absolute Einsteiger. Kontext: Nutzer trauen sich keine Fragen in Gruppenschulungen, sollen an echten Aufgaben üben. Format: System-Prompt unter 500 Zeichen plus drei gestufte Konversations-Starter (Grundlagen, erste Aufgabe, Selbstcheck)."
+**Erwartetes Artefakt:** Ein konfigurierter Lern-Agent mit drei gestuften Konversations-Startern und einem 1-seitigen Begleit-Leitfaden, teilbar mit der Einsteiger-Gruppe.
+**Fallstricke (≥2 spezifisch):**
+- Der Lern-Agent übt an erfundenen Beispielen, sodass kein Praxistransfer entsteht → Jede Übung muss an einer echten, anstehenden Aufgabe des Lernenden ansetzen; das System-Prompt fordert das ausdrücklich ein.
+- Einsteiger bleiben dauerhaft im Selbstlern-Modus und steigen nie auf → Der Begleit-Leitfaden definiert ein klares Signal (z.B. erste eigene Aufgabe ohne Hilfe gelöst), das den Wechsel in den Fortgeschrittenen-Track (S-LU-066) auslöst.
+**Anschluss-Szenario:** S-LU-079
+
+### S-LU-079 Executive-Snapshot-Agent für den monatlichen 1-Pager bauen
+
+**Wann nutzen (Trigger):** Die Reporting-Kadenz (S-LU-062) verlangt einen monatlichen KI-Snapshot, aber das Aufbereiten der Zahlen zum 1-Pager frisst jedes Mal eine Stunde Handarbeit — ein standardisierter Snapshot-Agent fehlt. (Quelle: A-10; sources/12 Q-124)
+**Strategisches Ziel:** Den monatlichen Executive-Snapshot von Handarbeit auf einen konfigurierten Agenten umstellen, der aus dem Usage-Export verlässlich denselben 1-Pager im selben Format erzeugt.
+**Hands-on Ergebnis:** Ein konfigurierter Snapshot-Agent, der aus dem Usage-Export-CSV einen 1-Pager mit drei Kennzahlen, Vormonats-Delta und einer Kernaussage produziert.
+**Eingesetzte Langdock-Fähigkeit(en):** Agents / Data Analyst / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Definiere das feste 1-Pager-Format aus der Reporting-Kadenz (S-LU-062): genau drei Pflicht-Kennzahlen, Vormonats-Delta und eine Kernaussage.
+2. Konfiguriere einen Snapshot-Agenten mit System-Prompt, der dieses Format erzwingt, und binde eine Beispiel-Vorlage als Wissensordner an.
+3. Lass den Agenten den über die Usage-Export-API gezogenen Monats-CSV im Data Analyst verarbeiten und das Format strikt befüllen.
+4. Teste mit zwei Monaten Realdaten, ob das Format stabil bleibt, und gib den Agenten dann für den festen Monatslauf frei.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Reporting-Architektin. Schreibe einen System-Prompt für einen Executive-Snapshot-Agenten, der aus dem monatlichen Usage-Export einen 1-Pager erzeugt. Kontext: Empfänger CMO, festes Format aus der Reporting-Kadenz, eine Datenquelle. Format: System-Prompt, der genau drei Kennzahlen, Vormonats-Delta und eine Kernaussage erzwingt und Abweichungen vom Format verbietet."
+**Erwartetes Artefakt:** Ein konfigurierter Snapshot-Agent plus ein Beispiel-1-Pager mit drei Kennzahlen, Vormonats-Delta und Kernaussage, freigegeben für den Monatslauf.
+**Fallstricke (≥2 spezifisch):**
+- Der Agent variiert Format und Kennzahlen von Monat zu Monat, sodass keine Vergleichbarkeit entsteht → Das System-Prompt fixiert genau drei Kennzahlen und verbietet Format-Abweichungen; Memory bleibt deaktiviert, um Drift zu vermeiden.
+- Der Snapshot übernimmt die Export-Zahlen ungeprüft, auch bei fehlerhaftem Export → Eine Plausibilitäts-Zeile (z.B. aktive Seats vs. Vormonat) einbauen, die unrealistische Sprünge sichtbar markiert.
+**Anschluss-Szenario:** S-LU-080
+
+### S-LU-080 Migrations-Pilot nach dem Konsolidierungs-Entscheid sauber aufsetzen
+
+**Wann nutzen (Trigger):** Die Konsolidierungs-Analyse (S-LU-064) hat ein Punkt-Tool als ablösbar markiert — bevor es gekündigt wird, soll ein kontrollierter Migrations-Pilot beweisen, dass Langdock den Kern-Workflow real und in vergleichbarer Qualität abdeckt. (Quelle: A-08; sources/12 Q-150)
+**Strategisches Ziel:** Den Wechsel von einem abzulösenden Punkt-Tool über einen messbaren Pilot absichern, statt die zugesagte Ersparnis blind umzusetzen und ein Qualitätsrisiko einzugehen.
+**Hands-on Ergebnis:** Ein Migrations-Pilotplan im Canvas mit Pilot-Scope, Vorher/Nachher-Qualitätskriterien, Abbruch-Schwelle und einem Go/No-Go-Termin für die Kündigung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Workflows
+**Vorgehen (4 Schritte):**
+1. Grenze den Pilot-Scope eng ein: ein konkreter Kern-Workflow des abzulösenden Tools, ein definierter Zeitraum, eine repräsentative Aufgabenmenge.
+2. Lege Vorher/Nachher-Qualitätskriterien fest (z.B. Output-Qualität, Durchlaufzeit, Fehlerquote) und erfasse die Baseline aus dem bestehenden Tool, bevor der Pilot startet.
+3. Baue die Langdock-Lösung (Agent oder Workflow) für den Pilot-Scope und lasse beide Wege parallel laufen, um real zu vergleichen.
+4. Definiere eine Abbruch-Schwelle und einen Go/No-Go-Termin: Nur bei erreichter Qualität und gemessener Ersparnis wird das Alt-Tool gekündigt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Migrations-Projektleiterin. Erstelle einen Migrations-Pilotplan für die Ablösung eines KI-Punkt-Tools durch Langdock. Kontext: Ein Kern-Workflow soll pilotiert werden, Kündigung erst nach Nachweis, Baseline aus dem Alt-Tool verfügbar. Format: Plan mit Pilot-Scope, Vorher/Nachher-Qualitätskriterien, Abbruch-Schwelle und Go/No-Go-Termin für die Kündigung."
+**Erwartetes Artefakt:** Ein Migrations-Pilotplan im Canvas mit Scope, Vorher/Nachher-Kriterien, Abbruch-Schwelle und Go/No-Go-Termin als Absicherung vor der Tool-Kündigung.
+**Fallstricke (≥2 spezifisch):**
+- Das Alt-Tool wird gekündigt, bevor der Pilot die Qualität belegt hat → Kündigung erst nach erreichtem Go/No-Go-Kriterium; bis dahin laufen beide Wege parallel, auch wenn das kurzzeitig doppelte Kosten verursacht.
+- Der Pilot misst nur Kosten, nicht die Output-Qualität → Mindestens ein Qualitätskriterium mit dokumentierter Baseline ist Pflicht; reine Kostenersparnis bei schlechterem Output ist ein Fehlschlag.
+**Anschluss-Szenario:** S-LU-001
