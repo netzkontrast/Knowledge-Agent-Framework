@@ -1213,6 +1213,387 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 **Fallstricke (≥2 spezifisch):**
 - Einer der Integration-Nodes schlägt fehl (z. B. Ad-Plattform-API-Timeout), und der Workflow produziert einen unvollständigen Bericht ohne Fehlermarkierung → jeden Integration-Node mit einem Error-Handler koppeln, der fehlende Datenquellen explizit als „Nicht verfügbar — manuell ergänzen" im KPI-Objekt markiert statt den Workflow stillschweigend abzubrechen.
 - Der AI-Narrativ-Node interpretiert kurzfristige Ausreißer (z. B. Traffic-Spike durch Presse-Erwähnung) als strategischen Trend → den Narrativ-Prompt explizit anweisen, Einzel-Event-Spikes von strukturellen Trends zu unterscheiden und Kausalitätsaussagen als Hypothesen zu formulieren, die die Marketing-Direktorin im HITL-Gate bestätigt oder verwirft.
+**Anschluss-Szenario:** S-WF-061
+
+### S-WF-061 Lead-Scoring-Anreicherung bei neuem CRM-Kontakt (Integration Trigger)
+
+**Wann nutzen (Trigger):** Neue Kontakte landen mit dünnen Formulardaten im CRM; das Team möchte sie automatisch anreichern und scoren, bevor der Vertrieb sie sieht. (Quelle: sources/10 S-066 + 12 Q110)
+**Strategisches Ziel:** Lead-Qualifizierung auf Basis angereicherter Firmographics standardisieren und nur belastbare Scores an den Vertrieb übergeben.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten Enrichment- und Scoring-Workflow mit deterministischem Score-Schema.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), Action-Node (Enrichment-API via HTTP-Request), AI-Node (Scoring, Structured Output), Logic-Node (Condition)
+**Vorgehen (4 Schritte):**
+1. Den Integration-Trigger auf „Neuer Kontakt" im CRM koppeln und die verfügbaren Felder als Payload übergeben.
+2. Einen HTTP-Request-Node die E-Mail-Domain gegen eine Firmographics-Quelle anreichern lassen (Branche, Größe, Region).
+3. Einen AI-Node einen Score mit erzwungenem JSON-Schema (score 0–100, begründung, negativ_signale) berechnen lassen — inklusive disqualifizierender Signale wie Freemail-Domain.
+4. Einen Condition-Node bei Score ≥ Schwelle den Kontakt als „Sales-Ready" markieren, sonst ins Nurturing routen — interne Markierung, kein automatischer Kunden-Kontakt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lead-Scoring-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow, der neue CRM-Kontakte anreichert und scort. Kontext: Firmographics-Enrichment via HTTP-Request, JSON-Score mit Negativ-Signalen, Schwellen-Routing. Format: Trigger, Enrichment-Node, AI-Node mit Score-Schema, Condition."
+**Erwartetes Artefakt:** Ein Scoring-Workflow-Entwurf mit Enrichment-Schritt und JSON-Score-Schema inklusive disqualifizierender Signale.
+**Fallstricke (≥2 spezifisch):**
+- Der AI-Node vergibt nur positive Punkte und übersieht Negativ-Signale → das Schema um ein Feld für disqualifizierende Aktionen (z. B. Freemail, Karriereseite) erweitern.
+- Schlägt die Enrichment-API fehl, scort der AI-Node auf Lückendaten → einen Error-Branch einplanen, der unvollständige Datensätze als „manuell prüfen" markiert statt blind zu scoren.
+**Anschluss-Szenario:** S-WF-062
+
+### S-WF-062 Warenkorb-Abbruch-Nurturing für Self-Serve-Checkout (Webhook Trigger)
+
+**Wann nutzen (Trigger):** Nutzer brechen den Self-Serve-Checkout für den Jahresplan ab; eine zeitnahe, einwandbehandelnde Nurturing-Sequenz soll vorbereitet, aber nie ungeprüft versendet werden. (Quelle: sources/10 S-065)
+**Strategisches Ziel:** Abbrecher mit wertorientierten Argumenten zurückgewinnen, ohne den B2B-Wert durch vorschnelle Rabatte zu beschädigen.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für eine webhook-getriggerte Abandoned-Cart-Pipeline mit HITL vor dem Versand.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), Wissensordner (Einwandbehandlungs-Playbook), AI-Node (Sequenz-Entwurf), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Webhook-Trigger an das Checkout-Abbruch-Event koppeln und Kontakt- sowie Plan-Daten übergeben.
+2. Einen AI-Node zwei Recovery-Mails entwerfen lassen, gebunden an das Einwandbehandlungs-Playbook: Mail 1 nimmt Implementierungs-Angst, Mail 2 betont den ROI.
+3. Einen HITL-Node vor jedem externen Versand zwingend einplanen, damit die Sequenz geprüft und freigegeben wird.
+4. Nach Freigabe einen Action-Node die freigegebene Sequenz an das E-Mail-Tool übergeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Retention-Workflow-Architekt. Entwirf eine Abandoned-Cart-Pipeline für den Jahresplan. Kontext: Einwandbehandlung aus Wissensordner, keine vorschnellen Rabatte, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Playbook-Bindung, HITL vor Versand, Übergabe-Action."
+**Erwartetes Artefakt:** Ein Abandoned-Cart-Workflow-Entwurf mit zweistufiger Sequenz-Logik und verpflichtendem Freigabe-Schritt.
+**Fallstricke (≥2 spezifisch):**
+- Ein automatischer Versand ohne Freigabe verletzt die Kontrolle über die Kunden-Kommunikation → HITL vor jeder externen Aktion zwingend setzen.
+- Der AI-Node greift reflexhaft zu Rabatten und entwertet den B2B-Preis → den Node strikt auf wertorientierte Argumente aus dem Playbook festlegen.
+**Anschluss-Szenario:** S-WF-063
+
+### S-WF-063 Event-Follow-up-Sequenz nach Badge-Scan-Segmentierung (Manual Trigger + Loop)
+
+**Wann nutzen (Trigger):** Nach einer Messe wurden hunderte Badges gescannt; generische Follow-ups konvertieren nicht, eine notiz-basierte Segmentierung mit individuellen Entwürfen ist manuell nicht leistbar. (Quelle: sources/10 S-116)
+**Strategisches Ziel:** Event-Leads nach Notiz-Signalen segmentieren und passgenaue Follow-up-Varianten vorbereiten, ohne den Versand zu automatisieren.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Loop-Workflow mit Segment-Logik und HITL vor Versand.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), Loop-Node (≤100 Items), AI-Node (Segmentierung + Entwurf, Structured Output), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Manual-Trigger mit der Badge-Scan-Liste (Notizen je Kontakt) als Eingabe definieren; die Liste bei Bedarf in Chargen aufteilen.
+2. Einen Loop-Node über die Kontakte iterieren und einen AI-Node je Kontakt das Segment (Preis-Interesse / Wettbewerb / Allgemein) sowie einen passenden Entwurf bestimmen lassen.
+3. Die Entwürfe als JSON-Array sammeln und einen HITL-Node die Batch-Freigabe vor dem Versand durchführen lassen.
+4. Nach Freigabe einen Action-Node die Entwürfe an das CRM/E-Mail-Tool übergeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Event-Follow-up-Architekt. Entwirf einen Loop-Workflow für Badge-Scan-Leads. Kontext: Segmentierung nach Notizen, drei Follow-up-Varianten, kein automatischer Versand. Format: Manual-Trigger, Loop-Node, AI-Node mit Segment-Schema, HITL-Batch-Freigabe."
+**Erwartetes Artefakt:** Ein Event-Follow-up-Workflow-Entwurf mit Segment-Schema und Batch-Freigabe-Punkt.
+**Fallstricke (≥2 spezifisch):**
+- Unscharfe oder leere Notizen führen zu Fehl-Segmentierung → einen Fallback-Pfad „Allgemeines Interesse" für nicht eindeutige Notizen definieren.
+- Mehr als 100 Kontakte sprengen den Loop → die Liste vorab in Chargen aufteilen und das Per-Execution-Limit prüfen.
+**Anschluss-Szenario:** S-WF-064
+
+### S-WF-064 Content-Kalender-Auto-Befüllung aus Asset-Liste (Scheduled Trigger)
+
+**Wann nutzen (Trigger):** Der monatliche Social-Content-Kalender wird manuell befüllt; eine Liste freigegebener Assets soll automatisch rhythmisch über den Monat verteilt und als Entwurf vorgelegt werden. (Quelle: sources/10 S-046 + S-001)
+**Strategisches Ziel:** Die Kalender-Befüllung automatisieren und einen ausgewogenen Format-Rhythmus sicherstellen, ohne die redaktionelle Endkontrolle abzugeben.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Kalender-Befüllungs-Workflow mit interner Ablage.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), AI-Node (Verteilungs-Logik, Structured Output), Action-Node (Google-Sheets-Ablage)
+**Vorgehen (4 Schritte):**
+1. Den Scheduled-Trigger auf den Monatsanfang setzen und die Liste freigegebener Asset-Links einlesen.
+2. Einen AI-Node die Assets über den Monat verteilen lassen — fester Rhythmus (z. B. drei Posts pro Woche), Format-Mix, Strukturierung als JSON-Tabelle.
+3. Feiertage und Sperrtage als Parameter übergeben, damit keine Posts auf ungeeignete Tage fallen.
+4. Einen Action-Node den befüllten Plan in ein Google-Sheet schreiben lassen — interne Ablage als Entwurf, keine automatische Veröffentlichung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Content-Kalender-Architekt. Entwirf einen Scheduled-Trigger-Workflow, der eine Asset-Liste über den Monat verteilt. Kontext: drei Posts pro Woche, Format-Mix, Feiertage berücksichtigen, nur interner Entwurf. Format: Trigger, AI-Node mit Verteilungs-Schema, Sheets-Action."
+**Erwartetes Artefakt:** Ein Kalender-Workflow-Entwurf mit Verteilungs-Schema und Feiertags-Parameter.
+**Fallstricke (≥2 spezifisch):**
+- Der AI-Node kennt keine nationalen Feiertage → die Sperrtage explizit als Parameter übergeben, sonst landen Posts an ungeeigneten Tagen.
+- Hochaufwändige Assets häufen sich in einer Woche → eine Obergrenze pro Format und Woche im Node-Briefing setzen.
+**Anschluss-Szenario:** S-WF-065
+
+### S-WF-065 Social-Listening-Alert bei Erwähnungs-Ausschlag (Webhook Trigger)
+
+**Wann nutzen (Trigger):** Ein Social-Listening-Tool liefert laufend Erwähnungen; das Team will nur bei echten Ausschlägen mit Themen-Zusammenfassung intern alarmiert werden, nicht bei jedem Rauschen. (Quelle: sources/10 S-049 + 12 Q108)
+**Strategisches Ziel:** Reaktives Marketing ermöglichen, indem nur signifikante Erwähnungs-Wellen verdichtet und intern gemeldet werden.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen webhook-getriggerten Listening-Alert mit Schwellen-Logik.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), AI-Node (Themen-Verdichtung, Structured Output), Logic-Node (Condition), Action-Node (Slack)
+**Vorgehen (4 Schritte):**
+1. Den Webhook-Trigger an den Daten-Dump des Listening-Tools koppeln.
+2. Einen AI-Node die Erwähnungen auf die Top-3-Themen verdichten und Sentiment sowie Volumen als Structured Output ausgeben lassen.
+3. Einen Condition-Node nur bei Volumen oder Negativ-Sentiment über Schwelle eine Slack-Meldung auslösen lassen — darunter stille Protokollierung.
+4. Die Slack-Nachricht mit Themen, Sentiment und einer Reaktiv-Idee befüllen — nur intern, kein automatischer Post.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Listening-Workflow-Architekt. Entwirf einen Webhook-Alert für Erwähnungs-Ausschläge. Kontext: Top-3-Themen, Sentiment, Schwellen-Eskalation, nur intern. Format: Webhook-Trigger, AI-Node mit Themen-Schema, Condition, Slack-Action."
+**Erwartetes Artefakt:** Ein Listening-Alert-Workflow-Entwurf mit Verdichtungs-Schema und Eskalations-Schwelle.
+**Fallstricke (≥2 spezifisch):**
+- Bot-getriebene Spam-Wellen lösen Fehlalarme aus → eine Mindest-Anzahl unterschiedlicher Quellen als zusätzliche Bedingung einplanen.
+- Jede kleine Erwähnung flutet Slack → den Condition-Node auf einen dokumentierten Schwellenwert halten.
+**Anschluss-Szenario:** S-WF-066
+
+### S-WF-066 NPS-Versand-Vorbereitung nach Lifecycle-Meilenstein (Integration Trigger)
+
+**Wann nutzen (Trigger):** Kunden erreichen einen Lifecycle-Meilenstein (z. B. 90 Tage aktiv); eine NPS-Umfrage soll vorbereitet und segmentgerecht angesprochen werden, ohne dass Mails ungeprüft hinausgehen. (Quelle: sources/10 S-090 + S-050)
+**Strategisches Ziel:** NPS-Befragungen zeitnah und segmentgerecht auslösen, mit menschlicher Kontrolle über die ausgehende Kommunikation.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten NPS-Dispatch mit HITL vor Versand.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), AI-Node (Anschreiben-Entwurf), Logic-Node (Condition), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Integration-Trigger auf den Lifecycle-Meilenstein im CRM koppeln.
+2. Einen Condition-Node prüfen lassen, ob der Kontakt nicht kürzlich bereits befragt wurde (Frequenz-Schutz).
+3. Einen AI-Node ein kurzes, segmentgerechtes NPS-Anschreiben mit Survey-Link entwerfen lassen.
+4. Einen HITL-Node vor jedem externen Versand zwingend einplanen; nach Freigabe übergibt ein Action-Node an das E-Mail-Tool.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lifecycle-Workflow-Architekt. Entwirf einen NPS-Dispatch-Workflow nach Lifecycle-Meilenstein. Kontext: Frequenz-Schutz gegen Doppelbefragung, segmentgerechtes Anschreiben, kein automatischer Versand. Format: Integration-Trigger, Condition, AI-Node, HITL vor Versand."
+**Erwartetes Artefakt:** Ein NPS-Dispatch-Workflow-Entwurf mit Frequenz-Schutz-Logik und Freigabe-Punkt.
+**Fallstricke (≥2 spezifisch):**
+- Ohne Frequenz-Schutz werden Kunden mehrfach befragt → einen Condition-Node mit Cooldown-Fenster vorschalten.
+- Ein automatischer Versand ohne Freigabe verletzt die Kommunikations-Kontrolle → HITL vor jeder externen Aktion zwingend setzen.
+**Anschluss-Szenario:** S-WF-067
+
+### S-WF-067 Webinar-Anmelde-Bestätigung mit Kalender-Asset (Webhook Trigger)
+
+**Wann nutzen (Trigger):** Nach einer Webinar-Anmeldung soll automatisch eine Bestätigung mit Kalendereintrag und passenden Vorbereitungs-Ressourcen vorbereitet werden — freigabepflichtig, da sie an den Kontakt geht. (Quelle: sources/10 S-062 + S-004)
+**Strategisches Ziel:** Anmelder zeitnah bestätigen und mit relevanten Ressourcen versorgen, ohne unkontrollierten automatischen Versand.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für eine webhook-getriggerte Bestätigungs-Pipeline mit HITL.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), AI-Node (Bestätigungs-Entwurf), Wissensordner (Ressourcen-Mapping), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Webhook-Trigger an die Webinar-Anmeldung koppeln und Name, Thema und Termin als Payload übergeben.
+2. Einen AI-Node eine Bestätigung entwerfen lassen, die passende Vorbereitungs-Ressourcen aus dem Wissensordner referenziert.
+3. Einen HITL-Node vor dem externen Versand einplanen, damit Inhalt und Ressourcen-Auswahl geprüft werden.
+4. Nach Freigabe einen Action-Node die Bestätigung samt Kalender-Asset (ICS-Link) an das E-Mail-Tool übergeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lifecycle-Workflow-Architekt. Entwirf eine Webinar-Bestätigungs-Pipeline. Kontext: Kalendereintrag plus Vorbereitungs-Ressourcen aus Wissensordner, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Ressourcen-Bindung, HITL, Versand-Action."
+**Erwartetes Artefakt:** Ein Bestätigungs-Workflow-Entwurf mit Ressourcen-Mapping und Freigabe-Punkt.
+**Fallstricke (≥2 spezifisch):**
+- Ungeprüfte Bestätigungen mit falschem Termin gehen hinaus → den HITL-Node vor dem Versand zwingend setzen.
+- Der AI-Node verlinkt unpassende Ressourcen → das Ressourcen-Mapping im Wissensordner pflegen und im Node referenzieren.
+**Anschluss-Szenario:** S-WF-068
+
+### S-WF-068 Wettbewerber-Preisänderungs-Alert (Scheduled Trigger)
+
+**Wann nutzen (Trigger):** Ändert ein Wettbewerber sein Preismodell, erfährt das Team es oft zu spät; ein täglicher Check der Pricing-Seiten soll signifikante Änderungen intern melden. (Quelle: sources/10 S-087)
+**Strategisches Ziel:** Preisbewegungen im Markt früh erkennen und intern mit Einordnung melden, ohne Quellenrauschen.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Preis-Monitoring-Workflow mit Änderungs-Erkennung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Web Search / HTTP-Request, AI-Node (Vergleich, Structured Output), Action-Node (Slack)
+**Vorgehen (4 Schritte):**
+1. Den Scheduled-Trigger auf einen täglichen Lauf setzen und die definierten Pricing-Seiten abrufen.
+2. Einen AI-Node den aktuellen Stand gegen den gespeicherten Vorstand vergleichen und Änderungen als Structured Output (Tier, alt, neu, Delta) ausgeben lassen.
+3. Nur bei tatsächlicher Änderung eine Slack-Meldung mit konkreten Werten und kurzer Einordnung auslösen.
+4. Den neuen Stand als Referenz für den nächsten Lauf speichern — nur interne Meldung, keine automatische Reaktion.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Workflow-Architekt. Entwirf einen täglichen Preis-Monitoring-Workflow. Kontext: feste Pricing-Seiten, nur bei echter Änderung melden, intern. Format: Scheduled-Trigger, Abruf-Node, AI-Vergleichs-Node mit Delta-Schema, Slack-Action."
+**Erwartetes Artefakt:** Ein Preis-Monitoring-Workflow-Entwurf mit Delta-Schema und Referenz-Speicherung.
+**Fallstricke (≥2 spezifisch):**
+- Versteckte „Auf Anfrage"-Preise lassen sich nicht vergleichen → diese Tiers explizit als „nicht prüfbar" markieren statt sie zu halluzinieren.
+- Layout-Änderungen der Seite lösen Fehl-Deltas aus → den Vergleich auf strukturierte Preis-Felder beschränken, nicht auf Roh-HTML.
+**Anschluss-Szenario:** S-WF-069
+
+### S-WF-069 RFP-Antwort-Zusammenbau aus Wissensbausteinen (Manual Trigger)
+
+**Wann nutzen (Trigger):** Eine eingehende Ausschreibung (RFP) enthält wiederkehrende Fragen zu Sicherheit, ROI und Funktionen; der Zusammenbau aus internen Bausteinen kostet das Team Tage. (Quelle: sources/10 S-075 + S-082)
+**Strategisches Ziel:** RFP-Antworten aus geprüften Wissensbausteinen reproduzierbar zusammenstellen, mit menschlicher Endkontrolle vor Abgabe.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen manuell getriggerten RFP-Assembly-Workflow mit HITL vor Abgabe.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), Wissensordner (Security/ROI/Feature-Bausteine), AI-Node (Antwort-Zusammenbau, Structured Output), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Manual-Trigger mit der Fragenliste der Ausschreibung als Eingabe definieren.
+2. Einen AI-Node je Frage den passenden Baustein aus dem Wissensordner abrufen und eine Antwort mit Quellenverweis zusammenstellen lassen.
+3. Lücken (keine Quelle gefunden) explizit als „manuell ergänzen" markieren statt sie zu erfinden.
+4. Einen HITL-Node vor der Abgabe einplanen, in dem die Verantwortliche jede Antwort prüft und freigibt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist RFP-Workflow-Architekt. Entwirf einen Assembly-Workflow für Ausschreibungs-Antworten. Kontext: Bausteine aus Wissensordner, Lücken markieren statt erfinden, menschliche Endkontrolle. Format: Manual-Trigger, AI-Node mit Baustein-Bindung, Lücken-Markierung, HITL vor Abgabe."
+**Erwartetes Artefakt:** Ein RFP-Assembly-Workflow-Entwurf mit Baustein-Mapping und Lücken-Markierungs-Logik.
+**Fallstricke (≥2 spezifisch):**
+- Der AI-Node erfindet Antworten, wo kein Baustein existiert → fehlende Quellen zwingend als „manuell ergänzen" ausgeben.
+- Sicherheits- oder Rechtsaussagen werden verkürzt → kritische Bausteine im HITL-Gate gegen den exakten Originaltext prüfen.
+**Anschluss-Szenario:** S-WF-070
+
+### S-WF-070 Newsletter-Entwurf-Zusammenbau mit Freigabe-Versand (Scheduled Trigger)
+
+**Wann nutzen (Trigger):** Der wöchentliche Newsletter soll automatisch aus aktuellen Blogs und einer Branchen-News zusammengebaut werden — der Versand bleibt aber freigabepflichtig. (Quelle: sources/10 S-010)
+**Strategisches Ziel:** Den Newsletter-Zusammenbau automatisieren und einen kontrollierten, freigabepflichtigen Versand sicherstellen.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Newsletter-Assembly-Workflow mit HITL vor Versand.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Web Search, AI-Node (Entwurf, Brand-Voice-Wissensordner), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Scheduled-Trigger früh genug vor dem Versandtag setzen, damit Pufferzeit für die Redaktion bleibt.
+2. Einen AI-Node die aktuellen Blogs zusammenfassen und eine geprüfte Branchen-News aus der Web Search ergänzen lassen — gebunden an die Brand-Voice.
+3. Negativ-Keywords für die News-Suche setzen, damit keine Wettbewerber- oder Risiko-Inhalte einfließen.
+4. Einen HITL-Node für die redaktionelle Freigabe vor dem Übergang ins E-Mail-Tool zwingend einplanen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Newsletter-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für den wöchentlichen Newsletter. Kontext: Blogs plus eine geprüfte Branchen-News, Brand-Voice, Negativ-Keywords, kein automatischer Versand. Format: Trigger, Web-Search-AI-Node, HITL vor Versand."
+**Erwartetes Artefakt:** Ein Newsletter-Assembly-Workflow-Entwurf mit Negativ-Keyword-Filter und Freigabe-Punkt.
+**Fallstricke (≥2 spezifisch):**
+- Die automatische News-Suche zieht Wettbewerber- oder kontroverse Inhalte → Negativ-Keywords definieren und die Quellen eng fassen.
+- Ein unfertiger Newsletter wird automatisch versendet → den HITL-Node vor dem E-Mail-Tool zwingend setzen.
+**Anschluss-Szenario:** S-WF-071
+
+### S-WF-071 Influencer-Outreach-Entwürfe per Loop (Manual Trigger + Loop)
+
+**Wann nutzen (Trigger):** Eine Kampagne erfordert personalisierte Outreach-Nachrichten an viele Micro-Influencer, die sich auf deren letzten Post beziehen — manuell pro Person nicht leistbar, der Versand bleibt aber in Menschenhand. (Quelle: sources/10 S-050)
+**Strategisches Ziel:** Authentische, personalisierte Outreach-Entwürfe skalieren, ohne automatischen Versand an externe Kontakte.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Loop-Workflow mit Personalisierung und HITL vor Versand.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), Loop-Node (≤100 Items), AI-Node (DM-Entwurf, Structured Output), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Manual-Trigger mit der Influencer-Liste (Name, letzter Post-Bezug) als Eingabe definieren; bei Bedarf in Chargen aufteilen.
+2. Einen Loop-Node iterieren und einen AI-Node je Kontakt eine lockere, plattformgerechte DM mit echtem Post-Bezug entwerfen lassen.
+3. Die Entwürfe als JSON-Array sammeln und einen HITL-Node die Batch-Prüfung vor dem Versand durchführen lassen.
+4. Nach Freigabe übergibt ein Action-Node die Entwürfe an das jeweilige Tool — kein automatischer Versand.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Influencer-Outreach-Workflow-Architekt. Entwirf einen Loop-Workflow für personalisierte DMs. Kontext: Bezug auf letzten Post, lockerer DM-Ton, kein automatischer Versand. Format: Manual-Trigger, Loop-Node, AI-Node mit DM-Schema, HITL-Batch-Freigabe."
+**Erwartetes Artefakt:** Ein Outreach-Workflow-Entwurf mit Personalisierungs-Logik und Batch-Freigabe-Punkt.
+**Fallstricke (≥2 spezifisch):**
+- Formelle E-Mail-Floskeln in DMs wirken deplatziert → den Node strikt auf lockeren, plattformnativen Ton festlegen.
+- Ein automatischer Versand ohne Freigabe verletzt die Kontrolle über externe Ansprache → HITL vor jeder Außen-Aktion zwingend setzen.
+**Anschluss-Szenario:** S-WF-072
+
+### S-WF-072 SLA-Verletzungs-Eskalation bei Lead-Übergabe (Integration Trigger)
+
+**Wann nutzen (Trigger):** Das MQL→SQL-SLA schreibt eine maximale Follow-up-Zeit vor; überschreitet ein Lead diese Frist ohne Bearbeitung, soll automatisch intern eskaliert werden. (Quelle: sources/10 S-097 + 12 Q113)
+**Strategisches Ziel:** SLA-Brüche bei der Lead-Übergabe sichtbar machen und gezielt eskalieren, bevor Leads kalt werden.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten SLA-Eskalations-Workflow mit Fristprüfung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger / Scheduled-Check), Logic-Node (Condition, Zeitvergleich), Action-Node (Slack-Eskalation)
+**Vorgehen (4 Schritte):**
+1. Den Trigger an die Lead-Übergabe koppeln bzw. einen periodischen Check über offene SQLs laufen lassen.
+2. Einen Condition-Node die seit Übergabe verstrichene Zeit gegen die SLA-Frist prüfen lassen.
+3. Bei Überschreitung einen Action-Node eine eindeutige Slack-Eskalation mit Lead-Name, Owner und Verzugsdauer auslösen lassen.
+4. Eine zweite Eskalationsstufe an die Teamleitung einplanen, falls die Frist deutlich überschritten wird — interne Meldung, kein Kunden-Kontakt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist RevOps-Workflow-Architekt. Entwirf einen SLA-Eskalations-Workflow für die Lead-Übergabe. Kontext: maximale Follow-up-Zeit, zweistufige interne Eskalation, kein Kunden-Kontakt. Format: Trigger/Check, Condition mit Zeitvergleich, Slack-Eskalations-Actions."
+**Erwartetes Artefakt:** Ein SLA-Eskalations-Workflow-Entwurf mit Frist-Logik und zweistufiger Eskalationskette.
+**Fallstricke (≥2 spezifisch):**
+- Zeitzonen-Unterschiede verfälschen die Fristberechnung → alle Zeitstempel vorab auf eine Referenzzone normalisieren.
+- Jede knappe Überschreitung eskaliert sofort an die Leitung → die zweite Stufe an eine deutliche Verzugsschwelle koppeln.
+**Anschluss-Szenario:** S-WF-073
+
+### S-WF-073 Content-Lokalisierungs-Pipeline mit Tonalitäts-Umstellung (Manual Trigger + Loop)
+
+**Wann nutzen (Trigger):** Große Mengen Website-Texte müssen systematisch lokalisiert und in der Anrede (z. B. „Du" → „Sie") umgestellt werden; manuelle Einzelarbeit kostet das Team Wochen. (Quelle: sources/10 S-120 + A-24)
+**Strategisches Ziel:** Lokalisierung und Tonalitäts-Umstellung kosteneffizient im Batch verarbeiten und durch native Prüfung absichern.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Loop-Workflow mit Flash-Modell, Glossar-Bindung und HITL.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), Loop-Node (≤100 Items), AI-Node (Flash-Modell, Glossar-Wissensordner, Structured Output), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Manual-Trigger mit den Text-Strings als JSON-Array aufsetzen; die Liste bei Bedarf in Chargen aufteilen.
+2. Einen Loop-Node iterieren und einen AI-Node mit Flash-Modell je String lokalisieren und die Anrede grammatikalisch korrekt umstellen lassen — gebunden an das Glossar.
+3. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit prüfen und die Warn-Schwellen setzen.
+4. Einen HITL-Node für die native Muttersprachler-Prüfung vor dem Live-Gang einplanen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lokalisierungs-Workflow-Architekt. Entwirf eine Batch-Pipeline für Tonalitäts-Umstellung (Du→Sie) vieler Text-Strings. Kontext: Flash-Modell für Kosten, Glossar im Wissensordner, native Prüfung vor Live-Gang. Format: Manual-Trigger, Loop-Node, AI-Node-Konfiguration, HITL, Kostenschätzung."
+**Erwartetes Artefakt:** Ein Lokalisierungs-Workflow-Entwurf mit Loop-Logik, Glossar-Bindung und Kostenschätzung pro Lauf.
+**Fallstricke (≥2 spezifisch):**
+- Reflexivpronomen werden bei der Anrede-Umstellung falsch konvertiert (z. B. „Dich" → „Sich") → konkrete Beispiel-Konversionen ins Node-Briefing aufnehmen und im HITL prüfen.
+- Mehr als 100 Strings sprengen den Loop → die Liste vorab in Chargen aufteilen und das Limit prüfen.
+**Anschluss-Szenario:** S-WF-074
+
+### S-WF-074 Asset-Freigabe-Routing nach Inhalts-Klassifizierung (Webhook Trigger)
+
+**Wann nutzen (Trigger):** Neu erstellte Kreativ-Assets brauchen je nach Typ unterschiedliche Freigeber; das manuelle Weiterleiten geht regelmäßig unter. (Quelle: sources/10 S-095)
+**Strategisches Ziel:** Asset-Freigaben automatisch an den richtigen Freigeber routen und so Durchlaufzeiten verkürzen.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen webhook-getriggerten Freigabe-Routing-Workflow mit Klassifizierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), AI-Node (Klassifizierung, Structured Output Enum), Logic-Node (Condition), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Webhook-Trigger an die Asset-Ablage koppeln und Metadaten plus Inhalts-Auszug übergeben.
+2. Einen AI-Node den Asset-Typ mit festem Enum klassifizieren lassen (Design / Text / Web / Performance).
+3. Condition-Nodes je Typ den zuständigen Freigeber bestimmen und einen HITL-Node mit klarer Prüf-Instruktion ansteuern.
+4. Nach Freigabe einen Action-Node den Ersteller intern benachrichtigen lassen — kein automatisches Publizieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Asset-Routing-Workflow-Architekt. Entwirf einen Freigabe-Routing-Workflow für Kreativ-Assets. Kontext: Klassifizierung in Design/Text/Web/Performance, je Typ ein Freigeber, kein Auto-Publish. Format: Webhook-Trigger, AI-Node mit Enum-Schema, Condition-Routing, HITL, Benachrichtigung."
+**Erwartetes Artefakt:** Ein Freigabe-Routing-Workflow-Entwurf mit Enum-Klassifizierung und Freigeber-Zuordnung.
+**Fallstricke (≥2 spezifisch):**
+- Cross-funktionale Assets passen in mehrere Kategorien → die Condition-Logik muss mehrere Tags gleichzeitig verarbeiten können.
+- Ein HITL-Node ohne klare Prüf-Instruktion wird übersprungen → jede Freigeber-Node mit einer konkreten Entscheidungsfrage ausstatten.
+**Anschluss-Szenario:** S-WF-075
+
+### S-WF-075 UTM-Parameter-Generierung nach Taxonomie (Form Trigger)
+
+**Wann nutzen (Trigger):** Teams bauen UTM-Tags inkonsistent, was die Analytics-Daten verschmutzt; eine taxonomie-konforme Generierung auf Knopfdruck soll das vereinheitlichen. (Quelle: sources/10 S-102)
+**Strategisches Ziel:** UTM-Tags strikt nach Namenskonvention erzeugen und so saubere Analytics-Daten sicherstellen.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen formular-getriggerten UTM-Generator mit Taxonomie-Validierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Form-Trigger), AI-Node (Validierung gegen Taxonomie, Structured Output), Action-Node (interne Ablage)
+**Vorgehen (4 Schritte):**
+1. Den Form-Trigger mit Pflichtfeldern (Quelle, Medium, Kampagne, Content) als strukturierte Eingabe aufsetzen.
+2. Einen AI-Node die Eingaben gegen die erlaubten Werte der UTM-Taxonomie prüfen und normalisieren lassen (z. B. Kleinschreibung erzwingen).
+3. Bei unzulässigen Werten den Nutzer auf die erlaubten Optionen hinweisen statt einen ungültigen Tag zu erzeugen.
+4. Einen Action-Node den finalen, vollständigen Tracking-Link intern ablegen — keine externe Aktion.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist UTM-Governance-Workflow-Architekt. Entwirf einen Form-Trigger-Workflow, der taxonomie-konforme UTM-Links erzeugt. Kontext: feste erlaubte Werte, Kleinschreibung erzwingen, ungültige Eingaben abweisen. Format: Form-Trigger, AI-Validierungs-Node mit Taxonomie, Ablage-Action."
+**Erwartetes Artefakt:** Ein UTM-Generator-Workflow-Entwurf mit Taxonomie-Validierung und Normalisierungs-Regeln.
+**Fallstricke (≥2 spezifisch):**
+- Zu komplexe Regeln werden von Marketern umgangen → die Taxonomie schlank halten und im Form-Trigger als Auswahl vorgeben statt Freitext.
+- Freitext-Eingaben erzeugen inkonsistente Tags → erlaubte Werte als feste Auswahl im Form-Trigger erzwingen.
+**Anschluss-Szenario:** S-WF-076
+
+### S-WF-076 Daten-Qualitäts-Validierung vor BI-Import (Webhook Trigger)
+
+**Wann nutzen (Trigger):** Vor dem Import in das BI-Dashboard müssen disparate Text-/CSV-Quellen standardisiert, von PII bereinigt und auf Format-Fehler geprüft werden, sonst bricht der Import. (Quelle: sources/10 S-089)
+**Strategisches Ziel:** Eine zuverlässige Daten-Pipeline etablieren, die Fehl- und Risikodaten vor dem BI-Import abfängt.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen webhook-getriggerten Validierungs-Workflow mit Quarantäne-Pfad.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), AI-Node (Normalisierung + PII-Check, Structured Output), Logic-Node (Condition), Action-Node (Sheets-Quarantäne)
+**Vorgehen (4 Schritte):**
+1. Den Webhook-Trigger an die eingehende Datenlieferung koppeln.
+2. Einen AI-Node Header normalisieren, PII entfernen und je Zeile ein Validitäts-Flag mit Begründung als Structured Output ausgeben lassen.
+3. Einen Condition-Node valide Zeilen in die Master-Datei und fehlerhafte Zeilen in eine Quarantäne-Ablage routen lassen.
+4. Eine interne Meldung über Anzahl und Art der Quarantäne-Fälle auslösen — keine stille Verwerfung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Data-Quality-Workflow-Architekt. Entwirf einen Validierungs-Workflow vor dem BI-Import. Kontext: Normalisierung, PII-Entfernung, Validitäts-Flag je Zeile, Quarantäne statt Verwerfen. Format: Webhook-Trigger, AI-Node mit Validitäts-Schema, Condition-Routing, Quarantäne-Action."
+**Erwartetes Artefakt:** Ein Validierungs-Workflow-Entwurf mit Validitäts-Schema und Quarantäne-Pfad.
+**Fallstricke (≥2 spezifisch):**
+- Radikal unterschiedliche Datumsformate lassen die Normalisierung scheitern → ein erwartetes Zielformat definieren und Abweichungen in Quarantäne schicken.
+- Fehlerhafte Zeilen werden still verworfen → einen Quarantäne-Pfad mit interner Meldung statt stiller Verwerfung einplanen.
+**Anschluss-Szenario:** S-WF-077
+
+### S-WF-077 Churn-Risiko-Alert aus Verhaltens- und Feedback-Signalen (Scheduled Trigger)
+
+**Wann nutzen (Trigger):** Abwanderungsgefährdete Kunden zeigen früh Signale (sinkende Nutzung, negatives NPS-Verbatim); diese sollen erkannt und dem Customer-Success-Team gemeldet werden. (Quelle: sources/10 S-092 + S-090)
+**Strategisches Ziel:** Churn-Risiken früh erkennen und gezielt an das richtige Team melden, ohne Fehlalarme bei einzelnen Schwankungen.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Churn-Risiko-Workflow mit Signal-Aggregation.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Integration (Nutzungs-/NPS-Daten), AI-Node (Risiko-Bewertung, Structured Output), Action-Node (Slack)
+**Vorgehen (4 Schritte):**
+1. Den Scheduled-Trigger auf einen wöchentlichen Lauf setzen und Nutzungs- sowie NPS-Verbatim-Daten ziehen.
+2. Einen AI-Node mehrere Signale zu einem Risiko-Score mit Begründung und Auslöse-Event verdichten lassen — Structured Output.
+3. Nur bei Score über Schwelle eine Slack-Meldung an Customer Success mit konkretem Account und Treibern auslösen.
+4. Die Meldung um einen Empfehlungs-Satz ergänzen — interne Meldung, keine automatische Kunden-Aktion.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Retention-Workflow-Architekt. Entwirf einen wöchentlichen Churn-Risiko-Workflow. Kontext: Nutzungs- plus NPS-Signale, Risiko-Score mit Treibern, Schwellen-Meldung an Customer Success, keine automatische Kunden-Aktion. Format: Scheduled-Trigger, Integration, AI-Node mit Risiko-Schema, Slack-Action."
+**Erwartetes Artefakt:** Ein Churn-Risiko-Workflow-Entwurf mit Signal-Aggregation und Risiko-Schema.
+**Fallstricke (≥2 spezifisch):**
+- Eine einzelne Schwankung löst Fehlalarm aus → mehrere Signale aggregieren und einen Glättungszeitraum definieren.
+- Sehr kurze NPS-Verbatims liefern keinen Mehrwert → Antworten unter wenigen Wörtern aus der Bewertung herausfiltern.
+**Anschluss-Szenario:** S-WF-078
+
+### S-WF-078 Partner-Co-Marketing-Brief aus Recherche (Manual Trigger)
+
+**Wann nutzen (Trigger):** Für eine Co-Marketing-Kampagne mit einer nicht-konkurrierenden Marke soll ein Brief entstehen, der gemeinsame Werte und konkrete Kampagnen-Ideen bündelt. (Quelle: sources/10 S-045)
+**Strategisches Ziel:** Partner-Briefs reproduzierbar und faktentreu erstellen, mit menschlicher Prüfung vor jeder Außenkommunikation.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen manuell getriggerten Co-Marketing-Brief-Workflow mit HITL.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), Web Search, AI-Node (Werte-Abgleich + Ideen, Structured Output), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Manual-Trigger mit dem Partnernamen und der eigenen Mission als Eingabe definieren.
+2. Einen AI-Node mit Web Search die öffentlichen Ziele und Werte des Partners recherchieren und mit der eigenen Mission abgleichen lassen.
+3. Drei konkrete gemeinsame Kampagnen-Ideen plus einen Pitch-Entwurf als Structured Output erzeugen lassen.
+4. Einen HITL-Node vor jeder Außenkommunikation einplanen, der Fakten und Tonalität prüft.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Partnership-Workflow-Architekt. Entwirf einen Co-Marketing-Brief-Workflow. Kontext: öffentliche Werte des Partners via Web Search, drei gemeinsame Kampagnen-Ideen, Prüfung vor Außenkommunikation. Format: Manual-Trigger, Web-Search-AI-Node mit Werte-Abgleich, HITL."
+**Erwartetes Artefakt:** Ein Co-Marketing-Brief-Workflow-Entwurf mit Werte-Abgleich und drei Kampagnen-Ideen.
+**Fallstricke (≥2 spezifisch):**
+- Der AI-Node schlägt Ideen vor, die regulatorische Grenzen der Partnerbranche verletzen → eine Prüfung der Branchen-Constraints in das HITL-Gate aufnehmen.
+- Web Search zieht veraltete Partner-News → den Recherche-Scope auf die letzten Monate beschränken.
+**Anschluss-Szenario:** S-WF-079
+
+### S-WF-079 Pressemitteilungs-Distribution an kuratierte Medienliste (Manual Trigger)
+
+**Wann nutzen (Trigger):** Eine freigegebene Pressemitteilung soll an eine kuratierte, themen-passende Journalistenliste verteilt werden — die Außenkommunikation bleibt jedoch freigabepflichtig. (Quelle: sources/10 S-076 + S-077)
+**Strategisches Ziel:** PR-Distribution beschleunigen und zielgenau halten, ohne ungeprüften automatischen Massen-Versand.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen manuell getriggerten Distributions-Workflow mit HITL vor Versand.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), Web Search (Medien-Recherche), AI-Node (Pitch-Personalisierung, Structured Output), HITL-Node
+**Vorgehen (4 Schritte):**
+1. Den Manual-Trigger mit der freigegebenen Pressemitteilung und dem Themen-Scope als Eingabe definieren.
+2. Einen AI-Node mit Web Search themen-passende Journalisten (Name, Medium, letzter Beitrag) recherchieren lassen — ohne E-Mail-Adressen zu erfinden.
+3. Je Journalist einen kurzen, personalisierten Pitch entwerfen lassen, der den letzten Beitrag analytisch aufgreift.
+4. Einen HITL-Node vor jedem Versand zwingend einplanen, der Liste und Pitches prüft und freigibt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist PR-Distributions-Workflow-Architekt. Entwirf einen Workflow zur Verteilung einer Pressemitteilung an eine kuratierte Medienliste. Kontext: themen-passende Journalisten via Web Search, personalisierte Pitches, keine erfundenen Kontaktdaten, kein automatischer Versand. Format: Manual-Trigger, Web-Search-Node, AI-Pitch-Node, HITL vor Versand."
+**Erwartetes Artefakt:** Ein PR-Distributions-Workflow-Entwurf mit Medien-Recherche-Logik und Freigabe-Punkt.
+**Fallstricke (≥2 spezifisch):**
+- Web Search halluziniert E-Mail-Adressen → den Node strikt auf Name, Medium und URL beschränken und Kontaktdaten manuell ergänzen.
+- Ein automatischer Massen-Versand ohne Freigabe schadet PR-Beziehungen → HITL vor jedem Versand zwingend setzen.
+**Anschluss-Szenario:** S-WF-080
+
+### S-WF-080 Quartals-Reporting-Kompilation aus Mehrquellen-Daten (Scheduled Trigger)
+
+**Wann nutzen (Trigger):** Die Quartals-Reporting-Kompilation aus mehreren Analytics- und CRM-Quellen kostet das Team jedes Quartal Tage manueller Aggregation. (Quelle: sources/10 S-110 + S-098 + A-01 + A-10)
+**Strategisches Ziel:** Quartalsdaten reproduzierbar aggregieren und faktentreu aufbereiten, mit menschlicher Interpretations-Freigabe.
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Reporting-Kompilations-Workflow mit HITL-Interpretations-Gate.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), parallele Integration-Nodes (GA4/CRM/Ad-Plattformen via HTTP-Request), AI-Node (Aggregation + KPI-Kommentar, Structured Output), HITL-Node
+**Vorgehen (5 Schritte):**
+1. Den Scheduled-Trigger auf den ersten Arbeitstag nach Quartalsende setzen.
+2. Parallele Integration-Nodes die Kennzahlen aus GA4, CRM und Ad-Plattformen als strukturiertes JSON ziehen lassen.
+3. Einen AI-Node die Rohdaten zu einem KPI-Objekt mit Vorquartals-Delta und Top-Ausreißern aggregieren lassen — Structured Output, Daten von Deutung getrennt.
+4. Einen HITL-Node einplanen, in dem die Leitung Werte prüft und die strategische Interpretation freigibt.
+5. Nach Freigabe einen Action-Node die Kompilation intern bereitstellen — keine automatische externe Verteilung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Reporting-Workflow-Architekt. Entwirf einen Quartals-Reporting-Workflow aus mehreren Quellen. Kontext: parallele Datenaggregation, Vorquartals-Delta, Zahlen faktentreu, Interpretation menschlich freigegeben. Format: Scheduled-Trigger, parallele Integration-Nodes, Aggregations-AI-Node, HITL, interne Bereitstellung."
+**Erwartetes Artefakt:** Ein Quartals-Reporting-Workflow-Entwurf mit Multi-Source-Aggregation, KPI-Schema und Interpretations-Freigabepunkt.
+**Fallstricke (≥2 spezifisch):**
+- Schlägt eine Integration fehl, entsteht ein unvollständiger Report ohne Hinweis → jeden Integration-Node mit Error-Handler versehen, der fehlende Quellen als „nicht verfügbar" markiert statt still abzubrechen.
+- Der AI-Node interpretiert Zahlen eigenmächtig → Daten und Deutung trennen und die Interpretation dem HITL-Gate überlassen.
 **Anschluss-Szenario:** S-WF-001
 
 ## Hinweise & Quellen-Konflikte
