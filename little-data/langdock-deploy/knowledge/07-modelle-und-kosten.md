@@ -1159,7 +1159,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Vorgehen (4 Schritte):**
 1. Definiere die Freigabe-Schwellen: Läufe €20–€50 → Freigabe durch Marketing-Operations-Lead; Läufe €50–€200 → Marketing-Direktor; Läufe >€200 → CFO-Sichtvermerk.
 2. Erstelle ein minimales Antragsformular (3 Felder: Use Case in einem Satz, erwartete Kosten, Zeitbedarf) als Slack-Message-Template oder Langdock-Formular-Agent.
-3. Baue einen Langdock-Workflow: Antragsformular-Eingang → Benachrichtigung an Genehmiger via Slack → Genehmigung durch Reaktion (✅/❌) → bei ✅ automatische Freigabe des Frontier-Modell-Zugangs für den benannten Nutzer für 24 Stunden.
+3. Baue einen Langdock-Workflow: Antragsformular-Eingang → Benachrichtigung an Genehmiger via Slack → Genehmigung durch Slack-Reaktion (Zustimmung/Ablehnung) → bei Zustimmung automatische Freigabe des Frontier-Modell-Zugangs für den benannten Nutzer für 24 Stunden.
 4. Archiviere jede Genehmigung automatisch im Wissensordner als Audit-Trail (Datum, Nutzer, Use Case, tatsächliche Kosten nach Lauf).
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist mein KI-Governance-Prozess-Designer. Erstelle einen Budget-Freigabe-Workflow für Frontier-Modell-Läufe (>€20) in unserem Marketing-Team. Definiere: (1) Freigabe-Schwellen, (2) Antragsformular (max. 3 Felder), (3) Genehmigungspfad per Slack-Reaktion, (4) Audit-Trail-Archivierung. Ziel: weniger als 2 Stunden von Antrag bis Freigabe. Prozessbeschreibung, Sie-Form."

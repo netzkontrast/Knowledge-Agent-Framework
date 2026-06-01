@@ -155,11 +155,11 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Hands-on Ergebnis:** Ein PTCF-Leitfaden als Library-Dokument + ein PTCF-Checker-Prompt der jeden Draft-Prompt gegen das Schema prüft.
 **Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Konversations-Starter
 **Vorgehen (3 Schritte):**
-1. Schreibe `ptcf-leitfaden.md` mit Definition der vier Felder, je 2 Gut/Schlecht-Beispielen aus dem eigenen Marketing-Kontext und einer Checkliste (4 Punkte: P ✓ T ✓ C ✓ F ✓).
+1. Schreibe `ptcf-leitfaden.md` mit Definition der vier Felder, je 2 Gut/Schlecht-Beispielen aus dem eigenen Marketing-Kontext und einer Checkliste (4 Punkte: P ja T ja C ja F ja).
 2. Konfiguriere einen PTCF-Checker-Konversations-Starter: Prompt-Draft einfügen → Agent prüft die vier Felder und gibt Missing-Fields als Bullet-Liste zurück.
 3. Integriere den PTCF-Leitfaden als Pflichtlektüre ins Onboarding-Dokument (1 Seite, Link zum Library-Dokument).
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Prompt-Reviewer. Prüfe den folgenden Prompt auf PTCF-Vollständigkeit: [Prompt-Draft einfügen]. Bewerte jeden der vier Bereiche (Persona, Task, Context, Format): vorhanden (✓) oder fehlend (✗). Für fehlende Bereiche: formuliere einen konkreten Ergänzungsvorschlag. Ausgabe: 4-Zeilen-Tabelle + überarbeiteter Prompt-Entwurf."
+> "Du bist Prompt-Reviewer. Prüfe den folgenden Prompt auf PTCF-Vollständigkeit: [Prompt-Draft einfügen]. Bewerte jeden der vier Bereiche (Persona, Task, Context, Format): vorhanden (ja) oder fehlend (nein). Für fehlende Bereiche: formuliere einen konkreten Ergänzungsvorschlag. Ausgabe: 4-Zeilen-Tabelle + überarbeiteter Prompt-Entwurf."
 **Erwartetes Artefakt:** PTCF-Analyse-Tabelle des Draft-Prompts + überarbeiteter Prompt mit allen vier Feldern befüllt.
 **Fallstricke (≥2 spezifisch):**
 - PTCF ist kein Allheilmittel für einfache Mikro-Tasks (Rechtschreib-Check, kurze Umformulierung) – den Leitfaden auf Prompts mit >2 Sätzen Erwartung beschränken.
@@ -308,7 +308,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 3. Fordere eine Selbst-Validierungs-Zeile am Ende der Tabelle: "Validierung: X von Y Assets unter Zeichenlimit / Z Wiederholungen gefunden."
 4. Exportiere die Tabelle als CSV für den Google Ads Editor.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Google-Ads-Spezialist. Erstelle eine vollständige Performance-Max-Asset-Matrix für {{Produkt-URL}}. Zeichenlimits: Short Headline ≤30, Long Headline ≤90, Short Description ≤60, Description ≤90. Mengen: 5 Short Headlines, 5 Long Headlines, 1 Short Description, 4 Descriptions. Regel: kein Verb wiederholt in >2 Assets. Format: Markdown-Tabelle mit Spalten Asset-Typ | Text | Zeichenanzahl | Validiert (✓/✗). Letzter Eintrag: Gesamt-Validierungszeile."
+> "Du bist Google-Ads-Spezialist. Erstelle eine vollständige Performance-Max-Asset-Matrix für {{Produkt-URL}}. Zeichenlimits: Short Headline ≤30, Long Headline ≤90, Short Description ≤60, Description ≤90. Mengen: 5 Short Headlines, 5 Long Headlines, 1 Short Description, 4 Descriptions. Regel: kein Verb wiederholt in >2 Assets. Format: Markdown-Tabelle mit Spalten Asset-Typ | Text | Zeichenanzahl | Validiert (ja/nein). Letzter Eintrag: Gesamt-Validierungszeile."
 **Erwartetes Artefakt:** Vollständige PMax-Asset-Tabelle mit Inline-Validierung; direkt in Google Ads Editor importierbar.
 **Fallstricke (≥2 spezifisch):**
 - PMax kombiniert Assets dynamisch — wenn alle Headlines mit demselben Verb beginnen, entstehen schwache automatische Kombinationen; Varianz der Eröffnungs-Hooks ist wichtiger als hohe Sprachqualität einzelner Assets.
@@ -361,13 +361,13 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Vorgehen (4 Schritte):**
 1. Schreibe `output-validierung-template.md` mit 5 Prüf-Dimensionen und je einer binären Prüffrage (JA/NEIN).
 2. Konfiguriere den zweiten Chat-Turn als Validierungs-Run: Agenten-Output + Validierungs-Template im selben Turn einreichen.
-3. Fordere als Format: "Liefere eine Tabelle: Dimension | Prüfergebnis (✓/✗) | Begründung (1 Satz) | Korrektur-Vorschlag wenn ✗."
-4. Erst wenn alle 5 Dimensionen ✓ zeigen, wird der Output freigegeben.
+3. Fordere als Format: "Liefere eine Tabelle: Dimension | Prüfergebnis (ja/nein) | Begründung (1 Satz) | Korrektur-Vorschlag wenn nein."
+4. Erst wenn alle 5 Dimensionen ja zeigen, wird der Output freigegeben.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Qualitätsprüfer. Prüfe den folgenden Marketing-Output gegen die Anforderungen: [Output einfügen]. Anforderungen: (1) Alle Felder ausgefüllt? (2) Zeichenlimits eingehalten (max. {{Limit}})? (3) Kein Superlativ ohne Beleg? (4) Produktname korrekt geschrieben? (5) CTA vorhanden? Format: 5-Zeilen-Tabelle mit Spalten Dimension | Ergebnis (✓/✗) | Begründung | Korrektur."
+> "Du bist Qualitätsprüfer. Prüfe den folgenden Marketing-Output gegen die Anforderungen: [Output einfügen]. Anforderungen: (1) Alle Felder ausgefüllt? (2) Zeichenlimits eingehalten (max. {{Limit}})? (3) Kein Superlativ ohne Beleg? (4) Produktname korrekt geschrieben? (5) CTA vorhanden? Format: 5-Zeilen-Tabelle mit Spalten Dimension | Ergebnis (ja/nein) | Begründung | Korrektur."
 **Erwartetes Artefakt:** 5-Zeilen-PASS/FAIL-Tabelle mit Korrektur-Vorschlägen für jede fehlgeschlagene Dimension.
 **Fallstricke (≥2 spezifisch):**
-- Der Agent validiert seine eigenen Outputs mit Optimismus-Bias; bei sicherheitskritischen Texten (rechtliche Claims, Pricing) muss ein zweiter Mensch die ✓-Einträge stichprobenartig gegenchecken.
+- Der Agent validiert seine eigenen Outputs mit Optimismus-Bias; bei sicherheitskritischen Texten (rechtliche Claims, Pricing) muss ein zweiter Mensch die ja-Einträge stichprobenartig gegenchecken.
 - Zu viele Prüfdimensionen (>7) überfordern den Agenten und führen zu oberflächlichen Begründungen; 5 Dimensionen sind das produktive Maximum.
 **Anschluss-Szenario:** S-PS-017
 
@@ -383,7 +383,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 3. Julia reviewed normierten Prompt (2-Minuten-Check) und lädt die freigegebene Version in die Library hoch.
 4. Quartals-Review der Library: Prompts mit <3 Verwendungen in 3 Monaten werden archiviert.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Prompt-Bibliothekar. Ich reiche folgenden Roh-Prompt zur Library-Aufnahme ein: [Prompt einfügen]. Prüfe: (1) Lässt er sich auf PTCF normieren? (2) Gibt es {{Variablen}}, die parametrisiert werden sollten? (3) Sind alle drei Aufnahme-Kriterien erfüllt? Ausgabe: normierter PTCF-Prompt-Entwurf + Checkliste der drei Kriterien (✓/✗) + Empfehlung: aufnehmen / überarbeiten / ablehnen."
+> "Du bist Prompt-Bibliothekar. Ich reiche folgenden Roh-Prompt zur Library-Aufnahme ein: [Prompt einfügen]. Prüfe: (1) Lässt er sich auf PTCF normieren? (2) Gibt es {{Variablen}}, die parametrisiert werden sollten? (3) Sind alle drei Aufnahme-Kriterien erfüllt? Ausgabe: normierter PTCF-Prompt-Entwurf + Checkliste der drei Kriterien (ja/nein) + Empfehlung: aufnehmen / überarbeiten / ablehnen."
 **Erwartetes Artefakt:** PTCF-normierter Prompt-Entwurf + Aufnahme-Entscheidung mit Begründung.
 **Fallstricke (≥2 spezifisch):**
 - Ohne definierten Reviewer (Julia oder Team-Lead) landen unkurierte Prompts in der Library und senken die Gesamtqualität — der Freigabe-Step ist nicht optional.
@@ -455,7 +455,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Vorgehen (4 Schritte):**
 1. Definiere für jeden Tabellen-Typ das exakte Schema im Prompt: Spaltenname | Datentyp (String/Zahl/Datum) | Maxlänge | Pflichtfeld (J/N).
 2. Formuliere im Format-Feld: "Antworte ausschließlich mit einer Markdown-Tabelle. Keine Einleitung, kein Text nach der Tabelle, keine Zusammenfassung."
-3. Ergänze eine Selbstprüfungs-Anweisung: "Prüfe nach der Tabellen-Erstellung, ob alle Pflichtfelder befüllt sind; kennzeichne leere Pflichtfelder mit ⚠️."
+3. Ergänze eine Selbstprüfungs-Anweisung: "Prüfe nach der Tabellen-Erstellung, ob alle Pflichtfelder befüllt sind; kennzeichne leere Pflichtfelder mit [unsicher]."
 4. Speichere alle drei Templates als `tabellen-output-templates.md` in der Library; Kollegen befüllen nur noch die {{Variablen}}-Felder.
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist Media-Planer. Erstelle einen Quartals-Medienplan für {{Kampagnenname}} mit Budget {{Gesamtbudget}} €. Spalten: Kanal | Monat | Budget (€) | KPI | Zielgruppe | Verantwortliche(r). Regeln: Kanal darf nicht leer sein, Budgetsumme muss {{Gesamtbudget}} ergeben. Format: Markdown-Tabelle, keine Einleitung, keine Schlussbemerkung. Prüfe Budgetsumme in einer Validierungszeile unter der Tabelle."
@@ -624,11 +624,11 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Canvas
 **Vorgehen (4 Schritte):**
 1. Definiere im Prompt exakt, welche Entitäten extrahiert werden sollen: "Extrahiere aus dem Text folgende Felder: [Liste der Entitäten mit Typ und Beispiel]."
-2. Füge eine Konfidenz-Anweisung ein: "Wenn du dir bei einer Extraktion nicht sicher bist, markiere das Feld mit ⚠️ und erkläre in einem Hinweis, was unklar ist."
+2. Füge eine Konfidenz-Anweisung ein: "Wenn du dir bei einer Extraktion nicht sicher bist, markiere das Feld mit [unsicher] und erkläre in einem Hinweis, was unklar ist."
 3. Fordere Null-Felder explizit: "Wenn ein Feld im Text nicht vorkommt, trage 'nicht erwähnt' ein — lasse kein Feld leer und erfinde keinen Wert."
 4. Lasse den Agenten nach der Tabelle eine Vollständigkeitsprüfung ausgeben: "Wie viele der X Felder konnten eindeutig extrahiert werden?"
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Datenanalysten-Assistent. Extrahiere aus der folgenden Pressemitteilung alle verfügbaren Daten für dieses Schema: Unternehmensname | Datum | Produkt/Service | Kernclaim | genannte Zahlen/KPIs | Zielmarkt | Ansprechpartner. Regeln: Unsichere Felder mit ⚠️ markieren und in einem Hinweis erklären. Nicht genannte Felder: 'nicht erwähnt'. Ausgabe: Markdown-Tabelle + Vollständigkeitsprüfung ('X von 7 Feldern eindeutig extrahiert')."
+> "Du bist Datenanalysten-Assistent. Extrahiere aus der folgenden Pressemitteilung alle verfügbaren Daten für dieses Schema: Unternehmensname | Datum | Produkt/Service | Kernclaim | genannte Zahlen/KPIs | Zielmarkt | Ansprechpartner. Regeln: Unsichere Felder mit [unsicher] markieren und in einem Hinweis erklären. Nicht genannte Felder: 'nicht erwähnt'. Ausgabe: Markdown-Tabelle + Vollständigkeitsprüfung ('X von 7 Feldern eindeutig extrahiert')."
 **Erwartetes Artefakt:** Strukturierte Extraktionstabelle mit Konfidenz-Markierungen und Vollständigkeitsquote; direkt als Grundlage für Wettbewerbsdatenbank oder CRM-Eintrag nutzbar.
 **Fallstricke (≥2 spezifisch):**
 - Ohne explizite "kein leeres Feld"-Regel füllt der Agent fehlende Informationen kreativ auf — die "nicht erwähnt"-Regel ist der entscheidende Halluzinations-Schutz.
@@ -662,11 +662,11 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Canvas
 **Vorgehen (4 Schritte):**
 1. Exportiere alle Library-Prompts als Liste (Name + ersten 100 Zeichen) in eine Arbeits-CSV.
-2. Führe für jeden Prompt den PTCF-Checker (aus S-PS-005) durch und trage das Ergebnis (P✓/✗, T✓/✗, C✓/✗, F✓/✗) in die Inventar-Tabelle ein.
+2. Führe für jeden Prompt den PTCF-Checker (aus S-PS-005) durch und trage das Ergebnis (Pja/nein, Tja/nein, Cja/nein, Fja/nein) in die Inventar-Tabelle ein.
 3. Identifiziere mit einem Ähnlichkeits-Prompt alle Prompt-Paare, die >70% semantisch überlappen, und markiere diese als Redundanz-Kandidaten.
 4. Präsentiere die Audit-Ergebnisse im Quarterly-Prompt-Review-Meeting (vgl. S-PS-003) und entscheide kollektiv über Deprecation und Konsolidierung.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Prompt-Auditor. Prüfe jeden der folgenden Prompts [Prompts einfügen] auf PTCF-Vollständigkeit. Für jeden Prompt: (1) Tabelleneintrag mit P/T/C/F (✓ oder ✗), (2) Verbesserungsvorschlag für fehlendes Feld in 1 Satz, (3) Status-Empfehlung: Active / Überarbeitungsbedarf / Deprecated. Ausgabe: Markdown-Tabelle + Konsolidierungs-Hinweis bei semantischen Dopplungen."
+> "Du bist Prompt-Auditor. Prüfe jeden der folgenden Prompts [Prompts einfügen] auf PTCF-Vollständigkeit. Für jeden Prompt: (1) Tabelleneintrag mit P/T/C/F (ja oder nein), (2) Verbesserungsvorschlag für fehlendes Feld in 1 Satz, (3) Status-Empfehlung: Active / Überarbeitungsbedarf / Deprecated. Ausgabe: Markdown-Tabelle + Konsolidierungs-Hinweis bei semantischen Dopplungen."
 **Erwartetes Artefakt:** `prompt-audit-report.md` mit vollständiger Inventar-Tabelle, Status-Labels und Konsolidierungsempfehlungen für alle geprüften Library-Prompts.
 **Fallstricke (≥2 spezifisch):**
 - Zu viele Prompts auf einmal auditieren überfordert das Kontextfenster — maximal 10 Prompts pro Audit-Run, bei größeren Libraries in Batches aufteilen.
@@ -776,7 +776,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Vorgehen (4 Schritte):**
 1. Lade das Bild direkt in den Chat (Langdock Vision analysiert das Bild automatisch).
 2. Sende den Alt-Text-Generator-Prompt mit drei Output-Formaten: (a) Alt-Text ≤125 Zeichen (WCAG-konform), (b) Long Description ≤250 Zeichen (für komplexe Infografiken), (c) Bildunterschrift mit Fokus-Keyword für SEO.
-3. Ergänze einen Brand-Safety-Check: "Enthält das Bild erkennbare Personen, Markenlogos oder sensible Inhalte? Wenn ja, markiere mit ⚠️ und erkläre."
+3. Ergänze einen Brand-Safety-Check: "Enthält das Bild erkennbare Personen, Markenlogos oder sensible Inhalte? Wenn ja, markiere mit [unsicher] und erkläre."
 4. Integriere den Alt-Text-Step als Standard-Endschritt in den Image-Generation-Workflow (vgl. S-PS-036).
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist Accessibility-Spezialist. Analysiere das angehängte Bild und erstelle: (1) Alt-Text WCAG-konform ≤125 Zeichen — beschreibe Inhalt, nicht Ästhetik; (2) Long Description ≤250 Zeichen für Screenreader bei Infografiken; (3) SEO-Bildunterschrift mit Fokus-Keyword '{{KEYWORD}}' ≤160 Zeichen. Danach: Brand-Safety-Check — erkennbare Personen oder Logos? Format: drei nummerierte Blöcke + Brand-Safety-Flag."
@@ -892,7 +892,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 2. Sende den Extraktions-Prompt mit vordefinierten Kategorien und Zitat-Pflicht — der Agent darf keine Klauseln umformulieren, nur zitieren.
 3. Öffne den Output in Canvas, füge die Ampel-Tags manuell hinzu und teile das Dokument mit der Rechtsabteilung als Vorprüfungs-Basis.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Contract-Analyst mit Fokus auf Marketing-Beschaffung. Analysiere das angehängte Vertrags-PDF. Extrahiere alle Klauseln aus diesen Kategorien: (1) Kündigungsfristen, (2) Haftungsbeschränkungen, (3) IP-Übertragung und Nutzungsrechte, (4) Datenschutz/DSGVO-Pflichten, (5) Zahlungsbedingungen. Für jede Klausel: direktes Zitat + Seitenzahl + 1-Satz-Erklärung in einfacher Sprache. Bewertung: 🟢 Standard / 🟡 Prüfen / 🔴 Risiko. Format: Tabelle je Kategorie. Keine Rechtsberatung — nur Informationsextraktion."
+> "Du bist Contract-Analyst mit Fokus auf Marketing-Beschaffung. Analysiere das angehängte Vertrags-PDF. Extrahiere alle Klauseln aus diesen Kategorien: (1) Kündigungsfristen, (2) Haftungsbeschränkungen, (3) IP-Übertragung und Nutzungsrechte, (4) Datenschutz/DSGVO-Pflichten, (5) Zahlungsbedingungen. Für jede Klausel: direktes Zitat + Seitenzahl + 1-Satz-Erklärung in einfacher Sprache. Bewertung: grün Standard / gelb Prüfen / rot Risiko. Format: Tabelle je Kategorie. Keine Rechtsberatung — nur Informationsextraktion."
 **Erwartetes Artefakt:** Klausel-Extrakt-Tabelle (5 Kategorien, direkte Zitate, Seitenzahlen, Ampel-Bewertung) als Gesprächsgrundlage für die Rechtsabteilung; in Canvas exportierbar als DOCX.
 **Fallstricke (≥2 spezifisch):**
 - Der Prompt muss explizit "Keine Rechtsberatung" verankern und im Output sichtbar machen — KI-Vertragsanalyse ersetzt keine juristische Prüfung und darf nicht als solche kommuniziert werden.
@@ -1064,7 +1064,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Erwartetes Artefakt:** Überarbeiteter interner Kommunikations-Text im definierten Internal Voice; Liste der Änderungen als transparente Dokumentation für das Lerneffekt des Einsenders.
 **Fallstricke (≥2 spezifisch):**
 - Ein zu rigider Internal Voice kann den persönlichen Ausdruck von Teammitgliedern unterdrücken und Widerstand erzeugen; den Guide als Orientierung, nicht als Zensur positionieren — Abweichungen erlaubt, wenn sie begründet sind.
-- Slide-Bullets kürzen und gleichzeitig inhaltlich vollständig halten ist eine echte Optimierungs-Herausforderung; der Prompt sollte explizit erlauben: "Wenn eine 12-Wörter-Limitation den Inhalt verfälscht, halte den Inhalt und markiere die Stelle mit [⚠️ zu lang]."
+- Slide-Bullets kürzen und gleichzeitig inhaltlich vollständig halten ist eine echte Optimierungs-Herausforderung; der Prompt sollte explizit erlauben: "Wenn eine 12-Wörter-Limitation den Inhalt verfälscht, halte den Inhalt und markiere die Stelle mit [[unsicher] zu lang]."
 **Anschluss-Szenario:** S-PS-054
 
 ### S-PS-054 UTM-Parameter-Schema für Kampagnen-Tracking generieren
@@ -1264,10 +1264,10 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Vorgehen (4 Schritte):**
 1. Lege je Zielsystem fest, welches Format es exakt erwartet (CSV-Export → Tabelle mit fixen Spalten; API → JSON; Briefing → nummerierte Struktur).
 2. Formuliere den Vertrag explizit: Spaltennamen, Reihenfolge, Datentypen, und ein Negativ-Constraint ("keine Einleitung, kein Text nach der Struktur").
-3. Ergänze eine Selbstprüf-Zeile als letzte Ausgabe ("Format-Check: Spaltenzahl korrekt? Pflichtfelder befüllt? ✓/✗").
+3. Ergänze eine Selbstprüf-Zeile als letzte Ausgabe ("Format-Check: Spaltenzahl korrekt? Pflichtfelder befüllt? ja/nein").
 4. Validiere den ersten Output gegen das Zielsystem (CSV-Import-Test bzw. JSON-Validator aus S-PS-011/022), bevor der Prompt in Serie geht.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Reporting-Daten-Engineer. Erstelle aus den folgenden Kampagnendaten eine Markdown-Tabelle nach diesem verbindlichen Vertrag: exakt diese Spalten in dieser Reihenfolge — Kanal | Impressionen (Ganzzahl) | Klicks (Ganzzahl) | CTR (% mit 2 Dezimalstellen) | CPL (€ mit 2 Dezimalstellen). Regeln: keine zusätzlichen Spalten, keine Einleitung, kein Text nach der Tabelle. Letzte Zeile: 'Format-Check: Spaltenzahl 5/5 ✓, alle Zellen befüllt ✓/✗'. Daten: [Rohdaten einfügen]."
+> "Du bist Reporting-Daten-Engineer. Erstelle aus den folgenden Kampagnendaten eine Markdown-Tabelle nach diesem verbindlichen Vertrag: exakt diese Spalten in dieser Reihenfolge — Kanal | Impressionen (Ganzzahl) | Klicks (Ganzzahl) | CTR (% mit 2 Dezimalstellen) | CPL (€ mit 2 Dezimalstellen). Regeln: keine zusätzlichen Spalten, keine Einleitung, kein Text nach der Tabelle. Letzte Zeile: 'Format-Check: Spaltenzahl 5/5 ja, alle Zellen befüllt ja/nein'. Daten: [Rohdaten einfügen]."
 **Erwartetes Artefakt:** Strukturkonformer Output (Tabelle/JSON/Struktur) mit Selbstprüf-Zeile; direkt vom Zielsystem verarbeitbar ohne manuelle Nachformatierung.
 **Fallstricke (≥2 spezifisch):**
 - Die Selbstprüf-Zeile ist ein Hinweis, keine Garantie — der Agent kann sich verzählen; bei programmatischer Weiterverarbeitung immer einen echten Parser/Validator nachschalten (vgl. S-PS-022).
@@ -1305,7 +1305,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 3. Speichere die kuratierten Anker je Content-Typ in der Library (`fewshot-rsa.md`, `fewshot-linkedin.md`).
 4. Teste denselben Prompt mit kuratierten vs. willkürlichen Ankern und vergleiche die Output-Qualität (A/B, vgl. S-PS-072).
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Few-Shot-Kurator. Prüfe die folgenden Kandidaten-Beispiele auf Eignung als Anker für {{Content-Typ}}: [Kandidaten einfügen]. Kriterien: (1) liegt ein Performance-Beleg vor (CTR/Conversion über Durchschnitt)?, (2) stammen alle aus derselben Produkt-Domäne?, (3) stilistisch konsistent zur Brand Voice in @brand-voice-guide?, (4) sind es maximal 3? Format: Tabelle Kandidat | Kriterium 1–4 (✓/✗) | Verdikt (aufnehmen/ablehnen) | 1-Satz-Begründung. Empfiehl am Ende die 2–3 stärksten Anker."
+> "Du bist Few-Shot-Kurator. Prüfe die folgenden Kandidaten-Beispiele auf Eignung als Anker für {{Content-Typ}}: [Kandidaten einfügen]. Kriterien: (1) liegt ein Performance-Beleg vor (CTR/Conversion über Durchschnitt)?, (2) stammen alle aus derselben Produkt-Domäne?, (3) stilistisch konsistent zur Brand Voice in @brand-voice-guide?, (4) sind es maximal 3? Format: Tabelle Kandidat | Kriterium 1–4 (ja/nein) | Verdikt (aufnehmen/ablehnen) | 1-Satz-Begründung. Empfiehl am Ende die 2–3 stärksten Anker."
 **Erwartetes Artefakt:** Kuratierte Anker-Auswahl mit Begründung je Beispiel; kuratierte Few-Shot-Bibliothek je Content-Typ in der Library.
 **Fallstricke (≥2 spezifisch):**
 - Anker aus unterschiedlichen Produktkategorien senden widersprüchliche Stil-Signale und senken die Reproduzierbarkeit — Domänen-Gleichheit ist das härteste Kriterium, nie zugunsten eines "schönen" Beispiels aufweichen.
@@ -1339,11 +1339,11 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Data Analyst
 **Vorgehen (4 Schritte):**
 1. Lege das fixe Spaltenschema fest (Feldname | Datentyp | Pflicht/optional) und friere es ein — kein Lauf darf Spalten ergänzen oder weglassen.
-2. Erzwinge je Zelle einen Quellbeleg ("Textstelle, aus der der Wert stammt") und eine Konfidenz-Markierung (⚠️ bei Unsicherheit).
+2. Erzwinge je Zelle einen Quellbeleg ("Textstelle, aus der der Wert stammt") und eine Konfidenz-Markierung ([unsicher] bei Unsicherheit).
 3. Definiere die Null-Regel: nicht gefundene Werte als "nicht erwähnt", niemals leer oder erfunden.
 4. Lass mehrere Dokumente nacheinander gegen dasselbe Schema laufen und führe die Ergebnisse im Data Analyst zu einer Gesamttabelle zusammen.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Extraktions-Engine mit fixem Schema. Extrahiere aus dem folgenden Text exakt diese Spalten, keine zusätzlichen: Unternehmen (String) | Datum (JJJJ-MM-TT) | Kernzahl (Zahl + Einheit) | Quelle-Zitat (wörtliche Textstelle) | Konfidenz (sicher/⚠️). Regeln: nicht gefundene Werte = 'nicht erwähnt' (nie leer, nie erfunden); jede Zahl mit wörtlichem Quell-Zitat belegen. Text: [Text einfügen]. Format: Markdown-Tabelle + Schlusszeile 'X/Y Felder sicher extrahiert'."
+> "Du bist Extraktions-Engine mit fixem Schema. Extrahiere aus dem folgenden Text exakt diese Spalten, keine zusätzlichen: Unternehmen (String) | Datum (JJJJ-MM-TT) | Kernzahl (Zahl + Einheit) | Quelle-Zitat (wörtliche Textstelle) | Konfidenz (sicher/[unsicher]). Regeln: nicht gefundene Werte = 'nicht erwähnt' (nie leer, nie erfunden); jede Zahl mit wörtlichem Quell-Zitat belegen. Text: [Text einfügen]. Format: Markdown-Tabelle + Schlusszeile 'X/Y Felder sicher extrahiert'."
 **Erwartetes Artefakt:** Strukturkonforme Extraktionstabelle mit Quellbeleg und Konfidenz je Zelle; über mehrere Dokumente konsolidierbar.
 **Fallstricke (≥2 spezifisch):**
 - Bei mehreren Kandidatenwerten im Text (mehrere Zahlen/Firmen) extrahiert der Agent ohne Regel den erstgenannten, nicht den relevantesten; eine Priorisierungsregel ergänzen ("bei mehreren Werten den prominentesten/aktuellsten, mit Begründung").
@@ -1381,11 +1381,11 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 3. Fordere einen Invarianz-Block: "Liste alle Zahlen und Kernfakten aus Original und Zielversion gegenüber — sie müssen identisch sein."
 4. Bei Abweichung im Invarianz-Block: Transformation verwerfen und neu anfordern.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Tone-Transfer-Spezialist. Übertrage den folgenden Text vom Ton 'formell-technisch' in 'nahbar-nutzerorientiert'. Ziel-Ton-Profil: kurze Sätze (max. 18 Wörter), du-Anrede, Nutzen vor Mechanik, ein konkretes Beispiel, ein klarer CTA. Regel: Ändere nur den Stil — jede Zahl und jeder Fakt bleibt wörtlich identisch. Original: [Text einfügen]. Format: (1) Zielversion, (2) Invarianz-Block: Tabelle Original-Fakt | Zielversion-Fakt | identisch (✓/✗)."
+> "Du bist Tone-Transfer-Spezialist. Übertrage den folgenden Text vom Ton 'formell-technisch' in 'nahbar-nutzerorientiert'. Ziel-Ton-Profil: kurze Sätze (max. 18 Wörter), du-Anrede, Nutzen vor Mechanik, ein konkretes Beispiel, ein klarer CTA. Regel: Ändere nur den Stil — jede Zahl und jeder Fakt bleibt wörtlich identisch. Original: [Text einfügen]. Format: (1) Zielversion, (2) Invarianz-Block: Tabelle Original-Fakt | Zielversion-Fakt | identisch (ja/nein)."
 **Erwartetes Artefakt:** Tonal transformierte Version + Fakten-Invarianz-Tabelle, die die Substanzgleichheit belegt; sofort wiederverwendbar im neuen Kanal.
 **Fallstricke (≥2 spezifisch):**
 - "Fakten dürfen nicht verändert werden" wird oft als Erlaubnis zur wörtlichen Wiederholung missverstanden; ergänzen: "paraphrasiere die Formulierung, erfinde aber keine neuen Zahlen" (vgl. S-PS-009).
-- Starker Ton-Shift (z.B. ins Saloppe) lädt zu Übertreibungen ein, die unbelegte Claims erzeugen; den Invarianz-Block immer ausgeben lassen und bei jeder ✗-Zelle die Transformation zurückweisen.
+- Starker Ton-Shift (z.B. ins Saloppe) lädt zu Übertreibungen ein, die unbelegte Claims erzeugen; den Invarianz-Block immer ausgeben lassen und bei jeder nein-Zelle die Transformation zurückweisen.
 **Anschluss-Szenario:** S-PS-071
 
 ### S-PS-071 Mehrstufige Chain-Prompts: Aufgaben in geprüfte Teilschritte zerlegen

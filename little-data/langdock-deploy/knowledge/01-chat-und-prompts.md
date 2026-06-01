@@ -915,7 +915,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 **Erwartetes Artefakt:** Einseitiges Executive-Lagebild (Markdown) mit Quellen-Referenzen je Aussage, direkt für die Meeting-Vorbereitung nutzbar.
 **Fallstricke (≥2 spezifisch):**
 - Zu große Anhänge sprengen das Kontextfenster — PDFs vorher auf relevante Kapitel kürzen oder komprimieren, falls über 80 Seiten.
-- KI benennt Widersprüche nicht explizit, wenn der Prompt es nicht erzwingt — immer „kennzeichne Widersprüche mit ⚠️" im Prompt fordern.
+- KI benennt Widersprüche nicht explizit, wenn der Prompt es nicht erzwingt — immer „kennzeichne Widersprüche mit [unsicher]" im Prompt fordern.
 **Anschluss-Szenario:** S-CP-047
 
 ---
@@ -931,7 +931,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Prompt mit konkreten Suchkategorien: Budget-Caps, Nutzungsrechte, Kündigungsfristen, Haftungsausschlüsse, Exklusivität.
 3. Ampelliste aus der KI-Ausgabe exportieren und als Briefing-Dokument an die Rechtsabteilung weiterleiten.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Vertragsanalystin mit Schwerpunkt Marketing-Recht. Analysiere den angehängten Vertrag. Extrahiere alle Klauseln zu: Budget-Freigaben, Nutzungsrechten, Kündigungsfristen und Exklusivität. Bewerte jede Klausel mit 🔴 (kritisch), 🟡 (prüfen), 🟢 (unproblematisch). Format: Tabelle mit Klauselnummer, Kurzfassung, Ampel, Ein-Satz-Risiko-Kommentar."
+> "Du bist Vertragsanalystin mit Schwerpunkt Marketing-Recht. Analysiere den angehängten Vertrag. Extrahiere alle Klauseln zu: Budget-Freigaben, Nutzungsrechten, Kündigungsfristen und Exklusivität. Bewerte jede Klausel mit rot (kritisch), gelb (prüfen), grün (unproblematisch). Format: Tabelle mit Klauselnummer, Kurzfassung, Ampel, Ein-Satz-Risiko-Kommentar."
 **Erwartetes Artefakt:** Ampel-Klauselliste als Markdown-Tabelle — Briefing-Grundlage für die Rechtsabteilung, kein Ersatz für juristische Beratung.
 **Fallstricke (≥2 spezifisch):**
 - KI kann keine Rechtsmeinung abgeben — Ausgabe ist Vorprüfung, nicht Rechtsberatung; dies im Dokument immer explizit vermerken.
@@ -991,10 +991,10 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 **Vorgehen (4 Schritte):**
 1. Agentur-Briefing als PDF anhängen und Brand-Guidelines-Ordner per @-Mention verknüpfen.
 2. KI bewertet jede Sektion des Briefings gegen die Brand Guidelines: strategischer Fit, Zielgruppen-Definition, Tonalität, KPI-Klarheit.
-3. Ampel-Bewertung erzeugen: 🔴 = Rückgabe nötig, 🟡 = Klärungsbedarf, 🟢 = freigabebereit.
+3. Ampel-Bewertung erzeugen: rot = Rückgabe nötig, gelb = Klärungsbedarf, grün = freigabebereit.
 4. Konkrete Rückfragen-Liste formulieren, die per E-Mail an die Agentur geht.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Creative-Direktorin und strategische Markenhüterin. Reviewe das angehängte Agentur-Briefing gegen unsere Brand Guidelines im Ordner. Bewerte jeden der sechs Abschnitte mit 🔴/🟡/🟢 und formuliere je eine konkrete Rückfrage für Abschnitte mit 🔴 oder 🟡. Format: Tabelle Abschnitt / Bewertung / Rückfrage, dann Gesamt-Empfehlung in einem Satz."
+> "Du bist Creative-Direktorin und strategische Markenhüterin. Reviewe das angehängte Agentur-Briefing gegen unsere Brand Guidelines im Ordner. Bewerte jeden der sechs Abschnitte mit rot/gelb/grün und formuliere je eine konkrete Rückfrage für Abschnitte mit rot oder gelb. Format: Tabelle Abschnitt / Bewertung / Rückfrage, dann Gesamt-Empfehlung in einem Satz."
 **Erwartetes Artefakt:** Strukturiertes Review-Dokument mit Ampelmatrix und Rückfragen-Liste — direkt als E-Mail-Anhang an die Agentur versendbar.
 **Fallstricke (≥2 spezifisch):**
 - KI bewertet Abschnitte zu nachsichtig, wenn Brand Guidelines zu vage formuliert sind — Guidelines müssen konkrete Dos-and-Don'ts enthalten.
