@@ -218,17 +218,17 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-008
 
 ### S-API-008 Echtzeit-Alerting bei Reputations-Krisen
-**Wann nutzen (Trigger):** Nach einem PR-Desaster auf Twitter verlangt die Geschäftsführung ein System, das Erwähnungen der Marke in Echtzeit durch eine KI auf toxisches Sentiment prüft und das Crisis-Team sofort via Slack alarmiert.
+**Wann nutzen (Trigger):** Nach einem PR-Desaster auf Twitter verlangt die Geschäftsführung ein System, das Erwähnungen der Marke in Echtzeit per Webhook und Integrations API auf toxisches Sentiment prüft und das Crisis-Team sofort via Slack alarmiert. (Quelle: sources/10 S-049, sources/10 S-051)
 **Strategisches Ziel:** Eine event-driven Architektur skizzieren, die über Webhooks und die Integrations API funktioniert.
 **Hands-on Ergebnis:** Ein Architektur-Blueprint für eine Event-Driven-Pipeline.
 **Eingesetzte Langdock-Fähigkeit(en):** Integrations API
 **Vorgehen (3-5 Schritte):**
 1. Definiere den Trigger (Social Media Listening Tool).
 2. Nutze Little Data, um den Workflow zu skizzieren: Webhook-Eingang in Langdock -> Sentiment-Analyse -> API-Aufruf an Slack.
-3. Berücksichtige die Limits des Custom Integration Builders (z.B. Timeout von 60 Sekunden).
+3. Berücksichtige die Limits des Custom Integration Builders (Custom-Code-Timeout in der Größenordnung von ~60 Sekunden — exakten Wert in der aktuellen Langdock-Doku verifizieren, da er sich ändern kann).
 4. Dokumentiere das Setup für das Marketing-Ops Team.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein Crisis-Comms Architekt. Wir brauchen ein Echtzeit-Alerting. Ein externes Social-Listening-Tool soll einen Webhook an Langdock senden, sobald wir erwähnt werden. Langdock analysiert das Sentiment und schickt bei 'Toxisch' einen Payload an die Slack API. Skizziere diese Architektur. Worauf müssen wir beim Custom Integration Builder achten? Erwähne speziell das 60-Sekunden Timeout Limit für Custom Code."
+> "Du bist ein Crisis-Comms Architekt. Wir brauchen ein Echtzeit-Alerting. Ein externes Social-Listening-Tool soll einen Webhook an Langdock senden, sobald wir erwähnt werden. Langdock analysiert das Sentiment und schickt bei 'Toxisch' einen Payload an die Slack API. Skizziere diese Architektur. Worauf müssen wir beim Custom Integration Builder achten? Erwähne speziell das Custom-Code-Timeout-Limit (rund 60 Sekunden, Wert vorab verifizieren)."
 **Erwartetes Artefakt:** Ein Systemarchitektur-Diagramm als Text.
 **Fallstricke (≥2 spezifisch):**
 - Das Konzept vergisst die Authentifizierung des eingehenden Webhooks (Security Risk).
@@ -236,7 +236,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-009
 
 ### S-API-009 Migration zur Agents API (Vercel AI SDK)
-**Wann nutzen (Trigger):** Die IT-Abteilung meldet, dass die alte "Assistants API" bald abgeschaltet wird (Deprecation) und ein Rewrite der internen Tools notwendig ist. Das Marketing-Team fürchtet monatelange Downtimes.
+**Wann nutzen (Trigger):** Die IT-Abteilung meldet, dass eine ältere Agenten-/Assistants-Schnittstelle laut aktueller Deprecation-Ankündigung (Stand 2026-06 — exaktes Datum im Langdock-Changelog verifizieren) abgeschaltet wird und ein Rewrite der internen Tools notwendig ist. Das Marketing-Team fürchtet monatelange Downtimes. (Quelle: research/50 A-33, research/50 A-03)
 **Strategisches Ziel:** Den Mehrwert der neuen API (Vercel AI SDK Kompatibilität) verstehen, um die IT-Kosten vor dem Management zu rechtfertigen.
 **Hands-on Ergebnis:** Ein Change-Management Memo für das interne Marketing-Team.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent API, Advisory
@@ -254,17 +254,17 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Anschluss-Szenario:** S-API-010
 
 ### S-API-010 Audit-Logs für DSGVO-Auskunftsanfragen
-**Wann nutzen (Trigger):** Ein Kunde macht von seinem "Recht auf Auskunft" (Art. 15 DSGVO) Gebrauch. Der Datenschutzbeauftragte verlangt lückenlose Protokolle, ob Kundendaten über einen bestimmten Langdock-Agenten verarbeitet wurden.
+**Wann nutzen (Trigger):** Ein Kunde macht von seinem "Recht auf Auskunft" (Art. 15 DSGVO) Gebrauch. Der Datenschutzbeauftragte verlangt über die Audit Logs API lückenlose Protokolle, ob Kundendaten über einen bestimmten Langdock-Agenten verarbeitet wurden. (Quelle: research/50 A-15, sources/12 Q135)
 **Strategisches Ziel:** Die Audit Logs API nutzen, um rechtssichere, exportierbare Reports zu generieren.
 **Hands-on Ergebnis:** Ein Prozess-Blueprint für Legal & Compliance.
 **Eingesetzte Langdock-Fähigkeit(en):** Audit Logs API
 **Vorgehen (3-5 Schritte):**
 1. Verstehe die rechtliche Anforderung (Nachweisbarkeit von System-Aktivitäten).
 2. Instruiere Little Data, den Abruf via Audit Logs API zu spezifizieren.
-3. Berücksichtige die Pagination (max. 50 Einträge pro Request).
+3. Berücksichtige die Pagination der Audit Logs API (Seitengröße in der Größenordnung weniger Dutzend Einträge pro Request — exakten Wert in der Langdock-API-Doku verifizieren; in jedem Fall ist eine Schleife über alle Seiten nötig).
 4. Dokumentiere den Prozess für den Datenschutzbeauftragten.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein Compliance-Berater. Unser Datenschutzbeauftragter braucht einen Export aller System-Aktivitäten des letzten Monats wegen einer DSGVO-Anfrage. Wir müssen das über die Langdock Audit Logs API automatisieren. Schreibe einen Prozess-Guide für die IT. Erkläre zwingend, dass die API paginiert ist und maximal 50 Einträge pro Request liefert, sie müssen also eine Schleife programmieren. Das Dokument muss formal und präzise sein."
+> "Du bist ein Compliance-Berater. Unser Datenschutzbeauftragter braucht einen Export aller System-Aktivitäten des letzten Monats wegen einer DSGVO-Anfrage. Wir müssen das über die Langdock Audit Logs API automatisieren. Schreibe einen Prozess-Guide für die IT. Erkläre zwingend, dass die API paginiert ist und nur eine begrenzte Seitengröße pro Request liefert (exakten Wert vorab verifizieren), sie müssen also eine Schleife über alle Seiten programmieren. Das Dokument muss formal und präzise sein."
 **Erwartetes Artefakt:** Ein DSGVO-Auskunftsprozess Dokument.
 **Fallstricke (≥2 spezifisch):**
 - Die KI verwechselt Audit-Logs (Wer hat das System konfiguriert?) mit Usage-Logs (Wer hat welche Tokens verbraucht?).
@@ -377,7 +377,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 2. Beauftrage Little Data, eine Queue-Strategie zu entwerfen: Requests in Batches von 50 gruppieren, Exponential-Backoff bei HTTP 429 Fehlern, maximale 3 Retry-Versuche.
 3. Erstelle eine Kostenschätzung auf Basis der Prompt-Länge (Produktdaten-Input + 80-Wörter-Output) und des gewählten Modells.
 4. Plane den Monitoring-Punkt: Usage Export API am nächsten Morgen abfragen, um tatsächliche Token-Kosten mit der Schätzung zu vergleichen.
-5. Weise auf die Budget-Grenzen hin: das Per-Workflow-Budget liegt standardmäßig bei 25 USD pro Monat (im Admin bis 10.000 USD erhöhbar), das Workspace-Budget bei 500 Euro pro Monat — bei großen Jobs müssen beide vor dem Lauf angepasst und ein optionales Per-Execution-Limit gegen Endlosschleifen gesetzt werden.
+5. Weise auf die Budget-Grenzen hin: das Per-Workflow-Limit liegt standardmäßig bei ca. 25 Euro pro Lauf, das Workspace-Budget bei ca. 500 Euro pro Monat (Stand 2026-06, im Admin erhöhbar — aktuelle Werte vorab verifizieren) — bei großen Jobs müssen beide vor dem Lauf angepasst und ein optionales Per-Execution-Limit gegen Endlosschleifen gesetzt werden.
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist ein technischer Projektleiter. Wir müssen 2.000 Produktbeschreibungen via Langdock Completion API über ein Wochenende generieren. Der Katalog liegt als CSV vor. Skizziere eine Batch-Architektur: Wie teilen wir die CSV auf? Wie implementieren wir Exponential-Backoff bei Rate Limit Fehlern? Welche Kosten erwarten uns bei durchschnittlich 500 Input-Tokens und 120 Output-Tokens pro Request mit Haiku? Liefere Architektur-Briefing und Kostenübersicht."
 **Erwartetes Artefakt:** Ein Architektur-Briefing (Queue-Strategie, Fehlerbehandlung) + Kosten-Schätzungssheet.

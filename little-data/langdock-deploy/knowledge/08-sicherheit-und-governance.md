@@ -1191,4 +1191,4 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 **Fallstricke (≥2 spezifisch):**
 - Der Leitfaden erzeugt übermäßiges Misstrauen gegenüber KI-Outputs und lähmt die Produktivität, weil Mitarbeitende jede Ausgabe exzessiv nachprüfen — Mitigation: den Verifikations-Workflow nach Inhaltsrisiko skalieren: Niedrigrisiko-Texte (interne Notizen) ohne Vollverifikation; Hochrisiko-Outputs (externe Präsentationen, Pressemitteilungen) mit vollständigem 3-Schritte-Check.
 - Mitarbeitende melden Halluzinationen nicht aus Angst, als unproduktiv oder technophoob zu gelten — Mitigation: eine explizite "False-Positive-Welcome"-Kultur im Leitfaden kommunizieren und Halluzinations-Meldungen als wertvolle Qualitäts-Beiträge öffentlich anerkennen (z. B. im monatlichen Champion-Meeting).
-**Anschluss-Szenario:** S-SG-001
+**Anschluss-Szenario:** S-SG-061 für die strukturierte DSFA-Vorlage als wiederverwendbaren Governance-Baustein.

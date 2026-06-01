@@ -543,7 +543,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-025 Modell-Changelog verfolgen: Quartals-Review für stabile Kostenplanung
 
-**Wann nutzen (Trigger):** Die Quartalsplanung zeigt Abweichungen zwischen der budgetierten und der tatsächlichen KI-Kosten — bei der Analyse stellt sich heraus, dass zwei Modelle im letzten Quartal Preisänderungen hatten, die das Team nicht mitbekommen hat. (Quelle: A-09 analog; sources/12 Q24)
+**Wann nutzen (Trigger):** Die Quartalsplanung zeigt Abweichungen zwischen der budgetierten und der tatsächlichen KI-Kosten — bei der Analyse stellt sich heraus, dass zwei Modelle im letzten Quartal Preisänderungen hatten, die das Team nicht mitbekommen hat. (Quelle: sources/12 Q24; A-30)
 **Strategisches Ziel:** Einen strukturierten Quartals-Review-Prozess etablieren, der Modell-Preisänderungen, neue Releases und Multiplikator-Verschiebungen rechtzeitig für die nächste Budgetrunde erfasst.
 **Hands-on Ergebnis:** Ein Quartals-Review-Template (Modell-Roster-Check, Multiplikator-Vergleich, Budget-Anpassungsempfehlung) als wiederkehrender Wissensordner-Eintrag.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, Usage-Export, Wissensordner für historische Multiplikator-Werte, manuelle Modellwahl.
@@ -962,7 +962,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-047 Token-Schätzung für große Wissensordner: Input-Kosten vor dem RAG-Lauf kalkulieren
 
-**Wann nutzen (Trigger):** Der Wissensordner ist auf 200 Dokumente (Briefings, Styleguides, Marktberichte) angewachsen, und das Team bemerkt, dass jede Agenten-Session deutlich teurer geworden ist — ohne zu verstehen, wie viele Token pro Abfrage tatsächlich aus dem Wissensordner geladen werden. (Quelle: sources/10 S-MK-027)
+**Wann nutzen (Trigger):** Der Wissensordner ist auf 200 Dokumente (Briefings, Styleguides, Marktberichte) angewachsen, und das Team bemerkt, dass jede Agenten-Session deutlich teurer geworden ist — ohne zu verstehen, wie viele Token pro Abfrage tatsächlich aus dem Wissensordner geladen werden. (Quelle: A-22; sources/12 Q57)
 **Strategisches Ziel:** Die Input-Token-Last eines RAG-gestützten Agenten mit großem Wissensordner transparent machen und eine Strategie zur Token-Reduzierung ohne Qualitätsverlust entwickeln.
 **Hands-on Ergebnis:** Eine Token-Analyse des Wissensordners (Dokument-Größen, typische Abruf-Token pro Session) plus eine Bereinigungsstrategie und eine Kostenprognose nach Optimierung.
 **Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (RAG-Abfrage), Token-Schätzung (Faustregel ~1,2 Token/Wort für Deutsch), Usage-Export für Input-Token-Messung, Modell-Katalog.
@@ -1019,7 +1019,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-050 Modell-Evaluierungs-Scorecard für marketing-spezifische Benchmarks
 
-**Wann nutzen (Trigger):** Ein neues Modell-Release (z.B. Gemini 4.0 Flash) wird vom Provider mit allgemeinen Benchmark-Ergebnissen beworben — das Marketing-Team will wissen, ob das Modell für seine spezifischen Aufgaben (DACH-Texte, Briefings, Daten-Klassifikation) tatsächlich besser ist als das bisherige Default-Modell. (Quelle: A-09 analog; Quelle: T6-dach-kontext-kosten)
+**Wann nutzen (Trigger):** Ein neues Modell-Release (z.B. Gemini 4.0 Flash) wird vom Provider mit allgemeinen Benchmark-Ergebnissen beworben — das Marketing-Team will wissen, ob das Modell für seine spezifischen Aufgaben (DACH-Texte, Briefings, Daten-Klassifikation) tatsächlich besser ist als das bisherige Default-Modell. (Quelle: sources/12 Q24; A-30)
 **Strategisches Ziel:** Eine standardisierte Evaluierungs-Scorecard entwickeln, die neue Modell-Releases zuverlässig an marketing-relevanten Aufgaben misst und eine nachvollziehbare Entscheidungsgrundlage für den Modell-Wechsel liefert.
 **Hands-on Ergebnis:** Eine ausgefüllte Scorecard (5 Aufgaben × Qualitätsdimensionen × Kostenmultiplikator) plus eine Wechsel-Empfehlung mit Konfidenz-Angabe.
 **Eingesetzte Langdock-Fähigkeit(en):** Manuelle Modellwahl, Wissensordner für Evaluierungs-Aufgaben und Bewertungsraster, Usage-Export für Kostenmessung, Modell-Katalog.
@@ -1076,7 +1076,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-053 Wechselkosten-Analyse: Migration von GPT auf Claude oder umgekehrt
 
-**Wann nutzen (Trigger):** Nach drei Monaten mit GPT-5.4 als Haupt-Content-Modell schlägt ein Teammitglied vor, auf Sonnet 4.6 umzustellen — aus Qualitätsgründen bei deutschen Texten. Das Team fragt, wie hoch die tatsächlichen Wechselkosten (Prompt-Umbau, Qualitäts-Tests, Übergangsphase) sind. (Quelle: T6-dach-kontext-kosten)
+**Wann nutzen (Trigger):** Nach drei Monaten mit GPT-5.4 als Haupt-Content-Modell schlägt ein Teammitglied vor, auf Sonnet 4.6 umzustellen — aus Qualitätsgründen bei deutschen Texten. Das Team fragt, wie hoch die tatsächlichen Wechselkosten (Prompt-Umbau, Qualitäts-Tests, Übergangsphase) sind. (Quelle: sources/12 Q84; A-30)
 **Strategisches Ziel:** Die vollständigen Wechselkosten eines Modell-Migrations-Projekts quantifizieren (Prompt-Engineering, Qualitäts-Tests, Übergangsphase, Dokumentations-Update) und gegen den erwarteten Qualitätsgewinn abwägen.
 **Hands-on Ergebnis:** Eine Wechselkosten-Kalkulation (Einmalinvestitionen + Übergangskosten + erwarteter Nutzen) als Entscheidungsvorlage für das Management.
 **Eingesetzte Langdock-Fähigkeit(en):** Manuelle Modellwahl, Wissensordner für Prompt-Inventar, Modell-Katalog (Multiplikator-Vergleich), Usage-Export.
@@ -1114,7 +1114,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-055 Modell-Deprecation-Planung: Was tun, wenn ein Modell abgekündigt wird
 
-**Wann nutzen (Trigger):** Ein Provider kündigt an, dass GPT-5.2 in 90 Tagen in den "Legacy"-Status wechselt und danach nur noch zu erhöhten Preisen verfügbar ist — das Team hat fünf produktive Agenten, die auf GPT-5.2 laufen, und keine Transitions-Roadmap. (Quelle: A-09 analog; Quelle: T6-dach-kontext-kosten)
+**Wann nutzen (Trigger):** Ein Provider kündigt an, dass GPT-5.2 in 90 Tagen in den "Legacy"-Status wechselt und danach nur noch zu erhöhten Preisen verfügbar ist — das Team hat fünf produktive Agenten, die auf GPT-5.2 laufen, und keine Transitions-Roadmap. (Quelle: sources/12 Q24; A-30)
 **Strategisches Ziel:** Einen strukturierten Deprecation-Response-Plan entwickeln, der den Übergang zu einem Nachfolge-Modell ohne Produktionsausfall und ohne Budget-Eskalation sicherstellt.
 **Hands-on Ergebnis:** Ein Deprecation-Response-Plan (betroffene Agenten / Migrations-Priorität / Ziel-Modell / Test-Zeitplan / Budget-Auswirkung) als ausführbares Projekt-Dokument.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, manuelle Modellwahl, Wissensordner für Agenten-Inventar, Usage-Export (Volumen je betroffenem Agenten).
@@ -1152,7 +1152,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-057 Budget-Freigabe-Workflow für Frontier-Modell-Zugang: Management Sign-off
 
-**Wann nutzen (Trigger):** Ein Senior-Stratege möchte Opus 4.7 für eine komplexe Wettbewerbs-Analyse einsetzen (geschätzte Kosten: €120 für den Lauf) — der Workspace-Admin hat Frontier-Modelle genehmigungspflichtig gemacht, aber es gibt noch keinen definierten digitalen Freigabe-Prozess, und die Genehmigung passiert per Zuruf. (Quelle: A-30)
+**Wann nutzen (Trigger):** Ein Senior-Stratege möchte Opus 4.8 für eine komplexe Wettbewerbs-Analyse einsetzen (geschätzte Kosten: Größenordnung €100–150 für den Lauf) — der Workspace-Admin hat Frontier-Modelle genehmigungspflichtig gemacht, aber es gibt noch keinen definierten digitalen Freigabe-Prozess, und die Genehmigung passiert per Zuruf. (Quelle: A-30)
 **Strategisches Ziel:** Einen leichtgewichtigen, dokumentierten Budget-Freigabe-Workflow für teure Einzelläufe (>€20) einrichten, der Management Sign-off sichert, ohne die Arbeit der Strategen durch bürokratischen Overhead zu blockieren.
 **Hands-on Ergebnis:** Ein Freigabe-Workflow (Antragsformular → Genehmiger → Freigabe-Dokumentation) plus ein Langdock-Workflow-Template, das die Freigabe nach Genehmigung automatisch triggert.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow-Builder (Genehmigungsschritt), Workspace-Admin (Modell-Zugangsbeschränkung), Wissensordner für Freigabe-Protokolle, Slack-Integration für Benachrichtigungen.
@@ -1190,7 +1190,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-059 Modell-Performance-Regressionstests nach Provider-Updates
 
-**Wann nutzen (Trigger):** Sonnet 4.6 hat ein stilles Update erhalten (ohne Versionsänderung), und das Content-Team bemerkt, dass die Brand-Voice-Konsistenz in den letzten zwei Wochen schlechter geworden ist — aber niemand kann belegen, ob das am Modell oder an einem geänderten Prompt liegt. (Quelle: T6-dach-kontext-kosten)
+**Wann nutzen (Trigger):** Sonnet 4.6 hat ein stilles Update erhalten (ohne Versionsänderung), und das Content-Team bemerkt, dass die Brand-Voice-Konsistenz in den letzten zwei Wochen schlechter geworden ist — aber niemand kann belegen, ob das am Modell oder an einem geänderten Prompt liegt. (Quelle: A-34; sources/12 Q84)
 **Strategisches Ziel:** Einen automatisierten Regressions-Test-Prozess aufsetzen, der nach jedem Provider-Update oder nach gemeldeten Qualitätsproblemen die Agenten-Performance gegen eine definierte Baseline prüft.
 **Hands-on Ergebnis:** Ein Regressions-Test-Protokoll (5 Canary-Prompts mit gespeicherten Referenz-Outputs × automatischer Abweichungs-Alert) plus ein Eskalationsprozess bei detektierter Performance-Regression.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow-Builder (Test-Workflow mit Referenz-Output-Vergleich), Wissensordner für Referenz-Outputs (Baseline), Modell-Katalog, Slack-Integration für Test-Alerts.
@@ -1224,4 +1224,4 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 **Fallstricke (≥2 spezifisch):**
 - Einen automatischen Resume-Mechanismus nach automatischem Stopp einzubauen, der nach einer Wartezeit alle Workflows wieder startet, perpetuiert den Loop-Fehler — Mitigation: ausschließlich manuelles Resume nach expliziter menschlicher Prüfung und Ursachenbehebung; kein automatisches Restart.
 - Den Monitoring-Workflow selbst ohne Execution-Limit und ohne eigenes Budget-Cap zu lassen schafft eine Lücke: der Sicherheits-Mechanismus ist selbst nicht abgesichert — Mitigation: den Monitoring-Workflow als reinen API-Abfrage-Workflow ohne LLM-Aufrufe konfigurieren und ein separates, minimales Budget-Cap (€2/Monat) zuweisen.
-**Anschluss-Szenario:** S-MK-001
+**Anschluss-Szenario:** S-MK-061

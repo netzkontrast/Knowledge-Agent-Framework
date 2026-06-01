@@ -165,7 +165,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-007 Research-Budget-Optimierung bei veralteten Annahmen
 
-**Wann nutzen (Trigger):** Eine teure Outbound-Research-Kampagne über Brevo ist spektakulär gefloppt, weil die zugrunde liegenden Zielgruppen-Personas völlig veraltet waren.
+**Wann nutzen (Trigger):** Eine teure Outbound-Research-Kampagne über Brevo ist spektakulär gefloppt, weil die zugrunde liegenden Zielgruppen-Personas völlig veraltet waren. (Quelle: A-13; Quelle: sources/10 S-021)
 **Strategisches Ziel:** Identifikation und Eliminierung von blinden Flecken in der Research-Strategie, indem verfallende Annahmen (Assumption Decay) aktiv aufgedeckt werden.
 **Hands-on Ergebnis:** Ein Audit-Report, der die verwundbarsten Annahmen der aktuellen Zielgruppen-Definition offenlegt und aktualisiert.
 **Eingesetzte Langdock-Fähigkeit(en):** Web Search, Chat
@@ -184,7 +184,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-008 ABM-Strategie-Kalibrierung mittels Base-Rates
 
-**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den organischen Traffic halbiert. Das ABM-Team ist in Panik und will sofort alle KI-generierten Inhalte löschen, ohne Evidenz.
+**Wann nutzen (Trigger):** Ein neues Google-Core-Update hat den organischen Traffic halbiert. Das ABM-Team ist in Panik und will sofort alle KI-generierten Inhalte löschen, ohne Evidenz. (Quelle: A-10; Quelle: sources/10 S-021)
 **Strategisches Ziel:** Rationale Neuausrichtung der ABM-Ressourcen basierend auf branchenweiten Base-Rates, um Überreaktionen zu vermeiden und den ROI zu sichern.
 **Hands-on Ergebnis:** Eine priorisierte Roadmap, die anzeigt, welche ABM-Workflows wirklich angepasst werden müssen und welche pausiert werden.
 **Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Data Analyst
@@ -203,7 +203,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-009 CRM-Reporting-Verteidigung vor dem Board
 
-**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter, unangreifbarer Erfolgsnachweis inklusive Adobe-Metriken muss bis morgen früh vorliegen.
+**Wann nutzen (Trigger):** Die Geschäftsführung zweifelt am ROI der Langdock-Einführung. Ein detaillierter, unangreifbarer Erfolgsnachweis inklusive Adobe-Metriken muss bis morgen früh vorliegen. (Quelle: A-01; Quelle: A-10)
 **Strategisches Ziel:** Schaffung einer 'Single-Source-of-Truth' für das CRM-Reporting, die von allen Stakeholdern bedingungslos akzeptiert wird, durch proaktive Vorwegnahme von Gegenargumenten.
 **Hands-on Ergebnis:** Ein fertiges, wasserdichtes Präsentations-Script für das Board-Meeting, das den Business-Case der KI-Tools im CRM verteidigt.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Web Search
@@ -222,7 +222,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-010 ABM-Kampagnen-Stresstest nach Workflow-Crash
 
-**Wann nutzen (Trigger):** Ein neues Inxmail-Update hat essenzielle Workflows im Account-Based-Marketing (ABM) zerschossen. Die Kernannahmen der Kampagne müssen unter extremem Zeitdruck validiert werden.
+**Wann nutzen (Trigger):** Ein neues Inxmail-Update hat essenzielle Workflows im Account-Based-Marketing (ABM) zerschossen. Die Kernannahmen der Kampagne müssen unter extremem Zeitdruck validiert werden. (Quelle: A-38; Quelle: sources/10 S-028)
 **Strategisches Ziel:** Rigorose Identifikation der technischen und inhaltlichen Root-Cause für den ABM-Ausfall und sofortige Ableitung resilienter Gegenmaßnahmen.
 **Hands-on Ergebnis:** Ein iteriertes, sofort einsatzbereites Prompt-Framework im Canvas, das strukturelle Fehler beim nächsten Versand ausschließt.
 **Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
@@ -391,7 +391,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 
 ### S-MP-019 Churn-Signale aus CRM-Daten identifizieren
 
-**Wann nutzen (Trigger):** Das Customer-Success-Team meldet, dass drei Enterprise-Kunden ihren Vertrag nicht verlängert haben — ohne Vorwarnung. Julia will künftig Frühwarnsignale aus dem CRM automatisiert erkennen, bevor Kunden abspringen. (Quelle: sources/10 S-056; Quelle: A-10)
+**Wann nutzen (Trigger):** Das Customer-Success-Team meldet, dass drei Enterprise-Kunden ihren Vertrag nicht verlängert haben — ohne Vorwarnung. Julia will künftig Frühwarnsignale aus dem CRM automatisiert erkennen, bevor Kunden abspringen. (Quelle: sources/10 S-056; Quelle: 12 Q105)
 **Strategisches Ziel:** Ein operatives Churn-Signal-Dashboard etablieren, das Retention-gefährdete Accounts frühzeitig markiert und automatisiert eine Slack-Benachrichtigung an den zuständigen Account Manager sendet.
 **Hands-on Ergebnis:** Eine priorisierte Liste von Accounts mit Churn-Risiko-Score (hoch/mittel/niedrig), ergänzt durch die jeweils ausschlaggebenden Aktivitätssignale.
 **Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Workflows (Slack Action)
@@ -1191,7 +1191,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 **Fallstricke (≥2 spezifisch):**
 - Feiertage ohne regionalen Differenzierungshinweis → Fronleichnam, Allerheiligen und andere Feiertage gelten nur in ausgewählten Bundesländern; Prompt muss fordern: "Markiere alle bundesland- oder kantonsabhängigen Feiertage explizit — keine gesamtdeutsche Verallgemeinerung."
 - Kampagnenkalender ignoriert die unterschiedliche Bedeutung von Feiertagen für B2B vs. B2C → Im B2B-DACH-Kontext sind Feiertage vor allem als Ausspiel-Pausen (keine Mails an Feiertagen) und als Themen-Anlässe für inhaltlich passende Content-Pieces relevant, nicht als Sales-Push-Momente; Prompt muss diese B2B-Perspektive explizit einfordern.
-**Anschluss-Szenario:** S-MP-001
+**Anschluss-Szenario:** S-MP-061
 
 ## Hinweise & Quellen-Konflikte
 

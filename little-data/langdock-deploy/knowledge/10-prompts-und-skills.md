@@ -93,7 +93,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 
 ### S-PS-002 {{Variablen}}-System für wiederkehrende Kampagnen-Prompts einführen
 
-**Wann nutzen (Trigger):** Dasselbe Prompt-Gerüst wird für 6 Produktlinien monatlich kopiert und manuell angepasst – Fehler durch Copy-Paste häufen sich. (Quelle: sources/12 Tabelle 05 – Prompt-Management-Praktiken)
+**Wann nutzen (Trigger):** Dasselbe Prompt-Gerüst wird für 6 Produktlinien monatlich kopiert und manuell angepasst – Fehler durch Copy-Paste häufen sich. (Quelle: sources/12 Q72 – {{brand_voice}}-Platzhalter via geschweifte Klammern + Q78 Platzhaltertexte)
 **Strategisches Ziel:** Einen Single-Template-Ansatz mit klar benannten {{Variablen}} etablieren, der Fehler eliminiert und Prompts auf Knopfdruck auf neue Produkte oder Märkte skaliert.
 **Hands-on Ergebnis:** Ein Team-Prompt-Dokument mit ≥5 Variablen-Feldern, das als Konversations-Starter konfiguriert und für alle Teammitglieder verfügbar ist.
 **Eingesetzte Langdock-Fähigkeit(en):** Konversations-Starter / Library Folder / Chat
@@ -150,7 +150,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 
 ### S-PS-005 PTCF als Team-Standard in Onboarding und Konversations-Startern verankern
 
-**Wann nutzen (Trigger):** Audit der letzten 50 Team-Prompts zeigt: 60% fehlt eine klare Persona, 40% kein Format – Ausgabequalität variiert stark je nach Verfasser. (Quelle: sources/10 S-026 + T8-Metaprompts-Critical-Thinking)
+**Wann nutzen (Trigger):** Audit der letzten 50 Team-Prompts zeigt: 60% fehlt eine klare Persona, 40% kein Format – Ausgabequalität variiert stark je nach Verfasser. (Quelle: sources/12 Q75 – Systemanweisungen/Nutzerdaten sauber trennen + sources/10 S-026)
 **Strategisches Ziel:** PTCF als verbindlichen Prompt-Standard im Marketing-Team einführen: Persona, Task, Context, Format sind Pflichtfelder in jedem nicht-trivialen Prompt.
 **Hands-on Ergebnis:** Ein PTCF-Leitfaden als Library-Dokument + ein PTCF-Checker-Prompt der jeden Draft-Prompt gegen das Schema prüft.
 **Eingesetzte Langdock-Fähigkeit(en):** Library Folder / Chat / Konversations-Starter
@@ -178,7 +178,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 3. Fordere im Format-Feld explizit drei getrennte Tabellenblöcke an (je Funnel-Stufe eine Tabelle) mit Zeichenzahl-Spalte.
 4. Teste den Prompt mit zwei unterschiedlichen Produkten; prüfe, ob die Intent-Differenzierung ohne manuelle Nachkorrektur stabil bleibt.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Senior Performance Manager. Erstelle RSA-Copy für {{Produkt}} in drei Funnel-Stufen. Hier sind Referenz-Headlines pro Stufe: ToFu-Beispiel: 'Effizienz steigern – ohne Risiko' | BoFu-Beispiel: 'Jetzt 14 Tage kostenlos testen'. Generiere 5 ToFu-, 5 MoFu- und 5 BoFu-Headlines (max. 30 Zeichen) sowie 4 Descriptions (max. 90 Zeichen). Format: drei separate Markdown-Tabellen mit Spalten Nr | Text | Zeichen | Intent-Typ."
+> "Du bist Senior Performance Manager für B2B-SaaS im DACH-Raum. Erstelle RSA-Copy für {{Produkt}} in drei Funnel-Stufen. Nutze diese Referenz-Anker (je 2 pro Stufe) als Stil- und Intent-Vorbild, ohne sie wörtlich zu kopieren: ToFu (Awareness): 'Effizienz steigern – ohne Risiko' / 'Wo Ihr Reporting heute Zeit verliert'. MoFu (Consideration): 'Vergleichen Sie 4 Lösungen in 5 Minuten' / 'Was {{Produkt}} anders macht'. BoFu (Purchase): 'Jetzt 14 Tage kostenlos testen' / 'Demo in 30 Minuten buchen'. Generiere 5 ToFu-, 5 MoFu- und 5 BoFu-Headlines (max. 30 Zeichen) sowie 4 Descriptions (max. 90 Zeichen). Regeln: kein Superlativ, kein Ausrufezeichen, jede Headline ein eigener Hook. Format: drei separate Markdown-Tabellen mit Spalten Nr | Text | Zeichen | Intent-Typ; pro Tabelle eine Validierungszeile (X/5 unter 30 Zeichen)."
 **Erwartetes Artefakt:** Drei Markdown-Tabellen (ToFu/MoFu/BoFu) mit 15 Headlines und 4 Descriptions; Zeichenzählung inline.
 **Fallstricke (≥2 spezifisch):**
 - Few-Shot-Anker, die aus unterschiedlichen Produktkategorien stammen, verwirren den Agenten — alle Anker müssen aus der gleichen Produkt-Domäne kommen.
@@ -315,7 +315,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 - Die Selbst-Validierungszeile ist ein Hinweis, kein Garantie-Check; finale manuelle Zeichenzählung in einem separaten Tool (Google Ads Editor Preview) ist vor dem Upload Pflicht.
 **Anschluss-Szenario:** S-PS-014
 
-### S-PS-014 Retargeting-Ad-Sequenz mit kanalem Ton-Progressions-Prompt
+### S-PS-014 Retargeting-Ad-Sequenz mit Ton-Progressions-Prompt
 
 **Wann nutzen (Trigger):** Eine 14-tägige Facebook-Retargeting-Sequenz klingt in allen Stufen gleich — weder Ton noch Dringlichkeit eskalieren, was zu Bannerblindheit führt. (Quelle: sources/10 S-035)
 **Strategisches Ziel:** Einen Sequenz-Prompt entwerfen, der drei Eskalationsstufen (Social Proof → Einwandbehandlung → Dringlichkeit) mit klar definierten Ton-Progressions-Regeln generiert, sodass alle drei Stages in einer einzigen Chat-Session entstehen.
@@ -901,7 +901,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 
 ### S-PS-045 Meeting-Transkript zu Action-Items und Entscheidungsprotokoll verarbeiten
 
-**Wann nutzen (Trigger):** Nach einem 60-minütigen Strategie-Meeting mit 8 Teilnehmenden liegt ein rohes Transkript vor — Zusagen, Verantwortlichkeiten und Deadlines sind im Gesprächsstrom vergraben und niemand will das Protokoll schreiben. (Quelle: sources/10 S-058 + Quick-Structuring-Abschnitt + A-05)
+**Wann nutzen (Trigger):** Nach einem 60-minütigen Strategie-Meeting mit 8 Teilnehmenden liegt ein rohes Transkript vor — Zusagen, Verantwortlichkeiten und Deadlines sind im Gesprächsstrom vergraben und niemand will das Protokoll schreiben. (Quelle: sources/12 Q15 – Recording-Upload → Auto-Transkript + sources/10 S-084 Interview-Synthese + A-05)
 **Strategisches Ziel:** Einen Prompt entwickeln, der aus einem rohen Meeting-Transkript in einem einzigen Pass ein vollständiges Entscheidungsprotokoll (Beschlüsse), eine priorisierte Action-Item-Liste (Owner + Deadline) und eine 3-Sätze-Executive-Summary generiert.
 **Hands-on Ergebnis:** Ein `meeting-protokoll-[datum].md` mit drei Blöcken: Executive-Summary (3 Sätze), Beschlüsse (nummeriert), Action-Items (Tabelle: Was | Wer | Bis wann | Priorität).
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Dateianlage oder Text-Paste) / Canvas / Library Folder
@@ -994,7 +994,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 
 ### S-PS-050 FAQ aus Support-Tickets automatisch generieren
 
-**Wann nutzen (Trigger):** Der Kundensupport häuft 200+ Tickets über drei Monate an — das Produktmarketing-Team soll daraus FAQ-Content für die Website generieren, hat aber keinen strukturierten Prozess, um die häufigsten Fragen zu identifizieren. (Quelle: Quick-Structuring-Abschnitt + sources/10 S-048 + A-05)
+**Wann nutzen (Trigger):** Der Kundensupport häuft 200+ Tickets über drei Monate an — das Produktmarketing-Team soll daraus FAQ-Content für die Website generieren, hat aber keinen strukturierten Prozess, um die häufigsten Fragen zu identifizieren. (Quelle: sources/10 S-048 Community-FAQ-Ordner + sources/10 S-052 Social-Listening-Synthese + A-05)
 **Strategisches Ziel:** Einen zweistufigen Prompt-Workflow entwickeln, der (1) Cluster häufig gestellter Fragen aus rohen Support-Ticket-Texten identifiziert und (2) für die Top-10-Fragen markenkonforme Antworten im FAQ-Format generiert — bereit für CMS-Import.
 **Hands-on Ergebnis:** Ein `faq-[produktname]-v[X].md` mit 10 Frage-Antwort-Paaren, kategorisiert nach Thema (Onboarding, Preise, Integrationen, Sicherheit), mit Quellenhinweis auf Ticket-Cluster.
 **Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Chat / Canvas / Library Folder (Brand Voice)
@@ -1013,7 +1013,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 
 ### S-PS-051 Gehalts-Benchmark-Recherche für Marketing-Stellenausschreibungen
 
-**Wann nutzen (Trigger):** Die Marketing-Direktorin muss eine neue Stelle (z.B. Senior Content Manager, Performance Marketing Lead) ausschreiben und benötigt aktuelle DACH-Gehaltskorridore für eine wettbewerbsfähige Positionierung — ohne HR-Budget für teure Vergütungsberichte. (Quelle: A-02 + sources/12 FAQ-Abschnitt)
+**Wann nutzen (Trigger):** Die Marketing-Direktorin muss eine neue Stelle (z.B. Senior Content Manager, Performance Marketing Lead) ausschreiben und benötigt aktuelle DACH-Gehaltskorridore für eine wettbewerbsfähige Positionierung — ohne HR-Budget für teure Vergütungsberichte. (Quelle: A-02 + sources/12 Q18 – Web-Recherche für komplexe Markt-/Wettbewerbsanalysen)
 **Strategisches Ziel:** Einen Recherche-Prompt mit Web Search entwickeln, der öffentlich verfügbare Gehaltsdaten (Glassdoor, Kununu, StepStone, LinkedIn Salary Insights) für eine spezifische Marketing-Rolle im DACH-Raum aggregiert und einen vertretbaren Gehalts-Korridor mit Quartil-Angaben generiert.
 **Hands-on Ergebnis:** Eine Gehalts-Benchmark-Tabelle (Rolle × Erfahrungsniveau × Region: D / AT / CH) mit Median, P25 und P75 sowie Datenquellen-Angaben — als Grundlage für die HR-Abstimmung.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent (Web Search aktiviert) / Canvas / Chat
@@ -1031,7 +1031,7 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 
 ### S-PS-052 Award-Bewerbung für Marketing-Kampagnen verfassen
 
-**Wann nutzen (Trigger):** Eine erfolgreiche Kampagne soll für einen Branchenpreis (z.B. German Brand Award, Effie DACH, Digital Communication Award) eingereicht werden — das Team hat die Daten, aber kein strukturiertes Format für die Award-Einreichung. (Quelle: A-07 + sources/10 S-044)
+**Wann nutzen (Trigger):** Eine erfolgreiche Kampagne soll für einen Branchenpreis (z.B. German Brand Award, Effie DACH, Digital Communication Award) eingereicht werden — das Team hat die Daten, aber kein strukturiertes Format für die Award-Einreichung. (Quelle: sources/10 S-082 Award Submission Writing + A-07)
 **Strategisches Ziel:** Einen Prompt entwickeln, der aus Kampagnen-KPIs, Kreativ-Briefing und Ergebnisberichten eine award-konforme Einreichung generiert, die die typischen Bewertungsdimensionen (Strategie, Kreativität, Messbarkeit, Impact) überzeugend abdeckt.
 **Hands-on Ergebnis:** Ein strukturiertes Award-Einreichungsdokument (max. 1 500 Wörter) mit den Pflicht-Sektionen: Executive Summary, Herausforderung, Strategie, Kreative Idee, Ergebnisse (mit Zahlen), Relevanz für die Jury.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Dateianlage) / Canvas / Library Folder
@@ -1196,4 +1196,4 @@ Dieser Abschnitt enthält eine umfassende Sammlung an konkreten, sofort anwendba
 **Fallstricke (≥2 spezifisch):**
 - Bei mehr als 5 angehängten PDFs kann das Kontextfenster des Modells erschöpft werden und frühe Dokumente "vergessen" werden; Dokumente auf die 4 relevantesten beschränken und weniger relevante erst in einem zweiten Pass einbeziehen.
 - Wettbewerber-Whitepapers sind Marketingmaterialien — sie beschreiben Stärken, nicht Schwächen; den Agenten explizit anweisen: "Interpretiere Wettbewerber-Materialien kritisch — was verschweigen sie? Welche Lücken zwischen Claim und Evidenz sind sichtbar?"
-**Anschluss-Szenario:** S-PS-001
+**Anschluss-Szenario:** S-PS-061
