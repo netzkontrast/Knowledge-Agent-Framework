@@ -1,21 +1,35 @@
-MIT License
+Knowledge Agent Framework
+Proprietary License
 
-Copyright (c) 2026 Aaron Mars
+Copyright (c) 2026 Michael Schimmer / Netzkontrast. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and its associated documentation, templates, tooling, and
+methodology (the "Framework") are the proprietary work of Michael Schimmer /
+Netzkontrast.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. OWNERSHIP
+   The Framework, including all knowledge-authoring methodology, schema
+   definitions, validators, templates, and documentation, is owned by the
+   copyright holder. All rights not expressly granted are reserved.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. PERMITTED USE
+   No license to use, copy, modify, distribute, sublicense, or sell the
+   Framework is granted by default. Use of the Framework requires a separate
+   written agreement with the copyright holder.
+
+3. EXAMPLES AND DELIVERABLES
+   Client deliverables built with the Framework (for instance the contents of
+   examples/iw-little-data/) are licensed separately and carry their own
+   LICENSE file inside their folder. The terms of this Framework license do
+   not grant any rights to those deliverables, and vice versa.
+
+4. NO WARRANTY
+   THE FRAMEWORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+5. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+   OTHER LIABILITY ARISING FROM OR IN CONNECTION WITH THE FRAMEWORK OR ITS USE.
+
+For licensing inquiries, contact the copyright holder.

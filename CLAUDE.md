@@ -56,7 +56,7 @@ de-duplicated inputs to authoring.
 
 ## Step 4 — Knowledge files (`langdock-deploy/knowledge/`)
 
-Author the knowledge base under the **strict schema** (`docs/framework/knowledge-schema.md`).
+Author the knowledge base under the **strict schema** (`docs/knowledge-file-authoring-spec.md`).
 Four file kinds, detected by filename, each validated differently:
 
 | Kind | Files | Unit |
@@ -101,7 +101,7 @@ strict. Always re-validate after.
 - `AGENT_PROMPT.md` — the system prompt: init protocol (forced first search loads the persona
   anchor), modes, exact refusal strings, gestaffeltes Antwortformat, calibration examples.
   Keep it **≤15 000 chars** (`tools/check_prompt_size.sh`); inline only the durable personality.
-See `docs/framework/persona-module.md` for the bootstrap pattern; skeleton in
+See the persona architecture in `docs/examples/iw-little-data-agent-design.md`; skeleton in
 `templates/AGENT_PROMPT.md`.
 
 ## Step 6 — Validate (gates)
@@ -139,9 +139,6 @@ names 90 d, platform limits 180 d). Re-run the gates each review.
 
 - `templates/` — blanks to start a new agent (knowledge-file, AGENT_PROMPT, research-prompt).
 - `tools/` — the validators (canonical copies).
-- `docs/framework/` — `methodology.md`, `knowledge-schema.md`, `persona-module.md`.
-- `docs/` — reframed specs/plans (framework reference).
+- `docs/` — framework methodology: `knowledge-file-authoring-spec.md`, `knowledge-build-plan-design.md`, `knowledge-build-plan.md`, and the restructure record.
+- `docs/examples/` — the IW reference example's design + critique.
 - `examples/iw-little-data/` — the full reference build (Institut der deutschen Wirtschaft).
-
-> The reference example currently lives at `little-data/` and is being relocated to
-> `examples/iw-little-data/` as part of the framework restructure.
