@@ -1206,6 +1206,428 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 **Fallstricke (≥2 spezifisch):**
 - Zitate ohne Namens- oder Unternehmensangabe wirken unglaubwürdig — KI immer anweisen, fehlende Attributionen als „[Quelle fehlt]" zu markieren.
 - KI kürzt manchmal den aussagekräftigsten Teil eines Zitats heraus — Rohdaten immer mitliefern und gekürztes Zitat gegen Original gegenchecken.
+**Anschluss-Szenario:** S-CP-061
+
+---
+
+### S-CP-061 Few-Shot-Prompt mit drei Mustern für konsistente LinkedIn-Posts
+
+**Wann nutzen (Trigger):** Das Team will, dass alle Social-Posts denselben Aufbau (Hook, Story, CTA) und Ton treffen, aber Zero-Shot-Prompts liefern jedes Mal eine andere Struktur. (Quelle: 12 Q72 Platzhalter-Vorlagen, sources/10 S-014 Social Teaser)
+**Strategisches Ziel:** Format und Tonalität über drei eingebettete Beispiele so fixieren, dass die KI das Muster zuverlässig repliziert statt frei zu interpretieren.
+**Hands-on Ergebnis:** Ein Few-Shot-Prompt mit drei vollständigen Vorher-Beispielen, der pro Aufruf einen markenkonformen LinkedIn-Post im exakt gleichen Schema erzeugt.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Prompt-Bibliothek (Speichern als Vorlage), Memory (Brand Voice)
+**Vorgehen (4 Schritte):**
+1. Drei bestehende, gut performende Posts als Beispiele auswählen, die das gewünschte Schema sauber zeigen.
+2. Jedes Beispiel mit identischer Struktur (Eingabe-Thema → fertiger Post) in den Prompt einbetten.
+3. Neue Aufgabe als vierten Block anhängen, nur mit dem Thema, und die KI den Post nach Muster vervollständigen lassen.
+4. Output gegen die drei Muster prüfen; bei Abweichung ein viertes Beispiel ergänzen, das den Fehler korrigiert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Social-Media-Texterin für ein B2B-SaaS [Persona]. Hier drei Beispiele unseres Post-Schemas (Hook, 3-Satz-Story, CTA mit Frage) [Context: 3 vollständige Vorher-Beispiele eingefügt]. Schreibe nach exakt diesem Schema einen neuen Post zum Thema 'Onboarding-Zeit halbiert' [Task]. Format: Hook (max. 12 Wörter), Story (3 Sätze), CTA als offene Frage [Format]."
+**Erwartetes Artefakt:** Wiederverwendbarer Few-Shot-Prompt in der Prompt-Bibliothek, der pro Aufruf einen schema-treuen Post liefert.
+**Fallstricke (≥2 spezifisch):**
+- Widersprüchliche Beispiele (unterschiedliche Tonlage) verwirren die KI — alle drei Muster müssen denselben Stil zeigen, sonst mischt das Modell.
+- Zu viele Beispiele blähen den Prompt auf und erhöhen Latenz und Tokenkosten — drei reichen meist; mehr nur bei nachweisbar besserem Treffer.
+**Anschluss-Szenario:** S-CP-062
+
+---
+
+### S-CP-062 Chain-of-Thought für eine fundierte Kanal-Budget-Empfehlung
+
+**Wann nutzen (Trigger):** Die Direktorin braucht eine begründete Empfehlung, wie das Q3-Budget auf Kanäle verteilt wird, und will den Denkweg nachvollziehen statt nur ein Endergebnis. (Quelle: A-26 BYOK-Daumenregel, 12 Q18 Reasoning-Modell)
+**Strategisches Ziel:** Das Modell zu schrittweisem, explizitem Schlussfolgern zwingen, damit Annahmen sichtbar und prüfbar werden, bevor die Empfehlung steht.
+**Hands-on Ergebnis:** Eine Budget-Empfehlung mit nachvollziehbarer Argumentationskette: Datenlage, Zwischenschritte, Trade-offs, dann Entscheidung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Reasoning-Modell mit Thinking), Dateianlage (Performance-CSV), Modellwahl (Reasoning statt Auto)
+**Vorgehen (4 Schritte):**
+1. Reasoning-fähiges Modell wählen und die Vorjahres-Performance-Daten anhängen.
+2. KI anweisen, zuerst die Daten zu interpretieren, dann Annahmen zu listen, dann Optionen zu vergleichen — Schritt für Schritt.
+3. Erst nach der Kette die finale Allokation als Tabelle ausgeben lassen.
+4. Die Annahmen-Liste manuell gegenprüfen; bei falscher Prämisse gezielt nachfassen statt den ganzen Prompt zu wiederholen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Performance-Marketing-Analystin [Persona]. Analysiere die angehängte Kanal-Performance-CSV des Vorjahres [Context]. Denke in dieser Reihenfolge laut: 1) Was sagen die Daten zu CAC je Kanal? 2) Welche Annahmen triffst du für Q3? 3) Welche Trade-offs hat eine Umschichtung? Erst danach gib eine Budget-Allokation [Task]. Format: nummerierte Denkschritte, dann Tabelle Kanal/Budget/Begründung [Format]."
+**Erwartetes Artefakt:** Budget-Empfehlung mit dokumentierter Argumentationskette als Entscheidungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Bei Auto-Mode wählt das System evtl. ein schnelles Modell ohne echte Reasoning-Tiefe — Reasoning-Modell explizit setzen.
+- Die KI kann eine plausibel klingende, aber falsche Zwischenannahme treffen, die das Ergebnis kippt — jede Annahme einzeln verifizieren, nicht nur das Endergebnis.
+**Anschluss-Szenario:** S-CP-063
+
+---
+
+### S-CP-063 Geteilte Prompt-Template-Bibliothek für das Content-Team kuratieren
+
+**Wann nutzen (Trigger):** Jeder im Team prompet anders, die Outputs schwanken in Qualität, und neue Kolleginnen fangen jedes Mal bei Null an. (Quelle: 12 Q74 Vorlagengruppe für B2B-Team, 12 Q81 Filtern nach Kategorie)
+**Strategisches Ziel:** Bewährte Prompts als versionierte, kategorisierte Vorlagen mit Variablen bereitstellen, sodass das ganze Team konsistente Ergebnisse erzielt.
+**Hands-on Ergebnis:** Eine nach Funktion (SEO, PR, Ad-Copy, Social) gegliederte Prompt-Bibliothek mit Pflicht-Variablen und Kurzbeschreibung je Vorlage.
+**Eingesetzte Langdock-Fähigkeit(en):** Prompt-Bibliothek, Variablen ({{zielgruppe}}), Gruppenfreigabe (B2B-Content-Team)
+**Vorgehen (5 Schritte):**
+1. Die fünf häufigsten Routine-Aufgaben des Teams sammeln.
+2. Je Aufgabe den besten existierenden Prompt aus dem Chatverlauf in die Bibliothek speichern.
+3. Variable Stellen durch {{platzhalter}} ersetzen und für jeden Platzhalter einen erklärenden Beispieltext setzen.
+4. Vorlagen nach Kategorie taggen und gezielt für die Team-Gruppe freigeben.
+5. Quartalsweisen Review-Termin setzen, um veraltete Vorlagen zu entfernen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Bibliothekarin [Persona]. Überführe meinen folgenden Chat-Prompt in eine wiederverwendbare Vorlage [Context: Prompt eingefügt]. Identifiziere alle situationsabhängigen Stellen und ersetze sie durch sprechende Variablen im Format {{name}} [Task]. Format: fertige Vorlage plus Tabelle aller Variablen mit erklärendem Platzhaltertext [Format]."
+**Erwartetes Artefakt:** Kategorisierte, freigegebene Prompt-Bibliothek mit variablenbasierten Vorlagen.
+**Fallstricke (≥2 spezifisch):**
+- Vorlagen verhalten sich beim Wechsel von GPT auf Claude unterschiedlich — pro Vorlage notieren, für welche Modellfamilie sie kalibriert ist.
+- Ohne erklärende Platzhaltertexte füllen unerfahrene Kolleginnen Variablen falsch aus — jeder Variable einen Beispielwert beigeben.
+**Anschluss-Szenario:** S-CP-064
+
+---
+
+### S-CP-064 Role-Prompting zur gezielten Tonalitäts-Steuerung
+
+**Wann nutzen (Trigger):** Derselbe Inhalt soll mal nüchtern-fachlich für ein Fachpublikum, mal nahbar für KMU klingen, aber generische Prompts treffen den Ton nicht. (Quelle: 12 Q26 Anthropic für Brand-Ton, sources/10 S-053 Thought-Leadership-Ton)
+**Strategisches Ziel:** Über eine präzise Rollen- und Publikumsdefinition die Tonalität steuern, ohne den Inhalt jedes Mal neu zu schreiben.
+**Hands-on Ergebnis:** Zwei Tonvarianten desselben Kerntexts, erzeugt durch unterschiedliche Rollen-Prompts.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Memory (Brand Voice), Chat-Branching (Variantenvergleich)
+**Vorgehen (4 Schritte):**
+1. Kerntext und Zielpublikum je Variante festlegen.
+2. Für Variante A eine fachliche Rolle plus Fachpublikum definieren, für Variante B eine nahbare Rolle plus KMU-Publikum.
+3. Beide Varianten in separaten Branches erzeugen, um sie direkt zu vergleichen.
+4. Tontreffer prüfen und die bessere Rolle als Memory-Eintrag oder Vorlage sichern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist eine erfahrene Fachjournalistin für IT-Sicherheit, die für CISOs schreibt [Persona]. Formuliere den folgenden Kerntext für dieses Publikum um: nüchtern, faktendicht, ohne Werbefloskeln [Context: Kerntext eingefügt] [Task]. Format: ein Absatz, max. 120 Wörter, keine Ausrufezeichen [Format]."
+**Erwartetes Artefakt:** Zwei tonal unterschiedliche Fassungen desselben Inhalts, vergleichbar nebeneinander.
+**Fallstricke (≥2 spezifisch):**
+- Eine zu vage Rolle ('Marketing-Experte') ändert den Ton kaum — Rolle plus konkretes Publikum nennen, sonst bleibt der Output generisch.
+- Die KI übertreibt eine 'nahbare' Rolle leicht ins Anbiedernde — explizit verbieten, sich anzubiedern oder Buzzwords zu stapeln.
+**Anschluss-Szenario:** S-CP-065
+
+---
+
+### S-CP-065 Strukturierten Output als saubere Tabelle erzwingen
+
+**Wann nutzen (Trigger):** Eine Kampagnen-Übersicht soll direkt in ein Sheet, aber die KI liefert Fließtext, den jemand manuell in Spalten zerlegen muss. (Quelle: sources/10 S-001 Kalender-Tabelle, 12 Q88 Tabellen im Editor)
+**Strategisches Ziel:** Den Output über eine exakte Spaltenvorgabe so strukturieren, dass er ohne Nacharbeit weiterverarbeitet werden kann.
+**Hands-on Ergebnis:** Eine sauber definierte Markdown-Tabelle mit festgelegten Spalten, direkt kopierbar ins Sheet.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dokument-Editor (Canvas), Format-Skill (Inline-Konversion)
+**Vorgehen (4 Schritte):**
+1. Die Zielspalten und ihre Reihenfolge vorab exakt benennen.
+2. KI anweisen, ausschließlich die Tabelle auszugeben, ohne Vor- oder Nachtext.
+3. Bei leeren Feldern eine feste Markierung ('[fehlt]') vorgeben statt Erfindungen zuzulassen.
+4. Ergebnis in den Editor übernehmen und Spaltenkonsistenz prüfen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Kampagnen-Koordinatorin [Persona]. Strukturiere die folgenden Kampagnen-Notizen [Context: Notizen eingefügt] in eine Tabelle [Task]. Spalten in exakt dieser Reihenfolge: Kampagne, Kanal, Startdatum, Verantwortlich, Status. Gib NUR die Tabelle aus, ohne Einleitung. Fehlende Werte als '[fehlt]' markieren [Format]."
+**Erwartetes Artefakt:** Weiterverarbeitbare Markdown-Tabelle mit fixen Spalten.
+**Fallstricke (≥2 spezifisch):**
+- Die KI ergänzt oft einen erklärenden Satz vor der Tabelle, der den Sheet-Import stört — 'NUR die Tabelle' explizit fordern.
+- Fehlende Daten werden gern frei erfunden, um Spalten zu füllen — Leerwert-Markierung verbindlich vorschreiben.
+**Anschluss-Szenario:** S-CP-066
+
+---
+
+### S-CP-066 Strukturierten JSON-Output für eine Workflow-Übergabe anfordern
+
+**Wann nutzen (Trigger):** Ein nachgelagerter Workflow erwartet sauberes JSON, aber die KI liefert Prosa mit eingestreuten Code-Schnipseln, an der die Automatisierung scheitert. (Quelle: 12 Q25 stabile JSON-Ausgaben, sources/10 S-061 JSON-Payload)
+**Strategisches Ziel:** Einen maschinenlesbaren, schema-treuen JSON-Output erzeugen, der ohne Bereinigung in einen Workflow fließt.
+**Hands-on Ergebnis:** Validierbares JSON-Objekt mit fest definierten Feldern, bereit für die Übergabe an einen Workflow-Node.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (JSON-stabiles Modell), Modellwahl, Workflow (nachgelagerter Node)
+**Vorgehen (4 Schritte):**
+1. Das gewünschte JSON-Schema mit allen Feldnamen und Datentypen vorgeben.
+2. Modell wählen, das für strukturierte Ausgaben bekannt stabil ist.
+3. KI anweisen, ausschließlich gültiges JSON ohne umgebenden Text auszugeben.
+4. Output gegen das Schema validieren, bevor er in den Workflow geht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Daten-Strukturiererin [Persona]. Extrahiere aus dem folgenden Lead-Text die Felder [Context: Text eingefügt] [Task]. Gib AUSSCHLIESSLICH gültiges JSON nach diesem Schema aus: {\"name\": string, \"firma\": string, \"interesse\": string, \"prioritaet\": \"hoch|mittel|niedrig\"}. Kein Text vor oder nach dem JSON [Format]."
+**Erwartetes Artefakt:** Schema-konformes JSON-Objekt für die Workflow-Übergabe.
+**Fallstricke (≥2 spezifisch):**
+- Modelle hängen gern Markdown-Code-Fences oder Erklärtext an, die JSON-Parser brechen — 'ausschließlich gültiges JSON' fordern und vor Übergabe validieren.
+- Nicht enthaltene Werte werden halluziniert statt als null gesetzt — im Schema vorgeben, dass fehlende Felder null sein müssen.
+**Anschluss-Szenario:** S-CP-067
+
+---
+
+### S-CP-067 Iterative Verfeinerung einer Anzeigen-Headline in Runden
+
+**Wann nutzen (Trigger):** Die erste Headline-Generierung trifft fast, aber nicht ganz; statt komplett neu zu prompten soll gezielt nachgeschärft werden. (Quelle: sources/10 S-026 RSA-Headlines, 12 Q76 Prompt nachträglich korrigieren)
+**Strategisches Ziel:** Output über kurze, präzise Korrekturschleifen verbessern, statt jeden Versuch von Grund auf neu zu starten.
+**Hands-on Ergebnis:** Eine finale Headline, entstanden aus drei dokumentierten Verfeinerungsrunden mit jeweils einer gezielten Änderung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (mehrstufig), Antwort-Regenerierung, Memory (laufender Kontext)
+**Vorgehen (4 Schritte):**
+1. Ersten Satz Varianten generieren und die nächstbeste auswählen.
+2. Genau eine Dimension pro Runde ändern lassen (Länge, Nutzenversprechen, Tonfall).
+3. Nach jeder Runde bewerten, ob die Änderung das Ziel näher bringt.
+4. Beste Fassung sichern und den Verfeinerungspfad als Notiz festhalten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Conversion-Texterin [Persona]. Hier die aktuelle Headline-Variante: 'Software, die Zeit spart' [Context]. Behalte das Nutzenversprechen, mache sie aber konkreter und unter 30 Zeichen [Task]. Format: 3 überarbeitete Varianten mit Zeichenzahl [Format]."
+**Erwartetes Artefakt:** Finale Headline plus dokumentierter Verfeinerungspfad.
+**Fallstricke (≥2 spezifisch):**
+- Mehrere Änderungen pro Runde machen unklar, welche Anpassung gewirkt hat — pro Schleife genau eine Dimension verändern.
+- Endloses Iterieren ohne Abbruchkriterium kostet Zeit — vorab definieren, wann 'gut genug' erreicht ist (z. B. Zeichenlimit plus klares Nutzenversprechen).
+**Anschluss-Szenario:** S-CP-068
+
+---
+
+### S-CP-068 Negative Prompting gegen typische KI-Floskeln
+
+**Wann nutzen (Trigger):** KI-Texte klingen generisch ('In der heutigen schnelllebigen Welt …', 'nahtlos', 'revolutionär') und verwässern die Markenstimme. (Quelle: sources/10 S-044 Klischees verbieten, 12 Q149 generischer Klang)
+**Strategisches Ziel:** Über explizite Verbotslisten die wiederkehrenden Sprach-Muster unterdrücken, die KI-Output verraten und die Marke schwächen.
+**Hands-on Ergebnis:** Ein Prompt-Baustein mit Negativliste, der die häufigsten Floskeln und Konstruktionen unterbindet.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Prompt-Bibliothek (Baustein), Memory (Brand-Don'ts)
+**Vorgehen (4 Schritte):**
+1. Aus bestehenden KI-Texten die zehn häufigsten Floskeln sammeln.
+2. Diese als explizite Verbotsliste in einen wiederverwendbaren Prompt-Baustein gießen.
+3. Baustein an Schreibaufgaben anhängen und Output gegen die Liste prüfen.
+4. Liste laufend erweitern, wenn neue Muster auffallen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Markentexterin mit Hang zu klarer Sprache [Persona]. Schreibe eine Produkt-Einleitung für unser Analytics-Tool [Context] [Task]. Verboten: 'in der heutigen Welt', 'nahtlos', 'revolutionär', 'Game-Changer', Dreierfiguren wie 'schneller, smarter, besser', leere Superlative. Format: 3 Sätze, konkret, mit einer überprüfbaren Aussage [Format]."
+**Erwartetes Artefakt:** Floskelfreier Text plus wiederverwendbarer Negativlisten-Baustein.
+**Fallstricke (≥2 spezifisch):**
+- Eine zu lange Verbotsliste lähmt die KI, sodass der Text stockt — auf die wirksamsten zehn Muster begrenzen.
+- Verbotene Wörter tauchen trotzdem in Synonymen wieder auf ('bahnbrechend' statt 'revolutionär') — Output gegenlesen, Liste um Synonyme ergänzen.
+**Anschluss-Szenario:** S-CP-069
+
+---
+
+### S-CP-069 Vergleichsmatrix-Prompt für eine Tool-Entscheidung
+
+**Wann nutzen (Trigger):** Drei Optionen (z. B. Marketing-Automation-Tools) stehen zur Wahl, und das Team braucht eine strukturierte Gegenüberstellung statt drei Fließtext-Beschreibungen. (Quelle: A-08 Tool-Stack-Konsolidierung, sources/10 S-021 SERP-Vergleich)
+**Strategisches Ziel:** Optionen anhand fixer Kriterien in einer Matrix vergleichbar machen, damit die Entscheidung auf gleichen Achsen beruht.
+**Hands-on Ergebnis:** Eine Vergleichsmatrix mit Optionen als Zeilen und festen Bewertungskriterien als Spalten, inklusive kurzer Begründung je Zelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Web-Suche (öffentliche Fakten), Dokument-Editor (Canvas)
+**Vorgehen (4 Schritte):**
+1. Die zu vergleichenden Optionen und die Entscheidungskriterien vorab festlegen.
+2. KI anweisen, je Zelle eine kurze Begründung statt nur 'ja/nein' zu liefern.
+3. Bei faktischen Angaben (Preis, Integrationen) auf Web-Suche bestehen und Quelle nennen.
+4. Matrix im Editor finalisieren und unsichere Felder markieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist MarTech-Analystin [Persona]. Vergleiche die drei genannten Marketing-Automation-Tools [Context: Namen eingefügt] [Task]. Kriterien als Spalten: DSGVO-Hosting, CRM-Integrationen, Preis pro Sitz, Lernkurve. Je Zelle ein kurzer Begründungssatz; bei Fakten Quelle via Web-Suche nennen. Format: Markdown-Matrix [Format]."
+**Erwartetes Artefakt:** Begründete Vergleichsmatrix als Entscheidungsgrundlage.
+**Fallstricke (≥2 spezifisch):**
+- Ohne Web-Suche nennt die KI veraltete oder erfundene Preise — faktische Spalten zwingend mit Quelle belegen.
+- Die KI bevorzugt subtil das erstgenannte Tool — Kriterien neutral formulieren und Begründungen quervergleichen.
+**Anschluss-Szenario:** S-CP-070
+
+---
+
+### S-CP-070 Summarization-Ladder: vom Detail zur Ein-Satz-Kernaussage
+
+**Wann nutzen (Trigger):** Ein langer Report muss in mehreren Längen vorliegen — eine Seite fürs Team, ein Absatz fürs Management, ein Satz für den Newsletter-Teaser. (Quelle: sources/10 S-031 Executive Summary, 12 Q20 langes Transkript)
+**Strategisches Ziel:** Denselben Inhalt in einer abgestuften Leiter aus drei Verdichtungsstufen erzeugen, ohne dass die Kernaussage zwischen den Stufen driftet.
+**Hands-on Ergebnis:** Drei konsistente Zusammenfassungen desselben Reports in absteigender Länge (eine Seite, ein Absatz, ein Satz).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Reasoning bei langem Kontext), Dateianlage (Report-PDF), Dokument-Editor
+**Vorgehen (4 Schritte):**
+1. Report anhängen und zuerst die Ein-Seiten-Fassung erzeugen.
+2. Aus dieser Fassung den Ein-Absatz ableiten lassen, damit die Kernaussage stabil bleibt.
+3. Aus dem Absatz den Ein-Satz-Teaser ableiten.
+4. Alle drei Stufen gegenlesen, ob die zentrale Botschaft durchgängig identisch ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Strategie-Redakteurin [Persona]. Hier unser Quartalsreport als Anhang [Context]. Erstelle eine Summarization-Ladder in drei Stufen, jede aus der vorigen abgeleitet [Task]: 1) eine Seite fürs Team, 2) ein Absatz fürs Management, 3) ein Satz als Newsletter-Teaser. Format: drei klar getrennte Blöcke mit Überschrift [Format]."
+**Erwartetes Artefakt:** Drei abgestufte, in der Kernaussage konsistente Zusammenfassungen.
+**Fallstricke (≥2 spezifisch):**
+- Werden die Stufen unabhängig erzeugt, driftet die Kernaussage zwischen ihnen — jede Stufe aus der vorigen ableiten lassen.
+- Bei sehr langen Reports kürzt die KI früh wichtige Zahlen weg — Schlüsselkennzahlen explizit als 'in allen Stufen erhalten' markieren.
+**Anschluss-Szenario:** S-CP-071
+
+---
+
+### S-CP-071 Prompt-Debugging: warum ein Output systematisch danebenliegt
+
+**Wann nutzen (Trigger):** Ein Prompt liefert wiederholt das Falsche (falscher Fokus, falsche Länge), aber unklar ist, welche Prompt-Komponente schuld ist. (Quelle: 12 Q75 Anweisungen und Daten trennen, A-38 Konfigurationsfehler)
+**Strategisches Ziel:** Den Fehler systematisch isolieren, indem Prompt-Bestandteile einzeln geprüft werden, statt wahllos umzuformulieren.
+**Hands-on Ergebnis:** Ein reparierter Prompt plus eine kurze Diagnose, welche Komponente den Fehler verursacht hat.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Prompt-Bibliothek (Versionsstände), Antwort-Regenerierung
+**Vorgehen (5 Schritte):**
+1. Den fehlerhaften Output und das eigentliche Ziel nebeneinanderlegen.
+2. Prompt in seine PTCF-Bestandteile zerlegen und prüfen, ob Persona, Aufgabe, Kontext und Format eindeutig sind.
+3. Eine Komponente isoliert ändern und Output erneut erzeugen.
+4. Wiederholen, bis der Output passt, und die wirksame Änderung notieren.
+5. Reparierten Prompt mit Versionsnotiz in die Bibliothek zurückspeichern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Engineering-Coach [Persona]. Hier mein Prompt und der danebenliegende Output [Context: beides eingefügt]. Diagnostiziere, welche der vier PTCF-Komponenten den Fehler verursacht, und schlage genau eine isolierte Korrektur vor [Task]. Format: 1) Diagnose, 2) korrigierte Komponente, 3) reparierter Gesamt-Prompt [Format]."
+**Erwartetes Artefakt:** Reparierter Prompt mit Fehlerdiagnose und Versionsnotiz.
+**Fallstricke (≥2 spezifisch):**
+- Werden mehrere Komponenten gleichzeitig geändert, bleibt die Ursache verborgen — strikt nur eine Variable pro Durchlauf anfassen.
+- Vermischen von Anweisung und Daten im selben Block lässt die KI Daten als Befehl lesen — klare Trennung mit Kontext-Markern setzen.
+**Anschluss-Szenario:** S-CP-072
+
+---
+
+### S-CP-072 Multi-Turn-Kontext über eine lange Strategie-Session managen
+
+**Wann nutzen (Trigger):** Eine ausgedehnte Chat-Session zur Kampagnenplanung verliert nach vielen Runden den roten Faden, und die KI widerspricht früheren Festlegungen. (Quelle: 12 Q85 Memory deaktivieren, A-29 Projekt-Gedächtnis)
+**Strategisches Ziel:** Den Kontext über viele Gesprächsrunden bewusst kuratieren, damit getroffene Entscheidungen stabil bleiben und nicht überschrieben werden.
+**Hands-on Ergebnis:** Eine fortlaufend gepflegte 'Stand'-Zusammenfassung im Chat, die nach jeder Phase die festen Entscheidungen festhält.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Memory bewusst gesteuert), Dokument-Editor (lebendes Briefing), Chat-Export
+**Vorgehen (4 Schritte):**
+1. Nach jeder Planungsphase die KI eine kompakte 'Bisher entschieden'-Liste erzeugen lassen.
+2. Diese Liste vor der nächsten Runde erneut als Kontext setzen, damit das Modell darauf aufbaut.
+3. Bei Widerspruch die KI explizit auf die festgehaltene Entscheidung verweisen.
+4. Am Ende die kumulierte Entscheidungs-Liste als Briefing exportieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Kampagnen-Strategin und führst Protokoll [Persona]. Fasse den bisherigen Stand unserer Session zusammen [Context: laufender Chat] [Task]: Liste nur die fest getroffenen Entscheidungen (Zielgruppe, Kanäle, Budget-Rahmen, Kernbotschaft). Format: nummerierte 'Bisher entschieden'-Liste, max. 8 Punkte [Format]."
+**Erwartetes Artefakt:** Lebendes Entscheidungs-Protokoll, das den Kontext über die Session stabil hält.
+**Fallstricke (≥2 spezifisch):**
+- Aktives Memory kann alte Kampagnen-Inhalte einschleppen und den neuen Kontext verfälschen — bei sauberem Start Memory gezielt deaktivieren.
+- Sehr lange Sessions sprengen das Kontextfenster, sodass frühe Festlegungen abfallen — regelmäßig verdichten statt den ganzen Verlauf mitzuschleppen.
+**Anschluss-Szenario:** S-CP-073
+
+---
+
+### S-CP-073 Daten-Extraktion aus unstrukturierten Notizen in Felder
+
+**Wann nutzen (Trigger):** Aus Freitext-Notizen (Messe-Gespräche, Call-Mitschriften) sollen strukturierte Lead-Datensätze entstehen, ohne dass jemand sie manuell abtippt. (Quelle: sources/10 S-068 Account-Dossier, 12 Q68 direkte Zitate erzwingen)
+**Strategisches Ziel:** Definierte Felder zuverlässig aus Fließtext extrahieren, ohne dass die KI fehlende Angaben erfindet.
+**Hands-on Ergebnis:** Eine strukturierte Tabelle, in der je Notiz die Zielfelder befüllt oder als fehlend markiert sind.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Notizen-Datei), Format-Skill (Tabelle)
+**Vorgehen (4 Schritte):**
+1. Die zu extrahierenden Felder exakt benennen.
+2. KI anweisen, ausschließlich im Text Belegtes zu übernehmen und Fehlendes zu markieren.
+3. Bei kritischen Feldern ein wörtliches Beleg-Zitat aus der Quelle mitliefern lassen.
+4. Stichprobe der Extraktion gegen die Originalnotizen prüfen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Daten-Extrahiererin [Persona]. Extrahiere aus den angehängten Messe-Notizen je Kontakt die Felder Name, Firma, Bedarf, nächster Schritt [Context] [Task]. Übernimm nur, was wörtlich belegt ist; Nicht-Genanntes als '[fehlt]'. Bei 'Bedarf' das Beleg-Zitat anfügen. Format: Tabelle mit Spalte 'Beleg' [Format]."
+**Erwartetes Artefakt:** Strukturierte Lead-Tabelle mit Beleg-Zitaten und markierten Lücken.
+**Fallstricke (≥2 spezifisch):**
+- Bei knappen Notizen füllt die KI Felder mit plausiblen Erfindungen — Beleg-Zitat-Pflicht macht Halluzinationen sofort sichtbar.
+- Mehrdeutige Notizen werden falsch zugeordnet (falsche Firma zu falschem Kontakt) — Stichprobe gegen Original verpflichtend.
+**Anschluss-Szenario:** S-CP-074
+
+---
+
+### S-CP-074 Tone-Shift-Rewriting: denselben Text in drei Registern
+
+**Wann nutzen (Trigger):** Ein Ankündigungstext liegt fertig vor, soll aber für drei Kanäle (förmliche Pressemitteilung, lockerer Instagram-Post, sachliche interne Notiz) im passenden Register vorliegen. (Quelle: sources/10 S-047 Plattform-Varianten, 12 Q77 kulturelle Nuancen)
+**Strategisches Ziel:** Den Informationsgehalt konstant halten und nur das sprachliche Register verschieben, statt drei separate Texte zu schreiben.
+**Hands-on Ergebnis:** Drei Fassungen desselben Inhalts in klar unterschiedlichen Tonregistern, inhaltlich deckungsgleich.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Memory (Brand Voice je Kanal), Chat-Branching
+**Vorgehen (4 Schritte):**
+1. Den Kerntext und die drei Zielregister definieren.
+2. KI anweisen, Fakten und Zahlen identisch zu halten und nur Ton und Satzbau anzupassen.
+3. Drei Fassungen erzeugen und gegen den Kerntext auf inhaltliche Treue prüfen.
+4. Je Kanal die passende Fassung freigeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Multi-Channel-Redakteurin [Persona]. Hier unser Ankündigungstext [Context: Text eingefügt] [Task]. Erzeuge drei Fassungen mit identischem Faktengehalt, nur das Register variiert: 1) förmliche Pressemitteilung (Sie), 2) lockerer Instagram-Post, 3) sachliche interne Notiz. Format: drei beschriftete Blöcke [Format]."
+**Erwartetes Artefakt:** Drei registerspezifische, inhaltlich identische Textfassungen.
+**Fallstricke (≥2 spezifisch):**
+- Beim Lockern verändert die KI gern auch Fakten oder Zahlen — explizit fordern, dass der Faktengehalt konstant bleibt, und gegenprüfen.
+- Der 'lockere' Ton kippt schnell ins Unprofessionelle — Markenrichtlinien als Memory beigeben und Grenze definieren.
+**Anschluss-Szenario:** S-CP-075
+
+---
+
+### S-CP-075 Brainstorming-Prompt mit erzwungener Kategorien-Vielfalt
+
+**Wann nutzen (Trigger):** Eine Ideen-Session liefert zwanzig Varianten derselben Idee statt echter Bandbreite. (Quelle: sources/10 S-040 kategorisierte Taglines, 12 Q34 kreatives Brainstorming)
+**Strategisches Ziel:** Echte Ideenvielfalt erzeugen, indem das Modell gezwungen wird, über klar getrennte Kategorien hinweg zu denken.
+**Hands-on Ergebnis:** Eine kategorisierte Ideenliste mit gleicher Anzahl Ideen pro bewusst unterschiedlicher Kategorie.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (höhere Kreativität), Dokument-Editor (Canvas), Prompt-Bibliothek
+**Vorgehen (4 Schritte):**
+1. Die Kategorie-Achsen vorgeben, die Vielfalt erzwingen (z. B. emotional / rational / provokant / nützlich).
+2. Je Kategorie eine feste Mindestanzahl Ideen verlangen.
+3. KI anweisen, Wiederholungen über Kategorien hinweg zu vermeiden.
+4. Beste Ideen je Kategorie markieren und für eine zweite Runde vertiefen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Kreativ-Direktorin im Ideen-Modus [Persona]. Wir brauchen Kampagnen-Aufhänger für unseren Datenschutz-USP [Context] [Task]. Liefere 16 Ideen, je 4 pro Kategorie: emotional, rational, provokant, alltagsnah. Keine Idee darf inhaltlich doppeln. Format: vier Blöcke mit Überschrift, je 4 Stichpunkte [Format]."
+**Erwartetes Artefakt:** Kategorisierte Ideenliste mit erzwungener Bandbreite.
+**Fallstricke (≥2 spezifisch):**
+- Ohne Kategorie-Zwang konvergiert die KI auf eine dominante Idee in Varianten — Kategorien und Mindestzahl je Kategorie verbindlich setzen.
+- 'Provokante' Ideen können markenschädlich werden — vor Nutzung gegen die Brand-Guidelines prüfen, nicht ungefiltert übernehmen.
+**Anschluss-Szenario:** S-CP-076
+
+---
+
+### S-CP-076 Critique-and-Improve: KI bewertet und überarbeitet den eigenen Entwurf
+
+**Wann nutzen (Trigger):** Ein erster Entwurf steht, aber das Team will vor der manuellen Überarbeitung eine strukturierte Schwachstellen-Analyse plus konkrete Verbesserung. (Quelle: sources/10 S-039 Brand-Guardian-Review, A-34 Quality-Drift)
+**Strategisches Ziel:** Output über einen expliziten Kritik-dann-Verbessern-Schritt heben, statt den Erstentwurf unkritisch zu übernehmen.
+**Hands-on Ergebnis:** Ein überarbeiteter Text plus eine kurze Mängelliste, die zeigt, was warum geändert wurde.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (zweistufig: Kritik, dann Revision), Memory (Qualitätskriterien)
+**Vorgehen (4 Schritte):**
+1. Entwurf einfügen und die KI zuerst nur kritisieren lassen — anhand fester Kriterien.
+2. Aus der Kritik konkrete Änderungen ableiten lassen.
+3. Überarbeitete Fassung erzeugen, die jede genannte Schwäche adressiert.
+4. Mängelliste gegen die finale Fassung prüfen, ob alle Punkte gelöst sind.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist strenge Lektorin [Persona]. Hier ein Blog-Entwurf [Context: Text eingefügt] [Task]. Schritt 1: Liste die drei größten Schwächen anhand Klarheit, Nutzenversprechen und Belegtheit. Schritt 2: Überarbeite den Text so, dass jede Schwäche behoben ist. Format: 'Mängel' (3 Punkte), dann 'Überarbeitete Fassung' [Format]."
+**Erwartetes Artefakt:** Überarbeiteter Text mit nachvollziehbarer Mängelliste.
+**Fallstricke (≥2 spezifisch):**
+- Die KI lobt den Entwurf oft unkritisch statt echte Schwächen zu nennen — feste Kriterien und eine Mindestzahl an Mängeln erzwingen.
+- In der Revision können neue Fehler entstehen, während alte verschwinden — finale Fassung gegen die Mängelliste abgleichen, nicht blind übernehmen.
+**Anschluss-Szenario:** S-CP-077
+
+---
+
+### S-CP-077 Übersetzungs-Prompt mit Glossar und Transkreation für Slogans
+
+**Wann nutzen (Trigger):** Marketing-Texte sollen ins Englische übersetzt werden, aber Slogans dürfen nicht wörtlich übertragen werden und Fachbegriffe müssen dem Firmen-Glossar folgen. (Quelle: 12 Q103 Übersetzung mit Glossar, sources/10 S-012 Transkreation)
+**Strategisches Ziel:** Eine glossartreue Übersetzung erzielen, bei der werbliche Kernaussagen transkreiert statt wörtlich übersetzt werden.
+**Hands-on Ergebnis:** Eine englische Fassung mit konsistenter Glossar-Terminologie und sinngemäß transkreierten Slogans.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (Glossar), Dateianlage (Quelltext)
+**Vorgehen (4 Schritte):**
+1. Glossar aus dem Wissensordner einbinden und Quelltext anhängen.
+2. KI anweisen, Fachbegriffe strikt nach Glossar zu übersetzen.
+3. Slogans und Headlines gesondert transkreieren lassen, mit kurzer Begründung der Wahl.
+4. Glossar-Treue und Slogan-Wirkung prüfen, kritische Stellen markieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lokalisierungs-Expertin [Persona]. Übersetze den angehängten Text ins Englische [Context: Text plus Glossar im Wissensordner] [Task]. Fachbegriffe strikt nach Glossar. Slogans NICHT wörtlich, sondern transkreiert mit gleicher Wirkung, je mit einem Satz Begründung. Format: zweispaltig DE/EN, Slogans separat markiert [Format]."
+**Erwartetes Artefakt:** Glossartreue Übersetzung mit transkreierten, begründeten Slogans.
+**Fallstricke (≥2 spezifisch):**
+- Ohne Glossar-Anbindung übersetzt die KI Fachbegriffe inkonsistent über den Text hinweg — Glossar verpflichtend einbinden und Treue prüfen.
+- Wörtlich übersetzte Slogans klingen oft hölzern — Transkreation explizit fordern, Ergebnis von Muttersprachlerin gegenlesen lassen.
+**Anschluss-Szenario:** S-CP-078
+
+---
+
+### S-CP-078 Fakten-Check eines Entwurfs gegen die Quelldatei
+
+**Wann nutzen (Trigger):** Ein KI-Entwurf enthält Zahlen und Behauptungen, die vor Veröffentlichung gegen die Originalquelle abgesichert werden müssen. (Quelle: sources/10 S-007 nur verifizierte Quellen, 12 Q147 Halluzinationsrisiko)
+**Strategisches Ziel:** Jede prüfbare Aussage des Entwurfs explizit gegen die angehängte Quelle abgleichen, statt dem Text blind zu vertrauen.
+**Hands-on Ergebnis:** Eine Prüfliste, die jede Behauptung als 'belegt', 'nicht belegt' oder 'widerspricht Quelle' klassifiziert.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Quelldokument), Dokument-Search (Zitat-Erzwingung)
+**Vorgehen (4 Schritte):**
+1. Entwurf und Quelldokument gemeinsam bereitstellen.
+2. KI anweisen, jede überprüfbare Aussage einzeln zu extrahieren.
+3. Je Aussage den Beleg-Status mit wörtlichem Quellen-Zitat oder dem Vermerk 'kein Beleg' liefern.
+4. Nicht belegte und widersprüchliche Aussagen manuell klären, bevor der Text freigeht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Fakten-Prüferin [Persona]. Hier ein Entwurf und das Quelldokument [Context: beides angehängt] [Task]. Extrahiere jede überprüfbare Aussage des Entwurfs und prüfe sie gegen die Quelle. Status je Aussage: belegt (mit Zitat), nicht belegt, widerspricht. Format: Tabelle Aussage / Status / Quellen-Zitat [Format]."
+**Erwartetes Artefakt:** Fakten-Prüfliste mit Beleg-Status und Quellen-Zitaten je Aussage.
+**Fallstricke (≥2 spezifisch):**
+- Die KI kann eine Aussage fälschlich als 'belegt' markieren und ein passendes Zitat halluzinieren — Zitate stichprobenartig im Quelldokument wiederfinden.
+- Aussagen ohne harte Zahl werden gern übersprungen — explizit auch qualitative Behauptungen einfordern, nicht nur Zahlen.
+**Anschluss-Szenario:** S-CP-079
+
+---
+
+### S-CP-079 Persona-Switch-Prompt: einen Text aus zwei Blickwinkeln bewerten
+
+**Wann nutzen (Trigger):** Vor Freigabe soll eine Landingpage geprüft werden, wie sie auf zwei gegensätzliche Zielpersonen wirkt (z. B. technischer Entscheider vs. budgetorientierter Einkauf). (Quelle: sources/10 S-028 Persona-Targeting, 12 Q149 Markenidentität)
+**Strategisches Ziel:** Denselben Text durch zwei klar definierte Persona-Brillen bewerten lassen, um blinde Flecken vor der Freigabe aufzudecken.
+**Hands-on Ergebnis:** Zwei Persona-Bewertungen desselben Textes mit je den überzeugendsten und schwächsten Stellen aus dieser Sicht.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Persona-Wechsel), Wissensordner (Persona-Profile), Chat-Branching
+**Vorgehen (4 Schritte):**
+1. Die zwei Personas und ihre Prioritäten aus dem Wissensordner definieren.
+2. Text aus Sicht von Persona A bewerten lassen (was überzeugt, was schreckt ab).
+3. Denselben Text aus Sicht von Persona B bewerten lassen.
+4. Beide Sichten gegenüberstellen und Konflikte als Überarbeitungspunkte ableiten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du schlüpfst in zwei Rollen nacheinander [Persona]. Bewerte die folgende Landingpage [Context: Text plus zwei Persona-Profile aus dem Wissensordner] [Task]. Rolle 1: technischer Entscheider. Rolle 2: budgetorientierter Einkauf. Je Rolle: zwei überzeugende und zwei abschreckende Stellen. Format: zwei beschriftete Blöcke, dann 'Konflikte' [Format]."
+**Erwartetes Artefakt:** Zwei-Personas-Bewertung mit abgeleiteten Überarbeitungspunkten.
+**Fallstricke (≥2 spezifisch):**
+- Ohne scharf getrennte Persona-Profile fallen beide Bewertungen fast gleich aus — konkrete, gegensätzliche Prioritäten je Persona vorgeben.
+- Die KI bewertet idealisiert statt aus echter Käufersicht — reale Einwände aus dem CRM oder Sales-Feedback als Kontext beigeben.
+**Anschluss-Szenario:** S-CP-080
+
+---
+
+### S-CP-080 Long-Document-Q&A mit Seiten- und Zitatnachweis
+
+**Wann nutzen (Trigger):** Ein langer Report oder Vertrag muss gezielt befragt werden ('Was steht zu Kündigungsfristen?'), und die Antwort muss zur exakten Fundstelle zurückführen. (Quelle: 12 Q52 Dateianlage statt RAG, 12 Q61 Page Viewer)
+**Strategisches Ziel:** Aus einem langen Dokument präzise Antworten ziehen, die jeweils mit Seitenangabe und wörtlichem Zitat belegt sind, statt einer vagen Paraphrase.
+**Hands-on Ergebnis:** Eine Q&A-Liste, in der jede Antwort an die Fundstelle (Seite plus Zitat) im Dokument rückgebunden ist.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Dateianlage (Volltext-Parsing für Tiefe), Dokument-Search (Page Viewer)
+**Vorgehen (4 Schritte):**
+1. Dokument als direkte Dateianlage einbinden (Volltext statt nur RAG-Chunks), wenn vollständige Tiefe nötig ist.
+2. Die konkreten Fragen klar formulieren.
+3. KI anweisen, je Antwort Seitenzahl und wörtliches Zitat anzugeben.
+4. Bei kritischen Punkten die zitierte Stelle über den Page Viewer visuell gegenprüfen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Dokumenten-Analystin [Persona]. Hier ein 40-seitiger Dienstleistungsvertrag als Anhang [Context]. Beantworte diese Fragen: 1) Welche Kündigungsfristen gelten? 2) Wer haftet bei Datenpannen? 3) Gibt es eine Preisanpassungsklausel? [Task]. Je Antwort: Aussage, Seitenzahl, wörtliches Zitat. Wenn nicht im Dokument: 'nicht geregelt'. Format: nummerierte Q&A [Format]."
+**Erwartetes Artefakt:** Q&A-Liste mit Seitenangaben und wörtlichen Zitaten je Antwort.
+**Fallstricke (≥2 spezifisch):**
+- Bei reiner RAG-Suche fehlen relevante Passagen, wenn die Frage über mehrere Abschnitte streut — für tiefe Vertragsanalyse direkte Dateianlage statt Wissensordner-Suche nutzen.
+- Seitenangaben können bei schlecht gescannten PDFs verrutschen — Zitat über den Page Viewer an der genannten Seite verifizieren.
 **Anschluss-Szenario:** S-CP-001
 
 ## Hinweise & Quellen-Konflikte
