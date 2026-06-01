@@ -1365,3 +1365,250 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 - Memory pauschal für alle Agenten aktivieren → Agenten vermischen Kontext aus unzusammenhängenden Sitzungen und produzieren irritierende Outputs; Memory ist die Ausnahme, nicht der Standard.
 - Memory bei Agenten mit personenbezogenen Daten aktivieren ohne Datenschutz-Prüfung → sitzungsübergreifend gespeicherte PII verletzt die Datenminimierung; Datenschutzbeauftragten vor Aktivierung einbeziehen.
 **Anschluss-Szenario:** S-AK-068
+
+### S-AK-068 Agent-Nutzungs-Quota-Konfiguration: Pro-Agent-Verbrauch deckeln gegen Budget-Spitzen
+
+**Wann nutzen (Trigger):** Ein viel genutzter Report-Agent auf einem teuren Modell treibt das Workspace-Budget am Monatsende über die Grenze, und die Administratorin will eine harte Verbrauchs-Obergrenze pro Agent setzen, bevor das Limit erneut gerissen wird. (Quelle: 12 Q122)
+**Strategisches Ziel:** Pro qualitätskritischem Agenten eine bewusste Nutzungs-Quota (Budget- und Modell-Deckel) konfigurieren, sodass ein einzelner Agent das Gesamtbudget nicht unbemerkt sprengt — abgegrenzt vom API-Backoff aus S-AK-065.
+**Hands-on Ergebnis:** Eine Quota-Konfigurations-Matrix (Markdown) mit Budget-Deckel und Modell-Beschränkung pro Agent plus eine 80-Prozent-Warnschwelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin (Kostenlimits) + Agent Builder (Modell-Beschränkung) + Wissensordner (Quota-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Exportiere den 30-Tage-Token-Verbrauch pro Agent aus dem Admin-Dashboard; identifiziere die teuersten 3 Agenten als Quota-Kandidaten.
+2. Setze pro Kandidat einen monatlichen Budget-Deckel im Admin-Bereich und beschränke teure Premium-Modelle (Opus) auf Agenten, die sie wirklich brauchen.
+3. Konfiguriere eine Warnschwelle bei 80 Prozent des Agent-Budgets, damit das Team vor dem harten Stopp reagieren kann.
+4. Teste den Deckel: simuliere einen Lastmonat und prüfe, ob die Warnung bei 80 Prozent auslöst und der Agent bei 100 Prozent stoppt statt das Gesamtbudget zu belasten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Budget-Governance-Berater [Persona]. Erstelle eine Nutzungs-Quota-Matrix für unsere 8 Marketing-Agenten [Task]. Kontext: Monats-Budget knapp, ein Report-Agent auf Opus treibt die Kosten, wir wollen Pro-Agent-Deckel und 80-Prozent-Warnungen [Context]. Format: Tabelle mit Agent, erlaubte Modelle, Monats-Budget, Warnschwelle, Hard-Stop [Format]."
+**Erwartetes Artefakt:** Eine Quota-Konfigurations-Matrix mit Budget-Deckel, Modell-Beschränkung und 80-Prozent-Warnschwelle pro Agent.
+**Fallstricke (≥2 spezifisch):**
+- Den Budget-Deckel ohne Warnschwelle setzen → der Agent stoppt mitten in einer Kampagnenwoche ohne Vorankündigung; die 80-Prozent-Warnung gibt dem Team Reaktionszeit statt eines harten Ausfalls.
+- Quota mit dem API-Rate-Limit aus S-AK-065 verwechseln → das Rate-Limit begrenzt Anfragen pro Minute, die Quota begrenzt das Monats-Budget; beide sind getrennte Stellschrauben und müssen separat konfiguriert werden.
+**Anschluss-Szenario:** S-AK-069
+
+### S-AK-069 Agent-Output-Schema erzwingen: Strukturierte JSON-Ausgaben für Downstream-Systeme
+
+**Wann nutzen (Trigger):** Ein Agent speist Kampagnen-Daten in ein nachgelagertes Reporting-Tool, aber die Ausgabe variiert mal als Fließtext, mal als Tabelle — das Downstream-System bricht ab, weil es ein stabiles JSON-Format erwartet. (Quelle: 12 Q25)
+**Strategisches Ziel:** Den Agenten so konfigurieren, dass er ausschließlich ein striktes, validierbares JSON-Schema ausgibt, sodass nachgelagerte Workflows und Integrationen die Daten zuverlässig weiterverarbeiten.
+**Hands-on Ergebnis:** Ein Agent mit erzwungener JSON-Schema-Instruktion im System-Prompt und ein Validierungs-Testprotokoll über 10 Durchläufe.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (System-Prompt) + Temperatur-Regler (niedrig) + Workflow (Downstream-Validierung)
+**Vorgehen (4 Schritte):**
+1. Definiere das exakte Zielschema mit Feldnamen und Datentypen (z.B. `{"kampagne": string, "kanal": string, "budget": number, "kpis": [string]}`); dokumentiere es im System-Prompt.
+2. Ergänze den System-Prompt um eine harte Format-Anweisung: "Gib ausschließlich valides JSON nach diesem Schema aus. Kein Fließtext, keine Erklärung, kein Markdown-Codeblock-Rahmen."
+3. Stelle den Creativity-Regler niedrig (0,0–0,2), damit die Struktur über Durchläufe stabil bleibt.
+4. Teste mit 10 verschiedenen Eingaben; validiere jede Ausgabe gegen das Schema (Pflichtfelder vorhanden, Datentypen korrekt); dokumentiere die Trefferquote.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Datenstruktur-Agent [Persona]. Extrahiere aus dem folgenden Kampagnen-Briefing die Kerndaten als JSON [Task]. Kontext: Das Ergebnis wird automatisiert in unser Reporting-Tool eingelesen und darf kein Fließtext sein [Context]. Format: Ausschließlich valides JSON nach dem Schema {kampagne, kanal, budget, kpis[]}, keine weiteren Zeichen [Format]."
+**Erwartetes Artefakt:** Ein Agent mit erzwungener JSON-Schema-Ausgabe und ein Validierungsprotokoll über 10 Durchläufe mit dokumentierter Trefferquote.
+**Fallstricke (≥2 spezifisch):**
+- Den Creativity-Regler hoch lassen → das Modell variiert Feldnamen oder fügt Erklärtext vor dem JSON ein, was den Parser im Downstream-System brechen lässt; niedrige Temperatur ist für Schema-Treue zwingend.
+- Kein Schema-Validierungs-Schritt im nachgelagerten Workflow → bei seltenen Format-Abweichungen läuft fehlerhaftes JSON unbemerkt durch; ein Validierungs-Node im Workflow muss ungültige Ausgaben abfangen.
+**Anschluss-Szenario:** S-AK-070
+
+### S-AK-070 Agent-Lokalisierungs-Konfiguration: Sprach- und Markt-Varianten sauber steuern
+
+**Wann nutzen (Trigger):** Ein Content-Agent soll Kampagnentexte für DE, AT und CH liefern, mischt aber Markt-Eigenheiten — österreichische Begriffe landen in deutschen Texten, und die Schweizer Variante nutzt fälschlich das ß. (Quelle: 12 Q77)
+**Strategisches Ziel:** Den Agenten so konfigurieren, dass Markt- und Sprachvarianten über einen Lokalisierungs-Parameter sauber getrennt werden und jede Variante die korrekten regionalen Konventionen einhält.
+**Hands-on Ergebnis:** Ein Agent mit Form-Input-Feld `{{markt}}` und einer pro-Markt-Konventions-Tabelle im Wissensordner plus ein 3-Markt-Testprotokoll.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Form-Input) + Wissensordner (Markt-Konventionen) + System-Prompt-Verzweigung
+**Vorgehen (4 Schritte):**
+1. Erstelle eine Markt-Konventions-Datei im Wissensordner: pro Markt (DE/AT/CH) die spezifischen Regeln (CH: kein ß, "Velo" statt "Fahrrad"; AT: "Jänner" statt "Januar").
+2. Füge dem Agenten ein Pflicht-Formularfeld `{{markt}}` als Dropdown (DE/AT/CH) hinzu, das vor jedem Lauf gewählt werden muss.
+3. Verzweige den System-Prompt: "Wende ausschließlich die Konventionen für den gewählten Markt {{markt}} aus der Markt-Konventions-Datei an; vermische keine Markt-Eigenheiten."
+4. Teste mit demselben Ausgangstext für alle drei Märkte; prüfe, ob CH-Texte das ß vermeiden und AT-Texte regionale Begriffe korrekt setzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist DACH-Lokalisierungs-Agent [Persona]. Lokalisiere den folgenden Kampagnentext für den Markt {{markt}} [Task]. Kontext: Wende ausschließlich die Konventionen des gewählten Marktes aus der Markt-Konventions-Datei an; CH ohne ß, AT mit regionalem Vokabular [Context]. Format: Reiner lokalisierter Text, darunter eine Zeile mit den 3 wichtigsten angewandten Markt-Anpassungen [Format]."
+**Erwartetes Artefakt:** Ein Agent mit `{{markt}}`-Formularfeld, einer Markt-Konventions-Datei im Wissensordner und einem 3-Markt-Testprotokoll.
+**Fallstricke (≥2 spezifisch):**
+- Die Markt-Wahl nur im Freitext-Prompt erbitten statt als Pflichtfeld → Nutzerinnen vergessen die Markt-Angabe, und der Agent fällt auf eine Standard-Variante zurück; ein Dropdown-Pflichtfeld erzwingt die Wahl.
+- Schweizerdeutschen Dialekt erwarten statt CH-Hochdeutsch → Dialekt-Output ist unzuverlässig; der Agent soll CH-Hochdeutsch mit ss-Konvention liefern, echter Mundart-Text bleibt manuelle Arbeit.
+**Anschluss-Szenario:** S-AK-071
+
+### S-AK-071 Agent-Tool-Permission-Scoping: Fähigkeiten minimal und zweckgebunden vergeben
+
+**Wann nutzen (Trigger):** Ein News-Agent mit aktivierter Web Search wurde so konfiguriert, dass er auch Data Analyst und Image Gen besitzt — ein Audit zeigt, dass diese ungenutzten Fähigkeiten die Latenz erhöhen und ein unnötiges Angriffsfeld öffnen. (Quelle: 12 Q45)
+**Strategisches Ziel:** Für jeden Agenten ein Tool-Permission-Scoping nach dem Least-Privilege-Prinzip durchsetzen, sodass nur die für den Zweck zwingend nötigen Capabilities aktiviert sind.
+**Hands-on Ergebnis:** Eine Capability-Scoping-Matrix (Markdown) mit der zweckbegründeten Mindest-Fähigkeiten-Liste pro Agent plus eine Liste der zu deaktivierenden Überberechtigungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Capability-Einstellungen) + Wissensordner (Scoping-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Liste pro Agent die aktuell aktivierten Capabilities auf; markiere für jede, ob der Kern-Use-Case sie zwingend benötigt.
+2. Definiere das Mindest-Set: ein Brand-Guardian braucht nur Wissensordner-Suche, ein News-Agent nur Web Search; deaktiviere alles darüber hinaus.
+3. Dokumentiere pro Agent eine Begründung "Capability X aktiv, weil [Zweck]" — fehlt die Begründung, wird die Fähigkeit deaktiviert.
+4. Teste nach der Reduktion, ob der Agent seinen Kern-Use-Case weiter erfüllt, und miss die Latenz-Differenz vor/nach dem Scoping.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Least-Privilege-Berater für KI-Agenten [Persona]. Erstelle eine Capability-Scoping-Matrix für unsere 8 Marketing-Agenten [Task]. Kontext: Mehrere Agenten haben ungenutzte Fähigkeiten aktiv, was Latenz und Risiko erhöht; wir wollen das Mindest-Set pro Zweck [Context]. Format: Tabelle mit Agent, benötigte Capabilities, zu deaktivierende Capabilities, Begründung [Format]."
+**Erwartetes Artefakt:** Eine Capability-Scoping-Matrix mit zweckbegründetem Mindest-Set und einer Deaktivierungs-Liste pro Agent.
+**Fallstricke (≥2 spezifisch):**
+- Capabilities "für alle Fälle" aktiviert lassen → jede aktive Fähigkeit wird bei jeder Anfrage evaluiert, was Latenz und Fehl-Trigger erhöht; nicht-zweckgebundene Fähigkeiten gehören deaktiviert.
+- Scoping einmalig machen und nie nachprüfen → bei jeder Agent-Änderung können Capabilities versehentlich wieder aktiviert werden; das Scoping gehört in den monatlichen Spot-Check (S-AK-004).
+**Anschluss-Szenario:** S-AK-072
+
+### S-AK-072 Agent-Audit-Logging: Prompt-, Modell- und Nutzer-Spuren für den DSB bereitstellen
+
+**Wann nutzen (Trigger):** Der Datenschutzbeauftragte verlangt einen Nachweis, wer wann mit welchem Modell welche Marketing-Entscheidung über einen Agenten getroffen hat — bisher gibt es keine strukturierte, exportierbare Audit-Spur. (Quelle: julia-lens A-15)
+**Strategisches Ziel:** Ein Audit-Logging-Verfahren einrichten, das pro Agent-Aufruf Prompt, Modell, Nutzer und Zeitstempel erfasst und dem DSB als revisionssicherer Export bereitsteht.
+**Hands-on Ergebnis:** Ein Audit-Log-Export-Prozess (Markdown) mit den erfassten Feldern, dem Export-Pfad im Admin-Bereich und einer DSB-Übergabe-Checkliste.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin (Audit-Logs) + Usage-Export-API + Wissensordner (Audit-Prozess-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Prüfe im Admin-Bereich, welche Felder die Audit-Logs erfassen (Prompt, Modell, User, Timestamp) und über welchen Pfad sie exportierbar sind.
+2. Definiere einen monatlichen Export-Rhythmus; lege das Exportformat (CSV) und den Ablageort für die revisionssichere Aufbewahrung fest.
+3. Erstelle eine DSB-Übergabe-Checkliste: welche Felder der DSB einsehen darf, welche pseudonymisiert werden, und die rechtliche Grundlage der Aufbewahrung.
+4. Teste den Export: ziehe einen Monats-Auszug und prüfe, ob ein konkreter Agent-Aufruf vollständig zu Nutzer, Modell und Zeit nachvollziehbar ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Audit-Governance-Berater [Persona]. Erstelle einen Audit-Log-Export-Prozess für unsere Marketing-Agenten [Task]. Kontext: Der DSB will nachvollziehen, wer wann mit welchem Modell welche Entscheidung getroffen hat; EU-Hosting, DSGVO-konform [Context]. Format: Prozess-Dokument mit erfassten Feldern, Export-Pfad, Aufbewahrungsfrist und DSB-Übergabe-Checkliste, max. 5 Schritte [Format]."
+**Erwartetes Artefakt:** Ein Audit-Log-Export-Prozess mit Feldliste, Export-Pfad und einer DSB-Übergabe-Checkliste.
+**Fallstricke (≥2 spezifisch):**
+- Audit-Logs zur Leistungsüberwachung einzelner Mitarbeiter zweckentfremden → das verletzt die Mitbestimmung (BetrVG § 87) und das Datenminimierungs-Prinzip; Logs dienen der Nachvollziehbarkeit von Entscheidungen, nicht der Personenkontrolle.
+- Audit-Export erst im Prüfungsfall einrichten → ohne laufende, lückenlose Erfassung fehlt für vergangene Zeiträume die Spur; das Logging muss vor dem ersten produktiven Einsatz aktiv sein.
+**Anschluss-Szenario:** S-AK-073
+
+### S-AK-073 Agent-Versionierung und Rollback: System-Prompts wie Code verwalten
+
+**Wann nutzen (Trigger):** Ein System-Prompt-Update verschlechterte die Output-Qualität, aber niemand kann sagen, was genau geändert wurde oder wie der vorherige Stand aussah — es gibt keine Versionshistorie und keinen sauberen Rollback-Pfad. (Quelle: julia-lens A-49)
+**Strategisches Ziel:** Eine Versionierungs-Disziplin für Agent-System-Prompts etablieren, die jede Änderung als nachvollziehbare Version mit Diff und Rollback-Punkt dokumentiert.
+**Hands-on Ergebnis:** Ein versioniertes Prompt-Repository (Markdown im Wissensordner) pro Agent mit Versionsnummer, Änderungsgrund, Datum und einem definierten Rollback-Verfahren.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (Versions-Repository) + Agent-Duplikation (Snapshot) + Agent Builder (System-Prompt)
+**Vorgehen (4 Schritte):**
+1. Lege pro Agent eine Datei "Prompt-Versionen-[Agent].md" an; trage den aktuellen Prompt als "v1.0" mit Datum und Zweck ein.
+2. Definiere die Regel: jede Prompt-Änderung erzeugt eine neue Version (v1.1, v1.2) mit Änderungsgrund und einer kurzen Diff-Notiz, was sich geändert hat.
+3. Erstelle vor jeder produktiven Änderung einen Snapshot über die Agent-Duplikation (S-AK-010) als Rollback-Punkt; benenne ihn mit der Versionsnummer.
+4. Teste den Rollback: simuliere ein verschlechterndes Update und stelle die Vorversion aus dem Snapshot wieder her; miss die Zeit bis zur Wiederherstellung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Versionierungs-Berater für Prompts [Persona]. Erstelle ein Versionierungs-Schema für die System-Prompts unserer Marketing-Agenten [Task]. Kontext: Änderungen sind aktuell nicht nachvollziehbar, ein schlechtes Update kostete uns einen Tag; wir wollen Diffs und einen Rollback-Pfad [Context]. Format: Vorlage für eine Prompt-Versions-Datei mit Versionsnummer, Datum, Änderungsgrund, Diff-Notiz und Rollback-Anleitung [Format]."
+**Erwartetes Artefakt:** Ein versioniertes Prompt-Repository pro Agent mit Diff-Notizen und einem getesteten Rollback-Verfahren.
+**Fallstricke (≥2 spezifisch):**
+- Prompt-Änderungen direkt im Agenten überschreiben ohne Versions-Eintrag → der vorherige Stand ist unwiederbringlich verloren, ein Rollback unmöglich; jede Änderung braucht zuerst einen Snapshot.
+- Versionsnummern vergeben, aber den Änderungsgrund weglassen → spätere Reviews verstehen nicht, warum eine Änderung erfolgte; ohne Diff-Notiz ist die Versionierung nur ein Datums-Stempel ohne Erkenntniswert.
+**Anschluss-Szenario:** S-AK-074
+
+### S-AK-074 Agent-SLA-Monitoring: Antwortzeit, Retrieval-Treffer und Refusal-Rate überwachen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will Agenten wie eine Microservice-Architektur betreiben — mit messbaren Service-Levels für Antwortzeit, Retrieval-Treffer und Ablehnungs-Quote — aber es gibt keine definierten SLOs und keine laufende Überwachung. (Quelle: julia-lens A-36)
+**Strategisches Ziel:** Pro produktivem Agenten Service-Level-Objectives (SLOs) definieren und ein laufendes Monitoring einrichten, das Verletzungen sichtbar macht, bevor Nutzerinnen sie melden.
+**Hands-on Ergebnis:** Ein SLO-Dashboard-Template (Markdown) mit 4 Metriken (P95-Antwortzeit, Retrieval-Hit-Rate, Refusal-Rate, Feedback-Quote) und definierten Schwellenwerten pro Agent.
+**Eingesetzte Langdock-Fähigkeit(en):** Langfuse-Integration (Tracing) + Agent-Usage-Insights + Wissensordner (SLO-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Definiere pro Agent 4 SLOs mit konkreten Schwellen: P95-Antwortzeit (z.B. < 8 s), Retrieval-Hit-Rate (z.B. > 90 %), Refusal-Rate (z.B. < 5 %), negative Feedback-Quote (z.B. < 15 %).
+2. Verbinde die Latenz- und Token-Metriken über die Langfuse-Tracing-Anbindung (S-AK-014); ziehe Retrieval- und Feedback-Werte aus den Usage-Insights.
+3. Erstelle ein "Agent-SLO-Dashboard.md": Tabelle pro Agent mit Ziel-Schwelle, aktuellem Wert und Status (grün/gelb/rot).
+4. Teste die Schwellen: führe Last- und Edge-Case-Anfragen aus und prüfe, ob eine SLO-Verletzung im Dashboard als rot erscheint.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist SLO-Definitions-Berater für KI-Agenten [Persona]. Definiere ein SLO-Set für unsere 6 produktiven Marketing-Agenten [Task]. Kontext: Wir wollen Agenten wie Microservices überwachen, mit Latenz, Retrieval-Treffer, Refusal-Rate und Feedback; Tracing läuft über Langfuse [Context]. Format: Tabelle mit Agent, Metrik, Ziel-Schwelle, Messquelle, Status-Logik [Format]."
+**Erwartetes Artefakt:** Ein SLO-Dashboard-Template mit 4 Metriken und konkreten Schwellenwerten pro Agent.
+**Fallstricke (≥2 spezifisch):**
+- SLO-Schwellen ohne Baseline-Messung festlegen → willkürliche Ziele lösen ständig Fehlalarme aus oder verdecken echte Probleme; erst eine Baseline über zwei Wochen messen, dann Schwellen setzen.
+- Nur die Antwortzeit überwachen und die Retrieval-Hit-Rate ignorieren → ein schneller Agent kann trotzdem die falschen Chunks ziehen und inhaltlich falsch antworten; Geschwindigkeit ohne inhaltliche Trefferquote ist kein verlässliches SLO.
+**Anschluss-Szenario:** S-AK-075
+
+### S-AK-075 Agent-Kosten-Attribution: Verbrauch pro Kampagne und Team taggen
+
+**Wann nutzen (Trigger):** Das Controlling fragt, welcher Anteil des Langdock-Verbrauchs auf welche Kampagne und welches Team entfällt — aber die Kosten landen in einem undifferenzierten Gesamttopf ohne Zuordnung. (Quelle: 12 Q124)
+**Strategisches Ziel:** Ein Kosten-Attributions-Verfahren einrichten, das den Agent-Verbrauch über eine Tagging-Konvention auf Kampagnen, Teams und Kostenstellen zurückführbar macht.
+**Hands-on Ergebnis:** Eine Tagging-Konvention (Markdown) plus ein monatlicher Kosten-Attributions-Report, der den Verbrauch pro Team und Kampagne aus den exportierten Nutzungsdaten ableitet.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage-Export-API + Agent Builder (Namens-/Beschreibungs-Konvention) + Data Analyst (Kosten-Auswertung)
+**Vorgehen (4 Schritte):**
+1. Definiere eine Tagging-Konvention im Agent-Namen oder der Beschreibung: Präfix für Team und Kampagne (z.B. "[PERF][Sommer26] PMax-Agent"), damit der Export nach diesen Tags filterbar ist.
+2. Exportiere die Nutzungsdaten pro Agent über die Usage-Export-API als CSV für den Abrechnungsmonat.
+3. Werte die CSV im Data Analyst aus: gruppiere den Token-Verbrauch nach Team- und Kampagnen-Tag und berechne den Kostenanteil je Gruppe.
+4. Teste die Zuordnung: prüfe, ob die Summe der getaggten Verbräuche dem Gesamtverbrauch entspricht (keine ungetaggten Agenten verbleiben).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Kosten-Attributions-Analyst [Persona]. Werte die angehängte Usage-Export-CSV aus und ordne den Token-Verbrauch unseren Teams und Kampagnen zu [Task]. Kontext: Agenten sind mit Team- und Kampagnen-Tags im Namen versehen; das Controlling will den Kostenanteil pro Kampagne [Context]. Format: Tabelle mit Team, Kampagne, Token, Kostenanteil in Prozent, absteigend sortiert [Format]."
+**Erwartetes Artefakt:** Eine Tagging-Konvention und ein monatlicher Kosten-Attributions-Report pro Team und Kampagne.
+**Fallstricke (≥2 spezifisch):**
+- Agenten ohne Tags produktiv setzen → ihr Verbrauch bleibt im undifferenzierten Gesamttopf und verzerrt die Attribution; jeder produktive Agent braucht ein Team- und Kampagnen-Tag.
+- Tags nur im Namen, aber uneinheitlich vergeben (mal "[PERF]", mal "Performance") → die Gruppierung im Export bricht; eine verbindliche, dokumentierte Tag-Schreibweise ist Voraussetzung für saubere Auswertung.
+**Anschluss-Szenario:** S-AK-076
+
+### S-AK-076 Agent-Canary-Deployment: Neue Agent-Version stufenweise ausrollen
+
+**Wann nutzen (Trigger):** Ein überarbeiteter Briefing-Agent soll live gehen, aber ein direkter Vollausroll an alle 30 Nutzer birgt das Risiko, dass eine unentdeckte Regression das gesamte Team trifft — es fehlt ein stufenweiser Ausroll-Pfad. (Quelle: julia-lens A-34)
+**Strategisches Ziel:** Ein Canary-Deployment einrichten, bei dem die neue Agent-Version zuerst an eine kleine Pilot-Gruppe geht und erst nach bestätigter Stabilität für alle freigegeben wird.
+**Hands-on Ergebnis:** Ein Canary-Rollout-Prozess (Markdown) mit Pilot-Gruppen-Definition, Beobachtungsfenster, Abbruchkriterien und Vollausroll-Bedingung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent-Duplikation + Sharing-Modell (Group-Stufung) + Agent-Usage-Insights (Canary-Beobachtung)
+**Vorgehen (4 Schritte):**
+1. Dupliziere die neue Version als "[CANARY] Briefing-Agent"; teile sie ausschließlich mit einer Pilot-Gruppe von 3–5 Nutzern (Group-Sharing).
+2. Definiere ein Beobachtungsfenster (z.B. 5 Arbeitstage) und Abbruchkriterien: negative Feedback-Quote über 15 %, oder eine SLO-Verletzung aus S-AK-074.
+3. Beobachte die Canary-Nutzung über die Usage-Insights; vergleiche Feedback und Fehlerrate gegen die alte Produktivversion.
+4. Erst wenn die Canary-Phase die Kriterien erfüllt: übertrage die Änderungen auf den produktiven Agenten und gib ihn für den vollen Workspace frei; sonst Rollback nach S-AK-073.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Deployment-Berater für KI-Agenten [Persona]. Erstelle einen Canary-Rollout-Prozess für unseren überarbeiteten Briefing-Agenten [Task]. Kontext: 30 Nutzer, wir wollen die neue Version zuerst mit 5 Pilot-Nutzern testen und erst nach bestätigter Stabilität voll ausrollen [Context]. Format: Prozess-Dokument mit Pilot-Gruppe, Beobachtungsfenster, Abbruchkriterien, Vollausroll-Bedingung [Format]."
+**Erwartetes Artefakt:** Ein Canary-Rollout-Prozess mit Pilot-Gruppe, Beobachtungsfenster, Abbruchkriterien und Vollausroll-Bedingung.
+**Fallstricke (≥2 spezifisch):**
+- Die Canary-Version sofort an den ganzen Workspace teilen → das ist kein Canary, sondern ein Vollausroll; die Pilot-Gruppe muss strikt über Group-Sharing begrenzt bleiben, bis die Kriterien erfüllt sind.
+- Kein Abbruchkriterium vorab definieren → in der Pilot-Phase wird "fühlt sich okay an" zur Freigabe-Basis; ohne messbare Schwellen (Feedback-Quote, SLO) ist die Canary-Phase wertlos.
+**Anschluss-Szenario:** S-AK-077
+
+### S-AK-077 Agent-Deprecation-Lifecycle: Veraltete Agenten geordnet einstellen
+
+**Wann nutzen (Trigger):** Ein Agent für eine ausgelaufene Produktlinie wird kaum noch genutzt und liefert teils veraltete Aussagen — aber niemand traut sich, ihn zu löschen, weil unklar ist, ob noch jemand davon abhängt. (Quelle: julia-lens A-33)
+**Strategisches Ziel:** Einen geordneten Deprecation-Lifecycle definieren, der festlegt, wann ein Agent eingestellt wird, wie Nutzer vorgewarnt werden und wie ein Archiv-Snapshot statt einer Hart-Löschung gesichert wird.
+**Hands-on Ergebnis:** Ein Deprecation-Prozess (Markdown) mit Deprecation-Kriterien, Ankündigungs-Template, Archiv-Snapshot-Schritt und Sunset-Datum.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent-Usage-Insights (Deprecation-Trigger) + Agent-Duplikation (Archiv-Snapshot) + Sharing-Modell (Sichtbarkeit entziehen)
+**Vorgehen (4 Schritte):**
+1. Definiere Deprecation-Kriterien: Quell-Material veraltet, Use-Case obsolet, oder Nutzung unter einer Schwelle (z.B. < 3 Sessions/Monat über ein Quartal).
+2. Prüfe vor der Einstellung die Usage-Insights auf verbliebene Nutzer; informiere sie mit einem Sunset-Memo (Grund, Sunset-Datum, Alternativ-Agent).
+3. Erstelle einen Archiv-Snapshot über die Duplikation (Suffix "[ARCHIV]", Sharing auf Individual), bevor du dem Original die Workspace-Sichtbarkeit entziehst.
+4. Setze den Agenten zum Sunset-Datum auf Individual (unsichtbar fürs Team) statt ihn sofort zu löschen; lösche endgültig erst nach einer Karenzzeit.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lifecycle-Berater für KI-Agenten [Persona]. Erstelle einen Deprecation-Prozess für einen Agenten einer ausgelaufenen Produktlinie [Task]. Kontext: Geringe Nutzung, teils veraltete Aussagen, aber mögliche Restabhängigkeiten; wir wollen einen Archiv-Snapshot statt Hart-Löschung [Context]. Format: Prozess mit Deprecation-Kriterien, Sunset-Memo-Template, Archiv-Schritt, Sunset-Datum, Karenzzeit [Format]."
+**Erwartetes Artefakt:** Ein Deprecation-Prozess mit Kriterien, Sunset-Memo-Template, Archiv-Snapshot-Schritt und Karenzzeit vor der endgültigen Löschung.
+**Fallstricke (≥2 spezifisch):**
+- Den Agenten sofort hart löschen statt ihn erst unsichtbar zu schalten → verbliebene Nutzer verlieren ihn ohne Vorwarnung, und ein Archiv-Snapshot fehlt; erst Sichtbarkeit entziehen, Snapshot sichern, dann nach Karenzzeit löschen.
+- Deprecation ohne Sunset-Memo durchführen → Nutzer suchen verwirrt nach dem verschwundenen Agenten; die Ankündigung mit Alternativ-Agent ist Pflicht, kein Nice-to-have.
+**Anschluss-Szenario:** S-AK-078
+
+### S-AK-078 Agent-Rollenbasierte-Zugriffskontrolle: Wer darf welchen Agenten nutzen und ändern
+
+**Wann nutzen (Trigger):** Ein Agent mit Zugriff auf vertrauliche Finanz-Wissensordner wurde versehentlich auf Workspace-Ebene geteilt, sodass das gesamte Unternehmen ihn nutzen konnte — es fehlt ein rollenbasiertes Zugriffsmodell für Agenten. (Quelle: 12 Q70)
+**Strategisches Ziel:** Eine rollenbasierte Zugriffskontrolle (RBAC) für Agenten etablieren, die pro Vertraulichkeitsstufe festlegt, welche Rollen einen Agenten nutzen, konfigurieren oder freigeben dürfen.
+**Hands-on Ergebnis:** Eine RBAC-Matrix (Markdown) mit Vertraulichkeitsstufen, erlaubtem Sharing-Level und Nutzungs-/Konfigurations-Rechten pro Rolle.
+**Eingesetzte Langdock-Fähigkeit(en):** Sharing-Modell (Individual/Group/Workspace) + Workspace-Admin (Freigabe-Restriktion) + Wissensordner (RBAC-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Klassifiziere jeden Agenten nach Vertraulichkeit: öffentlich (Workspace ok), intern (Group), vertraulich (nur kleine Gruppe, z.B. Finanz-Agenten).
+2. Lege pro Stufe das maximal erlaubte Sharing-Level fest; vertrauliche Agenten dürfen maximal auf Group-Ebene geteilt werden, nie Workspace.
+3. Definiere pro Rolle die Rechte: wer darf nutzen (Informed), wer konfigurieren (Owner), wer freigeben (Approver) — verknüpft mit der RACI aus S-AK-005.
+4. Prüfe alle bestehenden Agenten gegen die Matrix; entziehe jede Freigabe, die über das erlaubte Level hinausgeht, und dokumentiere die Korrekturen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Zugriffskontroll-Berater [Persona]. Erstelle eine RBAC-Matrix für unsere Marketing-Agenten [Task]. Kontext: Ein Agent mit Finanz-Wissensordner war versehentlich workspace-weit sichtbar; wir brauchen Vertraulichkeitsstufen mit erlaubtem Sharing-Level [Context]. Format: Tabelle mit Vertraulichkeitsstufe, max. Sharing-Level, Nutzungs-Recht, Konfigurations-Recht, Freigabe-Recht pro Rolle [Format]."
+**Erwartetes Artefakt:** Eine RBAC-Matrix mit Vertraulichkeitsstufen, erlaubtem Sharing-Level und rollenbasierten Nutzungs-/Konfigurations-Rechten.
+**Fallstricke (≥2 spezifisch):**
+- Vertrauliche Agenten auf Workspace-Ebene teilen, um "den Zugriff zu vereinfachen" → jeder Mitarbeiter kann dann auf Finanzdaten zugreifen; vertrauliche Agenten gehören maximal auf Group-Ebene, das ist nicht verhandelbar.
+- Nutzungs- und Konfigurationsrechte vermischen → wer einen Agenten nutzen darf, darf nicht automatisch seinen System-Prompt ändern; die Trennung von Nutzungs- und Owner-Rechten verhindert unkontrollierte Änderungen.
+**Anschluss-Szenario:** S-AK-079
+
+### S-AK-079 Agent-Health-Check-Automatisierung: Tägliche Lebendigkeits-Prüfung per Workflow
+
+**Wann nutzen (Trigger):** Ein kritischer Report-Agent fiel still aus, weil eine angebundene Integration ihre Autorisierung verlor — der Ausfall wurde erst bemerkt, als ein Nutzer sich beschwerte, statt durch eine automatische Prüfung. (Quelle: 12 Q40)
+**Strategisches Ziel:** Eine automatisierte tägliche Health-Check-Prüfung per Workflow einrichten, die zentrale Agenten mit einem festen Test-Prompt anstößt und bei abweichendem oder fehlendem Ergebnis alarmiert.
+**Hands-on Ergebnis:** Ein Schedule-getriggerter Health-Check-Workflow, der die Kern-Agenten täglich prüft und das Ergebnis als Status-Nachricht an einen Slack-Kanal sendet.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow-Builder (Schedule-Trigger) + Agent (Health-Check-Prompt) + Slack-Integration (Alarmierung)
+**Vorgehen (4 Schritte):**
+1. Definiere pro Kern-Agent einen festen Health-Check-Prompt mit einer bekannten, stabilen Erwartungsantwort (z.B. eine Frage, deren Antwort eindeutig aus dem Wissensordner kommt).
+2. Baue einen Workflow mit Schedule-Trigger (täglich morgens), der jeden Kern-Agenten mit seinem Health-Check-Prompt anstößt.
+3. Vergleiche die Antwort gegen die Erwartung; bei Abweichung, Fehler oder Timeout sendet eine Action-Node eine Alarm-Nachricht an den Slack-Kanal des Teams.
+4. Teste den Alarm-Pfad: deaktiviere testweise eine Integration und prüfe, ob der Health-Check den Ausfall erkennt und meldet.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Health-Check-Architekt für KI-Agenten [Persona]. Entwirf einen täglichen Health-Check-Workflow für unsere 4 Kern-Agenten [Task]. Kontext: Ein Agent fiel still aus, weil eine Integration die Autorisierung verlor; wir wollen eine automatische Prüfung mit Slack-Alarm [Context]. Format: Workflow-Beschreibung mit Schedule-Trigger, Health-Check-Prompt pro Agent, Vergleichslogik, Alarm-Bedingung, max. 5 Schritte [Format]."
+**Erwartetes Artefakt:** Ein Schedule-getriggerter Health-Check-Workflow mit Erwartungs-Vergleich und Slack-Alarmierung bei Ausfall oder Abweichung.
+**Fallstricke (≥2 spezifisch):**
+- Den Health-Check-Prompt an tagesaktuellen Wissensordner-Inhalt koppeln → bei jedem Content-Update schlägt die Prüfung falsch an; der Health-Check muss eine stabile Grundfunktion testen, nicht volatilen Inhalt (analog zu den Canaries aus S-AK-004).
+- Bei jeder kleinsten Abweichung alarmieren → das Team gewöhnt sich an Fehlalarme und ignoriert echte Ausfälle; nur klare Fehler, Timeouts oder grobe Abweichungen sollten den Alarm auslösen.
+**Anschluss-Szenario:** S-AK-080
+
+### S-AK-080 Agent-Guardrail-Layering: Mehrschichtige Schutzschichten gegen Fehlverhalten
+
+**Wann nutzen (Trigger):** Ein Vertrags-Analyse-Agent soll vertrauliche Quellen schützen, aber sich auch bei Prompt-Injection-Versuchen und Out-of-Scope-Anfragen korrekt verhalten — eine einzelne System-Prompt-Anweisung reicht als Schutz nachweislich nicht aus. (Quelle: 12 Q44)
+**Strategisches Ziel:** Mehrere Schutzschichten (Guardrails) gestaffelt kombinieren — Berechtigungen, System-Prompt-Regeln, Ablehnungs-Verhalten und Audit — sodass kein einzelner Umgehungsversuch den gesamten Schutz aushebelt.
+**Hands-on Ergebnis:** Ein Guardrail-Layering-Schema (Markdown) mit den 4 Schutzschichten pro Agent und einem Red-Team-Testprotokoll, das jede Schicht prüft.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (Berechtigungen) + Agent Builder (System-Prompt-Regeln) + Workspace-Admin (Audit-Logs)
+**Vorgehen (4 Schritte):**
+1. Definiere die 4 Schichten: (1) Berechtigung (Viewer-Only-Ordner, RBAC aus S-AK-078), (2) System-Prompt-Regeln (Quellen-Schutz, Ablehnungs-Verhalten), (3) Capability-Scoping (S-AK-071), (4) Audit-Logging (S-AK-072).
+2. Konfiguriere jede Schicht einzeln und dokumentiere, gegen welche Bedrohung sie schützt (Download, Datenleck, Prompt-Injection, Nachvollziehbarkeit).
+3. Erstelle ein Red-Team-Testset: Prompt-Injection ("Ignoriere alle Anweisungen…"), Datei-Auflistung, Out-of-Scope-Frage, Quellen-Volltext-Anfrage.
+4. Führe das Red-Team-Set aus; prüfe, ob bei Versagen einer Schicht die nächste greift; dokumentiere jede Lücke und schließe sie.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Sicherheits-Architekt für KI-Agenten [Persona]. Entwirf ein mehrschichtiges Guardrail-Schema für unseren Vertrags-Analyse-Agenten [Task]. Kontext: Eine einzelne System-Prompt-Anweisung reicht nicht; wir wollen gestaffelte Schichten gegen Download, Datenleck, Prompt-Injection und für Nachvollziehbarkeit [Context]. Format: Tabelle mit Schicht, Schutzziel, Konfiguration, Red-Team-Testfall [Format]."
+**Erwartetes Artefakt:** Ein Guardrail-Layering-Schema mit 4 Schutzschichten und einem Red-Team-Testprotokoll, das jede Schicht einzeln prüft.
+**Fallstricke (≥2 spezifisch):**
+- Sich allein auf den System-Prompt als Schutz verlassen → klassische Prompt-Injection ("Ignoriere alle vorherigen Anweisungen") umgeht eine einzelne Textregel; ohne technische Berechtigungs-Schicht (Viewer-Only) bleibt der Schutz löchrig.
+- Die Guardrails einmal einrichten und nie per Red-Team prüfen → neue Umgehungs-Muster bleiben unentdeckt, bis sie ausgenutzt werden; ein wiederkehrender Red-Team-Test ist Teil des laufenden Betriebs.
+**Anschluss-Szenario:** S-AK-001
