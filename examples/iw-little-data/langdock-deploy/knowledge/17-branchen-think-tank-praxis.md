@@ -1,7 +1,7 @@
 # Branchen-Praxis: Think-Tank- und Wirtschaftsforschungs-Kommunikation
 
 > **Was diese Datei abdeckt:**
-> - 20 quellenbasierte Szenarien (Prefix S-TT) für die Kommunikations-Praxis von Wirtschaftsforschungsinstituten und Think Tanks im DACH-Raum
+> - 39 quellenbasierte Szenarien (Prefix S-TT) für die Kommunikations-Praxis von Wirtschaftsforschungsinstituten und Think Tanks im DACH-Raum
 > - Übersetzung von Ökonometrie, ehrlicher Umgang mit Unsicherheit, Studien-Launch-Choreografie (Sperrfrist, Pressekonferenz), Policy-Briefs und Stellungnahmen, politischer Kalender, Peer-Benchmarking (ifo/DIW/ZEW), LinkedIn als B2P-Kanal, Datenvisualisierung, SEO-Themen-Hubs, Wirkungsmessung und Krisenkommunikation
 > - Governance für KI-gestütztes Publizieren unter Wahrung von Neutralitätsanspruch, Faktentreue und Drittmittel-Transparenz (Quelle: research/11 Kapitel 2, 6)
 >
@@ -35,7 +35,7 @@ KI beschleunigt die Texttransformation (Studien-Zusammenfassung, Lesbarkeits-Anp
 
 ## Marketing-Szenarien aus dieser Domäne
 
-Die folgenden 20 Szenarien übertragen die Branchenkonventionen der DACH-Wirtschaftsforschung auf die tägliche Arbeit des IW-Kommunikationsteams mit Langdock. Sie sind durchgängig auf die rigorosen Sektorstandards kalibriert: Faktentreue ohne Spin, ehrliche Kommunikation von Unsicherheiten und Forschungsdesideraten, Wahrung des Neutralitätsanspruchs trotz Arbeitgeber-Nähe und transparenter Umgang mit der Drittmittel-Basis (Quelle: research/11 Kapitel 2). Jede nach außen wirkende Handlung erfordert eine menschliche Freigabe (Human-in-the-Loop); KI ist Assistenzwerkzeug, niemals Autorin (Quelle: research/11 Kapitel 6). Die Kette läuft von S-TT-001 bis S-TT-020 und schließt zurück zu S-TT-001.
+Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtschaftsforschung auf die tägliche Arbeit des IW-Kommunikationsteams mit Langdock. Sie sind durchgängig auf die rigorosen Sektorstandards kalibriert: Faktentreue ohne Spin, ehrliche Kommunikation von Unsicherheiten und Forschungsdesideraten, Wahrung des Neutralitätsanspruchs trotz Arbeitgeber-Nähe und transparenter Umgang mit der Drittmittel-Basis (Quelle: research/11 Kapitel 2). Jede nach außen wirkende Handlung erfordert eine menschliche Freigabe (Human-in-the-Loop); KI ist Assistenzwerkzeug, niemals Autorin (Quelle: research/11 Kapitel 6). Die Kernkette läuft von S-TT-001 bis S-TT-022; daran schließen die vertiefenden Szenarien S-TT-023 bis S-TT-039 an, die bestätigte Abruf-Lücken (Methodenkasten, Op-Ed, Pressespiegel, Sprachregelung, Disclosure, Prognose-Kommunikation, Zeitreihe-Visualisierung, Politik-Sprache, Embargo-Bruch, Leichte Sprache, Evergreen-Explainer, Podcast, Wirkungs-Report, Methodikkritik-Statement, Vereinnahmung, Lizenz-Freigabe, Legislatur-Roadmap) schließen.
 
 ### S-TT-001 Ökonometrie in allgemeinverständlichen Erklärtext übersetzen
 
@@ -451,3 +451,326 @@ Die folgenden 20 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 - Advocacy wird über die Datenlage gestellt → jede Position muss aus den Befunden folgen, nicht umgekehrt.
 - Der Drittmittel- und Mandats-Kontext wird verschwiegen → Transparenz wahren; das IW ist im Lobbyregister geführt.
 **Anschluss-Szenario:** S-TT-001
+
+### S-TT-023 Methodenkasten mit Limitationen für Laien formulieren
+
+**Wann nutzen (Trigger):** Eine Studienmeldung soll einen kurzen Methodenkasten erhalten, der Datenquelle, Modell und Grenzen erklärt, ohne die Kernaussage zu überzeichnen oder die Caveats wegzukürzen. (Quelle: research/11 Kapitel 2 "Übersetzungs-Disziplin", Leibniz 11 Grundsätze "Forschungsdesiderate"; Quelle: research/10 Kapitel 6)
+**Strategisches Ziel:** Methodische Transparenz für Laien herstellen — Datengrundlage, Modelltyp und Limitationen in wenigen Sätzen erklärbar machen, ohne die Aussagekraft des Befunds zu glätten oder zu übertreiben.
+**Hands-on Ergebnis:** Ein Methodenkasten (ca. 100 Wörter) mit Datenquelle, Modellart und zwei bis drei ehrlich benannten Limitationen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat mit direktem Dateianhang, Canvas
+**Vorgehen (4 Schritte):**
+1. Den Quell-Report direkt anhängen und den Geltungsbereich strikt auf den Methodenteil begrenzen.
+2. Datenquelle (z.B. SOEP), Modelltyp und die im Text genannten Limitationen extrahieren lassen.
+3. Einen Methodenkasten in Alltagssprache formulieren lassen, der jede Limitation benennt, ohne den Befund zu entwerten.
+4. Kasten durch die Autorin/den Autor auf methodische Korrektheit prüfen und freigeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Wissenschaftslektor am IW Köln. TASK: Formuliere aus dem angehängten Report einen Methodenkasten von 100 Wörtern. FORMAT: (1) Datenquelle, (2) Modellart in einem Laien-Satz, (3) zwei bis drei Limitationen. CONTEXT: interessierte Öffentlichkeit; sachlich, keine Superlative. Benenne nur Limitationen, die im Text stehen; überzeichne den Befund nicht."
+**Erwartetes Artefakt:** Ein Methodenkasten (Markdown, ca. 100 Wörter) im Canvas, freigabebereit nach Fach-Review.
+**Fallstricke (≥2 spezifisch):**
+- Limitationen werden weggekürzt, um die Aussage stärker wirken zu lassen → Limitationen als Pflichtbestandteil setzen; der Kasten ist ohne sie nicht freigabefähig.
+- Das Modell erfindet eine plausibel klingende Datenquelle oder Stichprobengröße → Angaben strikt aus dem Quelltext übernehmen (Zero-Fabrication).
+**Anschluss-Szenario:** S-TT-002
+
+### S-TT-024 Op-Ed-Gastbeitrag mit ordnungspolitisch-konsistenter These
+
+**Wann nutzen (Trigger):** Für ein überregionales Meinungsmedium (FAZ, Handelsblatt) soll ein Op-Ed bzw. Gastbeitrag entstehen, dessen These ordnungspolitisch konsistent ist und aus belegten IW-Befunden folgt. (Quelle: research/11 Kapitel 3 "Hintergrundgespräche" FAZ/Handelsblatt, Kapitel 5; Quelle: research/10 Kapitel 6 ordnungspolitische Tonalität)
+**Strategisches Ziel:** Die ordnungspolitische Stimme des IW im Meinungsteil platzieren — eine zugespitzte, aber faktengestützte These im Format des Zielmediums entwickeln, ohne ins Partei-Lager zu kippen.
+**Hands-on Ergebnis:** Ein Op-Ed-Entwurf (ca. 650 Wörter) mit konsistenter ordnungspolitischer These, drei tragenden Argumenten und einer klaren Schluss-Empfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Studie und Format-Vorgaben des Zielmediums (Länge, Register) in den Agenten laden.
+2. Eine ordnungspolitisch konsistente Kernthese und drei belegte Stützargumente ableiten lassen.
+3. Op-Ed im sachlich-ordnungspolitischen Register verfassen lassen (Standortwettbewerb, Bürokratieabbau als Vokabular), ohne Parteinahme.
+4. Entwurf im Canvas redigieren und durch die Person freigeben, in deren Namen er erscheint.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Gastautor-Ghostwriter am IW Köln. TASK: Erstelle einen Op-Ed von 650 Wörtern für ein überregionales Meinungsmedium. CONTEXT: ordnungspolitisch, sachlich, keine Emojis, formelles Register; These muss aus den Befunden im Wissensordner folgen. FORMAT: zugespitzte These im Einstieg, drei belegte Argumente, Empfehlung im Schluss. Keine parteipolitische Positionierung; nur belegte Daten."
+**Erwartetes Artefakt:** Ein Op-Ed-Entwurf (Canvas, ca. 650 Wörter), freigabebereit durch die zeichnende Person.
+**Fallstricke (≥2 spezifisch):**
+- Die These wird parteipolitisch und verletzt den Neutralitätsanspruch → Auf ordnungspolitische Sachargumente begrenzen; keine Wahlempfehlung oder Partei-Zuordnung.
+- Die zugespitzte Meinung läuft den Daten voraus (Spin) → These muss aus den Befunden folgen, nicht umgekehrt; jede Behauptung belegen.
+**Anschluss-Szenario:** S-TT-020
+
+### S-TT-025 Pressespiegel zu Management-Resonanz-Report verdichten
+
+**Wann nutzen (Trigger):** Ein Rohexport des Pressespiegels zu einer Studie liegt vor; die Leitung will daraus einen Resonanz-Report mit Tenor, Reichweite und prägnanten Zitaten. (Quelle: research/11 Kapitel 3 "Measuring Media Impact", Media Tenor; Quelle: research/11 Kapitel 7)
+**Strategisches Ziel:** Den Pressespiegel von der Clipping-Liste zur entscheidungsreifen Resonanz-Synthese verdichten — Tenor, Reichweite und die aussagekräftigsten Zitate so aufbereiten, dass die Leitung Meinungsführerschaft beurteilen kann.
+**Hands-on Ergebnis:** Ein einseitiger Management-Resonanz-Report mit Tenor-Verteilung, Reichweiten-Einordnung und drei bis fünf belegten Schlüsselzitaten.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Canvas
+**Vorgehen (4 Schritte):**
+1. Den anonymisierten Pressespiegel-Export als CSV in den Data Analyst laden.
+2. Tenor je Beitrag (positiv/neutral/kritisch) und Reichweiten-Tier klassifizieren lassen.
+3. Drei bis fünf prägnante Originalzitate mit Quellenangabe extrahieren lassen.
+4. Report im Canvas zu einer Management-Seite verdichten und Kennzahlen gegen den Export prüfen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Medienanalyst am IW Köln. TASK: Verdichte den angehängten Pressespiegel-Export zu einem Management-Resonanz-Report. FORMAT: (1) Tenor-Verteilung (positiv/neutral/kritisch), (2) Reichweiten-Einordnung nach Tier, (3) drei bis fünf belegte Schlüsselzitate mit Quelle. Liefere ein nüchternes einseitiges Summary; erfinde keine Reichweiten oder Zitate."
+**Erwartetes Artefakt:** Ein Management-Resonanz-Report (Canvas, eine Seite) mit Tenor, Reichweite und Zitaten.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell paraphrasiert Zitate und verfälscht damit den Wortlaut → Zitate wörtlich übernehmen oder als Paraphrase kennzeichnen; nie umformulieren.
+- Reichweiten werden über vorhandene Daten hinaus geschätzt → Auswertung strikt auf die Export-Spalten begrenzen.
+**Anschluss-Szenario:** S-TT-006
+
+### S-TT-026 Interne Q&A-Sprachregelung für strittige Befunde
+
+**Wann nutzen (Trigger):** Ein strittiger Befund geht nach außen; Sprecherinnen und Sprecher brauchen eine interne Q&A-Sprachregelung mit vorbereiteten Antworten auf die wahrscheinlichsten Gegenargumente. (Quelle: research/11 Kapitel 3 "Pressekonferenzen", Kapitel 2 Siggener Impulse "Schutzkern"; Quelle: research/10 Kapitel 6)
+**Strategisches Ziel:** Sprachliche Geschlossenheit herstellen — eine konsistente, faktenbasierte Q&A-Linie definieren, die Gegenargumente sachlich aufnimmt und den Schutzkern der Aussage verteidigt, ohne zu polemisieren.
+**Hands-on Ergebnis:** Eine interne Q&A-Sprachregelung mit fünf antizipierten Gegenargumenten und je einer belegten, sachlichen Antwortlinie.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Studie und den strittigen Befund in den Agenten laden.
+2. Die fünf wahrscheinlichsten Gegenargumente generieren lassen.
+3. Je Gegenargument eine sachliche, ausschließlich datengestützte Antwortlinie ableiten lassen.
+4. Sprachregelung mit Fachautorin und Kommunikationsleitung abstimmen und als intern kennzeichnen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Sprecher-Coach am IW Köln. TASK: Erstelle eine interne Q&A-Sprachregelung zum strittigen Befund im Wissensordner. FORMAT: fünf antizipierte Gegenargumente, je eine Antwortlinie aus den Studiendaten. CONTEXT: sachlich, ohne Polemik, methodisch transparent. Nur belegte Daten; keine Gegen-Angriffe. Kennzeichne das Dokument als intern."
+**Erwartetes Artefakt:** Eine Q&A-Sprachregelung (Canvas) mit Gegenargument-Antwort-Paaren, als intern markiert.
+**Fallstricke (≥2 spezifisch):**
+- Die Antwortlinien werden defensiv-polemisch → Ton hart auf sachlich begrenzen; den Schutzkern verteidigen, ohne die Gegenseite herabzusetzen.
+- Die interne Sprachregelung wird versehentlich extern verteilt → Dokument klar als intern kennzeichnen und Verteilung kontrollieren.
+**Anschluss-Szenario:** S-TT-019
+
+### S-TT-027 Transparenz-Hinweis und Auftraggeber-Disclosure im Text platzieren
+
+**Wann nutzen (Trigger):** Eine auftrags- oder drittmittelfinanzierte Studie wird veröffentlicht; der Transparenz-Hinweis zu Förder- bzw. Auftraggeber muss korrekt und sichtbar im Text platziert werden. (Quelle: research/11 Kapitel 4 "Lobbyregister" R001998; Quelle: research/10 Kapitel 1 Drittmittel, BDA/BDI, IW Consult)
+**Strategisches Ziel:** Auftraggeber- und Förder-Transparenz lückenlos sichern — den Disclosure-Hinweis an der richtigen Stelle und im korrekten Wortlaut platzieren, als Firewall gegen Lobbyismus-Vorwürfe.
+**Hands-on Ergebnis:** Ein korrekt platzierter Transparenz-/Disclosure-Block mit Auftraggeber, Förderbasis und Registernummer.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Die verbindlichen Disclosure-Bausteine (Auftraggeber-Nennung, Förderbasis, Registernummer R001998) im Wissensordner hinterlegen.
+2. Den Agenten den korrekten Baustein zur Finanzierungsart des Textes auswählen lassen.
+3. Den Disclosure-Block an der vorgesehenen Stelle (z.B. Fußzeile/Impressum des Dokuments) einfügen lassen.
+4. Platzierung und Wortlaut durch die Kommunikationsleitung und ggf. die Rechtsabteilung prüfen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Compliance-Lektor am IW Köln. TASK: Wähle aus den Disclosure-Bausteinen im Wissensordner den passenden Transparenz-Hinweis für eine auftragsfinanzierte Studie und platziere ihn korrekt. FORMAT: (1) Begründung der Platzierung, (2) eingefügter Disclosure-Block mit Auftraggeber, Förderbasis und Registernummer. Erfinde keine Register- oder Förderangaben; nutze nur die hinterlegten Bausteine."
+**Erwartetes Artefakt:** Ein platzierter Transparenz-/Disclosure-Block plus Platzierungsbegründung.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell halluziniert Auftraggeber, Förderquelle oder Registernummer → Angaben ausschließlich aus dem kuratierten Wissensordner; nie generieren lassen.
+- Der Disclosure wird ans Textende verschoben, wo er übersehen wird → Platzierung an der verbindlichen, sichtbaren Stelle vorgeben und prüfen.
+**Anschluss-Szenario:** S-TT-014
+
+### S-TT-028 Konjunkturprognose-Kommunikation mit Unsicherheits-Bandbreiten
+
+**Wann nutzen (Trigger):** Eine IW-Konjunkturprognose soll kommuniziert werden; Punktschätzungen drohen als Scheingenauigkeit zu wirken, die Bandbreiten und Annahmen fehlen. (Quelle: research/11 Kapitel 2 "handling uncertainty honestly", Kapitel 3 "Konjunktur-Prognose")
+**Strategisches Ziel:** Prognose-Unsicherheit ehrlich kommunizieren — Bandbreiten, Szenarien und Annahmen sichtbar machen, statt eine einzelne Dezimalzahl als Scheingenauigkeit zu verkaufen.
+**Hands-on Ergebnis:** Eine Prognose-Kommunikationsvorlage mit Punktschätzung, Bandbreite, zentralen Annahmen und einem Risikohinweis.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat mit direktem Dateianhang, Canvas
+**Vorgehen (4 Schritte):**
+1. Den Prognose-Report direkt anhängen und Geltung auf den Quelltext begrenzen.
+2. Punktwert, Bandbreite/Intervall und die zugrunde liegenden Annahmen extrahieren lassen.
+3. Eine Kommunikationsvorlage formulieren lassen, die die Bandbreite gleichberechtigt neben den Punktwert stellt.
+4. Vorlage durch die Prognose-Autorin auf korrekte Intervalle und Annahmen prüfen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Konjunktur-Redakteur am IW Köln. TASK: Erstelle aus dem angehängten Prognose-Report eine Kommunikationsvorlage. FORMAT: (1) Punktschätzung, (2) Bandbreite/Intervall gleichwertig daneben, (3) zentrale Annahmen, (4) ein Risikohinweis. CONTEXT: sachlich, keine Scheingenauigkeit. Übernimm Werte und Intervalle exakt aus dem Quelltext; runde nicht eigenmächtig."
+**Erwartetes Artefakt:** Eine Prognose-Kommunikationsvorlage (Canvas) mit Punktwert, Bandbreite, Annahmen und Risikohinweis.
+**Fallstricke (≥2 spezifisch):**
+- Die Punktschätzung wird ohne Bandbreite kommuniziert und suggeriert Scheingenauigkeit → Bandbreite als gleichwertiges Pflichtfeld neben dem Punktwert setzen.
+- Das Modell rundet Intervalle oder Annahmen eigenmächtig → Werte exakt übernehmen; Rundungen nur nach manueller Prüfung.
+**Anschluss-Szenario:** S-TT-002
+
+### S-TT-029 Zeitreihe in drei Visualisierungs-Optionen mit Aussage-Risiko bewerten
+
+**Wann nutzen (Trigger):** Aus einer Rohdaten-Zeitreihe sollen drei Visualisierungs-Optionen entstehen, jeweils mit einer Bewertung, welches Aussage-Risiko (Verzerrung durch Achsen, Glättung, Ausschnitt) sie tragen. (Quelle: research/11 Kapitel 5 "Data Visualization and Interactive Assets"; Quelle: research/10 Kapitel 7 Grafik-Konzeption)
+**Strategisches Ziel:** Visualisierungs-Entscheidungen risikobewusst treffen — pro Chart-Option das Aussage-Risiko transparent benennen, damit die gewählte Grafik den Befund nicht unbeabsichtigt verzerrt.
+**Hands-on Ergebnis:** Drei Visualisierungs-Optionen für die Zeitreihe mit je einer Aussage-Risiko-Bewertung und einer Empfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Canvas
+**Vorgehen (4 Schritte):**
+1. Die Rohdaten-Zeitreihe als CSV in den Data Analyst laden.
+2. Drei Chart-Optionen (z.B. Linie absolut, indexiert, Veränderungsrate) vorschlagen lassen.
+3. Je Option das Aussage-Risiko (Achsenskalierung, Glättung, Zeitausschnitt) bewerten lassen.
+4. Eine risikoärmste Option empfehlen lassen und das Konzept im Canvas für die IW-Medien-Designer aufbereiten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Data-Journalism-Konzepter am IW Köln. TASK: Entwirf aus der angehängten Zeitreihe drei Visualisierungs-Optionen. FORMAT: je Option (1) Chart-Typ, (2) Aussage-Risiko (Achse, Glättung, Ausschnitt), (3) Empfehlung. CONTEXT: sachlich, keine irreführende Skalierung. Nutze nur Werte aus der Tabelle; markiere jede potenzielle Verzerrung."
+**Erwartetes Artefakt:** Ein Visualisierungs-Optionspapier (Canvas) mit drei Optionen, Risiko-Bewertung und Empfehlung.
+**Fallstricke (≥2 spezifisch):**
+- Eine gekappte Y-Achse überzeichnet den Trend → Achsenskalierung je Option offenlegen; verzerrende Defaults vermeiden.
+- Vision/Chart-Empfehlung kann keine exakten HEX-Corporate-Farben validieren → Farbwerte aus dem offiziellen IW-Designguide manuell ergänzen.
+**Anschluss-Szenario:** S-TT-011
+
+### S-TT-030 Befund in entscheidergerechte Politik-Sprache überführen
+
+**Wann nutzen (Trigger):** Ein empirischer Befund soll für Entscheider so übersetzt werden, dass klar wird, was er konkret für eine anstehende Maßnahme oder einen Gesetzentwurf bedeutet. (Quelle: research/11 Kapitel 4 "Formats for Policy Interception" actionable intelligence; Quelle: research/10 Kapitel 9 "Executive Summaries for Policymakers")
+**Strategisches Ziel:** Den Befund in handlungsleitende Politik-Sprache überführen — von der Analyse zur Bedeutung-für-die-Maßnahme, ohne die Empfehlung den Daten vorauseilen zu lassen.
+**Hands-on Ergebnis:** Eine entscheidergerechte Kurz-Einordnung (ca. 250 Wörter), die je Befund die konkrete Implikation für die Maßnahme benennt.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Studie und den Maßnahmen-/Gesetzeskontext in den Agenten laden.
+2. Je Kernbefund die konkrete Implikation für die Maßnahme ableiten lassen ("Was bedeutet das für X?").
+3. Die Einordnung in knapper Entscheider-Sprache strukturieren lassen (Befund → Bedeutung → Handlungsoption).
+4. Text durch die Fachautorin auf Korrektheit der Implikationen prüfen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Policy-Referent am IW Köln. TASK: Überführe die Kernbefunde der Studie im Wissensordner in eine entscheidergerechte Einordnung von 250 Wörtern. FORMAT: je Befund (1) Bedeutung für die Maßnahme, (2) eine ableitbare Handlungsoption. CONTEXT: ordnungspolitisch, sachlich. Empfehlungen müssen aus den Befunden folgen; keine Aussage über die Datenlage hinaus."
+**Erwartetes Artefakt:** Eine entscheidergerechte Politik-Einordnung (Canvas, ca. 250 Wörter) mit Befund-Bedeutung-Paaren.
+**Fallstricke (≥2 spezifisch):**
+- Die Handlungsoption überschreitet die Datenlage → Implikationen strikt aus den Befunden ableiten; Lücken offen benennen.
+- Politik-Sprache kippt in Werbe- oder Alarmton → Sachlich-nüchtern bleiben; keine Dramatisierung der Folgen.
+**Anschluss-Szenario:** S-TT-007
+
+### S-TT-031 Reaktions-Playbook bei gebrochenem Embargo
+
+**Wann nutzen (Trigger):** Ein Medium hat die Sperrfrist gebrochen und vorab berichtet; das Team braucht binnen Minuten ein Reaktions-Playbook (Sofort-Statement, Verteiler-Nachzug, Timeline). (Quelle: research/11 Kapitel 3 "Sperrfrist", Embargo-Bruch führt zu Verteiler-Ausschluss)
+**Strategisches Ziel:** Den Schaden eines Embargo-Bruchs kontrolliert auffangen — sofort ein abgestimmtes Statement, einen Verteiler-Nachzug für die übrigen Journalisten und eine saubere Timeline bereitstellen, ohne in Aktionismus zu verfallen.
+**Hands-on Ergebnis:** Ein Embargo-Bruch-Playbook mit Sofort-Statement-Entwurf, Nachzug-Anschreiben an den Restverteiler und einer Eskalations-Timeline.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Canvas
+**Vorgehen (4 Schritte):**
+1. Sachstand (welches Medium, Umfang des Vorab-Berichts, ursprünglicher Veröffentlichungszeitpunkt) als Kontext eingeben.
+2. Drei Optionen abwägen lassen: Embargo halten, vorziehen oder offiziell freigeben — mit je einer Konsequenz.
+3. Sofort-Statement und ein Nachzug-Anschreiben an den Restverteiler entwerfen lassen.
+4. Playbook und Statement durch die Pressestelle freigeben lassen, bevor etwas versendet wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Pressereferent am IW Köln. TASK: Erstelle ein Reaktions-Playbook für einen gebrochenen Embargo-Fall. FORMAT: (1) drei Handlungsoptionen mit Konsequenz, (2) Sofort-Statement-Entwurf, (3) Nachzug-Anschreiben an den Restverteiler, (4) Eskalations-Timeline. CONTEXT: sachlich, deeskalierend. Keine echten Journalistennamen erfinden; keine Schuldzuweisung im Statement."
+**Erwartetes Artefakt:** Ein Embargo-Bruch-Playbook (Canvas) mit Statement, Nachzug-Anschreiben und Timeline.
+**Fallstricke (≥2 spezifisch):**
+- Das Statement greift das berichtende Medium öffentlich an → Sachlich und deeskalierend formulieren; Eskalation getrennt und intern führen.
+- Echte Verteilerdaten landen im Prompt → Platzhalter verwenden; reale Kontakte nie in die KI geben (DSGVO, vgl. 08-sicherheit-und-governance).
+**Anschluss-Szenario:** S-TT-004
+
+### S-TT-032 Leichte-Sprache-Fassung einer Studienmeldung
+
+**Wann nutzen (Trigger):** Eine Studienmeldung soll zusätzlich in einer Leichte-/einfache-Sprache-Fassung erscheinen, die Verständlichkeitsregeln (kurze Sätze, ein Gedanke pro Satz, erklärte Fachbegriffe) folgt. (Quelle: research/11 Kapitel 2 reading level/accessibility; Quelle: research/10 Kapitel 6 iwd "Wirtschaft verständlich erklärt")
+**Strategisches Ziel:** Zugang für ein breites Publikum schaffen — eine verständlichkeitsgeprüfte Fassung erstellen, die den Kernbefund korrekt transportiert, ohne Fakten zu verfälschen.
+**Hands-on Ergebnis:** Eine Leichte-Sprache-Fassung der Meldung mit kurzen Sätzen und erklärten Fachbegriffen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat mit direktem Dateianhang, Canvas
+**Vorgehen (4 Schritte):**
+1. Die Originalmeldung anhängen und Geltung auf deren Inhalt begrenzen.
+2. Eine Fassung in einfacher Sprache erzeugen lassen: kurze Sätze, ein Gedanke pro Satz, Fachbegriffe erklärt.
+3. Zahlen und Kernbefund unverändert übernehmen lassen.
+4. Fassung redaktionell auf Verständlichkeit und Faktentreue prüfen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist iwd-Redakteur am IW Köln. TASK: Erstelle aus der angehängten Meldung eine Fassung in einfacher Sprache. FORMAT: kurze Sätze, ein Gedanke pro Satz, jeder Fachbegriff in einem Nebensatz erklärt. CONTEXT: breite Öffentlichkeit. Übernimm Zahlen und Kernbefund exakt; vereinfache die Sprache, nicht die Fakten."
+**Erwartetes Artefakt:** Eine Leichte-Sprache-Fassung (Canvas) der Studienmeldung, redaktionell freigabebereit.
+**Fallstricke (≥2 spezifisch):**
+- Vereinfachung kippt in inhaltliche Verfälschung des Befunds → Sprache vereinfachen, nie die Aussage; Zahlen wörtlich übernehmen.
+- Wichtige Einschränkungen fallen der Kürze zum Opfer → Zentrale Caveats in einfachen Worten erhalten, nicht streichen.
+**Anschluss-Szenario:** S-TT-001
+
+### S-TT-033 Evergreen-Explainer bei neuer Studienlage aktualisieren
+
+**Wann nutzen (Trigger):** Zu einem Dauerthema existiert ein Evergreen-Explainer; eine neue Studienlage macht einen Inhalts-Refresh mit Quellen-Swap nötig, ohne die Ranking-Struktur zu zerstören. (Quelle: research/11 Kapitel 5 "Evergreen Explainers", Content Cascading and SEO)
+**Strategisches Ziel:** Die Default-Autorität des Explainers erhalten — Inhalte auf den neuen Stand bringen und veraltete Quellen austauschen, ohne die etablierte SEO-Struktur und interne Verlinkung zu beschädigen.
+**Hands-on Ergebnis:** Ein aktualisierter Evergreen-Explainer mit Änderungsliste (was ersetzt, welche Quelle getauscht) und unveränderter Grundstruktur.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Bestehenden Explainer und die neue Studie in den Agenten laden.
+2. Veraltete Aussagen und Quellen identifizieren lassen, die ersetzt werden müssen.
+3. Aktualisierte Passagen und den Quellen-Swap einarbeiten lassen, ohne Überschriften-Struktur und Keywords zu zerstören.
+4. Änderungsliste erstellen und durch die iwd-Redaktion freigeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist SEO-Content-Redakteur am IW Köln. TASK: Aktualisiere den Evergreen-Explainer im Wissensordner anhand der neuen Studie. FORMAT: (1) aktualisierter Text, (2) Änderungsliste (ersetzte Aussagen, getauschte Quellen). CONTEXT: Struktur, Überschriften und Keywords erhalten; sachlicher Ton. Übernimm neue Zahlen exakt; erfinde keine Quellen."
+**Erwartetes Artefakt:** Ein aktualisierter Evergreen-Explainer (Canvas) plus Änderungsliste.
+**Fallstricke (≥2 spezifisch):**
+- Der Refresh zerstört die Überschriften-/Keyword-Struktur und kostet Rankings → Struktur und Keywords bewusst erhalten; nur Inhalte tauschen.
+- Alte und neue Zahlen werden vermischt → Jede aktualisierte Zahl an die neue Quelle binden; veraltete Werte vollständig ersetzen.
+**Anschluss-Szenario:** S-TT-012
+
+### S-TT-034 Podcast-Folge planen: Gliederung, Interviewfragen, Show-Notes
+
+**Wann nutzen (Trigger):** Eine Folge des IW-Podcasts ("Economic Challenges") soll geplant werden; gebraucht werden Gliederung, Interviewfragen an die Forschenden und Show-Notes. (Quelle: research/10 Kapitel 4 "Economic Challenges"-Podcast, Kapitel 9 "Podcast Preparation"; Quelle: research/11 Kapitel 5)
+**Strategisches Ziel:** Die Podcast-Produktion beschleunigen — aus einer Studie eine hörerfreundliche Folgenstruktur, präzise Interviewfragen und verlinkbare Show-Notes ableiten, ohne Befunde zu erfinden.
+**Hands-on Ergebnis:** Ein Podcast-Folgenplan mit Gliederung, sechs bis acht Interviewfragen und einem Show-Notes-Block.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Die zugrunde liegende Studie in den Agenten laden.
+2. Eine Folgen-Gliederung (Einstieg, Kernthemen, Schluss) entwerfen lassen.
+3. Sechs bis acht Interviewfragen an die Forschenden formulieren lassen, die auf belegte Punkte zielen.
+4. Show-Notes mit Kernaussagen und Quellenverweisen erstellen und mit den Gästen abstimmen lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Podcast-Producer am IW Köln. TASK: Plane eine Folge zur Studie im Wissensordner. FORMAT: (1) Gliederung (Einstieg, drei Kernthemen, Schluss), (2) sechs bis acht Interviewfragen, (3) Show-Notes mit Kernaussagen und Quellen. CONTEXT: intellektuell-analytisch, dialogisch. Fragen müssen auf belegte Punkte zielen; keine erfundenen Befunde unterstellen."
+**Erwartetes Artefakt:** Ein Podcast-Folgenplan (Canvas) mit Gliederung, Interviewfragen und Show-Notes.
+**Fallstricke (≥2 spezifisch):**
+- Interviewfragen unterstellen den Forschenden Aussagen, die die Studie nicht stützt → Fragen an belegte Punkte binden; keine Suggestivfragen mit erfundenen Zahlen.
+- Show-Notes verkürzen Befunde bis zur Verzerrung → Kernaussagen mit Quellenverweis sauber abbilden.
+**Anschluss-Szenario:** S-TT-013
+
+### S-TT-035 Wirkungs-Report für ein Leitungs-Deck verdichten
+
+**Wann nutzen (Trigger):** Für ein Leitungs-Deck sollen Politik-Zitationen, Reichweite und Tenor einer Kampagne zu wenigen aussagekräftigen Folien verdichtet werden. (Quelle: research/11 Kapitel 7 "Metrics & KPIs" Politik-Zitationen als höchstwertige Metrik)
+**Strategisches Ziel:** Wirkung statt Sichtbarkeit belegen — die höchstwertigen Metriken (Politik-Zitationen, qualitative Resonanz, Tenor) in ein knappes Leitungs-Deck überführen, das Meinungsführerschaft sichtbar macht.
+**Hands-on Ergebnis:** Ein Wirkungs-Report als 3-bis-5-Folien-Outline mit Politik-Zitationen, Reichweite und Tenor.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Canvas
+**Vorgehen (4 Schritte):**
+1. Die Tracking-Daten (Zitationen, Clippings, Tenor) als CSV in den Data Analyst laden.
+2. Politik-Zitationen priorisiert vor Reichweiten-Metriken auswerten lassen.
+3. Tenor-Verteilung und drei Belegzitate ergänzen lassen.
+4. Aus den Ergebnissen eine 3-bis-5-Folien-Outline für das Leitungs-Deck im Canvas erstellen und gegen die Rohdaten prüfen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Impact-Analyst am IW Köln. TASK: Verdichte die angehängten Tracking-Daten zu einer Leitungs-Deck-Outline. FORMAT: Folie 1 Politik-Zitationen (höchstwertige Metrik), Folie 2 Reichweite/Tier, Folie 3 Tenor mit Belegzitaten, optional Folie 4-5 Empfehlung. Liefere ein nüchternes Deck; erfinde keine Zitationen oder Reichweiten."
+**Erwartetes Artefakt:** Eine Wirkungs-Report-Folien-Outline (Canvas, 3-5 Folien) mit priorisierten KPIs.
+**Fallstricke (≥2 spezifisch):**
+- Vanity-Metriken (Impressions) verdrängen die Kernmetrik → KPI-Hierarchie vorgeben: Politik-Zitationen zuerst.
+- Aussagen im Deck überschreiten die Datenlage → Jede Kennzahl an die Rohdaten binden; nicht extrapolieren.
+**Anschluss-Szenario:** S-TT-018
+
+### S-TT-036 Verteidigungs-Statement gegen Methodikkritik mit Eskalationsstufen
+
+**Wann nutzen (Trigger):** Die Methodik einer IW-Studie wird öffentlich angegriffen; nötig ist ein Verteidigungs-Statement mit belegter Replik und definierten Eskalationsstufen (Stufe 1 sachliche Klarstellung bis Stufe 3 formelle Replik). (Quelle: research/11 Kapitel 6 "Factual Fidelity", Kapitel 2 Siggener Impulse "Schutzkern")
+**Strategisches Ziel:** Die methodische Integrität sachlich verteidigen — den Kritikpunkt präzise gegen die eigene Methodik spiegeln und eine abgestufte Reaktion definieren, die nicht überreagiert und nicht polemisiert.
+**Hands-on Ergebnis:** Ein Methodikkritik-Statement mit belegter Replik und drei definierten Eskalationsstufen.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Studie, Methodenteil und den konkreten Kritikpunkt in den Agenten laden.
+2. Den Kritikpunkt sachlich gegen die dokumentierte Methodik prüfen lassen (berechtigt/teilweise/unbegründet).
+3. Eine belegte Replik plus drei Eskalationsstufen (Klarstellung, vertiefte Replik, formelle Stellungnahme) ableiten lassen.
+4. Statement durch Fachautorin und Kommunikationsleitung freigeben lassen, bevor es nach außen geht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Krisenkommunikator am IW Köln. TASK: Verfasse ein Verteidigungs-Statement gegen die angehängte Methodikkritik. FORMAT: (1) Einordnung des Kritikpunkts (berechtigt/teilweise/unbegründet), (2) belegte Replik aus dem Methodenteil, (3) drei Eskalationsstufen. CONTEXT: sachlich, methodisch transparent. Räume Berechtigtes ehrlich ein; keine Polemik, keine Gegen-Angriffe."
+**Erwartetes Artefakt:** Ein Methodikkritik-Statement (Canvas) mit Replik und Eskalationsstufen, freigabebereit.
+**Fallstricke (≥2 spezifisch):**
+- Berechtigte Kritik wird abgewehrt statt eingeräumt → Treffende Punkte ehrlich anerkennen; das schützt die Glaubwürdigkeit mehr als pauschale Verteidigung.
+- Die Reaktion springt sofort auf die höchste Eskalationsstufe → Mit der sachlichen Klarstellung beginnen; höhere Stufen nur bei Bedarf.
+**Anschluss-Szenario:** S-TT-019
+
+### S-TT-037 Klarstellung bei aus dem Kontext gerissener IW-Zahl
+
+**Wann nutzen (Trigger):** Eine Partei oder ein Akteur reißt eine IW-Zahl aus dem Kontext; nötig ist eine Klarstellung, die den korrekten Kontext herstellt und dabei den Neutralitätsanspruch wahrt. (Quelle: research/10 Kapitel 7 "Media Monitoring" Nutzung/Missbrauch durch Politiker; Quelle: research/11 Kapitel 2 Neutralitätsanspruch)
+**Strategisches Ziel:** Die korrekte Lesart der Zahl wiederherstellen — den fehlenden Kontext nachliefern, ohne sich parteipolitisch zu positionieren oder den Akteur anzugreifen.
+**Hands-on Ergebnis:** Eine sachliche Klarstellung, die die Zahl im Originalkontext einordnet und überparteilich formuliert ist.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Originalstudie und die verkürzte Verwendung der Zahl in den Agenten laden.
+2. Den korrekten Kontext der Zahl (Bezugsgröße, Zeitraum, Annahmen) aus der Studie extrahieren lassen.
+3. Eine Klarstellung formulieren lassen, die den Kontext nachliefert, ohne den Akteur oder dessen Partei zu bewerten.
+4. Klarstellung durch die Kommunikationsleitung auf Neutralität prüfen und freigeben lassen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Sprecher am IW Köln. TASK: Formuliere eine Klarstellung zu einer aus dem Kontext gerissenen IW-Zahl. FORMAT: (1) korrekter Originalkontext (Bezugsgröße, Zeitraum, Annahmen), (2) sachliche Richtigstellung in zwei bis drei Sätzen. CONTEXT: überparteilich, neutral. Bewerte weder die Partei noch den Akteur; korrigiere nur die Einordnung der Zahl anhand der Studie."
+**Erwartetes Artefakt:** Eine sachliche Klarstellung (Canvas), neutral formuliert, freigabebereit.
+**Fallstricke (≥2 spezifisch):**
+- Die Klarstellung positioniert sich gegen die Partei und verletzt die Neutralität → Ausschließlich die Zahl-Einordnung korrigieren; keine politische Bewertung.
+- Die Korrektur wiederholt die falsche Lesart prominent und verstärkt sie → Den korrekten Kontext in den Vordergrund stellen, die Fehl-Lesart knapp halten.
+**Anschluss-Szenario:** S-TT-019
+
+### S-TT-038 Bild- und Datenquellen-Lizenz vor Veröffentlichung prüfen
+
+**Wann nutzen (Trigger):** Vor der Veröffentlichung einer Mediengrafik müssen Bild- und Datenquellen-Lizenzen sowie die Kennzeichnungspflicht für KI-Bilder geprüft werden. (Quelle: research/11 Kapitel 6 "Image Generation Protocols" §50 EU AI Act; Quelle: research/10 Kapitel 7 Grafik-Konzeption)
+**Strategisches Ziel:** Rechtssicher veröffentlichen — eine Freigabe-Checkliste abarbeiten, die Lizenzen von Bild- und Datenquellen klärt und KI-Bilder gemäß Kennzeichnungspflicht ausweist.
+**Hands-on Ergebnis:** Eine Lizenz-Freigabe-Checkliste für die Mediengrafik mit Status je Quelle und Kennzeichnungs-Hinweis.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Die Lizenz-Bausteine (zulässige Bildquellen, Datenlizenzen, KI-Kennzeichnungstext nach §50 EU AI Act) im Wissensordner hinterlegen.
+2. Den Agenten je verwendeter Quelle den Lizenzstatus und nötige Nachweise auflisten lassen.
+3. Bei KI-generierten Bildelementen den vorgeschriebenen Kennzeichnungs-Hinweis ergänzen lassen.
+4. Checkliste durch die Rechtsabteilung bzw. IW Medien prüfen lassen, bevor die Grafik veröffentlicht wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Rechte-Clearing-Assistent am IW Köln. TASK: Erstelle aus den Lizenz-Bausteinen im Wissensordner eine Freigabe-Checkliste für eine Mediengrafik. FORMAT: je Quelle (1) Lizenzstatus, (2) nötiger Nachweis; plus (3) Kennzeichnungs-Hinweis für KI-Bildelemente nach §50 EU AI Act. Erfinde keine Lizenzen; markiere unklare Fälle als zu prüfen."
+**Erwartetes Artefakt:** Eine Lizenz-Freigabe-Checkliste (Markdown) mit Status je Quelle und KI-Kennzeichnungs-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell unterstellt einer Quelle eine freie Lizenz, die nicht belegt ist → Lizenzstatus nur aus den hinterlegten Bausteinen; unklare Fälle als zu prüfen markieren.
+- KI-generierte Bildelemente werden ohne Kennzeichnung veröffentlicht → Kennzeichnungs-Hinweis nach §50 EU AI Act als Pflichtfeld setzen; Freigabe erst nach Rechtsprüfung.
+**Anschluss-Szenario:** S-TT-016
+
+### S-TT-039 Themen-Roadmap entlang Koalitionsvertrag und Legislaturagenda
+
+**Wann nutzen (Trigger):** Für proaktive Studien-PR soll eine Themen-Roadmap entstehen, die IW-Themen den Vorhaben aus Koalitionsvertrag und Legislaturagenda zuordnet. (Quelle: research/11 Kapitel 3 "Synchronization with the Political Calendar", Koalitionsverhandlungen, Kapitel 4)
+**Strategisches Ziel:** Studien-PR proaktiv vorpositionieren — IW-Themen mit den Vorhaben der Legislaturperiode synchronisieren, damit analytische Frameworks bereitstehen, bevor die Debatte aufflammt.
+**Hands-on Ergebnis:** Eine Themen-Roadmap, die Legislatur-Vorhaben mit passenden IW-Themen, vorhandenen Studien und Lücken verknüpft.
+**Eingesetzte Langdock-Fähigkeit(en):** Deep Research, Canvas
+**Vorgehen (4 Schritte):**
+1. Per Deep Research die relevanten Vorhaben aus Koalitionsvertrag und Legislaturagenda recherchieren.
+2. Den Vorhaben passende IW-Kompetenzfelder und vorhandene Studien zuordnen lassen.
+3. Lücken markieren, für die ein Kurzbericht oder Policy-Paper vorzubereiten wäre.
+4. Roadmap im Canvas finalisieren und mit der Redaktionsleitung abstimmen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Redaktionsplaner am IW Köln. TASK: Erstelle eine Themen-Roadmap entlang der Legislaturagenda. FORMAT: Tabelle mit Spalten Vorhaben (Koalitionsvertrag/Agenda), passendes IW-Kompetenzfeld, vorhandene Studie, Lücke. CONTEXT: proaktive Studien-PR, sachlich, überparteilich. Prüfe recherchierte Vorhaben gegen offizielle Quellen; kennzeichne Unsicheres."
+**Erwartetes Artefakt:** Eine Themen-Roadmap (Canvas-Tabelle) mit Vorhaben-Studien-Zuordnung und markierten Lücken.
+**Fallstricke (≥2 spezifisch):**
+- Deep Research gibt Vorhaben oder Fristen falsch wieder → Vor Nutzung gegen offizielle Quellen (Koalitionsvertrag, Bundestag) gegenprüfen.
+- Die Roadmap kippt in parteipolitische Bewertung der Vorhaben → Themen sachlich zuordnen; keine Wertung der politischen Agenda.
+**Anschluss-Szenario:** S-TT-008
