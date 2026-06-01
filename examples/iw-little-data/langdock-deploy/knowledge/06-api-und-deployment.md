@@ -373,7 +373,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Hands-on Ergebnis:** Ein Architektur-Briefing mit Queue-Strategie, Kostenabschätzung und Fehlerbehandlung für die IT.
 **Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory, Rate-Limit-Planung
 **Vorgehen (5 Schritte):**
-1. Kalkuliere die Anforderungen: 2.000 Requests bei 500 RPM Limit = mindestens 4 Minuten reine Verarbeitungszeit, in der Praxis mit Sicherheitspuffer 15–20 Minuten.
+1. Kalkuliere die Anforderungen: 2.000 Requests bei 500 RPM Limit = mindestens 4 Minuten reine Verarbeitungszeit, in der Praxis mit Sicherheitspuffer 15–30 Minuten.
 2. Beauftrage Little Data, eine Queue-Strategie zu entwerfen: Requests in Batches von 50 gruppieren, Exponential-Backoff bei HTTP 429 Fehlern, maximale 3 Retry-Versuche.
 3. Erstelle eine Kostenschätzung auf Basis der Prompt-Länge (Produktdaten-Input + 80-Wörter-Output) und des gewählten Modells.
 4. Plane den Monitoring-Punkt: Usage Export API am nächsten Morgen abfragen, um tatsächliche Token-Kosten mit der Schätzung zu vergleichen.
@@ -1151,7 +1151,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 
 ### S-API-057 Long-Polling für asynchrone Workflow-Status-Abfragen
 
-**Wann nutzen (Trigger):** Das Marketing-Team hat lange laufende KI-Workflows (z. B. Deep-Research-Läufe, die 5–20 Minuten dauern). Die Frontend-Applikation fragt alle fünf Sekunden per HTTP-Polling, ob der Workflow fertig ist — das erzeugt unnötige Last und führt zu Timeout-Fehlern bei langen Laufzeiten. (Quelle: S-API-004, S-API-050, sources/06 Workflow-Endpoints)
+**Wann nutzen (Trigger):** Das Marketing-Team hat lange laufende KI-Workflows (z. B. Deep-Research-Läufe, die 5–30 Minuten dauern). Die Frontend-Applikation fragt alle fünf Sekunden per HTTP-Polling, ob der Workflow fertig ist — das erzeugt unnötige Last und führt zu Timeout-Fehlern bei langen Laufzeiten. (Quelle: S-API-004, S-API-050, sources/06 Workflow-Endpoints)
 **Strategisches Ziel:** Das Long-Polling-Muster für asynchrone Langdock-Workflow-Status-Abfragen konzeptionieren, das unnötige Polling-Last eliminiert und Timeout-Probleme bei langen KI-Jobs löst.
 **Hands-on Ergebnis:** Ein Architekturkonzept für asynchrone Workflow-Status-Abfragen: Job-Submission-Pattern, Polling-Strategie, Timeout-Handling und Frontend-UX-Empfehlungen.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflows API, Advisory
@@ -1161,7 +1161,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 3. Designe die Frontend-UX für lange laufende Jobs: (a) sofortiges Progress-Feedback ("KI recherchiert — ca. 10 Minuten"); (b) nicht-blockierender UI-Zustand (Nutzer kann andere Aufgaben erledigen); (c) Push-Benachrichtigung oder E-Mail wenn der Job fertig ist (für Jobs über 5 Minuten).
 4. Behandle Fehler-Zustände: `FAILED`-Job → klare Fehlermeldung mit Job-ID für den Support; Network-Fehler während Polling → automatischer Retry ohne User-Eingriff; Browser-Tab-Wechsel → Polling läuft im Background-Worker weiter.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein Frontend-Architekt. Unsere KI-Workflows dauern 5–20 Minuten. Einfaches HTTP-Polling alle 5 Sekunden erzeugt Last und Timeouts. Erkläre: (1) das asynchrone Job-Submission-Pattern mit `job_id`, (2) exponentielles Backoff-Polling mit Timeout-Logik, (3) Frontend-UX für lange laufende Jobs, (4) Fehlerbehandlung für FAILED-Jobs und Network-Fehler. Liefere ein Architekturkonzept."
+> "Du bist ein Frontend-Architekt. Unsere KI-Workflows dauern 5–30 Minuten. Einfaches HTTP-Polling alle 5 Sekunden erzeugt Last und Timeouts. Erkläre: (1) das asynchrone Job-Submission-Pattern mit `job_id`, (2) exponentielles Backoff-Polling mit Timeout-Logik, (3) Frontend-UX für lange laufende Jobs, (4) Fehlerbehandlung für FAILED-Jobs und Network-Fehler. Liefere ein Architekturkonzept."
 **Erwartetes Artefakt:** Ein Architekturkonzept (Job-Submission-Pattern, Polling-Strategie, Frontend-UX, Fehlerbehandlung).
 **Fallstricke (≥2 spezifisch):**
 - Das Polling-Intervall bleibt konstant bei 5 Sekunden statt exponentiell zu wachsen — bei 100 gleichzeitigen aktiven Jobs macht das 1.200 überflüssige API-Calls pro Minute, die das Rate Limit belasten.
@@ -1463,11 +1463,11 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Eingesetzte Langdock-Fähigkeit(en):** Workflows API, Advisory
 **Vorgehen (4 Schritte):**
 1. Persistiere die Job-ID sofort: die bei Job-Start zurückgegebene `job_id` wird vor dem ersten Poll dauerhaft gespeichert — geht die Verbindung verloren, kann der Status später anhand der ID wieder abgefragt werden, statt den Job zu verlieren.
-2. Nutze adaptives Polling: erst nach 2 Sekunden, dann mit wachsendem Intervall (4, 8, max. 30 Sekunden), an die typische Laufzeit von 5–20 Minuten angepasst — kein Sekundentakt, der das Rate Limit belastet.
+2. Nutze adaptives Polling: erst nach 2 Sekunden, dann mit wachsendem Intervall (4, 8, max. 30 Sekunden), an die typische Laufzeit von 5–30 Minuten angepasst — kein Sekundentakt, der das Rate Limit belastet.
 3. Behandle Netzwerkfehler beim Polling separat: ein fehlgeschlagener Status-Poll bedeutet nicht, dass der Job fehlgeschlagen ist — Poll mit Backoff wiederholen, Job-Zustand bleibt serverseitig erhalten.
 4. Definiere Terminierung und UX: bei `COMPLETED`/`FAILED` stoppen; bei Überschreiten der Maximaldauer Timeout an den Nutzer melden; für Jobs über 5 Minuten Push-/E-Mail-Benachrichtigung statt offen gehaltenem Browser-Tab.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist ein Frontend-Architekt. Unser asynchroner Wettbewerbsreport läuft 5–20 Minuten; unser Polling-Skript fragt im Sekundentakt und verliert bei Netzwerkabbruch den Job. Erkläre robustes Async-Polling: (1) sofortige Job-ID-Persistenz, (2) adaptives Polling-Intervall, (3) Umgang mit Netzwerkfehlern ohne den Job zu verlieren, (4) Terminierung und Benachrichtigungs-UX. Liefere einen Polling-Leitfaden."
+> "Du bist ein Frontend-Architekt. Unser asynchroner Wettbewerbsreport läuft 5–30 Minuten; unser Polling-Skript fragt im Sekundentakt und verliert bei Netzwerkabbruch den Job. Erkläre robustes Async-Polling: (1) sofortige Job-ID-Persistenz, (2) adaptives Polling-Intervall, (3) Umgang mit Netzwerkfehlern ohne den Job zu verlieren, (4) Terminierung und Benachrichtigungs-UX. Liefere einen Polling-Leitfaden."
 **Erwartetes Artefakt:** Ein Polling-Leitfaden (Job-ID-Persistenz, adaptives Intervall, Netzwerk-Fehlerbehandlung, Terminierung).
 **Fallstricke (≥2 spezifisch):**
 - Die Job-ID wird nur im Browser-Speicher gehalten — bei Tab-Schließung oder Netzwerkabbruch ist der laufende Job nicht mehr abfragbar und gilt fälschlich als verloren.

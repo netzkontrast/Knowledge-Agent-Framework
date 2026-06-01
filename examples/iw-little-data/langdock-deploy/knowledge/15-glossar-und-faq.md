@@ -149,19 +149,19 @@
 
 ## Glossar — Wirtschaftsforschung und Politik-Kommunikation (IW-Domäne)
 
-(Nur etablierte, öffentlich belegbare Begriffe. IW-spezifische Detailangaben — exakte Formate, Frequenzen — mit „Stand: 2026-06 — über IW-Recherche zu verifizieren" markieren, NICHT erfinden.)
+(Nur etablierte, öffentlich belegbare Begriffe. Die IW-Publikationsformate sind gegen iwkoeln.de verifiziert (Quelle: iwkoeln.de, Stand Juni 2026) und können ohne Unsicherheits-Flag zitiert werden. Weiterhin gilt: nur belegbare Begriffe, NICHT erfinden. Registerhinweis: iwd ist allgemeinverständlich-redaktionell, während IW-Trends, IW-Report und Gutachten wissenschaftlich-empirisch sind.)
 
 **Drittmittel-Transparenz (Third-Party Funding Transparency):** Die offene Ausweisung externer Finanzierungsquellen einer Studie oder eines Projekts. Warum für die IW-Kommunikation relevant: stützt die Glaubwürdigkeit und beugt dem Vorwurf interessengeleiteter Forschung vor.
 
 **Gutachten (Expert Report):** Eine systematische wissenschaftliche Bewertung einer Frage, häufig im Auftrag erstellt. Warum für die IW-Kommunikation relevant: ein Format, dessen Kernaussagen für Presse und Politik verdichtet werden müssen.
 
-**iwd (Informationsdienst der deutschen Wirtschaft):** Das publizistische Medium des IW zur allgemeinverständlichen Aufbereitung wirtschaftlicher Themen. Warum für die IW-Kommunikation relevant: typisches Zielformat, um Forschungsergebnisse einem breiteren Publikum zugänglich zu machen. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**iwd (Informationsdienst der deutschen Wirtschaft):** Das redaktionelle Nachrichtenprodukt des IW (Web und Magazin) zur allgemeinverständlichen Aufbereitung wirtschaftlicher Themen. Warum für die IW-Kommunikation relevant: typisches Zielformat, um Forschungsergebnisse allgemeinverständlich einem breiteren Publikum zugänglich zu machen. (Quelle: iwkoeln.de, Stand Juni 2026)
 
-**IW-Kurzbericht (IW-Kurzbericht):** Ein kompaktes Publikationsformat des IW zur knappen Darstellung eines Forschungsergebnisses. Warum für die IW-Kommunikation relevant: dichte Quelle, aus der sich Meldungen und Posts ableiten lassen. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**IW-Kurzbericht (IW-Kurzbericht):** Eine kompakte Kurzanalyse des IW zu einem aktuellen Thema. Warum für die IW-Kommunikation relevant: dichte Quelle, aus der sich Meldungen und Posts ableiten lassen. (Quelle: iwkoeln.de, Stand Juni 2026)
 
-**IW-Report (IW-Report):** Ein ausführlicheres Publikationsformat des IW zur Darstellung von Analysen und Befunden. Warum für die IW-Kommunikation relevant: häufige Ausgangsbasis für Pressemitteilungen und iwd-Artikel. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**IW-Report (IW-Report):** Die empirische Analyse-Reihe des IW (etwa IW-Verteilungsreport oder IW-Arbeitsmarktfortschreibung) zur Darstellung von Analysen und Befunden. Warum für die IW-Kommunikation relevant: häufige Ausgangsbasis für Pressemitteilungen und iwd-Artikel. (Quelle: iwkoeln.de, Stand Juni 2026)
 
-**IW-Trends (IW-Trends):** Eine Publikationsreihe des IW für empirisch fundierte Beiträge zur wirtschaftlichen Entwicklung. Warum für die IW-Kommunikation relevant: liefert belastbare Datenpunkte für die Fachkommunikation. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**IW-Trends (IW-Trends):** Die wissenschaftliche Vierteljahresschrift des IW mit peer-orientierten, empirisch fundierten Fachbeiträgen zur wirtschaftlichen Entwicklung. Warum für die IW-Kommunikation relevant: liefert belastbare Datenpunkte für die Fachkommunikation. (Quelle: iwkoeln.de, Stand Juni 2026)
 
 **Neutralitätsanspruch (Claim to Neutrality):** Der Anspruch, Forschungsergebnisse sachlich und ohne parteipolitische Einfärbung darzustellen. Warum für die IW-Kommunikation relevant: prägt Tonalität und Formulierungsregeln aller nach außen gerichteten Texte.
 

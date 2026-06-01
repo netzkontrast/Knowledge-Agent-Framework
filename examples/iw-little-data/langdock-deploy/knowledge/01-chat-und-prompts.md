@@ -74,7 +74,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die vier PTCF-Slots explizit benennen: Persona, Aufgabe, Kontext, Format.
 2. Den Kontext-Slot mit den wenigen ergebnisbestimmenden Angaben füllen (Zielsegment, gewünschte Handlung).
 3. Den fertigen Prompt einmal testen und das Ergebnis gegen die Erwartung prüfen, bevor er geteilt wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Du bist B2B-Social-Media-Redakteur für ein DACH-SaaS. Aufgabe: Schreibe einen LinkedIn-Post zu [Thema]. Kontext: Zielgruppe Marketing-Entscheider, Ziel ein Klick auf [Asset]. Format: Hook in den ersten 40 Zeichen, max. 1.200 Zeichen, ein klarer CTA."
 **Erwartetes Artefakt:** Ein vier-teiliger PTCF-Prompt mit Platzhaltern, abgelegt für die Wiederverwendung.
 **Fallstricke (≥2 spezifisch):**
@@ -92,7 +92,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Zwei bis drei vorbildliche Beispiele auswählen, die den Zielton exakt treffen.
 2. Die Beispiele dem Prompt voranstellen und das Muster benennen ("schreibe im Stil dieser Beispiele").
 3. Bei mehr als drei Beispielen die Sammlung in einen Wissensordner auslagern, statt den Prompt zu überladen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Markenredakteur. Aufgabe: Schreibe drei Betreffzeilen im Stil der folgenden Beispiele. Kontext: [drei Beispiel-Betreffzeilen]. Format: maximal 50 Zeichen, gleiche Tonalität wie die Beispiele."
 **Erwartetes Artefakt:** Ein Few-Shot-Prompt mit eingebetteten Referenzbeispielen.
 **Fallstricke (≥2 spezifisch):**
@@ -110,7 +110,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die wirklich unveränderlichen Vorgaben sammeln (Sprache, Rolle, Formatpräferenzen).
 2. Diese als Custom Instructions hinterlegen, die bei jedem Chat-Start greifen.
 3. Dynamische, projektbezogene Fakten bewusst dem Memory bzw. dem jeweiligen Prompt überlassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: nüchterner DACH-Marketer. Aufgabe: Lege meine Custom Instructions fest. Kontext: Antworte stets auf Deutsch, mit Fachbegriffen englisch in Klammern, ohne Floskeln. Format: kurze Bestätigung der gespeicherten Regeln."
 **Erwartetes Artefakt:** Ein dokumentierter Custom-Instructions-Block mit getrennter Memory-Notiz.
 **Fallstricke (≥2 spezifisch):**
@@ -128,7 +128,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die Aufgabe als Routine- oder als Anspruchsaufgabe einordnen.
 2. Für Routine ein günstiges Modell (z. B. Gemini 3.5 Flash) wählen, für markenkritische Texte ein stärkeres (z. B. Sonnet 4.6 oder Opus 4.8).
 3. Den Auto-Mode nur für unkritische Einzelanfragen nutzen und ab hohem Volumen ein Modell fest pinnen, um Kostenvarianz zu kontrollieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: KI-Kosten-Berater. Aufgabe: Empfiehl mir ein Modell für [Task]. Kontext: Stand Mai 2026, Aufgabe ist markenkritisch / Routine. Format: eine Empfehlung mit kurzer Begründung und Kosten-Hinweis."
 **Erwartetes Artefakt:** Eine Modell-Empfehlung mit Begründung (Detailtiefe siehe 07-modelle-und-kosten).
 **Fallstricke (≥2 spezifisch):**
@@ -146,7 +146,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Den Rechercheauftrag präzise eingrenzen (Wettbewerber, Zeitraum, Leitfragen).
 2. Den Deep-Research-Modus starten und die asynchrone Laufzeit einplanen.
 3. Den Report auf belegte Aussagen prüfen und unbelegte Punkte als ungeprüft markieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Markt-Analyst. Aufgabe: Recherchiere die Positionierung von [drei Wettbewerbern]. Kontext: DACH-Markt, letzte zwölf Monate, Fokus auf Botschaft und Kanäle. Format: Tabelle je Wettbewerber plus Quellenliste mit URLs."
 **Erwartetes Artefakt:** Ein Deep-Research-Report mit Vergleichstabelle und Quellenangaben.
 **Fallstricke (≥2 spezifisch):**
@@ -164,7 +164,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die meistgenutzten Team-Prompts zusammentragen.
 2. Prüfen lassen, welche Taktiken bei der aktuellen Modell-Generation (z. B. Sonnet 4.6, GPT-5.2) obsolet oder kontraproduktiv sind.
 3. Eine rote Liste der zu entfernenden Hacks mit kurzer Begründung erstellen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: LLM-Forscher. Aufgabe: Prüfe unsere alten Prompts (anbei) auf veraltete Hacks. Kontext: Wir nutzen noch 'Take a deep breath' und übertriebenes 'Think step-by-step'. Welche dieser Taktiken sind für aktuelle Modelle nutzlos oder schädlich? Format: rote Liste mit technischer Begründung."
 **Erwartetes Artefakt:** Eine Liste veralteter Prompting-Mythen zum Entfernen aus den Templates.
 **Fallstricke (≥2 spezifisch):**
@@ -182,7 +182,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Den Anlass und das harte, messbare Ziel der Botschaft definieren (Context, Objective).
 2. Stil, Ton und Zielpublikum scharf festlegen (Style, Tone, Audience).
 3. Die exakte Ausgabestruktur vorgeben (Response) und im Canvas verfeinern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE, CO-STAR):**
 > "Context: Q3 verfehlt, Vorstand verunsichert. Objective: Vertrauen zurückgewinnen mit einem klaren Plan. Style: nüchternes Memo. Tone: sachlich-zuversichtlich. Audience: Geschäftsführung. Response: ein Absatz Lage, drei Maßnahmen, ein Ausblick."
 **Erwartetes Artefakt:** Ein CO-STAR-Entwurf für die Führungskommunikation.
 **Fallstricke (≥2 spezifisch):**
@@ -200,7 +200,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Den Quelltext einfügen und die Zielspalten benennen.
 2. Den Inline-Skill die Kernpunkte extrahieren und in die Tabellenstruktur überführen lassen.
 3. Für tabellarische Datendateien (CSV/JSON) auf den Data Analyst wechseln, nicht den Wissensordner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Strukturierungs-Assistent. Aufgabe: Überführe den folgenden Meeting-Text in eine Tabelle. Kontext: [Text]. Format: Spalten Thema, Entscheidung, Verantwortlich, Frist."
 **Erwartetes Artefakt:** Eine dreidimensionale Markdown-Tabelle mit den extrahierten Punkten.
 **Fallstricke (≥2 spezifisch):**
@@ -218,7 +218,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Das gemeinsame Briefing als Ausgangspunkt im Chat festhalten.
 2. Den Verlauf verzweigen und in jedem Ast genau eine Richtung konsequent ausarbeiten.
 3. Beide Äste anhand derselben Kriterien gegenüberstellen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Kampagnen-Stratege. Aufgabe: Entwickle aus diesem Briefing die Richtung 'emotionale Marke'. Kontext: [gemeinsames Briefing]. Format: Kernbotschaft, drei Maßnahmen, ein Risiko — für den späteren Vergleich mit der zweiten Richtung."
 **Erwartetes Artefakt:** Zwei vergleichbare Strategie-Skizzen aus einem Branch-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -236,7 +236,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die zu prüfende Aussage isolieren.
 2. Web Search oder den passenden Wissensordner zur Belegsuche nutzen.
 3. Die Aussage als belegt (mit Quelle) oder als ungeprüft kennzeichnen — niemals eine unbelegte Zahl als Fakt ausgeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Faktenprüfer. Aufgabe: Verifiziere die folgende Behauptung. Kontext: [Aussage], Verwendung in einer Pressemitteilung. Format: Urteil (belegt/ungeprüft), Quelle mit URL, ein Satz Begründung."
 **Erwartetes Artefakt:** Eine Fakten-Check-Notiz mit Quelle oder Ungeprüft-Markierung.
 **Fallstricke (≥2 spezifisch):**
@@ -255,7 +255,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Den Entwurf gezielt in einer zweiten Nachricht beanstanden: Ton, Länge oder einen konkreten Abschnitt benennen.
 3. Weitere Runden mit präzisen Ein-Punkt-Instruktionen durchführen ("Kürze Absatz 3 auf zwei Sätze") statt globaler Neufassung.
 4. Den finalen Stand in den Canvas übertragen und mit dem Split-Screen-Editor letzten Schliff geben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Senior-B2B-Texter. Schreibe einen 1.200-Wörter-Blogpost auf Basis des angehängten Interview-Transkripts. Zielgruppe sind DACH-Marketing-Entscheider; Tonalität nüchtern-fachlich. Format: Intro (150 W.), drei H2-Abschnitte, Fazit mit einem CTA."
 **Erwartetes Artefakt:** Ein fertig redigierter Blog-Post-Entwurf im Canvas, bereit für das interne Review.
 **Fallstricke (≥2 spezifisch):**
@@ -274,7 +274,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. E-Mail 1 (Awareness) anfordern und sofort auf Ton und Länge prüfen.
 3. E-Mail 2 und 3 im selben Chat anschließen und dabei explizit auf die Vorgänger-Mails referenzieren ("Baue auf der ersten E-Mail auf").
 4. Alle drei Entwürfe in einer Abschluss-Nachricht konsolidieren lassen: Tabelle mit Betreff, Preheader und Body.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist E-Mail-Copywriterin für B2B-SaaS. Schreibe E-Mail 1 einer dreiteiligen Nurture-Sequenz für den Launch von [Produkt]. Zielgruppe: Marketing-Ops-Manager, die noch kein Angebot angefordert haben. Tonalität: professionell-empathisch. Format: Betreffzeile (max. 50 Zeichen), Preheader (max. 90 Zeichen), Body max. 150 Wörter, ein CTA-Button-Text."
 **Erwartetes Artefakt:** Drei E-Mail-Entwürfe als konsolidierte Tabelle, importfertig für HubSpot oder Klaviyo.
 **Fallstricke (≥2 spezifisch):**
@@ -292,7 +292,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Den Blog-Post als Text einfügen oder die URL nennen und das Modell den Inhalt zusammenfassen lassen.
 2. LinkedIn-Post anfragen: Hook (erste 40 Zeichen), Body, CTA — in einer expliziten Format-Vorgabe.
 3. Im selben Chat den Newsletter-Teaser anfordern und auf denselben Inhalt referenzieren ("Nutze dieselbe Kernaussage wie oben").
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Media-Redakteur für ein DACH-B2B-Unternehmen. Extrahiere aus dem folgenden Blogpost den stärksten Insight und schreibe einen LinkedIn-Post. Zielgruppe: Marketing-Entscheider. Format: Hook (max. 40 Zeichen), drei kurze Absätze, ein CTA mit Link-Platzhalter. Max. 1.200 Zeichen gesamt."
 **Erwartetes Artefakt:** Ein fertiger LinkedIn-Post und ein zweisätziger Newsletter-Teaser.
 **Fallstricke (≥2 spezifisch):**
@@ -310,7 +310,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Den E-Mail-Body als Kontext einfügen und das Modell explizit nach fünf Triggern fragen: Neugier, Dringlichkeit, Nutzen, FOMO, persönliche Ansprache.
 2. Das Modell eine Tabelle (Trigger | Betreffzeile | Preheader | Begründung) ausgeben lassen.
 3. Die zwei schwächsten Varianten im selben Chat durch "Schärfere Version von Zeile X" ersetzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist E-Mail-Copywriter. Generiere 5 Betreffzeilen zum folgenden E-Mail-Text. Nutze die Trigger: Neugier, Dringlichkeit, direkter Nutzen, FOMO und persönliche Ansprache. Keine Ausrufezeichen, keine Spam-Wörter. Format: Tabelle mit Spalten Trigger, Betreffzeile (max. 50 Zeichen), Preheader (max. 90 Zeichen), Begründung."
 **Erwartetes Artefakt:** Eine Tabelle mit fünf testbaren Betreffzeilen-Varianten, direkt in das E-Mail-Tool übertragbar.
 **Fallstricke (≥2 spezifisch):**
@@ -329,7 +329,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Veränderliche Bestandteile durch Platzhalter ersetzen (z. B. `{{Thema}}`, `{{Zielgruppe}}`, `{{Kanal}}`).
 3. Den finalisierten Prompt in der Prompt Library unter dem richtigen Team-Ordner ablegen.
 4. Die Bibliothek im Team-Kickoff vorstellen und Feedback-Runde in 30 Tagen einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist B2B-Presseredakteur für den DACH-Markt. Schreibe eine Pressemitteilung zu {{Thema}}. Zielgruppe: {{Zielmedien}}. Hintergrund: {{Kontext}}. Format: Headline, Subline, Lead-Absatz (5 Sätze), Zitat CEO, Boilerplate-Platzhalter. Tonalität: sachlich, keine Superlative."
 **Erwartetes Artefakt:** Ein Satz von ≥5 abgelegten Prompts mit Variablen in der Team-Prompt Library, direkt per Klick aufrufbar.
 **Fallstricke (≥2 spezifisch):**
@@ -348,7 +348,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Rohtexte in einem neuen Chat zusammenfassen lassen: "Was sind die drei wichtigsten Erkenntnisse aus diesen Verläufen?"
 3. Das Modell eine WHAT-SO-WHAT-NOW-WHAT-Struktur erstellen lassen (Was war, warum relevant, was folgt daraus).
 4. Den Output als Basis für ein Board-Update-Slide oder ein Retrospektions-Dokument in Canvas finalisieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-Analytiker. Lies die folgenden Chat-Auszüge unserer letzten Kampagne [eingefügt]. Extrahiere drei zentrale Learnings, identifiziere das größte Risiko, das wir übersehen haben. Format: strukturiertes Memo mit drei Learnings, einem Risiko und zwei konkreten Empfehlungen für die nächste Kampagne."
 **Erwartetes Artefakt:** Ein strukturiertes Retrospektions-Memo mit benannten Learnings und konkreten Handlungsempfehlungen.
 **Fallstricke (≥2 spezifisch):**
@@ -366,7 +366,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die CSV-Datei anhängen oder eine vereinfachte Tabelle als Text einfügen (Cluster-Name, Volumen, Intent, Wettbewerb-Score).
 2. Das Modell bitten, die Cluster nach einem Priorisierungs-Framework zu sortieren (z. B. hohes Volumen + niedrige Competition + Bottom-of-Funnel).
 3. Eine kurze Begründung je Top-3-Cluster generieren lassen, die im Sprint-Planning direkt präsentiert werden kann.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Strategin. Hier sind meine Keyword-Cluster [Tabelle eingefügt]. Priorisiere die drei Cluster für den nächsten 4-Wochen-Sprint. Kriterien: (1) Suchvolumen >500, (2) Search-Intent = Commercial oder Transactional, (3) Keyword-Difficulty <60. Format: Tabelle mit Rang, Cluster-Name, Kernargument in einem Satz."
 **Erwartetes Artefakt:** Eine priorisierte Top-3-Cluster-Tabelle mit je einer Sprint-Begründung, sofort für Sprint-Planning nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -384,7 +384,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Web Search aktivieren und das Modell gezielt nach den Websites, aktuellen Kampagnen-Claims und LinkedIn-Präsenz der Wettbewerber suchen lassen.
 2. Die Ergebnisse in einer Vergleichstabelle strukturieren: Kernbotschaft, Kanal, sichtbare Schwäche.
 3. Eine "Was würde ich anders machen?"-Frage anfügen, um direkt Differenzierungs-Ansätze zu generieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wettbewerbs-Analytikerin. Recherchiere via Web Search die aktuelle Positionierung von [Wettbewerber A] und [Wettbewerber B] im DACH-Markt. Fokus: Hauptbotschaft auf der Website, aktive Kampagnen-Claims, LinkedIn-Frequenz. Format: Vergleichstabelle (Wettbewerber | Kernbotschaft | Kanal-Mix | erkennbare Schwäche) plus zwei Differenzierungs-Ansätze für uns."
 **Erwartetes Artefakt:** Eine einseite Wettbewerbs-Übersicht für das Meeting, mit URL-Belegen aus der Web Search.
 **Fallstricke (≥2 spezifisch):**
@@ -403,7 +403,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Beide Versionen einem Muttersprachler zeigen und Feedback dokumentieren.
 3. Für Schwiizerdütsch auf CH-Hochdeutsch + manuelle Dialekt-Überarbeitung umschwenken; für Bayerisch: explizite Beispieltexte als Few-Shot voranstellen.
 4. Den validierten Workflow als Hinweis-Note im Wissensordner festhalten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalkampagnen-Texterin. Schreibe einen Instagram-Post für einen Münchner Einzelhändler in lockerem bayerischen Ton. Hier sind zwei Referenztexte im Zielton: [Beispiel 1], [Beispiel 2]. Zielgruppe: Münchner*innen 25–40. Format: max. 120 Zeichen Text + drei passende Hashtags."
 **Erwartetes Artefakt:** Testversionen für mindestens zwei DACH-Regionen plus eine dokumentierte Entscheidung über Modell-Einsatz vs. manueller Überarbeitung.
 **Fallstricke (≥2 spezifisch):**
@@ -422,7 +422,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Das Format explizit vorgeben: Lage (2 Sätze), drei nummerierte Kernaussagen, eine Empfehlung, nächster Schritt.
 3. Zahlen und Quellenangaben im Chat prüfen und bei Bedarf im Dokument gegenchecken.
 4. Die finale Fassung in Canvas übertragen und für die Board-Folie formatieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist strategischer Analyst. Fasse den angehängten Bericht in eine Executive Summary zusammen. Zielgruppe: Geschäftsführung, die max. 90 Sekunden Lesezeit hat. Format: Lage (2 Sätze), drei nummerierte Kernaussagen (je max. 30 Wörter), eine Empfehlung, ein konkreter nächster Schritt."
 **Erwartetes Artefakt:** Eine Board-taugliche Executive Summary (max. 250 Wörter) als Canvas-Dokument.
 **Fallstricke (≥2 spezifisch):**
@@ -441,7 +441,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Konvergente Phase: die Ideen nach Kriterien (Budget-Realisierbarkeit, Differenzierungspotenzial, Zeit-to-Market) bewerten lassen.
 3. Die Top-3-Ideen per Chat-Branching parallel ausarbeiten lassen.
 4. Alle drei Kurzkonzepte in Canvas zusammenführen und als Entscheidungsvorlage exportieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kreativ-Strategin für B2B-Marketing. Generiere 10 Kampagnen-Ideen für das Thema [Thema] — ohne Selbstzensur, auch unkonventionelle Ansätze erlaubt. Zielgruppe: [Segment]. Format: nummerierte Liste, je Idee ein Satz Beschreibung. Keine Bewertung in diesem Schritt."
 **Erwartetes Artefakt:** Eine Entscheidungsvorlage mit 10 Ideen, einer Bewertungsmatrix und drei ausgearbeiteten Kurzkonzepten.
 **Fallstricke (≥2 spezifisch):**
@@ -459,7 +459,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Kommentare kategorisieren: Lob, Produktfrage, Beschwerde, Troll — und entsprechend an das Modell gruppiert übergeben.
 2. Den Wissensordner mit FAQ und Brand-Voice-Regeln verknüpfen, damit Produktantworten korrekt sind.
 3. Das Modell pro Kategorie einen Batch von Entwürfen erzeugen lassen; kritische Kommentare (Beschwerden, Trolle) immer manuell reviewen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Community-Managerin für eine DACH-B2B-Marke. Beantworte die folgenden fünf Kommentare (Typ: Produktfrage). Nutze den FAQ-Ordner für korrekte Informationen. Tonalität: freundlich-professionell, kein Jargon. Format: je Kommentar ein zweisätziger Antwort-Entwurf, nummeriert."
 **Erwartetes Artefakt:** Nummerierte Antwort-Entwürfe je Kommentar, direkt in die Social-Media-Plattform kopierbar.
 **Fallstricke (≥2 spezifisch):**
@@ -477,7 +477,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die Aufgabenphase diagnostizieren: kreatives Schreiben → Sonnet oder vergleichbares Frontier-Modell; strukturierte Ausgaben (JSON, Code) → Modell mit starker Instruktions-Folge-Kompetenz; Massenverarbeitung → Flash-Klasse.
 2. Im Langdock-Modell-Selektor das Modell wechseln und in der nächsten Nachricht explizit auf den bestehenden Kontext referenzieren.
 3. Eine kurze Team-Notiz im Wissensordner festhalten: welche Aufgabentypen welches Modell brauchen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Modell-Effizienz-Beraterin. Wir haben gerade auf [neues Modell] gewechselt. Kontext aus der bisherigen Session: [Zusammenfassung]. Jetzt benötige ich eine strukturierte JSON-Ausgabe der erarbeiteten Kampagnen-Parameter. Format: valides JSON-Objekt mit den Feldern campaign_name, target_segment, budget_eur, channels (Array)."
 **Erwartetes Artefakt:** Eine interne Modell-Wechsel-Daumenregel (max. eine Seite) plus ein konkreter Beispiel-Workflow für den täglichen Einsatz.
 **Fallstricke (≥2 spezifisch):**
@@ -496,7 +496,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Web Search für DACH-spezifische Quellen aktivieren (EU AI Act Art. 50, UWG, BetrVG).
 3. Die Liste nach Risiko-Schwere sortieren und je Kategorie einen menschlichen Verantwortlichen benennen.
 4. Die finale Liste im Wissensordner ablegen und in Custom Instructions referenzieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Governance-Beraterin für ein DACH-Unternehmen. Identifiziere Marketing-Aufgaben, die aus rechtlichen oder strategischen Gründen NICHT durch KI erledigt werden dürfen. Quellen: EU AI Act, UWG, Markenrecht. Format: nummerierte Liste, je Aufgabe eine Begründung (max. 2 Sätze) und ein benannter menschlicher Verantwortlicher."
 **Erwartetes Artefakt:** Eine "No-KI"-Leitlinie (5–10 Punkte) als abgelegtes Dokument im Wissensordner, verlinkbar in Onboarding-Materialien.
 **Fallstricke (≥2 spezifisch):**
@@ -515,7 +515,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Für jede Aufgabe einen Starter-Satz entwerfen, der Persona + Task + Kontext auf 1–2 Sätze komprimiert.
 3. Die Starter im Chat gegen den Agent testen und auf Eindeutigkeit prüfen.
 4. Die validierten Starter in die Agent-Konfiguration im Feld "Konversations-Starter" eintragen und dem Team vorstellen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Langdock-Konfigurationsexpertin. Entwirf 5 Konversations-Starter für unseren Brand-Guardian-Agent. Der Agent prüft Texte auf Marken-Compliance und schlägt Korrekturen vor. Jeder Starter soll eine typische Aufgabe in einem Satz beschreiben und den Nutzer zur Texteingabe auffordern. Format: nummerierte Liste, je Starter max. 2 Sätze."
 **Erwartetes Artefakt:** Fünf einsatzbereite Konversations-Starter im Agent-Konfigurationsfeld, die das Team ohne Einarbeitung sofort nutzen kann.
 **Fallstricke (≥2 spezifisch):**
@@ -525,7 +525,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 
 ### S-CP-026 Chain-of-Thought für komplexe strategische Analyse aktivieren
 
-**Wann nutzen (Trigger):** Eine mehrstufige Aufgabe — z. B. Priorisierung von vier Kampagnen-Optionen nach ROI, Machbarkeit und Brand-Fit — liefert oberflächliche Antworten, weil das Modell direkt zum Ergebnis springt.
+**Wann nutzen (Trigger):** Eine mehrstufige Aufgabe — z. B. Priorisierung von vier Kampagnen-Optionen nach ROI, Machbarkeit und Brand-Fit — liefert oberflächliche Antworten, weil das Modell direkt zum Ergebnis springt. (Quelle: 01-chat-und-prompts)
 **Strategisches Ziel:** Das Modell zwingen, seinen Denkweg sichtbar zu machen, damit die Direktorin den Schluss nachvollziehen und bei Bedarf an einem bestimmten Schritt eingreifen kann.
 **Hands-on Ergebnis:** Eine strukturierte Analyse mit sichtbarem Schritt-für-Schritt-Reasoning und einem begründeten Endergebnis.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Instruktions-Formulierung), Chat-Branching (alternative Denkwege)
@@ -534,7 +534,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Bewertungsdimensionen (ROI, Machbarkeit, Brand-Fit) mit Gewichtung vorab benennen, damit das Modell nicht selbst eine Hierarchie erfindet.
 3. Das Reasoning lesen und bei einem fehlerhaften Zwischenschritt direkt dort einhaken: "Schritt 2 ist falsch — korrigiere ab hier."
 4. Das Endergebnis als separaten Absatz vom Reasoning trennen lassen, damit die Präsentation ans C-Level sauber bleibt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Strategie-Analytikerin. Analysiere die vier Kampagnen-Optionen unten. Bewerte jede Dimension (ROI-Potenzial, Zeit-to-Market, Brand-Fit) nacheinander und zeige deine Überlegung je Schritt. Erst dann nenne die Empfehlung. Format: nummeriertes Reasoning je Option, darunter ein Fazit-Absatz."
 **Erwartetes Artefakt:** Eine nachvollziehbare Schritt-für-Schritt-Analyse mit begründetem Fazit, geeignet als Entscheidungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -553,7 +553,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Den @-Mention auf den Wissensordner mit den Brand-Voice-Guidelines setzen, damit das Modell gegen den offiziellen Standard prüft.
 3. Das Modell anweisen, Off-Brand-Stellen mit Zeilennummer und Begründung auszugeben — nicht pauschal umzuformulieren.
 4. Nur die markierten Stellen gezielt überarbeiten lassen; das Restdokument nicht ohne Grund anfassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Brand-Auditorin. Prüfe den angehängten Text gegen unsere Brand-Voice-Guidelines im @Wissensordner. Markiere jede Off-Brand-Passage mit Zeilennummer, erkläre in einem Satz warum, und schlage eine regelkonforme Alternativformulierung vor. Format: Tabelle mit Spalten Zeile, Original, Problem, Korrektur."
 **Erwartetes Artefakt:** Eine Audit-Tabelle mit Off-Brand-Stellen, Begründung und Korrekturen — direkt für das Freigabe-Meeting nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -563,7 +563,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 
 ### S-CP-028 Dokument-Analyse per Chat-Attachment: Vertragsklauseln extrahieren
 
-**Wann nutzen (Trigger):** Ein Agentur- oder Medienvertrag (PDF) soll vor dem internen Meeting auf für Marketing relevante Klauseln durchsucht werden — Laufzeiten, Exklusivitäten, Nutzungsrechte — ohne den Rechtstext vollständig zu lesen.
+**Wann nutzen (Trigger):** Ein Agentur- oder Medienvertrag (PDF) soll vor dem internen Meeting auf für Marketing relevante Klauseln durchsucht werden — Laufzeiten, Exklusivitäten, Nutzungsrechte — ohne den Rechtstext vollständig zu lesen. (Quelle: 01-chat-und-prompts)
 **Strategisches Ziel:** Relevante Klauseln schnell isolieren und in ein handlungsorientiertes Übersichtsdokument verdichten, ohne juristische Eigeninterpretation zu erzeugen.
 **Hands-on Ergebnis:** Eine Klauseln-Tabelle mit Fundstelle, Kurzinhalt und einem Hinweis auf eventuelle Rückfragen ans Rechtsteam.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (File-Attachment, PDF-Volltext-Modus statt RAG)
@@ -571,7 +571,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Das PDF als direkte Dateianlage in den Chat laden — nicht in den Wissensordner, damit das Modell den vollständigen Text liest statt Chunks zu retrieven.
 2. Die gesuchten Klausel-Kategorien explizit benennen (Laufzeit, Exklusivität, Nutzungsrechte, Haftung, Kündigungsfristen).
 3. Das Modell anweisen, fehlende oder unklare Klauseln explizit als "nicht gefunden — bitte Rechtsteam fragen" zu kennzeichnen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Vertragsanalystin für Marketing-Einkauf. Lies den angehängten Vertrag vollständig. Extrahiere alle Klauseln zu: Laufzeit, Exklusivität, Nutzungsrechte, Haftungsobergrenzen, Kündigungsfrist. Format: Tabelle mit Spalten Klausel-Typ, Fundstelle (Abschnitt/Seite), Kurzinhalt (max. 2 Sätze), Hinweis für Rechtsteam."
 **Erwartetes Artefakt:** Eine strukturierte Klauseln-Übersicht für das Meeting-Briefing, mit expliziten "Bitte prüfen"-Markierungen für unklare Stellen.
 **Fallstricke (≥2 spezifisch):**
@@ -590,7 +590,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. In einem neuen Chat das Exportdokument anhängen und ein Projekt-Briefing generieren lassen: Entscheidungen, offene Punkte, nächste Schritte.
 3. Das Briefing in den Projekt-Wissensordner laden, damit es für alle Teammitglieder abrufbar ist.
 4. Zukünftige Sessions mit "@Projekt-Ordner — hier ist der Stand" starten statt den Kontext mündlich zu wiederholen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Projektkoordinatorin. Lies den folgenden exportierten Chat-Verlauf unseres Rebranding-Sprints [eingefügt]. Erstelle ein strukturiertes Projekt-Briefing mit: getroffenen Entscheidungen (nummeriert), offenen Fragen (priorisiert), nächsten Schritten mit Verantwortlichen. Format: max. eine A4-Seite, Markdown."
 **Erwartetes Artefakt:** Ein Projekt-Briefing-Dokument im Wissensordner, das als Session-Einstieg für das gesamte Team dient.
 **Fallstricke (≥2 spezifisch):**
@@ -609,7 +609,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Diagnose auf einen einzigen Fehler eingrenzen: fehlende Persona, unklarer Task, zu wenig Kontext oder fehlendes Format.
 3. Nur das identifizierte Element ändern und die Ausgabe im selben Chat vergleichen — nicht mehrere Elemente gleichzeitig ändern.
 4. Den reparierten Prompt mit Fehlerursache als Notiz in der Prompt-Bibliothek ablegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prompt-Debugging-Expertin. Analysiere den folgenden Prompt [Prompt einfügen] und seine fehlerhafte Ausgabe [Ausgabe einfügen]. Identifiziere das schwächste PTCF-Element. Schlage nur eine gezielte Verbesserung vor — keine Komplett-Neufassung. Format: Diagnose (1 Satz), Schwaches Element (P/T/C/F), Korrektur-Vorschlag (max. 3 Sätze)."
 **Erwartetes Artefakt:** Ein reparierter Prompt mit dokumentierter Fehlerursache, abgelegt in der Prompt-Bibliothek als Lernbeispiel.
 **Fallstricke (≥2 spezifisch):**
@@ -627,7 +627,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Web Search aktivieren und das Modell nach G2/Capterra-Rezensionen, LinkedIn-Kommentaren und Fachmedien-Artikeln zu den Wettbewerbern suchen lassen.
 2. Das Modell die Quellen nach Sentiment kategorisieren lassen: Lob, Kritik, Neutral — und die meistgenannten Themen je Kategorie extrahieren.
 3. Eine "Differenzierungslücke"-Analyse anfordern: Wo kritisieren Kunden die Wettbewerber konsistent, wo sind wir stärker?
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marktforscherin. Recherchiere via Web Search die öffentlichen Kundenstimmen zu [Wettbewerber A] auf G2, Capterra und LinkedIn (letzte 6 Monate). Kategorisiere nach Sentiment (positiv/negativ/neutral). Identifiziere die drei häufigsten Kritikpunkte. Format: Tabelle Wettbewerber | Top-3-Lob | Top-3-Kritik | Differenzierungsansatz für uns."
 **Erwartetes Artefakt:** Eine Sentiment-Tabelle je Wettbewerber mit konkreten Differenzierungsempfehlungen für die eigene Positionierung.
 **Fallstricke (≥2 spezifisch):**
@@ -646,7 +646,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Regel-Empfehlung ableiten: Fachterminologie auf Englisch in Klammern, Ausgabe immer auf Deutsch, Prompt-Sprache = Ausgabe-Sprache.
 3. Für CH-spezifische Inhalte eine Variante mit Schweizer Orthografie (kein ß, "ss") und CH-Hochdeutsch-Ton testen.
 4. Den Entscheidungsbaum und die validierten Beispiel-Prompts in der Prompt-Bibliothek unter "Sprachstrategie DACH" ablegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DACH-Sprachstratege. Analysiere, ob ein Prompt auf Deutsch oder Englisch besser formuliert werden sollte für folgende Aufgabe: [Aufgabe]. Berücksichtige: Modell-Präferenz, Ziel-Tonalität, Ausgabe-Sprache. Format: Empfehlung (DE/EN) mit Begründung (max. 3 Sätze) und einem Beispiel-Prompt in der empfohlenen Sprache."
 **Erwartetes Artefakt:** Ein Entscheidungsbaum "Wann prompt ich auf Deutsch, wann auf Englisch" plus drei Beispiel-Prompts für Kerntasks, abgelegt in der Prompt-Bibliothek.
 **Fallstricke (≥2 spezifisch):**
@@ -664,7 +664,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die Daten als Tabelle oder CSV-Text in den Chat einfügen und zum Data Analyst wechseln.
 2. Den gewünschten Diagrammtyp und die Achsen explizit benennen (Zeitachse, Metrik, Farb-Encoding für Kanäle).
 3. Das generierte Diagramm herunterladen und mit einem Alt-Text versehen lassen (Barrierefreiheit, WCAG-konform, max. 125 Zeichen).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Data-Analyst. Erstelle aus der folgenden Tabelle [Tabelle einfügen] ein Balkendiagramm mit Python (matplotlib). X-Achse: Monate, Y-Achse: Leads, Farbkodierung nach Kanal (Blau=SEO, Orange=Paid, Grün=Social). Titel: 'Lead-Entwicklung Q1–Q2 2026'. Exportiere als PNG. Erstelle zusätzlich einen WCAG-konformen Alt-Text (max. 125 Zeichen)."
 **Erwartetes Artefakt:** Ein PNG-Diagramm zum Download und ein barrierefreier Alt-Text, direkt für Präsentationen und E-Mails nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -683,7 +683,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Templates mit geschweiften Klammern und aussagekräftigen Platzhalter-Texten versehen: `{{Zielgruppe: z.B. "DACH-Marketing-Entscheider"}}`.
 3. Für besonders fehleranfällige Workflows auf Agent-Forms umstellen: Pflichtfelder als separate Eingabemasken konfigurieren, die vor dem Absenden ausgefüllt sein müssen.
 4. Die fertigen Templates in der Bibliothek unter dem jeweiligen Team-Ordner ablegen und beim Onboarding einführen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prompt-Architektin. Erstelle ein wiederverwendbares Prompt-Template für LinkedIn-Posts mit Pflicht-Platzhaltern für: {{Thema}}, {{Zielgruppe}}, {{Kernbotschaft}}, {{CTA}}. Ergänze hilfreiche Beispielwerte in jedem Platzhalter. Format: fertiges Template mit Anleitung für das Team in max. 5 Sätzen."
 **Erwartetes Artefakt:** Drei abgelegte Templates mit Platzhaltern und Ausfüll-Anleitung, bereit für den Team-Rollout.
 **Fallstricke (≥2 spezifisch):**
@@ -702,7 +702,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Ergebnisse bewerten lassen nach: Einprägsamkeit, Differenzierung, Übersetzbarkeit ins Englische.
 3. Die Top-3 per Chat-Branching tiefer ausarbeiten: je zwei Variationen, eine Long- und eine Short-Version.
 4. Den finalen Kandidaten einer kurzen Plagiats-Prüfung unterziehen lassen (Web Search aktivieren, bekannte Slogans ausschließen).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Copywriter für Marken-Claims. Generiere 30 Taglines für [Produkt], Kernbotschaft: [ein Satz]. Teile auf in fünf Kategorien: Direkt/Klar, Metaphorisch, Provokant, Aspirational, Wortspiel — je 6 Varianten. Keine Bewertung in diesem Schritt. Format: nummerierte Liste nach Kategorie."
 **Erwartetes Artefakt:** Eine kategorisierte Liste von 30 Taglines plus drei ausgearbeitete Favoriten mit Begründung und Übersetzbarkeits-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -721,7 +721,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Stichpunkte in den Chat eingeben und das Modell anweisen, streng im Stil der Referenzen zu bleiben.
 3. Den ersten Entwurf auf generische Phrasen ("Ich freue mich sehr...", "In der heutigen schnelllebigen Zeit...") prüfen lassen und diese eliminieren.
 4. Maximal eine Überarbeitungsrunde mit konkreten Einzel-Instruktionen ("Erster Satz ist zu weich — stärker formulieren").
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Ghostwriter für unsere CEO. Formuliere aus diesen Stichpunkten [einfügen] einen LinkedIn-Post. Stil-Referenzen sind in @CEO-Voice-Ordner. Regeln: keine Emojis, kurze Absätze (max. 3 Sätze), konträrer Hook im ersten Satz, offene Frage am Ende. Verbiete Phrasen wie 'Ich freue mich' und 'In der heutigen Zeit'. Format: Post-Text, max. 350 Wörter."
 **Erwartetes Artefakt:** Ein LinkedIn-Post-Entwurf, der die CEO-Stimme authentisch trifft und ohne weitere Abstimmungsrunde abgesendet werden kann.
 **Fallstricke (≥2 spezifisch):**
@@ -739,7 +739,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Den gleichen Prompt in zwei Chat-Branches parallel mit zwei verschiedenen Modellen testen (z. B. Sonnet 4.6 vs. GPT-5.2).
 2. Wenn beide Modelle denselben Fehler machen → Prompt-Problem; wenn nur eines fehlt → Modell-Problem.
 3. Die Diagnose und den validierten Fix als Notiz im Wissensordner festhalten: Wann welches Modell für welchen Ton.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Qualitätsprüferin für KI-Outputs. Vergleiche die zwei angehängten Antworten auf denselben Prompt. Diagnostiziere: Ist der Fehler im Prompt (falscher Kontext/Format) oder modell-spezifisch (Tonalitäts-Tendenz)? Format: Diagnose (Prompt-Problem / Modell-Problem / beides), ein konkreter Lösungsvorschlag."
 **Erwartetes Artefakt:** Eine Diagnose-Notiz im Wissensordner: welche Tonalitätsprobleme Modell-Wechsel erfordern und welche Prompt-Reparaturen.
 **Fallstricke (≥2 spezifisch):**
@@ -758,7 +758,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die Fakten der Krise in einem Satz zusammenfassen und das Modell anweisen, ausschließlich auf diesen Fakten aufzubauen — keine spekulativen ETAs oder Versprechen.
 3. Parallel in Canvas drei Formate generieren: kurzes LinkedIn-Statement, Presseentwurf, interne Mitarbeiter-E-Mail.
 4. Alle drei Entwürfe vor dem Versand vom Rechtsteam und dem C-Level freigeben lassen — KI-Output nie ungecheckt in der Krise versenden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikations-Managerin. Fakten: [ein Satz]. Nutze den @Krisenplaybook-Ordner als Rahmen. Erstelle drei Statements: (1) LinkedIn-Post max. 300 Zeichen, (2) Presseentwurf max. 150 Wörter, (3) Interne E-Mail max. 100 Wörter. Verboten: geschätzte Lösungszeiten, Schuldeingeständnisse, Superlative."
 **Erwartetes Artefakt:** Drei kanalgerechte Krisenstatements im Canvas, freigabe-fertig für das Rechtsteam.
 **Fallstricke (≥2 spezifisch):**
@@ -776,7 +776,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Das Briefing als Anhang laden und den @Wissensordner mit der rechtlichen Checkliste verknüpfen.
 2. Das Modell anweisen, gegen drei Dimensionen zu prüfen: inhaltliche Vollständigkeit (Produktbeschreibung, Do's/Don'ts, Deadlines), Brand-Voice (Tonalität, Sperrwörter), Rechtliches (Kennzeichnungspflicht-Hinweis, DSGVO-Datenschutzhinweis).
 3. Für jede Dimension den Status ausgeben lassen und bei "Fehlt" einen konkreten Ergänzungsvorschlag generieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Influencer-Marketing-Compliance-Prüferin. Prüfe das angehängte Briefing gegen drei Dimensionen: (1) Inhalt vollständig, (2) Brand-Voice konform (@Brand-Ordner), (3) DACH-Rechtliches (UWG § 5a Kennzeichnungspflicht, DSGVO-Datenschutzhinweis). Format: Tabelle mit Spalten Dimension, Status (OK/Fehlt/Korrektur), Ergänzungsvorschlag."
 **Erwartetes Artefakt:** Eine Compliance-Tabelle für das Briefing, die als Checkliste vor dem Versand abgehakt wird.
 **Fallstricke (≥2 spezifisch):**
@@ -795,7 +795,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Das Modell 15 Kandidaten generieren lassen, die zur Architektur passen: Kürze, Aussprechbarkeit, Strukturlogik (z. B. Verb-Substantiv, Adjektiv-Noun).
 3. Die Kandidaten gegen ein Bewertungs-Framework prüfen lassen: Passung zur Architektur, Einprägsamkeit, Übersetzbarkeit, keine bestehenden Domain-Konflikte (Web Search).
 4. Einen expliziten Hinweis einfordern, dass die finale Wahl eine DPMA/EUIPO-Markenrecherche erfordert — vor jeder internen Kommunikation.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Naming-Expertin. Generiere 15 Namenskandidaten für die neue Funktion [Kurzbeschreibung]. Nutze @Namenskonventions-Ordner als Ankerpunkt. Bewerte jeden Namen nach: Architektur-Passung, Einprägsamkeit (1–5), Übersetzbarkeit ins Englische (ja/nein). Format: Tabelle Name | Begründung | Score | Englische Version. Hinweis am Ende: Markenrechtsprüfung erforderlich."
 **Erwartetes Artefakt:** Eine bewertete Kandidaten-Tabelle mit klarer Empfehlung und explizitem Markenrechts-Vorbehalt.
 **Fallstricke (≥2 spezifisch):**
@@ -814,7 +814,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Das Modell für jede bestehende Kategorie bewerten lassen: noch relevant, veraltet, neu klassifizieren.
 3. Neue Risikobereiche ergänzen, die durch veränderte Technologie entstanden sind (z. B. KI-generierte Deepfakes in Kampagnen, autonome Personalisierung ohne menschliche Kontrolle).
 4. Die Formulierung "verboten" auf "menschliche Endfreigabe Pflicht" kalibrieren, wo möglich — restriktive Verbote ohne Begründung werden umgangen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Policy-Beraterin. Aktualisiere unsere bestehende No-KI-Liste [aus @Policy-Ordner]. Prüfe auf regulatorische Neuerungen (EU AI Act 2027-Meilensteine, BetrVG § 87). Ergänze neue Risikobereiche. Format: nummerierte Liste mit Kategorie, Begründung (max. 2 Sätze), Prozess (Verbot / menschliche Endfreigabe), Änderung seit letzter Version (neu/aktualisiert/unverändert)."
 **Erwartetes Artefakt:** Eine versionierte "No-KI"-Policy-Liste im Wissensordner, mit Änderungs-Tracking für das nächste interne Review.
 **Fallstricke (≥2 spezifisch):**
@@ -833,7 +833,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Das Modell die Rohdaten in drei KPI-Kategorien übersetzen lassen: Effizienz (Time-to-Brief), Qualität (Iterationen pro Entwurf), Kosten (Cost-per-Artefakt in EUR).
 3. Jeden KPI mit einem Vor-KI-Benchmark vergleichen lassen — ohne Benchmark ist der Wert bedeutungslos.
 4. Den KPI-Block in Canvas als Folie formatieren: Titel, Metrik, Delta, Daten-Quelle, Vorbehalt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Management-Consultant. Übersetze die folgenden Langdock-Nutzungsdaten [einfügen] in einen Board-Reporting-KPI-Block. Wähle max. 4 Metriken, die ein CFO versteht. Forme jede Metrik als: Bezeichnung | Wert | Vergleich Vorquartal | Interpretation (1 Satz). Füge einen Daten-Vorbehalt hinzu. Format: Markdown-Tabelle."
 **Erwartetes Artefakt:** Ein KPI-Block (max. eine Folie) mit vier Metriken in CFO-Sprache, Trend-Indikator und Daten-Vorbehalt, exportfertig für das Board-Deck.
 **Fallstricke (≥2 spezifisch):**
@@ -851,7 +851,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Die Rohdaten einfügen: Zweck des Visuals, Plattform (LinkedIn, Infografik, Print), Zielgruppe, die drei bis fünf Kernaussagen.
 2. Das Modell das Briefing in Designersprache übersetzen lassen — Layout-Logik (F-Pattern, Z-Pattern), Farb-Mood (warm/kalt, Energie-Level), Schrift-Hierarchie, Icon-Stil.
 3. Den Copy-Text für jedes visuelle Element verbindlich festlegen — so dass der Designer keinen inhaltlichen Spielraum mehr hat, nur gestalterischen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Creative Director. Übersetze das folgende Konzept [einfügen] in ein Grafiker-Briefing für eine LinkedIn-Infografik. Berücksichtige @Corporate-Design-Ordner. Format: Abschnitte — Ziel & Zielgruppe, Layout-Logik (Leserichtung), Farb-Mood (3 Adjektive), Typografie-Hierarchie, Icon-Stil, exakter Copy-Text je Element."
 **Erwartetes Artefakt:** Ein vollständiges Design-Briefing-Dokument im Canvas, das das Grafik-Team ohne Rückfragen umsetzen kann.
 **Fallstricke (≥2 spezifisch):**
@@ -870,7 +870,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Stufe 1 (Social Proof) allein anfragen und Ton sowie Frame festlegen — dieser Ton wird für alle drei Stufen verbindlich.
 3. Stufen 2 und 3 im selben Chat anschließen mit explizitem Eskalationshinweis ("mehr Dringlichkeit als Stufe 2, aber kein Spam-Ton").
 4. Alle drei Texte in Canvas nebeneinander stellen und auf Ton-Konsistenz sowie Dringlichkeits-Eskalation prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Funnel-Copywriter. Schreibe die erste Stufe unserer Retargeting-Sequenz für [Produkt]. Stufe 1 = Social Proof (Kundenstimmen + Vertrauen). Zielgruppe: [Segment], die die Produktseite besucht, aber nicht gekauft haben. Tonalität: warm, empathisch, kein Druck. Format: Primary Text (max. 125 Zeichen), Headline (max. 40 Zeichen)."
 **Erwartetes Artefakt:** Drei aufeinander aufbauende Ad-Copy-Sets mit konsistentem Ton und klar gestaffelter Dringlichkeit, importfertig für Meta Ads Manager.
 **Fallstricke (≥2 spezifisch):**
@@ -889,7 +889,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Für jeden Workflow einen konkreten Konversations-Starter entwerfen, der in einem Durchgang bearbeitbar ist (max. 30 Minuten).
 3. Die Meilensteine zeitlich staffeln: Tag 1 (erster Chat), Tag 3 (Agenten testen), Tag 7 (Workflow nachbauen), Tag 14 (eigenen Starter beitragen).
 4. Den Plan als Dokument im Onboarding-Wissensordner ablegen und als erster Konversations-Starter des Willkommens-Agents hinterlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Onboarding-Designerin. Erstelle einen 14-Tage-Onboarding-Plan für eine neue Marketing-Managerin, die Langdock noch nicht kennt. Meilensteine: Tag 1, 3, 7, 14. Je Meilenstein: eine Aufgabe (max. 30 min), ein konkreter Konversations-Starter, ein Erfolgskriterium. Format: strukturierte Tabelle, Markdown."
 **Erwartetes Artefakt:** Ein 14-Tage-Onboarding-Dokument im Wissensordner mit vier Meilensteinen, je einem Konversations-Starter und einem messbaren Erfolgskriterium.
 **Fallstricke (≥2 spezifisch):**
@@ -910,7 +910,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Prompt mit klarer Syntheseaufgabe abschicken: KI soll Übereinstimmungen und Widersprüche zwischen den Quellen explizit kennzeichnen.
 3. Ausgabe in den Dokument-Editor übertragen und die Executive Summary auf max. 400 Wörter kürzen.
 4. Abschließend im Chat per Follow-up fragen: „Welche Quelle ist für Behauptung X am stärksten belegt?" — zur Verifikation vor dem Meeting.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Strategieberaterin für Marketing-Direktionen. Synthetisiere die vier angehängten Dokumente zu einem Executive-Lagebild. Markiere explizit: drei Übereinstimmungen, zwei Widersprüche, eine Top-Handlungsempfehlung. Format: strukturierte Markdown-Tabelle plus ein Absatz Freitext-Empfehlung, max. 400 Wörter."
 **Erwartetes Artefakt:** Einseitiges Executive-Lagebild (Markdown) mit Quellen-Referenzen je Aussage, direkt für die Meeting-Vorbereitung nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -930,7 +930,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Vertrag als direkte Dateianlage hochladen (nicht in Wissensordner, da vollständiger Vertragstext für korrekte Interpretation nötig ist).
 2. Prompt mit konkreten Suchkategorien: Budget-Caps, Nutzungsrechte, Kündigungsfristen, Haftungsausschlüsse, Exklusivität.
 3. Ampelliste aus der KI-Ausgabe exportieren und als Briefing-Dokument an die Rechtsabteilung weiterleiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Vertragsanalystin mit Schwerpunkt Marketing-Recht. Analysiere den angehängten Vertrag. Extrahiere alle Klauseln zu: Budget-Freigaben, Nutzungsrechten, Kündigungsfristen und Exklusivität. Bewerte jede Klausel mit rot (kritisch), gelb (prüfen), grün (unproblematisch). Format: Tabelle mit Klauselnummer, Kurzfassung, Ampel, Ein-Satz-Risiko-Kommentar."
 **Erwartetes Artefakt:** Ampel-Klauselliste als Markdown-Tabelle — Briefing-Grundlage für die Rechtsabteilung, kein Ersatz für juristische Beratung.
 **Fallstricke (≥2 spezifisch):**
@@ -951,7 +951,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Alle Dateien in eine Chat-Session laden; CSV über den Daten-Analysten-Modus einlesen lassen.
 3. Vergleichstabelle generieren: Produkt, Preismodell, Einstiegspreis, Top-Tier-Preis, Besonderheiten.
 4. Follow-up-Prompt: „Formuliere drei Preis-Kommunikations-Argumente, die unsere Positionierung als Premium-Anbieter untermauern."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Pricing-Strategin. Vergleiche die angehängten Preisstrukturen von fünf Wettbewerbern mit unserem Preiskatalog in der CSV. Erstelle eine Vergleichstabelle und identifiziere unsere zwei größten Preisvorteile sowie einen potenziellen Schwachpunkt. Format: Markdown-Tabelle plus drei Bullet-Kommunikationsargumente."
 **Erwartetes Artefakt:** Wettbewerbs-Preistabelle plus drei salesfähige Kommunikationsargumente — direkt für Sales-Enablement-Materialien verwendbar.
 **Fallstricke (≥2 spezifisch):**
@@ -972,7 +972,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI bittet um Plain-Language-Zusammenfassung der für Marketing relevanten Pflichten.
 3. KI erstellt Checkliste mit Ja/Nein-Fragen für die geplante Kampagne.
 4. Offene Punkte als Frage-Katalog für die Rechtsabteilung exportieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Compliance-Beraterin für Marketing-Teams ohne juristisches Fachstudium. Fasse den angehängten Gesetzestext in max. 200 Wörtern zusammen. Erstelle dann eine Checkliste mit 5 Ja/Nein-Fragen, die unser Team vor Kampagnen-Launch beantworten muss. Format: Kurzfassung, dann nummerierte Checkliste, dann offene Fragen für den Anwalt."
 **Erwartetes Artefakt:** Dreistufiges Compliance-Dokument: Kurzfassung + Checkliste + Anwaltsfragen — kein Rechtsrat, aber strukturierte Grundlage für die Prüfung.
 **Fallstricke (≥2 spezifisch):**
@@ -993,7 +993,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI bewertet jede Sektion des Briefings gegen die Brand Guidelines: strategischer Fit, Zielgruppen-Definition, Tonalität, KPI-Klarheit.
 3. Ampel-Bewertung erzeugen: rot = Rückgabe nötig, gelb = Klärungsbedarf, grün = freigabebereit.
 4. Konkrete Rückfragen-Liste formulieren, die per E-Mail an die Agentur geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Creative-Direktorin und strategische Markenhüterin. Reviewe das angehängte Agentur-Briefing gegen unsere Brand Guidelines im Ordner. Bewerte jeden der sechs Abschnitte mit rot/gelb/grün und formuliere je eine konkrete Rückfrage für Abschnitte mit rot oder gelb. Format: Tabelle Abschnitt / Bewertung / Rückfrage, dann Gesamt-Empfehlung in einem Satz."
 **Erwartetes Artefakt:** Strukturiertes Review-Dokument mit Ampelmatrix und Rückfragen-Liste — direkt als E-Mail-Anhang an die Agentur versendbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1014,7 +1014,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Screenshots der Feature-Übersicht als Bilddateien anhängen (Vision-Modus).
 3. Feature-Matrix erstellen: Wettbewerber vs. eigenes Produkt, Spalten: Feature, Wettbewerber, Eigene Lösung, Unser Vorteil.
 4. Drei Konter-Argumente formulieren lassen: direkte Antworten auf die stärksten Wettbewerbs-Claims.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Produktmarketing-Strategin. Analysiere das neue Produkt des Wettbewerbers via Web Search und den angehängten Screenshots. Erstelle eine Feature-Matrix (Wettbewerber vs. unsere Lösung) und formuliere drei direkte Konter-Argumente für unseren Vertrieb. Format: Markdown-Tabelle Feature-Matrix, dann nummerierte Konter-Argumente mit je einem Beweis-Satz."
 **Erwartetes Artefakt:** Teardown-Dokument mit Feature-Matrix und Sales-Konter-Argumenten — direkt in Battle-Cards überführbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1034,7 +1034,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Rollen-Briefing eingeben: Tätigkeiten, Muss-Anforderungen, Team-Kontext, Gehaltsband (falls kommunizierbar).
 2. KI formuliert Entwurf unter Nutzung des Employer-Branding-Dokuments im Wissensordner.
 3. Review-Prompt: „Prüfe, ob die Sprache geschlechtsneutral und frei von Bias-Begriffen ist; schlage Alternativen vor."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Employer-Branding-Spezialistin. Verfasse eine Stellenbeschreibung für eine/n Content Strategist (B2B SaaS). Pflichtanforderungen: 3+ Jahre Erfahrung, SEO-Kenntnisse, Deutsch C2. Nutze unseren Kultur-Guide aus dem Wissensordner für den Kultur-Abschnitt. Format: Struktur mit Intro, Aufgaben, Anforderungen, Kultur, Datenschutzhinweis — max. 550 Wörter, geschlechtsneutrale Sprache."
 **Erwartetes Artefakt:** Stellenbeschreibung als Markdown-Dokument, direkt für LinkedIn und die Karriereseite nutzbar, inklusive DSGVO-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -1055,7 +1055,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI kategorisiert Kommentare in Themen-Cluster (z. B. Kommunikation, Tools, Führung, Work-Life).
 3. Sentiment-Analyse pro Cluster: Anteil positiver, neutraler, negativer Nennungen.
 4. Drei Handlungsempfehlungen ableiten lassen, priorisiert nach Häufigkeit und Sentiment-Intensität.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist People-Analytics-Beraterin. Analysiere die angehängte CSV mit 200 anonymisierten Freitext-Kommentaren aus unserer Mitarbeiterbefragung. Kategorisiere in max. 6 Themen-Cluster, berechne den Sentiment-Anteil je Cluster und leite drei priorisierte Handlungsempfehlungen ab. Format: Tabelle Cluster/Anzahl/Sentiment-Anteil, dann nummerierte Empfehlungen."
 **Erwartetes Artefakt:** Auswertungs-Report mit Clustering-Tabelle, Sentiment-Übersicht und Empfehlungen — direkt als Management-Folie verwertbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1076,7 +1076,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI extrahiert die Bewertungskriterien und gewichtet sie nach Punktzahl.
 3. Für jeden Pflichtabschnitt einen dedizierten Prompt abschicken — Antragsabschnitte sequenziell erarbeiten.
 4. Konsistenz-Check: KI prüft, ob alle Abschnitte kohärent sind und kein Widerspruch zwischen Budget- und Zielformulierung besteht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Fördermittel-Beraterin mit Erfahrung in EU-Digital-Programmen. Formuliere den Abschnitt 'Projektbeschreibung und Innovationsgehalt' für unseren Förderantrag. Orientiere dich strikt an den Bewertungskriterien im angehängten Ausschreibungs-PDF. Nutze das Unternehmensprofil aus dem Wissensordner als Grundlage. Format: Fließtext, max. 600 Wörter, förderkonformer Sprachstil."
 **Erwartetes Artefakt:** Ausformulierter Antragsabschnitt im Förder-Jargon, formatiert nach Vorgabe der Förderstelle — bereit zur abschließenden manuellen Prüfung.
 **Fallstricke (≥2 spezifisch):**
@@ -1097,7 +1097,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI entwirft Storyline-Struktur: Opening-Hook, Lage, Ergebnisse, Learnings, Ausblick, Call to Decision.
 3. Für jede Folie: Kernbotschaft in einem Satz, drei Sprech-Leitpunkte, Visualisierungsempfehlung.
 4. Sprechernotizen automatisch in Folgeabsatz ausgeben lassen (→ S-CP-060).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Executive-Kommunikationsberaterin für C-Level-Präsentationen. Entwirf eine Gliederung für eine 10-Folien-Board-Präsentation unserer Q2-Marketing-Ergebnisse. Für jede Folie: eine Kernbotschaft (max. 12 Wörter), drei Sprech-Leitpunkte, empfohlener Chart-Typ. Format: nummerierte Folienliste mit den drei Unterfeldern, kein Fließtext-Overhead."
 **Erwartetes Artefakt:** Präsentations-Blueprint (Markdown) mit Foliengliederung, Kernbotschaften und Visualisierungsempfehlungen — als Briefing für die Design-Agentur oder als Grundlage für die eigene Erstellung nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1117,7 +1117,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Tech-Spec-PDF anhängen und Brand-Voice-Wissensordner per @-Mention verknüpfen.
 2. Prompt: KI soll drei Textmodule in der Markensprache erzeugen — Tagline, Kurztext, Bullet-List.
 3. Review-Prompt: „Prüfe, ob alle drei Module dieselbe Kernbotschaft transportieren und kein technischer Jargon enthalten ist."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Product-Copywriterin. Übersetze das angehängte technische Feature-Spec-Dokument in drei Marketing-Textmodule in unserer Brand Voice (Wissensordner). Modul 1: Tagline (1 Satz, max. 12 Wörter). Modul 2: Feature-Beschreibung (3 Sätze, kein Fachjargon). Modul 3: 5 Nutzen-Bulletpoints für das Sales Deck. Format: drei benannte Abschnitte, direkt verwendbar."
 **Erwartetes Artefakt:** Drei fertige Textmodule im Marken-Ton — direkt in Website-CMS, Pressemitteilung und Sales-Deck einfügbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1137,7 +1137,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 1. Folien-Gliederung (aus S-CP-055 oder als eigenständiges Dokument) als Anhang laden.
 2. KI generiert für jede Folie strukturierte Sprechernotizen: Öffnungssatz → Kernpunkte → Übergangs-Satz.
 3. Notizen in den Dokument-Editor übertragen und Tonalität per Inline-Edit an den Präsentationsstil anpassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Executive-Speech-Coach. Schreibe Sprechernotizen für jede der 10 Folien der angehängten Präsentation. Je Folie: ein Öffnungssatz (zieht die Aufmerksamkeit), zwei bis drei Kernpunkte (je ein Satz), ein Übergangs-Satz. Format: nummeriert nach Folienzahl, je Folie als separater Block, max. 120 Wörter."
 **Erwartetes Artefakt:** Vollständige Sprechernotizen-Datei (Markdown) — direkt in PowerPoint-Notizfeld oder als separates Teleprompter-Dokument nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1158,7 +1158,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI formuliert konsistente FAQ-Antworten basierend auf dem vorhandenen Wissensordner-Inhalt.
 3. Neue Einträge im standardisierten Format (Frage / Antwort / Stand-Datum) ausgeben lassen.
 4. Einträge in das FAQ-Dokument im Wissensordner kopieren und Dokument neu indizieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagerin für Marketing-Teams. Formuliere FAQ-Antworten für die folgenden 5 Fragen basierend auf dem Wissensordner. Je Eintrag: Frage (wörtlich), Antwort (max. 3 Sätze), Stand-Datum (heute), Zuständige Person (Platzhalter). Format: nummerierte Liste im Markdown-FAQ-Format."
 **Erwartetes Artefakt:** Fünf neue FAQ-Einträge im standardisierten Markdown-Format — direkt in das Wissensordner-Dokument einfügbar und für RAG-Abruf optimiert.
 **Fallstricke (≥2 spezifisch):**
@@ -1179,7 +1179,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI generiert 15 Fragen: fünf Fachkompetenz, fünf Soft Skills, fünf Kulturfit.
 3. Für jede Frage ein Beispiel für eine starke und eine schwache Antwort erstellen lassen (Kalibrierungshilfe für Interviewer).
 4. Review-Prompt: „Prüfe, ob alle Fragen DSGVO-konform sind und keine unzulässigen persönlichen Angaben abfragen."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist HR-Spezialistin und Interview-Design-Expertin. Erstelle einen Interview-Leitfaden für die Stelle Content Strategist (Beschreibung im Wissensordner). 15 Fragen: 5 Fachkompetenz, 5 Soft Skills, 5 Kulturfit. Je Frage: die Frage selbst, ein Beispiel starke Antwort, ein Beispiel schwache Antwort. Format: nummerierte Liste mit drei Unterfeldern je Frage."
 **Erwartetes Artefakt:** Strukturierter Interview-Leitfaden (Markdown) mit Kalibrierungsbeispielen — direkt als Briefing-Dokument für alle Interviewer nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1200,7 +1200,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI bewertet jedes Zitat nach Relevanz für definierte Personas und kürzt es auf das Wesentliche (max. 2 Sätze).
 3. Kategorisierung: Zielgruppe (Enterprise/KMU/Mittelstand), Anwendungsfall (ROI, Ease of Use, Support, Onboarding).
 4. Einsatzort-Empfehlung: Homepage Hero, Landingpage, Sales Deck, Newsletter, Anzeige.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Proof-Strategin. Kuratiere die angehängten 20 Rohzitate für unser Marketing. Kürze jedes Zitat auf max. 2 Sätze, kategorisiere nach Zielgruppe (Enterprise/KMU) und Anwendungsfall (ROI/UX/Support) und empfehle je einen optimalen Einsatzort. Format: Tabelle mit Spalten: Originalzitat (gekürzt), Zielgruppe, Anwendungsfall, Einsatzort-Empfehlung."
 **Erwartetes Artefakt:** Kuratierter Social-Proof-Katalog als Markdown-Tabelle — direkt als Referenz für Texter, Designer und Sales nutzbar; im Wissensordner ablegbar für zukünftige Abruf-Nutzung.
 **Fallstricke (≥2 spezifisch):**
@@ -1221,7 +1221,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Jedes Beispiel mit identischer Struktur (Eingabe-Thema → fertiger Post) in den Prompt einbetten.
 3. Neue Aufgabe als vierten Block anhängen, nur mit dem Thema, und die KI den Post nach Muster vervollständigen lassen.
 4. Output gegen die drei Muster prüfen; bei Abweichung ein viertes Beispiel ergänzen, das den Fehler korrigiert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Media-Texterin für ein B2B-SaaS [Persona]. Hier drei Beispiele unseres Post-Schemas (Hook, 3-Satz-Story, CTA mit Frage) [Context: 3 vollständige Vorher-Beispiele eingefügt]. Schreibe nach exakt diesem Schema einen neuen Post zum Thema 'Onboarding-Zeit halbiert' [Task]. Format: Hook (max. 12 Wörter), Story (3 Sätze), CTA als offene Frage [Format]."
 **Erwartetes Artefakt:** Wiederverwendbarer Few-Shot-Prompt in der Prompt-Bibliothek, der pro Aufruf einen schema-treuen Post liefert.
 **Fallstricke (≥2 spezifisch):**
@@ -1242,7 +1242,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, zuerst die Daten zu interpretieren, dann Annahmen zu listen, dann Optionen zu vergleichen — Schritt für Schritt.
 3. Erst nach der Kette die finale Allokation als Tabelle ausgeben lassen.
 4. Die Annahmen-Liste manuell gegenprüfen; bei falscher Prämisse gezielt nachfassen statt den ganzen Prompt zu wiederholen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Performance-Marketing-Analystin [Persona]. Analysiere die angehängte Kanal-Performance-CSV des Vorjahres [Context]. Denke in dieser Reihenfolge laut: 1) Was sagen die Daten zu CAC je Kanal? 2) Welche Annahmen triffst du für Q3? 3) Welche Trade-offs hat eine Umschichtung? Erst danach gib eine Budget-Allokation [Task]. Format: nummerierte Denkschritte, dann Tabelle Kanal/Budget/Begründung [Format]."
 **Erwartetes Artefakt:** Budget-Empfehlung mit dokumentierter Argumentationskette als Entscheidungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1264,7 +1264,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 3. Variable Stellen durch {{platzhalter}} ersetzen und für jeden Platzhalter einen erklärenden Beispieltext setzen.
 4. Vorlagen nach Kategorie taggen und gezielt für die Team-Gruppe freigeben.
 5. Quartalsweisen Review-Termin setzen, um veraltete Vorlagen zu entfernen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prompt-Bibliothekarin [Persona]. Überführe meinen folgenden Chat-Prompt in eine wiederverwendbare Vorlage [Context: Prompt eingefügt]. Identifiziere alle situationsabhängigen Stellen und ersetze sie durch sprechende Variablen im Format {{name}} [Task]. Format: fertige Vorlage plus Tabelle aller Variablen mit erklärendem Platzhaltertext [Format]."
 **Erwartetes Artefakt:** Kategorisierte, freigegebene Prompt-Bibliothek mit variablenbasierten Vorlagen.
 **Fallstricke (≥2 spezifisch):**
@@ -1285,7 +1285,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Für Variante A eine fachliche Rolle plus Fachpublikum definieren, für Variante B eine nahbare Rolle plus KMU-Publikum.
 3. Beide Varianten in separaten Branches erzeugen, um sie direkt zu vergleichen.
 4. Tontreffer prüfen und die bessere Rolle als Memory-Eintrag oder Vorlage sichern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist eine erfahrene Fachjournalistin für IT-Sicherheit, die für CISOs schreibt [Persona]. Formuliere den folgenden Kerntext für dieses Publikum um: nüchtern, faktendicht, ohne Werbefloskeln [Context: Kerntext eingefügt] [Task]. Format: ein Absatz, max. 120 Wörter, keine Ausrufezeichen [Format]."
 **Erwartetes Artefakt:** Zwei tonal unterschiedliche Fassungen desselben Inhalts, vergleichbar nebeneinander.
 **Fallstricke (≥2 spezifisch):**
@@ -1306,7 +1306,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, ausschließlich die Tabelle auszugeben, ohne Vor- oder Nachtext.
 3. Bei leeren Feldern eine feste Markierung ('[fehlt]') vorgeben statt Erfindungen zuzulassen.
 4. Ergebnis in den Editor übernehmen und Spaltenkonsistenz prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kampagnen-Koordinatorin [Persona]. Strukturiere die folgenden Kampagnen-Notizen [Context: Notizen eingefügt] in eine Tabelle [Task]. Spalten in exakt dieser Reihenfolge: Kampagne, Kanal, Startdatum, Verantwortlich, Status. Gib NUR die Tabelle aus, ohne Einleitung. Fehlende Werte als '[fehlt]' markieren [Format]."
 **Erwartetes Artefakt:** Weiterverarbeitbare Markdown-Tabelle mit fixen Spalten.
 **Fallstricke (≥2 spezifisch):**
@@ -1327,7 +1327,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Modell wählen, das für strukturierte Ausgaben bekannt stabil ist.
 3. KI anweisen, ausschließlich gültiges JSON ohne umgebenden Text auszugeben.
 4. Output gegen das Schema validieren, bevor er in den Workflow geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Daten-Strukturiererin [Persona]. Extrahiere aus dem folgenden Lead-Text die Felder [Context: Text eingefügt] [Task]. Gib AUSSCHLIESSLICH gültiges JSON nach diesem Schema aus: {\"name\": string, \"firma\": string, \"interesse\": string, \"prioritaet\": \"hoch|mittel|niedrig\"}. Kein Text vor oder nach dem JSON [Format]."
 **Erwartetes Artefakt:** Schema-konformes JSON-Objekt für die Workflow-Übergabe.
 **Fallstricke (≥2 spezifisch):**
@@ -1348,7 +1348,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Genau eine Dimension pro Runde ändern lassen (Länge, Nutzenversprechen, Tonfall).
 3. Nach jeder Runde bewerten, ob die Änderung das Ziel näher bringt.
 4. Beste Fassung sichern und den Verfeinerungspfad als Notiz festhalten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Conversion-Texterin [Persona]. Hier die aktuelle Headline-Variante: 'Software, die Zeit spart' [Context]. Behalte das Nutzenversprechen, mache sie aber konkreter und unter 30 Zeichen [Task]. Format: 3 überarbeitete Varianten mit Zeichenzahl [Format]."
 **Erwartetes Artefakt:** Finale Headline plus dokumentierter Verfeinerungspfad.
 **Fallstricke (≥2 spezifisch):**
@@ -1369,7 +1369,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Diese als explizite Verbotsliste in einen wiederverwendbaren Prompt-Baustein gießen.
 3. Baustein an Schreibaufgaben anhängen und Output gegen die Liste prüfen.
 4. Liste laufend erweitern, wenn neue Muster auffallen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Markentexterin mit Hang zu klarer Sprache [Persona]. Schreibe eine Produkt-Einleitung für unser Analytics-Tool [Context] [Task]. Verboten: 'in der heutigen Welt', 'nahtlos', 'revolutionär', 'Game-Changer', Dreierfiguren wie 'schneller, smarter, besser', leere Superlative. Format: 3 Sätze, konkret, mit einer überprüfbaren Aussage [Format]."
 **Erwartetes Artefakt:** Floskelfreier Text plus wiederverwendbarer Negativlisten-Baustein.
 **Fallstricke (≥2 spezifisch):**
@@ -1390,7 +1390,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, je Zelle eine kurze Begründung statt nur 'ja/nein' zu liefern.
 3. Bei faktischen Angaben (Preis, Integrationen) auf Web-Suche bestehen und Quelle nennen.
 4. Matrix im Editor finalisieren und unsichere Felder markieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist MarTech-Analystin [Persona]. Vergleiche die drei genannten Marketing-Automation-Tools [Context: Namen eingefügt] [Task]. Kriterien als Spalten: DSGVO-Hosting, CRM-Integrationen, Preis pro Sitz, Lernkurve. Je Zelle ein kurzer Begründungssatz; bei Fakten Quelle via Web-Suche nennen. Format: Markdown-Matrix [Format]."
 **Erwartetes Artefakt:** Begründete Vergleichsmatrix als Entscheidungsgrundlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1411,7 +1411,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Aus dieser Fassung den Ein-Absatz ableiten lassen, damit die Kernaussage stabil bleibt.
 3. Aus dem Absatz den Ein-Satz-Teaser ableiten.
 4. Alle drei Stufen gegenlesen, ob die zentrale Botschaft durchgängig identisch ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Strategie-Redakteurin [Persona]. Hier unser Quartalsreport als Anhang [Context]. Erstelle eine Summarization-Ladder in drei Stufen, jede aus der vorigen abgeleitet [Task]: 1) eine Seite fürs Team, 2) ein Absatz fürs Management, 3) ein Satz als Newsletter-Teaser. Format: drei klar getrennte Blöcke mit Überschrift [Format]."
 **Erwartetes Artefakt:** Drei abgestufte, in der Kernaussage konsistente Zusammenfassungen.
 **Fallstricke (≥2 spezifisch):**
@@ -1433,7 +1433,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 3. Eine Komponente isoliert ändern und Output erneut erzeugen.
 4. Wiederholen, bis der Output passt, und die wirksame Änderung notieren.
 5. Reparierten Prompt mit Versionsnotiz in die Bibliothek zurückspeichern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prompt-Engineering-Coach [Persona]. Hier mein Prompt und der danebenliegende Output [Context: beides eingefügt]. Diagnostiziere, welche der vier PTCF-Komponenten den Fehler verursacht, und schlage genau eine isolierte Korrektur vor [Task]. Format: 1) Diagnose, 2) korrigierte Komponente, 3) reparierter Gesamt-Prompt [Format]."
 **Erwartetes Artefakt:** Reparierter Prompt mit Fehlerdiagnose und Versionsnotiz.
 **Fallstricke (≥2 spezifisch):**
@@ -1454,7 +1454,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Diese Liste vor der nächsten Runde erneut als Kontext setzen, damit das Modell darauf aufbaut.
 3. Bei Widerspruch die KI explizit auf die festgehaltene Entscheidung verweisen.
 4. Am Ende die kumulierte Entscheidungs-Liste als Briefing exportieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kampagnen-Strategin und führst Protokoll [Persona]. Fasse den bisherigen Stand unserer Session zusammen [Context: laufender Chat] [Task]: Liste nur die fest getroffenen Entscheidungen (Zielgruppe, Kanäle, Budget-Rahmen, Kernbotschaft). Format: nummerierte 'Bisher entschieden'-Liste, max. 8 Punkte [Format]."
 **Erwartetes Artefakt:** Lebendes Entscheidungs-Protokoll, das den Kontext über die Session stabil hält.
 **Fallstricke (≥2 spezifisch):**
@@ -1475,7 +1475,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, ausschließlich im Text Belegtes zu übernehmen und Fehlendes zu markieren.
 3. Bei kritischen Feldern ein wörtliches Beleg-Zitat aus der Quelle mitliefern lassen.
 4. Stichprobe der Extraktion gegen die Originalnotizen prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Daten-Extrahiererin [Persona]. Extrahiere aus den angehängten Messe-Notizen je Kontakt die Felder Name, Firma, Bedarf, nächster Schritt [Context] [Task]. Übernimm nur, was wörtlich belegt ist; Nicht-Genanntes als '[fehlt]'. Bei 'Bedarf' das Beleg-Zitat anfügen. Format: Tabelle mit Spalte 'Beleg' [Format]."
 **Erwartetes Artefakt:** Strukturierte Lead-Tabelle mit Beleg-Zitaten und markierten Lücken.
 **Fallstricke (≥2 spezifisch):**
@@ -1496,7 +1496,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, Fakten und Zahlen identisch zu halten und nur Ton und Satzbau anzupassen.
 3. Drei Fassungen erzeugen und gegen den Kerntext auf inhaltliche Treue prüfen.
 4. Je Kanal die passende Fassung freigeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Multi-Channel-Redakteurin [Persona]. Hier unser Ankündigungstext [Context: Text eingefügt] [Task]. Erzeuge drei Fassungen mit identischem Faktengehalt, nur das Register variiert: 1) förmliche Pressemitteilung (Sie), 2) lockerer Instagram-Post, 3) sachliche interne Notiz. Format: drei beschriftete Blöcke [Format]."
 **Erwartetes Artefakt:** Drei registerspezifische, inhaltlich identische Textfassungen.
 **Fallstricke (≥2 spezifisch):**
@@ -1517,7 +1517,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Je Kategorie eine feste Mindestanzahl Ideen verlangen.
 3. KI anweisen, Wiederholungen über Kategorien hinweg zu vermeiden.
 4. Beste Ideen je Kategorie markieren und für eine zweite Runde vertiefen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kreativ-Direktorin im Ideen-Modus [Persona]. Wir brauchen Kampagnen-Aufhänger für unseren Datenschutz-USP [Context] [Task]. Liefere 16 Ideen, je 4 pro Kategorie: emotional, rational, provokant, alltagsnah. Keine Idee darf inhaltlich doppeln. Format: vier Blöcke mit Überschrift, je 4 Stichpunkte [Format]."
 **Erwartetes Artefakt:** Kategorisierte Ideenliste mit erzwungener Bandbreite.
 **Fallstricke (≥2 spezifisch):**
@@ -1538,7 +1538,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Aus der Kritik konkrete Änderungen ableiten lassen.
 3. Überarbeitete Fassung erzeugen, die jede genannte Schwäche adressiert.
 4. Mängelliste gegen die finale Fassung prüfen, ob alle Punkte gelöst sind.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist strenge Lektorin [Persona]. Hier ein Blog-Entwurf [Context: Text eingefügt] [Task]. Schritt 1: Liste die drei größten Schwächen anhand Klarheit, Nutzenversprechen und Belegtheit. Schritt 2: Überarbeite den Text so, dass jede Schwäche behoben ist. Format: 'Mängel' (3 Punkte), dann 'Überarbeitete Fassung' [Format]."
 **Erwartetes Artefakt:** Überarbeiteter Text mit nachvollziehbarer Mängelliste.
 **Fallstricke (≥2 spezifisch):**
@@ -1559,7 +1559,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, Fachbegriffe strikt nach Glossar zu übersetzen.
 3. Slogans und Headlines gesondert transkreieren lassen, mit kurzer Begründung der Wahl.
 4. Glossar-Treue und Slogan-Wirkung prüfen, kritische Stellen markieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungs-Expertin [Persona]. Übersetze den angehängten Text ins Englische [Context: Text plus Glossar im Wissensordner] [Task]. Fachbegriffe strikt nach Glossar. Slogans NICHT wörtlich, sondern transkreiert mit gleicher Wirkung, je mit einem Satz Begründung. Format: zweispaltig DE/EN, Slogans separat markiert [Format]."
 **Erwartetes Artefakt:** Glossartreue Übersetzung mit transkreierten, begründeten Slogans.
 **Fallstricke (≥2 spezifisch):**
@@ -1580,7 +1580,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. KI anweisen, jede überprüfbare Aussage einzeln zu extrahieren.
 3. Je Aussage den Beleg-Status mit wörtlichem Quellen-Zitat oder dem Vermerk 'kein Beleg' liefern.
 4. Nicht belegte und widersprüchliche Aussagen manuell klären, bevor der Text freigeht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Fakten-Prüferin [Persona]. Hier ein Entwurf und das Quelldokument [Context: beides angehängt] [Task]. Extrahiere jede überprüfbare Aussage des Entwurfs und prüfe sie gegen die Quelle. Status je Aussage: belegt (mit Zitat), nicht belegt, widerspricht. Format: Tabelle Aussage / Status / Quellen-Zitat [Format]."
 **Erwartetes Artefakt:** Fakten-Prüfliste mit Beleg-Status und Quellen-Zitaten je Aussage.
 **Fallstricke (≥2 spezifisch):**
@@ -1601,7 +1601,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Text aus Sicht von Persona A bewerten lassen (was überzeugt, was schreckt ab).
 3. Denselben Text aus Sicht von Persona B bewerten lassen.
 4. Beide Sichten gegenüberstellen und Konflikte als Überarbeitungspunkte ableiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du schlüpfst in zwei Rollen nacheinander [Persona]. Bewerte die folgende Landingpage [Context: Text plus zwei Persona-Profile aus dem Wissensordner] [Task]. Rolle 1: technischer Entscheider. Rolle 2: budgetorientierter Einkauf. Je Rolle: zwei überzeugende und zwei abschreckende Stellen. Format: zwei beschriftete Blöcke, dann 'Konflikte' [Format]."
 **Erwartetes Artefakt:** Zwei-Personas-Bewertung mit abgeleiteten Überarbeitungspunkten.
 **Fallstricke (≥2 spezifisch):**
@@ -1622,7 +1622,7 @@ Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen e
 2. Die konkreten Fragen klar formulieren.
 3. KI anweisen, je Antwort Seitenzahl und wörtliches Zitat anzugeben.
 4. Bei kritischen Punkten die zitierte Stelle über den Page Viewer visuell gegenprüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dokumenten-Analystin [Persona]. Hier ein 40-seitiger Dienstleistungsvertrag als Anhang [Context]. Beantworte diese Fragen: 1) Welche Kündigungsfristen gelten? 2) Wer haftet bei Datenpannen? 3) Gibt es eine Preisanpassungsklausel? [Task]. Je Antwort: Aussage, Seitenzahl, wörtliches Zitat. Wenn nicht im Dokument: 'nicht geregelt'. Format: nummerierte Q&A [Format]."
 **Erwartetes Artefakt:** Q&A-Liste mit Seitenangaben und wörtlichen Zitaten je Antwort.
 **Fallstricke (≥2 spezifisch):**

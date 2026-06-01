@@ -19,7 +19,7 @@ Die zweite Säule bilden die Agents. Hierbei handelt es sich um konfigurierbare,
 
 Die dritte Säule umfasst die Workflows, welche event-basierte Automatisierung ermöglichen. Über einen visuellen Builder können komplexe, mehrstufige Prozesse abgebildet werden – vom Eingang eines Lead-Formulars über das automatisierte KI-Scoring bis hin zur CRM-Aktualisierung. Workflows agieren asynchron im Hintergrund und verbinden Langdock mit der bestehenden Marketing-Infrastruktur.
 
-Ergänzt wird das System durch die Integrations-Säule, die über 60 native Konnektoren (CRM, CMS, Analytics) sowie Unterstützung für das Model Context Protocol (MCP) verfügt. Die fünfte Säule, die Library, dient als zentrales Repository. Hier werden kuratierte Prompts, Skills und statische Wissensordner (Library Folders) verwaltet, um eine Single Source of Truth für Markenrichtlinien und Kampagnen-Briefings sicherzustellen.
+Ergänzt wird das System durch die Integrations-Säule, die 55+ native Integrationen (rund 754 Actions; exakte Zahl nicht offiziell dokumentiert) (CRM, CMS, Analytics) sowie Unterstützung für das Model Context Protocol (MCP) verfügt. Die fünfte Säule, die Library, dient als zentrales Repository. Hier werden kuratierte Prompts, Skills und statische Wissensordner (Library Folders) verwaltet, um eine Single Source of Truth für Markenrichtlinien und Kampagnen-Briefings sicherzustellen.
 
 ## Wann nutze ich welche Säule (Entscheidungs-Routing)
 
@@ -493,7 +493,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Ergänze die vier Ethik-Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit) mit je einem konkreten Marketing-Beispiel pro Säule.
 4. Formuliere den finalen Leitfaden im Canvas als einseitigen 1-Pager, der im Team-Wiki und im Onboarding-Material verankert wird.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist KI-Ethik-Beraterin für ein B2B-Marketing-Team. Erstelle einen praxistauglichen KI-Ethik-Kompass. Kontext: Team nutzt KI für Content, Analyse und Personalisierung; EU AI Act tritt 2026-2027 in Kraft. Format: 1-Pager mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit), je einem Praxis-Beispiel und einer Nie-KI-Liste mit fünf Punkten."
+> "Du bist KI-Ethik-Beraterin für ein B2B-Marketing-Team. Erstelle einen praxistauglichen KI-Ethik-Kompass. Kontext: Team nutzt KI für Content, Analyse und Personalisierung; EU AI Act ist relevant (Frist datums-sensitiv — gegen Primärquelle per Web-Suche verifizieren). Format: 1-Pager mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit), je einem Praxis-Beispiel und einer Nie-KI-Liste mit fünf Punkten."
 **Erwartetes Artefakt:** Ein einseitiger KI-Ethik-Leitfaden im Canvas mit vier Säulen, Praxis-Beispielen und einer verbindlichen "Nie-KI"-Liste für das Marketing-Team.
 **Fallstricke (≥2 spezifisch):**
 - Der Leitfaden ist zu abstrakt und gibt dem Team keine Handlungssicherheit → Jede Säule muss mit einem "Wenn ... dann ..."-Beispiel konkretisiert sein, das direkt aus dem eigenen Marketing-Alltag stammt.
@@ -615,7 +615,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-030 EU AI Act: Marketing-Use-Cases klassifizieren und Risiko-Inventar anlegen
 
-**Wann nutzen (Trigger):** Der Rechtsberater weist darauf hin, dass der EU AI Act ab 2027 für Marketing-Anwendungen relevant wird — das Team hat keine Übersicht, welche Use-Cases betroffen sind. (Quelle: A-13)
+**Wann nutzen (Trigger):** Der Rechtsberater weist darauf hin, dass der EU AI Act für Marketing-Anwendungen relevant wird (Frist datums-sensitiv — gegen Primärquelle per Web-Suche verifizieren) — das Team hat keine Übersicht, welche Use-Cases betroffen sind. (Quelle: A-13)
 **Strategisches Ziel:** Ein vollständiges AI-Use-Case-Inventar mit Risikoeinstufung (unacceptable / high / limited / minimal) nach EU-AI-Act-Kategorien erstellen, das als Compliance-Grundlage dient.
 **Hands-on Ergebnis:** Ein Canvas-Dokument mit einer Klassifikationstabelle aller aktiven Langdock-Use-Cases, Human-Oversight-Anforderungen pro Kategorie und einem 6-Monats-Aktionsplan für Hoch-Risiko-Fälle.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Deep Research
@@ -1132,7 +1132,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Eingesetzte Langdock-Fähigkeit(en):** Workflows / Integrations / Canvas / Agents
 **Vorgehen (4 Schritte):**
 1. Kartiere den aktuellen Martech-Stack: Welche Tools werden täglich genutzt? Wo entstehen manuelle Übergabeschritte zwischen Langdock und anderen Systemen (z. B. Langdock-Output → manuell in HubSpot)?
-2. Priorisiere die drei vielversprechendsten Integrationspunkte nach Zeitersparnis und technischer Machbarkeit; nutze die native Langdock-Integrations-Liste (über 60 Konnektoren) als Ausgangspunkt.
+2. Priorisiere die drei vielversprechendsten Integrationspunkte nach Zeitersparnis und technischer Machbarkeit; nutze die native Langdock-Integrations-Liste (55+ native Integrationen, rund 754 Actions; exakte Zahl nicht offiziell dokumentiert) als Ausgangspunkt.
 3. Baue Workflow 1 (Quick Win): Wenn HubSpot ein neues Lead-Formular-Submission erhält → Langdock generiert automatisch eine personalisierte Follow-up-E-Mail → zurück in HubSpot als Draft.
 4. Dokumentiere alle Integrationen im Canvas als Martech-Stack-Karte: Tool, Verbindungstyp (native/MCP/Webhook), Trigger, Langdock-Aktion, Output-Ziel, Owner und Wartungsaufwand.
 **Beispiel-Prompt (DE, PTCF):**
