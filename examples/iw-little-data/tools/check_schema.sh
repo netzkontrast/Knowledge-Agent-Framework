@@ -127,8 +127,10 @@ check_one() {
   # H3 scenario count threshold by kind:
   #   content files (00-10): ≥40 (pivot 2026-05-31: full source-grounded rebuild; current target 80).
   #   persona files (11/12): ≥20 (per build-plan Phase-2 gate — different scale than content scenarios).
+  #   IW supplement files (14/16/17): ≥20 (client-specific scenario packs).
   local szen_min=40
   if [ "$kind" = "persona" ]; then szen_min=20; fi
+  case "$name" in 14-*|16-*|17-*) szen_min=20 ;; esac
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
   if [ "$szen_count" -lt "$szen_min" ]; then
     echo "[FAIL] $name: scenario count = $szen_count (expected ≥$szen_min)"
