@@ -1193,6 +1193,388 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 - Kampagnenkalender ignoriert die unterschiedliche Bedeutung von Feiertagen für B2B vs. B2C → Im B2B-DACH-Kontext sind Feiertage vor allem als Ausspiel-Pausen (keine Mails an Feiertagen) und als Themen-Anlässe für inhaltlich passende Content-Pieces relevant, nicht als Sales-Push-Momente; Prompt muss diese B2B-Perspektive explizit einfordern.
 **Anschluss-Szenario:** S-MP-061
 
+### S-MP-061 ABM-Target-Account-Playbook für Tier-1-Konten aufbauen
+
+**Wann nutzen (Trigger):** Sales und Marketing einigen sich auf 15 strategische Target-Accounts für das kommende Halbjahr, aber es fehlt ein wiederholbares Playbook, das pro Account Recherche, Messaging und Touchpoint-Sequenz standardisiert. Julia soll den Prozess so aufsetzen, dass jeder Account in unter zwei Stunden statt einem ganzen Tag bespielt werden kann. (Quelle: sources/10 S-028; Quelle: A-05)
+**Strategisches Ziel:** Eine pipeline-orientierte ABM-Maschine etablieren, die aus den 15 Tier-1-Accounts innerhalb von sechs Monaten mindestens fünf qualifizierte Opportunities erzeugt — bei konsistenter, account-spezifischer Ansprache statt Gießkannen-Marketing.
+**Hands-on Ergebnis:** Ein ABM-Playbook-Template mit: Account-Research-Steckbrief (Trigger-Events, Buying-Center-Rollen), einer Messaging-Matrix (Pain → Lösung pro Rolle) und einer 5-Touchpoint-Sequenz (LinkedIn, E-Mail, Direct-Mail) als wiederverwendbarer Konversations-Starter.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Web Search, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Account-Research-Agent konfigurieren: per Web Search aktuelle Trigger-Events (Finanzierung, M&A, Führungswechsel, Stellenanzeigen) der letzten 30 Tage je Account erfassen.
+2. Buying-Center-Rollen (Economic Buyer, Champion, Technical Evaluator) aus dem Wissensordner-ICP ableiten und je Rolle einen spezifischen Pain dokumentieren.
+3. Messaging-Matrix im Agenten generieren: pro Rolle eine Kernbotschaft, die Trigger-Event und Lösungsangebot verknüpft.
+4. 5-Touchpoint-Sequenz mit Human-in-the-Loop-Freigabe je Account vor dem ersten Versand verankern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ABM-Stratege für ein DACH-B2B-SaaS-Unternehmen. Zielkonto: {{Unternehmen}}. Nutze Web Search für die drei aktuellsten Trigger-Events der letzten 30 Tage. Erstelle: (1) Einen Account-Steckbrief (Trigger-Events mit Datum, vermutetes Buying-Center). (2) Eine Messaging-Matrix mit je einer Kernbotschaft für Economic Buyer, Champion und Technical Evaluator. (3) Eine 5-Touchpoint-Sequenz (LinkedIn-Connect, E-Mail 1, LinkedIn-Interaktion, E-Mail 2, Direct-Mail) mit je max. 80 Wörtern. Formelles 'Sie', nur belegbare Account-Fakten mit Quellendatum."
+**Erwartetes Artefakt:** ABM-Playbook-Dokument pro Account (Steckbrief + Messaging-Matrix + Touchpoint-Sequenz) im Canvas — nach AE-Review direkt einsetzbar.
+**Fallstricke (≥2 spezifisch):**
+- Web Search liefert veraltete oder unbelegte Trigger-Events → Search-Query auf "letzte 30 Tage" begrenzen und jedes Event mit Quellen-URL und Datum ausweisen lassen; ohne Beleg kein Touchpoint-Bezug.
+- Messaging klingt für alle Rollen identisch → System-Prompt muss pro Rolle einen rollenspezifischen Pain aus dem ICP erzwingen; ein Einheitstext für das gesamte Buying-Center senkt die Antwortrate.
+**Anschluss-Szenario:** S-MP-062
+
+### S-MP-062 Demand-Gen-Content-Engine für kontinuierliche Pipeline aufsetzen
+
+**Wann nutzen (Trigger):** Die Pipeline schwankt stark, weil Content nur kampagnenweise und nicht systematisch produziert wird. Julia will eine Content-Engine etablieren, die aus jedem Pillar-Thema planbar Top-, Mid- und Bottom-of-Funnel-Assets ableitet und so einen stetigen Lead-Zufluss erzeugt. (Quelle: sources/10 S-001; Quelle: A-37)
+**Strategisches Ziel:** Eine wiederholbare Demand-Gen-Engine schaffen, die pro Quartal mindestens 30 % mehr Marketing-Qualified-Leads liefert als die bisherige Ad-hoc-Produktion — bei gleichbleibendem Redaktionsbudget.
+**Hands-on Ergebnis:** Ein Content-Engine-Blueprint mit: Pillar-Thema, daraus abgeleiteter Asset-Kaskade (1 Pillar-Guide, 4 ToFu-Blogposts, 2 MoFu-Whitepaper-Hooks, 1 BoFu-Demo-Landingpage) und einem 90-Tage-Produktionsrhythmus als Tabelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Pillar-Thema und ICP-Pains aus dem Wissensordner laden; Funnel-Stufen (ToFu/MoFu/BoFu) als Strukturraster definieren.
+2. Agent leitet aus dem Pillar-Thema die Asset-Kaskade ab und ordnet jedes Asset einer Funnel-Stufe und einem konkreten Suchintent zu.
+3. 90-Tage-Produktionsplan im Canvas erstellen: Asset, Funnel-Stufe, Owner, Veröffentlichungsdatum, primärer Conversion-CTA.
+4. Pro Asset einen Erfolgs-KPI definieren (ToFu: organische Sitzungen; MoFu: Whitepaper-Downloads; BoFu: Demo-Anfragen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Demand-Generation-Stratege für ein DACH-B2B-SaaS-Unternehmen. Pillar-Thema: '{{Thema}}'. Erstelle eine Content-Engine: (1) Ein Pillar-Guide-Konzept (Titel + 5 H2). (2) Vier ToFu-Blogpost-Titel mit Suchintent. (3) Zwei MoFu-Whitepaper-Hooks. (4) Eine BoFu-Demo-Landingpage-Botschaft. Ordne jedem Asset Funnel-Stufe und KPI zu. Liefere zusätzlich einen 90-Tage-Produktionsplan als Tabelle: Asset | Funnel | Owner | Datum | KPI. Kein Marketinggeschwurbel."
+**Erwartetes Artefakt:** Content-Engine-Blueprint im Canvas (Asset-Kaskade + 90-Tage-Produktionsplan-Tabelle) — als operative Grundlage für das Content-Team.
+**Fallstricke (≥2 spezifisch):**
+- Alle Assets häufen sich auf einer Funnel-Stufe (meist ToFu) → Prompt muss eine ausgewogene Verteilung über alle drei Stufen erzwingen; eine Engine ohne BoFu-Assets erzeugt Reichweite, aber keine Pipeline.
+- Produktionsplan ohne realistische Kapazitätsprüfung → Pro Woche maximal die tatsächlich verfügbare Redaktionskapazität einplanen; im Prompt die Wochenkapazität als harte Obergrenze vorgeben.
+**Anschluss-Szenario:** S-MP-063
+
+### S-MP-063 SEO-Topic-Cluster-Planung mit Keyword-Datenbasis
+
+**Wann nutzen (Trigger):** Eine Keyword-Recherche hat 1.000 Keywords ergeben, aber das SEO-Team weiß nicht, wie es daraus eine sinnvolle Pillar-Cluster-Architektur baut. Julia braucht eine semantisch saubere Themen-Cluster-Struktur als Basis für die nächste Content-Roadmap. (Quelle: sources/10 S-016; Quelle: 12 Q53)
+**Strategisches Ziel:** Eine topical-authority-fördernde Cluster-Architektur etablieren, die organischen Traffic in den priorisierten Themenfeldern innerhalb von zwei Quartalen messbar steigert — durch saubere Pillar-Cluster-Verlinkungslogik statt isolierter Einzelartikel.
+**Hands-on Ergebnis:** Eine Topic-Cluster-Map als CSV: jedes Keyword einem Pillar zugeordnet, mit Suchintent, kumuliertem Suchvolumen je Cluster und einer Priorisierung nach Aufwand/Wirkung.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst
+**Vorgehen (4 Schritte):**
+1. Keyword-CSV (Keyword, Suchvolumen, Difficulty) in den Data Analyst laden — niemals in den Wissensordner, da strukturierte Tabellendaten.
+2. Python-basiertes semantisches Clustering ausführen lassen: Gruppierung nach Themen-Ähnlichkeit und Suchintent, je Cluster ein Pillar-Begriff.
+3. Pro Cluster kumuliertes Suchvolumen berechnen und eine Aufwand-Wirkung-Priorisierung (hohes Volumen, niedrige Difficulty zuerst) erstellen.
+4. Ergebnis als angereicherte CSV exportieren — bereit für die Content-Roadmap-Planung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist SEO-Data-Analyst für ein DACH-B2B-Unternehmen. Ich lade eine CSV mit 1.000 Keywords (Spalten: Keyword, Suchvolumen, Difficulty) hoch. Clustere sie semantisch nach Themen und Suchintent. Weise jedem Cluster einen Pillar-Begriff zu, berechne das kumulierte Suchvolumen je Cluster und priorisiere nach Aufwand-Wirkung (hohes Volumen + niedrige Difficulty zuerst). Liefere eine angereicherte CSV mit Spalten: Keyword | Cluster | Pillar | Suchintent | Cluster-Volumen | Priorität."
+**Erwartetes Artefakt:** Topic-Cluster-Map als CSV (Keyword, Cluster, Pillar, Suchintent, Cluster-Volumen, Priorität) plus ein kurzes Summary der Top-5-Cluster nach Priorität.
+**Fallstricke (≥2 spezifisch):**
+- Suchvolumen-Spalte mit deutschen Tausenderpunkten oder gemischten Formaten lässt das Python-Skript abbrechen → Daten vor dem Upload bereinigen oder den Agenten anweisen, Formatierungsfehler robust zu behandeln.
+- Cluster ohne Suchintent-Differenzierung mischen Info- und Transaktions-Keywords → Prompt muss zwingend nach Suchintent je Keyword fragen, damit die spätere Content-Format-Zuordnung valide ist.
+**Anschluss-Szenario:** S-MP-064
+
+### S-MP-064 Paid-Social-Creative-Testing-Framework strukturieren
+
+**Wann nutzen (Trigger):** Das Performance-Team launcht Meta- und LinkedIn-Kampagnen, testet aber Creatives unstrukturiert und kann nie sagen, welche Variable (Hook, Visual, CTA) die Performance treibt. Julia braucht ein systematisches Test-Framework mit klarer Hypothesen-Logik. (Quelle: sources/10 S-030; Quelle: A-10)
+**Strategisches Ziel:** Die Creative-Test-Effizienz so steigern, dass innerhalb von vier Wochen ein statistisch belastbarer Gewinner pro Kampagne identifiziert wird und der durchschnittliche Cost-per-Lead um mindestens 15 % gegenüber dem Vortest sinkt.
+**Hands-on Ergebnis:** Ein Creative-Testing-Framework mit: 8 Creative-Varianten nach ICE-priorisierten Hypothesen (je 2 pro Variable: Hook, Visual-Konzept, CTA, Format) und einer Test-Matrix mit Erfolgs-KPI und Mindest-Stichprobengröße.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Canvas, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Aktuelle Top-Performer und ICP-Pains aus dem Wissensordner laden; je getestete Variable eine klare Hypothese formulieren ("Hook X schlägt Hook Y, weil …").
+2. Pro Variable zwei Creative-Varianten generieren, sodass jeweils nur eine Variable verändert wird (saubere Isolation).
+3. ICE-Priorisierung (Impact, Confidence, Ease) der acht Varianten im Canvas; Testreihenfolge festlegen.
+4. Test-Matrix definieren: Variante, Hypothese, Erfolgs-KPI (CTR, CPL), Mindest-Impressionen für Signifikanz.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Paid-Social-Stratege für ein DACH-B2B-SaaS-Unternehmen. Erstelle ein Creative-Testing-Framework für eine LinkedIn-Lead-Gen-Kampagne. Formuliere für vier Variablen (Hook, Visual-Konzept, CTA, Format) je eine Test-Hypothese und je zwei Varianten — so dass pro Test nur eine Variable variiert. Priorisiere die acht Varianten per ICE-Score. Liefere eine Test-Matrix: Variante | getestete Variable | Hypothese | Erfolgs-KPI | Mindest-Impressionen für Signifikanz. Formelles 'Sie' in allen Texten."
+**Erwartetes Artefakt:** Creative-Testing-Framework im Canvas (8 Varianten + ICE-Priorisierung + Test-Matrix) — als Briefing für das Paid-Team und den Designer.
+**Fallstricke (≥2 spezifisch):**
+- Mehrere Variablen gleichzeitig verändert → kein valides Lernen möglich; Prompt muss "pro Test nur eine Variable variieren" als harte Regel enthalten.
+- Test wird bei zu kleiner Stichprobe vorzeitig ausgewertet → Mindest-Impressionen für statistische Signifikanz vorab definieren; KI neigt dazu, "Gewinner" bei volatilen Kleinstdaten zu benennen.
+**Anschluss-Szenario:** S-MP-065
+
+### S-MP-065 E-Mail-Lifecycle-Mapping über alle Kundenphasen
+
+**Wann nutzen (Trigger):** Die E-Mail-Kommunikation ist über Jahre gewachsen und besteht aus isolierten Einzel-Flows ohne Gesamtlogik. Julia will eine vollständige Lifecycle-Map erstellen, die Lücken (z. B. fehlende Re-Onboarding-Strecke) und Überlappungen (mehrere Flows mailen denselben Kunden gleichzeitig) sichtbar macht. (Quelle: sources/10 S-057; Quelle: A-32)
+**Strategisches Ziel:** Eine durchgängige, überschneidungsfreie Lifecycle-Architektur etablieren, die jede Kundenphase mit genau einem primären Flow bedient und die E-Mail-bedingte Abmelderate unter 0,5 % pro Versand hält.
+**Hands-on Ergebnis:** Eine Lifecycle-Map (Mermaid-Flowchart im Canvas) über alle Phasen (Lead → Trial → Onboarding → Aktiv → At-Risk → Churn → Win-Back) mit identifizierten Lücken, Überlappungen und einem priorisierten Maßnahmen-Backlog.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Bestehende E-Mail-Flows und Auslöse-Bedingungen aus dem Wissensordner oder einem CRM-Export als Kontext laden.
+2. Lifecycle-Phasen definieren und jeden bestehenden Flow einer Phase zuordnen; Mehrfachbelegungen markieren.
+3. Mermaid-Flowchart im Canvas generieren: Phasen als Knoten, Flows als Kanten, Lücken rot markiert.
+4. Priorisierten Maßnahmen-Backlog ableiten: Welche Lücke schließen, welche Überlappung auflösen — nach Pipeline-Impact sortiert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lifecycle-Marketing-Architekt für ein DACH-SaaS-Unternehmen. Hier ist die Liste unserer bestehenden E-Mail-Flows mit Auslöse-Bedingungen: [Liste]. Erstelle: (1) Eine Zuordnung jedes Flows zu einer Lifecycle-Phase (Lead, Trial, Onboarding, Aktiv, At-Risk, Churn, Win-Back). (2) Ein Mermaid-Flowchart der gesamten Lifecycle-Map. (3) Eine Lückenanalyse: Welche Phase hat keinen Flow, welche Phase hat mehrere überlappende Flows? (4) Einen priorisierten Maßnahmen-Backlog nach Pipeline-Impact. Sachlich, keine generischen Best-Practice-Floskeln."
+**Erwartetes Artefakt:** Lifecycle-Map als Mermaid-Flowchart im Canvas plus Lückenanalyse und priorisierter Maßnahmen-Backlog.
+**Fallstricke (≥2 spezifisch):**
+- KI erfindet plausibel klingende Flows, die gar nicht existieren → Nur die explizit übergebene Flow-Liste als Faktengrundlage zulassen; im Prompt verbieten, Flows zu ergänzen, die nicht im Input stehen.
+- Überlappungen werden übersehen, weil Auslöse-Bedingungen unklar formuliert sind → Vor der Analyse jede Flow-Bedingung präzise dokumentieren; ohne klare Trigger-Logik ist die Überschneidungsprüfung wertlos.
+**Anschluss-Szenario:** S-MP-066
+
+### S-MP-066 Webinar-Funnel von Registrierung bis Sales-Übergabe konzipieren
+
+**Wann nutzen (Trigger):** Das Team veranstaltet regelmäßig Webinare, aber die Conversion von Teilnehmer zu Sales-Gespräch ist niedrig, weil der Funnel nach dem Event abreißt. Julia braucht einen durchgängigen Webinar-Funnel mit klarer Lead-Qualifizierung und Sales-Übergabe-Logik. (Quelle: sources/10 S-062; Quelle: sources/10 S-004)
+**Strategisches Ziel:** Den Webinar-Funnel so gestalten, dass aus jeder Veranstaltung mindestens 10 % der Teilnehmer in qualifizierte Sales-Gespräche überführt werden — durch verhaltensbasierte Post-Event-Segmentierung statt undifferenziertem Massenversand.
+**Hands-on Ergebnis:** Ein vollständiges Webinar-Funnel-Konzept: Registrierungs-Logik mit Qualifizierungsfragen, Pre-Event-Engagement-Sequenz, Post-Event-Segmentierung (anwesend/abwesend, engaged/passiv) und automatisierter Sales-Übergabe-Regel.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows (HubSpot Action), Canvas, Agenten
+**Vorgehen (5 Schritte):**
+1. Registrierungsformular-Logik definieren: zwei Qualifizierungsfragen (Rolle, Kaufzeitfenster), um schon vor dem Event MQLs zu erkennen.
+2. Pre-Event-Sequenz (3 Touchpoints) und Post-Event-Segmentierung im Canvas entwerfen.
+3. Verhaltens-Segmente bilden: anwesend + engaged (heiß), anwesend + passiv (warm), abwesend (Replay-Nurture).
+4. Sales-Übergabe-Regel: Bei "heiß"-Segment automatische Slack-/HubSpot-Aufgabe an den zuständigen AE mit Kontext-Summary.
+5. Erfolgs-KPIs definieren: Show-up-Rate, Engagement-Rate, Teilnehmer-zu-SQL-Conversion.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Webinar-Funnel-Stratege für ein DACH-B2B-SaaS-Unternehmen. Konzipiere einen vollständigen Webinar-Funnel. Liefere: (1) Registrierungs-Qualifizierungsfragen (2 Fragen zur MQL-Erkennung). (2) Pre-Event-Sequenz (3 Touchpoints mit Timing). (3) Post-Event-Segmentierungslogik (anwesend+engaged, anwesend+passiv, abwesend) mit je einer Follow-up-Aktion. (4) Eine Sales-Übergabe-Regel für das heiße Segment. (5) Drei Funnel-KPIs. Formelles 'Sie', DSGVO-Abmeldelink in allen E-Mails."
+**Erwartetes Artefakt:** Webinar-Funnel-Konzept im Canvas (Registrierung + Pre-Event + Post-Event-Segmentierung + Sales-Übergabe + KPIs) plus eine HubSpot-Workflow-Skizze.
+**Fallstricke (≥2 spezifisch):**
+- Post-Event-Mail geht undifferenziert an alle → Workflow muss zwingend einen Condition-Split nach Anwesenheit enthalten; abwesende Teilnehmer brauchen Replay, nicht "Danke für die Teilnahme".
+- Sales-Übergabe ohne Kontext überfordert den AE → Übergabe-Aufgabe muss die beantworteten Qualifizierungsfragen und das Engagement-Signal als Summary enthalten, sonst ist die Übergabe wertlos.
+**Anschluss-Szenario:** S-MP-067
+
+### S-MP-067 Customer-Advisory-Board-Sitzung vorbereiten
+
+**Wann nutzen (Trigger):** Das Unternehmen richtet ein Customer Advisory Board (CAB) mit acht strategischen Kunden ein. Julia muss die erste Sitzung vorbereiten: Teilnehmer-Auswahl-Kriterien, Agenda, Diskussionsleitfaden und ein Format zur strukturierten Auswertung der Erkenntnisse. (Quelle: sources/10 S-013; Quelle: A-05)
+**Strategisches Ziel:** Aus dem CAB einen verlässlichen strategischen Input-Kanal machen, der Produkt-Roadmap und Messaging mit echter Kundenstimme fundiert — und gleichzeitig die Bindung der teilnehmenden Schlüsselkunden stärkt.
+**Hands-on Ergebnis:** Ein CAB-Vorbereitungspaket: Teilnehmer-Auswahl-Kriterien, eine 90-Minuten-Agenda, ein Moderations-Diskussionsleitfaden mit offenen Fragen und ein Auswertungs-Template für die strukturierte Erkenntnis-Synthese nach der Sitzung.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Auswahl-Kriterien definieren (strategischer Account-Wert, Branchenvielfalt, konstruktives Feedback-Verhalten); Kandidaten aus dem Wissensordner-Kundenprofil ableiten.
+2. 90-Minuten-Agenda im Canvas strukturieren: Begrüßung, Roadmap-Vorstellung, moderierte Diskussion, Priorisierungs-Übung, Wrap-up.
+3. Diskussionsleitfaden mit offenen, nicht-suggestiven Fragen entwickeln, die ehrliches Feedback fördern statt Bestätigung einzuholen.
+4. Auswertungs-Template vorbereiten: Erkenntnis | Häufigkeit | strategische Implikation | Verantwortlicher für Follow-up.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Customer-Marketing-Direktor für ein DACH-B2B-Unternehmen. Wir starten ein Customer Advisory Board mit 8 Schlüsselkunden. Erstelle: (1) Fünf Auswahl-Kriterien für CAB-Mitglieder. (2) Eine 90-Minuten-Agenda mit Zeitblöcken. (3) Einen Moderations-Diskussionsleitfaden mit 8 offenen, nicht-suggestiven Fragen, die ehrliches Feedback fördern. (4) Ein Auswertungs-Template (Erkenntnis | Häufigkeit | Implikation | Follow-up-Owner). Ton: partnerschaftlich, nicht verkäuferisch — das CAB ist kein Sales-Termin."
+**Erwartetes Artefakt:** CAB-Vorbereitungspaket im Canvas (Kriterien + Agenda + Diskussionsleitfaden + Auswertungs-Template) — für Moderation und Nachbereitung.
+**Fallstricke (≥2 spezifisch):**
+- Diskussionsfragen sind suggestiv und holen nur Bestätigung ein → Prompt muss explizit "offene, nicht-suggestive Fragen, die auch kritisches Feedback zulassen" fordern; ein CAB, das nur Lob produziert, ist wertlos.
+- CAB wird als verdeckter Sales-Termin wahrgenommen → Agenda und Leitfaden müssen jeglichen Pitch-Charakter vermeiden; Prompt muss "kein Produktverkauf, reiner Strategie-Dialog" verankern, sonst kündigen die Kunden die Teilnahme.
+**Anschluss-Szenario:** S-MP-068
+
+### S-MP-068 Win/Loss-Analyse aus Sales-Interviews synthetisieren
+
+**Wann nutzen (Trigger):** Das Sales-Team hat zwölf Win/Loss-Interviews mit gewonnenen und verlorenen Deals geführt, aber die Transkripte liegen ungenutzt herum. Julia will daraus systematisch die wiederkehrenden Gewinn- und Verlustmuster extrahieren, um Messaging und Battlecards zu schärfen. (Quelle: sources/10 S-052; Quelle: A-07)
+**Strategisches Ziel:** Aus qualitativen Win/Loss-Daten belastbare, handlungsleitende Muster ableiten, die die Win-Rate in umkämpften Deals innerhalb von zwei Quartalen messbar erhöhen — durch evidenzbasierte Anpassung von Messaging und Einwandbehandlung.
+**Hands-on Ergebnis:** Ein Win/Loss-Synthese-Report mit: Top-3-Gewinngründen, Top-3-Verlustgründen (je mit Häufigkeit), wörtlichen Schlüsselzitaten und drei konkreten Messaging-/Enablement-Maßnahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat, Canvas
+**Vorgehen (4 Schritte):**
+1. Zwölf Interview-Transkripte in einen dedizierten Wissensordner laden; nach Win/Loss-Kategorie taggen.
+2. Agent extrahiert wiederkehrende Themen je Kategorie und quantifiziert deren Häufigkeit über die Transkripte hinweg.
+3. Zu jedem Top-Muster ein wörtliches, anonymisiertes Kundenzitat als Beleg auswählen lassen.
+4. Aus den Mustern drei konkrete Maßnahmen ableiten (Messaging-Anpassung, neue Battlecard-Sektion, Einwand-Skript) und im Canvas dokumentieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Competitive-Intelligence-Analyst für ein DACH-B2B-SaaS-Unternehmen. Synthetisiere die 12 Win/Loss-Interview-Transkripte im verknüpften Ordner. Liefere: (1) Top-3-Gewinngründe mit Häufigkeit (in wie vielen Interviews genannt). (2) Top-3-Verlustgründe mit Häufigkeit. (3) Je ein wörtliches, anonymisiertes Kundenzitat pro Muster. (4) Drei konkrete Maßnahmen für Messaging und Sales-Enablement. Zähle nur Themen, die in mindestens drei Interviews vorkommen — keine Einzelmeinungen als Muster verkaufen."
+**Erwartetes Artefakt:** Win/Loss-Synthese-Report im Canvas (Gewinn-/Verlustgründe mit Häufigkeit + Zitate + 3 Maßnahmen) — als Input für Messaging-Refinement und Battlecard-Update.
+**Fallstricke (≥2 spezifisch):**
+- KI hebt eine Einzelmeinung zum "Muster" hoch → Prompt muss eine Mindesthäufigkeit (z. B. in ≥3 von 12 Interviews) als Schwelle für ein valides Muster setzen.
+- Zitate werden paraphrasiert statt wörtlich übernommen und verlieren damit ihre Beweiskraft → Explizit wörtliche, mit Anführungszeichen markierte Zitate aus den Transkripten einfordern; keine geglätteten Umschreibungen.
+**Anschluss-Szenario:** S-MP-069
+
+### S-MP-069 Pricing-Page-Copy-Varianten für A/B-Test entwickeln
+
+**Wann nutzen (Trigger):** Nach einer Pricing-Modell-Umstellung (z. B. von nutzerbasiert auf nutzungsbasiert) ist unklar, wie die neue Logik auf der Pricing-Page am verständlichsten und conversion-stärksten kommuniziert wird. Julia braucht testbare Copy-Varianten mit unterschiedlicher Erklärlogik. (Quelle: sources/10 S-029; Quelle: A-07)
+**Strategisches Ziel:** Über einen sauberen A/B-Test die Pricing-Page-Conversion gegenüber der aktuellen Version um mindestens einen Prozentpunkt steigern — durch eine Erklärlogik, die das neue Modell unmittelbar verständlich macht und Preis-Unsicherheit reduziert.
+**Hands-on Ergebnis:** Drei strukturell unterschiedliche Pricing-Page-Copy-Varianten (Wert-zuerst, Vergleichs-Tabelle, Rechenbeispiel-zuerst), eine angepasste FAQ-Sektion und ein A/B-Test-Plan mit Erfolgs-KPI und Laufzeit.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Web Search, Data Analyst
+**Vorgehen (4 Schritte):**
+1. Häufigste Pricing-Einwände aus Closed-Lost-Notizen (CSV) im Data Analyst identifizieren; Wettbewerber-Pricing-Pages via Web Search auf Erklärmuster prüfen.
+2. Drei strukturell unterschiedliche Hero-Copy-Varianten im Canvas entwerfen — nicht nur Wortlaut-, sondern Logik-Varianten.
+3. FAQ-Sektion mit den fünf häufigsten Verständnis- und Kaufhindernissen ergänzen.
+4. A/B-Test-Plan dokumentieren: Variante, Hypothese, Erfolgs-KPI (Conversion-Rate), Mindest-Stichprobe, Laufzeit (4 Wochen).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Conversion-Copywriter für ein DACH-B2B-SaaS-Unternehmen mit neuem nutzungsbasiertem Pricing. Erstelle drei strukturell unterschiedliche Pricing-Hero-Varianten (je ca. 90 Wörter): (a) Wert-zuerst, (b) Vergleichs-Tabelle, (c) Rechenbeispiel-zuerst. Schreibe außerdem eine FAQ mit den 5 häufigsten Verständnis- und Kaufhindernissen und ehrlichen Antworten. Liefere einen A/B-Test-Plan: Variante | Hypothese | KPI | Laufzeit | Mindest-Stichprobe. Formelles Deutsch, keine ROI-Garantieversprechen."
+**Erwartetes Artefakt:** Drei Pricing-Hero-Varianten + FAQ-Sektion + A/B-Test-Plan im Canvas — bereit für die Implementierung im Testing-Tool.
+**Fallstricke (≥2 spezifisch):**
+- Varianten unterscheiden sich nur im Wortlaut, nicht in der Erklärlogik → kein erkenntnisreicher Test; Prompt muss "fundamental unterschiedliche Erklärlogik je Variante" erzwingen.
+- FAQ verspricht garantierte Einsparungen, die das Unternehmen nicht halten kann → Legal-Review der FAQ zwingend; keine Performance- oder Kostengarantien ohne Disclaimer.
+**Anschluss-Szenario:** S-MP-070
+
+### S-MP-070 Sales-Enablement-One-Pager für neues Produkt erstellen
+
+**Wann nutzen (Trigger):** Ein neues Produkt-Bundle wird gelauncht und das Sales-Team braucht sofort einen One-Pager, der Value Proposition, ideale Zielkunden, Differenzierung und die häufigsten Einwände auf einer Seite bündelt — bevor die ersten Pitches anstehen. (Quelle: sources/10 S-002; Quelle: A-05)
+**Strategisches Ziel:** Das Sales-Team innerhalb von 48 Stunden mit einer einsatzfertigen Argumentationsgrundlage ausstatten, die die Time-to-First-Pitch verkürzt und die Konsistenz der Produktbotschaft über alle AEs hinweg sicherstellt.
+**Hands-on Ergebnis:** Ein einseitiger Sales-Enablement-One-Pager mit: Elevator Pitch, idealem Kundenprofil (ICP), drei Differenzierungs-Punkten, drei häufigen Einwänden mit Antworten und einer Discovery-Frage-Liste.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas, Chat
+**Vorgehen (4 Schritte):**
+1. Produktbeschreibung, ICP-Definition und bestehende Einwand-Playbooks aus dem Wissensordner laden.
+2. Elevator Pitch (max. 30 Wörter, outcome-fokussiert) und ICP-Steckbrief im Canvas formulieren.
+3. Drei Differenzierungs-Punkte ableiten, die belegbar und nicht generisch ("führend", "innovativ") sind.
+4. Einwand-Antwort-Matrix und drei Discovery-Fragen ergänzen; Zero-Fabrication-Policy für alle Produktclaims durchsetzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Sales-Enablement-Manager für ein DACH-B2B-SaaS-Unternehmen. Erstelle einen einseitigen One-Pager für unser neues Produkt-Bundle '{{Name}}'. Liefere: (1) Elevator Pitch (max. 30 Wörter, outcome-fokussiert). (2) Ideales Kundenprofil (Branche, Größe, Auslöser). (3) Drei belegbare Differenzierungs-Punkte — keine Adjektive wie 'führend' oder 'innovativ'. (4) Drei häufige Einwände mit Antworten. (5) Drei Discovery-Fragen. Nur Produktaussagen, die im Wissensordner belegt sind; sonst Platzhalter '[zu verifizieren]'."
+**Erwartetes Artefakt:** Sales-Enablement-One-Pager im Canvas (≤1 Seite) — nach Legal-/Produkt-Review als PDF für das Sales-Team exportierbar.
+**Fallstricke (≥2 spezifisch):**
+- Differenzierungs-Punkte sind leere Superlative ohne Beleg → Prompt muss generische Adjektive explizit verbieten und je Punkt einen konkreten, prüfbaren Beleg fordern.
+- One-Pager enthält halluzinierte Produktfeatures → Zero-Fabrication-Policy: nur durch den Wissensordner belegte Claims; nicht belegbare Aussagen als '[zu verifizieren]' markieren statt zu erfinden.
+**Anschluss-Szenario:** S-MP-071
+
+### S-MP-071 Brand-Voice-Guideline aus Bestands-Content authoring
+
+**Wann nutzen (Trigger):** Nach einem Rebranding oder dem Zusammenschluss zweier Teams existieren widersprüchliche Tonalitäten. Julia braucht eine konsolidierte, dokumentierte Brand-Voice-Guideline, die als verbindlicher Goldstandard für alle internen Autoren, Freelancer und KI-Agenten dient. (Quelle: sources/10 S-038; Quelle: 12 Q31)
+**Strategisches Ziel:** Eine konsistente, in System-Prompts einbettbare Brand Voice etablieren, die die Revisions-Zyklen bei Content-Freigaben halbiert und die Markenwahrnehmung über alle Kanäle hinweg vereinheitlicht.
+**Hands-on Ergebnis:** Eine Brand-Voice-Guideline (ca. 800 Wörter) mit: Tonalitäts-Definition, Do's & Don'ts, bevorzugtem/verbotenem Vokabular und drei Vorher/Nachher-Beispielen — direkt im Wissensordner abgelegt.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Zehn nachweislich erfolgreiche, markenkonforme Content-Stücke kuratiert in einen Wissensordner laden.
+2. Agent extrahiert Tonalität, durchschnittliche Satzlänge, rhetorische Muster und bevorzugtes Vokabular aus dem Korpus.
+3. Guideline-Draft im Canvas erstellen: Do's & Don'ts, Vokabular-Listen, drei Vorher/Nachher-Beispiele.
+4. Finales Dokument als "Brand Voice v1.0" im Wissensordner ablegen und alle bestehenden Agenten darauf verlinken.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Brand-Stratege für ein DACH-B2B-Unternehmen. Analysiere die zehn Dokumente im verknüpften Ordner und destilliere unsere Brand Voice. Achte auf Tonalität (formell vs. direkt), durchschnittliche Satzlänge, rhetorische Muster und bevorzugte Begriffe. Erstelle eine Guideline mit: Tonalitäts-Definition (3 Sätze), 5 Do's, 5 Don'ts, einer Liste bevorzugter und verbotener Begriffe und drei Vorher/Nachher-Beispielen. Fordere direkte, nutzenorientierte B2B-Sprache und verbiete Anglizismen und Marketinggeschwurbel explizit."
+**Erwartetes Artefakt:** Brand-Voice-Guideline (Markdown, ca. 800 Wörter) mit Vorher/Nachher-Beispielen — abgelegt im Wissensordner und in System-Prompts einbettbar.
+**Fallstricke (≥2 spezifisch):**
+- Inkonsistenter Input-Korpus erzeugt eine widersprüchliche Guideline → Nur manuell kuratierten, nachweislich erfolgreichen Content uploaden; ein gemischter Korpus produziert keinen klaren Goldstandard.
+- LLM neigt zu generischem Cheerleader-Tonfall und Anglizismen → Prompt muss "direkte, nutzenorientierte B2B-Sprache, kein Marketinggeschwurbel" als harte Vorgabe enthalten.
+**Anschluss-Szenario:** S-MP-072
+
+### S-MP-072 Crisis-Comms-Playbook für vordefinierte Szenarien erstellen
+
+**Wann nutzen (Trigger):** Bei der letzten Krise (Serverausfall, negativer Presseartikel) reagierte das Team chaotisch und zu langsam. Julia will präventiv ein Crisis-Comms-Playbook erstellen, das für die wahrscheinlichsten Szenarien vorab Rollen, Eskalationsstufen und vorgefertigte Holding-Statements definiert. (Quelle: sources/10 S-051; Quelle: A-41)
+**Strategisches Ziel:** Die Time-to-First-Response im Krisenfall auf unter eine Stunde senken und durch vorab abgestimmte, Legal-geprüfte Bausteine das Risiko reputations- und haftungsschädlicher Spontanaussagen eliminieren.
+**Hands-on Ergebnis:** Ein Crisis-Comms-Playbook mit: Szenario-Katalog (5 Szenarien), RACI-Rollenverteilung, dreistufigem Eskalations-Entscheidungsbaum und vorformulierten Holding-Statement-Templates je Szenario und Kanal.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas, Chat
+**Vorgehen (4 Schritte):**
+1. Wahrscheinlichste Krisen-Szenarien sammeln (Ausfall, Datenleck-Vorwurf, Produktfehler, negativer Presseartikel, Social-Shitstorm); pro Szenario Eintrittswahrscheinlichkeit und Schadenspotenzial bewerten.
+2. RACI-Rollen je Szenario im Canvas definieren (wer entscheidet, wer kommuniziert, wer informiert wird).
+3. Dreistufigen Eskalations-Entscheidungsbaum erstellen (Holding Statement / CEO-Statement / Krisenstab).
+4. Pro Szenario und Kanal (LinkedIn, Presse, Kunden-E-Mail) ein vorformuliertes, Legal-vorprüfbares Holding-Statement-Template ablegen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Krisenkommunikations-Direktor für ein DACH-B2B-Unternehmen. Erstelle ein Crisis-Comms-Playbook. Liefere: (1) Einen Katalog der 5 wahrscheinlichsten Krisen-Szenarien mit Wahrscheinlichkeit und Schadenspotenzial. (2) Eine RACI-Rollenverteilung je Szenario. (3) Einen dreistufigen Eskalations-Entscheidungsbaum. (4) Pro Szenario je ein Holding-Statement-Template für LinkedIn, Presse und Kunden-E-Mail (max. je 120 Wörter). Regeln: keine ETAs erfinden, keine Schuldeingeständnisse, jede Vorlage als Entwurf zur Legal-Freigabe kennzeichnen."
+**Erwartetes Artefakt:** Crisis-Comms-Playbook im Canvas (Szenario-Katalog + RACI + Eskalationsbaum + Statement-Templates) — abgelegt im Wissensordner für den Sofortzugriff im Ernstfall.
+**Fallstricke (≥2 spezifisch):**
+- Holding-Statements enthalten erfundene Wiederherstellungszeiten oder Ursachen → Prompt muss explizit verbieten, ETAs oder kausale Ursachenaussagen vorzuformulieren; im Krisenfall sind diese Felder Platzhalter.
+- Playbook wird ohne Legal-Vorabfreigabe genutzt → Jedes Template muss als "Entwurf — Legal-Freigabe vor Veröffentlichung zwingend" markiert sein; ein KI-Playbook ersetzt keine rechtliche Prüfung im Einzelfall.
+**Anschluss-Szenario:** S-MP-073
+
+### S-MP-073 DACH-Lokalisierung eines internationalen Kampagnen-Assets
+
+**Wann nutzen (Trigger):** Die globale Zentrale liefert ein englisches Kampagnen-Asset (Landingpage, E-Book), das in unter einer Woche für DE, AT und CH ausgerollt werden soll. Eine reine Übersetzung würde die regionalen Nuancen verfehlen und im B2B-Umfeld unprofessionell wirken. (Quelle: sources/10 S-012; Quelle: A-17)
+**Strategisches Ziel:** Aus dem internationalen Asset eine transkreierte, regional authentische DACH-Variante erzeugen, die nicht nach "übersetztem Marketing" klingt und die länderspezifischen Conversion-Treiber je Markt bedient.
+**Hands-on Ergebnis:** Drei lokalisierte Asset-Varianten (DE/AT/CH) mit angepasstem Vokabular, korrekter Orthografie (kein 'ß' in CH, 'Jänner' in AT), lokalisierten Beispielen und durchgängig formellem 'Sie' im B2B-Kontext.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Englisches Quell-Asset als Dateianhang laden; Brand-Voice- und Lokalisierungs-Guidelines aus dem Wissensordner verknüpfen.
+2. Agent transkreiert nach DE-Hochdeutsch und identifiziert US-spezifische Beispiele (z. B. SEC → BaFin), die ersetzt werden müssen.
+3. Aus der DE-Basis die AT- und CH-Varianten ableiten: orthografische und lexikalische Anpassungen ('ss' statt 'ß', 'Jänner', 'parkieren'/'Velo').
+4. Alle drei Varianten im Canvas nebeneinander prüfen; manuelle Endkontrolle der regionalen Begriffe vor Freigabe.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Lokalisierungs-Experte für die DACH-Region. Ich lade ein englisches Kampagnen-Asset hoch. Transkreiere es (keine wörtliche Übersetzung) in drei Varianten: DE, AT und CH. Ersetze US-spezifische Beispiele durch DACH-Äquivalente. Beachte: kein 'ß' in der CH-Variante (durchgängig 'ss'), 'Jänner' statt 'Januar' für AT, formelles 'Sie' im gesamten B2B-Text. Liefere die drei Varianten klar getrennt im Markdown-Format. Vermeide Anglizismen und passiven Cheerleader-Tonfall."
+**Erwartetes Artefakt:** Drei lokalisierte Asset-Varianten (DE/AT/CH) im Canvas — bereit für Design und Veröffentlichung nach manueller Begriffs-Endkontrolle.
+**Fallstricke (≥2 spezifisch):**
+- Modell verwendet in der CH-Variante deutsche Rechtschreibung ('ß') → System-Prompt muss das 'ß'-Verbot für CH hart codieren und die Variante manuell gegenprüfen.
+- Lokalisierung bleibt eine reine Übersetzung ohne kulturelle Anpassung → Prompt muss Transkreation (Beispiel-Ersetzung, kulturelle Norm) explizit von wörtlicher Übersetzung abgrenzen.
+**Anschluss-Szenario:** S-MP-074
+
+### S-MP-074 Partner-Co-Marketing-Kit für gemeinsame Kampagne entwickeln
+
+**Wann nutzen (Trigger):** Eine Co-Marketing-Kampagne mit einem nicht-konkurrierenden Technologiepartner steht an (gemeinsames Webinar, Co-Branded Whitepaper). Julia braucht ein vollständiges Co-Marketing-Kit, das beide Marken fair repräsentiert und beiden Teams identische Bausteine für die Bewerbung liefert. (Quelle: sources/10 S-045; Quelle: A-05)
+**Strategisches Ziel:** Aus der Partnerschaft eine reichweiten- und pipeline-wirksame Kampagne machen, die für beide Partner messbaren Lead-Zufluss erzeugt — durch ein abgestimmtes, sofort einsetzbares Kit, das Reibung in der Abstimmung minimiert.
+**Hands-on Ergebnis:** Ein Co-Marketing-Kit mit: gemeinsamer Kampagnen-Botschaft, Co-Branded Whitepaper-Outline, je fünf Social-Posts pro Partner, einer gemeinsamen Landingpage-Copy und einem Lead-Sharing-/Tracking-Plan.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Partner-Werte und aktuelle Schwerpunkte via Web Search recherchieren; gemeinsame Schnittmenge mit eigenen Botschaften aus dem Wissensordner identifizieren.
+2. Gemeinsame Kampagnen-Kernbotschaft formulieren, die beide Marken gleichwertig repräsentiert.
+3. Co-Branded Whitepaper-Outline und Landingpage-Copy im Canvas erstellen; Platzhalter für beide Logos und Kontakte.
+4. Je Partner fünf Social-Posts generieren (jeweils aus der Perspektive der eigenen Audience) und einen Lead-Sharing-/Tracking-Plan (UTM-Logik, DSGVO-konformes Opt-in) dokumentieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Partnership-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir starten eine Co-Marketing-Kampagne mit dem Partner '{{Partner}}'. Nutze Web Search für deren aktuelle Schwerpunkte. Erstelle: (1) Eine gemeinsame Kampagnen-Kernbotschaft (2 Sätze, beide Marken gleichwertig). (2) Eine Co-Branded Whitepaper-Outline (6 Kapitel). (3) Eine Landingpage-Copy (120 Wörter) mit Logo-Platzhaltern. (4) Je fünf Social-Posts pro Partner. (5) Einen Lead-Sharing-Plan mit UTM-Logik und DSGVO-Opt-in-Hinweis. Formelles 'Sie', keine einseitige Marken-Dominanz."
+**Erwartetes Artefakt:** Co-Marketing-Kit im Canvas (Kernbotschaft + Whitepaper-Outline + Landingpage + Social-Posts + Lead-Sharing-Plan) — als ZIP-Übergabe an den Partner.
+**Fallstricke (≥2 spezifisch):**
+- Eine Marke dominiert die Botschaft → Prompt muss "beide Marken gleichwertig" hart codieren; ein unausgewogenes Kit gefährdet die Partnerschaft.
+- Lead-Sharing ohne DSGVO-konforme Einwilligung → Der geteilte Lead-Fluss zwischen zwei Unternehmen erfordert ein explizites Opt-in der Kontakte; Tracking-Plan muss die Rechtsgrundlage dokumentieren, sonst drohen Bußgelder.
+**Anschluss-Szenario:** S-MP-075
+
+### S-MP-075 PR-Pitch-Personalisierung für DACH-Fachjournalisten
+
+**Wann nutzen (Trigger):** Eine Produktankündigung steht an und das generische Massen-Pitch der letzten Kampagne hatte eine Antwortrate nahe null. Julia will diesmal pro Journalist einen personalisierten Pitch, der am jeweiligen Beat und letzten Artikel ansetzt. (Quelle: sources/10 S-050; Quelle: 12 Q101)
+**Strategisches Ziel:** Die Pitch-Antwortrate gegenüber dem generischen Versand deutlich steigern und mindestens drei Earned-Media-Platzierungen in DACH-Fachmedien erzielen — durch echte Personalisierung statt Serienbrief.
+**Hands-on Ergebnis:** Zehn personalisierte Pitch-E-Mails (je max. 150 Wörter), die jeweils am letzten relevanten Artikel des Journalisten anknüpfen, plus eine Pitch-Tracking-Tabelle für den Nachfass.
+**Eingesetzte Langdock-Fähigkeit(en):** Web Search, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Fact-Sheet und Boilerplate aus dem Wissensordner laden; Ziel-Journalistenliste mit Medium und Beat bereitstellen.
+2. Pro Journalist via Web Search den letzten themenrelevanten Artikel finden (nur Name, Medium, URL — keine E-Mail-Adressen generieren).
+3. Pro Journalist einen Pitch (max. 150 Wörter) schreiben, der am letzten Artikel anknüpft und den Nachrichtenwert klar macht.
+4. Pitch-Tracking-Tabelle im Canvas anlegen: Journalist | Medium | Aufhänger | Versanddatum | Nachfass-Datum (T+7).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist PR-Manager für ein DACH-B2B-Unternehmen. Wir pitchen unsere Produktankündigung an Fachjournalisten. Für den Journalisten {{Name}} von {{Medium}}, der zuletzt über {{Thema}} geschrieben hat: Schreibe einen personalisierten Pitch (max. 150 Wörter), der an diesen letzten Artikel anknüpft, den Nachrichtenwert in einem Satz klarmacht und mit einer konkreten, niedrigschwelligen Bitte schließt. Nutze den Boilerplate aus dem Wissensordner. Liefere KEINE erfundene E-Mail-Adresse — nur Name, Medium und Artikel-URL als Referenz."
+**Erwartetes Artefakt:** Zehn personalisierte Pitch-E-Mails plus eine Pitch-Tracking-Tabelle im Canvas — versandbereit nach manueller Verifikation der Kontaktdaten.
+**Fallstricke (≥2 spezifisch):**
+- Agent erfindet Journalisten-E-Mail-Adressen → Web Search darf nur Name, Medium und URL liefern; Kontaktdaten müssen manuell über XING/LinkedIn verifiziert werden.
+- Pitch liest sich wie eine Pressemitteilung statt wie ein persönlicher Editorial-Anstoß → Prompt muss den Aufhänger am konkreten letzten Artikel erzwingen und reinen Produkt-Sprech verbieten.
+**Anschluss-Szenario:** S-MP-076
+
+### S-MP-076 Thought-Leadership-Artikel für Führungskraft ghostwriten
+
+**Wann nutzen (Trigger):** Eine Führungskraft (CMO, VP) soll als Thought-Leader in einem DACH-Fachmedium oder auf LinkedIn positioniert werden, hat aber keine Zeit zum Schreiben und liefert nur grobe Stichpunkte. Julia muss daraus einen authentischen, nicht-generischen Langform-Artikel destillieren. (Quelle: sources/10 S-053; Quelle: A-48)
+**Strategisches Ziel:** Den Thought-Leadership-Kanal der Führungskraft zu einem verlässlichen Treiber für Markenautorität und Pipeline ausbauen — mit Beiträgen, die nach der echten Stimme der Person klingen, nicht nach generischem LinkedIn-Content.
+**Hands-on Ergebnis:** Ein Langform-Thought-Leadership-Artikel (ca. 800 Wörter) in der authentischen Stimme der Führungskraft, beginnend mit einer konträren These und endend mit einer handlungsleitenden Schlussfolgerung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Memory, Wissensordner
+**Vorgehen (4 Schritte):**
+1. Ghostwriter-Agenten mit Memory anlegen; Sprach-Präferenzen der Führungskraft (Satzbau, verbotene Floskeln, Haltung) und drei Negativ-Beispiele ("klingt NICHT wie sie") fest verankern.
+2. Stichpunkte der Führungskraft als Input übergeben; relevante Belege aus dem Wissensordner verknüpfen.
+3. Agent entwickelt den Artikel: konträre Eröffnungsthese, drei argumentierte Abschnitte mit konkreten Beispielen, handlungsleitende Schlussfolgerung.
+4. Im Canvas final abstimmen und der Führungskraft zur Authentizitäts-Freigabe vorlegen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Ghostwriter für die CMO eines DACH-B2B-Unternehmens. Formuliere aus diesen Stichpunkten einen Thought-Leadership-Artikel (ca. 800 Wörter): [Stichpunkte]. Ton: direkt, meinungsstark, ohne Emojis, kurze Absätze. Beginne mit einer konträren These, die die gängige Branchenmeinung herausfordert. Drei argumentierte Abschnitte mit je einem konkreten Beispiel. Ende mit einer handlungsleitenden Schlussfolgerung — keine offene Floskel-Frage. Vermeide generischen LinkedIn-Broetry-Stil und jedes Marketinggeschwurbel."
+**Erwartetes Artefakt:** Thought-Leadership-Artikel (ca. 800 Wörter) im Canvas, in der Stimme der Führungskraft — zur finalen Authentizitäts-Freigabe.
+**Fallstricke (≥2 spezifisch):**
+- Memory zieht alte Kampagneninhalte heran und verfälscht die persönliche Stimme → Memory des Agenten strikt auf Sprach-Präferenzen beschränken; niemals automatisch auf frühere Kampagnen oder Posts zugreifen lassen.
+- Artikel klingt nach generischem Branchen-Allgemeinplatz → Drei konkrete Negativ-Beispiele im System-Prompt verankern und eine konträre, belegbare These statt Konsens-Aussagen erzwingen.
+**Anschluss-Szenario:** S-MP-077
+
+### S-MP-077 Community-Management-Playbook für skalierbares Engagement
+
+**Wann nutzen (Trigger):** Die Social-Media-Präsenz wächst und das Community-Team reagiert uneinheitlich auf Kommentare — mal zu langsam, mal off-brand, mal eskalierend statt deeskalierend. Julia braucht ein Community-Management-Playbook, das Antwort-Standards, Eskalations-Regeln und einen FAQ-Anker definiert. (Quelle: sources/10 S-048; Quelle: A-39)
+**Strategisches Ziel:** Die durchschnittliche Reaktionszeit auf Community-Kommentare auf unter zwei Stunden senken und markenkonforme, korrekte Antworten sicherstellen — bei einem skalierbaren Prozess, der auch bei viralen Lastspitzen trägt.
+**Hands-on Ergebnis:** Ein Community-Management-Playbook mit: Antwort-Tonalitäts-Standards, einer Sentiment-Triage-Matrix (positiv/neutral/negativ/troll), Eskalations-Regeln (wann an HR/Legal) und einem FAQ-Anker-Prozess für korrekte Produktantworten.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Aktuelle FAQ-Datenbank und Brand-Voice-Guidelines im Wissensordner verankern und als Antwort-Faktengrundlage festlegen.
+2. Sentiment-Triage-Matrix im Canvas definieren: je Sentiment-Typ eine Standard-Reaktionslogik (Direktantwort, Deeskalation, Eskalation).
+3. Eskalations-Regeln festlegen: Welche Kommentar-Typen (rechtliche Vorwürfe, Mitarbeiterbeschwerden) gehen ohne Direktantwort an HR/Legal.
+4. FAQ-Anker-Prozess dokumentieren: Antworten nur aus dem FAQ-Ordner; monatliche Aktualisierungspflicht der FAQ als Recurring Task.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Head of Community für ein DACH-B2B-SaaS-Unternehmen. Erstelle ein Community-Management-Playbook. Liefere: (1) Antwort-Tonalitäts-Standards (3 Regeln). (2) Eine Sentiment-Triage-Matrix (positiv, neutral, negativ, troll) mit je einer Reaktionslogik. (3) Eskalations-Regeln: welche Kommentar-Typen gehen ohne Direktantwort an HR/Legal. (4) Einen FAQ-Anker-Prozess. Wichtig: Bei negativem Sentiment keine Entschuldigung ohne vorherige Eskalation; bei Produktfragen nur Antworten aus dem FAQ-Ordner — keine Halluzination."
+**Erwartetes Artefakt:** Community-Management-Playbook im Canvas (Standards + Triage-Matrix + Eskalations-Regeln + FAQ-Prozess) — im Wissensordner abgelegt und für das Team verbindlich.
+**Fallstricke (≥2 spezifisch):**
+- Bei negativem Sentiment werden vorschnelle Entschuldigungen produziert, die das Problem verschärfen → Playbook muss "keine Entschuldigung ohne vorherige Eskalation an HR/Legal" als harte Regel enthalten.
+- Veralteter FAQ-Ordner führt zu falschen Produktantworten → Monatliche FAQ-Aktualisierung als Recurring Task im Team-Kalender verankern; ohne aktuellen Anker ist das Playbook unzuverlässig.
+**Anschluss-Szenario:** S-MP-078
+
+### S-MP-078 Retention-/Loyalty-Kampagne für gefährdete Accounts
+
+**Wann nutzen (Trigger):** Das Data-Analyst-Churn-Scoring (siehe S-MP-019) hat eine Liste gefährdeter Accounts geliefert. Julia muss daraus eine gezielte Retention-Kampagne entwickeln, die diese Accounts mit relevantem Mehrwert reaktiviert, bevor sie kündigen. (Quelle: sources/10 S-060; Quelle: A-48)
+**Strategisches Ziel:** Die Churn-Rate bei den als "gefährdet" markierten Accounts innerhalb eines Quartals um mindestens 20 % gegenüber der unbehandelten Vergleichsgruppe senken — durch wertorientierte statt rabattgetriebene Reaktivierung.
+**Hands-on Ergebnis:** Eine segmentierte Retention-Kampagne mit: Reaktivierungs-Sequenz (3 Touchpoints) je Gefährdungsgrund (geringe Nutzung, Support-Frust, fehlender Mehrwert-Beweis), einem Value-Recap-Asset und einer Erfolgsmessung gegen eine Kontrollgruppe.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Data Analyst
+**Vorgehen (4 Schritte):**
+1. Gefährdete Accounts nach Hauptursache segmentieren (geringe Feature-Nutzung, gestiegene Support-Tickets, kein dokumentierter ROI) — Daten aus dem Churn-Scoring im Data Analyst.
+2. Pro Segment eine 3-Touchpoint-Reaktivierungs-Sequenz im Canvas entwerfen: Mehrwert-Erinnerung, persönliches Hilfsangebot, Value-Recap.
+3. Value-Recap-Asset erstellen, das den bisher erzielten Nutzen des Accounts konkret aufzeigt (genutzte Features, eingesparte Zeit).
+4. Erfolgsmessung definieren: Behandlungsgruppe vs. unbehandelte Kontrollgruppe, KPI Verlängerungsrate über das Quartal.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Customer-Retention-Stratege für ein DACH-B2B-SaaS-Unternehmen. Wir haben gefährdete Accounts in drei Ursachen-Segmente geteilt: (a) geringe Feature-Nutzung, (b) gestiegene Support-Tickets, (c) kein dokumentierter ROI. Erstelle pro Segment eine 3-Touchpoint-Reaktivierungs-Sequenz (Mehrwert-Erinnerung, Hilfsangebot, Value-Recap), je max. 120 Wörter, formelles 'Sie'. Fokus auf Mehrwert, NICHT auf Rabatte. Definiere abschließend eine Erfolgsmessung gegen eine Kontrollgruppe (KPI: Verlängerungsrate)."
+**Erwartetes Artefakt:** Retention-Kampagne im Canvas (3 segmentspezifische Sequenzen + Value-Recap-Asset + Kontrollgruppen-Messplan) — als Briefing für das Customer-Success-Team.
+**Fallstricke (≥2 spezifisch):**
+- Reaktivierung greift sofort zu Rabatten und entwertet das B2B-Angebot → Prompt muss "Mehrwert vor Rabatt" hart codieren; ein vorschneller Discount signalisiert, dass der reguläre Preis nicht gerechtfertigt ist.
+- Erfolg wird ohne Kontrollgruppe gemessen und ist damit nicht belegbar → Messplan muss eine unbehandelte Vergleichsgruppe definieren, sonst lässt sich der Kampagneneffekt nicht vom natürlichen Verlauf trennen.
+**Anschluss-Szenario:** S-MP-079
+
+### S-MP-079 Referral-Programm-Content und Mechanik gestalten
+
+**Wann nutzen (Trigger):** Das Unternehmen will ein strukturiertes Empfehlungsprogramm (Referral) starten, um Bestandskunden als Wachstumskanal zu aktivieren. Julia braucht sowohl die Programm-Mechanik als auch die begleitenden Content-Assets (Einladungs-E-Mails, Landingpage, Reminder). (Quelle: sources/10 S-064; Quelle: A-37)
+**Strategisches Ziel:** Aus dem Referral-Programm einen messbaren, kosteneffizienten Akquisekanal machen, der innerhalb von zwei Quartalen mindestens 10 % der neuen Opportunities über Empfehlungen generiert — bei DSGVO-konformer Einwilligungslogik.
+**Hands-on Ergebnis:** Ein Referral-Programm-Paket mit: Mechanik-Beschreibung (Anreiz für Empfehler und Empfohlene, Trigger-Logik), Einladungs-E-Mail, Referral-Landingpage-Copy, zwei Reminder-Nachrichten und einer DSGVO-konformen Einwilligungs-Formulierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas, Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Programm-Mechanik im Canvas definieren: Double-Sided-Incentive (Vorteil für Empfehler und Empfohlene), Auslöser (nach positivem NPS oder erreichtem Aktivierungs-Meilenstein).
+2. Einladungs-E-Mail und Referral-Landingpage-Copy erstellen — Mehrwert für beide Seiten klar herausstellen, formelles 'Sie'.
+3. Zwei Reminder-Nachrichten mit unterschiedlichem Aufhänger (sozialer Nutzen, Anreiz-Erinnerung) entwerfen.
+4. DSGVO-Logik dokumentieren: Empfehler darf Kontaktdaten Dritter nur mit deren Einwilligung weitergeben; Einwilligungs-Formulierung und Opt-out vorgeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Growth-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Konzipiere ein Referral-Programm. Liefere: (1) Eine Mechanik-Beschreibung mit Double-Sided-Incentive und Auslöse-Logik (z. B. nach NPS ≥ 9). (2) Eine Einladungs-E-Mail (max. 130 Wörter). (3) Eine Referral-Landingpage-Copy (100 Wörter). (4) Zwei Reminder-Nachrichten mit unterschiedlichem Aufhänger. (5) Eine DSGVO-konforme Einwilligungs-Formulierung für die Weitergabe von Kontaktdaten Dritter. Formelles 'Sie', kein Spam-Ton, beide Seiten profitieren erkennbar."
+**Erwartetes Artefakt:** Referral-Programm-Paket im Canvas (Mechanik + Einladung + Landingpage + Reminder + DSGVO-Formulierung) — als Briefing für CRM und Legal.
+**Fallstricke (≥2 spezifisch):**
+- Weitergabe von Kontaktdaten Dritter ohne Einwilligung verletzt die DSGVO → Mechanik muss vorsehen, dass der Empfohlene aktiv einwilligt (z. B. selbst die Landingpage besucht), bevor er kontaktiert wird; Legal-Review zwingend.
+- Anreiz ist nur einseitig und demotiviert den Empfohlenen → Double-Sided-Incentive im Prompt erzwingen; ein Programm, das nur den Empfehler belohnt, erzeugt geringe Conversion auf der Empfänger-Seite.
+**Anschluss-Szenario:** S-MP-080
+
+### S-MP-080 Jahres-Marketingplan aus Teil-Inputs synthetisieren
+
+**Wann nutzen (Trigger):** Zum Jahreswechsel muss Julia aus heterogenen Teil-Inputs (Quartalsergebnisse, Wettbewerbsanalysen, Budget-Vorgaben der GF, Team-Vorschläge) einen kohärenten Jahres-Marketingplan synthetisieren, der für GF, Sales und das eigene Team gleichermaßen tragfähig ist. (Quelle: sources/10 S-001; Quelle: A-01)
+**Strategisches Ziel:** Einen integrierten, priorisierten Jahres-Marketingplan erstellen, der strategische Unternehmensziele in konkrete Kampagnen-Initiativen, Budgetallokation und messbare KPIs übersetzt — als verbindliche Steuerungsgrundlage statt loser Ideensammlung.
+**Hands-on Ergebnis:** Ein Jahres-Marketingplan-Dokument mit: strategischen Prioritäten (3–4), abgeleiteter Kampagnen-Roadmap (Quartals-Themen), Budget-Allokations-Vorschlag je Kanal, KPI-Framework und einem Quartals-Review-Rhythmus.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Data Analyst, Canvas
+**Vorgehen (5 Schritte):**
+1. Qualitative Inputs (Wettbewerbsanalysen, Team-Vorschläge, GF-Vorgaben) in den Wissensordner laden; quantitative Performance-Daten (CSV) in den Data Analyst.
+2. Aus den Vorjahresdaten die stärksten und schwächsten Kanäle quantifizieren; daraus 3–4 strategische Prioritäten für das neue Jahr ableiten.
+3. Kampagnen-Roadmap je Quartal im Canvas entwerfen: pro Quartal ein Leitthema, das auf eine strategische Priorität einzahlt.
+4. Budget-Allokations-Vorschlag je Kanal erstellen — datengestützt aus der Vorjahres-Performance, mit Begründung je Verschiebung.
+5. KPI-Framework (max. 5 Top-KPIs) und einen Quartals-Review-Rhythmus festlegen; Plan als CFO-taugliche Steuerungsvorlage finalisieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marketing-Direktorin eines DACH-B2B-SaaS-Unternehmens. Synthetisiere aus den Dokumenten im Wissensordner und den hochgeladenen Performance-Daten einen Jahres-Marketingplan. Liefere: (1) 3–4 strategische Prioritäten, abgeleitet aus den Vorjahresdaten. (2) Eine Kampagnen-Roadmap mit einem Leitthema je Quartal. (3) Einen Budget-Allokations-Vorschlag je Kanal mit datengestützter Begründung. (4) Ein KPI-Framework (max. 5 Top-KPIs). (5) Einen Quartals-Review-Rhythmus. Sprache: GF-tauglich, kein Marketingsprech, jede Priorität mit Daten belegt."
+**Erwartetes Artefakt:** Jahres-Marketingplan im Canvas (Prioritäten + Quartals-Roadmap + Budget-Allokation + KPI-Framework + Review-Rhythmus) — als verbindliche Steuerungsvorlage für GF und Team.
+**Fallstricke (≥2 spezifisch):**
+- Strukturierte Performance-Daten landen im Wissensordner statt im Data Analyst → Budget- und Kanalanalysen scheitern; quantitative CSV/XLSX immer über den Data Analyst, qualitative Dokumente über den Wissensordner.
+- Plan bleibt eine unpriorisierte Wunschliste ohne Budget-Kopplung → Prompt muss erzwingen, dass jede Priorität mit einer Budgetallokation und einem messbaren KPI verknüpft ist; ein Jahresplan ohne Ressourcen- und Messlogik ist nicht steuerungstauglich.
+**Anschluss-Szenario:** S-MP-001
+
 ## Hinweise & Quellen-Konflikte
 
 Konflikt in Quellen: Extract T3 erwähnt, dass CSV-Dateien nicht im Ordner-RAG (Wissensordner) verarbeitet werden sollen, sondern durch den Data Analyst. Die Quellen 10 und 12 bestätigen diese strikte Trennung für strukturierte Daten. Die Szenarien und Beschreibungen wurden entsprechend formuliert, um die Data-Analyst-Fähigkeit für quantitative Auswertungen zu nutzen, während RAG auf unstrukturierte Textdokumente fokussiert bleibt. Ebenfalls wurde der Widerspruch bzgl. der Vision-Limits (Hex-Code vs Layout) aus T3 durch klare Einschränkungen in den Szenario-Fallstricken (z.B. Hex-Validierung nicht möglich) aufgelöst. Diese redaktionellen Entscheidungen basieren auf den tiefgreifenden Analysen der bereitgestellten Dokumente und gewährleisten, dass das hier dokumentierte Wissen direkt und fehlerfrei in der Praxis anwendbar ist. Es ist unerlässlich, dass bei zukünftigen Updates der Langdock-Plattform diese Unterscheidungen erneut evaluiert werden. Bis dahin stellt dieses Dokument den verifizierten Status Quo für die DACH-Region dar. Zusätzliche Überprüfungen der Langdock API-Limits bezüglich der maximalen Datei-Anzahl im Wissensordner ergaben keine direkten Widersprüche, jedoch wurde die Best Practice von 1000 Dateien konsequent in die Empfehlungen integriert, um optimale Suchergebnisse zu garantieren.
