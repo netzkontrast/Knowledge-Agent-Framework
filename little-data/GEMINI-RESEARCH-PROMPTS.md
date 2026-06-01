@@ -1162,10 +1162,284 @@ Important:
 
 ---
 
+## Prompt 10 — Institut der deutschen Wirtschaft (IW) + IW Medien: Organizational & Communications Profile
+
+**Scope:** Source-cited profile of the *Institut der deutschen Wirtschaft (IW Köln)* and its media arm *IW Medien GmbH* — the named licensee of this agent. Feeds the IW-specific knowledge files (use cases + onboarding/change-management). The advisor agent must understand the IW's mission, structure, publication formats, channels, audiences, brand voice, and content-production reality.
+
+**Title to save as:** `little-data-research/10-iw-koeln-organisationsprofil.gdoc`
+
+```
+I need a comprehensive, source-cited profile of the "Institut der deutschen
+Wirtschaft" (IW, also "IW Köln" / "German Economic Institute") and its media
+and publishing arm "IW Medien GmbH". The output will be used to tailor a
+German-language Langdock advisor agent for the IW's marketing and
+communications team. Be exhaustive and concrete; cite primary sources
+(iwkoeln.de, iwmedien.de, iwd.de, the Impressum pages, annual reports, press
+releases) and flag anything you cannot verify.
+
+Cover the following:
+
+1. IDENTITY & MISSION
+   - Full legal name, founding year, seat (Köln), legal form (eingetragener
+     Verein / privatrechtlich), and self-description / Leitbild
+   - Funding model (arbeitgeber-/wirtschaftsnah; member associations;
+     Drittmittel) and what that implies for editorial positioning
+   - Mission: ordnungspolitische Ausrichtung, "soziale Marktwirtschaft",
+     research-to-policy mandate
+   - Relationship to BDA / BDI / employer associations
+
+2. STRUCTURE & GOVERNANCE
+   - Organizational structure (Wissenschaftsbereiche / Kompetenzfelder /
+     Forschungsgruppen), leadership (Direktor, Geschäftsführung)
+   - IW Medien GmbH — role, services (Verlag, Agentur, Druck, Digital),
+     relationship to the institute
+   - IW Consult GmbH and any other subsidiaries — what each does
+
+3. PUBLICATION FORMATS (critical — list every recurring format with its
+   purpose, length, cadence, and audience)
+   - IW-Report, IW-Kurzbericht, IW-Trends, IW-Gutachten, IW-Policy-Paper,
+     IW-Nachricht — define each precisely
+   - "iwd" (Informationsdienst des Instituts der deutschen Wirtschaft) —
+     format, cadence, audience, tone
+   - Studies, Gutachten, Pressemitteilungen, Standpunkte/Kommentare
+   - Books / Verlagsprodukte via IW Medien
+
+4. COMMUNICATION CHANNELS
+   - Websites (iwkoeln.de, iwd.de, iwmedien.de) — structure and purpose of each
+   - Newsletters, RSS, podcasts (e.g. any IW podcast formats)
+   - Social media presence (LinkedIn, X/Twitter, YouTube, Instagram) — which
+     channels, what content, posting cadence and tone
+   - Press / media relations approach; how IW reaches journalists
+   - Events, Veranstaltungen, Pressekonferenzen
+
+5. AUDIENCES & STAKEHOLDERS
+   - Primary audiences: policymakers (Bundestag, Ministerien, Länder), media/
+     journalists, business & employer associations, academia, general public
+   - How messaging differs per audience
+   - Stakeholder map (who the IW wants to influence and inform)
+
+6. BRAND VOICE & EDITORIAL STANDARDS
+   - Tone of voice in IW publications: sachlich, evidenzbasiert,
+     ordnungspolitisch, faktenorientiert — characterize precisely with
+     quoted examples from real IW texts
+   - Visual identity cues (corporate design, claim/Slogan if any)
+   - Editorial principles: Neutralität-claim vs. arbeitgebernahe Positionierung,
+     how IW handles contested topics, citation/Quellen discipline
+   - Language register (Sie/formal), use of Anglizismen, Fachsprache vs.
+     Allgemeinverständlichkeit (esp. iwd as the "übersetzende" format)
+
+7. CONTENT-PRODUCTION REALITY (for tailoring AI use cases)
+   - Typical content workflow: Forschung → Aufbereitung (iwd/IW Medien) →
+     Distribution → Presse/Social
+   - Recurring high-volume tasks: study summaries, press releases, social
+     posts from studies, charts/Grafiken, newsletter assembly, translations
+     (DE↔EN), media monitoring
+   - Pain points a comms team at a research institute typically faces
+     (turning dense research into public-ready content under time pressure)
+
+8. KEY RESEARCH TOPICS / KOMPETENZFELDER
+   - List the IW's main research areas (e.g. Arbeitsmarkt, Bildung, Demografie,
+     Konjunktur, Steuern/Finanzpolitik, Energie/Klima, Digitalisierung,
+     Außenwirtschaft) — these become content domains the agent will support
+
+Output format:
+- One H2 per section
+- Bullet lists with a 1-sentence description + source URL in parentheses
+- A "Publication formats" table (Format | Zweck | Umfang | Frequenz | Zielgruppe)
+- A "Channels" table (Kanal | Inhaltstyp | Tonalität | Frequenz)
+- A closing "Implications for an AI comms-advisor at the IW" section: the 10
+  highest-value tasks an AI advisor should support, given the above
+- Target length: ~3 500-5 000 words
+- Language: report framing in English; all IW format names, Leitbild quotes,
+  and tone examples verbatim in German
+
+Important:
+- Prefer primary IW sources; label third-party claims "[unverified]"
+- Do NOT invent publication formats, leadership names, or figures
+- Where the public record is thin (internal workflows), say so explicitly
+  and mark as an assumption to confirm with the IW comms team
+```
+
+---
+
+## Prompt 11 — Think-Tank & Wirtschaftsforschungs-Kommunikation: Branchen-Praxis (DACH)
+
+**Scope:** Sector practice for economic research institutes / think tanks in the DACH region — how they do marketing, communications, Wissenschaftskommunikation, media relations, and stakeholder engagement. Feeds the "Branchen-/Think-Tank-Praxis" knowledge file. Grounds IW-relevant scenarios in real sector conventions and peer benchmarks.
+
+**Title to save as:** `little-data-research/11-think-tank-branchen-praxis.gdoc`
+
+```
+I need a research brief on how economic research institutes and think tanks
+in the DACH region (Germany, Austria, Switzerland) practice marketing,
+communications, and Wissenschaftskommunikation as of 2025/2026. The output
+will tailor a German-language AI advisor agent for the communications team of
+the Institut der deutschen Wirtschaft (IW Köln). Focus on sector-specific
+conventions, not generic marketing.
+
+Cover the following:
+
+1. THE PEER LANDSCAPE
+   - Profile the major DACH economic institutes and policy think tanks and
+     how they communicate: ifo Institut, DIW Berlin, RWI, IWH, ZEW,
+     Hans-Böckler-Stiftung / IMK, Bertelsmann Stiftung, Kiel Institut (IfW),
+     Sachverständigenrat, plus IW Köln itself
+   - For each: signature publication formats, channel mix, social reach,
+     and how they translate research into public/media impact
+   - What distinguishes employer-/business-aligned institutes (IW) from
+     union-aligned (IMK) or neutral-academic (ifo, DIW) in tone and framing
+
+2. WISSENSCHAFTSKOMMUNIKATION (science communication)
+   - Best practice for translating dense research (studies, Gutachten) into
+     public-ready formats: press releases, explainers, social posts, charts
+   - The "Übersetzungs"-discipline: making econometrics accessible without
+     distortion; handling uncertainty and caveats honestly
+   - Standards and ethics: Neutralitätsanspruch, Transparenz über Auftraggeber/
+     Drittmittel, Wissenschaftsfreiheit, avoiding Spin while advocating a position
+   - Relevant guidance (Wissenschaft im Dialog, Siggener Impulse, DFG/
+     Leibniz communication guidelines)
+
+3. MEDIA & PRESS RELATIONS
+   - How institutes earn media coverage (Sperrfrist/embargo practice,
+     Pressekonferenzen, Hintergrundgespräche, O-Töne, Studien-Launch choreography)
+   - Journalist relationships, Verteiler management, timing around Konjunktur-
+     Prognosen and political calendar
+   - Measuring media impact (Reichweite, Medienresonanzanalyse, Zitationen)
+
+4. STAKEHOLDER & POLICY ENGAGEMENT
+   - Reaching Bundestag, Ministerien, Länder, EU institutions, Verbände
+   - Formats: Policy Briefs, Stellungnahmen, Anhörungen, Hintergrundpapiere
+   - Lobbyregister / transparency obligations relevant to think-tank advocacy
+   - The political calendar as a content driver (Haushalt, Wahlen,
+     Koalitionsverhandlungen, EU-Semester)
+
+5. DIGITAL & CONTENT MARKETING FOR INSTITUTES
+   - Owned channels: website, newsletter, podcast, data portals/dashboards
+   - LinkedIn as the primary B2P (business-to-policy) channel — what works
+   - Data visualization and interactive charts as a core asset class
+   - SEO for research content; evergreen explainers; topic hubs
+   - Repurposing one study into a multi-format content cascade
+
+6. AI ADOPTION IN RESEARCH-INSTITUTE COMMS
+   - How comms teams at institutes/think tanks are using generative AI
+     (drafting, summarizing studies, social repurposing, translation,
+     media monitoring) — sourced examples if available
+   - Specific risks for research institutes: factual fidelity, mis-stating
+     findings, fabricated numbers, tone drift away from scientific neutrality
+   - Governance patterns institutes adopt for AI-assisted publishing
+
+7. METRICS & KPIs
+   - What success looks like for institute communications: Medienresonanz,
+     Politik-Zitationen, Download/Reichweite of studies, Newsletter/Social
+     growth, event attendance, Markenbekanntheit among target audiences
+
+Output format:
+- Executive summary (~300 words)
+- One H2 per section
+- A peer-comparison table (Institut | Ausrichtung | Leitformate | Kanal-Mix | Stärke)
+- Cite every claim with source URL + date; quote German source text verbatim
+- A closing "Transfer to the IW comms team" section: the sector conventions
+  the AI advisor must respect and the highest-leverage practices to support
+- Target length: ~3 500-5 000 words
+- Language: framing in English; German verbatim for formats, terms, quotes
+
+Important:
+- Prefer 2024-2026 sources; note publication dates
+- Be concrete and sourced; avoid generic comms-agency advice
+- Where DACH-specific evidence is missing, say so rather than substituting
+  US/global think-tank practice
+```
+
+---
+
+## Prompt 12 — Glossar & FAQ: Langdock + Marketing-KI + Wirtschaftsforschungs-Kommunikation (DE)
+
+**Scope:** A German glossary + direct-answer FAQ corpus spanning the three vocabularies an IW communications practitioner will meet: the Langdock platform, Marketing/KI/RAG fundamentals, and economic-research/Wissenschaftskommunikation terminology. Feeds the "Glossar & FAQ" knowledge file (lookup-optimized for single-chunk retrieval). Each entry is self-contained.
+
+**Title to save as:** `little-data-research/12-glossar-iw-marketing-ki.gdoc`
+
+```
+I need a German-language GLOSSARY and FAQ corpus for the communications team
+of the Institut der deutschen Wirtschaft (IW Köln) who will use a Langdock
+advisor agent. It must cover three vocabularies in one consistent reference,
+so a non-technical comms professional can look up any term they encounter.
+Every entry must be self-contained (it will be retrieved as a single chunk).
+
+Produce TWO deliverables in one document:
+
+PART A — GLOSSARY (target 80-120 terms)
+Group terms into these domains and define each. For EACH term provide:
+  - **Begriff (DE)** + English equivalent in parentheses
+  - **Definition:** 1-2 precise German sentences
+  - **Warum es für die IW-Kommunikation zählt:** one sentence on practical relevance
+  - **Häufige Verwechslung / Fallstrick:** one sentence where useful
+
+Domains:
+1. Langdock-Plattform: Agent, Wissensordner (Library vs. Synced Folder),
+   Konversations-Starter, Workflow, Skill, Canvas, Data Analyst, Auto Mode,
+   BYOK, MCP, Chunk, Per-Document-Cap, Citation, Modell-Multiplikator, etc.
+2. KI- & RAG-Grundlagen: LLM, Token, Kontextfenster, Embedding, Vektorsuche,
+   RAG, Halluzination, Prompt, PTCF, CO-STAR, Few-Shot, System-Prompt,
+   Temperature, Fine-Tuning, Inferenz, Reasoning-Modell, etc.
+3. Marketing- & Comms-Begriffe: Touchpoint, Persona, Briefing, Tonalität,
+   Content-Repurposing, SEO, CTA, Reichweite, KPI, Redaktionsplan,
+   Medienresonanz, Sperrfrist, O-Ton, etc.
+4. Wirtschaftsforschung & Politik-Kommunikation (IW-spezifisch): iwd,
+   IW-Report, IW-Kurzbericht, IW-Trends, Gutachten, Policy Brief, Stellungnahme,
+   Ordnungspolitik, Konjunkturprognose, Drittmittel, Wissenschaftskommunikation,
+   Neutralitätsanspruch, Lobbyregister, Sachverständigenrat, etc.
+5. Recht & Compliance: DSGVO/AVV, EU AI Act, UWG, Kennzeichnung KI-generierter
+   Inhalte, Urheberrecht, Quellenangabe, Wissenschaftsfreiheit
+
+PART B — FAQ (target 30-40 direct questions)
+Real questions an IW comms professional would ask, each with a crisp,
+self-contained German answer (3-6 sentences). Examples:
+  - "Was ist der Unterschied zwischen einem Wissensordner und einem Workflow?"
+  - "Darf ich eine IW-Studie in den Wissensordner laden — und verlässt sie die EU?"
+  - "Wie verhindere ich, dass die KI eine Studienzahl falsch wiedergibt?"
+  - "Wie kennzeichne ich KI-generierte Inhalte rechtssicher?"
+  - "Welches Modell für eine Pressemitteilung aus einem IW-Report?"
+  - "Wie übersetze ich einen IW-Report in einen iwd-Artikel?"
+  Cover: orientation, model choice, Wissensordner, factual fidelity for
+  research content, compliance/Neutralität, IW-format-specific tasks.
+
+Output format:
+- PART A: one H2 per domain; each term as a bold term + the three fields
+  above; alphabetical within domain
+- PART B: one H2 "FAQ"; each question as an H3 with its self-contained answer
+- Keep each glossary entry and each FAQ answer short enough to stand alone as
+  a retrieval chunk (≤1 200 chars)
+- Language: ENTIRELY in German (definitions, answers) except the bracketed
+  English equivalents
+- Target length: 6 000-9 000 words; completeness over brevity
+
+Important:
+- Definitions must be accurate and non-circular; verify Langdock terms against
+  docs.langdock.com and IW terms against iwkoeln.de / iwd.de
+- Do NOT invent IW formats or Langdock features
+- For contested or evolving items (EU AI Act timelines, model names/prices),
+  add "Stand: [Monat/Jahr] — vor Nutzung verifizieren"
+- Prioritize the terms and questions a non-technical comms professional at a
+  research institute will actually hit in their first 90 days
+```
+
+---
+
+## IW expansion prompts (10–12) → new knowledge files 14–17
+
+Prompts 10–12 are tailored to the licensee **Institut der deutschen Wirtschaft (IW Köln)** and feed four new knowledge files (20 scenarios each):
+
+| Gemini prompt | Save-as | Feeds knowledge file(s) |
+|---|---|---|
+| **Prompt 10** — IW + IW Medien org/comms profile | `10-iw-koeln-organisationsprofil.gdoc` | `14-iw-use-cases.md` + `16-onboarding-change-management.md` |
+| **Prompt 11** — Think-tank / Wissenschaftskommunikation Branchen-Praxis | `11-think-tank-branchen-praxis.gdoc` | `17-branchen-think-tank-praxis.md` |
+| **Prompt 12** — Glossar & FAQ (Langdock + KI + IW-Domäne) | `12-glossar-iw-marketing-ki.gdoc` | `15-glossar-und-faq.md` |
+
+Run order for the IW expansion: **Prompt 10 first** (org grounding), then **11** and **12** in parallel.
+
 ## After Gemini finishes
 
-1. Move all seven Google Docs into the `little-data-research` folder in Drive.
-2. Tell me they're ready — I'll fetch them with the Drive MCP and integrate them into the agent's knowledge base alongside the 6 source docs and 4 research docs already ingested.
+1. Move all Google Docs into the `little-data-research` folder in Drive (now 12 prompts total; 10–12 are the IW expansion).
+2. Tell me they're ready — I'll fetch them with the Drive MCP and synthesize the four new knowledge files (14–17) at 20 source-grounded scenarios each, in the same strict schema and emoji-free Data-style as files 00–13.
 3. If any prompt produced a thin or off-target result, paste me Gemini's output and I'll write a tighter follow-up prompt.
 
 ## Recommended run order
@@ -1179,3 +1453,6 @@ Important:
 | 5 | **Prompt 1** (feature inventory) | Already run — refresh only if Langdock posts a major release. |
 | 6 | **Prompt 3** (marketing scenarios) | Already run — re-scope if the FAQ corpus from Prompt 7 reveals new high-value scenarios. |
 | 7 | **Prompt 2** (DACH adoption) | Already run — independent; refresh only if Bitkom / BVDW publish a new study. |
+| 8 | **Prompt 10** (IW org profile) | IW expansion — grounds files 14 + 16; run before 11/12. |
+| 9 | **Prompt 11** (think-tank Branchen-Praxis) | IW expansion — feeds file 17. |
+| 10 | **Prompt 12** (Glossar & FAQ) | IW expansion — feeds file 15. |

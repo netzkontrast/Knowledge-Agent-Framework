@@ -1,0 +1,65 @@
+Little Data — Langdock Advisor Agent
+Proprietary Software License (Single Licensee) — v1.0
+
+Copyright (c) 2026 Michael Schimmer / Netzkontrast. All rights reserved.
+
+Licensed to: Institut der deutschen Wirtschaft (the "Licensee").
+
+1. DEFINITIONS
+   "Package" means this release archive and all of its contents: the
+   knowledge files, the system prompt (AGENT_PROMPT.md), the conversation
+   starters, the persona and thematic files, the documentation, and the
+   accompanying provenance material.
+   "Licensee" means Institut der deutschen Wirtschaft, the single named
+   organization to whom this Package is delivered by the Licensor.
+   "Licensor" means Michael Schimmer / Netzkontrast.
+
+2. GRANT OF LICENSE
+   The Licensor grants the Licensee a non-exclusive, non-transferable,
+   non-sublicensable license to:
+   (a) deploy the Package in the Licensee's own Langdock workspace(s); and
+   (b) modify, adapt, and extend the knowledge files, system prompt, persona,
+       and other contents for the Licensee's own deployment and internal use.
+
+3. ATTRIBUTION
+   The Licensee shall retain a visible attribution notice
+   — "Little Data © 2026 Michael Schimmer / Netzkontrast" —
+   in AGENT_PROMPT.md or an equivalent visible location of any deployed or
+   modified version of the Package.
+
+4. RESTRICTIONS
+   The Licensee shall NOT:
+   (a) redistribute, publish, sublicense, lease, lend, share, or otherwise
+       make the Package or any derivative thereof available to any third
+       party;
+   (b) sell, resell, or commercially distribute the Package or any derivative;
+   (c) remove or obscure the attribution notice required in Section 3.
+   Modification and deployment are permitted for the single Licensee only;
+   external distribution in any form is not permitted.
+
+5. PROVENANCE MATERIAL
+   The contents of the provenance/ folder are provided for reference and
+   audit only. They are build-time research inputs, may contain unverified
+   or superseded statements, and must NOT be uploaded to the Langdock
+   knowledge folder or relied upon as the deployed knowledge base. The
+   authoritative knowledge base is the knowledge/ folder only.
+
+6. NO WARRANTY
+   THE PACKAGE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. THE CONTENT IS
+   DECISION-SUPPORT MATERIAL — NOT LEGAL, FINANCIAL, MEDICAL, OR COMPLIANCE
+   ADVICE.
+
+7. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+   LIABILITY, WHETHER IN CONTRACT, TORT, OR OTHERWISE, ARISING FROM OR IN
+   CONNECTION WITH THE PACKAGE OR THE USE OF THE PACKAGE.
+
+8. TERMINATION
+   This license terminates automatically upon any breach of Section 3 or
+   Section 4. Upon termination the Licensee shall cease all use and delete
+   all copies of the Package.
+
+For licensing beyond these terms — including redistribution, resale, or
+multi-party deployment — contact the Licensor.
