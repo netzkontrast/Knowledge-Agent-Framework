@@ -34,10 +34,12 @@ check_one() {
   # Detect file kind by basename prefix:
   #   - 11/12 are persona files (different H2/fields).
   #   - 13 is the per-Thema "Data-Anweisung" file (no scenarios; H2 anchor blocks).
+  #   - 15 is the Glossar & FAQ lookup file (term definitions + FAQ entries).
   local kind="content"
   case "$name" in
     11-persona-core*|12-persona-julia-modus*) kind="persona" ;;
     13-data-agent-anweisungen*) kind="anweisung" ;;
+    15-glossar*) kind="glossar" ;;
   esac
 
   # H1: exactly one
@@ -79,6 +81,30 @@ check_one() {
       return 0
     else
       echo "[FAIL] $name: $file_lines lines / $file_bytes bytes / $anw_h2 Data-Anweisungen"
+      return 1
+    fi
+  fi
+
+  # Glossar kind (file 15): validates a lookup-oriented Glossar + FAQ file
+  # instead of scenarios. Requires ≥1 "## Glossar" section and ≥15 "### F-" FAQ entries.
+  if [ "$kind" = "glossar" ]; then
+    local glo_h2; glo_h2=$(grep -cE '^## Glossar' "$file")
+    local faq_h3; faq_h3=$(grep -cE '^### F-' "$file")
+    if [ "$glo_h2" -lt 1 ]; then
+      echo "[FAIL] $name: '## Glossar' section missing"
+      fail=1
+    fi
+    if [ "$faq_h3" -lt 15 ]; then
+      echo "[FAIL] $name: FAQ entries (### F-) = $faq_h3 (expected ≥15)"
+      fail=1
+    fi
+    local file_lines; file_lines=$(wc -l < "$file")
+    local file_bytes; file_bytes=$(wc -c < "$file")
+    if [ "$fail" -eq 0 ]; then
+      echo "[PASS] $name: $file_lines lines / $file_bytes bytes / $glo_h2 Glossar-Sektionen, $faq_h3 FAQ-Einträge"
+      return 0
+    else
+      echo "[FAIL] $name: $file_lines lines / $file_bytes bytes / $glo_h2 Glossar-Sektionen, $faq_h3 FAQ-Einträge"
       return 1
     fi
   fi
