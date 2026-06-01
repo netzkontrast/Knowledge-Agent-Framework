@@ -98,10 +98,14 @@ check_one() {
     fail=1
   fi
 
-  # H3 scenario count: ≥40 (pivot 2026-05-31: full source-grounded rebuild).
+  # H3 scenario count threshold by kind:
+  #   content files (00-10): ≥40 (pivot 2026-05-31: full source-grounded rebuild; current target 80).
+  #   persona files (11/12): ≥20 (per build-plan Phase-2 gate — different scale than content scenarios).
+  local szen_min=40
+  if [ "$kind" = "persona" ]; then szen_min=20; fi
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
-  if [ "$szen_count" -lt 40 ]; then
-    echo "[FAIL] $name: scenario count = $szen_count (expected ≥40)"
+  if [ "$szen_count" -lt "$szen_min" ]; then
+    echo "[FAIL] $name: scenario count = $szen_count (expected ≥$szen_min)"
     fail=1
   fi
 
