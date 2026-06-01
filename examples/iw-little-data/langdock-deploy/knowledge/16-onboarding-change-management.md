@@ -11,6 +11,14 @@
 > - Plattform-Grundlagen, Modelle und Kosten → siehe `00-langdock-uebersicht`, `07-modelle-und-kosten`
 > - Inhaltliche IW-Use-Cases (iwd-Übersetzung, Pressemitteilung) → siehe `14-iw-use-cases`
 
+## IW-Struktur und Content-Workflow (Grundlagen für den Rollout)
+
+Das IW gliedert sich in thematische Wissenschaftsbereiche/Kompetenzfelder (u. a. Staat/Steuern/Soziale Sicherung, Bildung/Innovation/Migration, Digitalisierung/Klimawandel, Berufliche Qualifizierung/Fachkräfte, Arbeitswelt/Tarifpolitik, Internationale Wirtschaftspolitik) sowie die Tochtergesellschaften IW Medien GmbH (Verlag/Agentur, iwd-Redaktion) und IW Consult. Der Content-Workflow ist ein sequenzieller Trichter: Forschung (Ökonomen, interne Peer-Review) → Aufbereitung/Übersetzung (Kommunikation und IW Medien, Kernbotschaften, Grafiken) → Distribution (Presse, Pressemitteilung, Sperrfrist) → Social-Amplifikation (LinkedIn, Instagram @iwd_de, X). Wiederkehrende Engpässe: Übersetzung dichter Studien unter Zeitdruck, mehrfaches Audience-Rewriting derselben Erkenntnis, Grafik-Konzeption aus Tabellen, deutsch-englische Übersetzung ordnungspolitischer Begriffe, Media-Monitoring. Genau hier setzt der Little-Data-Rollout an. (Quelle: research/10 §2, §7)
+
+## Governance-Rahmen für KI in der Wissenschaftskommunikation
+
+Der KI-Einsatz in der Instituts-Kommunikation orientiert sich an zwei Leitdokumenten: den #FactoryWisskomm-Handlungsempfehlungen (Mai 2025, BMBF) und den IQ_HKom-Leitlinien des Bundesverbands Hochschulkommunikation (März 2026). Sie teilen die Governance in drei nicht verhandelbare Ebenen: (1) Rechtliche Pflichten — strikte DSGVO- und EU-AI-Act-Konformität; personenbezogene Daten, vertrauliche Strategien oder unveröffentlichte Wirtschaftsdaten gehören ohne Auftragsverarbeitungsvertrag (AVV) nicht in externe, ungeprüfte LLMs. (2) Organisatorische Schutzmaßnahmen — interne IT-Richtlinien, möglichst lokale oder abgesicherte Instanzen, verpflichtende KI-Literacy-Schulungen. (3) Professionelle Standards — „unteilbare redaktionelle Verantwortung": KI ist Assistenz, nie Autor; jede KI-gestützte Ausgabe braucht menschliche Faktenprüfung. Zentrale Risiken: Halluzination/Faktentreue, Bias, Tone Drift (ein zu werblicher Ton verletzt den Neutralitätsanspruch) und Kennzeichnungspflicht für KI-Bilder (§50 EU AI Act). (Quelle: research/11 §6)
+
 ## Marketing-Szenarien aus dieser Domäne
 
 Die folgenden zwanzig Szenarien (Präfix S-OC) bilden den Einführungs- und Veränderungs-Pfad für den "Little Data"-Langdock-Advisor am IW Köln ab. Sie führen von einem eng umrissenen Pilot mit einem einzelnen Kompetenzfeld über die Befähigung von KI-Champions je Wissenschaftsbereich, die Governance-Freigabe durch Datenschutz, Recht und CISO, die Schulung in Wissenschaftskommunikation mit KI bis hin zur kontrollierten Skalierung auf weitere Bereiche. Jedes Szenario respektiert die institutionelle Realität des IW: die strikte sachlich-evidenzbasierte Tonalität, die ordnungspolitische Ausrichtung, den redaktionellen Workflow von der Forschung über iwd und IW Medien bis zur Distribution sowie den fundamentalen Neutralitätsanspruch eines arbeitgebernahen Forschungsinstituts. Alle Artefakte sind Beratungsgrundlagen; jede Governance-Entscheidung und jede externe Handlung bleibt menschlich verantwortet (Human-in-the-Loop). Die Kette schließt sich bewusst: S-OC-020 führt zurück zu S-OC-001, weil Skalierung nach IW-Logik stets ein neuer, sauber pilotierter Anlauf ist.
@@ -393,4 +401,38 @@ Die folgenden zwanzig Szenarien (Präfix S-OC) bilden den Einführungs- und Ver�
 **Fallstricke (≥2 spezifisch):**
 - Ein institutsweiter Big-Bang-Rollout überspringt Governance und überfordert die Champions → jede Welle an einen eigenen, abgeschlossenen Mini-Pilot binden.
 - Die im Pilot bewährten Guardrails werden bei Skalierung verwässert → je neuem Bereich die Guardrail-Checkliste und Kennzeichnungs-Policy verbindlich übernehmen.
+**Anschluss-Szenario:** S-OC-021
+
+### S-OC-021 Faktenfrage: Was erlauben und verbieten die KI-Governance-Leitlinien?
+**Wann nutzen (Trigger):** Ein Teammitglied oder die Leitung fragt, was beim KI-Einsatz erlaubt ist und was nicht („Dürfen wir eine unveröffentlichte Studie in die KI geben?"). (Quelle: research/11 §6)
+**Strategisches Ziel:** Die drei Governance-Ebenen (rechtlich, organisatorisch, professionell) korrekt abrufbar machen, damit Mitarbeitende regelkonform arbeiten.
+**Hands-on Ergebnis:** Eine klare Auskunft mit der einschlägigen Regel und dem Verweis auf die menschliche Endverantwortung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Die Frage einer der drei Ebenen zuordnen (rechtlich/organisatorisch/professionell).
+2. Den Abschnitt „Governance-Rahmen für KI" abrufen und die zutreffende Regel zitieren.
+3. Bei rechtlicher Tragweite an Datenschutz/Recht verweisen (Beratung, keine Rechtsauskunft).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Governance-Berater fürs IW-Kommunikationsteam. Beantworte: Dürfen wir eine noch nicht veröffentlichte IW-Studie in ein externes LLM geben? Kontext: FactoryWisskomm- und IQ_HKom-Leitlinien. Format: klare Ja/Nein-Antwort, einschlägige Regel, ein nächster Schritt."
+**Erwartetes Artefakt:** Eine zitierte Governance-Auskunft mit Regel und Eskalationshinweis.
+**Fallstricke (≥2 spezifisch):**
+- Die Antwort wird als verbindliche Rechtsauskunft formuliert → Little Data berät; die verbindliche Bewertung bleibt Datenschutz/Recht vorbehalten.
+- „Sichere interne Instanz" wird mit „beliebiges externes LLM" verwechselt → die Unterscheidung (AVV, abgesicherte Instanz) klar benennen.
+**Anschluss-Szenario:** S-OC-022
+
+### S-OC-022 Faktenfrage: Welche KI-Risiken müssen wir im Institut beachten?
+**Wann nutzen (Trigger):** Es wird nach den spezifischen Risiken von KI in der Wissenschaftskommunikation gefragt („Was kann schiefgehen, wenn wir KI für Studientexte nutzen?"). (Quelle: research/11 §6)
+**Strategisches Ziel:** Die vier Kernrisiken (Halluzination, Bias, Tone Drift, Bild-Kennzeichnung) abrufbar machen und mit Gegenmaßnahmen verbinden.
+**Hands-on Ergebnis:** Eine Risiko-Maßnahmen-Übersicht für den konkreten Anlass.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Den Anlass (Textentwurf, Bildgenerierung, Übersetzung) klären.
+2. Den Abschnitt „Governance-Rahmen für KI" abrufen und die relevanten Risiken plus Gegenmaßnahmen zitieren.
+3. Auf die menschliche Faktenprüfung als nicht verhandelbaren Schritt hinweisen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Risiko-Berater fürs IW. Liste die KI-Risiken beim Erstellen einer Pressemitteilung aus einer Studie und je eine Gegenmaßnahme. Kontext: Faktentreue und Neutralitätsanspruch. Format: Tabelle (Risiko, Gegenmaßnahme)."
+**Erwartetes Artefakt:** Eine Risiko-Gegenmaßnahmen-Tabelle mit Bezug zum Anlass.
+**Fallstricke (≥2 spezifisch):**
+- Halluzinierte Zahlen werden übersehen → jede Studienzahl gegen die Originalquelle prüfen; ohne Beleg nicht veröffentlichen.
+- KI-Bilder werden ohne Kennzeichnung genutzt → §50 EU AI Act beachten; KI-Bilder nie als empirischen Beleg verwenden.
 **Anschluss-Szenario:** S-OC-001

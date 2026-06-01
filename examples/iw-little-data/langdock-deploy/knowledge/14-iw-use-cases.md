@@ -1,11 +1,35 @@
 # IW-Anwendungsfälle — Little Data im Kommunikationsalltag des IW Köln
 
 > **Was diese Datei abdeckt:**
-> - 20 konkrete Anwendungsfälle der IW-Kommunikation mit Little Data (Studien-Aufbereitung, Presse, iwd, Social, Stakeholder).
+> - Allgemeine Grundlagen zum IW: Publikationsformate, Kanäle/Zielgruppen, Markenstimme.
+> - Konkrete Anwendungsfälle der IW-Kommunikation mit Little Data plus Such-/Retrieval-Kontexte.
 > - Geerdet im IW-Organisationsprofil (research/10).
 >
 > **Was diese Datei NICHT abdeckt:**
 > - Allgemeine Langdock-Mechanik (dafür: 00–10) · Glossar/FAQ (15) · Branchen-Praxis (17) · Onboarding (16).
+
+## IW-Publikationsformate im Überblick
+
+Das IW produziert in klar abgegrenzten Formaten; Tonalität, Umfang und Zielgruppe unterscheiden sich je Format. Little Data erkennt das Zielformat und entwirft entsprechend, ohne die Formatgrenzen zu vermischen. (Quelle: research/10 §3)
+
+| Format | Zweck | Umfang | Zielgruppe |
+|---|---|---|---|
+| IW-Report | Tiefe empirische Bestandsaufnahme zu strukturellen Themen | Hoch | Ministerien, Wissenschaft, Fachpresse |
+| IW-Kurzbericht | Schnelle Analyse zu einem aktuellen Datensatz | 5–15 Seiten | Politik, Wirtschaftsjournalisten |
+| IW-Trends | Begutachtete Quartalszeitschrift (seit 1974) | Mittel–hoch | Wissenschaft, Fachpublikum |
+| IW-Policy-Paper | Konkrete ordnungspolitische Handlungsempfehlungen | Mittel | Abgeordnete, Ministerien, Verbände |
+| IW-Gutachten | Umfassende Auftragsforschung/Expertise | Buchformat | Auftraggeber, Gesetzgeber |
+| IW-Nachricht | Kurze Einordnung für den Nachrichtenzyklus | 1–3 Seiten | Tagespresse, Agenturen |
+| iwd (Magazin/Online) | Journalistische Übersetzung der Forschung | 3–5 Min. Lesezeit | Breite Öffentlichkeit, Journalisten, Schulen |
+| aktiv | Wirtschaftszeitung zur Mitarbeiterkommunikation | Zeitungsformat | Arbeitnehmer (M+E, Chemie), Betriebsräte |
+
+## IW-Kanäle und Zielgruppen
+
+Das IW trennt den akademischen Speicher (iwkoeln.de) strikt von der journalistischen Schnittstelle (iwd.de) und der Agentur (iwmedien.de). Zentrale Kanäle: iwkoeln.de (Studien, Pressemitteilungen, formell-akademisch), iwd.de (allgemeinverständliche Artikel und Infografiken), LinkedIn (debattenorientierte Thought Leadership), Instagram @iwd_de (visuelle, „snackable" Erklär-Kacheln), X/Twitter (schnelle politische Einordnung), der Podcast „Economic Challenges" sowie zielgerichtete Newsletter (IW-Trends, iwd, Presseverteiler). Hauptzielgruppen: Politik (Bundestag, Ministerien, Länder), Medien/Journalisten, Wirtschafts- und Arbeitgeberverbände (BDA, BDI, Gesamtmetall), Wissenschaft und breite Öffentlichkeit. Dieselbe Studie wird je Zielgruppe unterschiedlich gerahmt. (Quelle: research/10 §4–5)
+
+## IW-Markenstimme und redaktionelle Standards
+
+Der Grundton aller Kernpublikationen ist sachlich, evidenzbasiert, ordnungspolitisch und faktenorientiert — keine Hyperbel, kein Alarmismus, durchgängig Sie-Form; Anglizismen nur als etablierte Fachbegriffe. Die zentrale Spannung — wissenschaftliche Neutralität bei gleichzeitig arbeitgebernaher Position — löst das IW über kompromisslose Quellen- und Zitierdisziplin: Schlussfolgerungen erscheinen als Ableitung der Daten, nicht als ideologische Behauptung. Der iwd übersetzt dichte Forschung in klare Aussagen, ohne die ordnungspolitische Kernbotschaft zu verlieren. Little Data verstärkt diese Stimme und erfindet niemals Daten. (Quelle: research/10 §6)
 
 ## Marketing-Szenarien aus dieser Domäne
 
@@ -385,4 +409,38 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Der Check beschränkt sich auf Rechtschreibung statt Tonalität → Prompt muss explizit Tonalität, Alarmismus und ordnungspolitische Konsistenz adressieren.
 - Das Modell glättet jede Schärfe weg und entkernt die Aussage → Ziel ist Neutralität, nicht Verwässerung; belegte, pointierte Aussagen dürfen bestehen bleiben.
+**Anschluss-Szenario:** S-IW-021
+
+### S-IW-021 Faktenfrage: Welche IW-Publikationsformate gibt es und wofür?
+**Wann nutzen (Trigger):** Ein Teammitglied oder externer Partner fragt im Chat nach den IW-Formaten und ihrer Funktion („Was ist der Unterschied zwischen IW-Report, IW-Kurzbericht und iwd?"). (Quelle: research/10 §3)
+**Strategisches Ziel:** Eine korrekte, formattreue Auskunft direkt aus dem Wissensordner liefern, statt Formate zu verwechseln oder zu erfinden.
+**Hands-on Ergebnis:** Eine knappe Gegenüberstellung der angefragten Formate mit Zweck, Umfang und Zielgruppe.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Die Frage auf die gemeinten Formate eingrenzen.
+2. Den Abschnitt „IW-Publikationsformate im Überblick" abrufen und nur die relevanten Zeilen zitieren.
+3. Mit Quellenangabe antworten; bei nicht abgedecktem Format den exakten Verweigerungs-String nutzen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Wissensberater für die IW-Kommunikation. Erkläre den Unterschied zwischen IW-Report, IW-Kurzbericht und iwd. Kontext: neue Kollegin im Presseteam. Format: kurze Tabelle (Format, Zweck, Zielgruppe) plus ein Satz, wann welches Format passt."
+**Erwartetes Artefakt:** Eine zitierte Formattabelle mit ein bis drei Zeilen, passend zur Frage.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell vermengt iwd (journalistisch) mit IW-Report (akademisch) → die Formatgrenzen aus dem Überblick strikt einhalten.
+- Ein nicht gelistetes Format wird frei beschrieben → bei fehlender Deckung den exakten Verweigerungs-String nutzen, nichts erfinden.
+**Anschluss-Szenario:** S-IW-022
+
+### S-IW-022 Faktenfrage: Welcher Kanal und welche Tonalität für welche Zielgruppe?
+**Wann nutzen (Trigger):** Es wird gefragt, über welchen IW-Kanal eine Botschaft welche Zielgruppe in welcher Tonalität erreicht („Wo spiele ich eine Studie für die Politik vs. für die breite Öffentlichkeit aus?"). (Quelle: research/10 §4–5)
+**Strategisches Ziel:** Die richtige Kanal-/Zielgruppen-/Tonalitäts-Zuordnung abrufbar machen, damit Botschaften zielgruppengerecht ausgespielt werden.
+**Hands-on Ergebnis:** Eine Zuordnung von Kanal, Zielgruppe und Tonalität für den angefragten Fall.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Anliegen und Zielgruppe(n) klären.
+2. Den Abschnitt „IW-Kanäle und Zielgruppen" abrufen und die passende Zuordnung extrahieren.
+3. Antwort mit Quellenangabe und einem nächsten Schritt (z. B. Asset-Variante) liefern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Kanal-Stratege für das IW. Empfiehl für die Verbreitung einer neuen Arbeitsmarkt-Studie je einen Kanal für Politik, Fachpresse und breite Öffentlichkeit. Kontext: IW-Kurzbericht liegt vor. Format: Tabelle (Zielgruppe, Kanal, Tonalität, Asset-Typ)."
+**Erwartetes Artefakt:** Eine Kanal-Zielgruppen-Matrix für den konkreten Verbreitungsfall.
+**Fallstricke (≥2 spezifisch):**
+- Akademische Tonalität wird auf Instagram @iwd_de übertragen → dort gilt zugänglich und visuell, nicht formell-akademisch.
+- Veröffentlichung wird als automatisch angenommen → das Posten bleibt eine menschlich freigegebene Handlung (HITL).
 **Anschluss-Szenario:** S-IW-001

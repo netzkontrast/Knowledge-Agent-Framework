@@ -11,6 +11,28 @@
 > - Sicherheit, DSGVO und AVV im Detail → siehe 08-sicherheit-und-governance
 > - IW-spezifische Formate, Stakeholder und Brand Voice im Detail → siehe research/10 sowie 14/16
 
+## Die Peer-Landschaft der DACH-Wirtschaftsinstitute
+
+Die DACH-Wirtschaftsforschung wird von Instituten mit unterschiedlicher Ausrichtung geprägt; die Kommunikationsstrategie folgt jeweils der institutionellen Identität. Das IW Köln teilt die oberste Resonanz-Stufe häufig mit dem ifo Institut. (Quelle: research/11 §1)
+
+| Institut | Ausrichtung | Leitformate | Kernstärke |
+|---|---|---|---|
+| ifo (München) | neutral/marktorientiert | Geschäftsklimaindex, ifo Schnelldienst | Executive Thought Leadership, marktbewegende Indikatoren |
+| DIW Berlin | neutral/progressiv | DIW Wochenbericht, DIW aktuell | Transformations-Narrative, hohe Medienresonanz |
+| IW Köln | arbeitgeber-/wirtschaftsnah | interaktive Grafiken, Kurzberichte, Dossiers | interaktive Datenvisualisierung, strukturpolitische Advocacy |
+| IMK (Hans-Böckler) | gewerkschaftsnah | Inflationsmonitor, Policy Briefs | Verteilungs- und Nachfrage-Analyse |
+| RWI Essen | neutral/empirisch | Containerumschlag-Index, Konjunkturberichte | rigorose Datensätze, vorsichtiger Ton |
+| Sachverständigenrat | gesetzliches Beratungsgremium | Jahresgutachten | Agenda-Setting, strikte Sperrfrist/Schweigeperiode |
+| ZEW Mannheim | neutral/mikroökonometrisch | ZEW-Finanzmarkttest, Kurzexpertisen | Finanzmarkt-Sentiment, EU-Wirtschaftspolitik |
+
+## Wissenschaftskommunikation: Übersetzung, Standards, Ethik
+
+Kern der Branche ist die Übersetzungsdisziplin: dichte Ökonometrie ohne Verzerrung allgemeinverständlich machen und dabei Konfidenzintervalle, Modellannahmen und Forschungsdesiderate transparent benennen. Verbindliche Standards sind die Leibniz-Grundsätze (Transparenz und Faktentreue, Neutralitätsanspruch, „keine unlauteren Mittel") und die Siggener Impulse 2025 („Widerstandsfähigkeit stärken"). „Spin" — das Weglassen widersprechender Daten oder das Verbiegen von Kausalität für eine politische Erzählung — ist unter Codes wie den DRPR-Richtlinien für Wissenschafts-PR untersagt; jede Advocacy muss aus den Befunden folgen, nicht umgekehrt. Für advocacy-nahe Institute wie das IW gilt zusätzlich Drittmittel- und Mandats-Transparenz; das IW ist im Lobbyregister geführt (R001998). (Quelle: research/11 §2, §4)
+
+## KI in der Instituts-Kommunikation: Nutzen und Risiken
+
+KI beschleunigt die Texttransformation (Studien-Zusammenfassung, Lesbarkeits-Anpassung, DE→EN-Übersetzung), bleibt aber an die Branchen-Governance gebunden (FactoryWisskomm 2025, IQ_HKom 2026): unteilbare redaktionelle Verantwortung, KI als Assistenz nie Autorin, menschliche Faktenprüfung jeder Ausgabe. Sektor-Risiken: Halluzination/Faktentreue (eine erfundene Kausalität oder eine falsche Dezimalstelle beschädigt die Glaubwürdigkeit sofort), Bias, Tone Drift weg von wissenschaftlicher Neutralität sowie die Kennzeichnungspflicht für KI-Bilder (§50 EU AI Act). (Quelle: research/11 §6)
+
 ## Marketing-Szenarien aus dieser Domäne
 
 Die folgenden 20 Szenarien übertragen die Branchenkonventionen der DACH-Wirtschaftsforschung auf die tägliche Arbeit des IW-Kommunikationsteams mit Langdock. Sie sind durchgängig auf die rigorosen Sektorstandards kalibriert: Faktentreue ohne Spin, ehrliche Kommunikation von Unsicherheiten und Forschungsdesideraten, Wahrung des Neutralitätsanspruchs trotz Arbeitgeber-Nähe und transparenter Umgang mit der Drittmittel-Basis (Quelle: research/11 Kapitel 2). Jede nach außen wirkende Handlung erfordert eine menschliche Freigabe (Human-in-the-Loop); KI ist Assistenzwerkzeug, niemals Autorin (Quelle: research/11 Kapitel 6). Die Kette läuft von S-TT-001 bis S-TT-020 und schließt zurück zu S-TT-001.
@@ -394,4 +416,38 @@ Die folgenden 20 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 **Fallstricke (≥2 spezifisch):**
 - Das Modell legt dem Ökonomen Aussagen oder Zahlen in den Mund, die er nicht getroffen hat → Geltung strikt auf Transkript und Studie begrenzen; Freigabe durch die Person zwingend.
 - Generischer "LinkedIn-Broetry"-Ton trifft die Stimme nicht → Drei Negativbeispiele ("klingt NICHT wie unser Ökonom") im System-Prompt verankern. Schließt zurück zu S-TT-001, wenn der Beitrag eine neue Studienübersetzung anstößt.
+**Anschluss-Szenario:** S-TT-021
+
+### S-TT-021 Faktenfrage: Wie kommunizieren die Peer-Institute im Vergleich?
+**Wann nutzen (Trigger):** Es wird nach der Einordnung des IW gegenüber Peer-Instituten (ifo, DIW, IMK, RWI, ZEW, SVR) gefragt („Wie positioniert sich das IW gegenüber ifo und DIW?"). (Quelle: research/11 §1)
+**Strategisches Ziel:** Die Peer-Landschaft korrekt abrufbar machen, damit Botschaften im Wettbewerbsumfeld richtig verortet werden.
+**Hands-on Ergebnis:** Eine Vergleichseinordnung mit Ausrichtung, Leitformaten und Kernstärke der angefragten Institute.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Die gemeinten Institute eingrenzen.
+2. Den Abschnitt „Peer-Landschaft" abrufen und die relevanten Zeilen zitieren.
+3. Die spezifische IW-Stärke (interaktive Datenvisualisierung, strukturpolitische Advocacy) einordnen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Wettbewerbs-Analyst für Wirtschaftsinstitute. Vergleiche IW Köln, ifo und DIW nach Ausrichtung, Leitformaten und Kommunikations-Kernstärke. Kontext: Positionierung einer neuen IW-Studie. Format: kurze Tabelle plus ein Satz Empfehlung für die IW-Rahmung."
+**Erwartetes Artefakt:** Eine zitierte Peer-Vergleichstabelle für die angefragten Institute.
+**Fallstricke (≥2 spezifisch):**
+- Die Ausrichtung wird verwechselt (z. B. IMK als neutral statt gewerkschaftsnah) → die dokumentierte Ausrichtung strikt übernehmen.
+- Der Vergleich wird wertend gegen Wettbewerber → sachlich-neutral bleiben; keine Abwertung anderer Institute.
+**Anschluss-Szenario:** S-TT-022
+
+### S-TT-022 Faktenfrage: Welche Standards gelten für die Wissenschaftskommunikation?
+**Wann nutzen (Trigger):** Es wird nach den verbindlichen Standards und Ethikregeln der Wissenschaftskommunikation gefragt („Welche Regeln gelten für unsere KI-gestützten Texte?"). (Quelle: research/11 §2)
+**Strategisches Ziel:** Die Standards (Leibniz-Grundsätze, Siggener Impulse, Anti-Spin, Drittmittel-Transparenz, Lobbyregister) abrufbar machen.
+**Hands-on Ergebnis:** Eine knappe Standard-Auskunft mit Bezug zum konkreten Text.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Wissensordner
+**Vorgehen (3 Schritte):**
+1. Den Anlass (Studie, Stellungnahme, Social-Post) klären.
+2. Den Abschnitt „Wissenschaftskommunikation: Übersetzung, Standards, Ethik" abrufen und die einschlägigen Grundsätze zitieren.
+3. Auf Faktentreue, Neutralität und Quellenangabe als nicht verhandelbar hinweisen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Standards-Berater für Wissenschaftskommunikation. Nenne die Regeln, die ein KI-gestützter Pressetext einhalten muss. Kontext: IW, arbeitgebernah, Lobbyregister-geführt. Format: Checkliste mit je einem Satz Begründung."
+**Erwartetes Artefakt:** Eine Standards-Checkliste für den konkreten Text.
+**Fallstricke (≥2 spezifisch):**
+- Advocacy wird über die Datenlage gestellt → jede Position muss aus den Befunden folgen, nicht umgekehrt.
+- Der Drittmittel- und Mandats-Kontext wird verschwiegen → Transparenz wahren; das IW ist im Lobbyregister geführt.
 **Anschluss-Szenario:** S-TT-001
