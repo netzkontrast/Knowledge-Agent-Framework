@@ -444,3 +444,329 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 - Akademische Tonalität wird auf Instagram @iwd_de übertragen → dort gilt zugänglich und visuell, nicht formell-akademisch.
 - Veröffentlichung wird als automatisch angenommen → das Posten bleibt eine menschlich freigegebene Handlung (HITL).
 **Anschluss-Szenario:** S-IW-001
+
+### S-IW-023 Sharepic-Briefing und Zitatkachel-Text aus einer Studienkernaussage
+
+**Wann nutzen (Trigger):** Aus einer frisch veröffentlichten IW-Studie soll für Instagram @iwd_de und LinkedIn ein Sharepic mit Zitatkachel entstehen — Bildbriefing plus Caption, das eine einzelne Kernaussage visuell zuspitzt, bevor IW Medien gestaltet. (Quelle: research/10 §4 Instagram @iwd_de "snackable" Kacheln)
+**Strategisches Ziel:** Eine belastbare Kernaussage so verdichten, dass sie als Bildkachel sofort verständlich ist, ohne die ordnungspolitische Einordnung oder die Datengrenzen zu verlieren.
+**Hands-on Ergebnis:** Ein Bildbriefing (Bildaussage, Kachel-Headline, Zitat ≤120 Zeichen, Quellenfußnote) plus eine kurze Caption mit CTA.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Die Studie in den Wissensordner laden und die eine zentrale, belegbare Kernaussage isolieren.
+2. Daraus eine Kachel-Headline und einen zitierfähigen Satz (≤120 Zeichen) formulieren, der die Aussage nicht überdehnt.
+3. Bildbriefing für IW Medien ergänzen: Bildaussage, Hierarchie, Pflicht-Quellenfußnote auf der Kachel.
+4. Caption mit kurzer Einordnung entwerfen und Paket der Redaktion zur Freigabe vorlegen; Post erst nach Gegenzeichnung.
+**Beispiel-Prompt (DE):**
+> "Du briefst eine Sharepic-Kachel für @iwd_de aus der verknüpften IW-Studie. Isoliere eine belegbare Kernaussage. Liefere: (1) eine Kachel-Headline von maximal sechs Wörtern, (2) ein zitierfähiges Statement von höchstens 120 Zeichen, (3) ein Bildbriefing mit Bildaussage und Pflicht-Quellenfußnote, (4) eine Caption von maximal 60 Wörtern mit dezentem Call-to-Action zum Studienlink. Sachlich, keine Zuspitzung über die Daten hinaus, keine erfundenen Zahlen. Markiere jede nicht eindeutig belegte Zahl."
+**Erwartetes Artefakt:** Ein Kachel-Briefing (Markdown) mit Headline, Zitattext, Bildbriefing, Caption und Quellenfußnote, freigabebereit.
+**Fallstricke (≥2 spezifisch):**
+- Die Kachel-Verdichtung verliert die Einschränkung der Aussage und suggeriert Allgemeingültigkeit → Bezugsgröße und Studienjahr in der Fußnote zwingend mitführen.
+- Das Zitat wird ohne Quellenfußnote gestaltet und ist später nicht rückführbar → Quellenfußnote als Pflichtelement des Bildbriefings markieren.
+**Anschluss-Szenario:** S-IW-025
+
+### S-IW-024 Ein-Seiten-Faktenblatt für Journalisten und Politik
+
+**Wann nutzen (Trigger):** Zu einem IW-Report wünschen sich Wirtschaftsjournalisten und Ministerialbüros ein verdichtetes Ein-Seiten-Faktenblatt mit den Kernzahlen, einem Methodik-Kasten und einem freigegebenen O-Ton, das schneller erfassbar ist als die Vollstudie. (Quelle: research/10 §5 Media & Policymakers; §3 IW-Report)
+**Strategisches Ziel:** Die zentralen Befunde und ihre methodische Basis auf einer Seite entscheidungs- und zitierfähig bündeln, ohne die Limitationen zu verschweigen.
+**Hands-on Ergebnis:** Ein einseitiges Faktenblatt mit drei bis fünf Kernzahlen, Methodik-Kasten (Datenquelle, Zeitraum, Stichprobe), einem O-Ton-Platz und Quellenzeile.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Den Report in den Wissensordner laden und die drei bis fünf belastbarsten Kernzahlen extrahieren.
+2. Einen Methodik-Kasten mit Datenquelle, Erhebungszeitraum und Stichprobengröße aus der Studie zusammenstellen.
+3. Faktenblatt im Canvas layouten — Kernzahlen oben, Methodik-Kasten, O-Ton-Platzhalter, Quellenzeile.
+4. Entwurf an Pressestelle und Lead-Autor zur Freigabe geben; Versand an Externe erst nach Gegenzeichnung.
+**Beispiel-Prompt (DE):**
+> "Du erstellst ein Ein-Seiten-Faktenblatt aus dem verknüpften IW-Report für Journalisten und Ministerialbüros. Liefere: drei bis fünf Kernzahlen mit Bezugsgröße, einen Methodik-Kasten (Datenquelle, Zeitraum, Stichprobe), einen Platzhalter für einen autorisierten O-Ton und eine Quellenzeile mit exaktem Studientitel. Maximal eine Seite, sachlich, keine Zahl ohne Beleg. Benenne methodische Limitationen in einem Satz im Methodik-Kasten."
+**Erwartetes Artefakt:** Ein einseitiges Faktenblatt (Markdown) mit Kernzahlen, Methodik-Kasten, O-Ton-Platz und Quellenzeile.
+**Fallstricke (≥2 spezifisch):**
+- Kernzahlen erscheinen ohne Bezugsgröße und werden missverständlich (Prozent vs. Prozentpunkte, absolut vs. relativ) → jede Zahl mit expliziter Bezugsgröße und Einheit ausweisen.
+- Der Methodik-Kasten wird weggelassen, das Blatt wirkt wie PR statt Evidenz → Methodik-Kasten als Pflichtblock führen, auch bei knappem Platz.
+**Anschluss-Szenario:** S-IW-023
+
+### S-IW-025 Reel-Skript aus einem Studienergebnis (30–60 Sekunden)
+
+**Wann nutzen (Trigger):** Für ein Erklär-Reel auf Instagram @iwd_de soll aus einem einzelnen Studienergebnis ein 30–60-Sekunden-Skript entstehen — Hook, drei Kernzahlen, Abbinder mit Call-to-Action —, das die Daten korrekt, aber sehr knapp transportiert. (Quelle: research/10 §4 Instagram @iwd_de visuelle Erklärformate; §6 "Translating"-Rolle)
+**Strategisches Ziel:** Einen komplexen Befund für ein junges, breites Publikum in ein kurzes Bewegtbild-Skript übersetzen, ohne die Aussage zu verzerren oder Scheingenauigkeit zu erzeugen.
+**Hands-on Ergebnis:** Ein Reel-Skript mit Sekunden-Timing, Hook-Satz, drei verständlich gerahmten Kernzahlen, On-Screen-Text-Hinweisen und CTA.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Das Studienergebnis und die drei aussagekräftigsten Kernzahlen aus dem Wissensordner ziehen.
+2. Einen Hook (≤2 Sätze) formulieren, der neugierig macht, ohne zu übertreiben.
+3. Skript mit grobem Sekunden-Timing, On-Screen-Text je Kernzahl und CTA strukturieren.
+4. Skript der iwd-Redaktion zur Freigabe vorlegen; Produktion und Veröffentlichung erst danach.
+**Beispiel-Prompt (DE):**
+> "Du schreibst ein Reel-Skript für @iwd_de aus dem verknüpften Studienergebnis, Länge 30 bis 60 Sekunden. Struktur: Hook (maximal zwei Sätze), drei Kernzahlen mit kurzer, korrekter Einordnung und On-Screen-Text-Vorschlag, Abbinder mit Call-to-Action zum Studienlink. Aktive Sprache, kein Jargon, keine Zahl ohne Bezug. Gib pro Abschnitt ein grobes Sekunden-Timing an. Erfinde keine Zahlen und runde nicht irreführend."
+**Erwartetes Artefakt:** Ein Reel-Skript (Markdown) mit Timing, Hook, drei Kernzahlen, On-Screen-Text und CTA.
+**Fallstricke (≥2 spezifisch):**
+- Der Hook übertreibt für Reichweite und kippt in Alarmismus → Hook an einen belegten Datenpunkt binden, reißerische Zuspitzung untersagen.
+- Zahlen werden fürs Tempo grob gerundet und verzerren die Aussage → korrekte Rundungsregel vorgeben und Bezugsgröße im On-Screen-Text mitführen.
+**Anschluss-Szenario:** S-IW-027
+
+### S-IW-026 Sprechzettel und Talking Points für ein Präsidenten-Statement zum Studien-Launch
+
+**Wann nutzen (Trigger):** Zum Launch einer Leitstudie soll die Institutsspitze ein kurzes Statement abgeben; das Hauptstadtbüro braucht einen Sprechzettel mit Talking Points, der frei vortragbar ist und die ordnungspolitische Linie konsistent hält. (Quelle: research/10 §2 Direktor/Leitung als öffentliche Stimme; §5 Policymakers)
+**Strategisches Ziel:** Die Leitung in wenigen Minuten redefähig machen — eingängige Kernbotschaften, belegte Stützzahlen, saubere Übergänge —, ohne die Studie zu überdehnen.
+**Hands-on Ergebnis:** Ein Sprechzettel mit Eröffnung, drei Talking Points (je Botschaft plus Stützzahl), einer Brücke zur ordnungspolitischen Einordnung und einem Schlusssatz.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (5 Schritte):**
+1. Studie und geplante Kernbotschaften in den Wissensordner laden.
+2. Drei Talking Points formulieren, jeden mit genau einer belegbaren Stützzahl.
+3. Eine Eröffnung und einen Schlusssatz entwerfen, die frei vortragbar sind (kurze Sätze, Sie-Form).
+4. Übergänge zur ordnungspolitischen Einordnung als Brückensätze ergänzen.
+5. Sprechzettel der Leitung und der Kommunikation zur Freigabe vorlegen; Vortrag erst nach Abnahme.
+**Beispiel-Prompt (DE):**
+> "Du erstellst einen Sprechzettel für ein kurzes Statement der Institutsleitung zum Launch der verknüpften IW-Studie. Liefere: eine Eröffnung von zwei Sätzen, drei Talking Points mit je einer belegbaren Stützzahl, je einen Brückensatz zur ordnungspolitischen Einordnung und einen Schlusssatz. Frei vortragbar, kurze Sätze, formelles 'Sie', sachlich, kein Alarmismus. Keine Aussage über die Datenlage hinaus; markiere Unsicherheiten als solche."
+**Erwartetes Artefakt:** Ein Sprechzettel (Markdown) mit Eröffnung, drei belegten Talking Points, Brückensätzen und Schlusssatz.
+**Fallstricke (≥2 spezifisch):**
+- Talking Points geraten unter Bühnendruck zu Maximalaussagen ohne Deckung → jeden Punkt an einen konkreten Datenpunkt binden, freie Steigerung unterbinden.
+- Der Zettel ist zu schriftsprachlich und nicht frei sprechbar → kurze Hauptsätze und Sie-Form erzwingen, Schachtelsätze vermeiden.
+**Anschluss-Szenario:** S-IW-014
+
+### S-IW-027 LinkedIn-Karussell aus einer Studie (5–7 Slides)
+
+**Wann nutzen (Trigger):** Nach einer Studienveröffentlichung soll für LinkedIn ein Karussell mit fünf bis sieben Slides entstehen — je eine Kernaussage pro Slide mit Quellenfußnote —, das Fachpeers und Politik durchblättern. (Quelle: research/10 §4 LinkedIn Thought Leadership, §7 Social-Amplifikation Karussells)
+**Strategisches Ziel:** Einen Befund in eine durchblätterbare Argumentationskette übersetzen, die Sichtbarkeit erzeugt, ohne werblich oder polarisierend zu wirken.
+**Hands-on Ergebnis:** Ein Karussell-Manuskript mit Titel-Slide, fünf bis sieben Inhalts-Slides (je eine Kernaussage plus Quellenfußnote) und Abschluss-Slide mit CTA.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (4 Schritte):**
+1. Die Studie in den Wissensordner laden und fünf bis sieben tragende Kernaussagen in logischer Reihenfolge bestimmen.
+2. Pro Slide eine Aussage mit kurzer Belegzeile und Quellenfußnote formulieren.
+3. Titel-Slide und Abschluss-Slide mit dezentem CTA ergänzen; Slide-Text knapp halten.
+4. Manuskript der Redaktion und dem Kanalinhaber zur Freigabe vorlegen; Post nur durch ihn.
+**Beispiel-Prompt (DE):**
+> "Du textest ein LinkedIn-Karussell aus der verknüpften IW-Studie, fünf bis sieben Slides. Liefere je Slide: eine Kernaussage von maximal 18 Wörtern, eine Belegzeile mit Zahl und eine Quellenfußnote. Ergänze ein Titel-Slide und ein Abschluss-Slide mit dezentem Call-to-Action zur Studie. Tonalität professionell, debattenorientiert, formelles 'Sie', keine Emojis, keine Superlative. Jede Zahl muss aus der Studie belegbar sein."
+**Erwartetes Artefakt:** Ein Karussell-Manuskript (Markdown) mit Titel-, Inhalts- und Abschluss-Slides samt Quellenfußnoten.
+**Fallstricke (≥2 spezifisch):**
+- Slides werden mit Text überladen und auf dem Smartphone unlesbar → harte Wortobergrenze je Slide vorgeben und eine Aussage pro Slide erzwingen.
+- Die Slide-Reihenfolge ergibt keine Argumentationslogik, sondern lose Fakten → vor dem Texten die Slide-Dramaturgie als Gliederung festlegen.
+**Anschluss-Szenario:** S-IW-003
+
+### S-IW-028 Save-the-Date- und Einladungstexte plus Reminder-Sequenz für eine IW-Veranstaltung
+
+**Wann nutzen (Trigger):** Für eine IW-Veranstaltung (etwa eine Vortragsreihe oder ein Hauptstadt-Format) braucht das Team gestaffelte Texte — Save-the-Date, formelle Einladung und eine Reminder-Sequenz —, die Eingeladene aus Politik, Wissenschaft und Verbänden adressieren. (Quelle: research/10 §4 Events; §5 Stakeholder)
+**Strategisches Ziel:** Eine konsistente, fristgerechte Einladungsstrecke erzeugen, die Teilnahmequote sichert und im sachlichen IW-Ton bleibt.
+**Hands-on Ergebnis:** Ein Save-the-Date-Text, ein Einladungstext mit Programmpunkten und eine zweistufige Reminder-Sequenz, je mit klarem Call-to-Action.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat
+**Vorgehen (4 Schritte):**
+1. Eckdaten (Titel, Datum, Ort/Format, Zielgruppe, Anmeldeweg) als Eingabe bereitstellen.
+2. Save-the-Date kurz und merkfähig formulieren, Einladung mit Programmpunkten und Nutzenversprechen.
+3. Zwei Reminder (Vorlauf und Last Call) mit eindeutigem Call-to-Action entwerfen.
+4. Alle Texte der Veranstaltungs- und Kommunikationsverantwortung zur Freigabe vorlegen; Versand erst danach.
+**Beispiel-Prompt (DE):**
+> "Du textest die Einladungsstrecke für eine IW-Veranstaltung. Eckdaten: [Titel, Datum, Ort/Format, Zielgruppe, Anmeldelink]. Liefere: (1) einen Save-the-Date von maximal 40 Wörtern, (2) eine formelle Einladung mit drei bis fünf Programmpunkten und Nutzenversprechen, (3) zwei Reminder (früher Hinweis und Last Call) mit klarem Call-to-Action. Formelles 'Sie', sachlich, kein Marketing-Überschwang. Verwende ausschließlich die vorgegebenen Eckdaten, erfinde keine Programmpunkte oder Redner."
+**Erwartetes Artefakt:** Ein Textpaket (Markdown) mit Save-the-Date, Einladung und zwei Remindern, freigabebereit.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell erfindet Redner, Uhrzeiten oder Programmpunkte → ausschließlich vorgegebene Eckdaten verwenden, Lücken als Platzhalter markieren.
+- Die Reminder wirken aufdringlich und beschädigen den seriösen Ton → Frequenz auf zwei begrenzen und sachlich-serviceorientiert formulieren.
+**Anschluss-Szenario:** S-IW-014
+
+### S-IW-029 Plattform-native Kurzpost-Varianten aus einem Kernbefund (X, Bluesky, LinkedIn)
+
+**Wann nutzen (Trigger):** Ein einzelner Kernbefund soll zeitnah als kurzer Post auf mehreren Plattformen erscheinen; das Team braucht je eine plattform-native Variante für X, Bluesky und LinkedIn, die Längen- und Tonalitätsunterschiede respektiert. (Quelle: research/10 §4 X/Twitter schnelle politische Einordnung; §4 LinkedIn)
+**Strategisches Ziel:** Reichweite über mehrere Kurzkanäle erzeugen, ohne denselben Text stumpf zu duplizieren oder die jeweilige Plattformkonvention zu verfehlen.
+**Hands-on Ergebnis:** Drei plattform-native Kurzpost-Varianten mit identischer Faktenbasis, jeweils mit Quellenhinweis und ohne Hashtag-Überladung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten, Chat
+**Vorgehen (4 Schritte):**
+1. Den Kernbefund und die belegbare Zahl einmal als Single Source of Truth fixieren.
+2. Eine X-Variante (knapp, pointiert, politisch anschlussfähig) innerhalb der Zeichenkonvention formulieren.
+3. Eine Bluesky- und eine LinkedIn-Variante (etwas ausführlicher, debattenorientiert) ableiten.
+4. Alle drei der Kommunikation zur Freigabe vorlegen; Veröffentlichung kanalweise erst nach Gegenzeichnung.
+**Beispiel-Prompt (DE):**
+> "Du formulierst plattform-native Kurzposts aus dem folgenden IW-Kernbefund. Liefere drei Varianten: (1) X, knapp und pointiert innerhalb gängiger Zeichenkonvention, (2) Bluesky, etwas ausführlicher, (3) LinkedIn, debattenorientiert mit offener Fachfrage. Faktenbasis in allen identisch, je ein Quellenhinweis, maximal zwei sachliche Hashtags, keine Emojis, keine Zuspitzung über die Daten hinaus. Verbiege die Aussage nicht je Plattform."
+**Erwartetes Artefakt:** Drei Kurzpost-Varianten (Markdown) mit gemeinsamer Faktenbasis und plattformgerechter Länge/Tonalität.
+**Fallstricke (≥2 spezifisch):**
+- Die X-Variante verkürzt den Befund so stark, dass die Bezugsgröße verloren geht → Kernzahl und Bezug auch in der kürzesten Variante mitführen.
+- Identischer Text wird auf allen Plattformen gepostet und wirkt automatisiert → je Plattform Länge und Register anpassen, nicht bloß kopieren.
+**Anschluss-Szenario:** S-IW-011
+
+### S-IW-030 Reaktiv-Statement zu einer aktuellen wirtschaftspolitischen Entwicklung
+
+**Wann nutzen (Trigger):** Eine aktuelle wirtschaftspolitische Entwicklung (etwa ein Gesetzentwurf oder eine neue amtliche Zahl) verlangt eine zeitnahe Einordnung; das Team braucht ein Reaktiv-Statement mit drei zielgruppengerechten Botschaften für Presse, Politik und Verbände, gestützt auf vorhandene IW-Forschung. (Quelle: research/10 §4 X/Twitter schnelle Einordnung; §7 Media Monitoring)
+**Strategisches Ziel:** Schnell und faktentreu in die Debatte einzahlen, ohne über die belegte Forschung hinauszugehen oder parteipolitisch zu werten.
+**Hands-on Ergebnis:** Ein kurzes Reaktiv-Statement mit Kernbotschaft und drei Zielgruppen-Botschaften (Presse, Politik, Verbände), je mit Beleg aus vorhandener IW-Forschung.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Den Anlass präzise benennen und die einschlägige IW-Forschung im Wissensordner identifizieren.
+2. Eine sachliche Kernbotschaft formulieren, die nur durch vorhandene Daten gedeckt ist.
+3. Drei Zielgruppen-Botschaften ableiten — Presse (Nachrichtenwert), Politik (Wirkung), Verbände (Standort).
+4. Statement der Kommunikationsleitung zur Freigabe vorlegen; Veröffentlichung erst nach Abnahme.
+**Beispiel-Prompt (DE):**
+> "Du entwirfst ein Reaktiv-Statement des IW zu folgender aktueller Entwicklung: [Anlass]. Stütze dich ausschließlich auf die verknüpfte vorhandene IW-Forschung. Liefere eine Kernbotschaft von zwei Sätzen und drei Zielgruppen-Botschaften: Presse (Nachrichtenwert), Politik (legislative Wirkung), Verbände (Wettbewerbsfähigkeit), je mit einem belegten Datenpunkt. Sachlich, evidenzbasiert, keine parteipolitische Wertung, keine Aussage über die Datenlage hinaus. Markiere, wo die Forschung den Anlass nur teilweise abdeckt."
+**Erwartetes Artefakt:** Ein Reaktiv-Statement (Markdown) mit Kernbotschaft und drei belegten Zielgruppen-Botschaften.
+**Fallstricke (≥2 spezifisch):**
+- Unter Zeitdruck wird zu einer Entwicklung Stellung genommen, die die vorhandene Forschung nicht deckt → nur belegte Aussagen treffen; Deckungslücke offen markieren oder auf Statement verzichten.
+- Das Statement rutscht in tagespolitische Bewertung und gefährdet die Neutralität → Aussagen als Ableitung aus Daten rahmen, keine Partei- oder Personenwertung.
+**Anschluss-Szenario:** S-IW-010
+
+### S-IW-031 iwd-Teaser mit SEO-Title und Meta-Description aus einem Langfassungs-Artikel
+
+**Wann nutzen (Trigger):** Ein fertiger iwd-Langfassungs-Artikel soll auf iwd.de auffindbar und teilbar werden; die Redaktion braucht einen Teaser plus SEO-Title und Meta-Description, die suchmaschinengerecht sind, ohne Clickbait. (Quelle: research/10 §4 iwd.de SEO-optimierte Artikel; §6 "Translating"-Rolle)
+**Strategisches Ziel:** Reichweite und Auffindbarkeit des Artikels erhöhen und zugleich die sachliche Tonalität und Korrektheit des iwd wahren.
+**Hands-on Ergebnis:** Ein Teaser-Absatz, ein SEO-Title (≤60 Zeichen) und eine Meta-Description (≤155 Zeichen), konsistent mit dem Artikelinhalt.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Den Langfassungs-Artikel in den Wissensordner laden und das zentrale Suchinteresse bestimmen.
+2. Einen Teaser-Absatz (≤60 Wörter) formulieren, der den Kernnutzen vorwegnimmt.
+3. SEO-Title (≤60 Zeichen) und Meta-Description (≤155 Zeichen) mit natürlichem Keyword erstellen.
+4. Paket der iwd-Redaktion zur Freigabe vorlegen; Veröffentlichung erst danach.
+**Beispiel-Prompt (DE):**
+> "Du optimierst einen iwd-Artikel für iwd.de. Aus der verknüpften Langfassung: (1) ein Teaser von maximal 60 Wörtern mit klarem Kernnutzen, (2) ein SEO-Title von höchstens 60 Zeichen, (3) eine Meta-Description von höchstens 155 Zeichen. Binde das zentrale Keyword natürlich ein, kein Keyword-Stuffing, kein Clickbait. Inhalt muss mit dem Artikel übereinstimmen; keine Versprechen, die der Text nicht einlöst. Tonalität sachlich und allgemeinverständlich."
+**Erwartetes Artefakt:** Ein SEO-Paket (Markdown) aus Teaser, SEO-Title und Meta-Description, deckungsgleich mit dem Artikel.
+**Fallstricke (≥2 spezifisch):**
+- Title oder Description versprechen mehr als der Artikel liefert → Aussagen strikt am Artikelinhalt spiegeln, keine überzogenen Versprechen.
+- Zeichengrenzen werden überschritten und in der Suchergebnisliste abgeschnitten → Längen hart prüfen (Title ≤60, Description ≤155 Zeichen).
+**Anschluss-Szenario:** S-IW-002
+
+### S-IW-032 Rundfunk-O-Ton-Vorbereitung mit zitierfähigen Sätzen und Brückensätzen
+
+**Wann nutzen (Trigger):** Eine IW-Ökonomin gibt ein Radio-Interview (etwa Deutschlandfunk oder WDR); sie braucht wenige zitierfähige, kurze Sätze plus Brückensätze, um auch bei schwierigen Fragen sachlich zurück zur Kernaussage zu führen. (Quelle: research/10 §4 Broadcast; §5 Media & Journalists prime-time Radio)
+**Strategisches Ziel:** Die Sprecherin radiotauglich machen — knappe, gesprochene Sätze, ruhige Brücken bei Gegenfragen —, ohne die Studie zu überdehnen.
+**Hands-on Ergebnis:** Eine O-Ton-Karte mit drei zitierfähigen Kernsätzen, je einem Stützbeleg und drei Brückensätzen für heikle Fragen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Studie und Kernaussage in den Wissensordner laden.
+2. Drei kurze, gesprochene Kernsätze (radiotauglich, ≤2 Sätze) mit je einem Beleg formulieren.
+3. Drei Brückensätze entwerfen, die bei Gegenfragen ruhig zur Kernaussage zurückführen.
+4. O-Ton-Karte der Ökonomin zur Prüfung und Freigabe vorlegen; nur autorisierte Sätze verwenden.
+**Beispiel-Prompt (DE):**
+> "Du bereitest eine IW-Ökonomin auf ein Radio-Interview vor. Aus der verknüpften Studie: drei zitierfähige Kernsätze, je maximal zwei gesprochene Sätze, mit je einem belegenden Datenpunkt. Ergänze drei Brückensätze, die bei kritischen oder abschweifenden Fragen sachlich zur Kernaussage zurückführen ('Entscheidend ist …'). Gesprochene, kurze Sätze, formelles 'Sie', kein Alarmismus. Keine Aussage über die Daten hinaus; kennzeichne Unsicherheiten."
+**Erwartetes Artefakt:** Eine O-Ton-Karte (Markdown) mit drei belegten Kernsätzen und drei Brückensätzen.
+**Fallstricke (≥2 spezifisch):**
+- Die Sätze sind schriftsprachlich verschachtelt und im Radio nicht sprechbar → kurze Hauptsätze in gesprochener Sprache erzwingen.
+- Brückensätze weichen Fragen aus und wirken wie Ablenkung → Brücken sachlich an die belegte Kernaussage koppeln, nicht das Thema verlassen.
+**Anschluss-Szenario:** S-IW-007
+
+### S-IW-033 EN-Executive-Summary und EN-Press-Note aus einem deutschen IW-Report
+
+**Wann nutzen (Trigger):** Für die englische Website (iwkoeln.de/en) und internationale Adressaten soll aus einem deutschen IW-Report eine englische Executive Summary plus eine kurze englische Press-Note entstehen — terminologietreu für ordnungspolitische Begriffe. (Quelle: research/10 §7 Bilingual demands; §4 iwkoeln.de/en)
+**Strategisches Ziel:** Die Kernbefunde international anschlussfähig machen und dabei die IW-Fachterminologie konsistent und korrekt übertragen.
+**Hands-on Ergebnis:** Eine englische Executive Summary (Bullet-Form) und eine kurze englische Press-Note, beide mit glossarkonformer Terminologie und markierten Zweifelsfällen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (IW-Glossar), Canvas
+**Vorgehen (4 Schritte):**
+1. Den deutschen Report und das IW-Terminologie-Glossar als Wissensordner verknüpfen.
+2. Die Kernbefunde extrahieren und als englische Executive Summary in Bullet-Form fassen.
+3. Eine kurze englische Press-Note (Headline, Lead, zwei Belegsätze) ableiten; Fachbegriffe glossarkonform.
+4. Zweifelsfälle markieren und an die fachkundige Endredaktion geben; Veröffentlichung erst nach Freigabe.
+**Beispiel-Prompt (DE):**
+> "Du erstellst aus dem verknüpften deutschen IW-Report eine englische Executive Summary (Bullet-Form, maximal eine Seite) und eine kurze englische Press-Note (Headline, Lead, zwei Belegsätze). Nutze für Begriffe wie 'Soziale Marktwirtschaft', 'Tarifautonomie' oder 'Ordnungspolitik' ausschließlich die im Glossar hinterlegten englischen Entsprechungen. Idiomatisch und fachlich präzise, keine generischen Anglizismen. Markiere jede Stelle ohne eindeutige Glossar-Entsprechung für die menschliche Endredaktion. Keine Zahl ohne Beleg aus dem Report."
+**Erwartetes Artefakt:** Eine EN-Executive-Summary und eine EN-Press-Note (Markdown) mit glossarkonformer Terminologie und markierten Zweifelsfällen.
+**Fallstricke (≥2 spezifisch):**
+- Ordnungspolitische Termini werden frei und inkonsistent übersetzt → Glossar als verbindliche Quelle verankern, freie Übertragung der Kernbegriffe untersagen.
+- Die englische Fassung glättet eine fachliche Aussage idiomatisch weg → bei Bedeutungsverschiebung wörtlicher bleiben und Stelle zur Prüfung markieren.
+**Anschluss-Szenario:** S-IW-013
+
+### S-IW-034 Redaktionsplan aus Sitzungswochen und Gesetzgebungsvorhaben ableiten
+
+**Wann nutzen (Trigger):** Für das kommende Quartal soll ein Redaktionsplan präziser an den parlamentarischen Betrieb andocken — konkret an Bundestags-Sitzungswochen und benannte Gesetzgebungsvorhaben —, damit IW-Themen punktgenau zu Anhörungen und Lesungen vorliegen. (Quelle: research/10 §5 Policymakers Bundestag/Ministerien; §8 Kompetenzfelder)
+**Strategisches Ziel:** Das Agenda-Setting schärfen, indem Veröffentlichungen exakt auf Sitzungswochen und Verfahrensstände kalibriert werden, mit realistischem Redaktionsvorlauf.
+**Hands-on Ergebnis:** Ein Quartalsplan, der je Sitzungswoche und Gesetzgebungsvorhaben ein IW-Thema, Format, Kanal und Redaktionsvorlauf zuordnet.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Chat
+**Vorgehen (4 Schritte):**
+1. Sitzungswochen, benannte Gesetzgebungsvorhaben und verfügbare IW-Themen als Eingabe bereitstellen.
+2. Je Vorhaben den passenden Verfahrensstand (Anhörung, Lesung) und das geeignete Format wählen lassen.
+3. Plan als Tabelle ausgeben: Sitzungswoche, Vorhaben, IW-Thema, Format, Kanal, Redaktionsvorlauf.
+4. Plan dem Team und dem Hauptstadtbüro zur Freigabe und Ressourcenplanung vorlegen.
+**Beispiel-Prompt (DE):**
+> "Du verfeinerst den IW-Quartals-Redaktionsplan entlang des parlamentarischen Betriebs. Eingabe: die vorgegebenen Bundestags-Sitzungswochen, die benannten Gesetzgebungsvorhaben und die verfügbaren IW-Themen. Ordne je Vorhaben ein IW-Thema, ein Format (IW-Kurzbericht, Policy-Brief, iwd-Artikel) und einen Kanal zu und berücksichtige den Verfahrensstand. Liefere eine Tabelle: Sitzungswoche, Vorhaben, IW-Thema, Format, Kanal, Redaktionsvorlauf. Verwende ausschließlich die vorgegebenen Termine; erfinde keine Sitzungswochen oder Gesetzentwürfe."
+**Erwartetes Artefakt:** Ein verfeinerter Quartalsplan (Tabelle) mit Sitzungswoche, Vorhaben, Thema, Format, Kanal und Vorlauf.
+**Fallstricke (≥2 spezifisch):**
+- Das Modell erfindet Sitzungswochen, Gesetzentwürfe oder Verfahrensstände → ausschließlich vorgegebene Termine nutzen, fehlende als Lücke markieren.
+- Themen werden zu eng an ein Vorhaben gekoppelt und kompromittieren die Neutralität → Anlassbezug sachlich halten, keine parteipolitische Positionierung.
+**Anschluss-Szenario:** S-IW-019
+
+### S-IW-035 Jahresbericht-Narrativ aus dem Jahres-Studienportfolio synthetisieren
+
+**Wann nutzen (Trigger):** Über die modularen Jahresbericht-Bausteine hinaus soll ein durchgehendes Narrativ für den IW-Jahresbericht entstehen, das das Jahres-Studienportfolio zu einer roten Linie verdichtet und die Highlights begründet auswählt. (Quelle: research/10 §3 Publikationsformate; §7 wiederkehrende Aufgaben)
+**Strategisches Ziel:** Aus vielen Einzelveröffentlichungen eine kohärente Jahresgeschichte formen, die die strategischen Schwerpunkte sichtbar macht, ohne in Eigenlob zu kippen.
+**Hands-on Ergebnis:** Ein Narrativ-Entwurf mit Leitthese des Jahres, drei bis fünf begründet ausgewählten Highlights und Überleitungen zwischen den Themenclustern.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (5 Schritte):**
+1. Das Jahres-Studienportfolio (Titel, Cluster, Kernzahlen) in den Wissensordner laden.
+2. Eine belegbare Leitthese des Jahres ableiten, die die Schwerpunkte bündelt.
+3. Drei bis fünf Highlights nach nachvollziehbaren Kriterien (Resonanz, Relevanz, Datenstärke) auswählen.
+4. Überleitungen zwischen den Themenclustern formulieren, sodass ein durchgehender Faden entsteht.
+5. Narrativ-Entwurf der Jahresbericht-Redaktion zur Freigabe vorlegen.
+**Beispiel-Prompt (DE):**
+> "Du synthetisierst ein Jahresbericht-Narrativ aus dem verknüpften IW-Jahres-Studienportfolio. Liefere: eine belegbare Leitthese des Jahres, drei bis fünf Highlights mit kurzer Begründung der Auswahl (Resonanz, Relevanz, Datenstärke) und Überleitungen zwischen den Themenclustern zu einem durchgehenden Faden. Sachlich, kein Eigenlob über die Belege hinaus, jede Aussage an konkrete Veröffentlichungen und Zahlen gebunden. Markiere Stellen, an denen Portfolio-Daten fehlen."
+**Erwartetes Artefakt:** Ein Jahresbericht-Narrativ (Markdown) mit Leitthese, begründeten Highlights und Cluster-Überleitungen.
+**Fallstricke (≥2 spezifisch):**
+- Das Narrativ konstruiert eine rote Linie, die die Studien so nicht hergeben → Leitthese und Verknüpfungen aus belegten Befunden ableiten, keine nachträgliche Bedeutungszuschreibung.
+- Die Highlight-Auswahl bleibt unbegründet und wirkt beliebig → Auswahlkriterien je Highlight transparent ausweisen.
+**Anschluss-Szenario:** S-IW-018
+
+### S-IW-036 Zitatfreigabe-Workflow für O-Töne und Pressezitate
+
+**Wann nutzen (Trigger):** Vor Veröffentlichung von O-Tönen und Pressezitaten braucht das Team einen klaren Autorisierungs-Workflow, der sicherstellt, dass jedes Zitat vom genannten Forschenden freigegeben ist und nur die freigegebene Fassung nach außen geht. (Quelle: research/10 §5 Media; §6 Zitier- und Quellendisziplin)
+**Strategisches Ziel:** Die Zitierdisziplin prozessual absichern und Fehlzitate oder unautorisierte O-Töne systematisch verhindern.
+**Hands-on Ergebnis:** Ein Workflow-Dokument mit Freigabeschritten, Verantwortlichkeiten, Statusfeldern (offen/freigegeben/gesperrt) und einer Eskalationsregel bei Änderungswünschen.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows, Canvas
+**Vorgehen (4 Schritte):**
+1. Die Stationen eines Zitats (Entwurf, Autoren-Freigabe, redaktionelle Endfassung, Versand) als Schrittfolge erfassen.
+2. Je Station Verantwortliche und ein Statusfeld (offen, freigegeben, gesperrt) definieren.
+3. Eine Eskalationsregel ergänzen, falls nach Freigabe noch Änderungen am Zitat gewünscht werden.
+4. Workflow der Pressestelle zur Abstimmung vorlegen; produktiver Einsatz erst nach Freigabe.
+**Beispiel-Prompt (DE):**
+> "Du entwirfst einen Zitatfreigabe-Workflow für IW-O-Töne und Pressezitate. Liefere eine Schrittfolge: Zitatentwurf, persönliche Autoren-Freigabe, redaktionelle Endfassung, Versand — je mit Verantwortlichem und Statusfeld (offen, freigegeben, gesperrt). Ergänze eine klare Regel: Nur die vom genannten Forschenden freigegebene Fassung darf veröffentlicht werden; nachträgliche Änderungen lösen eine erneute Freigabe aus. Stelle dies als kompakte Tabelle plus Regeltext dar."
+**Erwartetes Artefakt:** Ein Zitatfreigabe-Workflow (Tabelle plus Regeltext) mit Schritten, Verantwortlichen, Status und Eskalationsregel.
+**Fallstricke (≥2 spezifisch):**
+- Eine nachträglich geänderte Zitatfassung geht ohne erneute Freigabe raus → Regel verankern, dass jede Änderung nach Freigabe eine neue Autorisierung erzwingt.
+- Verantwortlichkeiten bleiben unklar und Zitate versanden im Status → je Schritt genau einen Verantwortlichen und ein Pflicht-Statusfeld führen.
+**Anschluss-Szenario:** S-IW-007
+
+### S-IW-037 Social-Infografik-Serie aus einem Befund mit konsistentem Bildbriefing
+
+**Wann nutzen (Trigger):** Aus einem datenreichen Befund soll eine Serie aus drei aufeinander aufbauenden Social-Infografiken entstehen, die @iwd_de über mehrere Tage ausspielt — mit konsistentem Bildbriefing und durchgehender visueller Klammer. (Quelle: research/10 §4 Instagram @iwd_de Infografiken; §7 Social-Amplifikation)
+**Strategisches Ziel:** Einen Befund in eine wiedererkennbare, mehrteilige Erzählung übersetzen, die Aufmerksamkeit über mehrere Posts hält, ohne die Datenkorrektheit zu opfern.
+**Hands-on Ergebnis:** Ein Serien-Briefing für drei Infografiken (je Kernaussage, Chart-Typ, Bildbriefing) mit gemeinsamer visueller Klammer und Quellenfußnote je Post.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst, Canvas
+**Vorgehen (4 Schritte):**
+1. Den Befund bzw. die Tabelle in den Data Analyst laden und drei zusammenhängende Teilaussagen bestimmen.
+2. Je Infografik einen geeigneten Chart-Typ und eine Kernaussage in einem Satz festlegen.
+3. Eine konsistente visuelle Klammer (Reihenfolge, wiederkehrendes Element, Quellenfußnote) als Bildbriefing definieren.
+4. Serien-Briefing an IW Medien übergeben; Gestaltung, Freigabe und gestaffelter Post liegen dort.
+**Beispiel-Prompt (DE):**
+> "Du konzipierst eine dreiteilige Social-Infografik-Serie für @iwd_de aus dem im Data Analyst liegenden Befund. Bestimme drei aufeinander aufbauende Teilaussagen. Liefere je Infografik: Kernaussage in einem Satz, geeigneten Chart-Typ, Achsenbeschriftung und Pflicht-Quellenfußnote. Definiere eine konsistente visuelle Klammer über alle drei Posts (Reihenfolge, wiederkehrendes Element). Keine irreführenden Achsenkürzungen, keine erfundenen Werte, korrekte Bezugsgrößen."
+**Erwartetes Artefakt:** Ein Serien-Briefing (Markdown) für drei Infografiken mit Kernaussagen, Chart-Typen, visueller Klammer und Quellenfußnoten.
+**Fallstricke (≥2 spezifisch):**
+- Die drei Grafiken nutzen uneinheitliche Skalen und sind nicht vergleichbar → einheitliche Bezugsgrößen und Skalen über die Serie festschreiben.
+- Multi-Sheet-Tabellen im RAG-Wissensordner führen zu Lesefehlern → tabellarische Daten ausschließlich im Data Analyst verarbeiten.
+**Anschluss-Szenario:** S-IW-004
+
+### S-IW-038 Geschäftsführungs-Briefing mit Entscheidungs-Optionen
+
+**Wann nutzen (Trigger):** Über die reine Kurzfassung hinaus braucht die Geschäftsführung zu einem Gutachten ein Entscheidungs-Briefing, das nicht nur zusammenfasst, sondern zwei bis drei klar abgewogene Handlungsoptionen mit Vor- und Nachteilen und einer Empfehlung bereitstellt. (Quelle: research/10 §2 Geschäftsführung/Leitung; §9 Task 6 Executive Summaries)
+**Strategisches Ziel:** Die Leitung entscheidungsfähig machen, indem aus den Befunden konkrete, abgewogene Optionen statt nur einer Zusammenfassung abgeleitet werden — ohne die Datengrenzen zu verschleiern.
+**Hands-on Ergebnis:** Ein Entscheidungs-Briefing mit Kernbefunden, zwei bis drei Optionen (je Vor-/Nachteile, Risiken), einer begründeten Empfehlung und offenen Fragen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Canvas
+**Vorgehen (5 Schritte):**
+1. Das Gutachten in den Wissensordner laden und die entscheidungsrelevanten Kernbefunde extrahieren.
+2. Zwei bis drei plausible Handlungsoptionen formulieren, jede aus den Befunden ableitbar.
+3. Je Option Vorteile, Nachteile und Risiken knapp gegenüberstellen.
+4. Eine begründete Empfehlung geben und die zentralen offenen Fragen benennen.
+5. Briefing der Geschäftsführung vorlegen; die finale Entscheidung bleibt bei der Leitung.
+**Beispiel-Prompt (DE):**
+> "Du erstellst ein Entscheidungs-Briefing für die IW-Geschäftsführung aus dem verknüpften Gutachten. Liefere: die entscheidungsrelevanten Kernbefunde, zwei bis drei Handlungsoptionen mit je knappen Vor- und Nachteilen und Risiken, eine begründete Empfehlung und die wichtigsten offenen Fragen. Jede Option muss aus den Befunden ableitbar und durch Daten gedeckt sein; methodische Limitationen explizit benennen. Sachlich, ohne Wertung über die Daten hinaus. Quelle am Ende nennen."
+**Erwartetes Artefakt:** Ein Entscheidungs-Briefing (Markdown) mit Befunden, abgewogenen Optionen, Empfehlung und offenen Fragen.
+**Fallstricke (≥2 spezifisch):**
+- Die Empfehlung geht über die Datenlage hinaus und wird zur Meinung → Empfehlung strikt aus belegten Befunden ableiten, Annahmen offenlegen.
+- Optionen werden als Scheinalternativen formuliert, die faktisch auf eine hinauslaufen → echte, unterscheidbare Handlungswege mit realen Trade-offs ausweisen.
+**Anschluss-Szenario:** S-IW-009
+
+### S-IW-039 Laienverständliche Förder-Kommunikation aus einem Antragstext
+
+**Wann nutzen (Trigger):** Aus einem fachlich-formalen Antrags- oder Projekttext (etwa zu einem drittmittelgeförderten IW-Vorhaben) soll eine laienverständliche Außendarstellung für Website und Social entstehen, die Ziel und Nutzen des Projekts ohne Antragsjargon erklärt. (Quelle: research/10 §1 Drittmittel/Auftragsforschung; §6 "Translating"-Rolle)
+**Strategisches Ziel:** Ein gefördertes Vorhaben öffentlich verständlich und korrekt darstellen, ohne Wirkungen zu versprechen, die der Antrag nicht deckt.
+**Hands-on Ergebnis:** Ein kurzer Außendarstellungs-Text (Titel, Was/Warum/Für-wen, Nutzen, Förderhinweis) plus eine Social-Kurzfassung.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner, Chat
+**Vorgehen (4 Schritte):**
+1. Den Antrags-/Projekttext in den Wissensordner laden und Ziel, Zielgruppe und erwarteten Nutzen extrahieren.
+2. Antragsjargon in klare Alltagssprache übersetzen, ohne Wirkungen zu überzeichnen.
+3. Außendarstellungs-Text strukturieren (Titel, Was/Warum/Für-wen, Nutzen, Förderhinweis) und eine Social-Kurzfassung ableiten.
+4. Texte der Projektleitung und Kommunikation zur Freigabe vorlegen; Veröffentlichung erst nach Abnahme.
+**Beispiel-Prompt (DE):**
+> "Du erstellst aus dem verknüpften IW-Antrags-/Projekttext eine laienverständliche Außendarstellung. Liefere: einen Titel, einen kurzen Abschnitt 'Was, warum, für wen', den konkreten Nutzen und einen Förderhinweis, dazu eine Social-Kurzfassung von maximal 60 Wörtern. Übersetze Antragsjargon in klare Alltagssprache, aktive Verben. Versprich nur Wirkungen, die der Antrag deckt; markiere noch offene Projektziele als 'geplant'. Sachlich, kein Marketing-Überschwang."
+**Erwartetes Artefakt:** Ein Außendarstellungs-Text plus Social-Kurzfassung (Markdown) mit Förderhinweis, freigabebereit.
+**Fallstricke (≥2 spezifisch):**
+- Geplante Projektziele werden als bereits erreichte Ergebnisse dargestellt → noch offene Ziele klar als 'geplant' kennzeichnen, keine vorweggenommenen Wirkungen.
+- Der Förderhinweis und etwaige Auftraggeber fehlen, die Darstellung wirkt intransparent → Förderquelle und Projektkontext als Pflichtangabe führen.
+**Anschluss-Szenario:** S-IW-002
