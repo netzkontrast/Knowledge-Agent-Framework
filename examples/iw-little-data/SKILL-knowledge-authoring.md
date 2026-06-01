@@ -5,7 +5,7 @@ description: Use when authoring a markdown file destined for a Langdock Knowledg
 
 # Writing Langdock Knowledge Files — Project Skill
 
-This skill is the operational discipline for authoring every `.md` file that lands in `little-data/langdock-deploy/knowledge/`. Treat it as rigid for this project; deviations break retrieval.
+This skill is the operational discipline for authoring every `.md` file that lands in `examples/iw-little-data/langdock-deploy/knowledge/`. Treat it as rigid for this project; deviations break retrieval.
 
 The full methodology with sources is in `data/restructured/01-knowledge-authoring-methodology.md`. This skill is the action-oriented distillation.
 

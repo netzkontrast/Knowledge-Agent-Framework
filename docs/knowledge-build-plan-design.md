@@ -92,7 +92,7 @@ The framework's file-kind taxonomy is **content / persona / anweisung / glossar*
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ Phase 5 — Deployment Package                                                 │
 │  ├─ INSTALL.md (Schritt-für-Schritt Langdock-Setup)                          │
-│  ├─ little-data/README.md (Project-Überblick für PR-Reviewer)                │
+│  ├─ examples/iw-little-data/README.md (Project-Überblick für PR-Reviewer)                │
 │  └─ langdock-deploy/ als Upload-Ready-Folder                                 │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -177,7 +177,7 @@ Output: PR mit der Datei + kurze PR-Beschreibung der Inhalts-Mapping.
 
 Plan ist erfolgreich, wenn am Ende von Phase 5:
 
-1. `little-data/langdock-deploy/` ist vollständig: 14 Knowledge-Files + AGENT_PROMPT.md + CONVERSATION_STARTERS.md
+1. `examples/iw-little-data/langdock-deploy/` ist vollständig: 14 Knowledge-Files + AGENT_PROMPT.md + CONVERSATION_STARTERS.md
 2. `INSTALL.md` führt Schritt-für-Schritt durch Langdock-Workspace-Setup, Wissensordner-Upload, Agent-Konfiguration, Konversations-Starter-Setup
 3. `tools/check_*` Suite läuft grün
 4. 20-Query Spot-Check ≥85% Pass-Rate (oder defer mit Begründung)

@@ -9,7 +9,7 @@
 ## Project structure
 
 ```
-little-data/
+examples/iw-little-data/
 ├── INSTALL.md                         step-by-step Langdock workspace deployment
 ├── MAINTENANCE.md                     review cadence + staleness rules (after Phase 3)
 ├── SKILL-knowledge-authoring.md       action-oriented authoring discipline
@@ -55,13 +55,13 @@ little-data/
 
 ---
 
-## Key specs (linked from `docs/superpowers/specs/`)
+## Key specs (linked from `docs/`)
 
 - `2026-05-31-little-data-agent-design.md` — agent design (persona, system prompt, capabilities, F8-F12, N9-N12)
 - `2026-05-31-knowledge-file-authoring-spec.md` — 12 Commandments + Data-tonality discipline + Phase-2 synthesizer prompt template
 - `2026-05-31-knowledge-build-plan-design.md` — 2-phase build architecture (hybrid Themes + Outputs)
 
-## Key plans (linked from `docs/superpowers/plans/`)
+## Key plans (linked from `docs/`)
 
 - `2026-05-31-knowledge-build-plan.md` — bite-sized 6-phase implementation plan with gates and roll-back plays
 
@@ -140,7 +140,7 @@ Each scenario is CONSTRUCTED using one (or more) of these methods as a structura
 - Reference prose tonality (NOT Data speaking; Data persona only in system prompt + files 11/12/13).
 - Bilingual seeding: "Markenstimme (Brand Voice)" on first mention.
 
-Full spec: `docs/superpowers/specs/2026-05-31-knowledge-file-authoring-spec.md`.
+Full spec: `docs/knowledge-file-authoring-spec.md`.
 
 ---
 
