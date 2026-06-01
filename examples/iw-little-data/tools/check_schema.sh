@@ -40,6 +40,7 @@ check_one() {
     11-persona-core*|12-persona-julia-modus*) kind="persona" ;;
     13-data-agent-anweisungen*) kind="anweisung" ;;
     15-glossar*) kind="glossar" ;;
+    18-quellen*|18-links*|*-deeplinks*) kind="links" ;;
   esac
 
   # H1: exactly one
@@ -105,6 +106,31 @@ check_one() {
       return 0
     else
       echo "[FAIL] $name: $file_lines lines / $file_bytes bytes / $glo_h2 Glossar-Sektionen, $faq_h3 FAQ-Einträge"
+      return 1
+    fi
+  fi
+
+  # Links kind (file 18): a domain-clustered catalogue of external links + search contexts
+  # that RAG surfaces so the agent can point to authoritative deep-links. Requires ≥4 cluster
+  # H2 sections and ≥15 markdown links to http(s) URLs.
+  if [ "$kind" = "links" ]; then
+    local clusters; clusters=$(grep -cE '^## ' "$file")
+    local links; links=$(grep -coE '\]\(https?://' "$file")
+    if [ "$clusters" -lt 4 ]; then
+      echo "[FAIL] $name: domain cluster H2 sections = $clusters (expected ≥4)"
+      fail=1
+    fi
+    if [ "$links" -lt 15 ]; then
+      echo "[FAIL] $name: external links = $links (expected ≥15)"
+      fail=1
+    fi
+    local file_lines; file_lines=$(wc -l < "$file")
+    local file_bytes; file_bytes=$(wc -c < "$file")
+    if [ "$fail" -eq 0 ]; then
+      echo "[PASS] $name: $file_lines lines / $file_bytes bytes / $clusters Cluster, $links Links"
+      return 0
+    else
+      echo "[FAIL] $name: $file_lines lines / $file_bytes bytes / $clusters Cluster, $links Links"
       return 1
     fi
   fi
