@@ -54,6 +54,8 @@ jobs:
             echo "::group::Validate $NAME"
             ( cd "$EX" && bash tools/check_schema.sh --all )
             ( cd "$EX" && bash tools/check_prompt_size.sh )
+            ( cd "$EX" && bash tools/check_grounding.sh --all )
+            ( cd "$EX" && bash tools/check_coherence.sh --all )
             if grep -rlP '[\x{1F000}-\x{1FAFF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{2B00}-\x{2BFF}\x{FE0F}]' "$DEPLOY"/knowledge/*.md; then
               echo "::error::Pictographic emoji found in $NAME knowledge files — aborting."
               exit 1
