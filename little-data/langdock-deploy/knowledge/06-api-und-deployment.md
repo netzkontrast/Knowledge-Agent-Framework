@@ -1224,4 +1224,387 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 **Fallstricke (≥2 spezifisch):**
 - Das Team migriert blind, ohne Kompatibilitätsgrenzen zu prüfen — die Migration schlägt fehl, weil der Dienstleister die OpenAI Assistants-API nutzt, die Langdock nicht repliziert; vor der Migration muss ein Feature-Audit des bestehenden Systems stehen.
 - Nach der Migration wird die Response-Qualität als "automatisch gleich" angenommen — verschiedene Modelle hinter demselben Endpoint können unterschiedliche Output-Qualitäten für spezifische Marketing-Tasks liefern; ein Validierungs-Testplan mit Referenz-Prompts ist unverzichtbar.
+**Anschluss-Szenario:** S-API-061
+
+### S-API-061 API-Key-Rotation als Pflichtprozess automatisieren
+
+**Wann nutzen (Trigger):** Das Marketing-Team nutzt seit acht Monaten denselben Langdock-Workspace-API-Key in vier Integrationen. Ein Security-Audit bemängelt, dass der Key nie rotiert wurde. Die Direktorin soll mit der IT einen automatisierten Rotations-Prozess aufsetzen, der ohne Ausfall der laufenden Integrationen funktioniert. (Quelle: S-API-014, sources/12 Q120)
+**Strategisches Ziel:** Eine unterbrechungsfreie API-Key-Rotation etablieren, die Keys planmäßig (z. B. alle 90 Tage) und ad hoc bei Kompromittierung erneuert, ohne dass produktive Marketing-Workflows ausfallen.
+**Hands-on Ergebnis:** Ein Rotations-Runbook für die IT mit Dual-Key-Overlap-Verfahren, Rotations-Kalender und Verifikations-Schritten.
+**Eingesetzte Langdock-Fähigkeit(en):** API Security Advisory, Audit Logs API
+**Vorgehen (5 Schritte):**
+1. Erkläre das Dual-Key-Overlap-Prinzip: alten und neuen Key kurzzeitig parallel gültig halten, sodass Integrationen umgestellt werden können, bevor der alte Key invalidiert wird (kein Big-Bang-Cutover).
+2. Definiere den Rotations-Kalender: planmäßige Rotation alle 90 Tage (Stand 2026-06 als Best-Practice-Richtwert — interne Security-Policy ist maßgeblich), zusätzlich Sofort-Rotation bei jedem Offboarding oder Kompromittierungsverdacht.
+3. Lege die Schlüssel-Hinterlegung fest: jeder Key ausschließlich in einem Secrets-Manager, niemals in Code, Slack oder Tickets; pro Integration ein separater Key, damit Rotation eine Integration isoliert betreffen kann.
+4. Verifiziere nach der Rotation über die Audit Logs API, dass keine Requests mehr mit dem alten Key eintreffen, bevor er endgültig gelöscht wird.
+5. Dokumentiere ein Rollback: schlägt eine Integration nach Umstellung fehl, sofort zurück auf den noch gültigen alten Key, Fehler analysieren, erneut umstellen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein IT-Security-Berater. Wir nutzen denselben Langdock-API-Key seit acht Monaten in vier Integrationen und müssen Rotation automatisieren — ohne Ausfall. Erkläre: (1) das Dual-Key-Overlap-Verfahren, (2) einen 90-Tage-Rotations-Kalender plus Ad-hoc-Trigger, (3) Secrets-Manager-Hinterlegung mit separaten Keys pro Integration, (4) wie wir via Audit Logs API verifizieren, dass der alte Key inaktiv ist. Liefere ein Rotations-Runbook."
+**Erwartetes Artefakt:** Ein Rotations-Runbook (Dual-Key-Verfahren, Kalender, Secrets-Hinterlegung, Verifikation, Rollback).
+**Fallstricke (≥2 spezifisch):**
+- Der alte Key wird sofort invalidiert, bevor alle Integrationen auf den neuen umgestellt sind — produktive Marketing-Workflows fallen mitten in einer Kampagne aus.
+- Alle vier Integrationen teilen sich einen einzigen Key, sodass jede Rotation alle vier gleichzeitig betrifft und das Ausfallrisiko maximiert statt isoliert wird.
+**Anschluss-Szenario:** S-API-062
+
+### S-API-062 Rate-Limit-Backoff-Strategie sauber dimensionieren
+
+**Wann nutzen (Trigger):** Ein Localization-Workflow erzeugt in Spitzen kurzzeitig hunderte Completion-Requests und läuft regelmäßig in HTTP-429-Fehler. Das Entwicklungsteam hat einen festen 1-Sekunden-Retry eingebaut, der das Problem verschärft, weil alle Worker gleichzeitig erneut anklopfen. Die Direktorin beauftragt ein sauberes Backoff-Konzept. (Quelle: sources/10 S-066, sources/12 Q119)
+**Strategisches Ziel:** Eine korrekt dimensionierte Rate-Limit-Backoff-Strategie definieren, die HTTP-429-Stürme abfedert, den `Retry-After`-Header respektiert und den Thundering-Herd-Effekt vermeidet.
+**Hands-on Ergebnis:** Ein Backoff-Leitfaden für die IT mit konkreten Wartezeit-Kurven, Jitter-Empfehlung und Worker-Pacing.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API, Rate-Limit-Advisory
+**Vorgehen (4 Schritte):**
+1. Erkläre exponentielles Backoff mit Jitter: Wartezeit verdoppelt sich pro Versuch (1s, 2s, 4s, 8s), aber mit zufälligem Jitter (±50 %), damit nicht alle Worker synchron erneut anfragen (Thundering Herd).
+2. Priorisiere den `Retry-After`-Header: liefert die 429-Antwort diesen Header, ist dessen Wert maßgeblich und überschreibt die eigene Backoff-Kurve.
+3. Definiere Worker-Pacing als Prävention: statt Backoff erst nach dem Fehler zu nutzen, die Sende-Rate proaktiv unter der Workspace-Grenze halten (z. B. 400 statt 500 RPM als Safety-Margin — aktuelle Grenze vorab verifizieren).
+4. Lege ein Abbruchkriterium fest: nach maximal 5 Versuchen den Request in eine Dead-Letter-Queue verschieben und Marketing-Ops alarmieren, statt unendlich zu retrien.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Resilience-Engineer. Unser Localization-Workflow läuft ständig in HTTP-429-Fehler; ein fester 1-Sekunden-Retry verschärft das Problem. Erkläre: (1) exponentielles Backoff mit Jitter und warum Jitter den Thundering-Herd-Effekt verhindert, (2) wie wir den Retry-After-Header priorisieren, (3) proaktives Worker-Pacing als Prävention, (4) ein Abbruchkriterium mit Dead-Letter-Queue. Liefere einen Backoff-Leitfaden mit konkreten Wartezeiten."
+**Erwartetes Artefakt:** Ein Backoff-Leitfaden (Wartezeit-Kurve, Jitter, Retry-After-Priorität, Worker-Pacing, Abbruchkriterium).
+**Fallstricke (≥2 spezifisch):**
+- Das Backoff verwendet feste Intervalle ohne Jitter — alle Worker fragen synchron erneut an und erzeugen direkt die nächste 429-Welle.
+- Der `Retry-After`-Header wird ignoriert und durch die eigene Kurve überschrieben — das System wartet entweder zu kurz (erneuter Fehler) oder unnötig lange.
+**Anschluss-Szenario:** S-API-063
+
+### S-API-063 Idempotenz-Keys gegen doppelte Generierungen
+
+**Wann nutzen (Trigger):** Nach einem Netzwerk-Timeout hat ein PIM-Sync denselben Produkttext doppelt generieren lassen, weil der Client den Request blind wiederholte. Im Shop erschienen zwei leicht abweichende Beschreibungen für dasselbe Produkt. Die Direktorin verlangt einen Mechanismus, der Doppelverarbeitungen verlässlich verhindert. (Quelle: S-API-030, sources/10 S-066)
+**Strategisches Ziel:** Idempotente Verarbeitung für Langdock-Generierungs-Requests etablieren, sodass ein durch Timeout oder Retry wiederholter Request garantiert nur eine einzige fachliche Wirkung erzeugt.
+**Hands-on Ergebnis:** Ein Idempotenz-Konzept für die IT mit Key-Generierung, serverseitiger Deduplizierung und Aufbewahrungsdauer.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere den Idempotenz-Key: pro fachlichem Vorgang ein deterministischer Schlüssel (z. B. `produkt-id + content-version`), der bei einem Retry identisch bleibt — nicht zufällig pro HTTP-Versuch.
+2. Implementiere serverseitige Deduplizierung im eigenen BFF/Wrapper: bevor der Langdock-Call abgesetzt wird, prüfen, ob für diesen Key bereits ein Ergebnis gespeichert ist; falls ja, das gespeicherte Ergebnis zurückgeben statt erneut zu generieren.
+3. Behandle den ambiguen Timeout-Fall: bei Verbindungsabbruch nach Versand ist unklar, ob Langdock den Request verarbeitet hat — der Idempotenz-Key sorgt dafür, dass ein blinder Retry nicht doppelt schreibt.
+4. Lege die Aufbewahrungsdauer fest: Idempotenz-Records mindestens so lange halten wie das maximale Retry-Fenster (z. B. 24 Stunden), danach automatisch aufräumen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Backend-Architekt. Nach einem Timeout hat unser PIM-Sync denselben Produkttext doppelt generiert. Erkläre, wie wir Idempotenz-Keys einsetzen: (1) deterministische Key-Generierung pro fachlichem Vorgang, (2) serverseitige Deduplizierung im BFF vor dem Langdock-Call, (3) Umgang mit dem ambiguen Timeout-Fall, (4) Aufbewahrungsdauer der Idempotenz-Records. Liefere ein Idempotenz-Konzept als strukturierten Text."
+**Erwartetes Artefakt:** Ein Idempotenz-Konzept (Key-Generierung, Deduplizierung, Timeout-Handling, Aufbewahrung).
+**Fallstricke (≥2 spezifisch):**
+- Der Idempotenz-Key wird pro HTTP-Versuch neu zufällig erzeugt — dann erkennt das System den Retry nicht als Wiederholung und generiert doch doppelt.
+- Die Deduplizierung wird nur clientseitig implementiert — fällt der Client zwischen zwei Versuchen aus, fehlt der Dedup-Zustand und die Doppelverarbeitung tritt trotzdem ein.
+**Anschluss-Szenario:** S-API-064
+
+### S-API-064 Webhook-Signaturprüfung als verbindlicher Standard
+
+**Wann nutzen (Trigger):** Das Marketing-Ops-Team empfängt Webhooks von einem Social-Listening-Tool, das Krisen-Alerts an einen eigenen Receiver schickt, der wiederum Langdock anstößt. Bisher akzeptiert der Receiver jeden eingehenden POST ungeprüft. Der CISO verlangt eine verbindliche Signaturprüfung. (Quelle: S-API-030, sources/10 S-049)
+**Strategisches Ziel:** Eine kryptografische Webhook-Signaturprüfung als Pflicht-Gate etablieren, sodass nur authentische Ereignisse des erwarteten Senders eine Langdock-Verarbeitung auslösen können.
+**Hands-on Ergebnis:** Ein Verifikations-Leitfaden für die IT mit HMAC-Prüfverfahren, Replay-Schutz und Secret-Handhabung.
+**Eingesetzte Langdock-Fähigkeit(en):** Integrations API, API Security Advisory
+**Vorgehen (4 Schritte):**
+1. Erkläre die HMAC-SHA256-Signaturprüfung: der Sender signiert den rohen Payload mit einem Shared Secret; der Receiver berechnet dieselbe Signatur und vergleicht sie zeitkonstant (constant-time compare gegen Timing-Angriffe).
+2. Füge Replay-Schutz hinzu: ein Timestamp im signierten Payload, der nur ein kurzes Fenster (z. B. 5 Minuten) gültig ist, plus eine kurzlebige Speicherung verarbeiteter Event-IDs, damit ein abgefangener Webhook nicht erneut eingespielt werden kann.
+3. Handhabe das Shared Secret korrekt: ausschließlich im Secrets-Manager, getrennt vom Code; bei Verdacht auf Leak gemeinsam mit dem Sender rotieren.
+4. Definiere das Fehlerverhalten: ungültige Signatur → HTTP 401 ohne Langdock-Aufruf und mit Sicherheits-Log-Eintrag; auf keinen Fall bei Zweifel "durchwinken".
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein API-Security-Architekt. Unser Webhook-Receiver akzeptiert bisher jeden POST und stößt damit Langdock an. Erkläre eine verbindliche Signaturprüfung: (1) HMAC-SHA256-Verifikation mit constant-time compare, (2) Replay-Schutz über Timestamp und Event-ID-Speicher, (3) sichere Shared-Secret-Handhabung, (4) Fehlerverhalten bei ungültiger Signatur. Liefere einen Verifikations-Leitfaden für unsere IT."
+**Erwartetes Artefakt:** Ein Verifikations-Leitfaden (HMAC-Prüfung, Replay-Schutz, Secret-Handhabung, Fehlerverhalten).
+**Fallstricke (≥2 spezifisch):**
+- Die Signatur wird mit einem normalen String-Vergleich statt zeitkonstant geprüft — das öffnet einen Timing-Seitenkanal, über den ein Angreifer die Signatur erraten kann.
+- Es gibt keinen Replay-Schutz — ein einmal abgefangener gültiger Webhook kann beliebig oft erneut eingespielt werden und löst jedes Mal kostenpflichtige Langdock-Aufrufe aus.
+**Anschluss-Szenario:** S-API-065
+
+### S-API-065 Einheitliche Fehler-Taxonomie für alle Integrationen
+
+**Wann nutzen (Trigger):** Drei Marketing-Integrationen behandeln Langdock-Fehler je nach Entwickler unterschiedlich — mal wird ein 429 wie ein 500 behandelt, mal eine inhaltliche Ablehnung als technischer Fehler geloggt. Das Monitoring ist dadurch unbrauchbar. Die Direktorin will eine gemeinsame Fehler-Taxonomie. (Quelle: S-API-032, sources/12 Q46)
+**Strategisches Ziel:** Eine einheitliche, integrationsübergreifende Fehler-Taxonomie definieren, die jeden Langdock-Fehler eindeutig klassifiziert und damit konsistentes Retry-, Logging- und Alerting-Verhalten ermöglicht.
+**Hands-on Ergebnis:** Eine Fehler-Taxonomie-Tabelle für alle Teams mit Kategorien, Retry-Eignung und Standard-Reaktion.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, Completion API
+**Vorgehen (4 Schritte):**
+1. Definiere die Hauptkategorien: (a) transient-retrybar (429, 500, 503, Timeout), (b) permanent-nicht-retrybar (400, 401, 403, 422), (c) fachlich-erwartbar (Modell-Ablehnung/Refusal, leerer Output), (d) infrastrukturell (DNS, TLS, Netzwerk).
+2. Ordne jeder Kategorie ein Standardverhalten zu: transient → Backoff-Retry; permanent → kein Retry, sofort Fehler melden; fachlich → kein technischer Alarm, sondern Qualitäts-Logging; infrastrukturell → Circuit-Breaker (siehe S-API-032).
+3. Standardisiere das Fehler-Schema: jedes Logevent trägt `category`, `http_status`, `retryable` (bool), `request_id` — damit alle Integrationen vergleichbar reporten.
+4. Verankere die Taxonomie als geteilte Bibliothek: ein gemeinsames Error-Mapping-Modul, das alle drei Integrationen importieren, statt jeweils eigene Ad-hoc-Logik.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Platform-Engineering-Berater. Unsere drei Marketing-Integrationen behandeln Langdock-Fehler uneinheitlich, das Monitoring ist unbrauchbar. Definiere eine gemeinsame Fehler-Taxonomie: (1) Hauptkategorien (transient, permanent, fachlich, infrastrukturell), (2) Standardverhalten je Kategorie, (3) ein einheitliches Fehler-Log-Schema, (4) Verankerung als geteilte Bibliothek. Liefere eine Taxonomie-Tabelle."
+**Erwartetes Artefakt:** Eine Fehler-Taxonomie-Tabelle (Kategorien, Retry-Eignung, Standard-Reaktion, Log-Schema).
+**Fallstricke (≥2 spezifisch):**
+- Eine inhaltliche Modell-Ablehnung (Refusal) wird als technischer 500-Fehler klassifiziert — das erzeugt falsche Infrastruktur-Alarme und verdeckt das eigentliche Qualitätsproblem.
+- Die Taxonomie existiert nur als Dokument, nicht als geteilte Code-Bibliothek — jede Integration interpretiert sie leicht anders, und die Inkonsistenz kehrt zurück.
+**Anschluss-Szenario:** S-API-066
+
+### S-API-066 Retry mit Circuit-Breaker für stabile Spitzenlast
+
+**Wann nutzen (Trigger):** Bei einem Langdock-Teilausfall hat eine Marketing-Integration minutenlang stur weiter-retried und damit beim Wiederanlauf eine Anfrage-Flut erzeugt, die den eigenen BFF-Server überlastete. Die Direktorin will ein Resilience-Muster, das bei anhaltenden Fehlern automatisch entlastet. (Quelle: S-API-032, sources/12 Q46)
+**Strategisches Ziel:** Retry-Logik und Circuit-Breaker so kombinieren, dass transiente Fehler abgefangen, aber anhaltende Ausfälle nicht durch endloses Retrien verschlimmert werden — inklusive kontrolliertem Wiederanlauf.
+**Hands-on Ergebnis:** Ein Resilience-Pattern-Leitfaden mit Circuit-Breaker-Zuständen, Schwellenwerten und Half-Open-Probing.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, Completion API
+**Vorgehen (4 Schritte):**
+1. Erkläre die drei Circuit-Breaker-Zustände: CLOSED (normaler Betrieb, Retries erlaubt), OPEN (nach Fehlerschwelle alle Requests sofort abgewiesen, keine Last auf Langdock), HALF-OPEN (nach Cooldown einzelne Test-Requests).
+2. Definiere die Auslöse-Schwelle: z. B. 5 Fehler in 60 Sekunden öffnen den Breaker; Cooldown 60 Sekunden, bevor in HALF-OPEN ein einzelner Probe-Request gesendet wird.
+3. Kombiniere mit begrenztem Retry: innerhalb von CLOSED maximal 3 Backoff-Retries pro Request; der Circuit-Breaker ist die übergeordnete Schutzschicht, die einsetzt, wenn Retries systematisch scheitern.
+4. Plane den kontrollierten Wiederanlauf: bei Übergang HALF-OPEN → CLOSED die Last schrittweise hochfahren (Ramp-up), nicht sofort die volle Anfrage-Flut, um einen erneuten Zusammenbruch zu vermeiden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Resilience-Engineer. Bei einem Langdock-Teilausfall hat unsere Integration stur weiter-retried und beim Wiederanlauf den eigenen Server überlastet. Erkläre das Zusammenspiel von Retry und Circuit-Breaker: (1) die drei Breaker-Zustände, (2) Auslöse-Schwellen und Cooldown, (3) Kombination mit begrenztem Backoff-Retry, (4) kontrollierter Ramp-up-Wiederanlauf. Liefere einen Resilience-Pattern-Leitfaden."
+**Erwartetes Artefakt:** Ein Resilience-Pattern-Leitfaden (Breaker-Zustände, Schwellenwerte, Retry-Kombination, Ramp-up).
+**Fallstricke (≥2 spezifisch):**
+- Retry läuft ohne übergeordneten Circuit-Breaker — bei anhaltendem Ausfall hämmert das System unbegrenzt weiter und verzögert die Erholung des Dienstes.
+- Beim Wiederanlauf wird sofort die volle Last gesendet statt schrittweise hochgefahren — der gerade erholte Dienst bricht durch den Anfrage-Schwall erneut zusammen.
+**Anschluss-Szenario:** S-API-067
+
+### S-API-067 API-Versionierungs-Disziplin für eigene Integrationen
+
+**Wann nutzen (Trigger):** Das Marketing-Ops-Team hat eine interne Integrationsschicht über Langdock gebaut, die mehrere Agenturen ansprechen. Eine kleine Änderung am Response-Format hat letzte Woche zwei Agentur-Integrationen gebrochen, weil es keine Versionierung gab. Die Direktorin verlangt eine saubere Versionsstrategie. (Quelle: S-API-028, S-API-047)
+**Strategisches Ziel:** Eine Versionierungsstrategie für die eigene, über Langdock gelegte Integrationsschicht etablieren, die Breaking Changes kontrolliert ausrollt und bestehende Consumer schützt.
+**Hands-on Ergebnis:** Ein Versionierungs-Leitfaden mit Schema-Versionsstrategie, Deprecation-Policy und Kommunikationsprozess.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, API Architecture Advisory
+**Vorgehen (4 Schritte):**
+1. Wähle die Versionierungs-Methode: URL-Pfad-Versionierung (`/v1/`, `/v2/`) als einfachste und für Consumer transparenteste Variante; Header-basierte Versionierung nur, wenn das eigene Gateway sie sauber unterstützt.
+2. Unterscheide Breaking von Non-Breaking Changes: ein neues optionales Feld ist non-breaking (gleiche Version); das Umbenennen oder Entfernen eines Feldes ist breaking und erfordert eine neue Major-Version.
+3. Definiere eine Deprecation-Policy: alte Version mindestens eine definierte Frist (z. B. 90 Tage) parallel betreiben, mit `Deprecation`- und `Sunset`-Headern in den Responses, damit Consumer den Umstieg planen können.
+4. Lege den Kommunikationsprozess fest: bei jeder neuen Major-Version proaktive Ankündigung an alle Consumer (siehe S-API-049) plus aktualisierte API-Dokumentation (S-API-048).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein API-Architekt. Unsere interne Integrationsschicht über Langdock hat ohne Versionierung zwei Agentur-Integrationen gebrochen. Erkläre eine Versionierungsstrategie: (1) Methode (URL-Pfad vs. Header), (2) Abgrenzung Breaking vs. Non-Breaking, (3) Deprecation-Policy mit Sunset-Headern und Parallelbetrieb, (4) Kommunikationsprozess für Consumer. Liefere einen Versionierungs-Leitfaden."
+**Erwartetes Artefakt:** Ein Versionierungs-Leitfaden (Methode, Change-Klassifikation, Deprecation-Policy, Kommunikation).
+**Fallstricke (≥2 spezifisch):**
+- Ein Feld wird in der bestehenden Version umbenannt statt eine neue Major-Version einzuführen — alle Consumer brechen über Nacht ohne Vorwarnung.
+- Die alte Version wird sofort abgeschaltet, sobald die neue live ist — Consumer ohne abgeschlossene Migration verlieren abrupt den Zugang.
+**Anschluss-Szenario:** S-API-068
+
+### S-API-068 Blue-Green-Deployment des BFF-Layers
+
+**Wann nutzen (Trigger):** Updates am eigenen BFF-Proxy vor der Langdock-API verursachen jedes Mal eine kurze Downtime des Kampagnen-Chatbots, weil der laufende Prozess für das Deployment neu gestartet wird. Die Direktorin will ein Deployment-Verfahren ohne wahrnehmbaren Ausfall. (Quelle: S-API-052, sources/06 Deployment-Modelle)
+**Strategisches Ziel:** Ein Blue-Green-Deployment für den BFF-Layer einführen, das neue Versionen ohne Downtime ausrollt und einen sofortigen Rollback ermöglicht.
+**Hands-on Ergebnis:** Ein Deployment-Konzept mit Umgebungs-Switch, Health-Check-Gate und Rollback-Mechanismus.
+**Eingesetzte Langdock-Fähigkeit(en):** API Deployment Advisory, Advisory
+**Vorgehen (4 Schritte):**
+1. Erkläre das Blue-Green-Prinzip: zwei identische Umgebungen (Blue = aktuell live, Green = neue Version); der Load-Balancer schaltet erst auf Green um, wenn dieses vollständig bereit ist — Blue bleibt als Rückfallebene bestehen.
+2. Definiere das Health-Check-Gate: Green wird erst freigegeben, wenn ein Smoke-Test (Test-Completion-Call gegen Langdock, Auth-Prüfung, Wissensordner-Zugriff) erfolgreich durchläuft.
+3. Plane den Switch und das Connection-Draining: bestehende Verbindungen auf Blue sauber auslaufen lassen (Draining), neue Verbindungen auf Green leiten — kein hartes Kappen laufender Streams.
+4. Lege den Rollback fest: tritt nach dem Switch ein Problem auf, sofort zurück auf das noch laufende Blue (reiner Load-Balancer-Toggle, kein Re-Deploy).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein DevOps-Architekt. Updates an unserem BFF-Proxy vor der Langdock-API verursachen jedes Mal kurze Chatbot-Downtime. Erkläre Blue-Green-Deployment: (1) das Zwei-Umgebungs-Prinzip mit Load-Balancer-Switch, (2) ein Health-Check-Gate mit Langdock-Smoke-Test, (3) Connection-Draining beim Umschalten, (4) sofortiger Rollback auf Blue. Liefere ein Deployment-Konzept ohne Downtime."
+**Erwartetes Artefakt:** Ein Blue-Green-Deployment-Konzept (Umgebungs-Switch, Health-Check-Gate, Draining, Rollback).
+**Fallstricke (≥2 spezifisch):**
+- Green wird ohne Health-Check-Gate live geschaltet — eine fehlerhafte neue Version geht direkt in Produktion und der vermeintliche Downtime-Vorteil verkehrt sich in einen Totalausfall.
+- Beim Switch werden laufende Streams hart gekappt statt per Draining auslaufen gelassen — Nutzer mit aktiver Chatbot-Antwort sehen abgebrochene Texte.
+**Anschluss-Szenario:** S-API-069
+
+### S-API-069 Strukturiertes Logging für Langdock-Integrationen
+
+**Wann nutzen (Trigger):** Bei einem Vorfall im Kampagnen-Chatbot brauchte das Team vier Stunden, um die betroffenen Requests in unformatierten Textlogs zu finden. Die Direktorin verlangt strukturiertes Logging, das Vorfälle in Minuten statt Stunden nachvollziehbar macht — und dabei keine personenbezogenen Daten leakt. (Quelle: S-API-033, sources/12 Q135)
+**Strategisches Ziel:** Ein strukturiertes Logging-Schema für alle Langdock-Integrationen einführen, das schnelle Vorfall-Analyse ermöglicht, ohne sensible Inhalte oder PII zu protokollieren.
+**Hands-on Ergebnis:** Ein Logging-Standard mit JSON-Feldschema, Correlation-IDs und Datenschutz-Redaction-Regeln.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory, Audit Logs API
+**Vorgehen (4 Schritte):**
+1. Definiere das JSON-Log-Schema: jedes Event enthält `timestamp`, `request_id`, `correlation_id`, `endpoint`, `model`, `http_status`, `latency_ms`, `token_count` — durchsuchbar und aggregierbar im Log-System.
+2. Führe Correlation-IDs ein: eine ID wird pro Nutzervorgang erzeugt und durch alle Schichten (Frontend → BFF → Langdock-Call) durchgereicht, sodass ein Vorfall über alle Komponenten hinweg rekonstruierbar ist.
+3. Lege Redaction-Regeln fest: Prompt- und Antwort-Inhalte werden standardmäßig nicht im Klartext geloggt; PII (E-Mail, Namen, Kundennummern) wird vor dem Logging maskiert — nur Metadaten, keine Inhalte.
+4. Definiere Log-Level und Aufbewahrung: ERROR/WARN dauerhaft, INFO kurzfristig; Aufbewahrungsfristen im Einklang mit der Datenschutzrichtlinie und dem in S-API-010 beschriebenen DSGVO-Rahmen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Observability-Berater. Bei einem Chatbot-Vorfall brauchten wir vier Stunden, um betroffene Requests in Textlogs zu finden. Erkläre strukturiertes Logging: (1) ein JSON-Log-Feldschema, (2) Correlation-IDs über alle Schichten, (3) Redaction-Regeln gegen PII- und Inhalts-Leaks, (4) Log-Level und Aufbewahrungsfristen im Datenschutz-Rahmen. Liefere einen Logging-Standard."
+**Erwartetes Artefakt:** Ein Logging-Standard (JSON-Schema, Correlation-IDs, Redaction-Regeln, Aufbewahrung).
+**Fallstricke (≥2 spezifisch):**
+- Vollständige Prompts und Antworten werden im Klartext geloggt — das speichert potenziell PII und Geschäftsgeheimnisse ungeschützt und verstößt gegen die Datenminimierung.
+- Es fehlen Correlation-IDs — ein Vorfall lässt sich nicht über Frontend, BFF und Langdock-Call hinweg zusammenführen, und die Analyse bleibt mühsame Textsuche.
+**Anschluss-Szenario:** S-API-070
+
+### S-API-070 Kosten-pro-Endpoint-Tracking für Refactor-Priorisierung
+
+**Wann nutzen (Trigger):** Die monatlichen Langdock-Kosten steigen, aber die Direktorin sieht nur eine Gesamtsumme. Sie kann nicht erkennen, welcher API-Endpoint (Completion, Agent, Embedding, Search) der Haupt-Kostentreiber ist und wo sich ein Refactoring lohnt. (Quelle: S-API-053, research/50 A-21)
+**Strategisches Ziel:** Ein Kosten-pro-Endpoint-Tracking etablieren, das den Token-Verbrauch je API-Endpoint sichtbar macht und so eine datenbasierte Refactor-Priorisierung erlaubt.
+**Hands-on Ergebnis:** Ein Tracking-Konzept mit Endpoint-Attribution, Kosten-Aufschlüsselung und Priorisierungs-Logik.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage Export API, Advisory
+**Vorgehen (4 Schritte):**
+1. Instrumentiere jeden Aufruf: der eigene Wrapper taggt jeden Request mit dem genutzten Endpoint-Typ (`completion`, `agent`, `embedding`, `search`) und schreibt diesen Tag mit der Token-Zahl in ein Data Warehouse.
+2. Verknüpfe mit den Usage-Export-Daten: die Langdock Usage Export API liefert Token pro User/Modell; die eigene Endpoint-Attribution ergänzt die Endpoint-Dimension, die der reine Usage-Export nicht enthält.
+3. Berechne Kosten pro Endpoint: Token × aktueller Modell-Preis, gruppiert nach Endpoint-Typ; identifiziere die teuersten 5 % der Aufrufe (Heavy-Hitter) als Refactor-Kandidaten.
+4. Leite Maßnahmen ab: teure Completion-Heavy-Hitter prüfen auf Prompt-Caching (S-API-012) oder kleineres Modell (Flash); teure Embedding-Läufe auf Batch-Konsolidierung; pro Quartal neu bewerten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein FinOps-Berater. Unsere Langdock-Kosten steigen, aber wir sehen nur eine Gesamtsumme und nicht, welcher Endpoint der Treiber ist. Erkläre Kosten-pro-Endpoint-Tracking: (1) Endpoint-Tagging im eigenen Wrapper, (2) Verknüpfung mit den Usage-Export-Daten, (3) Kosten-Aufschlüsselung und Heavy-Hitter-Identifikation, (4) abgeleitete Refactor-Maßnahmen je Endpoint. Liefere ein Tracking-Konzept."
+**Erwartetes Artefakt:** Ein Tracking-Konzept (Endpoint-Attribution, Kosten-Aufschlüsselung, Heavy-Hitter-Analyse, Maßnahmen).
+**Fallstricke (≥2 spezifisch):**
+- Der Usage-Export wird allein genutzt, ohne eigene Endpoint-Tags — er kennt die Endpoint-Dimension nicht, sodass die Frage "welcher Endpoint kostet am meisten" unbeantwortbar bleibt.
+- Das Tracking listet nur Kosten auf, ohne die teuersten Aufrufe in konkrete Refactor-Maßnahmen zu übersetzen — die Transparenz bleibt folgenlos.
+**Anschluss-Szenario:** S-API-071
+
+### S-API-071 SDK-Auswahl für die Marketing-Integrationsschicht
+
+**Wann nutzen (Trigger):** Das Entwicklungsteam soll eine neue Integration gegen die OpenAI-kompatible Langdock-API bauen und diskutiert, ob es das offizielle OpenAI-SDK, das Vercel AI SDK oder einen rohen HTTP-Client nutzen soll. Die Direktorin wird in die Architekturentscheidung einbezogen. (Quelle: sources/06 OpenAI-Kompatibilität, S-API-009)
+**Strategisches Ziel:** Eine begründete SDK-Auswahl für die Langdock-Integration treffen, die zum Tech-Stack, zu den Streaming-Anforderungen und zur langfristigen Wartbarkeit passt.
+**Hands-on Ergebnis:** Eine Entscheidungsmatrix (SDK-Optionen) mit Empfehlung für typische Marketing-Use-Cases.
+**Eingesetzte Langdock-Fähigkeit(en):** OpenAI-kompatibler Completion-Endpoint, Advisory
+**Vorgehen (4 Schritte):**
+1. Liste die Optionen mit Stärken: offizielles OpenAI-SDK (nahtlos durch OpenAI-Kompatibilität, breite Sprachunterstützung), Vercel AI SDK (exzellentes Streaming für moderne Web-UIs), roher HTTP-Client (maximale Kontrolle, minimale Abhängigkeiten).
+2. Definiere die Auswahlkriterien: Streaming-Bedarf, Sprache des Stacks (Python vs. TypeScript), Team-Erfahrung, Update-/Wartungsaufwand der Abhängigkeit.
+3. Mappe Use-Cases auf SDKs: Batch-Backend in Python → OpenAI Python SDK; streamende Chat-UI im Web → Vercel AI SDK; schlanker Webhook-Receiver → roher HTTP-Client.
+4. Berücksichtige Langdock-Spezifika: Base-URL- und Modell-Namen-Mapping müssen unabhängig vom SDK gesetzt werden; Langdock-eigene Agenten-Features liegen außerhalb des OpenAI-SDK-Scopes.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein API-Architekt. Wir bauen eine neue Integration gegen die OpenAI-kompatible Langdock-API und diskutieren OpenAI-SDK vs. Vercel AI SDK vs. rohen HTTP-Client. Erkläre: (1) Stärken jeder Option, (2) Auswahlkriterien (Streaming, Sprache, Wartung), (3) Use-Case-zu-SDK-Mapping für Marketing-Szenarien, (4) Langdock-Spezifika (Base-URL, Modell-Mapping, Agenten-Features). Liefere eine Entscheidungsmatrix mit Empfehlung."
+**Erwartetes Artefakt:** Eine SDK-Entscheidungsmatrix (Optionen, Kriterien, Use-Case-Mapping, Empfehlung).
+**Fallstricke (≥2 spezifisch):**
+- Das Vercel AI SDK wird pauschal als "moderner" für ein reines Python-Batch-Backend gewählt — für nicht-streamende Server-Jobs bringt es keinen Vorteil und fügt eine unnötige TypeScript-Abhängigkeit hinzu.
+- Es wird angenommen, ein SDK kapsele auch die Langdock-Agenten-Features — der OpenAI-kompatible Endpoint deckt diese nicht ab; sie erfordern separate Langdock-Aufrufe.
+**Anschluss-Szenario:** S-API-072
+
+### S-API-072 Batch- vs. Streaming-Entscheidung pro Use-Case
+
+**Wann nutzen (Trigger):** Das Team setzt aus Gewohnheit für jeden Use-Case Streaming ein — auch für einen nächtlichen Massen-Job, bei dem niemand zuschaut. Gleichzeitig wartet die Chatbot-UI ohne Streaming sekundenlang auf die volle Antwort. Die Direktorin will eine klare Entscheidungsregel. (Quelle: S-API-026, S-API-031)
+**Strategisches Ziel:** Eine klare Entscheidungsregel etablieren, wann Batch-/Non-Streaming-Verarbeitung und wann Streaming einzusetzen ist — abgestimmt auf Nutzererlebnis, Timeout-Risiko und Verarbeitungseffizienz.
+**Hands-on Ergebnis:** Ein Entscheidungsleitfaden mit Kriterien und Use-Case-Zuordnung.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API (Streaming und Non-Streaming), Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere das Streaming-Kriterium: Streaming nur dort, wo ein Mensch in Echtzeit auf den Text wartet (Chatbot, interaktives Dashboard) — Time-to-First-Token unter 1 Sekunde verbessert die wahrgenommene Geschwindigkeit (siehe S-API-026).
+2. Definiere das Batch-Kriterium: für nicht-interaktive Massenverarbeitung (nächtliche Jobs, PIM-Sync) ist Non-Streaming/Batch effizienter und einfacher zu orchestrieren — niemand wartet auf einzelne Tokens.
+3. Beachte das Timeout-Risiko: lange Non-Streaming-Antworten riskieren das ~100-Sekunden-Timeout (aktuellen Wert verifizieren); bei langen Outputs entweder Streaming nutzen oder den Output in kleinere Teil-Requests zerlegen.
+4. Mappe die konkreten Use-Cases: Kampagnen-Chatbot → Streaming; nächtlicher 500-Artikel-Job → Batch; Echtzeit-KPI-Kommentar im Dashboard → Streaming; Embedding-Massenlauf → Batch.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein API-Architekt. Wir nutzen aus Gewohnheit überall Streaming, auch für nächtliche Massen-Jobs, während die Chatbot-UI ohne Streaming zu lange wartet. Erkläre eine Entscheidungsregel: (1) wann Streaming sinnvoll ist, (2) wann Batch/Non-Streaming besser passt, (3) Timeout-Risiko bei langen Non-Streaming-Antworten, (4) konkrete Use-Case-Zuordnung. Liefere einen Entscheidungsleitfaden."
+**Erwartetes Artefakt:** Ein Entscheidungsleitfaden (Streaming- vs. Batch-Kriterien, Timeout-Hinweis, Use-Case-Mapping).
+**Fallstricke (≥2 spezifisch):**
+- Streaming wird für nächtliche Massen-Jobs verwendet, obwohl niemand zuschaut — das verkompliziert die Orchestrierung ohne jeden Nutzen.
+- Ein langer Non-Streaming-Output läuft ins Timeout, weil weder Streaming gewählt noch der Output in Teil-Requests zerlegt wurde.
+**Anschluss-Szenario:** S-API-073
+
+### S-API-073 Async-Job-Polling robust gestalten
+
+**Wann nutzen (Trigger):** Ein neuer Deep-Research-getriebener Wettbewerbsreport läuft als asynchroner Job und dauert je nach Umfang 5 bis 20 Minuten. Das erste Polling-Skript fragte stur jede Sekunde nach dem Status und verlor bei einem kurzen Netzwerkabbruch den Job komplett. Die Direktorin will ein robustes Polling-Muster. (Quelle: S-API-057, sources/12 Q93)
+**Strategisches Ziel:** Ein robustes Async-Job-Polling für lange Langdock-Jobs definieren, das Status zuverlässig verfolgt, Netzwerkfehler übersteht und das Rate Limit nicht unnötig belastet.
+**Hands-on Ergebnis:** Ein Polling-Leitfaden mit Job-ID-Persistenz, adaptivem Polling-Intervall und Wiederaufnahme nach Unterbrechung.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflows API, Advisory
+**Vorgehen (4 Schritte):**
+1. Persistiere die Job-ID sofort: die bei Job-Start zurückgegebene `job_id` wird vor dem ersten Poll dauerhaft gespeichert — geht die Verbindung verloren, kann der Status später anhand der ID wieder abgefragt werden, statt den Job zu verlieren.
+2. Nutze adaptives Polling: erst nach 2 Sekunden, dann mit wachsendem Intervall (4, 8, max. 30 Sekunden), an die typische Laufzeit von 5–20 Minuten angepasst — kein Sekundentakt, der das Rate Limit belastet.
+3. Behandle Netzwerkfehler beim Polling separat: ein fehlgeschlagener Status-Poll bedeutet nicht, dass der Job fehlgeschlagen ist — Poll mit Backoff wiederholen, Job-Zustand bleibt serverseitig erhalten.
+4. Definiere Terminierung und UX: bei `COMPLETED`/`FAILED` stoppen; bei Überschreiten der Maximaldauer Timeout an den Nutzer melden; für Jobs über 5 Minuten Push-/E-Mail-Benachrichtigung statt offen gehaltenem Browser-Tab.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Frontend-Architekt. Unser asynchroner Wettbewerbsreport läuft 5–20 Minuten; unser Polling-Skript fragt im Sekundentakt und verliert bei Netzwerkabbruch den Job. Erkläre robustes Async-Polling: (1) sofortige Job-ID-Persistenz, (2) adaptives Polling-Intervall, (3) Umgang mit Netzwerkfehlern ohne den Job zu verlieren, (4) Terminierung und Benachrichtigungs-UX. Liefere einen Polling-Leitfaden."
+**Erwartetes Artefakt:** Ein Polling-Leitfaden (Job-ID-Persistenz, adaptives Intervall, Netzwerk-Fehlerbehandlung, Terminierung).
+**Fallstricke (≥2 spezifisch):**
+- Die Job-ID wird nur im Browser-Speicher gehalten — bei Tab-Schließung oder Netzwerkabbruch ist der laufende Job nicht mehr abfragbar und gilt fälschlich als verloren.
+- Ein fehlgeschlagener Status-Poll wird als Job-Fehlschlag interpretiert — der Nutzer erhält eine Fehlermeldung, obwohl der Job serverseitig erfolgreich weiterläuft.
+**Anschluss-Szenario:** S-API-074
+
+### S-API-074 Contract-Testing zwischen BFF und Langdock-API
+
+**Wann nutzen (Trigger):** Eine stille Schema-Änderung an einer Langdock-Antwort hat eine Marketing-Integration gebrochen, ohne dass ein Test anschlug — die Unit-Tests liefen gegen einen veralteten Mock, der nicht mehr der echten API entsprach. Die Direktorin will ein Verfahren, das solche Abweichungen früh erkennt. (Quelle: S-API-051, S-API-058)
+**Strategisches Ziel:** Contract-Testing einführen, das sicherstellt, dass die Annahmen der eigenen Integration über das Langdock-Response-Schema kontinuierlich gegen die reale API verifiziert werden.
+**Hands-on Ergebnis:** Ein Contract-Testing-Konzept mit Schema-Definition, Verifikationslauf gegen die echte API und CI-Integration.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API, Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere den Contract: ein versioniertes Schema (z. B. JSON-Schema), das die von der Integration erwarteten Felder und Typen der Langdock-Response festhält — als verbindlicher Vertrag zwischen Consumer und API.
+2. Verifiziere gegen die reale API: ein periodischer Smoke-Test sendet einen minimalen echten Request an Langdock und validiert die Antwort gegen das Contract-Schema — so wird eine Drift zwischen Mock und Realität entdeckt.
+3. Halte Mock und Contract synchron: der in S-API-051 genutzte Mock wird aus demselben Contract-Schema generiert, sodass Unit-Tests und Realität nicht auseinanderlaufen.
+4. Integriere in CI: der Contract-Test läuft täglich und vor jedem Deployment; ein Schema-Mismatch blockiert das Deployment und löst eine Benachrichtigung aus (Verknüpfung mit S-API-058).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein QA-Architekt. Eine stille Langdock-Schema-Änderung hat unsere Integration gebrochen, ohne dass ein Test anschlug — unsere Unit-Tests liefen gegen einen veralteten Mock. Erkläre Contract-Testing: (1) ein versioniertes Response-Contract-Schema, (2) periodische Verifikation gegen die echte API, (3) Mock-und-Contract-Synchronisation, (4) CI-Integration mit Deployment-Gate. Liefere ein Contract-Testing-Konzept."
+**Erwartetes Artefakt:** Ein Contract-Testing-Konzept (Schema-Definition, Realverifikation, Mock-Sync, CI-Gate).
+**Fallstricke (≥2 spezifisch):**
+- Es wird ausschließlich gegen den Mock getestet, nie gegen die echte API — eine reale Schema-Drift bleibt bis zum Produktionsfehler unentdeckt.
+- Mock und Contract werden getrennt gepflegt und laufen auseinander — der Contract-Test wird grün, während der Mock veraltet ist und die Integration trotzdem bricht.
+**Anschluss-Szenario:** S-API-075
+
+### S-API-075 Staging-vs-Prod-Konfiguration sauber trennen
+
+**Wann nutzen (Trigger):** Ein Entwickler hat aus Versehen den Produktions-API-Key und den Produktions-Wissensordner in einem Test-Lauf verwendet, weil Staging und Produktion dieselbe Konfigurationsdatei teilten. Es entstanden ungewollte Kosten und ein Eintrag in echten Audit-Logs. Die Direktorin verlangt eine saubere Umgebungstrennung. (Quelle: S-API-059, sources/12 Q47)
+**Strategisches Ziel:** Eine klare Trennung von Staging- und Produktions-Konfiguration etablieren, sodass Tests niemals versehentlich Produktions-Keys, -Budgets oder -Daten berühren.
+**Hands-on Ergebnis:** Ein Konfigurations-Trennungs-Leitfaden mit Umgebungsvariablen-Schema, Secrets-Trennung und Schutzmechanismen gegen Verwechslung.
+**Eingesetzte Langdock-Fähigkeit(en):** API Deployment Advisory, Advisory
+**Vorgehen (4 Schritte):**
+1. Trenne die Konfiguration physisch: separate `.env.staging` und `.env.production` mit unterschiedlichen `BASE_URL`, API-Keys und Workspace-IDs; niemals eine geteilte Datei mit umgeschalteten Werten.
+2. Trenne die Secrets: Staging- und Produktions-Keys liegen in getrennten Secrets-Manager-Pfaden mit getrennten Zugriffsrechten — ein Entwickler braucht für Tests keinen Zugriff auf Produktions-Keys.
+3. Baue einen Verwechslungsschutz: ein expliziter `ENVIRONMENT`-Marker, der bei jedem Start geloggt wird; produktive Aktionen erfordern eine zusätzliche Bestätigung; Staging nutzt sichtbar gekennzeichnete Test-Workspaces.
+4. Verankere das Prinzip in CI/CD: die Pipeline injiziert die korrekte Umgebungskonfiguration je Stage automatisch; ein Produktions-Deployment kann nicht mit Staging-Werten und umgekehrt erfolgen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein DevOps-Berater. Ein Entwickler hat versehentlich Produktions-Key und -Wissensordner in einem Test verwendet, weil Staging und Produktion dieselbe Config-Datei teilten. Erkläre saubere Umgebungstrennung: (1) physisch getrennte Konfigurationsdateien, (2) getrennte Secrets mit getrennten Rechten, (3) Verwechslungsschutz mit Environment-Marker, (4) Verankerung in CI/CD. Liefere einen Trennungs-Leitfaden."
+**Erwartetes Artefakt:** Ein Konfigurations-Trennungs-Leitfaden (Env-Schema, Secrets-Trennung, Verwechslungsschutz, CI/CD-Verankerung).
+**Fallstricke (≥2 spezifisch):**
+- Staging und Produktion teilen eine Konfigurationsdatei mit umschaltbarem Flag — ein falsch gesetztes Flag richtet sofort echten Schaden in der Produktion an.
+- Entwickler haben aus Bequemlichkeit Zugriff auf Produktions-Secrets — das einzige Sicherheitsnetz ist Disziplin, und genau diese versagt unter Zeitdruck.
+**Anschluss-Szenario:** S-API-076
+
+### S-API-076 Secrets-Vault statt verstreuter API-Keys
+
+**Wann nutzen (Trigger):** Eine Inventur ergibt, dass Langdock-API-Keys an fünf Stellen liegen: in einer `.env`-Datei im Repo, in einer Slack-Nachricht, in einer Build-Pipeline-Variable, in einem Wiki-Artikel und auf einem Entwickler-Laptop. Die Direktorin beauftragt die Konsolidierung in einen zentralen Secrets-Vault. (Quelle: S-API-014, S-API-061)
+**Strategisches Ziel:** Alle Langdock-Secrets in einem zentralen Secrets-Vault konsolidieren, mit kontrolliertem Zugriff, Auditierbarkeit und sauberer Bereitstellung an die Anwendungen.
+**Hands-on Ergebnis:** Ein Secrets-Management-Konzept mit Vault-Auswahl, Zugriffskontrolle, Bereitstellungsmechanismus und Migrations-Plan.
+**Eingesetzte Langdock-Fähigkeit(en):** API Security Advisory, Advisory
+**Vorgehen (4 Schritte):**
+1. Wähle den Vault: ein etablierter Secrets-Manager (z. B. HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) als alleinige Quelle der Wahrheit für alle Langdock-Keys.
+2. Definiere die Zugriffskontrolle: rollenbasierter Zugriff (nur die jeweilige Anwendung/der jeweilige Service liest ihren Key), vollständige Audit-Spur, wer wann welchen Key abgerufen hat.
+3. Lege den Bereitstellungsmechanismus fest: Anwendungen lesen Keys zur Laufzeit aus dem Vault (oder via injizierte Umgebungsvariable aus dem Vault), niemals aus Dateien im Repository oder fest im Code.
+4. Plane die Migration und Bereinigung: alle fünf verstreuten Kopien identifizieren, in den Vault überführen, dann die Altkopien löschen UND die betroffenen Keys rotieren (S-API-061), da sie als kompromittiert gelten müssen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein IT-Security-Berater. Eine Inventur zeigt unsere Langdock-Keys an fünf Stellen: Repo-.env, Slack, Pipeline-Variable, Wiki, Laptop. Erkläre die Konsolidierung in einen Secrets-Vault: (1) Vault-Auswahl, (2) rollenbasierte Zugriffskontrolle mit Audit-Spur, (3) Laufzeit-Bereitstellung statt Dateien im Repo, (4) Migrations- und Bereinigungsplan inklusive Rotation. Liefere ein Secrets-Management-Konzept."
+**Erwartetes Artefakt:** Ein Secrets-Management-Konzept (Vault-Auswahl, Zugriffskontrolle, Bereitstellung, Migrations-/Bereinigungsplan).
+**Fallstricke (≥2 spezifisch):**
+- Die Keys werden in den Vault überführt, aber die verstreuten Altkopien bleiben bestehen und werden nicht rotiert — die exponierten Keys sind weiterhin gültig und nutzbar.
+- Anwendungen lesen den Key beim Build in eine Datei und legen ihn dort ab — der Vault wird umgangen, und der Key liegt wieder ungeschützt auf dem System.
+**Anschluss-Szenario:** S-API-077
+
+### S-API-077 API-SLO-Definition und Alerting-Schwellen
+
+**Wann nutzen (Trigger):** Das Marketing-Ops-Team betreibt mehrere produktive Langdock-Integrationen, hat aber keine objektive Definition, was "gesund" bedeutet. Alarme feuern willkürlich oder gar nicht. Die Direktorin will klare Service Level Objectives mit sinnvollen Alerting-Schwellen. (Quelle: S-API-033, research/50 A-36)
+**Strategisches Ziel:** Aussagekräftige API-SLOs (Service Level Objectives) für die Langdock-Integrationen definieren und daraus Alerting-Schwellen ableiten, die echte Probleme melden und Fehlalarme minimieren.
+**Hands-on Ergebnis:** Ein SLO- und Alerting-Konzept mit Kennzahlen, Zielwerten, Error-Budget und Schwellenwert-Logik.
+**Eingesetzte Langdock-Fähigkeit(en):** Audit Logs API, Usage Export API, Advisory
+**Vorgehen (4 Schritte):**
+1. Definiere die SLO-Kennzahlen: Verfügbarkeit (z. B. 99,5 % erfolgreiche Requests), Latenz (P95 unter einem Zielwert), Fehlerrate (unter 1 %) — pro Integration differenziert, da ein FAQ-Bot und ein Recherche-Agent unterschiedliche Profile haben.
+2. Führe ein Error-Budget ein: das SLO erlaubt eine definierte Menge an Fehlern; solange das Budget nicht aufgebraucht ist, kein Alarm — das verhindert Alarme bei einzelnen, unkritischen Ausreißern.
+3. Definiere Multi-Window-Alerting: ein Alarm feuert nur, wenn die SLO-Verletzung über ein kurzes UND ein längeres Zeitfenster anhält (z. B. 5 Minuten und 1 Stunde) — das filtert kurzlebige Spitzen heraus.
+4. Verknüpfe Datenquellen und Eskalation: Latenz/Fehler aus dem Infrastruktur-Monitoring, Kosten aus der Usage Export API, sicherheitsrelevante Ereignisse aus den Audit Logs; klare Eskalationsstufen (Slack → On-Call) je Schweregrad.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein SRE-Berater. Unsere Langdock-Integrationen haben keine objektive Gesundheitsdefinition; Alarme feuern willkürlich. Erkläre: (1) sinnvolle SLO-Kennzahlen (Verfügbarkeit, Latenz, Fehlerrate) pro Integration, (2) das Error-Budget-Konzept, (3) Multi-Window-Alerting gegen Fehlalarme, (4) Datenquellen und Eskalationsstufen. Liefere ein SLO- und Alerting-Konzept."
+**Erwartetes Artefakt:** Ein SLO- und Alerting-Konzept (Kennzahlen, Zielwerte, Error-Budget, Multi-Window-Schwellen, Eskalation).
+**Fallstricke (≥2 spezifisch):**
+- Für alle Integrationen gelten identische SLO-Werte — ein langsamer Recherche-Agent verletzt ständig das auf einen FAQ-Bot zugeschnittene Latenz-SLO und erzeugt Dauer-Fehlalarme.
+- Alarme feuern bei jedem einzelnen Schwellenwert-Ausreißer ohne Error-Budget oder Multi-Window-Logik — das Team gewöhnt sich an Alarmrauschen und übersieht den echten Vorfall.
+**Anschluss-Szenario:** S-API-078
+
+### S-API-078 Prompt-Injection-Abwehr auf API-Ebene härten
+
+**Wann nutzen (Trigger):** Der öffentliche Produktberatungs-Chatbot wurde erneut Ziel von Injection-Versuchen, bei denen Nutzer den Bot zur Preisgabe interner Anweisungen verleiten wollten. Eine Moderationsebene besteht bereits (S-API-035); die Direktorin will nun die API-Schicht selbst härten. (Quelle: S-API-035, S-API-054, sources/12 Q115)
+**Strategisches Ziel:** Die Prompt-Injection-Abwehr direkt an der API-Schicht verstärken, sodass selbst bei umgangener Moderation der System-Prompt und interne Daten geschützt bleiben.
+**Hands-on Ergebnis:** Ein Härtungs-Konzept mit Trennung von System- und User-Kontext, Output-Constraints und Defense-in-Depth-Empfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Completion API, API Security Advisory
+**Vorgehen (4 Schritte):**
+1. Trenne System- und User-Kontext strikt: Nutzer-Input fließt ausschließlich in den User-Turn, niemals in den System-Prompt; serverseitig injizierte Variablen werden escapet (Verknüpfung mit S-API-054).
+2. Setze Boundary- und Scope-Anweisungen: der System-Prompt definiert explizit, dass Anweisungen aus dem User-Turn, die seinen Kern-Scope verlassen oder System-Inhalte erfragen, zu ignorieren sind; eine Themen-Whitelist begrenzt die Domäne.
+3. Constraine den Output: Maximal-Länge, kein Echo des System-Prompts, keine Ausgabe interner Bezeichner; eine nachgelagerte Output-Prüfung blockiert Antworten, die System-Prompt-Fragmente enthalten.
+4. Setze auf Defense-in-Depth: die API-Härtung ergänzt die Moderationsebene (S-API-035), ersetzt sie nicht; betone gegenüber dem CISO, dass kein Einzelmechanismus 100 % Schutz bietet (Residualrisiko, siehe S-API-042).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein KI-Security-Architekt. Unser öffentlicher Chatbot wird erneut mit Prompt-Injection angegriffen; eine Moderationsebene besteht bereits. Erkläre, wie wir die API-Schicht selbst härten: (1) strikte Trennung von System- und User-Kontext mit Escaping, (2) Boundary- und Scope-Anweisungen plus Themen-Whitelist, (3) Output-Constraints gegen System-Prompt-Leaks, (4) Defense-in-Depth mit ehrlichem Residualrisiko-Hinweis. Liefere ein Härtungs-Konzept."
+**Erwartetes Artefakt:** Ein Härtungs-Konzept (Kontext-Trennung, Boundary-Anweisungen, Output-Constraints, Defense-in-Depth).
+**Fallstricke (≥2 spezifisch):**
+- Die API-Härtung wird als alleiniger Schutz verstanden und die Moderationsebene abgeschaltet — fällt die eine Schicht, ist das System ungeschützt; Defense-in-Depth bedeutet mehrere unabhängige Schichten.
+- Es wird ein 100-prozentiger Schutz versprochen — kein LLM-System ist gegen Prompt-Injection immun; das verschwiegene Residualrisiko führt zu falscher Sicherheit beim CISO.
+**Anschluss-Szenario:** S-API-079
+
+### S-API-079 Multi-Region-Failover für hochverfügbare Chatbots
+
+**Wann nutzen (Trigger):** Der öffentliche Kampagnen-Chatbot ist geschäftskritisch geworden; ein regionaler Ausfall des eigenen BFF-Hostings würde während einer laufenden Kampagne direkten Umsatzverlust bedeuten. Die Direktorin will ein Multi-Region-Failover, das den Betrieb auch bei Ausfall einer Region aufrechterhält. (Quelle: S-API-040, S-API-068)
+**Strategisches Ziel:** Ein Multi-Region-Failover für die BFF-/Integrationsschicht vor der Langdock-API konzeptionieren, das bei Ausfall einer Region automatisch auf eine zweite umschaltet — unter Wahrung der EU-Datenresidenz.
+**Hands-on Ergebnis:** Ein Failover-Konzept mit Regionen-Topologie, Health-Routing, Datenresidenz-Beachtung und Failback-Plan.
+**Eingesetzte Langdock-Fähigkeit(en):** Deployment Advisory, API Deployment Advisory
+**Vorgehen (5 Schritte):**
+1. Definiere die Topologie: zwei BFF-Deployments in zwei EU-Regionen (Datenresidenz wahren — beide Regionen innerhalb der EU, damit das EU-Hosting-Versprechen nicht gebrochen wird); ein globaler Load-Balancer mit Health-basiertem Routing davor.
+2. Beschreibe das Health-Routing: der Load-Balancer prüft kontinuierlich die Gesundheit beider Regionen und leitet Traffic automatisch auf die gesunde Region, sobald eine ausfällt.
+3. Berücksichtige die Langdock-Abhängigkeit: ist nicht die eigene Region, sondern Langdock selbst betroffen, hilft kein BFF-Failover — dann greift das Fallback-Playbook (S-API-021); die zwei Mechanismen adressieren unterschiedliche Ausfallursachen.
+4. Plane den Zustands-Aspekt: der BFF sollte zustandslos (stateless) sein, damit ein Failover keinen Sitzungsverlust erzeugt; gemeinsame Zustände (z. B. Idempotenz-Records) in einem regionsübergreifenden Speicher halten.
+5. Definiere den Failback: nach Erholung der primären Region kontrolliert zurückschalten (nicht automatisch sofort), um ein Flapping zwischen beiden Regionen zu vermeiden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Cloud-Resilience-Architekt. Unser öffentlicher Kampagnen-Chatbot ist geschäftskritisch; ein regionaler Ausfall unseres BFF-Hostings würde Umsatz kosten. Erkläre ein Multi-Region-Failover: (1) Zwei-Regionen-Topologie unter Wahrung der EU-Datenresidenz, (2) Health-basiertes Load-Balancer-Routing, (3) Abgrenzung zum Langdock-Ausfall-Fall, (4) Stateless-BFF und geteilter Zustand, (5) kontrollierter Failback gegen Flapping. Liefere ein Failover-Konzept."
+**Erwartetes Artefakt:** Ein Multi-Region-Failover-Konzept (Topologie, Health-Routing, Datenresidenz, Stateless-Design, Failback).
+**Fallstricke (≥2 spezifisch):**
+- Die zweite Region liegt außerhalb der EU — das Failover bricht im Ernstfall das EU-Datenresidenz-Versprechen und erzeugt einen Compliance-Vorfall.
+- Multi-Region-Failover wird als Schutz gegen einen Langdock-Ausfall verkauft — fällt Langdock selbst aus, hilft die regionale Redundanz des eigenen BFF nicht; dafür ist das Fallback-Playbook zuständig.
+**Anschluss-Szenario:** S-API-080
+
+### S-API-080 Partner-Onboarding-Dokumentation für API-Consumer
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin öffnet die interne Langdock-Integrationsschicht für drei externe Vertriebspartner, die KI-gestützte Produktbeschreibungen für ihre eigenen Shops abrufen sollen. Jeder Partner stellt dieselben Fragen zu Zugang, Limits und Support — es fehlt eine partnerfähige Onboarding-Dokumentation. (Quelle: S-API-049, research/50 A-37, sources/12 Q148)
+**Strategisches Ziel:** Eine vollständige Partner-Onboarding-Dokumentation erstellen, die externe API-Consumer eigenständig produktionsfähig macht und zugleich Zugang, Limits, Haftung und Support klar regelt.
+**Hands-on Ergebnis:** Ein Partner-Onboarding-Paket mit Zugangsprozess, technischer Schnellstart-Anleitung, Nutzungsbedingungen und Support-/Eskalationsweg.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner
+**Vorgehen (5 Schritte):**
+1. Definiere den Zugangsprozess: wie ein Partner einen eigenen, isolierten API-Key erhält (pro Partner separat — niemals geteilt, siehe S-API-061), inklusive Identitäts- und Vertragsprüfung vor der Freigabe.
+2. Erstelle die technische Schnellstart-Anleitung: Authentifizierung, erster Test-Call, Beispiel-Requests und ein Fehler-Debugging-Entscheidungsbaum (aufbauend auf S-API-049) — Ziel: erster erfolgreicher Call in unter 30 Minuten.
+3. Dokumentiere Limits und faire Nutzung: partnerspezifische Rate Limits und Token-Budgets (durchgesetzt im eigenen Gateway, siehe S-API-046), damit ein Partner die Ressourcen anderer nicht beeinträchtigt.
+4. Regle Nutzungsbedingungen und Datenschutz: erlaubte Use-Cases, Verbot der Weitergabe des Keys, Datenschutzpflichten (kein Einspeisen unzulässiger personenbezogener Daten), Haftungsabgrenzung.
+5. Definiere Support und Eskalation: Kontaktkanal, Reaktionszeiten, Changelog-Benachrichtigung bei Breaking Changes (S-API-058) und ein Verfahren für Key-Kompromittierung beim Partner.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist ein Technical-Partnerships-Manager. Wir öffnen unsere Langdock-Integrationsschicht für drei externe Vertriebspartner. Erstelle ein Partner-Onboarding-Paket: (1) Zugangsprozess mit isoliertem Key pro Partner, (2) technische Schnellstart-Anleitung (erster Call in unter 30 Minuten), (3) partnerspezifische Limits und faire Nutzung, (4) Nutzungsbedingungen und Datenschutzpflichten, (5) Support- und Eskalationsweg. Liefere ein vollständiges Onboarding-Dokument."
+**Erwartetes Artefakt:** Ein Partner-Onboarding-Paket (Zugangsprozess, Schnellstart, Limits, Nutzungsbedingungen, Support-/Eskalationsweg).
+**Fallstricke (≥2 spezifisch):**
+- Alle Partner teilen sich einen gemeinsamen API-Key — bei Kompromittierung bei einem Partner müssen alle anderen mitrotiert werden, und eine partnergenaue Kostenzuordnung ist unmöglich.
+- Die Dokumentation regelt nur den technischen Zugang, aber weder faire Nutzungslimits noch Datenschutzpflichten — ein einzelner Partner kann das gemeinsame Budget aufbrauchen oder unzulässige Daten einspeisen.
 **Anschluss-Szenario:** S-API-001
