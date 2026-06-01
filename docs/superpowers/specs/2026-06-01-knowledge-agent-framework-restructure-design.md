@@ -23,6 +23,10 @@ This restructure renames the repo to **Knowledge Agent Framework**, removes the 
 ├── .github/
 │   └── workflows/
 │       └── release.yml        GENERIC release CI — zips every examples/<name>/ as <name>.zip
+├── templates/                 NEW — starter kit for a fresh knowledge agent
+│   ├── knowledge-file.md           blank 9-field scenario file skeleton (with the intro box + one kind of each)
+│   ├── AGENT_PROMPT.md             system-prompt skeleton (init protocol, 5 modes, refusal strings, gestaffelt format)
+│   └── research-prompt.md          Gemini deep-research prompt template
 ├── tools/                     NEW — generic validators promoted from the build (reusable across clients)
 │   ├── check_schema.sh
 │   ├── check_prompt_size.sh
@@ -111,10 +115,9 @@ Reframing scope: titles, intros, and "soul.md/superpowers/little-data" identity 
 
 ## 7a. Root LICENSE — ownership (decision pending)
 
-The current root `LICENSE` is **MIT, Copyright (c) 2026 Aaron Mars** — the original soul.md author. Since the restructure **deletes all soul.md code** and renames the project, that notice will no longer cover any remaining content. Options (user decision in §11):
-- (a) Replace with a fresh license owned by **Michael Schimmer / Netzkontrast** (MIT or other) for the framework. The IW example keeps its own proprietary LICENSE inside `examples/iw-little-data/`.
-- (b) Keep MIT but update the copyright holder to Michael Schimmer / Netzkontrast.
-- (c) Keep as-is (only correct if any soul.md-derived material is retained — not the case here).
+The current root `LICENSE` is **MIT, Copyright (c) 2026 Aaron Mars** — the original soul.md author. Since the restructure **deletes all soul.md code** and renames the project, that notice no longer covers any remaining content.
+
+**RESOLVED:** replace the root `LICENSE` with a **fresh framework license owned by Michael Schimmer / Netzkontrast** (© 2026, proprietary / all-rights-reserved by default; exact permission grant to be confirmed at implementation). The IW example keeps its own proprietary LICENSE inside `examples/iw-little-data/`.
 
 ## 8. Risks & rollback
 
@@ -139,12 +142,16 @@ The current root `LICENSE` is **MIT, Copyright (c) 2026 Aaron Mars** — the ori
 - Manual GitHub-rename steps delivered to the user.
 - One clean commit set; history preserved via `git mv`.
 
-## 11. Open decisions (user)
+## 11. Decisions — all resolved
 
-1. **`templates/` scaffold?** Add a `templates/` with a blank knowledge-file skeleton, an `AGENT_PROMPT` skeleton, and a research-prompt template (panel 🟠 — strengthens the "framework" claim). Yes / No.
-2. **Root LICENSE ownership** (§7a): replace with fresh license owned by Michael Schimmer / Netzkontrast (a), update holder only (b), or other.
-
-*(Release-CI mode resolved: generic root `release.yml`, zips every example as `<name>.zip`.)*
+1. **`templates/` scaffold → YES.** Add root `templates/` (blank knowledge-file skeleton, `AGENT_PROMPT` skeleton, research-prompt template).
+2. **Root LICENSE → fresh Netzkontrast-owned framework license** (§7a).
+3. **Release CI → generic root `release.yml`** that zips every `examples/<name>/` as `<name>.zip`.
+4. Soul.md removal → branding/templates/examples deleted; persona capability kept (§3, §4).
+5. IW deliverable → `examples/iw-little-data/`.
+6. Tools → promoted to root `tools/`; example keeps copies.
+7. Docs → `docs/superpowers/` reframed + flattened into root `docs/`.
+8. Rename → full, incl. GitHub repo (manual steps to user).
 
 ## 10. Out of scope (this restructure)
 
