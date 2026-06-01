@@ -4,7 +4,7 @@
 > **Required role:** Langdock Workspace Admin (for Wissensordner creation + Agent configuration)
 > **Time required:** ~30 minutes for first install, ~10 minutes for re-deploys
 
-This guide walks you through deploying Little Data — the German-language Langdock advisor agent modeled on Lt. Cmdr. Data — into a Langdock workspace. The agent helps a Marketing Director navigate Langdock features, write better prompts, choose models cost-effectively, and apply 1 400+ pre-rendered scenarios to daily marketing work.
+This guide walks you through deploying Little Data — the German-language Langdock advisor agent modeled on Lt. Cmdr. Data — into a Langdock workspace. The agent helps a Marketing Director navigate Langdock features, write better prompts, choose models cost-effectively, and apply 990+ decision-ready scenarios to daily marketing work.
 
 ---
 
@@ -31,7 +31,7 @@ This guide walks you through deploying Little Data — the German-language Langd
 ## 3. Schritt 2 — Knowledge-Files hochladen
 
 1. Im neu erstellten Wissensordner: **Datei hochladen** (oder Drag-and-Drop).
-2. Die folgenden **14 Markdown-Dateien** aus `langdock-deploy/knowledge/` hochladen:
+2. Die folgenden **15 Markdown-Dateien** aus `langdock-deploy/knowledge/` hochladen:
 
    ```
    00-langdock-uebersicht.md
@@ -48,11 +48,12 @@ This guide walks you through deploying Little Data — the German-language Langd
    11-persona-core.md
    12-persona-julia-modus.md
    13-data-agent-anweisungen-pro-thema.md
+   15-glossar-und-faq.md
    ```
 
 3. Auf das Status-Symbol pro Datei warten: muss **SYNCED** anzeigen (Embeddings sind erstellt). Bei großen Dateien (>200 KB) dauert das ein paar Sekunden.
 
-4. **Verifikation:** Im Wissensordner einen Test-Chat starten und fragen *"Was ist im Wissensordner 'Little-Data-Wissensordner' enthalten?"* — die Antwort muss alle 14 Dateien benennen.
+4. **Verifikation:** Im Wissensordner einen Test-Chat starten und fragen *"Was ist im Wissensordner 'Little-Data-Wissensordner' enthalten?"* — die Antwort muss alle 15 Dateien benennen.
 
 ---
 
@@ -145,7 +146,7 @@ Falls der Agent für andere Team-Mitglieder freigegeben werden soll:
 
 Übergib dem ersten Marketing-Director-Nutzer:
 1. Den Link zum Agenten in Langdock.
-2. Hinweis: *"Klick einen der Konversations-Starter, oder schreib einfach was du brauchst. Der Agent hat 1 400+ vorbereitete Szenarien — frag konkret nach deinem Marketing-Anwendungsfall."*
+2. Hinweis: *"Klick einen der Konversations-Starter, oder schreib einfach was du brauchst. Der Agent hat 990+ vorbereitete Szenarien — frag konkret nach deinem Marketing-Anwendungsfall."*
 3. (Optional) Eine 15-min-Walkthrough-Session mit dem ersten Nutzer.
 
 ---

@@ -1,0 +1,119 @@
+name: Release — Little Data Package
+
+# Assembles the lean Little Data deployment package (knowledge folder + system
+# prompt + starters + INSTALL/README/CHANGELOG/LICENSE + provenance/) into a
+# single zip and publishes it via the GitHub Releases tab.
+#
+# Triggers:
+#   - push a tag matching v*           → release named after the tag
+#   - manual run (workflow_dispatch)   → release named after the "version" input
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version tag (e.g. v1.0)"
+        required: true
+        default: "v1.0"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine version
+        id: ver
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "version=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate package (schema + prompt size + emoji guard)
+        run: |
+          set -euo pipefail
+          bash little-data/tools/check_schema.sh --all
+          bash little-data/tools/check_prompt_size.sh
+          # Knowledge files must be free of pictographic emoji (persona rule).
+          if grep -rlP '[\x{1F000}-\x{1FAFF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{2B00}-\x{2BFF}\x{FE0F}]' little-data/langdock-deploy/knowledge/*.md; then
+            echo "::error::Pictographic emoji found in knowledge files — aborting release."
+            exit 1
+          fi
+          echo "Validation passed."
+
+      - name: Assemble release package
+        id: build
+        run: |
+          set -euo pipefail
+          VER="${{ steps.ver.outputs.version }}"
+          REL="little-data-langdock-${VER}"
+          BASE="little-data"
+          DEPLOY="$BASE/langdock-deploy"
+          STAGE="dist/$REL"
+
+          rm -rf dist
+          mkdir -p "$STAGE/knowledge" "$STAGE/provenance"
+
+          # Tier-1 core (lean deploy package)
+          cp "$DEPLOY/AGENT_PROMPT.md" \
+             "$DEPLOY/CONVERSATION_STARTERS.md" \
+             "$DEPLOY/README.md" \
+             "$DEPLOY/CHANGELOG.md" \
+             "$DEPLOY/LICENSE" \
+             "$STAGE/"
+          cp "$BASE/INSTALL.md" "$STAGE/"
+
+          # Knowledge folder — every .md (upload-ready Wissensordner)
+          cp "$DEPLOY"/knowledge/*.md "$STAGE/knowledge/"
+
+          # Provenance — reference only, NOT for upload
+          cp "$DEPLOY/provenance-README.md" "$STAGE/provenance/README.md"
+          cp -r "$BASE/data/sources"  "$STAGE/provenance/sources"
+          cp -r "$BASE/data/research" "$STAGE/provenance/research"
+          mkdir -p "$STAGE/provenance/extracts"
+          cp "$BASE"/data/extracts/T*.md "$STAGE/provenance/extracts/"
+
+          # Hygiene
+          find "$STAGE" -name '*.bak' -delete
+
+          # Zip
+          ( cd dist && zip -rq "$REL.zip" "$REL" )
+          echo "asset=dist/$REL.zip" >> "$GITHUB_OUTPUT"
+          echo "Built dist/$REL.zip"
+          ls -la "dist/$REL.zip"
+          echo "Contents:"
+          ( cd dist && unzip -l "$REL.zip" | tail -3 )
+
+      - name: Upload workflow artifact (always)
+        uses: actions/upload-artifact@v4
+        with:
+          name: little-data-langdock-${{ steps.ver.outputs.version }}
+          path: ${{ steps.build.outputs.asset }}
+          if-no-files-found: error
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          VER="${{ steps.ver.outputs.version }}"
+          ASSET="${{ steps.build.outputs.asset }}"
+          NOTES="little-data/langdock-deploy/CHANGELOG.md"
+          if gh release view "$VER" >/dev/null 2>&1; then
+            echo "Release $VER exists — uploading asset (clobber)."
+            gh release upload "$VER" "$ASSET" --clobber
+          else
+            echo "Creating release $VER."
+            gh release create "$VER" "$ASSET" \
+              --title "Little Data $VER" \
+              --notes-file "$NOTES"
+          fi
