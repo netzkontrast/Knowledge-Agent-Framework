@@ -353,7 +353,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-015 Modell mitten im Projekt wechseln: Regeln für den sauberen Übergang
 
-**Wann nutzen (Trigger):** Ein Whitepaper-Projekt startete auf Sonnet 4.6, aber nach drei Entwurfsrunden zeigt sich, dass die strategische Kernthese flach bleibt — ein Teammitglied schlägt vor, auf Opus 4.7 zu wechseln, ohne zu wissen, ob das den laufenden Kontext zerstört. (Quelle: sources/12 Q21)
+**Wann nutzen (Trigger):** Ein Whitepaper-Projekt startete auf Sonnet 4.6, aber nach drei Entwurfsrunden zeigt sich, dass die strategische Kernthese flach bleibt — ein Teammitglied schlägt vor, auf Opus 4.8 zu wechseln, ohne zu wissen, ob das den laufenden Kontext zerstört. (Quelle: sources/12 Q21)
 **Strategisches Ziel:** Klare Entscheidungsregeln für einen Modellwechsel innerhalb eines laufenden Projekts etablieren, um Kontextverlust und unnötige Kostensprünge zu vermeiden.
 **Hands-on Ergebnis:** Ein Wechsel-Protokoll (wann wechseln, wie Kontext sichern, wie zurückwechseln) plus eine dokumentierte Modell-Entscheidung für das aktuelle Projekt.
 **Eingesetzte Langdock-Fähigkeit(en):** Manuelle Modellwahl im Chat, Wissensordner als Kontext-Anker, Modell-Katalog.
@@ -1225,3 +1225,384 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 - Einen automatischen Resume-Mechanismus nach automatischem Stopp einzubauen, der nach einer Wartezeit alle Workflows wieder startet, perpetuiert den Loop-Fehler — Mitigation: ausschließlich manuelles Resume nach expliziter menschlicher Prüfung und Ursachenbehebung; kein automatisches Restart.
 - Den Monitoring-Workflow selbst ohne Execution-Limit und ohne eigenes Budget-Cap zu lassen schafft eine Lücke: der Sicherheits-Mechanismus ist selbst nicht abgesichert — Mitigation: den Monitoring-Workflow als reinen API-Abfrage-Workflow ohne LLM-Aufrufe konfigurieren und ein separates, minimales Budget-Cap (€2/Monat) zuweisen.
 **Anschluss-Szenario:** S-MK-061
+
+### S-MK-061 Per-Task-Routing-Matrix für das gesamte Aufgaben-Portfolio formalisieren
+
+**Wann nutzen (Trigger):** Das Marketing-Team hat 14 wiederkehrende Aufgabentypen (von Headline bis Quartals-Synthese), aber jede Person wählt das Modell nach Gefühl — und niemand kann sagen, welcher Aufgabentyp verbindlich auf welchem Modell laufen soll. (Quelle: A-27)
+**Strategisches Ziel:** Eine verbindliche, vollständige Per-Task-Routing-Matrix etablieren, die jedem Aufgabentyp ein günstigstes ausreichendes Modell zuordnet — und für jede Stufe eine günstigere und eine stärkere Alternative ausweist.
+**Hands-on Ergebnis:** Eine Routing-Matrix über alle 14 Aufgabentypen (Aufgabe → Default-Modell + Multiplikator → günstigere Alternative → stärkere Alternative).
+**Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, manuelle Modellwahl, Wissensordner als Matrix-Ablage, Usage-Export zur Validierung.
+**Vorgehen (4 Schritte):**
+1. Liste alle 14 Aufgabentypen aus dem realen Portfolio und ordne jeden in eine Modell-Klasse: Light (Daten-Cleanup, Formatierung), Efficient (Drafts, Headlines, Klassifikation), Balanced/Step-up (Briefings, JSON-Reports), Strong (Brand-Voice-Langform), Frontier (heterogene Synthese).
+2. Trage als Default je Aufgabe das günstigste tragfähige Modell ein und ergänze pro Zeile eine günstigere Alternative (z.B. GPT-5.4 Mini, 0,3x) für unkritische Varianten und eine stärkere (z.B. Sonnet 4.6, 3,1x) für Qualitäts-Eskalation.
+3. Verankere die Matrix als Konversations-Starter im Content-Agenten, damit das Team sie im Chat abrufen kann, statt ein totes Dokument abzulegen.
+4. Validiere nach vier Wochen über den Usage-Export, ob der reale Modell-Mix der Matrix folgt; bei Abweichung ist die Kommunikation, nicht die Matrix, das Problem.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Modell-Routing-Architekt. Erstelle aus der Aufgabenliste im Wissensordner eine vollständige Per-Task-Routing-Matrix. Ordne jedem Aufgabentyp ein Default-Modell mit Multiplikator zu und ergänze je eine günstigere und eine stärkere Alternative mit kurzer Begründung. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Routing-Matrix (Aufgabentyp / Default-Modell / Multiplikator / günstigere Alternative / stärkere Alternative / Begründung) als Konversations-Starter im Content-Agenten.
+**Fallstricke (≥2 spezifisch):**
+- Eine Matrix ohne ausgewiesene Eskalations-Alternative zwingt das Team bei Qualitätsbedarf zurück ins Bauchgefühl — Mitigation: jede Zeile muss eine definierte stärkere Alternative und ein Eskalations-Kriterium nennen, nicht nur einen Default.
+- Eine Matrix, die das Team nicht im Arbeitsfluss findet, wird ignoriert — Mitigation: als Konversations-Starter im genutzten Agenten verankern, nicht nur als Ordner-Datei.
+**Anschluss-Szenario:** S-MK-062
+
+### S-MK-062 Workspace-Kostenguardrails mehrstufig absichern: Quota, Cap, Alert
+
+**Wann nutzen (Trigger):** Nach mehreren knappen Monatsabschlüssen will der Marketing-Operations-Lead nicht mehr auf den harten €500-Stopp warten, sondern ein gestaffeltes Guardrail-System, das pro Nutzer, pro Workflow und global gleichzeitig greift. (Quelle: A-25)
+**Strategisches Ziel:** Ein dreischichtiges Guardrail-System (Per-User-Quota → Workflow-Cap → Workspace-Limit mit 50/75/90%-Alerts) aufsetzen, das Cost-Leakage früh stoppt, ohne legitime Arbeit pauschal zu blockieren.
+**Hands-on Ergebnis:** Eine konfigurierte Guardrail-Architektur plus ein Eskalations-Sheet, das jede Stufe an einen Verantwortlichen koppelt.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Limit, Per-User-Quota, Workflow-Level-Budget, Warn-Schwellen (50/75/90%), Usage-Transparenz-Leiste.
+**Vorgehen (4 Schritte):**
+1. Setze als äußerste Schicht das Workspace-Limit (Standard €500) mit Alerts bei 50/75/90% an die Marketing-Operations-Adresse — nicht nur an den technischen Admin.
+2. Lege als mittlere Schicht Per-User-Quotas fest, damit ein einzelner Nutzer das Gemeinschaftsbudget nicht allein aufzehren kann; Default niedrig, Hochwahl begründungspflichtig.
+3. Setze als innerste Schicht für jeden produktiven Workflow ein dediziertes Budget plus Per-Execution-Limit (max. 2.000 Schritte) — die erste Barriere gegen Loop-Fehler.
+4. Dokumentiere pro Schicht eine günstigere Sofortmaßnahme (Modell-Downgrade) und eine stärkere (Workflow-Pause), damit bei Erreichen jeder Schwelle klar ist, was zuerst zu tun ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein FinOps-Berater für KI. Entwirf eine dreistufige Kostenguardrail-Architektur für unseren Workspace: Per-User-Quota, Workflow-Cap, Workspace-Limit mit Warn-Schwellen. Nenne pro Schicht: Standardwert, Verantwortlichen und die erste Sparmaßnahme. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Guardrail-Architektur (Schicht / Schwellenwert / Verantwortlicher / Sofortmaßnahme) plus ein konfiguriertes Alert-Set im Workspace-Admin.
+**Fallstricke (≥2 spezifisch):**
+- Nur ein globales Workspace-Limit ohne Per-User- oder Workflow-Schicht lässt einen einzelnen Ausreißer bis zum harten Stopp laufen — Mitigation: immer alle drei Schichten aktivieren, das globale Limit ist die letzte, nicht die einzige Barriere.
+- Alerts ohne namentlichen Empfänger verpuffen — Mitigation: jede Schwelle an eine benannte Person mit definierter Reaktionszeit koppeln.
+**Anschluss-Szenario:** S-MK-063
+
+### S-MK-063 Token-Budget-Forecast pro Quartal aus Treibern modellieren
+
+**Wann nutzen (Trigger):** Das Controlling will keine pauschale Fortschreibung der KI-Kosten mehr, sondern einen aus Treibern hergeleiteten Quartals-Forecast — basierend auf geplanten Kampagnen, Team-Größe und Automatisierungsgrad. (Quelle: sources/12 Q119)
+**Strategisches Ziel:** Den Token-Verbrauch des nächsten Quartals aus konkreten Treibern (Kampagnen-Anzahl, Workflow-Runs, aktive Nutzer) prognostizieren, statt linear aus dem Vormonat fortzuschreiben.
+**Hands-on Ergebnis:** Ein Treiber-basiertes Forecast-Modell (Treiber × Token-Faktor × Modell-Multiplikator) mit Best-/Base-/Worst-Case-Spannen.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage-Export (historische Treiber-Token-Verhältnisse), Modell-Katalog (Multiplikatoren), Wissensordner für Forecast-Vorlage.
+**Vorgehen (4 Schritte):**
+1. Leite aus dem Usage-Export historische Token-pro-Treiber-Verhältnisse ab (Token pro Kampagne, pro Workflow-Run, pro aktivem Nutzer/Monat) — diese Faktoren sind die Forecast-Basis.
+2. Multipliziere die geplanten Treibermengen des Quartals mit den Faktoren und dem erwarteten Modell-Mix-Multiplikator, um die Token-Kosten je Treiber zu erhalten.
+3. Rechne drei Szenarien: Base (Plan), Best (-20% Volumen), Worst (+40% durch Adoption) — der Forecast ist eine Spanne, kein Punktwert.
+4. Übergib den Forecast an Controlling mit der Basis-Notiz "Multiplikatoren Stand Mai 2026, gegen langdock.com/models prüfen" und einer günstigeren Hebel-Liste (Modell-Downgrades), falls das Worst-Case-Szenario eintritt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein KI-Forecast-Modellierer. Leite aus der angehängten Usage-Historie Token-pro-Treiber-Faktoren ab (pro Kampagne, pro Workflow-Run, pro Nutzer). Prognostiziere das Quartals-Token-Budget für die geplanten Treibermengen in drei Szenarien (Best/Base/Worst). Gib EUR-Kosten je Szenario auf Multiplikator-Basis. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Ein Forecast-Modell (Treiber / Token-Faktor / geplante Menge / Multiplikator / EUR je Szenario) als Controlling-Vorlage.
+**Fallstricke (≥2 spezifisch):**
+- Einen Punkt-Forecast statt einer Spanne abzugeben suggeriert eine Scheingenauigkeit, die bei der ersten Adoptionswelle bricht — Mitigation: immer Best/Base/Worst-Spanne ausweisen und den Worst-Case explizit als Adoptions-Szenario benennen.
+- Treiber-Faktoren ohne Datum altern still — Mitigation: jeden Forecast mit dem Datum der zugrundeliegenden Usage-Historie und der Multiplikator-Quelle versehen.
+**Anschluss-Szenario:** S-MK-064
+
+### S-MK-064 Quality-vs-Cost-A/B-Harness als wiederholbaren Test aufbauen
+
+**Wann nutzen (Trigger):** Das Team trifft Modell-Entscheidungen anekdotisch ("Sonnet fühlt sich besser an") und will eine reproduzierbare Testumgebung, die Qualität und Kosten für jeden Aufgabentyp gegeneinander stellt. (Quelle: A-21)
+**Strategisches Ziel:** Einen wiederholbaren A/B-Harness etablieren, der für jeden Aufgabentyp zwei Modelle blind gegeneinander bewertet und einen Qualität-pro-EUR-Wert ausgibt — die Grundlage jeder Routing-Entscheidung.
+**Hands-on Ergebnis:** Ein A/B-Harness (fixe Testfälle, Blind-Bewertungsraster, Kostenmessung) plus ein erstes Ergebnis-Set für zwei Kandidatenmodelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Manuelle Modellwahl, Wissensordner für Testfälle und Bewertungsraster, Usage-Export für Kostenmessung.
+**Vorgehen (4 Schritte):**
+1. Lege je Aufgabentyp 3 fixe, unveränderliche Testfälle im Wissensordner ab — sie sind der dauerhafte Anker, damit Ergebnisse über Zeit vergleichbar bleiben.
+2. Führe jeden Testfall auf beiden Kandidatenmodellen aus, anonymisiere die Outputs (Modell A/B), und lass mindestens zwei Bewerter blind nach einem 1-5-Raster (Relevanz, Sprachqualität, Strukturtreue) urteilen.
+3. Miss die tatsächlichen Kosten je Lauf über den Usage-Export (Token × Multiplikator) und berechne Qualität-pro-EUR pro Aufgabentyp.
+4. Gib pro Aufgabentyp eine Empfehlung aus: günstigeres Modell, wenn Qualität gleichwertig; stärkeres Modell nur, wenn der Qualitätsvorsprung den Mehrpreis trägt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein A/B-Test-Auswerter. Ich habe je Aufgabentyp Output-Paare (Modell A vs. B, anonymisiert) und die Kostendaten im Wissensordner. Bewerte alle Outputs blind nach Relevanz, Sprachqualität, Strukturtreue (1-5) und berechne den Qualität-pro-EUR-Wert je Aufgabentyp. Empfiehl je Aufgabentyp das wirtschaftlichere Modell. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Ein A/B-Harness-Ergebnis (Aufgabentyp / Modell A Score / Modell B Score / Kosten / Qualität-pro-EUR / Empfehlung) als wiederverwendbarer Wissensordner-Eintrag.
+**Fallstricke (≥2 spezifisch):**
+- Nicht-blinde Bewertung verzerrt zugunsten des Marken-Lieblings (Anthropic/Google) — Mitigation: Outputs vor der Bewertung als Modell A/B anonymisieren, Auflösung erst nach dem Urteil.
+- Ein einziger Bewerter oder ein einziger Testfall pro Aufgabentyp ist statistisch nicht belastbar — Mitigation: mindestens 3 Testfälle und 2 unabhängige Bewerter pro Aufgabentyp.
+**Anschluss-Szenario:** S-MK-065
+
+### S-MK-065 Caching-ROI berechnen: Lohnt sich ein statischer Prompt-Block wirklich?
+
+**Wann nutzen (Trigger):** Der Briefing-Agent überträgt bei jeder der täglich 200 Anfragen denselben 3.500-Token-Kontext (Persona, Styleguide, Format) — bevor das Team in einen Caching-Umbau investiert, soll der tatsächliche ROI belegt werden. (Quelle: A-22)
+**Strategisches Ziel:** Den wirtschaftlichen Nutzen von Prompt-Caching für den statischen Kontext-Anteil quantifizieren und nur dann umbauen, wenn die Volumen- und Token-Schwellen den Overhead schlagen.
+**Hands-on Ergebnis:** Eine Caching-ROI-Rechnung (statische Token × Anfragen × Treffer-Rate × Multiplikator) mit Go/No-Go-Entscheidung und ggf. einer umgebauten Prompt-Struktur.
+**Eingesetzte Langdock-Fähigkeit(en):** Agenten-Konfiguration (System-Prompt-Strukturierung), Wissensordner als praktische Caching-Entsprechung, Usage-Export für Token-Messung.
+**Vorgehen (4 Schritte):**
+1. Trenne im Prompt den statischen Block (Persona, Styleguide, Format) vom variablen (Kampagne, Datum, Zielgruppe) und miss die statische Token-Zahl exakt — nur der statische Teil ist cachefähig.
+2. Prüfe die Schwellen: statischer Block >2.048 Token UND >5 Anfragen/Minute; darunter überwiegt der Cache-Verwaltungsoverhead und die Antwort ist No-Go.
+3. Berechne die Ersparnis: statische Token × Anfragen/Tag × Treffer-Rate (z.B. 70%) × (1 − Cache-Lesefaktor) × Multiplikator × Basispreis = EUR/Monat; vergleiche mit dem Umbauaufwand.
+4. Setze, wenn Go, den statischen Block als RAG-Inhalt in den Wissensordner (Langdocks praktische Caching-Entsprechung) und ordne den variablen Teil hinten an, um die Trefferquote zu maximieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Caching-ROI-Berater. Unser Briefing-Agent überträgt 3.500 statische Token bei 200 täglichen Anfragen. Prüfe die Caching-Schwellen, berechne die monatliche EUR-Ersparnis bei 70% Treffer-Rate und gib eine Go/No-Go-Empfehlung. Bei Go: schlage eine statisch/variabel getrennte Prompt-Struktur vor. Sie-Form."
+**Erwartetes Artefakt:** Eine Caching-ROI-Rechnung (statische Token / Treffer-Rate / EUR-Ersparnis / Go-No-Go) plus, bei Go, eine umgebaute Prompt-Struktur.
+**Fallstricke (≥2 spezifisch):**
+- Caching unter den Schwellen (niedriges Volumen) einzuführen kostet mehr Pflegeaufwand als es spart — Mitigation: erst Volumen und statische Token messen, dann entscheiden; No-Go ist ein valides Ergebnis.
+- Gecachte Inhalte zu selten zu prüfen schleust veraltete Styleguides in die Produktion — Mitigation: quartalsweise Cache-/Wissensordner-Review-Pflicht.
+**Anschluss-Szenario:** S-MK-066
+
+### S-MK-066 Long-Context-Kostentradeoff: Großes Modell vs. RAG-Chunking abwägen
+
+**Wann nutzen (Trigger):** Ein 300-seitiger Marktreport soll wiederholt abgefragt werden — das Team überlegt, ob es ihn als Ganzes in ein Modell mit großem Kontextfenster lädt oder per RAG chunkt, und kennt den Kostenunterschied nicht. (Quelle: sources/12 Q20)
+**Strategisches Ziel:** Den Kostentradeoff zwischen Voll-Kontext-Verarbeitung (großes Kontextfenster) und RAG-Chunking für große, wiederholt abgefragte Dokumente bewerten und die günstigere Methode je Aufgabentyp wählen.
+**Hands-on Ergebnis:** Eine Tradeoff-Rechnung (Voll-Kontext-Token vs. RAG-Chunk-Token pro Abfrage × Abfragehäufigkeit) plus eine Methodenempfehlung je Aufgabentyp.
+**Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog (Kontextfenster, Gemini 2.5 Flash als Großkontext-Option), Wissensordner (RAG-Chunking), Usage-Export.
+**Vorgehen (4 Schritte):**
+1. Beziffere den Token-Umfang: 300 Seiten ≈ 150.000–200.000 Token; nur Modelle wie Gemini 2.5 Flash (Großkontext) verarbeiten das vollständig inline.
+2. Stelle die Kosten gegenüber: Voll-Kontext lädt bei jeder Abfrage die gesamten Token (teuer bei vielen Abfragen); RAG lädt nur die Top-k Chunks (günstiger bei wiederholten, gezielten Fragen).
+3. Trenne nach Aufgabentyp: dokumentweite Synthese braucht Voll-Kontext (einmalig, dafür großes Modell); gezielte Faktenfragen brauchen nur RAG-Chunks (günstig, wiederholbar).
+4. Empfiehl die günstigere Methode je Aufgabentyp und weise bei Großkontext-Nutzung auf die "lost in the middle"-Schwäche hin — kritische Passagen explizit als Zitat anfordern.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Kontext-Kosten-Berater. Ein 300-seitiger Report (~180.000 Token) wird 40-mal/Monat abgefragt. Vergleiche die Kosten: Voll-Kontext-Inline bei Gemini 2.5 Flash vs. RAG-Chunking aus dem Wissensordner. Empfiehl je Aufgabentyp (Synthese vs. Faktenfrage) die günstigere Methode. Tabelle, EUR, Sie-Form."
+**Erwartetes Artefakt:** Eine Tradeoff-Rechnung (Methode / Token pro Abfrage / Häufigkeit / EUR/Monat) plus eine Methodenempfehlung je Aufgabentyp.
+**Fallstricke (≥2 spezifisch):**
+- Ein großes Dokument bei jeder Folgefrage vollständig inline zu laden multipliziert die Input-Kosten unnötig — Mitigation: für wiederholte gezielte Abfragen RAG nutzen, Voll-Kontext nur für einmalige Synthese.
+- Großkontext-Modellen blind zu vertrauen ignoriert Präzisionsverlust in der Dokumentmitte — Mitigation: kritische Passagen explizit als Zitat anfordern statt auf implizites Scanning zu setzen.
+**Anschluss-Szenario:** S-MK-067
+
+### S-MK-067 Vision-Task-Kostenplanung: Bild-Inputs vor dem Rollout kalkulieren
+
+**Wann nutzen (Trigger):** Die Brand-Managerin plant einen wöchentlichen Vision-Check von Agentur-Kreativen (je ~80 Bilder), aber die erste Testrechnung war unerwartet hoch und niemand weiß, wie Bild-Inputs in Token umgerechnet werden. (Quelle: sources/12 Q30)
+**Strategisches Ziel:** Die Token-Kostenstruktur von Vision-Tasks transparent machen und einen budgetierten, kosteneffizienten Vision-Workflow für wiederkehrende CD-Checks aufsetzen.
+**Hands-on Ergebnis:** Eine Vision-Kostenprognose (Bilder × Token-Äquivalent × Multiplikator) plus eine Modellwahl- und Auflösungs-Empfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Vision-fähige Modelle (Gemini 2.5 Flash, Sonnet 4.6), Workflow-Builder, Workflow-Budget-Cap, Modell-Katalog.
+**Vorgehen (4 Schritte):**
+1. Halte fest: ein Bild wird je nach Auflösung in 1.000–2.000 Token-Äquivalente umgerechnet; 80 Bilder/Woche ≈ 80.000–160.000 Input-Token pro Lauf.
+2. Wähle für strukturierte CD-Checks (Farben, Logo-Abstand, Schriftart) das günstigere Vision-Modell Gemini 2.5 Flash statt eines teuren Reasoning-Modells — die Aufgabe ist Prüfung, kein kreatives Reasoning.
+3. Reduziere die Bildauflösung vor dem Upload auf das für den Check nötige Minimum — höhere Auflösung erhöht die Token-Kosten ohne Qualitätsgewinn für Compliance-Checks.
+4. Baue einen Batch-Workflow (kein interaktiver Chat) mit Workflow-Budget-Cap, der je Bild "Konform / Nicht konform: [Regel]" in eine Tabelle schreibt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Vision-Kostenplaner. Wir prüfen wöchentlich 80 Agentur-Kreative gegen unsere CD-Regeln. Schätze die Token-Last und EUR-Kosten pro Lauf für Gemini 2.5 Flash vs. ein teures Vision-Modell. Empfiehl Modell, Auflösung und Batch-Architektur mit Budget-Cap. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Vision-Kostenprognose (Bilder / Token-Äquivalent / Multiplikator / EUR pro Lauf) plus eine Batch-Pipeline-Empfehlung mit Budget-Cap.
+**Fallstricke (≥2 spezifisch):**
+- Bilder in voller Auflösung zu senden treibt die Token-Kosten ohne Mehrwert für strukturierte Checks — Mitigation: vor dem Upload auf die nötige Mindestauflösung komprimieren.
+- Vision-Checks im interaktiven Chat statt im Batch-Workflow auszuführen kumuliert Kontext und verteuert Folge-Bilder — Mitigation: serielle Bildprüfung immer als Workflow, nie als Chat-Session.
+**Anschluss-Szenario:** S-MK-068
+
+### S-MK-068 Batch-Discount-Hebel: Asynchrone Verarbeitung statt Echtzeit-Premium
+
+**Wann nutzen (Trigger):** Eine monatliche Lokalisierung von 6.000 Katalogtexten läuft bisher tagsüber im interaktiven Chat — das Team hört, dass asynchrone Batch-Verarbeitung deutlich günstiger sein kann, und will den Hebel beziffern. (Quelle: A-24)
+**Strategisches Ziel:** Den Kostenhebel asynchroner Batch-Verarbeitung gegenüber synchroner Echtzeit-Nutzung quantifizieren und latenz-tolerante Massenaufgaben konsequent in günstigere Batch-Läufe verschieben.
+**Hands-on Ergebnis:** Eine Hebel-Rechnung (Batch vs. Sync für denselben Job) plus ein konfigurierter Nacht-Batch-Workflow mit günstigem Modell.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow-Builder (JSON-Array-Input, Zeitplan-Trigger), Haiku 4.5 / Gemini 2.5 Flash, Workflow-Level-Budget.
+**Vorgehen (4 Schritte):**
+1. Halte fest: Der primäre Hebel ist nicht ein anderer Token-Preis, sondern die Kombination aus günstigem zugewiesenem Modell (Flash/Haiku, ≤0,8x) und der Vermeidung von Rate-Limit-Engpässen — typische Differenz 5–10x gegenüber dem Sync-Chat mit zu teurem Default.
+2. Verpacke die 6.000 Texte als JSON-Array und weise dem Batch-Schritt fest ein Light-Modell zu; niemals Auto Mode in einem Massen-Workflow.
+3. Triggere den Lauf nachts (Zeitplan-Trigger), damit er kein Tages-Kontingent der interaktiven Agenten blockiert, und setze ein Workflow-Budget plus Per-Execution-Limit.
+4. Rechne nach dem ersten Lauf die Ist-Kosten gegen eine Sync-Chat-Schätzung und dokumentiere den Faktor fürs Controlling.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Batch-Kostenoptimierer. Wir lokalisieren monatlich 6.000 Katalogtexte. Vergleiche zwei Wege: (1) Sync-Chat mit Default-Modell, (2) Nacht-Batch-Workflow mit Haiku 4.5. Schätze EUR-Kosten und den Differenzfaktor. Empfiehl die Architektur inkl. Budget-Cap. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Hebel-Rechnung (Weg / Modell / EUR / Differenzfaktor) plus ein konfigurierter Nacht-Batch-Workflow.
+**Fallstricke (≥2 spezifisch):**
+- "Batch ist billiger" als pauschale Annahme zu nehmen ohne die Modellzuweisung zu prüfen verfehlt den eigentlichen Hebel — Mitigation: der Spareffekt entsteht durch das günstige zugewiesene Modell, nicht durch den Batch-Modus an sich; immer explizit ein Light-Modell setzen.
+- Batch-Output ohne Stichproben-Review skaliert systematische Fehler — Mitigation: 2% der Outputs per Sonnet-Stichprobe prüfen, bevor der Datensatz produktiv geht.
+**Anschluss-Szenario:** S-MK-069
+
+### S-MK-069 Modell-Retirement-Migrationskosten beziffern und einplanen
+
+**Wann nutzen (Trigger):** Ein Provider kündigt das Auslaufen eines genutzten Modells in 60 Tagen an — das Team braucht nicht nur einen Migrationsplan, sondern eine belastbare Bezifferung der Migrationskosten für die Budgetfreigabe. (Quelle: sources/12 Q24)
+**Strategisches Ziel:** Die vollständigen Migrationskosten eines Modell-Retirements quantifizieren (Prompt-Anpassung, Tests, Parallelbetrieb, Multiplikator-Delta) und gegen die Frist und das Budget abstimmen.
+**Hands-on Ergebnis:** Eine Migrationskosten-Kalkulation (Einmalaufwand + Übergangskosten + laufendes Multiplikator-Delta) mit Fristenplan und Budgetfreigabe-Empfehlung.
+**Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog (Multiplikator-Vergleich), Usage-Export (Volumen je betroffenem Agenten), Wissensordner für Agenten-Inventar, manuelle Modellwahl.
+**Vorgehen (4 Schritte):**
+1. Inventarisiere die betroffenen Agenten/Workflows mit Token-Volumen und Kritikalität; priorisiere produktionskritische zuerst.
+2. Beziffere den Einmalaufwand: Prompt-Anpassung (2–4 h/Agent) plus Scorecard-Tests (5 Durchläufe/Agent) × Stundensatz.
+3. Beziffere die Übergangskosten: 2–4 Wochen Parallelbetrieb verdoppeln in dieser Phase die Token-Kosten der betroffenen Agenten — als (alter + neuer Multiplikator) × halbes Volumen × Wochen.
+4. Beziffere das laufende Delta: hat das Nachfolgemodell einen höheren oder niedrigeren Multiplikator? Weise eine günstigere Nachfolge-Option und eine stärkere aus und empfiehl die wirtschaftlich tragfähige.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Migrationskosten-Analyst. Modell X läuft in 60 Tagen aus, 4 Agenten sind betroffen (Inventar im Wissensordner). Berechne: Prompt-Anpassungsaufwand, Test-Aufwand, Übergangskosten (3 Wochen Parallelbetrieb), laufendes Multiplikator-Delta je Nachfolge-Kandidat. Empfiehl das wirtschaftlichste Ziel-Modell. Stundensatz €80. Tabelle, EUR, Sie-Form."
+**Erwartetes Artefakt:** Eine Migrationskosten-Kalkulation (Einmalaufwand / Übergangskosten / laufendes Delta / Fristenplan) als Budgetfreigabe-Vorlage.
+**Fallstricke (≥2 spezifisch):**
+- Den Parallelbetrieb in der Kalkulation zu vergessen unterschätzt die Migrationskosten erheblich — Mitigation: die Doppelkosten der Übergangsphase explizit als eigene Zeile ausweisen.
+- Das Nachfolgemodell ohne Scorecard-Test in Produktion zu nehmen, weil es "ähnlich" ist, riskiert stille Qualitätseinbrüche — Mitigation: jede Retirement-Migration erfordert eine Scorecard-Qualitätsprüfung, auch innerhalb derselben Modellfamilie.
+**Anschluss-Szenario:** S-MK-070
+
+### S-MK-070 BYOC-Break-Even präzise bestimmen: ab welchem Volumen lohnt eigene Compute?
+
+**Wann nutzen (Trigger):** Für einen rechenintensiven analytischen Use Case prüft die IT, ob BYOC (Bring Your Own Compute) über einen bestehenden Cloud-Rahmenvertrag günstiger ist als die Langdock-Standardabrechnung — und ab welchem Monatsvolumen sich der Aufwand rechnet. (Quelle: sources/12 Q117)
+**Strategisches Ziel:** Den exakten Break-Even-Punkt zwischen Langdock-Standardabrechnung und BYOC ermitteln, inklusive aller versteckten Kosten (Enterprise-Tier, Key-Management), statt nur die reinen Token-Preise zu vergleichen.
+**Hands-on Ergebnis:** Eine Break-Even-Kalkulation (monatliches Request-Volumen, ab dem BYOC günstiger wird) plus eine Empfehlung an IT und Einkauf.
+**Eingesetzte Langdock-Fähigkeit(en):** BYOC (Enterprise-Tier), Usage-Export für Volumenmessung, Modell-Katalog (Multiplikatoren), BYOK als Vergleichsalternative.
+**Vorgehen (4 Schritte):**
+1. Miss das reale Monatsvolumen des Use Case über den Usage-Export — eine Break-Even-Rechnung ohne belastbares Volumen führt zur Fehlentscheidung.
+2. Stelle die Kostenwege gegenüber: Langdock-Standard (Multiplikator + 10% API-Aufschlag) vs. BYOC (direkter Provider-Preis über Rahmenvertrag, aber plus Enterprise-Tier-Lizenz und Key-Management-Aufwand).
+3. Berücksichtige, dass BYOC den Enterprise-Tier voraussetzt — falls aktuell Standard/Max, gehören die Tier-Upgrade-Kosten in die Break-Even-Rechnung.
+4. Empfiehl BYOC nur, wenn alle drei Bedingungen erfüllt sind: Enterprise-Tier ohnehin vorhanden, Use-Case-Volumen über der berechneten Schwelle und IT-Kapazität für Key-Management; sonst bleibt die günstigere Standardabrechnung.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein BYOC-Break-Even-Berater. Use Case: [Volumen aus Usage-Export] Requests/Monat auf einem teuren Modell. Vergleiche Langdock-Standard (Multiplikator + 10% Aufschlag) vs. BYOC (direkter Provider-Preis + Enterprise-Tier + Key-Management). Berechne das Break-Even-Volumen und gib eine Empfehlung. Tabelle, EUR, Sie-Form."
+**Erwartetes Artefakt:** Eine Break-Even-Kalkulation (Kostenweg A vs. B / Break-Even-Volumen / Empfehlung) mit einer Eskalationsschwelle für die IT.
+**Fallstricke (≥2 spezifisch):**
+- BYOC-Rechnungen, die den Enterprise-Tier-Aufpreis und das Key-Management vergessen, unterschätzen die Gesamtkosten und führen zu vorschnellen Umstiegen — Mitigation: immer die vollständige Kostenstruktur (Lizenz + Betrieb) in den Vergleich aufnehmen.
+- BYOC ohne IT-Kapazität für Key-Rotation erzeugt Ausfallrisiken — Mitigation: die Betriebskapazität als harte Voraussetzung vor der Break-Even-Freigabe prüfen.
+**Anschluss-Szenario:** S-MK-071
+
+### S-MK-071 Kosten pro akquiriertem Lead: KI-Ausgaben an den Funnel koppeln
+
+**Wann nutzen (Trigger):** Der CFO akzeptiert keine reinen Token-Zahlen mehr und fragt, was ein über KI-produzierte Inhalte gewonnener Lead tatsächlich kostet — der Marketing-Direktor braucht eine Metrik, die KI-Ausgaben mit dem Funnel-Ergebnis verbindet. (Quelle: A-01)
+**Strategisches Ziel:** Eine Cost-per-Acquired-Lead-Metrik einführen, die KI-Produktionskosten (Token + Redaktion) den tatsächlich generierten Leads gegenüberstellt und für die CFO-Kommunikation taugt.
+**Hands-on Ergebnis:** Eine Cost-per-Lead-Rechnung (KI vs. extern) plus eine monatliche Erhebungsvorlage mit Qualitäts-Korrektiv.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage-Export (Token-Kosten je Kampagne), Wissensordner für Kampagnen-Performance und Stundensätze, Modell-Katalog.
+**Vorgehen (4 Schritte):**
+1. Ermittle die KI-Produktionskosten je Lead-Magnet: Token-Kosten (Usage-Export) plus Redaktionszeit-Wert (Stunden × Stundensatz) — Token allein verschönert die Metrik unfair.
+2. Setze die Gesamtkosten ins Verhältnis zu den tatsächlich generierten Leads aus dem CRM-Kampagnen-Report (Kosten ÷ Leads = Cost-per-Lead).
+3. Vergleiche mit dem externen Benchmark (extern produzierter Lead-Magnet, historische Lead-Zahl) und weise den Kosten-Faktor aus — bei deutlich günstigerer KI-Produktion ist das die CFO-Aussage.
+4. Erfasse als Korrektiv die Lead-Qualität (z.B. SQL-Rate) je Weg, damit der Kostenvergleich nicht an minderwertigen Leads scheitert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Funnel-Kosten-Analyst. KI-Kampagne: €[X] Token + [Y] h Redaktion à €65, generierte [Z] Leads. Externer Benchmark: €3.200, 28 Leads. Berechne Cost-per-Lead beide Wege, den Faktor und eine CFO-taugliche ROI-Aussage. Ergänze die SQL-Rate als Qualitäts-Korrektiv. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Cost-per-Acquired-Lead-Rechnung (KI vs. extern / Cost-per-Lead / Faktor / SQL-Rate) plus eine monatliche Erhebungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Den Redaktions-Overhead bei der KI-Kostenseite wegzulassen erzeugt eine geschönte, angreifbare Metrik — Mitigation: immer Total Cost of Output (Token + Redaktion) als Basis.
+- Cost-per-Lead ohne Qualitäts-Korrektiv vergleicht Äpfel mit Birnen, wenn KI-Leads schwächer konvertieren — Mitigation: die SQL- oder Konversionsrate je Weg immer mitführen.
+**Anschluss-Szenario:** S-MK-072
+
+### S-MK-072 Saisonale Spitzen budgetieren: Peak-Reserve ohne Dauer-Erhöhung
+
+**Wann nutzen (Trigger):** Vor der Weihnachtskampagne erwartet das Team ein Vielfaches des üblichen KI-Volumens für drei Wochen — das reguläre Workspace-Limit würde früh greifen, aber eine dauerhafte Erhöhung will niemand. (Quelle: sources/12 Q119)
+**Strategisches Ziel:** Ein saisonales Budget-Modell aufsetzen, das Peak-Phasen temporär absichert und nach dem Peak verlässlich auf das reguläre Niveau zurückfällt, ohne die Routine-Agenten zu blockieren.
+**Hands-on Ergebnis:** Ein Peak-Budget-Plan (temporäre Limit-Erhöhung mit Rücksetz-Datum, Kampagnen-vs-Routine-Trennung) plus eine Freigabe-Notiz.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Limit (temporäre Erhöhung), Workflow-Level-Budgets (Kampagnen-dediziert), Warn-Schwellen (50/75/90%), Modell-Katalog.
+**Vorgehen (4 Schritte):**
+1. Quantifiziere den Peak-Bedarf aus dem Vorjahres-Usage-Export oder einer analogen Kampagne — Peak-Faktor als Planungsgröße, nicht geschätzt.
+2. Beantrage eine temporäre, rechnerisch begründete Workspace-Limit-Erhöhung nur für den Kampagnenzeitraum, mit einem fest hinterlegten Rücksetz-Datum.
+3. Trenne Budgets: Kampagnen-Workflows erhalten ein dediziertes Peak-Budget, Routine-Agenten ein separates, damit sie sich nicht gegenseitig verdrängen.
+4. Nutze in der Peak-Phase günstige Modelle als Default für die Massenarbeit und reserviere stärkere Modelle für die wenigen qualitätskritischen Hero-Assets.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Peak-Budgetplaner. Unsere Weihnachtskampagne läuft 3 Wochen mit ca. 8x normalem KI-Volumen. Erstelle: Bedarfsschätzung aus den Vorjahresdaten, Antrag für temporäre Limit-Erhöhung mit Rücksetz-Datum, Budget-Trennung Kampagne vs. Routine. Tabelle, EUR, Sie-Form."
+**Erwartetes Artefakt:** Ein Peak-Budget-Plan (Bedarfsschätzung / temporäres Limit / Rücksetz-Datum / Budget-Trennung) als jährlich wiederverwendbare Vorlage.
+**Fallstricke (≥2 spezifisch):**
+- Das Peak-Limit nach der Kampagne nicht zurückzusetzen etabliert es als neue Norm — Mitigation: das Rücksetz-Datum als Admin-Kalender-Event direkt beim Erhöhungsantrag hinterlegen.
+- Routine-Agenten ohne eigenes Budget werden in der Peak-Phase vom Kampagnen-Volumen verdrängt — Mitigation: dedizierte Workflow-Budget-Trennung zwischen Peak und Dauerbetrieb.
+**Anschluss-Szenario:** S-MK-073
+
+### S-MK-073 FinOps-Tagging: KI-Kosten verursachungsgerecht kennzeichnen
+
+**Wann nutzen (Trigger):** Die Finanzabteilung will KI-Kosten nicht mehr als anonymen Sammelposten sehen, sondern nach Kampagne, Team und Kostenstelle aufgeschlüsselt — bisher fehlt jede Kennzeichnungs-Systematik. (Quelle: sources/12 Q124)
+**Strategisches Ziel:** Ein FinOps-Tagging-Schema einführen, das jede KI-Nutzung über Projekt-/Namenskonventionen einer Kampagne, einem Team und einer Kostenstelle zuordenbar macht — die Grundlage für Chargeback und Forecast.
+**Hands-on Ergebnis:** Ein Tagging-Schema (Namenskonvention für Agenten/Workflows/Projekte) plus eine Auswertungs-Logik aus dem Usage-Export.
+**Eingesetzte Langdock-Fähigkeit(en):** Workspace-Projekte und Gruppen, Usage-Export (per-User/per-Projekt-Filter), Wissensordner für das Tagging-Regelwerk.
+**Vorgehen (4 Schritte):**
+1. Definiere ein dreiteiliges Präfix-Schema für alle Agenten/Workflows/Projekte: [Team]-[Kampagne]-[Zweck], z.B. "PERF-BF26-AdCopy" — so wird jede Nutzung im Usage-Export filterbar.
+2. Lege fest, dass keine produktiven Assets ohne Tag angelegt werden dürfen, und verankere die Regel im Onboarding und im Sandbox-Review.
+3. Baue die Auswertungs-Logik: Usage-Export nach Präfix gruppieren, Token × Multiplikator je Gruppe = EUR-Kosten je Kampagne/Team/Kostenstelle.
+4. Übergib das aggregierte Ergebnis monatlich an Controlling; offene, ungetaggte Posten werden als "nicht zugeordnet" ausgewiesen und sind ein Signal für Prozessdisziplin.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein FinOps-Tagging-Berater. Entwirf ein Namenskonventions-Schema [Team]-[Kampagne]-[Zweck] für alle Langdock-Agenten und -Workflows. Beschreibe, wie ich den Usage-Export nach diesen Tags gruppiere, um Kosten je Kampagne und Kostenstelle auszuweisen. Gib das Regelwerk und eine Beispiel-Auswertung. Sie-Form."
+**Erwartetes Artefakt:** Ein FinOps-Tagging-Regelwerk (Namenskonvention / Pflichtregel / Auswertungs-Logik) plus eine Beispiel-Kostenaufschlüsselung je Tag.
+**Fallstricke (≥2 spezifisch):**
+- Ein Tagging-Schema, das nicht erzwungen wird, erzeugt einen wachsenden "nicht zugeordnet"-Block, der den Zweck unterläuft — Mitigation: die Tag-Pflicht im Sandbox-Review und Onboarding verankern und ungetaggte Posten sichtbar ausweisen.
+- Zu granulare Tags (pro Einzel-Asset) erzeugen Pflegeaufwand ohne Mehrwert — Mitigation: auf der Ebene Team/Kampagne/Zweck taggen, nicht pro Datei.
+**Anschluss-Szenario:** S-MK-074
+
+### S-MK-074 Latenz-SLO gegen Kosten ausbalancieren für interaktive Agenten
+
+**Wann nutzen (Trigger):** Ein neuer interaktiver Kundendienst-Agent soll ein Antwortzeit-SLO von unter zwei Sekunden einhalten — das Team hat aus Qualitätsgründen ein starkes Modell gewählt, verfehlt damit aber das SLO und kennt den Kosten-Latenz-Tradeoff nicht. (Quelle: sources/12 Q16)
+**Strategisches Ziel:** Ein Latenz-SLO als gleichrangiges Auswahlkriterium neben Kosten und Qualität etablieren und das Modell wählen, das das SLO bei vertretbaren Kosten hält.
+**Hands-on Ergebnis:** Eine SLO-Konformitäts-Matrix (Modell / TTFT / Multiplikator / Qualität) plus eine Hybrid-Empfehlung mit Eskalationspfad.
+**Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog (Latenz-Profile), manuelle Modellwahl, Agenten-Konfiguration, Wissensordner für FAQ-Basis.
+**Vorgehen (4 Schritte):**
+1. Definiere das SLO konkret (z.B. TTFT <2 Sek. im 95. Perzentil) und miss die Kandidatenmodelle unter realistischer Last, nicht im Einzeltest.
+2. Stufe gegen das SLO ein: Light-Modelle (Haiku 4.5, Gemini 2.5 Flash) liegen typisch unter 1 Sek.; Sonnet 4.6 bei 3–5 Sek.; Frontier-Modelle bei 8–15 Sek. und verfehlen das SLO strukturell.
+3. Wähle das SLO-konforme günstige Modell, gestützt durch einen reichen Wissensordner — für FAQ-artige Anfragen ist Haiku mit Kontext oft qualitativ besser als Sonnet ohne.
+4. Definiere einen Eskalationspfad: komplexe Anfragen, die das günstige Modell nicht löst, werden an ein stärkeres Modell oder einen menschlichen Bearbeiter weitergeleitet — SLO für den Standardfall, Tiefe für den Ausnahmefall.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Latenz-SLO-Berater. Unser Kundendienst-Agent muss TTFT <2 Sek. einhalten, läuft aber auf einem zu langsamen Modell. Vergleiche drei Modellklassen nach TTFT, Multiplikator und Qualität für FAQ-Anfragen. Empfiehl ein SLO-konformes Modell plus einen Eskalationspfad für komplexe Fälle. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine SLO-Konformitäts-Matrix (Modell / TTFT / Multiplikator / Qualität / SLO erfüllt?) plus eine Hybrid-Architektur mit Eskalationspfad.
+**Fallstricke (≥2 spezifisch):**
+- Latenz nur seriell im Büro zu messen unterschätzt die TTFT unter realer Gleichzeitigkeit — Mitigation: SLO-Tests unter simulierter paralleler Last durchführen.
+- Ein reiner Latenz-Fokus ohne Qualitätsprüfung lässt den Agenten schnell, aber falsch antworten — Mitigation: die Qualität des SLO-konformen Modells an 20 repräsentativen Anfragen vorab validieren.
+**Anschluss-Szenario:** S-MK-075
+
+### S-MK-075 Fine-Tune vs. Prompt: Gesamtkostenvergleich über 12 Monate
+
+**Wann nutzen (Trigger):** Nach Monaten aufwändigen System-Prompt-Engineerings für einen Brand-Voice-Agenten fragt das Team, ob ein fine-getuntes Modell langfristig günstiger und konsistenter wäre als der lange Kontext-Overhead bei jedem Request. (Quelle: sources/12 Q34)
+**Strategisches Ziel:** Eine fundierte Make-or-Buy-Entscheidung zwischen Fine-Tuning und Prompt-Engineering treffen, basierend auf den Gesamtkosten über 12 Monate, nicht nur den laufenden Inferenzkosten.
+**Hands-on Ergebnis:** Eine Entscheidungsmatrix (Fine-Tune vs. Prompt nach Kosten, Flexibilität, Wartung) plus eine Break-Even-Schwelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (als Prompting-Lösung), Modell-Katalog, BYOC-Option für fine-getunte Modelle, Usage-Export.
+**Vorgehen (4 Schritte):**
+1. Beziffere die laufenden Prompting-Kosten: statischer Kontext-Overhead (z.B. 5.000 Token) × Requests/Tag × Multiplikator × Basispreis = täglicher Kontext-Aufwand.
+2. Halte fest: Fine-Tuning ist über Langdock nicht nativ, sondern nur via BYOC mit extern trainiertem Modell verfügbar; der Einmalaufwand (Datenvorbereitung, Training, Deployment) ist erheblich und gehört in die TCO.
+3. Empfiehl für die meisten Marketing-Use-Cases die Prompting-Lösung als günstigere und flexiblere Option: keine Rüstkosten, sofortige Anpassbarkeit bei Brand-Änderungen.
+4. Setze die Break-Even-Bedingung: Fine-Tuning lohnt nur, wenn der Kontext-Overhead >50% der Input-Kosten ist, das Volumen sehr hoch und die Brand-Voice quartalsstabil ist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Make-or-Buy-Berater. Vergleiche Fine-Tuning (via BYOC) vs. Prompt-Engineering für unseren Brand-Voice-Agenten mit [X] täglichen Requests und 5.000 Token Kontext-Overhead. Bewerte über 12 Monate nach: TCO, Flexibilität bei Brand-Änderungen, Wartung. Gib eine Empfehlung mit Break-Even-Schwelle. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Entscheidungsmatrix (Kriterium / Fine-Tune / Prompt / Gewinner) plus eine Break-Even-Berechnung über 12 Monate.
+**Fallstricke (≥2 spezifisch):**
+- Die Einmalkosten des Fine-Tunings im Vergleich zu vergessen verzerrt zugunsten des Fine-Tunings — Mitigation: immer TCO über 12 Monate rechnen, inkl. Datenvorbereitung, Training, Deployment.
+- Ein fine-getuntes Modell bei jeder Brand-Änderung neu trainieren zu müssen macht es bei häufigen Änderungen teurer und träger — Mitigation: ändert sich die Brand-Voice öfter als quartalsweise, ist Prompting strukturell überlegen.
+**Anschluss-Szenario:** S-MK-076
+
+### S-MK-076 Embeddings-Kosten großer Wissensordner einplanen
+
+**Wann nutzen (Trigger):** Ein neuer Wissensordner mit mehreren tausend Dokumenten soll angelegt werden, und das Team bemerkt, dass nicht nur die Abfragen, sondern auch die einmalige Indexierung (Embeddings) Kosten verursacht — ohne diese vorab zu kennen. (Quelle: sources/12 Q57)
+**Strategisches Ziel:** Die Embeddings-Kosten der einmaligen Wissensordner-Indexierung sowie die laufenden Re-Embedding-Kosten bei Updates transparent machen und in die Folder-Planung einbeziehen.
+**Hands-on Ergebnis:** Eine Embeddings-Kostenschätzung (Dokument-Token × Embedding-Preis) plus eine Strategie, unnötiges Re-Embedding zu vermeiden.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (RAG-Indexierung), Embedding-Modell, Usage-Export, Modell-Katalog.
+**Vorgehen (4 Schritte):**
+1. Schätze die zu indexierende Token-Menge: Dokumentanzahl × durchschnittliche Token/Dokument (deutsche Seite ≈ 360 Token) — das ist die einmalige Embedding-Last.
+2. Halte fest: Embeddings sind deutlich günstiger als generative Inferenz, aber bei sehr großen Ordnern (Millionen Token) summieren sie sich; lege den Embedding-Preis als eigene Kostenzeile an, getrennt von den Abfragekosten.
+3. Vermeide unnötiges Re-Embedding: nur geänderte oder neue Dokumente werden re-indexiert; ein kompletter Ordner-Rebuild bei jeder Kleinänderung ist Geldverschwendung.
+4. Plane die laufende Pflege: dokumentiere, dass jedes große Dokument-Update Re-Embedding-Kosten auslöst, und bündle Updates statt sie einzeln einzuspielen.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Embeddings-Kostenplaner. Wir indexieren einen Wissensordner mit [N] Dokumenten à durchschnittlich [M] Seiten. Schätze die einmalige Embedding-Token-Last und die EUR-Kosten, getrennt von den späteren Abfragekosten. Empfiehl eine Update-Strategie, die unnötiges Re-Embedding vermeidet. Tabelle, Sie-Form."
+**Erwartetes Artefakt:** Eine Embeddings-Kostenschätzung (Dokument-Token / Embedding-Preis / einmalige EUR-Kosten) plus eine Update-Strategie gegen unnötiges Re-Embedding.
+**Fallstricke (≥2 spezifisch):**
+- Embedding-Kosten mit generativen Inferenzkosten zu verwechseln führt zu einer stark überhöhten Schätzung — Mitigation: Embeddings als eigene, günstigere Kostenzeile mit dem Embedding-Preis behandeln, nicht mit dem Modell-Multiplikator.
+- Bei jeder Kleinänderung den gesamten Ordner neu zu embedden vervielfacht die Indexierungskosten — Mitigation: Updates bündeln und nur geänderte Dokumente re-indexieren.
+**Anschluss-Szenario:** S-MK-077
+
+### S-MK-077 Multi-Model-Fallback-Kosten: Ausfallabsicherung beziffern
+
+**Wann nutzen (Trigger):** Nach einem Provider-Ausfall, der eine Kampagnenproduktion stundenlang lahmlegte, will das Team eine Fallback-Kette definieren — aber auch wissen, welche Mehrkosten ein Fallback auf ein teureres Modell im Ausfallzeitraum verursacht. (Quelle: sources/12 Q28)
+**Strategisches Ziel:** Eine Multi-Model-Fallback-Kette etablieren, die Provider-Ausfälle abfängt, und die Kosten- und Qualitätsfolgen jedes Fallbacks vorab beziffern, statt im Notfall zu improvisieren.
+**Hands-on Ergebnis:** Ein Fallback-Protokoll (Primärmodell → Fallback → Multiplikator-Delta → Qualitäts-Einschränkung) mit beziffertem Mehrkostenrahmen je Ausfalltag.
+**Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog (Provider-Diversität), manuelle Modellwahl, Wissensordner für Fallback-Policy, Usage-Export.
+**Vorgehen (4 Schritte):**
+1. Baue die Kette auf Provider-Diversität: Anthropic-Ausfall → OpenAI-Äquivalent; Google-Ausfall → Anthropic/OpenAI — Langdocks modellagnostische Architektur als Absicherung.
+2. Definiere je Aufgabentyp den Fallback mit Multiplikator-Delta: z.B. Brand-Content Sonnet 4.6 → GPT-5.4 (~1,5x), Synthese Opus 4.8 → Sonnet 4.6 (mit Qualitätsabstrich).
+3. Beziffere die Mehrkosten je Ausfalltag: betroffenes Tagesvolumen × (Fallback-Multiplikator − Primär-Multiplikator) × Basispreis = Mehrkosten/Tag — das ist der Preis der Resilienz.
+4. Hinterlege im Protokoll eine temporäre Budget-Anpassungs-Empfehlung, falls der Fallback teurer ist, und lege das Protokoll als angepinnten Wissensordner-Eintrag ab.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Resilienz-Kostenberater. Erstelle eine Fallback-Kette für unsere fünf wichtigsten Aufgabentypen (Primär → Fallback) mit Multiplikator-Delta und Qualitäts-Einschränkung. Beziffere die Mehrkosten pro Ausfalltag bei unserem Tagesvolumen. Tabelle, EUR, Sie-Form."
+**Erwartetes Artefakt:** Ein Fallback-Protokoll (Aufgabentyp / Primär / Fallback / Multiplikator-Delta / Mehrkosten pro Ausfalltag / Einschränkung) als angepinnter Notfallplan.
+**Fallstricke (≥2 spezifisch):**
+- Ein Fallback auf ein teureres Modell ohne Budget-Anpassung kann das Workflow-Budget in der Ausfallperiode sprengen — Mitigation: jedes Fallback-Protokoll enthält eine bezifferte Mehrkostenwarnung und eine temporäre Budget-Empfehlung.
+- Das Protokoll erst im Notfall zu suchen kostet die kritische Zeit — Mitigation: als angepinnten Wissensordner-Eintrag im Content-Agenten als erste Antwort-Option hinterlegen.
+**Anschluss-Szenario:** S-MK-078
+
+### S-MK-078 Frontier-Spend-Approval als sauberer Genehmigungs-Workflow
+
+**Wann nutzen (Trigger):** Frontier-Modell-Läufe sind genehmigungspflichtig, aber die Freigabe passiert per Zuruf und ist nicht dokumentiert — der Marketing-Direktor will einen schlanken, nachvollziehbaren Approval-Workflow mit klaren Spend-Schwellen. (Quelle: A-30)
+**Strategisches Ziel:** Einen leichtgewichtigen, dokumentierten Frontier-Spend-Approval-Workflow etablieren, der teure Einzelläufe je nach Spend-Höhe an den richtigen Genehmiger leitet, ohne die Arbeit zu bremsen.
+**Hands-on Ergebnis:** Ein Approval-Workflow (Spend-Schwellen → Genehmiger → Slack-Reaktion → Audit-Trail) plus ein Langdock-Workflow-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow-Builder (Genehmigungsschritt), Workspace-Admin (Frontier-Modell-Zugangsbeschränkung), Wissensordner für Audit-Trail, Slack-Integration.
+**Vorgehen (4 Schritte):**
+1. Definiere die Spend-Schwellen: Läufe €20–€50 → Marketing-Operations-Lead; €50–€200 → Marketing-Direktor; >€200 → CFO-Sichtvermerk.
+2. Erstelle ein minimales Antragsformular (3 Felder: Use Case in einem Satz, erwartete Kosten, Zeitbedarf) als Langdock-Formular oder Slack-Template.
+3. Baue den Workflow: Antrag → Slack-Benachrichtigung an den schwellenabhängigen Genehmiger → Freigabe per Reaktion → automatische 24-Stunden-Freischaltung des Frontier-Zugangs für den Antragsteller.
+4. Archiviere jede Genehmigung automatisch im Wissensordner (Datum, Nutzer, Use Case, Ist-Kosten nach Lauf) als Audit-Trail.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Approval-Prozess-Designer. Entwirf einen Frontier-Spend-Approval-Workflow mit Spend-Schwellen (€20–50, €50–200, >€200), 3-Feld-Antragsformular, Slack-Freigabe und automatischem Audit-Trail. Ziel: weniger als 2 Stunden von Antrag bis Freigabe. Prozessbeschreibung, Sie-Form."
+**Erwartetes Artefakt:** Ein Approval-Workflow-Dokument (Spend-Schwellen / Antragsformular / Genehmigungspfad / Audit-Trail) plus ein Langdock-Workflow-Template.
+**Fallstricke (≥2 spezifisch):**
+- Ein Prozess, der länger als einen halben Arbeitstag dauert, verleitet zu Umgehung über private API-Keys — Mitigation: den Pfad auf maximal 2 Stunden begrenzen und als SLA kommunizieren.
+- Einen manuell geführten Audit-Trail vorzusehen führt zu Lücken — Mitigation: die Archivierung als automatischen letzten Workflow-Schritt konfigurieren.
+**Anschluss-Szenario:** S-MK-079
+
+### S-MK-079 Kosten-Anomalie-Alerting: Spikes automatisch früh erkennen
+
+**Wann nutzen (Trigger):** Ein Loop-Fehler trieb die Kosten einmal in Stunden hoch, ohne dass jemand es bemerkte — das Team will ein automatisches Alerting, das ungewöhnliche Ausgaben-Muster früh meldet, statt erst beim Monatsabschluss. (Quelle: A-21)
+**Strategisches Ziel:** Ein automatisches Kosten-Anomalie-Alerting aufsetzen, das auf Basis eines gleitenden Erwartungswerts plötzliche Spikes erkennt und meldet, bevor sie das Budget gefährden.
+**Hands-on Ergebnis:** Eine Alerting-Regel (Intraday-Schwellenwert relativ zum gleitenden Durchschnitt) plus ein günstiger Monitoring-Workflow ohne eigene Token-Kosten.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow-Builder (Zeitplan-Trigger, HTTP-Request für Usage-Export-API), Slack-Integration, Warn-Schwellen, Modell-Katalog.
+**Vorgehen (4 Schritte):**
+1. Leite aus dem Usage-Export einen gleitenden Erwartungswert ab (z.B. durchschnittliche Stundenkosten der letzten 7 Tage) — die Baseline, gegen die Anomalien gemessen werden.
+2. Konfiguriere einen Monitoring-Workflow (15-Minuten-Trigger), der die aktuelle Stundenausgabe gegen die Baseline prüft; Schwelle z.B. >2,5x des Erwartungswerts oder >15% des Tagesbudgets in einem Fenster.
+3. Sende bei Überschreitung einen Slack-Alert mit Diagnose-Kontext (Top-Verursacher, Modell, Token der letzten 60 Minuten), damit die Reaktion gezielt erfolgen kann.
+4. Konfiguriere den Monitoring-Workflow als reinen API-Abruf ohne LLM-Schritt und mit eigenem Mini-Budget-Cap — der Wächter darf nicht selbst zur Kostenquelle werden.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Anomalie-Alerting-Architekt. Entwirf eine Kosten-Anomalie-Alert-Regel für unseren Workspace: gleitender Erwartungswert aus 7 Tagen, Intraday-Schwellenwert, Slack-Alert mit Diagnose-Kontext. Beschreibe den Monitoring-Workflow als reinen API-Abruf ohne eigene Token-Kosten. Stichpunkte, Sie-Form."
+**Erwartetes Artefakt:** Eine Alerting-Regel (gleitende Baseline / Schwellenwert / Diagnose-Inhalt) plus ein Langdock-Monitoring-Workflow-Template ohne LLM-Schritt.
+**Fallstricke (≥2 spezifisch):**
+- Eine starre absolute Schwelle ohne gleitende Baseline alarmiert in Peak-Phasen ständig und wird ignoriert — Mitigation: relativ zum gleitenden Erwartungswert messen, nicht gegen einen fixen Wert.
+- Den Monitoring-Workflow mit einem LLM-Schritt zu bauen erzeugt selbst Token-Kosten — Mitigation: als reinen API-Abruf-Workflow mit eigenem Mini-Budget-Cap konfigurieren.
+**Anschluss-Szenario:** S-MK-080
+
+### S-MK-080 Jahres-KI-Budget als vorstandsreifes Board-Pack aufbereiten
+
+**Wann nutzen (Trigger):** Das KI-Budget ist zu groß geworden, um es im Software-Topf zu verstecken — der Marketing-Direktor muss erstmals ein eigenständiges, vorstandsreifes Jahresbudget mit Szenarien und ROI-Aussage vorlegen. (Quelle: sources/12 Q116)
+**Strategisches Ziel:** Ein vorstandsreifes Board-Pack entwickeln, das Lizenz- und Token-Kosten, Wachstumspuffer, Szenarien und eine ROI-Aussage in einer genehmigungsfähigen Vorlage zusammenführt — und die ROI-Zahl vor die Kostenaufstellung stellt.
+**Hands-on Ergebnis:** Ein Board-Pack (Kostenstruktur + Best/Base/Worst-Szenarien + ROI-Aussage) im Controlling-Format, genehmigungsreif.
+**Eingesetzte Langdock-Fähigkeit(en):** Usage-Export (Referenzjahr), Modell-Katalog (Multiplikatoren + Preise), Pricing-Tiers, Wissensordner für historische Verbrauchsdaten.
+**Vorgehen (5 Schritte):**
+1. Ziehe den Usage-Export des laufenden Jahres und segmentiere die Ist-Kosten: Lizenz (Seats × Tier), Token nach Modellklasse, Workflow-Run-Pakete — die Baseline für die Hochrechnung.
+2. Plane das Wachstum aus Treibern (geplante Automatisierungen, Team-Erweiterung) und übersetze es in eine Token-Wachstumsspanne, nicht in einen Punktwert.
+3. Baue die Budget-Struktur: Fixkosten (Seats × Tier × 12) + variable Kosten (Token × Modell-Mix × Multiplikator × Basispreis) + Adoptions-Reserve (≥30%) + Extra-Usage-Reserve.
+4. Formuliere die ROI-Aussage als erste Zahl im Pack: KI-Budget gegen Lohnkosten-Äquivalent der eingesparten Stunden, ergänzt um drei konkrete Kampagnen-Erfolge.
+5. Lege zwei Szenarien vor (Base + Wachstum) und eine günstigere Hebel-Liste (Modell-Downgrades, Routing-Matrix), die zeigt, wie das Budget bei Bedarf gesteuert wird — der Vorstand entscheidet zwischen Szenarien, nicht über die Methodik.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Board-Pack-Stratege für KI-Budgets. Erstelle aus den angehängten Usage-Daten ein vorstandsreifes Jahresbudget. Enthalte: ROI-Aussage zuerst (eingesparte Stunden × Stundensatz), dann Kostenstruktur (Lizenz + Token nach Modellklasse), 30% Adoptions-Reserve und zwei Szenarien (Base/Wachstum). Basis: Multiplikatoren Stand Mai 2026, gegen langdock.com/models prüfen. Tabelle, EUR, Sie-Form."
+**Erwartetes Artefakt:** Ein Board-Pack (ROI-Aussage / Kostenstruktur / Szenarien / Steuerungshebel) im Controlling-Format als Vorstandsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Ein Jahresbudget ohne Adoptions-Reserve wird bei planmäßig steigender Nutzung schon im ersten Quartal gesprengt — Mitigation: ≥30% Reserve einplanen und explizit als "Adoptions-Reserve" benennen, nicht als vagen Sicherheitspuffer.
+- Eine Budget-Anfrage ohne vorangestellte ROI-Aussage wird als reiner Kostenposten behandelt — Mitigation: das Lohnkosten-Äquivalent als erste Zahl im Pack präsentieren, vor der Kostenaufstellung.
+**Anschluss-Szenario:** S-MK-001
