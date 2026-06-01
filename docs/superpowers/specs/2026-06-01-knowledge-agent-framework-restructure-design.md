@@ -18,8 +18,11 @@ This restructure renames the repo to **Knowledge Agent Framework**, removes the 
 ```
 /  (Knowledge Agent Framework)
 ├── README.md                  NEW — lean framework overview + the workflow; links to the example
-├── LICENSE                    KEPT — framework license (IW deliverable keeps its own LICENSE in the example)
+├── LICENSE                    framework license (see §7a — ownership decision pending)
 ├── .gitignore                 KEPT (adjust paths)
+├── .github/
+│   └── workflows/
+│       └── release.yml        GENERIC release CI — zips every examples/<name>/ as <name>.zip
 ├── tools/                     NEW — generic validators promoted from the build (reusable across clients)
 │   ├── check_schema.sh
 │   ├── check_prompt_size.sh
@@ -45,8 +48,7 @@ This restructure renames the repo to **Knowledge Agent Framework**, removes the 
         ├── langdock-deploy/   (knowledge/ + AGENT_PROMPT.md + LICENSE + CONVERSATION_STARTERS …)
         ├── tools/             (the example keeps its own copy, incl. legacy jules-* tooling)
         ├── data/              (sources, research, extracts, reviews — the build inputs/provenance)
-        ├── dist/              (built release v1.0 + zip)
-        └── release-workflow/  the release CI relocated here as a reference example
+        └── dist/              (built release artifacts)
 ```
 
 ## 3. Delete list (soul.md branding/templates/examples)
@@ -74,7 +76,7 @@ The soul.md *templates* are removed, but the *pattern* — storing an agent's pe
 
 - Use `git mv` for `little-data/` → `examples/iw-little-data/` so history is preserved.
 - Promote validators: `git mv` (or copy) the seven `check_*` tools from `examples/iw-little-data/tools/` to root `tools/`. The example retains its own copies (per decision: example stays runnable as-is); root `tools/` is the framework-level reusable set. Legacy `jules-*` tooling stays only in the example.
-- Relocate `.github/workflows/release-little-data.yml` → `examples/iw-little-data/release-workflow/release-little-data.yml` (reference-only; documented as re-activatable by copying back to root `.github/workflows/`).
+- **Generalize the release CI (stays at root `.github/workflows/`).** Rename `release-little-data.yml` → `release.yml` and rewrite it to be example-driven: on tag/dispatch, iterate every `examples/<name>/` directory and produce one zip per example named `<name>.zip` (e.g. `examples/iw-little-data/` → `iw-little-data.zip`). Each example declares what goes into its zip (default: the example's release contents; for IW that is the lean `langdock-deploy` package + provenance + LICENSE per the v1.0 design). This makes "release every agent" a framework feature, not client-specific.
 
 **Docs reframe + flatten:** remove the `docs/superpowers/` wrapper; move its contents up into the root `docs/` folder and **reframe** each from soul.md/superpowers/little-data framing to **Knowledge Agent Framework** framing:
 - `superpowers/specs/2026-05-31-knowledge-file-authoring-spec.md` → `docs/knowledge-file-authoring-spec.md` (made client-agnostic)
@@ -107,6 +109,13 @@ Reframing scope: titles, intros, and "soul.md/superpowers/little-data" identity 
   3. GitHub auto-redirects the old slug, but update any external links/badges.
 - The working directory path `/home/user/soul.md` is environment-controlled and does not need to change for the rename to take effect.
 
+## 7a. Root LICENSE — ownership (decision pending)
+
+The current root `LICENSE` is **MIT, Copyright (c) 2026 Aaron Mars** — the original soul.md author. Since the restructure **deletes all soul.md code** and renames the project, that notice will no longer cover any remaining content. Options (user decision in §11):
+- (a) Replace with a fresh license owned by **Michael Schimmer / Netzkontrast** (MIT or other) for the framework. The IW example keeps its own proprietary LICENSE inside `examples/iw-little-data/`.
+- (b) Keep MIT but update the copyright holder to Michael Schimmer / Netzkontrast.
+- (c) Keep as-is (only correct if any soul.md-derived material is retained — not the case here).
+
 ## 8. Risks & rollback
 
 | Risk | Mitigation |
@@ -124,9 +133,18 @@ Reframing scope: titles, intros, and "soul.md/superpowers/little-data" identity 
 - Root `tools/` holds the seven reusable validators; they run against the example's knowledge files.
 - `docs/framework/{methodology,knowledge-schema,persona-module}.md` exist, are lean, and are client-agnostic.
 - Persona capability documented (framework) and intact (example).
-- Release workflow relocated as a reference; framework README explains re-activation.
+- Generic `release.yml` at root `.github/workflows/` zips every `examples/<name>/` as `<name>.zip`; verified to produce `iw-little-data.zip`.
+- `docs/superpowers/` flattened into root `docs/` and reframed to Knowledge Agent Framework framing.
+- Root `LICENSE` ownership resolved per §7a.
 - Manual GitHub-rename steps delivered to the user.
 - One clean commit set; history preserved via `git mv`.
+
+## 11. Open decisions (user)
+
+1. **`templates/` scaffold?** Add a `templates/` with a blank knowledge-file skeleton, an `AGENT_PROMPT` skeleton, and a research-prompt template (panel 🟠 — strengthens the "framework" claim). Yes / No.
+2. **Root LICENSE ownership** (§7a): replace with fresh license owned by Michael Schimmer / Netzkontrast (a), update holder only (b), or other.
+
+*(Release-CI mode resolved: generic root `release.yml`, zips every example as `<name>.zip`.)*
 
 ## 10. Out of scope (this restructure)
 
