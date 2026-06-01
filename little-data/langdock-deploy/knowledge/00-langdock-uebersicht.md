@@ -57,7 +57,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-001 Q4-Budget Falsifikations-Audit für Performance-Kanäle
 
-**Wann nutzen (Trigger):** Das Team fordert mehr Budget für Meta-Ads mit der Begründung historisch guter CPLs, während LinkedIn-Ads als 'zu teuer' gelten.
+**Wann nutzen (Trigger):** Das Team fordert mehr Budget für Meta-Ads mit der Begründung historisch guter CPLs, während LinkedIn-Ads als 'zu teuer' gelten. (Quelle: sources/10 S-031; A-21)
 **Strategisches Ziel:** Historischen Bias durch Hinterfragen eliminieren, um Budget nicht ineffizient zu verbrennen.
 **Hands-on Ergebnis:** Prioritätenliste, die falsche interne Annahmen zu CPLs aufdeckt.
 **Eingesetzte Langdock-Fähigkeit(en):** Data Analyst + direkter Dateianhang
@@ -68,7 +68,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Lass dir vom Data Analyst die wahren Lead-to-Customer Conversion-Raten pro Kanal ausrechnen.
 5. Exportiere die Gegenbeweis-Tabelle als PDF.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Widerlege, dass Meta-Ads effizienter sind. CONTEXT: Salesforce-Export anbei. FORMAT: CPA vs. CPL Tabelle."
+> "PERSONA: Du bist skeptische Performance-Marketing-Analystin. TASK: Widerlege die Hypothese, dass Meta-Ads effizienter sind als LinkedIn-Ads. CONTEXT: Salesforce-Export der letzten drei Monate anbei; das Team argumentiert mit historischen CPLs. FORMAT: Tabelle mit CPA vs. CPL pro Kanal plus eine abschließende Action-Item-Zeile."
 **Erwartetes Artefakt:** Eine präzise Tabelle, die aufzeigt, in welchen spezifischen Kampagnen-Segmenten die Annahmen des Teams durch die aktuellen Daten entlarvt werden.
 **Fallstricke (mind. 2 spezifisch):**
 - Der Data Analyst Modus scheitert an unsauberen CSV-Headern → Stelle sicher, dass die Spalten 'Lead_Source' und 'Closed_Won' vor dem Upload normiert sind.
@@ -77,7 +77,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-002 Steelmanning gegen die neue Brand-Kampagne der Konkurrenz
 
-**Wann nutzen (Trigger):** Ein Wettbewerber launcht eine virale Brand-Kampagne. Das Team redet sie als 'oberflächlich' klein.
+**Wann nutzen (Trigger):** Ein Wettbewerber launcht eine virale Brand-Kampagne. Das Team redet sie als 'oberflächlich' klein. (Quelle: A-07; sources/10 S-036)
 **Strategisches Ziel:** Interne Überheblichkeit stoppen, indem das stärkste Argument für den Erfolg des Wettbewerbers konstruiert wird.
 **Hands-on Ergebnis:** Strategie-Memo zur psychologischen Hebelwirkung der Konkurrenz.
 **Eingesetzte Langdock-Fähigkeit(en):** Deep Research Modus + Canvas Editor
@@ -88,7 +88,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Ergebnis im Canvas Editor formatieren.
 5. Memo mit der Lead-Agentur teilen.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Konstruiere das stärkste Argument für den Erfolg der Konkurrenz-Kampagne. CONTEXT: Das Team nimmt die Bedrohung nicht ernst. FORMAT: Erklärung der psychologischen Trigger."
+> "PERSONA: Du bist Verhaltenspsychologin mit Marketing-Fokus. TASK: Konstruiere das stärkste Argument für den Erfolg der Konkurrenz-Kampagne. CONTEXT: Das Team nimmt die Bedrohung nicht ernst; Kampagnenvideo-Link anbei. FORMAT: Erklärung der psychologischen Trigger plus ein Abschnitt 'Unsere ungenutzten Gegenhebel'."
 **Erwartetes Artefakt:** Ein strukturiertes Canvas-Dokument mit H2-Überschriften, das die Konkurrenz-Strategie glorifiziert, um das eigene Team wachzurütteln.
 **Fallstricke (mind. 2 spezifisch):**
 - Deep Research verliert sich in PR-Mitteilungen des Konkurrenten statt die Kampagne psychologisch zu analysieren → Gib explizit die Rolle des Verhaltenspsychologen vor.
@@ -97,7 +97,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-003 Pre-Mortem-Check für den B2B-Newsletter-Relaunch
 
-**Wann nutzen (Trigger):** Der Go-Live des B2B-Newsletters steht bevor. Es gibt Bedenken, dass Abhängigkeiten übersehen wurden.
+**Wann nutzen (Trigger):** Der Go-Live des B2B-Newsletters steht bevor. Es gibt Bedenken, dass Abhängigkeiten übersehen wurden. (Quelle: A-41; sources/10 S-010)
 **Strategisches Ziel:** Aufdecken von Single Points of Failure, um Launch-Desaster zu verhindern.
 **Hands-on Ergebnis:** Checkliste mit präventiven Notfallmaßnahmen für das Ops-Team.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent mit angebundenem Wissensordner
@@ -108,7 +108,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Bewerte die von der KI identifizierten Risiken (z.B. defekte Personalisierungs-Token).
 5. Wandle die Risiken in eine konkrete QA-Checkliste für den HubSpot-Administrator um.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Simuliere ein Scheitern des Newsletter-Relaunches. FORMAT: 5 wahrscheinlichste Ursachen für das Scheitern."
+> "PERSONA: Du bist Marketing-Ops-Lead mit HubSpot-Erfahrung. TASK: Simuliere ein Scheitern des Newsletter-Relaunches (Pre-Mortem). CONTEXT: Finaler HTML-Entwurf anbei; Versand läuft über HubSpot-Workflows. FORMAT: Die 5 wahrscheinlichsten technischen Ursachen für das Scheitern als QA-Checkliste."
 **Erwartetes Artefakt:** Eine harte, ungeschönte Liste an potenziellen Launch-Fehlern, formatiert als direkt anwendbare Checkliste.
 **Fallstricke (mind. 2 spezifisch):**
 - Der Agent schlägt generische Fehler wie 'zu viele E-Mails' vor → Limitiere die Suche strikt auf technische Fehlerquellen im spezifischen Setup (z.B. HubSpot-Workflows).
@@ -117,7 +117,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-004 Contrast Classes beim Rebranding-Pitch
 
-**Wann nutzen (Trigger):** Die Agentur präsentiert Rebranding-Routen. Dem Entwurf fehlt Schärfe, wird aber akzeptiert.
+**Wann nutzen (Trigger):** Die Agentur präsentiert Rebranding-Routen. Dem Entwurf fehlt Schärfe, wird aber akzeptiert. (Quelle: sources/10 S-044; A-48)
 **Strategisches Ziel:** Lösungsraum sprengen durch radikale Alternativ-Szenarien.
 **Hands-on Ergebnis:** Strukturiertes Gegen-Briefing mit radikalen Positionierungen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat + File Attachment
@@ -128,7 +128,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Vergleiche die vorgeschlagenen Alternativen mit der ursprünglichen Route.
 5. Kopiere die stärksten Gegenentwürfe und sende sie als strategisches Feedback zurück an die Agentur.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Entwickle drei völlig gegensätzliche 'Contrast Classes' zum Rebranding-Pitch. FORMAT: Drei radikale Gegenentwürfe."
+> "PERSONA: Du bist provokante Brand-Strategin. TASK: Entwickle drei völlig gegensätzliche 'Contrast Classes' zum vorliegenden Rebranding-Pitch. CONTEXT: Agentur-Deck als PDF anbei; rote Linien für Brand-Safety beachten. FORMAT: Drei radikale Gegenentwürfe mit je einem konkreten Slogan und einer visuellen Leitidee."
 **Erwartetes Artefakt:** Ein Dokument mit drei radikalen Alternativ-Ansätzen, das genutzt wird, um die Agentur beim nächsten Termin aus der Komfortzone zu zwingen.
 **Fallstricke (mind. 2 spezifisch):**
 - Die KI generiert absurde, branchenfremde Alternativen (z.B. Humor in der Medizintechnik) → Definiere im Prompt harte rote Linien für die Brand-Safety.
@@ -137,7 +137,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-005 Bayesian Prior Korrektur bei der Messeplanung
 
-**Wann nutzen (Trigger):** Die Messeplanung steht an. Das Team budgetiert blind den Vorjahresbetrag.
+**Wann nutzen (Trigger):** Die Messeplanung steht an. Das Team budgetiert blind den Vorjahresbetrag. (Quelle: A-01; A-10)
 **Strategisches Ziel:** Vorannahmen explizit machen und mit der Realität abgleichen.
 **Hands-on Ergebnis:** Gegenüberstellung von Annahmen vs. historischen Fakten zur Entscheidungsfindung.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent + Data Analyst
@@ -148,7 +148,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Lass dir ausrechnen, wie hoch die Conversion-Rate der Messe-Leads nach 12 Monaten wirklich war.
 5. Integriere die Ergebnisse direkt in die nächste Budget-Präsentation.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Prüfe den Messe-Kanal auf echten ROI. FORMAT: Tabelle mit Leads, Closed-Won und Messe-CPA."
+> "PERSONA: Du bist Event-Marketing-Controllerin. TASK: Prüfe den Messe-Kanal auf echten ROI und mache die Vorjahres-Annahme explizit. CONTEXT: Lead-Tracking der letzten Messe als CSV anbei; Multi-Touch-Attribution falls vorhanden berücksichtigen. FORMAT: Tabelle mit Leads, Closed-Won, Messe-CPA und ausgewiesenem Rechenweg pro Datenpunkt."
 **Erwartetes Artefakt:** Eine schonungslose ROI-Auswertung, die interne Mythen über den Wert von Messen durch harte Salesforce-Daten widerlegt oder bestätigt.
 **Fallstricke (mind. 2 spezifisch):**
 - Das CRM-Attributionsmodell ist fehlerhaft, was die Messe-Leads künstlich entwertet → Stelle sicher, dass die KI Multi-Touch-Attribution versteht, falls vorhanden.
@@ -157,7 +157,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-006 Source Triangulation beim Content-Outsourcing
 
-**Wann nutzen (Trigger):** SEO-Agenturen melden Erfolge, aber der organische Traffic stagniert.
+**Wann nutzen (Trigger):** SEO-Agenturen melden Erfolge, aber der organische Traffic stagniert. (Quelle: A-02; sources/10 S-021)
 **Strategisches Ziel:** Triangulation der Reports zur Ermittlung der wahren Performance.
 **Hands-on Ergebnis:** Audit-Report, der Diskrepanzen glasklar aufdeckt.
 **Eingesetzte Langdock-Fähigkeit(en):** Standard-Chat mit multiplen Dateianhängen
@@ -168,7 +168,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Identifiziere, welche Agentur mit 'Vanity Metrics' (z.B. Rankings für irrelevante Keywords) arbeitet.
 5. Nutze den Output, um die Verträge der unprofitablen Dienstleister zu kündigen.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Finde Widersprüche zwischen den Agentur-Reports und unseren GSC-Daten. FORMAT: Liste der drei größten Diskrepanzen."
+> "PERSONA: Du bist forensische SEO-Auditorin. TASK: Finde Widersprüche zwischen den Agentur-Reports und unseren Google-Search-Console-Daten. CONTEXT: Drei Agentur-Reports plus GSC-Export anbei; alle Daten auf denselben Monat normalisieren, nur Klicks und Conversions zählen als Erfolg. FORMAT: Liste der drei größten Diskrepanzen."
 **Erwartetes Artefakt:** Ein strukturiertes Dokument, das unmissverständlich aufzeigt, an welchen Stellen externe Reports geschönt wurden.
 **Fallstricke (mind. 2 spezifisch):**
 - Die KI scheitert an unterschiedlichen Datumsformaten in den verschiedenen Reports → Zwinge sie im Prompt, alle Daten auf denselben Monat zu normalisieren.
@@ -177,7 +177,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-007 Red Team Stresstest für den Krisen-PR-Plan
 
-**Wann nutzen (Trigger):** Neues PR-Krisen-Playbook liegt vor, Praxis-Tauglichkeit wird bezweifelt.
+**Wann nutzen (Trigger):** Neues PR-Krisen-Playbook liegt vor, Praxis-Tauglichkeit wird bezweifelt. (Quelle: sources/10 S-051; A-41)
 **Strategisches Ziel:** Aufdecken von Engpässen im PR-Plan vor dem Ernstfall.
 **Hands-on Ergebnis:** Praxistaugliches Action-Sheet für das Management-Board.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner
@@ -188,7 +188,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Dokumentiere, an welchen Stellen der Prozess (z.B. Freigabe durch Legal) zu langsam ist.
 5. Exportiere die gefundenen Schwachstellen zur sofortigen Überarbeitung des Playbooks.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Attackiere unseren Krisenplan. FORMAT: 3 Szenarien, in denen er gnadenlos scheitern würde."
+> "PERSONA: Du bist feindseliger Red-Team-Stratege; ignoriere Höflichkeit, dein Ziel ist es, unsere Reputation zu zerstören. TASK: Attackiere unseren Krisen-PR-Plan. CONTEXT: Krisen-Playbook als Wissensordner hinterlegt; Fokus auf externe Wahrnehmung und Medien-Echo, nicht IT-Sicherheit. FORMAT: 3 Szenarien, in denen der Plan gnadenlos scheitern würde, plus die jeweilige Schwachstelle."
 **Erwartetes Artefakt:** Ein schonungsloses Audit-Protokoll des Krisenplans, das zwingt, juristische Freigabeprozesse für den Notfall radikal zu kürzen.
 **Fallstricke (mind. 2 spezifisch):**
 - Der Agent bleibt zu höflich und greift das eigene Unternehmen nicht hart genug an → Ergänze den Prompt um die Klausel 'Ignoriere Höflichkeit, dein Ziel ist es, unsere Reputation zu zerstören'.
@@ -197,7 +197,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-008 Pre-Commitment-Definition für das neue Tool-Stack
 
-**Wann nutzen (Trigger):** Einführung eines teuren Attribution-Tools steht an. Angst vor fehlendem ROI.
+**Wann nutzen (Trigger):** Einführung eines teuren Attribution-Tools steht an. Angst vor fehlendem ROI. (Quelle: A-08; sources/12 Q-117)
 **Strategisches Ziel:** Festlegen harter Abbruchkriterien vor Vertragsunterschrift.
 **Hands-on Ergebnis:** Internes Agreement mit Exit-Bedingungen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas
@@ -208,7 +208,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Passe die Schwellenwerte kollaborativ mit dem MarketingOps-Lead an.
 5. Speichere das Dokument als PDF und mache es zur Bedingung für die Budget-Freigabe.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Definiere harte Pre-Commitments für das neue Attribution-Tool. FORMAT: Checkliste für M3 und M6 inklusive Kill-Switch."
+> "PERSONA: Du bist nüchterne MarketingOps-Beraterin. TASK: Definiere harte Pre-Commitments für das neue Attribution-Tool. CONTEXT: SLA und Pricing-Deck anbei; nutze nur Metriken, die wir bereits messen können. FORMAT: Checkliste für M3 und M6 mit absoluten Schwellenwerten (z.B. CPA-Diskrepanz unter 5%) inklusive Kill-Switch."
 **Erwartetes Artefakt:** Ein präziser Projektvertrag (Pre-Commitment-Log) im Canvas, der jede Form von Sunk-Cost-Fallacy präventiv ausschließt.
 **Fallstricke (mind. 2 spezifisch):**
 - Die KI schlägt Metriken vor, die wir historisch gar nicht tracken können → Ergänze im Prompt: 'Nutze nur Metriken, die wir bereits in unserem aktuellen Setup messen können'.
@@ -217,7 +217,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-009 First-Principles-Dekonstruktion des Lead-Funnels
 
-**Wann nutzen (Trigger):** Der B2B-Sales-Funnel ist viel zu komplex geworden. Drop-off-Raten sind katastrophal.
+**Wann nutzen (Trigger):** Der B2B-Sales-Funnel ist viel zu komplex geworden. Drop-off-Raten sind katastrophal. (Quelle: A-04; sources/10 S-057)
 **Strategisches Ziel:** Reduktion des Funnels auf fundamentale Wahrheiten.
 **Hands-on Ergebnis:** Visuelles, radikal reduziertes Funnel-Konzept.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent mit Wissensordner
@@ -228,7 +228,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Fordere einen Neu-Entwurf, der maximal drei Touchpoints bis zum Sales-Call zulässt.
 5. Exportiere das neue Konzept zur sofortigen Implementierung im Marketing-Automation-Tool.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Dekonstruiere unseren B2B-Funnel auf First Principles. FORMAT: Fundamentale Kauf-Wahrheit und neuer Prozess mit max. 3 Schritten."
+> "PERSONA: Du bist First-Principles-Denkerin mit B2B-Funnel-Expertise. TASK: Dekonstruiere unseren B2B-Funnel auf First Principles, beginne mit einem weißen Blatt. CONTEXT: Aktuelle Funnel-Dokumentation als Wissensordner; DSGVO-konformes Double-Opt-In ist ein zwingendes First Principle. FORMAT: Fundamentale Kauf-Wahrheit und neuer Prozess mit maximal 3 Touchpoints bis zum Sales-Call."
 **Erwartetes Artefakt:** Ein kompromisslos gekürzter CRM-Workflow, der sämtliche historisch gewachsenen 'Nice-to-have'-E-Mails streicht und den Pfad zum Kauf befreit.
 **Fallstricke (mind. 2 spezifisch):**
 - Die KI baut bestehende Prozesse einfach nur minimal um → Zwinge sie im Prompt, mit einem sprichwörtlichen 'weißen Blatt Papier' zu beginnen.
@@ -237,7 +237,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 
 ### S-LU-010 Assumption-Decay-Prüfung der Core Persona
 
-**Wann nutzen (Trigger):** Media-Planung basiert auf veralteten Buyer-Personas.
+**Wann nutzen (Trigger):** Media-Planung basiert auf veralteten Buyer-Personas. (Quelle: A-11; sources/10 S-028)
 **Strategisches Ziel:** Überprüfung der Kernannahmen über die Zielgruppe auf Aktualität.
 **Hands-on Ergebnis:** Aktualisiertes Persona-Set mit verifizierten Marktgegebenheiten.
 **Eingesetzte Langdock-Fähigkeit(en):** Deep Research Modus
@@ -248,7 +248,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 4. Überprüfe die von der KI gefundenen Diskrepanzen (z.B. Shift von LinkedIn zu spezialisierten Slack-Communities).
 5. Überführe die verifizierten Updates in das offizielle Brand-Wiki.
 **Beispiel-Prompt (DE, PTCF):**
-> "TASK: Prüfe Personas auf 'Assumption Decay'. FORMAT: Tabelle (Alte Annahme / Gültigkeit / Harter Beleg)."
+> "PERSONA: Du bist Marktforscherin für B2B-Software-Einkäufer. TASK: Prüfe unsere Buyer-Personas auf 'Assumption Decay'. CONTEXT: Persona-PDF von 2023 anbei; Kontext strikt B2B-DACH; gib nur Quellen mit belegbarer URL an, sonst markiere die Annahme als ungeprüft. FORMAT: Tabelle (Alte Annahme / Gültigkeit / Harter Beleg)."
 **Erwartetes Artefakt:** Eine validierte 'Decay-Matrix', die aufzeigt, welche Marketing-Budgets sofort gestoppt werden müssen, weil die Zielgruppe nicht mehr über diese Kanäle erreichbar ist.
 **Fallstricke (mind. 2 spezifisch):**
 - Deep Research liefert B2C-Trends, obwohl wir B2B agieren → Den Kontext im Prompt glasklar auf 'B2B Software-Einkäufer' einschränken.
@@ -778,6 +778,9 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist Business-Continuity-Planerin für ein Marketing-Team. Erstelle ein 2-Stunden-Notfall-Playbook für den Fall eines vollständigen KI-Plattform-Ausfalls. Kontext: 3 kritische Aufgaben (Krisen-PR, Newsletter-Draft, Lead-Scoring), Team hat Zugang zu Claude.ai und ChatGPT. Format: Checkliste mit Schritt-für-Schritt-Anleitung, Alternativ-Links und Eskalationsplan."
 **Erwartetes Artefakt:** Ein 1-seitiges Notfall-Playbook im Canvas, das lokal als PDF gespeichert wird, mit den drei kritischen Prompts als Markdown und einem Fallback-Drill-Termin im Jahreskalender.
+**Fallstricke (≥2 spezifisch):**
+- Das Playbook liegt nur in Langdock selbst und ist beim Ausfall nicht erreichbar → Die finale PDF plus die drei System-Prompt-Markdowns müssen offline (lokaler Laptop des Team-Leads, geteiltes Cloud-Drive) gespeichert sein, nie ausschließlich im Workspace.
+- Die exportierten System-Prompts referenzieren Wissensordner-Inhalte, die im Alternativ-Interface fehlen → Bei kritischen Prompts die benötigten Kernfakten (Brand-Voice-Regeln, Krisen-Eskalationskontakte) direkt in den offline-Prompt einbetten, statt auf den nicht-portablen Wissensordner zu verweisen.
 **Anschluss-Szenario:** S-LU-039
 
 ### S-LU-039 AI-Disclosure-Strategie für KI-assistierten Content entwickeln
@@ -1195,4 +1198,194 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 **Fallstricke (≥2 spezifisch):**
 - Externe Teilnehmende erwarten Exklusivwissen und sind enttäuscht von zu allgemeinen Inhalten → Jedes externe Event braucht mindestens einen konkreten, anonymisierten Praxisfall mit echten Zahlen — keine reinen Tool-Demos.
 - Public-Content-Beiträge enthalten versehentlich sensible Business-Daten → Jeder externe Content-Beitrag muss den Community-Content-Agenten zur Anonymisierung durchlaufen und dann von der Rechtsabteilung (10 Minuten Durchsicht) freigegeben werden.
+**Anschluss-Szenario:** S-LU-061
+
+### S-LU-061 Workspace-ROI-Dashboard für das vierteljährliche Leitungs-Review bauen
+
+**Wann nutzen (Trigger):** Die Geschäftsführung will den Langdock-Wertbeitrag nicht mehr in Einzel-Slides, sondern in einem stehenden, vierteljährlich aktualisierten ROI-Dashboard sehen, das auf einen Blick Nutzung, Kosten und Ersparnis zusammenführt. (Quelle: A-10; sources/12 Q-122)
+**Strategisches Ziel:** Ein wiederverwendbares ROI-Dashboard etablieren, das die wichtigsten Wert- und Kostenkennzahlen bündelt und die Quartals-Diskussion von Anekdoten auf Daten umstellt.
+**Hands-on Ergebnis:** Ein Canvas-Dashboard-Template mit vier Kacheln (Gesamtnutzung, Kosten pro Asset, eingesparte Stunden, Top-3-Werttreiber) und einem Quartals-Vergleich.
+**Eingesetzte Langdock-Fähigkeit(en):** Data Analyst / Canvas / Workspace-Admin
+**Vorgehen (4 Schritte):**
+1. Exportiere die Quartals-Nutzungsdaten aus dem Workspace-Admin (Token, Agent-Runs, aktive Nutzer, Workflow-Läufe) als CSV.
+2. Lade die CSV in den Data Analyst und berechne die vier Dashboard-Kennzahlen plus den Vergleich zum Vorquartal.
+3. Überführe die Ergebnisse in ein Canvas-Kachel-Layout und ergänze pro Kachel eine 1-Satz-Interpretation für die Leitung.
+4. Speichere das Layout als Template, das im Folgequartal nur neue Zahlen erfordert; verlinke es im Governance-Wissensordner.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Transformations-Controllerin. Baue aus der angehängten Quartals-CSV ein ROI-Dashboard für die Geschäftsführung. Kontext: 15 Nutzer, Stundensatz 85 Euro, Langdock-Quartalskosten 1.450 Euro. Format: Vier-Kachel-Layout (Gesamtnutzung, Kosten pro Asset, eingesparte Stunden, Top-3-Werttreiber) mit Vorquartals-Delta und je einem Interpretations-Satz."
+**Erwartetes Artefakt:** Ein Canvas-ROI-Dashboard-Template mit vier Kacheln, Quartals-Delta und Interpretations-Sätzen, direkt im Leitungs-Review präsentierbar.
+**Fallstricke (≥2 spezifisch):**
+- Eingesparte Stunden werden als reine Drafting-Zeit gerechnet, ohne Review-Aufwand abzuziehen → Im Data-Analyst-Prompt explizit Netto-Ersparnis (Drafting minus Review) anfordern, sonst wirkt das Dashboard unglaubwürdig.
+- Das Dashboard wird einmal gebaut und dann nicht gepflegt → Quartals-Aktualisierung als wiederkehrenden 30-Minuten-Kalendertermin mit dem Workspace-Admin als Owner verankern.
+**Anschluss-Szenario:** S-LU-062
+
+### S-LU-062 Executive-KI-Reporting-Kadenz festlegen statt Ad-hoc-Updates
+
+**Wann nutzen (Trigger):** Das CMO liefert KI-Updates immer dann, wenn jemand danach fragt — mal als E-Mail, mal als Slide, mal mündlich. Es fehlt eine verlässliche Berichts-Kadenz, die die Leitung kalibriert. (Quelle: A-10; A-01)
+**Strategisches Ziel:** Eine klare Reporting-Kadenz (monatlich/quartalsweise/jährlich) mit definierten Empfängern, Formaten und Kennzahlen festlegen, damit KI-Berichterstattung planbar und vergleichbar wird.
+**Hands-on Ergebnis:** Ein Reporting-Kadenz-Plan im Canvas mit drei Ebenen (Monats-Snapshot, Quartals-Review, Jahres-Strategie-Update), je Empfängerkreis, Format und Pflicht-Kennzahlen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Liste im Chat alle aktuellen KI-Berichtsanlässe und ihre Empfänger auf (Team, CMO, Board, Finance).
+2. Ordne jeden Anlass einer der drei Kadenz-Ebenen zu und definiere pro Ebene das Format (1-Pager / Slide-Set / Deck) und die Pflicht-Kennzahlen.
+3. Lege Verantwortliche und feste Termine fest (z.B. Monats-Snapshot am 3. Werktag, Quartals-Review in KW-Schluss-Woche).
+4. Dokumentiere den Plan im Governance-Wissensordner und verteile ihn als verbindlichen Reporting-Standard.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Executive-Communications-Beraterin. Entwirf eine KI-Reporting-Kadenz für ein Marketing-Team mit CMO und Board. Kontext: Aktuell unregelmäßige Ad-hoc-Updates; gewünscht sind planbare Berichtsrhythmen. Format: Tabelle mit Kadenz-Ebene, Empfängerkreis, Format, Pflicht-Kennzahlen, Verantwortlicher und festem Termin."
+**Erwartetes Artefakt:** Ein Reporting-Kadenz-Plan im Canvas mit drei Ebenen, Empfängern, Formaten, Kennzahlen und festen Terminen.
+**Fallstricke (≥2 spezifisch):**
+- Die Kadenz erzeugt mehr Reporting-Aufwand als Erkenntnis → Pro Ebene maximal drei Pflicht-Kennzahlen; alles andere nur auf Nachfrage als Anhang.
+- Monats- und Quartalsbericht zeigen inkonsistente Zahlen, weil Datenquellen abweichen → Eine einzige Datenquelle (Workspace-Admin-Export) für alle Ebenen festschreiben; abweichende manuelle Schätzungen sind verboten.
+**Anschluss-Szenario:** S-LU-063
+
+### S-LU-063 Cross-Team-Adoptions-Playbook für Nicht-Marketing-Abteilungen erstellen
+
+**Wann nutzen (Trigger):** Nach erfolgreicher Marketing-Adoption wollen Sales, HR und Produkt Langdock ebenfalls nutzen — aber jede Abteilung beginnt bei null und wiederholt die Fehler, die Marketing längst gelöst hat. (Quelle: sources/12 Q-136; A-37)
+**Strategisches Ziel:** Die Marketing-Lernkurve in ein übertragbares Adoptions-Playbook gießen, das jede neue Abteilung in einem strukturierten, wiederholbaren Pfad schnell produktiv macht.
+**Hands-on Ergebnis:** Ein Cross-Team-Adoptions-Playbook im Canvas mit fünf Phasen (Use-Case-Findung, Quick-Win-Agent, Onboarding, Messung, Skalierung) und abteilungsspezifischen Anpassungshinweisen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Extrahiere aus der Marketing-Adoption die übertragbaren Schritte und die abteilungsspezifischen (nicht übertragbaren) Schritte.
+2. Strukturiere das Playbook in fünf Phasen mit je einem konkreten Artefakt pro Phase (z.B. Phase 1 = priorisierte Use-Case-Liste).
+3. Ergänze pro Phase einen "Adaptions-Hinweis": Was muss eine Abteilung anpassen (z.B. HR hat strengere Datenschutz-Auflagen als Marketing)?
+4. Lege das Playbook als Wissensordner-Dokument ab und benenne pro startender Abteilung einen Marketing-Paten.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Adoptions-Strategin. Erstelle ein übertragbares Cross-Team-Adoptions-Playbook auf Basis unserer Marketing-Erfahrung. Kontext: Nächste Abteilungen sind Sales, HR und Produkt; jede hat eigene Use-Cases und Compliance-Anforderungen. Format: Fünf-Phasen-Tabelle mit Phase, Aktivität, Artefakt, typischer Stolperstein und abteilungsspezifischem Adaptions-Hinweis."
+**Erwartetes Artefakt:** Ein Cross-Team-Adoptions-Playbook im Canvas mit fünf Phasen, Artefakten pro Phase und Adaptions-Hinweisen je Abteilung.
+**Fallstricke (≥2 spezifisch):**
+- Marketing-Agenten werden 1:1 übernommen, obwohl die Use-Cases anders sind → Das Playbook schreibt vor, dass jede Abteilung mindestens einen eigenen Quick-Win-Agenten neu konfiguriert, statt Marketing-Agenten zu kopieren.
+- Das Playbook bleibt theoretisch, weil kein Pate die neue Abteilung begleitet → Jede startende Abteilung bekommt einen benannten Marketing-Champion mit 2 Stunden/Woche für die ersten 30 Tage.
+**Anschluss-Szenario:** S-LU-064
+
+### S-LU-064 Langdock vs. Punkt-Tools: Konsolidierungs-Analyse für den Tool-Stack
+
+**Wann nutzen (Trigger):** Das Team zahlt parallel für mehrere spezialisierte KI-Punkt-Tools (Copy-Generator, Übersetzer, Social-Scheduler-KI) — und der CFO fragt, welche davon Langdock ersetzen kann, um Lizenzkosten zu sparen. (Quelle: A-08; sources/12 Q-117)
+**Strategisches Ziel:** Eine faktenbasierte Konsolidierungs-Analyse erstellen, die zeigt, welche Punkt-Tools durch Langdock ablösbar sind, welche bleiben müssen und welche jährliche Ersparnis daraus folgt.
+**Hands-on Ergebnis:** Eine Konsolidierungs-Matrix im Canvas mit Tool, Jahreskosten, Langdock-Abdeckungsgrad (voll/teilweise/keine), Migrationsaufwand und Netto-Ersparnis.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Data Analyst
+**Vorgehen (4 Schritte):**
+1. Inventarisiere alle aktiven KI-Punkt-Tools mit Jahreskosten, Hauptnutzen und Nutzeranzahl.
+2. Bewerte pro Tool den Langdock-Abdeckungsgrad: Kann eine Säule (Chat, Agents, Workflows) den Kernnutzen voll, teilweise oder gar nicht ersetzen?
+3. Schätze pro ablösbares Tool den Migrationsaufwand (Stunden) und die jährliche Netto-Ersparnis (Lizenz minus Migrations- und Langdock-Mehrkosten).
+4. Erstelle die Konsolidierungs-Matrix im Canvas und markiere klare Ablöse-Kandidaten farblich.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist SaaS-Portfolio-Analystin. Bewerte unsere KI-Punkt-Tools auf Ablösbarkeit durch Langdock. Kontext: Vier Tools mit zusammen 18.000 Euro Jahreskosten; Langdock ist bereits lizenziert. Format: Matrix mit Tool, Jahreskosten, Langdock-Abdeckungsgrad (voll/teilweise/keine), Migrationsaufwand in Stunden und Netto-Jahresersparnis."
+**Erwartetes Artefakt:** Eine Konsolidierungs-Matrix im Canvas mit Ablöse-Kandidaten, Migrationsaufwand und Gesamt-Jahresersparnis als Entscheidungsgrundlage für den CFO.
+**Fallstricke (≥2 spezifisch):**
+- Ein Tool wird als "voll ablösbar" markiert, obwohl es eine Spezialfunktion hat, die Langdock nicht bietet (z.B. native Social-Scheduling-Queue) → Abdeckungsgrad immer am konkreten Kern-Workflow prüfen, nicht am Marketing-Versprechen des Tools.
+- Migrationsaufwand wird unterschätzt und die Ersparnis dadurch überschätzt → Migration eines Tools als Pilot durchführen und den realen Aufwand messen, bevor die Gesamtersparnis dem CFO zugesagt wird.
+**Anschluss-Szenario:** S-LU-065
+
+### S-LU-065 Change-Management-Fahrplan gegen KI-Rollout-Widerstand aufsetzen
+
+**Wann nutzen (Trigger):** Ein Teil des Teams begegnet dem Langdock-Rollout mit offener Skepsis oder stiller Verweigerung ("KI nimmt uns die Arbeit weg") — die Adoption stockt nicht an der Technik, sondern an der Haltung. (Quelle: sources/12 Q-146; A-04)
+**Strategisches Ziel:** Einen strukturierten Change-Management-Fahrplan etablieren, der Widerstand sichtbar adressiert, Betroffene zu Beteiligten macht und die emotionale Adoption neben der technischen sicherstellt.
+**Hands-on Ergebnis:** Ein Change-Fahrplan im Canvas mit Stakeholder-Map (Promotoren/Skeptiker/Blockierer), gezielten Interventionen pro Gruppe und einem Kommunikations-Narrativ.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Erstelle im Chat eine Stakeholder-Map: Wer ist Promotor, wer Skeptiker, wer Blockierer — und was ist die jeweilige Kernsorge?
+2. Lass die KI pro Gruppe eine gezielte Intervention vorschlagen (z.B. Skeptiker bekommen einen sichtbaren Quick-Win, Blockierer ein 1:1-Gespräch).
+3. Formuliere ein ehrliches Kommunikations-Narrativ: Was ändert sich, was bleibt, welche Ängste sind unbegründet, welche werden ernst genommen.
+4. Lege Check-in-Punkte fest (Tag 30/60/90), an denen die Stimmung neu gemessen wird.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Change-Management-Beraterin für KI-Transformation. Entwickle einen Fahrplan gegen Rollout-Widerstand in einem 15-köpfigen Marketing-Team. Kontext: Drei offene Skeptiker, zwei stille Verweigerer, Hauptsorge ist Jobverlust. Format: Stakeholder-Map (Gruppe, Kernsorge, Intervention) plus ein 3-Absatz-Kommunikations-Narrativ und Check-in-Punkte."
+**Erwartetes Artefakt:** Ein Change-Fahrplan im Canvas mit Stakeholder-Map, Interventionen pro Gruppe, Kommunikations-Narrativ und Stimmungs-Check-in-Terminen.
+**Fallstricke (≥2 spezifisch):**
+- Das Narrativ verspricht "kein Stellenabbau", obwohl das nicht zugesichert werden kann → Nur kommunizieren, was die Führung tatsächlich garantieren kann; falsche Beruhigung zerstört Vertrauen dauerhaft.
+- Skeptiker werden überredet statt eingebunden → Mindestens einen früheren Skeptiker als Champion (S-LU-014) gewinnen; seine sichtbare Wandlung wirkt stärker als jede Top-down-Botschaft.
+**Anschluss-Szenario:** S-LU-066
+
+### S-LU-066 KI-Literacy-Trainingspfade nach Rollen differenzieren
+
+**Wann nutzen (Trigger):** Ein einheitliches KI-Training für alle überfordert die Einsteiger und langweilt die Power-User — das Team braucht rollendifferenzierte Lernpfade statt einer Einheitsschulung. (Quelle: sources/12 Q-042; A-37)
+**Strategisches Ziel:** Drei abgestufte KI-Literacy-Tracks (Basis, Fortgeschritten, Builder) definieren, die jede Person auf dem passenden Niveau abholen und einen klaren Kompetenz-Aufstiegspfad bieten.
+**Hands-on Ergebnis:** Ein Trainingspfad-Plan im Canvas mit drei Tracks, je Lernzielen, Übungen, geschätztem Zeitaufwand und einem Abschluss-Kompetenznachweis.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Agents / Konversations-Starter
+**Vorgehen (4 Schritte):**
+1. Definiere im Chat drei Kompetenzstufen mit klaren Lernzielen: Basis (Chat + Konversations-Starter nutzen), Fortgeschritten (Agenten kalibrieren, Wissensordner pflegen), Builder (Workflows bauen, Prompts versionieren).
+2. Weise jeder Stufe 3–5 konkrete Übungen mit echten Team-Aufgaben zu (max. 30 Minuten pro Übung).
+3. Definiere pro Track einen Abschluss-Kompetenznachweis (z.B. Builder: einen funktionierenden Workflow demonstrieren).
+4. Lege einen Aufstiegspfad fest: Wann und wie wechselt jemand von Basis zu Fortgeschritten?
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Learning-Designerin. Entwickle drei rollendifferenzierte KI-Literacy-Tracks für ein Marketing-Team. Kontext: Mischung aus Einsteigern, erfahrenen Nutzern und einem technik-affinen Champion. Format: Tabelle pro Track mit Lernziel, drei Übungen (max. 30 min), Zeitaufwand gesamt und Abschluss-Kompetenznachweis."
+**Erwartetes Artefakt:** Ein Trainingspfad-Plan im Canvas mit drei Tracks, Übungen, Zeitaufwand, Kompetenznachweisen und einem Aufstiegspfad.
+**Fallstricke (≥2 spezifisch):**
+- Die Tracks bleiben theoretisch, weil die Übungen keine echten Aufgaben sind → Jede Übung muss an einer realen, anstehenden Team-Aufgabe ansetzen, damit das Gelernte sofort Wert schafft.
+- Niemand steigt vom Basis-Track auf, weil kein Anreiz besteht → Aufstieg sichtbar machen (z.B. Champion-Rolle für Builder-Absolventen) und im Onboarding (S-LU-041) als Pfad verankern.
+**Anschluss-Szenario:** S-LU-067
+
+### S-LU-067 Vendor-Relationship mit Langdock-Customer-Success strukturiert steuern
+
+**Wann nutzen (Trigger):** Der Kontakt zum Langdock-Anbieter ist rein reaktiv — man meldet sich nur bei Problemen. Quartals-Reviews, Roadmap-Einblicke und Eskalationswege mit dem Customer-Success-Manager sind ungenutzt. (Quelle: sources/12 Q-136; A-49)
+**Strategisches Ziel:** Die Anbieter-Beziehung von reaktivem Support zu einer gesteuerten Partnerschaft entwickeln, die Roadmap-Einfluss, schnellere Eskalation und bessere Konditionen ermöglicht.
+**Hands-on Ergebnis:** Ein Vendor-Relationship-Plan im Canvas mit Quartals-Review-Agenda, Eskalations-Kontaktmatrix und einer Liste der Verhandlungs-Hebel für den nächsten Vertragszyklus.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Sammle im Chat alle Berührungspunkte mit dem Anbieter: Support-Tickets, Feature-Requests (S-LU-049), Vertragsdaten, Ansprechpartner.
+2. Entwirf eine Quartals-Review-Agenda mit dem Customer-Success-Manager: Nutzungsentwicklung, offene Feature-Requests, Roadmap-Ausblick, Eskalations-Rückschau.
+3. Erstelle eine Eskalations-Kontaktmatrix: Wer wird bei welcher Schwere kontaktiert, mit welcher erwarteten Reaktionszeit?
+4. Liste die Verhandlungs-Hebel für den nächsten Vertragszyklus auf (Volumen, Mehrjahres-Commitment, Referenz-Bereitschaft).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Vendor-Management-Beraterin für SaaS-Plattformen. Strukturiere unsere Beziehung zum Langdock-Customer-Success-Team. Kontext: Aktuell rein reaktiver Kontakt, Vertragsverlängerung in 6 Monaten. Format: Quartals-Review-Agenda (Tagesordnungspunkte), Eskalations-Kontaktmatrix (Schweregrad/Kontakt/Reaktionszeit) und Liste der Verhandlungs-Hebel."
+**Erwartetes Artefakt:** Ein Vendor-Relationship-Plan im Canvas mit Quartals-Review-Agenda, Eskalations-Kontaktmatrix und Verhandlungs-Hebel-Liste für den Vertragszyklus.
+**Fallstricke (≥2 spezifisch):**
+- Feature-Requests werden im Review als verbindliche Zusagen des Anbieters missverstanden → Roadmap-Aussagen immer als unverbindlich protokollieren; nur schriftlich Zugesichertes als Planungsgrundlage nutzen.
+- Die Verhandlungs-Hebel werden erst kurz vor Vertragsende gesammelt → Hebel-Liste ab Vertragsmitte pflegen; Nutzungs- und Referenzdaten frühzeitig dokumentieren, um Verhandlungsmacht aufzubauen.
+**Anschluss-Szenario:** S-LU-068
+
+### S-LU-068 Multi-Region-Workspace-Governance für DACH plus internationale Einheiten
+
+**Wann nutzen (Trigger):** Das Unternehmen betreibt getrennte Langdock-Workspaces für DACH und internationale Regionen mit unterschiedlichen Datenschutz-Regimen und Sprachen — es fehlt ein Rahmen, der Datenresidenz, Sprache und gemeinsame Standards regional differenziert. (Quelle: A-17; sources/12 Q-132)
+**Strategisches Ziel:** Ein Multi-Region-Governance-Modell aufbauen, das regionale Rechtsräume (DSGVO/DSG-Schweiz/außereuropäisch) respektiert und zugleich gemeinsame Brand- und Sicherheitsstandards durchsetzt.
+**Hands-on Ergebnis:** Ein Multi-Region-Governance-Rahmen im Canvas mit Region, Datenresidenz-Anforderung, Primärsprache, zwingenden Standards und regional erlaubten Abweichungen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner / Deep Research
+**Vorgehen (4 Schritte):**
+1. Inventarisiere die regionalen Workspaces mit Nutzerzahl, geltendem Datenschutz-Regime und Primärsprache.
+2. Aktiviere den Deep Research Modus, um die Datentransfer-Anforderungen je Region zu prüfen (z.B. DSG-Schweiz-Adäquanz, EU-Hosting für DACH).
+3. Definiere global zwingende Standards (Brand-Voice, Sicherheits-Baseline) und regional zulässige Abweichungen (Sprache, lokale Use-Cases).
+4. Lege einen Cross-Region-Governance-Owner und einen halbjährlichen Abgleich-Termin fest; dokumentiere alles im Governance-Hub-Wissensordner.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Enterprise-KI-Governance-Beraterin mit Datenschutz-Fokus. Entwickle ein Multi-Region-Governance-Modell für Langdock-Workspaces in DACH und zwei internationalen Regionen. Kontext: DACH unterliegt DSGVO/DSG-Schweiz; gemeinsame Brand-Standards, aber unterschiedliche Sprachen und Rechtsräume. Format: Tabelle mit Region, Datenresidenz-Anforderung, Primärsprache, zwingende Standards und erlaubte Abweichungen."
+**Erwartetes Artefakt:** Ein Multi-Region-Governance-Rahmen im Canvas mit Regional-Tabelle, zwingenden Standards, erlaubten Abweichungen und einem Cross-Region-Abgleich-Termin.
+**Fallstricke (≥2 spezifisch):**
+- Datenresidenz-Annahmen der KI werden ohne juristische Prüfung übernommen → Die Deep-Research-Ergebnisse sind Arbeitsgrundlage; jede Datentransfer-Regel muss durch den Datenschutzbeauftragten bestätigt werden.
+- Globale Standards werden international als DACH-Bevormundung empfunden → Standards mit je einem Vertreter pro Region co-kreieren, statt das DACH-Modell unverändert zu exportieren.
+**Anschluss-Szenario:** S-LU-069
+
+### S-LU-069 KI-Nutzungs-Policy für das Marketing-Team verfassen
+
+**Wann nutzen (Trigger):** Das Team nutzt Langdock breit, aber es gibt kein schriftliches, verbindliches Regelwerk, das festhält, was erlaubt, was eingeschränkt und was verboten ist — bei einem Audit gäbe es nichts vorzuzeigen. (Quelle: A-06; sources/12 Q-126)
+**Strategisches Ziel:** Eine knappe, praxistaugliche KI-Nutzungs-Policy verfassen, die erlaubte und verbotene Nutzungen klar abgrenzt, Datenschutz-Leitplanken setzt und als Audit-fähiges Dokument dient.
+**Hands-on Ergebnis:** Eine 1- bis 2-seitige KI-Nutzungs-Policy im Canvas mit Geltungsbereich, Erlaubt/Eingeschränkt/Verboten-Listen, Datenschutz-Regeln und Verstoß-Konsequenzen.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Wissensordner
+**Vorgehen (4 Schritte):**
+1. Definiere im Chat den Geltungsbereich (welche Tools, welche Daten, welche Nutzergruppen) und die drei Kategorien Erlaubt/Eingeschränkt/Verboten.
+2. Befülle die Kategorien mit konkreten Marketing-Beispielen (erlaubt: Content-Entwürfe; eingeschränkt: Kundendaten nur pseudonymisiert; verboten: sensible Personaldaten).
+3. Ergänze Datenschutz-Leitplanken (Verweis auf S-LU-031) und Verstoß-Konsequenzen in drei Eskalationsstufen.
+4. Lege das Dokument im Governance-Wissensordner ab und mache es zum Pflicht-Lesestoff im Onboarding (S-LU-041).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist KI-Policy-Autorin für ein DACH-Marketing-Team. Verfasse eine knappe, audit-fähige KI-Nutzungs-Policy. Kontext: Breite Langdock-Nutzung, DSGVO-Pflicht, kein bestehendes Regelwerk. Format: 1- bis 2-seitige Policy mit Geltungsbereich, Erlaubt/Eingeschränkt/Verboten-Listen (je 3 Beispiele), Datenschutz-Leitplanken und dreistufigen Verstoß-Konsequenzen."
+**Erwartetes Artefakt:** Eine KI-Nutzungs-Policy im Canvas mit Geltungsbereich, drei Nutzungs-Kategorien, Datenschutz-Regeln und Verstoß-Konsequenzen, ablagefertig im Governance-Wissensordner.
+**Fallstricke (≥2 spezifisch):**
+- Die Policy ist zu abstrakt und gibt im Zweifel keine Antwort → Jede Kategorie braucht konkrete Marketing-Beispiele, keine reinen Prinzipien; das Team muss eine echte Frage daran entscheiden können.
+- Die Policy wird ohne Einbindung von Datenschutzbeauftragtem und Betriebsrat als verbindlich kommuniziert → Vor Inkraftsetzung DSB- und (bei Mitbestimmung) Betriebsrats-Freigabe einholen; Freigabe-Datum im Dokument vermerken.
+**Anschluss-Szenario:** S-LU-070
+
+### S-LU-070 Erfolgsmetrik-Framework für KI-Initiativen definieren
+
+**Wann nutzen (Trigger):** Verschiedene KI-Initiativen im Team werden mit verschiedenen, teils widersprüchlichen Erfolgsmaßen bewertet — es fehlt ein gemeinsames Metrik-Framework, das Vergleichbarkeit und Priorisierung erlaubt. (Quelle: A-10; sources/10 S-031)
+**Strategisches Ziel:** Ein einheitliches Erfolgsmetrik-Framework etablieren, das jede KI-Initiative auf denselben vier Dimensionen (Effizienz, Qualität, Adoption, Geschäftswert) misst und so eine faire Priorisierung ermöglicht.
+**Hands-on Ergebnis:** Ein Metrik-Framework im Canvas mit vier Dimensionen, je 1–2 Leitmetriken, Messmethode, Zielwert und Datenquelle.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat / Canvas / Data Analyst
+**Vorgehen (4 Schritte):**
+1. Definiere im Chat die vier Dimensionen und ordne jede bestehende KI-Initiative testweise zu.
+2. Lege pro Dimension 1–2 Leitmetriken mit klarer Messmethode und Datenquelle fest (z.B. Qualität = Anteil revisionsfrei freigegebener Outputs).
+3. Bestimme realistische Zielwerte auf Basis vorhandener Baseline-Daten aus dem Workspace-Admin.
+4. Erstelle das Framework als Canvas-Referenz, die für jede neue Initiative als verbindliche Bewertungsvorlage dient.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Marketing-Performance-Architektin. Entwickle ein einheitliches Erfolgsmetrik-Framework für KI-Initiativen. Kontext: Mehrere parallele Langdock-Initiativen, bisher uneinheitlich bewertet. Format: Tabelle mit Dimension (Effizienz/Qualität/Adoption/Geschäftswert), 1–2 Leitmetriken, Messmethode, Zielwert und Datenquelle."
+**Erwartetes Artefakt:** Ein Erfolgsmetrik-Framework im Canvas mit vier Dimensionen, Leitmetriken, Messmethoden, Zielwerten und Datenquellen als verbindliche Bewertungsvorlage.
+**Fallstricke (≥2 spezifisch):**
+- Nur Effizienz wird gemessen, weil sie am leichtesten quantifizierbar ist → Mindestens eine Qualitäts- und eine Geschäftswert-Metrik sind pro Initiative Pflicht, sonst werden reine Vielnutzer fälschlich als Erfolg gewertet.
+- Zielwerte werden ohne Baseline gesetzt und sind willkürlich → Jeder Zielwert braucht einen dokumentierten Ist-Wert als Ausgangspunkt; ohne Baseline gilt das erste Quartal als Messphase, nicht als Bewertung.
 **Anschluss-Szenario:** S-LU-001

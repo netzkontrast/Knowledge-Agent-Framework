@@ -49,7 +49,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-001 HubSpot-Integration für Kampagnen-Reporting freigeben lassen
 
-**Wann nutzen (Trigger):** Die Marketing-Direktorin will, dass ein Reporting-Agent wöchentliche Deal- und Lead-Zahlen direkt aus HubSpot zieht, statt dass eine Analystin sie manuell exportiert — die IT fragt, welche Integration (Integration) und welche Berechtigungen sie konkret einrichten soll.
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will, dass ein Reporting-Agent wöchentliche Deal- und Lead-Zahlen direkt aus HubSpot zieht, statt dass eine Analystin sie manuell exportiert — die IT fragt, welche Integration (Integration) und welche Berechtigungen sie konkret einrichten soll. (Quelle: 12 Q110, Quelle: sources/10 S-061)
 **Strategisches Ziel:** Das Wochen-Reporting von manuellem CSV-Export auf eine native, identitätsgebundene HubSpot-Anbindung umstellen, ohne der KI mehr Schreibrechte zu geben als nötig.
 **Hands-on Ergebnis:** Ein IT-Briefing, das die native HubSpot-Integration, die benötigten OAuth-Scopes (nur Lesezugriff auf Deals/Contacts) und die acting-user-Identität präzise benennt.
 **Eingesetzte Langdock-Fähigkeit(en):** Native HubSpot-Integration (OAuth), Agent-Actions, Wissensordner als Briefing-Ablage.
@@ -68,7 +68,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-002 Google-Drive-Synced-Folder als lebende Wissensquelle planen
 
-**Wann nutzen (Trigger):** Die Marketing-Direktorin merkt, dass ihr Brand-Agent veraltete Guidelines zitiert, weil jemand die PDFs manuell hochgeladen hat — sie will, dass der Agent automatisch dem Master-Ordner in Google Drive folgt.
+**Wann nutzen (Trigger):** Die Marketing-Direktorin merkt, dass ihr Brand-Agent veraltete Guidelines zitiert, weil jemand die PDFs manuell hochgeladen hat — sie will, dass der Agent automatisch dem Master-Ordner in Google Drive folgt. (Quelle: 12 Q91, Quelle: sources/10 S-057)
 **Strategisches Ziel:** Den Brand-Agenten auf eine Synced-Folder-Anbindung (Synced Folder) zu Google Drive umstellen, sodass aktualisierte Richtlinien innerhalb eines Tages automatisch in den Abruf einfließen.
 **Hands-on Ergebnis:** Ein Ordner-Taxonomie-Vorschlag plus Sync-Konzept, das die 200-Dateien-Grenze und den 24-Stunden-Sync-Zyklus berücksichtigt.
 **Eingesetzte Langdock-Fähigkeit(en):** Native Google-Drive-Integration, Synced Folder, Wissensordner-RAG.
@@ -105,7 +105,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-004 Slack-Integration für Freigabe-Benachrichtigungen einordnen
 
-**Wann nutzen (Trigger):** Die Marketing-Direktorin will, dass freigabereife Kampagnen-Entwürfe automatisch in einem Slack-Kanal landen — sie fragt, ob das eine native Integration (Integration) ist oder einen Workflow braucht.
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will, dass freigabereife Kampagnen-Entwürfe automatisch in einem Slack-Kanal landen — sie fragt, ob das eine native Integration (Integration) ist oder einen Workflow braucht. (Quelle: 12 Q109, Quelle: sources/10 S-049)
 **Strategisches Ziel:** Den Freigabeweg von E-Mail-Pingpong auf eine Slack-Benachrichtigung umstellen und sauber die Zuständigkeit zwischen Integration (diese Datei) und Workflow-Orchestrierung (Schwesterdatei `04-workflows`) trennen.
 **Hands-on Ergebnis:** Ein Entscheidungsmemo, das die native Slack-Integration als Action-Baustein benennt und für die zeitliche Auslösung an die Workflow-Beratung verweist.
 **Eingesetzte Langdock-Fähigkeit(en):** Native Slack-Integration (Action: Nachricht posten), Agent-Actions; Workflow-Trigger gehören in `04-workflows`.
@@ -123,7 +123,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-005 DeepL-Integration für Transkreation DE↔EN strategisch nutzen
 
-**Wann nutzen (Trigger):** Eine globale Kampagne soll von Deutsch ins Englische und drei weitere Sprachen, aber die Marketing-Direktorin hat schon einmal erlebt, wie eine wörtliche Übersetzung den Markenton zerstörte — sie will DeepL eingebunden, aber mit Glossar-Kontrolle.
+**Wann nutzen (Trigger):** Eine globale Kampagne soll von Deutsch ins Englische und drei weitere Sprachen, aber die Marketing-Direktorin hat schon einmal erlebt, wie eine wörtliche Übersetzung den Markenton zerstörte — sie will DeepL eingebunden, aber mit Glossar-Kontrolle. (Quelle: 12 Q77, Quelle: sources/10 S-005)
 **Strategisches Ziel:** Lokalisierung über die native DeepL-Integration (Integration) skalieren und zugleich Markenstimme und Terminologie über hinterlegte Glossare absichern, statt roh zu übersetzen.
 **Hands-on Ergebnis:** Ein Lokalisierungs-Setup-Konzept, das DeepL-Anbindung, Glossar-Ablage im Wissensordner und einen verpflichtenden Muttersprachler-Review verbindet.
 **Eingesetzte Langdock-Fähigkeit(en):** Native DeepL-Integration, Wissensordner für Glossar und Tone-of-Voice, Agent für Transkreation.
@@ -142,7 +142,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-006 BI-Daten aus Looker und GA4 in Management-Reports holen
 
-**Wann nutzen (Trigger):** Vor dem Board-Meeting will die Marketing-Direktorin Conversion-Trends aus Looker und Traffic aus Google Analytics 4 (GA4) in einer Management-Summary verbinden, ohne dass jemand zwischen Dashboards springt.
+**Wann nutzen (Trigger):** Vor dem Board-Meeting will die Marketing-Direktorin Conversion-Trends aus Looker und Traffic aus Google Analytics 4 (GA4) in einer Management-Summary verbinden, ohne dass jemand zwischen Dashboards springt. (Quelle: 12 Q104, Quelle: 12 Q107)
 **Strategisches Ziel:** Quantitative BI-Daten aus mehreren nativen Analytics-Integrationen (Integration) in einer kohärenten Erzählung zusammenführen, mit strikter Quellenbindung gegen Zahlen-Halluzination.
 **Hands-on Ergebnis:** Ein Report-Setup, das Looker- und GA4-Anbindung benennt und einen Prompt-Rahmen liefert, der den Agenten zwingt, jede Zahl an ihre Quelle zu binden.
 **Eingesetzte Langdock-Fähigkeit(en):** Native Looker-Integration, native Google-Analytics-Integration, Agent mit Quellenbindung.
@@ -160,7 +160,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-007 Eigenen MCP-Server an einen Langdock-Agenten anbinden
 
-**Wann nutzen (Trigger):** Das Unternehmen hat eine proprietäre Kampagnen-Datenbank, für die es keine native Integration gibt; die IT hat dafür einen MCP (Model Context Protocol)-Server gebaut und die Marketing-Direktorin will, dass ihr Agent ihn sicher nutzt.
+**Wann nutzen (Trigger):** Das Unternehmen hat eine proprietäre Kampagnen-Datenbank, für die es keine native Integration gibt; die IT hat dafür einen MCP (Model Context Protocol)-Server gebaut und die Marketing-Direktorin will, dass ihr Agent ihn sicher nutzt. (Quelle: sources/10 S-061, Quelle: 12 Q108)
 **Strategisches Ziel:** Einen externen MCP (Model Context Protocol)-Server so an Langdock anbinden, dass der Marketing-Agent proprietäre Kampagnendaten lesen kann, ohne dass sicherheitskritische Aktionen unkontrolliert ausgeführt werden.
 **Hands-on Ergebnis:** Ein MCP-Anbindungs-Briefing, das Transport, Authentifizierung über Custom Header und kuratierte Tool-Freigabe mit Bestätigungspflicht festlegt.
 **Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, MCP-Server-Verbindung, automatische Tool-Discovery (bis 50 Tools), User-Confirmation für kritische Aktionen.
@@ -179,7 +179,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-008 Langdock als MCP-Server für Cursor und Claude Desktop bereitstellen
 
-**Wann nutzen (Trigger):** Technische Marketer arbeiten in Cursor und Claude Desktop und sollen den zentralen Brand-Agenten direkt aus ihrer lokalen Umgebung abfragen können, ohne ins Web-UI zu wechseln — die Marketing-Direktorin will wissen, ob und wie das geht.
+**Wann nutzen (Trigger):** Technische Marketer arbeiten in Cursor und Claude Desktop und sollen den zentralen Brand-Agenten direkt aus ihrer lokalen Umgebung abfragen können, ohne ins Web-UI zu wechseln — die Marketing-Direktorin will wissen, ob und wie das geht. (Quelle: A-36, Quelle: 12 Q108)
 **Strategisches Ziel:** Den zentral gepflegten Brand-Agenten als MCP (Model Context Protocol)-Endpoint exponieren, damit dezentrale Tools auf eine einzige verwaltete Wissensquelle zugreifen und keine Brand-Logik dupliziert wird.
 **Hands-on Ergebnis:** Ein Konzept, das den Langdock-MCP-Server-Endpoint, die drei bereitgestellten Tools und die Bearer-/API-Key-Authentifizierung für die Client-Teams erklärt.
 **Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Server (`/mcp`-Endpoint), Tools `find_agent`/`ask_agent`/`ask_custom_agent`, AGENT_API-Scope, Bearer- oder x-api-key-Auth.
@@ -197,7 +197,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-009 Nicht-native Plattform (LinkedIn-Publishing) als Lücke einordnen
 
-**Wann nutzen (Trigger):** Die Marketing-Direktorin erwartet, dass ihr Agent freigegebene Posts direkt auf LinkedIn veröffentlicht, und ist überrascht, dass es dafür keine native Integration (Integration) gibt — sie braucht eine belastbare Einschätzung, wie die Lücke zu schließen ist.
+**Wann nutzen (Trigger):** Die Marketing-Direktorin erwartet, dass ihr Agent freigegebene Posts direkt auf LinkedIn veröffentlicht, und ist überrascht, dass es dafür keine native Integration (Integration) gibt — sie braucht eine belastbare Einschätzung, wie die Lücke zu schließen ist. (Quelle: sources/10 S-047, Quelle: A-08)
 **Strategisches Ziel:** Realistisch einordnen, welche Marketing-Plattformen nativ angebunden sind und welche (LinkedIn-, Twitter-, Instagram-Publishing, Buffer, Hootsuite, Canva) nur über MCP oder HTTP-Brücke laufen, um Erwartungen und Risiko zu steuern.
 **Hands-on Ergebnis:** Eine Gap-Analyse, die die nicht-nativen Plattformen benennt und für jede einen pragmatischen, governance-konformen Lösungsweg vorschlägt.
 **Eingesetzte Langdock-Fähigkeit(en):** Übersicht native Integrationen vs. Nicht-Natives, MCP-Server als Brücke, Verweis auf HTTP-Request-Beratung in `04-workflows`.
@@ -215,7 +215,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-010 Integrations-Audit vor einem Tool-Wechsel durchführen
 
-**Wann nutzen (Trigger):** Das Unternehmen erwägt, von Salesforce auf ein anderes CRM zu wechseln; die Marketing-Direktorin muss wissen, welche Langdock-Agenten und -Integrationen (Integration) daran hängen, bevor eine Entscheidung fällt.
+**Wann nutzen (Trigger):** Das Unternehmen erwägt, von Salesforce auf ein anderes CRM zu wechseln; die Marketing-Direktorin muss wissen, welche Langdock-Agenten und -Integrationen (Integration) daran hängen, bevor eine Entscheidung fällt. (Quelle: A-08, Quelle: A-03)
 **Strategisches Ziel:** Vor einem Plattformwechsel die Abhängigkeiten aller marketingrelevanten Integrationen sichtbar machen, um den Migrationsaufwand und Ausfallrisiken realistisch zu bewerten.
 **Hands-on Ergebnis:** Ein Integrations-Abhängigkeitsregister, das pro Agent und Workflow die genutzten Konnektoren und das Risiko bei Wegfall der Salesforce-Integration aufführt.
 **Eingesetzte Langdock-Fähigkeit(en):** Überblick native Integrationen, Wissensordner zur Inventarisierung, Dokumenten-Analyse für die Agentenliste.
@@ -1166,6 +1166,382 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 **Fallstricke (≥2 spezifisch):**
 - Checkliste als Formalität ohne echte Prüfung abhaken → Jeder Prüfpunkt muss mit einem konkreten Nachweis belegt werden (z. B. Screenshot der API-Scope-Konfiguration, Name des Service-Accounts); reine Selbstauskunft ohne Nachweis ist kein Security-Review.
 - Sicherheits-Review nur bei neuen Integrationen durchführen → Bestehende Integrationen können durch Konfigurationsänderungen oder API-Versionsupdates Sicherheitslücken entwickeln; die Checkliste einmal jährlich auch auf bestehende Verbindungen anwenden.
+**Anschluss-Szenario:** S-IM-061
+
+### S-IM-061 HubSpot-CRM-Read-Sync für Lifecycle-Reporting governance-konform planen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will, dass ein Reporting-Agent Lifecycle-Stages und Lead-Quellen aus HubSpot synchron liest, um wöchentlich den Funnel-Übergang (MQL→SQL) zu berichten, ohne dass jemand CRM-Listen exportiert. (Quelle: 12 Q110, Quelle: sources/10 S-061)
+**Strategisches Ziel:** Einen rein lesenden HubSpot-CRM-Read-Sync etablieren, der Lifecycle-Reporting ermöglicht, ohne dem Agenten jemals Schreibrechte auf Kontakt- oder Deal-Datensätze zu geben.
+**Hands-on Ergebnis:** Ein HubSpot-Read-Sync-Briefing mit den minimalen Lese-Scopes (`crm.objects.contacts.read`, `crm.objects.deals.read`), einer Lifecycle-Stage-Mapping-Tabelle und einem Reporting-Prompt-Rahmen mit Quellenbindung.
+**Eingesetzte Langdock-Fähigkeit(en):** Native HubSpot-Integration (Read-Only), Agent-Actions, Advisory-Grenze (kein CRM-Write durch Little Data).
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die für das Funnel-Reporting nötigen HubSpot-Felder bestimmen: Lifecycle-Stage, Lead-Source, Deal-Stage — keine PII-Felder über das Minimum hinaus.
+2. Du lässt das Read-Sync-Briefing formulieren, das ausschließlich Lese-Scopes anfordert und Schreib-Scopes explizit ausschließt.
+3. Du lässt einen Reporting-Prompt-Rahmen entwerfen, der jede Zahl mit HubSpot-Objekt und Zeitraum belegt und fehlende Werte als "keine Daten" ausweist.
+4. Du übergibst das Briefing an die IT; die Verbindung wird an einen Service-Account gebunden — Little Data berät, konfiguriert nicht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein CRM-Reporting-Berater (Persona). Erstelle ein HubSpot-Read-Sync-Briefing für einen Lifecycle-Reporting-Agenten (Aufgabe). Kontext: wöchentliches Funnel-Reporting MQL→SQL, nur Lesen, SCIM-synchronisierte Marketing-Gruppe, DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Feld, benötigtem Read-Scope, Begründung; plus Lifecycle-Stage-Mapping und drei Sätze Sicherheitshinweis (Format)."
+**Erwartetes Artefakt:** Ein HubSpot-Read-Sync-Briefing (Tabelle) mit Lifecycle-Mapping und Quellenbindungs-Prompt.
+**Fallstricke (≥2 spezifisch):**
+- Schreib-Scopes mitbeantragen → Im Briefing ausschließlich `*.read`-Scopes anfordern und `*.write` als "explizit verboten" markieren; ein versehentlicher Write-Scope erlaubt dem Agenten, Lifecycle-Stages zu überschreiben.
+- Verbindung an einen Mitarbeiter-Account binden → Einen technischen Service-Owner als Verbindungsinhaber vorschlagen, damit der Read-Sync bei Personalwechsel nicht still abreißt.
+**Anschluss-Szenario:** S-IM-062
+
+### S-IM-062 Salesforce Campaign-Member-Read für Multi-Touch-Attribution anbinden
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will Kampagnen-Mitgliedschaften (Campaign Members) aus Salesforce lesen, um zu berichten, welche Kampagnen welche Opportunities beeinflusst haben — die Salesforce-Admins fragen nach einem Lese-Berechtigungs-Konzept. (Quelle: 12 Q112, Quelle: 12 Q115)
+**Strategisches Ziel:** Salesforce Campaign-Member-Daten rein lesend erschließen, um Multi-Touch-Attribution zu ermöglichen, ohne dass der Agent Kampagnen-Mitglieder anlegt oder verändert — die Anlage neuer Campaign Members verbleibt bei Marketing-Operations.
+**Hands-on Ergebnis:** Ein Salesforce-Read-Konzept mit den Objekten (Campaign, CampaignMember, Opportunity), minimalen Read-Scopes, einer PII-Risikobewertung und einer klaren Trennung von Lese- und Schreib-Pfad.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Salesforce-Integration (Read-Only), Agent-Actions, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die für Attribution nötigen Salesforce-Objekte bestimmen: Campaign, CampaignMember (Status, ResponseDate), zugeordnete Opportunity — keine personenbezogenen Kontaktfelder, wenn vermeidbar.
+2. Du lässt das Lese-Konzept über ein dediziertes Read-Only-Profil formulieren; die Anlage neuer Campaign Members (Q112) bleibt explizit bei Marketing-Operations.
+3. Du lässt einen PII-Hinweis einarbeiten: Lead-/Contact-Namen werden nur anonymisiert (IDs statt Namen) in den Agent-Kontext geladen.
+4. Du übergibst das Konzept an Salesforce-Admin und Datenschutzbeauftragten; die Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein CRM-Attribution-Berater (Persona). Erstelle ein Salesforce-Read-Konzept für Campaign-Member-Attribution (Aufgabe). Kontext: Objekte Campaign, CampaignMember, Opportunity; nur Lesen; Anlage neuer Mitglieder bleibt bei Marketing-Ops; DSGVO-Pflicht (Kontext). Format: Tabelle mit Objekt, Read-Scope, PII-Risiko, Maßnahme; plus drei Sätze Lese-vs.-Schreib-Abgrenzung (Format)."
+**Erwartetes Artefakt:** Ein Salesforce-Read-Konzept (Tabelle) mit PII-Risikobewertung und Lese-/Schreib-Trennung.
+**Fallstricke (≥2 spezifisch):**
+- Erwarten, dass der Agent neue Campaign Members anlegt → Q112 beschreibt eine Schreib-Aktion; diese gehört in einen HITL-Workflow bei Marketing-Ops, nicht in den lesenden Reporting-Agenten.
+- Salesforce-Verbindung über ein Admin-Profil einrichten → Ein dediziertes Read-Only-Profil verwenden, damit kein Privilege-Escalation-Risiko über den KI-Proxy entsteht.
+**Anschluss-Szenario:** S-IM-063
+
+### S-IM-063 Google Analytics 4 via MCP-Server für tiefere Funnel-Abfragen anbinden
+
+**Wann nutzen (Trigger):** Die native GA4-Integration reicht für Standard-Metriken, aber die Marketing-Direktorin will komplexe, dimension-übergreifende Funnel-Abfragen (Quelle/Medium × Landingpage × Conversion) — die IT prüft, ob ein GA4-MCP-Server mehr Abfrageflexibilität bietet. (Quelle: 12 Q104, Quelle: A-36)
+**Strategisches Ziel:** Einen GA4-MCP-Server als rein lesende, abfrageflexible Erweiterung der nativen Integration einordnen und dabei sicherstellen, dass keine GA4-Konfiguration (Ziele, Properties) verändert werden kann.
+**Hands-on Ergebnis:** Ein GA4-MCP-Briefing mit Read-Only-Scope (`analytics.readonly`), einer Tool-Freigabe-Tabelle (nur Report-/Query-Tools), einer Abgrenzung zur nativen Integration und einem Funnel-Query-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, GA4-MCP-Server (read-only), Quellenbindung im Prompt, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, wann die native GA4-Integration ausreicht und wann ein MCP-Server für komplexe, dimension-übergreifende Abfragen mehr Flexibilität bringt.
+2. Du lässt den Read-Only-Scope (`analytics.readonly`) festschreiben und alle Admin-/Config-Tools des MCP-Servers in der Freigabe sperren.
+3. Du lässt einen Funnel-Query-Prompt-Rahmen entwerfen, der Property-ID, Metrik, Dimension und Zeitraum mitführt und leere Ergebnisse als "keine Daten" ausweist.
+4. Du übergibst das Briefing an die IT; Little Data berät, richtet keinen MCP-Server ein.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Analytics-Integrations-Berater (Persona). Erstelle ein GA4-MCP-Briefing für komplexe Funnel-Abfragen und grenze es zur nativen Integration ab (Aufgabe). Kontext: Abfragen über Quelle/Medium × Landingpage × Conversion, nur Lesen, eine GA4-Property (Kontext). Format: Briefing mit Abschnitten native-vs.-MCP-Abgrenzung, Read-Scope, Tool-Freigabe-Tabelle, Funnel-Query-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein GA4-MCP-Briefing mit Read-Scope, Tool-Freigabe und Funnel-Query-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Admin-/Config-Tools des GA4-MCP-Servers ungeprüft freigeben → Nur Report- und Query-Tools kuratieren; Property-/Ziel-Konfiguration darf der Agent strukturell nicht erreichen.
+- MCP-Server parallel zur nativen Integration ohne klare Aufgabentrennung betreiben → Pro Abfragetyp festlegen, welcher Weg führt, damit Reporting-Zahlen nicht aus zwei Quellen mit abweichender Sampling-Logik stammen.
+**Anschluss-Szenario:** S-IM-064
+
+### S-IM-064 Google Search Console via MCP für SEO-Performance-Reporting anbinden
+
+**Wann nutzen (Trigger):** Das SEO-Team will Klicks, Impressions, Position und Top-Queries aus der Google Search Console direkt im Chat auswerten, statt wöchentlich Berichte zu exportieren — die Marketing-Direktorin fragt nach einem Read-Only-Konzept. (Quelle: 12 Q104, Quelle: sources/10 S-016)
+**Strategisches Ziel:** Die Search Console als rein lesende SEO-Datenquelle via MCP-Server anbinden, sodass Query- und Page-Performance abrufbar sind, ohne dass der Agent Property-Einstellungen oder Sitemaps verändern kann.
+**Hands-on Ergebnis:** Ein Search-Console-MCP-Briefing mit Read-Scope (`webmasters.readonly`), einer Tool-Freigabe-Tabelle (Search-Analytics-Query erlaubt, Sitemap-Submit gesperrt) und einem SEO-Reporting-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Search-Console-MCP-Server (read-only), Quellenbindung, Advisory-Grenze.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data die SEO-Reporting-Fragen bestimmen (Top-Queries, CTR-Drops, Position-Veränderungen) und daraus den minimalen Read-Scope ableiten.
+2. Du lässt eine Tool-Freigabe-Tabelle erstellen: Search-Analytics-Query und URL-Inspection (read) freigeben; Sitemap-Submit und Property-Verwaltung sperren.
+3. Du lässt einen Prompt-Rahmen entwerfen, der jede Kennzahl mit Property, Query/Page und Zeitraum belegt und auf das 16-Monats-Datenfenster der Search Console hinweist.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein SEO-Analytics-Berater (Persona). Erstelle ein Search-Console-MCP-Briefing und einen wöchentlichen SEO-Reporting-Prompt-Rahmen (Aufgabe). Kontext: eine verifizierte Property, Fokus auf Top-Queries und Position-Drops, nur Lesen (Kontext). Format: Briefing mit Read-Scope, Tool-Freigabe-Tabelle, Datenfenster-Hinweis; Prompt-Rahmen separat als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein Search-Console-MCP-Briefing mit Read-Scope, Tool-Freigabe und SEO-Reporting-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Sitemap-Submit- oder Property-Verwaltungs-Tools freigeben → Diese verändern die SEO-Konfiguration; ausschließlich Search-Analytics- und Inspection-Read-Tools kuratiert freigeben.
+- Das 16-Monats-Datenlimit der Search Console übersehen → Im Prompt-Rahmen ausweisen, dass Daten älter als 16 Monate nicht verfügbar sind, damit der Agent keine Langzeit-Trends erfindet.
+**Anschluss-Szenario:** S-IM-065
+
+### S-IM-065 LinkedIn Ads Reporting via MCP für Pipeline-Beitrag anbinden
+
+**Wann nutzen (Trigger):** Das Performance-Team will den Pipeline-Beitrag von LinkedIn-Ads-Kampagnen (Spend, Leads, CPL) wöchentlich im Chat auswerten und mit CRM-Daten verknüpfen, ohne LinkedIn Campaign Manager manuell zu öffnen. (Quelle: sources/10 S-047, Quelle: A-36)
+**Strategisches Ziel:** LinkedIn Ads als lesende Reporting-Quelle über einen MCP-Server anbinden, sodass Performance-Daten mit CRM-Zahlen kombinierbar sind, ohne dass der Agent Budgets oder Targeting verändert.
+**Hands-on Ergebnis:** Ein LinkedIn-Ads-Reporting-MCP-Briefing mit Read-Scopes (`r_ads`, `r_ads_reporting`), einem AGB-Hinweis zur Insights-Datennutzung und einem Pipeline-Reporting-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, LinkedIn-Ads-MCP-Server (read-only), Advisory-Grenze, User-Confirmation für schreibende Endpunkte.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klarstellen, dass LinkedIn-Ads-Konfiguration nicht nativ ist und die Reporting-Anbindung über einen MCP-Server mit der LinkedIn Ads API läuft.
+2. Du lässt die Read-Scopes auf `r_ads` und `r_ads_reporting` beschränken; `rw_ads` (Schreiben) wird explizit ausgeschlossen.
+3. Du lässt einen AGB-Hinweis einarbeiten: Rohe Insights-Daten dürfen nicht an Drittplattformen weitergegeben werden; Nutzung nur für internes Reporting.
+4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die OAuth-App-Registrierung liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Performance-Reporting-Berater (Persona). Erstelle ein LinkedIn-Ads-Reporting-MCP-Briefing und einen Pipeline-Prompt-Rahmen (Aufgabe). Kontext: wöchentliche Auswertung Spend/Leads/CPL, Verknüpfung mit CRM-Zahlen, kein Schreiben auf LinkedIn (Kontext). Format: Briefing mit Read-Scopes, Tool-Freigabe-Tabelle, AGB-Hinweis; Prompt-Rahmen als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein LinkedIn-Ads-Reporting-MCP-Briefing mit Read-Scopes, AGB-Hinweis und Pipeline-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- `rw_ads`-Scope mitbeantragen → Dieser Scope erlaubt Budget- und Targeting-Änderungen; im OAuth-Setup ausschließen und im Briefing als "verboten" markieren.
+- LinkedIn-Insights mit CRM-Daten in einen externen BI-Export schreiben → LinkedIn AGB verbieten die Weitergabe von API-Daten an Dritte; die Auswertung im Langdock-/internen Reporting halten.
+**Anschluss-Szenario:** S-IM-066
+
+### S-IM-066 Meta Ads Reporting via MCP für Social-Performance-Auswertung anbinden
+
+**Wann nutzen (Trigger):** Das Social-Team will Facebook-/Instagram-Ads-Performance (Reach, CTR, Cost-per-Result) aus dem Meta Ads Manager direkt im Chat auswerten — die Marketing-Direktorin fragt nach einer DSGVO-konformen Read-Only-Anbindung. (Quelle: sources/10 S-047, Quelle: A-36)
+**Strategisches Ziel:** Meta Ads als lesende Reporting-Quelle via Meta-Marketing-API-MCP-Server anbinden, dabei nur aggregierte Kampagnen-Insights abrufen und keine Kampagnen oder Zielgruppen-Audiences verändern.
+**Hands-on Ergebnis:** Ein Meta-Ads-Reporting-MCP-Briefing mit Read-Permission (`ads_read`), einer DSGVO-Governance-Regel (keine Custom-Audience-PII), einer Tool-Freigabe-Tabelle und einem Social-Performance-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Meta-Marketing-API-MCP-Server (read-only), DSGVO-Datensparsamkeit, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, dass Meta-Ads nicht nativ ist und die Reporting-Anbindung über einen MCP-Server mit der Meta Marketing API erfolgt.
+2. Du lässt die Permission auf `ads_read` (Insights lesen) beschränken; `ads_management` (schreiben) wird ausgeschlossen.
+3. Du lässt eine DSGVO-Governance-Regel einarbeiten: Keine Custom-Audience-Mitgliederlisten oder personenbezogenen Daten in den Agent-Kontext — nur aggregierte Kampagnen-Insights.
+4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die Meta-App-Registrierung liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Social-Performance-Berater (Persona). Erstelle ein Meta-Ads-Reporting-MCP-Briefing und einen Performance-Prompt-Rahmen (Aufgabe). Kontext: Auswertung Reach/CTR/Cost-per-Result, nur aggregierte Insights, keine Custom-Audience-PII, DSGVO-Pflicht (Kontext). Format: Briefing mit Read-Permission, DSGVO-Regel, Tool-Freigabe-Tabelle; Prompt-Rahmen als Code-Block (Format)."
+**Erwartetes Artefakt:** Ein Meta-Ads-Reporting-MCP-Briefing mit Read-Permission, DSGVO-Regel und Performance-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- `ads_management`-Permission mitbeantragen → Diese erlaubt das Ändern von Kampagnen und Budgets; ausschließlich `ads_read` anfordern und Schreib-Permission technisch ausschließen.
+- Custom-Audience-Daten in den Agent-Kontext laden → Audience-Mitgliederlisten enthalten PII; ausschließlich aggregierte Insights übergeben, gemäß DSGVO-Datensparsamkeit.
+**Anschluss-Szenario:** S-IM-067
+
+### S-IM-067 Mailchimp- oder Klaviyo-Listen read-only für Segment-Reporting anbinden
+
+**Wann nutzen (Trigger):** Das E-Mail-Team nutzt Mailchimp (bzw. Klaviyo) und die Marketing-Direktorin will Listen-Wachstum, Open-/Click-Rates und Segment-Größen im Chat auswerten — für diese Tools gibt es keine native Integration. (Quelle: sources/10 S-061, Quelle: A-08)
+**Strategisches Ziel:** Mailchimp/Klaviyo-Listen rein lesend via MCP-Server oder HTTP-Brücke erschließen, sodass Segment- und Kampagnen-Metriken abrufbar sind, ohne dass der Agent Abonnenten anlegt, taggt oder Mails versendet.
+**Hands-on Ergebnis:** Ein Mailchimp/Klaviyo-Read-Konzept mit Anbindungsweg, Read-Scopes (Listen-/Kampagnen-Statistiken), einer DSGVO-Regel (keine Abonnenten-PII) und einem Segment-Reporting-Prompt-Template.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Mailchimp/Klaviyo-API (read-only), DSGVO-Datensparsamkeit, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den Anbindungsweg prüfen: offizieller MCP-Server falls verfügbar, sonst HTTP-Brücke via Custom Integration Builder; Mailchimp und Klaviyo bieten beide REST-APIs.
+2. Du lässt die Read-Scopes auf Listen-/Audience-Statistiken und Kampagnen-Reports beschränken — kein Subscriber-Write, kein Send.
+3. Du lässt eine DSGVO-Regel formulieren: Nur aggregierte Segment-Größen und Raten in den Agent-Kontext; keine individuellen E-Mail-Adressen oder Profile.
+4. Du übergibst das Konzept an IT und Datenschutzbeauftragten; die API-Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein E-Mail-Marketing-Integrations-Berater (Persona). Erstelle ein Read-Konzept für Mailchimp-Listen-Reporting (Aufgabe). Kontext: Auswertung Listen-Wachstum, Open-/Click-Rate, Segment-Größe; keine Abonnenten-PII; kein Versand über Langdock; DSGVO-Pflicht (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Read-Scopes, DSGVO-Regel, Segment-Reporting-Prompt-Template (Format)."
+**Erwartetes Artefakt:** Ein Mailchimp/Klaviyo-Read-Konzept mit Anbindungsweg, Read-Scopes, DSGVO-Regel und Reporting-Template.
+**Fallstricke (≥2 spezifisch):**
+- Erwarten, dass der Agent E-Mails versendet oder Abonnenten taggt → Kampagnen-Ausführung verbleibt in Mailchimp/Klaviyo; der Agent liest Statistiken und generiert Analysen.
+- Abonnenten-E-Mail-Adressen für "personalisierte Auswertung" laden → Ausschließlich aggregierte Segment-Metriken übergeben; individuelle Adressen sind PII und bleiben im E-Mail-Tool.
+**Anschluss-Szenario:** S-IM-068
+
+### S-IM-068 Notion-Knowledge-MCP für Live-Wissensabfragen anbinden
+
+**Wann nutzen (Trigger):** Das Produktmarketing pflegt Positionierung, FAQ und Launch-Pläne in Notion und die Marketing-Direktorin will, dass ein Berater-Agent diese Seiten live abfragt, statt veraltete Synced-Folder-Kopien zu zitieren. (Quelle: sources/10 S-094, Quelle: 12 Q92)
+**Strategisches Ziel:** Notion als primäre interne Wissensquelle über einen MCP-Server live anbinden, sodass der Agent stets die aktuelle Seitenversion abruft und keine veralteten Kopien aus Sync-Zyklen verwendet.
+**Hands-on Ergebnis:** Ein Notion-Knowledge-MCP-Briefing mit Datenbank-/Page-Freigabeliste, Read-Scopes (Page-Content, Search), Service-Account-Empfehlung und einer Governance-Regel: keine Seiten schreiben oder löschen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Notion-MCP-Server (read-only), Advisory-Grenze, User-Confirmation für übergreifende Suchen.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die relevanten Notion-Datenbanken und Seiten bestimmen (Positionierung, FAQ, Launch-Pläne) und alle anderen aus der MCP-Freigabe ausschließen.
+2. Du lässt die Authentifizierung über eine dedizierte Notion-Integration (Service-Account-Token) festlegen, nicht über persönliche Tokens.
+3. Du lässt verbotene Operationen sperren: Seiten erstellen, bearbeiten, löschen — nur Read- und Search-Tools freigeben.
+4. Du übergibst das Briefing an die IT; Little Data berät, konfiguriert keinen MCP-Server.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Notion-Wissens-Integrations-Berater (Persona). Erstelle ein Notion-Knowledge-MCP-Briefing für einen Berater-Agenten, der Positionierung und FAQ live liest (Aufgabe). Kontext: freigegebene Datenbanken Positionierung, FAQ, Launch-Pläne; kein Schreibzugriff; Service-Account-Token (Kontext). Format: Briefing mit Datenbank-Freigabeliste, freigegebene Tools, gesperrte Operationen, Authentifizierungsweg (Format)."
+**Erwartetes Artefakt:** Ein Notion-Knowledge-MCP-Briefing mit Freigabeliste, zugelassenen Tools und Authentifizierungsweg.
+**Fallstricke (≥2 spezifisch):**
+- Den gesamten Notion-Workspace pauschal freigeben → Private oder HR-Bereiche enthalten sensible Daten; immer eine explizite Positivliste freigegebener Datenbanken dokumentieren.
+- Persönliche Notion-Tokens verwenden → Bei Personalwechsel bricht die Verbindung ab; eine dedizierte Notion-Integration als Service-Account-Inhaber benennen.
+**Anschluss-Szenario:** S-IM-069
+
+### S-IM-069 Airtable Content-Ops als Read-Only-Pipeline-Quelle anbinden
+
+**Wann nutzen (Trigger):** Das Content-Team steuert die Redaktionspipeline (Status, Verantwortliche, Veröffentlichungsdatum) in Airtable — die Marketing-Direktorin will, dass ein Ops-Agent den Pipeline-Status abfragt und Engpässe meldet, ohne Records zu verändern. (Quelle: sources/10 S-056, Quelle: 12 Q113)
+**Strategisches Ziel:** Airtable-Content-Ops rein lesend via Airtable-MCP-Server erschließen, sodass Pipeline-Engpässe und überfällige Tasks sichtbar werden, ohne dass der Agent Records schreibt oder löscht.
+**Hands-on Ergebnis:** Ein Airtable-Content-Ops-Briefing mit Base-/Table-Freigabeliste, Read-Scopes, einer Tool-Freigabe-Tabelle (Lesen erlaubt, Schreiben/Löschen mit Pflichtbestätigung gesperrt) und einem Pipeline-Status-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client, Airtable-MCP-Server, User-Confirmation für schreibende Tools, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die relevante Airtable-Base und Tables (Redaktionspipeline, Verantwortliche) bestimmen und den Read-Scope auf diese begrenzen.
+2. Du lässt eine Tool-Freigabe-Tabelle erstellen: Record-Read und List-Records freigeben; Create/Update/Delete sperren oder mit Pflicht-Nutzerbestätigung versehen.
+3. Du lässt einen Pipeline-Status-Prompt-Rahmen entwerfen, der überfällige und blockierte Tasks mit Verantwortlichem und Fälligkeitsdatum ausweist.
+4. Du übergibst das Briefing an die IT; der API-Key gehört in den Admin-Secrets-Bereich, nicht in die MCP-Konfiguration im Klartext.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Content-Ops-Integrations-Berater (Persona). Erstelle ein Airtable-Read-Briefing für einen Pipeline-Status-Agenten (Aufgabe). Kontext: Base Redaktionspipeline mit Status/Verantwortlicher/Datum; nur Lesen; schreibende Tools mit Pflichtbestätigung; DSGVO-Hosting (Kontext). Format: Briefing mit Base-Freigabe, Tool-Freigabe-Tabelle mit Bestätigungs-Spalte, Pipeline-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein Airtable-Content-Ops-Briefing mit Tool-Freigabe-Tabelle und Pipeline-Status-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Alle auto-entdeckten Airtable-Tools freigeben → Der Airtable-MCP liefert auch Create-/Delete-Endpunkte; nur Read-Tools kuratiert freigeben, schreibende mit Pflichtbestätigung.
+- Airtable-API-Key im Klartext in der MCP-Konfiguration hinterlegen → Dynamische Platzhalter in Custom Headern verwenden; der Key gehört in den Langdock-Admin-Secrets-Bereich.
+**Anschluss-Szenario:** S-IM-070
+
+### S-IM-070 Figma-Asset-Referenz für Design-Konsistenz read-only anbinden
+
+**Wann nutzen (Trigger):** Das Kreativteam pflegt Design-System, Komponenten und freigegebene Kampagnen-Frames in Figma — die Marketing-Direktorin will, dass ein Content-Agent auf Asset-Metadaten und Frame-Links referenziert, um Design-Konsistenz in Briefings zu sichern. (Quelle: sources/10 S-055, Quelle: A-08)
+**Strategisches Ziel:** Figma als lesende Asset-Referenzquelle via Figma-API/MCP-Server anbinden, sodass Frame-Namen, Komponenten und Datei-Links im Chat referenzierbar sind, ohne dass der Agent Designs verändert oder Binärdateien in den Kontext lädt.
+**Hands-on Ergebnis:** Ein Figma-Read-Konzept mit Scope (`file_read`/Files-Read), einer Governance-Regel (nur Metadaten und Links, keine Bild-Binärdaten), und einem Referenz-Prompt-Rahmen für Design-konsistente Briefings.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Figma-API (read-only), Advisory-Grenze, Kontext-Fenster-Governance.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data den Read-Scope auf Datei- und Komponenten-Metadaten beschränken: Frame-Namen, Komponenten-Namen, Datei-/Node-Links — kein Edit-Scope.
+2. Du lässt eine Kontext-Governance-Regel festschreiben: Der Agent gibt nur Asset-Namen und Figma-Links aus, lädt keine gerenderten PNG/JPEG-Binärdaten in den Kontext.
+3. Du lässt einen Referenz-Prompt-Rahmen entwerfen, der Briefings mit den korrekten Design-System-Komponenten und Frame-Links anreichert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Design-Ops-Integrations-Berater (Persona). Erstelle ein Figma-Read-Konzept für einen Content-Agenten, der Design-System-Komponenten referenziert (Aufgabe). Kontext: Figma-Datei mit Design-System und Kampagnen-Frames; nur Metadaten und Links, keine Bild-Binärdaten; DSGVO-Hosting (Kontext). Format: Konzept mit Abschnitten Read-Scope, Kontext-Governance-Regel, Referenz-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein Figma-Read-Konzept mit Read-Scope, Kontext-Governance und Referenz-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Gerenderte Figma-Bilder als Binärdaten in den Agent-Kontext laden → Binärdaten überlasten das Kontext-Fenster und verursachen Kosten; nur Frame-Namen und Links übergeben.
+- Edit-/Write-Zugriff auf Figma-Dateien beantragen → Der Agent referenziert nur; Design-Änderungen bleiben beim Kreativteam, ein Read-Only-Token genügt.
+**Anschluss-Szenario:** S-IM-071
+
+### S-IM-071 WordPress- oder Contentful-CMS read-only für Content-Inventar anbinden
+
+**Wann nutzen (Trigger):** Das Content-Team verwaltet veröffentlichte Inhalte in WordPress (bzw. Contentful) und die Marketing-Direktorin will, dass ein Audit-Agent das Content-Inventar (Titel, URL, Veröffentlichungsdatum, Status) liest, um Refresh-Kandidaten zu finden. (Quelle: sources/10 S-007, Quelle: 12 Q91)
+**Strategisches Ziel:** Das CMS rein lesend via REST-/GraphQL-API oder MCP-Server anbinden, sodass ein Content-Inventar für Audits und Refresh-Planung abrufbar ist, ohne dass der Agent Beiträge veröffentlicht oder ändert.
+**Hands-on Ergebnis:** Ein CMS-Read-Konzept (WordPress oder Contentful) mit Anbindungsweg, Read-Scopes (Posts/Entries lesen), Governance-Regel (kein Publish/Update) und einem Content-Inventar-Prompt-Rahmen für Refresh-Priorisierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, WordPress-REST-API / Contentful-CDA (read-only), Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data den Anbindungsweg klären: WordPress bietet eine REST-API, Contentful eine Content-Delivery-API (read-only) — beide über HTTP-Brücke oder MCP-Server anbindbar.
+2. Du lässt die Read-Scopes auf Posts/Entries und Metadaten (Titel, URL, Datum, Status) beschränken; keine Publish-/Update-/Delete-Rechte.
+3. Du lässt einen Content-Inventar-Prompt-Rahmen entwerfen, der alte Beiträge nach Veröffentlichungsdatum und Performance-Indikatoren als Refresh-Kandidaten clustert.
+4. Du übergibst das Konzept an IT und CMS-Administrator; die API-Konfiguration liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein CMS-Integrations-Berater (Persona). Erstelle ein WordPress-Read-Konzept für einen Content-Audit-Agenten (Aufgabe). Kontext: WordPress-Blog mit ca. 400 Beiträgen; Ziel ist Refresh-Kandidaten finden; nur Lesen, kein Publish; DSGVO-Hosting (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Read-Scopes, Governance-Regel, Content-Inventar-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein CMS-Read-Konzept mit Anbindungsweg, Read-Scopes, Governance-Regel und Content-Inventar-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Publish-/Update-Rechte "für späteres direktes Veröffentlichen" mitbeantragen → KI-Content muss vor Veröffentlichung redaktionell freigegeben werden; ein Read-Only-Application-Password/CDA-Token genügt.
+- Das gesamte CMS inklusive Entwurfs- und privater Inhalte laden → Auf veröffentlichte Beiträge filtern; Entwürfe und passwortgeschützte Inhalte gehören nicht in den Audit-Kontext.
+**Anschluss-Szenario:** S-IM-072
+
+### S-IM-072 Slack-Digest-Posting mit HITL-Freigabe konzipieren
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will einen wöchentlichen Performance-Digest automatisch in einen Slack-Kanal posten lassen — sie will aber sicherstellen, dass kein Digest ungeprüft erscheint, falls die KI Zahlen falsch interpretiert. (Quelle: 12 Q109, Quelle: sources/10 S-049)
+**Strategisches Ziel:** Slack-Digest-Posting als schreibende Action mit einem verpflichtenden Human-in-the-Loop-Gate konzipieren, sodass ein Mensch jeden Digest freigibt, bevor er im Kanal erscheint — und die Trigger-Logik sauber an die Workflow-Beratung abgegrenzt wird.
+**Hands-on Ergebnis:** Ein Slack-Digest-Konzept mit HITL-Freigabe-Schritt, Nachrichtenformat-Vorlage, Bot-Token-Empfehlung und einer Abgrenzung Integration vs. Workflow-Trigger.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Slack-Integration (Action: Nachricht posten), Human-in-the-Loop-Gate, Advisory-Grenze; Trigger-Logik in `04-workflows`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data das Digest-Nachrichtenformat entwerfen: drei KPI-Highlights, je mit Zahl, Quelle und Zeitraum, plus ein Link zum vollständigen Report.
+2. Du lässt das HITL-Gate verankern: Der Digest wird erst nach menschlicher Freigabe gepostet — der Agent erstellt einen Entwurf, ein Mensch bestätigt das Posten.
+3. Du lässt die Slack-Action an einen Bot-Token (nicht persönlichen Account) binden, damit das Posting bei Personalwechsel weiterläuft.
+4. Du lässt die Trigger-Logik (wann der Digest erzeugt wird) an die Workflow-Beratung in `04-workflows` übergeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Berater (Persona). Entwirf ein Slack-Digest-Konzept mit Pflicht-Freigabe vor dem Posten (Aufgabe). Kontext: wöchentlicher Performance-Digest in #marketing-weekly; KI darf nie ungeprüft posten; Bot-Token (Kontext). Format: Konzept mit Nachrichtenvorlage, HITL-Gate-Beschreibung, Auth-Hinweis, zwei Sätzen Abgrenzung zur Workflow-Beratung (Format)."
+**Erwartetes Artefakt:** Ein Slack-Digest-Konzept mit Nachrichtenvorlage, HITL-Gate und Schnittstellen-Abgrenzung.
+**Fallstricke (≥2 spezifisch):**
+- Digest ohne HITL-Gate automatisch posten → Eine falsch interpretierte Zahl wäre sofort öffentlich im Team-Kanal; ein menschliches Freigabe-Gate vor dem Posten ist bei schreibenden Slack-Actions Pflicht.
+- Trigger-Bedingung ("wann erzeugen") in der Integrationsberatung mitlösen → Die Auslöselogik gehört in den Workflow-Builder (`04-workflows`), nicht in die Integrationsberatung.
+**Anschluss-Szenario:** S-IM-073
+
+### S-IM-073 Jira-Marketing-Ops-Board read-only für Sprint-Transparenz anbinden
+
+**Wann nutzen (Trigger):** Das Marketing-Ops-Team arbeitet in einem Jira-Board mit Sprints für Kampagnen-Tasks — die Marketing-Direktorin will, dass ein Agent offene und blockierte Tickets pro Sprint zusammenfasst, ohne dass jemand Jira-Filter manuell baut. (Quelle: 12 Q113, Quelle: A-35)
+**Strategisches Ziel:** Das Jira-Marketing-Board rein lesend anbinden, sodass Sprint-Transparenz (offene, blockierte, überfällige Tickets) im Chat entsteht, ohne dass der Agent Tickets verschiebt oder Status ändert.
+**Hands-on Ergebnis:** Ein Jira-Read-Briefing mit Projekt-/Board-Freigabe, Read-Permission (Issue-Read/Search), einer Governance-Regel (kein Transition/Update) und einem Sprint-Übersichts-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Jira-Integration (Read-Actions), Advisory-Grenze, Read-Only-Prinzip.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data das relevante Jira-Marketing-Projekt/Board bestimmen und den Read-Scope auf dieses Projekt begrenzen — kein workspace-weiter Issue-Zugriff.
+2. Du lässt die Governance-Regel festschreiben: nur Issue-Read und JQL-Search; Status-Transitions, Zuweisungen und Updates verbleiben bei den Ticket-Ownern.
+3. Du lässt einen Sprint-Übersichts-Prompt-Rahmen entwerfen, der offene, blockierte und überfällige Tickets je Sprint mit Assignee und Fälligkeit gruppiert.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Marketing-Ops-Integrations-Berater (Persona). Erstelle ein Jira-Read-Briefing für einen Sprint-Transparenz-Agenten (Aufgabe). Kontext: ein Marketing-Jira-Projekt mit Sprints; Agent fasst offene/blockierte Tickets zusammen, ändert nichts (Kontext). Format: Briefing mit Projekt-Freigabe, Read-Permission, gesperrte Operationen, Sprint-Übersichts-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein Jira-Read-Briefing mit Projekt-Freigabe, Read-Permission und Sprint-Übersichts-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Workspace-weiten Jira-Zugriff statt projektgebundenen Read-Scope erteilen → Andere Jira-Projekte (Engineering, HR) enthalten irrelevante oder sensible Tickets; auf das Marketing-Projekt begrenzen.
+- Transition-/Update-Rechte "für spätere Automatisierung" mitbeantragen → Scope-Creep; der Agent berichtet nur, Status-Änderungen bleiben bei den Ownern. Schreibende Jira-Aktionen brauchen ein separates HITL-Konzept.
+**Anschluss-Szenario:** S-IM-074
+
+### S-IM-074 Google-Sheets-Reporting-Bridge für flexible Ad-hoc-Auswertungen einrichten
+
+**Wann nutzen (Trigger):** Viele Marketing-Kennzahlen landen am Ende in Google Sheets (manuelle Tabellen, exportierte Dashboards) — die Marketing-Direktorin will, dass ein Agent diese Sheets liest und Ad-hoc-Auswertungen erstellt, ohne dass jemand Zahlen abtippt. (Quelle: 12 Q107, Quelle: sources/10 S-089)
+**Strategisches Ziel:** Google Sheets als flexible, lesende Reporting-Bridge anbinden, sodass strukturierte Tabellen für Ad-hoc-Analysen abrufbar sind, ohne dass der Agent Zellen überschreibt oder Formeln verändert.
+**Hands-on Ergebnis:** Ein Google-Sheets-Read-Konzept mit Scope (`spreadsheets.readonly`), einer Range-/Sheet-Freigabeliste, einer Datenqualitäts-Regel (Header-Zeilen, Datentypen) und einem Ad-hoc-Auswertungs-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Native Google-Sheets-Integration (Read-Only), Agent-Actions, Quellenbindung, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data die relevanten Sheets und Ranges bestimmen und den Read-Scope auf diese begrenzen — kein Zugriff auf das gesamte Drive.
+2. Du lässt eine Datenqualitäts-Regel formulieren: Sheets brauchen klare Header-Zeilen und konsistente Datentypen, damit der Agent Spalten korrekt interpretiert.
+3. Du lässt einen Ad-hoc-Auswertungs-Prompt-Rahmen entwerfen, der jede abgeleitete Zahl mit Sheet-Name, Range und Stand-Datum belegt.
+4. Du übergibst das Konzept an die IT; die Verbindung wird an einen Service-Account gebunden — Little Data berät, konfiguriert nicht.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Reporting-Bridge-Berater (Persona). Erstelle ein Google-Sheets-Read-Konzept für Ad-hoc-Marketing-Auswertungen (Aufgabe). Kontext: drei Reporting-Sheets mit KPI-Tabellen; nur Lesen; Quellenbindung Pflicht; DSGVO-Hosting (Kontext). Format: Konzept mit Read-Scope, Sheet-/Range-Freigabe, Datenqualitäts-Regel, Ad-hoc-Auswertungs-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein Google-Sheets-Read-Konzept mit Scope, Range-Freigabe, Datenqualitäts-Regel und Auswertungs-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Write-Scope mitbeantragen, um Ergebnisse "zurückzuschreiben" → Ein Agent, der Zellen überschreibt, kann manuelle Formeln zerstören; nur `spreadsheets.readonly` anfordern, Ergebnisse separat ablegen.
+- Sheets ohne saubere Header-Struktur einlesen → Bei verbundenen Zellen oder fehlenden Headern interpretiert der Agent Spalten falsch; eine Datenqualitäts-Mindestanforderung vorab definieren.
+**Anschluss-Szenario:** S-IM-075
+
+### S-IM-075 Stripe-Revenue-Kontext read-only für Kampagnen-ROI-Bezug anbinden
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will Kampagnen-Performance gegen tatsächlichen Umsatz spiegeln und fragt, ob ein Agent aggregierte Revenue-Daten aus Stripe lesen kann, um Marketing-ROI realistisch zu belegen. (Quelle: A-01, Quelle: A-36)
+**Strategisches Ziel:** Stripe als rein lesende, aggregierte Revenue-Kontextquelle anbinden, sodass Marketing-ROI gegen echten Umsatz belegbar wird, ohne dass der Agent Zahlungsdaten verändert oder auf personenbezogene/karten-bezogene Daten zugreift.
+**Hands-on Ergebnis:** Ein Stripe-Read-Konzept mit restricted-API-Key (nur Read auf Charges/Subscriptions-Aggregate), einer strikten PII-/PCI-Governance-Regel und einem ROI-Bezug-Prompt-Rahmen.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock als MCP-Client oder HTTP-Brücke, Stripe-API (restricted read-only Key), DSGVO-/PCI-Governance, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data klären, dass ausschließlich ein Stripe-Restricted-Key mit Read-Berechtigung auf aggregierte Umsatzdaten (z. B. MRR, Charges-Summen) verwendet wird — kein Secret-Key, kein Write.
+2. Du lässt eine strikte Governance-Regel festschreiben: keine Kartendaten, keine vollständigen Kunden-PII; nur aggregierte oder anonymisierte Revenue-Kennzahlen in den Agent-Kontext.
+3. Du lässt einen ROI-Bezug-Prompt-Rahmen entwerfen, der Marketing-Spend gegen aggregierten Umsatz stellt und jede Zahl mit Quelle und Zeitraum belegt.
+4. Du übergibst das Konzept an Finance, IT und Datenschutzbeauftragten; die Schlüsselvergabe liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Revenue-Kontext-Integrations-Berater (Persona). Erstelle ein Stripe-Read-Konzept für einen Marketing-ROI-Bezug (Aufgabe). Kontext: nur aggregierte Umsatzdaten (MRR, Charges-Summen); keine Kartendaten, keine Kunden-PII; Restricted-Key; DSGVO-/PCI-Pflicht (Kontext). Format: Konzept mit Abschnitten Key-Typ und Read-Scope, PII-/PCI-Governance-Regel, ROI-Bezug-Prompt-Rahmen (Format)."
+**Erwartetes Artefakt:** Ein Stripe-Read-Konzept mit Restricted-Key-Scope, PII-/PCI-Governance und ROI-Bezug-Prompt-Rahmen.
+**Fallstricke (≥2 spezifisch):**
+- Stripe-Secret-Key statt eines Restricted-Read-Keys hinterlegen → Der Secret-Key erlaubt Schreib- und Refund-Operationen; ausschließlich einen Restricted-Key mit minimalen Read-Berechtigungen verwenden.
+- Einzeltransaktionen mit Kunden-PII in den Agent-Kontext laden → Zahlungsdaten unterliegen PCI-DSS und DSGVO; ausschließlich aggregierte Kennzahlen übergeben, niemals Kartendaten.
+**Anschluss-Szenario:** S-IM-076
+
+### S-IM-076 Zapier- oder Make-Bridge-Anbindung advisory bewerten
+
+**Wann nutzen (Trigger):** Die IT schlägt vor, mehrere nicht-native Tools über Zapier oder Make (Integromat) als Brücke an Langdock anzubinden — die Marketing-Direktorin will eine neutrale Bewertung, wann eine solche Bridge sinnvoll ist und wann ein MCP-Weg vorzuziehen ist. (Quelle: sources/10 S-049, Quelle: A-08)
+**Strategisches Ziel:** Zapier/Make als pragmatische Bridge advisory einordnen, die Auswahlkriterien gegenüber MCP-/HTTP-Wegen klären und die DSGVO-, AGB- und Wartungs-Risiken transparent machen, bevor eine Bridge gebaut wird.
+**Hands-on Ergebnis:** Eine Bridge-Bewertungsmatrix (Zapier vs. Make vs. MCP) mit Bewertungsdimensionen (DSGVO-Standort, Wartung, Kosten, Konnektoren) und einer Entscheidungsempfehlung je geplantem Tool.
+**Eingesetzte Langdock-Fähigkeit(en):** Gap-Analyse native Integrationen, MCP-Client, Advisory-Grenze; HTTP-Request-Anbindung via `04-workflows`.
+**Vorgehen (3 Schritte):**
+1. Du lässt Little Data je geplantem Tool prüfen, ob ein MCP-Server existiert — wenn ja, MCP bevorzugen; Zapier/Make erst als Fallback ohne MCP-Option.
+2. Du lässt die Bewertungsdimensionen strukturieren: DSGVO-Server-Standort (EU-Region wählbar?), Wartungsaufwand, Lizenzkosten, Konnektor-Abdeckung, Langdock-Webhook-Kompatibilität.
+3. Du lässt eine Entscheidungsempfehlung je Tool formulieren und für PII-tragende Verbindungen einen Auftragsverarbeitungsvertrag und EU-Region als Bedingung markieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Middleware-Bewertungs-Berater (Persona). Erstelle eine Bridge-Bewertungsmatrix Zapier vs. Make vs. MCP für drei geplante Tool-Anbindungen (Aufgabe). Kontext: DSGVO-Konformität Pflicht; teils PII-Transfer; Team ohne eigene Entwickler (Kontext). Format: Tabelle mit Tool, MCP-Option ja/nein, DSGVO-Standort, Wartung, Empfehlung (Format)."
+**Erwartetes Artefakt:** Eine Bridge-Bewertungsmatrix (Zapier vs. Make vs. MCP) mit Entscheidungsempfehlung je Tool.
+**Fallstricke (≥2 spezifisch):**
+- Bridge bauen, obwohl ein MCP-Server existiert → MCP-Server sind in der Regel wartungsärmer und ohne zusätzlichen Drittanbieter-Datentransfer; immer zuerst die MCP-Verfügbarkeit prüfen.
+- PII-Daten über eine Bridge ohne EU-Region und AV-Vertrag transferieren → Zapier/Make verarbeiten je nach Konfiguration außerhalb der EU; EU-Region erzwingen und Auftragsverarbeitungsvertrag abschließen.
+**Anschluss-Szenario:** S-IM-077
+
+### S-IM-077 Webhook-Security-Review für eingehende Event-Trigger durchführen
+
+**Wann nutzen (Trigger):** Mehrere externe Systeme lösen Langdock-Workflows über Webhooks aus — die Marketing-Direktorin will sicherstellen, dass diese Webhook-Endpunkte nicht von beliebigen Absendern missbraucht werden können. (Quelle: sources/10 S-072, Quelle: 12 Q129)
+**Strategisches Ziel:** Einen Webhook-Security-Review etablieren, der für jeden eingehenden Webhook-Endpunkt Signatur-Validierung, Secret-Verwaltung und Payload-Minimierung prüft, bevor externe Trigger produktiv geschaltet werden.
+**Hands-on Ergebnis:** Eine Webhook-Security-Review-Checkliste (Signatur-Validierung, Shared-Secret-Rotation, IP-Allowlist falls möglich, Payload-Minimierung) und ein Go/No-Go-Vermerk je Endpunkt.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock Webhook-Trigger (empfangende Seite), Advisory-Grenze; Workflow-Verarbeitung in `04-workflows`, tiefe Security in `08-sicherheit-und-governance`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data je Webhook-Endpunkt die Signatur-Validierung prüfen: HMAC-Signatur oder Shared Secret muss vor jeder Verarbeitung verifiziert werden.
+2. Du lässt die Secret-Verwaltung kontrollieren: Shared Secrets gehören in den Admin-Secrets-Bereich, werden rotiert und stehen nie im Klartext in der Konfiguration.
+3. Du lässt die Payload-Minimierung bewerten: Nur die für den Workflow nötigen Felder werden übernommen; PII-Felder nur wenn zwingend nötig.
+4. Du übergibst die Review-Checkliste an IT-Security; tiefe Security-Fragen werden an `08-sicherheit-und-governance` übergeben.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Webhook-Security-Berater (Persona). Erstelle eine Webhook-Security-Review-Checkliste für unsere eingehenden Langdock-Webhooks (Aufgabe). Kontext: drei externe Trigger (Formular-Tool, CRM-Event, E-Commerce); Signatur-Pflicht; DSGVO-Hosting (Kontext). Format: Checkliste als nummerierte Liste mit Prüfpunkt und Bewertung; plus Go/No-Go-Vermerk je Endpunkt (Format)."
+**Erwartetes Artefakt:** Eine Webhook-Security-Review-Checkliste mit Go/No-Go-Vermerk je Endpunkt.
+**Fallstricke (≥2 spezifisch):**
+- Webhook ohne Signatur-Validierung produktiv schalten → Ein unvalidierter Endpunkt kann von beliebigen Absendern beschickt werden; HMAC oder Shared Secret als erste Verarbeitungs-Bedingung erzwingen.
+- Shared Secrets im Klartext in der Workflow-Konfiguration ablegen → Secrets gehören in den Admin-Secrets-Bereich mit Rotation-Policy; Klartext-Secrets sind ein Leak-Risiko.
+**Anschluss-Szenario:** S-IM-078
+
+### S-IM-078 OAuth-Scope-Minimierung über alle Integrationen durchsetzen
+
+**Wann nutzen (Trigger):** Über die Zeit sind viele Integrationen mit großzügigen OAuth-Scopes eingerichtet worden — die Marketing-Direktorin will im Rahmen eines Security-Hardenings prüfen lassen, wo Scopes über das Nötige hinausgehen und reduziert werden können. (Quelle: 12 Q115, Quelle: A-13)
+**Strategisches Ziel:** Das Prinzip der minimalen Berechtigung über alle Integrationen durchsetzen, indem für jede Verbindung der tatsächlich genutzte Scope dem beantragten gegenübergestellt und überflüssige Berechtigungen identifiziert werden.
+**Hands-on Ergebnis:** Eine Scope-Minimierungs-Matrix (Integration, beantragter Scope, tatsächlich genutzter Scope, Reduktionsempfehlung) und ein Hardening-Briefing für die IT.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Scope-Governance, Wissensordner für Integrations-Inventar, Verweis auf `08-sicherheit-und-governance`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data je Integration aus dem Inventar den beantragten OAuth-Scope und die tatsächlich vom Agenten genutzten Operationen gegenüberstellen.
+2. Du lässt die Differenz markieren: Scopes, die beantragt, aber nie genutzt werden (z. B. Write-Scopes bei reinen Reporting-Agenten), als Reduktionskandidaten ausweisen.
+3. Du lässt je Reduktion das Risiko der Beibehaltung benennen (z. B. ungenutzter Write-Scope = unnötige Angriffsfläche).
+4. Du übergibst die Matrix als Hardening-Briefing an die IT; die Scope-Reduktion in den jeweiligen Apps liegt bei der IT.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein OAuth-Hardening-Berater (Persona). Erstelle eine Scope-Minimierungs-Matrix für unsere aktiven Langdock-Integrationen auf Basis des Integrations-Inventars im Wissensordner (Aufgabe). Kontext: gewachsene Landschaft, einige Reporting-Agenten haben Write-Scopes; Prinzip minimaler Berechtigung (Kontext). Format: Tabelle mit Integration, beantragtem Scope, genutztem Scope, Reduktionsempfehlung, Risiko bei Beibehaltung (Format)."
+**Erwartetes Artefakt:** Eine OAuth-Scope-Minimierungs-Matrix mit Reduktionsempfehlungen und Hardening-Briefing.
+**Fallstricke (≥2 spezifisch):**
+- Scopes reduzieren, ohne die tatsächlich genutzten Operationen zu kennen → Zuerst die genutzten Actions je Integration erheben; blindes Reduzieren bricht laufende Reporting-Pfade.
+- Write-Scopes "für mögliche künftige Use-Cases" behalten → Ungenutzte Write-Scopes sind unnötige Angriffsfläche; bei Bedarf später gezielt mit HITL-Konzept neu beantragen.
+**Anschluss-Szenario:** S-IM-079
+
+### S-IM-079 MCP-Server-Inventar-Audit über den gesamten Workspace durchführen
+
+**Wann nutzen (Trigger):** Im Workspace sind über die Zeit mehrere MCP-Server angebunden worden und die Marketing-Direktorin hat den Überblick verloren, welche aktiv sind, wer sie owned und welche Tools sie freigeben. (Quelle: A-36, Quelle: A-13)
+**Strategisches Ziel:** Ein vollständiges MCP-Server-Inventar erstellen, das je Server Zweck, Owner, freigegebene Tools, Auth-Methode und letzten Health-Check ausweist, um Schatten-Integrationen und ungenutzte Verbindungen aufzudecken.
+**Hands-on Ergebnis:** Ein MCP-Server-Inventar (Tabelle) mit je Server: Name, Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write-Klasse, letzter Health-Check, Status (aktiv/ungenutzt/zu deaktivieren).
+**Eingesetzte Langdock-Fähigkeit(en):** MCP-Client-Verbindungen, Wissensordner für Inventar-Ablage, Advisory-Grenze, Verweis auf `08-sicherheit-und-governance`.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data alle bekannten MCP-Server aus dem Wissensordner und den Agenten-Konfigurationen zusammentragen — jeder Server als eigener Eintrag.
+2. Du lässt je Server die Pflichtfelder ausfüllen: Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write-Klasse.
+3. Du lässt den Status bewerten: aktiv genutzt, ungenutzt (Kandidat für Deaktivierung), oder ohne Owner (sofort klären).
+4. Du übergibst das Inventar an IT-Security und Workspace-Admin; ungenutzte oder owner-lose Server werden im Deprecation-Plan (S-IM-080) behandelt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein MCP-Governance-Berater (Persona). Erstelle ein vollständiges MCP-Server-Inventar für unseren Marketing-Workspace auf Basis der Agenten-Konfigurationen und des Wissensordners (Aufgabe). Kontext: gewachsene Landschaft, Verdacht auf ungenutzte und owner-lose Server (Kontext). Format: Tabelle mit Server, Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write, letzter Health-Check, Status (Format)."
+**Erwartetes Artefakt:** Ein MCP-Server-Inventar (Tabelle) mit Owner, Tools, Auth und Status je Server.
+**Fallstricke (≥2 spezifisch):**
+- Nur dokumentierte Server erfassen → Auch Server prüfen, die direkt in einzelnen Agenten konfiguriert sind, sonst bleiben Schatten-Integrationen unentdeckt.
+- Owner-lose Server im Inventar lediglich markieren, aber nicht eskalieren → Ein Server ohne Owner ist ein Governance-Risiko; je owner-losem Server sofort eine Zuständigkeit zuweisen oder den Server zur Deaktivierung vormerken.
+**Anschluss-Szenario:** S-IM-080
+
+### S-IM-080 Integration-Deprecation-Plan für abzulösende Verbindungen erstellen
+
+**Wann nutzen (Trigger):** Aus dem MCP-Inventar und dem Scope-Audit ist klar geworden, dass mehrere Integrationen ungenutzt, redundant oder veraltet sind — die Marketing-Direktorin will einen geordneten Plan, um sie abzuschalten, ohne laufende Reporting-Pfade zu reißen. (Quelle: A-13, Quelle: A-03)
+**Strategisches Ziel:** Einen Integration-Deprecation-Plan entwickeln, der für jede abzulösende Verbindung die Abhängigkeiten, einen Migrationspfad, ein Abschaltdatum und ein Rollback-Fenster definiert, sodass keine aktive Kampagne unerwartet ihre Datenquelle verliert.
+**Hands-on Ergebnis:** Ein Integration-Deprecation-Plan (Tabelle) mit je Verbindung: Begründung der Ablösung, abhängige Agenten/Workflows, Ersatz oder Migrationspfad, Abschaltdatum, Rollback-Fenster, Verantwortlicher.
+**Eingesetzte Langdock-Fähigkeit(en):** Advisory-Beratung zu Integrations-Lebenszyklus, Wissensordner für Abhängigkeitsregister, Advisory-Grenze.
+**Vorgehen (4 Schritte):**
+1. Du lässt Little Data je abzulösende Integration die abhängigen Agenten und Workflows aus dem Abhängigkeitsregister ermitteln, damit keine stille Abhängigkeit übersehen wird.
+2. Du lässt je Verbindung einen Migrationspfad oder einen Ersatz benennen (oder dokumentieren, dass die Funktion ersatzlos entfällt).
+3. Du lässt ein gestaffeltes Abschaltdatum mit Rollback-Fenster festlegen: zuerst stilllegen (deaktivieren, aber wiederherstellbar), nach einer Beobachtungsphase endgültig entfernen.
+4. Du übergibst den Plan an IT und Marketing-Ops; die tatsächliche Abschaltung liegt bei der IT — Little Data berät, führt keine Deaktivierung durch.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist mein Integrations-Lebenszyklus-Berater (Persona). Erstelle einen Integration-Deprecation-Plan für unsere abzulösenden Langdock-Verbindungen auf Basis von MCP-Inventar und Abhängigkeitsregister (Aufgabe). Kontext: mehrere ungenutzte und redundante Verbindungen; keine aktive Kampagne darf ihre Datenquelle verlieren (Kontext). Format: Tabelle mit Verbindung, Begründung, abhängige Agenten/Workflows, Migrationspfad, Abschaltdatum, Rollback-Fenster, Verantwortlicher (Format)."
+**Erwartetes Artefakt:** Ein Integration-Deprecation-Plan (Tabelle) mit Migrationspfad, gestaffelten Abschaltdaten und Rollback-Fenster.
+**Fallstricke (≥2 spezifisch):**
+- Eine Verbindung abschalten, ohne ihre Abhängigkeiten zu prüfen → Eine vermeintlich ungenutzte Integration kann einen kritischen Reporting-Pfad speisen; immer zuerst das Abhängigkeitsregister konsultieren.
+- Verbindungen sofort hart löschen statt gestaffelt stillzulegen → Zuerst deaktivieren mit Rollback-Fenster und Beobachtungsphase; eine harte Löschung ohne Rückweg macht Fehler irreversibel.
 **Anschluss-Szenario:** S-IM-001
 
 ## Hinweise & Quellen-Konflikte

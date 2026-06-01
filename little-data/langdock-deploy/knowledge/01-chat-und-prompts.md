@@ -62,11 +62,11 @@ Für eine exzellente Nutzung sollten beide Konzepte strategisch kombiniert werde
 
 ## Marketing-Szenarien aus dieser Domäne
 
-Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situationen einer Marketing-Direktorin ab. Modellnamen sind auf dem Stand Mai 2026; bei neuen Releases bleibt die jeweilige Logik gültig. Die zugrundeliegenden Critical-Thinking-Methoden sind unsichtbares Konstruktions-Gerüst und erscheinen nicht als Feld.
+Die folgenden Szenarien decken die häufigsten Chat- und Prompting-Situationen einer Marketing-Direktorin ab. Modellnamen sind auf dem Stand Mai 2026; bei neuen Releases bleibt die jeweilige Logik gültig. Das zugrundeliegende Denk-Gerüst ist unsichtbares Konstruktions-Hilfsmittel und erscheint nicht als eigenes Feld.
 
 ### S-CP-001 Wiederverwendbaren PTCF-Prompt für eine Routine-Aufgabe bauen
 
-**Wann nutzen (Trigger):** Eine wiederkehrende Aufgabe — etwa der wöchentliche LinkedIn-Post — wird jedes Mal neu und uneinheitlich geprompted.
+**Wann nutzen (Trigger):** Eine wiederkehrende Aufgabe — etwa der wöchentliche LinkedIn-Post — wird jedes Mal neu und uneinheitlich geprompted. (Quelle: 12 Q71)
 **Strategisches Ziel:** Einen stabilen, teamweit nutzbaren Prompt etablieren, der reproduzierbare Ergebnisse liefert.
 **Hands-on Ergebnis:** Ein dokumentierter PTCF-Prompt zum Kopieren für das ganze Team.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Custom Instructions (für stabile Tonalität)
@@ -84,7 +84,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-002 Few-Shot-Prompting zur Fixierung von Format und Ton
 
-**Wann nutzen (Trigger):** Das Modell trifft den gewünschten Ton oder das Format trotz Beschreibung nicht zuverlässig.
+**Wann nutzen (Trigger):** Das Modell trifft den gewünschten Ton oder das Format trotz Beschreibung nicht zuverlässig. (Quelle: 12 Q75, sources/10 S-038)
 **Strategisches Ziel:** Tonalität und Struktur über konkrete Beispiele statt über Adjektive erzwingen.
 **Hands-on Ergebnis:** Ein Prompt mit zwei bis drei eingebetteten Vorbild-Beispielen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (Auslagerung bei vielen Beispielen)
@@ -102,7 +102,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-003 Persona-Setup über Custom Instructions statt pro Chat
 
-**Wann nutzen (Trigger):** Die Direktorin erklärt der KI in jedem neuen Chat erneut ihre Rolle, Sprache und Formatwünsche.
+**Wann nutzen (Trigger):** Die Direktorin erklärt der KI in jedem neuen Chat erneut ihre Rolle, Sprache und Formatwünsche. (Quelle: 12 Q85, 12 Q22)
 **Strategisches Ziel:** Wiederkehrende Grund-Leitplanken einmalig hinterlegen und Memory vom statischen Setup trennen.
 **Hands-on Ergebnis:** Ein konsolidierter Satz Custom Instructions plus klare Memory-Abgrenzung.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Custom Instructions, Memory
@@ -120,7 +120,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-004 Modell bewusst wählen statt blind Auto-Mode
 
-**Wann nutzen (Trigger):** Für eine markenkritische Aufgabe ist unklar, ob der Auto-Mode oder ein fest gewähltes Modell genutzt werden soll.
+**Wann nutzen (Trigger):** Für eine markenkritische Aufgabe ist unklar, ob der Auto-Mode oder ein fest gewähltes Modell genutzt werden soll. (Quelle: 12 Q17, A-23)
 **Strategisches Ziel:** Die Modellwahl an Aufgabe und Kostenrahmen ausrichten statt an Gewohnheit.
 **Hands-on Ergebnis:** Eine begründete Modell-Empfehlung für den konkreten Task.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Modell-Auswahl, Auto-Mode)
@@ -138,7 +138,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-005 Deep Research für eine asynchrone Wettbewerbsanalyse
 
-**Wann nutzen (Trigger):** Eine fundierte, mehrquellige Markt- oder Wettbewerbsrecherche ist nötig, die mehr Tiefe braucht als eine schnelle Chat-Antwort.
+**Wann nutzen (Trigger):** Eine fundierte, mehrquellige Markt- oder Wettbewerbsrecherche ist nötig, die mehr Tiefe braucht als eine schnelle Chat-Antwort. (Quelle: 12 Q92, sources/10 S-021)
 **Strategisches Ziel:** Eine strukturierte, belegte Recherche erhalten, ohne manuell Dutzende Quellen zu sichten.
 **Hands-on Ergebnis:** Ein strukturierter Research-Report mit benannten Quellen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Deep Research Modus, asynchron)
@@ -156,7 +156,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-006 Veraltete Prompting-Hacks aus Team-Templates entfernen
 
-**Wann nutzen (Trigger):** Die Team-Templates enthalten alte "Voodoo-Hacks" wie "Take a deep breath" oder übertriebenes "Think step-by-step" bei trivialen Aufgaben.
+**Wann nutzen (Trigger):** Die Team-Templates enthalten alte "Voodoo-Hacks" wie "Take a deep breath" oder übertriebenes "Think step-by-step" bei trivialen Aufgaben. (Quelle: 12 Q84)
 **Strategisches Ziel:** Veraltete Prompt-Mythen identifizieren, die bei aktuellen Modellen nichts mehr bringen oder schaden (Assumption Decay).
 **Hands-on Ergebnis:** Eine bereinigte Template-Sammlung ohne wirkungslose Hacks.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Wissensordner (Template-Ablage)
@@ -174,7 +174,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-007 CO-STAR für hochsensible C-Level-Kommunikation
 
-**Wann nutzen (Trigger):** Eine strategische oder Krisen-Botschaft an die Geschäftsführung erfordert mehr Steuerung, als PTCF bietet.
+**Wann nutzen (Trigger):** Eine strategische oder Krisen-Botschaft an die Geschäftsführung erfordert mehr Steuerung, als PTCF bietet. (Quelle: sources/10 S-078)
 **Strategisches Ziel:** Alle Wirkungs-Parameter einer sensiblen Botschaft vorab festlegen.
 **Hands-on Ergebnis:** Ein nach CO-STAR strukturierter Entwurf für die Führungskommunikation.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Canvas (für die Ausarbeitung)
@@ -192,7 +192,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-008 Format-Konversion per Inline-Skill (Prose zu Tabelle)
 
-**Wann nutzen (Trigger):** Ein langer Fließtext aus einem Meeting soll schnell in eine strukturierte, sortierbare Übersicht überführt werden.
+**Wann nutzen (Trigger):** Ein langer Fließtext aus einem Meeting soll schnell in eine strukturierte, sortierbare Übersicht überführt werden. (Quelle: 12 Q15)
 **Strategisches Ziel:** Unstrukturierte Information ohne manuelle Nacharbeit in ein nutzbares Format bringen.
 **Hands-on Ergebnis:** Eine strukturierte Tabelle aus dem Quelltext.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Inline-Skill), Data Analyst (bei CSV↔JSON)
@@ -210,7 +210,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-009 Chat-Branching zum Vergleich zweier strategischer Richtungen
 
-**Wann nutzen (Trigger):** Zwei mögliche Kampagnen-Richtungen sollen aus demselben Ausgangspunkt heraus durchgespielt und verglichen werden.
+**Wann nutzen (Trigger):** Zwei mögliche Kampagnen-Richtungen sollen aus demselben Ausgangspunkt heraus durchgespielt und verglichen werden. (Quelle: 12 Q21)
 **Strategisches Ziel:** Beide Optionen unter gleichen Bedingungen entwickeln, ohne den Kontext zu vermischen.
 **Hands-on Ergebnis:** Zwei parallel ausgearbeitete Optionen aus einem gemeinsamen Briefing.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Chat-Branching)
@@ -228,7 +228,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-010 Quellen-gestützter Fakten-Check im Chat
 
-**Wann nutzen (Trigger):** Eine Zahl oder Behauptung soll vor der externen Verwendung verifiziert werden, um eine Halluzination zu vermeiden.
+**Wann nutzen (Trigger):** Eine Zahl oder Behauptung soll vor der externen Verwendung verifiziert werden, um eine Halluzination zu vermeiden. (Quelle: 12 Q68)
 **Strategisches Ziel:** Aussagen belegen statt ihnen zu vertrauen — mit klarer Markierung des Ungeprüften.
 **Hands-on Ergebnis:** Eine verifizierte Aussage mit Quelle oder eine explizite Ungeprüft-Kennzeichnung.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Web Search), Wissensordner (interne Belege)
@@ -581,7 +581,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-029 Chat-Export und Konversations-Wiederverwendung als Projekt-Gedächtnis
 
-**Wann nutzen (Trigger):** Ein mehrtägiges Strategieprojekt (z. B. Rebranding-Sprint) erzeugt wertvolle Konversationsverläufe, die das Team in der nächsten Session nicht neu aufbauen will. (Quelle: A-10, sources/12 Q80)
+**Wann nutzen (Trigger):** Ein mehrtägiges Strategieprojekt (z. B. Rebranding-Sprint) erzeugt wertvolle Konversationsverläufe, die das Team in der nächsten Session nicht neu aufbauen will. (Quelle: A-10, 12 Q80)
 **Strategisches Ziel:** Exportierte Chat-Inhalte als strukturiertes Projekt-Gedächtnis recyceln, um Kontext zwischen Sessions nicht zu verlieren.
 **Hands-on Ergebnis:** Ein komprimiertes Briefing-Dokument aus dem vorherigen Chat-Verlauf, das als Einstieg für die nächste Session dient.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Cmd-K Omni-Search, File-Attachment), Wissensordner (für langlebige Projekt-Snapshots)
@@ -600,7 +600,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-030 Prompt-Debugging: Schlechte Outputs systematisch reparieren
 
-**Wann nutzen (Trigger):** Ein Prompt liefert wiederholt Ergebnisse, die nicht dem gewünschten Standard entsprechen — aber unklar ist, welches der vier PTCF-Elemente das Problem verursacht. (Quelle: sources/12 Q76, Q79)
+**Wann nutzen (Trigger):** Ein Prompt liefert wiederholt Ergebnisse, die nicht dem gewünschten Standard entsprechen — aber unklar ist, welches der vier PTCF-Elemente das Problem verursacht. (Quelle: 12 Q76, Q79)
 **Strategisches Ziel:** Schlechte KI-Outputs nicht durch blindes Neuformulieren, sondern durch systematisches Eingrenzen des Fehlers effizient verbessern.
 **Hands-on Ergebnis:** Ein reparierter Prompt mit dokumentierter Fehlerursache und Lösung für die Team-Prompt-Bibliothek.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Antwort neu generieren, Modell wechseln), Chat-Branching (Varianten testen)
@@ -637,7 +637,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-032 Mehrsprachige Prompt-Strategie für DACH-Teams
 
-**Wann nutzen (Trigger):** Das Marketing-Team arbeitet mit Kolleginnen in Deutschland, Österreich und der Schweiz; Prompts werden gemischt auf Deutsch und Englisch verfasst, was zu inkonsistenten Outputs führt. (Quelle: A-46, sources/12 Q77)
+**Wann nutzen (Trigger):** Das Marketing-Team arbeitet mit Kolleginnen in Deutschland, Österreich und der Schweiz; Prompts werden gemischt auf Deutsch und Englisch verfasst, was zu inkonsistenten Outputs führt. (Quelle: A-46, 12 Q77)
 **Strategisches Ziel:** Eine klare Sprachstrategie für Prompts im DACH-Team etablieren, die Konsistenz erhöht und regionalen Tonalitäts-Anforderungen gerecht wird.
 **Hands-on Ergebnis:** Eine ein-seitige Sprachpolitik für Prompts mit Entscheidungsbaum und Beispiel-Prompts für drei häufige Aufgabentypen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat, Custom Instructions (Sprachpräferenz), Prompt Library (DE/AT/CH-Varianten)
@@ -656,7 +656,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-033 Inline-Datenvisualisierung aus Kampagnenzahlen im Chat anfordern
 
-**Wann nutzen (Trigger):** Die Direktorin hat Kampagnen-Performance-Zahlen als Tabelle im Chat und möchte sofort eine verständliche Visualisierung für das Management-Meeting — ohne in ein Reporting-Tool zu wechseln. (Quelle: sources/12 Q107)
+**Wann nutzen (Trigger):** Die Direktorin hat Kampagnen-Performance-Zahlen als Tabelle im Chat und möchte sofort eine verständliche Visualisierung für das Management-Meeting — ohne in ein Reporting-Tool zu wechseln. (Quelle: 12 Q107)
 **Strategisches Ziel:** Rohdaten direkt im Chat in ein präsentationsfähiges Diagramm überführen, das als PNG oder in Canvas exportiert werden kann.
 **Hands-on Ergebnis:** Ein Python-generiertes Diagramm (Balken-, Linien- oder Tortendiagramm) aus den eingefügten Kampagnendaten.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Data Analyst für Python-Code-Ausführung)
@@ -674,7 +674,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-034 Prompt-Template mit Pflichtfeldern für das Team standardisieren
 
-**Wann nutzen (Trigger):** Neue Teammitglieder schicken unvollständige Prompts ab, weil sie vergessen, Zielgruppe, Tonalität oder Format zu füllen — was zu Nachfragen und Iterationsrunden führt. (Quelle: sources/12 Q78, Q35)
+**Wann nutzen (Trigger):** Neue Teammitglieder schicken unvollständige Prompts ab, weil sie vergessen, Zielgruppe, Tonalität oder Format zu füllen — was zu Nachfragen und Iterationsrunden führt. (Quelle: 12 Q78, Q35)
 **Strategisches Ziel:** Pflichtfelder im Prompt-Template erzwingen, sodass unvollständige Prompts gar nicht erst abgesendet werden können.
 **Hands-on Ergebnis:** Mindestens drei Prompt-Templates mit Pflicht-Platzhaltern (`{{Zielgruppe}}`, `{{Tonalität}}`, `{{Format}}`) in der Team-Prompt-Bibliothek.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Prompt Library mit Variable-System), Agent-Form (für strukturierte Pflichtfelder)
@@ -731,7 +731,7 @@ Die folgenden zehn Szenarien decken die häufigsten Chat- und Prompting-Situatio
 
 ### S-CP-037 Antwort-Regenerierung und Modell-Wechsel gezielt einsetzen
 
-**Wann nutzen (Trigger):** Die erste Antwort eines Modells trifft die Tonalität nicht — zu formell, zu kreativ, zu kurz — und unklar ist, ob eine Prompt-Änderung oder ein Modell-Wechsel das Problem löst. (Quelle: sources/12 Q79, Q84)
+**Wann nutzen (Trigger):** Die erste Antwort eines Modells trifft die Tonalität nicht — zu formell, zu kreativ, zu kurz — und unklar ist, ob eine Prompt-Änderung oder ein Modell-Wechsel das Problem löst. (Quelle: 12 Q79, Q84)
 **Strategisches Ziel:** Zwischen Prompt-Problem und Modell-Problem unterscheiden, bevor Zeit mit unnötigen Prompt-Variationen verschwendet wird.
 **Hands-on Ergebnis:** Eine dokumentierte Daumenregel: welche Tonalitätsprobleme durch Prompt-Änderung, welche durch Modell-Wechsel gelöst werden.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Antwort neu generieren, Modell-Selektor), Chat-Branching

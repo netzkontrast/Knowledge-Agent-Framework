@@ -102,7 +102,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 3. Lass eine Kostenschätzung auf Basis der aktuellen Workspace-Budgets erstellen.
 4. Formuliere ein Briefing, das der IT glasklar die Advisory-Grenze aufzeigt (Marketing liefert Konzept, IT schreibt Python-Code).
 **Beispiel-Prompt (DE, PTCF):**
-> "Little Data, wir haben ein massives Skalierungsproblem. Für den Q4-Launch müssen wir 15.000 Produkttexte via API aus Langdock generieren und ins PIM pushen. Die IT hat Angst vor Rate Limits und CORS-Problemen, wenn wir das direkt aus dem CMS triggern. Schreibe mir ein Architektur-Briefing für unseren Lead Developer. Erkläre das Backend-for-Frontend Pattern, wie wir die 500 RPM Grenze durch Batching umgehen und füge eine Warnung zum 100-Sekunden Timeout bei langen Prompts hinzu."
+> "Little Data, wir haben ein massives Skalierungsproblem. Für den Q4-Launch müssen wir 15.000 Produkttexte via API aus Langdock generieren und ins PIM pushen. Die IT hat Angst vor Rate Limits und CORS-Problemen, wenn wir das direkt aus dem CMS triggern. Schreibe mir ein Architektur-Briefing für unseren Lead Developer. Erkläre das Backend-for-Frontend Pattern, wie wir die 500 RPM Grenze (pro Workspace und Modell) durch Batching umgehen und füge eine Warnung zum 100-Sekunden Non-Streaming-Timeout (HTTP 524) bei langen Prompts hinzu — empfiehl Streaming als Gegenmaßnahme."
 **Erwartetes Artefakt:** Technisches Briefing-Dokument (Markdown).
 **Fallstricke (≥2 spezifisch):**
 - Die Kostenschätzung verwechselt Langdock-Plattformkosten mit OpenAI-Inferenzkosten, was den CFO verärgern würde.
@@ -377,7 +377,7 @@ Ebenso wird "Little Data" keine Langdock-Konfigurationen (wie das Einrichten von
 2. Beauftrage Little Data, eine Queue-Strategie zu entwerfen: Requests in Batches von 50 gruppieren, Exponential-Backoff bei HTTP 429 Fehlern, maximale 3 Retry-Versuche.
 3. Erstelle eine Kostenschätzung auf Basis der Prompt-Länge (Produktdaten-Input + 80-Wörter-Output) und des gewählten Modells.
 4. Plane den Monitoring-Punkt: Usage Export API am nächsten Morgen abfragen, um tatsächliche Token-Kosten mit der Schätzung zu vergleichen.
-5. Weise auf das 25-Euro-Limit pro Workflow-Lauf hin — bei großen Jobs muss dieses Limit im Admin erhöht werden.
+5. Weise auf die Budget-Grenzen hin: das Per-Workflow-Budget liegt standardmäßig bei 25 USD pro Monat (im Admin bis 10.000 USD erhöhbar), das Workspace-Budget bei 500 Euro pro Monat — bei großen Jobs müssen beide vor dem Lauf angepasst und ein optionales Per-Execution-Limit gegen Endlosschleifen gesetzt werden.
 **Beispiel-Prompt (DE, PTCF):**
 > "Du bist ein technischer Projektleiter. Wir müssen 2.000 Produktbeschreibungen via Langdock Completion API über ein Wochenende generieren. Der Katalog liegt als CSV vor. Skizziere eine Batch-Architektur: Wie teilen wir die CSV auf? Wie implementieren wir Exponential-Backoff bei Rate Limit Fehlern? Welche Kosten erwarten uns bei durchschnittlich 500 Input-Tokens und 120 Output-Tokens pro Request mit Haiku? Liefere Architektur-Briefing und Kostenübersicht."
 **Erwartetes Artefakt:** Ein Architektur-Briefing (Queue-Strategie, Fehlerbehandlung) + Kosten-Schätzungssheet.

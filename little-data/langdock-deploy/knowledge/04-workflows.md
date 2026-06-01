@@ -83,7 +83,7 @@ Diese strikte Trennung dient der Systemstabilität, der Governance und der Verme
 
 ## Marketing-Szenarien aus dieser Domäne
 
-Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, aber nicht baut** — der Output ist ein Architektur-Entwurf (Canvas/Markdown), kein deployter Workflow. Die zugrundeliegenden Critical-Thinking-Methoden sind unsichtbares Konstruktions-Gerüst und erscheinen nicht als Feld.
+Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, aber nicht baut** — der Output ist ein Architektur-Entwurf (Canvas/Markdown), kein deployter Workflow. Die zugrundeliegenden Analyse-Methoden bleiben unsichtbares Konstruktions-Gerüst und erscheinen nicht als Feld.
 
 ### S-WF-001 Wöchentlicher Newsletter-Zusammenbau (Scheduled Trigger)
 
@@ -1007,37 +1007,39 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 **Wann nutzen (Trigger):** Nach Abschluss eines Kaufs oder einer Projektphase soll automatisch eine personalisierte Bewertungsanfrage versendet werden — bisher erfolgt das manuell mit inkonsistentem Timing und generischen Texten. (Quelle: sources/10 S-064 + S-090 + research/julia-lens A-32)
 **Strategisches Ziel:** Den optimalen Review-Anfrage-Zeitpunkt automatisch treffen, die Anfrage personalisieren und die Antwortquote messbar steigern.
-**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten Review-Anfrage-Workflow mit personalisiertem AI-Copywriting und Plattform-Routing.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), Logic-Node (Verzögerung nach Kaufabschluss + Kundensegment-Filter), AI-Node (personalisierte E-Mail, Structured Output), Action-Node (E-Mail-Tool)
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten Review-Anfrage-Workflow mit personalisiertem AI-Copywriting, Plattform-Routing und HITL-Template-Freigabe.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), Logic-Node (Verzögerung nach Kaufabschluss + Kundensegment-Filter), AI-Node (personalisierte E-Mail, Structured Output), HITL-Node (Template-Freigabe), Action-Node (E-Mail-Tool)
 **Vorgehen (4 Schritte):**
 1. Den Integration-Trigger an das CRM-/E-Commerce-Event „Kauf abgeschlossen" oder „Projektphase abgenommen" koppeln; Payload enthält Kundenname, Produkt/Projekt, Kaufdatum und Kundensegment.
 2. Einen Logic-Node eine Wartezeit von 3–5 Tagen einplanen lassen (Zeitversatz-Node), danach nach Kundensegment verzweigen: B2B → G2/Capterra-Anfrage; B2C → Google/Trustpilot-Anfrage.
 3. Ein AI-Node generiert eine kurze, personalisierte Bewertungsanfrage-E-Mail mit direktem Bewertungslink — Structured Output: Betreffzeile, Body-Text, CTA-Button-Label; Tonalität richtet sich nach Kundensegment aus dem Wissensordner.
-4. Ein Action-Node versendet die E-Mail und protokolliert die gesendete Anfrage im CRM als Aktivität, damit Sales keine doppelten Anfragen stellt.
+4. Ein HITL-Node legt die segment-spezifischen E-Mail-Templates einmalig zur Freigabe vor und zieht bei jedem Lauf eine Stichprobe (z. B. 10 %) zur Qualitätskontrolle; erst nach Freigabe versendet ein Action-Node die E-Mail und protokolliert die Anfrage im CRM als Aktivität, damit Sales keine doppelten Anfragen stellt.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Review-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Kundenbewertungsanfragen. Kontext: CRM-Kauf-Event, 3-5 Tage Verzögerung, B2B-vs-B2C-Segmentverzweigung, personalisierte KI-E-Mail mit Review-Link. Format: Trigger, Delay-Logic, Segment-Verzweigung, AI-E-Mail-Node, CRM-Protokollierungs-Action."
+> "Du bist Review-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Kundenbewertungsanfragen. Kontext: CRM-Kauf-Event, 3-5 Tage Verzögerung, B2B-vs-B2C-Segmentverzweigung, personalisierte KI-E-Mail mit Review-Link, HITL-Template-Freigabe vor Versand. Format: Trigger, Delay-Logic, Segment-Verzweigung, AI-E-Mail-Node, HITL-Gate, E-Mail-Action + CRM-Protokollierung."
 **Erwartetes Artefakt:** Ein Review-Anfrage-Workflow-Entwurf mit Timing-Logik, Segment-Verzweigung und personalisierten AI-E-Mail-Templates.
 **Fallstricke (≥2 spezifisch):**
 - Der Workflow feuert auch bei B2B-Testkunden oder internen Demo-Konten → einen Filter-Node einbauen, der Kunden mit dem Tag „Intern" oder „Demo" herausfiltert.
 - Die Review-Plattform-URL im E-Mail-CTA ist hart kodiert und bricht bei Plattformwechsel → die Ziel-URL als konfigurierbaren Workflow-Parameter hinterlegen, nicht als statischen String im Prompt.
+- Ohne Freigabe-Gate gehen fehlerhaft personalisierte Anfragen ungeprüft an Kunden → den HITL-Node als Template-Freigabe plus laufende 10-%-Stichprobe verankern; der finale Versand an den Kunden bleibt an die menschliche Freigabe gebunden.
 **Anschluss-Szenario:** S-WF-051
 
 ### S-WF-051 Produktverfügbarkeits-Alert-Workflow (Webhook Trigger)
 
 **Wann nutzen (Trigger):** Kunden, die sich auf eine Warteliste für ein ausverkauftes Produkt eingetragen haben, sollen sofort nach Wiederverfügbarkeit automatisch benachrichtigt werden — jede Stunde Verzögerung kostet Conversion. (Quelle: sources/10 S-047 + research/julia-lens A-24)
 **Strategisches Ziel:** Wartelisten-Kunden in Echtzeit reaktivieren, sobald ein Produkt wieder verfügbar ist, und die Time-to-Notification unter 5 Minuten halten.
-**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen reaktiven Verfügbarkeits-Alert-Workflow mit personalisierter Nachricht und optionalem Checkout-Deep-Link.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), Logic-Node (Wartelisten-Abfrage + Limit-Check), AI-Node (personalisierte Alert-Nachricht, Structured Output), Action-Nodes (E-Mail + optionale Push-Benachrichtigung)
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen reaktiven Verfügbarkeits-Alert-Workflow mit vorab freigegebenem Nachrichten-Template und optionalem Checkout-Deep-Link.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), Logic-Node (Wartelisten-Abfrage + Limit-Check), AI-Node (Template-Befüllung, Structured Output), HITL-Node (einmalige Template-Freigabe), Action-Nodes (E-Mail + optionale Push-Benachrichtigung)
 **Vorgehen (4 Schritte):**
 1. Den Webhook-Trigger an das Lager-Management-System oder den Shop koppeln, das bei Bestandsübergang von 0 auf >0 feuert; Payload enthält Produkt-ID, Produktname und verfügbare Menge.
 2. Einen Logic-Node prüfen lassen: (a) Gibt es Wartelisten-Einträge für dieses Produkt? (b) Ist die verfügbare Menge groß genug, um alle Wartelisten-Kunden zu bedienen? Falls ja, vollständige Liste; falls nein, nach Wartelistenposition priorisieren und ein Per-Execution-Limit setzen.
-3. Ein AI-Node generiert pro Wartelisten-Kunde eine personalisierte Alert-Nachricht mit dem Produktnamen, dem direkten Checkout-Link und einem optionalen Scarcity-Element (z. B. „Nur noch 12 Stück verfügbar").
-4. Action-Nodes versenden E-Mails und/oder Push-Benachrichtigungen; nach Versand aktualisiert ein CRM-Action-Node den Wartelisten-Status des Kontakts auf „Benachrichtigt".
+3. Ein AI-Node befüllt ein zuvor per HITL freigegebenes Nachrichten-Template mit Produktname, direktem Checkout-Link und optionalem Scarcity-Element (z. B. „Nur noch 12 Stück verfügbar") — da der Echtzeit-Alert keinen Versand-HITL erlaubt, wird das Template einmalig vom Marketing freigegeben und runtime nur datenbefüllt.
+4. Action-Nodes versenden E-Mails und/oder Push-Benachrichtigungen auf Basis des freigegebenen Templates; nach Versand aktualisiert ein CRM-Action-Node den Wartelisten-Status des Kontakts auf „Benachrichtigt".
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist E-Commerce-Workflow-Architekt. Entwirf einen Webhook-Workflow für Produktverfügbarkeits-Alerts. Kontext: Lager-Webhook bei Bestandsänderung, Wartelisten-Abfrage, Priorisierung bei Teilmengen, personalisierte KI-Alert-E-Mail mit Checkout-Link. Format: Webhook-Trigger, Logic-Wartelisten-Node, AI-Alert-Node, E-Mail-Action, CRM-Status-Update."
-**Erwartetes Artefakt:** Ein Verfügbarkeits-Alert-Workflow-Entwurf mit Priorisierungslogik, personalisiertem AI-Alert und CRM-Status-Protokollierung.
+> "Du bist E-Commerce-Workflow-Architekt. Entwirf einen Webhook-Workflow für Produktverfügbarkeits-Alerts. Kontext: Lager-Webhook bei Bestandsänderung, Wartelisten-Abfrage, Priorisierung bei Teilmengen, vorab per HITL freigegebenes Alert-Template, das runtime nur datenbefüllt wird. Format: Webhook-Trigger, Logic-Wartelisten-Node, HITL-Template-Gate, AI-Befüllungs-Node, E-Mail-Action, CRM-Status-Update."
+**Erwartetes Artefakt:** Ein Verfügbarkeits-Alert-Workflow-Entwurf mit Priorisierungslogik, HITL-freigegebenem Template und CRM-Status-Protokollierung.
 **Fallstricke (≥2 spezifisch):**
 - Der Webhook feuert mehrfach in kurzer Zeit (Lager-Korrekturbuchungen), was mehrfache Alerts an dieselben Kunden auslöst → einen Deduplizierungs-Node mit Cooldown-Fenster (z. B. 30 Minuten pro Produkt) einbauen.
+- Ein per-Send-HITL würde den Sub-5-Minuten-Alert unmöglich machen, ein völlig ungeprüfter Versand verletzt aber die Kontrolle über Kunden-Kommunikation → die Lösung ist das einmalig freigegebene Template-Gate; nur freie Felder (Name, Bestand, Link) werden runtime befüllt, der Template-Text bleibt menschlich autorisiert.
 - Scarcity-Formulierungen im AI-Node werden juristisch problematisch, wenn die Bestandsangabe nicht exakt stimmt → Scarcity-Element nur aktivieren, wenn der Bestand direkt aus dem Lager-Payload kommt, kein AI-generierter Schätzwert.
 **Anschluss-Szenario:** S-WF-052
 
@@ -1064,19 +1066,19 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 **Wann nutzen (Trigger):** Kunden mit ablaufenden Garantien oder Service-Verträgen sollen rechtzeitig auf Verlängerungsangebote hingewiesen werden — heute gehen diese Touchpoints systematisch verloren, weil keine automatische Datumsprüfung stattfindet. (Quelle: sources/10 S-061 + S-064 + research/julia-lens A-32)
 **Strategisches Ziel:** Garantie- und Vertragsabläufe als Retention- und Upsell-Moment nutzen, indem Kunden 60, 30 und 7 Tage vor Ablauf automatisch kontaktiert werden.
-**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Garantie-Erinnerungs-Workflow mit mehrstufiger Eskalationslogik und personalisierten Verlängerungsangeboten.
-**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Integration-Action (CRM-Abfrage ablaufender Garantien), Logic-Node (Eskalationsstufen 60/30/7 Tage), AI-Node (personalisierte Erinnerungs-E-Mail je Stufe, Structured Output), Action-Nodes (E-Mail-Tool + CRM-Aktivitäts-Log)
+**Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Garantie-Erinnerungs-Workflow mit mehrstufiger Eskalationslogik, HITL-Template-Freigabe und personalisierten Verlängerungsangeboten.
+**Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Integration-Action (CRM-Abfrage ablaufender Garantien), Logic-Node (Eskalationsstufen 60/30/7 Tage), AI-Node (personalisierte Erinnerungs-E-Mail je Stufe, Structured Output), HITL-Node (Template- + Preis-Freigabe), Action-Nodes (E-Mail-Tool + CRM-Aktivitäts-Log)
 **Vorgehen (4 Schritte):**
 1. Den Scheduled-Trigger täglich ausführen; ein Integration-Action-Node fragt das CRM nach allen Kontakten ab, deren Garantie- oder Vertragsenddatum in genau 60, 30 oder 7 Tagen liegt.
 2. Einen Logic-Node die drei Eskalationsstufen verwalten lassen: 60-Tage-E-Mail (weicher Hinweis + Verlängerungsangebot), 30-Tage-E-Mail (konkretes Angebot + Preisinfo), 7-Tage-E-Mail (Dringlichkeits-CTA + direkter Checkout-Link).
 3. Ein AI-Node generiert je Stufe eine tonalitätsgerechte E-Mail — Structured Output: Betreff, Eskalationsstufen-angepasster Body, CTA-Text; Inputs sind Kundenname, Produktbezeichnung, genaues Ablaufdatum und Verlängerungsoptionen aus dem Wissensordner.
-4. Action-Nodes versenden die E-Mail und schreiben die Aktivität ins CRM, damit der Vertrieb den Kommunikationsverlauf nachverfolgen kann.
+4. Ein HITL-Node legt die drei Stufen-Templates samt kommunizierten Preisen dem Retention-Lead einmalig zur Freigabe vor (bei Preisänderung erneut); erst nach Freigabe versenden Action-Nodes die datenbefüllte E-Mail und schreiben die Aktivität ins CRM, damit der Vertrieb den Kommunikationsverlauf nachverfolgen kann.
 **Beispiel-Prompt (DE, PTCF):**
-> "Du bist Retention-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für Garantie-Ablauf-Erinnerungen. Kontext: Tägliche CRM-Abfrage nach 60/30/7-Tage-Ablauf, drei Eskalationsstufen mit unterschiedlichem Tonfall und CTA, personalisierte KI-E-Mails. Format: Scheduled-Trigger, CRM-Abfrage-Node, Logic-Eskalation, AI-Node je Stufe, E-Mail-Action + CRM-Log."
-**Erwartetes Artefakt:** Ein Garantie-Erinnerungs-Workflow-Entwurf mit dreistufiger Eskalationslogik, stufenspezifischen AI-Prompt-Varianten und CRM-Aktivitätsprotokollierung.
+> "Du bist Retention-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für Garantie-Ablauf-Erinnerungen. Kontext: Tägliche CRM-Abfrage nach 60/30/7-Tage-Ablauf, drei Eskalationsstufen mit unterschiedlichem Tonfall und CTA, HITL-Template- und Preis-Freigabe vor Versand. Format: Scheduled-Trigger, CRM-Abfrage-Node, Logic-Eskalation, AI-Node je Stufe, HITL-Gate, E-Mail-Action + CRM-Log."
+**Erwartetes Artefakt:** Ein Garantie-Erinnerungs-Workflow-Entwurf mit dreistufiger Eskalationslogik, stufenspezifischen AI-Prompt-Varianten, HITL-Preis-Freigabe und CRM-Aktivitätsprotokollierung.
 **Fallstricke (≥2 spezifisch):**
 - Derselbe Kunde erhält an einem Tag mehrere Erinnerungen, weil er mehrere ablaufende Produkte hat → einen Deduplizierungs-Node einbauen, der pro Kunde nur eine E-Mail pro Tag zulässt und mehrere Produkte bündelt.
-- Die Verlängerungspreise im AI-Node-Wissensordner sind veraltet, sodass die E-Mail falsche Preise kommuniziert → Preisliste im Wissensordner als „Prüf-alle-30-Tage"-Dokument kennzeichnen und in den monatlichen Wissensordner-Audit (→ S-WF-045) aufnehmen.
+- Die Verlängerungspreise im AI-Node-Wissensordner sind veraltet, sodass die E-Mail falsche Preise kommuniziert → Preisliste im Wissensordner als „Prüf-alle-30-Tage"-Dokument kennzeichnen, in den monatlichen Wissensordner-Audit (→ S-WF-045) aufnehmen und Preisänderungen über den HITL-Node erneut freigeben lassen, bevor der erste Versand mit neuem Preis erfolgt.
 **Anschluss-Szenario:** S-WF-054
 
 ### S-WF-054 Internes Schulungsmaterial-Verteilungs-Workflow (Integration Trigger)

@@ -854,7 +854,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-041 Saisonaler Kampagnen-Agent: Black-Friday- und Weihnachtskampagnen systematisch vorbereiten
 
-**Wann nutzen (Trigger):** Es ist Anfang Oktober, und die Marketing-Direktorin stellt fest, dass die Agentur jedes Jahr dieselben generischen Briefings für Black Friday und Weihnachten bekommt — ohne konsistente Tonalität, ohne Vorjahres-Lernkurve, mit vier überflüssigen Review-Runden. (Quelle: S-046, julia-lens A-38)
+**Wann nutzen (Trigger):** Es ist Anfang Oktober, und die Marketing-Direktorin stellt fest, dass die Agentur jedes Jahr dieselben generischen Briefings für Black Friday und Weihnachten bekommt — ohne konsistente Tonalität, ohne Vorjahres-Lernkurve, mit vier überflüssigen Review-Runden. (Quelle: sources/10 S-046)
 **Strategisches Ziel:** Einen saisonalen Kampagnen-Agenten konfigurieren, der ein dediziertes Wissensordner-Set (Vorjahres-Ergebnisse, saisonale Tonalitätsvorgaben, Kanal-Checklisten) nutzt und Briefings ab Anfang Oktober deterministisch produziert.
 **Hands-on Ergebnis:** Ein Saisonkampagnen-Agent mit Wissensordner-Set (Vorjahres-Briefs + Saisonkalender + Tonalitätsvorgaben) und 3 Konversations-Startern je Saison.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Saisonkampagnen-Set) + Konversations-Starter + Form-Input (Kampagnenparameter)
@@ -892,7 +892,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-043 Mehrsprachiger Agent-Stack: Konfiguration für DE/EN/FR ohne Qualitätsverlust
 
-**Wann nutzen (Trigger):** Das Marketing-Team bespielt drei Märkte (DACH, UK/US, Frankreich), nutzt aber denselben deutschen Agenten für alle drei Sprachen — die englischen und französischen Outputs sind off-brand, weil der System-Prompt nur deutsche Tonalitätsvorgaben enthält. (Quelle: S-009, julia-lens A-46)
+**Wann nutzen (Trigger):** Das Marketing-Team bespielt drei Märkte (DACH, UK/US, Frankreich), nutzt aber denselben deutschen Agenten für alle drei Sprachen — die englischen und französischen Outputs sind off-brand, weil der System-Prompt nur deutsche Tonalitätsvorgaben enthält. (Quelle: sources/10 S-012, julia-lens A-46)
 **Strategisches Ziel:** Drei dedizierte Sprach-Instanzen desselben Basisagenten konfigurieren (DE, EN, FR), die jeweils einen sprachspezifischen Wissensordner nutzen und als zusammenhängende Subagenten-Familie funktionieren.
 **Hands-on Ergebnis:** Drei konfigurierte Sprach-Agenten (DE/EN/FR) mit eigenem System-Prompt und Wissensordner sowie einem Orchestrator-Agenten, der Anfragen an die richtige Sprachinstanz delegiert.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent (×4) + Subagents-Fähigkeit + Wissensordner (je Sprache) + Konversations-Starter
@@ -912,7 +912,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-044 Bildunterschriften-Agent: Automatische Caption-Generierung für Social-Media-Assets
 
-**Wann nutzen (Trigger):** Das Social-Media-Team produziert täglich 5–10 Bilder für LinkedIn, Instagram und die Website, verbringt aber im Schnitt 20 Minuten pro Bild mit der Formulierung von plattformgerechten Bildunterschriften — ein skalierbarer Agent fehlt. (Quelle: S-047, S-293 Vision-Agent)
+**Wann nutzen (Trigger):** Das Social-Media-Team produziert täglich 5–10 Bilder für LinkedIn, Instagram und die Website, verbringt aber im Schnitt 20 Minuten pro Bild mit der Formulierung von plattformgerechten Bildunterschriften — ein skalierbarer Agent fehlt. (Quelle: sources/10 S-047, sources/10 S-025)
 **Strategisches Ziel:** Einen Caption-Agenten konfigurieren, der ein hochgeladenes Bild via Vision analysiert, den Kampagnenkontext aus dem Form-Input aufnimmt und plattformspezifische Captions (LinkedIn, Instagram, Alt-Text) in einem Durchgang liefert.
 **Hands-on Ergebnis:** Ein Caption-Agent mit Vision-Fähigkeit, Form-Input (Plattform, Ton, Kampagnenkontext) und drei Ausgabe-Blöcken pro Bild (LinkedIn-Caption, Instagram-Caption, Alt-Text).
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Image Generation (Vision-Analyse) + Form-Input + Wissensordner (Plattform-Richtlinien)
@@ -1232,4 +1232,136 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 **Fallstricke (≥2 spezifisch):**
 - Angebots-PDFs mit eingebetteten Grafiken (keine selektierbaren Texte) direkt hochladen → der Agent kann aus grafik-basierten PDFs keine strukturierten Daten extrahieren; Angebote zuerst als Text kopieren oder ein OCR-Tool nutzen, bevor sie in den Agenten eingegeben werden.
 - Agent-Output ohne kaufmännische Prüfung direkt als CFO-Entscheidungsgrundlage verwenden → KI kann Fußnoten, Anlagen und juristische Klauseln übersehen; die Tabelle ist ein Vorbereitungs-Tool, die finale Entscheidung liegt beim kaufmännischen Team.
+**Anschluss-Szenario:** S-AK-061
+
+### S-AK-061 Agent-Template-Marketplace: Geprüfte Vorlagen aus internem Katalog ausrollen
+
+**Wann nutzen (Trigger):** Jedes Team baut seine Agenten von Grund auf neu — der SEO-Agent von Team A und der von Team B unterscheiden sich grundlos, und niemand kann auf bewährte, freigegebene Vorlagen zugreifen, weil kein interner Template-Katalog existiert. (Quelle: 12 Q43)
+**Strategisches Ziel:** Einen kuratierten Template-Marketplace im Wissensordner aufbauen, der geprüfte Agent-Vorlagen (System-Prompt + empfohlene Capabilities + Wissensordner-Struktur) als wiederverwendbare Bausteine bereitstellt.
+**Hands-on Ergebnis:** Ein Template-Katalog (Markdown im Wissensordner) mit 5 freigegebenen Agent-Vorlagen, jeweils mit Einsatz-Beschreibung, Capability-Liste und Duplikations-Anleitung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Duplikation) + Wissensordner (Template-Katalog) + Verified-Status
+**Vorgehen (4 Schritte):**
+1. Identifiziere die 5 meistgenutzten Agent-Typen (Brand-Guardian, Briefing, SEO, Social, FAQ); exportiere für jeden den System-Prompt als Markdown.
+2. Erstelle pro Template eine Katalog-Datei "Template-[Typ].md": Zweck (1 Satz), empfohlene Capabilities, benötigte Wissensordner-Struktur, kompletter System-Prompt-Text zum Kopieren.
+3. Markiere die produktiven Referenz-Agenten als Verified; dokumentiere im Katalog: "Statt neu zu bauen, diesen Verified-Agenten duplizieren und anpassen."
+4. Teste den Ausroll-Prozess: lass ein Teammitglied einen Agenten ausschließlich anhand des Katalogs aufsetzen; messe ob es ohne Rückfragen gelingt.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Template-Katalog-Kurator [Persona]. Erstelle einen Katalog-Eintrag für unsere Brand-Guardian-Agent-Vorlage [Task]. Kontext: Der Agent prüft Texte gegen Brand Guidelines, nutzt nur Wissensordner-Suche, keine Web Search [Context]. Format: Markdown-Block mit Sektionen Zweck, Capabilities, Wissensordner-Setup, System-Prompt (vollständig), Duplikations-Hinweis [Format]."
+**Erwartetes Artefakt:** Ein Template-Katalog mit 5 freigegebenen Agent-Vorlagen und einer Duplikations-Anleitung pro Vorlage.
+**Fallstricke (≥2 spezifisch):**
+- Templates als statisches PDF ablegen statt als kopierbaren Markdown-Text → Nutzerinnen können den System-Prompt nicht direkt übernehmen; immer reinen, selektierbaren Text bereitstellen.
+- Template-Katalog nie nachpflegen → wenn der Referenz-Agent verbessert wird, aber die Katalog-Vorlage alt bleibt, divergieren neue Agenten; Katalog und Verified-Agent müssen synchron gehalten werden (RACI aus S-AK-005).
+**Anschluss-Szenario:** S-AK-062
+
+### S-AK-062 Agent-Inheritance-Pattern: Gemeinsamer Basis-Prompt für alle Marketing-Agenten
+
+**Wann nutzen (Trigger):** Eine neue DSGVO-Regel verlangt, dass alle Agenten einen identischen Datenschutz-Hinweis ausgeben — aber das Team muss die Anweisung manuell in 12 verschiedene System-Prompts kopieren, was fehleranfällig ist und bei jeder Änderung wiederholt werden muss. (Quelle: 12 Q31)
+**Strategisches Ziel:** Ein Inheritance-Pattern etablieren, bei dem ein gemeinsamer Basis-Prompt-Block (Compliance, Tonalitäts-Grundregeln, Ablehnungs-Verhalten) zentral gepflegt und in jeden agentenspezifischen System-Prompt eingesetzt wird.
+**Hands-on Ergebnis:** Ein "Basis-Prompt.md" im Wissensordner mit dem gemeinsamen Block plus eine dokumentierte Konvention, wie agentenspezifische Prompts darauf aufbauen.
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (Basis-Prompt-Bibliothek) + Agent Builder (System-Prompt-Komposition)
+**Vorgehen (4 Schritte):**
+1. Extrahiere aus den bestehenden 12 Agenten alle Anweisungen, die identisch wiederkehren (Compliance-Hinweis, "antworte auf Deutsch", Ablehnungs-Standardsatz); konsolidiere sie zu einem Basis-Block.
+2. Speichere den Basis-Block als "Basis-Prompt.md"; markiere klar mit Kommentar "## BASIS-BLOCK v1.0 — bei Änderung alle Agenten aktualisieren".
+3. Definiere die Prompt-Struktur jedes Agenten: oben der Basis-Block (kopiert), darunter eine klar abgegrenzte agentenspezifische Sektion ("## SPEZIFISCH").
+4. Teste die Konsistenz: prüfe ob alle 12 Agenten denselben Compliance-Hinweis ausgeben; bei der nächsten Basis-Block-Änderung dokumentiere den Roll-Through-Aufwand.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Prompt-Architektur-Berater [Persona]. Erstelle einen wiederverwendbaren Basis-Prompt-Block für alle unsere Marketing-Agenten [Task]. Kontext: Gemeinsame Elemente sind DSGVO-Hinweis bei personenbezogenen Daten, deutsche Sprache, Ablehnung bei Out-of-Scope [Context]. Format: Markdown-Block mit Versionskennung und klarer Abgrenzung zum agentenspezifischen Teil [Format]."
+**Erwartetes Artefakt:** Ein versionierter Basis-Prompt-Block im Wissensordner und eine Komposition-Konvention (Basis-Block + spezifischer Block) für alle Agenten.
+**Fallstricke (≥2 spezifisch):**
+- Langdock kennt keine echte Prompt-Vererbung → der Basis-Block muss manuell in jeden Agenten kopiert werden; ohne ein Änderungsprotokoll (welcher Agent hat welche Basis-Version) geht die Synchronität verloren; Version im Block-Kommentar ist Pflicht.
+- Basis-Block zu groß machen (>5.000 Zeichen) → die 40.000-Zeichen-Grenze pro Agent wird knapp, wenn der spezifische Teil komplex ist; den Basis-Block strikt auf wirklich universelle Regeln beschränken.
+**Anschluss-Szenario:** S-AK-063
+
+### S-AK-063 Multi-Tenant-Isolation: Agenten pro Marke/Tochtergesellschaft sauber trennen
+
+**Wann nutzen (Trigger):** Das Unternehmen führt drei Marken im selben Workspace — und ein Brand-Agent der Marke A hat versehentlich Zugriff auf den Wissensordner der Marke B, wodurch in einem Output Marke-B-Tonalität in einen Marke-A-Text geriet. (Quelle: 12 Q36)
+**Strategisches Ziel:** Eine saubere Mandanten-Isolation einrichten, bei der jede Marke/Tochtergesellschaft eigene Agenten, Wissensordner und Sharing-Gruppen hat, die strikt voneinander getrennt sind.
+**Hands-on Ergebnis:** Ein Isolations-Schema (Markdown) mit Gruppen-, Wissensordner- und Agenten-Namenskonvention pro Mandant plus eine Cross-Tenant-Leakage-Testreihe.
+**Eingesetzte Langdock-Fähigkeit(en):** Sharing-Modell (Group-Ebene) + Wissensordner (mandantengetrennt) + Agent Builder (Namenskonvention)
+**Vorgehen (4 Schritte):**
+1. Definiere eine Namenskonvention mit Mandanten-Präfix: "[MARKE-A] Brand-Guardian", "[MARKE-B] Briefing" usw.; benenne alle Wissensordner analog.
+2. Erstelle pro Marke eine eigene Sharing-Gruppe; binde jeden Marken-Agenten ausschließlich an den marken-eigenen Wissensordner; setze den Sharing-Status auf Group, nicht Workspace.
+3. Prüfe für jeden Agenten die Wissensordner-Anbindungen: kein Marken-Agent darf auf einen fremden Marken-Ordner zeigen; dokumentiere die Zuordnung in einer Mandanten-Matrix.
+4. Teste Cross-Tenant-Leakage: stelle dem Marke-A-Agenten eine Frage, die nur mit Marke-B-Wissen beantwortbar wäre; prüfe ob er korrekt "keine Information" antwortet statt zu halluzinieren.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Multi-Brand-Governance-Berater [Persona]. Erstelle ein Isolations-Schema für drei Marken in einem Langdock-Workspace [Task]. Kontext: Marken A, B, C haben eigene Tonalitäten und dürfen keine Wissensordner teilen; ein Workspace, getrennte Gruppen [Context]. Format: Tabelle mit Mandant, Gruppen-Name, Wissensordner-Präfix, Agenten-Präfix, Sharing-Status [Format]."
+**Erwartetes Artefakt:** Ein Mandanten-Isolations-Schema mit Namenskonvention pro Marke und ein Cross-Tenant-Leakage-Testprotokoll.
+**Fallstricke (≥2 spezifisch):**
+- Agenten auf Workspace-Ebene statt Group-Ebene teilen → alle Mitarbeiter aller Marken sehen alle Agenten; bei mehreren Marken im Workspace ist Group-Sharing zwingend, nicht optional.
+- Cross-Tenant-Isolation nur über den System-Prompt absichern → eine Prompt-Anweisung "nutze nur Marke-A-Daten" verhindert keinen technischen Zugriff; die Isolation muss über getrennte Wissensordner-Anbindungen erfolgen, nicht über Prompt-Wording.
+**Anschluss-Szenario:** S-AK-064
+
+### S-AK-064 Agent-Secrets-Management: Integrations-Zugangsdaten sicher verwalten
+
+**Wann nutzen (Trigger):** Ein duplizierter Agent verlor nach der Kopie alle Integrations-Verbindungen, und ein Teammitglied versuchte, einen API-Schlüssel direkt in den System-Prompt zu schreiben — ein gefährlicher Workaround, der den Schlüssel für alle Agent-Nutzer sichtbar macht. (Quelle: 12 Q46)
+**Strategisches Ziel:** Ein sicheres Secrets-Management-Verfahren etablieren, das festlegt, wie Integrations-Zugangsdaten (OAuth, API-Keys) verwaltet werden und warum sie niemals in System-Prompts oder Wissensordner gehören.
+**Hands-on Ergebnis:** Eine Secrets-Management-Richtlinie (1-Seiter im Wissensordner) mit Do's und Don'ts plus eine Audit-Checkliste, die System-Prompts auf versehentlich eingebettete Secrets prüft.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Integration-Autorisierung) + OAuth-Verbindungen + Wissensordner (Richtlinien-Dokumentation)
+**Vorgehen (3 Schritte):**
+1. Dokumentiere das Plattform-Verhalten: Integrationen werden über OAuth-Autorisierung am Agenten verbunden, nicht über manuell eingegebene Keys im Prompt; bei Duplikation werden OAuth-Verbindungen bewusst gelöscht (Sicherheits-Feature, kein Bug).
+2. Erstelle eine Secrets-Audit-Checkliste: durchsuche jeden System-Prompt nach Mustern, die wie Keys aussehen (sk-, Bearer, lange Zeichenketten); markiere Fundstellen für sofortige Entfernung.
+3. Lege eine Richtlinie fest: API-Keys ausschließlich serverseitig (bei API-Deployment, S-AK-047); für UI-Agenten ausschließlich OAuth-Autorisierung; nie Secrets in Prompt, Wissensordner oder Konversations-Starter.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Security-Governance-Berater [Persona]. Erstelle eine Secrets-Management-Richtlinie für unsere Langdock-Agenten [Task]. Kontext: Das Team nutzt HubSpot-, Slack- und GA4-Integrationen; einige Mitarbeitende kennen den Unterschied zwischen OAuth und API-Key nicht [Context]. Format: 1-Seiter mit 3 Do's, 3 Don'ts und einer Audit-Checkliste zum Prüfen bestehender Agenten [Format]."
+**Erwartetes Artefakt:** Eine Secrets-Management-Richtlinie und eine Audit-Checkliste, die System-Prompts auf eingebettete Zugangsdaten prüft.
+**Fallstricke (≥2 spezifisch):**
+- Einen API-Key in einen System-Prompt oder Konversations-Starter schreiben → jeder Agent-Nutzer kann den Schlüssel durch geschicktes Prompting auslesen; Keys gehören ausschließlich in serverseitige Umgebungsvariablen.
+- Nach einem Owner-Transfer (S-AK-007) annehmen, dass die OAuth-Verbindungen mitwandern → individuelle Integrationen sind an die autorisierende Person gebunden; der neue Owner muss die Integrationen neu autorisieren.
+**Anschluss-Szenario:** S-AK-065
+
+### S-AK-065 Agent-Rate-Limit-Konfiguration: API-Aufrufe gegen Plattform-Limits absichern
+
+**Wann nutzen (Trigger):** Ein über die API angebundener Content-Agent verarbeitet einen Massen-Import und stößt gegen das 500-Anfragen-pro-Minute-Limit — die Hälfte der Aufrufe schlägt fehl, und niemand hat ein Queue- oder Backoff-Verhalten konfiguriert. (Quelle: julia-lens A-36)
+**Strategisches Ziel:** Ein Rate-Limit-bewusstes Aufruf-Design für API-angebundene Agenten etablieren, das Massen-Lasten durch Batching, Queueing und exponentielles Backoff zuverlässig innerhalb der Plattform-Limits hält.
+**Hands-on Ergebnis:** Ein Rate-Limit-Handling-Leitfaden (Markdown) mit konkretem Batch-Größen-Vorschlag, Backoff-Strategie und einem Monitoring-Hinweis für das Entwicklungsteam.
+**Eingesetzte Langdock-Fähigkeit(en):** Langdock API (Rate Limits) + Custom Agent (API-Deployment) + Wissensordner (Betriebsdokumentation)
+**Vorgehen (4 Schritte):**
+1. Dokumentiere das geltende Limit (500 Anfragen/Minute pro Workspace bei API-Nutzung); berechne aus dem Massen-Volumen die nötige Verarbeitungsdauer (z.B. 5.000 Items → mind. 10 Minuten bei voller Auslastung).
+2. Definiere eine Batch-Strategie: max. 8 Anfragen/Sekunde mit Puffer; bei HTTP-429-Antwort exponentielles Backoff (1s, 2s, 4s) statt sofortiger Wiederholung.
+3. Empfehle für planbare Massen-Jobs den Workflow-Builder mit Schedule-Trigger statt synchroner API-Schleife — Workflows verteilen die Last automatisch und sind robuster.
+4. Teste mit einem 1.000-Item-Job; protokolliere, ob 429-Fehler auftreten und ob das Backoff greift.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist API-Betriebs-Berater [Persona]. Erstelle einen Rate-Limit-Handling-Leitfaden für unseren API-angebundenen Content-Agenten [Task]. Kontext: Workspace-Limit 500 Anfragen/Minute, regelmäßige Massen-Imports von bis zu 5.000 Items, Entwicklungsteam ohne Langdock-Erfahrung [Context]. Format: Schritt-für-Schritt-Leitfaden mit Batch-Größe, Backoff-Strategie und Monitoring-Empfehlung, max. 5 Schritte [Format]."
+**Erwartetes Artefakt:** Ein Rate-Limit-Handling-Leitfaden mit Batch-Größe, Backoff-Strategie und einer Workflow-vs-API-Entscheidungsregel.
+**Fallstricke (≥2 spezifisch):**
+- Bei einem 429-Fehler sofort ohne Verzögerung erneut anfragen → das verschärft die Überlastung und verlängert die Sperre; exponentielles Backoff ist zwingend, kein sofortiger Retry.
+- Massen-Jobs über synchrone API-Schleifen statt über den Workflow-Builder fahren → bei großen Volumina ist die manuelle Rate-Steuerung fehleranfällig; planbare Bulk-Lasten gehören in einen Schedule-getriggerten Workflow.
+**Anschluss-Szenario:** S-AK-066
+
+### S-AK-066 Agent-Fallback-Modell-Konfiguration: Robustheit bei Modell-Ausfall oder -Limit
+
+**Wann nutzen (Trigger):** Der Strategie-Agent läuft auf Opus 4.8, aber bei Erreichen des Fair-Usage-Limits oder einem Provider-Ausfall fällt er komplett aus — es gibt keine definierte Rückfall-Strategie auf ein günstigeres oder anderes Modell. (Quelle: julia-lens A-30)
+**Strategisches Ziel:** Eine Fallback-Modell-Strategie pro Agent definieren, die bei Limit-Erreichen oder Provider-Ausfall auf ein alternatives Modell ausweicht, ohne dass die Nutzerin den Dienst verliert.
+**Hands-on Ergebnis:** Eine Fallback-Matrix (Markdown) pro Agent-Typ mit Primär-Modell, Fallback-Modell und der akzeptierten Qualitätsdifferenz.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Modell-Auswahl) + Auto-Mode + Wissensordner (Fallback-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Klassifiziere jeden Agenten nach Qualitätssensibilität: kritisch (Strategie, Brand-Voice → Opus/Sonnet) vs. routine (Klassifikation, Übersetzung → günstigeres Modell tolerierbar).
+2. Definiere pro Agent ein Fallback-Modell: für kritische Agenten ein gleichwertiges Modell eines anderen Providers (Cross-Provider-Resilienz); für Routine-Agenten ein günstigeres Modell desselben Providers.
+3. Dokumentiere für jeden Agenten in der Beschreibung: "Primär: [Modell], Fallback: [Modell], erwartete Qualitätsdifferenz: [gering/spürbar]"; bei spürbarer Differenz Hinweis an Nutzerinnen.
+4. Teste den Fallback: stelle den Agenten testweise auf das Fallback-Modell um und führe das Canary-Set (S-AK-004) aus; dokumentiere die Qualitätsdifferenz.
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Modell-Resilienz-Berater [Persona]. Erstelle eine Fallback-Modell-Matrix für unsere 6 Marketing-Agenten [Task]. Kontext: Brand-Voice und Strategie sind qualitätskritisch; Übersetzung und Klassifikation sind routinemäßig; wir wollen bei Modell-Ausfall handlungsfähig bleiben [Context]. Format: Tabelle mit Agent, Primär-Modell, Fallback-Modell, Qualitätsdifferenz, Nutzer-Hinweis nötig (Ja/Nein) [Format]."
+**Erwartetes Artefakt:** Eine Fallback-Modell-Matrix pro Agent mit dokumentierter Qualitätsdifferenz und einem Canary-Test-Vergleich.
+**Fallstricke (≥2 spezifisch):**
+- Auto-Mode als Fallback für qualitätskritische Agenten verwenden → Auto-Mode kann auf ein schwächeres Modell routen und Brand-Voice-Qualität unbemerkt senken; kritische Agenten brauchen ein explizit gewähltes Fallback-Modell, kein automatisches Routing.
+- Fallback-Modell ohne Canary-Test einsetzen → die Qualitätsdifferenz zwischen Primär- und Fallback-Modell ist erst messbar, wenn man sie gegen die Baseline prüft; ohne Test riskiert man stillen Qualitätsverlust im Notfall.
+**Anschluss-Szenario:** S-AK-067
+
+### S-AK-067 Agent-Memory-Konfiguration: Sitzungsübergreifendes Gedächtnis bewusst steuern
+
+**Wann nutzen (Trigger):** Der Ghostwriter-Agent merkt sich versehentlich Kampagnen-Details aus einer alten Sitzung und mischt sie in neue Texte — gleichzeitig vergisst ein anderer Agent wichtige Stilvorgaben zwischen Sitzungen, weil Memory dort fälschlich deaktiviert ist. (Quelle: 12 Q85)
+**Strategisches Ziel:** Für jeden Agenten bewusst entscheiden, ob die Memory-Fähigkeit aktiviert sein soll, und die Entscheidung anhand von Datensparsamkeit und Anwendungsfall begründen.
+**Hands-on Ergebnis:** Eine Memory-Konfigurations-Matrix (Markdown) pro Agent mit Begründung (aktiviert/deaktiviert) und einem DSGVO-Hinweis zur Datenminimierung.
+**Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Memory-Capability) + Wissensordner (Konfigurations-Dokumentation)
+**Vorgehen (4 Schritte):**
+1. Liste alle Agenten auf; klassifiziere nach Memory-Nutzen: sinnvoll (CEO-Ghostwriter, der Stil über Sitzungen lernt) vs. schädlich (Briefing-Agent, der frühere Kampagnen nicht vermischen darf).
+2. Aktiviere Memory nur dort, wo sitzungsübergreifende Konsistenz den Anwendungsfall verbessert; deaktiviere es bei Agenten, die jede Anfrage isoliert behandeln sollen.
+3. Ergänze für Memory-Agenten einen DSGVO-Hinweis: Memory speichert Inhalte sitzungsübergreifend; bei personenbezogenen Daten ist die Speicherung nach dem Grundsatz der Datenminimierung (DSGVO Art. 5 Abs. 1 c) zu vermeiden.
+4. Teste den Memory-Effekt: führe zwei Sitzungen hintereinander; prüfe ob der Agent Stilvorgaben behält (gewollt) bzw. keine alten Kampagnen-Daten einmischt (ungewollt).
+**Beispiel-Prompt (DE, PTCF):**
+> "Du bist Memory-Konfigurations-Berater [Persona]. Erstelle eine Memory-Entscheidungs-Matrix für unsere 8 Marketing-Agenten [Task]. Kontext: Einige profitieren von sitzungsübergreifendem Stil-Gedächtnis, andere müssen jede Anfrage isoliert behandeln; DSGVO-Datensparsamkeit ist eine Vorgabe [Context]. Format: Tabelle mit Agent, Memory (an/aus), Begründung, DSGVO-Relevanz [Format]."
+**Erwartetes Artefakt:** Eine Memory-Konfigurations-Matrix pro Agent mit Begründung und DSGVO-Datenminimierungs-Hinweis.
+**Fallstricke (≥2 spezifisch):**
+- Memory pauschal für alle Agenten aktivieren → Agenten vermischen Kontext aus unzusammenhängenden Sitzungen und produzieren irritierende Outputs; Memory ist die Ausnahme, nicht der Standard.
+- Memory bei Agenten mit personenbezogenen Daten aktivieren ohne Datenschutz-Prüfung → sitzungsübergreifend gespeicherte PII verletzt die Datenminimierung; Datenschutzbeauftragten vor Aktivierung einbeziehen.
 **Anschluss-Szenario:** S-AK-001
