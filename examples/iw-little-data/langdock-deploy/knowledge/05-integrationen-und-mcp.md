@@ -1630,12 +1630,15 @@ Vorgehen:
 1. Du lässt Little Data das relevante Jira-Marketing-Projekt/Board bestimmen und den Read-Scope auf dieses Projekt begrenzen — kein workspace-weiter Issue-Zugriff.
 2. Du lässt die Governance-Regel festschreiben: nur Issue-Read und JQL-Search; Status-Transitions, Zuweisungen und Updates verbleiben bei den Ticket-Ownern.
 3. Du lässt einen Sprint-Übersichts-Prompt-Rahmen entwerfen, der offene, blockierte und überfällige Tickets je Sprint mit Assignee und Fälligkeit gruppiert.
-Prompt:
-> "Du bist mein Marketing-Ops-Integrations-Berater (Persona). Erstelle ein Jira-Read-Briefing für einen Sprint-Transparenz-Agenten (Aufgabe). Kontext: ein Marketing-Jira-Projekt mit Sprints; Agent fasst offene/blockierte Tickets zusammen, ändert nichts (Kontext). Format: Briefing mit Projekt-Freigabe, Read-Permission, gesperrte Operationen, Sprint-Übersichts-Prompt-Rahmen (Format)."
+Vorlage: Jira-Marketing-Board-Read-Briefing (Sprint-Transparenz):
+1. Projekt-Freigabe — nur das Marketing-Projekt/Board; kein workspace-weiter Issue-Zugriff.
+2. Read-Permission — Issue-Read + JQL-Search; Status-Transitions/Zuweisungen/Updates bleiben bei den Ownern.
+3. Sprint-Uebersichts-Prompt-Rahmen — offene/blockierte/ueberfaellige Tickets je Sprint mit Assignee + Faelligkeit.
 Artefakt: Ein Jira-Read-Briefing mit Projekt-Freigabe, Read-Permission und Sprint-Übersichts-Prompt-Rahmen.
 Fallstricke:
 - Workspace-weiten Jira-Zugriff statt projektgebundenen Read-Scope erteilen → Andere Jira-Projekte (Engineering, HR) enthalten irrelevante oder sensible Tickets; auf das Marketing-Projekt begrenzen.
 - Transition-/Update-Rechte "für spätere Automatisierung" mitbeantragen → Scope-Creep; der Agent berichtet nur, Status-Änderungen bleiben bei den Ownern. Schreibende Jira-Aktionen brauchen ein separates HITL-Konzept.
+Empfehlung: Den Read-Scope projektgebunden halten, nicht workspace-weit — andere Jira-Projekte (Engineering/HR) enthalten irrelevante oder sensible Tickets. Keine Transition-/Update-Rechte 'fuer spaetere Automatisierung' mitbeantragen (Scope-Creep); schreibende Jira-Aktionen brauchen ein separates HITL-Konzept.
 Anschluss: S-IM-074
 
 ### S-IM-074 Google-Sheets-Reporting-Bridge für flexible Ad-hoc-Auswertungen einrichten
@@ -1649,12 +1652,16 @@ Vorgehen:
 2. Du lässt eine Datenqualitäts-Regel formulieren: Sheets brauchen klare Header-Zeilen und konsistente Datentypen, damit der Agent Spalten korrekt interpretiert.
 3. Du lässt einen Ad-hoc-Auswertungs-Prompt-Rahmen entwerfen, der jede abgeleitete Zahl mit Sheet-Name, Range und Stand-Datum belegt.
 4. Du übergibst das Konzept an die IT; die Verbindung wird an einen Service-Account gebunden — Little Data berät, konfiguriert nicht.
-Prompt:
-> "Du bist mein Reporting-Bridge-Berater (Persona). Erstelle ein Google-Sheets-Read-Konzept für Ad-hoc-Marketing-Auswertungen (Aufgabe). Kontext: drei Reporting-Sheets mit KPI-Tabellen; nur Lesen; Quellenbindung Pflicht; DSGVO-Hosting (Kontext). Format: Konzept mit Read-Scope, Sheet-/Range-Freigabe, Datenqualitäts-Regel, Ad-hoc-Auswertungs-Prompt-Rahmen (Format)."
+Vorlage: Google-Sheets-Read-Konzept (Ad-hoc-Auswertungen):
+1. Scope — spreadsheets.readonly; Range-/Sheet-Freigabeliste; kein Drive-Vollzugriff.
+2. Datenqualitaets-Regel — klare Header-Zeilen + konsistente Datentypen, damit Spalten korrekt interpretiert werden.
+3. Ad-hoc-Auswertungs-Prompt-Rahmen — jede abgeleitete Zahl mit Sheet-Name, Range, Stand-Datum belegen.
+4. Service-Account als Verbindungsinhaber.
 Artefakt: Ein Google-Sheets-Read-Konzept mit Scope, Range-Freigabe, Datenqualitäts-Regel und Auswertungs-Prompt-Rahmen.
 Fallstricke:
 - Write-Scope mitbeantragen, um Ergebnisse "zurückzuschreiben" → Ein Agent, der Zellen überschreibt, kann manuelle Formeln zerstören; nur `spreadsheets.readonly` anfordern, Ergebnisse separat ablegen.
 - Sheets ohne saubere Header-Struktur einlesen → Bei verbundenen Zellen oder fehlenden Headern interpretiert der Agent Spalten falsch; eine Datenqualitäts-Mindestanforderung vorab definieren.
+Empfehlung: Nur spreadsheets.readonly anfordern und Ergebnisse separat ablegen — ein Agent mit Write-Scope kann manuelle Formeln in den Reporting-Sheets zerstoeren. Eine Datenqualitaets-Mindestanforderung (saubere Header, keine verbundenen Zellen) vorab definieren, sonst interpretiert der Agent Spalten falsch.
 Anschluss: S-IM-075
 
 ### S-IM-075 Stripe-Revenue-Kontext read-only für Kampagnen-ROI-Bezug anbinden
@@ -1668,12 +1675,15 @@ Vorgehen:
 2. Du lässt eine strikte Governance-Regel festschreiben: keine Kartendaten, keine vollständigen Kunden-PII; nur aggregierte oder anonymisierte Revenue-Kennzahlen in den Agent-Kontext.
 3. Du lässt einen ROI-Bezug-Prompt-Rahmen entwerfen, der Marketing-Spend gegen aggregierten Umsatz stellt und jede Zahl mit Quelle und Zeitraum belegt.
 4. Du übergibst das Konzept an Finance, IT und Datenschutzbeauftragten; die Schlüsselvergabe liegt bei der IT.
-Prompt:
-> "Du bist mein Revenue-Kontext-Integrations-Berater (Persona). Erstelle ein Stripe-Read-Konzept für einen Marketing-ROI-Bezug (Aufgabe). Kontext: nur aggregierte Umsatzdaten (MRR, Charges-Summen); keine Kartendaten, keine Kunden-PII; Restricted-Key; DSGVO-/PCI-Pflicht (Kontext). Format: Konzept mit Abschnitten Key-Typ und Read-Scope, PII-/PCI-Governance-Regel, ROI-Bezug-Prompt-Rahmen (Format)."
+Vorlage: Stripe-Read-Konzept (Revenue-ROI-Kontext):
+1. Key-Typ + Scope — Restricted-Key mit Read auf aggregierte Umsatzdaten (MRR, Charges-Summen); kein Secret-Key, kein Write.
+2. PII-/PCI-Governance — keine Kartendaten, keine vollstaendigen Kunden-PII; nur aggregierte/anonymisierte Revenue-Kennzahlen.
+3. ROI-Bezug-Prompt-Rahmen — Marketing-Spend gegen aggregierten Umsatz, jede Zahl mit Quelle + Zeitraum.
 Artefakt: Ein Stripe-Read-Konzept mit Restricted-Key-Scope, PII-/PCI-Governance und ROI-Bezug-Prompt-Rahmen.
 Fallstricke:
 - Stripe-Secret-Key statt eines Restricted-Read-Keys hinterlegen → Der Secret-Key erlaubt Schreib- und Refund-Operationen; ausschließlich einen Restricted-Key mit minimalen Read-Berechtigungen verwenden.
 - Einzeltransaktionen mit Kunden-PII in den Agent-Kontext laden → Zahlungsdaten unterliegen PCI-DSS und DSGVO; ausschließlich aggregierte Kennzahlen übergeben, niemals Kartendaten.
+Empfehlung: Ausschliesslich einen Stripe-Restricted-Read-Key mit minimalen Berechtigungen verwenden, nie den Secret-Key, der Schreib- und Refund-Operationen erlaubt. Niemals Einzeltransaktionen mit Kunden-PII oder Kartendaten in den Agent-Kontext laden (PCI-DSS/DSGVO); nur aggregierte Kennzahlen uebergeben.
 Anschluss: S-IM-076
 
 ### S-IM-076 Zapier- oder Make-Bridge-Anbindung advisory bewerten
@@ -1686,12 +1696,15 @@ Vorgehen:
 1. Du lässt Little Data je geplantem Tool prüfen, ob ein MCP-Server existiert — wenn ja, MCP bevorzugen; Zapier/Make erst als Fallback ohne MCP-Option.
 2. Du lässt die Bewertungsdimensionen strukturieren: DSGVO-Server-Standort (EU-Region wählbar?), Wartungsaufwand, Lizenzkosten, Konnektor-Abdeckung, Langdock-Webhook-Kompatibilität.
 3. Du lässt eine Entscheidungsempfehlung je Tool formulieren und für PII-tragende Verbindungen einen Auftragsverarbeitungsvertrag und EU-Region als Bedingung markieren.
-Prompt:
-> "Du bist mein Middleware-Bewertungs-Berater (Persona). Erstelle eine Bridge-Bewertungsmatrix Zapier vs. Make vs. MCP für drei geplante Tool-Anbindungen (Aufgabe). Kontext: DSGVO-Konformität Pflicht; teils PII-Transfer; Team ohne eigene Entwickler (Kontext). Format: Tabelle mit Tool, MCP-Option ja/nein, DSGVO-Standort, Wartung, Empfehlung (Format)."
+Vorlage: Bridge-Bewertungsmatrix (Zapier vs. Make vs. MCP):
+1. Tabelle — je geplantem Tool: MCP-Option ja/nein, DSGVO-Server-Standort (EU waehlbar?), Wartung, Lizenzkosten, Konnektor-Abdeckung, Webhook-Kompatibilitaet, Empfehlung.
+2. MCP zuerst — bei vorhandenem MCP-Server diesen bevorzugen; Zapier/Make nur als Fallback.
+3. PII-Bedingung — fuer PII-tragende Verbindungen EU-Region + Auftragsverarbeitungsvertrag markieren.
 Artefakt: Eine Bridge-Bewertungsmatrix (Zapier vs. Make vs. MCP) mit Entscheidungsempfehlung je Tool.
 Fallstricke:
 - Bridge bauen, obwohl ein MCP-Server existiert → MCP-Server sind in der Regel wartungsärmer und ohne zusätzlichen Drittanbieter-Datentransfer; immer zuerst die MCP-Verfügbarkeit prüfen.
 - PII-Daten über eine Bridge ohne EU-Region und AV-Vertrag transferieren → Zapier/Make verarbeiten je nach Konfiguration außerhalb der EU; EU-Region erzwingen und Auftragsverarbeitungsvertrag abschließen.
+Empfehlung: Vor jedem Bridge-Bau die MCP-Verfuegbarkeit pruefen — MCP-Server sind in der Regel wartungsaermer und ohne zusaetzlichen Drittanbieter-Datentransfer. Fuer PII-Daten eine EU-Region erzwingen und einen Auftragsverarbeitungsvertrag abschliessen, da Zapier/Make je nach Konfiguration ausserhalb der EU verarbeiten.
 Anschluss: S-IM-077
 
 ### S-IM-077 Webhook-Security-Review für eingehende Event-Trigger durchführen
@@ -1705,12 +1718,16 @@ Vorgehen:
 2. Du lässt die Secret-Verwaltung kontrollieren: Shared Secrets gehören in den Admin-Secrets-Bereich, werden rotiert und stehen nie im Klartext in der Konfiguration.
 3. Du lässt die Payload-Minimierung bewerten: Nur die für den Workflow nötigen Felder werden übernommen; PII-Felder nur wenn zwingend nötig.
 4. Du übergibst die Review-Checkliste an IT-Security; tiefe Security-Fragen werden an `08-sicherheit-und-governance` übergeben.
-Prompt:
-> "Du bist mein Webhook-Security-Berater (Persona). Erstelle eine Webhook-Security-Review-Checkliste für unsere eingehenden Langdock-Webhooks (Aufgabe). Kontext: drei externe Trigger (Formular-Tool, CRM-Event, E-Commerce); Signatur-Pflicht; DSGVO-Hosting (Kontext). Format: Checkliste als nummerierte Liste mit Prüfpunkt und Bewertung; plus Go/No-Go-Vermerk je Endpunkt (Format)."
+Vorlage: Webhook-Security-Review-Checkliste (eingehende Trigger):
+1. Signatur-Validierung — HMAC oder Shared Secret vor jeder Verarbeitung verifizieren.
+2. Secret-Verwaltung — Shared Secrets im Admin-Secrets-Bereich, rotiert, nie im Klartext.
+3. Payload-Minimierung — nur die fuer den Workflow noetigen Felder; PII nur wenn zwingend.
+4. Go/No-Go-Vermerk je Endpunkt; tiefe Security an 08-sicherheit-und-governance.
 Artefakt: Eine Webhook-Security-Review-Checkliste mit Go/No-Go-Vermerk je Endpunkt.
 Fallstricke:
 - Webhook ohne Signatur-Validierung produktiv schalten → Ein unvalidierter Endpunkt kann von beliebigen Absendern beschickt werden; HMAC oder Shared Secret als erste Verarbeitungs-Bedingung erzwingen.
 - Shared Secrets im Klartext in der Workflow-Konfiguration ablegen → Secrets gehören in den Admin-Secrets-Bereich mit Rotation-Policy; Klartext-Secrets sind ein Leak-Risiko.
+Empfehlung: Keinen Webhook ohne Signatur-Validierung produktiv schalten — ein unvalidierter Endpunkt kann von beliebigen Absendern beschickt werden; HMAC oder Shared Secret als erste Verarbeitungs-Bedingung erzwingen. Shared Secrets in den Admin-Secrets-Bereich mit Rotation-Policy legen, nie im Klartext in der Workflow-Konfiguration (Leak-Risiko).
 Anschluss: S-IM-078
 
 ### S-IM-078 OAuth-Scope-Minimierung über alle Integrationen durchsetzen
@@ -1724,12 +1741,16 @@ Vorgehen:
 2. Du lässt die Differenz markieren: Scopes, die beantragt, aber nie genutzt werden (z. B. Write-Scopes bei reinen Reporting-Agenten), als Reduktionskandidaten ausweisen.
 3. Du lässt je Reduktion das Risiko der Beibehaltung benennen (z. B. ungenutzter Write-Scope = unnötige Angriffsfläche).
 4. Du übergibst die Matrix als Hardening-Briefing an die IT; die Scope-Reduktion in den jeweiligen Apps liegt bei der IT.
-Prompt:
-> "Du bist mein OAuth-Hardening-Berater (Persona). Erstelle eine Scope-Minimierungs-Matrix für unsere aktiven Langdock-Integrationen auf Basis des Integrations-Inventars im Wissensordner (Aufgabe). Kontext: gewachsene Landschaft, einige Reporting-Agenten haben Write-Scopes; Prinzip minimaler Berechtigung (Kontext). Format: Tabelle mit Integration, beantragtem Scope, genutztem Scope, Reduktionsempfehlung, Risiko bei Beibehaltung (Format)."
+Vorlage: OAuth-Scope-Minimierungs-Matrix (Hardening):
+1. Gegenueberstellung — je Integration beantragter Scope vs. tatsaechlich genutzte Operationen.
+2. Reduktionskandidaten — beantragte, aber nie genutzte Scopes (z. B. Write bei reinen Reporting-Agenten) markieren.
+3. Risiko bei Beibehaltung — ungenutzter Write-Scope = unnoetige Angriffsflaeche.
+4. Hardening-Briefing fuer die IT; Tiefe an 08-sicherheit-und-governance.
 Artefakt: Eine OAuth-Scope-Minimierungs-Matrix mit Reduktionsempfehlungen und Hardening-Briefing.
 Fallstricke:
 - Scopes reduzieren, ohne die tatsächlich genutzten Operationen zu kennen → Zuerst die genutzten Actions je Integration erheben; blindes Reduzieren bricht laufende Reporting-Pfade.
 - Write-Scopes "für mögliche künftige Use-Cases" behalten → Ungenutzte Write-Scopes sind unnötige Angriffsfläche; bei Bedarf später gezielt mit HITL-Konzept neu beantragen.
+Empfehlung: Zuerst die tatsaechlich genutzten Actions je Integration erheben, bevor Scopes reduziert werden — blindes Reduzieren bricht laufende Reporting-Pfade. Keine Write-Scopes 'fuer moegliche kuenftige Use-Cases' behalten; ungenutzte Write-Scopes sind unnoetige Angriffsflaeche und bei Bedarf spaeter gezielt mit HITL-Konzept neu zu beantragen.
 Anschluss: S-IM-079
 
 ### S-IM-079 MCP-Server-Inventar-Audit über den gesamten Workspace durchführen
@@ -1743,12 +1764,15 @@ Vorgehen:
 2. Du lässt je Server die Pflichtfelder ausfüllen: Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write-Klasse.
 3. Du lässt den Status bewerten: aktiv genutzt, ungenutzt (Kandidat für Deaktivierung), oder ohne Owner (sofort klären).
 4. Du übergibst das Inventar an IT-Security und Workspace-Admin; ungenutzte oder owner-lose Server werden im Deprecation-Plan (S-IM-080) behandelt.
-Prompt:
-> "Du bist mein MCP-Governance-Berater (Persona). Erstelle ein vollständiges MCP-Server-Inventar für unseren Marketing-Workspace auf Basis der Agenten-Konfigurationen und des Wissensordners (Aufgabe). Kontext: gewachsene Landschaft, Verdacht auf ungenutzte und owner-lose Server (Kontext). Format: Tabelle mit Server, Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write, letzter Health-Check, Status (Format)."
+Vorlage: MCP-Server-Inventar (Workspace-Audit):
+1. Erfassung — alle bekannten MCP-Server aus Wissensordner UND einzelnen Agenten-Konfigurationen (gegen Schatten-Integrationen).
+2. Pflichtfelder je Server — Name, Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write-Klasse, letzter Health-Check.
+3. Status — aktiv / ungenutzt (Deaktivierungs-Kandidat) / owner-los (sofort klaeren).
 Artefakt: Ein MCP-Server-Inventar (Tabelle) mit Owner, Tools, Auth und Status je Server.
 Fallstricke:
 - Nur dokumentierte Server erfassen → Auch Server prüfen, die direkt in einzelnen Agenten konfiguriert sind, sonst bleiben Schatten-Integrationen unentdeckt.
 - Owner-lose Server im Inventar lediglich markieren, aber nicht eskalieren → Ein Server ohne Owner ist ein Governance-Risiko; je owner-losem Server sofort eine Zuständigkeit zuweisen oder den Server zur Deaktivierung vormerken.
+Empfehlung: Auch direkt in einzelnen Agenten konfigurierte MCP-Server pruefen, nicht nur dokumentierte — sonst bleiben Schatten-Integrationen unentdeckt. Owner-lose Server nicht nur markieren, sondern sofort eskalieren: je owner-losem Server eine Zustaendigkeit zuweisen oder ihn zur Deaktivierung (S-IM-080) vormerken.
 Anschluss: S-IM-080
 
 ### S-IM-080 Integration-Deprecation-Plan für abzulösende Verbindungen erstellen
@@ -1762,12 +1786,16 @@ Vorgehen:
 2. Du lässt je Verbindung einen Migrationspfad oder einen Ersatz benennen (oder dokumentieren, dass die Funktion ersatzlos entfällt).
 3. Du lässt ein gestaffeltes Abschaltdatum mit Rollback-Fenster festlegen: zuerst stilllegen (deaktivieren, aber wiederherstellbar), nach einer Beobachtungsphase endgültig entfernen.
 4. Du übergibst den Plan an IT und Marketing-Ops; die tatsächliche Abschaltung liegt bei der IT — Little Data berät, führt keine Deaktivierung durch.
-Prompt:
-> "Du bist mein Integrations-Lebenszyklus-Berater (Persona). Erstelle einen Integration-Deprecation-Plan für unsere abzulösenden Langdock-Verbindungen auf Basis von MCP-Inventar und Abhängigkeitsregister (Aufgabe). Kontext: mehrere ungenutzte und redundante Verbindungen; keine aktive Kampagne darf ihre Datenquelle verlieren (Kontext). Format: Tabelle mit Verbindung, Begründung, abhängige Agenten/Workflows, Migrationspfad, Abschaltdatum, Rollback-Fenster, Verantwortlicher (Format)."
+Vorlage: Integration-Deprecation-Plan (geordnete Abloesung):
+1. Abhaengigkeiten — je abzuloesende Verbindung die abhaengigen Agenten/Workflows aus dem Abhaengigkeitsregister (gegen stille Abhaengigkeiten).
+2. Migrationspfad/Ersatz — benennen oder dokumentieren, dass die Funktion ersatzlos entfaellt.
+3. Gestaffeltes Abschaltdatum + Rollback-Fenster — zuerst stilllegen (wiederherstellbar), nach Beobachtungsphase endgueltig entfernen.
+4. Verantwortlicher je Verbindung.
 Artefakt: Ein Integration-Deprecation-Plan (Tabelle) mit Migrationspfad, gestaffelten Abschaltdaten und Rollback-Fenster.
 Fallstricke:
 - Eine Verbindung abschalten, ohne ihre Abhängigkeiten zu prüfen → Eine vermeintlich ungenutzte Integration kann einen kritischen Reporting-Pfad speisen; immer zuerst das Abhängigkeitsregister konsultieren.
 - Verbindungen sofort hart löschen statt gestaffelt stillzulegen → Zuerst deaktivieren mit Rollback-Fenster und Beobachtungsphase; eine harte Löschung ohne Rückweg macht Fehler irreversibel.
+Empfehlung: Vor jeder Abschaltung das Abhaengigkeitsregister konsultieren — eine vermeintlich ungenutzte Integration kann einen kritischen Reporting-Pfad speisen. Verbindungen gestaffelt stilllegen (deaktivieren mit Rollback-Fenster + Beobachtungsphase) statt sofort hart loeschen, da eine Loeschung ohne Rueckweg Fehler irreversibel macht.
 Anschluss: S-IM-001
 
 ## Hinweise & Quellen-Konflikte

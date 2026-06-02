@@ -3274,8 +3274,8 @@
     {
       "name": "05-integrationen-und-mcp.md",
       "kind": "content",
-      "lines": 1553,
-      "bytes": 220296,
+      "lines": 1807,
+      "bytes": 246900,
       "scenarios": [
         {
           "id": "S-IM-001",
@@ -3283,7 +3283,7 @@
           "noun": "Reporting-Agent",
           "anschluss": "S-IM-006",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-002",
@@ -3291,7 +3291,7 @@
           "noun": "Brand-Agent",
           "anschluss": "S-IM-003",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-003",
@@ -3299,15 +3299,15 @@
           "noun": "Produktmarketing",
           "anschluss": "S-IM-009",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-004",
           "trigger": "Die Marketing-Direktorin will, dass freigabereife Kampagnen-Entwürfe automatisch in einem Slack-Kanal landen — sie fragt, ob das eine native Integration (Integration) ist oder einen Workflow braucht.",
           "noun": "Kampagnen-Entwürfe",
           "anschluss": "S-IM-001",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-IM-005",
@@ -3315,7 +3315,7 @@
           "noun": "Deutsch",
           "anschluss": "S-IM-007",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-006",
@@ -3331,7 +3331,7 @@
           "noun": "Kampagnen-Datenbank",
           "anschluss": "S-IM-008",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-008",
@@ -3339,7 +3339,7 @@
           "noun": "Technische",
           "anschluss": "S-IM-009",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-009",
@@ -3347,7 +3347,7 @@
           "noun": "Posts",
           "anschluss": "S-IM-010",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-010",
@@ -3355,7 +3355,7 @@
           "noun": "Salesforce",
           "anschluss": "S-IM-011",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-011",
@@ -3363,7 +3363,7 @@
           "noun": "Brand-Team",
           "anschluss": "S-IM-012",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-012",
@@ -3371,7 +3371,7 @@
           "noun": "Jour-fixe",
           "anschluss": "S-IM-013",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-013",
@@ -3379,7 +3379,7 @@
           "noun": "Demand-Gen-Team",
           "anschluss": "S-IM-014",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-014",
@@ -3387,7 +3387,7 @@
           "noun": "Kampagnen-Entwürfe",
           "anschluss": "S-IM-015",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-015",
@@ -3395,7 +3395,7 @@
           "noun": "ABM-Kampagne",
           "anschluss": "S-IM-016",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-016",
@@ -3403,7 +3403,7 @@
           "noun": "HubSpot",
           "anschluss": "S-IM-017",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-017",
@@ -3411,7 +3411,7 @@
           "noun": "MCP-Server",
           "anschluss": "S-IM-018",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-018",
@@ -3419,7 +3419,7 @@
           "noun": "MCP-Server",
           "anschluss": "S-IM-019",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-019",
@@ -3427,7 +3427,7 @@
           "noun": "IT-Abteilung",
           "anschluss": "S-IM-020",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-020",
@@ -3435,7 +3435,7 @@
           "noun": "Tracking-Link",
           "anschluss": "S-IM-021",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-021",
@@ -3443,7 +3443,7 @@
           "noun": "Analytics-Tool",
           "anschluss": "S-IM-022",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-022",
@@ -3451,7 +3451,7 @@
           "noun": "Budgetfreigabe",
           "anschluss": "S-IM-023",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-023",
@@ -3459,7 +3459,7 @@
           "noun": "HubSpot",
           "anschluss": "S-IM-024",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-024",
@@ -3467,7 +3467,7 @@
           "noun": "Lead-Scoring-Engine",
           "anschluss": "S-IM-025",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-025",
@@ -3475,7 +3475,7 @@
           "noun": "Langdock",
           "anschluss": "S-IM-026",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-026",
@@ -3483,7 +3483,7 @@
           "noun": "Kampagnen",
           "anschluss": "S-IM-027",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-027",
@@ -3491,7 +3491,7 @@
           "noun": "Asset-Listen",
           "anschluss": "S-IM-028",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-028",
@@ -3499,7 +3499,7 @@
           "noun": "Reporting-Agenten",
           "anschluss": "S-IM-029",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-029",
@@ -3507,7 +3507,7 @@
           "noun": "Performance-Marketing-Team",
           "anschluss": "S-IM-030",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-030",
@@ -3515,7 +3515,7 @@
           "noun": "Demand-Gen-Team",
           "anschluss": "S-IM-031",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-031",
@@ -3523,7 +3523,7 @@
           "noun": "Tools",
           "anschluss": "S-IM-032",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-032",
@@ -3531,7 +3531,7 @@
           "noun": "System",
           "anschluss": "S-IM-033",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-033",
@@ -3539,7 +3539,7 @@
           "noun": "Kampagnen-Attribution-Daten",
           "anschluss": "S-IM-034",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-034",
@@ -3547,7 +3547,7 @@
           "noun": "Snowflake",
           "anschluss": "S-IM-035",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-035",
@@ -3555,7 +3555,7 @@
           "noun": "DAM-System",
           "anschluss": "S-IM-036",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-036",
@@ -3563,7 +3563,7 @@
           "noun": "Event-Marketing-Team",
           "anschluss": "S-IM-037",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-037",
@@ -3571,7 +3571,7 @@
           "noun": "Kundenbefragungen",
           "anschluss": "S-IM-038",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-038",
@@ -3579,7 +3579,7 @@
           "noun": "Typeform",
           "anschluss": "S-IM-039",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-039",
@@ -3587,7 +3587,7 @@
           "noun": "Pardot",
           "anschluss": "S-IM-040",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-040",
@@ -3595,7 +3595,7 @@
           "noun": "Tool-Stack",
           "anschluss": "S-IM-041",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-041",
@@ -3603,7 +3603,7 @@
           "noun": "IT-Team",
           "anschluss": "S-IM-042",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-042",
@@ -3611,7 +3611,7 @@
           "noun": "Anforderung",
           "anschluss": "S-IM-043",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-043",
@@ -3619,7 +3619,7 @@
           "noun": "Lead-E-Mails",
           "anschluss": "S-IM-044",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-044",
@@ -3627,7 +3627,7 @@
           "noun": "Integrations-Projekten",
           "anschluss": "S-IM-045",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-045",
@@ -3635,7 +3635,7 @@
           "noun": "Prüfer",
           "anschluss": "S-IM-046",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-046",
@@ -3643,7 +3643,7 @@
           "noun": "Produktmarketing",
           "anschluss": "S-IM-047",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-047",
@@ -3651,7 +3651,7 @@
           "noun": "Kampagnen",
           "anschluss": "S-IM-048",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-048",
@@ -3659,7 +3659,7 @@
           "noun": "Microsoft",
           "anschluss": "S-IM-049",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-049",
@@ -3667,7 +3667,7 @@
           "noun": "Unternehmens-YouTube-Kanal",
           "anschluss": "S-IM-050",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-050",
@@ -3675,7 +3675,7 @@
           "noun": "Kreativteam",
           "anschluss": "S-IM-051",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-051",
@@ -3683,7 +3683,7 @@
           "noun": "Langdock-Agent",
           "anschluss": "S-IM-052",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-052",
@@ -3691,7 +3691,7 @@
           "noun": "Customer-Success-Bereich",
           "anschluss": "S-IM-053",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-053",
@@ -3699,7 +3699,7 @@
           "noun": "Akeneo",
           "anschluss": "S-IM-054",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-054",
@@ -3707,7 +3707,7 @@
           "noun": "Phrase",
           "anschluss": "S-IM-055",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-055",
@@ -3715,7 +3715,7 @@
           "noun": "Digital-Signage-Screens",
           "anschluss": "S-IM-056",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-056",
@@ -3723,7 +3723,7 @@
           "noun": "Event-Marketing-Team",
           "anschluss": "S-IM-057",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-057",
@@ -3731,7 +3731,7 @@
           "noun": "Wachstums-Team",
           "anschluss": "S-IM-058",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-058",
@@ -3739,7 +3739,7 @@
           "noun": "Athena",
           "anschluss": "S-IM-059",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-059",
@@ -3747,7 +3747,7 @@
           "noun": "Kampagnenangebote",
           "anschluss": "S-IM-060",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-060",
@@ -3755,7 +3755,7 @@
           "noun": "Langdock-Integration",
           "anschluss": "S-IM-061",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-061",
@@ -3763,7 +3763,7 @@
           "noun": "Reporting-Agent",
           "anschluss": "S-IM-062",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-062",
@@ -3771,7 +3771,7 @@
           "noun": "Kampagnen-Mitgliedschaften",
           "anschluss": "S-IM-063",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-063",
@@ -3779,7 +3779,7 @@
           "noun": "Integration",
           "anschluss": "S-IM-064",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-064",
@@ -3787,7 +3787,7 @@
           "noun": "SEO-Team",
           "anschluss": "S-IM-065",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-065",
@@ -3795,7 +3795,7 @@
           "noun": "Pipeline-Beitrag",
           "anschluss": "S-IM-066",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-066",
@@ -3803,7 +3803,7 @@
           "noun": "Facebook",
           "anschluss": "S-IM-067",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-067",
@@ -3811,7 +3811,7 @@
           "noun": "E-Mail-Team",
           "anschluss": "S-IM-068",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-068",
@@ -3819,7 +3819,7 @@
           "noun": "Produktmarketing",
           "anschluss": "S-IM-069",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-069",
@@ -3827,7 +3827,7 @@
           "noun": "Redaktionspipeline",
           "anschluss": "S-IM-070",
           "advice_style": false,
-          "type": "P"
+          "type": "M"
         },
         {
           "id": "S-IM-070",
@@ -3835,7 +3835,7 @@
           "noun": "Kreativteam",
           "anschluss": "S-IM-071",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-071",
@@ -3843,7 +3843,7 @@
           "noun": "Inhalte",
           "anschluss": "S-IM-072",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-072",
@@ -3851,7 +3851,7 @@
           "noun": "Performance-Digest",
           "anschluss": "S-IM-073",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-073",
@@ -3859,7 +3859,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-IM-074",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-074",
@@ -3867,7 +3867,7 @@
           "noun": "Viele",
           "anschluss": "S-IM-075",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-075",
@@ -3875,7 +3875,7 @@
           "noun": "Kampagnen-Performance",
           "anschluss": "S-IM-076",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-076",
@@ -3883,7 +3883,7 @@
           "noun": "Tools",
           "anschluss": "S-IM-077",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-077",
@@ -3891,7 +3891,7 @@
           "noun": "Mehrere",
           "anschluss": "S-IM-078",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-078",
@@ -3899,7 +3899,7 @@
           "noun": "Integrationen",
           "anschluss": "S-IM-079",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-079",
@@ -3907,7 +3907,7 @@
           "noun": "Workspace",
           "anschluss": "S-IM-080",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-IM-080",
@@ -3915,14 +3915,17 @@
           "noun": "MCP-Inventar",
           "anschluss": "S-IM-001",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 0,
+      "advice_style": 1,
       "types": {
-        "P": 80
+        "G": 62,
+        "D": 1,
+        "P": 1,
+        "M": 16
       }
     },
     {
@@ -11781,14 +11784,15 @@
     }
   ],
   "total_scenarios": 1106,
-  "total_advice": 18,
+  "total_advice": 19,
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 826,
+    "P": 747,
     "W": 80,
-    "D": 18,
-    "G": 72,
+    "D": 19,
+    "G": 134,
+    "M": 16,
     "K": 110
   },
   "typed": 1106
