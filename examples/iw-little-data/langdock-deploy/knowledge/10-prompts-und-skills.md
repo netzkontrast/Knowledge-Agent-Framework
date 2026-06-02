@@ -898,12 +898,16 @@ Vorgehen:
 3. Berechne den Gesamt-Health-Score (Durchschnitt der 5 Dimensionen).
 4. Priorisiere Action-Items nach Impact × Effort: die 3 Maßnahmen mit höchstem Impact und niedrigstem Effort kommen ins Quartal-Sprint-Backlog.
 5. Präsentiere den Report im Team-Meeting (15-Minuten-Slot); entscheide kollektiv über Deprecations und neue Prompt-Bedarfe.
-Prompt:
-> "Du bist Prompt-Library-Curator. Ich übergebe dir das folgende Prompt-Inventar: [Inventarliste einfügen]. Bewerte die Library in 5 Dimensionen (je 1–5): (1) Vollständigkeit der Kern-Use-Cases, (2) Aktualität (Prompts ohne Canary-Test >6 Monate = Abzug), (3) PTCF-Konformitätsrate, (4) Nutzungsrate-Verteilung, (5) Compliance-Abdeckung. Ausgabe: Canvas-Tabelle mit Scores + Gesamtscore + Top-3 priorisierte Action-Items nach Impact × Effort."
+Vorlage: Quarterly-Prompt-Health-Review (90 Min):
+1. Inventar — vollstaendige Library-Liste (Name/Update-Datum/Status) aus prompt-changelog.md + prompt-deprecation-log.md.
+2. 5 Dimensionen (je 1–5) — Vollstaendigkeit, Aktualitaet (kein Prompt >6 Monate ohne Canary), PTCF-Konformitaet (S-PS-032), Nutzungsrate (<3 Verwendungen/3 Monate = Deprecation-Kandidat), Compliance (S-PS-039).
+3. Health-Score — Durchschnitt der 5 Dimensionen.
+4. Action-Items nach Impact × Effort; Top 3 ins Quartal-Sprint-Backlog; 15-Min-Team-Slot.
 Artefakt: Canvas-basierter `quarterly-prompt-health-report.md` mit 5-Dimensionen-Score, Gesamt-Health-Score und 3 priorisierten Action-Items; Grundlage für das Quartal-Sprint-Backlog des Prompt-Teams.
 Fallstricke:
 - Ohne Nutzungsrate-Daten aus dem Langdock-Workspace-Dashboard ist die Nutzungsrate-Dimension rein subjektiv; immer Dashboard-Export als objektive Datenbasis einbeziehen, bevor Deprecation-Entscheidungen getroffen werden.
 - Der Report verliert seinen Wert, wenn er nicht konsequent quartalsweise durchgeführt wird — einmalige Durchführung reicht nicht; einen festen Kalender-Termin (z.B. letzter Freitag im Quartal) als unverrückbares Team-Ritual etablieren.
+Empfehlung: Die Nutzungsrate-Dimension immer mit einem Workspace-Dashboard-Export als objektive Datenbasis belegen, bevor Deprecation-Entscheidungen fallen — ohne Daten ist sie rein subjektiv. Den Review als unverrueckbares Quartals-Ritual (fester Kalender-Termin) etablieren; eine einmalige Durchfuehrung verfehlt den Zweck.
 Anschluss: S-PS-041
 
 ### S-PS-041 Persona-Stacking: Mehrschichtige Rollen-Instruktionen in System-Prompts
@@ -923,6 +927,7 @@ Artefakt: Gestapelter System-Prompt-Block in `persona-stacking-template.md`; dok
 Fallstricke:
 - Widersprüche zwischen Schichten (z.B. "Sei kreativ" in Schicht 1 vs. "Keine Metaphern" in Schicht 3) erzeugen inkonsistente Outputs — jede Schicht muss vor dem Einsatz auf Konflikte geprüft werden.
 - System-Prompts über 1 500 Wörter erhöhen die Latenz und können den Agenten dazu bringen, frühe Schichten zu "vergessen"; Schicht 1–3 zusammen sollten 400 Wörter nicht überschreiten.
+Empfehlung: Die drei Persona-Schichten vor dem Einsatz auf Widersprueche pruefen (z. B. 'sei kreativ' in Schicht 1 vs. 'keine Metaphern' in Schicht 3) — Konflikte zwischen Schichten erzeugen inkonsistente Outputs. Schicht 1–3 zusammen unter 400 Woertern halten, da System-Prompts ueber ~1.500 Woerter die Latenz erhoehen und den Agenten fruehe Schichten 'vergessen' lassen.
 Anschluss: S-PS-042
 
 ### S-PS-042 Multimodale Prompts: Screenshot + Text für Design-Feedback
@@ -941,6 +946,7 @@ Artefakt: Markdown-Tabelle mit strukturiertem Design-Feedback; als PDF exportier
 Fallstricke:
 - Vision-Modelle können keine exakten HEX-Farbcodes aus komprimierten Screenshots ablesen; Farbabweichungen müssen manuell mit einem Color-Picker-Tool bestätigt werden, bevor sie reklamiert werden.
 - Screenshots mit sehr kleiner Typografie (unter 10pt) werden vom Vision-Modell unscharf interpretiert; für Typo-Checks immer hochauflösende PNG-Exports (≥150 dpi) verwenden.
+Empfehlung: Exakte HEX-Farbabweichungen nie allein dem Vision-Modell ueberlassen — komprimierte Screenshots erlauben keine praezise Farbmessung; Farbreklamationen mit einem Color-Picker manuell bestaetigen. Fuer Typo-Checks hochaufloesende PNG-Exports (>=150 dpi) verwenden, da kleine Typografie (<10 pt) unscharf interpretiert wird.
 Anschluss: S-PS-043
 
 ### S-PS-043 Wettbewerbs-Benchmarking-Tabelle aus Web-Recherche generieren
@@ -960,6 +966,7 @@ Artefakt: Benchmarking-Tabelle (4 Wettbewerber × 6 Dimensionen) mit Bewertungen
 Fallstricke:
 - Web Search ruft öffentliche Preisseiten ab, nicht Vertragspreise; Preismodell-Bewertungen sind immer mit "Stand: Datum" zu versehen und vor Kundenpräsentationen manuell verifiziert werden.
 - Wettbewerber mit schlechter Web-Präsenz werden systematisch schlechter bewertet als sie sind — explizit anweisen: "Falls keine Daten verfügbar, trage 'Keine öffentlichen Daten' ein, nicht 1."
+Empfehlung: Preismodell-Bewertungen immer mit 'Stand: Datum' versehen und vor Kundenpraesentationen manuell verifizieren — Web Search liefert oeffentliche Preisseiten, keine Vertragspreise. Bei fehlenden Daten 'Keine oeffentlichen Daten' eintragen lassen, nie eine 1, sonst werden Wettbewerber mit schwacher Web-Praesenz systematisch zu schlecht bewertet.
 Anschluss: S-PS-044
 
 ### S-PS-044 Vertragsklauseln aus PDFs extrahieren und kategorisieren
@@ -978,6 +985,7 @@ Artefakt: Klausel-Extrakt-Tabelle (5 Kategorien, direkte Zitate, Seitenzahlen, A
 Fallstricke:
 - Der Prompt muss explizit "Keine Rechtsberatung" verankern und im Output sichtbar machen — KI-Vertragsanalyse ersetzt keine juristische Prüfung und darf nicht als solche kommuniziert werden.
 - Bei Verträgen über 50 Seiten kann das Kontextfenster des Modells überlastet werden; lange Verträge in Abschnitte splitten (je ~30 Seiten) und Extrakte zusammenführen.
+Empfehlung: 'Keine Rechtsberatung — nur Informationsextraktion' im Prompt verankern und im Output sichtbar machen — eine KI-Vertragsanalyse ersetzt keine juristische Pruefung und darf nicht so kommuniziert werden. Vertraege ueber 50 Seiten in Abschnitte (~30 Seiten) splitten und die Extrakte zusammenfuehren, sonst ueberlastet das Kontextfenster.
 Anschluss: S-PS-045
 
 ### S-PS-045 Meeting-Transkript zu Action-Items und Entscheidungsprotokoll verarbeiten
@@ -996,6 +1004,7 @@ Artefakt: Fertig formatiertes `meeting-protokoll-[datum].md` mit Executive-Summa
 Fallstricke:
 - Der Agent tendiert dazu, Diskussionspunkte als Beschlüsse zu werten — im Prompt explizit fordern: "Nur Beschlüsse, die mit 'wir einigen uns', 'entschieden' oder ähnlichen Formulierungen eindeutig getroffen wurden."
 - Automatisch generierte Deadlines aus vagen Aussagen ("nächste Woche") sind fehleranfällig; der Output muss immer von einer verantwortlichen Person vor dem Versand gegengelesen werden.
+Empfehlung: Im Prompt erzwingen, dass nur eindeutig getroffene Beschluesse ('wir einigen uns/entschieden') als Beschluss gewertet werden — der Agent wertet sonst blosse Diskussionspunkte als Entscheidungen. Unklare Owner/Deadlines als '[Klären]' markieren und das Protokoll vor dem Versand von einer verantwortlichen Person gegenlesen lassen, da Deadlines aus vagen Aussagen ('naechste Woche') fehleranfaellig sind.
 Anschluss: S-PS-046
 
 ### S-PS-046 Produkt-Changelog in nutzerorientierte Release-Notes umwandeln
@@ -1014,6 +1023,7 @@ Artefakt: Drei fertige Release-Notes-Varianten (In-App / Newsletter / Blog) im C
 Fallstricke:
 - Wenn der technische Changelog mehrdeutige Formulierungen enthält ("improved performance"), tendiert der Agent zu Übertreibungen; im Prompt fordern: "Bei vagen Begriffen schreibe wörtlich 'verbesserte Performance' — keine Zahlen erfinden."
 - Drei Formate in einem einzigen Prompt können dazu führen, dass Variante 3 (Blog) die Länge von Variante 1 (In-App) ignoriert; Längenrestriktionen in der Format-Sektion wiederholen und nach Generierung mit Wort-Count prüfen.
+Empfehlung: Bei vagen Changelog-Begriffen ('improved performance') woertlich 'verbesserte Performance' schreiben lassen und keine Zahlen erfinden — sonst neigt der Agent zu Uebertreibungen. Die Laengenrestriktionen je Format in der Format-Sektion wiederholen und nach der Generierung per Wort-Count pruefen, da bei drei Formaten in einem Prompt die Blog-Variante die In-App-Laenge ignoriert.
 Anschluss: S-PS-047
 
 ### S-PS-047 Social-Media-Compliance-Check vor Veröffentlichung
@@ -1033,6 +1043,7 @@ Artefakt: Compliance-Ampel-Tabelle (3 Dimensionen) mit Befunden und direkten Tex
 Fallstricke:
 - Plattform-Policies ändern sich mehrfach jährlich; die `social-compliance-checkliste.md` muss mit einem Datum und einer Versionsnummer versehen und mindestens quartalsweise aktualisiert werden.
 - Der Compliance-Check ist keine rechtssichere Prüfung — bei Kampagnen mit Preisangaben oder Gesundheitsbezug muss immer ein Jurist oder Compliance-Officer gegenlesen, bevor der Post geht.
+Empfehlung: Die social-compliance-checkliste.md mit Datum und Versionsnummer fuehren und mindestens quartalsweise aktualisieren — Plattform-Policies aendern sich mehrfach jaehrlich. Den Check als Ersteinschaetzung behandeln: bei Preisangaben oder Gesundheitsbezug muss vor der Veroeffentlichung immer ein Jurist/Compliance-Officer gegenlesen.
 Anschluss: S-PS-048
 
 ### S-PS-048 DACH-spezifische Headline-Varianten testen
