@@ -6,24 +6,24 @@
 
 | File | Kind | Lines | Bytes | Scenarios | Notes |
 |---|---|---:|---:|---:|---|
-| `00-langdock-uebersicht.md` | content | 1582 | 204826 | 80 |  |
-| `01-chat-und-prompts.md` | content | 1636 | 165937 | 80 |  |
-| `02-agenten-konfiguration.md` | content | 1615 | 242636 | 80 |  |
-| `03-wissensordner-und-rag.md` | content | 1571 | 260287 | 80 |  |
-| `04-workflows.md` | content | 1602 | 205506 | 80 |  |
-| `05-integrationen-und-mcp.md` | content | 1553 | 233336 | 80 |  |
-| `06-api-und-deployment.md` | content | 1611 | 233240 | 80 |  |
-| `07-modelle-und-kosten.md` | content | 1609 | 238000 | 80 |  |
-| `08-sicherheit-und-governance.md` | content | 1575 | 255819 | 80 |  |
-| `09-marketing-praxis.md` | content | 1581 | 228585 | 80 |  |
-| `10-prompts-und-skills.md` | content | 1580 | 225219 | 80 |  |
-| `11-persona-core.md` | persona | 906 | 91715 | 40 |  |
-| `12-persona-julia-modus.md` | persona | 702 | 76345 | 31 |  |
-| `13-data-agent-anweisungen-pro-thema.md` | anweisung | 904 | 77568 | 39 | data-anw×11 |
-| `14-iw-use-cases.md` | content | 812 | 98806 | 39 |  |
+| `00-langdock-uebersicht.md` | content | 1582 | 191736 | 80 |  |
+| `01-chat-und-prompts.md` | content | 1636 | 152868 | 80 |  |
+| `02-agenten-konfiguration.md` | content | 1615 | 229596 | 80 |  |
+| `03-wissensordner-und-rag.md` | content | 1571 | 247247 | 80 |  |
+| `04-workflows.md` | content | 1602 | 192446 | 80 |  |
+| `05-integrationen-und-mcp.md` | content | 1553 | 220296 | 80 |  |
+| `06-api-und-deployment.md` | content | 1611 | 220180 | 80 |  |
+| `07-modelle-und-kosten.md` | content | 1609 | 224940 | 80 |  |
+| `08-sicherheit-und-governance.md` | content | 1575 | 242759 | 80 |  |
+| `09-marketing-praxis.md` | content | 1581 | 215495 | 80 |  |
+| `10-prompts-und-skills.md` | content | 1580 | 212170 | 80 |  |
+| `11-persona-core.md` | persona | 906 | 84795 | 40 |  |
+| `12-persona-julia-modus.md` | persona | 702 | 70982 | 31 |  |
+| `13-data-agent-anweisungen-pro-thema.md` | anweisung | 904 | 71328 | 39 | data-anw×11 |
+| `14-iw-use-cases.md` | content | 812 | 91942 | 39 |  |
 | `15-glossar-und-faq.md` | glossar | 255 | 38551 | 0 | faq×20 |
-| `16-onboarding-change-management.md` | content | 554 | 69025 | 28 |  |
-| `17-branchen-think-tank-praxis.md` | content | 777 | 82971 | 39 |  |
+| `16-onboarding-change-management.md` | content | 554 | 64461 | 28 |  |
+| `17-branchen-think-tank-praxis.md` | content | 777 | 76614 | 39 |  |
 | `18-quellen-und-deeplinks.md` | links | 100 | 12031 | 0 |  |
 | `19-iwmedien-zusammenarbeit.md` | iw-brand | 265 | 24346 | 10 | advice×10 |
 

@@ -42,9 +42,9 @@ RESERVED_NOUNS = {
 TRIGGER_RE = re.compile(r"^(?:\*\*Wann nutzen \(Trigger\):\*\*|Trigger:)\s+(.*?)(?:\s+\(Quelle:[^)]*\))?\s*$", re.M)
 ANSCHLUSS_RE = re.compile(r"^(?:\*\*Anschluss-Szenario:\*\*|Anschluss:)\s+(.*?)\s*$", re.M)
 # R20: type derived from the slot-6 payload marker (NOT from an ID rename).
-SLOT6_RE = re.compile(r"^(?:\*\*(?:Beispiel-Prompt[^:]*|Beispiel-Konversation|Konkrete Empfehlung):\*\*|(Prompt|API|MCP|Skill|Code|Workflow|Pfad|Empfehlung|Vorlage):)", re.M)
+SLOT6_RE = re.compile(r"^(?:\*\*(?:Beispiel-Prompt[^:]*|Beispiel-Konversation|Konkrete Empfehlung):\*\*|(Prompt|Konversation|API|MCP|Skill|Code|Workflow|Pfad|Empfehlung|Vorlage):)", re.M)
 MARKER_TO_TYPE = {"Prompt":"P","API":"A","MCP":"M","Skill":"S","Code":"T",
-                  "Workflow":"W","Pfad":"C","Empfehlung":"D","Vorlage":"G"}
+                  "Workflow":"W","Pfad":"C","Empfehlung":"D","Vorlage":"G","Konversation":"K"}
 NOUN_RE = re.compile(r"\b([A-ZÄÖÜ][a-zäöüßA-ZÄÖÜ\-]{4,})\b")
 
 def detect_kind(name: str) -> str:

@@ -193,7 +193,7 @@ check_one() {
   # Slot-6 payload (R18/R19/R7b) — the solution-type field. Accept verbose
   # Beispiel-Prompt|Konversation|Konkrete Empfehlung OR any terse type marker:
   # Prompt: API: MCP: Skill: Code: Workflow: Pfad: Empfehlung: Vorlage:
-  local example_count; example_count=$(grep -cE '^(\*\*(Beispiel-(Prompt|Konversation)|Konkrete Empfehlung)|(Prompt|API|MCP|Skill|Code|Workflow|Pfad|Empfehlung|Vorlage):)' "$file")
+  local example_count; example_count=$(grep -cE '^(\*\*(Beispiel-(Prompt|Konversation)|Konkrete Empfehlung)|(Prompt|Konversation|API|MCP|Skill|Code|Workflow|Pfad|Empfehlung|Vorlage):)' "$file")
   if [ "$example_count" -lt "$szen_count" ]; then
     echo "[WARN] $name: slot-6 payload (Prompt/API/MCP/Skill/Code/Workflow/Pfad/Empfehlung/Vorlage or verbose) appears $example_count times (expected ≥$szen_count)"
   fi

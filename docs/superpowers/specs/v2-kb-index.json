@@ -4,7 +4,7 @@
       "name": "00-langdock-uebersicht.md",
       "kind": "content",
       "lines": 1582,
-      "bytes": 204826,
+      "bytes": 191736,
       "scenarios": [
         {
           "id": "S-LU-001",
@@ -658,7 +658,7 @@
       "name": "01-chat-und-prompts.md",
       "kind": "content",
       "lines": 1636,
-      "bytes": 165937,
+      "bytes": 152868,
       "scenarios": [
         {
           "id": "S-CP-001",
@@ -1312,7 +1312,7 @@
       "name": "02-agenten-konfiguration.md",
       "kind": "content",
       "lines": 1615,
-      "bytes": 242636,
+      "bytes": 229596,
       "scenarios": [
         {
           "id": "S-AK-001",
@@ -1966,7 +1966,7 @@
       "name": "03-wissensordner-und-rag.md",
       "kind": "content",
       "lines": 1571,
-      "bytes": 260287,
+      "bytes": 247247,
       "scenarios": [
         {
           "id": "S-WR-001",
@@ -2620,7 +2620,7 @@
       "name": "04-workflows.md",
       "kind": "content",
       "lines": 1602,
-      "bytes": 205506,
+      "bytes": 192446,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -3274,7 +3274,7 @@
       "name": "05-integrationen-und-mcp.md",
       "kind": "content",
       "lines": 1553,
-      "bytes": 233336,
+      "bytes": 220296,
       "scenarios": [
         {
           "id": "S-IM-001",
@@ -3928,7 +3928,7 @@
       "name": "06-api-und-deployment.md",
       "kind": "content",
       "lines": 1611,
-      "bytes": 233240,
+      "bytes": 220180,
       "scenarios": [
         {
           "id": "S-API-001",
@@ -4582,7 +4582,7 @@
       "name": "07-modelle-und-kosten.md",
       "kind": "content",
       "lines": 1609,
-      "bytes": 238000,
+      "bytes": 224940,
       "scenarios": [
         {
           "id": "S-MK-001",
@@ -5236,7 +5236,7 @@
       "name": "08-sicherheit-und-governance.md",
       "kind": "content",
       "lines": 1575,
-      "bytes": 255819,
+      "bytes": 242759,
       "scenarios": [
         {
           "id": "S-SG-001",
@@ -5890,7 +5890,7 @@
       "name": "09-marketing-praxis.md",
       "kind": "content",
       "lines": 1581,
-      "bytes": 228585,
+      "bytes": 215495,
       "scenarios": [
         {
           "id": "S-MP-001",
@@ -6544,7 +6544,7 @@
       "name": "10-prompts-und-skills.md",
       "kind": "content",
       "lines": 1580,
-      "bytes": 225219,
+      "bytes": 212170,
       "scenarios": [
         {
           "id": "S-PS-001",
@@ -7198,7 +7198,7 @@
       "name": "11-persona-core.md",
       "kind": "persona",
       "lines": 906,
-      "bytes": 91715,
+      "bytes": 84795,
       "scenarios": [
         {
           "id": "S-LC-001",
@@ -7206,7 +7206,7 @@
           "noun": "Marke",
           "anschluss": "S-LC-018",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-002",
@@ -7214,7 +7214,7 @@
           "noun": "Wettbewerbers",
           "anschluss": "S-LC-012",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-003",
@@ -7222,7 +7222,7 @@
           "noun": "Go-Live",
           "anschluss": "S-LC-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-004",
@@ -7230,7 +7230,7 @@
           "noun": "Content",
           "anschluss": "S-LC-017",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-005",
@@ -7238,7 +7238,7 @@
           "noun": "Sicherheit",
           "anschluss": "S-LC-001",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-006",
@@ -7246,7 +7246,7 @@
           "noun": "Entscheidung",
           "anschluss": "S-LC-019",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-007",
@@ -7254,7 +7254,7 @@
           "noun": "Reports",
           "anschluss": "S-LC-006",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-008",
@@ -7262,7 +7262,7 @@
           "noun": "KI-Output",
           "anschluss": "S-LC-013",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-009",
@@ -7270,7 +7270,7 @@
           "noun": "Maßnahme",
           "anschluss": "S-LC-011",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-010",
@@ -7278,7 +7278,7 @@
           "noun": "Prozess",
           "anschluss": "S-LC-011",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-011",
@@ -7286,7 +7286,7 @@
           "noun": "Planung",
           "anschluss": "S-LC-020",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-012",
@@ -7294,7 +7294,7 @@
           "noun": "Einzelgeschichte",
           "anschluss": "S-LC-019",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-013",
@@ -7302,7 +7302,7 @@
           "noun": "Funktion",
           "anschluss": "S-LC-014",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-014",
@@ -7310,7 +7310,7 @@
           "noun": "Little",
           "anschluss": "S-LC-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-015",
@@ -7318,7 +7318,7 @@
           "noun": "Prognose",
           "anschluss": "S-LC-005",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-016",
@@ -7326,7 +7326,7 @@
           "noun": "Artefakt",
           "anschluss": "S-LC-014",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-017",
@@ -7334,7 +7334,7 @@
           "noun": "Erfolg",
           "anschluss": "S-LC-004",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-018",
@@ -7342,7 +7342,7 @@
           "noun": "Entwurf",
           "anschluss": "S-LC-001",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-019",
@@ -7350,7 +7350,7 @@
           "noun": "Entscheidung",
           "anschluss": "S-LC-012",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-020",
@@ -7358,7 +7358,7 @@
           "noun": "Zielgruppen-Persona",
           "anschluss": "S-LC-011",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-021",
@@ -7366,7 +7366,7 @@
           "noun": "Zusage",
           "anschluss": "S-LC-005",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-022",
@@ -7374,7 +7374,7 @@
           "noun": "Little",
           "anschluss": "S-LC-009",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-023",
@@ -7382,7 +7382,7 @@
           "noun": "Stress",
           "anschluss": "S-LC-008",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-024",
@@ -7390,7 +7390,7 @@
           "noun": "Frage",
           "anschluss": "S-LC-015",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-025",
@@ -7398,7 +7398,7 @@
           "noun": "Textblock",
           "anschluss": "S-LC-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-026",
@@ -7406,7 +7406,7 @@
           "noun": "Werturteil",
           "anschluss": "S-LC-027",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-027",
@@ -7414,7 +7414,7 @@
           "noun": "Option",
           "anschluss": "S-LC-028",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-028",
@@ -7422,7 +7422,7 @@
           "noun": "Varianten",
           "anschluss": "S-LC-027",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-029",
@@ -7430,7 +7430,7 @@
           "noun": "Gefühlen",
           "anschluss": "S-LC-023",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-030",
@@ -7438,7 +7438,7 @@
           "noun": "Daten",
           "anschluss": "S-LC-002",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-031",
@@ -7446,7 +7446,7 @@
           "noun": "Argument",
           "anschluss": "S-LC-006",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-032",
@@ -7454,7 +7454,7 @@
           "noun": "Zusammentreffen",
           "anschluss": "S-LC-007",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-033",
@@ -7462,7 +7462,7 @@
           "noun": "Entscheidung",
           "anschluss": "S-LC-003",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-034",
@@ -7470,7 +7470,7 @@
           "noun": "Aussage",
           "anschluss": "S-LC-019",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-035",
@@ -7478,7 +7478,7 @@
           "noun": "Ausgangsbasis",
           "anschluss": "S-LC-015",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-036",
@@ -7486,7 +7486,7 @@
           "noun": "Brand",
           "anschluss": "S-LC-018",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-037",
@@ -7494,7 +7494,7 @@
           "noun": "Handlung",
           "anschluss": "S-LC-014",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-038",
@@ -7502,7 +7502,7 @@
           "noun": "Little",
           "anschluss": "S-LC-033",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-039",
@@ -7510,7 +7510,7 @@
           "noun": "",
           "anschluss": "S-LC-029",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-LC-040",
@@ -7518,21 +7518,21 @@
           "noun": "Frage",
           "anschluss": "S-LC-021",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
       "advice_style": 0,
       "types": {
-        "P": 40
+        "K": 40
       }
     },
     {
       "name": "12-persona-julia-modus.md",
       "kind": "persona",
       "lines": 702,
-      "bytes": 76345,
+      "bytes": 70982,
       "scenarios": [
         {
           "id": "S-JL-001",
@@ -7540,7 +7540,7 @@
           "noun": "Board-Meeting",
           "anschluss": "S-JL-005",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-002",
@@ -7548,7 +7548,7 @@
           "noun": "Modell",
           "anschluss": "S-JL-008",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-003",
@@ -7556,7 +7556,7 @@
           "noun": "Turns",
           "anschluss": "S-JL-001",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-004",
@@ -7564,7 +7564,7 @@
           "noun": "Hilfe",
           "anschluss": "S-JL-009",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-005",
@@ -7572,7 +7572,7 @@
           "noun": "Frust",
           "anschluss": "S-JL-002",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-006",
@@ -7580,7 +7580,7 @@
           "noun": "Kernzeit",
           "anschluss": "S-JL-010",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-007",
@@ -7588,7 +7588,7 @@
           "noun": "Beratungs-Grenze",
           "anschluss": "S-JL-004",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-008",
@@ -7596,7 +7596,7 @@
           "noun": "Claim",
           "anschluss": "S-JL-006",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-009",
@@ -7604,7 +7604,7 @@
           "noun": "Eifer",
           "anschluss": "S-JL-003",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-010",
@@ -7612,7 +7612,7 @@
           "noun": "Gewinn",
           "anschluss": "S-JL-007",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-011",
@@ -7620,7 +7620,7 @@
           "noun": "Erschöpfung",
           "anschluss": "S-JL-005",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-012",
@@ -7628,7 +7628,7 @@
           "noun": "Rebrand-Idee",
           "anschluss": "S-JL-019",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-013",
@@ -7636,7 +7636,7 @@
           "noun": "Stakeholder",
           "anschluss": "S-JL-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-014",
@@ -7644,7 +7644,7 @@
           "noun": "Tabellen",
           "anschluss": "S-JL-024",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-015",
@@ -7652,7 +7652,7 @@
           "noun": "Scherz",
           "anschluss": "S-JL-009",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-016",
@@ -7660,7 +7660,7 @@
           "noun": "Aufgaben",
           "anschluss": "S-JL-021",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-017",
@@ -7668,7 +7668,7 @@
           "noun": "Widerspruch",
           "anschluss": "S-JL-012",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-018",
@@ -7676,7 +7676,7 @@
           "noun": "Umstrukturierung",
           "anschluss": "S-JL-022",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-019",
@@ -7684,7 +7684,7 @@
           "noun": "Entwurf",
           "anschluss": "S-JL-026",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-020",
@@ -7692,7 +7692,7 @@
           "noun": "Fehler",
           "anschluss": "S-JL-023",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-021",
@@ -7700,7 +7700,7 @@
           "noun": "Frage",
           "anschluss": "S-JL-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-022",
@@ -7708,7 +7708,7 @@
           "noun": "Frist",
           "anschluss": "S-JL-011",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-023",
@@ -7716,7 +7716,7 @@
           "noun": "Zuspruch",
           "anschluss": "S-JL-020",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-024",
@@ -7724,7 +7724,7 @@
           "noun": "Pause",
           "anschluss": "S-JL-025",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-025",
@@ -7732,7 +7732,7 @@
           "noun": "Wiederbeginn",
           "anschluss": "S-JL-014",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-026",
@@ -7740,7 +7740,7 @@
           "noun": "Prognose",
           "anschluss": "S-JL-002",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-027",
@@ -7748,7 +7748,7 @@
           "noun": "Prüfung",
           "anschluss": "S-JL-001",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-028",
@@ -7756,7 +7756,7 @@
           "noun": "Vendor-Versprechen",
           "anschluss": "S-JL-002",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-029",
@@ -7764,7 +7764,7 @@
           "noun": "Adoption",
           "anschluss": "S-JL-010",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-030",
@@ -7772,7 +7772,7 @@
           "noun": "Feiermodus",
           "anschluss": "S-JL-023",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-JL-031",
@@ -7780,21 +7780,21 @@
           "noun": "Druck",
           "anschluss": "S-JL-018",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
       "advice_style": 0,
       "types": {
-        "P": 31
+        "K": 31
       }
     },
     {
       "name": "13-data-agent-anweisungen-pro-thema.md",
       "kind": "anweisung",
       "lines": 904,
-      "bytes": 77568,
+      "bytes": 71328,
       "scenarios": [
         {
           "id": "S-DT-001",
@@ -7802,7 +7802,7 @@
           "noun": "Übersichtsfrage",
           "anschluss": "S-DT-002",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-002",
@@ -7810,7 +7810,7 @@
           "noun": "Einstiegspunkt",
           "anschluss": "S-DT-014",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-003",
@@ -7818,7 +7818,7 @@
           "noun": "Wunsch",
           "anschluss": "S-DT-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-004",
@@ -7826,7 +7826,7 @@
           "noun": "Hilfe",
           "anschluss": "S-DT-005",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-005",
@@ -7834,7 +7834,7 @@
           "noun": "Dinge",
           "anschluss": "S-DT-006",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-006",
@@ -7842,7 +7842,7 @@
           "noun": "Fakten",
           "anschluss": "S-DT-007",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-007",
@@ -7850,7 +7850,7 @@
           "noun": "Vorgehen",
           "anschluss": "S-DT-008",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-008",
@@ -7858,7 +7858,7 @@
           "noun": "Bezug",
           "anschluss": "S-DT-009",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-009",
@@ -7866,7 +7866,7 @@
           "noun": "Optionen",
           "anschluss": "S-DT-010",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-010",
@@ -7874,7 +7874,7 @@
           "noun": "Inhalte",
           "anschluss": "S-DT-011",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-011",
@@ -7882,7 +7882,7 @@
           "noun": "CSV-Datei",
           "anschluss": "S-DT-012",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-012",
@@ -7890,7 +7890,7 @@
           "noun": "Dateien",
           "anschluss": "S-DT-013",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-013",
@@ -7898,7 +7898,7 @@
           "noun": "Legal",
           "anschluss": "S-DT-029",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-014",
@@ -7906,7 +7906,7 @@
           "noun": "Little",
           "anschluss": "S-DT-015",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-015",
@@ -7914,7 +7914,7 @@
           "noun": "Workflow",
           "anschluss": "S-DT-016",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-016",
@@ -7922,7 +7922,7 @@
           "noun": "JSON-Output",
           "anschluss": "S-DT-024",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-017",
@@ -7930,7 +7930,7 @@
           "noun": "Integrationen",
           "anschluss": "S-DT-018",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-018",
@@ -7938,7 +7938,7 @@
           "noun": "CRM-Integration",
           "anschluss": "S-DT-015",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-019",
@@ -7946,7 +7946,7 @@
           "noun": "Bezug",
           "anschluss": "S-DT-020",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-020",
@@ -7954,7 +7954,7 @@
           "noun": "API-Frage",
           "anschluss": "S-DT-021",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-021",
@@ -7962,7 +7962,7 @@
           "noun": "Migration",
           "anschluss": "S-DT-022",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-022",
@@ -7970,7 +7970,7 @@
           "noun": "Browser-Frontend",
           "anschluss": "S-DT-029",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-023",
@@ -7978,7 +7978,7 @@
           "noun": "Modell",
           "anschluss": "S-DT-024",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-024",
@@ -7986,7 +7986,7 @@
           "noun": "KI-Kosten",
           "anschluss": "S-DT-025",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-025",
@@ -7994,7 +7994,7 @@
           "noun": "EUR-Tarif",
           "anschluss": "S-DT-032",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-026",
@@ -8002,7 +8002,7 @@
           "noun": "Langdock",
           "anschluss": "S-DT-027",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-027",
@@ -8010,7 +8010,7 @@
           "noun": "Datenweitergabe",
           "anschluss": "S-DT-028",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-028",
@@ -8018,7 +8018,7 @@
           "noun": "KI-Auswertung",
           "anschluss": "S-DT-029",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-029",
@@ -8026,7 +8026,7 @@
           "noun": "Frage",
           "anschluss": "S-DT-033",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-030",
@@ -8034,7 +8034,7 @@
           "noun": "Beginnerin",
           "anschluss": "S-DT-031",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-031",
@@ -8042,7 +8042,7 @@
           "noun": "KI-Adoption",
           "anschluss": "S-DT-032",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-032",
@@ -8050,7 +8050,7 @@
           "noun": "Briefing",
           "anschluss": "S-DT-004",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-033",
@@ -8058,7 +8058,7 @@
           "noun": "Suche",
           "anschluss": "S-DT-025",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-034",
@@ -8066,7 +8066,7 @@
           "noun": "Little",
           "anschluss": "S-DT-014",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-035",
@@ -8074,7 +8074,7 @@
           "noun": "Sachfrage",
           "anschluss": "S-DT-036",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-036",
@@ -8082,7 +8082,7 @@
           "noun": "Briefing",
           "anschluss": "S-DT-035",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-037",
@@ -8090,7 +8090,7 @@
           "noun": "Nachricht",
           "anschluss": "S-DT-035",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-038",
@@ -8098,7 +8098,7 @@
           "noun": "Mikro-Aufgabe",
           "anschluss": "S-DT-039",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         },
         {
           "id": "S-DT-039",
@@ -8106,7 +8106,7 @@
           "noun": "Texte",
           "anschluss": "S-DT-038",
           "advice_style": false,
-          "type": "P"
+          "type": "K"
         }
       ],
       "data_anweisungen": [
@@ -8125,14 +8125,14 @@
       "faq": [],
       "advice_style": 0,
       "types": {
-        "P": 39
+        "K": 39
       }
     },
     {
       "name": "14-iw-use-cases.md",
       "kind": "content",
       "lines": 812,
-      "bytes": 98806,
+      "bytes": 91942,
       "scenarios": [
         {
           "id": "S-IW-001",
@@ -8549,7 +8549,7 @@
       "name": "16-onboarding-change-management.md",
       "kind": "content",
       "lines": 554,
-      "bytes": 69025,
+      "bytes": 64461,
       "scenarios": [
         {
           "id": "S-OC-001",
@@ -8787,7 +8787,7 @@
       "name": "17-branchen-think-tank-praxis.md",
       "kind": "content",
       "lines": 777,
-      "bytes": 82971,
+      "bytes": 76614,
       "scenarios": [
         {
           "id": "S-TT-001",
@@ -11782,7 +11782,8 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 1096,
+    "P": 986,
+    "K": 110,
     "D": 10
   },
   "typed": 1106
