@@ -819,12 +819,16 @@ Vorgehen:
 2. Definiere die Key-Metriken: P95-Latenz unter 6 Sekunden, Fehlerrate unter 1 %, Token-Kosten pro Request-Typ im definierten Band, monatlicher Gesamtverbrauch unter Budget-Schwelle.
 3. Skizziere den Datenfluss: Langdock Audit Logs API täglich → Datadog-Ingest-API; Usage Export API monatlich → Power BI; LLM-Tracing via Langfuse-SDK direkt im BFF-Server instrumentiert.
 4. Definiere Alerting-Regeln: Fehlerrate über 2 % für 5 Minuten → PagerDuty-Alert; Token-Kosten an einem Tag über 150 % des Tagesdurchschnitts → E-Mail an Marketing-Ops; P95-Latenz über 10 Sekunden für 15 Minuten → Slack-Alert #ki-monitoring.
-Prompt:
-> "Du bist ein Platform-Engineering-Berater. Unsere Langdock-API-Integrationen laufen ohne Monitoring — wir bemerken Qualitätsprobleme erst Tage später. Empfehle eine Monitoring-Strategie: Welche Metriken sind für LLM-APIs kritisch? Wie nutzen wir Langfuse für LLM-Tracing und Datadog für Infrastruktur-Metriken? Definiere konkrete Alerting-Schwellenwerte. Erkläre, wie Audit Logs API und Usage Export API als Datenquellen eingebunden werden. Liefere das Konzept als strukturiertes Monitoring-Design."
+Vorlage: API-Monitoring-Design (zwei Schichten):
+1. Infrastruktur — Latenz/Fehlerrate/Verfuegbarkeit via Datadog oder Grafana.
+2. LLM-Qualitaet — Output-Konsistenz, Prompt-Injection-Erkennung, Token-Kosten/Request via Langfuse.
+3. Datenfluss — Audit Logs API taeglich → Datadog; Usage Export API monatlich → Power BI; Langfuse-SDK im BFF instrumentiert.
+4. Alerting — Fehlerrate >2 % (5 Min) → PagerDuty; Tageskosten >150 % Schnitt → E-Mail; P95-Latenz >10 s (15 Min) → Slack #ki-monitoring.
 Artefakt: Ein Monitoring-Design-Dokument (Schichten, Metriken, Datenfluss, Alerting-Regeln).
 Fallstricke:
 - Das Monitoring erfasst nur technische Metriken (Latenz, Fehler) und ignoriert Qualitäts-Drift — ein Agent kann technisch einwandfrei laufen und trotzdem inhaltlich degradieren.
 - Langfuse wird als vollständiger Ersatz für Datadog positioniert — tatsächlich sind beide Tools komplementär: Langfuse für LLM-Traces, Datadog für Infrastruktur.
+Empfehlung: Technische Metriken (Latenz/Fehler) und inhaltliche Qualitaets-Drift gleichermassen ueberwachen — ein Agent kann technisch einwandfrei laufen und inhaltlich degradieren. Langfuse und Datadog als komplementaer behandeln (LLM-Traces vs. Infrastruktur), nicht das eine als Ersatz fuers andere positionieren.
 Anschluss: S-API-034
 
 ### S-API-034 Langdock Search API für unternehmensweites Q&A-System
@@ -838,12 +842,16 @@ Vorgehen:
 2. Erkläre den Unterschied zwischen Search API und direktem Agent: die Search API liefert Rohchunks und Relevanz-Scores — das System entscheidet dann selbst, ob es diese Chunks in einen Completion-Call weiterleitet oder direkt präsentiert; ein Agent erledigt beides automatisch.
 3. Weise auf Skalierungsaspekte hin: das Wissensordner-Limit von 1.000 Dokumenten und 256 MB pro Dokument; bei Überschreitung müssen ältere Dokumente archiviert oder ein zweiter Wissensordner eingerichtet werden.
 4. Definiere eine Feedback-Schleife: Nutzer können Antworten mit "hilfreich / nicht hilfreich" bewerten; alle negativen Bewertungen werden wöchentlich analysiert, um die Indexierungsqualität der Quelldokumente zu verbessern.
-Prompt:
-> "Du bist ein Knowledge-Management-Architekt. Wir bauen ein unternehmensweites Q&A-System auf Basis der Langdock Search API und Completion API. Beschreibe den dreistufigen Stack: Dokumenten-Ingestion, semantische Suche, Antwort-Synthese. Erkläre den Unterschied zwischen Search API (Chunks) und einem direkten Agent. Nenne Skalierungsgrenzen des Wissensordners und wie eine Nutzerfeedback-Schleife das System verbessert. Liefere ein strukturiertes Systemdesign-Dokument."
+Vorlage: Unternehmens-Q&A-Systemdesign (dreistufig):
+1. Ingestion — Knowledge Folder API: alle relevanten Dokumente als Markdown hochladen.
+2. Suche — Search API: Query → Top-K Chunks + Relevanz-Score.
+3. Synthese — Completion API: Chunks als Kontext + Frage → Antwort mit Quellenangaben.
+4. Skalierung + Feedback — 1.000-Dokumente-/256-MB-Limit beachten; Nutzer-Feedback (hilfreich/nicht) woechentlich zur Kuratierung auswerten.
 Artefakt: Ein Systemdesign-Dokument (Architektur-Stack, API-Rollen, Skalierungsgrenzen, Feedback-Schleife).
 Fallstricke:
 - Das Design verwendet die Search API als vollständige RAG-Lösung und vergisst den Completion-API-Schritt für die Antwort-Synthese — das Ergebnis sind rohe Textchunks statt lesbarer Antworten.
 - Die Feedback-Schleife wird als automatisches Re-Training interpretiert — tatsächlich verbessert Feedback nur die menschliche Kuratierung der Quelldokumente, nicht das Modell selbst.
+Empfehlung: Den Completion-API-Schritt zur Antwort-Synthese nie auslassen — die Search API allein liefert rohe Chunks, keine lesbaren Antworten. Die Feedback-Schleife als menschliche Kuratierung der Quelldokumente verstehen, nicht als automatisches Modell-Re-Training (das findet nicht statt).
 Anschluss: S-API-035
 
 ### S-API-035 Content-Moderations-Layer auf Langdock-API
@@ -857,12 +865,16 @@ Vorgehen:
 2. Erkläre Prompt-Injection-Abwehr: im System-Prompt klar definieren, dass der Agent Anweisungen aus dem User-Turn ignoriert, die seinen Kern-Scope verlassen; zusätzlich eine Whitelist erlaubter Themen im System-Prompt hinterlegen.
 3. Definiere Logging-Pflichten: alle blockierten Inputs und alle gefilterten Outputs werden mit Timestamp, User-Session-ID (anonymisiert) und Grund der Blockierung geloggt — diese Logs sind Input für wöchentliche Security-Reviews.
 4. Plane den Eskalationsprozess: bei mehr als 10 blockierten Inputs pro Stunde von derselben Session-ID → automatischer Chatbot-Block dieser Session + Alert an das Security-Team.
-Prompt:
-> "Du bist ein KI-Security-Architekt. Unser öffentlicher Langdock-Chatbot wurde durch Prompt-Injection manipuliert. Der CISO verlangt eine Moderationsebene. Konzipiere einen zweistufigen Content-Moderations-Layer: (1) Input-Validierung vor dem Langdock-Aufruf (Moderations-API, Prompt-Injection-Abwehr), (2) Output-Filterung nach dem Langdock-Aufruf (Toxizität, PII, Brand-Risiko). Ergänze Logging-Anforderungen und einen Eskalationsprozess bei Angriffserkennung. Tonfall: sicherheitsorientiert, umsetzbar."
+Vorlage: Content-Moderations-Layer (zweistufig):
+1. Pre-Processing — eingehende Inputs vor dem Langdock-Aufruf durch eine Moderations-API (OpenAI Moderation/Azure Content Safety); toxische/injection-verdaechtige blockieren + loggen.
+2. Post-Processing — Langdock-Outputs vor Auslieferung auf Toxizitaet, PII und Brand-Risiko pruefen.
+3. Injection-Abwehr — System-Prompt ignoriert Scope-verlassende User-Anweisungen; Themen-Whitelist.
+4. Logging + Eskalation — blockierte Inputs/gefilterte Outputs mit Timestamp + anon. Session-ID; >10 Blocks/Stunde/Session → Session-Block + Security-Alert.
 Artefakt: Ein Architekturkonzept für den Content-Moderations-Layer (zweistufige Moderation, Logging, Eskalation).
 Fallstricke:
 - Das Konzept verlässt sich ausschließlich auf die Langdock-eigene Systemkontrolle und implementiert keinen externen Moderations-Layer — damit ist ein System-Prompt-Jailbreak nicht durch eine unabhängige Moderationsschicht absicherbar.
 - Die Output-Filterung fügt signifikante Latenz hinzu, was die Nutzererfahrung verschlechtert; das Konzept muss asynchrone Filterung (Filter läuft parallel, nicht seriell) evaluieren.
+Empfehlung: Einen unabhaengigen externen Moderations-Layer vor- und nachschalten — sich allein auf die Langdock-eigene System-Prompt-Kontrolle zu verlassen, schuetzt nicht gegen einen Jailbreak. Die Output-Filterung asynchron/parallel auslegen, nicht seriell, sonst verschlechtert die zusaetzliche Latenz die Nutzererfahrung spuerbar.
 Anschluss: S-API-036
 
 ### S-API-036 Custom Model Routing via BYOC für datensensitive Segmentierung
@@ -876,12 +888,16 @@ Vorgehen:
 2. Beschreibe den Routing-Mechanismus: Standard-Requests → Langdock BYOC mit Azure OpenAI; datensensitive Requests → Langdock BYOM mit internem Llama-Modell in der eigenen VPC; beide Routes nutzen dieselbe Langdock-Orchestrierungsebene, aber unterschiedliche Modell-Konfigurationen.
 3. Plane die Fallback-Strategie: wenn das interne BYOM-Modell nicht verfügbar ist, wird der datensensitive Request abgelehnt (nicht auf Cloud-Modell fallen!) und eine Fehlermeldung zurückgegeben — kein automatisches Fallback auf Cloud.
 4. Definiere den Compliance-Nachweis: für jede Anfrage wird im Audit-Log protokolliert, welches Modell-Backend genutzt wurde; monatlicher Report für den Datenschutzbeauftragten zeigt 100% der datensensitiven Anfragen auf dem internen Modell.
-Prompt:
-> "Du bist ein KI-Infrastruktur-Berater. Wir brauchen ein Model-Routing-System: Standard-Marketing-Tasks laufen auf unserem Azure-Cloud-Modell via BYOC, datensensitive Segmentierungsaufgaben nur auf unserem internen BYOM-Modell. Beschreibe die Routing-Architektur: Klassifikationslogik, Routing-Mechanismus über Langdock BYOC/BYOM, und explizit: Kein automatisches Fallback auf Cloud bei BYOM-Ausfall. Wie dokumentieren wir die Compliance im Audit-Log? Liefere ein Architektur-Dokument."
+Vorlage: Model-Routing-Architektur (BYOC + BYOM):
+1. Klassifikation — BFF entscheidet per Request-Metadaten (z. B. data_sensitivity) oder vorgeschaltetem Classifier.
+2. Routing — Standard → BYOC (Azure OpenAI); datensensitiv → BYOM (internes Llama in eigener VPC); gleiche Orchestrierung, andere Modell-Config.
+3. Fallback — bei BYOM-Ausfall datensensitiven Request ABLEHNEN, nie auf Cloud fallen.
+4. Compliance — pro Request Modell-Backend im Audit-Log; Monatsreport zeigt 100 % datensensitiver Anfragen auf dem internen Modell.
 Artefakt: Ein Model-Routing-Architektur-Dokument (Klassifikation, Routing, Fallback-Strategie, Compliance-Nachweis).
 Fallstricke:
 - Das Routing implementiert ein automatisches Fallback auf das Cloud-Modell bei BYOM-Ausfall — dies verletzt die Datenschutzanforderung und würde einen Compliance-Vorfall erzeugen.
 - Die Klassifikationslogik ist zu einfach (nur ein Boolean-Parameter) und gibt Nutzern die Möglichkeit, datensensitive Anfragen als "standard" zu deklarieren, um die schnellere Cloud-Route zu nutzen.
+Empfehlung: Niemals ein automatisches Fallback auf das Cloud-Modell bei BYOM-Ausfall einbauen — das verletzt die Datenschutzanforderung und erzeugt einen Compliance-Vorfall; datensensitive Requests im Ausfall stattdessen ablehnen. Die Klassifikation nicht an einem einzelnen, vom Nutzer setzbaren Boolean aufhaengen, sonst deklarieren Nutzer sensible Anfragen als 'standard' fuer die schnellere Route.
 Anschluss: S-API-037
 
 ### S-API-037 Enterprise-SSO-Integration mit Langdock
@@ -895,12 +911,16 @@ Vorgehen:
 2. Beschreibe die automatische Rollenzuweisung: Azure-AD-Gruppen (z. B. "Marketing-Team", "Marketing-Admins") werden auf Langdock-Rollen gemappt; neue Mitarbeiter erhalten automatisch die richtige Rolle, sobald sie der AD-Gruppe zugewiesen werden.
 3. Kläre das Offboarding: sobald ein Mitarbeiterkonto in Azure AD deaktiviert wird, verliert es sofort den SSO-Zugang zu Langdock — manuelle Deaktivierung in Langdock ist nicht mehr nötig; dies schließt die in S-API-014 beschriebene Key-Kompromittierungs-Lücke.
 4. Weise auf API-Key-Governance hin: auch nach SSO-Einführung bleiben Workspace-API-Keys außerhalb des SSO-Scope — diese müssen weiterhin über den in S-API-014 beschriebenen Lifecycle-Prozess verwaltet werden.
-Prompt:
-> "Du bist ein Identity-Management-Berater. Wir wollen Langdock via SSO mit unserem Azure AD / Entra ID verbinden. Erkläre: (1) Welches Protokoll nutzen wir (SAML 2.0 oder OIDC)? (2) Wie werden Azure-AD-Gruppen auf Langdock-Rollen gemappt? (3) Was passiert automatisch beim Offboarding? (4) Welche Zugriffsvektoren bleiben nach SSO-Einführung bestehen (API-Keys!)? Liefere ein SSO-Integrationskonzept für unseren IT-Leiter."
+Vorlage: Enterprise-SSO-Integrationskonzept (Azure AD/Entra ID):
+1. Mechanismus — Langdock als Service Provider in Azure AD registrieren; SAML 2.0 oder OIDC; Login nur ueber Azure-AD-Konto.
+2. Rollenmapping — Azure-AD-Gruppen (Marketing-Team/-Admins) auf Langdock-Rollen mappen, automatisch bei Gruppenzuweisung.
+3. Offboarding — AD-Konto deaktiviert → sofortiger SSO-Entzug (schliesst die Key-Luecke aus S-API-014).
+4. Rest-Scope — Workspace-API-Keys bleiben ausserhalb SSO → weiter ueber den Lifecycle-Prozess (S-API-014) verwalten.
 Artefakt: Ein SSO-Integrationskonzept (Protokollwahl, Rollenmapping, Offboarding-Automatisierung, residuale Risiken).
 Fallstricke:
 - Das Konzept suggeriert, dass SSO alle Zugangswege absichert — tatsächlich bleiben Workspace-API-Keys außerhalb des SSO-Scope und müssen separat verwaltet werden.
 - Die Rollenzuweisung wird manuell im Langdock-Admin gepflegt statt automatisch über Azure-AD-Gruppen, was bei 200 Nutzern zu einem manuellen Verwaltungsaufwand führt.
+Empfehlung: SSO sichert die Nutzer-Logins, aber nicht alle Zugangswege — Workspace-API-Keys bleiben ausserhalb des SSO-Scope und brauchen weiter den separaten Lifecycle-Prozess (S-API-014). Das Rollenmapping ueber Azure-AD-Gruppen automatisieren, nie manuell im Langdock-Admin pflegen, sonst entsteht bei 200 Nutzern erheblicher Verwaltungsaufwand.
 Anschluss: S-API-038
 
 ### S-API-038 SLA-Monitoring für API-Verfügbarkeit
@@ -914,12 +934,16 @@ Vorgehen:
 2. Berechne den monatlichen Verfügbarkeits-Wert: (Gesamtminuten im Monat − gemessene Ausfallminuten) / Gesamtminuten × 100; typische Enterprise-SLAs fordern 99,9 % (≈ 43 Minuten Downtime/Monat).
 3. Plane Alerting und Eskalation: bei Ausfall über 10 Minuten → automatische Benachrichtigung an Marketing-Ops + Aktivierung des Fallback-Playbooks (S-API-021); bei monatlichem SLA-Verstoß → formelle Eskalation an Langdock Customer Success Manager mit Dokumentation.
 4. Definiere das Report-Template: monatlicher SLA-Report enthält gemessene Uptime, Incident-Liste (Datum, Dauer, Ursache soweit bekannt), Vergleich mit vertraglichem SLA und ggf. SLA-Kredit-Anspruch.
-Prompt:
-> "Du bist ein SLA-Management-Berater. Nach zwei Langdock-Ausfällen brauchen wir ein SLA-Monitoring-System. Erkläre: (1) Wie messen wir die tatsächliche Verfügbarkeit aus unserer Netzwerkperspektive (Synthetic Monitor)? (2) Wie berechnen wir den monatlichen Uptime-Prozentsatz? (3) Welche Alerting-Schwellenwerte und Eskalationsprozesse richten wir ein? (4) Wie sieht unser monatliches SLA-Report-Template aus? Liefere ein vollständiges Monitoring-Konzept."
+Vorlage: SLA-Monitoring-Konzept (API-Verfuegbarkeit):
+1. Messmethodik — Synthetic-Monitor alle 5 Min aus dem eigenen Netz; status.langdock.com als ergaenzende Incident-Quelle.
+2. Uptime — (Gesamtminuten − Ausfallminuten)/Gesamtminuten ×100; Enterprise-SLA oft 99,9 % (~43 Min/Monat).
+3. Alerting/Eskalation — Ausfall >10 Min → Marketing-Ops + Fallback-Playbook (S-API-021); Monats-SLA-Verstoss → formelle Eskalation an CSM.
+4. Report — Uptime, Incident-Liste (Datum/Dauer/Ursache), SLA-Vergleich, SLA-Kredit-Anspruch.
 Artefakt: Ein SLA-Monitoring-Konzept (Messmethodik, Uptime-Berechnung, Alerting, Report-Template).
 Fallstricke:
 - Das Monitoring verlässt sich ausschließlich auf die status.langdock.com-Seite — diese zeigt anbietergemeldete Incidents, nicht die tatsächliche Erreichbarkeit aus dem eigenen Netz; netzwerk-lokale Probleme bleiben unsichtbar.
 - Der SLA-Kredit-Anspruchsprozess wird im Konzept vergessen — ohne dokumentierte Incident-Daten und den richtigen Eskalationsweg hat das Unternehmen keine Handhabe gegenüber dem Anbieter.
+Empfehlung: Nicht allein auf status.langdock.com verlassen — die Seite zeigt anbietergemeldete Incidents, nicht die reale Erreichbarkeit aus dem eigenen Netz; ein Synthetic-Monitor deckt netzwerk-lokale Probleme auf. Den SLA-Kredit-Anspruchsprozess samt dokumentierter Incident-Daten und Eskalationsweg von Beginn an mitdefinieren, sonst fehlt die Handhabe gegenueber dem Anbieter.
 Anschluss: S-API-039
 
 ### S-API-039 Kosten-Anomalie-Erkennung bei API-Nutzung
@@ -933,12 +957,16 @@ Vorgehen:
 2. Beschreibe die Verursacher-Identifikation: Usage-Export-Daten nach User-ID, Agent-ID und Modell aufschlüsseln; der höchste Token-Verbrauch in einer einzigen Dimension ist in 80 % der Fälle der Kostentreiber.
 3. Definiere automatische Schutzmaßnahmen: bei bestätigtem Kostenabnormal-Alert — den verdächtigen Agenten oder User vorübergehend auf ein günstigeres Fallback-Modell umleiten (statt ihn vollständig zu sperren, was laufende Kampagnen blockiert).
 4. Dokumentiere das Eskalations-Playbook: Alert erhält Marketing-Ops + CFO; innerhalb von 4 Stunden muss der Verursacher identifiziert und entweder die Ursache behoben oder der Workaround aktiviert sein; nach 24 Stunden schriftlicher Incident-Report an Finance.
-Prompt:
-> "Du bist ein FinOps-Berater für KI-Infrastruktur. Unsere Langdock-Kosten sind diese Woche um 340 % gestiegen. Erstelle ein Kosten-Anomalie-Erkennungs-Framework: (1) täglicher Usage-Export-API-Pull mit Anomalie-Schwellenwerten, (2) Verursacher-Identifikation via User-ID/Agent-ID-Aufschlüsselung, (3) automatische Schutzmaßnahmen ohne laufende Kampagnen zu blockieren, (4) Eskalations-Playbook für Finance. Liefere das Framework als strukturiertes Dokument."
+Vorlage: Kosten-Anomalie-Erkennungs-Framework:
+1. Erkennung — taeglicher Usage-Export-Pull (07:00); Tagesverbrauch vs. 30-Tage-Schnitt; >150 % Alert, >300 % Modell-Gating-Review.
+2. Verursacher — Aufschluesselung nach User-ID/Agent-ID/Modell; hoechster Verbrauch in einer Dimension ist meist der Treiber.
+3. Schutz — verdaechtigen Agenten/User auf guenstigeres Fallback-Modell umleiten (nicht sperren → laufende Kampagnen bleiben).
+4. Eskalation — Alert an Marketing-Ops + CFO; Verursacher binnen 4 h; Incident-Report binnen 24 h an Finance.
 Artefakt: Ein Kosten-Anomalie-Erkennungs-Framework (Alert-Logik, Verursacher-Analyse, Schutzmaßnahmen, Eskalations-Playbook).
 Fallstricke:
 - Das Framework sperrt sofort den auffälligen Nutzer oder Agenten, ohne die laufende Kampagnenauswirkung zu prüfen — ein wichtiger Kampagnen-Workflow wird möglicherweise ungeplant unterbrochen.
 - Die Anomalie-Erkennung setzt absolute Kostenschwellenwerte statt relative Prozentabweichungen — ein saisonaler Anstieg von 200 % kurz vor dem Black Friday löst fälschlicherweise einen Alert aus.
+Empfehlung: Relative Prozentabweichungen statt absoluter Schwellenwerte nutzen — ein saisonaler 200-%-Anstieg vor Black Friday darf keinen Fehlalarm ausloesen. Den auffaelligen Verursacher auf ein guenstigeres Fallback-Modell umleiten statt ihn sofort zu sperren, damit ein wichtiger Kampagnen-Workflow nicht ungeplant unterbrochen wird.
 Anschluss: S-API-040
 
 ### S-API-040 Disaster-Recovery-Planung für KI-Marketing-Infrastruktur
@@ -948,17 +976,22 @@ Ziel: Einen vollständigen Disaster-Recovery-Plan für die KI-Marketing-Infrastr
 Ergebnis: Ein Disaster-Recovery-Plan (DRP) mit definierten RTO (Recovery Time Objective), RPO (Recovery Point Objective), Ausfallszenarien, Wiederherstellungsschritten und Testkalender.
 Fähigkeit: Deployment Advisory, Advisory
 Vorgehen:
-1. Definiere RTO und RPO: RTO = 30 Minuten (innerhalb dieser Zeit muss Minimal-Betrieb wiederhergestellt sein); RPO = 24 Stunden (maximaler Datenverlust durch letztes Backup).
-2. Kategorisiere die Ausfallszenarien: (a) Langdock-Plattform-Ausfall — Fallback auf lokale Agent-Prompt-Backups + direkter Anthropic/OpenAI-Webzugang; (b) BFF-Server-Ausfall — Umschaltung auf Standby-BFF-Instanz in anderer Availability-Zone; (c) Kombinations-Ausfall — manueller Betrieb nach vorbereiteten Fallback-Vorlagen.
-3. Dokumentiere die Wiederherstellungsschritte pro Szenario: für jeden der drei Szenarien eine nummerierte Schritt-für-Schritt-Anleitung, die auch unter Stress ohne IT-Expertise ausführbar ist.
-4. Sichere kritische Ressourcen: alle Agent-System-Prompts als Markdown in einem versionierten Git-Repository; alle Wissensordner-Dokumente als wöchentliches Backup auf einen separaten Cloud-Storage; BFF-Server-Konfiguration als Infrastructure-as-Code (IaC) in Git.
-5. Definiere den Testkalender: jährlicher DRP-Test (simulierter Vollausfall), halbjährlicher Partial-Test (nur Langdock-Ausfall-Szenario), quartalsweise Überprüfung der Backup-Vollständigkeit.
-Prompt:
-> "Du bist ein Business-Continuity-Planer. Wir hatten zwei Ausfälle: einmal Langdock selbst, einmal unser BFF-Server. Erstelle einen Disaster-Recovery-Plan für unsere KI-Marketing-Infrastruktur. Definiere RTO (30 min) und RPO (24h). Beschreibe drei Ausfallszenarien mit je nummerierten Wiederherstellungsschritten. Erkläre, welche Ressourcen wir als Backups sichern müssen (Prompts, Wissensordner, BFF-Config). Füge einen Testkalender hinzu. Liefere den DRP als formelles Dokument."
+1. RTO/RPO festlegen (30 Min Minimal-Betrieb, 24 h max. Datenverlust).
+2. Die drei Ausfallszenarien (Langdock / BFF / Kombination) und ihre Fallback-Wege bestimmen.
+3. Je Szenario eine nummerierte, stressfest-ausfuehrbare Wiederherstellungs-Anleitung dokumentieren.
+4. Kritische Ressourcen sichern: System-Prompts in Git, Wissensordner woechentlich, BFF-Config als IaC.
+5. Den Testkalender definieren (jaehrlich Voll-, halbjaehrlich Partial-, quartalsweise Backup-Test).
+Vorlage: Disaster-Recovery-Plan KI-Marketing-Infrastruktur:
+1. Ziele — RTO 30 Min (Minimal-Betrieb), RPO 24 h (max. Datenverlust).
+2. Szenarien — (a) Langdock-Ausfall → lokale Prompt-Backups + Anthropic/OpenAI-Webzugang; (b) BFF-Ausfall → Standby-BFF in anderer AZ; (c) Kombi → manueller Betrieb nach Vorlagen.
+3. Wiederherstellung — je Szenario nummerierte Schritte, auch ohne IT-Expertise unter Stress ausfuehrbar.
+4. Backups — System-Prompts in Git, Wissensordner woechentlich auf separaten Cloud-Storage, BFF-Config als IaC.
+5. Testkalender — jaehrlicher Vollausfall-Test, halbjaehrlicher Partial-Test, quartalsweise Backup-Pruefung.
 Artefakt: Ein formeller Disaster-Recovery-Plan (RTO/RPO, Szenarien, Wiederherstellungsschritte, Backup-Strategie, Testkalender).
 Fallstricke:
 - Der DRP ist zu allgemein und beschreibt nur "nehmt einen anderen KI-Anbieter" ohne konkrete Schritte — im Ausfall-Stressfall fehlt die Handlungsorientierung.
 - Der Testkalender ist einmalig und wird nie wiederholt — ohne regelmäßige DRP-Tests wird das Team bei einem echten Ausfall feststellen, dass die Schritte veraltet oder unvollständig sind.
+Empfehlung: Pro Szenario konkrete, nummerierte Wiederherstellungsschritte schreiben — ein DRP, der nur 'nehmt einen anderen Anbieter' sagt, hilft im Stressfall nicht. Den Testkalender als wiederkehrende Pflicht verankern (nicht einmalig), sonst sind die Schritte beim echten Ausfall veraltet oder unvollstaendig.
 Anschluss: S-API-041
 
 ### S-API-041 BYOK-Entscheidungskalkulation ab welchem Volumen
