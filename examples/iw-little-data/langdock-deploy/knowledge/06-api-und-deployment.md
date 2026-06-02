@@ -101,12 +101,17 @@ Vorgehen:
 2. Beauftrage den Agenten, eine Batch-Processing Architektur zu entwerfen, die zwingend einen Exponential-Backoff für HTTP 429 Fehler integriert.
 3. Lass eine Kostenschätzung auf Basis der aktuellen Workspace-Budgets erstellen.
 4. Formuliere ein Briefing, das der IT glasklar die Advisory-Grenze aufzeigt (Marketing liefert Konzept, IT schreibt Python-Code).
-Prompt:
-> "Little Data, wir haben ein massives Skalierungsproblem. Für den Q4-Launch müssen wir 15.000 Produkttexte via API aus Langdock generieren und ins PIM pushen. Die IT hat Angst vor Rate Limits und CORS-Problemen, wenn wir das direkt aus dem CMS triggern. Schreibe mir ein Architektur-Briefing für unseren Lead Developer. Erkläre das Backend-for-Frontend Pattern, wie wir die aktuell geltende Workspace-RPM-Grenze (ca. 500 Requests/Minute, vorab verifizieren) durch Batching respektieren und füge eine Warnung zum Non-Streaming-Timeout (ca. 100 Sekunden) bei langen Prompts hinzu — empfiehl Streaming als Gegenmaßnahme."
+Vorlage: Architektur-Briefing PIM-Massenanbindung (Markdown):
+1. Kontext & Volumen — Q4: 15.000 Artikel via Completion API ins PIM.
+2. Batch-Architektur — Backend-for-Frontend; server-seitiger Batch-Worker, kein CMS-Direkt-Trigger (CORS).
+3. Rate-Limit-Respekt — Workspace-RPM-Grenze (Stand 2026-06 ~500 RPM, beim CSM verifizieren) per Batching + Exponential-Backoff bei HTTP 429.
+4. Timeout — Non-Streaming-Timeout ~100 s bei langen Prompts; Streaming als Gegenmassnahme.
+5. Kosten & Advisory-Grenze — Schaetzung auf Workspace-Budget-Basis; Marketing liefert Konzept, IT schreibt Python.
 Artefakt: Technisches Briefing-Dokument (Markdown).
 Fallstricke:
 - Die Kostenschätzung verwechselt Langdock-Plattformkosten mit OpenAI-Inferenzkosten, was den CFO verärgern würde.
 - Das Briefing driftet zu sehr ins Technische ab und vergisst, die strategische Kostenkontrolle (Workspace-Budgets) für das Marketing zu betonen.
+Empfehlung: Den Batch-Worker server-seitig (BFF) bauen und HTTP 429 zwingend mit Exponential-Backoff abfangen; die RPM-Grenze vor dem Lauf beim Customer Success Manager verifizieren statt sie zu raten. In der Kostenschaetzung Langdock-Plattformkosten klar von Inferenzkosten trennen, sonst kippt das CFO-Gespraech.
 Anschluss: S-API-002
 
 ### S-API-002 CISO-Abwehr: Static IP und Egress-Whitelisting
@@ -119,12 +124,16 @@ Vorgehen:
 2. Nutze Little Data, um das Konzept des Langdock Egress-Whitelisting und der dedizierten Static IP zu dekonstruieren (die konkrete IP-Adresse wird vom Langdock-Enterprise-Support pro Workspace zugewiesen — niemals eine erfundene Adresse in der ACL hinterlegen).
 3. Erarbeite eine Argumentationskette, die beweist, dass die Firewall nur für diese einzige IP geöffnet werden muss.
 4. Verfasse ein hochgradig formelles, Compliance-zentriertes Dossier.
-Prompt:
-> "Unser CISO hat gerade die CRM-Integration gestoppt. Er weigert sich strikt, unsere On-Premise-Datenbank für eine SaaS-Plattform zu öffnen. Erstelle ein Security-Dossier, das ich ihm schicken kann. Fokussiere dich auf die 'Static IP'-Lösung von Langdock. Erkläre ihm in seiner Sprache (Firewall ACLs, Egress-Whitelisting), dass unser Netzwerk sicher bleibt, weil wir den Traffic exakt auf die Langdock-IP beschränken können. Lass jegliches Marketing-Bla-Bla weg."
+Vorlage: Security-Dossier Static-IP/Egress-Whitelisting (One-Pager):
+1. Kernbedenken — CISO fuerchtet Ingress aus dem offenen Web in die On-Prem-DB.
+2. Loesung — Langdock-Egress-Whitelisting + dedizierte Static IP (IP wird vom Enterprise-Support pro Workspace zugewiesen, nie erfunden).
+3. Firewall-Argumentation — ACL oeffnet exakt eine IP; Netzwerk bleibt geschlossen.
+4. Compliance-Anker — ISO-Zertifikate + Netzwerkarchitektur statt Marketing-Sprache.
 Artefakt: Ein formelles Security-Dossier.
 Fallstricke:
 - Die KI verwechselt Ingress-Routing (eingehender Traffic) mit Egress-Routing (ausgehender Traffic der Langdock-Plattform), was den CISO sofort misstrauisch machen würde.
 - Der Tone-of-Voice ist zu werblich ("Langdock ist total sicher!"), statt sich auf ISO-Zertifikate und Netzwerkarchitektur zu stützen.
+Empfehlung: Im Dossier strikt zwischen Ingress (eingehend) und Egress (ausgehender Langdock-Traffic) trennen — diese Verwechslung macht jeden CISO sofort misstrauisch. Die konkrete Static IP erst vom Langdock-Enterprise-Support pro Workspace zuweisen lassen und nie eine erfundene Adresse in die ACL schreiben.
 Anschluss: S-API-003
 
 ### S-API-003 FinOps-Audit: Chargeback für 5 Marketing-Teams
@@ -137,12 +146,16 @@ Vorgehen:
 2. Instruiere Little Data, ein Zuordnungsmodell auf Basis der User-IDs und Teams zu entwickeln.
 3. Skizziere einen automatisierten monatlichen Prozess, wie die Usage Export API genutzt werden kann, um diese Daten in Power BI zu speisen.
 4. Definiere Warnschwellen (Soft-Limits) im Workspace-Adminbereich.
-Prompt:
-> "Little Data, der CFO macht Druck wegen unserer Langdock-Rechnung. Wir müssen die Token-Kosten auf unsere fünf Fachabteilungen aufteilen. Schreibe mir einen Prozessplan: Wie ziehen wir am Ersten jeden Monats die Daten über die Usage Export API? Wie mappen wir die User-IDs auf die Kostenstellen? Und ganz wichtig: Skizziere eine Empfehlung für harte Workspace-Budgets, damit wir im nächsten Monat nicht wieder blind ins Limit laufen."
+Vorlage: FinOps-Chargeback-Prozess-Spezifikation (Markdown):
+1. Ziel — verursachergerechte Kostenumlage auf SEO/PR/Social/Event/Content.
+2. Datenquelle — Usage Export API (asynchron; liefert Download-Link, nicht sofort; reportet primaer auf User- und Modell-Ebene).
+3. Monatsprozess — am Ersten CSV ziehen, User-IDs auf Kostenstellen mappen, in Power BI speisen.
+4. Steuerung — harte Workspace-Budgets + Warn-Schwellen (Soft-Limits) im Admin-Bereich.
 Artefakt: Eine FinOps Prozess-Spezifikation.
 Fallstricke:
 - Das Modell ignoriert, dass die Usage Export API asynchron funktioniert und große CSV-Dateien (Millionen Zeilen) nicht sofort, sondern als Download-Link zurückliefert.
 - Die KI empfiehlt, Kosten pro Agent aufzuschlüsseln, vergisst aber, dass die API primär auf User- und Modell-Ebene reportet.
+Empfehlung: Das Modell auf User- und Modell-Ebene aufbauen, nicht auf Agent-Ebene — die Usage Export API reportet primaer so. Den asynchronen Charakter einplanen (grosse CSVs kommen als Download-Link) und harte Workspace-Budgets plus Warn-Schwellen setzen, damit das Team nicht erneut blind ins Limit laeuft.
 Anschluss: S-API-004
 
 ### S-API-004 Legacy-Migration: OpenAI Drop-In Strategie
@@ -155,12 +168,16 @@ Vorgehen:
 2. Erstelle einen kurzen Guide, der die zwei notwendigen Code-Änderungen (Base-URL und API-Key) visualisiert.
 3. Weise darauf hin, dass einzelne OpenAI-proprietäre Parameter und Endpoints (z. B. die Assistants- oder Fine-Tuning-API) im Kompatibilitäts-Layer kein Äquivalent haben — diese Stellen müssen vor der Migration in einem Feature-Audit identifiziert werden.
 4. Sende den Guide als klares Mandat an die Agentur.
-Prompt:
-> "Wir kündigen unseren direkten OpenAI-Vertrag und ziehen unser Python-Clustering-Skript zu Langdock um. Die Agentur behauptet, das dauert zwei Wochen. Erstelle einen prägnanten Migrations-Guide, der beweist, dass es sich um ein Drop-In Replacement handelt. Zeige auf, dass sie nur die Base-URL auf 'api.langdock.com/openai/eu/v1/chat/completions' ändern und den Bearer Token tauschen müssen. Sei höflich, aber lass keinen Zweifel daran, dass dieser Task maximal 30 Minuten dauern darf."
+Vorlage: OpenAI-Drop-In-Migrations-Guide (Mandat an die Agentur):
+1. Kernaussage — Langdock Completion API ist OpenAI-kompatibel; Drop-In, kein Refactoring.
+2. Zwei Aenderungen — Base-URL auf 'api.langdock.com/openai/eu/v1/chat/completions' + Bearer-Token tauschen.
+3. Feature-Audit — proprietaere Endpoints (Assistants-, Fine-Tuning-API) haben kein Aequivalent; vorab identifizieren.
+4. Mandat — Aufwand max. 30 Minuten, hoeflich aber unmissverstaendlich.
 Artefakt: Ein technisches Mandat (Migrations-Guide).
 Fallstricke:
 - Der Agent schlägt vor, den Code umzuschreiben, um das Vercel AI SDK zu nutzen, was das Ziel (Zero-Code-Änderung) komplett verfehlt.
 - Die regionale Endung in der Base-URL (eu vs. us) wird vergessen, was zu Compliance-Verstößen führen könnte.
+Empfehlung: Die EU-Region in der Base-URL (eu statt us) explizit vorgeben — eine falsche Region ist ein Compliance-Verstoss. Den Drop-In-Charakter verteidigen: kein Umbau auf das Vercel AI SDK, das verfehlt das Zero-Code-Ziel; nur Base-URL und Token tauschen.
 Anschluss: S-API-005
 
 ### S-API-005 RAG-Hygiene: Automatisierter Lifecycle für den Wissensordner
@@ -173,12 +190,16 @@ Vorgehen:
 2. Nutze Little Data, um die Endpoints der Knowledge Folder API (Upload, List, Delete) zu strukturieren.
 3. Entwirf einen nächtlichen Cron-Job-Prozess für die IT.
 4. Definiere Regeln für Dateigrößen (max 256MB) und Formate, um Fehler beim Upload zu vermeiden.
-Prompt:
-> "Little Data, wir haben ein massives Qualitätsproblem: Unser Produkt-Agent halluziniert alte Preise, weil der Wissensordner voller Datenmüll ist. Wir müssen das automatisieren. Skizziere einen Architektur-Workflow für unsere IT: Wie können sie via Knowledge Folder API jede Nacht um 03:00 Uhr alle veralteten PDFs löschen und die neuen Versionen aus SharePoint hochladen? Nenne unbedingt die Dateigrößen-Limits und erkläre, dass XLSX-Dateien vorher in Text konvertiert werden müssen."
+Vorlage: Knowledge-Folder-Sync-Spezifikation (fuer die IT):
+1. Problem — Data Decay: 500 veraltete PDFs verursachen Halluzinationen.
+2. Endpoints — Knowledge Folder API: List / Delete / Upload.
+3. Naechtlicher Cron — 03:00 Uhr: veraltete Dateien loeschen, neue aus SharePoint hochladen.
+4. Limits — max. 256 MB/Datei, max. 1.000 Dateien/Folder; XLSX vorab in Text konvertieren.
 Artefakt: Eine Sync-Spezifikation für die IT.
 Fallstricke:
 - Die Limitierung von maximal 1.000 Dateien pro Folder wird nicht berücksichtigt, was die Pipeline nach wenigen Wochen zum Absturz bringen würde.
 - Der Agent schlägt vor, direkte Integrationen (Native Syncs) zu nutzen, obwohl SharePoint (als Beispiel) vielleicht nur on-premise liegt und eine API-Lösung zwingend ist.
+Empfehlung: Das 1.000-Dateien-pro-Folder-Limit von Beginn an in die Pipeline einplanen, sonst stuerzt sie nach Wochen ab. Wenn SharePoint nur on-premise liegt, zwingend die API-Sync-Loesung waehlen — eine native Integration ist dann keine Option.
 Anschluss: S-API-006
 
 ### S-API-006 BYOC vs. SaaS Entscheidungsvorlage
@@ -191,8 +212,7 @@ Vorgehen:
 2. Konstruiere das Bring-Your-Own-Cloud (BYOC) Modell als perfekte Schnittmenge.
 3. Erkläre, wie die Administrator-Ebene in Langdock die Azure-Keys sicher speichert.
 4. Verfasse ein Pitch-Script, das die User-Experience des Marketings verteidigt.
-Prompt:
-> "Julia hier. Unser CTO will uns Langdock wegnehmen und alles selbst auf Azure bauen, um Kosten zu sparen. Wir brauchen die Plattform aber! Hilf mir, das BYOC (Bring Your Own Cloud) Modell zu pitchen. Erkläre, dass wir Langdock als Frontend und Orchestrierungsebene behalten können, während wir im Backend seinen Azure-API-Key eintragen. Verfasse drei starke Argumente, warum das für ihn günstiger ist (seine Enterprise-Rabatte gelten) und wir trotzdem agil bleiben."
+Empfehlung: BYOC (Bring Your Own Cloud) als Win-Win pitchen: Langdock bleibt Frontend- und Orchestrierungsebene fuers Marketing, waehrend die Inferenz ueber den Azure-Key des CTO laeuft — seine Enterprise-Rabatte greifen, die UI bleibt erhalten. Drei Argumente: (1) Kostenkonsolidierung ueber bestehende Azure-Vertraege, (2) erhaltene Marketing-Agilitaet, (3) zentrale Key-Verwaltung auf Admin-Ebene. Wichtig: im BYOC-Modell muessen die internen Token-Preise fuers Dashboard manuell vom Admin gepflegt werden — das offen ansprechen. Ton: Win-Win, nicht konfrontativ.
 Artefakt: Ein Pitch-Script (3 Absätze).
 Fallstricke:
 - Die KI vergisst zu erwähnen, dass im BYOC-Modell die internen Token-Preise für das Dashboard manuell vom Admin gepflegt werden müssen.
@@ -209,12 +229,16 @@ Vorgehen:
 2. Identifiziere den Verstoß gegen die Zero-Trust CORS-Richtlinien von Langdock.
 3. Erkläre das Backend-for-Frontend (BFF) Pattern als einzige Lösung.
 4. Formuliere eine strikte Anweisung an die Agentur.
-Prompt:
-> "Ich fass es nicht – unsere Web-Agentur will den Langdock API-Key direkt in den JavaScript-Code unserer Landingpage packen, damit der Browser direkt mit Langdock spricht. Verfasse eine scharfe, aber professionelle Mängelrüge an den Lead Developer. Erkläre, dass Langdock strikte CORS-Blocks hat und direkte Frontend-Aufrufe ohnehin scheitern würden. Fordere sie auf, ein Backend-for-Frontend (BFF) zu bauen, das den Key in den Environment Variables sichert."
+Vorlage: Maengelruege + Architekturanweisung (formelle E-Mail):
+1. Befund — Konzept platziert den API-Key im Browser-JavaScript (Klartext-Leak).
+2. Verstoss — Langdock-Zero-Trust-CORS blockt direkte Frontend-Aufrufe ohnehin.
+3. Loesung — Backend-for-Frontend (BFF): Key in Environment Variables, Browser spricht nur mit dem eigenen Backend.
+4. Ton — professionell-bestimmt, Arbeitsbeziehung wahren.
 Artefakt: Eine formelle E-Mail (Mängelrüge).
 Fallstricke:
 - Die Mängelrüge ist zu unfreundlich und zerstört die Arbeitsbeziehung zur Agentur.
 - Der Agent schlägt vor, den API-Key im Frontend "zu verschlüsseln" – was bei Web-Apps ein wirkungsloses Anti-Pattern ist.
+Empfehlung: Auf das BFF-Pattern als einzige Loesung bestehen — der Key gehoert in Environment Variables des eigenen Backends, nie ins Frontend. Den Vorschlag, den Key im Browser zu 'verschluesseln', klar als wirkungsloses Anti-Pattern zurueckweisen und die Ruege professionell statt verletzend formulieren.
 Anschluss: S-API-008
 
 ### S-API-008 Echtzeit-Alerting bei Reputations-Krisen
@@ -227,12 +251,16 @@ Vorgehen:
 2. Nutze Little Data, um den Workflow zu skizzieren: Webhook-Eingang in Langdock -> Sentiment-Analyse -> API-Aufruf an Slack.
 3. Berücksichtige die Limits des Custom Integration Builders (Custom-Code-Timeout in der Größenordnung von ~60 Sekunden — exakten Wert in der aktuellen Langdock-Doku verifizieren, da er sich ändern kann).
 4. Dokumentiere das Setup für das Marketing-Ops Team.
-Prompt:
-> "Du bist ein Crisis-Comms Architekt. Wir brauchen ein Echtzeit-Alerting. Ein externes Social-Listening-Tool soll einen Webhook an Langdock senden, sobald wir erwähnt werden. Langdock analysiert das Sentiment und schickt bei 'Toxisch' einen Payload an die Slack API. Skizziere diese Architektur. Worauf müssen wir beim Custom Integration Builder achten? Erwähne speziell das Custom-Code-Timeout-Limit (rund 60 Sekunden, Wert vorab verifizieren)."
+Vorlage: Event-Driven-Alerting-Blueprint (Systemarchitektur als Text):
+1. Trigger — Social-Listening-Tool sendet Webhook an Langdock bei Marken-Erwaehnung.
+2. Verarbeitung — Sentiment-Analyse; bei 'toxisch' Payload an die Slack API.
+3. Limit — Custom-Code-Timeout im Custom Integration Builder (~60 s, exakten Wert in der Doku verifizieren).
+4. Security — eingehenden Webhook authentifizieren (Signatur/Token).
 Artefakt: Ein Systemarchitektur-Diagramm als Text.
 Fallstricke:
 - Das Konzept vergisst die Authentifizierung des eingehenden Webhooks (Security Risk).
 - Die KI empfiehlt, den Chat-Agenten zu nutzen, obwohl ein automatisierter Workflow (ohne UI) hier die korrekte Lösung ist.
+Empfehlung: Den eingehenden Webhook zwingend authentifizieren (Signatur oder Token) — ein offener Empfaenger ist das groesste Risiko dieser Architektur. Die Pipeline als automatisierten Workflow ohne UI auslegen, nicht als Chat-Agenten, und das Custom-Code-Timeout vorab gegen die aktuelle Doku pruefen.
 Anschluss: S-API-009
 
 ### S-API-009 Migration zur Agents API (Vercel AI SDK)
