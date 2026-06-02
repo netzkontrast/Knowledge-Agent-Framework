@@ -1364,12 +1364,13 @@ Vorgehen:
 2. Einen AI-Node die Erwähnungen auf die Top-3-Themen verdichten und Sentiment sowie Volumen als Structured Output ausgeben lassen.
 3. Einen Condition-Node nur bei Volumen oder Negativ-Sentiment über Schwelle eine Slack-Meldung auslösen lassen — darunter stille Protokollierung.
 4. Die Slack-Nachricht mit Themen, Sentiment und einer Reaktiv-Idee befüllen — nur intern, kein automatischer Post.
-Prompt:
-> "Du bist Social-Listening-Workflow-Architekt. Entwirf einen Webhook-Alert für Erwähnungs-Ausschläge. Kontext: Top-3-Themen, Sentiment, Schwellen-Eskalation, nur intern. Format: Webhook-Trigger, AI-Node mit Themen-Schema, Condition, Slack-Action."
+Workflow: Webhook-Trigger (Listening-Tool-Dump) → AI-Node (Top-3-Themen-Verdichtung, Sentiment + Volumen, Structured Output) → Quellen-Vielfalt-Condition (Mindest-Anzahl unterschiedlicher Quellen) → Condition (Volumen/Negativ-Sentiment ueber Schwelle→Slack / sonst→stilles Protokoll) → Action-Node (Slack mit Reaktiv-Idee, intern).
+Budget: Ein AI-Node je Dump; bei kontinuierlichem Stream relevant — die Quellen-Vielfalt-Condition vor dem AI-Node spart Laeufe.
 Artefakt: Ein Listening-Alert-Workflow-Entwurf mit Verdichtungs-Schema und Eskalations-Schwelle.
 Fallstricke:
 - Bot-getriebene Spam-Wellen lösen Fehlalarme aus → eine Mindest-Anzahl unterschiedlicher Quellen als zusätzliche Bedingung einplanen.
 - Jede kleine Erwähnung flutet Slack → den Condition-Node auf einen dokumentierten Schwellenwert halten.
+Empfehlung: Eine Mindest-Anzahl unterschiedlicher Quellen als zusaetzliche Bedingung einplanen, damit Bot-getriebene Spam-Wellen keine Fehlalarme ausloesen. Den Condition-Node auf einen dokumentierten Schwellenwert halten, sonst flutet jede kleine Erwaehnung den Slack-Kanal.
 Anschluss: S-WF-066
 
 ### S-WF-066 NPS-Versand-Vorbereitung nach Lifecycle-Meilenstein (Integration Trigger)
@@ -1383,12 +1384,13 @@ Vorgehen:
 2. Einen Condition-Node prüfen lassen, ob der Kontakt nicht kürzlich bereits befragt wurde (Frequenz-Schutz).
 3. Einen AI-Node ein kurzes, segmentgerechtes NPS-Anschreiben mit Survey-Link entwerfen lassen.
 4. Einen HITL-Node vor jedem externen Versand zwingend einplanen; nach Freigabe übergibt ein Action-Node an das E-Mail-Tool.
-Prompt:
-> "Du bist Lifecycle-Workflow-Architekt. Entwirf einen NPS-Dispatch-Workflow nach Lifecycle-Meilenstein. Kontext: Frequenz-Schutz gegen Doppelbefragung, segmentgerechtes Anschreiben, kein automatischer Versand. Format: Integration-Trigger, Condition, AI-Node, HITL vor Versand."
+Workflow: Integration-Trigger (Lifecycle-Meilenstein CRM) → Frequenz-Condition (kuerzlich befragt?→Cooldown) → AI-Node (segmentgerechtes NPS-Anschreiben + Survey-Link) → HITL-Node (zwingend vor Versand) → Action-Node (E-Mail-Tool).
+Budget: Ein AI-Node je Meilenstein-Erreichung — gering; die Frequenz-Condition begrenzt Doppellaeufe.
 Artefakt: Ein NPS-Dispatch-Workflow-Entwurf mit Frequenz-Schutz-Logik und Freigabe-Punkt.
 Fallstricke:
 - Ohne Frequenz-Schutz werden Kunden mehrfach befragt → einen Condition-Node mit Cooldown-Fenster vorschalten.
 - Ein automatischer Versand ohne Freigabe verletzt die Kommunikations-Kontrolle → HITL vor jeder externen Aktion zwingend setzen.
+Empfehlung: Einen Frequenz-Condition-Node mit Cooldown-Fenster vorschalten, damit Kunden nicht mehrfach befragt werden. Einen HITL-Node vor jeder externen Aktion zwingend setzen — ein automatischer Versand verletzt die Kommunikations-Kontrolle.
 Anschluss: S-WF-067
 
 ### S-WF-067 Webinar-Anmelde-Bestätigung mit Kalender-Asset (Webhook Trigger)
@@ -1402,12 +1404,13 @@ Vorgehen:
 2. Einen AI-Node eine Bestätigung entwerfen lassen, die passende Vorbereitungs-Ressourcen aus dem Wissensordner referenziert.
 3. Einen HITL-Node vor dem externen Versand einplanen, damit Inhalt und Ressourcen-Auswahl geprüft werden.
 4. Nach Freigabe einen Action-Node die Bestätigung samt Kalender-Asset (ICS-Link) an das E-Mail-Tool übergeben lassen.
-Prompt:
-> "Du bist Lifecycle-Workflow-Architekt. Entwirf eine Webinar-Bestätigungs-Pipeline. Kontext: Kalendereintrag plus Vorbereitungs-Ressourcen aus Wissensordner, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Ressourcen-Bindung, HITL, Versand-Action."
+Workflow: Webhook-Trigger (Webinar-Anmeldung: Name/Thema/Termin) → AI-Node (Bestaetigungs-Entwurf, referenziert Vorbereitungs-Ressourcen aus Wissensordner) → HITL-Node (Inhalt + Ressourcen-Auswahl pruefen) → Action-Node (Bestaetigung + ICS-Kalender-Asset ans E-Mail-Tool).
+Budget: Ein AI-Node je Anmeldung; das Volumen folgt der Anmelderate — gering bis mittel pro Lauf.
 Artefakt: Ein Bestätigungs-Workflow-Entwurf mit Ressourcen-Mapping und Freigabe-Punkt.
 Fallstricke:
 - Ungeprüfte Bestätigungen mit falschem Termin gehen hinaus → den HITL-Node vor dem Versand zwingend setzen.
 - Der AI-Node verlinkt unpassende Ressourcen → das Ressourcen-Mapping im Wissensordner pflegen und im Node referenzieren.
+Empfehlung: Den HITL-Node vor dem Versand zwingend setzen, damit keine Bestaetigung mit falschem Termin hinausgeht. Das Ressourcen-Mapping im Wissensordner pflegen und im Node referenzieren, sonst verlinkt der AI-Node unpassende Vorbereitungs-Materialien.
 Anschluss: S-WF-068
 
 ### S-WF-068 Wettbewerber-Preisänderungs-Alert (Scheduled Trigger)
@@ -1421,12 +1424,13 @@ Vorgehen:
 2. Einen AI-Node den aktuellen Stand gegen den gespeicherten Vorstand vergleichen und Änderungen als Structured Output (Tier, alt, neu, Delta) ausgeben lassen.
 3. Nur bei tatsächlicher Änderung eine Slack-Meldung mit konkreten Werten und kurzer Einordnung auslösen.
 4. Den neuen Stand als Referenz für den nächsten Lauf speichern — nur interne Meldung, keine automatische Reaktion.
-Prompt:
-> "Du bist Competitive-Intelligence-Workflow-Architekt. Entwirf einen täglichen Preis-Monitoring-Workflow. Kontext: feste Pricing-Seiten, nur bei echter Änderung melden, intern. Format: Scheduled-Trigger, Abruf-Node, AI-Vergleichs-Node mit Delta-Schema, Slack-Action."
+Workflow: Scheduled-Trigger (taeglich) → HTTP-Request/Web-Search-Node (definierte Pricing-Seiten) → AI-Node (Vergleich gegen gespeicherten Vorstand, Structured Output Tier/alt/neu/Delta) → Aenderungs-Condition (nur bei echter Aenderung) → Action-Node (Slack mit Werten + Einordnung) → Referenz-Speicherung fuer naechsten Lauf.
+Budget: Ein AI-Node taeglich; Web-Search-/Abruf-Aufrufe koennen kosten — das Quellen-Set eng halten.
 Artefakt: Ein Preis-Monitoring-Workflow-Entwurf mit Delta-Schema und Referenz-Speicherung.
 Fallstricke:
 - Versteckte „Auf Anfrage"-Preise lassen sich nicht vergleichen → diese Tiers explizit als „nicht prüfbar" markieren statt sie zu halluzinieren.
 - Layout-Änderungen der Seite lösen Fehl-Deltas aus → den Vergleich auf strukturierte Preis-Felder beschränken, nicht auf Roh-HTML.
+Empfehlung: 'Auf Anfrage'-Preise explizit als 'nicht pruefbar' markieren statt sie zu halluzinieren. Den Vergleich auf strukturierte Preis-Felder beschraenken, nicht auf Roh-HTML, damit Layout-Aenderungen keine Fehl-Deltas ausloesen.
 Anschluss: S-WF-069
 
 ### S-WF-069 RFP-Antwort-Zusammenbau aus Wissensbausteinen (Manual Trigger)
@@ -1440,12 +1444,13 @@ Vorgehen:
 2. Einen AI-Node je Frage den passenden Baustein aus dem Wissensordner abrufen und eine Antwort mit Quellenverweis zusammenstellen lassen.
 3. Lücken (keine Quelle gefunden) explizit als „manuell ergänzen" markieren statt sie zu erfinden.
 4. Einen HITL-Node vor der Abgabe einplanen, in dem die Verantwortliche jede Antwort prüft und freigibt.
-Prompt:
-> "Du bist RFP-Workflow-Architekt. Entwirf einen Assembly-Workflow für Ausschreibungs-Antworten. Kontext: Bausteine aus Wissensordner, Lücken markieren statt erfinden, menschliche Endkontrolle. Format: Manual-Trigger, AI-Node mit Baustein-Bindung, Lücken-Markierung, HITL vor Abgabe."
+Workflow: Manual-Trigger (RFP-Fragenliste) → AI-Node je Frage (passender Baustein aus Wissensordner + Antwort mit Quellenverweis, Luecken als 'manuell ergaenzen') → HITL-Node (jede Antwort pruefen + freigeben vor Abgabe).
+Budget: Ein AI-Node je Frage, selten ausgeloest — gering pro RFP.
 Artefakt: Ein RFP-Assembly-Workflow-Entwurf mit Baustein-Mapping und Lücken-Markierungs-Logik.
 Fallstricke:
 - Der AI-Node erfindet Antworten, wo kein Baustein existiert → fehlende Quellen zwingend als „manuell ergänzen" ausgeben.
 - Sicherheits- oder Rechtsaussagen werden verkürzt → kritische Bausteine im HITL-Gate gegen den exakten Originaltext prüfen.
+Empfehlung: Fehlende Quellen zwingend als 'manuell ergaenzen' ausgeben statt zu erfinden — der AI-Node darf keine Antworten halluzinieren, wo kein Baustein existiert. Sicherheits- und Rechtsbausteine im HITL-Gate gegen den exakten Originaltext pruefen, damit kritische Aussagen nicht verkuerzt werden.
 Anschluss: S-WF-070
 
 ### S-WF-070 Newsletter-Entwurf-Zusammenbau mit Freigabe-Versand (Scheduled Trigger)
@@ -1459,12 +1464,13 @@ Vorgehen:
 2. Einen AI-Node die aktuellen Blogs zusammenfassen und eine geprüfte Branchen-News aus der Web Search ergänzen lassen — gebunden an die Brand-Voice.
 3. Negativ-Keywords für die News-Suche setzen, damit keine Wettbewerber- oder Risiko-Inhalte einfließen.
 4. Einen HITL-Node für die redaktionelle Freigabe vor dem Übergang ins E-Mail-Tool zwingend einplanen.
-Prompt:
-> "Du bist Newsletter-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für den wöchentlichen Newsletter. Kontext: Blogs plus eine geprüfte Branchen-News, Brand-Voice, Negativ-Keywords, kein automatischer Versand. Format: Trigger, Web-Search-AI-Node, HITL vor Versand."
+Workflow: Scheduled-Trigger (mit Redaktions-Puffer vor Versandtag) → AI-Node (Blogs zusammenfassen + gepruefte Branchen-News via Web Search, Brand-Voice; Negativ-Keywords) → HITL-Node (redaktionelle Freigabe) → Action-Node (E-Mail-Tool).
+Budget: Ein AI-Node woechentlich plus Web Search — gering pro Lauf.
 Artefakt: Ein Newsletter-Assembly-Workflow-Entwurf mit Negativ-Keyword-Filter und Freigabe-Punkt.
 Fallstricke:
 - Die automatische News-Suche zieht Wettbewerber- oder kontroverse Inhalte → Negativ-Keywords definieren und die Quellen eng fassen.
 - Ein unfertiger Newsletter wird automatisch versendet → den HITL-Node vor dem E-Mail-Tool zwingend setzen.
+Empfehlung: Negativ-Keywords definieren und die News-Quellen eng fassen, damit die automatische Suche keine Wettbewerber- oder kontroversen Inhalte zieht. Den HITL-Node vor dem E-Mail-Tool zwingend setzen, damit kein unfertiger Newsletter automatisch hinausgeht.
 Anschluss: S-WF-071
 
 ### S-WF-071 Influencer-Outreach-Entwürfe per Loop (Manual Trigger + Loop)
@@ -1478,12 +1484,13 @@ Vorgehen:
 2. Einen Loop-Node iterieren und einen AI-Node je Kontakt eine lockere, plattformgerechte DM mit echtem Post-Bezug entwerfen lassen.
 3. Die Entwürfe als JSON-Array sammeln und einen HITL-Node die Batch-Prüfung vor dem Versand durchführen lassen.
 4. Nach Freigabe übergibt ein Action-Node die Entwürfe an das jeweilige Tool — kein automatischer Versand.
-Prompt:
-> "Du bist Influencer-Outreach-Workflow-Architekt. Entwirf einen Loop-Workflow für personalisierte DMs. Kontext: Bezug auf letzten Post, lockerer DM-Ton, kein automatischer Versand. Format: Manual-Trigger, Loop-Node, AI-Node mit DM-Schema, HITL-Batch-Freigabe."
+Workflow: Manual-Trigger (Influencer-Liste: Name + letzter Post-Bezug, in Chargen ≤100) → Loop-Node → AI-Node je Kontakt (lockere plattformgerechte DM mit echtem Post-Bezug, Structured Output) → JSON-Array → HITL-Node (Batch-Pruefung) → Action-Node (jeweiliges Tool; kein Auto-Versand).
+Budget: Ein AI-Node je Kontakt im Loop; bei vielen Influencern in Chargen ≤100 fahren, das Per-Lauf-Limit pruefen, Warn-Schwelle 75 %.
 Artefakt: Ein Outreach-Workflow-Entwurf mit Personalisierungs-Logik und Batch-Freigabe-Punkt.
 Fallstricke:
 - Formelle E-Mail-Floskeln in DMs wirken deplatziert → den Node strikt auf lockeren, plattformnativen Ton festlegen.
 - Ein automatischer Versand ohne Freigabe verletzt die Kontrolle über externe Ansprache → HITL vor jeder Außen-Aktion zwingend setzen.
+Empfehlung: Den AI-Node strikt auf lockeren, plattformnativen Ton festlegen — formelle E-Mail-Floskeln wirken in DMs deplatziert. Einen HITL-Node vor jeder Aussen-Aktion zwingend setzen, da der Versand an externe Kontakte in Menschenhand bleibt.
 Anschluss: S-WF-072
 
 ### S-WF-072 SLA-Verletzungs-Eskalation bei Lead-Übergabe (Integration Trigger)
@@ -1497,12 +1504,13 @@ Vorgehen:
 2. Einen Condition-Node die seit Übergabe verstrichene Zeit gegen die SLA-Frist prüfen lassen.
 3. Bei Überschreitung einen Action-Node eine eindeutige Slack-Eskalation mit Lead-Name, Owner und Verzugsdauer auslösen lassen.
 4. Eine zweite Eskalationsstufe an die Teamleitung einplanen, falls die Frist deutlich überschritten wird — interne Meldung, kein Kunden-Kontakt.
-Prompt:
-> "Du bist RevOps-Workflow-Architekt. Entwirf einen SLA-Eskalations-Workflow für die Lead-Übergabe. Kontext: maximale Follow-up-Zeit, zweistufige interne Eskalation, kein Kunden-Kontakt. Format: Trigger/Check, Condition mit Zeitvergleich, Slack-Eskalations-Actions."
+Workflow: Integration-Trigger (Lead-Uebergabe) bzw. periodischer Scheduled-Check ueber offene SQLs → Condition-Node (verstrichene Zeit vs. SLA-Frist, Zeitstempel normalisiert) → Action-Node (Slack-Eskalation Stufe 1: Lead/Owner/Verzug) → zweite Stufe an Teamleitung bei deutlicher Ueberschreitung; interne Meldung.
+Budget: Kein AI-Node — eine reine Logic-/Action-Kette; pro Lauf vernachlaessigbar.
 Artefakt: Ein SLA-Eskalations-Workflow-Entwurf mit Frist-Logik und zweistufiger Eskalationskette.
 Fallstricke:
 - Zeitzonen-Unterschiede verfälschen die Fristberechnung → alle Zeitstempel vorab auf eine Referenzzone normalisieren.
 - Jede knappe Überschreitung eskaliert sofort an die Leitung → die zweite Stufe an eine deutliche Verzugsschwelle koppeln.
+Empfehlung: Alle Zeitstempel vorab auf eine Referenzzone normalisieren, damit Zeitzonen-Unterschiede die Fristberechnung nicht verfaelschen. Die zweite Eskalationsstufe an eine deutliche Verzugsschwelle koppeln, damit nicht jede knappe Ueberschreitung sofort an die Leitung geht.
 Anschluss: S-WF-073
 
 ### S-WF-073 Content-Lokalisierungs-Pipeline mit Tonalitäts-Umstellung (Manual Trigger + Loop)
