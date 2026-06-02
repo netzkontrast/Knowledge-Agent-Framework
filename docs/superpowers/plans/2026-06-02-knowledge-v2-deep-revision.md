@@ -138,7 +138,13 @@ rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-
     - **D (41, one-time model/cost recommendation, often + break-even/cost-calc; Empfehlung = slot-6):** S-MK-001, 002, 004, 005, 006, 007, 008, 009, 010, 011, 012, 020, 021, 024, 026, 027, 028, 030, 032, 034, 035, 036, 037, 038, 046, 047, 048, 050, 051, 053, 054, 056, 065, 066, 067, 069, 070, 071, 074, 075, 076.
     - R7a: every scenario gets Empfehlung (for D it IS the slot-6 payload; for G/W it is slot-9). Watch chunk band (median 2562 B start; condense Vorgehen on warns as in files 02/03).
   - [x] **File 08 (Sicherheit & Governance) DONE** — all 80 best-typed: **78 Guide-Vorlage, 2 Decision** (S-SG-009 Datenresidenz, S-SG-014 Embedding-AVV). R7a 80/80. G-dominant and honest (governance/compliance is the reusable-artifact domain, like file 06). Condensed Vorgehen of 18 scenarios that crossed 3200 B -> median 3017->2853 B, 0 warns. Commits: sg batches 1-3 + condense.
-  - [ ] **Then:** 09, 14/16/17.
+  - [ ] **File 09 (Marketing-Praxis) IN PROGRESS** — classified (most mixed file; per-deliverable rule: one-shot publishable content/analysis-report-via-prompt -> P; reusable playbook/template/framework/strategy/matrix/plan/guideline/kit -> G; automation build -> W; prioritization/budget recommendation -> D). Type plan by ID:
+    - **W (3):** S-MP-028 (email Delay/Condition workflow), 040 (webinar-promo + HubSpot workflow), 057 (newsletter auto-prep workflow).
+    - **D (3):** S-MP-004 (social-roadmap stop/adjust/scale), 008 (ABM-roadmap adjust/pause), 058 (budget-redistribution memo + Empfehlung).
+    - **G (~36, reusable artifact):** S-MP-002, 005, 011, 012, 025, 029, 030, 035, 036, 038, 041, 042, 044, 045, 051, 052, 056, 059, 060, 061, 062, 063, 064, 065, 066, 067, 070, 071, 072, 074, 077, 078, 079, 080.
+    - **P (~38, content/analysis output):** all remaining S-MP (001,003,006,007,009,010,013,014,015,016,017,018,019,020,021,022,023,024,026,027,031,032,033,034,037,039,043,046,047,048,049,050,053,054,055,068,069,073,075,076). R20.3: method-named prompts (Falsifikation etc.) stay P.
+    - R7a on all; chunk band (median 2539 start; D/P keep tight, G adds ~300 B; condense Vorgehen on warns).
+  - [ ] **Then:** 14/16/17.
 - [ ] **R7a Empfehlung rollout** to the 13 remaining content files (combined with each R20 file touch).
 - [ ] **Critical-thinking scenarios (R20.3) + scenario chains (R20.4)** added opportunistically per file.
 - [ ] **File 08 chunk-trim** (22 scenarios 3200-3800 B) during its R20 pass.
