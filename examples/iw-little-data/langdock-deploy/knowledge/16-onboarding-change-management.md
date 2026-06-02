@@ -39,14 +39,18 @@ Vorgehen:
 3. Einen Pilot-Owner und zwei freiwillige Test-Anwender aus dem Kompetenzfeld benennen.
 4. Das Charter der Kommunikationsleitung zur Freigabe vorlegen (menschliche Entscheidung).
 
-Prompt:
-> "Du bist mein Rollout-Berater. Erstelle aus der Workflow-Beschreibung im Wissensordner ein einseitiges Pilot-Charter für den Langdock-Advisor im Kompetenzfeld 'Digitalisierung & Klimawandel'. Kontext: 6 Wochen Laufzeit, ein Pilot-Owner, zwei Test-Anwender. Format: Abschnitte Scope, Erfolgskriterien (drei messbare), Out-of-Scope, Verantwortlichkeiten. Erfinde keine Erfolgszahlen; markiere offene Punkte als 'mit Leitung zu klären'."
+Vorlage: Pilot-Charter (ein Kompetenzfeld):
+1. Scope + Out-of-Scope - genau ein Kompetenzfeld, max. zwei Formate; unfreigegebene Use-Cases ausgeschlossen.
+2. Erfolgskriterien - drei messbare, davon mindestens eines qualitativ (Zeitersparnis bei iwd-Aufbereitung).
+3. Rahmen - feste Laufzeit (z. B. 6 Wochen), Pilot-Owner, zwei Test-Anwender; offene Punkte als 'mit Leitung zu klaeren'.
 
 Artefakt: Pilot-Charter (Canvas, ca. 1 Seite) mit Scope, drei Erfolgskriterien, Laufzeit und Verantwortlichkeiten.
 
 Fallstricke:
 - Ein zu breiter Scope verwässert die Messbarkeit und zieht unfreigegebene Use-Cases hinein → den Pilot strikt auf ein Kompetenzfeld und maximal zwei Formate begrenzen.
 - Erfolgskriterien als reine "Vanity-Metriken" (Anzahl Prompts) definiert → mindestens ein qualitatives Kriterium (Zeitersparnis bei iwd-Aufbereitung) verankern, das den IW-Workflow widerspiegelt.
+
+Empfehlung: Den Pilot strikt auf ein Kompetenzfeld und maximal zwei Formate begrenzen - ein zu breiter Scope verwaessert die Messbarkeit und zieht unfreigegebene Use-Cases hinein. Mindestens ein qualitatives Erfolgskriterium (Zeitersparnis bei iwd-Aufbereitung) verankern statt reiner Vanity-Metriken wie Prompt-Anzahl.
 
 Anschluss: S-OC-002
 
@@ -66,14 +70,18 @@ Vorgehen:
 3. Jede Aussage mit dem konkreten Quelldokument belegen und offene Punkte als "offen" markieren.
 4. Das Dossier den drei Freigabe-Instanzen zur formalen Zeichnung übergeben (menschliche Entscheidung).
 
-Prompt:
-> "Du bist mein Compliance-Referent. Erstelle aus den Dokumenten im Wissensordner ein Governance-Freigabe-Dossier für Datenschutz, Rechtsabteilung und CISO des IW. Format: je Anforderung eine Zeile mit Status, Fundstelle und zuständiger Instanz. Belege EU-Hosting, AVV und Zero-Data-Retention je mit Quelle. Erfinde keine Klauseln; markiere Lücken explizit als 'offen'."
+Vorlage: Governance-Freigabe-Dossier:
+1. Anforderungs-Status-Tabelle - je Anforderung Status, Fundstelle, zustaendige Instanz (Datenschutz/Recht/CISO).
+2. Nachweise - EU-Hosting, AVV, Zero-Data-Retention je mit Quelldokument belegt; Luecken explizit 'offen'.
+3. Gueltigkeit - Berichtsdatum der Zertifikate mitfuehren, Re-Pruefung vor Skalierung terminieren.
 
 Artefakt: Governance-Freigabe-Dossier mit Anforderungs-Status-Tabelle, Quellenverweisen und markierten offenen Punkten.
 
 Fallstricke:
 - Der Standard-AVV deckt nur die Langdock-Plattform, nicht den angebundenen Modell-Provider → die provider-seitige Zero-Data-Retention-Zusage separat beilegen.
 - Zertifikate gelten nur zum Audit-Zeitraum → das Berichtsdatum mitführen und eine Re-Prüfung vor Skalierung terminieren.
+
+Empfehlung: Die provider-seitige Zero-Data-Retention-Zusage separat beilegen - der Standard-AVV deckt nur die Langdock-Plattform, nicht den angebundenen Modell-Provider. Das Berichtsdatum der Zertifikate mitfuehren und eine Re-Pruefung vor der Skalierung terminieren, da Testate nur zum Audit-Zeitraum gelten.
 
 Anschluss: S-OC-003
 
@@ -93,14 +101,18 @@ Vorgehen:
 3. Die Klausel der unteilbaren redaktionellen Verantwortung verankern: KI ist Assistenz, nie Autor.
 4. Den Entwurf der Geschäftsführung und dem Betriebsrat zur Abstimmung vorlegen.
 
-Prompt:
-> "Du bist mein Policy-Berater. Entwirf aus den KI-Leitlinien im Wissensordner eine institutsweite KI-Nutzungs-Policy für das IW. Format: Abschnitte Geltungsbereich, erlaubte/verbotene Datenklassen, redaktionelle Verantwortung, Kennzeichnung, Schulungspflicht. Verankere die 'unteilbare redaktionelle Verantwortung'. Stütze jede Pflicht auf eine Quelle im Ordner; markiere Lücken."
+Vorlage: KI-Nutzungs-Policy (institutsweit):
+1. Geltungsbereich + Datenklassen - erlaubt vs. nie ohne Freigabe (unveroeffentlichte Gutachten, embargobehaftete Daten als eigene Klasse).
+2. Redaktionelle Verantwortung - unteilbare redaktionelle Verantwortung: KI ist Assistenz, nie Autor.
+3. Kennzeichnung + Schulungspflicht; je Verbot die genehmigte Advisor-Entsprechung nennen.
 
 Artefakt: KI-Nutzungs-Policy-Entwurf mit Datenklassen, Verantwortungsklausel und Schulungspflicht.
 
 Fallstricke:
 - Eine Policy ohne benannte erlaubte Alternative treibt Mitarbeitende zurück in private Tools → jede Verbots-Regel mit der genehmigten Advisor-Entsprechung koppeln.
 - Embargo-/Sperrfrist-Daten werden nicht als eigene Datenklasse geführt → unveröffentlichte Studien und embargobehaftete Pressetexte explizit als "nie ohne Freigabe" klassifizieren.
+
+Empfehlung: Jede Verbots-Regel mit der genehmigten Advisor-Entsprechung koppeln - eine Policy ohne erlaubte Alternative treibt Mitarbeitende zurueck in private Tools (Shadow AI). Embargo-/Sperrfrist-Daten als eigene Datenklasse 'nie ohne Freigabe' fuehren, sonst geraten unveroeffentlichte Studien in externe Tools.
 
 Anschluss: S-OC-004
 
@@ -129,6 +141,8 @@ Fallstricke:
 - Promotionaler Ton verletzt den IW-Neutralitätsanspruch → Werbe-Adjektive hart unterdrücken, bei "signifikant/strukturell/evidenzbasiert" bleiben.
 - Effizienz wird über Compliance gestellt → die Reihenfolge Risikominimierung-zuerst beibehalten, wie es das arbeitgebernahe Profil verlangt.
 
+Empfehlung: Werbe-Adjektive hart unterdruecken und bei 'signifikant/strukturell/evidenzbasiert' bleiben - ein promotionaler Ton verletzt den IW-Neutralitaetsanspruch. Die Reihenfolge Risikominimierung-zuerst beibehalten und Effizienz nicht ueber Compliance stellen, wie es das arbeitgebernahe Profil verlangt.
+
 Anschluss: S-OC-005
 
 ### S-OC-005 KI-Champions je Wissenschaftsbereich identifizieren und befähigen
@@ -147,14 +161,18 @@ Vorgehen:
 3. Verantwortlichkeiten festlegen: Agenten bauen, Prompt-Bibliothek pflegen, Peer-Training geben.
 4. Die Landkarte den Bereichsleitungen zur Nominierung vorlegen (menschliche Entscheidung).
 
-Prompt:
-> "Du bist mein Berater für KI-Champion-Strukturen. Erstelle aus dem Organigramm im Wissensordner eine Champion-Landkarte für die IW-Wissenschaftsbereiche. Format: Tabelle (Bereich, Champion-Profil/Auswahlkriterien, Verantwortlichkeiten, zentrale vs. dezentrale Aufgaben). Halte fest, dass Sicherheit und Abrechnung zentral bleiben, Agenten-Kreation dezentral."
+Vorlage: KI-Champion-Landkarte (je Wissenschaftsbereich):
+1. Tabelle - Bereich, Champion-Profil/Auswahlkriterien, Verantwortlichkeiten.
+2. Foederierte Abgrenzung - zentral (Sicherheit, Abrechnung) vs. dezentral (Agenten-Kreation, Prompt-Pflege, Peer-Training).
+3. Auswahlkriterien - Domaenenkenntnis + reales Bereichs-Schmerzpunkt-Wissen + Compliance-Bewusstsein.
 
 Artefakt: Champion-Landkarte (Tabelle) mit Profilen, Verantwortlichkeiten und föderierter Governance-Abgrenzung je Bereich.
 
 Fallstricke:
 - Champions ohne Compliance-Wissen verbreiten unsichere Praktiken → Auswahlkriterium "kennt DSGVO-/Neutralitäts-Leitplanken" verbindlich machen.
 - Reine Technik-Affinität statt Domänenkenntnis → Auswahl an realen Bereichs-Schmerzpunkten (z. B. iwd-Aufbereitung) ausrichten, nicht nur an Tool-Begeisterung.
+
+Empfehlung: Das Auswahlkriterium 'kennt DSGVO-/Neutralitaets-Leitplanken' verbindlich machen - Champions ohne Compliance-Wissen verbreiten unsichere Praktiken bereichsweit. Die Auswahl an realen Bereichs-Schmerzpunkten (z. B. iwd-Aufbereitung) ausrichten, nicht an reiner Tool-Begeisterung.
 
 Anschluss: S-OC-006
 
@@ -174,14 +192,18 @@ Vorgehen:
 3. Woche 5-7 auf Aufbereitung (iwd-Übersetzung), Workflows und Qualitätssicherung anlegen.
 4. Je Woche eine reale IW-Praxisaufgabe und ein Lernziel verankern; Plan der Leitung vorlegen.
 
-Prompt:
-> "Du bist mein Lerndesign-Berater. Erstelle aus Policy und Format-Definitionen im Wissensordner ein 7-Wochen-Onboarding-Curriculum für das IW-Kommunikationsteam. Format: je Woche Lernziel, Inhalt, eine IW-Praxisaufgabe (z. B. iwd-Übersetzung eines Kurzberichts), Compliance-Hinweis. Beginne mit Datenschutz; ende mit Qualitätssicherung."
+Vorlage: 7-Wochen-Onboarding-Curriculum:
+1. Woche 1-2 - Datenschutz/AVV, Prompt-Grundlagen, IW-Tonalitaet (Sie-Form) von Anfang an.
+2. Woche 3-4 - Wissensordner-Nutzung + Agenten-Konfiguration fuer IW-Formate; CSV gehoert in den Data Analyst, nicht in den RAG-Ordner.
+3. Woche 5-7 - iwd-Aufbereitung, Workflows, Qualitaetssicherung; je Woche ein Lernziel + eine reale IW-Praxisaufgabe.
 
 Artefakt: 7-Wochen-Curriculum (Tabelle/Liste) mit Lernzielen, Inhalten, IW-Praxisaufgaben und Compliance-Hinweisen je Woche.
 
 Fallstricke:
 - Strukturierte CSV-Daten werden fälschlich im Wissensordner geübt → Woche 3 explizit klären, dass tabellarische Daten in den Data Analyst gehören, nicht in den RAG-Ordner.
 - Curriculum ignoriert die IW-"Sie"-Form und Sachlichkeit → Prompt-Übungen müssen formelle, evidenzbasierte Tonalität von Anfang an trainieren.
+
+Empfehlung: In Woche 3 explizit klaeren, dass tabellarische CSV-Daten in den Data Analyst gehoeren, nicht in den RAG-Wissensordner - sonst wird die falsche Ablage eingeuebt. Die IW-Sie-Form und sachlich-evidenzbasierte Tonalitaet von der ersten Prompt-Uebung an trainieren, nicht erst spaeter.
 
 Anschluss: S-OC-007
 
@@ -201,14 +223,18 @@ Vorgehen:
 3. Anti-Tone-Drift-Regeln formulieren: keine Werbe-Superlative, Wahrung der Neutralität.
 4. Eine Abschlussübung verankern: Übersetzung eines IW-Reports mit Pflicht-Faktencheck durch einen Menschen.
 
-Prompt:
-> "Du bist mein Berater für Wissenschaftskommunikation. Konzipiere aus den Leibniz-Grundsätzen und iwd-Stilbeispielen im Wissensordner eine Schulung 'Wissenschaftskommunikation mit KI' für das IW. Format: Module mit Lernziel, je ein Vorher/Nachher-Beispiel, Anti-Tone-Drift-Regeln, Abschlussübung. Betone: Unsicherheiten und Forschungslücken ehrlich ausweisen, KI nie als Faktenquelle."
+Vorlage: Schulungskonzept 'Wissenschaftskommunikation mit KI':
+1. Kernmodul Uebersetzungs-Disziplin - Kernmechanismus statt Methodik, Unsicherheiten ehrlich ausweisen.
+2. Vorher/Nachher-Beispiele - akademischer Caveat zu klarer iwd-Aussage ohne Distortion.
+3. Anti-Tone-Drift-Regeln + Abschlussuebung mit Pflicht-Faktencheck durch einen Menschen.
 
 Artefakt: Schulungskonzept mit Modulen, Vorher/Nachher-Beispielen, Anti-Tone-Drift-Regeln und Abschlussübung.
 
 Fallstricke:
 - Glättung von Unsicherheiten zugunsten einer "knackigeren" Aussage → Schulung muss das explizite Ausweisen von Konfidenzintervallen und Forschungsdesideraten einüben.
 - KI-Halluzination kausaler Zusammenhänge → Regel verankern, dass nur aus dem bereitgestellten Quelltext gearbeitet wird, keine Extrapolation.
+
+Empfehlung: Das explizite Ausweisen von Konfidenzintervallen und Forschungsdesideraten einueben - die Glaettung von Unsicherheiten zugunsten einer knackigeren Aussage verletzt die wissenschaftliche Redlichkeit. Die Regel verankern, dass nur aus dem bereitgestellten Quelltext gearbeitet wird, keine Extrapolation kausaler Zusammenhaenge.
 
 Anschluss: S-OC-008
 
@@ -228,14 +254,18 @@ Vorgehen:
 3. Im Canvas Qualitätskriterien und ein Versions-/Freigabe-Feld je Prompt ergänzen.
 4. Die Bibliothek als "v1.0" im Wissensordner ablegen und alle Champions darauf verlinken.
 
-Prompt:
-> "Du bist mein Prompt-Bibliotheks-Kurator. Strukturiere aus den vorhandenen Team-Prompts im Wissensordner eine geteilte Prompt-Bibliothek für das IW. Format: Kategorien (iwd-Übersetzung, Pressemitteilung, Social-Atomisierung), je Prompt Persona/Task/Context/Format, Qualitätskriterium und Versionsfeld. Markiere ungeprüfte Prompts als 'Review offen'."
+Vorlage: Geteilte Prompt-Bibliothek (v1.0):
+1. Kategorien - iwd-Uebersetzung, Pressemitteilung, Social-Atomisierung.
+2. Je Prompt - Persona/Task/Context/Format (PTCF), Qualitaetskriterium, Versions-/Freigabefeld.
+3. Status - ungepruefte Prompts als 'Review offen', nur neutralitaetskonforme als 'freigegeben'.
 
 Artefakt: Prompt-Bibliothek v1.0 (Wissensordner) mit kategorisierten, versionierten PTCF-Prompts und Qualitätskriterien.
 
 Fallstricke:
 - Unkuratierte Prompts verbreiten Tone-Drift institutsweit → nur geprüfte, neutralitätskonforme Prompts als "freigegeben" markieren.
 - Memory-Reste alter Kampagnen verfälschen die Bibliotheks-Prompts → bei der Kuratierung Memory deaktivieren und auf reine PTCF-Struktur achten.
+
+Empfehlung: Nur geprueft-neutralitaetskonforme Prompts als 'freigegeben' markieren - unkuratierte Prompts verbreiten Tone-Drift institutsweit. Bei der Kuratierung die Memory-Funktion deaktivieren, damit Reste alter Kampagnen die Bibliotheks-Prompts nicht verfaelschen; auf reine PTCF-Struktur achten.
 
 Anschluss: S-OC-009
 
@@ -255,14 +285,18 @@ Vorgehen:
 3. Je Ordner die Group-Sharing-Rolle und das RAG-Limit (max. Dateien) festlegen.
 4. Den Plan mit den Champions abstimmen und als Konvention verankern.
 
-Prompt:
-> "Du bist mein Berater für Wissensordner-Architektur. Entwirf aus der Inhalts-Taxonomie im Wissensordner einen Strukturplan für das IW-Team. Format: Tabelle (Ordnername, Inhaltstyp, Sensitivitätsstufe, Group-Sharing-Rolle, RAG-Hinweis). Trenne offene Format-Vorlagen klar von vertraulichen Gutachten. Verweise auf das Datei-Limit pro Ordner."
+Vorlage: Wissensordner-Strukturplan:
+1. Tabelle - Ordnername, Inhaltstyp, Sensitivitaetsstufe (offen/bereichsintern/vertraulich), Group-Sharing-Rolle, RAG-Hinweis.
+2. Trennung - offene Format-Vorlagen klar von vertraulichen Gutachten getrennt.
+3. RAG-Hygiene - Datei-Limit pro Ordner, thematische Trennung.
 
 Artefakt: Wissensordner-Strukturplan mit Taxonomie, Sensitivitätsstufen und Freigabe-/RAG-Hinweisen.
 
 Fallstricke:
 - Vertrauliche Gutachten landen in einem breit geteilten Ordner → vertrauliche Stufe von Anfang an mit restriktiver Group-Sharing-Rolle koppeln.
 - Überfüllte Ordner (>1000 Dateien) verschlechtern das Retrieval → pro Ordner ein Datei-Limit und eine thematische Trennung festschreiben.
+
+Empfehlung: Die vertrauliche Stufe von Anfang an mit einer restriktiven Group-Sharing-Rolle koppeln - sonst landen Gutachten in einem breit geteilten Ordner. Pro Ordner ein Datei-Limit und eine thematische Trennung festschreiben, da ueberfuellte Ordner (>1000 Dateien) das Retrieval verschlechtern.
 
 Anschluss: S-OC-010
 
@@ -282,14 +316,18 @@ Vorgehen:
 3. Jede Über-Berechtigung markieren (z. B. externer Mitarbeiter mit Owner auf Gutachten-Ordner).
 4. Eine priorisierte Korrektur-Liste für den Admin ableiten, kritischste Fälle zuerst.
 
-Prompt:
-> "Du bist mein Access-Governance-Berater. Gleiche den Ist-Zustand der Rollen für Gutachten-Ressourcen im Wissensordner gegen Least Privilege ab. Format: Mapping-Tabelle (Job-Rolle, Soll-Rolle, Ressource) plus priorisierte Korrektur-Liste. Behandle embargobehaftete Gutachten als höchste Sensitivität. Erfinde keine Nutzer; arbeite nur mit der Liste."
+Vorlage: RBAC-Mapping (Gutachten-Ressourcen):
+1. Soll-Mapping - Job-Rolle zu Plattform-Rolle (Owner/Editor/Viewer) zu Ressource, nach Least Privilege.
+2. Korrektur-Liste - Ueber-Berechtigungen markiert, kritischste Faelle zuerst; embargobehaftete Gutachten hoechste Sensitivitaet.
+3. Umsetzungs-Hinweis - Rollenaenderung an der Verzeichnis-/Gruppenquelle, nicht nur lokal.
 
 Artefakt: RBAC-Mapping-Tabelle für Gutachten-Ressourcen mit priorisierter Korrektur-Liste.
 
 Fallstricke:
 - Manuell korrigierte Rollen werden beim nächsten SCIM-Sync überschrieben → die Korrektur an der Gruppen-/Verzeichnisquelle vornehmen, nicht nur lokal.
 - Workspace-Admin-Rechte werden mit Owner-Rechten auf einer Ressource verwechselt → klarstellen, dass Abrechnung und Limits nur Workspace-Admins vorbehalten sind.
+
+Empfehlung: Die Korrektur an der Gruppen-/Verzeichnisquelle vornehmen, nicht nur lokal - manuell geaenderte Rollen werden beim naechsten SCIM-Sync ueberschrieben. Klarstellen, dass Abrechnung und Limits nur Workspace-Admins vorbehalten sind und nicht mit Owner-Rechten auf einer Ressource verwechselt werden.
 
 Anschluss: S-OC-011
 
@@ -309,14 +347,18 @@ Vorgehen:
 3. Vor jeder Veröffentlichung ein verbindliches Human-in-the-Loop-Gate setzen.
 4. Die Übergabe-Artefakte je Stufe definieren und die Beschreibung mit dem Team validieren.
 
-Prompt:
-> "Du bist mein Workflow-Berater. Beschreibe aus der Workflow-Doku im Wissensordner die Advisor-Integration in den IW-Editorial-Funnel. Format: je Stufe (Forschung, Aufbereitung, Distribution, Amplifikation) ein Block mit Input, Advisor-Touchpoint, Human-Gate, Output-Artefakt. Mache klar, dass vor jeder Veröffentlichung ein Mensch freigibt."
+Vorlage: Editorial-Workflow-Integration (Advisor-Touchpoints):
+1. Je Stufe (Forschung, Aufbereitung, Distribution, Amplifikation) - Input, Advisor-Touchpoint, Human-Gate, Output-Artefakt.
+2. Pflicht-Gate - vor jeder Veroeffentlichung eine verbindliche menschliche Freigabe.
+3. Sperrfrist-Logik - Embargo-/Sperrfrist-Hinweise als Pflichtfeld der Aufbereitungsstufe.
 
 Artefakt: Workflow-Beschreibung mit Advisor-Touchpoints, Human-in-the-Loop-Gates und Artefakten je Stufe.
 
 Fallstricke:
 - Ein fehlendes Human-Gate vor der Distribution lässt ungeprüfte Texte in den Nachrichtenzyklus → vor PR-/Social-Ausspielung zwingend menschliche Freigabe verankern.
 - Embargo-/Sperrfrist-Logik wird im automatisierten Schritt ignoriert → Sperrfrist-Hinweise als Pflichtfeld in der Aufbereitungsstufe führen.
+
+Empfehlung: Vor PR-/Social-Ausspielung zwingend ein menschliches Human-Gate verankern - ein fehlendes Gate vor der Distribution laesst ungepruefte Texte in den Nachrichtenzyklus. Sperrfrist-Hinweise als Pflichtfeld in der Aufbereitungsstufe fuehren, damit die Embargo-Logik im Ablauf nicht ignoriert wird.
 
 Anschluss: S-OC-012
 
@@ -336,14 +378,18 @@ Vorgehen:
 3. Einen Neutralitäts-Check ergänzen: Trennung von empirischer Aussage und Wertung.
 4. Die Checkliste als Pflicht-Gate in den Freigabe-Workflow integrieren.
 
-Prompt:
-> "Du bist mein Qualitäts- und Neutralitäts-Auditor. Erstelle aus den Brand-Voice-Standards im Wissensordner eine Guardrail-Checkliste für KI-gestützte IW-Texte. Format: Prüfpunkte zu Tonalität, Evidenzbindung, Anti-Spin (keine Datenauslassung) und Neutralität, je mit Bestanden/Nicht-bestanden. Sei pedantisch; markiere jeden Werbe-Superlativ als Verstoß."
+Vorlage: Qualitaets-/Neutralitaets-Guardrail-Checkliste:
+1. Tonalitaet - keine Werbe-Superlative, sachlich-evidenzbasiert, keine Alarmistik.
+2. Evidenzbindung + Anti-Spin - Aussagen aus Daten abgeleitet; Pruefpunkt 'wurden widersprechende Daten weggelassen?' (DRPR-konform).
+3. Neutralitaet - Trennung von empirischer Aussage und Wertung; je Punkt Bestanden/Nicht-bestanden.
 
 Artefakt: Guardrail-Checkliste mit Prüfpunkten zu Tonalität, Evidenzbindung, Anti-Spin und Neutralität.
 
 Fallstricke:
 - Spin durch selektive Datenauslassung bleibt unbemerkt → Prüfpunkt "wurden widersprechende Daten weggelassen?" explizit aufnehmen (DRPR-konform).
 - Der Check fokussiert nur Rechtschreibung statt Markenstimme → Prüfkriterien zwingend auf Tonalitäts- und Neutralitätsbrüche ausrichten.
+
+Empfehlung: Den Pruefpunkt 'wurden widersprechende Daten weggelassen?' explizit aufnehmen - Spin durch selektive Datenauslassung bleibt sonst unbemerkt (DRPR-konform). Die Pruefkriterien zwingend auf Tonalitaets- und Neutralitaetsbrueche ausrichten, nicht nur auf Rechtschreibung.
 
 Anschluss: S-OC-013
 
@@ -363,14 +409,18 @@ Vorgehen:
 3. Per Web-Search die aktuell gültige Art.-50-Frist gegen eine Primärquelle verifizieren und Quelle notieren.
 4. Im Canvas Disclaimer-Bausteine je Typ formulieren; KI-Bilder nie als empirische Evidenz zulassen.
 
-Prompt:
-> "Du bist mein Berater für Transparenz-Compliance. Erstelle aus den AI-Act-Fristen im Wissensordner eine Kennzeichnungs-Policy für KI-Inhalte des IW. Format: Tabelle (Inhaltstyp, kennzeichnungspflichtig ja/nein, Disclaimer-Baustein). Verankere: KI-Bilder nie als empirische Evidenz. Verifiziere die aktuelle Art.-50-Frist per Web-Search und nenne die Quelle."
+Vorlage: Kennzeichnungs-Policy (KI-Inhalte):
+1. Tabelle - Inhaltstyp, kennzeichnungspflichtig ja/nein, Disclaimer-Baustein.
+2. KI-Bilder - nie als empirische Evidenz; Bild-Kennzeichnung gemaess Art. 50 EU AI Act.
+3. Aktualitaet - geltende Art.-50-Frist per Web-Search gegen eine Primaerquelle verifiziert, mit Quelle und Abrufdatum.
 
 Artefakt: Kennzeichnungs-Policy mit Disclaimer-Bausteinen je Inhaltstyp und verifizierter AI-Act-Frist.
 
 Fallstricke:
 - KI-Grafiken werden als Beleg für reale Forschungsergebnisse genutzt → Regel verankern, dass KI-Bilder nie als empirische Evidenz dienen dürfen (AI-Act-konform).
 - Eine veraltete AI-Act-Frist im Ordner führt zu falscher Planung → den per Web-Search verifizierten Stichtag mit Quelle und Abrufdatum dokumentieren.
+
+Empfehlung: Die Regel verankern, dass KI-Bilder nie als empirische Evidenz fuer reale Forschungsergebnisse dienen duerfen (AI-Act-konform). Den per Web-Search verifizierten Art.-50-Stichtag mit Quelle und Abrufdatum dokumentieren, da eine veraltete Frist im Ordner zu falscher Planung fuehrt.
 
 Anschluss: S-OC-014
 
@@ -390,14 +440,18 @@ Vorgehen:
 3. Jede Antwort an eine reale Leitplanke knüpfen (z. B. "nur aus Quelltext", EU-Hosting, Human-Gate).
 4. Das Playbook den Champions als Gesprächsleitfaden übergeben.
 
-Prompt:
-> "Du bist mein Berater für Change-Kommunikation. Erstelle aus Policy und Guardrails im Wissensordner ein Einwand-Playbook für skeptische IW-Wissenschaftler. Format: je Einwand eine Zeile mit anerkennender Einleitung und belegter Antwort, gestützt auf eine konkrete Leitplanke. Ton: respektvoll, evidenzbasiert, ohne Marketing. Spiele die Sorgen nicht herunter."
+Vorlage: Einwand-Playbook (skeptische Wissenschaftler):
+1. Q&A je Einwand - Halluzination, Neutralitaetsverlust, Datenabfluss, Methodendrift, Autorenschaft.
+2. Aufbau je Zeile - sachliche Anerkennung der Sorge + belegte Antwort.
+3. Bindung - jede Antwort an eine reale Leitplanke (nur aus Quelltext, EU-Hosting, Human-Gate).
 
 Artefakt: Einwand-Playbook (Q&A) mit anerkennenden Einleitungen und leitplanken-gestützten Antworten.
 
 Fallstricke:
 - Einwände werden bagatellisiert statt anerkannt → jede Antwort mit echter Anerkennung der berechtigten Sorge beginnen, sonst verhärten sich die Fronten.
 - Antworten versprechen mehr, als der Advisor leistet → keine Langdock-Fähigkeiten erfinden; nur belegte Leitplanken nennen.
+
+Empfehlung: Jede Antwort mit echter Anerkennung der berechtigten Sorge beginnen - werden Einwaende bagatellisiert, verhaerten sich die Fronten. Keine Langdock-Faehigkeiten erfinden; nur belegte Leitplanken nennen, sonst verspricht das Playbook mehr, als der Advisor leistet.
 
 Anschluss: S-OC-015
 
@@ -417,14 +471,18 @@ Vorgehen:
 3. Eine geteilte Ablage für neue Prompts und Lessons Learned mit der Bibliothek verknüpfen.
 4. Das Konzept den Champions zur Umsetzung übergeben.
 
-Prompt:
-> "Du bist mein Community-Berater. Entwirf aus Champion-Landkarte und Prompt-Bibliothek im Wissensordner ein Community-of-Practice-Konzept für den IW-Advisor. Format: Office-Hour-Rhythmus, Agenda-Vorlage, Rollen, Ablagestruktur für Lessons Learned. Verknüpfe neue Prompts mit der bestehenden Bibliothek."
+Vorlage: Community-of-Practice-Konzept:
+1. Office-Hour - fester Rhythmus (z. B. zweiwoechentlich), Moderationsrolle, Agenda-Vorlage (Impuls, Q&A, dokumentierte Fallstricke).
+2. Wissens-Ablage - geteilte Ablage fuer neue Prompts und Lessons Learned, mit der Prompt-Bibliothek verknuepft.
+3. Praxisbezug - Agenda an realen IW-Aufgaben (z. B. iwd-Uebersetzung) ausgerichtet.
 
 Artefakt: Community-of-Practice-Konzept mit Office-Hour-Rhythmus, Agenda-Vorlage, Rollen und Wissens-Ablage.
 
 Fallstricke:
 - Lessons Learned versickern ohne feste Ablage → eine verbindliche Verknüpfung zur Prompt-Bibliothek festschreiben, sonst geht Wissen verloren.
 - Office-Hour wird zur reinen Tool-Demo → Agenda zwingend an realen IW-Aufgaben (z. B. iwd-Übersetzung) ausrichten, nicht an Feature-Showcases.
+
+Empfehlung: Eine verbindliche Verknuepfung der Lessons Learned zur Prompt-Bibliothek festschreiben - ohne feste Ablage versickert das Wissen. Die Agenda zwingend an realen IW-Aufgaben (iwd-Uebersetzung) ausrichten, damit die Office-Hour nicht zur reinen Tool-Demo wird.
 
 Anschluss: S-OC-016
 
@@ -444,14 +502,18 @@ Vorgehen:
 3. NDA-/AVV-Bezug und Sensitivitätsregeln verankern (vertrauliche Ordner ausgeschlossen).
 4. Verbindliche Offboarding-Schritte definieren (Owner-Transfer vor Abgang, sofortiger Zugriffsentzug).
 
-Prompt:
-> "Du bist mein Berater für externes Onboarding. Erstelle aus der RBAC-Doku im Wissensordner einen Agentur-Onboarding-Leitfaden für IW Medien. Kontext: externe Agentur, nur Social-Atomisierung, kein Gutachten-Zugriff. Format: Zugriffsmatrix (Ressource × Rolle), NDA-/AVV-Hinweis, Offboarding-Checkliste. Externe nie als Owner sensibler Ressourcen."
+Vorlage: Agentur-Onboarding-Leitfaden (externe Dienstleister):
+1. Zugriffsmatrix - Ressource x Rolle; Externe = Viewer/Editor auf freigegebene Ressourcen, nie Owner.
+2. Vertraulichkeit - NDA-/AVV-Bezug; vertrauliche Gutachten-Ordner fuer Externe gesperrt.
+3. Offboarding - Owner-Transfer auf Funktions-Account vor Abgang, sofortiger Zugriffsentzug.
 
 Artefakt: Agentur-Onboarding-Leitfaden mit Zugriffsmatrix, NDA-/AVV-Bezug und Offboarding-Checkliste.
 
 Fallstricke:
 - Synced-Folder-Verbindungen brechen, wenn der externe Ersteller-Account beim Offboarding gelöscht wird → vor Abgang einen Owner-Transfer auf einen Funktions-Account durchführen.
 - Externe erhalten versehentlich Zugriff auf vertrauliche Gutachten-Ordner → vertrauliche Stufe in der Matrix explizit für Externe sperren.
+
+Empfehlung: Vor dem Abgang einen Owner-Transfer auf einen Funktions-Account durchfuehren - synced-Folder-Verbindungen brechen, wenn der externe Ersteller-Account beim Offboarding geloescht wird. Die vertrauliche Stufe in der Zugriffsmatrix explizit fuer Externe sperren, damit sie keinen Zugriff auf Gutachten-Ordner erhalten.
 
 Anschluss: S-OC-017
 
@@ -471,14 +533,18 @@ Vorgehen:
 3. Sicherstellen, dass Metriken aggregiert/anonym sind (keine individuelle Leistungskontrolle, Betriebsrat-konform).
 4. Das Set der Leitung als Steuerungsgrundlage vorlegen.
 
-Prompt:
-> "Du bist mein Adoptions-Analyst. Definiere aus den KPI-Prinzipien im Wissensordner ein Adoptionsmetrik-Set für den IW-Advisor. Format: Tabelle (Metrik, Definition, Datenquelle, Zielwert, Aggregationsebene). Mische qualitative (Zeitersparnis Aufbereitung) und quantitative Metriken. Schließe individuelle Leistungskontrolle aus."
+Vorlage: Adoptionsmetrik-Set:
+1. Tabelle - Metrik, Definition, Datenquelle, Zielwert, Aggregationsebene.
+2. Mischung - qualitativ (Zeitersparnis iwd-Aufbereitung) + quantitativ (aktive Nutzer je Bereich, Anteil gepruefter Outputs, Champion-Aktivitaet).
+3. Betriebsrat-Konformitaet - ausschliesslich aggregiert/anonym, keine Individualkontrolle.
 
 Artefakt: Adoptionsmetrik-Set (Tabelle) mit Definition, Datenquelle, Zielwert und Aggregationsebene je Kennzahl.
 
 Fallstricke:
 - Reine Vanity-Metriken (Prompt-Anzahl) suggerieren Erfolg ohne Wirkung → mindestens eine Wirkungsmetrik (Zeitersparnis im Workflow) verpflichtend aufnehmen.
 - Metriken auf Individualebene verletzen die Betriebsrat-Zusicherung → ausschließlich aggregierte, anonymisierte Auswertung festschreiben.
+
+Empfehlung: Mindestens eine Wirkungsmetrik (Zeitersparnis im Workflow) verpflichtend aufnehmen - reine Vanity-Metriken wie Prompt-Anzahl suggerieren Erfolg ohne Wirkung. Ausschliesslich aggregierte, anonymisierte Auswertung festschreiben, da Metriken auf Individualebene die Betriebsrat-Zusicherung verletzen.
 
 Anschluss: S-OC-018
 
@@ -498,14 +564,18 @@ Vorgehen:
 3. Je Fehlerklasse Rolle, Frist und ob ein veröffentlichter Inhalt zu korrigieren ist festhalten.
 4. Eine Dokumentationspflicht verankern, die in die Community of Practice zurückfließt.
 
-Prompt:
-> "Du bist mein Berater für Incident-Prozesse. Entwirf aus Guardrails und Policy im Wissensordner einen Eskalations- und Korrektur-Prozess für KI-Fehler im IW. Format: Fehlerklassen-Tabelle (Klasse, Erkennung, Eskalationsrolle, Frist, Korrektur, Doku). Behandle Zahlen-/Faktenfehler als höchste Priorität wegen der Glaubwürdigkeit."
+Vorlage: Eskalations- und Korrektur-Prozess (KI-Fehler):
+1. Fehlerklassen-Tabelle - Klasse (Faktenfehler, Zahlenfehler, Tone-/Neutralitaets-Drift, Datenschutz), Erkennung, Eskalationsrolle, Frist, Korrektur, Doku.
+2. Ablauf - Erkennung zu Stopp zu Eskalation an Champion/Leitung zu Korrektur zu Lessons Learned.
+3. Prioritaet - Zahlen-/Faktenfehler hoechste Prioritaet; veroeffentlichte Inhalte mit externer Richtigstellungspflicht.
 
 Artefakt: Eskalations- und Korrektur-Prozess mit Fehlerklassen, Rollen, Fristen und Dokumentationspflicht.
 
 Fallstricke:
 - Ein bereits veröffentlichter Zahlenfehler wird nur intern korrigiert → für veröffentlichte Inhalte eine externe Korrektur-/Richtigstellungspflicht verankern.
 - Fehler werden korrigiert, aber nicht dokumentiert → verbindliche Lessons-Learned-Rückspielung in die Community of Practice festschreiben.
+
+Empfehlung: Fuer bereits veroeffentlichte Inhalte eine externe Korrektur-/Richtigstellungspflicht verankern, nicht nur eine interne Korrektur - ein publizierter Zahlenfehler gefaehrdet die Glaubwuerdigkeit. Eine verbindliche Lessons-Learned-Rueckspielung in die Community of Practice festschreiben, damit Fehler nicht nur korrigiert, sondern auch dokumentiert werden.
 
 Anschluss: S-OC-019
 
@@ -534,6 +604,8 @@ Fallstricke:
 - Multi-Sheet-Excels überfordern den Data Analyst → vor dem Upload bereinigen und nur relevante, anonymisierte Sheets behalten.
 - Zertifikate und AI-Act-Fristen werden im Review nicht nachgeprüft → die Re-Prüfung des Audit-/Stichtags als Pflichtpunkt aufnehmen.
 
+Empfehlung: Die anonymisierten Adoptionsdaten vor dem Upload bereinigen und nur relevante Sheets behalten - Multi-Sheet-Excels ueberfordern den Data Analyst. Die Re-Pruefung des Audit-/AI-Act-Stichtags als Pflichtpunkt in den Review aufnehmen, da Zertifikate und Fristen sonst unbemerkt ablaufen.
+
 Anschluss: S-OC-020
 
 ### S-OC-020 Skalierung auf weitere Wissenschaftsbereiche planen
@@ -552,14 +624,18 @@ Vorgehen:
 3. Je Welle die Voraussetzungen festhalten (Governance-Freigabe geprüft, Champion benannt, Charter erstellt).
 4. Den Fahrplan der Leitung vorlegen; den Pilot-Pfad (S-OC-001) je neuem Bereich wieder anstoßen.
 
-Prompt:
-> "Du bist mein Skalierungs-Berater. Erstelle aus Champion-Landkarte und Review-Bericht im Wissensordner einen Wellen-Fahrplan für die Skalierung des IW-Advisors auf weitere Wissenschaftsbereiche. Format: Tabelle (Welle, Bereich, Voraussetzungen, Champion, Mini-Pilot-Charter ja/nein). Schreibe fest, dass jeder Bereich einen eigenen Pilot- und Governance-Pfad durchläuft."
+Vorlage: Skalierungs-Fahrplan (Wellen):
+1. Wellen-Tabelle - Welle, Bereich, Voraussetzungen, Champion, Mini-Pilot-Charter ja/nein.
+2. Pflicht je Welle - eigener Pilot-, Governance- und Champion-Pfad; kein institutsweiter Big Bang.
+3. Guardrail-Uebernahme - Guardrail-Checkliste und Kennzeichnungs-Policy je neuem Bereich verbindlich.
 
 Artefakt: Skalierungs-Fahrplan (Wellen-Tabelle) mit Bereichen, Voraussetzungen, Champions und Mini-Pilot-Pflicht je Welle.
 
 Fallstricke:
 - Ein institutsweiter Big-Bang-Rollout überspringt Governance und überfordert die Champions → jede Welle an einen eigenen, abgeschlossenen Mini-Pilot binden.
 - Die im Pilot bewährten Guardrails werden bei Skalierung verwässert → je neuem Bereich die Guardrail-Checkliste und Kennzeichnungs-Policy verbindlich übernehmen.
+
+Empfehlung: Jede Welle an einen eigenen, abgeschlossenen Mini-Pilot binden - ein institutsweiter Big-Bang-Rollout ueberspringt Governance und ueberfordert die Champions. Je neuem Bereich die Guardrail-Checkliste und Kennzeichnungs-Policy verbindlich uebernehmen, damit die im Pilot bewaehrten Leitplanken bei der Skalierung nicht verwaessern.
 
 Anschluss: S-OC-021
 
@@ -587,6 +663,8 @@ Fallstricke:
 - Die Antwort wird als verbindliche Rechtsauskunft formuliert → Little Data berät; die verbindliche Bewertung bleibt Datenschutz/Recht vorbehalten.
 - „Sichere interne Instanz" wird mit „beliebiges externes LLM" verwechselt → die Unterscheidung (AVV, abgesicherte Instanz) klar benennen.
 
+Empfehlung: Die Auskunft klar als Beratung kennzeichnen - Little Data beraet, die verbindliche Bewertung bleibt Datenschutz/Recht vorbehalten, nie als Rechtsauskunft formulieren. Die Unterscheidung zwischen 'sicherer interner Instanz mit AVV' und 'beliebigem externem LLM' klar benennen, da beides leicht verwechselt wird.
+
 Anschluss: S-OC-022
 
 ### S-OC-022 Faktenfrage: Welche KI-Risiken müssen wir im Institut beachten?
@@ -612,6 +690,8 @@ Artefakt: Eine Risiko-Gegenmaßnahmen-Tabelle mit Bezug zum Anlass.
 Fallstricke:
 - Halluzinierte Zahlen werden übersehen → jede Studienzahl gegen die Originalquelle prüfen; ohne Beleg nicht veröffentlichen.
 - KI-Bilder werden ohne Kennzeichnung genutzt → §50 EU AI Act beachten; KI-Bilder nie als empirischen Beleg verwenden.
+
+Empfehlung: Jede Studienzahl gegen die Originalquelle pruefen und ohne Beleg nicht veroeffentlichen - halluzinierte Zahlen werden sonst uebersehen. Auf Paragraf 50 EU AI Act hinweisen und KI-Bilder nie als empirischen Beleg verwenden, da die Kennzeichnungspflicht sonst verletzt wird.
 
 Anschluss: S-OC-023
 
@@ -640,6 +720,8 @@ Fallstricke:
 - Das Briefing glättet akademische Unsicherheiten zu früh und überträgt sie nicht ins iwd-Register → Konfidenz-/Vorbehaltsmarker der Autorin im Briefing ausdrücklich vermerken, statt sie zu streichen.
 - Eine Kernaussage wird ohne Seitenbeleg übernommen → jede Kernaussage zwingend an eine Fundstelle in der Studie binden, sonst droht ein Zahlenfehler in der späteren Pressearbeit.
 
+Empfehlung: Die Konfidenz-/Vorbehaltsmarker der Studienautorin im Briefing ausdruecklich vermerken statt sie zu streichen - ein zu frueh geglaettetes Briefing uebertraegt die akademische Unsicherheit nicht ins iwd-Register. Jede Kernaussage zwingend an eine Fundstelle (Seitenbeleg) in der Studie binden, sonst droht ein Zahlenfehler in der spaeteren Pressearbeit.
+
 Anschluss: S-OC-024
 
 ### S-OC-024 Rollen-Onboarding: neue Teammitglieder an den Little-Data-Agenten heranführen
@@ -658,14 +740,18 @@ Vorgehen:
 3. Die nicht verhandelbaren Leitplanken kompakt auflisten (keine unveröffentlichten Gutachten, Sie-Form, Faktencheck-Pflicht, kein Außenversand ohne Freigabe).
 4. Den Leitfaden mit dem zuständigen KI-Champion durchgehen und beim ersten realen Use-Case begleiten (menschliche Begleitung).
 
-Prompt:
-> "Du bist mein Onboarding-Berater. Erstelle aus Policy und Prompt-Bibliothek im Wissensordner einen Erstkontakt-Leitfaden für ein neues IW-Teammitglied am Little-Data-Advisor. Format: drei erste sinnvolle Anfragen mit Beispiel-Prompt, kompakte Leitplanken-Liste, Verweis auf Policy. Betone die Sie-Form und die Faktencheck-Pflicht vor jedem Außenversand."
+Vorlage: Erstkontakt-Leitfaden (neue Teammitglieder):
+1. Drei Einstiegs-Anfragen - z. B. iwd-Zusammenfassung eines Kurzberichts, Glossar-Begriff nachschlagen, Social-Atomisierung testen (je mit Beispiel-Prompt).
+2. Leitplanken-Liste - keine unveroeffentlichten Gutachten, Sie-Form, Faktencheck-Pflicht, kein Aussenversand ohne Freigabe.
+3. Bezug - Verweis auf Policy und Prompt-Bibliothek; ein bereits veroeffentlichtes Beispieldokument fuer erste Versuche.
 
 Artefakt: Erstkontakt-Leitfaden mit drei Einstiegs-Anfragen, Leitplanken-Liste und Policy-Verweis.
 
 Fallstricke:
 - Neuzugänge laden zum Üben echte vertrauliche Inhalte (embargobehaftete Studie) hoch → schon im Leitfaden ein unkritisches, bereits veröffentlichtes Beispieldokument für die ersten Versuche vorgeben.
 - Der Leitfaden vermittelt Tool-Bedienung, aber nicht die redaktionelle Verantwortung → die Faktencheck-Pflicht und das Verbot des automatischen Außenversands als erste Lektion setzen, nicht als Fußnote.
+
+Empfehlung: Schon im Leitfaden ein unkritisches, bereits veroeffentlichtes Beispieldokument fuer die ersten Versuche vorgeben - sonst laden Neuzugaenge zum Ueben echte vertrauliche Inhalte (embargobehaftete Studie) hoch. Die Faktencheck-Pflicht und das Verbot des automatischen Aussenversands als erste Lektion setzen, nicht als Fussnote.
 
 Anschluss: S-OC-025
 
@@ -694,6 +780,8 @@ Fallstricke:
 - Der Zeitgewinn wird ohne den Faktencheck-Aufwand gerechnet und wirkt unglaubwürdig → den menschlichen Prüfschritt immer in die Nachher-Schätzung aufnehmen, sonst verhärtet sich die Skepsis.
 - Eine erfundene Prozentzahl ("70 Prozent schneller") wird als Beleg genutzt → nur am realen Fall geschätzte, als Schätzung gekennzeichnete Werte verwenden; keine Marktstudien-Zahlen erfinden.
 
+Empfehlung: Den menschlichen Pruefschritt (Faktencheck) immer in die Nachher-Schaetzung einrechnen - ein Zeitgewinn ohne diesen Aufwand wirkt unglaubwuerdig und verhaertet die Skepsis. Nur am realen Fall geschaetzte, als Schaetzung gekennzeichnete Werte verwenden; keine erfundene Prozentzahl ('70 Prozent schneller') als Beleg.
+
 Anschluss: S-OC-026
 
 ### S-OC-026 Prompt-Bibliothek: die fünf häufigsten IW-Kommunikationsaufgaben als geteilte Vorlagen etablieren
@@ -713,14 +801,18 @@ Vorgehen:
 4. Anwendungshinweis und Freigabe-Status ("getestet/freigegeben") je Vorlage ergänzen.
 5. Die fünf Vorlagen im geteilten Wissensordner ablegen und dem Team als Standard kommunizieren (menschliche Freigabe der Inhalte).
 
-Prompt:
-> "Du bist mein Vorlagen-Kurator. Entwirf aus den Format-Vorgaben im Wissensordner fünf getestete PTCF-Vorlagen für die häufigsten IW-Kommunikationsaufgaben (iwd-Übersetzung, Audience-Rewriting, Grafik-Konzeption aus Tabelle, DE-EN-Übersetzung ordnungspolitischer Begriffe, Media-Monitoring). Format: je Vorlage Persona/Task/Context/Format, Anwendungshinweis, Freigabe-Status. Markiere ungetestete Vorlagen als 'Test offen'."
+Vorlage: Top-5-PTCF-Vorlagen (haeufigste IW-Aufgaben):
+1. Fuenf Aufgaben - iwd-Uebersetzung, Audience-Rewriting, Grafik-Konzeption aus Tabelle, DE-EN-Uebersetzung ordnungspolitischer Begriffe, Media-Monitoring-Auswertung.
+2. Je Vorlage - Persona/Task/Context/Format, Anwendungshinweis, Freigabe-Status; ungetestete als 'Test offen'.
+3. Integration - als kuratierter Kern in die bestehende Prompt-Bibliothek (S-OC-008) eingehaengt, nicht parallel.
 
 Artefakt: Fünf PTCF-Vorlagen (Wissensordner) mit Anwendungshinweis und Freigabe-Status je häufiger Aufgabe.
 
 Fallstricke:
 - Die Vorlagen duplizieren die bestehende Prompt-Bibliothek aus S-OC-008 und es entstehen widersprüchliche Versionen → die Top-5-Vorlagen als kuratierten Kern in die bestehende Bibliothek einhängen, nicht parallel führen.
 - Eine ungetestete Vorlage wird als "freigegeben" verbreitet und trägt Tone-Drift ins ganze Team → nur am realen Beispiel getestete, brand-voice-geprüfte Vorlagen freigeben.
+
+Empfehlung: Die Top-5-Vorlagen als kuratierten Kern in die bestehende Prompt-Bibliothek aus S-OC-008 einhaengen, nicht parallel fuehren - sonst entstehen widerspruechliche Versionen. Nur am realen Beispiel getestete, brand-voice-gepruefte Vorlagen freigeben, da eine ungetestete 'freigegebene' Vorlage Tone-Drift ins ganze Team traegt.
 
 Anschluss: S-OC-027
 
@@ -740,14 +832,18 @@ Vorgehen:
 3. Eine benannte Freigabe-Rolle und ein Dokumentationsfeld (wer hat wann freigegeben) ergänzen.
 4. Das Gate als Pflichtschritt vor dem Versand in den Editorial-Workflow einhängen; ohne Freigabe kein Außenversand.
 
-Prompt:
-> "Du bist mein Qualitäts-Gate-Berater. Erstelle aus Guardrails und Policy im Wissensordner eine verbindliche Freigabe-Checkliste vor jedem Außenversand KI-gestützter IW-Inhalte. Format: je Artefakttyp Faktencheck-Punkte, Freigabe-Rolle, Dokumentationsfeld. Verankere: jede Zahl gegen die Originalquelle prüfen; kein Versand ohne menschliche Freigabe."
+Vorlage: Qualitaets-Gate-Checkliste (vor Aussenversand):
+1. Je Artefakttyp (Pressetext, iwd-Artikel, Social-Post, EN-Uebersetzung) - Faktencheck-Punkte: jede Zahl gegen Originalquelle, Neutralitaet, Kennzeichnung.
+2. Freigabe - benannte Freigabe-Rolle + Dokumentationsfeld (wer hat wann freigegeben).
+3. Verbindlichkeit - als erzwungener Pflichtschritt in den Editorial-Workflow eingehaengt; ohne Freigabe kein Aussenversand.
 
 Artefakt: Qualitäts-Gate-Checkliste mit Faktencheck-Punkten, Freigabe-Rolle und Dokumentationsfeld je Außen-Artefakt.
 
 Fallstricke:
 - Das Gate wird als unverbindliche Empfehlung formuliert und unter Zeitdruck übersprungen → die Freigabe als technisch/organisatorisch erzwungenen Pflichtschritt verankern, nicht als optionalen Hinweis; nie "vollautomatisch" versenden.
 - Geprüft wird nur Stil, nicht die Faktentreue → jede Studienzahl muss namentlich gegen die Originalquelle abgeglichen sein, sonst gefährdet ein Zahlenfehler die IW-Glaubwürdigkeit.
+
+Empfehlung: Die Freigabe als technisch/organisatorisch erzwungenen Pflichtschritt verankern, nicht als optionalen Hinweis - unter Zeitdruck wird ein unverbindliches Gate uebersprungen; nie 'vollautomatisch' versenden. Jede Studienzahl namentlich gegen die Originalquelle abgleichen, da reine Stilpruefung einen Zahlenfehler durchlaesst und die IW-Glaubwuerdigkeit gefaehrdet.
 
 Anschluss: S-OC-028
 
@@ -767,13 +863,17 @@ Vorgehen:
 3. Je Fehlerart den Rückspielweg festlegen (Knowledge-Datei korrigieren, Prompt-Vorlage schärfen, an Champion eskalieren).
 4. Eine regelmäßige Sichtung in der Community of Practice verankern; Korrekturen werden menschlich entschieden und dokumentiert.
 
-Prompt:
-> "Du bist mein Berater für Feedback-Prozesse. Entwirf aus Guardrails und Policy im Wissensordner eine Feedback-Schleife für falsche oder unsichere Ausgaben des IW-Advisors. Format: Meldevorlage (Anfrage, Fehlausgabe, Fehlerart, erwartete Ausgabe), Klassifikation, Rückspielweg in Wissensordner/Prompt-Bibliothek. Halte fest, dass Korrekturen menschlich entschieden und dokumentiert werden."
+Vorlage: Feedback-Schleifen-Konzept:
+1. Meldevorlage - Anfrage, fehlerhafte Ausgabe, Fehlerart, erwartete Ausgabe.
+2. Klassifikation - Faktenfehler, veraltete Quelle, Tone-/Neutralitaets-Drift, Wissensluecke.
+3. Rueckspielweg - je Fehlerart konkrete Korrektur (Knowledge-Datei korrigieren, Prompt schaerfen, an Champion eskalieren) + verantwortliche Rolle; Sichtung in der CoP.
 
 Artefakt: Feedback-Schleifen-Konzept mit Meldevorlage, Fehler-Klassifikation und dokumentiertem Rückspielweg.
 
 Fallstricke:
 - Gemeldete Fehler versickern ohne festen Rückspielweg → je Fehlerart eine konkrete Korrekturaktion und eine verantwortliche Rolle festschreiben, sonst wiederholt sich derselbe Fehler.
 - Eine veraltete Quelle (z. B. überholte Modell-/Frist-Angabe) wird nur lokal korrigiert, nicht in der Wissensbasis → die Korrektur verbindlich in die betroffene Knowledge-Datei zurückführen, damit alle Nutzer profitieren.
+
+Empfehlung: Je Fehlerart eine konkrete Korrekturaktion und eine verantwortliche Rolle festschreiben - ohne festen Rueckspielweg versickern gemeldete Fehler und wiederholen sich. Die Korrektur verbindlich in die betroffene Knowledge-Datei zurueckfuehren (nicht nur lokal), damit eine veraltete Quelle fuer alle Nutzer behoben wird.
 
 Anschluss: S-OC-001
