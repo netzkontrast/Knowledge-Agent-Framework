@@ -1365,12 +1365,16 @@ Vorgehen:
 2. Implementiere exponentielles Backoff-Polling: erster Poll nach 2 Sekunden, dann 4 Sekunden, 8 Sekunden, maximal alle 30 Sekunden; nach 20 Minuten ohne `COMPLETED` wird ein Timeout-Fehler an den Nutzer gemeldet.
 3. Designe die Frontend-UX für lange laufende Jobs: (a) sofortiges Progress-Feedback ("KI recherchiert — ca. 10 Minuten"); (b) nicht-blockierender UI-Zustand (Nutzer kann andere Aufgaben erledigen); (c) Push-Benachrichtigung oder E-Mail wenn der Job fertig ist (für Jobs über 5 Minuten).
 4. Behandle Fehler-Zustände: `FAILED`-Job → klare Fehlermeldung mit Job-ID für den Support; Network-Fehler während Polling → automatischer Retry ohne User-Eingriff; Browser-Tab-Wechsel → Polling läuft im Background-Worker weiter.
-Prompt:
-> "Du bist ein Frontend-Architekt. Unsere KI-Workflows dauern 5–30 Minuten. Einfaches HTTP-Polling alle 5 Sekunden erzeugt Last und Timeouts. Erkläre: (1) das asynchrone Job-Submission-Pattern mit `job_id`, (2) exponentielles Backoff-Polling mit Timeout-Logik, (3) Frontend-UX für lange laufende Jobs, (4) Fehlerbehandlung für FAILED-Jobs und Network-Fehler. Liefere ein Architekturkonzept."
+Vorlage: Async-Workflow-Status-Architektur (Long-Polling):
+1. Job-Pattern — Workflow-Endpoint gibt sofort job_id zurueck; Client pollt Status-Endpoint bis COMPLETED/FAILED.
+2. Backoff-Polling — 2s/4s/8s, max. alle 30 s; nach 20 Min ohne COMPLETED Timeout an Nutzer.
+3. Frontend-UX — sofortiges Progress-Feedback, nicht-blockierende UI, Push/E-Mail bei Jobs >5 Min.
+4. Fehler — FAILED→Fehlermeldung mit Job-ID; Network-Fehler→Auto-Retry; Tab-Wechsel→Background-Worker pollt weiter.
 Artefakt: Ein Architekturkonzept (Job-Submission-Pattern, Polling-Strategie, Frontend-UX, Fehlerbehandlung).
 Fallstricke:
 - Das Polling-Intervall bleibt konstant bei 5 Sekunden statt exponentiell zu wachsen — bei 100 gleichzeitigen aktiven Jobs macht das 1.200 überflüssige API-Calls pro Minute, die das Rate Limit belasten.
 - Der Polling-Loop wird im Haupt-Thread implementiert und blockiert die UI — der Nutzer kann während eines laufenden Deep-Research-Jobs keine anderen Aktionen in der Anwendung ausführen.
+Empfehlung: Das Polling-Intervall exponentiell wachsen lassen statt konstant 5 s — bei 100 aktiven Jobs erzeugt fixes Polling 1.200 ueberfluessige Calls/Minute, die das Rate Limit belasten. Den Polling-Loop in einen Background-Worker legen, nicht in den Haupt-Thread, damit der Nutzer waehrend eines langen Deep-Research-Jobs weiterarbeiten kann.
 Anschluss: S-API-058
 
 ### S-API-058 API-Changelog-Benachrichtigungs-Workflow
@@ -1384,12 +1388,13 @@ Vorgehen:
 2. Klassifiziere Updates automatisch: ein KI-Schritt analysiert den neuen Changelog-Text und klassifiziert: `BREAKING_CHANGE` (Response-Schema-Änderung, Deprecation, Endpoint-Entfernung), `FEATURE_ADD` (neuer Endpoint, neues Feld), `BUGFIX` (keine Migrations-Aktion nötig).
 3. Leite Team-Benachrichtigungen ab: `BREAKING_CHANGE` → sofortige Slack-Benachrichtigung an DevOps-Channel + Jira-Ticket-Erstellung mit 30-Tage-Migrations-Deadline; `FEATURE_ADD` → wöchentliche Zusammenfassung im Tech-Newsletter; `BUGFIX` → Log ohne Benachrichtigung.
 4. Generiere eine Migrations-Checkliste: für `BREAKING_CHANGE`-Einträge erstellt der Workflow automatisch eine Checkliste: (a) API-Mock aktualisieren (S-API-051), (b) Integrationstests ausführen, (c) Canary-Deployment vorbereiten (S-API-052), (d) Rollback-Plan dokumentieren.
-Prompt:
-> "Du bist ein DevOps-Automatisierer. Wir wollen proaktiv über Langdock-API-Updates informiert werden, bevor Breaking Changes unsere Produktion treffen. Beschreibe einen automatisierten Workflow: (1) tägliches Changelog-Monitoring, (2) KI-basierte Update-Klassifikation (Breaking/Feature/Bugfix), (3) differenzierte Team-Benachrichtigung pro Klasse, (4) automatisch generierte Migrations-Checkliste für Breaking Changes. Liefere ein vollständiges Workflow-Konzept."
+Workflow: Scheduled-Trigger (taeglich) → Changelog-Abruf (Seite/RSS) + Diff gegen letzten Stand → AI-Node (Klassifikation BREAKING_CHANGE/FEATURE_ADD/BUGFIX) → Condition (BREAKING→Slack DevOps + Jira mit 30-Tage-Deadline / FEATURE→Wochen-Newsletter / BUGFIX→nur Log) → bei BREAKING Action-Node erzeugt Migrations-Checkliste (Mock-Update S-API-051, Tests, Canary S-API-052, Rollback).
+Budget: Ein AI-Node taeglich zur Klassifikation eines kurzen Changelog-Diffs — minimal pro Lauf.
 Artefakt: Ein automatisierter Benachrichtigungs-Workflow (Changelog-Monitoring, Update-Klassifikation, Team-Benachrichtigung, Migrations-Checkliste).
 Fallstricke:
 - Jedes API-Update — egal wie klein — löst eine Slack-Benachrichtigung aus; das Team entwickelt Alert-Fatigue und ignoriert auch kritische Breaking-Change-Alerts; die Klassifikation ist zwingend, um Signalrauschen zu reduzieren.
 - Der Workflow monitort nur die Changelog-Seite, nicht die tatsächliche API-Response-Schema; ein stilles Breaking Change (Schema-Änderung ohne Changelog-Eintrag) wird nicht entdeckt; ein wöchentlicher Smoke-Test gegen ein Response-Fixture (S-API-051) ist als Ergänzung empfohlen.
+Empfehlung: Die Klassifikation (Breaking/Feature/Bugfix) ist zwingend — ein Alert bei jedem Mini-Update erzeugt Alert-Fatigue, sodass das Team auch kritische Breaking-Change-Alerts ignoriert. Ergaenzend einen woechentlichen Smoke-Test gegen ein Response-Fixture (S-API-051) fahren, da ein stilles Breaking Change ohne Changelog-Eintrag sonst unentdeckt bleibt.
 Anschluss: S-API-059
 
 ### S-API-059 API-Sandbox-Umgebung für sicheres Experimentieren
@@ -1403,12 +1408,16 @@ Vorgehen:
 2. Konfiguriere die Sandbox für günstige Experimente: Standard-Modell in der Sandbox ist ein Flash-/Haiku-Modell (10× günstiger als Sonnet); Token-Budget-Limit pro Entwickler bei 5 USD/Tag, um unkontrollierte Kosten zu verhindern; kein Streaming (einfacheres Debugging).
 3. Definiere die Testdaten-Strategie: keine echten Kundendaten in der Sandbox; synthetische Testprodukte, fiktive Kampagnennamen und generierte Nutzerprofile; ein `test-data-generator`-Skript erstellt konsistente Testdatensätze, die alle Entwickler verwenden.
 4. Standardisiere den Promotions-Prozess: bevor ein experimentell entwickelter Agent oder Prompt in die Produktion übernommen wird — (a) drei Spot-Tests mit Canary-Prompts (S-API-034-Methodik), (b) Review durch Brand-Verantwortlichen, (c) Dokumentation im Wissensordner.
-Prompt:
-> "Du bist ein DevOps-Architekt. Wir wollen eine sichere Sandbox-Umgebung für KI-Experimente aufbauen, die von unserer Produktion vollständig isoliert ist. Erkläre: (1) wie wir Langdock-Workspaces für Sandbox vs. Produktion trennen, (2) Modell- und Budget-Konfiguration für die Sandbox, (3) Testdaten-Strategie ohne echte Kundendaten, (4) Promotions-Prozess von Sandbox nach Produktion. Liefere ein vollständiges Setup-Konzept."
+Vorlage: API-Sandbox-Setup-Konzept (Experimentier-Isolation):
+1. Umgebungstrennung — separater Sandbox-Workspace (kein Produktions-Wissensordner/CRM), separate Keys, .env.sandbox vs. .env.production.
+2. Sandbox-Modelle — Flash/Haiku als Standard (10× guenstiger), Budget 5 USD/Tag/Entwickler, kein Streaming.
+3. Testdaten — keine echten Kundendaten; synthetische Produkte/Kampagnen/Profile aus einem test-data-generator.
+4. Promotion — vor Produktion: 3 Spot-Tests, Brand-Review, Wissensordner-Doku.
 Artefakt: Ein Sandbox-Setup-Konzept (Umgebungstrennung, Modell-Konfiguration, Testdaten-Strategie, Promotions-Prozess).
 Fallstricke:
 - Die Sandbox teilt denselben Langdock-Workspace wie die Produktion — ein fehlerhafter Experiment-Prompt kann versehentlich Produktions-Wissensordner modifizieren oder durch exzessive Token-Nutzung das Produktions-Budget aufbrauchen.
 - Sandbox-Experimente werden mit echten Kundendaten durchgeführt (aus Bequemlichkeit) — das verstößt gegen DSGVO-Grundsätze der Datenvermeidung und riskiert, dass sensible Daten in Sandbox-Logs ungeschützt verbleiben.
+Empfehlung: Sandbox und Produktion strikt in getrennten Workspaces fuehren — teilen sie sich einen Workspace, kann ein fehlerhafter Experiment-Prompt Produktions-Wissensordner modifizieren oder das Produktions-Budget aufbrauchen. Niemals echte Kundendaten in der Sandbox verwenden (DSGVO-Datenvermeidung); synthetische Testdaten aus einem Generator nutzen.
 Anschluss: S-API-060
 
 ### S-API-060 OpenAI-Kompatibilitäts-Layer — Migrationsmuster und Fallstricke
@@ -1423,12 +1432,17 @@ Vorgehen:
 3. Dokumentiere bekannte Fallstricke: Modell-Namen unterscheiden sich (Mapping-Tabelle Pflicht); OpenAI-`tools`-Parameter kompatibel, aber Langdock-Agenten-Features nur über native Endpoints; Rate-Limit-Headers können abweichen — Retry-Logik gegen Langdocks 429-Response testen.
 4. Baue den Validierungs-Testplan: nach der Migration führt das Team 10 Referenz-Prompts aus (zuvor mit OpenAI getestet), vergleicht Response-Qualität, Latenz und Token-Zählung; bei mehr als 20 % Qualitätsabweichung ist eine Prompt-Anpassung nötig.
 5. Kommuniziere den Compliance-Gewinn: nach erfolgter Migration profitiert die bestehende Infrastruktur sofort von EU-Hosting, Zero-Data-Retention und Audit-Logs — der Dienstleister kann dieselbe ISO-27001-konforme Umgebung für alle seine DACH-Kunden nutzen.
-Prompt:
-> "Du bist ein Migrations-Berater. Wir wollen unsere OpenAI-basierte Marketing-Automatisierung auf Langdock migrieren und den Kompatibilitäts-Layer nutzen. Erkläre: (1) die zwei Kernschritte des Drop-in-Replacements, (2) welche OpenAI-Features nicht kompatibel sind, (3) die drei häufigsten Fallstricke bei der Migration (Modell-Namen, Rate-Limits, Agenten-Features), (4) einen Validierungs-Testplan nach der Migration. Liefere ein praxistaugliches Migrations-Playbook."
+Vorlage: OpenAI-Kompatibilitaets-Migrations-Playbook:
+1. Drop-in-Kern — base_url auf api.langdock.com/openai/eu/v1, api_key auf Langdock-Token; restlicher Code (OpenAI SDK/Axios) unveraendert.
+2. Grenzen — nahtlos: Chat Completions/Embeddings/temperature/max_tokens/stream; ohne Aequivalent: assistants-/fine-tuning-/realtime-API.
+3. Fallstricke — Modell-Namen-Mapping Pflicht; Agenten-Features nur ueber native Endpoints; Retry-Logik gegen Langdocks 429 testen.
+4. Validierung — 10 Referenz-Prompts vergleichen (Qualitaet/Latenz/Token); >20 % Abweichung → Prompt-Anpassung.
+5. Compliance-Gewinn — sofort EU-Hosting, Zero-Data-Retention, Audit-Logs (ISO-27001-konforme Umgebung).
 Artefakt: Ein Migrations-Playbook (Drop-in-Replacement-Schritte, Kompatibilitätsgrenzen-Checkliste, Fallstricke, Validierungs-Testplan).
 Fallstricke:
 - Das Team migriert blind, ohne Kompatibilitätsgrenzen zu prüfen — die Migration schlägt fehl, weil der Dienstleister die OpenAI Assistants-API nutzt, die Langdock nicht repliziert; vor der Migration muss ein Feature-Audit des bestehenden Systems stehen.
 - Nach der Migration wird die Response-Qualität als "automatisch gleich" angenommen — verschiedene Modelle hinter demselben Endpoint können unterschiedliche Output-Qualitäten für spezifische Marketing-Tasks liefern; ein Validierungs-Testplan mit Referenz-Prompts ist unverzichtbar.
+Empfehlung: Vor der Migration ein Feature-Audit des bestehenden Systems durchfuehren — nutzt der Dienstleister die OpenAI Assistants-API, scheitert ein blinder Drop-in, weil Langdock sie nicht repliziert. Nach der Migration die Response-Qualitaet nie als 'automatisch gleich' annehmen, sondern mit 10 Referenz-Prompts validieren; verschiedene Modelle hinter demselben Endpoint liefern fuer spezifische Tasks unterschiedliche Qualitaet.
 Anschluss: S-API-061
 
 ### S-API-061 API-Key-Rotation als Pflichtprozess automatisieren
@@ -1443,12 +1457,17 @@ Vorgehen:
 3. Lege die Schlüssel-Hinterlegung fest: jeder Key ausschließlich in einem Secrets-Manager, niemals in Code, Slack oder Tickets; pro Integration ein separater Key, damit Rotation eine Integration isoliert betreffen kann.
 4. Verifiziere nach der Rotation über die Audit Logs API, dass keine Requests mehr mit dem alten Key eintreffen, bevor er endgültig gelöscht wird.
 5. Dokumentiere ein Rollback: schlägt eine Integration nach Umstellung fehl, sofort zurück auf den noch gültigen alten Key, Fehler analysieren, erneut umstellen.
-Prompt:
-> "Du bist ein IT-Security-Berater. Wir nutzen denselben Langdock-API-Key seit acht Monaten in vier Integrationen und müssen Rotation automatisieren — ohne Ausfall. Erkläre: (1) das Dual-Key-Overlap-Verfahren, (2) einen 90-Tage-Rotations-Kalender plus Ad-hoc-Trigger, (3) Secrets-Manager-Hinterlegung mit separaten Keys pro Integration, (4) wie wir via Audit Logs API verifizieren, dass der alte Key inaktiv ist. Liefere ein Rotations-Runbook."
+Vorlage: API-Key-Rotations-Runbook (unterbrechungsfrei):
+1. Dual-Key-Overlap — alten und neuen Key kurz parallel gueltig halten; Integrationen umstellen, dann alten invalidieren (kein Big-Bang).
+2. Kalender — planmaessig alle 90 Tage (Best-Practice-Richtwert; interne Policy maßgeblich) + Sofort-Rotation bei Offboarding/Verdacht.
+3. Hinterlegung — Keys nur im Secrets-Manager, nie in Code/Slack/Tickets; pro Integration ein separater Key.
+4. Verifikation — via Audit Logs API pruefen, dass keine Requests mehr mit dem alten Key kommen, bevor er geloescht wird.
+5. Rollback — bei Fehlschlag zurueck auf den noch gueltigen alten Key, Fehler analysieren, erneut umstellen.
 Artefakt: Ein Rotations-Runbook (Dual-Key-Verfahren, Kalender, Secrets-Hinterlegung, Verifikation, Rollback).
 Fallstricke:
 - Der alte Key wird sofort invalidiert, bevor alle Integrationen auf den neuen umgestellt sind — produktive Marketing-Workflows fallen mitten in einer Kampagne aus.
 - Alle vier Integrationen teilen sich einen einzigen Key, sodass jede Rotation alle vier gleichzeitig betrifft und das Ausfallrisiko maximiert statt isoliert wird.
+Empfehlung: Den alten Key erst invalidieren, wenn alle Integrationen nachweislich (Audit Logs API) auf den neuen umgestellt sind — ein sofortiger Cutover laesst Workflows mitten in der Kampagne ausfallen. Pro Integration einen separaten Key fuehren, damit eine Rotation eine Integration isoliert betrifft statt alle gleichzeitig.
 Anschluss: S-API-062
 
 ### S-API-062 Rate-Limit-Backoff-Strategie sauber dimensionieren
@@ -1462,12 +1481,16 @@ Vorgehen:
 2. Priorisiere den `Retry-After`-Header: liefert die 429-Antwort diesen Header, ist dessen Wert maßgeblich und überschreibt die eigene Backoff-Kurve.
 3. Definiere Worker-Pacing als Prävention: statt Backoff erst nach dem Fehler zu nutzen, die Sende-Rate proaktiv unter der Workspace-Grenze halten (z. B. 400 statt 500 RPM als Safety-Margin — aktuelle Grenze vorab verifizieren).
 4. Lege ein Abbruchkriterium fest: nach maximal 5 Versuchen den Request in eine Dead-Letter-Queue verschieben und Marketing-Ops alarmieren, statt unendlich zu retrien.
-Prompt:
-> "Du bist ein Resilience-Engineer. Unser Localization-Workflow läuft ständig in HTTP-429-Fehler; ein fester 1-Sekunden-Retry verschärft das Problem. Erkläre: (1) exponentielles Backoff mit Jitter und warum Jitter den Thundering-Herd-Effekt verhindert, (2) wie wir den Retry-After-Header priorisieren, (3) proaktives Worker-Pacing als Prävention, (4) ein Abbruchkriterium mit Dead-Letter-Queue. Liefere einen Backoff-Leitfaden mit konkreten Wartezeiten."
+Vorlage: Rate-Limit-Backoff-Leitfaden:
+1. Exponential + Jitter — 1/2/4/8 s mit ±50 % Jitter, damit Worker nicht synchron erneut anfragen (Thundering Herd).
+2. Retry-After — liefert die 429 diesen Header, ist sein Wert maßgeblich und ueberschreibt die eigene Kurve.
+3. Worker-Pacing — proaktiv unter der Grenze senden (z. B. 400 statt 500 RPM Safety-Margin; Grenze vorab verifizieren).
+4. Abbruch — nach max. 5 Versuchen in eine Dead-Letter-Queue + Marketing-Ops-Alert, nicht endlos retrien.
 Artefakt: Ein Backoff-Leitfaden (Wartezeit-Kurve, Jitter, Retry-After-Priorität, Worker-Pacing, Abbruchkriterium).
 Fallstricke:
 - Das Backoff verwendet feste Intervalle ohne Jitter — alle Worker fragen synchron erneut an und erzeugen direkt die nächste 429-Welle.
 - Der `Retry-After`-Header wird ignoriert und durch die eigene Kurve überschrieben — das System wartet entweder zu kurz (erneuter Fehler) oder unnötig lange.
+Empfehlung: Jitter zwingend einbauen — feste Intervalle lassen alle Worker synchron erneut anfragen und erzeugen direkt die naechste 429-Welle. Den Retry-After-Header immer priorisieren statt ihn mit der eigenen Kurve zu ueberschreiben, sonst wartet das System zu kurz (erneuter Fehler) oder unnoetig lange.
 Anschluss: S-API-063
 
 ### S-API-063 Idempotenz-Keys gegen doppelte Generierungen
@@ -1481,12 +1504,16 @@ Vorgehen:
 2. Implementiere serverseitige Deduplizierung im eigenen BFF/Wrapper: bevor der Langdock-Call abgesetzt wird, prüfen, ob für diesen Key bereits ein Ergebnis gespeichert ist; falls ja, das gespeicherte Ergebnis zurückgeben statt erneut zu generieren.
 3. Behandle den ambiguen Timeout-Fall: bei Verbindungsabbruch nach Versand ist unklar, ob Langdock den Request verarbeitet hat — der Idempotenz-Key sorgt dafür, dass ein blinder Retry nicht doppelt schreibt.
 4. Lege die Aufbewahrungsdauer fest: Idempotenz-Records mindestens so lange halten wie das maximale Retry-Fenster (z. B. 24 Stunden), danach automatisch aufräumen.
-Prompt:
-> "Du bist ein Backend-Architekt. Nach einem Timeout hat unser PIM-Sync denselben Produkttext doppelt generiert. Erkläre, wie wir Idempotenz-Keys einsetzen: (1) deterministische Key-Generierung pro fachlichem Vorgang, (2) serverseitige Deduplizierung im BFF vor dem Langdock-Call, (3) Umgang mit dem ambiguen Timeout-Fall, (4) Aufbewahrungsdauer der Idempotenz-Records. Liefere ein Idempotenz-Konzept als strukturierten Text."
+Vorlage: Idempotenz-Konzept (gegen Doppelgenerierung):
+1. Key — deterministisch pro fachlichem Vorgang (z. B. produkt-id + content-version), bei Retry identisch, nicht zufaellig pro HTTP-Versuch.
+2. Server-Dedup — im BFF/Wrapper vor dem Langdock-Call pruefen, ob fuer den Key bereits ein Ergebnis existiert; falls ja, dieses zurueckgeben.
+3. Timeout-Fall — bei Abbruch nach Versand sorgt der Key dafuer, dass ein blinder Retry nicht doppelt schreibt.
+4. Aufbewahrung — Idempotenz-Records mindestens das maximale Retry-Fenster (z. B. 24 h) halten, dann aufraeumen.
 Artefakt: Ein Idempotenz-Konzept (Key-Generierung, Deduplizierung, Timeout-Handling, Aufbewahrung).
 Fallstricke:
 - Der Idempotenz-Key wird pro HTTP-Versuch neu zufällig erzeugt — dann erkennt das System den Retry nicht als Wiederholung und generiert doch doppelt.
 - Die Deduplizierung wird nur clientseitig implementiert — fällt der Client zwischen zwei Versuchen aus, fehlt der Dedup-Zustand und die Doppelverarbeitung tritt trotzdem ein.
+Empfehlung: Den Idempotenz-Key deterministisch pro fachlichem Vorgang erzeugen, nie zufaellig pro HTTP-Versuch — sonst erkennt das System den Retry nicht als Wiederholung und generiert doch doppelt. Die Deduplizierung serverseitig (BFF) implementieren, nicht clientseitig, sonst geht der Dedup-Zustand bei einem Client-Ausfall zwischen zwei Versuchen verloren.
 Anschluss: S-API-064
 
 ### S-API-064 Webhook-Signaturprüfung als verbindlicher Standard
@@ -1500,12 +1527,16 @@ Vorgehen:
 2. Füge Replay-Schutz hinzu: ein Timestamp im signierten Payload, der nur ein kurzes Fenster (z. B. 5 Minuten) gültig ist, plus eine kurzlebige Speicherung verarbeiteter Event-IDs, damit ein abgefangener Webhook nicht erneut eingespielt werden kann.
 3. Handhabe das Shared Secret korrekt: ausschließlich im Secrets-Manager, getrennt vom Code; bei Verdacht auf Leak gemeinsam mit dem Sender rotieren.
 4. Definiere das Fehlerverhalten: ungültige Signatur → HTTP 401 ohne Langdock-Aufruf und mit Sicherheits-Log-Eintrag; auf keinen Fall bei Zweifel "durchwinken".
-Prompt:
-> "Du bist ein API-Security-Architekt. Unser Webhook-Receiver akzeptiert bisher jeden POST und stößt damit Langdock an. Erkläre eine verbindliche Signaturprüfung: (1) HMAC-SHA256-Verifikation mit constant-time compare, (2) Replay-Schutz über Timestamp und Event-ID-Speicher, (3) sichere Shared-Secret-Handhabung, (4) Fehlerverhalten bei ungültiger Signatur. Liefere einen Verifikations-Leitfaden für unsere IT."
+Vorlage: Webhook-Signaturpruefungs-Leitfaden:
+1. HMAC-SHA256 — Sender signiert den rohen Payload mit Shared Secret; Receiver berechnet dieselbe Signatur, vergleicht zeitkonstant (gegen Timing-Angriffe).
+2. Replay-Schutz — signierter Timestamp mit kurzem Gueltigkeitsfenster (z. B. 5 Min) + kurzlebiger Event-ID-Speicher.
+3. Secret — nur im Secrets-Manager, getrennt vom Code; bei Leak-Verdacht mit dem Sender rotieren.
+4. Fehlerverhalten — ungueltige Signatur → HTTP 401 ohne Langdock-Aufruf + Sicherheits-Log; nie 'durchwinken'.
 Artefakt: Ein Verifikations-Leitfaden (HMAC-Prüfung, Replay-Schutz, Secret-Handhabung, Fehlerverhalten).
 Fallstricke:
 - Die Signatur wird mit einem normalen String-Vergleich statt zeitkonstant geprüft — das öffnet einen Timing-Seitenkanal, über den ein Angreifer die Signatur erraten kann.
 - Es gibt keinen Replay-Schutz — ein einmal abgefangener gültiger Webhook kann beliebig oft erneut eingespielt werden und löst jedes Mal kostenpflichtige Langdock-Aufrufe aus.
+Empfehlung: Die Signatur zeitkonstant vergleichen (constant-time compare) und einen Replay-Schutz ueber Timestamp + Event-ID-Speicher ergaenzen — eine reine Signaturpruefung ohne Replay-Schutz laesst einen abgefangenen Webhook erneut einspielen. Bei ungueltiger Signatur strikt mit HTTP 401 ablehnen und loggen, nie im Zweifel durchwinken.
 Anschluss: S-API-065
 
 ### S-API-065 Einheitliche Fehler-Taxonomie für alle Integrationen
