@@ -99,7 +99,17 @@
 
 **CTA (Call to Action):** Eine konkrete Handlungsaufforderung an die Zielgruppe, etwa „Studie herunterladen" oder „zum Standpunkt". Warum für die IW-Kommunikation relevant: lenkt Leser gezielt zur vertiefenden Publikation oder zum Kontakt. (Quelle: 10-prompts-und-skills)
 
+**Faktenblatt (Fact Sheet):** Eine ein- bis zweiseitige Verdichtung der wichtigsten Zahlen und Aussagen einer Studie für Presse und Entscheider. Warum für die IW-Kommunikation relevant: liefert Journalisten zitierfähige Kernfakten, ohne dass die Vollstudie gelesen werden muss. (Quelle: 14-iw-use-cases)
+
+**Gastbeitrag (Op-Ed / Guest Article):** Ein meinungsstarker, namentlich gezeichneter Fachbeitrag in einem externen Medium. Warum für die IW-Kommunikation relevant: positioniert IW-Expertise in der publizistischen Debatte, erfordert aber eine klare Trennung von Befund und Wertung. (Quelle: 17-branchen-think-tank-praxis)
+
+**Karussell-Post (Carousel Post):** Ein mehrteiliger Social-Media-Beitrag aus mehreren wischbaren Kacheln, der einen Befund Schritt für Schritt entfaltet. Warum für die IW-Kommunikation relevant: erhöht Verweildauer und Erklärtiefe auf LinkedIn und Instagram. (Quelle: 14-iw-use-cases)
+
 **KPI (Key Performance Indicator):** Eine messbare Leitkennzahl zur Bewertung des Kommunikationserfolgs, abzugrenzen von reinen Vanity-Metriken. Warum für die IW-Kommunikation relevant: zwingt zur Definition von Wirkung (z. B. Downloads, Medienaufnahme) statt bloßer Sichtbarkeit.
+
+**Leichte Sprache (Easy / Plain Language):** Eine regelbasierte, stark vereinfachte Sprachvariante für barrierearme Verständlichkeit, abzugrenzen von der weniger strengen Einfachen Sprache. Warum für die IW-Kommunikation relevant: erweitert die Reichweite von Forschungskommunikation auf breitere Zielgruppen. (Quelle: 17-branchen-think-tank-praxis)
+
+**Methodenkasten (Methodology Box):** Ein abgesetzter Textbaustein, der Datenbasis, Erhebung und Grenzen einer Studie transparent macht. Warum für die IW-Kommunikation relevant: stützt den Neutralitäts- und Transparenzanspruch und beugt Methodikkritik vor. (Quelle: 17-branchen-think-tank-praxis)
 
 **Medienresonanz (Media Coverage):** Der Umfang und die Art der Aufnahme einer Publikation oder Meldung in Medien und Fachöffentlichkeit. Warum für die IW-Kommunikation relevant: ein zentraler Wirkungsindikator für die Verbreitung von Forschungsergebnissen.
 
@@ -109,17 +119,25 @@
 
 **Pressemitteilung (Press Release):** Ein standardisierter, an Medien gerichteter Text, der eine Nachricht mit Kernaussage, Beleg und Zitat verdichtet. Warum für die IW-Kommunikation relevant: das zentrale Format, um Studienergebnisse pressegerecht zu verbreiten. (Quelle: 08-sicherheit-und-governance)
 
+**Pressespiegel (Press Review / Clipping):** Eine kuratierte Zusammenstellung der Medienberichterstattung zu einem Thema oder einer Publikation. Warum für die IW-Kommunikation relevant: dokumentiert Medienresonanz und liefert belastbare Argumente für die Wirkungsmessung. (Quelle: 17-branchen-think-tank-praxis)
+
 **Reichweite (Reach):** Die Anzahl erreichter Personen oder Kontakte über einen Kanal, ein früher Funnel-Indikator, aber kein Wirkungsnachweis. Warum für die IW-Kommunikation relevant: nützlich als Begleitgröße, ersetzt aber keine belastbare Wirkungsmetrik. (Quelle: 11-persona-core)
 
 **Redaktionsplan (Editorial Calendar):** Eine zeitliche Planung von Themen, Formaten und Kanälen über einen definierten Zeitraum. Warum für die IW-Kommunikation relevant: koordiniert Publikationen mit politischen Terminen und Fachveranstaltungen. (Quelle: 00-langdock-uebersicht)
 
 **SEO (Search Engine Optimization):** Die Optimierung von Inhalten für die organische Auffindbarkeit in Suchmaschinen über Keywords, Struktur und interne Verlinkung. Warum für die IW-Kommunikation relevant: erhöht die dauerhafte Auffindbarkeit von Online-Publikationen. (Quelle: 03-wissensordner-und-rag)
 
+**Sharepic (Social Graphic):** Eine geteilte Bild-Text-Kachel, die eine Kernaussage visuell zugespitzt für Social Media transportiert. Warum für die IW-Kommunikation relevant: macht eine einzelne Studienzahl schnell teilbar, darf den Befund dabei aber nicht verzerren. (Quelle: 14-iw-use-cases)
+
 **Sperrfrist (Embargo):** Eine zeitliche Vorgabe, bis zu der Medien eine vorab erhaltene Information nicht veröffentlichen dürfen. Warum für die IW-Kommunikation relevant: erlaubt Journalisten die Vorbereitung umfassender Berichterstattung zu Studien vor dem offiziellen Termin.
+
+**Sprechzettel (Talking Points / Speaking Notes):** Eine stichpunktartige Argumentationshilfe für Interviews, Reden oder Hintergrundgespräche. Warum für die IW-Kommunikation relevant: hält Sprecher faktentreu und auf die Kernbotschaften fokussiert. (Quelle: 14-iw-use-cases)
 
 **Tonalität (Tone of Voice):** Die situative sprachliche Färbung eines Textes, abgeleitet aus der übergeordneten Brand Voice und an Kanal sowie Publikum angepasst. Warum für die IW-Kommunikation relevant: differenziert zwischen nüchternem Fachton und zugänglicherer Pressesprache. (Quelle: 03-wissensordner-und-rag)
 
 **Touchpoint (Touchpoint):** Ein konkreter Kontaktpunkt zwischen Organisation und Zielgruppe entlang ihrer Customer Journey. Warum für die IW-Kommunikation relevant: hilft, die Wege von der Veröffentlichung bis zur Wahrnehmung durch Entscheider zu strukturieren. (Quelle: 11-persona-core)
+
+**Zitatkachel (Quote Card):** Eine Bildkachel, die ein prägnantes Zitat einer Expertin oder eines Experten visuell hervorhebt. Warum für die IW-Kommunikation relevant: erhöht die Sichtbarkeit zitierfähiger O-Töne in sozialen Medien. (Quelle: 14-iw-use-cases)
 
 ## Glossar — Recht und Compliance
 
