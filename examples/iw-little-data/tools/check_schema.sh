@@ -188,12 +188,25 @@ check_one() {
     fi
   done
 
-  # Example field — accept Beispiel-Prompt, Beispiel-Konversation, OR R7's "Konkrete Empfehlung"
-  # (advice-style scenarios deliberately replace the prompt with an actionable recommendation).
+  # Example field (R7b) — content/persona require Beispiel-Prompt|Konversation; iw-brand may
+  # rely on Konkrete Empfehlung alone (advice-style omits the prompt by design).
   local example_count; example_count=$(grep -cE '^\*\*(Beispiel-(Prompt|Konversation)|Konkrete Empfehlung)' "$file")
   if [ "$example_count" -lt "$szen_count" ]; then
     echo "[WARN] $name: 'Beispiel-Prompt|Konversation|Konkrete Empfehlung' appears $example_count times (expected ≥$szen_count)"
   fi
+
+  # Konkrete Empfehlung (R7a) — universal field. SOFT WARN during rollout: report
+  # coverage so the reader sees which files still need the field added. Once every
+  # scenario has the field, this WARN goes silent. Skip for non-scenario kinds
+  # (persona/anweisung/glossar/links/iw-brand handle this differently).
+  case "$kind" in
+    content|persona)
+      local emp_count; emp_count=$(grep -c '^\*\*Konkrete Empfehlung:' "$file")
+      if [ "$emp_count" -lt "$szen_count" ]; then
+        echo "[WARN] $name: R7a Konkrete Empfehlung coverage: $emp_count/$szen_count scenarios"
+      fi
+      ;;
+  esac
 
   # Vorgehen field — accept any step count, e.g. "Vorgehen (3 Schritte):", "Vorgehen (3-5 Schritte):"
   local vorgehen_count; vorgehen_count=$(grep -cE '^\*\*Vorgehen \([0-9]+(-[0-9]+)? Schritte?\):\*\*' "$file")

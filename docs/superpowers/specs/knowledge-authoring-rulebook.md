@@ -61,9 +61,18 @@ disagree, fix the spec or the rulebook so they agree — never ship a contradict
 - Content/persona scenarios keep the 9 mandatory fields in order: Wann nutzen (Trigger) · Strategisches Ziel · Hands-on Ergebnis · Eingesetzte Langdock-Fähigkeit(en) · Vorgehen (≤5 Schritte) · Beispiel-Prompt (DE) · Erwartetes Artefakt · Fallstricke (≥2 spezifisch) · Anschluss-Szenario.
 - `Vorgehen` ≤ 5 steps. `Fallstricke` ≥ 2, each a concrete failure mode → named mitigation.
 
-## R7 — New scenario KIND: advice-style (no prompt)
+## R7 — Konkrete Empfehlung (universal field) + advice-style files
 
-Permitted where a copy-paste prompt is not the right deliverable (governance, decisions, checklists, policy). Same head fields, but **replace `Beispiel-Prompt (DE)` with `Konkrete Empfehlung:`** — direct, actionable guidance (what to do, thresholds, defaults), not a prompt. All other rules (grounding, ≤5 steps, ≥2 Fallstricke, Anschluss, citations) still apply. Mark such files/sections in their per-file rules so reviewers expect the variant. (Schema treats the example field as WARN-only, so this stays valid.)
+**R7a — Universal field (all content/persona scenarios):**
+Every scenario carries a `**Konkrete Empfehlung:**` field — one short paragraph (2–4 sentences) of distilled actionable guidance that the reader can act on without the prompt: what to do, what threshold/default to use, what to avoid. Derived from the scenario's own Strategisches Ziel + the strongest Fallstrick-Mitigation; sourced from the same primary references as the rest of the scenario. Sits between `**Fallstricke:**` and `**Anschluss-Szenario:**` so it acts as the punchline before the chain-out. Soft-WARN in the schema gate during rollout; once every file has been touched once, it becomes a hard requirement.
+
+**R7a rollout discipline (NO PROGRAMMATIC GENERATION):**
+Konkrete Empfehlung is **hand-crafted per scenario**, never bulk-generated from a template. Each scenario is read individually; the recommendation distills its specific lesson in the persona voice (R8, R15). This is necessarily a multi-loop rollout — one file per file-pass — but the quality bar is non-negotiable: a template-produced field would be the exact anti-pattern (fabricated specificity) the rest of the rulebook fights. Bulk programmatic changes are still allowed for **concrete wording replacements** (e.g. "(DE, PTCF)" → "(DE)") and **scenario-ID renames** (e.g. S-IM → S-MD when namespacing requires), because those don't synthesize new content.
+
+**R7b — Advice-style files (iw-brand kind):**
+Files where a copy-paste prompt is genuinely not the right deliverable (governance, decisions, checklists, policy — file 19 is the exemplar) **omit the `Beispiel-Prompt` field entirely** and rely on `Konkrete Empfehlung` as the operative output. All other 9 fields still required. Schema accepts the omission for kind=iw-brand only.
+
+In short: R7a = "every scenario gives a concrete recommendation"; R7b = "iw-brand scenarios may skip the prompt because the recommendation IS the deliverable".
 
 ## R8 — Persona fidelity
 
