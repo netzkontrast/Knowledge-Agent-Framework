@@ -62,6 +62,8 @@ Fallstricke:
 - Das Modell glättet Caveats und macht aus einer Korrelation eine Kausalaussage → Im Prompt explizit verbieten, Kausalität zu behaupten, die der Quelltext nicht stützt.
 - Tone Drift zu Marketing-Sprache verletzt den Neutralitätsanspruch → Superlative ("bahnbrechend", "revolutionär") hart untersagen; sachliche Termini wie "signifikant", "strukturell" vorgeben.
 
+Empfehlung: Im Prompt explizit verbieten, eine Kausalitaet zu behaupten, die der Quelltext nicht stuetzt - das Modell macht aus einer Korrelation sonst eine Kausalaussage. Superlative ('bahnbrechend', 'revolutionaer') hart untersagen und sachliche Termini ('signifikant', 'strukturell') vorgeben, damit Tone Drift den Neutralitaetsanspruch nicht verletzt.
+
 Anschluss: S-TT-002
 
 ### S-TT-002 Unsicherheit und Caveats ehrlich kommunizieren
@@ -88,6 +90,8 @@ Artefakt: Ein Caveat-Absatz (ca. 120 Wörter), der zur Einbettung in den Erklär
 Fallstricke:
 - Das Modell erfindet plausibel klingende, aber nicht im Text belegte Unsicherheiten → Geltung strikt auf den Quelltext begrenzen (Zero-Fabrication).
 - Übertriebene Verunsicherung untergräbt die Aussage → Anweisen, Unsicherheiten zu benennen, ohne den Kernbefund zu entwerten.
+
+Empfehlung: Die Geltung strikt auf den Quelltext begrenzen (Zero-Fabrication) - das Modell erfindet sonst plausibel klingende, nicht belegte Unsicherheiten. Unsicherheiten benennen, ohne den Kernbefund zu entwerten, da uebertriebene Verunsicherung die Aussage untergraebt.
 
 Anschluss: S-TT-003
 
@@ -117,6 +121,8 @@ Fallstricke:
 - Über mehrere Module driftet die Kernbotschaft → Im Prompt verankern, dass alle Formate denselben Kernbefund tragen, und im Canvas gegenprüfen.
 - Wissensordner mit >1.000 Dateien führt zu ungenauem Retrieval → Gutachten in einem fokussierten Ordner ablegen.
 
+Empfehlung: Im Prompt verankern, dass alle Formate denselben Kernbefund tragen, und im Canvas gegenpruefen - ueber mehrere Module driftet die Kernbotschaft sonst auseinander. Das Gutachten in einem fokussierten Ordner ablegen, da ein Wissensordner mit ueber 1.000 Dateien zu ungenauem Retrieval fuehrt.
+
 Anschluss: S-TT-004
 
 ### S-TT-004 Sperrfrist- und Embargo-Choreografie planen
@@ -135,14 +141,18 @@ Vorgehen:
 3. Sperrfrist-Anschreiben mit deutlich platziertem Embargo-Hinweis formulieren lassen.
 4. Verteiler und Sperrfristtext durch die Pressestelle freigeben, bevor versandt wird.
 
-Prompt:
-> "Du bist Pressereferent am IW Köln. TASK: Erstelle (1) einen Launch-Ablaufplan von T-48h bis Veröffentlichung und (2) ein Sperrfrist-Anschreiben an den Presseverteiler. CONTEXT: Veröffentlichung Dienstag 9:00 Uhr; Vorabversand 48 Stunden vorher. FORMAT: Ablaufplan als Tabelle; Anschreiben mit dem Embargo-Hinweis 'Gesperrt bis [Datum, Uhrzeit]' in der ersten Zeile. Keine Empfängernamen erfinden."
+Vorlage: Sperrfrist-/Embargo-Choreografie (Studien-Launch):
+1. Ablaufplan - Vorab-Tranche unter Sperrfrist, oeffentlicher Versand zum Sperrfristende, Social-Welle danach; je mit exaktem Datum/Uhrzeit.
+2. Sperrfrist-Anschreiben - Embargo-Hinweis in der ersten Zeile, mit Datum und Uhrzeit.
+3. Vorab-Verteiler - als Platzhalter-Liste (keine realen Kontaktdaten ins Prompt); Eskalation bei Bruch verknuepft (S-TT-031).
 
 Artefakt: Ablaufplan-Tabelle plus Sperrfrist-Anschreiben (Canvas), freigabebereit.
 
 Fallstricke:
 - Sperrfristhinweis unklar oder fehlplatziert riskiert Embargo-Bruch und Verteiler-Ausschluss → Embargo-Hinweis zwingend in die erste Zeile, mit exaktem Datum und Uhrzeit.
 - Das Modell erfindet konkrete Journalistennamen/Kontakte → Echte Verteilerdaten nie ins Prompt geben; Platzhalter verwenden (DSGVO, vgl. 08-sicherheit-und-governance).
+
+Empfehlung: Den Embargo-Hinweis zwingend in die erste Zeile des Anschreibens setzen, mit exaktem Datum und Uhrzeit - ein unklar platzierter Sperrfristhinweis riskiert Embargo-Bruch und Verteiler-Ausschluss. Nie echte Journalistennamen/Kontakte ins Prompt geben, sondern Platzhalter verwenden (DSGVO, vgl. 08-sicherheit-und-governance).
 
 Anschluss: S-TT-005
 
@@ -171,6 +181,8 @@ Fallstricke:
 - Antworten enthalten halluzinierte Zahlen → Antwortgrundlage strikt auf den Wissensordner begrenzen.
 - Off-the-record-Inhalte werden versehentlich in zitierfähige Statements überführt → Hintergrund-Passagen im Briefing klar als "unter drei" kennzeichnen.
 
+Empfehlung: Die Antwortgrundlage strikt auf den Wissensordner begrenzen, damit das Briefing keine halluzinierten Zahlen enthaelt. Hintergrund-Passagen klar als 'unter drei' kennzeichnen, damit Off-the-record-Inhalte nicht versehentlich in zitierfaehige Statements geraten.
+
 Anschluss: S-TT-006
 
 ### S-TT-006 Medienresonanzanalyse aufbereiten
@@ -197,6 +209,8 @@ Artefakt: Ein Resonanz-Report (PDF/Markdown) mit Tabellen und einseitigem Summar
 Fallstricke:
 - Multi-Sheet-Export überfordert den Data Analyst → Vorher auf relevante Spalten reduzieren (max. 30 MB).
 - Das Modell extrapoliert Reichweiten, die nicht im Export stehen → Auswertung strikt auf vorhandene Daten begrenzen.
+
+Empfehlung: Den Medien-Export vor dem Upload auf die relevanten Spalten reduzieren (max. 30 MB), da ein Multi-Sheet-Export den Data Analyst ueberfordert. Die Auswertung strikt auf vorhandene Daten begrenzen, damit das Modell keine Reichweiten extrapoliert, die nicht im Export stehen.
 
 Anschluss: S-TT-007
 
@@ -225,6 +239,8 @@ Fallstricke:
 - "Spin": die gewünschte politische Aussage diktiert die Befunde → Im Prompt verankern, dass Empfehlungen aus den Daten folgen, nie umgekehrt.
 - Fehlender Drittmittel-/Mandatshinweis verletzt Transparenzpflichten → Transparenz-Footer als zwingendes Pflichtfeld setzen.
 
+Empfehlung: Im Prompt verankern, dass Empfehlungen aus den Daten folgen, nie umgekehrt - sonst diktiert die gewuenschte politische Aussage die Befunde (Spin). Den Drittmittel-/Mandatshinweis als zwingendes Transparenz-Pflichtfeld setzen, da sein Fehlen Transparenzpflichten verletzt.
+
 Anschluss: S-TT-008
 
 ### S-TT-008 Reaktion entlang des politischen Kalenders timen
@@ -243,14 +259,18 @@ Vorgehen:
 3. Lücken markieren, für die kurzfristig ein Kurzbericht sinnvoll wäre.
 4. Kalender im Canvas finalisieren und mit der Redaktionsleitung abstimmen.
 
-Prompt:
-> "Du bist Redaktionsplaner am IW Köln. TASK: Führe einen Deep Research zu wirtschaftspolitischen Terminen der nächsten 8 Wochen durch (Haushaltsdebatten, Wahlen, EU-Semester, EZB-Sitzungen). Ordne die übergebene Liste vorhandener IW-Studien diesen Terminen zu und markiere thematische Lücken. FORMAT: Wochenkalender als Tabelle mit Spalten Termin, passende Studie, Lücke."
+Vorlage: 8-Wochen-Themenkalender (politischer Kalender):
+1. Tabelle - Woche, politischer Termin, zugeordnete IW-Studie, Format, Kanal.
+2. Termin-Verifikation - alle Termine vor Nutzung gegen offizielle Quellen (Bundestag, EU-Kommission) gegengeprueft.
+3. Deep-Research-Budget - Recherche gebuendelt (Limit 15 Laeufe/30 Tage beachten).
 
 Artefakt: Ein 8-Wochen-Themenkalender (Canvas-Tabelle) mit Termin-Studien-Zuordnung.
 
 Fallstricke:
 - Deep Research liefert veraltete oder falsche Termine → Termine vor Nutzung gegen offizielle Quellen (Bundestag, EU-Kommission) gegenprüfen.
 - Deep Research ist auf 15 Ausführungen pro 30 Tage limitiert → Recherche bündeln statt mehrfach einzeln starten.
+
+Empfehlung: Alle von Deep Research gelieferten Termine vor Nutzung gegen offizielle Quellen (Bundestag, EU-Kommission) gegenpruefen - die Recherche liefert teils veraltete oder falsche Termine. Die Recherche buendeln statt mehrfach einzeln starten, da Deep Research auf 15 Ausfuehrungen pro 30 Tage limitiert ist.
 
 Anschluss: S-TT-009
 
@@ -279,6 +299,8 @@ Fallstricke:
 - Deep Research vermischt veraltete Format-Bezeichnungen → Formate gegen die research/11-Matrix abgleichen.
 - Vergleich kippt in abwertende Konkurrenz-Rhetorik → Neutralen, sachlichen Ton vorgeben; keine Herabsetzung von Peers.
 
+Empfehlung: Die von Deep Research gelieferten Format-Bezeichnungen gegen die research/11-Matrix abgleichen, da die Recherche veraltete Bezeichnungen vermischt. Einen neutralen, sachlichen Ton vorgeben und keine Peers herabsetzen, damit der Vergleich nicht in abwertende Konkurrenz-Rhetorik kippt.
+
 Anschluss: S-TT-010
 
 ### S-TT-010 LinkedIn als B2P-Kanal bespielen
@@ -305,6 +327,8 @@ Artefakt: Ein Carousel-Skript (5 Slides) plus Tagging-Vorschlagsliste, freigabeb
 Fallstricke:
 - Der "kontraintuitive" Datenpunkt wird zugespitzt bis zur Verzerrung → Datenpunkt muss exakt belegt und im Kontext korrekt bleiben.
 - Automatisches Tagging von Personen ohne Freigabe ist eine ungeprüfte Außenhandlung → Tags nur vorschlagen; Veröffentlichung erst nach menschlicher Freigabe.
+
+Empfehlung: Den kontraintuitiven Datenpunkt exakt belegen und im Kontext korrekt halten, damit er nicht bis zur Verzerrung zugespitzt wird. Personen-Tags nur vorschlagen und erst nach menschlicher Freigabe veroeffentlichen, da automatisches Tagging eine ungepruefte Aussenhandlung ist.
 
 Anschluss: S-TT-011
 
@@ -333,6 +357,8 @@ Fallstricke:
 - Vision/Chart-Empfehlung kann keine exakten HEX-Corporate-Farben validieren → Farbwerte aus dem offiziellen IW-Designguide manuell ergänzen.
 - Personalisierungslogik suggeriert Genauigkeit, die die Daten nicht hergeben → Unsicherheitsbereiche im Tool sichtbar machen (vgl. S-TT-002).
 
+Empfehlung: Die HEX-Corporate-Farben manuell aus dem offiziellen IW-Designguide ergaenzen, da die Vision/Chart-Empfehlung exakte Farbwerte nicht validieren kann. Unsicherheitsbereiche im Tool sichtbar machen, damit die Personalisierungslogik keine Genauigkeit suggeriert, die die Daten nicht hergeben.
+
 Anschluss: S-TT-012
 
 ### S-TT-012 SEO-Themen-Hub für Forschungsinhalte aufbauen
@@ -351,14 +377,18 @@ Vorgehen:
 3. Vorhandene IW-Studien den Cluster-Seiten zuordnen lassen.
 4. Architektur im Canvas finalisieren und mit der iwd-Redaktion abstimmen.
 
-Prompt:
-> "Du bist SEO-Content-Architekt am IW Köln. TASK: Entwirf einen Evergreen-Themen-Hub zum Thema [Schuldenbremse]. FORMAT: (1) Pillar-Page-Outline, (2) 5-7 Cluster-Unterseiten mit Suchintention und Keyword, (3) Zuordnung vorhandener IW-Studien. Sachlicher, erklärender Ton ohne Werbesprache."
+Vorlage: SEO-Themen-Hub-Architektur:
+1. Pillar-Page - sachlicher, praeziser Titel (kein Clickbait), Kernthema.
+2. Cluster-Unterseiten - je Unterthema eine Seite, intern auf die Pillar verlinkt.
+3. Keyword-Zuordnung - je Seite ein Fokus-Keyword, vor Umsetzung mit echtem Keyword-Tool validiert.
 
 Artefakt: Eine Themen-Hub-Architektur (Canvas) mit Pillar/Cluster-Struktur und Keyword-Mapping.
 
 Fallstricke:
 - SEO-Optimierung kippt in Clickbait-Headlines, die den Neutralitätsanspruch verletzen → Sachliche, präzise Titel vorgeben.
 - Keyword-Empfehlungen aus Deep Research sind nicht validiert → Vor Umsetzung mit echtem Keyword-Tool gegenprüfen.
+
+Empfehlung: Sachliche, praezise Titel vorgeben - SEO-Optimierung kippt sonst in Clickbait-Headlines, die den Neutralitaetsanspruch verletzen. Die Keyword-Empfehlungen aus Deep Research vor der Umsetzung mit einem echten Keyword-Tool gegenpruefen, da sie nicht validiert sind.
 
 Anschluss: S-TT-013
 
@@ -378,14 +408,16 @@ Vorgehen:
 3. Aus dem stärksten Thema eine Podcast-Anmoderation für "Economic Challenges" ableiten lassen.
 4. Entwurf im Workflow in die Newsletter-Vorlage schreiben und redaktionell freigeben.
 
-Prompt:
-> "Du bist Newsletter-Redakteur am IW Köln. TASK: Erzeuge aus den Wochenpublikationen im Wissensordner (1) je einen Teaser von max. 60 Wörtern und (2) eine Podcast-Anmoderation von 80 Wörtern zum stärksten Thema. CONTEXT: serviceorientiert, nachrichtenwert-fokussiert, sachlich. Übernimm Zahlen exakt aus den Quellen."
+Workflow: Trigger (neue iwd-/Studieninhalte freigegeben) -> Agent-Node (Repurposing-Texter, Input: Wissensordner-Beitraege) -> Newsletter-Entwurf mit Teaser-Copy je Beitrag + Podcast-Anmoderation -> HITL-Freigabe vor Versand. Kein Auto-Versand; Vorlagen-ID vorab in der Sandbox getestet.
+Budget: Pro Lauf guenstig (kurze Teaser-Texte); Efficient-Default-Modell genuegt; HITL statt Auto-Versand. (Quelle: 04-workflows, 07-modelle-und-kosten)
 
 Artefakt: Newsletter-Entwurf mit Teasern plus Podcast-Anmoderation, freigabebereit.
 
 Fallstricke:
 - Teaser überzeichnen Befunde, um Klicks zu erzeugen → Nachrichtenwert ohne Spin; Zahlen exakt übernehmen.
 - Workflow scheitert bei falsch konfigurierter Vorlagen-ID → Verbindung vor dem Live-Lauf in der Sandbox testen.
+
+Empfehlung: Nachrichtenwert ohne Spin formulieren und Zahlen exakt uebernehmen - automatisierte Teaser ueberzeichnen Befunde sonst, um Klicks zu erzeugen. Die Workflow-Verbindung (Vorlagen-ID) vor dem Live-Lauf in der Sandbox testen, da der Workflow bei falsch konfigurierter ID lautlos scheitert.
 
 Anschluss: S-TT-014
 
@@ -405,14 +437,18 @@ Vorgehen:
 3. Korrekten Transparenz-Footer aus den Bausteinen einfügen lassen.
 4. Ergebnis durch die Kommunikationsleitung freigeben.
 
-Prompt:
-> "Du bist Compliance-Lektor am IW Köln. TASK: Prüfe den Entwurf auf Spin (ausgelassene Gegenbefunde, tendenziöse Kausalität) und ergänze den Transparenz-Footer aus dem Wissensordner. FORMAT: (1) Spin-Check-Liste mit Fundstellen, (2) korrekter Transparenz-Footer mit Mandat und Förderbasis. Erfinde keine Registerangaben; nutze nur die Bausteine aus dem Wissensordner."
+Vorlage: Transparenz- und Spin-Check (KI-Texte):
+1. Transparenz-Footer - Auftraggeber, Foerderbasis, Registernummer; ausschliesslich aus dem kuratierten Wissensordner.
+2. Spin-Check - Pruefung auf weggelassene widersprechende Daten (DRPR-konform), nicht nur Tonalitaet.
+3. Befund-Bericht - Verstoesse je Pruefpunkt markiert; freigabefaehig erst nach Behebung.
 
 Artefakt: Ein Spin-Check-Bericht plus eingefügter, geprüfter Transparenz-Footer.
 
 Fallstricke:
 - Das Modell halluziniert eine Registernummer oder Förderquelle → Transparenzangaben ausschließlich aus dem kuratierten Wissensordner; nie generieren lassen.
 - Spin-Check übersieht subtile Auslassungen → Prompt zwingt explizit zur Suche nach weggelassenen widersprechenden Daten.
+
+Empfehlung: Transparenzangaben (Registernummer, Foerderquelle) ausschliesslich aus dem kuratierten Wissensordner uebernehmen, nie generieren lassen - das Modell halluziniert sonst plausible, falsche Angaben. Den Prompt explizit zur Suche nach weggelassenen widersprechenden Daten zwingen, da der Spin-Check subtile Auslassungen sonst uebersieht.
 
 Anschluss: S-TT-015
 
@@ -432,14 +468,18 @@ Vorgehen:
 3. Abweichungen, Rundungsfehler und nicht belegte Kausalaussagen markieren lassen.
 4. Protokoll prüfen; Entwurf erst nach Korrektur aller Abweichungen freigeben.
 
-Prompt:
-> "Du bist Fact-Checker am IW Köln. TASK: Gleiche jede Zahl im angehängten Pressemitteilungs-Entwurf gegen die angehängte Originalstudie ab. FORMAT: Tabelle mit Spalten Aussage im Entwurf, Wert, Fundstelle in der Studie, Status (korrekt/abweichend/nicht belegt). Markiere jede behauptete Kausalität, die die Studie nicht stützt. Verändere keine Werte selbst."
+Vorlage: Faktentreue-Verifikationsprotokoll:
+1. Zahlen-Abgleich-Tabelle - je Zahl im Entwurf die Fundstelle in der Studie gegenuebergestellt.
+2. Regel - ausschliesslich vergleichen, nichts eigenmaechtig aendern.
+3. Rundungstoleranz - definiert; gerundete Werte nicht faelschlich als Fehler markiert.
 
 Artefakt: Ein Verifikationsprotokoll (Tabelle) mit Status je Zahl und markierten nicht belegten Aussagen.
 
 Fallstricke:
 - Das Modell "korrigiert" Zahlen eigenmächtig statt nur abzugleichen → Anweisen, ausschließlich zu vergleichen und nichts zu ändern.
 - Gerundete Werte werden fälschlich als Fehler markiert → Rundungstoleranz im Prompt definieren und manuell prüfen.
+
+Empfehlung: Den Agenten anweisen, ausschliesslich zu vergleichen und nichts zu aendern - das Modell 'korrigiert' Zahlen sonst eigenmaechtig statt sie nur abzugleichen. Eine Rundungstoleranz im Prompt definieren und manuell pruefen, damit gerundete Werte nicht faelschlich als Fehler markiert werden.
 
 Anschluss: S-TT-016
 
@@ -459,14 +499,18 @@ Vorgehen:
 3. Jede Regel auf konkrete IW-Workflows anwenden (z.B. keine unveröffentlichten Daten in externe Prompts).
 4. Checkliste im Canvas finalisieren und mit Datenschutz und Leitung abstimmen.
 
-Prompt:
-> "Du bist KI-Governance-Beauftragter am IW Köln. TASK: Leite aus den Frameworks im Wissensordner eine Publishing-Checkliste ab. FORMAT: drei Abschnitte (rechtliche Pflichten, organisatorische Schutzmaßnahmen, professionelle Standards) mit je konkreten, prüfbaren Regeln für unsere Workflows. Stütze dich nur auf die hinterlegten Dokumente."
+Vorlage: Governance-Checkliste (KI-gestuetztes Publizieren):
+1. Rechtliche Leitplanken - DSGVO/EU-AI-Act, Transparenzpflicht, je mit konkretem IW-Workflow-Bezug.
+2. Organisatorische Leitplanken - abgesicherte Instanz, Datenklassen, Schulungspflicht.
+3. Professionelle Leitplanken - unteilbare redaktionelle Verantwortung, Faktencheck, Neutralitaet.
 
 Artefakt: Eine Governance-Checkliste (Canvas) mit drei Tiers und prüfbaren Regeln.
 
 Fallstricke:
 - Regeln bleiben abstrakt und nicht operationalisierbar → Jede Regel mit konkretem IW-Workflow-Bezug ausformulieren lassen.
 - Das Modell ergänzt erfundene Vorgaben → Geltung strikt auf die hinterlegten Frameworks begrenzen.
+
+Empfehlung: Jede Regel mit konkretem IW-Workflow-Bezug ausformulieren lassen - abstrakte Regeln bleiben nicht operationalisierbar. Die Geltung strikt auf die hinterlegten Frameworks begrenzen, damit das Modell keine erfundenen Vorgaben ergaenzt.
 
 Anschluss: S-TT-017
 
@@ -495,6 +539,8 @@ Fallstricke:
 - Echte Kontaktdaten im Prompt verletzen DSGVO → Nur Platzhalter; reale Verteilerdaten nie in die KI geben (vgl. 08-sicherheit-und-governance).
 - Regionalwerte werden überzeichnet ("schlechteste Kommune") → Datenpunkte sachlich und kontextualisiert darstellen.
 
+Empfehlung: Nur Platzhalter verwenden und reale Verteilerdaten nie in die KI geben (DSGVO, vgl. 08-sicherheit-und-governance). Regionalwerte sachlich und kontextualisiert darstellen, statt sie zu ueberzeichnen ('schlechteste Kommune').
+
 Anschluss: S-TT-018
 
 ### S-TT-018 Wirkungsmessung über Politik-Zitationen und Reichweite
@@ -521,6 +567,8 @@ Artefakt: Ein Impact-Report (Canvas) mit priorisierten KPIs und Summary.
 Fallstricke:
 - Das Modell mischt Vanity-Metriken (Impressions) prominent unter die Kernmetriken → KPI-Hierarchie im Prompt vorgeben (Politik-Zitationen zuerst).
 - Deep Research bestätigt nicht belegbare Erwähnungen → Jede Zitation an eine nachprüfbare Quelle binden.
+
+Empfehlung: Die KPI-Hierarchie im Prompt vorgeben (Politik-Zitationen zuerst), damit das Modell keine Vanity-Metriken (Impressions) prominent unter die Kernmetriken mischt. Jede Zitation an eine nachpruefbare Quelle binden, da Deep Research sonst nicht belegbare Erwaehnungen bestaetigt.
 
 Anschluss: S-TT-019
 
@@ -549,6 +597,8 @@ Fallstricke:
 - Das Statement wird defensiv-polemisch und verletzt den Neutralitätsanspruch → Ton hart auf sachlich begrenzen; keine Herabsetzung der Gegenseite.
 - Caveats werden verschwiegen, um stärker zu wirken → Verbleibende Unsicherheiten ehrlich benennen, statt Überlegenheit zu suggerieren.
 
+Empfehlung: Den Ton hart auf sachlich begrenzen und die Gegenseite nicht herabsetzen, da ein defensiv-polemisches Statement den Neutralitaetsanspruch verletzt. Verbleibende Unsicherheiten ehrlich benennen, statt Ueberlegenheit zu suggerieren, damit verschwiegene Caveats die Glaubwuerdigkeit nicht untergraben.
+
 Anschluss: S-TT-020
 
 ### S-TT-020 Thought-Leadership-Ghostwriting aus Interview-Transkripten
@@ -576,6 +626,8 @@ Fallstricke:
 - Das Modell legt dem Ökonomen Aussagen oder Zahlen in den Mund, die er nicht getroffen hat → Geltung strikt auf Transkript und Studie begrenzen; Freigabe durch die Person zwingend.
 - Generischer "LinkedIn-Broetry"-Ton trifft die Stimme nicht → Drei Negativbeispiele ("klingt NICHT wie unser Ökonom") im System-Prompt verankern. Schließt zurück zu S-TT-001, wenn der Beitrag eine neue Studienübersetzung anstößt.
 
+Empfehlung: Die Geltung strikt auf Transkript und Studie begrenzen und die Freigabe durch den Oekonomen zwingend einholen - das Modell legt ihm sonst Aussagen oder Zahlen in den Mund. Drei Negativbeispiele ('klingt NICHT wie unser Oekonom') im System-Prompt verankern, damit kein generischer LinkedIn-Broetry-Ton die Stimme verfehlt.
+
 Anschluss: S-TT-021
 
 ### S-TT-021 Faktenfrage: Wie kommunizieren die Peer-Institute im Vergleich?
@@ -602,6 +654,8 @@ Fallstricke:
 - Die Ausrichtung wird verwechselt (z. B. IMK als neutral statt gewerkschaftsnah) → die dokumentierte Ausrichtung strikt übernehmen.
 - Der Vergleich wird wertend gegen Wettbewerber → sachlich-neutral bleiben; keine Abwertung anderer Institute.
 
+Empfehlung: Die dokumentierte Ausrichtung der Institute strikt uebernehmen (z. B. IMK gewerkschaftsnah, nicht neutral), da sie sonst verwechselt wird. Sachlich-neutral bleiben und kein Institut abwerten, damit der Vergleich nicht wertend gegen Wettbewerber kippt.
+
 Anschluss: S-TT-022
 
 ### S-TT-022 Faktenfrage: Welche Standards gelten für die Wissenschaftskommunikation?
@@ -627,6 +681,8 @@ Artefakt: Eine Standards-Checkliste für den konkreten Text.
 Fallstricke:
 - Advocacy wird über die Datenlage gestellt → jede Position muss aus den Befunden folgen, nicht umgekehrt.
 - Der Drittmittel- und Mandats-Kontext wird verschwiegen → Transparenz wahren; das IW ist im Lobbyregister geführt.
+
+Empfehlung: Jede Position aus den Befunden ableiten, nie umgekehrt - Advocacy darf nicht ueber die Datenlage gestellt werden. Den Drittmittel- und Mandats-Kontext wahren (das IW ist im Lobbyregister gefuehrt), statt ihn zu verschweigen.
 
 Anschluss: S-TT-001
 
@@ -655,6 +711,8 @@ Fallstricke:
 - Limitationen werden weggekürzt, um die Aussage stärker wirken zu lassen → Limitationen als Pflichtbestandteil setzen; der Kasten ist ohne sie nicht freigabefähig.
 - Das Modell erfindet eine plausibel klingende Datenquelle oder Stichprobengröße → Angaben strikt aus dem Quelltext übernehmen (Zero-Fabrication).
 
+Empfehlung: Die Limitationen als Pflichtbestandteil setzen - der Methodenkasten ist ohne sie nicht freigabefaehig und darf nicht weggekuerzt werden, nur um die Aussage staerker wirken zu lassen. Angaben (Datenquelle, Stichprobengroesse) strikt aus dem Quelltext uebernehmen (Zero-Fabrication), da das Modell sonst plausibel klingende erfindet.
+
 Anschluss: S-TT-002
 
 ### S-TT-024 Op-Ed-Gastbeitrag mit ordnungspolitisch-konsistenter These
@@ -681,6 +739,8 @@ Artefakt: Ein Op-Ed-Entwurf (Canvas, ca. 650 Wörter), freigabebereit durch die 
 Fallstricke:
 - Die These wird parteipolitisch und verletzt den Neutralitätsanspruch → Auf ordnungspolitische Sachargumente begrenzen; keine Wahlempfehlung oder Partei-Zuordnung.
 - Die zugespitzte Meinung läuft den Daten voraus (Spin) → These muss aus den Befunden folgen, nicht umgekehrt; jede Behauptung belegen.
+
+Empfehlung: Die These auf ordnungspolitische Sachargumente begrenzen - keine Wahlempfehlung oder Partei-Zuordnung, da das den Neutralitaetsanspruch verletzt. Die These aus den Befunden ableiten, nie umgekehrt, und jede Behauptung belegen, damit die zugespitzte Meinung den Daten nicht vorauslaeuft (Spin).
 
 Anschluss: S-TT-020
 
@@ -709,6 +769,8 @@ Fallstricke:
 - Das Modell paraphrasiert Zitate und verfälscht damit den Wortlaut → Zitate wörtlich übernehmen oder als Paraphrase kennzeichnen; nie umformulieren.
 - Reichweiten werden über vorhandene Daten hinaus geschätzt → Auswertung strikt auf die Export-Spalten begrenzen.
 
+Empfehlung: Zitate woertlich uebernehmen oder als Paraphrase kennzeichnen, nie umformulieren - paraphrasierte Zitate verfaelschen den Wortlaut. Die Auswertung strikt auf die Export-Spalten begrenzen, damit Reichweiten nicht ueber die vorhandenen Daten hinaus geschaetzt werden.
+
 Anschluss: S-TT-006
 
 ### S-TT-026 Interne Q&A-Sprachregelung für strittige Befunde
@@ -727,14 +789,18 @@ Vorgehen:
 3. Je Gegenargument eine sachliche, ausschließlich datengestützte Antwortlinie ableiten lassen.
 4. Sprachregelung mit Fachautorin und Kommunikationsleitung abstimmen und als intern kennzeichnen.
 
-Prompt:
-> "Du bist Sprecher-Coach am IW Köln. TASK: Erstelle eine interne Q&A-Sprachregelung zum strittigen Befund im Wissensordner. FORMAT: fünf antizipierte Gegenargumente, je eine Antwortlinie aus den Studiendaten. CONTEXT: sachlich, ohne Polemik, methodisch transparent. Nur belegte Daten; keine Gegen-Angriffe. Kennzeichne das Dokument als intern."
+Vorlage: Interne Q&A-Sprachregelung (strittige Befunde):
+1. Fuenf antizipierte Gegenargumente - je eine belegte, sachliche Antwortlinie.
+2. Ton - sachlich, den Schutzkern verteidigend, ohne die Gegenseite herabzusetzen.
+3. Vertraulichkeit - klar als intern gekennzeichnet, Verteilung kontrolliert.
 
 Artefakt: Eine Q&A-Sprachregelung (Canvas) mit Gegenargument-Antwort-Paaren, als intern markiert.
 
 Fallstricke:
 - Die Antwortlinien werden defensiv-polemisch → Ton hart auf sachlich begrenzen; den Schutzkern verteidigen, ohne die Gegenseite herabzusetzen.
 - Die interne Sprachregelung wird versehentlich extern verteilt → Dokument klar als intern kennzeichnen und Verteilung kontrollieren.
+
+Empfehlung: Den Ton hart auf sachlich begrenzen und den Schutzkern verteidigen, ohne die Gegenseite herabzusetzen - defensiv-polemische Antwortlinien schaden mehr als sie nuetzen. Das Dokument klar als intern kennzeichnen und die Verteilung kontrollieren, damit die Sprachregelung nicht versehentlich extern verteilt wird.
 
 Anschluss: S-TT-019
 
@@ -763,6 +829,8 @@ Fallstricke:
 - Das Modell halluziniert Auftraggeber, Förderquelle oder Registernummer → Angaben ausschließlich aus dem kuratierten Wissensordner; nie generieren lassen.
 - Der Disclosure wird ans Textende verschoben, wo er übersehen wird → Platzierung an der verbindlichen, sichtbaren Stelle vorgeben und prüfen.
 
+Empfehlung: Die Transparenzangaben (Auftraggeber, Foerderquelle, Registernummer) ausschliesslich aus dem kuratierten Wissensordner uebernehmen, nie generieren lassen. Den Disclosure an der verbindlichen, sichtbaren Stelle platzieren und pruefen, statt ihn ans Textende zu verschieben, wo er uebersehen wird.
+
 Anschluss: S-TT-014
 
 ### S-TT-028 Konjunkturprognose-Kommunikation mit Unsicherheits-Bandbreiten
@@ -781,14 +849,18 @@ Vorgehen:
 3. Eine Kommunikationsvorlage formulieren lassen, die die Bandbreite gleichberechtigt neben den Punktwert stellt.
 4. Vorlage durch die Prognose-Autorin auf korrekte Intervalle und Annahmen prüfen lassen.
 
-Prompt:
-> "Du bist Konjunktur-Redakteur am IW Köln. TASK: Erstelle aus dem angehängten Prognose-Report eine Kommunikationsvorlage. FORMAT: (1) Punktschätzung, (2) Bandbreite/Intervall gleichwertig daneben, (3) zentrale Annahmen, (4) ein Risikohinweis. CONTEXT: sachlich, keine Scheingenauigkeit. Übernimm Werte und Intervalle exakt aus dem Quelltext; runde nicht eigenmächtig."
+Vorlage: Konjunkturprognose-Kommunikationsvorlage:
+1. Punktschaetzung + Bandbreite - Bandbreite als gleichwertiges Pflichtfeld neben dem Punktwert.
+2. Zentrale Annahmen - explizit benannt.
+3. Risikohinweis - ein klar formulierter Vorbehalt; Werte exakt (Rundung nur nach Pruefung).
 
 Artefakt: Eine Prognose-Kommunikationsvorlage (Canvas) mit Punktwert, Bandbreite, Annahmen und Risikohinweis.
 
 Fallstricke:
 - Die Punktschätzung wird ohne Bandbreite kommuniziert und suggeriert Scheingenauigkeit → Bandbreite als gleichwertiges Pflichtfeld neben dem Punktwert setzen.
 - Das Modell rundet Intervalle oder Annahmen eigenmächtig → Werte exakt übernehmen; Rundungen nur nach manueller Prüfung.
+
+Empfehlung: Die Bandbreite als gleichwertiges Pflichtfeld neben dem Punktwert setzen - eine Punktschaetzung ohne Bandbreite suggeriert Scheingenauigkeit. Werte exakt uebernehmen und Intervalle/Annahmen nur nach manueller Pruefung runden, da das Modell sonst eigenmaechtig rundet.
 
 Anschluss: S-TT-002
 
@@ -808,8 +880,7 @@ Vorgehen:
 3. Je Option das Aussage-Risiko (Achsenskalierung, Glättung, Zeitausschnitt) bewerten lassen.
 4. Eine risikoärmste Option empfehlen lassen und das Konzept im Canvas für die IW-Medien-Designer aufbereiten.
 
-Prompt:
-> "Du bist Data-Journalism-Konzepter am IW Köln. TASK: Entwirf aus der angehängten Zeitreihe drei Visualisierungs-Optionen. FORMAT: je Option (1) Chart-Typ, (2) Aussage-Risiko (Achse, Glättung, Ausschnitt), (3) Empfehlung. CONTEXT: sachlich, keine irreführende Skalierung. Nutze nur Werte aus der Tabelle; markiere jede potenzielle Verzerrung."
+Empfehlung: Empfiehl die Visualisierungs-Option mit dem geringsten Aussage-Risiko und lege je Option die Achsenskalierung offen - eine gekappte Y-Achse ueberzeichnet den Trend und verzerrt die Aussage. Ergaenze die exakten HEX-Corporate-Farben manuell aus dem offiziellen IW-Designguide, da die Vision/Chart-Empfehlung sie nicht zuverlaessig validieren kann; waehle die Option, die den Befund am ehrlichsten abbildet, nicht die visuell dramatischste.
 
 Artefakt: Ein Visualisierungs-Optionspapier (Canvas) mit drei Optionen, Risiko-Bewertung und Empfehlung.
 
@@ -844,6 +915,8 @@ Fallstricke:
 - Die Handlungsoption überschreitet die Datenlage → Implikationen strikt aus den Befunden ableiten; Lücken offen benennen.
 - Politik-Sprache kippt in Werbe- oder Alarmton → Sachlich-nüchtern bleiben; keine Dramatisierung der Folgen.
 
+Empfehlung: Die Implikationen strikt aus den Befunden ableiten und Luecken offen benennen, damit die Handlungsoption die Datenlage nicht ueberschreitet. Sachlich-nuechtern bleiben und die Folgen nicht dramatisieren, damit die Politik-Sprache nicht in Werbe- oder Alarmton kippt.
+
 Anschluss: S-TT-007
 
 ### S-TT-031 Reaktions-Playbook bei gebrochenem Embargo
@@ -862,14 +935,18 @@ Vorgehen:
 3. Sofort-Statement und ein Nachzug-Anschreiben an den Restverteiler entwerfen lassen.
 4. Playbook und Statement durch die Pressestelle freigeben lassen, bevor etwas versendet wird.
 
-Prompt:
-> "Du bist Pressereferent am IW Köln. TASK: Erstelle ein Reaktions-Playbook für einen gebrochenen Embargo-Fall. FORMAT: (1) drei Handlungsoptionen mit Konsequenz, (2) Sofort-Statement-Entwurf, (3) Nachzug-Anschreiben an den Restverteiler, (4) Eskalations-Timeline. CONTEXT: sachlich, deeskalierend. Keine echten Journalistennamen erfinden; keine Schuldzuweisung im Statement."
+Vorlage: Embargo-Bruch-Reaktions-Playbook:
+1. Sofort-Statement-Entwurf - sachlich, deeskalierend, ohne oeffentlichen Angriff auf das berichtende Medium.
+2. Nachzug-Anschreiben - an den Restverteiler (Platzhalter statt realer Kontakte).
+3. Eskalations-Timeline - getrennt und intern gefuehrt.
 
 Artefakt: Ein Embargo-Bruch-Playbook (Canvas) mit Statement, Nachzug-Anschreiben und Timeline.
 
 Fallstricke:
 - Das Statement greift das berichtende Medium öffentlich an → Sachlich und deeskalierend formulieren; Eskalation getrennt und intern führen.
 - Echte Verteilerdaten landen im Prompt → Platzhalter verwenden; reale Kontakte nie in die KI geben (DSGVO, vgl. 08-sicherheit-und-governance).
+
+Empfehlung: Sachlich und deeskalierend formulieren und die Eskalation getrennt/intern fuehren - ein oeffentlicher Angriff auf das berichtende Medium verschaerft den Schaden. Platzhalter statt realer Verteilerdaten verwenden, da echte Kontakte nie in die KI gehoeren (DSGVO, vgl. 08-sicherheit-und-governance).
 
 Anschluss: S-TT-004
 
@@ -898,6 +975,8 @@ Fallstricke:
 - Vereinfachung kippt in inhaltliche Verfälschung des Befunds → Sprache vereinfachen, nie die Aussage; Zahlen wörtlich übernehmen.
 - Wichtige Einschränkungen fallen der Kürze zum Opfer → Zentrale Caveats in einfachen Worten erhalten, nicht streichen.
 
+Empfehlung: Die Sprache vereinfachen, nie die Aussage, und Zahlen woertlich uebernehmen, damit die Vereinfachung nicht in eine inhaltliche Verfaelschung des Befunds kippt. Zentrale Caveats in einfachen Worten erhalten, statt sie der Kuerze zu opfern.
+
 Anschluss: S-TT-001
 
 ### S-TT-033 Evergreen-Explainer bei neuer Studienlage aktualisieren
@@ -924,6 +1003,8 @@ Artefakt: Ein aktualisierter Evergreen-Explainer (Canvas) plus Änderungsliste.
 Fallstricke:
 - Der Refresh zerstört die Überschriften-/Keyword-Struktur und kostet Rankings → Struktur und Keywords bewusst erhalten; nur Inhalte tauschen.
 - Alte und neue Zahlen werden vermischt → Jede aktualisierte Zahl an die neue Quelle binden; veraltete Werte vollständig ersetzen.
+
+Empfehlung: Struktur und Keywords des Explainers bewusst erhalten und nur Inhalte tauschen, da ein Refresh sonst die Ueberschriften-/Keyword-Struktur zerstoert und Rankings kostet. Jede aktualisierte Zahl an die neue Quelle binden und veraltete Werte vollstaendig ersetzen, damit alte und neue Zahlen nicht vermischt werden.
 
 Anschluss: S-TT-012
 
@@ -952,6 +1033,8 @@ Fallstricke:
 - Interviewfragen unterstellen den Forschenden Aussagen, die die Studie nicht stützt → Fragen an belegte Punkte binden; keine Suggestivfragen mit erfundenen Zahlen.
 - Show-Notes verkürzen Befunde bis zur Verzerrung → Kernaussagen mit Quellenverweis sauber abbilden.
 
+Empfehlung: Die Interviewfragen an belegte Punkte binden und keine Suggestivfragen mit erfundenen Zahlen stellen, da das Modell den Forschenden sonst nicht gestuetzte Aussagen unterstellt. Die Kernaussagen mit Quellenverweis sauber abbilden, damit die Show-Notes Befunde nicht bis zur Verzerrung verkuerzen.
+
 Anschluss: S-TT-013
 
 ### S-TT-035 Wirkungs-Report für ein Leitungs-Deck verdichten
@@ -978,6 +1061,8 @@ Artefakt: Eine Wirkungs-Report-Folien-Outline (Canvas, 3-5 Folien) mit priorisie
 Fallstricke:
 - Vanity-Metriken (Impressions) verdrängen die Kernmetrik → KPI-Hierarchie vorgeben: Politik-Zitationen zuerst.
 - Aussagen im Deck überschreiten die Datenlage → Jede Kennzahl an die Rohdaten binden; nicht extrapolieren.
+
+Empfehlung: Die KPI-Hierarchie vorgeben (Politik-Zitationen zuerst), damit Vanity-Metriken (Impressions) die Kernmetrik nicht verdraengen. Jede Kennzahl im Deck an die Rohdaten binden und nicht extrapolieren, damit keine Aussage die Datenlage ueberschreitet.
 
 Anschluss: S-TT-018
 
@@ -1006,6 +1091,8 @@ Fallstricke:
 - Berechtigte Kritik wird abgewehrt statt eingeräumt → Treffende Punkte ehrlich anerkennen; das schützt die Glaubwürdigkeit mehr als pauschale Verteidigung.
 - Die Reaktion springt sofort auf die höchste Eskalationsstufe → Mit der sachlichen Klarstellung beginnen; höhere Stufen nur bei Bedarf.
 
+Empfehlung: Treffende Kritikpunkte ehrlich anerkennen statt sie pauschal abzuwehren - das schuetzt die Glaubwuerdigkeit mehr als eine Pauschalverteidigung. Mit der sachlichen Klarstellung beginnen und hoehere Eskalationsstufen nur bei Bedarf ziehen, statt sofort auf die hoechste Stufe zu springen.
+
 Anschluss: S-TT-019
 
 ### S-TT-037 Klarstellung bei aus dem Kontext gerissener IW-Zahl
@@ -1033,6 +1120,8 @@ Fallstricke:
 - Die Klarstellung positioniert sich gegen die Partei und verletzt die Neutralität → Ausschließlich die Zahl-Einordnung korrigieren; keine politische Bewertung.
 - Die Korrektur wiederholt die falsche Lesart prominent und verstärkt sie → Den korrekten Kontext in den Vordergrund stellen, die Fehl-Lesart knapp halten.
 
+Empfehlung: Ausschliesslich die Zahl-Einordnung korrigieren und keine politische Bewertung vornehmen, damit die Klarstellung sich nicht gegen die Partei positioniert und die Neutralitaet wahrt. Den korrekten Kontext in den Vordergrund stellen und die Fehl-Lesart knapp halten, damit die Korrektur die falsche Lesart nicht prominent wiederholt und verstaerkt.
+
 Anschluss: S-TT-019
 
 ### S-TT-038 Bild- und Datenquellen-Lizenz vor Veröffentlichung prüfen
@@ -1051,14 +1140,18 @@ Vorgehen:
 3. Bei KI-generierten Bildelementen den vorgeschriebenen Kennzeichnungs-Hinweis ergänzen lassen.
 4. Checkliste durch die Rechtsabteilung bzw. IW Medien prüfen lassen, bevor die Grafik veröffentlicht wird.
 
-Prompt:
-> "Du bist Rechte-Clearing-Assistent am IW Köln. TASK: Erstelle aus den Lizenz-Bausteinen im Wissensordner eine Freigabe-Checkliste für eine Mediengrafik. FORMAT: je Quelle (1) Lizenzstatus, (2) nötiger Nachweis; plus (3) Kennzeichnungs-Hinweis für KI-Bildelemente nach §50 EU AI Act. Erfinde keine Lizenzen; markiere unklare Fälle als zu prüfen."
+Vorlage: Lizenz-Freigabe-Checkliste (Mediengrafik):
+1. Quellen-Status-Tabelle - je Bild-/Datenquelle Lizenzstatus, nur aus den hinterlegten Bausteinen.
+2. Unklare Faelle - explizit als 'zu pruefen' markiert.
+3. KI-Kennzeichnung - Hinweis nach Paragraf 50 EU AI Act als Pflichtfeld; Freigabe erst nach Rechtspruefung.
 
 Artefakt: Eine Lizenz-Freigabe-Checkliste (Markdown) mit Status je Quelle und KI-Kennzeichnungs-Hinweis.
 
 Fallstricke:
 - Das Modell unterstellt einer Quelle eine freie Lizenz, die nicht belegt ist → Lizenzstatus nur aus den hinterlegten Bausteinen; unklare Fälle als zu prüfen markieren.
 - KI-generierte Bildelemente werden ohne Kennzeichnung veröffentlicht → Kennzeichnungs-Hinweis nach §50 EU AI Act als Pflichtfeld setzen; Freigabe erst nach Rechtsprüfung.
+
+Empfehlung: Den Lizenzstatus nur aus den hinterlegten Bausteinen uebernehmen und unklare Faelle als 'zu pruefen' markieren - das Modell unterstellt sonst eine freie Lizenz, die nicht belegt ist. Den Kennzeichnungs-Hinweis nach Paragraf 50 EU AI Act als Pflichtfeld setzen und KI-generierte Bildelemente erst nach Rechtspruefung freigeben.
 
 Anschluss: S-TT-016
 
@@ -1078,13 +1171,17 @@ Vorgehen:
 3. Lücken markieren, für die ein Kurzbericht oder Policy-Paper vorzubereiten wäre.
 4. Roadmap im Canvas finalisieren und mit der Redaktionsleitung abstimmen.
 
-Prompt:
-> "Du bist Redaktionsplaner am IW Köln. TASK: Erstelle eine Themen-Roadmap entlang der Legislaturagenda. FORMAT: Tabelle mit Spalten Vorhaben (Koalitionsvertrag/Agenda), passendes IW-Kompetenzfeld, vorhandene Studie, Lücke. CONTEXT: proaktive Studien-PR, sachlich, überparteilich. Prüfe recherchierte Vorhaben gegen offizielle Quellen; kennzeichne Unsicheres."
+Vorlage: Themen-Roadmap (Koalitionsvertrag + Legislaturagenda):
+1. Tabelle - Legislatur-Vorhaben, passendes IW-Thema, vorhandene Studie, Luecke.
+2. Verifikation - Vorhaben/Fristen gegen offizielle Quellen (Koalitionsvertrag, Bundestag) gegengeprueft.
+3. Neutralitaet - Themen sachlich zugeordnet, keine Wertung der politischen Agenda.
 
 Artefakt: Eine Themen-Roadmap (Canvas-Tabelle) mit Vorhaben-Studien-Zuordnung und markierten Lücken.
 
 Fallstricke:
 - Deep Research gibt Vorhaben oder Fristen falsch wieder → Vor Nutzung gegen offizielle Quellen (Koalitionsvertrag, Bundestag) gegenprüfen.
 - Die Roadmap kippt in parteipolitische Bewertung der Vorhaben → Themen sachlich zuordnen; keine Wertung der politischen Agenda.
+
+Empfehlung: Vorhaben und Fristen vor Nutzung gegen offizielle Quellen (Koalitionsvertrag, Bundestag) gegenpruefen - Deep Research gibt sie teils falsch wieder. Themen sachlich zuordnen ohne parteipolitische Bewertung der Vorhaben, damit die Roadmap die Neutralitaet wahrt.
 
 Anschluss: S-TT-008
