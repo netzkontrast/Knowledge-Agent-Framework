@@ -29,9 +29,59 @@
 
 ## Trigger-noun collisions (R4)
 
-_no cross-file collisions detected_
+| Sev | Noun | # files | files |
+|---|---|---:|---|
+| [C] | Langdock | 8 | 00-langdock-uebersicht.md, 02-agenten-konfiguration.md, 03-wissensordner-und-rag.md, 05-integrationen-und-mcp.md, 06-api-und-deployment.md, 07-modelle-und-kosten.md, 08-sicherheit-und-governance.md, 13-data-agent-anweisungen-pro-thema.md |
+| [C] | Dokumente | 4 | 03-wissensordner-und-rag.md, 04-workflows.md, 06-api-und-deployment.md, 07-modelle-und-kosten.md |
+| [C] | Frage | 4 | 03-wissensordner-und-rag.md, 11-persona-core.md, 12-persona-julia-modus.md, 13-data-agent-anweisungen-pro-thema.md |
+| [C] | Rechtsabteilung | 4 | 00-langdock-uebersicht.md, 02-agenten-konfiguration.md, 03-wissensordner-und-rag.md, 08-sicherheit-und-governance.md |
+| [C] | Wettbewerber | 4 | 00-langdock-uebersicht.md, 01-chat-und-prompts.md, 04-workflows.md, 10-prompts-und-skills.md |
+| [M] | Aufgabe | 3 | 00-langdock-uebersicht.md, 01-chat-und-prompts.md, 19-iwmedien-zusammenarbeit.md |
+| [M] | Betriebsrat | 3 | 00-langdock-uebersicht.md, 08-sicherheit-und-governance.md, 09-marketing-praxis.md |
+| [M] | Blog-Artikel | 3 | 02-agenten-konfiguration.md, 04-workflows.md, 06-api-und-deployment.md |
+| [M] | Briefing | 3 | 09-marketing-praxis.md, 13-data-agent-anweisungen-pro-thema.md, 19-iwmedien-zusammenarbeit.md |
+| [M] | Briefing-Agent | 3 | 02-agenten-konfiguration.md, 07-modelle-und-kosten.md, 10-prompts-und-skills.md |
+| [M] | Bring | 3 | 00-langdock-uebersicht.md, 06-api-und-deployment.md, 07-modelle-und-kosten.md |
+| [M] | CRM-Team | 3 | 00-langdock-uebersicht.md, 02-agenten-konfiguration.md, 09-marketing-praxis.md |
+| [M] | Entwurf | 3 | 01-chat-und-prompts.md, 11-persona-core.md, 12-persona-julia-modus.md |
+| [M] | IT-Abteilung | 3 | 00-langdock-uebersicht.md, 05-integrationen-und-mcp.md, 06-api-und-deployment.md |
+| [M] | Langdock-Agent | 3 | 05-integrationen-und-mcp.md, 06-api-und-deployment.md, 08-sicherheit-und-governance.md |
+| [M] | Langdock-Integration | 3 | 05-integrationen-und-mcp.md, 06-api-und-deployment.md, 10-prompts-und-skills.md |
+| [M] | Marketing-Manager | 3 | 03-wissensordner-und-rag.md, 08-sicherheit-und-governance.md, 09-marketing-praxis.md |
+| [M] | Marketing-Managerin | 3 | 00-langdock-uebersicht.md, 01-chat-und-prompts.md, 02-agenten-konfiguration.md |
+| [M] | Modell | 3 | 01-chat-und-prompts.md, 12-persona-julia-modus.md, 13-data-agent-anweisungen-pro-thema.md |
+| [M] | Onboarding | 3 | 07-modelle-und-kosten.md, 10-prompts-und-skills.md, 16-onboarding-change-management.md |
+| [M] | Produkt | 3 | 03-wissensordner-und-rag.md, 04-workflows.md, 10-prompts-und-skills.md |
+| [M] | Prompts | 3 | 00-langdock-uebersicht.md, 01-chat-und-prompts.md, 10-prompts-und-skills.md |
+| [M] | Quartalsbericht | 3 | 00-langdock-uebersicht.md, 04-workflows.md, 09-marketing-praxis.md |
+| [M] | Rollout | 3 | 02-agenten-konfiguration.md, 08-sicherheit-und-governance.md, 16-onboarding-change-management.md |
+| [M] | SEO-Team | 3 | 01-chat-und-prompts.md, 05-integrationen-und-mcp.md, 06-api-und-deployment.md |
+| [M] | Strategie-Meeting | 3 | 00-langdock-uebersicht.md, 01-chat-und-prompts.md, 10-prompts-und-skills.md |
+| [M] | Teammitglieder | 3 | 01-chat-und-prompts.md, 10-prompts-und-skills.md, 16-onboarding-change-management.md |
+| [M] | Teams | 3 | 00-langdock-uebersicht.md, 04-workflows.md, 06-api-und-deployment.md |
+| [M] | Workflow | 3 | 01-chat-und-prompts.md, 04-workflows.md, 13-data-agent-anweisungen-pro-thema.md |
+| [M] | Workspace | 3 | 00-langdock-uebersicht.md, 03-wissensordner-und-rag.md, 05-integrationen-und-mcp.md |
+| [m] | Agentur | 2 | 00-langdock-uebersicht.md, 01-chat-und-prompts.md |
+| [m] | Anfang | 2 | 02-agenten-konfiguration.md, 07-modelle-und-kosten.md |
+| [m] | Audit | 2 | 08-sicherheit-und-governance.md, 10-prompts-und-skills.md |
+| [m] | Aufgaben | 2 | 10-prompts-und-skills.md, 12-persona-julia-modus.md |
+| [m] | Befund | 2 | 14-iw-use-cases.md, 17-branchen-think-tank-praxis.md |
+| [m] | Beginn | 2 | 00-langdock-uebersicht.md, 09-marketing-praxis.md |
+| [m] | Betrieb | 2 | 02-agenten-konfiguration.md, 08-sicherheit-und-governance.md |
+| [m] | Bevor | 2 | 14-iw-use-cases.md, 16-onboarding-change-management.md |
+| [m] | Board-Meeting | 2 | 05-integrationen-und-mcp.md, 12-persona-julia-modus.md |
+| [m] | Brand-Agent | 2 | 05-integrationen-und-mcp.md, 07-modelle-und-kosten.md |
+
+_…72 more_
 
 
 ## Reserved-noun violations (R4)
 
-_no reserved-noun violations_
+| Reserved noun | File | Scenario | Trigger snippet |
+|---|---|---|---|
+| Pressemitteilung | `04-workflows.md` | S-WF-032 | Eine fertige Pressemitteilung soll an Journalisten-Listen, den Unternehmens-Blog, Social-Media und die Investor-Relation |
+| Pressemitteilung | `04-workflows.md` | S-WF-079 | Eine freigegebene Pressemitteilung soll an eine kuratierte, themen-passende Journalistenliste verteilt werden — die Auße |
+| Newsletter | `04-workflows.md` | S-WF-001 | Der Newsletter erscheint jeden Donnerstag, und die Kuratierung der Inhalte kostet die Redaktion jede Woche mehrere Stund |
+| Newsletter | `04-workflows.md` | S-WF-027 | Der monatliche Newsletter soll nicht mehr als ein Einheitstext, sondern als drei segment-spezifische Varianten ausgesend |
+| Newsletter | `04-workflows.md` | S-WF-070 | Der wöchentliche Newsletter soll automatisch aus aktuellen Blogs und einer Branchen-News zusammengebaut werden — der Ver |
+| Newsletter | `09-marketing-praxis.md` | S-MP-024 | Der monatliche B2B-Newsletter wurde bereits versendet. Julia entdeckt, dass der KI-Agent eine falsche Aussage über ein W |

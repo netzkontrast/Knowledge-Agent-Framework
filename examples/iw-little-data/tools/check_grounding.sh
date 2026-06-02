@@ -54,8 +54,9 @@ check_one() {
   case "$name" in
     11-*|12-*|13-*|15-*|18-*) : ;;  # non-scenario kinds — skip Quelle check
     *)
-      local trig; trig=$(grep -c '^\*\*Wann nutzen (Trigger):' "$file")
-      local trig_q; trig_q=$(grep -cE '^\*\*Wann nutzen \(Trigger\):.*\(Quelle:' "$file")
+      # R19: accept verbose "**Wann nutzen (Trigger):" OR terse "Trigger:"
+      local trig; trig=$(grep -cE '^(\*\*Wann nutzen \(Trigger\):|Trigger:)' "$file")
+      local trig_q; trig_q=$(grep -cE '^(\*\*Wann nutzen \(Trigger\):|Trigger:).*\(Quelle:' "$file")
       if [ "$trig" -gt 0 ] && [ "$trig_q" -lt "$trig" ]; then
         echo "[WARN] $name: $((trig - trig_q)) of $trig Trigger lines lack a (Quelle: ...) citation"
       fi

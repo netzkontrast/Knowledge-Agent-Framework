@@ -38,8 +38,13 @@ RESERVED_NOUNS = {
     "Brand Voice":      ["14-iw-use-cases.md", "17-branchen-think-tank-praxis.md"],
 }
 
-TRIGGER_RE = re.compile(r"^\*\*Wann nutzen \(Trigger\):\*\*\s+(.*?)(?:\s+\(Quelle:[^)]*\))?\s*$")
-ANSCHLUSS_RE = re.compile(r"^\*\*Anschluss-Szenario:\*\*\s+(.*?)\s*$")
+# R19: accept verbose markers AND terse line-anchored markers.
+TRIGGER_RE = re.compile(r"^(?:\*\*Wann nutzen \(Trigger\):\*\*|Trigger:)\s+(.*?)(?:\s+\(Quelle:[^)]*\))?\s*$", re.M)
+ANSCHLUSS_RE = re.compile(r"^(?:\*\*Anschluss-Szenario:\*\*|Anschluss:)\s+(.*?)\s*$", re.M)
+# R20: type derived from the slot-6 payload marker (NOT from an ID rename).
+SLOT6_RE = re.compile(r"^(?:\*\*(?:Beispiel-Prompt[^:]*|Beispiel-Konversation|Konkrete Empfehlung):\*\*|(Prompt|API|MCP|Skill|Code|Workflow|Pfad|Empfehlung|Vorlage):)", re.M)
+MARKER_TO_TYPE = {"Prompt":"P","API":"A","MCP":"M","Skill":"S","Code":"T",
+                  "Workflow":"W","Pfad":"C","Empfehlung":"D","Vorlage":"G"}
 NOUN_RE = re.compile(r"\b([A-ZÄÖÜ][a-zäöüßA-ZÄÖÜ\-]{4,})\b")
 
 def detect_kind(name: str) -> str:
@@ -55,9 +60,24 @@ def detect_kind(name: str) -> str:
         return "iw-brand"
     return "content"
 
+# Function-words AND generic actor/subject nouns that are NOT topic nouns —
+# the trigger's grammatical subject ("Das Marketing-Team will …") must not be
+# mistaken for the retrieval topic. Only genuine topic nouns drive R4 collisions.
+_STOP = {"die","der","das","ein","eine","aus","beim","über","unter","ohne","mit",
+    "für","vor","nach","sich","auch","aber","sind","wird","wenn","damit","welche",
+    "welcher","welches","ihrem","ihrer","seine","seiner","seinem","unser","unsere",
+    "unseres","mein","meine","meinem","meiner","keine","keiner","jede","jeder","jedes",
+    # generic actors / subjects / time / platform-context (not topics):
+    "marketing","marketing-team","marketing-direktorin","marketing-leiterin","direktorin",
+    "content-team","performance-team","social-team","pr-team","team","unternehmen",
+    "kampagne","launch","agent","agenten","geschäftsführung","julia","monaten","monate",
+    "wochen","wissensordner","datenschutzbeauftragte","abteilung","kollegin","kollege",
+    "vorstand","management","redaktion","mitarbeiter","mitarbeiterin","kunde","kundin",
+    "projekt","quartal","jahr","woche","tag","stunde"}
+
 def first_dominant_noun(trigger: str) -> str:
     for n in NOUN_RE.findall(trigger):
-        if n.lower() in {"die","der","das","ein","eine","aus","beim","beim","über","unter","ohne","mit","für","vor","nach","sich","auch","aber","sind","wird","wenn","damit","welche","welcher","welches","ihrem","ihrer","seine","seiner","seinem","unser","unsere","unseres","mein","meine","meinem","meiner","keine","keiner"}:
+        if n.lower() in _STOP:
             continue
         return n
     return ""
@@ -81,9 +101,20 @@ def parse_file(path: Path) -> dict:
         anschl = a.group(1).strip() if a else ""
         is_advice = ("**Konkrete Empfehlung:**" in body)
         if is_advice: out["advice_style"] += 1
+        # R20: derive solution type from the slot-6 payload marker.
+        stype = ""
+        m6 = SLOT6_RE.search(body)
+        if m6:
+            if m6.group(1):  # terse marker captured
+                stype = MARKER_TO_TYPE.get(m6.group(1), "")
+            else:            # verbose Beispiel-Prompt/Konversation/Konkrete Empfehlung
+                stype = "D" if "Konkrete Empfehlung" in m6.group(0) else "P"
+        out.setdefault("types", {})
+        if stype:
+            out["types"][stype] = out["types"].get(stype, 0) + 1
         out["scenarios"].append({
             "id": sid, "trigger": trig, "noun": first_dominant_noun(trig),
-            "anschluss": anschl, "advice_style": is_advice,
+            "anschluss": anschl, "advice_style": is_advice, "type": stype,
         })
     if kind == "anweisung":
         out["data_anweisungen"] = re.findall(r"^## Data-Anweisung (.+)$", text, flags=re.M)
@@ -160,6 +191,12 @@ def main():
     reserved_v = reserved_violations(files)
     total_scenarios = sum(len(f["scenarios"]) for f in files)
     total_advice = sum(f["advice_style"] for f in files)
+    type_totals = {}
+    for f in files:
+        for t, n in f.get("types", {}).items():
+            type_totals[t] = type_totals.get(t, 0) + n
+    typed = sum(type_totals.values())
+    type_str = " ".join(f"{k}={v}" for k, v in sorted(type_totals.items()))
     # paths resolved relative to this script's parent (the example dir)
     here = Path(__file__).resolve().parent.parent
     md = here / "../../docs/superpowers/specs/v2-kb-index.md"
@@ -168,12 +205,13 @@ def main():
     write_md(files, collisions, reserved_v, total_scenarios, total_advice, md.resolve())
     js.resolve().write_text(json.dumps({"files":files,"collisions":collisions,"reserved_violations":reserved_v,
                                         "total_scenarios":total_scenarios,"total_advice":total_advice,
-                                        "file_count":len(files),"file_cap":30}, ensure_ascii=False, indent=2),
+                                        "file_count":len(files),"file_cap":30,"type_totals":type_totals,"typed":typed}, ensure_ascii=False, indent=2),
                             encoding="utf-8")
     print(f"wrote {md.resolve()}")
     print(f"wrote {js.resolve()}")
     print(f"files={len(files)}/30  scenarios={total_scenarios}  advice-style={total_advice}  "
-          f"collisions={len(collisions)}  reserved-violations={len(reserved_v)}")
+          f"collisions={len(collisions)}  reserved-violations={len(reserved_v)}\n"
+          f"types[{typed}/{total_scenarios}]: {type_str}")
     if "--check-collisions" in sys.argv:
         bad = [c for c in collisions if c["severity"] == "[C]"] + reserved_v
         if bad:

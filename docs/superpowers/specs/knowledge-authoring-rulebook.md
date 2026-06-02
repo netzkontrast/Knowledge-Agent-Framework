@@ -268,6 +268,39 @@ Inline emphasis inside a field (e.g. **bold** within Vorgehen prose) is unchange
 - Embedding signal becomes substance-dominated (Pressemitteilung, Faktenblatt,
   Workflow-Budget) instead of label-dominated, improving retrieval precision.
 
+## R20 — Best-solution-type, critical-thinking scenarios, scenario chains (loop 4 directive)
+
+**Directive (user, loop 4):** every scenario is adapted so its slot-6 payload is
+the *genuinely best* Langdock solution for that problem — not whatever was there
+before. The payload marker names the type and the content is source-grounded.
+
+1. **Choose the best solution type per scenario.** Read the problem, then pick the
+   type whose tool actually solves it best (R18 catalog): a recurring multi-step
+   automation → `Workflow:` + `Budget:`; a live external system call → `MCP:` +
+   `Tool:` + `Scope:` or `API:` + `RateLimit:`; a reusable micro-task → `Skill:` +
+   `Trigger-Wörter:`; a deterministic transform → `Code:` + `IO:`; an agent/
+   setting change → `Pfad:` + `Diff:` + `Rollback:`; a judgement call →
+   `Empfehlung:`; a document/template deliverable → `Vorlage:`; a one-off
+   generation → `Prompt:`. Do **not** force a prompt where a workflow/MCP is the
+   real answer. Re-author the payload with verified, source-grounded specifics.
+2. **Type is encoded by the slot-6 marker, NOT by an ID rename.** This supersedes
+   R18's `S-XXX-Y-NNN` proposal: keep existing IDs `S-XXX-NNN` (no cross-file
+   Anschluss breakage); `kb_index.py` derives the type from the slot-6 marker.
+3. **Critical-thinking-method scenarios are welcome (new content).** Add scenarios
+   that *recommend* or *use as a prompt* one or more of the M01–M13 methods, fitted
+   to the situation (e.g. a Pre-Mortem `Prompt:` before a campaign launch; a
+   Steelman `Empfehlung:` before a competitor response). The method may be named in
+   the scenario body when it is the deliverable's subject — this is the one
+   permitted place M-methods surface, because here the method IS the user-facing
+   technique, not invisible authoring scaffolding. Keep R5 otherwise intact.
+4. **Scenario chains are first-class.** A scenario may be an explicit chain that
+   sequences others; reference steps by their scenario IDs (`S-XXX-NNN`) as links,
+   and always set `Anschluss:` to the next existing scenario so chains stay
+   coherence-valid. Chains must still pass the chunk gate (one chunk per file per
+   query) — a chain scenario describes the sequence, it does not inline the others.
+5. Migration is per-file, one commit per file, R19 terse markers + R20 best-type
+   re-authoring applied together. Gates green after every file.
+
 ---
 
 ## Change log (rulebook improves each loop)
