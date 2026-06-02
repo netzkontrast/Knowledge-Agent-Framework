@@ -73,6 +73,7 @@ Artefakt: Eine präzise Tabelle, die aufzeigt, in welchen spezifischen Kampagnen
 Fallstricke:
 - Der Data Analyst Modus scheitert an unsauberen CSV-Headern → Stelle sicher, dass die Spalten 'Lead_Source' und 'Closed_Won' vor dem Upload normiert sind.
 - Die KI verliert sich in statistischen Details ohne Handlungsempfehlung → Im Prompt explizit eine abschließende 'Action-Item'-Zeile einfordern.
+Empfehlung: Den Prompt so formulieren, dass die KI die Lieblingshypothese aktiv widerlegen MUSS (Falsifikation), nicht bestaetigt — und eine abschliessende Action-Item-Zeile erzwingen, sonst verliert sich der Data Analyst in Statistik ohne Handlungsempfehlung. Die CSV-Header (Lead_Source, Closed_Won) vor dem Upload normieren, da der Data-Analyst-Modus an unsauberen Spalten scheitert.
 Anschluss: S-LU-002
 
 ### S-LU-002 Steelmanning gegen die neue Brand-Kampagne der Konkurrenz
@@ -93,6 +94,7 @@ Artefakt: Ein strukturiertes Canvas-Dokument mit H2-Überschriften, das die Konk
 Fallstricke:
 - Deep Research verliert sich in PR-Mitteilungen des Konkurrenten statt die Kampagne psychologisch zu analysieren → Gib explizit die Rolle des Verhaltenspsychologen vor.
 - Das Team fühlt sich durch das Artefakt demotiviert → Ergänze einen Abschnitt 'Unsere ungenutzten Gegenhebel' im finalen Dokument.
+Empfehlung: Der KI explizit die Rolle der Verhaltenspsychologin geben und das staerkste Argument FUER die Konkurrenz konstruieren lassen (Steelman) — sonst verliert sich Deep Research in deren PR-Mitteilungen. Einen Abschnitt 'Unsere ungenutzten Gegenhebel' anhaengen, damit das Steelman-Memo das Team wachruettelt statt demotiviert.
 Anschluss: S-LU-003
 
 ### S-LU-003 Pre-Mortem-Check für den B2B-Newsletter-Relaunch
@@ -113,6 +115,7 @@ Artefakt: Eine harte, ungeschönte Liste an potenziellen Launch-Fehlern, formati
 Fallstricke:
 - Der Agent schlägt generische Fehler wie 'zu viele E-Mails' vor → Limitiere die Suche strikt auf technische Fehlerquellen im spezifischen Setup (z.B. HubSpot-Workflows).
 - Wenn der Wissensordner veraltete Tool-Dokumentationen enthält, sind die Warnungen nutzlos → Überprüfe das Änderungsdatum der Folder-Dokumente vorab.
+Empfehlung: Die Pre-Mortem-Simulation strikt auf technische Fehlerquellen im konkreten Setup (HubSpot-Workflows, Personalisierungs-Token) begrenzen — sonst liefert der Agent generische Fehler ('zu viele E-Mails'). Das Aenderungsdatum der Wissensordner-Dokumente vorab pruefen, da veraltete Tool-Doku die Warnungen nutzlos macht.
 Anschluss: S-LU-004
 
 ### S-LU-004 Contrast Classes beim Rebranding-Pitch
@@ -133,6 +136,7 @@ Artefakt: Ein Dokument mit drei radikalen Alternativ-Ansätzen, das genutzt wird
 Fallstricke:
 - Die KI generiert absurde, branchenfremde Alternativen (z.B. Humor in der Medizintechnik) → Definiere im Prompt harte rote Linien für die Brand-Safety.
 - Die Alternativen sind zu vage formuliert → Verlange, dass jede Contrast Class einen konkreten 'Slogan' und eine visuelle Leitidee enthält.
+Empfehlung: Harte rote Linien fuer Brand-Safety im Prompt definieren — sonst generiert die KI absurde, branchenfremde Contrast Classes (Humor in der Medizintechnik). Je Gegenentwurf einen konkreten Slogan und eine visuelle Leitidee verlangen, damit die Alternativen scharf genug sind, um die Agentur aus der Komfortzone zu zwingen.
 Anschluss: S-LU-005
 
 ### S-LU-005 Bayesian Prior Korrektur bei der Messeplanung
@@ -153,6 +157,7 @@ Artefakt: Eine schonungslose ROI-Auswertung, die interne Mythen über den Wert v
 Fallstricke:
 - Das CRM-Attributionsmodell ist fehlerhaft, was die Messe-Leads künstlich entwertet → Stelle sicher, dass die KI Multi-Touch-Attribution versteht, falls vorhanden.
 - Das Team greift das Ergebnis als 'KI-Fehler' an → Fordere von der KI den exakten Rechenweg für jeden Datenpunkt an.
+Empfehlung: Den exakten Rechenweg pro Datenpunkt einfordern — so kann das Team das Ergebnis nicht als 'KI-Fehler' abtun. Sicherstellen, dass die KI Multi-Touch-Attribution beruecksichtigt (falls vorhanden), sonst entwertet ein fehlerhaftes Single-Touch-Modell die Messe-Leads kuenstlich.
 Anschluss: S-LU-006
 
 ### S-LU-006 Source Triangulation beim Content-Outsourcing
@@ -173,6 +178,7 @@ Artefakt: Ein strukturiertes Dokument, das unmissverständlich aufzeigt, an welc
 Fallstricke:
 - Die KI scheitert an unterschiedlichen Datumsformaten in den verschiedenen Reports → Zwinge sie im Prompt, alle Daten auf denselben Monat zu normalisieren.
 - Die KI bewertet 'Impressions' fälschlicherweise als echten Geschäftserfolg → Definiere im Prompt, dass nur tatsächliche 'Klicks' und 'Conversions' als Erfolg zählen.
+Empfehlung: Alle Reports vorab auf denselben Monat normalisieren — die KI scheitert sonst an unterschiedlichen Datumsformaten. Im Prompt definieren, dass nur Klicks und Conversions als Erfolg zaehlen (nicht Impressions/Rankings), damit die Triangulation Vanity Metrics als geschoente Reports entlarvt.
 Anschluss: S-LU-007
 
 ### S-LU-007 Red Team Stresstest für den Krisen-PR-Plan
@@ -193,6 +199,7 @@ Artefakt: Ein schonungsloses Audit-Protokoll des Krisenplans, das zwingt, jurist
 Fallstricke:
 - Der Agent bleibt zu höflich und greift das eigene Unternehmen nicht hart genug an → Ergänze den Prompt um die Klausel 'Ignoriere Höflichkeit, dein Ziel ist es, unsere Reputation zu zerstören'.
 - Die KI bewertet technische IT-Sicherheitsaspekte statt der kommunikativen → Fokus im Prompt explizit auf 'externe Wahrnehmung und Medien-Echo' lenken.
+Empfehlung: Die Klausel 'ignoriere Hoeflichkeit, dein Ziel ist es, unsere Reputation zu zerstoeren' ergaenzen — sonst greift der Red-Team-Agent das eigene Unternehmen nicht hart genug an. Den Fokus explizit auf externe Wahrnehmung und Medien-Echo lenken, nicht auf IT-Sicherheit, damit der Stresstest die kommunikativen Engpaesse (z. B. langsame Legal-Freigabe) aufdeckt.
 Anschluss: S-LU-008
 
 ### S-LU-008 Pre-Commitment-Definition für das neue Tool-Stack
@@ -213,6 +220,7 @@ Artefakt: Ein präziser Projektvertrag (Pre-Commitment-Log) im Canvas, der jede 
 Fallstricke:
 - Die KI schlägt Metriken vor, die wir historisch gar nicht tracken können → Ergänze im Prompt: 'Nutze nur Metriken, die wir bereits in unserem aktuellen Setup messen können'.
 - Die Abbruchkriterien sind zu weich formuliert (z.B. 'Verbesserung der Datenqualität') → Verlange absolute Zahlen ('Senkung der CPA-Diskrepanz auf unter 5%').
+Empfehlung: 'Nutze nur Metriken, die wir bereits messen koennen' im Prompt verankern — sonst schlaegt die KI Pre-Commitments auf nicht-trackbaren Metriken vor. Absolute Schwellenwerte und einen Kill-Switch verlangen ('CPA-Diskrepanz unter 5 %'), nie weiche Kriterien ('Verbesserung der Datenqualitaet'), damit das Pre-Commitment-Log die Sunk-Cost-Fallacy praeventiv ausschliesst.
 Anschluss: S-LU-009
 
 ### S-LU-009 First-Principles-Dekonstruktion des Lead-Funnels
@@ -233,6 +241,7 @@ Artefakt: Ein kompromisslos gekürzter CRM-Workflow, der sämtliche historisch g
 Fallstricke:
 - Die KI baut bestehende Prozesse einfach nur minimal um → Zwinge sie im Prompt, mit einem sprichwörtlichen 'weißen Blatt Papier' zu beginnen.
 - Wichtige rechtliche Double-Opt-In Schritte werden weggekürzt → Erwähne DSGVO-Konformität als zwingendes First Principle.
+Empfehlung: Die KI zwingen, mit einem 'weissen Blatt' zu beginnen — sonst baut sie bestehende Prozesse nur minimal um statt sie auf First Principles zu dekonstruieren. DSGVO-konformes Double-Opt-In als zwingendes First Principle vorgeben, damit die radikale Funnel-Kuerzung keine rechtlich notwendigen Schritte wegstreicht.
 Anschluss: S-LU-010
 
 ### S-LU-010 Assumption-Decay-Prüfung der Core Persona
@@ -253,6 +262,7 @@ Artefakt: Eine validierte 'Decay-Matrix', die aufzeigt, welche Marketing-Budgets
 Fallstricke:
 - Deep Research liefert B2C-Trends, obwohl wir B2B agieren → Den Kontext im Prompt glasklar auf 'B2B Software-Einkäufer' einschränken.
 - Die KI findet keine aktuellen Studien und erfindet Trends → Strikte Anweisung: 'Gib nur Quellen an, die du mit einer URL belegen kannst, ansonsten markiere die Annahme als ungeprüft'.
+Empfehlung: Den Kontext glasklar auf 'B2B-DACH-Software-Einkaeufer' einschraenken — Deep Research liefert sonst irrelevante B2C-Trends. Strikt 'nur Quellen mit belegbarer URL, sonst Annahme als ungeprueft markieren' anweisen, damit die KI bei fehlenden Studien keine Trends erfindet.
 Anschluss: S-LU-011
 
 ### S-LU-011 Langdock-Workspace für eine neue Kampagnen-Saison strukturieren
