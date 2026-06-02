@@ -627,12 +627,15 @@ Vorgehen:
 1. Kategorisiere alle wiederkehrenden Marketing-Tasks nach zwei Dimensionen: Komplexität (Routine vs. Strategie) und Brand-Criticality (generisch vs. markenprägend).
 2. Führe den PTCF-Prompt aus, um die Modell-Zuordnungsregel zu generieren: Flash für Routine-Drafts, Übersetzungen und Klassifikation; Sonnet für Strategie-Reviews, Brand-Voice-kritische Texte und komplexe Argumentation.
 3. Überführe die Regel in den Canvas als 1-Pager und hinterlege sie als Konversations-Starter "Welches Modell für diese Aufgabe?" in allen relevanten Agenten.
-Prompt:
-> "Du bist KI-Modell-Stratege. Erstelle eine Daumenregel für unser Marketing-Team: Wann nutzen wir Flash, wann Sonnet, wann Opus? Kontext: 15 Personen, täglich ca. 200 Requests, Budget-Limit 500 Euro/Monat. Format: Tabelle mit Task-Typ, empfohlenem Modell, Begründung und geschätzten Kosten pro 1 000 Requests."
+Vorlage: Auto-vs-explizite-Modellwahl-Entscheidungskarte (1-Pager):
+1. Achsen — Komplexitaet (Routine/Strategie) × Brand-Criticality (generisch/markenpraegend).
+2. Zuordnung — Flash fuer Routine-Drafts/Uebersetzungen/Klassifikation; Sonnet fuer Strategie-Reviews/Brand-Voice-kritische Texte/komplexe Argumentation; Opus nur fuer hoechste Tiefe.
+3. Ablage — Canvas-1-Pager + Konversations-Starter 'Welches Modell fuer diese Aufgabe?'
 Artefakt: Ein 1-Pager im Canvas mit Modell-Zuordnungstabelle (Task-Typ → Modell → Begründung → Kostenschätzung), direkt einsetzbar als Team-Referenzkarte.
 Fallstricke:
 - Die Regel wird als starr verstanden und Team-Mitglieder wechseln auch bei Ausnahmefällen nicht vom Flash-Modell ab → Die Karte muss explizit eine "Eskalations-Regel" enthalten: Wenn drei Iterationen keinen zufriedenstellenden Output liefern, Modell upgraden.
 - Auto-Modus-Kosten sind schwer vorherzusagen, weil das System selbst zwischen Modellen wechselt → Ab 100 Requests/Tag lohnt explizite Wahl, da der Auto-Modus tendenziell zum höherwertigen Modell neigt.
+Empfehlung: Eine Eskalations-Regel auf die Karte schreiben ('wenn drei Iterationen keinen zufriedenstellenden Output liefern, Modell upgraden') — sonst bleibt das Team auch in Ausnahmefaellen starr beim Flash-Modell. Ab ~100 Requests/Tag die explizite Modellwahl dem Auto-Modus vorziehen, da der Auto-Modus tendenziell zum hoeherwertigen (teureren) Modell neigt.
 Anschluss: S-LU-028
 
 ### S-LU-028 BYOK-Rentabilitätsschwelle berechnen und Entscheidung herbeiführen
@@ -646,8 +649,7 @@ Vorgehen:
 2. Lade die CSV in den Data Analyst: Berechne die Kosten im Inklusivangebot vs. direktem Provider-Preis (Anthropic/OpenAI) + 10 % Langdock-Aufschlag entfällt bei BYOK.
 3. Ergänze im Chat den operativen Aufwand für BYOK: API-Key-Rotation, Billing-Reconciliation, Security-Overhead — schätzungsweise 2–4 Stunden/Monat IT-Zeit.
 4. Erstelle im Canvas die Go/No-Go-Empfehlung: BYOK lohnt ab ca. 5 000 Euro/Monat Verbrauch; darunter überwiegt der Verwaltungsaufwand.
-Prompt:
-> "Du bist SaaS-Beschaffungsanalystin. Vergleiche für unser Langdock-Nutzungsprofil die Kosten von Inklusivangebot vs. BYOK. Kontext: Monatlicher Verbrauch laut CSV anbei, IT-Ressource für API-Management: 3 h/Monat à 90 Euro. Format: Break-even-Tabelle mit Monatsschwelle, Jahresersparnis ab Break-even und Empfehlung."
+Empfehlung: Einen datenbasierten Break-even-Vergleich rechnen: Inklusivangebot vs. direkter Provider-Preis (Anthropic/OpenAI) — bei BYOK entfaellt der 10-%-Langdock-Aufschlag, dafuer kommen 2–4 h/Monat IT-Zeit fuer Key-Rotation, Billing-Reconciliation und Security-Overhead hinzu. Faustregel: BYOK lohnt ab ca. 5.000 €/Monat Verbrauch; darunter ueberwiegt der Verwaltungsaufwand. Das Datum der Preisgrundlage im Dokument vermerken und bei jeder Vertragsverlaengerung neu rechnen, da Provider-Preise quartalsweise schwanken. Die Entscheidung nicht allein auf Token-Kosten stuetzen — eine Key-Kompromittierung verursacht bei BYOK direkten Provider-Schaden; den CISO vorab konsultieren.
 Artefakt: Eine Break-even-Tabelle im Canvas mit Monatsschwelle, Jahresersparnis-Projektion und einer eindeutigen Empfehlung (BYOK Ja/Nein) mit Begründung.
 Fallstricke:
 - Provider-Preise ändern sich quartalsweise — die Rechnung veraltet schnell → Datum der Preisgrundlage im Dokument vermerken und bei jedem Vertragsverlängerungsgespräch aktualisieren.
@@ -665,12 +667,16 @@ Vorgehen:
 2. Definiere im Chat eine "Prioritätsliste der Workflows": Welche Prozesse dürfen bei Budget-Engpass weiterlaufen (Lead-Scoring, Krisen-PR), welche werden pausiert (Content-Volumen-Produktion)?
 3. Überführe den Plan in den Canvas und dokumentiere die Eskalationskette: Admin → Team-Lead → CMO → CFO mit Reaktionszeit-SLA pro Stufe.
 4. Speichere das Dokument im zentralen Governance-Wissensordner als Pflichtdokument für den monatlichen Budget-Review.
-Prompt:
-> "Du bist KI-Infrastruktur-Managerin. Erstelle einen dreistufigen Token-Budget-Eskalationsplan für einen 20-köpfigen Marketing-Workspace. Kontext: Monatsbudget 800 Euro, häufige Überschreitungen in Kampagnen-Hochphasen. Format: Tabelle mit Stufe, Schwellenwert in %, auslösende Aktion, Verantwortliche und Reaktionszeit."
+Vorlage: Token-Budget-Eskalationsplan (3 Stufen):
+1. Schwellen — 60 % (Info-Mail an Admin), 80 % (Warnung an CMO + Modell-Downgrade auf Flash fuer Routine), 100 % (Stopp non-kritischer Workflows).
+2. Workflow-Prioritaetsliste — was laeuft bei Engpass weiter (Lead-Scoring, Krisen-PR), was pausiert (Content-Volumen).
+3. Eskalationskette — Admin → Team-Lead → CMO → CFO mit Reaktionszeit-SLA.
+4. Ablage im Governance-Wissensordner.
 Artefakt: Ein Canvas-Dokument mit Eskalationstabelle (drei Stufen), Priorisierungsliste der Workflows und einer Notfall-Fallback-Prozedur bei vollständigem Budget-Stop.
 Fallstricke:
 - Die 80-%-Warnung kommt zu spät, weil in der letzten Woche oft 30–40 % des Budgets verbraucht werden → Setze den zweiten Schwellenwert auf 70 % statt 80 % in Hochphasen (Q4, Launch-Wochen).
 - Workflow-Stopps lösen Daten-Inkonsistenzen aus, wenn ein Multi-Step-Prozess mitten unterbrochen wird → Für kritische Workflows "Graceful Shutdown"-Logik im Workflow-Builder konfigurieren, die laufende Schritte abschließt.
+Empfehlung: In Hochphasen (Q4, Launch-Wochen) die zweite Schwelle auf 70 % statt 80 % setzen — in der letzten Woche werden oft 30–40 % des Budgets verbraucht, sodass die 80-%-Warnung zu spaet kaeme. Fuer kritische Multi-Step-Workflows eine 'Graceful-Shutdown'-Logik konfigurieren, die laufende Schritte abschliesst, damit ein Stopp keine Daten-Inkonsistenzen erzeugt.
 Anschluss: S-LU-030
 
 ### S-LU-030 EU AI Act: Marketing-Use-Cases klassifizieren und Risiko-Inventar anlegen
@@ -684,12 +690,16 @@ Vorgehen:
 2. Aktiviere den Deep Research Modus und recherchiere die aktuellen EU-AI-Act-Kategorien (Stand 2026) für Marketing-spezifische Anwendungen; fokussiere auf Art. 5 (verbotene Praktiken) und Annex III (Hoch-Risiko-Systeme).
 3. Klassifiziere jeden Use-Case in der Tabelle: Risikostufe, ob Human-Oversight-Log erforderlich ist, ob eine DPIA nötig wird, und welche Dokumentationspflichten gelten.
 4. Erstelle einen 6-Monats-Aktionsplan für alle als "limited" oder höher eingestuften Use-Cases: Verantwortlicher, Maßnahme und Deadline.
-Prompt:
-> "Du bist EU-AI-Act-Compliance-Beraterin für ein B2B-Marketing-Team. Klassifiziere unsere 8 KI-Anwendungen nach EU-AI-Act-Risikokategorien. Kontext: Anwendungen umfassen Content-Erstellung, Lead-Scoring, Personalisierung und Wettbewerbs-Monitoring. Format: Tabelle mit Use-Case, Risikostufe, Human-Oversight-Pflicht (Ja/Nein) und nächster Maßnahme."
+Vorlage: EU-AI-Act-Use-Case-Inventar (Risiko-Klassifikation):
+1. Use-Case-Liste — Content-Erstellung, Lead-Scoring, Wettbewerbs-Analyse, Personalisierung, Sentiment-Analyse.
+2. Recherche (Deep Research) — aktuelle EU-AI-Act-Kategorien (Art. 5 verbotene Praktiken, Annex III Hoch-Risiko); Stand datums-sensitiv.
+3. Klassifikation je Use-Case — Risikostufe (unacceptable/high/limited/minimal), Human-Oversight-Log?, DPIA noetig?, Dokumentationspflichten.
+4. 6-Monats-Aktionsplan fuer 'limited'+ Faelle (Verantwortlicher/Massnahme/Deadline).
 Artefakt: Eine Klassifikationstabelle im Canvas mit allen Use-Cases, EU-AI-Act-Risikostufen und einem priorisierten Aktionsplan für compliance-relevante Anwendungen.
 Fallstricke:
 - Rechtliche Einschätzungen der KI werden ohne Anwaltsprüfung als verbindlich behandelt → Das Inventar ist eine Arbeitsgrundlage für das Gespräch mit dem Datenschutzbeauftragten; keine eigenständige Rechtsauskunft.
 - Der Aktionsplan wird erstellt, aber nie umgesetzt, weil kein Owner definiert ist → Jede Zeile bekommt eine namentliche Verantwortliche und ein verbindliches Reviewdatum im Canvas-Dokument.
+Empfehlung: Das Inventar als Arbeitsgrundlage fuer das Gespraech mit dem Datenschutzbeauftragten behandeln, nicht als verbindliche Rechtsauskunft — KI-Einschaetzungen ohne Anwaltspruefung sind keine Compliance-Freigabe. Jede Aktionsplan-Zeile mit namentlicher Verantwortlicher und verbindlichem Reviewdatum versehen, sonst wird der Plan erstellt, aber nie umgesetzt.
 Anschluss: S-LU-031
 
 ### S-LU-031 DSGVO-Konflikt bei KI-gestützter Sentiment-Analyse auf Kundendaten prüfen
@@ -702,12 +712,15 @@ Vorgehen:
 1. Definiere im Chat die zwei Analyse-Szenarien: (A) aggregierte Auswertung von 5 000 anonymisierten Feedbacks → Trend-Report ohne Personenbezug; (B) individuelle Sentiment-Bewertung pro Kontakt-ID → Profiling mit möglichem Personenbezug.
 2. Führe den PTCF-Prompt aus, um den datenschutzrechtlichen Unterschied zu erläutern: Szenario A ist bei korrekter Pseudonymisierung unbedenklich; Szenario B erfordert Rechtsgrundlage (Art. 6 (1) f DSGVO) plus Information an die betroffene Person.
 3. Erstelle das Entscheidungsblatt im Canvas mit einer "Ampel-Regel": Grün (aggregiert + pseudonymisiert), Gelb (individuell + Rechtsgrundlage vorhanden + DSB informiert), Rot (individuell + keine Rechtsgrundlage = STOP).
-Prompt:
-> "Du bist DSGVO-Beraterin für Marketing-Teams. Erkläre den datenschutzrechtlichen Unterschied zwischen aggregierter Sentiment-Analyse und individuellem Sentiment-Profiling. Kontext: Wir verarbeiten Kundenfeedback-Texte in Langdock, Daten sind pseudonymisiert (nur Kontakt-IDs). Format: Ampel-Entscheidungsblatt mit drei Szenarien (Grün/Gelb/Rot), Rechtsgrundlage und empfohlener Maßnahme."
+Vorlage: Sentiment-Analyse-DSGVO-Entscheidungsblatt (Ampel):
+1. Szenario A (gruen) — aggregierte, pseudonymisierte Auswertung → Trend-Report ohne Personenbezug, unbedenklich.
+2. Szenario B (gelb) — individuelles Sentiment pro Kontakt-ID → Profiling; Rechtsgrundlage (Art. 6 (1) f) + Info an Betroffene + DSB informiert.
+3. Szenario C (rot) — individuell ohne Rechtsgrundlage = STOP.
 Artefakt: Ein Canvas-Entscheidungsblatt mit Ampel-Regel (drei Szenarien), konkreter DSGVO-Rechtsgrundlage pro Szenario und einem empfohlenen Handlungspfad für das CRM-Team.
 Fallstricke:
 - "Pseudonymisiert" wird mit "anonym" verwechselt, obwohl re-Identifizierung via CRM-ID möglich ist → Im Dokument explizit festhalten: Pseudonyme Daten sind weiterhin personenbezogen nach DSGVO; nur echte Anonymisierung hebt den Schutzstatus auf.
 - Das Entscheidungsblatt wird ohne Abstimmung mit dem Datenschutzbeauftragten als Policy behandelt → Verbindliche interne Leitlinie erfordert DSB-Freigabe und sollte im Team-Wiki mit Status "DSB-geprüft am [Datum]" markiert werden.
+Empfehlung: Im Dokument klarstellen, dass pseudonyme Daten (re-identifizierbar via CRM-ID) weiterhin personenbezogen nach DSGVO sind — nur echte Anonymisierung hebt den Schutzstatus auf; 'pseudonymisiert' nie mit 'anonym' gleichsetzen. Das Entscheidungsblatt erst nach DSB-Freigabe als verbindliche Leitlinie behandeln und im Wiki mit 'DSB-geprueft am [Datum]' markieren.
 Anschluss: S-LU-032
 
 ### S-LU-032 Langdock-Nutzungsanalysen dem Betriebsrat gegenüber transparent machen
@@ -721,12 +734,15 @@ Vorgehen:
 2. Kategorisiere im Chat jeden Datenpunkt: Dient er der System-Optimierung (zulässig ohne Mitbestimmung) oder ermöglicht er Rückschlüsse auf individuelle Arbeitsleistung (mitbestimmungspflichtig nach BetrVG § 87 (1) Nr. 6)?
 3. Erstelle im Canvas einen RACI-Vorschlag: Workspace-Admin sieht aggregierte Team-Statistiken; individuelle User-Daten nur für den User selbst sichtbar; CMO erhält nur Team-Level-Reports.
 4. Formuliere einen Betriebsvereinbarungs-Entwurf (1 Seite): Zweck der Nutzungsanalyse, Datenzugriffs-RACI, Aufbewahrungsfrist und Mitbestimmungs-Vorbehalt bei Änderungen.
-Prompt:
-> "Du bist Arbeitsrechtsberaterin mit Fokus auf Digitalisierung. Erstelle ein Briefing für ein Betriebsratsgespräch über KI-Nutzungsanalysen. Kontext: Langdock erfasst anonymisierte Nutzungsdaten auf User-Ebene; Betriebsrat besorgt wegen Leistungsüberwachung (BetrVG § 87 (1) Nr. 6). Format: Zwei-seitiges Dokument mit Datenpunkt-Übersicht, RACI-Tabelle und Betriebsvereinbarungs-Entwurf."
+Vorlage: Betriebsrat-Briefing KI-Nutzungsanalysen (BetrVG §87 (1) Nr. 6):
+1. Datenpunkt-Uebersicht — User-ID, Zeitstempel, Agent-ID, Token/Session; je 'System-Optimierung (zulaessig)' oder 'Rueckschluss auf Arbeitsleistung (mitbestimmungspflichtig)'.
+2. RACI — Admin sieht nur aggregierte Team-Statistiken; individuelle Daten nur fuer den User selbst; CMO nur Team-Level-Reports.
+3. Betriebsvereinbarungs-Entwurf — Zweck, Datenzugriffs-RACI, Aufbewahrungsfrist, Mitbestimmungs-Vorbehalt.
 Artefakt: Ein zweiseitiges Canvas-Dokument mit Datenpunkt-Kategorisierung, RACI-Vorschlag und Betriebsvereinbarungs-Entwurf für das Gespräch mit dem Betriebsrat.
 Fallstricke:
 - Der Betriebsvereinbarungs-Entwurf wird ohne Rechtsanwalt als fertige Vereinbarung behandelt → Das Dokument ist ein Verhandlungs-Startpunkt; der finale Text muss durch einen Fachanwalt für Arbeitsrecht geprüft werden.
 - Nutzungsdaten werden für inoffizielle Leistungsbeurteilungen genutzt, obwohl dies nicht vereinbart ist → RACI-Restriktion technisch im Admin-Dashboard umsetzen, nicht nur dokumentarisch.
+Empfehlung: Den Betriebsvereinbarungs-Entwurf als Verhandlungs-Startpunkt behandeln und den finalen Text durch einen Fachanwalt fuer Arbeitsrecht pruefen lassen — kein fertiges Dokument. Die RACI-Restriktion technisch im Admin-Dashboard umsetzen, nicht nur dokumentarisch, damit Nutzungsdaten nicht doch fuer inoffizielle Leistungsbeurteilungen genutzt werden.
 Anschluss: S-LU-033
 
 ### S-LU-033 Agent-Qualitätsdrift monatlich mit Canary-Prompts erkennen
@@ -740,12 +756,16 @@ Vorgehen:
 2. Führe den Spot-Check einmal monatlich durch: Führe alle fünf Canary-Prompts aus und dokumentiere die Antworten in einer Tabelle (Datum, Prompt, Erwarteter Output, Tatsächlicher Output, Abweichung Ja/Nein).
 3. Definiere die Eskalationsschwelle: Zwei oder mehr Abweichungen von fünf → Agent-Owner wird benachrichtigt und hat 48 Stunden, um Wissensordner und System-Prompt zu prüfen.
 4. Archiviere alle Spot-Check-Protokolle im Governance-Wissensordner als Audit-Trail.
-Prompt:
-> "Du bist KI-Qualitätssicherungsmanagerin. Erstelle ein Canary-Prompt-Set für unseren Brand-Voice-Agenten. Kontext: Der Agent soll Texte im formellen, direkten B2B-Ton ausgeben; Benchmark ist unser Tone-of-Voice-Guide. Format: Tabelle mit 5 Canary-Fragen, erwartetem Output (Schlüsselwort oder Stil-Merkmal) und Bewertungskriterium (bestanden/nicht bestanden)."
+Vorlage: Agent-Qualitaetsdrift-Canary-Spot-Check (monatlich):
+1. Canary-Set — 5 Testfragen je kritischem Agenten mit stabiler Soll-Antwort; mind. 2 testen Stil/Tonalitaet (nicht nur Fakten).
+2. Monatslauf — alle 5 ausfuehren, Tabelle (Datum/Prompt/Soll/Ist/Abweichung).
+3. Eskalation — >=2 Abweichungen von 5 → Agent-Owner prueft Wissensordner + System-Prompt binnen 48 h.
+4. Audit-Trail — Protokolle im Governance-Wissensordner.
 Artefakt: Eine Canary-Prompt-Tabelle mit fünf Testfragen pro Agent, Bewertungskriterien und einem Eskalationsprotokoll-Template für den monatlichen Spot-Check-Prozess.
 Fallstricke:
 - Canary-Prompts testen nur Fakten, nicht Ton — und der Ton-Drift wird übersehen → Mindestens zwei der fünf Prompts müssen explizit Stil und Tonalität testen, nicht nur Fakten abrufen.
 - Der Spot-Check wird wegen Zeitdruck übersprungen → Canary-Check als monatliche Workflow-Automation konfigurieren, die die fünf Prompts automatisch ausführt und eine Ergebnis-Mail an den Agent-Owner sendet.
+Empfehlung: Mindestens zwei der fuenf Canary-Prompts explizit auf Stil und Tonalitaet auslegen, nicht nur auf Faktenabruf — sonst bleibt ein Ton-Drift unentdeckt. Den Canary-Check als monatliche Workflow-Automation konfigurieren, die die Prompts automatisch ausfuehrt und eine Ergebnis-Mail an den Agent-Owner sendet, damit er nicht unter Zeitdruck uebersprungen wird.
 Anschluss: S-LU-034
 
 ### S-LU-034 Pilot auf Company-wide Rollout skalieren: 30-Tage-Skalierungsplan
