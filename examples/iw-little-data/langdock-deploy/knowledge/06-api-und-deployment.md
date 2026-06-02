@@ -1005,8 +1005,7 @@ Vorgehen:
 2. Liste die versteckten BYOK-Kosten: (a) IT-Aufwand für 90-Tage-Key-Rotation und Monitoring, (b) monatliche Billing-Reconciliation zwischen Langdock-Usage-Export und Azure Cost Management, (c) Pflege der manuell hinterlegten Token-Preise im Langdock-Admin bei jedem Azure-Preisupdate.
 3. Bewerte das Risiko bei aktuellem Verbrauch (2.800 Euro): unterhalb der 5.000-Euro-Schwelle ist BYOK wirtschaftlich grenzwertig; der IT-Verwaltungsaufwand kann den Rabattvorteil aufzehren.
 4. Empfehle einen Monitoring-Trigger: BYOK-Entscheidung neu bewerten, sobald der monatliche Verbrauch drei Monate in Folge über 4.500 Euro liegt oder ein neuer Enterprise-Rahmenvertrag mit über 25 % Rabatt verhandelt wird.
-Prompt:
-> "Du bist ein FinOps-Berater. Wir verbrauchen 2.800 Euro/Monat über Langdock's Standard-Bundle und können mit Azure-BYOK 20 % Rabatt erhalten. Berechne den Break-even: Ab welchem monatlichen Verbrauch lohnt BYOK? Liste alle versteckten Kosten von BYOK (Key-Management, Billing-Reconciliation, Preispflege im Admin). Liefere eine tabellarische Break-even-Kalkulation und eine klare Empfehlung für unsere aktuelle Situation. Füge einen Monitoring-Trigger hinzu, wann wir die Entscheidung neu bewerten."
+Empfehlung: BYOK lohnt erst, wenn der Enterprise-Rabatt (z. B. 20 % auf Token) die versteckten Verwaltungskosten uebersteigt — Faustregel aus der Praxis: ab ca. 5.000 €/Monat Token-Verbrauch entsteht ein klarer Netto-Vorteil. Beim aktuellen Verbrauch von 2.800 €/Monat ist BYOK wirtschaftlich grenzwertig: der IT-Aufwand fuer 90-Tage-Key-Rotation, monatliche Billing-Reconciliation und die Preispflege im Langdock-Admin (bei jedem Azure-Preisupdate) kann den Rabattvorteil aufzehren. Daher jetzt beim Standard-Bundle bleiben und neu bewerten, sobald der Verbrauch drei Monate in Folge >4.500 €/Monat liegt oder ein Rahmenvertrag mit >25 % Rabatt verhandelt wird. BYOK nie pauschal 'wegen Kontrolle' empfehlen, ohne die versteckten Kosten in die Break-even-Rechnung aufzunehmen.
 Artefakt: Eine Break-even-Kalkulation (Tabelle) + Entscheidungsrahmen + Monitoring-Trigger.
 Fallstricke:
 - Die Kalkulation berücksichtigt nur den Token-Rabatt und ignoriert die versteckten Verwaltungskosten — das Ergebnis ist eine zu optimistische Break-even-Schwelle.
@@ -1024,12 +1023,16 @@ Vorgehen:
 2. Bewerte jedes Angriffsszenario mit einer Risikomatrix: Wahrscheinlichkeit (1–5) × Impact auf Marke / Kosten / Datenschutz (1–5) = Risiko-Score; priorisiere die Top-3-Risiken.
 3. Empfehle Gegenmaßnahmen je Angriffsvektor: Boundary-Anweisungen im System-Prompt, Input-Längen-Limit, Output-Moderationsebene (S-API-035), regelmäßige Red-Team-Tests mit typischen Jailbreak-Prompts.
 4. Definiere das Residualrisiko-Statement: kein Chatbot kann zu 100 % gegen Prompt-Injection abgesichert werden; das akzeptable Restrisiko-Level muss vom CISO schriftlich freigegeben werden.
-Prompt:
-> "Du bist ein KI-Sicherheitsanalyst. Wir wollen einen öffentlichen Produktberatungs-Chatbot launchen. Der CISO verlangt eine Prompt-Injection-Risikoanalyse. Dokumentiere: (1) die vier Haupt-Angriffsvektoren, (2) eine Risikomatrix (Wahrscheinlichkeit × Impact), (3) konkrete Gegenmaßnahmen je Angriffsvektor, (4) ein Residualrisiko-Statement für die CISO-Freigabe. Liefere das Dokument in formeller Berichtsstruktur."
+Vorlage: Prompt-Injection-Risikoanalyse (oeffentlicher Chatbot):
+1. Angriffsvektoren — (a) direkte Injection, (b) indirekte Injection ueber manipulierte Wissensdokumente, (c) Jailbreak, (d) Daten-Exfiltration.
+2. Risikomatrix — je Szenario Wahrscheinlichkeit (1–5) × Impact (Marke/Kosten/Datenschutz, 1–5); Top-3 priorisieren.
+3. Gegenmassnahmen — Boundary-Anweisungen im System-Prompt, Input-Laengen-Limit, Output-Moderation (S-API-035), regelmaessige Red-Team-Tests.
+4. Residualrisiko — kein Chatbot ist 100 % sicher; akzeptables Restrisiko-Level schriftlich vom CISO freigeben lassen.
 Artefakt: Ein Risikoanalyse-Dokument (Angriffsvektoren, Risikomatrix, Gegenmaßnahmen, Residualrisiko-Statement).
 Fallstricke:
 - Die Risikoanalyse behandelt Prompt-Injection als vollständig lösbar und gibt dem CISO eine falsche Sicherheitsgarantie — kein LLM-System ist immun gegen Prompt-Injection, das Residualrisiko muss explizit benannt werden.
 - Das Dokument analysiert nur direkte Injection-Vektoren und vergisst indirekte Injection über Wissensdokumente — ein manipuliertes PDF im Wissensordner kann das System unterwandern.
+Empfehlung: Das Residualrisiko explizit benennen — kein LLM-System ist gegen Prompt-Injection immun; dem CISO nie eine vollstaendige Sicherheitsgarantie geben, sondern eine schriftliche Restrisiko-Freigabe einholen. Indirekte Injection ueber Wissensdokumente mitanalysieren: ein manipuliertes PDF im Wissensordner kann das System ebenso unterwandern wie ein direkter Angriff.
 Anschluss: S-API-043
 
 ### S-API-043 FX-Kosten-Management bei globaler API-Nutzung
@@ -1043,12 +1046,16 @@ Vorgehen:
 2. Beschreibe den monatlichen Reconciliation-Prozess: Langdock Usage Export API liefert Token-Zählung; Azure Cost Management liefert USD-Kosten; monatliche Umrechnung zum Monatsendkurs mit expliziter FX-Rate-Dokumentation.
 3. Bewerte FX-Hedging-Optionen: (a) natürliches Hedging durch Erhöhung des EUR-fixen Langdock-Bundle-Anteils (weniger BYOK), (b) Konzern-Treasury-Hedging für den USD-Anteil bei Volumen über 50.000 USD/Jahr, (c) monatlicher Budget-Puffer von 8–10 % für Wechselkursschwankungen.
 4. Empfehle eine Budgetierungspraxis: KI-Budget-Planung immer in EUR mit USD-Anteil als separater Linie inkl. FX-Puffer; quartalsweise Anpassung basierend auf tatsächlichen Wechselkursen.
-Prompt:
-> "Du bist ein FinOps-Berater mit FX-Expertise. Langdock fakturiert in EUR, aber unsere BYOK-Azure-Modellkosten kommen in USD. Wechselkursschwankungen machen unsere KI-Budgetplanung unzuverlässig. Erkläre: (1) Unsere gemischte Kostenstruktur (EUR/USD), (2) monatlicher Reconciliation-Prozess mit expliziter FX-Rate-Dokumentation, (3) FX-Hedging-Optionen, (4) Budget-Puffer-Empfehlung für unser Controlling. Liefere ein FX-Risiko-Management-Konzept."
+Vorlage: FX-Risiko-Management-Konzept (EUR/USD-Mischabrechnung):
+1. Kostenstruktur — Langdock-Lizenz EUR-fix, BYOK-Azure-Modellkosten USD-variabel; Anteile kartieren.
+2. Reconciliation — Usage Export API (Token) + Azure Cost Management (USD); monatlich zum Monatsendkurs mit dokumentierter FX-Rate.
+3. Hedging — natuerliches Hedging (mehr EUR-Bundle), Treasury-Hedging erst ab >50.000 USD/Jahr, 8–10 % Budget-Puffer.
+4. Budgetierung — Planung in EUR mit separater USD-Linie + FX-Puffer; quartalsweise Anpassung.
 Artefakt: Ein FX-Risiko-Management-Konzept (Kostenstruktur, Reconciliation-Prozess, Hedging-Optionen, Budget-Puffer-Empfehlung).
 Fallstricke:
 - Das Konzept empfiehlt Konzern-Treasury-Hedging auch bei kleinem Volumen (unter 10.000 USD/Jahr) — die Transaktionskosten von Hedging-Instrumenten übersteigen bei kleinen Beträgen den FX-Risikobetrag.
 - Die monatliche Reconciliation verwendet den Tageskurs des Abrufzeitpunkts statt den vertraglich vereinbarten oder Monatsendkurs — das erzeugt Inkonsistenzen im Controlling-Report.
+Empfehlung: Bei kleinem USD-Volumen (unter ~10.000 USD/Jahr) kein Treasury-Hedging — die Transaktionskosten der Instrumente uebersteigen den FX-Risikobetrag; stattdessen mit einem 8–10-%-Budget-Puffer arbeiten. In der Reconciliation konsequent den Monatsend- oder vertraglich vereinbarten Kurs verwenden, nie den Tageskurs des Abrufzeitpunkts, sonst entstehen Inkonsistenzen im Controlling.
 Anschluss: S-API-044
 
 ### S-API-044 Embedding-API für semantische Kampagnen-Ähnlichkeitssuche
@@ -1062,12 +1069,16 @@ Vorgehen:
 2. Beschreibe den Aufbau-Prozess: alle 800 historischen Kampagnenkonzepte werden einmalig durch die Embedding-API geleitet und die resultierenden Vektoren in einer Vektordatenbank (z. B. Pinecone, pgvector in PostgreSQL oder Qdrant) gespeichert.
 3. Skizziere den Abfrage-Prozess: neue Kampagnenidee → Embedding-API → Abfragevektor → Vektordatenbank-Nearest-Neighbor-Suche → Top-5 ähnlichste historische Kampagnen mit Ähnlichkeits-Score.
 4. Weise auf Pflege-Aufwand hin: jede neue Kampagne muss nach Abschluss in die Vektordatenbank eingespeist werden; bei Kampagnen-Updates muss der Eintrag neu vektorisiert werden (Embeddings sind nicht inkrementell aktualisierbar).
-Prompt:
-> "Du bist ein Vector-Search-Architekt. Wir wollen eine interne Ähnlichkeitssuche für unsere 800 historischen Kampagnenkonzepte bauen. Erkläre: (1) Wie funktioniert die Langdock Embedding-API (Input/Output)? (2) Wie bauen wir die initiale Vektordatenbank auf? (3) Wie läuft eine neue Ähnlichkeitsabfrage ab (Cosine-Similarity, Top-K-Ergebnisse)? (4) Welche Pflege-Aufgaben entstehen laufend? Empfehle eine geeignete Vektordatenbank. Liefere ein strukturiertes Integrationskonzept."
+Vorlage: Kampagnen-Aehnlichkeitssuche-Integrationskonzept (Embedding API):
+1. Konzept — Embedding API wandelt Kampagnentext in einen Vektor; aehnliche Texte = hohe Cosine-Similarity.
+2. Aufbau — 800 historische Konzepte einmalig embedden, Vektoren in einer Vektordatenbank (Pinecone/pgvector/Qdrant) speichern.
+3. Abfrage — neue Idee → Embedding → Nearest-Neighbor-Suche → Top-5 aehnlichste mit Score.
+4. Pflege — jede neue Kampagne nach Abschluss einspeisen; bei Updates neu vektorisieren (nicht inkrementell).
 Artefakt: Ein Integrationskonzept (Embedding-Prozess, Vektordatenbank-Aufbau, Abfragearchitektur, Pflege-Aufwand).
 Fallstricke:
 - Das Konzept verwendet die Embedding-API zur Textgenerierung — Embeddings generieren keinen Text, sie kodieren Bedeutung als Zahlenvektor; der Unterschied zum Completion-Endpoint ist fundamental.
 - Die Vektordatenbank wird nicht als persistente Infrastruktur geplant, sondern bei jedem Abfragevorgang neu aufgebaut — bei 800 Kampagnen dauert das re-Embedding jedes Mal mehrere Minuten und ist prohibitiv teuer.
+Empfehlung: Embeddings kodieren Bedeutung als Zahlenvektor, sie generieren keinen Text — den Embedding-Endpoint klar vom Completion-Endpoint unterscheiden. Die Vektordatenbank als persistente Infrastruktur planen, nicht bei jeder Abfrage neu aufbauen, sonst ist das wiederholte Re-Embedding von 800 Konzepten prohibitiv langsam und teuer.
 Anschluss: S-API-045
 
 ### S-API-045 KI-Carbon-Footprint-Schätzung für den Nachhaltigkeitsbericht
@@ -1081,12 +1092,16 @@ Vorgehen:
 2. Wende CO₂-Konversionsfaktoren an: öffentlich zugängliche Schätzungen wie das ML.energy-Projekt und Hugging Face's LLM-Energie-Forschung liefern Wh-pro-Token-Schätzwerte für gängige Modellarchitekturen; EU-Strommix-Emissionsfaktor (ca. 230 gCO₂/kWh für EU-27 Durchschnitt, Quelle: European Environment Agency) für die Umrechnung in CO₂.
 3. Dokumentiere Annahmen und Unsicherheit: Token-zu-Wh-Faktoren variieren je nach Modellgröße, Datacenter-Effizienz und Auslastung um den Faktor 3–10; die Schätzung sollte als "Bereich" (Min–Max) statt als Punktwert ausgewiesen werden.
 4. Definiere den jährlichen Aktualisierungsprozess: CO₂-Faktoren und EU-Strommix-Werte jährlich aus den Quellen aktualisieren; Vergleich mit dem Vorjahr nur bei identischer Methodik aussagekräftig.
-Prompt:
-> "Du bist ein Nachhaltigkeits-Analyst. Unsere Nachhaltigkeitsbeauftragte braucht eine CO₂-Schätzung für unsere Langdock-KI-Nutzung für den Jahresbericht. Erkläre die Schätzungsmethodik: (1) Token-Verbrauch aus der Usage Export API, (2) Konversionsfaktoren aus ML.energy und Hugging Face, (3) EU-Strommix-Emissionsfaktor, (4) Darstellung als Bereich statt Punktwert. Liefere ein ausgefülltes Schätzungs-Template mit dokumentierten Annahmen und Unsicherheitsbereich."
+Vorlage: KI-CO2-Schaetzungsmethodik (Nachhaltigkeitsbericht):
+1. Token-Basis — Jahressumme aus Usage Export API pro Modell.
+2. Konversion — Wh-pro-Token aus oeffentlichen Quellen (ML.energy, Hugging Face); EU-Strommix ~230 gCO2/kWh (European Environment Agency).
+3. Unsicherheit — Token-zu-Wh variiert Faktor 3–10 je Modellgroesse/Datacenter; Ergebnis als Bereich (Min–Max), nicht als Punktwert.
+4. Aktualisierung — Faktoren und Strommix jaehrlich aus den Quellen nachziehen; Vorjahresvergleich nur bei identischer Methodik.
 Artefakt: Eine CO₂-Schätzungsmethodik und ein ausgefülltes Schätzungs-Template (Token-Basis, Konversionsfaktoren, Ergebnisbereich, Annahmen-Dokumentation).
 Fallstricke:
 - Das Modell liefert einen einzelnen CO₂-Punktwert ohne Unsicherheitsbereich — dies vermittelt eine Scheingenauigkeit, die methodisch nicht vertretbar ist und im Nachhaltigkeitsbericht angreifbar wäre.
 - Die Quelle der CO₂-Faktoren wird nicht dokumentiert — ohne Quellenangabe ist die Schätzung im nächsten Jahr nicht reproduzierbar und der Vergleich mit dem Vorjahr nicht möglich.
+Empfehlung: Das Ergebnis als Bereich (Min–Max) statt als Punktwert ausweisen — ein einzelner CO2-Wert taeuscht eine Scheingenauigkeit vor, die im Nachhaltigkeitsbericht angreifbar ist. Alle Konversionsquellen (ML.energy, Hugging Face, EEA-Strommix) explizit dokumentieren, sonst ist die Schaetzung im Folgejahr nicht reproduzierbar und kein Vorjahresvergleich moeglich.
 Anschluss: S-API-046
 
 ### S-API-046 API-Gateway-Muster für Multi-Tenant Marketing-SaaS
@@ -1101,12 +1116,17 @@ Vorgehen:
 3. Setze Token-Budget-Enforcement im Gateway um: der Gateway trackt Token-Verbrauch pro Tenant in einer eigenen Datenbank (z. B. Redis); überschreitet ein Tenant sein Monatsbudget, blockiert der Gateway weitere Requests mit HTTP 429 — bevor sie Langdock erreichen.
 4. Trenne Audit-Logs: jeder Gateway-Request wird mit Tenant-ID, Timestamp und Token-Zahl in ein zentrales Log-System (z. B. Elasticsearch) geschrieben; Mandanten-Administratoren erhalten nur Zugriff auf ihre eigenen Log-Einträge via rollenbasierter Log-Filterung.
 5. Teste die Isolation: Penetrationstest-Szenario — versuche von Tenant A aus, auf Wissensordner von Tenant B zuzugreifen; Erwartung: HTTP 403; dokumentiere das Ergebnis als Isolationsnachweis für den SaaS-Sicherheits-Fragebogen.
-Prompt:
-> "Du bist ein Cloud-Architekt. Wir betreiben ein Marketing-SaaS mit 50 Mandanten, alle auf demselben Langdock-Workspace. Erkläre das API-Gateway-Muster: (1) Gateway-Layer-Design mit Tenant-Routing, (2) Token-Budget-Enforcement pro Tenant, (3) Wissensordner-Isolation, (4) getrennte Audit-Logs. Liefere ein Architekturkonzept mit Komponentendiagramm-Beschreibung und Isolationsnachweis-Prozedur."
+Vorlage: Multi-Tenant-API-Gateway-Konzept (1 Workspace, mehrere Mandanten):
+1. Gateway — eigener Reverse-Proxy (API Gateway/Kong/Traefik) vor der Langdock-API; authentifiziert Tenant-JWTs, leitet mit gemeinsamem Key weiter.
+2. Routing + Isolation — X-Tenant-ID-Header; pro Tenant ein Wissensordner mit restriktivem Zugriff (Agent liest nur seinen Ordner).
+3. Budget-Enforcement — Token-Verbrauch pro Tenant im Gateway (Redis) tracken; bei Ueberschreitung HTTP 429, bevor der Request Langdock erreicht.
+4. Audit — pro Request Tenant-ID/Timestamp/Token ins zentrale Log; Mandanten sehen nur eigene Eintraege (rollenbasiert).
+5. Isolationsnachweis — Pentest: Tenant A → Tenant-B-Ordner erwartet HTTP 403; Ergebnis fuer den Sicherheits-Fragebogen dokumentieren.
 Artefakt: Ein Architekturkonzept (Gateway-Layer, Tenant-Routing, Budget-Enforcement, Log-Trennung, Isolationsnachweis).
 Fallstricke:
 - Der API-Key wird im Gateway-Code als Plaintext hinterlegt statt als verschlüsseltes Secret in einem Secret-Manager — bei einem Code-Leak sind alle Mandanten exponiert.
 - Token-Budget-Enforcement wird in Langdock selbst statt im Gateway erwartet — Langdock bietet kein natives Mandanten-Budget-Splitting; die Enforcement-Logik muss zwingend im eigenen Gateway liegen.
+Empfehlung: Den gemeinsamen API-Key als verschluesseltes Secret im Secret-Manager halten, nie als Plaintext im Gateway-Code — ein Code-Leak exponiert sonst alle Mandanten. Das Token-Budget-Enforcement zwingend im eigenen Gateway umsetzen: Langdock bietet kein natives Mandanten-Budget-Splitting.
 Anschluss: S-API-047
 
 ### S-API-047 GraphQL vs. REST — Abwägung für Langdock-Integrationen
@@ -1120,8 +1140,7 @@ Vorgehen:
 2. Bewerte REST-Vorteile für Langdock-Integrationen: Langdock bietet nativ eine REST-API mit OpenAI-Kompatibilität; REST-Bibliotheken (Python OpenAI SDK, Axios) sind in jedem Tech-Stack vorhanden; Debugging über Browser-DevTools und Postman ist einfach.
 3. Erkläre, wann GraphQL einen Mehrwert hätte: wenn eine eigene Abstraktionsschicht über der Langdock-API gebaut wird, die mehreren internen Consumers (Dashboard, Mobile App, Chatbot) unterschiedliche Antwortformate liefern soll — dann reduziert GraphQL Over-Fetching.
 4. Gib eine klare Empfehlung: Für direkte Langdock-Integrationen ist REST die richtige Wahl — Langdock exponiert keine GraphQL-API; GraphQL ist erst relevant, wenn ein eigener API-Layer über Langdock gebaut wird und mehr als drei verschiedene Consumer-Typen bedient werden müssen.
-Prompt:
-> "Du bist ein API-Architekt. Wir integrieren Langdock in unsere Marketing-Daten-Plattform. Unser Team diskutiert REST vs. GraphQL. Erkläre: (1) den grundlegenden Unterschied, (2) warum REST für direkte Langdock-Integrationen vorzuziehen ist, (3) in welchem Szenario GraphQL einen eigenen Abstraktions-Layer rechtfertigt. Liefere eine Entscheidungsmatrix mit Empfehlung für unsere Marketing-Use-Cases."
+Empfehlung: Fuer direkte Langdock-Integrationen REST waehlen — Langdock exponiert nativ eine REST-API mit OpenAI-Kompatibilitaet, REST-SDKs (Python OpenAI SDK, Axios) sind ueberall vorhanden und das Debugging (Postman, DevTools) ist einfach. GraphQL rechtfertigt sich erst, wenn ein eigener Abstraktions-Layer ueber Langdock gebaut wird, der mehr als drei verschiedene Consumer-Typen (Dashboard, Mobile, Chatbot) mit unterschiedlichen Antwortformaten bedient und Over-Fetching real reduziert. GraphQL nie pauschal als 'moderner/besser' empfehlen — Langdock hat keine native GraphQL-API, sie muesste als eigener Layer entwickelt und gewartet werden, und bei typischen Marketing-Calls existiert das Over-Fetching-Problem schlicht nicht.
 Artefakt: Eine Entscheidungsmatrix (REST vs. GraphQL) mit konkreter Empfehlung für Marketing-Automatisierungs-Szenarien.
 Fallstricke:
 - Das Modell empfiehlt GraphQL als generell moderner und besser — ohne zu berücksichtigen, dass Langdock keine native GraphQL-API hat; GraphQL muss als eigener Layer entwickelt und gewartet werden.
@@ -1139,12 +1158,16 @@ Vorgehen:
 2. Lass die KI eine OpenAPI 3.0-Spezifikation in YAML ableiten: für jeden Endpoint definiert die Spec `paths`, `operationId`, `parameters`, `requestBody`, `responses` inklusive HTTP-Status-Codes (200, 400, 401, 429, 500) und Fehler-Schemas.
 3. Generiere das menschenlesbare Markdown-Dokument: für jeden Endpoint ein Abschnitt mit Beschreibung, cURL-Beispiel-Request, Beispiel-Response und typischen Fehler-Szenarien.
 4. Integriere Dokumentations-Maintenance in den Entwicklungsprozess: neue Endpoints werden vor dem Merge via Pull-Request-Template mit einer Mindest-Dokumentation (1 Beispiel-Request + 1 Fehler-Code) verknüpft.
-Prompt:
-> "Du bist ein technischer Dokumentationsexperte. Ich gebe dir Code-Snippets unserer internen Langdock-Integrationsschicht. Erstelle: (1) eine OpenAPI 3.0-Spezifikation in YAML mit Paths, Parameters, Request/Response-Schemas und HTTP-Status-Codes, (2) ein Markdown-Referenzdokument mit cURL-Beispielen pro Endpoint. Liefere beide Artefakte vollständig — auch wenn du Annahmen treffen musst, kennzeichne diese."
+Vorlage: API-Dokumentations-Generierung (OpenAPI + Markdown):
+1. Eingabe — Code-Snippets der Endpoints, Postman-Collections, Beispiel-Requests/-Responses, bekannte Fehler-Codes.
+2. OpenAPI 3.0 (YAML) — je Endpoint paths/operationId/parameters/requestBody/responses inkl. Status-Codes (200/400/401/429/500) + Fehler-Schemas.
+3. Markdown-Referenz — je Endpoint Beschreibung, cURL-Beispiel, Beispiel-Response, typische Fehler-Szenarien.
+4. Maintenance — neue Endpoints per PR-Template mit Mindest-Doku (1 Beispiel-Request + 1 Fehler-Code) koppeln.
 Artefakt: Eine OpenAPI 3.0-Spezifikation (YAML) und ein Markdown-Referenz-Dokument mit Beispiel-Requests und Fehler-Codes.
 Fallstricke:
 - Die generierte OpenAPI-Spec wird nicht gegen einen Validator (z. B. Swagger Editor) geprüft — ungültige YAML-Syntax oder fehlende Pflichtfelder (`info`, `openapi`-Version) machen die Spec für Code-Generatoren unbrauchbar.
 - Das Modell dokumentiert Happy-Path-Responses, vergisst aber Fehler-Schemas für 4xx-Codes — ein Entwickler, der auf Rate-Limit-Fehler (429) trifft, findet keinen Hinweis auf den Retry-After-Header.
+Empfehlung: Die generierte OpenAPI-Spec zwingend gegen einen Validator (z. B. Swagger Editor) pruefen — ungueltige YAML-Syntax oder fehlende Pflichtfelder (info, openapi-Version) machen die Spec fuer Code-Generatoren unbrauchbar. Fehler-Schemas fuer alle 4xx-Codes dokumentieren (insb. 429 mit Retry-After-Header), nicht nur Happy-Path-Responses.
 Anschluss: S-API-049
 
 ### S-API-049 API Consumer Onboarding Guide erstellen
