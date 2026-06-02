@@ -580,12 +580,16 @@ Vorgehen:
 2. Du lässt je Meilenstein einen Owner benennen: IT verantwortet SSO/SCIM und CRM-Scopes; Marketing-Ops verantwortet Synced-Folder-Taxonomie und Slack-Kanal.
 3. Du lässt die Advisory-Grenze explizit einbauen: Little Data liefert Briefings und Konzepte je Meilenstein; die Konfiguration übernehmen IT und Operations.
 4. Du übergibst den Rollout-Plan als Kick-off-Dokument an IT, Marketing-Ops und Workspace-Admin.
-Prompt:
-> "Du bist mein Integrationsplanungs-Berater für einen neuen Langdock-Workspace (Persona). Erstelle einen 30-Tage-Rollout-Plan für die wichtigsten Marketing-Integrationen (Aufgabe). Kontext: Team mit 20 Personen, Stack: Google Workspace, HubSpot, Slack, keine Salesforce-Anbindung geplant; DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Woche, Integration, Owner, erwartetes Ergebnis, Abhängigkeit; plus zwei Sätze zur Advisory-Grenze (Format)."
+Vorlage: 30-Tage-Integrations-Rollout-Plan:
+1. Woche 1 — SSO+SCIM (Governance-Fundament).
+2. Woche 2 — Google Drive Synced Folder (Wissensquelle).
+3. Woche 3 — HubSpot Read (Reporting).
+4. Woche 4 — Slack-Action (Freigabe). Je Meilenstein Owner (IT: SSO/SCIM/CRM-Scopes; Marketing-Ops: Taxonomie/Slack) + Advisory-Grenze (Little Data beraet, IT/Ops konfiguriert).
 Artefakt: Ein 30-Tage-Rollout-Plan (Tabelle) mit Meilensteinen, Ownern und Advisory-Grenze-Hinweis.
 Fallstricke:
 - Alle Integrationen gleichzeitig starten wollen → Sequenziell vorgehen und mit dem Governance-Fundament (SSO/SCIM) beginnen; parallele Setups erhöhen Fehlerrisiko und erschweren die Fehlersuche.
 - Keinen Owner je Meilenstein benennen → Ohne klare Verantwortlichkeit bleiben Integrationen halb fertig; je Meilenstein eine Person benennen, die den Abschluss bestätigt.
+Empfehlung: Sequenziell vorgehen und mit dem Governance-Fundament (SSO/SCIM) beginnen — parallele Setups erhoehen das Fehlerrisiko und erschweren die Fehlersuche. Je Meilenstein einen Owner benennen, der den Abschluss bestaetigt, sonst bleiben Integrationen halb fertig.
 Anschluss: S-IM-026
 
 ### S-IM-026 Notion als Content-Planungsdatenbank via nativer Integration anbinden
@@ -599,12 +603,16 @@ Vorgehen:
 2. Du lässt klären, dass der Agent ausschließlich Lese-Zugriff erhält — Notion-Einträge werden nie vom Agenten verändert; Statusänderungen bleiben bei den Redakteurinnen.
 3. Du lässt einen Query-Rahmen formulieren, der den Agenten anweist, beim Abfragen immer das heutige Datum als Filter zu nutzen, um nur aktuelle und anstehende Einträge zu laden.
 4. Du übergibst das Konzept und die benötigten Notion-API-Scopes (Datenbank lesen) an die IT zur Einrichtung der nativen Integration.
-Prompt:
-> "Du bist mein Content-Planungs-Berater (Persona). Entwirf ein Notion-Integrations-Konzept für unseren Content-Agenten, der den Redaktionsplan liest (Aufgabe). Kontext: zwei Notion-Datenbanken — Redaktionsplan mit Feldern Thema/Deadline/Status und Kampagnen-Board mit Feldern Name/Zielgruppe; Agent darf nie schreiben (Kontext). Format: Konzept mit Abschnitten Datenbank-Auswahl, benötigter API-Scope, Query-Rahmen mit Datum-Filter (Format)."
+Vorlage: Notion-Content-Integrations-Konzept (Read-Only):
+1. Datenbank-Auswahl — Redaktionsplan (Thema/Deadline/Status), Kampagnen-Board (Name/Zielgruppe).
+2. Lese-Scope — Agent liest nur; Statusaenderungen bleiben bei den Redakteurinnen.
+3. Query-Rahmen — heutiges Datum als Filter, nur aktuelle/anstehende Eintraege laden.
+4. Owner — dedizierter Notion-Integrations-Account.
 Artefakt: Ein Notion-Integrations-Konzept mit Datenbank-Auswahl, Lese-Scope und Query-Rahmen.
 Fallstricke:
 - Agent lädt alle Notion-Seiten ohne Filter → Einen strikten Datum- und Status-Filter vorgeben; ohne Filter lädt der Agent veraltete oder irrelevante Seiten und belegt unnötig Kontext-Fenster.
 - Notion-Integration an einen persönlichen User-Account binden → Einen dedizierten Notion-Integrations-Account empfehlen, damit die Verbindung bei Personalwechsel nicht abreißt.
+Empfehlung: Einen strikten Datum- und Status-Filter im Query-Rahmen vorgeben — ohne Filter laedt der Agent veraltete oder irrelevante Seiten und belegt unnoetig das Kontext-Fenster. Die Notion-Integration an einen dedizierten Integrations-Account binden, nicht an einen persoenlichen User, damit die Verbindung bei Personalwechsel nicht abreisst.
 Anschluss: S-IM-027
 
 ### S-IM-027 Airtable als Content-Datenbank via MCP-Server erschließen
@@ -618,12 +626,14 @@ Vorgehen:
 2. Du lässt die für den Content-Agenten relevanten Airtable-Bases und Felder bestimmen und den Lese-Scope auf genau diese Tables begrenzen.
 3. Du lässt im Briefing festschreiben, dass alle schreibenden Airtable-Tools (Record erstellen, Record löschen) in der Langdock-MCP-Konfiguration mit Pflicht-Nutzerbestätigung versehen werden.
 4. Du übergibst das Briefing an die IT; Little Data berät, konfiguriert den MCP-Server nicht selbst.
-Prompt:
-> "Du bist mein MCP-Integrations-Berater (Persona). Erstelle ein Anbindungs-Briefing für einen Airtable-MCP-Server, der unsere Content-Asset-Datenbank lesbar macht (Aufgabe). Kontext: Airtable-Base mit Tables Asset-Liste und Kampagnen-Varianten; Agent darf nur lesen; schreibende Endpunkte müssen Nutzerbestätigung erfordern (Kontext). Format: Briefing mit Abschnitten MCP-Server-Quelle, Lese-Scope, Tabelle freigegebener vs. gesperrter Tools, Transport-Angabe (Format)."
+MCP: Airtable-MCP-Server (offiziell; kein nativer Konnektor); Transport laut MCP-Server-Doku; Auth ueber dynamische Platzhalter in Custom Headern (Key nur im Admin-Secrets-Bereich).
+Tool: Nur die fuer den Content-Agenten relevanten Lese-Tools (Base/Record lesen) auf die benoetigten Tables kuratieren.
+Scope: Schreibende Airtable-Tools (Record erstellen/loeschen) mit Pflicht-Nutzerbestaetigung; Server-Einrichtung bleibt IT-Aufgabe.
 Artefakt: Ein MCP-Anbindungs-Briefing mit Tool-Freigabe-Tabelle und Bestätigungs-Policy.
 Fallstricke:
 - Alle auto-entdeckten Airtable-Tools freigeben → Airtable-MCP liefert auch Schreib- und Lösch-Endpunkte; nur explizit benötigte Lese-Tools kuratiert freigeben.
 - Airtable-API-Key direkt in der MCP-Konfiguration im Klartext hinterlegen → Dynamische Platzhalter in Custom Headern verwenden; der API-Key gehört ausschließlich in den Langdock-Admin-Secrets-Bereich.
+Empfehlung: Nur die explizit benoetigten Lese-Tools kuratiert freigeben — Airtable-MCP liefert auch Schreib- und Loesch-Endpunkte, die ungeprueft das groesste Risiko sind. Den Airtable-API-Key nie im Klartext in der MCP-Konfiguration hinterlegen, sondern dynamische Platzhalter in Custom Headern nutzen (Key nur im Langdock-Admin-Secrets-Bereich).
 Anschluss: S-IM-028
 
 ### S-IM-028 Google Analytics 4 als MCP-Read-Only-Datenquelle für Kampagnen-Dashboards einrichten
@@ -636,12 +646,15 @@ Vorgehen:
 1. Du lässt Little Data erklären, dass GA4 in Langdock ausschließlich lesend integriert ist — es gibt strukturell keinen Schreib-Scope; dieser Punkt ist im IT-Briefing explizit zu dokumentieren, um Missverständnisse bei zukünftigen Audits zu vermeiden.
 2. Du lässt die benötigten GA4-Lese-Scopes (analytics.readonly auf eine bestimmte Property) und die sinnvollen Abfrage-Parameter (Metriken, Dimensionen, Zeitraum) für typische Reporting-Fragen bestimmen.
 3. Du lässt ein Prompt-Template ausarbeiten, das bei jeder GA4-Abfrage Property-ID, Metrik-Name und Zeitraum mitführt und fehlende Werte als "keine Daten verfügbar" — niemals als Schätzwert — ausweist.
-Prompt:
-> "Du bist mein Analytics-Governance-Berater (Persona). Erstelle ein GA4-Read-Only-Konzept für unseren Reporting-Agenten sowie ein Prompt-Template für Kampagnen-Abfragen (Aufgabe). Kontext: GA4-Property unserer Unternehmenswebsite, wöchentliche Reporting-Fragen zu Traffic, Conversions und Cost-per-Lead (Kontext). Format: Konzept mit Abschnitten GA4-Scope, strukturelle Schreibbeschränkung, Prompt-Template als Code-Block mit Pflichtfeldern Property/Metrik/Zeitraum (Format)."
+Vorlage: GA4-Read-Only-Konzept (+ Prompt-Template):
+1. Scope — analytics.readonly auf eine bestimmte Property; sinnvolle Metriken/Dimensionen/Zeitraum.
+2. Strukturelle Schreibbeschraenkung — GA4 ist in Langdock ausschliesslich lesend; im Briefing fuer Audits dokumentieren.
+3. Prompt-Template — jede Abfrage mit Property-ID, Metrik-Name, Zeitraum; fehlende Werte als 'keine Daten verfuegbar'.
 Artefakt: Ein GA4-Read-Only-Konzept und ein einsatzbereites Prompt-Template für Kampagnen-Reporting.
 Fallstricke:
 - Agent gibt gerundete Schätzwerte aus, wenn GA4 keine Daten zurückliefert → Im Prompt explizit anweisen: "Fehlende oder leere GA4-Werte immer als 'keine Daten verfügbar' ausweisen; niemals interpolieren oder schätzen."
 - GA4-Property-ID nicht im Prompt verankern → Ohne explizite Property-ID kann der Agent auf die falsche Property zugreifen, wenn mehrere Properties im Workspace verbunden sind.
+Empfehlung: Im Prompt explizit anweisen, fehlende oder leere GA4-Werte als 'keine Daten verfuegbar' auszuweisen und nie zu interpolieren oder schaetzen — sonst gibt der Agent gerundete Phantomwerte aus. Die GA4-Property-ID fest im Prompt verankern, damit der Agent bei mehreren verbundenen Properties nicht auf die falsche zugreift.
 Anschluss: S-IM-029
 
 ### S-IM-029 LinkedIn Ads API via MCP-Server für Performance-Reporting anbinden
@@ -655,12 +668,14 @@ Vorgehen:
 2. Du lässt die benötigten OAuth-Scopes bestimmen: r_ads (Kampagnendaten lesen) und r_ads_reporting (Performance-Metriken lesen); rw_ads (schreiben) ist explizit auszuschließen.
 3. Du lässt einen LinkedIn-AGB-Hinweis einarbeiten: Rohe Insights-Daten dürfen nicht an Drittplattformen weitergegeben werden; die Nutzung ist auf interne Reporting-Zwecke zu beschränken.
 4. Du übergibst das Briefing an die IT und den Datenschutzbeauftragten; die OAuth-App-Registrierung in LinkedIn liegt bei der IT.
-Prompt:
-> "Du bist mein Performance-Integrations-Berater (Persona). Erstelle ein Briefing für die Anbindung von LinkedIn Ads via MCP-Server an unseren Reporting-Agenten (Aufgabe). Kontext: Ziel ist Lesen von Kampagnenkosten, Impressions, CTR; Schreiben auf LinkedIn ist verboten; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten benötigte OAuth-Scopes, Tool-Freigabe-Tabelle mit Bestätigungs-Spalte, LinkedIn-AGB-Hinweis (Format)."
+MCP: LinkedIn-Ads-MCP-Server (kein nativer Konnektor fuer Publishing/Konfiguration); OAuth-App-Registrierung in LinkedIn liegt bei der IT.
+Tool: Lese-Tools fuer Kampagnendaten und Performance-Metriken (Impressions/CTR/Kosten); schreibende Endpunkte mit Pflichtbestaetigung.
+Scope: r_ads + r_ads_reporting; rw_ads (schreiben) explizit ausschliessen; Nutzung auf interne Reporting-Zwecke beschraenken (LinkedIn-AGB).
 Artefakt: Ein LinkedIn-Ads-MCP-Briefing mit Scope-Definition, Tool-Freigabe-Tabelle und AGB-Hinweis.
 Fallstricke:
 - rw_ads-Scope versehentlich mitbeantragen → Dieser Scope erlaubt das Ändern von Kampagnenbudgets und Targeting; im Briefing als "explizit verboten" markieren und im OAuth-App-Setup ausschließen.
 - LinkedIn-Insights-Daten in externe Reports exportieren → LinkedIn AGB verbieten die Weitergabe von API-Daten an Dritte; die Nutzung im Briefing auf interne Reporting-Dashboards beschränken.
+Empfehlung: Den rw_ads-Scope explizit ausschliessen — er erlaubt das Aendern von Kampagnenbudgets und Targeting; im OAuth-App-Setup nur r_ads und r_ads_reporting vergeben. LinkedIn-Insights-Daten gemaess LinkedIn-AGB nicht an Dritte weitergeben, sondern auf interne Reporting-Dashboards beschraenken.
 Anschluss: S-IM-030
 
 ### S-IM-030 Marketo-Integration advisory einordnen und Anbindungsweg planen
@@ -674,12 +689,16 @@ Vorgehen:
 2. Du lässt den empfohlenen Weg für Lese-Reporting bewerten: MCP-Server für strukturierte API-Abfragen bevorzugen; HTTP-Brücke als Fallback, aber mit höherem Wartungsaufwand.
 3. Du lässt klar benennen, was Langdock bei Marketo strukturell nicht kann: E-Mail-Sends auslösen, Kampagnen-Flows konfigurieren oder Lead-Scoring-Regeln ändern — diese Aktionen verbleiben in Marketo.
 4. Du übergibst die Einschätzung an IT und Marketing-Ops als Entscheidungsgrundlage; die Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein Marketing-Automation-Integrations-Berater (Persona). Erstelle eine Integrations-Einschätzung für die Anbindung von Marketo an unseren Langdock-Workspace (Aufgabe). Kontext: Ziel ist Lesen von Kampagnen-Performance und Lead-Zahlen; kein E-Mail-Versand über Langdock; DSGVO-konformes EU-Hosting (Kontext). Format: Einschätzung mit Abschnitten Anbindungsweg (MCP vs. HTTP-Brücke), Lese-Scope, was Langdock strukturell nicht übernimmt, Risiko je Pfad (Format)."
+Vorlage: Marketo-Integrations-Einschaetzung (advisory):
+1. Anbindungsweg — kein nativer Konnektor; MCP-Server bevorzugt, HTTP-Bruecke (04-workflows) als Fallback mit hoeherem Wartungsaufwand.
+2. Lese-Scope — Kampagnen-Performance und Lead-Zahlen lesen.
+3. Strukturelle Grenzen — Langdock loest keine E-Mail-Sends aus, konfiguriert keine Flows, aendert keine Scoring-Regeln (bleibt in Marketo).
+4. Risiko je Pfad.
 Artefakt: Eine Marketo-Integrations-Einschätzung mit Anbindungsweg, Scope-Empfehlung und strukturellen Grenzen.
 Fallstricke:
 - Erwarten, dass Langdock Marketo-E-Mail-Sends auslöst → Kampagnen-Ausführung verbleibt in Marketo; Langdock liest Daten und generiert Analyse-Outputs, löst aber keine MAP-Aktionen aus.
 - HTTP-Brücke als gleichwertig zur nativen Integration behandeln → Auf höheres Bruchrisiko bei Marketo-API-Updates hinweisen und einen dedizierten Brücken-Owner in der IT benennen.
+Empfehlung: Klar kommunizieren, dass Langdock keine Marketo-E-Mail-Sends ausloest — die Kampagnen-Ausfuehrung bleibt in Marketo; Langdock liest Daten und generiert Analyse-Outputs. Die HTTP-Bruecke nicht als gleichwertig zur nativen Integration darstellen: auf das hoehere Bruchrisiko bei Marketo-API-Updates hinweisen und einen Bruecken-Owner in der IT benennen.
 Anschluss: S-IM-031
 
 ### S-IM-031 Zapier als Middleware-Brücke für nicht-native Tools einsetzen
@@ -693,12 +712,16 @@ Vorgehen:
 2. Du lässt je Verbindung das DSGVO-Risiko einschätzen: Zapier-Server liegen zum Teil außerhalb der EU; für PII-Daten (Kontaktdaten aus Typeform) ist ein EU-Zapier-Account oder eine Alternative zu prüfen.
 3. Du lässt den Wartungsaufwand realistisch benennen: Zapier-Brücken können bei API-Änderungen der angebundenen Tools still abreißen; einen Owner je Brücke benennen.
 4. Du übergibst die Bewertung an IT und Datenschutzbeauftragten; Little Data empfiehlt, konfiguriert aber keine Zapier-Zaps.
-Prompt:
-> "Du bist mein Middleware-Integrations-Berater (Persona). Bewerte den Einsatz von Zapier als Brücke für Mailchimp, Typeform und Canva in unserem Langdock-Workspace (Aufgabe). Kontext: keine nativen Konnektoren für diese Tools, DSGVO-konformes EU-Hosting Pflicht, Team ohne eigene Entwickler (Kontext). Format: Tabelle mit Tool, MCP-Alternative ja/nein, DSGVO-Risiko, Wartungsaufwand, Empfehlung (Format)."
+Vorlage: Zapier-Bruecken-Bewertung (nicht-native Tools):
+1. Tabelle — je Tool (Mailchimp/Typeform/Canva): MCP-Alternative ja/nein, DSGVO-Risiko, Wartungsaufwand, Empfehlung.
+2. MCP zuerst — wenn ein MCP-Server existiert, diesen bevorzugen; Zapier nur als Fallback.
+3. DSGVO — Zapier-Server teils ausserhalb der EU; fuer PII (z. B. Typeform-Kontakte) EU-Account/Alternative + AVV.
+4. Owner — je Bruecke eine verantwortliche Person mit monatlichem Health-Check.
 Artefakt: Eine Zapier-Brücken-Bewertungstabelle mit DSGVO-Risiko, Wartungsaufwand und Empfehlung je Tool.
 Fallstricke:
 - Zapier-Brücken für PII-Daten einrichten ohne DSGVO-Prüfung → Zapier-Server außerhalb der EU verarbeiten Daten; EU-Standort des Zapier-Accounts prüfen und Auftragsverarbeitungsvertrag abschließen.
 - Brücken ohne Owner einrichten → Bei API-Änderungen der angebundenen Tools reißen Zapier-Zaps still ab; je Brücke eine verantwortliche Person benennen, die monatliche Gesundheits-Checks durchführt.
+Empfehlung: Fuer jedes Tool zuerst pruefen, ob ein MCP-Server existiert, und diesen Zapier vorziehen — Zapier ist nur der Fallback. Fuer PII-Daten (Typeform-Kontakte) den EU-Standort des Zapier-Accounts pruefen und einen Auftragsverarbeitungsvertrag abschliessen, sonst verarbeiten ausser-EU-Server die Daten ungeregelt.
 Anschluss: S-IM-032
 
 ### S-IM-032 Webhook-zu-Langdock-Muster für externe Event-Trigger konzipieren
@@ -711,12 +734,16 @@ Vorgehen:
 1. Du lässt Little Data das Webhook-Muster erklären: Ein externes System sendet eine HTTP-POST-Payload an einen Langdock-Webhook-Endpoint; der Workflow-Builder empfängt und verarbeitet das Ereignis.
 2. Du lässt drei konkrete Marketing-Anwendungsfälle skizzieren und je Fall die Payload-Felder, die Sicherheitsanforderung (HMAC-Signatur oder Shared Secret) und den nächsten Verarbeitungsschritt benennen.
 3. Du lässt die Grenze klar ziehen: Die Webhook-Endpoint-Konfiguration und Payload-Verarbeitungslogik gehören in die Workflow-Beratung (`04-workflows`); hier wird nur das Architektur-Konzept beraten.
-Prompt:
-> "Du bist mein Integrations-Architekt (Persona). Erstelle ein Webhook-Architektur-Konzept für drei Marketing-Anwendungsfälle in unserem Langdock-Workspace (Aufgabe). Kontext: Anwendungsfälle — Formular-Lead-Eingang, Intent-Signal aus Bombora, Kampagnen-Status-Change in HubSpot; Sicherheitspflicht: HMAC-Signatur oder Shared Secret (Kontext). Format: Tabelle mit Anwendungsfall, Payload-Felder, Sicherheitsanforderung, nächster Verarbeitungsschritt; plus zwei Sätze Abgrenzung zur Workflow-Beratung (Format)."
+Vorlage: Webhook-Eingangs-Architektur-Konzept:
+1. Muster — externes System sendet HTTP-POST-Payload an einen Langdock-Webhook-Endpoint; Workflow-Builder empfaengt und verarbeitet.
+2. Anwendungsfaelle — Formular-Lead-Eingang, Intent-Signal (Bombora), Kampagnen-Status-Change (HubSpot); je Fall Payload-Felder + naechster Schritt.
+3. Sicherheit — HMAC-Signatur oder Shared Secret Pflicht.
+4. Grenze — Endpoint-Konfiguration + Verarbeitungslogik gehoeren in 04-workflows.
 Artefakt: Ein Webhook-Architektur-Konzept (Tabelle) mit drei Anwendungsfällen und Sicherheitsanforderungen.
 Fallstricke:
 - Webhook-Endpunkte ohne Signatur-Validierung öffnen → Ein nicht validierter Webhook-Endpoint kann von beliebigen Absendern beschickt werden; HMAC-Signatur oder Shared Secret ist Pflicht.
 - Webhook-Verarbeitung und Workflow-Logik in der Integrationsberatung mitlösen → Die Trigger-Verarbeitungslogik (Bedingungen, Schleifen, Agent-Aufrufe) gehört in die Workflow-Beratung (`04-workflows`), nicht hierher.
+Empfehlung: Jeden Webhook-Endpunkt per HMAC-Signatur oder Shared Secret validieren — ein offener Endpoint kann von beliebigen Absendern beschickt werden. Die Trigger-Verarbeitungslogik (Bedingungen, Schleifen, Agent-Aufrufe) in die Workflow-Beratung (04-workflows) auslagern, nicht in der Integrationsberatung mitloesen.
 Anschluss: S-IM-033
 
 ### S-IM-033 BigQuery als Read-Only Data-Warehouse-Quelle via MCP-Server anbinden
