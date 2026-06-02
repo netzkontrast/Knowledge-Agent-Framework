@@ -723,12 +723,13 @@ Vorgehen:
 2. Einen Loop-Node iterieren lassen; pro Item einen AI-Node eine 3-Satz-Personalisierung auf Basis der Gesprächsnotiz und des Produkt-Kontext-Wissensordners erzeugen lassen — Structured Output: Betreff + Body.
 3. Einen HITL-Node eine zufällige Stichprobe von 10 % der generierten E-Mails zur Qualitätsprüfung vorlegen lassen — erst nach Freigabe der Stichprobe läuft die Action.
 4. Einen Action-Node den generierten Text als Draft-Feld im CRM hinterlegen — der tatsächliche Versand bleibt beim Menschen.
-Prompt:
-> "Du bist Messe-Follow-up-Workflow-Architekt. Entwirf einen Batch-Personalisierungs-Workflow für 120 Messe-Kontakte. Kontext: CSV-Input mit Gesprächsnotizen, Flash-Modell für Kosteneffizienz, 10%-Stichproben-HITL, Versand durch Menschen. Format: Manual-Trigger, Loop-Node mit Chargenlogik, AI-Node, HITL-Stichprobe, CRM-Draft-Action."
+Workflow: Manual-Trigger (JSON-Array Kontaktname/Unternehmen/Gespraechsnotiz, ≤100/Charge) → Loop-Node → AI-Node (3-Satz-Personalisierung, Produkt-Kontext-Wissensordner, Structured Output Betreff+Body) → HITL-Node (10 %-Stichprobe) → Action-Node (CRM-Draft-Feld; Versand manuell).
+Budget: 120 Items × Personalisierungs-Node — der kosten-kritischste Loop der Datei; ein Flash-Modell waehlen, in zwei Chargen à ≤100 splitten, Warn-Schwelle 75 % vor jedem Chargenlauf.
 Artefakt: Ein Messe-Follow-up-Workflow-Entwurf mit Loop-Chargenlogik, Stichproben-HITL-Definition und CRM-Draft-Action-Konfiguration.
 Fallstricke:
 - Gesprächsnotizen sind zu kurz oder leer → einen Condition-Node vorschalten, der Items ohne verwertbare Notiz in eine manuelle Nachbearbeitungs-Liste umleitet statt eine generische E-Mail zu erzeugen.
 - Die Kostenschätzung wird nicht vorab geprüft → 120 Items × Personalisierungs-Node können das Per-Execution-Limit überschreiten; Warn-Schwelle auf 75 % setzen und Chargengröße entsprechend wählen.
+Empfehlung: Vor dem Loop einen Condition-Node setzen, der Items ohne verwertbare Gespraechsnotiz in eine manuelle Liste umleitet — sonst entstehen generische E-Mails. Die Kostenschaetzung (Items × Token) vorab gegen das Per-Lauf-Limit pruefen und die Chargengroesse danach waehlen.
 Anschluss: S-WF-034
 
 ### S-WF-034 Social-Media-Scheduling-Workflow (Scheduled Trigger)
@@ -742,12 +743,13 @@ Vorgehen:
 2. Einen Loop-Node über die aktiven Kanäle (LinkedIn, Instagram, X) iterieren lassen; pro Kanal und Thema einen AI-Node einen kanalgerechten Post mit Brand-Voice-Wissensordner erstellen lassen — Structured Output: Text, Hashtags, empfohlener Publish-Zeitpunkt.
 3. Einen HITL-Node alle Posts der Woche als Batch zur Freigabe präsentieren — Social-Media-Manager prüft und kann einzelne Posts ablehnen oder bearbeiten.
 4. Nach Freigabe sendet ein Action-Node die genehmigten Posts an die Scheduling-Tool-API — kein direktes Veröffentlichen durch den Workflow.
-Prompt:
-> "Du bist Social-Media-Scheduling-Workflow-Architekt. Entwirf eine wöchentliche Post-Planungs-Pipeline. Kontext: Themen aus Content-Kalender, Loop über LinkedIn/Instagram/X, Brand-Voice aus Wissensordner, HITL-Batch-Freigabe vor Scheduling-Tool-Übergabe. Format: Scheduled-Trigger, Integration-Node, Loop, AI-Post-Node, HITL, Scheduling-Action."
+Workflow: Scheduled-Trigger (Montag frueh) → Integration-Node (Content-Kalender) → Loop-Node (Kanal-Array LinkedIn/Instagram/X) → AI-Node (kanalgerechter Post, Brand-Voice, Structured Output Text/Hashtags/Zeitpunkt) → HITL-Node (Wochen-Batch) → Action-Node (Scheduling-Tool-API).
+Budget: Ein AI-Node je Kanal×Thema pro Woche bei mittlerem Volumen — eine Loop-Obergrenze ueber die Kanalzahl setzen; die Token-Rotation der Scheduling-API ist ein Betriebsrisiko, kein Budget-Posten.
 Artefakt: Ein Social-Media-Scheduling-Workflow-Entwurf mit Kanal-Loop-Logik, Structured-Output-Schema für Posts und HITL-Batch-Freigabe-Beschreibung.
 Fallstricke:
 - Der AI-Node erzeugt Posts, die Plattform-Limits überschreiten (z. B. X: 280 Zeichen) → jede Kanal-Iteration mit einem harten Zeichenlimit im Node-Briefing versehen.
 - Das Scheduling-Tool akzeptiert keine automatischen Posts ohne Nutzer-Authentifizierung → die Action-Node muss auf einen API-Endpunkt mit gültigem OAuth-Token konfiguriert sein; Token-Rotation als Wartungsaufgabe planen.
+Empfehlung: Jede Kanal-Iteration mit einem harten Zeichenlimit briefen (X: 280) — sonst reisst der AI-Node Plattform-Limits. Die Scheduling-Action braucht einen gueltigen OAuth-Token; Token-Rotation als wiederkehrende Wartungsaufgabe einplanen.
 Anschluss: S-WF-035
 
 ### S-WF-035 Budget-Alert-Workflow bei Kampagnen-Ausgaben-Überschreitung (Scheduled Trigger)
@@ -761,12 +763,13 @@ Vorgehen:
 2. Einen AI-Node Ausgaben gegen Budget-Pläne vergleichen lassen — Structured Output: Kanal, verbrauchte %, verbleibende Tage, Prognose zum Monatsende.
 3. Condition-Node: bei 80 % Budget-Verbrauch → Slack-Warning ohne HITL; bei 95 % → HITL-Node mit AI-generierter Umverteilungsempfehlung an die Kampagnen-Leitung.
 4. Die Umverteilungsempfehlung enthält konkrete Vorschläge (z. B. Kanal X pausieren, Budget nach Y verlagern) — Umsetzung nur durch den Menschen.
-Prompt:
-> "Du bist Budget-Monitoring-Workflow-Architekt. Entwirf einen täglichen Budget-Alert-Workflow für Kampagnen-Ausgaben. Kontext: Integration mit Ad-Plattform, 80%-Warning ohne HITL, 95%-Eskalation mit Umverteilungsempfehlung per HITL, keine automatische Kampagnen-Steuerung. Format: Scheduled-Trigger, Integration-Node, AI-Analyse-Node, Condition mit zwei Schwellenwerten, Slack-Action, HITL."
+Workflow: Scheduled-Trigger (taeglich) → Integration-Node (Ad-Plattform-API) → AI-Node (Ausgaben-Analyse vs. Plan, Structured Output Kanal/%/Prognose) → Condition-Node (80 %→Slack-Warning ohne HITL / 95 %→HITL mit Umverteilungsempfehlung) → Action-Node (Slack); Umsetzung manuell.
+Budget: Ein AI-Node taeglich — gering pro Lauf; das Hauptrisiko sind Wochenend-Luecken in der Ad-Plattform-API, nicht die Token-Kosten.
 Artefakt: Ein Budget-Alert-Workflow-Entwurf mit zweistufiger Condition-Logik, Structured-Output-Schema für Ausgaben-Analyse und HITL-Umverteilungs-Briefing.
 Fallstricke:
 - Wochenend-Lücken in der Ad-Plattform-API führen zu falschen Auslastungsberechnungen am Montag → den Workflow an Wochenenden entweder deaktivieren oder die Berechnung auf Montag-Basis normalisieren.
 - Der HITL-Node zeigt Umverteilungsempfehlungen, die technisch nicht sofort umsetzbar sind (z. B. gesperrte Kampagnen) → den AI-Node anweisen, nur Kanäle zu empfehlen, deren Status im Payload als "aktiv" markiert ist.
+Empfehlung: An Wochenenden den Workflow deaktivieren oder die Berechnung auf Montag-Basis normalisieren — sonst falsche Auslastungswerte. Den AI-Node anweisen, nur Kanaele mit Payload-Status 'aktiv' fuer Umverteilung vorzuschlagen.
 Anschluss: S-WF-036
 
 ### S-WF-036 Wettbewerber-Erwähnungs-Alert-Workflow (Scheduled Trigger)
@@ -780,12 +783,13 @@ Vorgehen:
 2. Einen AI-Node mit Web Search die definierten Quellen nach den Wettbewerber-Namen absuchen und jede Erwähnung mit Relevanz-Score (1–10), Quelle, Thema und Kurzzusammenfassung als Structured Output ausgeben lassen.
 3. Condition-Node: Relevanz ≥ 7 → Slack-Eskalation an Strategie-Team; Relevanz < 7 → stille Protokollierung im Notiz-Dokument.
 4. Die Slack-Nachricht enthält: Wettbewerber-Name, Quelle, Relevanz-Score, Kern-Aussage und Link — kein automatisches Handeln.
-Prompt:
-> "Du bist Wettbewerbs-Monitoring-Architekt. Entwirf einen täglichen Erwähnungs-Alert-Workflow für drei Wettbewerber. Kontext: Web-Search-Scope auf Branchen-Whitelist begrenzt, Relevanz-Score 1–10, Eskalation nur ab Score 7, stille Protokollierung darunter. Format: Scheduled-Trigger, Web-Search-AI-Node mit Structured Output, Condition, Slack-Action."
+Workflow: Scheduled-Trigger (taeglich Werktag) → AI-Node (Web Search auf Quellen-Whitelist, Relevanz-Score 1–10, Structured Output Quelle/Thema/Summary) → URL-Dedup-Condition (gegen persistentes Log-Sheet) → Condition (≥7→Slack-Eskalation an Strategie-Team / <7→stilles Protokoll).
+Budget: Ein AI-Node mit Web-Search taeglich — Web-Search-Aufrufe koennen kosten; die Quellen-Whitelist eng halten und Warn-Schwelle 75 % setzen.
 Artefakt: Ein Wettbewerber-Monitoring-Workflow-Entwurf mit Quellen-Whitelist, Relevanz-Score-Schema und zweistufiger Condition-Eskalation.
 Fallstricke:
 - Web Search liefert dieselben News-Artikel täglich erneut, weil keine Deduplizierung existiert → einen Condition-Node vorschalten, der bereits protokollierte URLs gegen ein persistentes Log-Sheet prüft.
 - Zu breite Wettbewerber-Suchbegriffe treffen auch irrelevante Nennungen (z. B. gleichnamige Unternehmen in anderen Branchen) → die Suchbegriffe mit Branchen-Qualifikatoren kombinieren und im Node-Briefing eng definieren.
+Empfehlung: Eine URL-Dedup-Condition gegen ein persistentes Log-Sheet vorschalten — sonst meldet Web Search dieselben Artikel taeglich erneut. Die Suchbegriffe mit Branchen-Qualifikatoren kombinieren, um gleichnamige Unternehmen auszuschliessen.
 Anschluss: S-WF-037
 
 ### S-WF-037 Kunden-Lifecycle-Stage-Übergangs-Workflow (Integration Trigger)
@@ -799,12 +803,13 @@ Vorgehen:
 2. Einen AI-Node das Risiko-Profil gegen das Retention-Playbook im Wissensordner analysieren lassen und eine Risiko-Tier-Klassifikation (hoch/mittel) sowie eine Maßnahmen-Empfehlung ausgeben lassen.
 3. Condition-Node: Risiko-Tier "hoch" → HITL-Node mit personalisertem Retention-Angebot-Entwurf an Account-Manager; Risiko-Tier "mittel" → automatische CRM-Task "Eincheck-Anruf in 7 Tagen".
 4. HITL-Node: Account-Manager prüft den Entwurf und gibt die Kontaktaufnahme frei — kein automatischer Kunden-Kontakt.
-Prompt:
-> "Du bist Lifecycle-Retention-Workflow-Architekt. Entwirf einen At-Risk-Transitions-Workflow. Kontext: CRM-Integration-Trigger, Risiko-Analyse gegen Retention-Playbook-Wissensordner, HITL nur für hohes Risiko, CRM-Task für mittleres Risiko. Format: Integration-Trigger, AI-Analyse-Node, Condition mit zwei Pfaden, HITL-Gate, CRM-Task-Action."
+Workflow: Integration-Trigger (CRM 'Wechsel zu At-Risk') → AI-Node (Risiko-Analyse gegen Retention-Playbook, Risiko-Tier hoch/mittel + Massnahme) → Condition (hoch→HITL Retention-Angebot an Account-Manager / mittel→CRM-Task Eincheck-Anruf in 7 Tagen) → HITL-Gate; kein automatischer Kontakt.
+Budget: Ein AI-Node pro Uebergang bei niedrigem Volumen — gering pro Lauf; ein 30-Tage-Dedup-Condition gegen Mehrfach-Klassifikation schuetzt vor Wiederholungslaeufen.
 Artefakt: Ein Lifecycle-Transitions-Workflow-Entwurf mit Risiko-Tier-Definition, zweistufiger Condition-Architektur und HITL-Freigabe-Schritt.
 Fallstricke:
 - Das Retention-Playbook im Wissensordner ist veraltet und empfiehlt Rabatte, die nicht mehr genehmigt sind → das Playbook mindestens quartalsweise gegen die aktuelle Genehmigungsmatrix aktualisieren.
 - Der Workflow klassifiziert denselben Kontakt mehrfach als "At-Risk", wenn das CRM-Feld fluktuiert → einen Condition-Node prüfen lassen, ob für diesen Kontakt innerhalb der letzten 30 Tage bereits eine Retention-Action angelegt wurde.
+Empfehlung: Das Retention-Playbook quartalsweise gegen die aktuelle Genehmigungsmatrix aktualisieren — sonst empfiehlt die KI nicht mehr genehmigte Rabatte. Einen 30-Tage-Dedup-Condition setzen, der prueft, ob bereits eine Retention-Action laeuft.
 Anschluss: S-WF-038
 
 ### S-WF-038 Re-Engagement-Kampagnen-Automatisierung nach Inaktivitätssignal (Scheduled Trigger)
@@ -818,12 +823,13 @@ Vorgehen:
 2. Einen Condition-Node jeden Kontakt auf DSGVO-Opt-out-Status prüfen lassen — Kontakte mit Opt-out werden ohne weitere Aktion archiviert.
 3. Einen AI-Node für verbleibende Kontakte einen personalisierten Re-Engagement-E-Mail-Entwurf auf Basis des letzten Kaufs oder letzten Interaktionsthemas erstellen lassen.
 4. Einen HITL-Node eine Stichprobe von 10 % der Entwürfe zur Qualitätsprüfung vorlegen lassen; nach Freigabe startet ein CRM-Action-Node die Sequenz.
-Prompt:
-> "Du bist Re-Engagement-Workflow-Architekt. Entwirf einen wöchentlichen Inaktivitäts-Erkennungs-Workflow. Kontext: 90-Tage-Inaktivitäts-Schwelle, DSGVO-Opt-out-Filter als Condition, KI-Personalisierung per letzter Interaktion, HITL-Stichprobe, kein automatischer Versand. Format: Scheduled-Trigger, CRM-Integration, Condition (Opt-out), AI-Entwurf-Node, HITL, CRM-Sequenz-Action."
+Workflow: Scheduled-Trigger (woechentlich) → Integration-Node (CRM: letzte Interaktion >90 Tage, opt-in) → DSGVO-Opt-out-Condition (allererster Schritt; Opt-out→archivieren) → AI-Node (Re-Engagement-Entwurf aus letztem Kauf/Thema) → HITL-Node (10 %-Stichprobe) → Action-Node (CRM-Sequenz-Start).
+Budget: Ein AI-Node je verbleibendem Kontakt; das Volumen schwankt mit dem Inaktiv-Segment — eine Loop-Obergrenze und Warn-Schwelle 75 % setzen.
 Artefakt: Ein Re-Engagement-Workflow-Entwurf mit DSGVO-Opt-out-Filter-Logik, Stichproben-HITL-Definition und CRM-Sequenz-Action-Konfiguration.
 Fallstricke:
 - Kontakte ohne Opt-out-Prüfung erhalten Re-Engagement-E-Mails nach einem Abmelde-Wunsch → den Condition-Node für DSGVO-Opt-out als den allerersten Check-Schritt im Workflow verankern, nicht als nachgelagerter Filter.
 - Der AI-Node generiert eine generische "Wir vermissen Sie"-E-Mail ohne Personalisierungsankerpunkt → den Workflow so konfigurieren, dass Kontakte ohne verwertbaren Interaktions-Historien-Eintrag in eine manuelle Nachbearbeitungs-Liste fließen statt eine leere Personalisierung zu erhalten.
+Empfehlung: Den DSGVO-Opt-out-Condition als allerersten Schritt verankern, nie als nachgelagerten Filter — sonst gehen E-Mails an Abgemeldete. Kontakte ohne verwertbare Interaktions-Historie in eine manuelle Liste leiten statt leer zu personalisieren.
 Anschluss: S-WF-039
 
 ### S-WF-039 SLA-Verletzungs-Eskalations-Workflow (Integration Trigger)
@@ -837,12 +843,13 @@ Vorgehen:
 2. Condition-Node: Überziehung 1–24 h → automatische Slack-Erinnerung an Verantwortlichen; Überziehung > 24 h → HITL-Node mit Eskalations-Vorschlag an Teamleitung.
 3. Einen AI-Node eine kontextuelle Eskalations-Nachricht generieren lassen, die Task-Kontext, Auswirkung auf abhängige Kampagnen und einen Lösungsvorschlag enthält.
 4. HITL-Node: Teamleitung prüft die Eskalation und entscheidet über Maßnahme — kein automatisches Eingreifen in Task-Zuweisung oder Deadlines.
-Prompt:
-> "Du bist SLA-Eskalations-Workflow-Architekt. Entwirf einen Überziehungs-Erkennungs-Workflow für interne Marketing-Briefings. Kontext: PM-Tool-Integration-Trigger, zweistufige Condition (1–24 h Erinnerung, >24 h HITL-Eskalation), KI-Kontext-Nachricht mit Auswirkungsanalyse. Format: Integration-Trigger, Condition mit zwei Pfaden, AI-Eskalations-Node, Slack-Action, HITL."
+Workflow: Integration-Trigger (PM-Tool Statuswechsel 'Ueberfaellig') → Condition (1–24 h→Slack-DM-Erinnerung / >24 h→HITL-Eskalation) → AI-Node (Kontext-Eskalations-Nachricht mit Auswirkungsanalyse + Loesungsvorschlag) → HITL-Node (Teamleitung entscheidet); kein automatisches Eingreifen.
+Budget: Ein AI-Node nur bei >24-h-Eskalation; die meisten Faelle enden bei der Slack-DM vor dem AI-Node → gering pro Lauf.
 Artefakt: Ein SLA-Eskalations-Workflow-Entwurf mit zweistufiger Condition-Logik, AI-Eskalations-Nachrichts-Template und HITL-Freigabe-Schritt.
 Fallstricke:
 - Der Workflow eskaliert auch Tasks, die absichtlich on-hold gestellt wurden → den Condition-Node auf den Task-Status-Qualifier "on-hold" prüfen lassen und diese Tasks aus der Eskalations-Logik ausschließen.
 - Zu häufige Eskalations-Nachrichten für kleine Überziehungen untergraben die Wirkung → die 1–24-h-Erinnerung als direkte Slack-DM (nicht als Kanal-Nachricht) an den Verantwortlichen senden, um Alert-Fatigue im Team-Kanal zu vermeiden.
+Empfehlung: 'on-hold'-Tasks per Status-Qualifier aus der Eskalations-Logik ausschliessen — sonst eskaliert der Workflow absichtlich pausierte Aufgaben. Die 1–24-h-Erinnerung als direkte Slack-DM senden, nicht in den Team-Kanal, gegen Alert-Fatigue.
 Anschluss: S-WF-040
 
 ### S-WF-040 Internes Wissens-Update-Benachrichtigungs-Workflow (Integration Trigger)
@@ -856,12 +863,13 @@ Vorgehen:
 2. Einen AI-Node eine kompakte Change-Summary (max. 5 Sätze) aus dem neuen Dokument-Inhalt erzeugen lassen — was hat sich inhaltlich verändert, was sind die Implikationen für Agenten-Prompts.
 3. Action-Node: Slack-Benachrichtigung an alle Nutzer, die diesen Wissensordner in einem Agenten oder Workflow referenzieren — basierend auf einer RACI-Matrix im Wissensordner.
 4. HITL-Node nur bei Compliance-Dokumenten (Brand-Guidelines, Legal-Dokumente): Agent-Owner bestätigt explizit, dass er seine Agenten-Konfiguration auf Basis der Änderung geprüft hat.
-Prompt:
-> "Du bist Wissensordner-Change-Management-Architekt. Entwirf einen Benachrichtigungs-Workflow für Wissensordner-Updates. Kontext: Integration-Trigger bei Dateiänderung, AI-Change-Summary, Slack-Routing nach RACI-Matrix, HITL nur bei Compliance-Dokumenten. Format: Integration-Trigger, AI-Summary-Node, Condition (Compliance ja/nein), Slack-Action, optionaler HITL."
+Workflow: Integration-Trigger (Wissensordner-Datei aktualisiert/geloescht) → AI-Node (Change-Summary ≤5 Saetze + Prompt-Implikationen) → Signifikanz-Condition (rein formal→Stopp ohne Benachrichtigung) → Action-Node (Slack nach RACI-Matrix) → HITL-Node nur bei Compliance-Dokumenten.
+Budget: Ein AI-Node je Dateiaenderung; das Volumen ist niedrig, aber Formatierungs-Updates koennen sich haeufen — der Signifikanz-Filter spart die meisten unnoetigen Laeufe.
 Artefakt: Ein Wissens-Update-Workflow-Entwurf mit Change-Summary-Node, RACI-Routing-Logik und selektivem HITL-Gate für Compliance-Dokumente.
 Fallstricke:
 - Automatische Formatierungs-Updates (z. B. Whitespace-Korrekturen) triggern unnötige Benachrichtigungen → den AI-Node anweisen, den Diff auf inhaltlich signifikante Änderungen zu prüfen und bei rein formalen Änderungen den Workflow ohne Benachrichtigung zu beenden.
 - Die RACI-Matrix ist veraltet und versendet Benachrichtigungen an frühere Team-Mitglieder → die RACI-Matrix als eigenes, regelmäßig geprüftes Dokument im Wissensordner führen und quartalsweise aktualisieren.
+Empfehlung: Den AI-Node den Diff auf inhaltlich signifikante Aenderungen pruefen lassen und bei rein formalen (Whitespace) ohne Benachrichtigung beenden. Die RACI-Matrix als eigenes Dokument im Wissensordner fuehren und quartalsweise aktualisieren, sonst gehen Alerts an Ex-Mitglieder.
 Anschluss: S-WF-041
 
 ### S-WF-041 Automatische Qualitätsprüfung bei KI-generiertem Content (Manual Trigger + Loop)
