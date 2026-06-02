@@ -1224,6 +1224,7 @@ Artefakt: 5 vollständige Onboarding-E-Mails (Subject + Preheader + Body + CTA) 
 Fallstricke:
 - Onboarding-E-Mails ohne produktspezifische Screenshots oder In-App-Links sind weniger effektiv; den Agenten anweisen, `[SCREENSHOT_PLACEHOLDER: ...]`-Tags einzufügen, die das Design-Team später befüllt.
 - Zu viele CTAs in einer E-Mail verwässern die Zielaktion; der Prompt muss "genau 1 CTA je E-Mail" als harte Regel verankern, nicht als Empfehlung.
+Empfehlung: Genau 1 CTA je E-Mail als harte Regel verankern, nicht als Empfehlung — mehrere CTAs verwaessern die Zielaktion. Den Agenten [SCREENSHOT_PLACEHOLDER: ...]-Tags einfuegen lassen, die das Design-Team befuellt — Onboarding-E-Mails ohne produktspezifische Visuals/In-App-Links sind deutlich weniger effektiv.
 Anschluss: S-PS-057
 
 ### S-PS-057 Rechtliche Disclaimer-Texte für Marketing-Materialien generieren
@@ -1242,6 +1243,7 @@ Artefakt: Disclaimer-Entwurf (max. 80 Wörter) mit Rechtsrahmen-Referenz und Dat
 Fallstricke:
 - KI-generierte Disclaimer sind niemals ohne juristische Prüfung publikationsfertig — AT und CH haben abweichende Anforderungen zu DE; den Output immer als "Entwurf zur Prüfung" kennzeichnen, nie als "fertig".
 - Disclaimer-Texte dürfen nicht zu lang sein (Lesbarkeit / Transparenz-Pflicht); Modelle neigen zu Absicherungs-Inflation mit langen Klausel-Listen — explizit ein Wortlimit setzen und einhalten.
+Empfehlung: KI-Disclaimer nie als 'fertig' kennzeichnen, sondern immer als 'Entwurf zur juristischen Pruefung, Stand: Datum' — AT und CH haben von DE abweichende Anforderungen. Ein hartes Wortlimit setzen und einhalten, da Modelle zu Absicherungs-Inflation mit langen Klausel-Listen neigen, die die Transparenz-/Lesbarkeitspflicht verletzen.
 Anschluss: S-PS-058
 
 ### S-PS-058 Media-Kit-Content für Partner und Presse zusammenstellen
@@ -1261,6 +1263,7 @@ Artefakt: `media-kit-text-[version].md` mit allen 5 Text-Komponenten im presseü
 Fallstricke:
 - KI-generierte Führungskräfte-Biografien enthalten gelegentlich plausible aber falsche Karrierestationen; jede Biografie muss von der betroffenen Person oder HR freigegeben werden — kein direkter Versand ohne Personenfreigabe.
 - Boilerplate-Texte veralten schnell bei Fusionen, Expansionen oder Pivot; das `media-kit-text.md` muss mit einem Gültigkeitsdatum versehen und bei Änderungen versioniert werden.
+Empfehlung: Jede KI-generierte Fuehrungskraefte-Biografie von der betroffenen Person oder HR freigeben lassen — Modelle erfinden gelegentlich plausible, aber falsche Karrierestationen; kein Direktversand ohne Personenfreigabe. Das media-kit-text.md mit einem Gueltigkeitsdatum versehen und bei Fusionen/Expansionen/Pivot versionieren, da Boilerplate schnell veraltet.
 Anschluss: S-PS-059
 
 ### S-PS-059 Marktgrößen-Schätzung (TAM/SAM/SOM) prompt-gestützt erarbeiten
@@ -1280,6 +1283,7 @@ Artefakt: TAM/SAM/SOM-Schätzungsdokument (3 Ebenen, Methodik, Quellen, 3 Szenar
 Fallstricke:
 - Web Search findet keine kostenpflichtigen Vollberichte (z.B. vollständige Gartner-Studien) — nur Pressemitteilungen und Zusammenfassungen; immer transparent machen, dass keine Primärquelle im Volltext analysiert wurde.
 - SOM-Schätzungen ohne interne Vertriebskapazitäts-Daten sind nicht belastbar; SOM immer als "abhängig von Go-to-Market-Kapazität — intern zu validieren" kennzeichnen.
+Empfehlung: Transparent machen, dass keine kostenpflichtige Primaerquelle im Volltext analysiert wurde — Web Search findet nur Pressemitteilungen/Zusammenfassungen, nicht die vollstaendigen Gartner-/IDC-Studien. SOM immer als 'abhaengig von Go-to-Market-Kapazitaet — intern zu validieren' kennzeichnen, da SOM-Schaetzungen ohne interne Vertriebskapazitaets-Daten nicht belastbar sind.
 Anschluss: S-PS-060
 
 ### S-PS-060 Wettbewerbs-Gap-Analyse aus PDF-Wettbewerbsberichten
@@ -1299,6 +1303,7 @@ Artefakt: `gap-analyse-[datum].md` mit Gap-Matrix (eigene Stärken × Wettbewerb
 Fallstricke:
 - Bei mehr als 5 angehängten PDFs kann das Kontextfenster des Modells erschöpft werden und frühe Dokumente "vergessen" werden; Dokumente auf die 4 relevantesten beschränken und weniger relevante erst in einem zweiten Pass einbeziehen.
 - Wettbewerber-Whitepapers sind Marketingmaterialien — sie beschreiben Stärken, nicht Schwächen; den Agenten explizit anweisen: "Interpretiere Wettbewerber-Materialien kritisch — was verschweigen sie? Welche Lücken zwischen Claim und Evidenz sind sichtbar?"
+Empfehlung: Auf die 4 relevantesten PDFs beschraenken — bei mehr als 5 Anhaengen erschoepft sich das Kontextfenster und fruehe Dokumente werden 'vergessen'; weniger Relevantes in einen zweiten Pass. Den Agenten Wettbewerber-Whitepapers kritisch interpretieren lassen ('was verschweigen sie? welche Luecken zwischen Claim und Evidenz?'), da es Marketingmaterialien sind, die Staerken, nicht Schwaechen beschreiben.
 Anschluss: S-PS-061
 
 ### S-PS-061 Prompt-Library-Governance: Ownership, Zugriff und Namenskonvention regeln
@@ -1312,12 +1317,16 @@ Vorgehen:
 2. Lege je Prompt einen Owner (pflegt + entscheidet) und einen Approver (gibt frei) fest; dokumentiere beide in einer Inventar-Tabelle.
 3. Ordne jeder Kategorie eine Sichtbarkeitsgruppe in der Prompt-Library zu (Langdock → Library → Template-Gruppe → Freigabe-Scope), damit z.B. Rechts-Prompts nur das Compliance-Team sieht.
 4. Verankere die Konvention im Onboarding (→ S-PS-080) und prüfe sie im Quarterly Health-Review (→ S-PS-040).
-Prompt:
-> "Du bist Prompt-Library-Governance-Berater. Prüfe die folgende Liste von Library-Prompts gegen unser Governance-Modell: [Prompt-Liste mit aktuellem Namen einfügen]. Aufgabe: (1) Schlage für jeden Prompt einen konformen Namen nach Schema `[Kategorie]_[Aufgabe]_v[X]` vor, (2) ordne eine der 6 Kategorien zu, (3) empfiehl eine Sichtbarkeitsgruppe (Team / Abteilung / Workspace) mit 1-Satz-Begründung. Format: Markdown-Tabelle mit Spalten Alt-Name | Neu-Name | Kategorie | Sichtbarkeit | Begründung."
+Vorlage: Prompt-Library-Governance-Modell:
+1. Namenskonvention — [Kategorie]_[Aufgabe]_v[X] (z. B. RSA_Funnel-Copy_v2); 6 feste Kategorien (SEO/Ad-Copy/PR/CRM/Analyse/Governance).
+2. RACI je Prompt — Owner (pflegt/entscheidet) + Approver (gibt frei) in einer Inventar-Tabelle.
+3. Sichtbarkeit — je Kategorie eine Sichtbarkeitsgruppe (Team/Abteilung/Workspace) ueber die Library-Template-Gruppe.
+4. Verankerung — im Onboarding (S-PS-080) und Quarterly Health-Review (S-PS-040).
 Artefakt: Umbenennungs- und Zuordnungstabelle für alle Library-Prompts; `prompt-governance-modell.md` als verbindlicher Standard.
 Fallstricke:
 - Sichtbarkeitsgruppen in der Library sind an Workspace-Rollen gebunden; wird ein Owner deaktiviert, verwaisen seine Prompts — pro Kategorie immer einen Stellvertreter-Owner benennen.
 - Zu feingranulare Kategorien (>6) machen die Filterung unübersichtlich statt klarer; bei Bedarf Unterkategorien als Tag-Suffix (`Ad-Copy/RSA`) statt als neue Top-Kategorie führen.
+Empfehlung: Pro Kategorie einen Stellvertreter-Owner benennen — Sichtbarkeitsgruppen sind an Workspace-Rollen gebunden, sodass die Prompts eines deaktivierten Owners sonst verwaisen. Bei mehr als 6 Top-Kategorien Unterkategorien als Tag-Suffix (Ad-Copy/RSA) fuehren, nicht als neue Top-Kategorie, da zu feingranulare Buckets die Filterung unuebersichtlich machen.
 Anschluss: S-PS-062
 
 ### S-PS-062 Prompt-Template-Variablen mit Platzhaltertexten benutzerfreundlich gestalten
@@ -1331,12 +1340,16 @@ Vorgehen:
 2. Schreibe je Variable einen Platzhaltertext nach Muster `{{ZIELGRUPPE: z.B. "CFOs in Produktionsbetrieben, 500+ MA"}}` — sichtbarer Beispielwert direkt im Platzhalter.
 3. Definiere je Variable eine Validierungsregel: erlaubte Werte (`TONALITAET ∈ {sachlich, inspirierend, provokant}`), Format (`MARKT = DE | AT | CH`), Pflicht/optional.
 4. Hinterlege den Guide als Library-Dokument und verlinke ihn im Variablen-Glossar aus S-PS-002.
-Prompt:
-> "Du bist Prompt-UX-Designer. Verbessere die Platzhalter im folgenden Template, sodass auch ein Erstnutzer sie korrekt befüllt: [Template mit Roh-Variablen einfügen]. Für jede `{{Variable}}`: (1) ergänze einen Beispielwert direkt im Platzhalter (Muster `{{NAME: z.B. ...}}`), (2) benenne erlaubte Werte oder das geforderte Format, (3) markiere Pflicht vs. optional. Format: überarbeitetes Template + Tabelle Variable | Platzhaltertext | erlaubte Werte | Pflicht (J/N)."
+Vorlage: Template-Variablen-Design-Guide:
+1. Variablen-Inventar — alle wiederkehrenden Variablen aus Team-Templates ({{ZIELGRUPPE}}/{{TONALITAET}}/{{MARKT}}).
+2. Selbsterklaerender Platzhalter — Muster {{ZIELGRUPPE: z.B. "CFOs in Produktionsbetrieben, 500+ MA"}} mit sichtbarem Beispielwert.
+3. Validierungsregel je Variable — erlaubte Werte (TONALITAET in {sachlich/inspirierend/provokant}), Format (MARKT = DE|AT|CH), Pflicht/optional.
+4. Ablage + Verlinkung zum Variablen-Glossar (S-PS-002).
 Artefakt: Überarbeitetes Template mit selbsterklärenden Platzhaltern + Variablen-Spezifikationstabelle; messbar an sinkender Fehlbefüllungs-Quote.
 Fallstricke:
 - Zu lange Platzhaltertexte mit mehreren Beispielen verwässern den eigentlichen Prompt und kosten Token; ein Beispielwert pro Variable genügt, längere Erklärungen gehören in den Guide, nicht in den Platzhalter.
 - Modelle interpretieren einen unausgefüllten Platzhalter `{{X}}` manchmal als Literal-Text und geben ihn unverändert aus; im Template eine Sperranweisung ergänzen: "Wenn eine Variable nicht befüllt ist, brich ab und fordere den Wert an, statt `{{...}}` auszugeben."
+Empfehlung: Nur einen Beispielwert pro Variable in den Platzhalter setzen — mehrere Beispiele verwaessern den Prompt und kosten Token; laengere Erklaerungen gehoeren in den Guide. Eine Sperranweisung ergaenzen ('bei unbefuellter Variable abbrechen und den Wert anfordern, statt {{...}} auszugeben'), da Modelle leere Platzhalter sonst als Literal-Text ausgeben.
 Anschluss: S-PS-063
 
 ### S-PS-063 System-Prompt und User-Prompt sauber trennen
@@ -1356,6 +1369,7 @@ Artefakt: Agent mit getrennter System-/User-Architektur + Delimiter-Template; na
 Fallstricke:
 - Delimiter, die wie normaler Text aussehen (`---`), werden von Modellen überlesen; eindeutige, seltene Marker (`===NUTZERDATEN START===`) verwenden, die im echten Inhalt nicht vorkommen.
 - System-Prompt-Regeln helfen nur, wenn der Inhalt wirklich im Chat-Feld bleibt; wer die Rolle versehentlich erneut in das User-Feld kopiert, hebt die Trennung auf — im Guide explizit klarstellen, dass die Persona nur einmal im Agenten steht.
+Empfehlung: Eindeutige, seltene Delimiter (===NUTZERDATEN START===) verwenden, die im echten Inhalt nicht vorkommen — Marker, die wie normaler Text aussehen (---), werden von Modellen ueberlesen. Die Persona nur einmal im Agenten-System-Prompt fuehren und im Guide klarstellen, dass ein erneutes Kopieren der Rolle ins User-Feld die Trennung aufhebt.
 Anschluss: S-PS-064
 
 ### S-PS-064 Output-Format-Verträge: Tabelle, Markdown oder JSON verbindlich erzwingen
