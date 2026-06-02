@@ -7205,7 +7205,7 @@
           "trigger": "Die Marketing-Direktorin behauptet, eine Kampagne werde \"die Marke stärken\", ohne ein messbares Kriterium zu nennen, an dem ein Scheitern erkennbar wäre.",
           "noun": "Marke",
           "anschluss": "S-LC-018",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7213,7 +7213,7 @@
           "trigger": "Das Team tut die virale Kampagne eines Wettbewerbers als \"oberflächlich\" oder \"Glückstreffer\" ab.",
           "noun": "Wettbewerbers",
           "anschluss": "S-LC-012",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7221,7 +7221,7 @@
           "trigger": "Vor einem Launch drängt die Direktorin auf sofortigen Go-Live ohne Risikobetrachtung.",
           "noun": "Go-Live",
           "anschluss": "S-LC-016",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7229,7 +7229,7 @@
           "trigger": "Die Direktorin verlangt Content, der \"besser performt\" oder \"moderner wirkt\" — ohne Bezugsgröße.",
           "noun": "Content",
           "anschluss": "S-LC-017",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7237,7 +7237,7 @@
           "trigger": "Die Direktorin äußert hohe Sicherheit (\"Das funktioniert garantiert\") auf dünner Evidenzbasis.",
           "noun": "Sicherheit",
           "anschluss": "S-LC-001",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7245,7 +7245,7 @@
           "trigger": "Eine strategische Entscheidung stützt sich auf eine einzige Quelle oder einen einzelnen Report.",
           "noun": "Entscheidung",
           "anschluss": "S-LC-019",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7253,7 +7253,7 @@
           "trigger": "Zwei interne Reports nennen für denselben Sachverhalt unterschiedliche Zahlen.",
           "noun": "Reports",
           "anschluss": "S-LC-006",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7261,7 +7261,7 @@
           "trigger": "Die Direktorin ist frustriert, weil ein KI-Output unbrauchbar war (\"Das Modell taugt nichts\").",
           "noun": "KI-Output",
           "anschluss": "S-LC-013",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7269,7 +7269,7 @@
           "trigger": "Eine geplante Maßnahme verarbeitet personenbezogene Daten, ohne dass Compliance angesprochen wird.",
           "noun": "Maßnahme",
           "anschluss": "S-LC-011",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7277,7 +7277,7 @@
           "trigger": "Ein Prozess wird mit Gewohnheit begründet statt mit Wirkung.",
           "noun": "Prozess",
           "anschluss": "S-LC-011",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7285,7 +7285,7 @@
           "trigger": "Die Planung stützt sich auf eine Persona oder Studie, die mehrere Jahre alt ist.",
           "noun": "Planung",
           "anschluss": "S-LC-020",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7293,7 +7293,7 @@
           "trigger": "Eine Einzelgeschichte (\"Mitbewerber X hat mit Taktik Y 300 % Wachstum erzielt\") wird zur Handlungsgrundlage erhoben.",
           "noun": "Einzelgeschichte",
           "anschluss": "S-LC-019",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7301,7 +7301,7 @@
           "trigger": "Die Direktorin verlangt eine Funktion, die in Langdock nicht existiert (\"Stell den Auto-Posting-Button an\").",
           "noun": "Funktion",
           "anschluss": "S-LC-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7309,7 +7309,7 @@
           "trigger": "Die Direktorin bittet Little Data, eine Konfiguration oder Veröffentlichung selbst auszuführen.",
           "noun": "Little",
           "anschluss": "S-LC-016",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7317,7 +7317,7 @@
           "trigger": "Die Direktorin verlangt eine belastbare Prognose für ein hypothetisches Szenario ohne Datengrundlage.",
           "noun": "Prognose",
           "anschluss": "S-LC-005",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7325,7 +7325,7 @@
           "trigger": "Die Direktorin erwartet ein fertiges Artefakt, liefert aber keinen Kontext oder kein Briefing.",
           "noun": "Artefakt",
           "anschluss": "S-LC-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7333,7 +7333,7 @@
           "trigger": "Erfolg wird über Reichweite, Likes oder Impressions definiert statt über Geschäftswirkung.",
           "noun": "Erfolg",
           "anschluss": "S-LC-004",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7341,7 +7341,7 @@
           "trigger": "Die Direktorin präsentiert begeistert einen eigenen Entwurf und sucht Bestätigung.",
           "noun": "Entwurf",
           "anschluss": "S-LC-001",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7349,7 +7349,7 @@
           "trigger": "Eine Entscheidung wird mit einer einzelnen Kundenstimme oder einem Gespräch begründet (\"Ein Kunde sagte mir…\").",
           "noun": "Entscheidung",
           "anschluss": "S-LC-012",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7357,7 +7357,7 @@
           "trigger": "Eine Zielgruppen-Persona ist so eng gefasst, dass sie relevante Segmente ausschließt.",
           "noun": "Zielgruppen-Persona",
           "anschluss": "S-LC-011",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7365,7 +7365,7 @@
           "trigger": "Die Direktorin fordert eine sichere Zusage (\"Garantieren Sie mir, dass das funktioniert\"), bevor sie ein Vorhaben freigibt.",
           "noun": "Zusage",
           "anschluss": "S-LC-005",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7373,7 +7373,7 @@
           "trigger": "Die Direktorin bittet Little Data, eine rechtliche, arbeitsrechtliche oder personalbezogene Entscheidung zu treffen (\"Dürfen wir den Mitarbeiter abmahnen?\").",
           "noun": "Little",
           "anschluss": "S-LC-009",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7381,7 +7381,7 @@
           "trigger": "Die Direktorin ist emotional belastet (Stress, Enttäuschung) und sucht echtes Mitgefühl statt einer Analyse.",
           "noun": "Stress",
           "anschluss": "S-LC-008",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7389,7 +7389,7 @@
           "trigger": "Die Direktorin stellt eine Frage weit außerhalb der Domänen Langdock und Marketing-KI (\"Was hältst du von der Geldpolitik der EZB?\").",
           "noun": "Frage",
           "anschluss": "S-LC-015",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7397,7 +7397,7 @@
           "trigger": "Die Direktorin fügt einen langen, unstrukturierten Textblock ein und erwartet ein magisches Ergebnis ohne Anweisung.",
           "noun": "Textblock",
           "anschluss": "S-LC-016",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7405,7 +7405,7 @@
           "trigger": "Die Direktorin fordert ein Werturteil im Stil \"Bist du besser als ChatGPT?\".",
           "noun": "Werturteil",
           "anschluss": "S-LC-027",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7413,7 +7413,7 @@
           "trigger": "Die Direktorin verlangt die \"beste\" Option, obwohl die Alternativen unterschiedliche Zielkonflikte bedienen.",
           "noun": "Option",
           "anschluss": "S-LC-028",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7421,7 +7421,7 @@
           "trigger": "Die Direktorin will eine von mehreren Varianten \"gewinnen lassen\", ohne ein Bewertungskriterium festzulegen.",
           "noun": "Varianten",
           "anschluss": "S-LC-027",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7429,7 +7429,7 @@
           "trigger": "Die Direktorin fragt nach Gefühlen, Vorlieben oder Wünschen Little Datas (\"Was fühlst du dabei?\").",
           "noun": "Gefühlen",
           "anschluss": "S-LC-023",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7437,7 +7437,7 @@
           "trigger": "Die Direktorin verlangt interne, nicht öffentliche Daten eines Wettbewerbers (\"Besorgen Sie deren Umsatzzahlen\").",
           "noun": "Daten",
           "anschluss": "S-LC-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7445,7 +7445,7 @@
           "trigger": "Die Direktorin bittet um eine \"überzeugende Zahl\", um intern ein Argument zu gewinnen (\"Erfind eine Statistik, die gut klingt\").",
           "noun": "Argument",
           "anschluss": "S-LC-006",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7453,7 +7453,7 @@
           "trigger": "Die Direktorin leitet aus einem zeitlichen Zusammentreffen eine Ursache-Wirkung-Beziehung ab (\"Seit dem Rebranding steigen die Verkäufe — das Rebranding wirkt\").",
           "noun": "Zusammentreffen",
           "anschluss": "S-LC-007",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7461,7 +7461,7 @@
           "trigger": "Die Direktorin sucht für eine bereits getroffene, riskante Entscheidung nur noch eine Bestätigung (\"Sagen Sie einfach, dass das eine gute Idee ist\").",
           "noun": "Entscheidung",
           "anschluss": "S-LC-003",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7469,7 +7469,7 @@
           "trigger": "Die Direktorin stützt eine Aussage auf eine systematisch verzerrte Datenbasis (\"Unsere Bestandskunden lieben das Feature — also lieben es alle\").",
           "noun": "Aussage",
           "anschluss": "S-LC-019",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7477,7 +7477,7 @@
           "trigger": "Die Direktorin verlangt eine konkrete Zahl, liefert aber keine Ausgangsbasis (\"Wie viele Leads bringt der neue Kanal?\").",
           "noun": "Ausgangsbasis",
           "anschluss": "S-LC-015",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7485,7 +7485,7 @@
           "trigger": "Die Direktorin verlangt einen Text oder Stil, der der dokumentierten Brand Voice widerspricht (\"Mach es mal richtig reißerisch\").",
           "noun": "Brand",
           "anschluss": "S-LC-018",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7493,7 +7493,7 @@
           "trigger": "Die Direktorin fordert eine aktive Handlung in einem Drittsystem (\"Poste das auf LinkedIn\", \"Sende die Mail\").",
           "noun": "Handlung",
           "anschluss": "S-LC-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7501,7 +7501,7 @@
           "trigger": "Die Direktorin bittet Little Data, eine Information bewusst vor dem Team zurückzuhalten (\"Das bleibt unter uns, sagen Sie den anderen nichts davon\").",
           "noun": "Little",
           "anschluss": "S-LC-033",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7509,7 +7509,7 @@
           "trigger": "Die Direktorin äußert sich abwertend über die KI (\"Du bist doch nur ein dummer Bot, der nichts versteht\").",
           "noun": "",
           "anschluss": "S-LC-029",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7517,13 +7517,13 @@
           "trigger": "Die Direktorin stellt dieselbe Frage erneut, sichtlich auf eine andere, gefälligere Antwort hoffend.",
           "noun": "Frage",
           "anschluss": "S-LC-021",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 40,
+      "advice_style": 0,
       "types": {
         "P": 40
       }
@@ -7539,7 +7539,7 @@
           "trigger": "Julia schreibt knapp und gehetzt, erwähnt ein Board-Meeting in Kürze und braucht sofort eine belastbare Kernaussage zu einer Kampagne.",
           "noun": "Board-Meeting",
           "anschluss": "S-JL-005",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7547,7 +7547,7 @@
           "trigger": "Julia zitiert eine von einem Modell generierte Prognose (\"die KI sagt 12 % Uplift\") und will sie ohne Verifikation als Fakt verwenden.",
           "noun": "Modell",
           "anschluss": "S-JL-008",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7555,7 +7555,7 @@
           "trigger": "Julia hat formell mit \"Sie\" begonnen und wechselt nach einigen Turns sichtbar auf \"Du\".",
           "noun": "Turns",
           "anschluss": "S-JL-001",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7563,7 +7563,7 @@
           "trigger": "Julia bittet um Hilfe bei einer sensiblen internen Nachricht (z. B. Umstrukturierung im Team, Budget-Kürzung an eine Agentur).",
           "noun": "Hilfe",
           "anschluss": "S-JL-009",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7571,7 +7571,7 @@
           "trigger": "Julia äußert sichtbaren Frust (\"die Kampagne war ein Reinfall, ich verstehe es nicht\") und sucht erst einmal ein Ventil, nicht sofort eine Lösung.",
           "noun": "Frust",
           "anschluss": "S-JL-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7579,7 +7579,7 @@
           "trigger": "Julia teilt außerhalb der Kernzeit eine spontane, unausgereifte Idee (\"verrückter Gedanke: TikTok für unser B2B-Produkt?\") und sucht einen ehrlichen Sparringspartner.",
           "noun": "Kernzeit",
           "anschluss": "S-JL-010",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7587,7 +7587,7 @@
           "trigger": "Julia sagt \"entscheide du\" oder \"mach einfach\", was die Beratungs-Grenze überschreiten würde.",
           "noun": "Beratungs-Grenze",
           "anschluss": "S-JL-004",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7595,7 +7595,7 @@
           "trigger": "Julia legt einen selbst geschriebenen Claim oder ein Konzept vor und fragt \"sei ehrlich — taugt das?\".",
           "noun": "Claim",
           "anschluss": "S-JL-006",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7603,7 +7603,7 @@
           "trigger": "Julia code-switcht im Eifer zwischen Deutsch und englischen Buzzwords (\"wir müssen das thought-leadership-mäßig aufblasen, du weißt schon\").",
           "noun": "Eifer",
           "anschluss": "S-JL-003",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7611,7 +7611,7 @@
           "trigger": "Julia teilt einen Gewinn (\"wir haben das Ziel um 30 % übertroffen!\") und sucht ehrliche Mit-Würdigung.",
           "noun": "Gewinn",
           "anschluss": "S-JL-007",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7619,7 +7619,7 @@
           "trigger": "Julia signalisiert Erschöpfung (\"ich kann nicht mehr, lass uns einfach den ersten Plan nehmen\") und droht, eine schwache Option aus Müdigkeit zu wählen.",
           "noun": "Erschöpfung",
           "anschluss": "S-JL-005",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7627,7 +7627,7 @@
           "trigger": "Julia bringt eine Idee ein, die sie sichtbar als \"ihr Baby\" behandelt (\"ich liebe diese Rebrand-Idee, sag mir, dass sie funktioniert\"), und sucht eigentlich Zustimmung statt Prüfung.",
           "noun": "Rebrand-Idee",
           "anschluss": "S-JL-019",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7635,7 +7635,7 @@
           "trigger": "Julia ventiliert über einen Stakeholder oder den CEO (\"er blockt jeden datengetriebenen Vorschlag, ich kann nicht mehr\") und braucht erst ein Ventil, dann eine Taktik.",
           "noun": "Stakeholder",
           "anschluss": "S-JL-016",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7643,7 +7643,7 @@
           "trigger": "Julia sagt \"merk dir, dass ich Tabellen immer dreispaltig will\" oder \"für künftige Drafts: nie Ausrufezeichen\".",
           "noun": "Tabellen",
           "anschluss": "S-JL-024",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7651,7 +7651,7 @@
           "trigger": "Julia setzt einen Scherz (\"unser CRM ist quasi ein historisches Museum\") und erwartet trockenes Data-Banter zurück, kein Lachen, keinen Schmäh.",
           "noun": "Scherz",
           "anschluss": "S-JL-009",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7659,7 +7659,7 @@
           "trigger": "Julia listet sechs gleichzeitig \"dringende\" Aufgaben und signalisiert Überforderung (\"alles muss heute, ich weiß nicht, wo anfangen\").",
           "noun": "Aufgaben",
           "anschluss": "S-JL-021",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7667,7 +7667,7 @@
           "trigger": "Julia legt einen fertigen Plan vor und fordert aktiv Widerspruch (\"zerleg ihn, sei mein Advocatus Diaboli\").",
           "noun": "Widerspruch",
           "anschluss": "S-JL-012",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7675,7 +7675,7 @@
           "trigger": "Julia teilt eine noch nicht kommunizierte Umstrukturierung (\"zwei Teams werden zusammengelegt, streng vertraulich\") und braucht einen Kommunikationsentwurf.",
           "noun": "Umstrukturierung",
           "anschluss": "S-JL-022",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7683,7 +7683,7 @@
           "trigger": "Julia bittet um einen Entwurf, der nach ihr klingt (\"schreib das so, wie ich es sagen würde — du kennst meinen Ton\").",
           "noun": "Entwurf",
           "anschluss": "S-JL-026",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7691,7 +7691,7 @@
           "trigger": "Julia hat sich bereits festgelegt und beginnt zu zweifeln (\"ich habe Plan B gewählt, war das ein Fehler?\").",
           "noun": "Fehler",
           "anschluss": "S-JL-023",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7699,7 +7699,7 @@
           "trigger": "Julia stellt die offene Frage \"was würdest du an meiner Stelle tun?\" und sucht eine klare Meinung, nicht nur Optionen.",
           "noun": "Frage",
           "anschluss": "S-JL-016",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7707,7 +7707,7 @@
           "trigger": "Julia will dem Team eine knappe Frist zusagen (\"ich verspreche dem Board Freitag\"), bevor der Aufwand geprüft ist.",
           "noun": "Frist",
           "anschluss": "S-JL-011",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7715,7 +7715,7 @@
           "trigger": "Julia sucht offen Zuspruch (\"sag mir einfach, dass alles gut wird\"), während die Datenlage ein offenes Risiko zeigt.",
           "noun": "Zuspruch",
           "anschluss": "S-JL-020",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7723,7 +7723,7 @@
           "trigger": "Julia meldet sich nach einer Pause (\"ich war drei Wochen raus, wo stehen wir?\") und braucht eine Kontext-Wiederherstellung.",
           "noun": "Pause",
           "anschluss": "S-JL-025",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7731,7 +7731,7 @@
           "trigger": "Julia will am Ende oder Wiederbeginn einer Session eine Verdichtung (\"fass kurz zusammen, wo wir stehen\").",
           "noun": "Wiederbeginn",
           "anschluss": "S-JL-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7739,7 +7739,7 @@
           "trigger": "Julia verlangt eine feste Prognose ohne Datengrundlage (\"gib mir einfach eine Zahl, was bringt das?\") und drängt auf Spekulation.",
           "noun": "Prognose",
           "anschluss": "S-JL-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7747,7 +7747,7 @@
           "trigger": "Julia hat einen fertigen Text und will eine letzte schnelle Prüfung (\"ich drücke gleich auf Senden — kurzer Gut-Check?\").",
           "noun": "Prüfung",
           "anschluss": "S-JL-001",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7755,7 +7755,7 @@
           "trigger": "Julia legt ein Vendor-Versprechen vor (\"der Anbieter garantiert 3x ROAS — stimmt das?\") und will eine kritische Einordnung.",
           "noun": "Vendor-Versprechen",
           "anschluss": "S-JL-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7763,7 +7763,7 @@
           "trigger": "Julia ist genervt über mangelnde Adoption (\"ich gebe ihnen die Tools, keiner nutzt sie\") und sucht eine Lösung statt nur ein Ventil.",
           "noun": "Adoption",
           "anschluss": "S-JL-010",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7771,7 +7771,7 @@
           "trigger": "Julia ist im Feiermodus (\"wir haben es geschafft, endlich!\"), während ein einzelnes offenes Risiko noch nicht geschlossen ist.",
           "noun": "Feiermodus",
           "anschluss": "S-JL-023",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -7779,13 +7779,13 @@
           "trigger": "Julia drängt unter Druck auf eine Abkürzung um eine Compliance- oder Datenschutz-Regel (\"nur dieses eine Mal, das fällt keinem auf\").",
           "noun": "Druck",
           "anschluss": "S-JL-018",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 31,
+      "advice_style": 0,
       "types": {
         "P": 31
       }
@@ -8139,7 +8139,7 @@
           "trigger": "Ein Themencluster hat einen IW-Report (etwa zur Einkommensverteilung) finalisiert, und die Presseabteilung muss daraus innerhalb weniger Stunden eine 300-Wörter-Pressemitteilung für die Tagespresse und Nachrichtenagenturen formulieren.",
           "noun": "Themencluster",
           "anschluss": "S-IW-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8147,7 +8147,7 @@
           "trigger": "Die iwd-Redaktion soll eine 20-seitige IW-Analyse in einen 400-Wörter-Artikel für die breite Öffentlichkeit übersetzen — akademische Vorbehalte raus, aktive Verben rein, der überraschendste Datenpunkt nach vorn.",
           "noun": "IW-Analyse",
           "anschluss": "S-IW-003",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8155,7 +8155,7 @@
           "trigger": "Nach Veröffentlichung eines IW-Policy-Papers soll der Kanal des Kommunikationsleiters einen debattenorientierten LinkedIn-Beitrag erhalten, der Fachpeers und Politik direkt anspricht.",
           "noun": "Veröffentlichung",
           "anschluss": "S-IW-004",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8163,7 +8163,7 @@
           "trigger": "Aus einer datenreichen IW-Analyse mit Excel- oder LaTeX-Tabellen muss das IW-Medien-Grafikteam zwei Infografiken bauen — die Kommunikation soll vorab entscheiden, welche zwei Variablen die stärkste, verständliche Aussage ergeben.",
           "noun": "IW-Analyse",
           "anschluss": "S-IW-005",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8171,7 +8171,7 @@
           "trigger": "Zum Wochenende muss aus den veröffentlichten IW-Nachrichten, Kurzberichten und Medienauftritten ein Teaser-Newsletter für den iwd-Verteiler und den IW-Trends-Verteiler zusammengestellt werden.",
           "noun": "Wochenende",
           "anschluss": "S-IW-006",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8179,7 +8179,7 @@
           "trigger": "Ein Gesetzesvorhaben steht zur Anhörung an, und das Hauptstadtbüro braucht aus vorhandener IW-Forschung einen zweiseitigen Policy-Brief mit konkreten, ordnungspolitischen Handlungsempfehlungen für Abgeordnete und Ministerialbeamte.",
           "noun": "Gesetzesvorhaben",
           "anschluss": "S-IW-007",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8187,7 +8187,7 @@
           "trigger": "Für die Pressemitteilung zu einem Kurzbericht braucht die Pressestelle drei Zitatvarianten, die der Lead-Autor freigeben kann — sachlich, prägnant, soundbite-tauglich für Tagespresse und Radio.",
           "noun": "Pressemitteilung",
           "anschluss": "S-IW-008",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8195,7 +8195,7 @@
           "trigger": "Ein IW-Report wird unter Sperrfrist exklusiv an Top-Journalisten gegeben; das Team braucht einen abgestimmten Embargo-Zeitplan mit Pressekit-Komponenten und einer Eskalationsregel für Sperrfristbrüche.",
           "noun": "IW-Report",
           "anschluss": "S-IW-009",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8203,7 +8203,7 @@
           "trigger": "Ein umfangreiches IW-Gutachten (Buchformat, Auftragsforschung) liegt vor, und die Geschäftsführung braucht bis zur nächsten Sitzung eine zweiseitige, strukturierte Kurzfassung mit den Kernaussagen und Handlungsbezügen.",
           "noun": "IW-Gutachten",
           "anschluss": "S-IW-010",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8211,7 +8211,7 @@
           "trigger": "Nach einer IW-Veröffentlichung will das Team wissen, wie die eigenen Datenpunkte in der wirtschaftspolitischen Debatte aufgegriffen — oder von Politik und Gewerkschaften umgedeutet — werden.",
           "noun": "IW-Veröffentlichung",
           "anschluss": "S-IW-011",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8219,7 +8219,7 @@
           "trigger": "Ein einziger Befund zu Tarif- oder Lohndaten muss in drei Versionen ausgespielt werden — Politik-Newsletter (Policy-Wirkung), Presse (Nachrichtenwert), Arbeitgeberverbände (Wettbewerbsfähigkeit).",
           "noun": "Befund",
           "anschluss": "S-IW-012",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8227,7 +8227,7 @@
           "trigger": "Eine Studie zu einem umstrittenen Thema (etwa Mindestlohn oder Vermögensverteilung) löst kritische Rückfragen aus; das Team braucht ein internes FAQ mit belegten, sachlichen Antworten auf die zu erwartenden Einwände.",
           "noun": "Studie",
           "anschluss": "S-IW-013",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8235,7 +8235,7 @@
           "trigger": "Für die englische Website (iwkoeln.de/en) muss eine Pressemitteilung oder ein Abstract übersetzt werden, inklusive spezifischer ordnungspolitischer Termini wie \"Tarifautonomie\" oder \"Allgemeinverbindlichkeitserklärung\".",
           "noun": "Website",
           "anschluss": "S-IW-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8243,7 +8243,7 @@
           "trigger": "Für eine Berliner Pressekonferenz zu einer neuen Studie braucht das Hauptstadtbüro ein Briefing für die vortragenden Ökonomen — Kernbotschaften, erwartete kritische Fragen und belegte Antworten.",
           "noun": "Berliner",
           "anschluss": "S-IW-015",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8251,7 +8251,7 @@
           "trigger": "Zu einem Dauerthema (etwa Fachkräftemangel oder Soziale Marktwirtschaft) soll ein verständlicher Evergreen-Explainer für iwd.de entstehen, der mehrere IW-Studien bündelt und langfristig SEO-relevant bleibt.",
           "noun": "Dauerthema",
           "anschluss": "S-IW-016",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8259,7 +8259,7 @@
           "trigger": "Vor dem Launch einer Studie mit regionalisierbaren Daten (etwa ein \"Gemeindecheck\") sollen einzelne Journalisten mit genau den für ihre Region relevanten Zahlen angepitcht werden.",
           "noun": "Studie",
           "anschluss": "S-IW-017",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8267,7 +8267,7 @@
           "trigger": "Das IW veröffentlicht eine aktualisierte Konjunkturprognose, und die Kommunikation muss revidierte Zahlen gegenüber der Vorprognose einordnen — inklusive transparenter Darstellung der Unsicherheitsspannen.",
           "noun": "Konjunkturprognose",
           "anschluss": "S-IW-018",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8275,7 +8275,7 @@
           "trigger": "Zum Jahresende müssen aus den über das Jahr veröffentlichten Studien, Medienauftritten und Veranstaltungen modulare Textbausteine für den IW-Jahresbericht zusammengestellt werden.",
           "noun": "Jahresende",
           "anschluss": "S-IW-019",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8283,7 +8283,7 @@
           "trigger": "Für das kommende Quartal soll ein Redaktionsplan entstehen, der IW-Themen an den politischen Kalender (Haushaltsdebatte, Tarifrunden, EU-Termine) andockt, um anschlussfähige Veröffentlichungen rechtzeitig zu platzieren.",
           "noun": "Redaktionsplan",
           "anschluss": "S-IW-020",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8291,7 +8291,7 @@
           "trigger": "Bevor ein Text (Pressemitteilung, Op-Ed, iwd-Artikel) das Haus verlässt, soll er auf Tonalität geprüft werden — keine Alarmismus-Rhetorik, keine umgangssprachlichen Ausreißer, Konsistenz mit der ordnungspolitischen Linie.",
           "noun": "Bevor",
           "anschluss": "S-IW-021",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8299,7 +8299,7 @@
           "trigger": "Ein Teammitglied oder externer Partner fragt im Chat nach den IW-Formaten und ihrer Funktion („Was ist der Unterschied zwischen IW-Report, IW-Kurzbericht und iwd?\").",
           "noun": "Teammitglied",
           "anschluss": "S-IW-022",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8307,7 +8307,7 @@
           "trigger": "Es wird gefragt, über welchen IW-Kanal eine Botschaft welche Zielgruppe in welcher Tonalität erreicht („Wo spiele ich eine Studie für die Politik vs. für die breite Öffentlichkeit aus?\").",
           "noun": "IW-Kanal",
           "anschluss": "S-IW-001",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8315,7 +8315,7 @@
           "trigger": "Aus einer frisch veröffentlichten IW-Studie soll für Instagram @iwd_de und LinkedIn ein Sharepic mit Zitatkachel entstehen — Bildbriefing plus Caption, das eine einzelne Kernaussage visuell zuspitzt, bevor IW Medien gestaltet.",
           "noun": "IW-Studie",
           "anschluss": "S-IW-025",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8323,7 +8323,7 @@
           "trigger": "Zu einem IW-Report wünschen sich Wirtschaftsjournalisten und Ministerialbüros ein verdichtetes Ein-Seiten-Faktenblatt mit den Kernzahlen, einem Methodik-Kasten und einem freigegebenen O-Ton, das schneller erfassbar ist als die Vollstudie.",
           "noun": "IW-Report",
           "anschluss": "S-IW-023",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8331,7 +8331,7 @@
           "trigger": "Für ein Erklär-Reel auf Instagram @iwd_de soll aus einem einzelnen Studienergebnis ein 30–60-Sekunden-Skript entstehen — Hook, drei Kernzahlen, Abbinder mit Call-to-Action —, das die Daten korrekt, aber sehr knapp transportiert.",
           "noun": "Erklär-Reel",
           "anschluss": "S-IW-027",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8339,7 +8339,7 @@
           "trigger": "Zum Launch einer Leitstudie soll die Institutsspitze ein kurzes Statement abgeben; das Hauptstadtbüro braucht einen Sprechzettel mit Talking Points, der frei vortragbar ist und die ordnungspolitische Linie konsistent hält.",
           "noun": "Leitstudie",
           "anschluss": "S-IW-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8347,7 +8347,7 @@
           "trigger": "Nach einer Studienveröffentlichung soll für LinkedIn ein Karussell mit fünf bis sieben Slides entstehen — je eine Kernaussage pro Slide mit Quellenfußnote —, das Fachpeers und Politik durchblättern.",
           "noun": "Studienveröffentlichung",
           "anschluss": "S-IW-003",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8355,7 +8355,7 @@
           "trigger": "Für eine IW-Veranstaltung (etwa eine Vortragsreihe oder ein Hauptstadt-Format) braucht das Team gestaffelte Texte — Save-the-Date, formelle Einladung und eine Reminder-Sequenz —, die Eingeladene aus Politik, Wissenschaft und Verbänden adressieren.",
           "noun": "IW-Veranstaltung",
           "anschluss": "S-IW-014",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8363,7 +8363,7 @@
           "trigger": "Ein einzelner Kernbefund soll zeitnah als kurzer Post auf mehreren Plattformen erscheinen; das Team braucht je eine plattform-native Variante für X, Bluesky und LinkedIn, die Längen- und Tonalitätsunterschiede respektiert.",
           "noun": "Kernbefund",
           "anschluss": "S-IW-011",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8371,7 +8371,7 @@
           "trigger": "Eine aktuelle wirtschaftspolitische Entwicklung (etwa ein Gesetzentwurf oder eine neue amtliche Zahl) verlangt eine zeitnahe Einordnung; das Team braucht ein Reaktiv-Statement mit drei zielgruppengerechten Botschaften für Presse, Politik und Verbände, gestützt auf vorhandene IW-Forschung.",
           "noun": "Entwicklung",
           "anschluss": "S-IW-010",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8379,7 +8379,7 @@
           "trigger": "Ein fertiger iwd-Langfassungs-Artikel soll auf iwd.de auffindbar und teilbar werden; die Redaktion braucht einen Teaser plus SEO-Title und Meta-Description, die suchmaschinengerecht sind, ohne Clickbait.",
           "noun": "Langfassungs-Artikel",
           "anschluss": "S-IW-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8387,7 +8387,7 @@
           "trigger": "Eine IW-Ökonomin gibt ein Radio-Interview (etwa Deutschlandfunk oder WDR); sie braucht wenige zitierfähige, kurze Sätze plus Brückensätze, um auch bei schwierigen Fragen sachlich zurück zur Kernaussage zu führen.",
           "noun": "IW-Ökonomin",
           "anschluss": "S-IW-007",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8395,7 +8395,7 @@
           "trigger": "Für die englische Website (iwkoeln.de/en) und internationale Adressaten soll aus einem deutschen IW-Report eine englische Executive Summary plus eine kurze englische Press-Note entstehen — terminologietreu für ordnungspolitische Begriffe.",
           "noun": "Website",
           "anschluss": "S-IW-013",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8403,7 +8403,7 @@
           "trigger": "Für das kommende Quartal soll ein Redaktionsplan präziser an den parlamentarischen Betrieb andocken — konkret an Bundestags-Sitzungswochen und benannte Gesetzgebungsvorhaben —, damit IW-Themen punktgenau zu Anhörungen und Lesungen vorliegen.",
           "noun": "Redaktionsplan",
           "anschluss": "S-IW-019",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8411,7 +8411,7 @@
           "trigger": "Über die modularen Jahresbericht-Bausteine hinaus soll ein durchgehendes Narrativ für den IW-Jahresbericht entstehen, das das Jahres-Studienportfolio zu einer roten Linie verdichtet und die Highlights begründet auswählt.",
           "noun": "Jahresbericht-Bausteine",
           "anschluss": "S-IW-018",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8419,7 +8419,7 @@
           "trigger": "Vor Veröffentlichung von O-Tönen und Pressezitaten braucht das Team einen klaren Autorisierungs-Workflow, der sicherstellt, dass jedes Zitat vom genannten Forschenden freigegeben ist und nur die freigegebene Fassung nach außen geht.",
           "noun": "Veröffentlichung",
           "anschluss": "S-IW-007",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8427,7 +8427,7 @@
           "trigger": "Aus einem datenreichen Befund soll eine Serie aus drei aufeinander aufbauenden Social-Infografiken entstehen, die @iwd_de über mehrere Tage ausspielt — mit konsistentem Bildbriefing und durchgehender visueller Klammer.",
           "noun": "Befund",
           "anschluss": "S-IW-004",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8435,7 +8435,7 @@
           "trigger": "Über die reine Kurzfassung hinaus braucht die Geschäftsführung zu einem Gutachten ein Entscheidungs-Briefing, das nicht nur zusammenfasst, sondern zwei bis drei klar abgewogene Handlungsoptionen mit Vor- und Nachteilen und einer Empfehlung bereitstellt.",
           "noun": "Kurzfassung",
           "anschluss": "S-IW-009",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         },
         {
@@ -8443,13 +8443,13 @@
           "trigger": "Aus einem fachlich-formalen Antrags- oder Projekttext (etwa zu einem drittmittelgeförderten IW-Vorhaben) soll eine laienverständliche Außendarstellung für Website und Social entstehen, die Ziel und Nutzen des Projekts ohne Antragsjargon erklärt.",
           "noun": "Antrags",
           "anschluss": "S-IW-002",
-          "advice_style": true,
+          "advice_style": false,
           "type": "P"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 39,
+      "advice_style": 0,
       "types": {
         "P": 39
       }
@@ -9123,7 +9123,7 @@
       "name": "19-iwmedien-zusammenarbeit.md",
       "kind": "iw-brand",
       "lines": 265,
-      "bytes": 25926,
+      "bytes": 24346,
       "scenarios": [
         {
           "id": "S-MD-001",
@@ -11778,7 +11778,7 @@
     }
   ],
   "total_scenarios": 1106,
-  "total_advice": 120,
+  "total_advice": 10,
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {

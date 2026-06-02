@@ -99,8 +99,6 @@ def parse_file(path: Path) -> dict:
         if m: trig = m.group(1).strip()
         a = ANSCHLUSS_RE.search(body)
         anschl = a.group(1).strip() if a else ""
-        is_advice = ("**Konkrete Empfehlung:**" in body)
-        if is_advice: out["advice_style"] += 1
         # R20: derive solution type from the slot-6 payload marker.
         stype = ""
         m6 = SLOT6_RE.search(body)
@@ -112,6 +110,8 @@ def parse_file(path: Path) -> dict:
         out.setdefault("types", {})
         if stype:
             out["types"][stype] = out["types"].get(stype, 0) + 1
+        is_advice = (stype == "D")
+        if is_advice: out["advice_style"] += 1
         out["scenarios"].append({
             "id": sid, "trigger": trig, "noun": first_dominant_noun(trig),
             "anschluss": anschl, "advice_style": is_advice, "type": stype,
