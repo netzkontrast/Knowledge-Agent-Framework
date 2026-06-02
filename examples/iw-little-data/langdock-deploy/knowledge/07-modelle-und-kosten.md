@@ -106,7 +106,7 @@ Vorgehen:
 2. Weise dem Workflow fest GPT-5 Mini (€0,21/1M) zu; nutze niemals Auto Mode in einem automatisierten Workflow, da dieser unvorhersehbar teure Modelle anstößt.
 3. Setze ein Workflow-Budget (Standard €25/Monat) plus einen 50%-Warn-Alert, damit der Lauf bei Fehlkonfiguration stoppt, bevor er entgleist.
 4. Lass die ersten 50 Texte als Stichprobe durch Sonnet 4.6 prüfen — gezielter Qualitäts-Check statt teurem Volllauf.
-Prompt: "Übersetze die angehängten Produkttexte ins Schweizerhochdeutsch. Ersetze jedes 'ß' durch 'ss', nutze 'Velo' statt 'Fahrrad'. Behalte Länge und Tonalität bei, max. 2 Sätze pro Text. Gib eine Tabelle mit Original und Übersetzung zurück."
+Empfehlung: Behandle die Massen-Lokalisierung als Light-Aufgabe und weise dem Workflow fest ein guenstiges Modell zu (z. B. GPT-5 Mini, EUR 0,21/1M Input) - der EUR-Preis von Sonnet 4.6 (EUR 2,58) ist bei kurzen, schablonenhaften Texten nicht durch Qualitaetsgewinn gerechtfertigt. Nutze nie Auto Mode in einem automatisierten Workflow und setze ein Workflow-Budget (Standard EUR 25) plus 50-%-Warn-Alert, damit ein Fehl-Loop stoppt, bevor er das Workspace-Limit (EUR 500) ausreizt. Lass die ersten 50 Texte als Stichprobe durch Sonnet pruefen und schreibe die Region-Regeln (ss statt ß, 'Velo') explizit in den Prompt, da Light-Modelle regionale Vokabel-Feinheiten uebersehen.
 Artefakt: Lokalisierter Katalog als Tabelle plus eine kurze Kostennotiz (Modell-/Tier-Wahl + Budget-Deckel) für das Controlling.
 Fallstricke:
 - Light-Modelle übersehen regionale Vokabel-Feinheiten (Velo, parkieren) — Mitigation: die Region-Regeln explizit in den Prompt schreiben, nicht dem Modell überlassen.
@@ -124,7 +124,7 @@ Vorgehen:
 2. Pinne bewusst Opus 4.8 (Frontier-Tier, €4,30) — die Aufgabe ist Deduktion aus heterogenen Quellen, genau das Profil, für das der Aufpreis gerechtfertigt ist.
 3. Begrenze den Einsatz auf diese eine Session; dokumentiere die Modellwahl als genehmigungspflichtige Ausnahme für das Quartals-Review.
 4. Prüfe alle Zahlen aus der Synthese gegen die Originalreports — auch Frontier-Modelle halluzinieren Quartalszahlen.
-Prompt: "Du bist mein strategischer Sparringspartner. Synthetisiere aus den fünf Quartalsreports im Wissensordner die drei wichtigsten Marktbewegungen. Wo sich Quellen widersprechen, benenne den Widerspruch statt ihn zu glätten. Ergebnis: 1 Seite, Sie-Form, für den Vorstand."
+Empfehlung: Pinne fuer die seltene, geschaeftskritische Synthese bewusst Opus 4.8 (Frontier, EUR 4,30) - Deduktion aus widerspruechlichen Quellen ist genau das Profil, fuer das der Frontier-Aufpreis gerechtfertigt ist; begrenze ihn strikt auf diese eine Chat-Session und stufe Folgefragen auf GPT-5.2 herab. Lege die fuenf Reports einmalig im Wissensordner ab statt sie in jeden Prompt zu kopieren (spart Input-Tokens), pruefe alle Quartalszahlen gegen die Originale (auch Frontier-Modelle halluzinieren) und dokumentiere die Modellwahl als genehmigungspflichtige Ausnahme.
 Artefakt: Eine einseitige Synthese-Note mit benannten Datenwidersprüchen, vorstandsreif.
 Fallstricke:
 - Opus 4.8 für eine simple Headline zu nutzen verbrennt das ~8-fache des Nötigen — Mitigation: das Frontier-Modell strikt auf Synthese begrenzen, Folgefragen auf GPT-5.2 herabstufen.
@@ -142,11 +142,16 @@ Vorgehen:
 2. Lege die Regel fest: Auto Mode nur für exploratives Chatten; für wiederkehrende Aufgaben das günstigste passende Modell pinnen (z.B. Haiku 4.5, €0,86).
 3. Setze für Einsteiger einen reduzierten Workspace-Cap unter dem €500-Standard, damit ein Auto-Mode-Ausreißer früh stoppt.
 4. Lass das Team einmal pro Woche die Usage-Transparenz-Leiste prüfen und Ausreißer melden.
-Prompt: "Erstelle mir eine einseitige Team-Regel auf Deutsch: Wann nutzen wir Auto Mode, wann pinnen wir ein Modell? Nenne pro Aufgabentyp (Social-Post, Whitepaper, Analyse) das empfohlene Modell. Kurze Hauptsätze, max. 3 Sätze pro Punkt."
+Vorlage: Auto-Mode-vs-Pinned Team-Policy:
+1. Regel - Auto Mode nur fuer exploratives Chatten; fuer wiederkehrende Aufgaben das guenstigste passende Modell pinnen (z. B. Haiku 4.5).
+2. Modell je Aufgabentyp - Social-Post -> Flash/Haiku, Whitepaper -> Sonnet, Analyse -> Frontier (genehmigungspflichtig).
+3. Einsteiger-Cap - reduzierter Workspace-Cap unter EUR 500 + Warn-Schwellen 50/75/90 %.
+4. Routine - woechentliche Usage-Leisten-Pruefung, Ausreisser melden.
 Artefakt: Eine Modell-Wahl-Policy (1 Seite) plus ein konfigurierter Einsteiger-Cap.
 Fallstricke:
 - Auto Mode in Workflows einzusetzen erzeugt unvorhersehbare Kosten — Mitigation: in jeder Automatisierung ein Modell fest zuweisen, nie Auto Mode.
 - Ein zu niedriger Cap blockiert legitime Arbeit mitten in einer Kampagne — Mitigation: Warn-Schwellen bei 50/75/90% statt nur harter Stopp, damit man vorher nachsteuert.
+Empfehlung: Weise in jeder Automatisierung ein Modell fest zu und nutze nie Auto Mode - Auto Mode fixiert nach der ersten Nachricht zwischen GPT-5.2 und Sonnet und landet bei komplex formulierten Trivialfragen unnoetig teuer. Setze den Einsteiger-Cap mit Warn-Schwellen (50/75/90 %) statt nur als harten Stopp, damit ein Ausreisser frueh auffaellt, ohne legitime Arbeit mitten in einer Kampagne zu blockieren.
 Anschluss: S-MK-001
 
 ### S-MK-004 BYOK-Entscheidung: Lohnt der Azure-Rahmenvertrag für das Marketing-Volumen?
@@ -160,7 +165,7 @@ Vorgehen:
 2. Halte fest, dass BYOK nur die reinen Token-Kosten verlagert (direkt beim Provider abgerechnet), Langdock berechnet dann nur Plattformgebühren — der Hebel liegt also in deinen ausgehandelten Azure-Rabatten.
 3. Beachte, dass BYOK ab Enterprise-Tier relevant ist und der Admin mindestens drei Modelltypen (Completion, Embedding, Image-Gen) hinterlegen muss, sonst fallen UI-Funktionen aus.
 4. Übergib die Gegenüberstellung an die IT mit klarer Empfehlung und der Volumenschwelle, ab der sich BYOK rechnet.
-Prompt: "Vergleiche zwei Abrechnungsmodelle für unser Marketing-Team auf Basis der angehängten Usage-CSV: Langdock-Standard vs. BYOK über unseren Azure-Rabatt. Rechne mit Token-Volumen pro Modell. Gib eine Tabelle und eine klare Schwelle, ab welchem Volumen BYOK günstiger ist."
+Empfehlung: Entscheide BYOK nicht spekulativ, sondern auf Basis des realen Token-Volumens aus dem 3-Monats-Usage-Export - BYOK verlagert nur die reinen Token-Kosten zum Provider (Langdock berechnet dann Plattformgebuehren), der Hebel liegt in deinen ausgehandelten Azure-Rabatten und lohnt erst ab hohem Volumen. Pruefe vor dem Umstieg, dass alle drei Modelltypen (Completion, Embedding, Image-Gen) hinterlegt sind, sonst fallen UI-Features aus, und uebergib der IT die Gegenueberstellung mit der konkreten Volumenschwelle, ab der BYOK guenstiger wird (BYOK ist Enterprise-Tier).
 Artefakt: Eine Entscheidungsvorlage (Tabelle + Empfehlung) für das Controlling und die IT.
 Fallstricke:
 - BYOK ohne alle drei Modelltypen führt zu ausfallenden UI-Features (z.B. Bildgenerierung) — Mitigation: vor dem Umstieg Completion, Embedding und Image-Gen mappen.
@@ -178,7 +183,7 @@ Vorgehen:
 2. Stufe unkritische Prozesse sofort herab oder pausiere sie, damit Budget für geschäftskritische Agenten bis Monatsende bleibt.
 3. Prüfe, ob ein Workflow Auto Mode nutzt oder ein Modell falsch zugewiesen ist — die häufigste Einzelursache für Ausreißer.
 4. Erst wenn der Verbrauch legitim und produktiv ist, beantrage eine begründete Limit-Erhöhung statt einer pauschalen Verdopplung.
-Prompt: "Analysiere den angehängten Usage-Export der letzten 20 Tage. Welche drei Agenten oder Workflows verursachen die höchsten Kosten und welches Modell nutzen sie? Schlage je eine konkrete Sparmaßnahme vor (z.B. Modell-Downgrade). Antworte in Stichpunkten, Sie-Form."
+Empfehlung: Diagnostiziere bei erreichtem 90-%-Limit zuerst die Ursache ueber die Usage-Leiste (welcher Agent/welches Modell treibt die Kosten - meist ein Agent versehentlich auf Opus statt Haiku oder ein Workflow im Auto Mode), statt das Budget pauschal zu verdoppeln. Stufe unkritische Prozesse sofort herab oder pausiere sie (90-%-Schwelle gezielt nutzen), damit Budget fuer geschaeftskritische Agenten bis Monatsende bleibt, und beantrage eine Limit-Erhoehung erst, wenn der Verbrauch nachweislich legitim und produktiv ist.
 Artefakt: Eine Triage-Liste der Top-3-Kostentreiber mit je einer Sofortmaßnahme.
 Fallstricke:
 - Pauschale Limit-Erhöhung verschiebt nur das Problem in den nächsten Monat — Mitigation: erst die Ursache (Modellwahl/Workflow) beheben.
@@ -196,7 +201,7 @@ Vorgehen:
 2. Belasse faktenarme Aufgaben auf Haiku 4.5 (€0,86), aber zwinge faktenkritische Texte dazu, nur Zahlen aus dem Wissensordner zu nutzen, keine aus dem Modellwissen.
 3. Füge einen verpflichtenden menschlichen Faktencheck vor jedem Presseversand ein — kein Modellpreis ersetzt diese Kontrolle.
 4. Erwäge für faktenkritische Synthesen ein Step-up auf GPT-5.4 (€2,36), wenn Quellenbindung allein nicht reicht.
-Prompt: "Schreibe die Pressemeldung nur auf Basis der Zahlen im Wissensordner. Erfinde keine Statistiken. Markiere jede Zahl mit der Quelle in Klammern. Wenn eine Angabe fehlt, schreibe '[Quelle fehlt]' statt zu schätzen. Sie-Form, faktischer Ton."
+Empfehlung: Trenne PR-Aufgaben in faktenarme (Tonalitaet, Formulierung -> Haiku 4.5, EUR 0,86 genuegt) und faktenkritische (Zahlen, Zitate, Studien) - bei Letzteren zwinge das Modell, nur Zahlen aus dem Wissensordner zu nutzen und fehlende mit '[Quelle fehlt]' zu markieren, statt aus dem Modellwissen zu schaetzen. Mach einen menschlichen Faktencheck vor jedem Presseversand verpflichtend (kein Modellpreis und kein Upgrade ersetzt ihn) und erwaege fuer faktenkritische Synthesen einen Step-up auf GPT-5.4 (EUR 2,36), wenn Quellenbindung allein nicht reicht.
 Artefakt: Eine PR-Risiko-Matrix (faktenarm/faktenkritisch) plus ein quellengebundener Meldungsentwurf mit markierten Zahlen.
 Fallstricke:
 - Sparen am Modell ohne Quellenbindung verlagert das Risiko auf erfundene Zahlen mit Reputationsschaden — Mitigation: Quellenbindung an den Wissensordner plus '[Quelle fehlt]'-Pflicht.
@@ -214,7 +219,7 @@ Vorgehen:
 2. Ordne zu: Gemini 2.5 Flash für Rohentwürfe (sehr günstig), Sonnet 4.6 (€2,58) für die Brand-Voice-Politur, Opus 4.8 (Frontier-Tier, €4,30) nur falls die Kernthese echte Synthese braucht — sonst auch hier Sonnet.
 3. Stelle dem Sonnet-Schritt die Brand-Voice-Richtlinie aus dem Wissensordner bereit, damit weniger manuelle Nachkorrektur nötig ist.
 4. Rechne die Phasen-EUR-Kosten gegen den alten Durchgängig-Sonnet-Lauf und dokumentiere die Ersparnis fürs Team.
-Prompt: "Phase 1 (Flash): Erstelle drei Rohgliederungen zum Thema X. Phase 2 (Sonnet): Wähle die beste und schreibe sie in unserer Brand Voice aus dem Wissensordner aus. Halte die Du-Form durchgängig ein, max. 4 Sätze pro Absatz."
+Empfehlung: Zerlege die Content-Supply-Chain in Phasen und ordne jeder das kosteneffizienteste Modell zu, statt durchgaengig Sonnet zu fahren: Gemini 2.5 Flash fuer Rohentwuerfe, Sonnet 4.6 (EUR 2,58) fuer die Brand-Voice-Politur, Opus 4.8 nur falls die Kernthese echte Synthese braucht (sonst auch hier Sonnet). Starte pro Phase eine neue Session mit gepinntem Modell (ein Phasenwechsel innerhalb einer Session loest kein Re-Routing aus) und verankere die Politur-Phase als verbindlichen Schritt, damit guenstige Flash-Rohentwuerfe nicht ungepoliert rausgehen.
 Artefakt: Eine dokumentierte Modell-Pipeline mit EUR-Preise pro Phase und einer Ersparnis-Rechnung.
 Fallstricke:
 - Phasenwechsel innerhalb einer Chat-Session löst kein Modell-Re-Routing aus (Auto Mode fixiert) — Mitigation: pro Phase bewusst eine neue Session mit gepinntem Modell starten.
@@ -232,7 +237,7 @@ Vorgehen:
 2. Halte fest, dass Max die fünffache Nutzungskapazität und komplexe Workflows freischaltet — relevant nur für die Automatisierer.
 3. Prüfe, ob Features wie SSO oder BYOK gebraucht werden — die liegen erst im Enterprise-Tier, nicht in Max.
 4. Rechne ein gemischtes Modell (z.B. 3x Max, 9x Standard) gegen pauschal-Max und gegen pauschal-Standard, jeweils auf Jahresbasis (ex VAT).
-Prompt: "Erstelle eine Tier-Empfehlung für unser 12-köpfiges Team auf Basis der angehängten Nutzungsdaten. Wer braucht Max (Workflows, hohes Volumen), wer Standard? Gib eine Jahreskostenrechnung für ein gemischtes Modell vs. pauschal Max. Tabelle, Sie-Form."
+Empfehlung: Richte den Pricing-Tier am realen Bedarf aus statt pauschal hochzustufen: Segmentiere in Chat-/Basis-Agenten-Nutzer (Standard EUR 25 genuegt) und Workflow-Bauer/hochvolumige RAG-Nutzer (Max EUR 99, schaltet 5-fache Kapazitaet + komplexe Workflows frei) und rechne ein gemischtes Modell (z. B. 3x Max, 9x Standard) gegen pauschal-Max und pauschal-Standard auf Jahresbasis. Pruefe den Feature-Bedarf gegen die Tier-Matrix, bevor du hochstufst - SSO und BYOK liegen erst im Enterprise-Tier, nicht in Max.
 Artefakt: Eine Tier-Zuordnung pro Nutzergruppe mit Jahreskosten-Gegenüberstellung.
 Fallstricke:
 - Pauschal-Max für alle vervierfacht die Lizenzkosten, obwohl die meisten nur Chat nutzen — Mitigation: gemischte Tier-Zuordnung nach realem Bedarf.
@@ -250,7 +255,7 @@ Vorgehen:
 2. Beachte, dass Gemini 3 Flash (Stand Mai 2026 teurer als Gemini 2.5 Flash) nicht automatisch der günstigere Draft-Default ist — der niedrigere EUR-Preis pro Token bleibt das Kriterium, nicht die höhere Versionsnummer.
 3. Teste ein neues Modell nur an einem repräsentativen Aufgaben-Batch, bevor du es teamweit zuweist.
 4. Dokumentiere die Entscheidung mit Datum ("Stand Mai 2026"), damit die nächste Quartalsplanung den Stand kennt.
-Prompt: "Vergleiche für unsere Draft-Aufgaben Gemini 2.5 Flash und Gemini 3 Flash anhand der EUR-Preis pro Tokenen und der Output-Qualität auf den angehängten Beispieltexten. Empfiehl, ob wir wechseln. Begründe mit Kosten, nicht mit der Versionsnummer. Sie-Form."
+Empfehlung: Bewerte neue Modell-Releases strukturiert gegen die bestehende Zuordnung am EUR-Preis pro Token und an einem repraesentativen Batch-Test, nicht an der Versionsnummer - Gemini 3 Flash ist (Stand Mai 2026) teurer als Gemini 2.5 Flash und damit nicht automatisch der guenstigere Draft-Default. Pruefe nach jedem auto-aktivierten Release die Usage-Leiste und pinne Modelle gezielt, da neue Modelle ueber Auto Mode unbemerkt teurer routen koennen, und datiere die Entscheidung ('Stand Mai 2026') fuer die naechste Quartalsplanung.
 Artefakt: Eine datierte Modell-Roster-Empfehlung mit Begründung pro Wechsel/Beibehalten.
 Fallstricke:
 - Annahme, ein höheres Versions-Release sei automatisch günstiger oder besser — Gemini 3 Flash ist teurer als 2.5 Flash — Mitigation: immer am EUR-Preis pro Token und am Batch-Test entscheiden.
@@ -268,7 +273,7 @@ Vorgehen:
 2. Beziffere: GPT-5.5 (€4,72/1M Input, €28,35 Output) ist das teuerste Modell — rund 3x so teuer pro Input-Token wie GPT-5.2 (€1,50) und rund 18x des Efficient-Defaults (€0,26); der Einsatz ist nur für die finale, mehrstufige Synthese der vorverarbeiteten Cluster vertretbar, nicht für die Rohdaten.
 3. Setze einen dedizierten Workspace-Cap für diesen einmaligen Lauf, damit der hohe Frontier-Preis nicht das Monatsbudget aufzehrt.
 4. Halte die Entscheidung als genehmigte Ausnahme fest und prüfe das Ergebnis stichprobenartig gegen die Rohdaten.
-Prompt: "Auf Basis der bereits geclusterten Antworten im Wissensordner: Leite die drei tiefsten, nicht offensichtlichen Verhaltensmuster ab und belege jedes mit zwei Beispielzitaten. Keine Spekulation über Daten hinaus. Ergebnis: strukturierte Liste, Sie-Form."
+Empfehlung: Trenne vor dem Frontier-Einsatz, was deterministisch per Code Node vorverarbeitet werden kann (kostet keine AI-Tokens) von dem, was echte Reasoning-Tiefe braucht - oft schrumpft die Frontier-Aufgabe dadurch stark. Setze das teuerste Modell (GPT-5.5, EUR 4,72/1M Input, EUR 28,35 Output - rund 3x GPT-5.2, 18x des Efficient-Defaults) nur fuer die finale, mehrstufige Synthese der vorverarbeiteten Cluster ein, sichere den einmaligen Lauf mit einem dedizierten Workspace-Cap ab und dokumentiere ihn als genehmigte Ausnahme.
 Artefakt: Eine Insights-Synthese der Top-Muster plus eine dokumentierte Frontier-Modell-Ausnahme mit Kostendeckel.
 Fallstricke:
 - Rohdaten direkt durch das teuerste Frontier-Modell zu jagen ist Geldverschwendung — Mitigation: deterministische Vorverarbeitung per Code Node, Frontier-Modell nur für die finale Synthese.
@@ -286,8 +291,7 @@ Vorgehen:
 2. Exportiere die Top-10-Einträge als CSV und prüfe, welches Modell jeweils aktiv war — ein einzelner Frontier-Agent auf Opus 4.8 (Frontier-Tier, €4,30) treibt die Kosten oft mehr als zwanzig Standard-Prompts zusammen.
 3. Klassifiziere jeden Heavy-Hitter: Ist die Komplexität des Prompts durch den EUR-Preis pro Token gerechtfertigt, oder wurde ein zu teures Modell für eine Routine-Aufgabe eingesetzt?
 4. Baue die Top-3-Problemprompts um: entweder Modell-Downgrade (z.B. von Sonnet auf Haiku), Kontext-Komprimierung (Wissensordner statt Inline-Upload) oder Splitting in eine günstige Vorverarbeitungs- und eine gezielte Synthese-Phase.
-Prompt:
-> "Du bist mein KI-Kostenberater. Analysiere die angehängte Usage-CSV der letzten 30 Tage. Identifiziere die 5 teuersten Prompts oder Agenten nach Token-Kosten und benenne das jeweils genutzte Modell. Schlage für jeden Eintrag einen konkreten Umbau vor (Modell-Downgrade, Kontext-Komprimierung oder Task-Split). Antworte in einer Tabelle, Sie-Form."
+Empfehlung: Isoliere die teuersten Prompts ueber das nach Token-Verbrauch sortierte Dashboard (getrennt nach Nutzer und Agent) und multipliziere immer die absolute Token-Zahl mit dem Modell-EUR-Preis, bevor du priorisierst - ein langer Haiku-Prompt erscheint volumenmaessig oben, ist aber kostenmaessig unbedeutend, waehrend ein Opus-Agent zwanzig Standard-Prompts uebertrifft. Bau die Top-3-Heavy-Hitter um (Modell-Downgrade, Kontext-Komprimierung via Wissensordner, oder Split in guenstige Vorverarbeitung + gezielte Synthese) und vergleiche nach jedem Downgrade fuenf Canary-Prompts mit dem alten Ergebnis, damit die Qualitaet nicht unbemerkt sinkt.
 Artefakt: Eine Refactor-Tabelle mit den Top-5-Kostentreibern, zugehörigem EUR-Preis pro Token und je einer priorisierten Sparmaßnahme.
 Fallstricke:
 - Dashboard-Zahlen zeigen absoluten Token-Verbrauch, nicht die tatsächlichen Kosten — ein langer Haiku-Prompt kann volumenmäßig oben erscheinen, aber kostenmäßig unbedeutend sein; Mitigation: immer Modell-EUR-Preis zur absoluten Token-Zahl multiplizieren, bevor priorisiert wird.
@@ -305,8 +309,7 @@ Vorgehen:
 2. Trenne den statischen Template-Teil (Persona, Ton, Struktur) klar vom variablen Teil (Kampagnenname, Datum, Zielgruppe) — nur der statische Teil profitiert vom Cache.
 3. Hinterlege den statischen Teil einmalig im Wissensordner; der Agent ruft ihn per RAG ab, statt ihn bei jeder Anfrage neu zu übergeben — das ist Langdocks praktische Caching-Entsprechung.
 4. Messe die Input-Token-Reduktion nach 30 Tagen über den Usage-Export und dokumentiere die Ersparnis für das Quartals-Reporting.
-Prompt:
-> "Du bist mein Prompt-Effizienz-Berater. Analysiere die drei Briefing-Templates im Wissensordner. Identifiziere, welche Anteile bei jedem Abruf identisch sind und daher gecacht werden könnten. Gib eine Empfehlung, welche Teile statisch (Cache-geeignet) und welche variabel bleiben müssen. Antworte mit einer strukturierten Aufschlüsselung, Sie-Form."
+Empfehlung: Pruefe Prompt-Caching nur, wenn der statische Template-Anteil ueber 2.048 Token liegt UND mindestens 5 Requests/Minute anfallen - darunter ueberwiegt der Verwaltungsaufwand den Nutzen. Trenne den statischen Teil (Persona, Ton, Struktur) klar vom variablen (Kampagnenname, Datum) und hinterlege den statischen einmalig im Wissensordner (Langdocks praktische Caching-Entsprechung via RAG); plane eine Quartals-Review-Pflicht fuer gecachte Templates ein, damit keine veralteten Briefing-Vorgaben zementiert werden.
 Artefakt: Eine annotierte Template-Struktur (statisch / variabel) plus eine ROI-Schätzung der monatlichen Token-Ersparnis.
 Fallstricke:
 - Caching lohnt sich nicht bei niedrigem Request-Volumen: unter 5 Requests/Minute und unter 2.048 Token Template-Anteil ist der Cache-Overhead größer als die Ersparnis — Mitigation: erst das Volumen messen, bevor die Architektur umgebaut wird.
@@ -324,12 +327,16 @@ Vorgehen:
 2. Lege fest, dass Flash-Klasse-Modelle der Default für jede Aufgabe sind, bei der kein explizites Qualitätsargument für Sonnet vorliegt — Bequemlichkeit ist kein Qualitätsargument.
 3. Halte die Routing-Matrix im Wissensordner ab und verknüpfe sie mit dem Content-Agenten als Referenz, damit das Team die Regel im Chat abrufen kann.
 4. Prüfe nach vier Wochen die Usage-Leiste: hat der Sonnet-Anteil im Verhältnis abgenommen? Wenn nicht, war die Kommunikation der Regel unklar.
-Prompt:
-> "Du bist mein Content-Routing-Berater. Erstelle eine Modell-Routing-Matrix für unser Content-Team auf Basis der Aufgabenliste im Wissensordner. Ordne jedem Aufgabentyp das günstigste ausreichende Modell (Flash, Haiku, Sonnet) mit EUR-Preis pro Token zu. Gib eine Tabelle und eine geschätzte monatliche Einsparung bei konsequenter Anwendung. Sie-Form."
+Vorlage: Aufgaben-Routing-Matrix (Flash vs. Sonnet):
+1. Kategorien - Routine-Drafts/Uebersetzungen -> Flash/Haiku (guenstigstes Tier); Headlines/Social -> Haiku 4.5; Brand-Voice-Langform/Strategie -> Sonnet 4.6 (EUR 2,58).
+2. Default-Regel - Flash-Klasse fuer jede Aufgabe ohne explizites Qualitaetsargument fuer Sonnet.
+3. Ablage - Matrix im Wissensordner + als Konversations-Starter im Content-Agenten.
+4. Kontrolle - nach 4 Wochen Usage-Leiste: Sonnet-Anteil gesunken?
 Artefakt: Eine Routing-Matrix (Aufgabentyp / Modell / EUR-Preis / Begründung) plus Einsparungs-Schätzung als Team-Leitfaden.
 Fallstricke:
 - Flash-Modelle produzieren bei Brand-Voice-kritischen Texten inkonsistente Tonalität — Mitigation: jede Ausnahme für Sonnet muss schriftlich begründet werden, nicht aus Gewohnheit.
 - Eine Routing-Matrix nützt nichts, wenn das Team sie nicht findet — Mitigation: die Matrix als Konversations-Starter im Content-Agenten verankern, nicht nur als Dokument im Ordner ablegen.
+Empfehlung: Verlange fuer jede Sonnet-Ausnahme ein schriftliches Qualitaetsargument - Bequemlichkeit ist keines, und Flash-Modelle liefern bei Brand-Voice-kritischen Texten inkonsistente Tonalitaet. Verankere die Routing-Matrix als Konversations-Starter im Content-Agenten, nicht nur als Dokument im Ordner, sonst findet das Team sie nicht und die Regel verpufft.
 Anschluss: S-MK-014
 
 ### S-MK-014 Monatliches KI-Budget für eine Kampagne im Voraus kalkulieren
@@ -343,12 +350,16 @@ Vorgehen:
 2. Multipliziere Token-Volumen je Aufgabentyp mit dem EUR-Preis pro Token des geplanten Modells — nutze Referenzwerte aus dem Usage-Export vergangener Kampagnen als Ankerpunkt.
 3. Addiere einen Iterations-Puffer von 30 % für Nachbesserungen und setze das Ergebnis als Workflow-Budget-Cap vor dem Kampagnenstart.
 4. Übergib die Kalkulation an das Controlling mit einer klaren Zeile: "Basis: EUR-Preis pro Tokenen Stand Mai 2026 — bei Quartalsplanung gegen langdock.com/models gegenchecken."
-Prompt:
-> "Du bist mein KI-Budget-Planer. Erstelle auf Basis der angehängten Kampagnenplanung eine Kostenkalkulation. Nutze die Modell-EUR-Preise aus dem Wissensordner. Schätze Token pro Aufgabentyp, addiere 30 % Iterations-Puffer und gib das Ergebnis als Tabelle mit Gesamt-Budget-Empfehlung aus. Sie-Form, EUR."
+Vorlage: Vorkampagnen-Kostenkalkulation:
+1. Aufgaben-Zerlegung - Briefing, Texterstellung, Uebersetzung, Review, Analyse; je Durchlaeufe + typische Prompt-Laenge (Token) schaetzen.
+2. Kosten je Typ - Token-Volumen x EUR-Preis pro Token des geplanten Modells; Anker aus Usage-Export vergangener Kampagnen.
+3. Puffer - +30 % Iterations-Puffer; Ergebnis als Workflow-Budget-Cap vor Start.
+4. Controlling-Zeile - 'Basis: EUR-Preis Stand Mai 2026, gegen langdock.com/models gegenchecken'.
 Artefakt: Eine tabellarische Vorkampagnen-Kalkulation (Aufgabentyp / Token-Schätzung / Modell / EUR-Preis / Kosten-EUR / Puffer) als Controlling-Vorlage.
 Fallstricke:
 - Token-Schätzungen ohne Referenz aus vergangenen Kampagnen weichen stark von der Realität ab — Mitigation: immer den Usage-Export der letzten vergleichbaren Kampagne als Ankerpunkt verwenden, nie rein spekulativ schätzen.
 - Der Puffer-Faktor deckt keine unkontrollierten Frontier-Model-Läufe ab — Mitigation: den Puffer zusammen mit einem Workflow-Cap setzen, damit Ausreißer gestoppt werden, bevor sie den Puffer aufzehren.
+Empfehlung: Verwende immer den Usage-Export der letzten vergleichbaren Kampagne als Anker statt rein spekulativ zu schaetzen - ohne Referenz weichen Token-Schaetzungen stark von der Realitaet ab. Setze den 30-%-Puffer zusammen mit einem Workflow-Cap, da der Puffer keine unkontrollierten Frontier-Laeufe abdeckt und Ausreisser gestoppt werden muessen, bevor sie ihn aufzehren.
 Anschluss: S-MK-015
 
 ### S-MK-015 Modell mitten im Projekt wechseln: Regeln für den sauberen Übergang
@@ -362,12 +373,16 @@ Vorgehen:
 2. Sichere den bisherigen Kontext: speichere die beste Zwischenversion im Wissensordner, bevor das Modell gewechselt wird — ein Modellwechsel löscht den Chat-Kontext nicht, aber das neue Modell hat keinen automatischen Zugriff auf frühere Schlussfolgerungen.
 3. Starte eine neue Session mit dem höheren Modell, übergib die gesicherte Zwischenversion als Kontext-Dokument und formuliere explizit, was die vorherigen Entwürfe nicht geleistet haben.
 4. Plane den Rückwechsel auf das günstigere Modell für die Überarbeitungs- und Formatierungsphase — Opus nur für die strategische Synthese, nicht für die redaktionelle Politur.
-Prompt:
-> "Du bist mein strategischer Synthesizer. Ich übergebe dir den bisherigen Whitepaper-Entwurf aus dem Wissensordner. Die drei Hauptprobleme: [X, Y, Z]. Entwickle eine schärfere Kernthese, die alle drei überwindet. Gib mir eine überarbeitete Einleitung und einen neuen Gliederungs-Vorschlag. Sie-Form, max. 2 Seiten."
+Vorlage: Modell-Wechsel-Protokoll (mid-Projekt):
+1. Wann wechseln - Aufgabenphase aendert sich (Draft -> Politur -> Synthese) oder Qualitaet/Kosten passen nicht mehr.
+2. Kontext sichern - 'Bisher entschieden'-Zusammenfassung erstellen, bevor die Session gewechselt wird.
+3. Sauberer Uebergang - neue Session mit gepinntem Zielmodell + Kontext-Zusammenfassung starten (kein Re-Routing in derselben Session).
+4. Rueckwechsel - Bedingung dokumentieren, falls das Zielmodell schlechter abschneidet.
 Artefakt: Ein dokumentiertes Wechsel-Protokoll plus eine überarbeitete Whitepaper-Kernthese aus dem Frontier-Modell-Lauf.
 Fallstricke:
 - Modellwechsel ohne Kontext-Sicherung bedeutet, dass das neue Modell den Entwurfsverlauf nicht kennt und schlechter startet als das alte Modell nach Iteration 3 — Mitigation: Zwischenversion immer im Wissensordner ablegen, bevor gewechselt wird.
 - Auf dem höheren Modell auch die Formatierungs- und Korrekturphase laufen lassen ist vermeidbare Kostenverschwendung — Mitigation: Rückwechsel auf Sonnet oder Haiku für alle Phasen nach der strategischen Synthese fest einplanen.
+Empfehlung: Starte fuer den Wechsel eine neue Session mit gepinntem Modell und gib eine kompakte Kontext-Zusammenfassung mit - ein Modellwechsel innerhalb derselben Session loest kein Re-Routing aus und das neue Modell verliert sonst den Gespraechskontext. Dokumentiere die Modell-Entscheidung mit Datum, damit spaetere Projektphasen den Stand nachvollziehen.
 Anschluss: S-MK-016
 
 ### S-MK-016 ROI des KI-Setups für den CFO übersetzen
