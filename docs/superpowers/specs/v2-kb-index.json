@@ -2619,8 +2619,8 @@
     {
       "name": "04-workflows.md",
       "kind": "content",
-      "lines": 1602,
-      "bytes": 192446,
+      "lines": 1610,
+      "bytes": 195485,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -2628,7 +2628,7 @@
           "noun": "Newsletter",
           "anschluss": "S-WF-005",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-002",
@@ -2636,7 +2636,7 @@
           "noun": "Formular-Anfrage",
           "anschluss": "S-WF-010",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-003",
@@ -2644,7 +2644,7 @@
           "noun": "Bestandsseiten",
           "anschluss": "S-WF-007",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-004",
@@ -2652,7 +2652,7 @@
           "noun": "Eingehende",
           "anschluss": "S-WF-008",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-005",
@@ -2660,7 +2660,7 @@
           "noun": "Blog-Artikel",
           "anschluss": "S-WF-001",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-006",
@@ -2668,7 +2668,7 @@
           "noun": "CMS-Artikel",
           "anschluss": "S-WF-005",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-007",
@@ -2676,7 +2676,7 @@
           "noun": "Morgen",
           "anschluss": "S-WF-003",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-008",
@@ -2684,7 +2684,7 @@
           "noun": "Negative",
           "anschluss": "S-WF-004",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-009",
@@ -3267,7 +3267,8 @@
       "faq": [],
       "advice_style": 0,
       "types": {
-        "P": 80
+        "W": 8,
+        "P": 72
       }
     },
     {
@@ -11782,7 +11783,8 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 986,
+    "P": 978,
+    "W": 8,
     "K": 110,
     "D": 10
   },

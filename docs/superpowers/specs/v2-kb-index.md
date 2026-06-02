@@ -10,7 +10,7 @@
 | `01-chat-und-prompts.md` | content | 1636 | 152868 | 80 |  |
 | `02-agenten-konfiguration.md` | content | 1615 | 229596 | 80 |  |
 | `03-wissensordner-und-rag.md` | content | 1571 | 247247 | 80 |  |
-| `04-workflows.md` | content | 1602 | 192446 | 80 |  |
+| `04-workflows.md` | content | 1610 | 195485 | 80 |  |
 | `05-integrationen-und-mcp.md` | content | 1553 | 220296 | 80 |  |
 | `06-api-und-deployment.md` | content | 1611 | 220180 | 80 |  |
 | `07-modelle-und-kosten.md` | content | 1609 | 224940 | 80 |  |

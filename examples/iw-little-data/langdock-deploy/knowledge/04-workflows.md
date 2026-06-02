@@ -95,12 +95,13 @@ Vorgehen:
 1. Den Scheduled-Trigger auf Mittwoch früh setzen, damit vor dem Versand Pufferzeit bleibt.
 2. Einen AI-Node mit Web Search die relevanten Themen der Woche sammeln und in ein festes Format bringen lassen.
 3. Einen HITL-Node für die redaktionelle Freigabe vor dem Übergang in das E-Mail-Tool einplanen.
-Prompt:
-> "Persona: Du bist Marketing-Workflow-Architekt. Aufgabe: Skizziere einen zeitgesteuerten Workflow, der wöchentlich Newsletter-Themen kuratiert. Kontext: Versand donnerstags, Redaktion will Endfreigabe behalten. Format: Node-Liste mit Trigger, AI-Node, HITL und Übergabepunkt."
+Workflow: Scheduled-Trigger (Mittwoch früh, Puffer vor Do-Versand) → AI-Node + Web Search (Wochenthemen sammeln, in Festformat bringen) → HITL-Node (redaktionelle Freigabe) → Action-Node (Übergabe an E-Mail-Tool). Kein Versand vor Freigabe.
+Budget: Workflow-Budget-Guard pro Lauf (Standard €25); AI-Node fix auf Efficient-Default-Modell, Auto Mode aus; 2.000-Schritte-Stopp aktiv. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Ein Workflow-Architektur-Entwurf (Canvas) mit Trigger-Zeitpunkt, AI-Node-Briefing und HITL-Punkt — bereit zur Umsetzung durch den Workspace-Admin.
 Fallstricke:
 - Ohne HITL-Node würde ein unfertiger Newsletter automatisch versendet → Freigabe-Node vor jeder externen Aktion zwingend einplanen.
 - Der Scheduled-Trigger läuft zu knapp vor Versand → genügend Pufferzeit für die Redaktion vorsehen.
+Empfehlung: Setze den HITL-Node als ersten Architektur-Entscheid, nicht als Anhängsel — er ist der einzige Schutz davor, dass ein halbfertiger Newsletter automatisch rausgeht. Der Scheduled-Trigger gehört auf Mittwoch, damit die Redaktion vor dem Do-Versand Freigabe-Puffer hat.
 Anschluss: S-WF-005
 
 ### S-WF-002 Lead-Scoring bei Formular-Eingang (Form/Webhook Trigger)
@@ -113,12 +114,13 @@ Vorgehen:
 1. Den Form- oder Webhook-Trigger an das Website-Formular koppeln.
 2. Einen AI-Node mit erzwungenem JSON-Schema (Score + Begründung) konfigurieren, damit der Output maschinenlesbar bleibt.
 3. Bei hohem Score einen HITL-Node für die persönliche Vertriebsansprache einplanen, bei niedrigem Score automatisch ins Nurturing routen.
-Prompt:
-> "Persona: Marketing-Workflow-Architekt. Aufgabe: Entwirf einen Scoring-Workflow für Formular-Leads. Kontext: Output muss als JSON ins CRM. Format: Trigger, AI-Node mit JSON-Schema (score, reason), Verzweigung hoch/niedrig."
+Workflow: Form-/Webhook-Trigger (Website-Formular) → AI-Node mit erzwungenem JSON-Schema (score, reason) → Verzweigung: hoher Score → HITL-Node (persönliche Vertriebsansprache) → CRM-Action; niedriger Score → Nurturing-Strecke.
+Budget: Pro Lauf günstig (kurze Inputs); Efficient-Default-Modell genügt fürs Scoring; Auto Mode aus. (Quelle: 04-workflows)
 Artefakt: Ein Workflow-Entwurf inklusive JSON-Schema-Vorschlag für die Lead-Bewertung.
 Fallstricke:
 - Structured Output wird über Prompt-Wording statt über die Node-Konfiguration erzwungen → das JSON-Schema in der Agent-Node hinterlegen, nicht im Prompt erbitten.
 - Niedrig bewertete Leads werden verworfen statt genurtured → eine zweite Verzweigung ins Lead-Nurturing vorsehen.
+Empfehlung: Erzwinge das JSON-Schema (score, reason) in der Node-Konfiguration, nicht über Prompt-Formulierungen — nur so bleibt der Output zuverlässig maschinenlesbar fürs CRM. Verwirf niedrig bewertete Leads nie, route sie in die Nurturing-Strecke.
 Anschluss: S-WF-010
 
 ### S-WF-003 Massen-Erzeugung von Meta-Descriptions (Manual Trigger + Loop)
@@ -131,12 +133,13 @@ Vorgehen:
 1. Die URL-Liste in Chargen aufteilen, da ein Loop maximal 100 Items pro Durchlauf verarbeitet.
 2. Einen AI-Node mit klarer Längen- und Keyword-Vorgabe je Seite konfigurieren.
 3. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit (Standard 25 €) und die Warn-Schwellen prüfen.
-Prompt:
-> "Persona: SEO-Workflow-Architekt. Aufgabe: Skizziere einen Batch-Workflow für Meta-Descriptions aus einer URL-Liste. Kontext: 800 Seiten, Budget begrenzt. Format: Trigger, Loop-Logik mit Chargen, AI-Node-Vorgaben, Kosten-Check."
+Workflow: Manual-Trigger (URL-Liste) → Loop-Node (Chargen ≤100 Items) → AI-Node (Längen- + Keyword-Vorgabe je Seite) → Sheets-Integration (Rückschreiben). Vor Start: Kostenschätzung gegen das Per-Execution-Limit.
+Budget: Per-Execution-Limit Standard €25 pro Lauf; Warn-Schwellen 50/75/90 % vor Start aktivieren; Efficient-Default-Modell; 800 Seiten in ≥8 Chargen splitten. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Ein Batch-Workflow-Entwurf mit Chargen-Logik und einer Kostenschätzung pro Lauf.
 Fallstricke:
 - Mehr als 100 Items im Loop führen zum Abbruch → die Liste vorab in Chargen aufteilen.
 - Ein unkontrollierter Lauf reißt das Per-Execution-Limit → Warn-Schwellen (50/75/90 %) vor dem Start aktivieren.
+Empfehlung: Teile die 800 URLs in Chargen zu ≤100 — ein Loop bricht darüber ab. Rechne vor dem Start die Kosten gegen das €25-Per-Execution-Limit; ein unkontrollierter Massenlauf ist der häufigste Budget-Ausreißer.
 Anschluss: S-WF-007
 
 ### S-WF-004 Klassifizierung eingehender Support-Tickets (Integration Trigger)
@@ -149,12 +152,13 @@ Vorgehen:
 1. Den Integration-Trigger an das Ticket-System (z. B. Zendesk) koppeln.
 2. Einen AI-Node mit festen Enum-Kategorien für Thema und Dringlichkeit konfigurieren.
 3. Eine Eskalations-Verzweigung definieren, die nur bei eindeutiger Hoch-Dringlichkeit automatisch alarmiert.
-Prompt:
-> "Persona: Workflow-Architekt für Service-Marketing. Aufgabe: Entwirf einen Ticket-Klassifizierungs-Workflow. Kontext: Kategorien fix, Fehlalarme vermeiden. Format: Trigger, AI-Node mit Enum-Schema, Eskalations-Regel."
+Workflow: Integration-Trigger (Ticket-System, z. B. Zendesk) → AI-Node mit Structured Output (Enum: Thema, Dringlichkeit) → Eskalations-Verzweigung (Auto-Alarm nur bei eindeutiger Hoch-Dringlichkeit, sonst normale Queue).
+Budget: Pro Ticket günstig; Efficient-Default-Modell; Auto Mode aus. (Quelle: 04-workflows)
 Artefakt: Ein Workflow-Entwurf mit definierter Enum-Kategorienliste und Eskalationslogik.
 Fallstricke:
 - Freitext-Kategorien statt Enums führen zu inkonsistenter Sortierung → die erlaubten Werte als Enum im Schema fixieren.
 - Jede Kategorie löst Alarme aus → Auto-Eskalation strikt auf eindeutige Hoch-Dringlichkeit begrenzen.
+Empfehlung: Fixiere die Kategorien als Enum im Structured-Output-Schema — Freitext-Kategorien zerfasern die Triage. Begrenze die Auto-Eskalation strikt auf eindeutige Hoch-Dringlichkeit, sonst trainierst du dem Team Alarm-Müdigkeit an.
 Anschluss: S-WF-008
 
 ### S-WF-005 Multi-Channel-Distribution eines Blog-Artikels (Manual Trigger)
@@ -167,12 +171,13 @@ Vorgehen:
 1. Den Manual-Trigger mit der Artikel-URL als Eingabe definieren.
 2. Einen AI-Node je Kanal konfigurieren, jeweils gebunden an den Brand-Voice-Wissensordner und die Plattform-Limits (z. B. LinkedIn-Hook in den ersten 40 Zeichen).
 3. Einen HITL-Node für die Freigabe aller Varianten vor der Veröffentlichung einplanen.
-Prompt:
-> "Persona: Content-Distribution-Architekt. Aufgabe: Skizziere einen Workflow, der einen Blog-Artikel in drei Kanal-Teaser überführt. Kontext: Markenstimme aus Wissensordner, je Kanal eigene Limits. Format: Trigger, drei AI-Nodes, HITL."
+Workflow: Manual-Trigger (Artikel-URL) → drei parallele AI-Nodes (LinkedIn/X/Newsletter), jeder an Brand-Voice-Wissensordner + Plattform-Limit gebunden (z. B. LinkedIn-Hook ≤40 Zeichen) → HITL-Node (Freigabe aller Varianten) → Veröffentlichung.
+Budget: Drei AI-Aufrufe pro Lauf; Strong-Generalist nur wenn Brand-Voice-Präzision kritisch, sonst Efficient-Default. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Ein Distributions-Workflow-Entwurf mit kanal-spezifischen AI-Node-Briefings.
 Fallstricke:
 - Ein einziger Node für alle Kanäle erzeugt uniforme Texte → je Kanal einen eigenen Node mit eigenen Limits.
 - Die Markenstimme driftet ab → jeden Node verbindlich an den Brand-Voice-Wissensordner koppeln.
+Empfehlung: Ein Node pro Kanal, nicht ein Sammelnode — sonst bekommst du drei Mal denselben uniformen Text. Koppel jeden Node verbindlich an den Brand-Voice-Wissensordner, sonst driftet die Stimme über die Kanäle auseinander.
 Anschluss: S-WF-001
 
 ### S-WF-006 Lokalisierungs-Pipeline für neue CMS-Artikel (Integration Trigger)
@@ -185,12 +190,13 @@ Vorgehen:
 1. Den Integration-Trigger an die CMS-Veröffentlichung koppeln.
 2. Eine DeepL-Integration die Rohübersetzung erzeugen lassen, gefolgt von einem AI-Node, der Tonalität und Fachbegriffe gegen den Brand-Voice-Wissensordner prüft.
 3. Einen HITL-Node vor der Veröffentlichung der lokalisierten Fassung einplanen.
-Prompt:
-> "Persona: Lokalisierungs-Workflow-Architekt. Aufgabe: Entwirf eine DE→EN-Transkreations-Pipeline für neue CMS-Artikel. Kontext: Brand-Voice muss erhalten bleiben, keine ungeprüfte Veröffentlichung. Format: Trigger, DeepL-Node, AI-Check-Node, HITL."
+Workflow: Integration-Trigger (CMS-Veröffentlichung) → DeepL-Integration (Rohübersetzung) → AI-Node (Brand-Voice- + Terminologie-Check gegen Glossar im Wissensordner) → HITL-Node (Freigabe) → Veröffentlichung der EN-Fassung. Keine ungeprüfte Live-Schaltung.
+Budget: DeepL plus ein AI-Check-Aufruf pro Artikel; Efficient-Default für den Check. (Quelle: 04-workflows)
 Artefakt: Ein Lokalisierungs-Workflow-Entwurf mit Übersetzungs- und Prüfschritt.
 Fallstricke:
 - Roh-Übersetzungen gehen ungeprüft live → den HITL-Node vor der Veröffentlichung zwingend setzen.
 - Fachbegriffe werden falsch übersetzt → ein Glossar im Brand-Voice-Wissensordner hinterlegen und im Check-Node referenzieren.
+Empfehlung: Hinterlege ein Fachglossar im Brand-Voice-Wissensordner und referenziere es im Check-Node — DeepL allein übersetzt Fachbegriffe oft falsch. Der HITL-Node vor Veröffentlichung ist nicht verhandelbar: roh-übersetzte Texte gehen nie ungeprüft live.
 Anschluss: S-WF-005
 
 ### S-WF-007 Täglicher Wettbewerbs-Nachrichten-Digest (Scheduled Trigger)
@@ -203,12 +209,13 @@ Vorgehen:
 1. Den Scheduled-Trigger auf jeden Werktagmorgen setzen.
 2. Einen AI-Node mit Web Search die definierten Wettbewerber und Themen abfragen und auf maximal fünf Kernpunkte verdichten lassen.
 3. Eine Action den Digest in den internen Team-Kanal stellen — ohne externe Veröffentlichung, daher ohne HITL.
-Prompt:
-> "Persona: Market-Intelligence-Architekt. Aufgabe: Skizziere einen täglichen Wettbewerbs-Digest-Workflow. Kontext: feste Wettbewerberliste, max. fünf Kernpunkte, nur intern. Format: Scheduled-Trigger, Web-Search-AI-Node, interner Action-Node."
+Workflow: Scheduled-Trigger (Werktagmorgen) → AI-Node + Web Search (feste Wettbewerber-/Themenliste, auf ≤5 Kernpunkte verdichten) → Action-Node (Post in internen Team-Kanal). Rein intern, daher kein HITL nötig.
+Budget: Ein Web-Search-Lauf pro Tag; Efficient-Default genügt; enger Quellen-Scope spart Tokens. (Quelle: 04-workflows)
 Artefakt: Ein Digest-Workflow-Entwurf mit Quellen-Scope und Verdichtungsregel.
 Fallstricke:
 - Web Search liefert irrelevantes Rauschen → den Quellen-Scope und die Wettbewerberliste eng definieren.
 - Der Digest wird zu lang → eine harte Obergrenze von fünf Kernpunkten im Node-Briefing setzen.
+Empfehlung: Definiere Wettbewerberliste und Quellen-Scope eng — offene Web Search liefert sonst Rauschen statt Marktsignal. Eine harte Obergrenze von fünf Kernpunkten hält den Digest lesbar; weil er nur intern läuft, ist hier ausnahmsweise kein HITL nötig.
 Anschluss: S-WF-003
 
 ### S-WF-008 Sentiment-Monitoring für Produkt-Reviews (Scheduled Trigger)
@@ -221,12 +228,13 @@ Vorgehen:
 1. Den Scheduled-Trigger auf einen täglichen Lauf setzen.
 2. Einen AI-Node die neuen Reviews klassifizieren und einen aggregierten Sentiment-Wert mit fester Skala ausgeben lassen.
 3. Einen Alarm nur auslösen, wenn der Wert eine vorab definierte Schwelle unterschreitet.
-Prompt:
-> "Persona: Brand-Monitoring-Architekt. Aufgabe: Entwirf einen Sentiment-Monitoring-Workflow für Reviews. Kontext: nur bei echtem Negativ-Ausschlag alarmieren. Format: Scheduled-Trigger, AI-Node mit Sentiment-Skala, Schwellen-Alarm."
+Workflow: Scheduled-Trigger (täglich) → Integration (Review-Quelle) → AI-Node (Sentiment-Klassifikation, Structured Output mit fester numerischer Skala, aggregierter Wert) → Schwellen-Verzweigung (Alarm nur bei Unterschreiten der definierten Schwelle).
+Budget: Ein Lauf pro Tag; Efficient-Default-Modell; nur neue Reviews verarbeiten. (Quelle: 04-workflows)
 Artefakt: Ein Monitoring-Workflow-Entwurf mit definierter Sentiment-Skala und Alarmschwelle.
 Fallstricke:
 - Jede leichte Schwankung löst Alarm aus → eine sinnvolle Schwelle und einen Glättungszeitraum definieren.
 - Die Sentiment-Skala ist unscharf → eine feste numerische Skala im Structured Output erzwingen.
+Empfehlung: Erzwinge eine feste numerische Sentiment-Skala im Structured Output und definiere Alarmschwelle plus Glättungszeitraum — sonst feuert jede Tagesschwankung einen Fehlalarm. Alarmiere nur bei echtem Ausschlag.
 Anschluss: S-WF-004
 
 ### S-WF-009 Wöchentlicher Kampagnen-Reporting-Digest (Scheduled Trigger)
