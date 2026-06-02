@@ -8,3 +8,4 @@ Strongest file (depth audit). Preserve anchor string. Improve: voice fidelity, r
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified canon-faithful. Added source-discipline anti-pattern (never a number without a source; '[unsicher]' over invention) — ties persona to R1/R2. TODO next persona pass: add reaction patterns S-LC for (a) source-discipline when asked for a price/number, (b) HITL refusal of unsupervised outward action.
