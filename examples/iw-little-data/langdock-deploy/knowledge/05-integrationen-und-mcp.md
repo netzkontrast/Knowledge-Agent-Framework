@@ -1107,12 +1107,15 @@ Vorgehen:
 2. Du lässt die API-Scopes auf das Minimum beschränken: `youtube.readonly` für Kanal-Metadaten und `yt-analytics.readonly` für Performance-Metriken — kein Upload- oder Management-Scope.
 3. Du lässt einen Prompt-Rahmen für wöchentliche Video-Performance-Berichte ausarbeiten, der jede Kennzahl mit Video-Titel und Messzeitraum belegt.
 4. Du übergibst Briefing und Prompt-Rahmen an die IT; Little Data berät, konfiguriert keine Google-API-Verbindungen.
-Prompt:
-> "Du bist mein Video-Analytics-Berater (Persona). Erstelle ein YouTube-Analytics-Anbindungs-Briefing und einen wöchentlichen Reporting-Prompt-Rahmen für unseren Performance-Agenten (Aufgabe). Kontext: Unternehmens-YouTube-Kanal mit 50 Videos; Metriken: Aufrufe, Watch-Time, CTR; kein Upload-Scope; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, API-Scopes, verbotene Scopes; Prompt-Rahmen separat als Code-Block (Format)."
+Vorlage: YouTube-Analytics-Anbindungs-Briefing (+ Reporting-Prompt):
+1. Anbindungsweg — offizieller YouTube-MCP-Server falls vorhanden; sonst HTTP-Bruecke (Custom Builder + Google-OAuth).
+2. API-Scopes — youtube.readonly (Kanal-Metadaten) + yt-analytics.readonly (Performance); kein Upload-/Management-Scope.
+3. Prompt-Rahmen — woechentliche Video-Performance, jede Kennzahl mit Video-Titel + Messzeitraum belegt.
 Artefakt: Ein YouTube-Analytics-Anbindungs-Briefing (Scopes und Anbindungsweg) und ein wöchentlicher Reporting-Prompt-Rahmen.
 Fallstricke:
 - `youtube` (vollständigen Management-Scope) statt `youtube.readonly` beantragen → Der vollständige Scope erlaubt Video-Uploads und Kanalverwaltung; ausschließlich Read-Only-Scopes im IT-Briefing dokumentieren.
 - Agent erfindet Aufrufe wenn ein Video noch nicht genug Daten hat → Im Prompt-Rahmen anweisen, Videos mit weniger als 100 Aufrufen als "zu wenig Daten für Auswertung" auszuflaggen statt Trends zu erfinden.
+Empfehlung: Ausschliesslich Read-Only-Scopes (youtube.readonly, yt-analytics.readonly) beantragen, nie den vollen youtube-Management-Scope, der Video-Uploads und Kanalverwaltung erlaubt. Im Prompt-Rahmen Videos mit weniger als 100 Aufrufen als 'zu wenig Daten fuer Auswertung' ausflaggen lassen, statt Trends zu erfinden.
 Anschluss: S-IM-050
 
 ### S-IM-050 Pinterest-API für visuelle Content-Planung als Read-Only-Quelle anbinden
@@ -1125,12 +1128,15 @@ Vorgehen:
 1. Du lässt Little Data die Pinterest-API-Scopes auf das Minimum beschränken: `boards:read`, `pins:read` und `user_accounts:read` für das eigene Business-Konto — kein `boards:write` oder `pins:write`.
 2. Du lässt eine DSGVO-Governance-Regel formulieren: Nur aggregierte Trend-Daten und öffentliche Pin-Metadaten in den Agent-Kontext; keine personalisierten Zielgruppen-Profile oder individuellen Nutzer-Daten.
 3. Du lässt ein Trend-Analyse-Prompt-Template ausarbeiten, das den Agenten anweist, Top-Trend-Kategorien, Farbpaletten und Content-Formate der Woche zu identifizieren und als Inspirations-Brief aufzubereiten.
-Prompt:
-> "Du bist mein Visual-Content-Strategie-Berater (Persona). Erstelle ein Pinterest-API-Anbindungs-Konzept für einen Trend-Analyse-Agenten und ein wöchentliches Inspirations-Prompt-Template (Aufgabe). Kontext: Fashion- und Lifestyle-Brand; nur öffentliche Trend-Daten; kein Pin-Posting; DSGVO-konforme Nutzung (Kontext). Format: Konzept mit Abschnitten API-Scopes, gesperrte Operationen, DSGVO-Regel; Prompt-Template separat als Code-Block (Format)."
+Vorlage: Pinterest-API-Anbindungs-Konzept (+ Trend-Prompt):
+1. Scopes — boards:read, pins:read, user_accounts:read (eigenes Business-Konto); kein boards:write/pins:write.
+2. DSGVO-Governance — nur aggregierte Trend-Daten + oeffentliche Pin-Metadaten; keine personalisierten Zielgruppen-Profile.
+3. Trend-Prompt-Template — Top-Trend-Kategorien, Farbpaletten, Content-Formate der Woche als Inspirations-Brief.
 Artefakt: Ein Pinterest-API-Anbindungs-Konzept mit Scopes und DSGVO-Governance sowie ein Trend-Analyse-Prompt-Template.
 Fallstricke:
 - Schreib-Scopes "für spätere direkte Pin-Planung" mitbeantragen → Pinterest-Publishing bleibt in Pinterest oder einem dedizierten Social-Scheduling-Tool; der Agent ist ein Analyse-, kein Publishing-Tool.
 - Pinterest-Trends als repräsentativ für alle Zielgruppen interpretieren → Pinterest hat eine spezifische Demographie (überwiegend weiblich, Lifestyle-affin); im Prompt-Template explizit auf die Plattform-Bias hinweisen.
+Empfehlung: Keine Schreib-Scopes 'fuer spaetere Pin-Planung' mitbeantragen — Pinterest-Publishing bleibt in Pinterest oder einem Social-Scheduling-Tool; der Agent ist ein Analyse-, kein Publishing-Tool. Im Prompt-Template explizit auf die Pinterest-Plattform-Bias (ueberwiegend weiblich, Lifestyle-affin) hinweisen, statt Trends als repraesentativ fuer alle Zielgruppen zu interpretieren.
 Anschluss: S-IM-051
 
 ### S-IM-051 TikTok Business API advisory einordnen — Möglichkeiten und Grenzen für Marketing-Agenten
@@ -1143,12 +1149,16 @@ Vorgehen:
 1. Du lässt Little Data die TikTok Business API auf verfügbare Endpunkte prüfen: Analytics-Daten (Video-Performance, Follower-Statistiken) sind über die Business API lesbar; organisches Posting ist über die API in vielen Märkten nicht verfügbar oder erfordert spezifische Partnerschafts-Zertifizierungen.
 2. Du lässt das DSGVO-Risiko einschätzen: TikTok (ByteDance) ist ein US-amerikanisches Unternehmen mit chinesischer Eigentümerschaft; Datentransfers aus EU-Kampagnendaten unterliegen besonderen Prüfpflichten — DSB und Datenschutzbeauftragten vor Anbindung konsultieren.
 3. Du lässt eine Handlungsempfehlung formulieren: TikTok-Analytics über eine Drittanbieter-Analytics-Plattform (z. B. Brandwatch) aggregieren statt direkt via API anbinden; so reduziert sich der Datentransfer-Footprint.
-Prompt:
-> "Du bist mein Social-API-Berater (Persona). Erstelle eine TikTok-Business-API-Einschätzung für unsere Marketing-Direktorin vor einer Investitionsentscheidung (Aufgabe). Kontext: B2B-Unternehmen in der EU, DSGVO-Pflicht, Interesse an Analytics-Integration und Posting-Automatisierung (Kontext). Format: Einschätzung mit Abschnitten erreichbare API-Funktionen, nicht erreichbare Funktionen, DSGVO-Risikoeinschätzung, Handlungsempfehlung (Format)."
+Vorlage: TikTok-Business-API-Einschaetzung (advisory):
+1. Erreichbar — Analytics-Daten (Video-Performance, Follower-Statistiken) ueber die Business API; Research API.
+2. Nicht erreichbar — organisches Posting via API in vielen Maerkten eingeschraenkt/zertifizierungspflichtig.
+3. DSGVO-Risiko — ByteDance (US/CN-Eigentuemerschaft); EU-Datentransfers mit besonderer Pruefpflicht.
+4. Handlungsempfehlung — Analytics ueber eine Drittanbieter-Plattform (z. B. Brandwatch) aggregieren statt direkter API-Anbindung.
 Artefakt: Eine TikTok-Business-API-Einschätzung mit Funktionsumfang, DSGVO-Risikoeinschätzung und Handlungsempfehlung.
 Fallstricke:
 - TikTok-API-Möglichkeiten mit Instagram-API-Erfahrungen gleichsetzen → TikTok hat eigene Restriktionen und Zertifizierungsanforderungen; keine Annahmen übertragen, sondern die aktuelle TikTok-Developer-Dokumentation als Grundlage nutzen.
 - DSGVO-Risikoeinschätzung durch Little Data als rechtliche Freigabe interpretieren → Little Data liefert eine strategische Ersteinschätzung; die Datenschutzbehörde und der unternehmenseigene DSB müssen vor einer Anbindung formell konsultiert werden.
+Empfehlung: TikTok-API-Moeglichkeiten nicht mit Instagram-Erfahrungen gleichsetzen — TikTok hat eigene Restriktionen und Zertifizierungsanforderungen; die aktuelle TikTok-Developer-Doku als Grundlage nutzen. Die DSGVO-Ersteinschaetzung von Little Data nicht als rechtliche Freigabe interpretieren: Datenschutzbehoerde und unternehmenseigener DSB muessen vor einer Anbindung formell konsultiert werden.
 Anschluss: S-IM-052
 
 ### S-IM-052 Intercom- oder Zendesk-Kundendaten als Read-Only-Quelle für Content-Insights nutzen
@@ -1162,12 +1172,16 @@ Vorgehen:
 2. Du lässt die Aggregationsstufe definieren: Der Agent erhält nur Häufigkeitsverteilungen pro Themen-Cluster (z. B. "Top-10-Fragen diese Woche") — keine Einzeltickets.
 3. Du lässt ein Content-Insights-Prompt-Template ausarbeiten, das den Agenten anweist, aus den Top-Fragen drei Content-Ideen (FAQ-Artikel, Video-Tutorial, Onboarding-Tipp) abzuleiten.
 4. Du übergibst Konzept und Template an IT und Customer-Success; die API-Konfiguration liegt bei der IT, die DSGVO-Freigabe beim DSB.
-Prompt:
-> "Du bist mein Customer-Insights-Integrations-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Konzept für unsere Intercom-Ticket-Daten zur Content-Insights-Gewinnung (Aufgabe). Kontext: Marketing-Agent soll häufigste Kundenfragen aggregieren; keine PII; DSGVO-Pflicht; Ergebnisse als Content-Ideen-Brief (Kontext). Format: Konzept mit Abschnitten Datenzugriff-Governance, API-Scopes, Aggregationsstufe, Content-Insights-Prompt-Template (Format)."
+Vorlage: Intercom/Zendesk-Read-Only-Konzept (Content-Insights):
+1. Datenzugriff-Governance — nur Ticket-Kategorien + Themen-Tags; keine Namen/E-Mails/Gespraechsinhalte.
+2. Aggregationsstufe — nur Haeufigkeitsverteilungen pro Themen-Cluster (z. B. Top-10-Fragen/Woche); keine Einzeltickets.
+3. API-Scopes — Ticket-Kategorien lesen, kein individueller Kontaktzugriff.
+4. Content-Insights-Prompt — aus den Top-Fragen drei Content-Ideen (FAQ/Video/Onboarding) ableiten.
 Artefakt: Ein Intercom/Zendesk-Read-Only-Anbindungs-Konzept mit Datenschutz-Governance und Content-Insights-Prompt-Template.
 Fallstricke:
 - Einzelne Kundengespräche für "tiefere Analyse" in den Agent-Kontext laden → Individuelle Support-Gespräche enthalten PII und vertragliche Kommunikation; ausschließlich aggregierte, anonymisierte Themen-Cluster übergeben.
 - Support-Insights direkt ohne Customer-Success-Review als Content-Briefing verwenden → Customer-Success versteht den Ticketkontext besser als ein Agent; ein Feedback-Gate einbauen, bei dem CS die generierten Content-Ideen vor der Produktion validiert.
+Empfehlung: Niemals einzelne Kundengespraeche fuer 'tiefere Analyse' in den Agent-Kontext laden — sie enthalten PII und vertragliche Kommunikation; ausschliesslich aggregierte, anonymisierte Themen-Cluster uebergeben. Ein Customer-Success-Feedback-Gate einbauen, das die generierten Content-Ideen vor der Produktion validiert, da CS den Ticketkontext besser einordnet als der Agent.
 Anschluss: S-IM-053
 
 ### S-IM-053 PIM-System (Akeneo) für Produkt-Content-Agenten als Datenquelle einbinden
@@ -1181,12 +1195,15 @@ Vorgehen:
 2. Du lässt die Lese-Scopes definieren: Produkte, Produktmodelle, Kategorien und Attribute lesen — kein Schreibzugriff auf Produktdaten.
 3. Du lässt ein Content-Generierungs-Prompt-Template ausarbeiten, das den Agenten anweist, Produktattribute aus Akeneo als strukturierten Input für SEO-optimierte Beschreibungen zu nutzen.
 4. Du übergibst das Konzept an PIM-Administrator und IT; die API-Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein PIM-Integrations-Berater (Persona). Erstelle ein Akeneo-Anbindungs-Konzept für einen Produkt-Content-Agenten, der Produktbeschreibungen auf Basis aktueller PIM-Daten generiert (Aufgabe). Kontext: Akeneo Cloud, ca. 500 aktive Produkte, kein Schreibzugriff, SEO-optimierte Beschreibungen als Ziel (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Lese-Scopes, Governance-Regel, Content-Prompt-Template (Format)."
+Vorlage: Akeneo-PIM-Anbindungs-Konzept (Produkt-Content):
+1. Anbindungsweg — offizieller Akeneo-MCP-Server falls vorhanden; sonst Akeneo-REST-API ueber den Custom Builder.
+2. Lese-Scopes — Produkte, Produktmodelle, Kategorien, Attribute lesen; kein Schreibzugriff.
+3. Content-Prompt-Template — Produktattribute als strukturierten Input fuer SEO-optimierte Beschreibungen nutzen.
 Artefakt: Ein Akeneo-Anbindungs-Konzept mit Anbindungsweg, Lese-Scopes, Governance-Regel und Content-Prompt-Template.
 Fallstricke:
 - Akeneo als Schreibziel für KI-generierte Beschreibungen planen → KI-generierter Content muss von Produktmarketing-Redakteurinnen validiert werden, bevor er in Akeneo eingetragen wird; der Agent generiert Entwürfe, Humans führen die PIM-Pflege durch.
 - Alle Produktattribute pauschal in den Agent-Kontext laden → Bei 500 Produkten mit je 30 Attributen übersteigt das Kontext-Fenster schnell die Grenze; gezielt nur die für die Beschreibung relevanten Attribute (Name, Hauptmerkmale, USP) übergeben.
+Empfehlung: Akeneo nie als Schreibziel fuer KI-generierte Beschreibungen planen — der Agent generiert Entwuerfe, Produktmarketing-Redakteurinnen validieren und pflegen sie ins PIM. Nicht alle Produktattribute pauschal in den Kontext laden (500 Produkte × 30 Attribute sprengen das Fenster); gezielt nur die beschreibungsrelevanten (Name, Hauptmerkmale, USP) uebergeben.
 Anschluss: S-IM-054
 
 ### S-IM-054 Translation-Management-System (Phrase oder Lokalise) für Lokalisierungs-Workflows anbinden
@@ -1200,12 +1217,16 @@ Vorgehen:
 2. Du lässt die Lese-Scopes bestimmen: Projekt-Status, Translation-Memory (abgleichen für Konsistenz), Glossar (für Terminologie-Kontrolle) — das TMS-Glossar ersetzt oder ergänzt den Langdock-Wissensordner-Glossar.
 3. Du lässt den optionalen Draft-Write-Scope einordnen: Falls AI-Entwürfe direkt ins TMS als Draft hinterlegt werden sollen, ist ein eingeschränkter Write-Scope notwendig — aber nur für Draft-Status, kein direktes Publishen.
 4. Du übergibst das Konzept und die Workflow-Skizze an IT und Lokalisierungs-Management; Übersetzerinnen validieren alle AI-Entwürfe im TMS.
-Prompt:
-> "Du bist mein Lokalisierungs-Integrations-Berater (Persona). Erstelle ein TMS-Anbindungs-Konzept für Phrase an unseren Langdock-Lokalisierungs-Workflow (Aufgabe). Kontext: 4 Zielsprachen, Glossar in Phrase als führende Terminologie, AI-Entwürfe als Draft in Phrase hinterlegen, Übersetzer validieren final (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Lese-Scopes, Draft-Write-Governance, Workflow-Skizze als nummerierte Schritte (Format)."
+Vorlage: TMS-Anbindungs-Konzept (Phrase/Lokalise):
+1. Anbindungsweg — Phrase/Lokalise REST-API; fuer Read-Abfragen HTTP-Bruecke via Custom Builder.
+2. Lese-Scopes — Projekt-Status, Translation-Memory (Konsistenz), Glossar (Terminologie); TMS-Glossar als fuehrend.
+3. Draft-Write — optionaler eingeschraenkter Write-Scope NUR fuer Draft-Status, kein direktes Publishen.
+4. Workflow-Skizze — DeepL-Erst-Entwurf → AI-Pre-Draft ins TMS (Draft) → Uebersetzer validiert final.
 Artefakt: Ein TMS-Anbindungs-Konzept mit Anbindungsweg, Scopes, Draft-Write-Governance und Lokalisierungs-Workflow-Skizze.
 Fallstricke:
 - AI-Entwürfe direkt als finale Übersetzung ins TMS publishen → TMS-basierte Lokalisierungen sind oft rechtlich und markenrechtlich relevant; ein Draft-Status mit Pflicht-Übersetzer-Review als unveränderliches Gate einbauen.
 - TMS-Glossar und Langdock-Wissensordner-Glossar parallel pflegen → Doppelpflege erzeugt Terminologie-Inkonsistenzen; das TMS-Glossar zur führenden Quelle erklären und den Langdock-Wissensordner nur als schreibgeschützte Referenz verwenden.
+Empfehlung: AI-Entwuerfe nie direkt als finale Uebersetzung ins TMS publishen — Lokalisierungen sind oft rechtlich/markenrechtlich relevant; ein Draft-Status mit Pflicht-Uebersetzer-Review als unveraenderliches Gate einbauen. Das TMS-Glossar zur fuehrenden Terminologie-Quelle erklaeren und den Langdock-Wissensordner nur als schreibgeschuetzte Referenz nutzen, sonst entsteht Doppelpflege mit Inkonsistenzen.
 Anschluss: S-IM-055
 
 ### S-IM-055 Digital-Signage-System-Integration für automatisierte Content-Belieferung advisory planen
@@ -1218,12 +1239,15 @@ Vorgehen:
 1. Du lässt Little Data den Workflow klar definieren: Langdock generiert Screen-Texte und Kampagnen-Copy auf Basis von Kampagnen-Briefings — die Outputs werden als Entwürfe im Wissensordner oder per HTTP-Übergabe an das Signage-System geliefert.
 2. Du lässt den Anbindungsweg für das Signage-System prüfen: Die meisten Signage-Plattformen bieten REST-APIs für Content-Upload; eine HTTP-Brücke via Custom Integration Builder ist der empfohlene Weg.
 3. Du lässt die Governance-Regel als unveränderlich einarbeiten: Kein KI-Agent darf Content ohne menschliche Freigabe auf öffentlich sichtbare Signage-Screens einspielen — das Publikations-Gate verbleibt bei Marketing-Ops oder IT.
-Prompt:
-> "Du bist mein Digital-Signage-Content-Berater (Persona). Erstelle eine Integrations-Einschätzung für die Anbindung unseres Yodeck-Signage-Systems an Langdock für automatisierte Content-Lieferung (Aufgabe). Kontext: 15 Screens in drei Filialen; Kampagnen-Content wöchentlich wechselnd; kein autonomes KI-Einspielen; Human-Approval-Pflicht (Kontext). Format: Einschätzung mit Abschnitten Workflow-Skizze, Anbindungsweg, Governance-Regel, Risiken (Format)."
+Vorlage: Digital-Signage-Integrations-Einschaetzung:
+1. Workflow-Skizze — Langdock generiert Screen-Texte/Copy aus Briefings → Entwuerfe im Wissensordner oder per HTTP-Uebergabe → Human-Approval → IT spielt ein.
+2. Anbindungsweg — Signage-REST-API (Yodeck/Screenly) via HTTP-Bruecke (Custom Builder).
+3. Governance — kein autonomes KI-Einspielen auf oeffentliche Screens; Publikations-Gate bei Marketing-Ops/IT.
 Artefakt: Eine Digital-Signage-Integrations-Einschätzung mit Workflow-Skizze, Anbindungsweg und Governance-Regel.
 Fallstricke:
 - KI-generierten Content ohne Bildrechte-Prüfung auf Signage-Screens einspielen → Signage-Content in öffentlichen Räumen unterliegt Urheberrecht und Wettbewerbsrecht; jeder KI-Output muss vor dem Einspielen rechtlich geprüft sein.
 - Signage-System-API als stabiles Interface behandeln → Proprietäre Signage-Systeme ändern ihre APIs häufig; einen IT-Owner für die HTTP-Brücken-Wartung benennen und einen Canary-Test einplanen.
+Empfehlung: KI-generierten Signage-Content vor dem Einspielen rechtlich pruefen (Urheber-/Wettbewerbsrecht) — Content in oeffentlichen Raeumen ist haftungsrelevant; kein Output geht ungeprueft auf einen Screen. Einen IT-Owner fuer die HTTP-Bruecken-Wartung benennen und einen Canary-Test einplanen, da proprietaere Signage-Systeme ihre APIs haeufig aendern.
 Anschluss: S-IM-056
 
 ### S-IM-056 Eventbrite-Integration für Event-Marketing-Reporting und Ticket-Analytics anbinden
@@ -1237,12 +1261,15 @@ Vorgehen:
 2. Du lässt die DSGVO-Governance-Regel formulieren: Individuelle Ticketkäufer-Daten (Name, E-Mail, Adresse) bleiben in Eventbrite; der Agent erhält nur Aggregat-Metriken (Gesamtverkäufe, Auslastungsgrad, Revenue-Summe).
 3. Du lässt ein Event-Performance-Prompt-Template ausarbeiten, das nach jedem Event automatisch eine Post-Event-Zusammenfassung mit KPI-Vergleich (Ziel vs. Ist) generiert.
 4. Du übergibst Briefing und Template an IT und Event-Marketing; die Datenschutz-Freigabe liegt beim DSB.
-Prompt:
-> "Du bist mein Event-Analytics-Berater (Persona). Erstelle ein Eventbrite-API-Anbindungs-Briefing und ein Post-Event-Prompt-Template für unseren Reporting-Agenten (Aufgabe). Kontext: 3–5 Events pro Quartal, aggregierte Ticket-Metriken, keine Käufer-PII im Agent-Kontext, DSGVO-Pflicht (Kontext). Format: Briefing mit Abschnitten OAuth-Scopes, gesperrte Daten, DSGVO-Governance-Regel; Post-Event-Prompt-Template als Code-Block (Format)."
+Vorlage: Eventbrite-API-Anbindungs-Briefing (+ Post-Event-Prompt):
+1. OAuth-Scopes — event:read (Metadaten/Kapazitaet) + order:read (aggregierte Verkaufszahlen); keine individuellen Kaeuferprofile.
+2. DSGVO-Governance — Kaeufer-PII (Name/E-Mail/Adresse) bleibt in Eventbrite; Agent erhaelt nur Aggregat-Metriken (Verkaeufe, Auslastung, Revenue-Summe).
+3. Post-Event-Prompt-Template — automatische Zusammenfassung mit KPI-Vergleich (Ziel vs. Ist).
 Artefakt: Ein Eventbrite-API-Anbindungs-Briefing mit DSGVO-Governance und ein Post-Event-Prompt-Template.
 Fallstricke:
 - Individuelle Ticket-Order-Daten für "tiefere Analyse" in den Agent-Kontext laden → Käufer-Kontaktdaten sind DSGVO-relevant und erfordern Zweckbindung; ausschließlich aggregierte Metriken ohne PII übergeben.
 - Eventbrite-Anbindung als dauerhaft stabil betrachten → Eventbrite hat in der Vergangenheit API-Versionen ohne lange Vorlaufzeit geändert; einen IT-Owner für die Verbindungsüberwachung benennen.
+Empfehlung: Die OAuth-Scopes strikt auf event:read und order:read (aggregiert) beschraenken — individuelle Ticketkaeufer-Daten verbleiben DSGVO-konform in Eventbrite. Im Post-Event-Prompt-Template immer einen Ziel-vs-Ist-KPI-Vergleich erzwingen, damit die Zusammenfassung den Event-Erfolg einordnet statt nur absolute Zahlen zu nennen.
 Anschluss: S-IM-057
 
 ### S-IM-057 Marketing-Analytics-Plattform (Mixpanel oder Amplitude) via MCP für Funnel-Analyse anbinden
