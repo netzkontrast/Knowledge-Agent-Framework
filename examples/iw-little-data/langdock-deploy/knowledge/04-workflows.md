@@ -87,7 +87,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-001 Wöchentlicher Newsletter-Zusammenbau (Scheduled Trigger)
 
-**Wann nutzen (Trigger):** Der Newsletter erscheint jeden Donnerstag, und die Kuratierung der Inhalte kostet die Redaktion jede Woche mehrere Stunden manueller Recherche.
+**Wann nutzen (Trigger):** Der Newsletter erscheint jeden Donnerstag, und die Kuratierung der Inhalte kostet die Redaktion jede Woche mehrere Stunden manueller Recherche. (Quelle: 04-workflows)
 **Strategisches Ziel:** Die wiederkehrende Kuratierung automatisieren, ohne die redaktionelle Endkontrolle aufzugeben.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Workflow mit menschlicher Freigabe vor Versand.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), AI-Node, Web Search, HITL-Node
@@ -105,7 +105,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-002 Lead-Scoring bei Formular-Eingang (Form/Webhook Trigger)
 
-**Wann nutzen (Trigger):** Jede Formular-Anfrage auf der Website soll automatisch bewertet und priorisiert an den Vertrieb übergeben werden.
+**Wann nutzen (Trigger):** Jede Formular-Anfrage auf der Website soll automatisch bewertet und priorisiert an den Vertrieb übergeben werden. (Quelle: 04-workflows)
 **Strategisches Ziel:** Eingehende Leads ohne manuelle Vorsortierung qualifizieren, bevor sie das CRM erreichen.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen ereignisgesteuerten Scoring-Workflow mit deterministischem Output.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Form-/Webhook-Trigger), AI-Node mit Structured Output, Integration-Action (CRM), HITL-Node bei hohem Score
@@ -123,7 +123,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-003 Massen-Erzeugung von Meta-Descriptions (Manual Trigger + Loop)
 
-**Wann nutzen (Trigger):** Für 800 Bestandsseiten fehlen SEO-Meta-Descriptions, und die manuelle Pflege ist nicht leistbar.
+**Wann nutzen (Trigger):** Für 800 Bestandsseiten fehlen SEO-Meta-Descriptions, und die manuelle Pflege ist nicht leistbar. (Quelle: 04-workflows)
 **Strategisches Ziel:** Einen einmaligen Massen-Lauf aufsetzen, der die Texte erzeugt, ohne das Workspace-Budget zu sprengen.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Loop-Workflow mit Kostenkontrolle.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger, Loop-Node ≤100 Items), AI-Node, Sheets-Integration
@@ -141,7 +141,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-004 Klassifizierung eingehender Support-Tickets (Integration Trigger)
 
-**Wann nutzen (Trigger):** Eingehende Kunden-Tickets sollen automatisch nach Thema und Dringlichkeit sortiert werden, bevor das Team sie sieht.
+**Wann nutzen (Trigger):** Eingehende Kunden-Tickets sollen automatisch nach Thema und Dringlichkeit sortiert werden, bevor das Team sie sieht. (Quelle: 04-workflows)
 **Strategisches Ziel:** Die Triage automatisieren und konsistent halten, ohne falsch-kritische Eskalationen zu riskieren.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten Klassifizierungs-Workflow.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), AI-Node mit Structured Output (Enum-Kategorien)
@@ -159,7 +159,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-005 Multi-Channel-Distribution eines Blog-Artikels (Manual Trigger)
 
-**Wann nutzen (Trigger):** Ein fertiger Blog-Artikel soll als kanal-spezifische Teaser für LinkedIn, X und den Newsletter aufbereitet werden.
+**Wann nutzen (Trigger):** Ein fertiger Blog-Artikel soll als kanal-spezifische Teaser für LinkedIn, X und den Newsletter aufbereitet werden. (Quelle: 04-workflows)
 **Strategisches Ziel:** Aus einem Quelltext mehrere kanalgerechte Varianten erzeugen, ohne die Markenstimme zu verlieren.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Distributions-Workflow mit Brand-Voice-Bindung.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Manual-Trigger), AI-Node, Wissensordner (Brand-Voice), HITL-Node
@@ -177,7 +177,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-006 Lokalisierungs-Pipeline für neue CMS-Artikel (Integration Trigger)
 
-**Wann nutzen (Trigger):** Jeder neue deutschsprachige CMS-Artikel soll automatisch eine englische Transkreation für den internationalen Markt erhalten.
+**Wann nutzen (Trigger):** Jeder neue deutschsprachige CMS-Artikel soll automatisch eine englische Transkreation für den internationalen Markt erhalten. (Quelle: 04-workflows)
 **Strategisches Ziel:** Lokalisierung beschleunigen, ohne dass roh-übersetzte Texte ungeprüft live gehen.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für eine getriggerte Übersetzungs- und Prüf-Pipeline.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), DeepL-Integration, AI-Node (Brand-Voice-Check), HITL-Node
@@ -195,7 +195,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-007 Täglicher Wettbewerbs-Nachrichten-Digest (Scheduled Trigger)
 
-**Wann nutzen (Trigger):** Das Team möchte jeden Morgen eine kompakte Übersicht relevanter Wettbewerber- und Marktnachrichten erhalten.
+**Wann nutzen (Trigger):** Das Team möchte jeden Morgen eine kompakte Übersicht relevanter Wettbewerber- und Marktnachrichten erhalten. (Quelle: 04-workflows)
 **Strategisches Ziel:** Marktbeobachtung automatisieren und auf das Wesentliche verdichten, ohne Quellenrauschen.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Recherche- und Zusammenfassungs-Workflow.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Web Search, AI-Node, Action-Node (interner Versand)
@@ -213,7 +213,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-008 Sentiment-Monitoring für Produkt-Reviews (Scheduled Trigger)
 
-**Wann nutzen (Trigger):** Negative Bewegungen in Produkt-Reviews sollen früh erkannt werden, bevor sie eskalieren.
+**Wann nutzen (Trigger):** Negative Bewegungen in Produkt-Reviews sollen früh erkannt werden, bevor sie eskalieren. (Quelle: 04-workflows)
 **Strategisches Ziel:** Stimmungsverschiebungen automatisch erkennen und nur bei echten Ausschlägen alarmieren.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Monitoring-Workflow mit Schwellen-Alarm.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Integration (Review-Quelle), AI-Node (Sentiment, Structured Output)
@@ -231,7 +231,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-009 Wöchentlicher Kampagnen-Reporting-Digest (Scheduled Trigger)
 
-**Wann nutzen (Trigger):** Das wöchentliche Performance-Reporting aus mehreren Analytics-Quellen kostet das Team jeden Montag viel Zusammenbau-Zeit.
+**Wann nutzen (Trigger):** Das wöchentliche Performance-Reporting aus mehreren Analytics-Quellen kostet das Team jeden Montag viel Zusammenbau-Zeit. (Quelle: 04-workflows)
 **Strategisches Ziel:** Das Reporting automatisch aggregieren und narrativ aufbereiten, mit klarer Trennung von Daten und Interpretation.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen Reporting-Workflow mit menschlicher Interpretations-Freigabe.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Integration (Analytics/BI), AI-Node, HITL-Node
@@ -249,7 +249,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 
 ### S-WF-010 Personalisierte Follow-up-Sequenz nach Event-Anmeldung (Webhook Trigger)
 
-**Wann nutzen (Trigger):** Nach einer Webinar-Anmeldung soll automatisch eine personalisierte, aber freigabepflichtige Follow-up-Nachricht vorbereitet werden.
+**Wann nutzen (Trigger):** Nach einer Webinar-Anmeldung soll automatisch eine personalisierte, aber freigabepflichtige Follow-up-Nachricht vorbereitet werden. (Quelle: 04-workflows)
 **Strategisches Ziel:** Zeitnahe Personalisierung ermöglichen, ohne unkontrollierten automatischen Versand an Kontakte.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für eine webhook-getriggerte Follow-up-Pipeline mit Freigabe.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger), AI-Node, Wissensordner (Segment-Kontext), HITL-Node

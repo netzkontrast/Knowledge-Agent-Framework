@@ -8,3 +8,4 @@ Integration count must read '55+ (~754 Actions)'. No hard EU-AI-Act dates (verif
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified CLEAN: 80/80 triggers cited, integration count + AI-Act fixes held, no >5-step Vorgehen. Collisions S-LU-003/007 are method-angled (Pre-Mortem/Red-Team) — distinct intent, no rename needed.

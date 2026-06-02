@@ -87,7 +87,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 
 ### S-IM-003 Confluence- und Notion-Wissen ohne Doppelpflege anbinden
 
-**Wann nutzen (Trigger):** Das Produktmarketing pflegt Positionierung in Confluence, das Content-Team in Notion — die Marketing-Direktorin will einen Agenten, der beide Quellen durchsucht, ohne dass jemand Inhalte dupliziert.
+**Wann nutzen (Trigger):** Das Produktmarketing pflegt Positionierung in Confluence, das Content-Team in Notion — die Marketing-Direktorin will einen Agenten, der beide Quellen durchsucht, ohne dass jemand Inhalte dupliziert. (Quelle: 05-integrationen-und-mcp)
 **Strategisches Ziel:** Zwei parallele Wissenssysteme über native Integrationen (Integration) erschließen und entscheiden, welches die führende Quelle pro Thema ist, um Doppelpflege zu vermeiden.
 **Hands-on Ergebnis:** Eine Source-of-Truth-Matrix, die pro Themenfeld festlegt, ob Confluence oder Notion führt und wie der Agent beide einbindet.
 **Eingesetzte Langdock-Fähigkeit(en):** Native Confluence-Integration, native Notion-Integration, semantische Suche über Wissensordner.

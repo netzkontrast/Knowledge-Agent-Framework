@@ -53,7 +53,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-001 AVV-Nachweis vor dem HubSpot-Sync erbringen
 
-**Wann nutzen (Trigger):** Die Rechtsabteilung verlangt vor der Freigabe des HubSpot-Sync einen belastbaren Nachweis, dass ein Auftragsverarbeitungsvertrag (AVV) nach Art. 28 DSGVO vorliegt und das Modell-Training auf Unternehmensdaten vertraglich ausgeschlossen ist.
+**Wann nutzen (Trigger):** Die Rechtsabteilung verlangt vor der Freigabe des HubSpot-Sync einen belastbaren Nachweis, dass ein Auftragsverarbeitungsvertrag (AVV) nach Art. 28 DSGVO vorliegt und das Modell-Training auf Unternehmensdaten vertraglich ausgeschlossen ist. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Den juristischen Freigabe-Engpass auflösen, indem die vertragliche Datenschutz-Grundlage (DSGVO) prüffähig dokumentiert wird, bevor die erste Kampagnendatei das CRM verlässt.
 **Hands-on Ergebnis:** Ein AVV-Nachweisdossier, das die Rechtsabteilung ohne Rückfragen abzeichnen kann.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) als Ablage für AVV, ISO-27001-Zertifikat und Sub-Prozessor-Liste; Canvas / Document Editor für die Dossier-Erstellung. (Keine Web-Search — die Nachweise liegen intern vor.)
@@ -72,7 +72,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-002 Datenschutz-Folgenabschätzung vor dem Agenten-Rollout strukturieren
 
-**Wann nutzen (Trigger):** Der Datenschutzbeauftragte stuft den geplanten CRM-Agenten als wahrscheinlich hochriskante Verarbeitung ein und fordert eine Datenschutz-Folgenabschätzung (DSFA / DPIA nach Art. 35 DSGVO), bevor irgendein Team produktiv geht.
+**Wann nutzen (Trigger):** Der Datenschutzbeauftragte stuft den geplanten CRM-Agenten als wahrscheinlich hochriskante Verarbeitung ein und fordert eine Datenschutz-Folgenabschätzung (DSFA / DPIA nach Art. 35 DSGVO), bevor irgendein Team produktiv geht. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Die DSFA als strukturierten Prozess aufsetzen, sodass die Verarbeitung dokumentiert, Risiken bewertet und technisch-organisatorische Maßnahmen (TOMs) belegt sind — Rechtsgrundlage vor Technologie.
 **Hands-on Ergebnis:** Ein DSFA-Entwurf entlang des 7-Schritte-Compliance-Programms als Vorlage für den Datenschutzbeauftragten.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Strukturierung; Knowledge (Wissensordner) für DSK-Orientierungshilfe und interne Verarbeitungsbeschreibungen. (Beratungsartefakt, keine automatisierte Ausführung.)
@@ -92,7 +92,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-003 Betriebsrat-Vorlage zur KI-Einführung vorbereiten
 
-**Wann nutzen (Trigger):** Der Betriebsrat macht von seinem Mitbestimmungsrecht Gebrauch und verlangt vor dem unternehmensweiten Rollout eine nachvollziehbare Darstellung, welche Leistungs- und Verhaltensdaten der Mitarbeiter durch die Plattform erfasst werden.
+**Wann nutzen (Trigger):** Der Betriebsrat macht von seinem Mitbestimmungsrecht Gebrauch und verlangt vor dem unternehmensweiten Rollout eine nachvollziehbare Darstellung, welche Leistungs- und Verhaltensdaten der Mitarbeiter durch die Plattform erfasst werden. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Vertrauen schaffen und eine Betriebsvereinbarung ermöglichen, indem klar abgegrenzt wird, was die Audit Logs erfassen — und dass sie nicht zur Leistungsüberwachung einzelner Mitarbeiter zweckentfremdet werden.
 **Hands-on Ergebnis:** Eine Betriebsrat-Informationsvorlage mit Datenkatalog und Zweckbindung.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Vorlage; Knowledge (Wissensordner) für die Audit-Logs-Eventliste und die interne KI-Nutzungsrichtlinie. (Reines Beratungsartefakt.)
@@ -111,7 +111,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-004 Shadow-AI im Marketing-Team aufdecken und überführen
 
-**Wann nutzen (Trigger):** Der Verdacht steht im Raum, dass Mitarbeiter unveröffentlichte Kampagnen-Drafts in private ChatGPT-Accounts kopieren; die Marketing-Direktorin will das Shadow-AI-Ausmaß belegen, bevor sie eine genehmigte Alternative durchsetzt.
+**Wann nutzen (Trigger):** Der Verdacht steht im Raum, dass Mitarbeiter unveröffentlichte Kampagnen-Drafts in private ChatGPT-Accounts kopieren; die Marketing-Direktorin will das Shadow-AI-Ausmaß belegen, bevor sie eine genehmigte Alternative durchsetzt. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Den unkontrollierten Datenabfluss (Shadow AI) sichtbar machen und in die DSGVO-konforme Plattform überführen — Risikominimierung als primärer Hebel, nicht Produktivität.
 **Hands-on Ergebnis:** Ein Shadow-AI-Lagebild mit Maßnahmenplan zur Überführung.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) für die KI-Nutzungsrichtlinie und Tool-Inventar; Canvas / Document Editor für das Lagebild. (Hinweis: Eine technische Endpoint-Erfassung gehört nicht zu Langdock — die Daten liefert die IT; die Plattform stützt nur die Analyse und Kommunikation.)
@@ -130,7 +130,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-005 Fehlkonfigurierte Zugriffsrollen nach Least-Privilege bereinigen
 
-**Wann nutzen (Trigger):** Ein Security-Review zeigt, dass eine externe Agentur Owner-Rechte auf einem unternehmenskritischen Agenten besitzt und ein Praktikant einen sensiblen Strategie-Wissensordner bearbeiten kann — die Zugriffskontrolle (RBAC) verstößt gegen das Least-Privilege-Prinzip.
+**Wann nutzen (Trigger):** Ein Security-Review zeigt, dass eine externe Agentur Owner-Rechte auf einem unternehmenskritischen Agenten besitzt und ein Praktikant einen sensiblen Strategie-Wissensordner bearbeiten kann — die Zugriffskontrolle (RBAC) verstößt gegen das Least-Privilege-Prinzip. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Die Berechtigungsstruktur (RBAC) auf das Principle of Least Privilege zurückführen, sodass Job-Rollen sauber auf die dreistufigen Plattform-Rollen (Owner/Editor/Viewer) abgebildet sind.
 **Hands-on Ergebnis:** Eine RBAC-Mapping-Tabelle plus konkrete Korrektur-Liste.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) für den exportierten Ist-Zustand der Freigaben; Canvas / Document Editor für die Mapping-Tabelle. (Die eigentliche Rollenänderung erfolgt durch den Admin in den Workspace-Einstellungen, nicht durch die Plattform-KI.)
@@ -149,7 +149,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-006 Group-Sharing für eine neue Abteilung sauber aufsetzen
 
-**Wann nutzen (Trigger):** Eine neue Abteilung "Performance-Team" wird gegründet und benötigt Zugriff auf einen definierten Satz Agenten und Wissensordner — eine Einzelfreigabe an zwanzig Personen wäre fehleranfällig und beim nächsten Personalwechsel sofort veraltet.
+**Wann nutzen (Trigger):** Eine neue Abteilung "Performance-Team" wird gegründet und benötigt Zugriff auf einen definierten Satz Agenten und Wissensordner — eine Einzelfreigabe an zwanzig Personen wäre fehleranfällig und beim nächsten Personalwechsel sofort veraltet. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Die Zusammenarbeit über das Group-Sharing-Modell skalieren, ohne die Vertraulichkeit sensibler Ressourcen (z. B. Financial-Reporting-Agent) zu gefährden — Silos abbauen bei gewahrter Datentrennung.
 **Hands-on Ergebnis:** Ein Gruppen- und Freigabekonzept als Umsetzungsvorlage für die IT.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Konzept; Knowledge (Wissensordner) für die bestehende Gruppen-Taxonomie aus dem Active Directory. (Die Gruppen-Synchronisation läuft über SCIM; die Plattform-KI berät nur zur Struktur.)
@@ -168,7 +168,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-007 SSO- und SCIM-Onboarding mit dem Entra-Quirk absichern
 
-**Wann nutzen (Trigger):** Beim Anbinden von Microsoft Entra ID für das automatisierte User-Provisioning scheitern erste Synchronisationen still — Nutzer werden nicht angelegt, ohne dass eine Fehlermeldung erscheint.
+**Wann nutzen (Trigger):** Beim Anbinden von Microsoft Entra ID für das automatisierte User-Provisioning scheitern erste Synchronisationen still — Nutzer werden nicht angelegt, ohne dass eine Fehlermeldung erscheint. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Ein reibungsloses, sicheres Onboarding über SAML SSO und SCIM etablieren, sodass Zugriffe beim Ein- und Austritt in Echtzeit und ohne manuelles Eingreifen vergeben bzw. entzogen werden.
 **Hands-on Ergebnis:** Eine SSO/SCIM-Konfigurations-Checkliste für die IT-Administration mit dem Entra-Quirk als Pflichtschritt.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Checkliste; Knowledge (Wissensordner) für die interne IdP-Metadaten-Dokumentation. (Die Konfiguration selbst nimmt die IT in Entra und den Workspace-Einstellungen vor.)
@@ -187,7 +187,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-008 Audit-Log-Übergabe an das SIEM-Team vorbereiten
 
-**Wann nutzen (Trigger):** Das IT-Security-Team verlangt, dass alle sicherheitsrelevanten Workspace-Ereignisse kontinuierlich in das zentrale SIEM (Splunk oder Datadog) eingespeist werden, damit Alarme z. B. bei Massenlöschungen aus sensiblen Wissensordnern automatisch auslösen.
+**Wann nutzen (Trigger):** Das IT-Security-Team verlangt, dass alle sicherheitsrelevanten Workspace-Ereignisse kontinuierlich in das zentrale SIEM (Splunk oder Datadog) eingespeist werden, damit Alarme z. B. bei Massenlöschungen aus sensiblen Wissensordnern automatisch auslösen. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Die Nutzung der Plattform vollständig nachvollziehbar machen (kein Blindflug) und die Telemetrie sauber an die bestehende Security-Infrastruktur übergeben — mit minimal nötigen Rechten.
 **Hands-on Ergebnis:** Ein Übergabe-Dokument für das SIEM-Team inklusive Schlüssel-Scope und überwachenswerter Events.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für das Übergabe-Dokument; Knowledge (Wissensordner) für die Audit-Logs-Endpoint-Doku und Schlüsselrichtlinie. (Die Ingestion konfiguriert das Security-Team; die Audit Logs API liefert die Daten.)
@@ -206,7 +206,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-009 Datenresidenz und Trainings-Opt-out für ein US-Modell prüfen
 
-**Wann nutzen (Trigger):** Ein Team möchte ein nur in der US-Region verfügbares Modell nutzen; die Compliance fragt, ob damit die DSGVO-Datenresidenz und die Trainings-Opt-out-Garantie verletzt würden.
+**Wann nutzen (Trigger):** Ein Team möchte ein nur in der US-Region verfügbares Modell nutzen; die Compliance fragt, ob damit die DSGVO-Datenresidenz und die Trainings-Opt-out-Garantie verletzt würden. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Sicherstellen, dass sensible Marketing-Daten den europäischen Rechtsraum nicht verlassen und nicht in Modell-Training fließen — und für den US-Modell-Wunsch eine klare, belegte Entscheidung herbeiführen.
 **Hands-on Ergebnis:** Eine Datenresidenz-Entscheidungsvorlage mit klarer Empfehlung.
 **Eingesetzte Langdock-Fähigkeit(en):** Knowledge (Wissensordner) für die Hosting- und Opt-out-Dokumentation; Canvas / Document Editor für die Entscheidungsvorlage. (Die Region-/Opt-out-Einstellung verwaltet der Admin im Workspace; hier wird beraten, nicht geschaltet.)
@@ -225,7 +225,7 @@ Um die notwendigen Budgets für eine Enterprise-KI-Plattform zu sichern, muss di
 
 ### S-SG-010 KI-Kennzeichnung nach UWG und EU AI Act vorbereiten
 
-**Wann nutzen (Trigger):** Eine KI-gestützte Kampagne mit synthetischen Testimonials steht kurz vor Veröffentlichung; die Rechtsabteilung weist auf die Kennzeichnungspflicht nach UWG und Art. 50 EU AI Act hin und fordert eine konforme Disclaimer-Strategie.
+**Wann nutzen (Trigger):** Eine KI-gestützte Kampagne mit synthetischen Testimonials steht kurz vor Veröffentlichung; die Rechtsabteilung weist auf die Kennzeichnungspflicht nach UWG und Art. 50 EU AI Act hin und fordert eine konforme Disclaimer-Strategie. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Abmahnrisiken (AI-Washing, fehlende Kennzeichnung) vermeiden, indem KI-generierte Inhalte rechtskonform und einheitlich gekennzeichnet werden — bevor die Kampagne live geht.
 **Hands-on Ergebnis:** Eine Kennzeichnungs-Richtlinie mit konkreten Disclaimer-Bausteinen je Inhaltstyp.
 **Eingesetzte Langdock-Fähigkeit(en):** Canvas / Document Editor für die Richtlinie; Knowledge (Wissensordner) für UWG-Leitfaden und AI-Act-Fristen; Web-Search nur zur Verifikation der aktuell gültigen Art.-50-Frist gegen eine externe Primärquelle. (Web-Search wird hier bewusst eingesetzt, weil regulatorische Stichtage datums-sensitiv sind.)

@@ -103,7 +103,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-001 Brand-Guardian-Agent mit Tone-of-Voice-Wissensordner konfigurieren
 
-**Wann nutzen (Trigger):** Freelance-Texte für den B2B-Blog kommen konsistent off-brand zurück — falsche Tonalität, falsche Terminologie — und die Marketing-Direktorin will einen dedizierten Prüf-Agenten statt manueller Review-Schleifen.
+**Wann nutzen (Trigger):** Freelance-Texte für den B2B-Blog kommen konsistent off-brand zurück — falsche Tonalität, falsche Terminologie — und die Marketing-Direktorin will einen dedizierten Prüf-Agenten statt manueller Review-Schleifen. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen "Brand Guardian"-Agenten aufsetzen, der dauerhaft an den Brand-Guidelines-Wissensordner angebunden ist und Textentwürfe automatisch auf Markenkonformität prüft.
 **Hands-on Ergebnis:** Ein konfigurierter Brand-Guardian-Agent mit System-Prompt, Wissensordner-Anbindung und 3 Konversations-Startern für den täglichen Content-Review-Betrieb.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Brand Guidelines) + Konversations-Starter
@@ -122,7 +122,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-002 Input-Formular erzwingen: Kampagnen-Briefing mit strukturiertem Form-Input
 
-**Wann nutzen (Trigger):** Der Content-Agent liefert unbrauchbare Ergebnisse, weil Nutzer vage Prompts wie "schreib einen Post über unser Produkt" eingeben — Kanal, Budget, Zielgruppe und Tonalität fehlen systematisch.
+**Wann nutzen (Trigger):** Der Content-Agent liefert unbrauchbare Ergebnisse, weil Nutzer vage Prompts wie "schreib einen Post über unser Produkt" eingeben — Kanal, Budget, Zielgruppe und Tonalität fehlen systematisch. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Über den Form-Input (Eingabeformular) im Agent Builder sicherstellen, dass kein Kampagnen-Brief gestartet werden kann, ohne alle Pflichtfelder auszufüllen.
 **Hands-on Ergebnis:** Ein Agent mit 5-Felder-Formular (Kampagnenname, Zielgruppe, Kanal, Kernnachricht, Budget-Klasse), der Inputs strukturiert vor dem KI-Aufruf sammelt.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent + Form-Input (Eingabeformular mit Variablen-Blöcken)
@@ -140,7 +140,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-003 Mega-Agent vs. Spezialisten-Agenten: Architektur-Entscheidung treffen
 
-**Wann nutzen (Trigger):** Das Team diskutiert, ob ein einziger "Marketing-Alles-Könner"-Agent oder 5 spezialisierte Agenten (Brand, SEO, Performance, CRM, Social) besser skalieren — Technologie-Entscheidung steht diese Woche an.
+**Wann nutzen (Trigger):** Das Team diskutiert, ob ein einziger "Marketing-Alles-Könner"-Agent oder 5 spezialisierte Agenten (Brand, SEO, Performance, CRM, Social) besser skalieren — Technologie-Entscheidung steht diese Woche an. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Anhand konkreter Langdock-Limits (System-Prompt-Limit 40.000 Zeichen, Retrieval-Konfusion bei breiten Wissensordnern) eine begründete Entscheidung treffen.
 **Hands-on Ergebnis:** Eine Entscheidungsmatrix mit Empfehlung, welche Use Cases einen eigenen Agenten rechtfertigen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (Entscheidungsmatrix)
@@ -159,7 +159,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-004 Agent-Quality-Drift messen: Monatliches Canary-Prompt-Spotcheck-Set
 
-**Wann nutzen (Trigger):** Ein Briefing-Agent, der vor 3 Monaten einwandfreie Outputs lieferte, produziert jetzt auffällig generischere Texte — niemand weiß ob das am Modell-Update, am Wissensordner-Veralterung oder am Prompt-Drift liegt.
+**Wann nutzen (Trigger):** Ein Briefing-Agent, der vor 3 Monaten einwandfreie Outputs lieferte, produziert jetzt auffällig generischere Texte — niemand weiß ob das am Modell-Update, am Wissensordner-Veralterung oder am Prompt-Drift liegt. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Ein Monitoring-System aufsetzen, das Agent-Qualitätsdrift monatlich mit 5 fixen Canary-Prompts misst und Abweichungen von der Erwartung dokumentiert.
 **Hands-on Ergebnis:** Ein Canary-Set (5 Prompts + erwartete Antwortmuster) als Wissensordner-Dokument, das jeden Monat gegen den Agenten ausgeführt wird.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent + Konversations-Starter (als Canary-Trigger) + Wissensordner (Canary-Dokumentation)
@@ -178,7 +178,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-005 RACI-Ownership für Agenten in der Marketing-Org definieren
 
-**Wann nutzen (Trigger):** Nach dem letzten Wissensordner-Update waren 3 Agenten plötzlich mit veralteten Daten — niemand hatte eine klare Verantwortung für die Pflege, und das Team hat 45 Minuten damit verbracht, den Schuldigen zu suchen.
+**Wann nutzen (Trigger):** Nach dem letzten Wissensordner-Update waren 3 Agenten plötzlich mit veralteten Daten — niemand hatte eine klare Verantwortung für die Pflege, und das Team hat 45 Minuten damit verbracht, den Schuldigen zu suchen. (Quelle: 03-wissensordner-und-rag)
 **Strategisches Ziel:** Eine RACI-Matrix einführen, die für jeden Agenten Owner (Konfiguration), Approver (Brand-Compliance), Consulted (Wissensordner-Inhalt) und Informed (Team) festlegt.
 **Hands-on Ergebnis:** Ein RACI-Dokument im Wissensordner, das pro Agent die Verantwortlichkeiten, Review-Zyklen und Eskalationspfade benennt.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (RACI-Tabelle) + Wissensordner (Governance-Dokumentation)
@@ -478,7 +478,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-021 Multi-Agent-Handoff-Pattern: Übergabe zwischen Spezialisten-Agenten dokumentieren
 
-**Wann nutzen (Trigger):** Das Team hat drei Spezialisten-Agenten (Recherche, Texterstellung, Brand-Check), aber die Übergabe zwischen ihnen passiert manuell per Copy-Paste — niemand hat dokumentiert, welches Ausgabeformat den nächsten Agenten als Input erwartet.
+**Wann nutzen (Trigger):** Das Team hat drei Spezialisten-Agenten (Recherche, Texterstellung, Brand-Check), aber die Übergabe zwischen ihnen passiert manuell per Copy-Paste — niemand hat dokumentiert, welches Ausgabeformat den nächsten Agenten als Input erwartet. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Ein verbindliches Handoff-Schema definieren, das den Output-Format des Upstream-Agenten exakt auf den Input-Format des Downstream-Agenten abstimmt und Copy-Paste-Fehler eliminiert.
 **Hands-on Ergebnis:** Ein Handoff-Protokoll-Dokument (Markdown im Wissensordner) mit dem Eingabe- und Ausgabe-Kontrakt für jede Agenten-Schnittstelle in der Kette.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Subagents-Fähigkeit + Wissensordner (Handoff-Schema) + Canvas
@@ -497,7 +497,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-022 Agent-Kostenmonitoring: Token-Verbrauch pro Agent im Dashboard sichtbar machen
 
-**Wann nutzen (Trigger):** Am Monatsende explodiert das Token-Budget und die Marketing-Direktorin kann dem CFO nicht sagen, welcher Agent die Kosten verursacht hat — alle Agenten sind im selben Workspace, aber keine Aufschlüsselung ist sichtbar.
+**Wann nutzen (Trigger):** Am Monatsende explodiert das Token-Budget und die Marketing-Direktorin kann dem CFO nicht sagen, welcher Agent die Kosten verursacht hat — alle Agenten sind im selben Workspace, aber keine Aufschlüsselung ist sichtbar. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Ein einfaches Kostenmonitoring-Dashboard aufbauen, das den Token-Verbrauch pro Agent transparent macht und Ausreißer für das CFO-Reporting identifiziert.
 **Hands-on Ergebnis:** Ein monatliches Kostenmonitoring-Template (Markdown im Wissensordner) mit Verbrauch pro Agent, Kostentreiber-Ranking und einer Optimierungsempfehlung.
 **Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin-Dashboard (Usage-Insights) + Langfuse-Integration + Data Analyst (für CSV-Auswertung)
@@ -516,7 +516,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-023 Agent-Fehlerbehandlung: Graceful-Degradation bei fehlgeschlagenem Wissensordner-Retrieval
 
-**Wann nutzen (Trigger):** Ein Kampagnen-Briefing-Agent liefert plötzlich generische Antworten ohne Bezug auf die Brand Guidelines — niemand merkt es, weil der Agent keine Fehlermeldung ausgibt, wenn das Wissensordner-Retrieval nichts findet.
+**Wann nutzen (Trigger):** Ein Kampagnen-Briefing-Agent liefert plötzlich generische Antworten ohne Bezug auf die Brand Guidelines — niemand merkt es, weil der Agent keine Fehlermeldung ausgibt, wenn das Wissensordner-Retrieval nichts findet. (Quelle: 03-wissensordner-und-rag)
 **Strategisches Ziel:** Den Agenten so konfigurieren, dass er bei leerem oder unzuverlässigem Retrieval-Ergebnis explizit warnt statt still zu halluzinieren.
 **Hands-on Ergebnis:** Ein System-Prompt mit eingebautem Retrieval-Fallback-Verhalten und ein Test-Protokoll, das den Graceful-Degradation-Pfad bestätigt.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner + System-Prompt-Instruktionen (Fehlerbehandlung)
@@ -534,7 +534,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-024 Spezialisierter Social-Media-Agent: Plattform-spezifische Persona und Format-Regeln
 
-**Wann nutzen (Trigger):** Ein generischer Content-Agent produziert LinkedIn-Posts, die zu lang sind, Instagram-Captions ohne Hashtags und Twitter-Posts, die 280 Zeichen sprengen — ein einziger Agent kann keine drei Plattform-Logiken zuverlässig einhalten.
+**Wann nutzen (Trigger):** Ein generischer Content-Agent produziert LinkedIn-Posts, die zu lang sind, Instagram-Captions ohne Hashtags und Twitter-Posts, die 280 Zeichen sprengen — ein einziger Agent kann keine drei Plattform-Logiken zuverlässig einhalten. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen dedizierten Social-Media-Agenten aufsetzen, dessen System-Prompt plattform-spezifische Format-Regeln, Zeichenlimits und Tonalitätsvorgaben für LinkedIn, Instagram und X (Twitter) enthält.
 **Hands-on Ergebnis:** Ein konfigurierter Social-Media-Agent mit drei klar abgegrenzten Plattform-Profilen im System-Prompt und 3 Konversations-Startern (je einer pro Plattform).
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Social-Media-Guidelines) + Konversations-Starter
@@ -553,7 +553,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-025 SEO-Agent konfigurieren: Keyword-Briefing mit Suchintentions-Analyse
 
-**Wann nutzen (Trigger):** Das Content-Team schreibt Blog-Artikel ohne systematische SEO-Grundlage — Keyword-Recherchen passieren ad hoc in externen Tools, die Ergebnisse werden manuell in Briefings übertragen, und die Verbindung zwischen Suchintention und Content-Struktur fehlt.
+**Wann nutzen (Trigger):** Das Content-Team schreibt Blog-Artikel ohne systematische SEO-Grundlage — Keyword-Recherchen passieren ad hoc in externen Tools, die Ergebnisse werden manuell in Briefings übertragen, und die Verbindung zwischen Suchintention und Content-Struktur fehlt. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen spezialisierten SEO-Agent aufsetzen, der aus einem Target-Keyword ein vollständiges SEO-Briefing mit Suchintentions-Analyse, semantischer Keyword-Cluster und empfohlenem Content-Outline erstellt.
 **Hands-on Ergebnis:** Ein SEO-Agent mit aktivierter Web Search, einem strukturierten Briefing-Output und einem Konversations-Starter "[SEO-BRIEFING] Keyword analysieren".
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Web Search + Wissensordner (SEO-Strategie-Richtlinien) + Form-Input
@@ -572,7 +572,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-026 PR-Agent konfigurieren: Pressemitteilungen nach Journalisten-Format automatisch strukturieren
 
-**Wann nutzen (Trigger):** Jede neue Produktankündigung erfordert eine Pressemitteilung — das Team schreibt sie von Grund auf neu, ohne konsistentes Format, und die PR-Agentur gibt immer dieselben strukturellen Korrekturen zurück: falsche Dateline, fehlender Boilerplate, zu kurzer Lead-Absatz.
+**Wann nutzen (Trigger):** Jede neue Produktankündigung erfordert eine Pressemitteilung — das Team schreibt sie von Grund auf neu, ohne konsistentes Format, und die PR-Agentur gibt immer dieselben strukturellen Korrekturen zurück: falsche Dateline, fehlender Boilerplate, zu kurzer Lead-Absatz. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen PR-Agenten aufsetzen, der Pressemitteilungen automatisch im Standard-Journalisten-Format (Inverted Pyramid, Dateline, Lead, Body, Zitate, Boilerplate) produziert und den Boilerplate aus dem Wissensordner zieht.
 **Hands-on Ergebnis:** Ein PR-Agent mit Boilerplate-Wissensordner-Anbindung, Form-Input für Pflichtfelder und einem Test-Protokoll mit einer vollständigen Pressemitteilung.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Boilerplate, Zitate-Bank, Stilguide) + Form-Input
@@ -591,7 +591,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-027 Event-Agent konfigurieren: Pre-/During-/Post-Event-Content-Automatisierung
 
-**Wann nutzen (Trigger):** Für jede Messe und jeden Webinar-Termin wird das Marketing-Team zum Content-Fließband: Event-Ankündigungen, Live-Social-Posts, Follow-up-E-Mails und Recap-Artikel werden jedes Mal neu erstellt — ohne Wiederverwendung von Strukturen oder Brand-Voice-Standards.
+**Wann nutzen (Trigger):** Für jede Messe und jeden Webinar-Termin wird das Marketing-Team zum Content-Fließband: Event-Ankündigungen, Live-Social-Posts, Follow-up-E-Mails und Recap-Artikel werden jedes Mal neu erstellt — ohne Wiederverwendung von Strukturen oder Brand-Voice-Standards. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen Event-Content-Agenten aufsetzen, der den gesamten Content-Zyklus eines Events in drei Phasen (Pre/During/Post) strukturiert und die jeweiligen Assets aus einem zentralen Event-Briefing ableitet.
 **Hands-on Ergebnis:** Ein Event-Agent mit 3 Konversations-Startern für die drei Phasen und einem Test-Protokoll für ein vollständiges Event-Content-Paket.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Konversations-Starter + Wissensordner (Event-Brand-Guidelines, Recap-Templates) + Canvas
@@ -610,7 +610,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-028 Agent-Input-Validierung: Pflichtfeld-Prüfung vor der Generierung
 
-**Wann nutzen (Trigger):** Ein Briefing-Agent generiert Texte auf Basis unvollständiger Inputs — Nutzerinnen überspringen Felder oder liefern Platzhalter wie "TBD", und der Agent produziert trotzdem eine Ausgabe, die später verworfen werden muss.
+**Wann nutzen (Trigger):** Ein Briefing-Agent generiert Texte auf Basis unvollständiger Inputs — Nutzerinnen überspringen Felder oder liefern Platzhalter wie "TBD", und der Agent produziert trotzdem eine Ausgabe, die später verworfen werden muss. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Eine Input-Validierungsschicht im System-Prompt des Agenten einbauen, die fehlende oder unplausible Pflichtfelder vor der Generierung explizit zurückmeldet und um Ergänzung bittet.
 **Hands-on Ergebnis:** Ein Agent-System-Prompt mit einer Validierungs-Gate-Instruktion und einem Test-Protokoll mit 4 verschiedenen Unvollständigkeits-Szenarien.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Form-Input + System-Prompt-Instruktionen (Validierungs-Gate)
@@ -628,7 +628,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-029 Agent-Output-Nachbearbeitung: Automatisches Formatierungs-Cleanup nach der Generierung
 
-**Wann nutzen (Trigger):** Der Content-Agent liefert zuverlässig gute Texte, aber die Outputs kommen immer mit überflüssigen Markdown-Symbolen, doppelten Leerzeilen und englischen Schachtel-Sätzen — jede Ausgabe erfordert 5–10 Minuten manuelle Nachbearbeitung vor dem Einpflegen.
+**Wann nutzen (Trigger):** Der Content-Agent liefert zuverlässig gute Texte, aber die Outputs kommen immer mit überflüssigen Markdown-Symbolen, doppelten Leerzeilen und englischen Schachtel-Sätzen — jede Ausgabe erfordert 5–10 Minuten manuelle Nachbearbeitung vor dem Einpflegen. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Eine Post-Processing-Instruktion im System-Prompt einbauen, die jede Ausgabe automatisch nach definierten Formatierungs-Standards bereinigt, bevor sie an die Nutzerin geliefert wird.
 **Hands-on Ergebnis:** Ein Agent-System-Prompt mit einer Output-Cleanup-Sektion und einem Before/After-Testprotokoll, das die Bereinigungsleistung belegt.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + System-Prompt-Instruktionen (Output-Cleanup) + Canvas (Before/After-Vergleich)
@@ -646,7 +646,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-030 Kontext-Window-Management für große Dokumente im Agenten
 
-**Wann nutzen (Trigger):** Ein Analyse-Agent soll einen 80-seitigen Jahresbericht verarbeiten — die Nutzerin lädt die PDF hoch und erhält entweder eine unvollständige Analyse oder eine Fehlermeldung, weil das Dokument das Kontext-Window des Modells übersteigt.
+**Wann nutzen (Trigger):** Ein Analyse-Agent soll einen 80-seitigen Jahresbericht verarbeiten — die Nutzerin lädt die PDF hoch und erhält entweder eine unvollständige Analyse oder eine Fehlermeldung, weil das Dokument das Kontext-Window des Modells übersteigt. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Eine Strategie definieren, die große Dokumente (>30 Seiten) zuverlässig in Agenten-Workflows integriert, ohne das Kontext-Window zu überlasten, und dabei keine relevanten Informationen verliert.
 **Hands-on Ergebnis:** Eine dokumentierte Chunking-Strategie und ein System-Prompt-Template für dokument-intensive Agenten, das explizit mit großen Dateien umgehen kann.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Dokument-Upload) + Data Analyst (für strukturierte Dokumente) + System-Prompt-Instruktionen
@@ -665,7 +665,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-031 Wettbewerber-Monitoring-Agent: Automatisierte Konkurrenz-Beobachtung einrichten
 
-**Wann nutzen (Trigger):** Die Marketing-Direktorin erfährt von einem neuen Wettbewerber-Feature erst aus dem Sales-Meeting statt proaktiv — ein systematisches Monitoring fehlt, und manuelle Website-Checks passieren sporadisch und inkonsistent.
+**Wann nutzen (Trigger):** Die Marketing-Direktorin erfährt von einem neuen Wettbewerber-Feature erst aus dem Sales-Meeting statt proaktiv — ein systematisches Monitoring fehlt, und manuelle Website-Checks passieren sporadisch und inkonsistent. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen Wettbewerber-Monitoring-Agenten aufsetzen, der wöchentlich die öffentlich zugänglichen Inhalte von bis zu 5 Konkurrenten analysiert und eine strukturierte Kompetitiv-Zusammenfassung liefert.
 **Hands-on Ergebnis:** Ein Wettbewerber-Agent mit Web Search, einer Kompetitiv-Analyse-Vorlage und einem wöchentlichen Konversations-Starter "[WETTBEWERB-CHECK] Wöchentlicher Monitoring-Report".
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Web Search + Wissensordner (Wettbewerber-Stammdaten, Beobachtungs-Kriterien) + Konversations-Starter
@@ -684,7 +684,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-032 Event-gesteuerter Agent: Trigger-basierte Aktivierung bei externen Signalen
 
-**Wann nutzen (Trigger):** Das Social-Media-Team will, dass ein Agent automatisch einen Reaktions-Post-Entwurf generiert, sobald ein Branchentrend in der Social-Listening-App auftaucht — heute passiert das manuell, was im Durchschnitt 45 Minuten Reaktionszeit kostet.
+**Wann nutzen (Trigger):** Das Social-Media-Team will, dass ein Agent automatisch einen Reaktions-Post-Entwurf generiert, sobald ein Branchentrend in der Social-Listening-App auftaucht — heute passiert das manuell, was im Durchschnitt 45 Minuten Reaktionszeit kostet. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen Langdock-Workflow aufsetzen, der durch einen Webhook-Trigger automatisch den zuständigen Content-Agenten aktiviert und einen ersten Reaktions-Post-Entwurf in Slack postet, ohne manuellen Eingriff.
 **Hands-on Ergebnis:** Ein konfigurierter Webhook-to-Agent-to-Slack-Workflow mit einem Test-Protokoll für 2 verschiedene Trigger-Szenarien.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Webhook-Trigger + Agent-Node + Slack-Action) + Custom Agent
@@ -703,7 +703,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-033 Agent-Governance-Checkliste: EU AI Act Compliance-Vorbereitung
 
-**Wann nutzen (Trigger):** Der Datenschutzbeauftragte fragt, ob die Marketing-Agenten unter den EU AI Act fallen und ob eine Risikodokumentation existiert — das Team hat noch keine systematische Klassifikation der Agenten nach Risikostufen.
+**Wann nutzen (Trigger):** Der Datenschutzbeauftragte fragt, ob die Marketing-Agenten unter den EU AI Act fallen und ob eine Risikodokumentation existiert — das Team hat noch keine systematische Klassifikation der Agenten nach Risikostufen. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Alle aktiven Marketing-Agenten nach den Risikostufen des EU AI Acts klassifizieren, die erforderliche Dokumentation pro Agent festlegen und ein Compliance-Register anlegen.
 **Hands-on Ergebnis:** Ein Agent-Compliance-Register (Markdown im Wissensordner) mit Risikostufe, Begründung und erforderlichen Maßnahmen pro Agent.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (Compliance-Register) + Wissensordner (Governance-Dokumentation)
@@ -722,7 +722,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-034 Wissensordner-Refresh-Trigger: Wann und wie veraltete Inhalte erkannt werden
 
-**Wann nutzen (Trigger):** Ein Brand-Guardian-Agent zitiert seit Wochen überschriebene Design-Richtlinien aus dem Wissensordner — das Rebranding-Dokument wurde aktualisiert, aber niemand hat den Wissensordner synchronisiert, weil kein Prozess existiert, der auf veralteten Content hinweist.
+**Wann nutzen (Trigger):** Ein Brand-Guardian-Agent zitiert seit Wochen überschriebene Design-Richtlinien aus dem Wissensordner — das Rebranding-Dokument wurde aktualisiert, aber niemand hat den Wissensordner synchronisiert, weil kein Prozess existiert, der auf veralteten Content hinweist. (Quelle: 03-wissensordner-und-rag)
 **Strategisches Ziel:** Einen proaktiven Wissensordner-Refresh-Prozess einrichten, der auf Basis von Dokumenten-Metadaten und regelmäßigen Canary-Tests erkennt, wann Inhalte veraltet sind und eine Aktualisierung ansteht.
 **Hands-on Ergebnis:** Ein Wissensordner-Audit-Template (Markdown) und ein Refresh-Protokoll mit definierten Trigger-Kriterien und Verantwortlichkeiten.
 **Eingesetzte Langdock-Fähigkeit(en):** Wissensordner + Agent-Canary-Set (aus S-AK-004) + Wissensordner (Audit-Dokumentation) + Workspace-Admin-Dashboard
@@ -741,7 +741,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-035 Edge-Case-Prompt-Testing: Adversarielle Inputs vor dem Rollout systematisch testen
 
-**Wann nutzen (Trigger):** Nach dem Rollout eines neuen Kundenservice-Agenten entdeckt ein Nutzer durch einen ungewöhnlichen Prompt, dass der Agent unbeabsichtigt vertrauliche System-Prompt-Inhalte preisgibt — ein systematisches Edge-Case-Testing vor dem Launch hätte dies verhindert.
+**Wann nutzen (Trigger):** Nach dem Rollout eines neuen Kundenservice-Agenten entdeckt ein Nutzer durch einen ungewöhnlichen Prompt, dass der Agent unbeabsichtigt vertrauliche System-Prompt-Inhalte preisgibt — ein systematisches Edge-Case-Testing vor dem Launch hätte dies verhindert. (Quelle: 08-sicherheit-und-governance)
 **Strategisches Ziel:** Vor jedem Agenten-Rollout eine strukturierte Edge-Case-Test-Runde mit 6 adversariellen Prompt-Kategorien durchführen, die bekannte Schwachstellen abdecken.
 **Hands-on Ergebnis:** Ein Edge-Case-Testprotokoll (6 Kategorien × 2 Prompt-Varianten) als Wissensordner-Dokument, das vor jedem Rollout ausgeführt wird.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Wissensordner (Edge-Case-Testprotokoll) + Sandbox-Sharing (Individual-Status)
@@ -760,7 +760,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-036 Agent-Rollback-Verfahren: Schnelle Rückkehr zur letzten stabilen Version
 
-**Wann nutzen (Trigger):** Ein System-Prompt-Update hat ungewollt den Ton des Brand-Agenten verändert — der Agent antwortet jetzt zu informell, aber die Marketing-Direktorin steht unter Zeitdruck und muss innerhalb von 10 Minuten zur vorherigen Version zurückkehren.
+**Wann nutzen (Trigger):** Ein System-Prompt-Update hat ungewollt den Ton des Brand-Agenten verändert — der Agent antwortet jetzt zu informell, aber die Marketing-Direktorin steht unter Zeitdruck und muss innerhalb von 10 Minuten zur vorherigen Version zurückkehren. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen klaren Rollback-Prozess definieren, der innerhalb von 10 Minuten ausführbar ist und keine Entwicklerkenntnisse erfordert, um einen Agenten auf seine letzte stabile Konfiguration zurückzusetzen.
 **Hands-on Ergebnis:** Ein Rollback-Playbook (1 Seite Markdown im Wissensordner) mit einem 3-Schritte-Verfahren und einer Rollback-Kommunikations-Vorlage für das Team.
 **Eingesetzte Langdock-Fähigkeit(en):** Agent Builder (Sandbox-Duplikat aus S-AK-010) + Wissensordner (Prompt-Archiv aus S-AK-019) + Sharing-Status
@@ -778,7 +778,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-037 KI-Champions-Onboarding: Neuen Marketing-Manager in 14 Tagen auf AI-Workflows einarbeiten
 
-**Wann nutzen (Trigger):** Eine neue Marketing-Managerin beginnt nächste Woche — das Team hat keine standardisierte Einarbeitung für die KI-Workflows, und der letzte neue Kollege brauchte 6 Wochen, um die Agenten produktiv zu nutzen.
+**Wann nutzen (Trigger):** Eine neue Marketing-Managerin beginnt nächste Woche — das Team hat keine standardisierte Einarbeitung für die KI-Workflows, und der letzte neue Kollege brauchte 6 Wochen, um die Agenten produktiv zu nutzen. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen 14-Tage-Onboarding-Plan für neue Marketing-Teammitglieder erstellen, der strukturiert von der ersten Agent-Interaktion bis zur eigenständigen Konfiguration führt.
 **Hands-on Ergebnis:** Ein 14-Tage-Onboarding-Plan (Markdown im Wissensordner) mit tagesgenauen Aktivitäten, Lernzielen und Meilensteinen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat + Canvas (Onboarding-Plan) + Wissensordner (Onboarding-Dokumentation) + Konversations-Starter (als Lernmodule)
@@ -797,7 +797,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-038 Agent-Skill-Spezialisierung: Dedizierter CRM-Analyse-Agent für Lifecycle-Daten
 
-**Wann nutzen (Trigger):** Das CRM-Team fragt regelmäßig beim Marketing nach Segment-Analysen — jedes Mal wird ein generischer Agenten-Chat geöffnet und der CSV-Export manuell beschrieben, anstatt einen dedizierten CRM-Analyse-Agenten zu nutzen, der die Datenstruktur bereits kennt.
+**Wann nutzen (Trigger):** Das CRM-Team fragt regelmäßig beim Marketing nach Segment-Analysen — jedes Mal wird ein generischer Agenten-Chat geöffnet und der CSV-Export manuell beschrieben, anstatt einen dedizierten CRM-Analyse-Agenten zu nutzen, der die Datenstruktur bereits kennt. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen CRM-Analyse-Agenten aufsetzen, der das Datenmodell des CRM-Systems (HubSpot oder Salesforce) als Wissensordner-Kontext kennt und CRM-CSV-Exporte zuverlässig ohne manuelle Feldbeschreibung analysiert.
 **Hands-on Ergebnis:** Ein CRM-Analyse-Agent mit aktivierter Data-Analyst-Fähigkeit, einem Wissensordner mit dem CRM-Datenmodell und 3 Konversations-Startern für die häufigsten Analyse-Anfragen.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Data Analyst (Capability) + Wissensordner (CRM-Datenmodell-Dokumentation) + Konversations-Starter
@@ -816,7 +816,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-039 Agenten-Bibliothek kuratieren: Workspace-Bibliothek nach Qualitätsstandard pflegen
 
-**Wann nutzen (Trigger):** Die Workspace-Bibliothek des Teams enthält nach 8 Monaten 23 Agenten — davon sind 7 experimentell und nie verifiziert, 4 veraltet und 2 Duplikate mit ähnlichem Zweck, was neue Nutzerinnen verwirrt und die Adoption hemmt.
+**Wann nutzen (Trigger):** Die Workspace-Bibliothek des Teams enthält nach 8 Monaten 23 Agenten — davon sind 7 experimentell und nie verifiziert, 4 veraltet und 2 Duplikate mit ähnlichem Zweck, was neue Nutzerinnen verwirrt und die Adoption hemmt. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Die Workspace-Bibliothek auf verifizierte, aktuelle und deduplizierte Agenten reduzieren und einen kontinuierlichen Kurationsprozess einrichten, der die Bibliothek dauerhaft übersichtlich hält.
 **Hands-on Ergebnis:** Eine Bibliotheks-Audit-Tabelle mit Handlungsempfehlung pro Agent (Behalten/Aktualisieren/Zusammenführen/Retirement) und ein Kurationsprozess mit halbjährlichem Review.
 **Eingesetzte Langdock-Fähigkeit(en):** Workspace-Admin-Dashboard + Agent Builder (Verified/Highlighted-Status) + Wissensordner (Bibliotheks-Governance) + Sharing-Status
@@ -835,7 +835,7 @@ Ein Agent (Agent) wird eingesetzt, wenn der Lösungsweg unklar ist und die Nutze
 
 ### S-AK-040 Barrierefreiheits-Alt-Text-Agent: WCAG-konforme Bildbeschreibungen für Marketing-Assets
 
-**Wann nutzen (Trigger):** Das Accessibility-Audit zeigt, dass 80 % der KI-generierten Social-Media-Bilder keine Alt-Texte haben — der Website-Relaunch steht in 6 Wochen an, und Barrierefreiheit ist eine Anforderung; das manuelle Nachpflegen von hunderten Alt-Texten bindet wertvolle Ressourcen.
+**Wann nutzen (Trigger):** Das Accessibility-Audit zeigt, dass 80 % der KI-generierten Social-Media-Bilder keine Alt-Texte haben — der Website-Relaunch steht in 6 Wochen an, und Barrierefreiheit ist eine Anforderung; das manuelle Nachpflegen von hunderten Alt-Texten bindet wertvolle Ressourcen. (Quelle: 02-agenten-konfiguration)
 **Strategisches Ziel:** Einen Alt-Text-Agenten konfigurieren, der für jedes hochgeladene Marketing-Bild automatisch einen WCAG-konformen Alt-Text (max. 125 Zeichen, deskriptiv, kein Keyword-Stuffing) generiert und dabei den Bildkontext aus dem Marketing-Briefing berücksichtigt.
 **Hands-on Ergebnis:** Ein Alt-Text-Agent mit Vision-Fähigkeit, einem WCAG-Regelwerk im Wissensordner und einem Batch-Verarbeitungs-Konversations-Starter für bis zu 10 Bilder.
 **Eingesetzte Langdock-Fähigkeit(en):** Custom Agent + Image Generation (Vision-Analyse) + Wissensordner (WCAG-Richtlinien, Alt-Text-Beispiele) + Konversations-Starter

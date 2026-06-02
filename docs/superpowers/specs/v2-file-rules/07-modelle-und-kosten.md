@@ -8,3 +8,4 @@
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Added 10 (Quelle: 07) citations on cost triggers. Pricing fully verified-EUR, 0 multipliers. Grounding PASS.

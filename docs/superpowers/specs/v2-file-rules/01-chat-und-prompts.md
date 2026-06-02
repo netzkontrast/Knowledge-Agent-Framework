@@ -8,3 +8,4 @@ Labels now '(DE)'/'(DE, CO-STAR)'. Watch thin artefacts. 'Brand Voice' audit-in-
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified CLEAN: 80/80 cited; labels already corrected to (DE)/(DE,CO-STAR).

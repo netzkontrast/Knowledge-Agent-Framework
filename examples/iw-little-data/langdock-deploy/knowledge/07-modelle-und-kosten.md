@@ -97,7 +97,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-001 Massen-Lokalisierung von 4.000 Produkttexten: Light-Modell statt Flaggschiff
 
-**Wann nutzen (Trigger):** Der E-Commerce-Katalog soll für die DACH-Expansion in Schweizerhochdeutsch und österreichisches Deutsch lokalisiert werden — 4.000 kurze Produkttexte, und das erste Test-Batch mit Sonnet 4.6 hat das Workflow-Budget in zwei Stunden gesprengt.
+**Wann nutzen (Trigger):** Der E-Commerce-Katalog soll für die DACH-Expansion in Schweizerhochdeutsch und österreichisches Deutsch lokalisiert werden — 4.000 kurze Produkttexte, und das erste Test-Batch mit Sonnet 4.6 hat das Workflow-Budget in zwei Stunden gesprengt. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Eine Massenaufgabe mit dem günstigsten Modell lösen, das die Qualität noch trägt, statt reflexhaft ein Flaggschiff-Modell (Flagship Model) zu wählen.
 **Hands-on Ergebnis:** Eine Modell-Empfehlung mit gerechneter Kostenprognose: GPT-5 Mini (€0,21/1M Input) für den Lauf, Stichproben-Review durch Sonnet 4.6.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflows mit manueller Modellzuweisung, Workflow-Level-Budget, Modell-Katalog.
@@ -115,7 +115,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-002 Board-Deck zur Jahresstrategie: Wann ein Frontier-Modell den Frontier-Aufpreis wert ist
 
-**Wann nutzen (Trigger):** In drei Tagen steht die Vorstandspräsentation zur Marketing-Jahresstrategie an; widersprüchliche Marktdaten aus fünf Quartalsreports müssen zu einer kohärenten These synthetisiert werden, und die Standard-Entwürfe wirken oberflächlich.
+**Wann nutzen (Trigger):** In drei Tagen steht die Vorstandspräsentation zur Marketing-Jahresstrategie an; widersprüchliche Marktdaten aus fünf Quartalsreports müssen zu einer kohärenten These synthetisiert werden, und die Standard-Entwürfe wirken oberflächlich. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Für eine seltene, geschäftskritische Synthese bewusst ein Frontier-Reasoning-Modell (Frontier Reasoning Model) einsetzen — und diese Ausnahme gegenüber dem Budget rechtfertigen.
 **Hands-on Ergebnis:** Eine strategische Synthese-Note mit Opus 4.8 (Frontier-Tier, €4,30), erstellt im Chat, nicht in einem Workflow.
 **Eingesetzte Langdock-Fähigkeit(en):** Manuelle Modellwahl im Chat, Wissensordner für die fünf Reports, Modell-Katalog.
@@ -133,7 +133,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-003 Auto Mode oder gepinntes Modell: Entscheidungsregel für ein neues Content-Team
 
-**Wann nutzen (Trigger):** Ein neues, KI-unerfahrenes Content-Team startet auf Langdock, und die ersten Workspace-Verbrauchszahlen zeigen unerklärliche Ausschläge — vermutlich feuert der Auto Mode bei trivialen Anfragen Premium-Modelle.
+**Wann nutzen (Trigger):** Ein neues, KI-unerfahrenes Content-Team startet auf Langdock, und die ersten Workspace-Verbrauchszahlen zeigen unerklärliche Ausschläge — vermutlich feuert der Auto Mode bei trivialen Anfragen Premium-Modelle. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Eine klare Regel etablieren, wann Auto Mode (Auto Mode) erlaubt ist und wann ein Modell fest gepinnt wird, um Cost-Leakage durch Bequemlichkeit zu stoppen.
 **Hands-on Ergebnis:** Eine einseitige Team-Policy plus ein Workspace-Cap für Einsteiger.
 **Eingesetzte Langdock-Fähigkeit(en):** Auto Mode (Routing GPT-5.2 ↔ Sonnet 4.6), Workspace-Limit, Usage-Transparenz-Leiste.
@@ -151,7 +151,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-004 BYOK-Entscheidung: Lohnt der Azure-Rahmenvertrag für das Marketing-Volumen?
 
-**Wann nutzen (Trigger):** Das Unternehmen hat einen großen Azure-Rahmenvertrag mit ausgehandelten OpenAI-Rabatten, und die Marketing-Token-Kosten über die Langdock-Standardabrechnung steigen monatlich — die Frage ist, ob BYOK günstiger wäre.
+**Wann nutzen (Trigger):** Das Unternehmen hat einen großen Azure-Rahmenvertrag mit ausgehandelten OpenAI-Rabatten, und die Marketing-Token-Kosten über die Langdock-Standardabrechnung steigen monatlich — die Frage ist, ob BYOK günstiger wäre. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Beurteilen, ob Bring Your Own Key (BYOK) für das Marketing-Volumen wirtschaftlich ist, statt es als reine IT-Entscheidung zu behandeln.
 **Hands-on Ergebnis:** Eine Kosten-Gegenüberstellung Standard-Abrechnung vs. BYOK plus eine Empfehlung an die IT.
 **Eingesetzte Langdock-Fähigkeit(en):** BYOK, Usage-Export-CSV für Chargeback, Enterprise-Tier.
@@ -169,7 +169,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-005 Workspace-Limit erreicht am 20. des Monats: Notfall-Triage statt Panik-Erhöhung
 
-**Wann nutzen (Trigger):** Eine Warnung meldet, dass der Workspace-Verbrauch am 20. des Monats bereits bei 90% liegt — laufende Kampagnen drohen zu stoppen, und der Reflex ist, das Budget einfach zu verdoppeln.
+**Wann nutzen (Trigger):** Eine Warnung meldet, dass der Workspace-Verbrauch am 20. des Monats bereits bei 90% liegt — laufende Kampagnen drohen zu stoppen, und der Reflex ist, das Budget einfach zu verdoppeln. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Die Ursache des Budget-Verbrauchs (Budget Burn) diagnostizieren und gezielt nachsteuern, bevor man pauschal das Limit erhöht.
 **Hands-on Ergebnis:** Eine Verbrauchs-Triage: welche Agenten/Workflows treiben die Kosten, plus eine priorisierte Sofortmaßnahme.
 **Eingesetzte Langdock-Fähigkeit(en):** Workspace-Limit, Warn-Schwellen 50/75/90%, Usage-Transparenz-Leiste, Modell-EUR-Preise.
@@ -187,7 +187,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-006 Günstiges Modell, teure Halluzination: Wo Sparen am Faktencheck scheitert
 
-**Wann nutzen (Trigger):** Ein auf Haiku 4.5 laufender Agent erstellt PR-Texte mit konkreten Marktzahlen, und in einem Entwurf tauchte eine frei erfundene Studienzahl auf — kurz vor Versand an die Presse.
+**Wann nutzen (Trigger):** Ein auf Haiku 4.5 laufender Agent erstellt PR-Texte mit konkreten Marktzahlen, und in einem Entwurf tauchte eine frei erfundene Studienzahl auf — kurz vor Versand an die Presse. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Entscheiden, bei welchen Aufgabentypen ein günstiges Modell trotz Spar-Logik das falsche Werkzeug ist, weil das Halluzinationsrisiko (Hallucination Risk) den Schaden über die Ersparnis hebt.
 **Hands-on Ergebnis:** Eine Risiko-Klassifikation der PR-Aufgaben plus eine angepasste Modell-Zuordnung mit Faktencheck-Schritt.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, Wissensordner als Faktenquelle, manuelle Modellwahl.
@@ -205,7 +205,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-007 Drei-Stufen-Pipeline: Flash zum Entwerfen, Sonnet zum Polieren, Opus nur zur Synthese
 
-**Wann nutzen (Trigger):** Die Content-Supply-Chain für einen monatlichen Thought-Leadership-Artikel kostet zu viel, weil das ganze Team alles auf Sonnet 4.6 macht — vom ersten Brainstorm bis zur Endredaktion.
+**Wann nutzen (Trigger):** Die Content-Supply-Chain für einen monatlichen Thought-Leadership-Artikel kostet zu viel, weil das ganze Team alles auf Sonnet 4.6 macht — vom ersten Brainstorm bis zur Endredaktion. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Eine Aufgabe in Phasen zerlegen und jeder Phase das kosteneffizienteste Modell zuordnen, statt durchgängig ein mittleres Modell zu fahren.
 **Hands-on Ergebnis:** Eine dreistufige Modell-Pipeline mit zugeordneten EUR-Preise und geschätzter Ersparnis.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, manuelle Modellwahl pro Phase, Wissensordner.
@@ -223,7 +223,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-008 Max-Tarif oder Standard: Lizenz-Tier an der tatsächlichen Automatisierungstiefe ausrichten
 
-**Wann nutzen (Trigger):** Vor der Jahresbudgetierung steht die Frage, ob das 12-köpfige Marketing-Team vom Standard-Tarif (€25/Nutzer/Monat) auf Max (€99/Nutzer/Monat) wechseln soll — der Vertrieb drängt, aber der reale Bedarf ist unklar.
+**Wann nutzen (Trigger):** Vor der Jahresbudgetierung steht die Frage, ob das 12-köpfige Marketing-Team vom Standard-Tarif (€25/Nutzer/Monat) auf Max (€99/Nutzer/Monat) wechseln soll — der Vertrieb drängt, aber der reale Bedarf ist unklar. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Den Pricing-Tier (Pricing Tier) an der tatsächlichen Nutzung ausrichten, statt pauschal hochzustufen oder aus Sparsamkeit Engpässe zu riskieren.
 **Hands-on Ergebnis:** Eine Tier-Empfehlung pro Nutzergruppe mit Jahreskostenrechnung.
 **Eingesetzte Langdock-Fähigkeit(en):** Pricing-Tiers, Usage-Export, Workflows (Max-Feature).
@@ -241,7 +241,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-009 Modell-Roster im Quartal aktualisieren: neue Releases bewerten statt blind übernehmen
 
-**Wann nutzen (Trigger):** Langdock hat im Mai 2026 Opus 4.8 und Gemini 3 Flash global automatisch aktiviert, und das Team fragt, ob es seine etablierten Modell-Zuordnungen umstellen soll.
+**Wann nutzen (Trigger):** Langdock hat im Mai 2026 Opus 4.8 und Gemini 3 Flash global automatisch aktiviert, und das Team fragt, ob es seine etablierten Modell-Zuordnungen umstellen soll. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Neue Modell-Releases (Model Releases) strukturiert gegen die bestehende Zuordnung bewerten, statt aus Neugier auf das jeweils neueste Modell zu wechseln.
 **Hands-on Ergebnis:** Eine aktualisierte Modell-Roster-Empfehlung mit begründeten Wechseln oder bewusstem Beibehalten.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, manuelle Modellwahl, Usage-Transparenz-Leiste.
@@ -259,7 +259,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 
 ### S-MK-010 Frontier-Edge-Case rechtfertigen: Wann das teuerste Frontier-Modell (GPT-5.5) vertretbar ist
 
-**Wann nutzen (Trigger):** Für eine groß angelegte Customer-Insights-Studie mit zehntausenden offenen Antworten soll ein Modell tiefe, mehrstufige Muster ableiten — ein Analyst schlägt das teuerste verfügbare Modell vor, und die Marketing-Leitung muss den Aufpreis verantworten.
+**Wann nutzen (Trigger):** Für eine groß angelegte Customer-Insights-Studie mit zehntausenden offenen Antworten soll ein Modell tiefe, mehrstufige Muster ableiten — ein Analyst schlägt das teuerste verfügbare Modell vor, und die Marketing-Leitung muss den Aufpreis verantworten. (Quelle: 07-modelle-und-kosten)
 **Strategisches Ziel:** Entscheiden, ob das teuerste Frontier-Modell (GPT-5.5, €4,72/1M Input) vertretbar ist, oder ob ein günstigeres Tier mit klugem Vorgehen genügt.
 **Hands-on Ergebnis:** Eine begründete Modell-Entscheidung mit Kostendeckel und klarer Einsatzgrenze.
 **Eingesetzte Langdock-Fähigkeit(en):** Modell-Katalog, Wissensordner, Workspace-Limit, Code Node für deterministische Vorverarbeitung.
