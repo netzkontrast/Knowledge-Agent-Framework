@@ -1160,7 +1160,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 ### S-WF-058 Mehrsprachiger Content-Synchronisierungs-Workflow (Integration Trigger)
 
 **Wann nutzen (Trigger):** Jedes Mal, wenn ein masterhafter deutschsprachiger Content-Artikel im CMS veröffentlicht wird, müssen Englisch-, Französisch- und ggf. weitere Sprachversionen angestoßen, geprüft und publiziert werden — der manuelle Lokalisierungsprozess verzögert internationale Veröffentlichungen um Tage bis Wochen. (Quelle: sources/10 S-006 + research/julia-lens A-24)
-**Strategisches Ziel:** Mehrsprachige Content-Synchronisation vollautomatisch anstoßen, Überqualität durch Brand-Voice-Checks sichern und den manuellen Koordinationsaufwand auf reine HITL-Freigaben reduzieren.
+**Strategisches Ziel:** Mehrsprachige Content-Synchronisation automatisiert anstoßen (Trigger + Übersetzungs- und Brand-Voice-Schritte), den manuellen Koordinationsaufwand auf die sprachspezifischen HITL-Freigaben vor jeder CMS-Veröffentlichung reduzieren — keine Veröffentlichung ohne menschliche Freigabe.
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen integrations-getriggerten Mehrsprachen-Sync-Workflow mit paralleler Übersetzungsverarbeitung, AI-Brand-Voice-Check und sprachspezifischen HITL-Gates.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Integration-Trigger), DeepL-Integration (Rohübersetzung), AI-Node (Brand-Voice-Check + Terminologie-Kontrolle, Structured Output je Sprache), Loop-Node (parallele Sprachverarbeitung), HITL-Node je Sprache, Action-Node (CMS-Veröffentlichung je Sprachversion)
 **Vorgehen (4 Schritte):**

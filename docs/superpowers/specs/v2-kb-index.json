@@ -1,0 +1,8028 @@
+{
+  "files": [
+    {
+      "name": "00-langdock-uebersicht.md",
+      "kind": "content",
+      "lines": 1582,
+      "bytes": 205306,
+      "scenarios": [
+        {
+          "id": "S-LU-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LU-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "01-chat-und-prompts.md",
+      "kind": "content",
+      "lines": 1636,
+      "bytes": 165937,
+      "scenarios": [
+        {
+          "id": "S-CP-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-CP-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "02-agenten-konfiguration.md",
+      "kind": "content",
+      "lines": 1615,
+      "bytes": 243116,
+      "scenarios": [
+        {
+          "id": "S-AK-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-AK-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "03-wissensordner-und-rag.md",
+      "kind": "content",
+      "lines": 1571,
+      "bytes": 260927,
+      "scenarios": [
+        {
+          "id": "S-WR-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WR-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "04-workflows.md",
+      "kind": "content",
+      "lines": 1602,
+      "bytes": 206159,
+      "scenarios": [
+        {
+          "id": "S-WF-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-WF-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "05-integrationen-und-mcp.md",
+      "kind": "content",
+      "lines": 1553,
+      "bytes": 233816,
+      "scenarios": [
+        {
+          "id": "S-IM-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IM-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "06-api-und-deployment.md",
+      "kind": "content",
+      "lines": 1611,
+      "bytes": 233879,
+      "scenarios": [
+        {
+          "id": "S-API-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-API-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "07-modelle-und-kosten.md",
+      "kind": "content",
+      "lines": 1609,
+      "bytes": 238480,
+      "scenarios": [
+        {
+          "id": "S-MK-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MK-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "08-sicherheit-und-governance.md",
+      "kind": "content",
+      "lines": 1575,
+      "bytes": 256553,
+      "scenarios": [
+        {
+          "id": "S-SG-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-SG-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "09-marketing-praxis.md",
+      "kind": "content",
+      "lines": 1581,
+      "bytes": 229224,
+      "scenarios": [
+        {
+          "id": "S-MP-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-MP-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "10-prompts-und-skills.md",
+      "kind": "content",
+      "lines": 1580,
+      "bytes": 225693,
+      "scenarios": [
+        {
+          "id": "S-PS-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-041",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-042",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-043",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-044",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-045",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-046",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-047",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-048",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-049",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-050",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-051",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-052",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-053",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-054",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-055",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-056",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-057",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-058",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-059",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-060",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-061",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-062",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-063",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-064",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-065",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-066",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-067",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-068",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-069",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-070",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-071",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-072",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-073",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-074",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-075",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-076",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-077",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-078",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-079",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-PS-080",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "11-persona-core.md",
+      "kind": "persona",
+      "lines": 866,
+      "bytes": 78415,
+      "scenarios": [
+        {
+          "id": "S-LC-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-LC-040",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "12-persona-julia-modus.md",
+      "kind": "persona",
+      "lines": 671,
+      "bytes": 65986,
+      "scenarios": [
+        {
+          "id": "S-JL-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-JL-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "13-data-agent-anweisungen-pro-thema.md",
+      "kind": "anweisung",
+      "lines": 904,
+      "bytes": 77568,
+      "scenarios": [
+        {
+          "id": "S-DT-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-DT-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [
+        "Übersicht",
+        "Chat und Prompts",
+        "Agenten-Konfiguration",
+        "Wissensordner und RAG",
+        "Workflows",
+        "Integrationen und MCP",
+        "API und Deployment",
+        "Modelle und Kosten",
+        "Sicherheit und Governance",
+        "Marketing-Praxis",
+        "Prompts und Skills"
+      ],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "14-iw-use-cases.md",
+      "kind": "content",
+      "lines": 773,
+      "bytes": 87075,
+      "scenarios": [
+        {
+          "id": "S-IW-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-IW-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "15-glossar-und-faq.md",
+      "kind": "glossar",
+      "lines": 255,
+      "bytes": 38551,
+      "scenarios": [],
+      "data_anweisungen": [],
+      "faq": [
+        [
+          "F-001",
+          "Wo fange ich als KI-Einsteiger im IW-Kommunikationsteam an?"
+        ],
+        [
+          "F-002",
+          "Welches Modell soll ich für welche Aufgabe wählen?"
+        ],
+        [
+          "F-003",
+          "Welches Modell eignet sich für eine Pressemitteilung aus einem IW-Report?"
+        ],
+        [
+          "F-004",
+          "Wie verhindere ich, dass die KI eine Studienzahl falsch wiedergibt?"
+        ],
+        [
+          "F-005",
+          "Darf ich eine IW-Studie in den Wissensordner laden — verlässt sie die EU?"
+        ],
+        [
+          "F-006",
+          "Werden meine hochgeladenen Inhalte zum Training der Modelle verwendet?"
+        ],
+        [
+          "F-007",
+          "Wie übersetze ich einen IW-Report in einen iwd-Artikel?"
+        ],
+        [
+          "F-008",
+          "Wie kennzeichne ich KI-generierte Inhalte rechtssicher?"
+        ],
+        [
+          "F-009",
+          "Wie wahre ich den Neutralitätsanspruch des IW in KI-Texten?"
+        ],
+        [
+          "F-010",
+          "Wann nutze ich einen Wissensordner und wann einen direkten Anhang?"
+        ],
+        [
+          "F-011",
+          "Warum findet der Agent eine bestimmte Studienaussage nicht?"
+        ],
+        [
+          "F-012",
+          "Wie muss ich ein Dokument aufbereiten, damit das Retrieval funktioniert?"
+        ],
+        [
+          "F-013",
+          "Was unterscheidet einen Library Folder von einem Synced Folder?"
+        ],
+        [
+          "F-014",
+          "Wie halte ich die Kosten unter Kontrolle?"
+        ],
+        [
+          "F-015",
+          "Warum sollte ich den Auto Mode in Automatisierungen vermeiden?"
+        ],
+        [
+          "F-016",
+          "Konfiguriert Little Data Agenten und Workflows selbst?"
+        ],
+        [
+          "F-017",
+          "Wie sichere ich Zugriffsrechte auf sensible Studien ab?"
+        ],
+        [
+          "F-018",
+          "Sind die Vektor-Embeddings unserer Dokumente personenbezogene Daten?"
+        ],
+        [
+          "F-019",
+          "Wie nutze ich Deep Research für das wirtschaftspolitische Monitoring?"
+        ],
+        [
+          "F-020",
+          "Welche Nachweise braucht die Rechtsabteilung vor dem Rollout?"
+        ]
+      ],
+      "advice_style": 0
+    },
+    {
+      "name": "16-onboarding-change-management.md",
+      "kind": "content",
+      "lines": 554,
+      "bytes": 69157,
+      "scenarios": [
+        {
+          "id": "S-OC-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-OC-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "17-branchen-think-tank-praxis.md",
+      "kind": "content",
+      "lines": 777,
+      "bytes": 83205,
+      "scenarios": [
+        {
+          "id": "S-TT-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-011",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-012",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-013",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-014",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-015",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-016",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-017",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-018",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-019",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-020",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-021",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-022",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-023",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-024",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-025",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-026",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-027",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-028",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-029",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-030",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-031",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-032",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-033",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-034",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-035",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-036",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-037",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-038",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        },
+        {
+          "id": "S-TT-039",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": false
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "18-quellen-und-deeplinks.md",
+      "kind": "links",
+      "lines": 100,
+      "bytes": 12031,
+      "scenarios": [],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 0
+    },
+    {
+      "name": "19-iwmedien-zusammenarbeit.md",
+      "kind": "iw-brand",
+      "lines": 151,
+      "bytes": 13207,
+      "scenarios": [
+        {
+          "id": "S-MD-001",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-002",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-003",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-004",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-005",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        }
+      ],
+      "data_anweisungen": [],
+      "faq": [],
+      "advice_style": 5
+    }
+  ],
+  "collisions": [],
+  "reserved_violations": [],
+  "total_scenarios": 1101,
+  "total_advice": 5,
+  "file_count": 20,
+  "file_cap": 30
+}

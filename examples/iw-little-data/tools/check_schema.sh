@@ -41,6 +41,7 @@ check_one() {
     13-data-agent-anweisungen*) kind="anweisung" ;;
     15-glossar*) kind="glossar" ;;
     18-quellen*|18-links*|*-deeplinks*) kind="links" ;;
+    19-iwmedien*|20-iw-medien*) kind="iw-brand" ;;
   esac
 
   # H1: exactly one
@@ -157,6 +158,9 @@ check_one() {
   local szen_min=40
   if [ "$kind" = "persona" ]; then szen_min=20; fi
   case "$name" in 14-*|16-*|17-*) szen_min=20 ;; esac
+  # iw-brand (file 19/20): R7 advice-style file — boutique scale, decision-focused;
+  # threshold deliberately low so the file stays chunk-optimised (R13) and on-topic (R14).
+  if [ "$kind" = "iw-brand" ]; then szen_min=5; fi
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
   if [ "$szen_count" -lt "$szen_min" ]; then
     echo "[FAIL] $name: scenario count = $szen_count (expected ≥$szen_min)"
@@ -184,10 +188,11 @@ check_one() {
     fi
   done
 
-  # Example field — accept either Beispiel-Prompt or Beispiel-Konversation
-  local example_count; example_count=$(grep -cE '^\*\*Beispiel-(Prompt|Konversation)' "$file")
+  # Example field — accept Beispiel-Prompt, Beispiel-Konversation, OR R7's "Konkrete Empfehlung"
+  # (advice-style scenarios deliberately replace the prompt with an actionable recommendation).
+  local example_count; example_count=$(grep -cE '^\*\*(Beispiel-(Prompt|Konversation)|Konkrete Empfehlung)' "$file")
   if [ "$example_count" -lt "$szen_count" ]; then
-    echo "[WARN] $name: 'Beispiel-Prompt/Konversation' appears $example_count times (expected ≥$szen_count)"
+    echo "[WARN] $name: 'Beispiel-Prompt|Konversation|Konkrete Empfehlung' appears $example_count times (expected ≥$szen_count)"
   fi
 
   # Vorgehen field — accept any step count, e.g. "Vorgehen (3 Schritte):", "Vorgehen (3-5 Schritte):"

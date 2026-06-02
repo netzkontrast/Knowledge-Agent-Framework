@@ -85,10 +85,64 @@ Respect the IW Neutralitätsanspruch: the agent advises, it does not take politi
 ## R12 — Validation gates (must stay green)
 
 `tools/check_schema.sh --all`, `check_grounding.sh --all`, `check_coherence.sh --all`,
-`check_prompt_size.sh`, and the emoji guard. Run after every file; never commit a red gate.
+`check_chunks.sh --all`, `check_prompt_size.sh`, and the emoji guard. Plus `python3 tools/kb_index.py`
+(navigation + collision report). Run after every file; never commit a red gate.
+
+## R13 — Chunk-optimisation (mandatory, never compromised)
+
+Langdock RAG retrieves **one chunk per file per query** (~2 000 chars). A scenario
+that spills past the chunk window splits across two chunks, and the wrong half
+wins for half the queries.
+
+- Every content scenario block (from `### S-XXX` to the next anchor) must sit in
+  **[600, 4096] bytes**; >3 200 B is a soft warn ("consider trimming"); >4 096 B
+  hard-fails the chunk gate.
+- Aim for a per-file median around **2 000–2 300 B** (file 14 and 17 are exemplars).
+- Persona/anweisung/glossar/links/iw-brand files are exempt (different chunking).
+- When a scenario grows past the warn band, trim the most verbose part first
+  (typically the Beispiel-Prompt or trailing prose), preserving substance.
+- No trailing redactional prose at end-of-file that merges into the last
+  scenario's chunk window — keep ending notes brief.
+
+## R14 — File-count cap (clear and concise navigation)
+
+The knowledge base **must not exceed 30 files** (`langdock-deploy/knowledge/*.md`).
+Data believes in clear topic boundaries; more files fragment retrieval and
+overwhelm the reader. When tempted to add a file, first ask: can this live in an
+existing one as a new scenario (or scenario kind R7)? Only split when the topic
+is genuinely a new domain with its own canonical-facts ownership. Run
+`python3 tools/kb_index.py` to see the current count vs. the cap.
+
+## R15 — Persona depth in written knowledge
+
+Little Data's voice is not a separate file to be searched — it must show up *in*
+the written knowledge. Every content file's prose should:
+- Use Data's vocabulary register (formal, precise, "Aufschlussreich" not
+  "Faszinierend"; see 11-persona-core §Vokabular).
+- Apply the source-discipline anti-pattern (never a number without a source).
+- Honour "berät, konfiguriert nicht" — recommend, do not promise execution.
+- Avoid emoji and umgangssprachliche Verkürzungen even in helper prose.
+Per-file rules note any specific persona-voice TODOs surfaced during a pass.
+
+## R16 — Navigation tooling for agents and humans
+
+`tools/kb_index.py` writes a Markdown + JSON index to
+`docs/superpowers/specs/v2-kb-index.{md,json}` listing every file (kind, scenario
+count, advice-count) and the cross-file trigger-noun collisions. Treat it as the
+single map of the base; regenerate before each pass and after any commit that
+adds/edits scenarios.
+
+## R17 — Quality gates evolve with new scenario kinds
+
+When a new scenario *kind* (R7 advice-style, future R7+) is introduced, the
+relevant validator (`check_schema.sh`, `check_grounding.sh`, `check_chunks.sh`,
+`kb_index.py`) is **updated in the same commit** so the kind is recognised and
+verified. Without this co-update, a new kind silently slips past the gates.
 
 ---
 
 ## Change log (rulebook improves each loop)
 
-- **2026-06-02 (loop 1 close):** created. Captured verified pricing reality (direct EUR, no multipliers), IW formats, single-source-of-truth values (R3), RAG noun-reservation (R4), and the new advice-style kind (R7).
+- **2026-06-02 (loop 1 close):** created. Captured verified pricing reality (direct EUR, no multipliers), IW formats, single-source-of-truth values (R3), RAG noun-reservation (R4), advice-style kind (R7).
+- **2026-06-02 (loop 2 close):** grounding now 100% cited base-wide; persona 11 source-discipline anti-pattern added; spec-panel review caught 1 [C] (file 15 multiplier glossary) + 2 [M] (R10 vollautomatisch wording) — all fixed.
+- **2026-06-02 (loop 3 open):** added **R13** chunk-optimisation (hard-fail >4096 B), **R14** ≤30 files, **R15** persona depth in prose, **R16** navigation tooling (`kb_index.py`), **R17** gates-co-evolve-with-kinds. Built `tools/kb_index.py` + `tools/check_chunks.sh`. New verified source: `data/research/15-iwmedien-verified-2026-06.md`.

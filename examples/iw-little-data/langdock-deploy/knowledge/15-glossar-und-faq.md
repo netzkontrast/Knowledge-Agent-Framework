@@ -37,7 +37,7 @@
 
 **Memory (Memory):** Das systemübergreifende Gedächtnis des Chats, das Nutzerpräferenzen speichert (max. 50 Einträge pro Nutzer), in konfigurierten Agenten jedoch standardmäßig deaktiviert ist. Warum für die IW-Kommunikation relevant: schützt das deterministische, reproduzierbare Verhalten eines Fach-Agenten. (Quelle: 00-langdock-uebersicht)
 
-**Modell-Multiplikator (Cost Multiplier):** Die wirtschaftliche Gewichtung eines Modells relativ zum Plattform-Standard (GPT-5.2 = 1.0x), die belastbarer ist als der absolute Credit-Preis. Warum für die IW-Kommunikation relevant: erlaubt Kostenvergleiche, die unabhängig von schwankenden Preisangaben gültig bleiben. (Quelle: 07-modelle-und-kosten)
+**Modell-EUR-Preis (pro 1M Tokens):** Die direkte Abrechnungsgröße für Sprachmodelle in Langdock — getrennt nach Input- und Output-Tokens, in Euro je 1 Million Tokens (z. B. Gemini 2.5 Flash €0,26 Input / Sonnet 4.6 €2,58 Input / Opus 4.8 €4,30 Input). Es gibt keine veröffentlichten per-Modell-Multiplikatoren; die wirtschaftliche Einordnung erfolgt über Tier-Stufen (Light, Efficient Default, Balanced, Strong Generalist, Frontier). Warum für die IW-Kommunikation relevant: erlaubt belastbare Kostenrechnungen und faire Vergleiche zwischen Modellen ohne Umrechnungs-Annahmen. (Quelle: 07-modelle-und-kosten; Stand Juni 2026, gegen langdock.com/models gegenprüfen)
 
 **Per-Document-Cap (Per-Document-Cap):** Die Regel, dass pro Datei und Suchanfrage meist nur ein einziger Chunk abgerufen wird, um die Dominanz großer Dokumente zu verhindern. Warum für die IW-Kommunikation relevant: erzwingt das Prinzip „ein Thema pro Datei", damit jede Studienaussage zuverlässig auffindbar bleibt. (Quelle: 03-wissensordner-und-rag)
 
@@ -179,7 +179,7 @@
 
 ### F-002 Welches Modell soll ich für welche Aufgabe wählen?
 **Frage:** "Wie entscheide ich zwischen einem günstigen und einem teuren Modell?"
-**Antwort:** Die Faustregel lautet: das günstigste Modell, das die Aufgabe zuverlässig löst. Routine-Drafts und Übersetzungen laufen auf Light- oder Efficient-Default-Modellen (z. B. Haiku 4.5), faktenkritische oder stilistisch anspruchsvolle Texte auf einem Strong Generalist wie Sonnet 4.6. Frontier-Reasoning-Modelle wie Opus 4.8 sind nur für seltene, komplexe Synthesen gerechtfertigt. Maßgeblich ist der Modell-Multiplikator, nicht der absolute Preis. (Quelle: 07-modelle-und-kosten)
+**Antwort:** Die Faustregel lautet: das günstigste Modell, das die Aufgabe zuverlässig löst. Routine-Drafts und Übersetzungen laufen auf Light- oder Efficient-Default-Modellen (z. B. Haiku 4.5), faktenkritische oder stilistisch anspruchsvolle Texte auf einem Strong Generalist wie Sonnet 4.6. Frontier-Reasoning-Modelle wie Opus 4.8 sind nur für seltene, komplexe Synthesen gerechtfertigt. Maßgeblich ist der direkte EUR-Preis pro 1M Tokens (Input und Output), nicht eine abstrakte Multiplikator-Annahme. (Quelle: 07-modelle-und-kosten)
 
 ### F-003 Welches Modell eignet sich für eine Pressemitteilung aus einem IW-Report?
 **Frage:** "Ich will aus einem IW-Report eine Pressemitteilung erstellen lassen — welches Modell?"
