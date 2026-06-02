@@ -156,3 +156,14 @@ rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-
     - [x] **[m]2 closed** — S-IM-080 was 4088 B (8 B under hard limit); condensed Vorgehen to 3 steps → 3802 B (294 B margin). Remaining 04/05 >3200 B soft-warns are non-blocking (all <4096, no FAIL).
     - [ ] **[m]3 noted (optional, non-blocking)** — two near-twin scenario pairs share opening Empfehlung wording (internal-linking pair in 03; budget-reserve "30 %" pair); both valid + grounded, mild retrieval overlap only.
 - [ ] **v1.0-Beta tag** — all gates green; CONVERGED. Tag push is rejected by the git proxy → user tags via GitHub UI.
+
+### v1.0 finalization (consolidate-and-validate pass)
+
+- [x] **Operator docs current to 20 files** — INSTALL (20 files, 1,106 scenarios, 15 starters, +Test 5 IW-routing, +Test 6 HITL), CONVERSATION_STARTERS (10→15), MAINTENANCE (full gate list + v1.0 log row).
+- [x] **Glossar self-description** — +9 grounded IW-format terms (Faktenblatt, Gastbeitrag/Op-Ed, Karussell-Post, Leichte Sprache, Methodenkasten, Pressespiegel, Sharepic, Sprechzettel, Zitatkachel); 114→123. Each cited to file 14/17.
+- [x] **AGENT_PROMPT** — added IW-Fachebene + HITL calibration example; 14,456→14,925 / 15,000.
+- [x] **Release mechanics** — `docs/RELEASE_NOTES-v1.0.md`; version flip Beta→1.0 (README, deploy README + specifics, CHANGELOG v1.0 entry; historical loop records left as history).
+- [x] **L4-0b — DROPPED (decision recorded).** Runtime agent retrieves prose; never needs the authoring marker schema → would waste budget. No prompt change.
+- [x] **All gates green** post-finalization: schema 20/20, grounding clean, chunks clean, coherence PASS, prompt 14,925/15,000, marker-spacing 0, emoji clean.
+- [ ] **v1.0 tag** — user tags via GitHub UI (git proxy rejects tag push). Triggers release.yml → picks `docs/RELEASE_NOTES-v1.0.md` verbatim.
+- → **v2.0 work** is specified in `docs/superpowers/plans/2026-06-02-knowledge-v2.0-roadmap.md` (RAG simulator + maxbuild architecture + parked backlog incl. [m]3 and the 04/05 chunk-headroom pass).
