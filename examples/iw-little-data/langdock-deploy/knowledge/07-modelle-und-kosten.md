@@ -106,7 +106,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Weise dem Workflow fest GPT-5 Mini (€0,21/1M) zu; nutze niemals Auto Mode in einem automatisierten Workflow, da dieser unvorhersehbar teure Modelle anstößt.
 3. Setze ein Workflow-Budget (Standard €25/Monat) plus einen 50%-Warn-Alert, damit der Lauf bei Fehlkonfiguration stoppt, bevor er entgleist.
 4. Lass die ersten 50 Texte als Stichprobe durch Sonnet 4.6 prüfen — gezielter Qualitäts-Check statt teurem Volllauf.
-**Beispiel-Prompt (DE, PTCF):** "Übersetze die angehängten Produkttexte ins Schweizerhochdeutsch. Ersetze jedes 'ß' durch 'ss', nutze 'Velo' statt 'Fahrrad'. Behalte Länge und Tonalität bei, max. 2 Sätze pro Text. Gib eine Tabelle mit Original und Übersetzung zurück."
+**Beispiel-Prompt (DE):** "Übersetze die angehängten Produkttexte ins Schweizerhochdeutsch. Ersetze jedes 'ß' durch 'ss', nutze 'Velo' statt 'Fahrrad'. Behalte Länge und Tonalität bei, max. 2 Sätze pro Text. Gib eine Tabelle mit Original und Übersetzung zurück."
 **Erwartetes Artefakt:** Lokalisierter Katalog als Tabelle plus eine kurze Kostennotiz (Modell-/Tier-Wahl + Budget-Deckel) für das Controlling.
 **Fallstricke (≥2 spezifisch):**
 - Light-Modelle übersehen regionale Vokabel-Feinheiten (Velo, parkieren) — Mitigation: die Region-Regeln explizit in den Prompt schreiben, nicht dem Modell überlassen.
@@ -124,7 +124,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Pinne bewusst Opus 4.8 (Frontier-Tier, €4,30) — die Aufgabe ist Deduktion aus heterogenen Quellen, genau das Profil, für das der Aufpreis gerechtfertigt ist.
 3. Begrenze den Einsatz auf diese eine Session; dokumentiere die Modellwahl als genehmigungspflichtige Ausnahme für das Quartals-Review.
 4. Prüfe alle Zahlen aus der Synthese gegen die Originalreports — auch Frontier-Modelle halluzinieren Quartalszahlen.
-**Beispiel-Prompt (DE, PTCF):** "Du bist mein strategischer Sparringspartner. Synthetisiere aus den fünf Quartalsreports im Wissensordner die drei wichtigsten Marktbewegungen. Wo sich Quellen widersprechen, benenne den Widerspruch statt ihn zu glätten. Ergebnis: 1 Seite, Sie-Form, für den Vorstand."
+**Beispiel-Prompt (DE):** "Du bist mein strategischer Sparringspartner. Synthetisiere aus den fünf Quartalsreports im Wissensordner die drei wichtigsten Marktbewegungen. Wo sich Quellen widersprechen, benenne den Widerspruch statt ihn zu glätten. Ergebnis: 1 Seite, Sie-Form, für den Vorstand."
 **Erwartetes Artefakt:** Eine einseitige Synthese-Note mit benannten Datenwidersprüchen, vorstandsreif.
 **Fallstricke (≥2 spezifisch):**
 - Opus 4.8 für eine simple Headline zu nutzen verbrennt das ~8-fache des Nötigen — Mitigation: das Frontier-Modell strikt auf Synthese begrenzen, Folgefragen auf GPT-5.2 herabstufen.
@@ -142,7 +142,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Lege die Regel fest: Auto Mode nur für exploratives Chatten; für wiederkehrende Aufgaben das günstigste passende Modell pinnen (z.B. Haiku 4.5, €0,86).
 3. Setze für Einsteiger einen reduzierten Workspace-Cap unter dem €500-Standard, damit ein Auto-Mode-Ausreißer früh stoppt.
 4. Lass das Team einmal pro Woche die Usage-Transparenz-Leiste prüfen und Ausreißer melden.
-**Beispiel-Prompt (DE, PTCF):** "Erstelle mir eine einseitige Team-Regel auf Deutsch: Wann nutzen wir Auto Mode, wann pinnen wir ein Modell? Nenne pro Aufgabentyp (Social-Post, Whitepaper, Analyse) das empfohlene Modell. Kurze Hauptsätze, max. 3 Sätze pro Punkt."
+**Beispiel-Prompt (DE):** "Erstelle mir eine einseitige Team-Regel auf Deutsch: Wann nutzen wir Auto Mode, wann pinnen wir ein Modell? Nenne pro Aufgabentyp (Social-Post, Whitepaper, Analyse) das empfohlene Modell. Kurze Hauptsätze, max. 3 Sätze pro Punkt."
 **Erwartetes Artefakt:** Eine Modell-Wahl-Policy (1 Seite) plus ein konfigurierter Einsteiger-Cap.
 **Fallstricke (≥2 spezifisch):**
 - Auto Mode in Workflows einzusetzen erzeugt unvorhersehbare Kosten — Mitigation: in jeder Automatisierung ein Modell fest zuweisen, nie Auto Mode.
@@ -160,7 +160,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest, dass BYOK nur die reinen Token-Kosten verlagert (direkt beim Provider abgerechnet), Langdock berechnet dann nur Plattformgebühren — der Hebel liegt also in deinen ausgehandelten Azure-Rabatten.
 3. Beachte, dass BYOK ab Enterprise-Tier relevant ist und der Admin mindestens drei Modelltypen (Completion, Embedding, Image-Gen) hinterlegen muss, sonst fallen UI-Funktionen aus.
 4. Übergib die Gegenüberstellung an die IT mit klarer Empfehlung und der Volumenschwelle, ab der sich BYOK rechnet.
-**Beispiel-Prompt (DE, PTCF):** "Vergleiche zwei Abrechnungsmodelle für unser Marketing-Team auf Basis der angehängten Usage-CSV: Langdock-Standard vs. BYOK über unseren Azure-Rabatt. Rechne mit Token-Volumen pro Modell. Gib eine Tabelle und eine klare Schwelle, ab welchem Volumen BYOK günstiger ist."
+**Beispiel-Prompt (DE):** "Vergleiche zwei Abrechnungsmodelle für unser Marketing-Team auf Basis der angehängten Usage-CSV: Langdock-Standard vs. BYOK über unseren Azure-Rabatt. Rechne mit Token-Volumen pro Modell. Gib eine Tabelle und eine klare Schwelle, ab welchem Volumen BYOK günstiger ist."
 **Erwartetes Artefakt:** Eine Entscheidungsvorlage (Tabelle + Empfehlung) für das Controlling und die IT.
 **Fallstricke (≥2 spezifisch):**
 - BYOK ohne alle drei Modelltypen führt zu ausfallenden UI-Features (z.B. Bildgenerierung) — Mitigation: vor dem Umstieg Completion, Embedding und Image-Gen mappen.
@@ -178,7 +178,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Stufe unkritische Prozesse sofort herab oder pausiere sie, damit Budget für geschäftskritische Agenten bis Monatsende bleibt.
 3. Prüfe, ob ein Workflow Auto Mode nutzt oder ein Modell falsch zugewiesen ist — die häufigste Einzelursache für Ausreißer.
 4. Erst wenn der Verbrauch legitim und produktiv ist, beantrage eine begründete Limit-Erhöhung statt einer pauschalen Verdopplung.
-**Beispiel-Prompt (DE, PTCF):** "Analysiere den angehängten Usage-Export der letzten 20 Tage. Welche drei Agenten oder Workflows verursachen die höchsten Kosten und welches Modell nutzen sie? Schlage je eine konkrete Sparmaßnahme vor (z.B. Modell-Downgrade). Antworte in Stichpunkten, Sie-Form."
+**Beispiel-Prompt (DE):** "Analysiere den angehängten Usage-Export der letzten 20 Tage. Welche drei Agenten oder Workflows verursachen die höchsten Kosten und welches Modell nutzen sie? Schlage je eine konkrete Sparmaßnahme vor (z.B. Modell-Downgrade). Antworte in Stichpunkten, Sie-Form."
 **Erwartetes Artefakt:** Eine Triage-Liste der Top-3-Kostentreiber mit je einer Sofortmaßnahme.
 **Fallstricke (≥2 spezifisch):**
 - Pauschale Limit-Erhöhung verschiebt nur das Problem in den nächsten Monat — Mitigation: erst die Ursache (Modellwahl/Workflow) beheben.
@@ -196,7 +196,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Belasse faktenarme Aufgaben auf Haiku 4.5 (€0,86), aber zwinge faktenkritische Texte dazu, nur Zahlen aus dem Wissensordner zu nutzen, keine aus dem Modellwissen.
 3. Füge einen verpflichtenden menschlichen Faktencheck vor jedem Presseversand ein — kein Modellpreis ersetzt diese Kontrolle.
 4. Erwäge für faktenkritische Synthesen ein Step-up auf GPT-5.4 (€2,36), wenn Quellenbindung allein nicht reicht.
-**Beispiel-Prompt (DE, PTCF):** "Schreibe die Pressemeldung nur auf Basis der Zahlen im Wissensordner. Erfinde keine Statistiken. Markiere jede Zahl mit der Quelle in Klammern. Wenn eine Angabe fehlt, schreibe '[Quelle fehlt]' statt zu schätzen. Sie-Form, faktischer Ton."
+**Beispiel-Prompt (DE):** "Schreibe die Pressemeldung nur auf Basis der Zahlen im Wissensordner. Erfinde keine Statistiken. Markiere jede Zahl mit der Quelle in Klammern. Wenn eine Angabe fehlt, schreibe '[Quelle fehlt]' statt zu schätzen. Sie-Form, faktischer Ton."
 **Erwartetes Artefakt:** Eine PR-Risiko-Matrix (faktenarm/faktenkritisch) plus ein quellengebundener Meldungsentwurf mit markierten Zahlen.
 **Fallstricke (≥2 spezifisch):**
 - Sparen am Modell ohne Quellenbindung verlagert das Risiko auf erfundene Zahlen mit Reputationsschaden — Mitigation: Quellenbindung an den Wissensordner plus '[Quelle fehlt]'-Pflicht.
@@ -214,7 +214,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Ordne zu: Gemini 2.5 Flash für Rohentwürfe (sehr günstig), Sonnet 4.6 (€2,58) für die Brand-Voice-Politur, Opus 4.8 (Frontier-Tier, €4,30) nur falls die Kernthese echte Synthese braucht — sonst auch hier Sonnet.
 3. Stelle dem Sonnet-Schritt die Brand-Voice-Richtlinie aus dem Wissensordner bereit, damit weniger manuelle Nachkorrektur nötig ist.
 4. Rechne die Phasen-EUR-Kosten gegen den alten Durchgängig-Sonnet-Lauf und dokumentiere die Ersparnis fürs Team.
-**Beispiel-Prompt (DE, PTCF):** "Phase 1 (Flash): Erstelle drei Rohgliederungen zum Thema X. Phase 2 (Sonnet): Wähle die beste und schreibe sie in unserer Brand Voice aus dem Wissensordner aus. Halte die Du-Form durchgängig ein, max. 4 Sätze pro Absatz."
+**Beispiel-Prompt (DE):** "Phase 1 (Flash): Erstelle drei Rohgliederungen zum Thema X. Phase 2 (Sonnet): Wähle die beste und schreibe sie in unserer Brand Voice aus dem Wissensordner aus. Halte die Du-Form durchgängig ein, max. 4 Sätze pro Absatz."
 **Erwartetes Artefakt:** Eine dokumentierte Modell-Pipeline mit EUR-Preise pro Phase und einer Ersparnis-Rechnung.
 **Fallstricke (≥2 spezifisch):**
 - Phasenwechsel innerhalb einer Chat-Session löst kein Modell-Re-Routing aus (Auto Mode fixiert) — Mitigation: pro Phase bewusst eine neue Session mit gepinntem Modell starten.
@@ -232,7 +232,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest, dass Max die fünffache Nutzungskapazität und komplexe Workflows freischaltet — relevant nur für die Automatisierer.
 3. Prüfe, ob Features wie SSO oder BYOK gebraucht werden — die liegen erst im Enterprise-Tier, nicht in Max.
 4. Rechne ein gemischtes Modell (z.B. 3x Max, 9x Standard) gegen pauschal-Max und gegen pauschal-Standard, jeweils auf Jahresbasis (ex VAT).
-**Beispiel-Prompt (DE, PTCF):** "Erstelle eine Tier-Empfehlung für unser 12-köpfiges Team auf Basis der angehängten Nutzungsdaten. Wer braucht Max (Workflows, hohes Volumen), wer Standard? Gib eine Jahreskostenrechnung für ein gemischtes Modell vs. pauschal Max. Tabelle, Sie-Form."
+**Beispiel-Prompt (DE):** "Erstelle eine Tier-Empfehlung für unser 12-köpfiges Team auf Basis der angehängten Nutzungsdaten. Wer braucht Max (Workflows, hohes Volumen), wer Standard? Gib eine Jahreskostenrechnung für ein gemischtes Modell vs. pauschal Max. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Tier-Zuordnung pro Nutzergruppe mit Jahreskosten-Gegenüberstellung.
 **Fallstricke (≥2 spezifisch):**
 - Pauschal-Max für alle vervierfacht die Lizenzkosten, obwohl die meisten nur Chat nutzen — Mitigation: gemischte Tier-Zuordnung nach realem Bedarf.
@@ -250,7 +250,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Beachte, dass Gemini 3 Flash (Stand Mai 2026 teurer als Gemini 2.5 Flash) nicht automatisch der günstigere Draft-Default ist — der niedrigere EUR-Preis pro Token bleibt das Kriterium, nicht die höhere Versionsnummer.
 3. Teste ein neues Modell nur an einem repräsentativen Aufgaben-Batch, bevor du es teamweit zuweist.
 4. Dokumentiere die Entscheidung mit Datum ("Stand Mai 2026"), damit die nächste Quartalsplanung den Stand kennt.
-**Beispiel-Prompt (DE, PTCF):** "Vergleiche für unsere Draft-Aufgaben Gemini 2.5 Flash und Gemini 3 Flash anhand der EUR-Preis pro Tokenen und der Output-Qualität auf den angehängten Beispieltexten. Empfiehl, ob wir wechseln. Begründe mit Kosten, nicht mit der Versionsnummer. Sie-Form."
+**Beispiel-Prompt (DE):** "Vergleiche für unsere Draft-Aufgaben Gemini 2.5 Flash und Gemini 3 Flash anhand der EUR-Preis pro Tokenen und der Output-Qualität auf den angehängten Beispieltexten. Empfiehl, ob wir wechseln. Begründe mit Kosten, nicht mit der Versionsnummer. Sie-Form."
 **Erwartetes Artefakt:** Eine datierte Modell-Roster-Empfehlung mit Begründung pro Wechsel/Beibehalten.
 **Fallstricke (≥2 spezifisch):**
 - Annahme, ein höheres Versions-Release sei automatisch günstiger oder besser — Gemini 3 Flash ist teurer als 2.5 Flash — Mitigation: immer am EUR-Preis pro Token und am Batch-Test entscheiden.
@@ -268,7 +268,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Beziffere: GPT-5.5 (€4,72/1M Input, €28,35 Output) ist das teuerste Modell — rund 3x so teuer pro Input-Token wie GPT-5.2 (€1,50) und rund 18x des Efficient-Defaults (€0,26); der Einsatz ist nur für die finale, mehrstufige Synthese der vorverarbeiteten Cluster vertretbar, nicht für die Rohdaten.
 3. Setze einen dedizierten Workspace-Cap für diesen einmaligen Lauf, damit der hohe Frontier-Preis nicht das Monatsbudget aufzehrt.
 4. Halte die Entscheidung als genehmigte Ausnahme fest und prüfe das Ergebnis stichprobenartig gegen die Rohdaten.
-**Beispiel-Prompt (DE, PTCF):** "Auf Basis der bereits geclusterten Antworten im Wissensordner: Leite die drei tiefsten, nicht offensichtlichen Verhaltensmuster ab und belege jedes mit zwei Beispielzitaten. Keine Spekulation über Daten hinaus. Ergebnis: strukturierte Liste, Sie-Form."
+**Beispiel-Prompt (DE):** "Auf Basis der bereits geclusterten Antworten im Wissensordner: Leite die drei tiefsten, nicht offensichtlichen Verhaltensmuster ab und belege jedes mit zwei Beispielzitaten. Keine Spekulation über Daten hinaus. Ergebnis: strukturierte Liste, Sie-Form."
 **Erwartetes Artefakt:** Eine Insights-Synthese der Top-Muster plus eine dokumentierte Frontier-Modell-Ausnahme mit Kostendeckel.
 **Fallstricke (≥2 spezifisch):**
 - Rohdaten direkt durch das teuerste Frontier-Modell zu jagen ist Geldverschwendung — Mitigation: deterministische Vorverarbeitung per Code Node, Frontier-Modell nur für die finale Synthese.
@@ -286,7 +286,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Exportiere die Top-10-Einträge als CSV und prüfe, welches Modell jeweils aktiv war — ein einzelner Frontier-Agent auf Opus 4.8 (Frontier-Tier, €4,30) treibt die Kosten oft mehr als zwanzig Standard-Prompts zusammen.
 3. Klassifiziere jeden Heavy-Hitter: Ist die Komplexität des Prompts durch den EUR-Preis pro Token gerechtfertigt, oder wurde ein zu teures Modell für eine Routine-Aufgabe eingesetzt?
 4. Baue die Top-3-Problemprompts um: entweder Modell-Downgrade (z.B. von Sonnet auf Haiku), Kontext-Komprimierung (Wissensordner statt Inline-Upload) oder Splitting in eine günstige Vorverarbeitungs- und eine gezielte Synthese-Phase.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Kostenberater. Analysiere die angehängte Usage-CSV der letzten 30 Tage. Identifiziere die 5 teuersten Prompts oder Agenten nach Token-Kosten und benenne das jeweils genutzte Modell. Schlage für jeden Eintrag einen konkreten Umbau vor (Modell-Downgrade, Kontext-Komprimierung oder Task-Split). Antworte in einer Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Refactor-Tabelle mit den Top-5-Kostentreibern, zugehörigem EUR-Preis pro Token und je einer priorisierten Sparmaßnahme.
 **Fallstricke (≥2 spezifisch):**
@@ -305,7 +305,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Trenne den statischen Template-Teil (Persona, Ton, Struktur) klar vom variablen Teil (Kampagnenname, Datum, Zielgruppe) — nur der statische Teil profitiert vom Cache.
 3. Hinterlege den statischen Teil einmalig im Wissensordner; der Agent ruft ihn per RAG ab, statt ihn bei jeder Anfrage neu zu übergeben — das ist Langdocks praktische Caching-Entsprechung.
 4. Messe die Input-Token-Reduktion nach 30 Tagen über den Usage-Export und dokumentiere die Ersparnis für das Quartals-Reporting.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Prompt-Effizienz-Berater. Analysiere die drei Briefing-Templates im Wissensordner. Identifiziere, welche Anteile bei jedem Abruf identisch sind und daher gecacht werden könnten. Gib eine Empfehlung, welche Teile statisch (Cache-geeignet) und welche variabel bleiben müssen. Antworte mit einer strukturierten Aufschlüsselung, Sie-Form."
 **Erwartetes Artefakt:** Eine annotierte Template-Struktur (statisch / variabel) plus eine ROI-Schätzung der monatlichen Token-Ersparnis.
 **Fallstricke (≥2 spezifisch):**
@@ -324,7 +324,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Lege fest, dass Flash-Klasse-Modelle der Default für jede Aufgabe sind, bei der kein explizites Qualitätsargument für Sonnet vorliegt — Bequemlichkeit ist kein Qualitätsargument.
 3. Halte die Routing-Matrix im Wissensordner ab und verknüpfe sie mit dem Content-Agenten als Referenz, damit das Team die Regel im Chat abrufen kann.
 4. Prüfe nach vier Wochen die Usage-Leiste: hat der Sonnet-Anteil im Verhältnis abgenommen? Wenn nicht, war die Kommunikation der Regel unklar.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Content-Routing-Berater. Erstelle eine Modell-Routing-Matrix für unser Content-Team auf Basis der Aufgabenliste im Wissensordner. Ordne jedem Aufgabentyp das günstigste ausreichende Modell (Flash, Haiku, Sonnet) mit EUR-Preis pro Token zu. Gib eine Tabelle und eine geschätzte monatliche Einsparung bei konsequenter Anwendung. Sie-Form."
 **Erwartetes Artefakt:** Eine Routing-Matrix (Aufgabentyp / Modell / EUR-Preis / Begründung) plus Einsparungs-Schätzung als Team-Leitfaden.
 **Fallstricke (≥2 spezifisch):**
@@ -343,7 +343,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Multipliziere Token-Volumen je Aufgabentyp mit dem EUR-Preis pro Token des geplanten Modells — nutze Referenzwerte aus dem Usage-Export vergangener Kampagnen als Ankerpunkt.
 3. Addiere einen Iterations-Puffer von 30 % für Nachbesserungen und setze das Ergebnis als Workflow-Budget-Cap vor dem Kampagnenstart.
 4. Übergib die Kalkulation an das Controlling mit einer klaren Zeile: "Basis: EUR-Preis pro Tokenen Stand Mai 2026 — bei Quartalsplanung gegen langdock.com/models gegenchecken."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Budget-Planer. Erstelle auf Basis der angehängten Kampagnenplanung eine Kostenkalkulation. Nutze die Modell-EUR-Preise aus dem Wissensordner. Schätze Token pro Aufgabentyp, addiere 30 % Iterations-Puffer und gib das Ergebnis als Tabelle mit Gesamt-Budget-Empfehlung aus. Sie-Form, EUR."
 **Erwartetes Artefakt:** Eine tabellarische Vorkampagnen-Kalkulation (Aufgabentyp / Token-Schätzung / Modell / EUR-Preis / Kosten-EUR / Puffer) als Controlling-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -362,7 +362,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Sichere den bisherigen Kontext: speichere die beste Zwischenversion im Wissensordner, bevor das Modell gewechselt wird — ein Modellwechsel löscht den Chat-Kontext nicht, aber das neue Modell hat keinen automatischen Zugriff auf frühere Schlussfolgerungen.
 3. Starte eine neue Session mit dem höheren Modell, übergib die gesicherte Zwischenversion als Kontext-Dokument und formuliere explizit, was die vorherigen Entwürfe nicht geleistet haben.
 4. Plane den Rückwechsel auf das günstigere Modell für die Überarbeitungs- und Formatierungsphase — Opus nur für die strategische Synthese, nicht für die redaktionelle Politur.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein strategischer Synthesizer. Ich übergebe dir den bisherigen Whitepaper-Entwurf aus dem Wissensordner. Die drei Hauptprobleme: [X, Y, Z]. Entwickle eine schärfere Kernthese, die alle drei überwindet. Gib mir eine überarbeitete Einleitung und einen neuen Gliederungs-Vorschlag. Sie-Form, max. 2 Seiten."
 **Erwartetes Artefakt:** Ein dokumentiertes Wechsel-Protokoll plus eine überarbeitete Whitepaper-Kernthese aus dem Frontier-Modell-Lauf.
 **Fallstricke (≥2 spezifisch):**
@@ -381,7 +381,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Berechne das Lohnkosten-Äquivalent: wie viele Arbeitsstunden hätten die erledigten Aufgaben ohne KI gekostet, multipliziert mit dem internen Stundensatz?
 3. Stelle die Langdock-Lizenzkosten plus Token-Kosten der Stunden-Ersparnis gegenüber — das ergibt den ROI in Prozent.
 4. Beschränke die CFO-Folie auf drei Kennzahlen maximum; mehr Details in den Appendix, nicht in den Hauptteil.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CFO-Kommunikations-Berater. Übersetze die angehängten KI-Nutzungsdaten in eine einseitige ROI-Darstellung für den Vorstand. Nutze drei KPIs: AI-Assisted-Output-Ratio, Cost-per-Brief und Time-from-Brief-to-Draft. Vergleiche Lohnkosten-Äquivalent mit Langdock-Gesamtkosten. Gib das Ergebnis als Folie-Gliederung in Sie-Form aus."
 **Erwartetes Artefakt:** Eine CFO-Folie (Gliederung + Kennzahlen) plus ein kurzes Methodenblatt zur Berechnung des Lohnkosten-Äquivalents.
 **Fallstricke (≥2 spezifisch):**
@@ -400,7 +400,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Weise dem Workflow-Schritt fest Haiku 4.5 (€0,86) oder Gemini 2.5 Flash zu; nutze niemals Auto Mode in einem Massen-Workflow, da dieser unvorhersehbar teurere Modelle ansteuert.
 3. Setze ein Workflow-Level-Budget als Sicherheitsnetz und aktiviere einen 50%-Warn-Alert, damit ein fehlerhafter Loop-Knoten früh gestoppt wird.
 4. Vergleiche nach dem ersten Lauf die tatsächlichen Kosten mit einer Schätzung für den Chat-Modus — dokumentiere den Faktor (typisch 5–10x Kostendifferenz) für das interne Reporting.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Lokalisierungs-Spezialist. Übersetze den übergebenen Produkttext ins {{Zielsprache}}. Erhalte Tonalität, Markennamen und Formatierung. Passe regionale Begriffe an (z.B. 'Velo' für CH-DE). Gib exakt den übersetzten Text zurück, keine Erläuterungen."
 **Erwartetes Artefakt:** Ein Lokalisierungs-Workflow mit Loop-Knoten, zugewiesenem Flash-Modell, Workflow-Budget-Cap und einer Kostendifferenz-Notiz (Batch vs. Chat) für das Controlling.
 **Fallstricke (≥2 spezifisch):**
@@ -419,7 +419,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Empfehle rollenspezifische Defaults: Content-Autor → Haiku 4.5 (€0,86); Strategen und Analysten → GPT-5.2 (€1,50); Workspace-Admins bei komplexen Synthesen → Sonnet 4.6 (€2,58); Opus-Klasse nur auf explizite Anforderung.
 3. Füge "Standard-Modell konfigurieren" als Pflichtschritt in das Day-1-Onboarding ein — prüfbar im Admin-Panel anhand der Default-Modell-Einstellung pro User.
 4. Kommuniziere die Regel als "günstigstes passendes Modell wählen, bewusst hochstufen statt bequem oben bleiben".
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Onboarding-Berater für KI-Tools. Erstelle eine Day-1-Checkliste für neue Marketing-Mitarbeitende auf Langdock. Enthalte den Schritt 'Standard-Modell setzen' mit konkreter Empfehlung nach Rolle (Content, Strategie, Analyse). Kurze Stichpunkte, max. 8 Punkte gesamt. Sie-Form."
 **Erwartetes Artefakt:** Eine Day-1-Onboarding-Checkliste mit Default-Modell-Empfehlung pro Rolle als wiederverwendbarer Wissensordner-Eintrag.
 **Fallstricke (≥2 spezifisch):**
@@ -438,7 +438,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Definiere im Playbook für 50 %: Usage-Leiste auf Ausreißer prüfen, unkritische Frontier-Modell-Nutzung einfrieren.
 3. Definiere für 75 %: Workflow-Budgets unkritischer Prozesse halbieren, Team über verbleibende Kapazität informieren.
 4. Definiere für 90 %: alle nicht kampagnenkritischen Agenten pausieren, Limit-Erhöhung beim Admin beantragen mit begründetem Bedarf — nicht pauschal verdoppeln.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Operations-Berater. Erstelle ein Eskalations-Playbook für unser Marketing-Team, wenn das Langdock-Workspace-Budget die Schwellen 50 %, 75 % und 90 % erreicht. Nenne pro Schwelle: Verantwortlichen, konkrete Maßnahme und maximale Reaktionszeit. Tabellenformat, Sie-Form."
 **Erwartetes Artefakt:** Ein Eskalations-Playbook (Tabelle: Schwelle / Verantwortlicher / Maßnahme / Reaktionszeit) zur Ablage im Wissensordner.
 **Fallstricke (≥2 spezifisch):**
@@ -457,7 +457,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest: Workflow-Runs verfallen am Monatsende (kein Rollover) — ungenutzte Runs im Paket sind verlorene Investitionen; Mitigation ist entweder ein kleineres Paket oder eine bessere Auslastungsplanung.
 3. Prüfe, ob der Max-Tarif mit höherem Workflow-Run-Inklusivvolumen günstiger ist als Standard plus Zusatz-Pakete — rechne auf Jahresbasis.
 4. Setze für jeden aktiven Workflow ein dediziertes Run-Budget, damit kein einzelner Prozess das monatliche Kontingent allein aufzehrt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Langdock-Kostenberater. Analysiere die angehängte Usage-CSV der letzten drei Monate. Trenne Chat-Token-Kosten und Workflow-Run-Kosten. Empfiehl das optimale Workflow-Run-Paket basierend auf dem tatsächlichen Verbrauch. Rechne zwei Szenarien: Standard + Zusatzpaket vs. Max-Tarif. Tabellenformat, Jahresbasis, Sie-Form."
 **Erwartetes Artefakt:** Eine Verbrauchs-Aufschlüsselung (Chat vs. Runs) plus eine Jahreskosten-Gegenüberstellung zweier Paket-Szenarien als Entscheidungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -476,7 +476,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Bewerte die Outputs strukturiert: Argumentation, Quellenbindung, strategische Tiefe — dokumentiere, wo Opus einen messbaren Mehrwert zeigt und wo die Outputs gleichwertig sind.
 3. Berechne den Upgrade-Kosteneffekt: wenn 60 % der Aufgaben Opus-Qualität benötigen und Opus (€4,30) rund 1,7x so teuer pro Token ist wie Sonnet (€2,58), steigen die Gesamtkosten für das Projekt auf rund 1,4x des Sonnet-Niveaus — ist der Mehrwert das wert?
 4. Lege eine Rückwechsel-Bedingung fest: wenn das Projekt in die Überarbeitungs- und Formatierungsphase wechselt, zurück auf Sonnet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Evaluierungs-Berater. Ich habe fünf Aufgaben je auf Sonnet 4.6 und Opus 4.8 durchgeführt. Die Ergebnisse sind im Wissensordner. Bewerte den Qualitätsunterschied strukturiert nach: Argumentation, Quellenbindung, strategische Tiefe. Empfiehl, ob der Upgrade auf Opus für dieses Projekt gerechtfertigt ist. Begründung in Zahlen, Sie-Form."
 **Erwartetes Artefakt:** Eine Vergleichstabelle (Aufgabe / Sonnet-Output-Qualität / Opus-Output-Qualität / Mehrwert ja/nein) plus eine ROI-Entscheidung mit Rückwechsel-Bedingung.
 **Fallstricke (≥2 spezifisch):**
@@ -495,7 +495,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Nutze öffentliche CO₂-Faktoren von ML.energy und Hugging Face Public Estimates als Basis; dokumentiere explizit, dass diese Schätzungen sind, keine zertifizierten Messungen.
 3. Multipliziere Token-Volumen je Modellklasse mit dem jeweiligen Faktor und addiere die Ergebnisse zu einer Jahres-Gesamtschätzung in kg CO₂-Äquivalent.
 4. Füge eine Annahmen-Sektion hinzu und plane eine jährliche Aktualisierung der Faktoren ein — CO₂-Schätzungen für KI-Modelle ändern sich mit der Hardware-Effizienz der Rechenzentren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Nachhaltigkeits-Berater. Ich habe unsere Langdock-Usage-CSV der letzten 12 Monate und CO₂-Faktoren aus ML.energy im Wissensordner. Berechne unsere geschätzte KI-Emissionslast nach Modell-Kategorie. Dokumentiere alle Annahmen explizit. Gib das Ergebnis als Tabelle in kg CO₂-Äquivalent/Jahr aus. Sie-Form."
 **Erwartetes Artefakt:** Eine Emissions-Tabelle (Modellklasse / Token-Volumen / CO₂-Faktor / kg CO₂/Jahr) mit Annahmen-Dokumentation als Anhang für den Nachhaltigkeitsbericht.
 **Fallstricke (≥2 spezifisch):**
@@ -514,7 +514,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Nutze einen HTTP-Request-Knoten, der die Usage-Export-API abruft und die Daten als JSON an den nächsten Schritt übergibt.
 3. Weise dem Summarisierungs-Schritt Haiku 4.5 zu — die Aufgabe ist strukturierte Zusammenfassung mit bekannten Feldern, kein Frontier-Modell nötig; Prompt: "Erstelle aus den KPI-Daten eine Management-Summary mit drei Kennzahlen und einer Handlungsempfehlung."
 4. Sende die Summary per Slack-Integration an den definierten Kanal und setze einen Workflow-Budget-Cap von €5/Monat, damit der Report-Workflow das Gesamtbudget nicht belastet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Reporting-Assistent. Erstelle aus den übergebenen Usage-Daten eine Management-Summary. Enthalte: Gesamtkosten des Monats, Top-3-Kostentreiber (Modell + Team), Vergleich zum Vormonat in Prozent und eine Handlungsempfehlung. Max. 5 Stichpunkte. Sie-Form."
 **Erwartetes Artefakt:** Ein konfigurierter Reporting-Workflow (Cron → API-Abruf → Haiku-Summarisierung → Slack-Versand) plus eine Beispiel-Summary als Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -533,7 +533,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Lass Haiku 4.5 dieselben 100 Tickets klassifizieren mit dem geplanten Klassifikations-Prompt und vergleiche die Ergebnisse mit der Ground Truth.
 3. Berechne Precision und Recall für die wichtigste Kategorie ("marketingrelevant") — wenn Recall unter 80 % liegt, übersieht das Modell zu viele relevante Tickets; erwäge ein Step-up auf GPT-5.2 (€1,50).
 4. Dokumentiere die Testergebnisse als Entscheidungsgrundlage: Modell, Prompt-Version, Precision, Recall, Kosten-Schätzung für Vollauf.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Klassifikations-Assistent. Klassifiziere das folgende Support-Ticket als 'marketingrelevant' oder 'nicht marketingrelevant'. Kriterien aus dem Wissensordner anwenden. Antworte ausschließlich mit 'marketingrelevant' oder 'nicht marketingrelevant' — keine Begründung."
 **Erwartetes Artefakt:** Ein Suitability-Test-Report (Stichproben-Größe, Precision, Recall, Kosten-Schätzung Vollauf) plus eine dokumentierte Modell-Entscheidung mit Begründung.
 **Fallstricke (≥2 spezifisch):**
@@ -552,7 +552,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Prüfe, ob neue Releases (z.B. neue Flash-Generation) die bestehende Routing-Matrix verändern sollten: nicht jede neue Version ist günstiger oder besser — entscheide anhand EUR-Preis pro Token und Batch-Test, nicht Versionsnummer.
 3. Passe die Kostenkalkulation für das laufende Quartal an geänderte EUR-Preise an und kommuniziere Abweichungen gegenüber der Jahresplanung proaktiv an Controlling.
 4. Halte das aktualisierte Modell-Roster mit Stand-Datum im Wissensordner ab — jede Kostenkalkulation muss auf einen datierten Roster verweisen, nicht auf vage "aktuelle Preise".
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Controlling-Assistent. Vergleiche die Modell-EUR-Preise aus unserem letzten Quartals-Roster (im Wissensordner) mit den aktuellen Werten. Identifiziere Änderungen und schätze die Budget-Auswirkung basierend auf unserem Usage-Volumen aus dem Export. Gib eine Anpassungsempfehlung für die laufende Quartalsplanung. Tabellenformat, Sie-Form."
 **Erwartetes Artefakt:** Ein datiertes Modell-Roster-Update (Modell / alter EUR-Preis pro Token / neuer EUR-Preis pro Token / Budget-Auswirkung EUR/Quartal) als Controlling-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -571,7 +571,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Führe fünf repräsentative Aufgaben durch (Headline, Social Post, Pressemitteilung, Produkttext, E-Mail) parallel auf beiden Modellen mit identischem Prompt.
 3. Bewerte die Outputs nach dem definierten Raster auf einer 1-5-Skala pro Kriterium; lass bei Bedarf einen Muttersprachler zwei strittige Outputs blind beurteilen.
 4. Entscheide aufgabenspezifisch: wenn Anthropic für Brand-Voice-Texte besser abschneidet und Gemini für kurze Draft-Aufgaben gleichwertig bei niedrigerem EUR-Preis ist, trenne die Routing-Empfehlung danach.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein DACH-Sprachqualitäts-Bewerter. Ich habe fünf Textpaare (Gemini-Output vs. Claude-Output) im Wissensordner. Bewerte jedes Paar nach folgenden Kriterien: idiomatisches Deutsch, formelle Anrede, Brand-Voice-Konsistenz, regionale Neutralität (DACH-kompatibel). Vergib 1-5 Punkte pro Kriterium. Fasse die Empfehlung pro Aufgabentyp in einer Tabelle zusammen. Sie-Form."
 **Erwartetes Artefakt:** Eine Vergleichstabelle (Aufgabentyp / Gemini-Score / Claude-Score / Empfehlung) plus eine begründete Routing-Empfehlung pro Aufgabenkategorie.
 **Fallstricke (≥2 spezifisch):**
@@ -590,7 +590,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Wäge Kontextfenster gegen Kosten ab: ein vollständiges 100K-Token-Dokument als Inline-Input bei einem teuren Modell kostet deutlich mehr als eine RAG-Abfrage aus dem Wissensordner — trenne Aufgaben, die den vollen Text brauchen (Synthese), von denen, die nur Auszüge brauchen (Faktencheck).
 3. Nutze Gemini 2.5 Flash für Extraktions- und Komprimierungsaufgaben großer Dokumente; eskaliere auf Sonnet 4.6 nur, wenn strategische Synthese aus dem vollen Dokumentkontext nötig ist.
 4. Lege die Matrix im Wissensordner ab: Dokument ≤10 Seiten → jedes Modell; 10–80 Seiten → RAG/Wissensordner bevorzugt; 80–500 Seiten → Gemini 2.5 Flash direkt; >500 Seiten → zwingend RAG-Chunking.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Kontext-Effizienz-Berater. Ich habe einen 150-seitigen Report (ca. 90.000 Token). Empfiehl: (1) welches Modell dieses Kontextfenster unterstützt, (2) ob Inline-Upload oder Wissensordner-RAG günstiger ist, (3) welche Aufgabentypen den vollen Kontext wirklich benötigen. Gib eine Entscheidungsmatrix aus. Sie-Form."
 **Erwartetes Artefakt:** Eine Dokumenttyp-Matrix (Seitenbereich / empfohlenes Modell / Zugangsmethode / Kostenbegründung) als Wissensordner-Leitfaden.
 **Fallstricke (≥2 spezifisch):**
@@ -609,7 +609,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Identifiziere latenz-sensitive Aufgaben (Kundendienst-Chat, interaktive Briefing-Generierung) → Streaming unvermeidbar; und latenz-tolerante Aufgaben (Massenübersetzung, Report-Summarisierung, Klassifikation) → Batch bevorzugen.
 3. Verschiebe latenz-tolerante Aufgaben in Nacht-Workflows, damit sie kein Tages-Kontingent der interaktiven Agenten blockieren — das verhindert Rate-Limit-Probleme in Stoßzeiten.
 4. Dokumentiere die Aufgabentrennung: Batch-Workflows bekommen ein dediziertes Budget und Zeitplan-Trigger; Streaming-Agenten bekommen ein separates Budget für interaktive Nutzung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Architektur-Berater. Ich habe zwei Aufgabentypen: (1) Echtzeit-Kundendienst-Antworten, (2) tägliche Batch-Klassifikation von 500 Tickets. Erkläre den Kostenunterschied zwischen Streaming und Batch und empfehle die optimale Architektur. Berücksichtige Rate-Limits und Budget-Trennung. Stichpunkte, Sie-Form."
 **Erwartetes Artefakt:** Eine Aufgaben-Zuordnung (Aufgabentyp / Streaming oder Batch / Begründung / Budget-Cap-Empfehlung) als Architektur-Entscheidungsdokument.
 **Fallstricke (≥2 spezifisch):**
@@ -628,7 +628,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Lege aufgabenspezifische Defaults fest: Brainstorming/Slogan-Ideation → 0,8; Textpolitur/Brand-Voice → 0,4; strukturierte Datenextraktion/Klassifikation → 0,1; Standard-Content-Drafting → 0,5.
 3. Teste den betroffenen Agenten mit Temperature 0,4 statt 1,0 an fünf Beispieltexten und vergleiche Output-Länge und Nachbearbeitungszeit — dokumentiere den Token-Unterschied.
 4. Verankere die Temperature-Einstellung als expliziten Parameter in der Agenten-Konfiguration und erkläre dem Team, warum "steif" oft besser ist als "wortreich-unkontrolliert".
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Agenten-Konfigurations-Berater. Erkläre mir den praktischen Effekt einer Temperature von 0,1 vs. 0,8 für einen Brand-Voice-Content-Agenten. Welche Temperature empfiehlst du für: (1) Headline-Varianten, (2) Produkttexte, (3) Datenextraktion? Begründe mit Token-Effizienz und Qualitätsargumenten. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Temperature-Empfehlungstabelle (Aufgabentyp / empfohlene Temperature / Begründung / Token-Effizienz-Effekt) als Agenten-Konfigurationsregel.
 **Fallstricke (≥2 spezifisch):**
@@ -647,7 +647,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Wähle für CD-Checks (Farben, Logo-Position, Abstände) Gemini 2.5 Flash als kosteneffizientes Vision-Modell — Präzisionsanforderungen sind hoch, aber die Aufgabe ist strukturiert, kein kreatives Reasoning nötig.
 3. Erstelle einen Batch-Workflow (nicht interaktiven Chat), der Bilder sequenziell prüft und das Ergebnis als strukturierte Liste (Konform / Nicht Konform / Begründung) in eine Tabelle schreibt.
 4. Setze einen Workflow-Budget-Cap pro Batch-Lauf und limitiere die Bildauflösung auf das für den Check nötige Minimum — höhere Auflösung erhöht Token-Kosten ohne Qualitätsgewinn für strukturierte Compliance-Checks.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CD-Compliance-Prüfer. Analysiere das angehängte Bild gegen folgende Corporate-Design-Regeln aus dem Wissensordner: Primärfarben (#HEX), Logo-Mindestabstand (20px), Schriftart (nur Helvetica). Antworte ausschließlich mit: 'Konform' oder 'Nicht konform: [Regel] verletzt'. Keine Erläuterungen."
 **Erwartetes Artefakt:** Eine Kosten-Schätzung für den Vision-Workflow (Bilder × Token-Äquivalent × EUR-Preis pro Token × EUR) plus eine konfigurierte Batch-Pipeline mit Budget-Cap.
 **Fallstricke (≥2 spezifisch):**
@@ -666,7 +666,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Exportiere monatlich den Usage-Export, filtere nach User-Gruppe und multipliziere Token-Volumen je Modell mit dem jeweiligen EUR-Preis pro Token, um die EUR-Kosten pro Team zu erhalten.
 3. Definiere die Chargeback-Policy: direkte Nutzungskosten werden verursachungsgerecht verteilt; Lizenzkosten (Seats) bleiben auf der zentralen Marketing-Kostenstelle.
 4. Teile die Chargeback-Tabelle monatlich mit jedem Team-Lead und verknüpfe sie mit dem Team-Budget — Kostentransparenz erzeugt dezentrales Sparverhalten ohne zentrale Mikromanagement-Eingriffe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Kostencontroller. Ich habe eine Usage-CSV mit Token-Verbrauch pro User der letzten 30 Tage im Wissensordner sowie eine User-Gruppen-Zuordnung (User → Team). Berechne die KI-Kosten pro Team in EUR (Token-Menge × EUR-Preis pro 1M Tokens). Gib eine Chargeback-Tabelle aus: Team / Token-Gesamt / Kosten-EUR / Anteil am Gesamtbudget %. Sie-Form."
 **Erwartetes Artefakt:** Eine monatliche Chargeback-Tabelle (Team / Token-Volumen / Modell-Mix / EUR-Kosten / Budgetanteil %) als Controlling-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -685,7 +685,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Prüfe die Top-Ausgaben auf Modellklasse: ein einzelner Frontier-Modell-Lauf (Opus, €4,30/1M) kann denselben Kosteneffekt haben wie hundert Standard-Chats — der EUR-Preis pro Token ist entscheidend, nicht das absolute Token-Volumen.
 3. Identifiziere, ob der Spike durch einen Loop-Fehler (unendliche Wiederholung), eine nicht geplante Frontier-Eskalation (Auto Mode) oder einen neu aktivierten Agenten ausgelöst wurde.
 4. Implementiere die gezielte Sofortmaßnahme (Workflow pausieren / Modell herabstufen / Auto Mode deaktivieren) und dokumentiere die Ursache für die nächste Team-Retrospektive.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Anomalie-Diagnostiker. Ich habe eine Usage-CSV der letzten 48 Stunden im Wissensordner. Die Kosten sind dreimal höher als der Tagesdurchschnitt. Identifiziere den Spike-Auslöser: Welcher User, Workflow oder Agent verursacht den größten Kostenanteil? Welches Modell wurde genutzt? Schlage eine Sofortmaßnahme vor. Diagnose-Bericht, Sie-Form."
 **Erwartetes Artefakt:** Ein Anomalie-Diagnose-Report (Spike-Quelle / Modell / Token-Volumen / Kostenanteil / Sofortmaßnahme) als Grundlage für das Post-Mortem.
 **Fallstricke (≥2 spezifisch):**
@@ -704,7 +704,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Definiere aufgabenspezifische Fallbacks: Brand-Voice-Content (Sonnet 4.6 → GPT-5.4, €2,36/1M, mit expliziter Brand-Voice-Anweisung); Bulk-Drafts (Gemini 2.5 Flash → Haiku 4.5, €0,86/1M); Synthese (Opus 4.8 → Sonnet 4.6, mit akzeptiertem Qualitätsabstrich).
 3. Dokumentiere Einschränkungen des Fallback-Modells explizit: GPT-5.4 hält Brand-Voice-Nuancen weniger präzise als Claude — das Team muss bei einem Fallback mit erhöhtem Redaktionsaufwand rechnen.
 4. Lege das Fallback-Protokoll im Wissensordner ab und referenziere es im Team-Onboarding, damit bei einem Ausfall kein zeitraubendes Suchen beginnt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Resilience-Berater. Erstelle ein Modell-Fallback-Protokoll für unser Marketing-Team. Für jeden Aufgabentyp (Brand-Content, Bulk-Drafts, Strategie-Synthese, Klassifikation, Übersetzung): Primärmodell → Fallback-Modell → EUR-Preis pro Token-Änderung → Qualitäts-Einschränkung. Tabellenformat, Sie-Form."
 **Erwartetes Artefakt:** Ein Fallback-Protokoll (Aufgabentyp / Primärmodell / Fallback / EUR-Preis-Delta / Einschränkungen) zur Ablage im Wissensordner als Notfallplan.
 **Fallstricke (≥2 spezifisch):**
@@ -723,7 +723,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Prüfe die drei Upgrade-Schwellen: (a) Workflows mit >10 Knoten oder Loop-Nodes werden benötigt → Max-Kandidat; (b) RAG-Szenarien mit >50.000 Token pro Abfrage → Max-Kandidat; (c) SSO, BYOK, Audit-Logs → Enterprise, nicht Max.
 3. Rechne das gemischte Modell: 2 Nutzer auf Max (€99/Monat) + 10 Nutzer auf Standard (€25/Monat) = €448/Monat = €5.376/Jahr — vs. pauschal Max für alle: €1.188/Monat = €14.256/Jahr.
 4. Dokumentiere die Entscheidung mit einem Revisionsterm (6 Monate): wenn weitere Nutzer auf Max-Features angewiesen sind, schrittweise upgraden statt auf einmal.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Lizenz-Strategie-Berater. Wir haben 12 Marketing-Nutzer auf Standard-Tarif (€25/Nutzer/Monat). 2 Nutzer brauchen komplexe Workflows mit Loop-Nodes und großvolumige RAG-Abfragen. Rechne: (1) gemischtes Modell 2x Max + 10x Standard, (2) alle auf Max, (3) alle auf Standard mit Einschränkungen. Jahresbasis, Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Jahreskosten-Gegenüberstellung (3 Szenarien) plus eine begründete Tier-Empfehlung pro Nutzergruppe mit Revisionsterm.
 **Fallstricke (≥2 spezifisch):**
@@ -742,7 +742,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Berechne den Total-Input pro Request: addiere alle Komponenten und multipliziere mit dem Modell-EUR-Preis und dem Basis-Preis — für 100 Batch-Requests mit je 5.000 Input-Token auf Sonnet 4.6 (€2,58) ergibt das ~€1,35 Input-Kosten.
 3. Berücksichtige auch Output-Tokens: bei Zusammenfassungen oder Klassifikationen ist der Output kurz; bei vollständigen Textentwürfen kann er länger als der Input sein.
 4. Nutze die Kalkulation als Freigabe-Schwelle: Batch-Läufe über €10 benötigen eine begründete Modell-Wahl; über €50 eine explizite Management-Freigabe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Token-Budget-Rechner. Ich plane einen Batch-Lauf: System-Prompt (1.200 Token), 3 Dokumente à 8 Seiten (je ~4.000 Token), User-Frage (150 Token), 50 Wiederholungen. Modell: Sonnet 4.6 (€2,58/1M Input-Token). Berechne: Gesamt-Input-Token, geschätzte Input-Kosten EUR, Output-Kosten bei durchschnittlich 500 Token Output. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Token-Aufschlüsselung (Komponente / Token-Schätzung / EUR-Kosten) plus eine Gesamtkosten-Kalkulation als Freigabe-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -761,7 +761,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Bewerte die Qualitätsanforderungen für den Use Case: Messefragen sind oft FAQ-artig und gut durch den Wissensordner abgedeckt — ein Haiku 4.5-Modell mit reichem Wissensordner-Kontext kann hier qualitativ besser sein als Sonnet ohne Kontext.
 3. Kalkuliere den Kostenvorteil: tausend Messe-Interaktionen auf Haiku 4.5 (€0,86) kosten ca. ein Siebentel von Sonnet 4.6 (€2,58) — die Latenz-Optimierung ist hier gleichzeitig eine Kosten-Optimierung.
 4. Reserviere Sonnet für komplexe Folgefragen oder Eskalations-Pfade (z.B. technische Detail-Anfragen), die der Haiku-Agent mit "Weitere Details finden Sie beim Fachberater" weitergeleitet hat.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Latenz-Optimierungs-Berater. Ich habe einen Messestand-Agenten auf Sonnet 4.6 mit 8-12 Sekunden Antwortzeit. Analysiere: Kann Haiku 4.5 mit dem angehängten FAQ-Wissensordner die Qualität halten bei deutlich geringerer Latenz? Bewerte Latenz, EUR-Preis pro Token und Qualitätsrisiko. Empfehle eine Hybrid-Strategie (Fast-Track vs. Eskalation). Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Latenz-Qualitäts-Kosten-Matrix (Modell / TTFT / EUR-Preis / Qualitätsbewertung) plus eine Hybrid-Architektur-Empfehlung (Standard-Fragen vs. Eskalations-Pfad).
 **Fallstricke (≥2 spezifisch):**
@@ -780,7 +780,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest: Fine-Tuning ist via Langdock nicht nativ verfügbar — es erfordert BYOC (Bring Your Own Compute) mit einem extern fine-getunten Modell; der Aufwand (Datenvorbereitung, Training, Deployment) ist erheblich.
 3. Empfehle für die meisten Marketing-Use-Cases die Prompting-Lösung: niedrigere Rüstkosten, sofortige Anpassbarkeit bei Brand-Änderungen und keine Abhängigkeit von externem ML-Engineering.
 4. Fine-Tuning ist nur dann wirtschaftlich, wenn: (a) das Prompt-Overhead >50 % der Input-Kosten ausmacht, (b) täglich >5.000 Requests ausgeführt werden und (c) die Brand-Voice sich selten ändert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Strategie-Berater. Vergleiche Fine-Tuning vs. Prompt-Engineering für unseren Brand-Voice-Agenten mit 500 täglichen Requests auf Sonnet 4.6. System-Prompt: 5.000 Token. Bewerte nach: tägliche Kosten, Einrichtungsaufwand, Flexibilität bei Brand-Änderungen, Qualitäts-Konsistenz. Gib eine klare Empfehlung mit Break-Even-Schwelle. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Entscheidungsmatrix (Kriterium / Fine-Tuning / Prompting / Gewinner) plus eine Break-Even-Berechnung (ab welchem Request-Volumen würde Fine-Tuning günstiger).
 **Fallstricke (≥2 spezifisch):**
@@ -799,7 +799,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Vergleiche die Kostenwege: Langdock-Standard (GPT-5.5 zu €4,72/1M Input inkl. rund 10% API-Aufschlag) vs. BYOC (direkter Provider-Preis ohne den 10%-Aufschlag, aber mit BYOC-Setup-Aufwand und Enterprise-Tier-Lizenzkosten).
 3. Halte fest: BYOC erfordert Enterprise-Tier — wenn der aktuelle Tarif Standard oder Max ist, kommen Lizenz-Upgrade-Kosten hinzu, die in die Break-Even-Berechnung einfließen müssen.
 4. Empfehle BYOC nur, wenn (a) Enterprise-Tier bereits vorhanden, (b) Use-Case-Volumen >20.000 Requests/Monat für das teure Modell und (c) IT-Kapazität für Key-Management vorhanden ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein BYOC-Entscheidungsberater. Ich nutze GPT-5.5 (€4,72/1M Input, €28,35 Output) für 800 Requests/Monat à 3.000 Input-Token und 1.000 Output-Token. Vergleiche: Langdock-Standard (inkl. rund 10% API-Aufschlag) vs. BYOC mit direktem Provider-Preis ohne den Aufschlag. Berücksichtige Enterprise-Tier-Kosten bei BYOC. Gib Break-Even-Monat und Empfehlung. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine BYOC-Entscheidungsvorlage (Kostenszenario A vs. B / Break-Even-Monat / Empfehlung) mit einer klaren Schwelle für die IT-Eskalation.
 **Fallstricke (≥2 spezifisch):**
@@ -818,7 +818,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Führe alle 5 Aufgaben auf den 3 zu vergleichenden Modellen durch, messe die tatsächlich verbrauchten Token per Usage-Export und berechne den Kostenwert pro Aufgabe.
 3. Bewerte jeden Output nach einem definierten Qualitätsraster (Relevanz, DACH-Sprachqualität, Strukturtreue, Faktentreue) auf einer 1-5-Skala — mindestens ein Muttersprachler bewertet blind.
 4. Berechne den "Qualität-pro-EUR"-Score: Qualitätspunkte / tatsächliche Kosten EUR und erstelle das Benchmark-Ranking; aktualisiere es quartalsweise nach Modell-Releases.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Benchmark-Analyst. Ich habe Outputs von Haiku 4.5, Sonnet 4.6 und Gemini 2.5 Flash für fünf Aufgaben und das Bewertungsraster im Wissensordner. Bewerte alle 15 Outputs nach: Relevanz (1-5), DACH-Sprachqualität (1-5), Strukturtreue (1-5). Berechne den Gesamt-Score und den Qualität-pro-EUR-Score auf Basis der beiliegenden Kostendaten. Ranking-Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Ein Benchmark-Ranking (Modell / Aufgabe / Qualitäts-Score / Kosten-EUR / Qualität-pro-EUR) plus eine Empfehlung für die nächste Budgetplanung.
 **Fallstricke (≥2 spezifisch):**
@@ -837,7 +837,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Prüfe im Usage-Export, welche Kostenanteile API-basiert und welche paket-basiert abgerechnet werden — der Aufschlag gilt nur für den API-Anteil.
 3. Passe die Kostenkalkulation an: Token-Kosten × EUR-Preis pro Token × 1,10 für alle API-genutzten Modelle; dokumentiere den Faktor explizit in jeder Kalkulations-Vorlage.
 4. Erstelle ein monatliches Abgleich-Template: Langdock-Rechnung / kalkulierte Basiskosten / erwarteter Aufschlag / Abweichung — eine Abweichung über 5 % ist ein Hinweis auf nicht geplante API-Nutzung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Abrechnungs-Aufklärer. Erkläre unserem Controlling, warum die Langdock-Rechnung 10 % über unserer Token-Kalkulation liegt. Erstelle ein Abgleich-Template für die monatliche Rechnungsprüfung: kalkulierte Token-Kosten (aus Usage-Export) + 10 % API-Aufschlag vs. tatsächliche Rechnung. Gib das Template als ausfüllbare Tabelle. Sie-Form."
 **Erwartetes Artefakt:** Ein Abgleich-Template (Kalkulierte Basiskosten / API-Aufschlag 10 % / Gesamt-Soll / Tatsächliche Rechnung / Abweichung EUR/%) plus eine erklärende Notiz für das Controlling.
 **Fallstricke (≥2 spezifisch):**
@@ -856,7 +856,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Definiere die Aktivierungs-Policy: Extra-Usage darf nur der Marketing-Operations-Lead oder der Workspace-Admin aktivieren; Teamnutzer erhalten keine Selbst-Aktivierungs-Rechte.
 3. Setze sofort nach Aktivierung einen dedizierten Extra-Usage-Budget-Cap (z.B. €50 maximal), damit der Over-Quota-Bereich nicht unbegrenzt läuft.
 4. Plane mittelfristig: wenn Extra-Usage regelmäßig nötig wird, ist das ein Signal, das Basis-Kontingent (Paket-Upgrade) zu erhöhen statt strukturell im Over-Quota-Modus zu arbeiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Abrechnungs-Berater. Erstelle eine Extra-Usage-Policy für unser Marketing-Team. Definiere: (1) wer darf Extra-Usage aktivieren, (2) welche Bedingungen müssen vorliegen (Notfall-Kriterien), (3) welchen sofortigen Budget-Cap setzen wir, (4) wie dokumentieren wir jede Aktivierung. Policy-Dokument, max. 1 Seite, Sie-Form."
 **Erwartetes Artefakt:** Eine Extra-Usage-Policy (Aktivierungsberechtigung / Notfall-Kriterien / Budget-Cap / Dokumentationspflicht) plus eine Kalkulation der Over-Quota-Kosten für das aktuelle Szenario.
 **Fallstricke (≥2 spezifisch):**
@@ -875,7 +875,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Definiere die Namenskonvention: alle Sandbox-Agenten und Workflows tragen das Präfix "EXP-" — so sind Experimente im Usage-Export sofort von produktiven Prozessen unterscheidbar.
 3. Weise das günstigste passende Modell für Experimente zu (Haiku 4.5 oder Gemini 2.5 Flash) — Experimente validieren Prompt-Logik, nicht Frontier-Modell-Qualität; teure Modelle erst im Produktiv-Modus einsetzen.
 4. Etabliere einen monatlichen "Experiment-Review": was hat funktioniert und wird in den produktiven Workspace übernommen, was wird verworfen? Nur validierte Ansätze migrieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Governance-Berater. Erstelle eine Sandbox-Strategie für unser Langdock-Marketing-Workspace. Definiere: (1) Sandbox-Projekt-Setup mit Budget-Cap, (2) Namenskonvention für Experiment-Agenten, (3) Modell-Policy für Experimente (günstigstes passendes Modell), (4) monatlicher Review-Prozess für Migration in Produktion. Policy-Dokument, Sie-Form."
 **Erwartetes Artefakt:** Ein Sandbox-Governance-Dokument (Projektstruktur / Namenskonvention / Modell-Policy / Review-Zyklus) als Wissensordner-Eintrag für das Team-Onboarding.
 **Fallstricke (≥2 spezifisch):**
@@ -894,7 +894,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Konfiguriere einen wöchentlichen Workflow (Montag, 9:00 Uhr), der den Usage-Export der Vorwoche abruft, die Top-5-Verbraucher (anonymisiert oder namentlich je nach Kultur) und die Modell-Mix-Verteilung zusammenfasst und in den Marketing-Slack-Kanal sendet.
 3. Kommuniziere die Zahlen ohne Blame: "Team-Verbrauch letzte Woche: €87 (Budget: €500/Monat). Top-Modell: Sonnet 4.6 (60 %). Tipp: 3 Tasks auf Flash umstellbar." — Transparenz als Coaching, nicht als Kontrolle.
 4. Definiere monatliche Team-Ziele für den Modell-Mix (z.B. "Flash/Haiku soll >50 % der Token-Verbrauchsanteile ausmachen") und feiere Fortschritte als Team-Leistung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Kultur-Berater. Erstelle eine Transparenz-Kommunikation für unseren wöchentlichen Slack-Digest zur KI-Nutzung. Enthalte: Gesamtverbrauch der Woche in EUR, Modell-Mix in Prozent, einen konkreten Spar-Tipp, einen positiven Hinweis auf gute Praktiken. Ton: coachend, nicht kontrollierend. Max. 5 Zeilen, Sie-Form."
 **Erwartetes Artefakt:** Ein konfigurierter wöchentlicher Slack-Digest-Workflow plus ein Kommunikations-Template (5 Zeilen) für die transparente, nicht-sanktionierende Kosten-Kommunikation.
 **Fallstricke (≥2 spezifisch):**
@@ -913,7 +913,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Definiere den Genehmigungsprozess: eine kurze Anfrage (Use Case + Begründung + Zeitraum) per E-Mail oder Slack an den Marketing-Operations-Lead; Genehmigung dauert maximal 1 Werktag.
 3. Lege die Ausnahme-Kriterien fest: Frontier-Modell ist genehmigt für (a) geschäftskritische Synthesen aus heterogenen Quellen, (b) Quartals-Strategiepapiere, (c) komplexe Marktanalysen mit zehntausenden Datenpunkten — nicht für iterative Entwurfsprozesse.
 4. Überprüfe die "Frontier-Approved"-Gruppe quartalsweise: wer ist noch berechtigt, wer kann wieder auf Standard zurückgestuft werden?
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Governance-Berater. Erstelle einen Genehmigungsprozess für Frontier-Modell-Nutzung (Opus 4.8, GPT-5.5) in unserem Marketing-Team. Definiere: Genehmigungskriterien, Antragsformat (max. 3 Felder), Genehmigungspfad, maximale Bearbeitungszeit und Quartals-Review. Policy-Dokument, max. 1 Seite, Sie-Form."
 **Erwartetes Artefakt:** Ein Frontier-Modell-Genehmigungsprotokoll (Kriterien / Antragsformat / Genehmigungspfad / Review-Zyklus) plus eine technische Umsetzungsanweisung für den Workspace-Admin.
 **Fallstricke (≥2 spezifisch):**
@@ -933,7 +933,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 3. Erstelle die Budget-Struktur: Fixkosten (Seats × Tier × 12 Monate) + Variable Kosten (Token-Volumen × Modell-Mix × EUR-Preis pro Token × Basispreis) + Experimentier-Budget (10 % Puffer) + Extra-Usage-Reserve (5 % für Stoßzeiten).
 4. Formuliere die ROI-Aussage: KI-Budget-Anfrage / Lohnkosten-Äquivalent der eingesparten Arbeitsstunden = ROI-Faktor; ergänze drei konkrete Kampagnen-Erfolge als qualitative Belege.
 5. Bereite zwei Szenarien vor: Basis-Szenario (Status quo + organisches Wachstum) und Wachstums-Szenario (zusätzliche Automatisierungen + neue Use Cases) — der Vorstand entscheidet zwischen den Szenarien, nicht über die Methodik.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Jahresbudget-Stratege für KI-Investitionen. Erstelle auf Basis der angehängten Usage-Daten des laufenden Jahres eine Jahresbudget-Vorlage für die Vorstandsgenehmigung. Enthalte: Lizenzkosten, Token-Kosten nach Modellklasse, 40 % Wachstumspuffer, ROI-Aussage (eingesparte Arbeitsstunden × Stundensatz). Zwei Szenarien: Basis und Wachstum. Tabellenformat, EUR, Sie-Form."
 **Erwartetes Artefakt:** Eine Jahresbudget-Vorlage (Kostenstruktur / Szenarien / ROI-Aussage) im Controlling-Format als Entscheidungsvorlage für die Vorstandspräsentation.
 **Fallstricke (≥2 spezifisch):**
@@ -952,7 +952,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest: ein Frontier-Modell wie Opus 4.8 hat typischerweise TTFT von 8–15 Sekunden — für einen interaktiven Messestand-Chat ist das eine akzeptanzgefährdende Wartezeit, nicht ein Qualitätsproblem.
 3. Definiere einen Hybrid-Ansatz: der Echtzeit-Agent verwendet Haiku 4.5 (TTFT <1 Sek., €0,86/1M) gestützt durch einen reichhaltigen Wissensordner; der Nacht-Agent verwendet Sonnet 4.6 (€2,58/1M) für tiefere Synthesen, da Nutzer schlafen.
 4. Dokumentiere die Latenz-Klassifikation im Wissensordner als Teil der Agenten-Übersicht, damit neue Kolleginnen den Echtzeit-vs.-Async-Unterschied sofort sehen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Architektur-Berater. Wir haben einen Echtzeit-Messeagenten und einen Nacht-Reporting-Agenten. Empfehle je ein Modell nach Latenz, Qualität und EUR-Preis pro Token. Begründe, warum ein einheitliches Modell für beide keine gute Idee ist. Tabelle mit TTFT-Schätzung, EUR-Preis pro Token und Qualitätsbewertung. Sie-Form."
 **Erwartetes Artefakt:** Eine Latenz-Klassifikations-Matrix (Agent / Latenz-Klasse / empfohlenes Modell / TTFT-Schätzung / EUR-Preis) als Konfigurationsleitfaden.
 **Fallstricke (≥2 spezifisch):**
@@ -971,7 +971,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Verstehe, dass RAG nicht alle 200 Dokumente bei jedem Query lädt, sondern die Top-k relevantesten Chunks — prüfe über den Usage-Export, wie viele Input-Token tatsächlich pro Session geladen werden.
 3. Bereinige den Wissensordner: Dokumente, die älter als 12 Monate und durch neuere ersetzt sind, archivieren; Styleguides auf das Wesentliche kürzen; Duplikate entfernen — Ziel: Reduktion auf die 50 wichtigsten, aktuellen Dokumente.
 4. Miss die Input-Token-Reduktion nach der Bereinigung über den Usage-Export und dokumentiere die monatliche Einsparung für das Controlling.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Wissensordner-Optimierer. Analysiere die Dokument-Liste im angehängten Inventar (Name, Seiten, Datum). Identifiziere: (1) Dokumente die archiviert werden können (älter als 12 Monate, durch neuere ersetzt), (2) Dokumente die inhaltlich redundant sind, (3) Dokumente die auf das Wesentliche gekürzt werden können. Ziel: Reduktion auf 50 Kern-Dokumente. Priorisierte Liste, Sie-Form."
 **Erwartetes Artefakt:** Eine Wissensordner-Bereinigungsliste (Dokument / Handlungsempfehlung: behalten/archivieren/kürzen / Begründung) plus eine Token-Einspar-Schätzung nach der Bereinigung.
 **Fallstricke (≥2 spezifisch):**
@@ -990,7 +990,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Ermittle pro Gruppe, welche Features tatsächlich genutzt werden — kein Tier-Upgrade ohne Feature-Nachweis: SSO und BYOC erst bei nachgewiesenem Enterprise-Bedarf.
 3. Rechne drei Szenarien auf Jahresbasis: (a) alle 15 auf Standard = €4.500/Jahr; (b) alle 15 auf Max = €17.820/Jahr; (c) gemischt 10x Standard + 3x Max + 2x Enterprise (Preis auf Anfrage, Schätzwert €150/Nutzer) = €9.060/Jahr plus Enterprise-Verhandlung.
 4. Empfehle das gemischte Modell mit einem 6-Monats-Review: wenn weitere Workflow-Entwickler dazukommen, schrittweise upgraden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Lizenz-Strategie-Berater. Unser 15-köpfiges Marketing-Team hat drei Rollengruppen: 10 Content-Autoren, 3 Workflow-Entwickler, 2 Strategen. Rechne drei Tier-Szenarien auf Jahresbasis: alle Standard, alle Max, gemischtes Modell. Begründe je Gruppe den Tier-Bedarf anhand konkreter Feature-Anforderungen. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Eine Tier-Entscheidungsmatrix (Rollengruppe / benötigte Features / empfohlener Tier / Jahreskosten) plus eine Jahreskosten-Gegenüberstellung drei Szenarien.
 **Fallstricke (≥2 spezifisch):**
@@ -1009,7 +1009,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Berechne die Direktersparnis: welche Agentur- oder Freelancer-Kosten wurden durch interne KI-Produktion ersetzt? Welche Software-Lizenzen wurden abgelöst?
 3. Kalkuliere den Zeitersparnis-Wert: durchschnittliche Zeitersparnis pro Aufgabentyp (aus Mitarbeiterbefragung) × Anzahl der Durchläufe pro Monat × interner Stundensatz = jährlicher Opportunitätswert.
 4. Ergänze den Qualitätseffekt als Proxy: Reduktion der Überarbeitungsrunden bei Briefings und Texten (messbar durch Versionszählung vor vs. nach KI) × Kosten pro Überarbeitungsrunde.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein ROI-Analyse-Experte für KI-Investitionen. Erstelle auf Basis der angehängten Daten (Usage-Export, Stundensätze, Aufgaben-Logs) ein ROI-Framework mit drei Dimensionen: Direktersparnis, Zeitersparnis-Wert, Qualitätseffekt. Berechne den Gesamt-ROI in Prozent. Gib das Framework als ausfüllbare Vorlage für Folgejahre aus. Tabellenformat, EUR, Sie-Form."
 **Erwartetes Artefakt:** Ein ROI-Framework-Dokument (Investitions-Komponenten / Einsparungs-Dimensionen / Gesamt-ROI %) als jährlich wiederverwendbare CFO-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1028,7 +1028,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Führe alle 5 Aufgaben parallel auf dem neuen Modell und dem bisherigen Default durch; messe Qualität (1-5 pro Dimension: Relevanz, Sprachqualität, Strukturtreue) und EUR-Preis pro Token.
 3. Berechne den "Qualität-pro-EUR"-Score: höhere Qualität bei gleichem oder niedrigerem EUR-Preis ist ein klares Wechselsignal; höhere Qualität bei deutlich höherem EUR-Preis erfordert eine Kosten-Nutzen-Abwägung je Aufgabentyp.
 4. Dokumentiere die Scorecard mit Datum und Modell-Version im Wissensordner — die Scorecard bildet die historische Entscheidungsspur für zukünftige Modell-Reviews.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Evaluierungs-Analytiker. Ich habe Outputs von unserem bisherigen Default-Modell und dem neuen Kandidaten für 5 Aufgaben aus dem Wissensordner. Bewerte alle Outputs nach: Relevanz (1-5), DACH-Sprachqualität (1-5), Strukturtreue (1-5). Berechne Qualität-pro-EUR-Score. Gib eine Wechsel-Empfehlung mit Konfidenz-Angabe. Scorecard-Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine ausgefüllte Evaluierungs-Scorecard (Aufgabe / altes Modell / neues Modell / Score / EUR-Preis / Wechsel-Empfehlung) als datierter Wissensordner-Eintrag.
 **Fallstricke (≥2 spezifisch):**
@@ -1047,7 +1047,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Prüfe die Caching-Voraussetzungen: statischer Anteil muss >2.048 Token sein UND die Session-Frequenz muss >5 Requests/Stunde betragen — unter diesen Schwellen überwiegt der Cache-Verwaltungsoverhead.
 3. Berechne die potenzielle Einsparung: 4.000 statische Token × 300 Sessions/Tag × Cache-Treffer-Rate 70 % × (1 - 0,10 Cache-Kosten-Faktor) × EUR-Preis pro Token × Basispreis/Token = monatliche Ersparnis in EUR.
 4. Strukturiere den System-Prompt so, dass der statische Block an erster Stelle steht und der dynamische Block danach folgt — das maximiert die Cache-Trefferquote.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Prompt-Caching-Berater. Unser Content-Agent hat einen 4.000-Token-System-Prompt, der bei 300 täglichen Sessions komplett übertragen wird. Analysiere den angehängten System-Prompt auf statische und dynamische Anteile. Berechne die monatliche Token-Einsparung durch Caching bei einer angenommenen Cache-Treffer-Rate von 70 %. Gib eine Empfehlung und eine optimierte Prompt-Struktur. Sie-Form."
 **Erwartetes Artefakt:** Eine Caching-Wirtschaftlichkeitsrechnung (statische Token / Cache-Treffer-Rate / monatliche Ersparnis EUR) plus eine optimierte System-Prompt-Struktur mit statischem und dynamischem Block.
 **Fallstricke (≥2 spezifisch):**
@@ -1066,7 +1066,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Beantrage eine temporäre Workspace-Limit-Erhöhung für den Kampagnenzeitraum (z.B. von €500 auf €2.000 für 4 Wochen) mit begründetem Businesscase beim Management — nicht pauschal verdoppeln, sondern rechnerisch begründen.
 3. Richte ein dediziertes Kampagnen-Budget-Konto auf Workflow-Level ein: Kampagnen-Workflows bekommen ein eigenes Budget, Routine-Agenten (Reporting, Onboarding) bekommen ein separates, reduziertes Budget, damit sie die Kampagne nicht konkurrenzieren.
 4. Plane die Nachkampagnen-Reduktion explizit: nach dem Peak-Zeitraum Workspace-Limit auf das reguläre Niveau zurücksetzen und nicht als "neue Norm" laufen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Peak-Kampagnen-Budgetplaner. Unsere Black-Friday-Kampagne läuft 4 Wochen mit ca. 10x normalem KI-Nutzungsvolumen. Erstelle: (1) eine Bedarfsschätzung basierend auf den angehängten Vorjahrsdaten, (2) einen Antrag für temporäre Workspace-Limit-Erhöhung mit Begründung, (3) eine Budget-Aufteilung zwischen Kampagnen- und Routine-Workflows. Tabellenformat, EUR, Sie-Form."
 **Erwartetes Artefakt:** Ein Peak-Budget-Plan (Bedarfsschätzung / temporäres Limit / Budget-Aufteilung Kampagne vs. Routine / Nachkampagnen-Reduktionsplan) als jährlich wiederverwendbare Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1085,7 +1085,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Kalkuliere den Test-Aufwand: alle aktiven Agenten müssen auf dem neuen Modell gegen einen definierten Qualitäts-Standard geprüft werden (Scorecard aus S-MK-050); mindestens 5 Testdurchläufe pro Agent.
 3. Plane eine Übergangsphase von 2–4 Wochen mit Parallel-Betrieb (alt und neu): doppelter Token-Verbrauch in dieser Phase; berechne die Übergangskosten als (alter EUR-Preis pro Token + neuer EUR-Preis pro Token) × halbes normales Volumen × Wochen.
 4. Vergleiche Gesamtwechselkosten mit dem prognostizierten jährlichen Qualitätsgewinn (Reduktion Überarbeitungsrunden × Stundensatz × Anzahl Iterationen/Jahr) — wenn Amortisierungszeitraum >12 Monate, ist Wechsel wirtschaftlich fraglich.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Migrations-Berater. Wir planen einen Wechsel von GPT-5.4 auf Sonnet 4.6 für unseren Content-Agenten (tägliches Volumen: 200 Sessions, 10 angepasste Prompts). Berechne: Prompt-Engineering-Aufwand, Test-Aufwand, Übergangskosten (4 Wochen Parallelbetrieb), und stelle einen Amortisierungszeitraum bei geschätztem 20 % Qualitätsgewinn gegenüber. Tabelle, EUR, Stundensatz €80, Sie-Form."
 **Erwartetes Artefakt:** Eine Wechselkosten-Kalkulation (Einmalinvestition / Übergangskosten / jährlicher Nutzen / Amortisierungszeitraum Monate) als Management-Entscheidungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1104,7 +1104,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Berechne den Überarbeitungs-Kostenwert: Überarbeitungszeit (Minuten) × Häufigkeit (Sessions/Monat) × Stundensatz der Redakteurin / 60 = monatlicher Überarbeitungs-Kostenwert.
 3. Addiere Token-Kosten und Überarbeitungs-Kosten: Total-Cost-of-Output = (Token-Kosten Modell A) + (Überarbeitungszeit-Wert Modell A) — führe dies für beide Modelle durch.
 4. Vergleiche die Total-Cost-of-Output-Werte: wenn Sonnet 4.6 trotz höherem EUR-Preis im Gesamt-Kostenvergleich günstiger ist, ist das das wirtschaftliche Argument für den Modell-Upgrade.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Total-Cost-of-Output-Analytiker. Haiku 4.5 kostet €0,86/1M, Sonnet 4.6 kostet €2,58/1M. Haiku-Texte brauchen 2,5 Überarbeitungsrunden à 20 Minuten, Sonnet-Texte 0,8 Runden à 20 Minuten. Stundensatz Redaktion: €65. Tägliches Volumen: 15 Pressemitteilungen. Berechne den Total-Cost-of-Output pro Monat für beide Modelle und bestimme den Break-Even. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Eine Total-Cost-of-Output-Rechnung (Token-Kosten / Überarbeitungs-Kosten / Gesamt / Break-Even-Analyse) plus eine begründete Modell-Empfehlung für faktenkritische Texte.
 **Fallstricke (≥2 spezifisch):**
@@ -1123,7 +1123,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Evaluiere Nachfolge-Modell-Kandidaten nach den Kriterien aus der Evaluierungs-Scorecard (S-MK-050): Qualität für den spezifischen Aufgabentyp, EUR-Preis-Vergleich, DACH-Sprachqualität.
 3. Plane die Test- und Übergangsphase: produktionskritische Agenten migrieren in den ersten 30 Tagen; niedriger-Priorität-Agenten bis Tag 75; in den letzten 15 Tagen nur noch Notfall-Patches.
 4. Kalkuliere die Budget-Auswirkung: wenn das Nachfolge-Modell einen höheren EUR-Preis hat, berechne die monatliche Mehrkosten und kommuniziere sie proaktiv an das Controlling — Deprecations sind keine Budget-Überraschungen, wenn sie früh geplant werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Deprecation-Manager. GPT-5.2 wird in 90 Tagen deprecated. Wir haben 5 Agenten auf diesem Modell (Details im Wissensordner: Aufgabentyp, Volumen, Kritikalität). Erstelle einen Transitions-Plan: Migrations-Priorität, Ziel-Modell-Empfehlung, Test-Zeitplan und Budget-Auswirkung für jedes Nachfolge-Modell. Projektplan-Format, Sie-Form."
 **Erwartetes Artefakt:** Ein Deprecation-Response-Plan (Agent / Kritikalität / Ziel-Modell / Migrations-Frist / Budget-Delta) plus ein 90-Tage-Zeitplan als ausführbares Projekt-Dokument.
 **Fallstricke (≥2 spezifisch):**
@@ -1142,7 +1142,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Ziehe aus dem Usage-Export die Token-Kosten für die spezifische Kampagne; addiere den Redaktionszeit-Wert (Stunden × Stundensatz) für die Nachbearbeitung.
 3. Vergleiche mit dem Benchmark: externe Whitepaper-Produktion kostet typischerweise €2.000–€5.000 pro Stück; KI-gestützte Produktion mit Redaktions-Overhead typischerweise €150–€600 — berechne den Kosten-Faktor.
 4. Erstelle eine monatliche Metrik-Tabelle, die automatisch aus dem Usage-Export und dem CRM-Kampagnen-Report befüllt werden kann.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Marketing-ROI-Analytiker. Unsere letzte Whitepaper-Kampagne kostete KI-seitig €87 (aus Usage-Export), plus 6 Stunden Redaktion à €65/h. Das Whitepaper generierte 43 Leads. Vergleiche Kosten-pro-Lead mit unserem externen Benchmark (€3.200 für externes Whitepaper, 28 Leads historisch). Berechne: Kosten-pro-Lead beide Wege, Kosten-Ersparnis-Faktor, ROI-Aussage für Vertrieb. Stichpunkte und Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Kosten-pro-Ergebnis-Rechnung (KI vs. Extern / Kosten-pro-Lead / Faktor) plus eine monatliche Metrik-Vorlage für die kontinuierliche Erhebung.
 **Fallstricke (≥2 spezifisch):**
@@ -1161,7 +1161,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Erstelle ein minimales Antragsformular (3 Felder: Use Case in einem Satz, erwartete Kosten, Zeitbedarf) als Slack-Message-Template oder Langdock-Formular-Agent.
 3. Baue einen Langdock-Workflow: Antragsformular-Eingang → Benachrichtigung an Genehmiger via Slack → Genehmigung durch Slack-Reaktion (Zustimmung/Ablehnung) → bei Zustimmung automatische Freigabe des Frontier-Modell-Zugangs für den benannten Nutzer für 24 Stunden.
 4. Archiviere jede Genehmigung automatisch im Wissensordner als Audit-Trail (Datum, Nutzer, Use Case, tatsächliche Kosten nach Lauf).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Governance-Prozess-Designer. Erstelle einen Budget-Freigabe-Workflow für Frontier-Modell-Läufe (>€20) in unserem Marketing-Team. Definiere: (1) Freigabe-Schwellen, (2) Antragsformular (max. 3 Felder), (3) Genehmigungspfad per Slack-Reaktion, (4) Audit-Trail-Archivierung. Ziel: weniger als 2 Stunden von Antrag bis Freigabe. Prozessbeschreibung, Sie-Form."
 **Erwartetes Artefakt:** Ein Budget-Freigabe-Workflow-Dokument (Schwellen / Antragsformular / Genehmigungspfad / Audit-Trail) plus ein Langdock-Workflow-Template für die automatische Freigabe.
 **Fallstricke (≥2 spezifisch):**
@@ -1180,7 +1180,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Schicke den JSON-Output an die Grafana/Datadog-API oder in ein leichtgewichtiges intermediäres Datenbank-Layer (z.B. Google Sheets via Webhook als einfachste Option für kleine Teams).
 3. Baue im Dashboard zwei Panels: (a) Tageskosten kumuliert vs. Tagesbudget-Soll, (b) Modell-Mix-Verteilung (% Frontier vs. Standard vs. Light) — diese zwei Panels decken 90 % der Überwachungs-Bedürfnisse ab.
 4. Konfiguriere eine Anomalie-Alert-Regel: wenn die Kosten in einem 1-Stunden-Fenster 20 % des Tagesbudgets überschreiten, wird eine Slack-Alert-Nachricht an den Marketing-Operations-Kanal gesendet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Monitoring-Architektur-Berater. Beschreibe eine Monitoring-Architektur für Langdock-Token-Kosten in Grafana. Definiere: (1) Daten-Pipeline von der Langdock-API zum Dashboard, (2) zwei wichtigste Dashboard-Panels mit Metriken, (3) Anomalie-Alert-Regel für Kosten-Spikes. Wir sind ein kleines Team ohne eigenes Ops — empfiehl die einfachste umsetzbare Lösung. Stichpunkte, Sie-Form."
 **Erwartetes Artefakt:** Eine Monitoring-Architektur-Beschreibung (Daten-Pipeline / Panel-Definitionen / Alert-Regel) plus ein Langdock-Workflow-Template für das 15-Minuten-API-Polling.
 **Fallstricke (≥2 spezifisch):**
@@ -1199,7 +1199,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Erstelle Referenz-Outputs für jeden Canary-Prompt (heutiger Stand, nach aktuellem Qualitäts-Niveau bewertet) und speichere sie im Wissensordner — das ist die Baseline gegen die zukünftige Outputs verglichen werden.
 3. Konfiguriere einen wöchentlichen Test-Workflow (jeden Montag, 8:00 Uhr): alle 5 Canary-Prompts werden automatisch ausgeführt; ein Bewertungs-Schritt (mit Haiku 4.5 als günstigem Evaluator) vergleicht neue Outputs mit den Referenz-Outputs nach definierten Kriterien.
 4. Sende einen Slack-Alert, wenn mehr als 2 von 5 Tests eine Qualitäts-Abweichung von >1 Punkt auf der 1-5-Skala zeigen — das triggert eine manuelle Review-Sitzung mit dem Prompt-Engineering-Verantwortlichen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Qualitätssicherungs-Berater. Erstelle ein Regressions-Test-Protokoll für unseren Content-Agenten. Definiere: 5 Canary-Prompts (je ein Aufgabentyp), Bewertungs-Kriterien für automatischen Vergleich mit Referenz-Outputs, Alert-Schwelle und Eskalationsprozess bei detektierter Regression. Ziel: wöchentliche automatisierte Qualitäts-Baseline-Prüfung. Protokoll-Format, Sie-Form."
 **Erwartetes Artefakt:** Ein Regressions-Test-Protokoll (5 Canary-Prompts / Bewertungs-Kriterien / Alert-Schwelle / Eskalationsprozess) plus ein Langdock-Workflow-Template für den wöchentlichen Test-Lauf.
 **Fallstricke (≥2 spezifisch):**
@@ -1218,7 +1218,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Konfiguriere einen Monitoring-Workflow (15-Minuten-Trigger), der die aktuelle Workspace-Ausgabe gegen einen Intraday-Schwellenwert prüft: wenn Tagesausgaben 15 % des Monatsbudgets überschreiten, wird ein Halt-Signal gesendet.
 3. Baue den automatischen Pause-Befehl: bei Erreichen des Intraday-Schwellenwerts pausiert der Monitoring-Workflow alle Nicht-Prioritäts-Workflows über die Workflow-API und sendet einen Slack-Alert mit der Fehldiagnose-Information (welcher Workflow, welches Modell, wie viele Token in den letzten 60 Minuten).
 4. Dokumentiere die Recovery-Prozedur: nach manuellem Review und Ursachenbehebung reaktiviert der Admin die Workflows einzeln mit einer expliziten Freigabe — kein automatisches Resume, da das das Problem erneut triggern könnte.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Sicherheits-Architekt. Entwirf ein automatisches Kosten-Cap-Enforcement-System für unseren Langdock-Workspace. Definiere: (1) drei Sicherheits-Ebenen (Execution-Limit, Workflow-Budget, Workspace-Limit), (2) Intraday-Schwellenwert-Logik, (3) automatischer Pause-Befehl mit Slack-Alert, (4) manuelle Recovery-Prozedur. Ziel: kein manueller Eingriff nötig bei Loop-Fehler in weniger als 30 Minuten. Architektur-Dokument, Sie-Form."
 **Erwartetes Artefakt:** Ein Enforcement-Architektur-Dokument (drei Sicherheits-Ebenen / Intraday-Schwellenwert-Logik / Pause-Befehl / Recovery-Prozedur) plus ein Langdock-Workflow-Template für den automatischen Stopp-Trigger.
 **Fallstricke (≥2 spezifisch):**
@@ -1237,7 +1237,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Trage als Default je Aufgabe das günstigste tragfähige Modell ein und ergänze pro Zeile eine günstigere Alternative (z.B. GPT-5 Mini, €0,21/1M) für unkritische Varianten und eine stärkere (z.B. Sonnet 4.6, €2,58/1M) für Qualitäts-Eskalation.
 3. Verankere die Matrix als Konversations-Starter im Content-Agenten, damit das Team sie im Chat abrufen kann, statt ein totes Dokument abzulegen.
 4. Validiere nach vier Wochen über den Usage-Export, ob der reale Modell-Mix der Matrix folgt; bei Abweichung ist die Kommunikation, nicht die Matrix, das Problem.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Modell-Routing-Architekt. Erstelle aus der Aufgabenliste im Wissensordner eine vollständige Per-Task-Routing-Matrix. Ordne jedem Aufgabentyp ein Default-Modell mit EUR-Preis pro Token zu und ergänze je eine günstigere und eine stärkere Alternative mit kurzer Begründung. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Routing-Matrix (Aufgabentyp / Default-Modell / EUR-Preis / günstigere Alternative / stärkere Alternative / Begründung) als Konversations-Starter im Content-Agenten.
 **Fallstricke (≥2 spezifisch):**
@@ -1256,7 +1256,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Lege als mittlere Schicht Per-User-Quotas fest, damit ein einzelner Nutzer das Gemeinschaftsbudget nicht allein aufzehren kann; Default niedrig, Hochwahl begründungspflichtig.
 3. Setze als innerste Schicht für jeden produktiven Workflow ein dediziertes Budget plus Per-Execution-Limit (max. 2.000 Schritte) — die erste Barriere gegen Loop-Fehler.
 4. Dokumentiere pro Schicht eine günstigere Sofortmaßnahme (Modell-Downgrade) und eine stärkere (Workflow-Pause), damit bei Erreichen jeder Schwelle klar ist, was zuerst zu tun ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein FinOps-Berater für KI. Entwirf eine dreistufige Kostenguardrail-Architektur für unseren Workspace: Per-User-Quota, Workflow-Cap, Workspace-Limit mit Warn-Schwellen. Nenne pro Schicht: Standardwert, Verantwortlichen und die erste Sparmaßnahme. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Guardrail-Architektur (Schicht / Schwellenwert / Verantwortlicher / Sofortmaßnahme) plus ein konfiguriertes Alert-Set im Workspace-Admin.
 **Fallstricke (≥2 spezifisch):**
@@ -1275,7 +1275,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Multipliziere die geplanten Treibermengen des Quartals mit den Faktoren und dem erwarteten Modell-Mix-EUR-Preis, um die Token-Kosten je Treiber zu erhalten.
 3. Rechne drei Szenarien: Base (Plan), Best (-20% Volumen), Worst (+40% durch Adoption) — der Forecast ist eine Spanne, kein Punktwert.
 4. Übergib den Forecast an Controlling mit der Basis-Notiz "EUR-Preise Stand Mai 2026, gegen langdock.com/models prüfen" und einer günstigeren Hebel-Liste (Modell-Downgrades), falls das Worst-Case-Szenario eintritt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein KI-Forecast-Modellierer. Leite aus der angehängten Usage-Historie Token-pro-Treiber-Faktoren ab (pro Kampagne, pro Workflow-Run, pro Nutzer). Prognostiziere das Quartals-Token-Budget für die geplanten Treibermengen in drei Szenarien (Best/Base/Worst). Gib EUR-Kosten je Szenario auf EUR-Preis-Basis. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Ein Forecast-Modell (Treiber / Token-Faktor / geplante Menge / EUR-Preis / EUR je Szenario) als Controlling-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1294,7 +1294,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Führe jeden Testfall auf beiden Kandidatenmodellen aus, anonymisiere die Outputs (Modell A/B), und lass mindestens zwei Bewerter blind nach einem 1-5-Raster (Relevanz, Sprachqualität, Strukturtreue) urteilen.
 3. Miss die tatsächlichen Kosten je Lauf über den Usage-Export (Token-Menge × EUR-Preis pro 1M Tokens) und berechne Qualität-pro-EUR pro Aufgabentyp.
 4. Gib pro Aufgabentyp eine Empfehlung aus: günstigeres Modell, wenn Qualität gleichwertig; stärkeres Modell nur, wenn der Qualitätsvorsprung den Mehrpreis trägt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein A/B-Test-Auswerter. Ich habe je Aufgabentyp Output-Paare (Modell A vs. B, anonymisiert) und die Kostendaten im Wissensordner. Bewerte alle Outputs blind nach Relevanz, Sprachqualität, Strukturtreue (1-5) und berechne den Qualität-pro-EUR-Wert je Aufgabentyp. Empfiehl je Aufgabentyp das wirtschaftlichere Modell. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Ein A/B-Harness-Ergebnis (Aufgabentyp / Modell A Score / Modell B Score / Kosten / Qualität-pro-EUR / Empfehlung) als wiederverwendbarer Wissensordner-Eintrag.
 **Fallstricke (≥2 spezifisch):**
@@ -1313,7 +1313,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Prüfe die Schwellen: statischer Block >2.048 Token UND >5 Anfragen/Minute; darunter überwiegt der Cache-Verwaltungsoverhead und die Antwort ist No-Go.
 3. Berechne die Ersparnis: statische Token × Anfragen/Tag × Treffer-Rate (z.B. 70%) × (1 − Cache-Lesefaktor) × EUR-Preis pro Token × Basispreis = EUR/Monat; vergleiche mit dem Umbauaufwand.
 4. Setze, wenn Go, den statischen Block als RAG-Inhalt in den Wissensordner (Langdocks praktische Caching-Entsprechung) und ordne den variablen Teil hinten an, um die Trefferquote zu maximieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Caching-ROI-Berater. Unser Briefing-Agent überträgt 3.500 statische Token bei 200 täglichen Anfragen. Prüfe die Caching-Schwellen, berechne die monatliche EUR-Ersparnis bei 70% Treffer-Rate und gib eine Go/No-Go-Empfehlung. Bei Go: schlage eine statisch/variabel getrennte Prompt-Struktur vor. Sie-Form."
 **Erwartetes Artefakt:** Eine Caching-ROI-Rechnung (statische Token / Treffer-Rate / EUR-Ersparnis / Go-No-Go) plus, bei Go, eine umgebaute Prompt-Struktur.
 **Fallstricke (≥2 spezifisch):**
@@ -1332,7 +1332,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Stelle die Kosten gegenüber: Voll-Kontext lädt bei jeder Abfrage die gesamten Token (teuer bei vielen Abfragen); RAG lädt nur die Top-k Chunks (günstiger bei wiederholten, gezielten Fragen).
 3. Trenne nach Aufgabentyp: dokumentweite Synthese braucht Voll-Kontext (einmalig, dafür großes Modell); gezielte Faktenfragen brauchen nur RAG-Chunks (günstig, wiederholbar).
 4. Empfiehl die günstigere Methode je Aufgabentyp und weise bei Großkontext-Nutzung auf die "lost in the middle"-Schwäche hin — kritische Passagen explizit als Zitat anfordern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Kontext-Kosten-Berater. Ein 300-seitiger Report (~180.000 Token) wird 40-mal/Monat abgefragt. Vergleiche die Kosten: Voll-Kontext-Inline bei Gemini 2.5 Flash vs. RAG-Chunking aus dem Wissensordner. Empfiehl je Aufgabentyp (Synthese vs. Faktenfrage) die günstigere Methode. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Eine Tradeoff-Rechnung (Methode / Token pro Abfrage / Häufigkeit / EUR/Monat) plus eine Methodenempfehlung je Aufgabentyp.
 **Fallstricke (≥2 spezifisch):**
@@ -1351,7 +1351,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Wähle für strukturierte CD-Checks (Farben, Logo-Abstand, Schriftart) das günstigere Vision-Modell Gemini 2.5 Flash statt eines teuren Reasoning-Modells — die Aufgabe ist Prüfung, kein kreatives Reasoning.
 3. Reduziere die Bildauflösung vor dem Upload auf das für den Check nötige Minimum — höhere Auflösung erhöht die Token-Kosten ohne Qualitätsgewinn für Compliance-Checks.
 4. Baue einen Batch-Workflow (kein interaktiver Chat) mit Workflow-Budget-Cap, der je Bild "Konform / Nicht konform: [Regel]" in eine Tabelle schreibt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Vision-Kostenplaner. Wir prüfen wöchentlich 80 Agentur-Kreative gegen unsere CD-Regeln. Schätze die Token-Last und EUR-Kosten pro Lauf für Gemini 2.5 Flash vs. ein teures Vision-Modell. Empfiehl Modell, Auflösung und Batch-Architektur mit Budget-Cap. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Vision-Kostenprognose (Bilder / Token-Äquivalent / EUR-Preis / EUR pro Lauf) plus eine Batch-Pipeline-Empfehlung mit Budget-Cap.
 **Fallstricke (≥2 spezifisch):**
@@ -1370,7 +1370,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Verpacke die 6.000 Texte als JSON-Array und weise dem Batch-Schritt fest ein Light-Modell zu; niemals Auto Mode in einem Massen-Workflow.
 3. Triggere den Lauf nachts (Zeitplan-Trigger), damit er kein Tages-Kontingent der interaktiven Agenten blockiert, und setze ein Workflow-Budget plus Per-Execution-Limit.
 4. Rechne nach dem ersten Lauf die Ist-Kosten gegen eine Sync-Chat-Schätzung und dokumentiere den Faktor fürs Controlling.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Batch-Kostenoptimierer. Wir lokalisieren monatlich 6.000 Katalogtexte. Vergleiche zwei Wege: (1) Sync-Chat mit Default-Modell, (2) Nacht-Batch-Workflow mit Haiku 4.5. Schätze EUR-Kosten und den Differenzfaktor. Empfiehl die Architektur inkl. Budget-Cap. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Hebel-Rechnung (Weg / Modell / EUR / Differenzfaktor) plus ein konfigurierter Nacht-Batch-Workflow.
 **Fallstricke (≥2 spezifisch):**
@@ -1389,7 +1389,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Beziffere den Einmalaufwand: Prompt-Anpassung (2–4 h/Agent) plus Scorecard-Tests (5 Durchläufe/Agent) × Stundensatz.
 3. Beziffere die Übergangskosten: 2–4 Wochen Parallelbetrieb verdoppeln in dieser Phase die Token-Kosten der betroffenen Agenten — als (alter + neuer EUR-Preis pro Token) × halbes Volumen × Wochen.
 4. Beziffere das laufende Delta: hat das Nachfolgemodell einen höheren oder niedrigeren EUR-Preis? Weise eine günstigere Nachfolge-Option und eine stärkere aus und empfiehl die wirtschaftlich tragfähige.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Migrationskosten-Analyst. Modell X läuft in 60 Tagen aus, 4 Agenten sind betroffen (Inventar im Wissensordner). Berechne: Prompt-Anpassungsaufwand, Test-Aufwand, Übergangskosten (3 Wochen Parallelbetrieb), laufendes EUR-Preis-Delta je Nachfolge-Kandidat. Empfiehl das wirtschaftlichste Ziel-Modell. Stundensatz €80. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Eine Migrationskosten-Kalkulation (Einmalaufwand / Übergangskosten / laufendes Delta / Fristenplan) als Budgetfreigabe-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1408,7 +1408,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Stelle die Kostenwege gegenüber: Langdock-Standard (EUR-Preis + 10% API-Aufschlag) vs. BYOC (direkter Provider-Preis über Rahmenvertrag, aber plus Enterprise-Tier-Lizenz und Key-Management-Aufwand).
 3. Berücksichtige, dass BYOC den Enterprise-Tier voraussetzt — falls aktuell Standard/Max, gehören die Tier-Upgrade-Kosten in die Break-Even-Rechnung.
 4. Empfiehl BYOC nur, wenn alle drei Bedingungen erfüllt sind: Enterprise-Tier ohnehin vorhanden, Use-Case-Volumen über der berechneten Schwelle und IT-Kapazität für Key-Management; sonst bleibt die günstigere Standardabrechnung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein BYOC-Break-Even-Berater. Use Case: [Volumen aus Usage-Export] Requests/Monat auf einem teuren Modell. Vergleiche Langdock-Standard (EUR-Preis + 10% Aufschlag) vs. BYOC (direkter Provider-Preis + Enterprise-Tier + Key-Management). Berechne das Break-Even-Volumen und gib eine Empfehlung. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Eine Break-Even-Kalkulation (Kostenweg A vs. B / Break-Even-Volumen / Empfehlung) mit einer Eskalationsschwelle für die IT.
 **Fallstricke (≥2 spezifisch):**
@@ -1427,7 +1427,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Setze die Gesamtkosten ins Verhältnis zu den tatsächlich generierten Leads aus dem CRM-Kampagnen-Report (Kosten ÷ Leads = Cost-per-Lead).
 3. Vergleiche mit dem externen Benchmark (extern produzierter Lead-Magnet, historische Lead-Zahl) und weise den Kosten-Faktor aus — bei deutlich günstigerer KI-Produktion ist das die CFO-Aussage.
 4. Erfasse als Korrektiv die Lead-Qualität (z.B. SQL-Rate) je Weg, damit der Kostenvergleich nicht an minderwertigen Leads scheitert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Funnel-Kosten-Analyst. KI-Kampagne: €[X] Token + [Y] h Redaktion à €65, generierte [Z] Leads. Externer Benchmark: €3.200, 28 Leads. Berechne Cost-per-Lead beide Wege, den Faktor und eine CFO-taugliche ROI-Aussage. Ergänze die SQL-Rate als Qualitäts-Korrektiv. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Cost-per-Acquired-Lead-Rechnung (KI vs. extern / Cost-per-Lead / Faktor / SQL-Rate) plus eine monatliche Erhebungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1446,7 +1446,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Beantrage eine temporäre, rechnerisch begründete Workspace-Limit-Erhöhung nur für den Kampagnenzeitraum, mit einem fest hinterlegten Rücksetz-Datum.
 3. Trenne Budgets: Kampagnen-Workflows erhalten ein dediziertes Peak-Budget, Routine-Agenten ein separates, damit sie sich nicht gegenseitig verdrängen.
 4. Nutze in der Peak-Phase günstige Modelle als Default für die Massenarbeit und reserviere stärkere Modelle für die wenigen qualitätskritischen Hero-Assets.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Peak-Budgetplaner. Unsere Weihnachtskampagne läuft 3 Wochen mit ca. 8x normalem KI-Volumen. Erstelle: Bedarfsschätzung aus den Vorjahresdaten, Antrag für temporäre Limit-Erhöhung mit Rücksetz-Datum, Budget-Trennung Kampagne vs. Routine. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Ein Peak-Budget-Plan (Bedarfsschätzung / temporäres Limit / Rücksetz-Datum / Budget-Trennung) als jährlich wiederverwendbare Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1465,7 +1465,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Lege fest, dass keine produktiven Assets ohne Tag angelegt werden dürfen, und verankere die Regel im Onboarding und im Sandbox-Review.
 3. Baue die Auswertungs-Logik: Usage-Export nach Präfix gruppieren, Token-Menge × EUR-Preis pro 1M Tokens je Gruppe = EUR-Kosten je Kampagne/Team/Kostenstelle.
 4. Übergib das aggregierte Ergebnis monatlich an Controlling; offene, ungetaggte Posten werden als "nicht zugeordnet" ausgewiesen und sind ein Signal für Prozessdisziplin.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein FinOps-Tagging-Berater. Entwirf ein Namenskonventions-Schema [Team]-[Kampagne]-[Zweck] für alle Langdock-Agenten und -Workflows. Beschreibe, wie ich den Usage-Export nach diesen Tags gruppiere, um Kosten je Kampagne und Kostenstelle auszuweisen. Gib das Regelwerk und eine Beispiel-Auswertung. Sie-Form."
 **Erwartetes Artefakt:** Ein FinOps-Tagging-Regelwerk (Namenskonvention / Pflichtregel / Auswertungs-Logik) plus eine Beispiel-Kostenaufschlüsselung je Tag.
 **Fallstricke (≥2 spezifisch):**
@@ -1484,7 +1484,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Stufe gegen das SLO ein: Light-Modelle (Haiku 4.5, Gemini 2.5 Flash) liegen typisch unter 1 Sek.; Sonnet 4.6 bei 3–5 Sek.; Frontier-Modelle bei 8–15 Sek. und verfehlen das SLO strukturell.
 3. Wähle das SLO-konforme günstige Modell, gestützt durch einen reichen Wissensordner — für FAQ-artige Anfragen ist Haiku mit Kontext oft qualitativ besser als Sonnet ohne.
 4. Definiere einen Eskalationspfad: komplexe Anfragen, die das günstige Modell nicht löst, werden an ein stärkeres Modell oder einen menschlichen Bearbeiter weitergeleitet — SLO für den Standardfall, Tiefe für den Ausnahmefall.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Latenz-SLO-Berater. Unser Kundendienst-Agent muss TTFT <2 Sek. einhalten, läuft aber auf einem zu langsamen Modell. Vergleiche drei Modellklassen nach TTFT, EUR-Preis pro Token und Qualität für FAQ-Anfragen. Empfiehl ein SLO-konformes Modell plus einen Eskalationspfad für komplexe Fälle. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine SLO-Konformitäts-Matrix (Modell / TTFT / EUR-Preis / Qualität / SLO erfüllt?) plus eine Hybrid-Architektur mit Eskalationspfad.
 **Fallstricke (≥2 spezifisch):**
@@ -1503,7 +1503,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest: Fine-Tuning ist über Langdock nicht nativ, sondern nur via BYOC mit extern trainiertem Modell verfügbar; der Einmalaufwand (Datenvorbereitung, Training, Deployment) ist erheblich und gehört in die TCO.
 3. Empfiehl für die meisten Marketing-Use-Cases die Prompting-Lösung als günstigere und flexiblere Option: keine Rüstkosten, sofortige Anpassbarkeit bei Brand-Änderungen.
 4. Setze die Break-Even-Bedingung: Fine-Tuning lohnt nur, wenn der Kontext-Overhead >50% der Input-Kosten ist, das Volumen sehr hoch und die Brand-Voice quartalsstabil ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Make-or-Buy-Berater. Vergleiche Fine-Tuning (via BYOC) vs. Prompt-Engineering für unseren Brand-Voice-Agenten mit [X] täglichen Requests und 5.000 Token Kontext-Overhead. Bewerte über 12 Monate nach: TCO, Flexibilität bei Brand-Änderungen, Wartung. Gib eine Empfehlung mit Break-Even-Schwelle. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Entscheidungsmatrix (Kriterium / Fine-Tune / Prompt / Gewinner) plus eine Break-Even-Berechnung über 12 Monate.
 **Fallstricke (≥2 spezifisch):**
@@ -1522,7 +1522,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Halte fest: Embeddings sind deutlich günstiger als generative Inferenz, aber bei sehr großen Ordnern (Millionen Token) summieren sie sich; lege den Embedding-Preis als eigene Kostenzeile an, getrennt von den Abfragekosten.
 3. Vermeide unnötiges Re-Embedding: nur geänderte oder neue Dokumente werden re-indexiert; ein kompletter Ordner-Rebuild bei jeder Kleinänderung ist Geldverschwendung.
 4. Plane die laufende Pflege: dokumentiere, dass jedes große Dokument-Update Re-Embedding-Kosten auslöst, und bündle Updates statt sie einzeln einzuspielen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Embeddings-Kostenplaner. Wir indexieren einen Wissensordner mit [N] Dokumenten à durchschnittlich [M] Seiten. Schätze die einmalige Embedding-Token-Last und die EUR-Kosten, getrennt von den späteren Abfragekosten. Empfiehl eine Update-Strategie, die unnötiges Re-Embedding vermeidet. Tabelle, Sie-Form."
 **Erwartetes Artefakt:** Eine Embeddings-Kostenschätzung (Dokument-Token / Embedding-Preis / einmalige EUR-Kosten) plus eine Update-Strategie gegen unnötiges Re-Embedding.
 **Fallstricke (≥2 spezifisch):**
@@ -1541,7 +1541,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Definiere je Aufgabentyp den Fallback mit EUR-Preis-Delta: z.B. Brand-Content Sonnet 4.6 → GPT-5.4 (€2,36/1M), Synthese Opus 4.8 → Sonnet 4.6 (mit Qualitätsabstrich).
 3. Beziffere die Mehrkosten je Ausfalltag: betroffenes Tagesvolumen × (Fallback-EUR-Preis − Primär-EUR-Preis) pro 1M Tokens = Mehrkosten/Tag — das ist der Preis der Resilienz.
 4. Hinterlege im Protokoll eine temporäre Budget-Anpassungs-Empfehlung, falls der Fallback teurer ist, und lege das Protokoll als angepinnten Wissensordner-Eintrag ab.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Resilienz-Kostenberater. Erstelle eine Fallback-Kette für unsere fünf wichtigsten Aufgabentypen (Primär → Fallback) mit EUR-Preis-Delta und Qualitäts-Einschränkung. Beziffere die Mehrkosten pro Ausfalltag bei unserem Tagesvolumen. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Ein Fallback-Protokoll (Aufgabentyp / Primär / Fallback / EUR-Preis-Delta / Mehrkosten pro Ausfalltag / Einschränkung) als angepinnter Notfallplan.
 **Fallstricke (≥2 spezifisch):**
@@ -1560,7 +1560,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Erstelle ein minimales Antragsformular (3 Felder: Use Case in einem Satz, erwartete Kosten, Zeitbedarf) als Langdock-Formular oder Slack-Template.
 3. Baue den Workflow: Antrag → Slack-Benachrichtigung an den schwellenabhängigen Genehmiger → Freigabe per Reaktion → automatische 24-Stunden-Freischaltung des Frontier-Zugangs für den Antragsteller.
 4. Archiviere jede Genehmigung automatisch im Wissensordner (Datum, Nutzer, Use Case, Ist-Kosten nach Lauf) als Audit-Trail.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Approval-Prozess-Designer. Entwirf einen Frontier-Spend-Approval-Workflow mit Spend-Schwellen (€20–50, €50–200, >€200), 3-Feld-Antragsformular, Slack-Freigabe und automatischem Audit-Trail. Ziel: weniger als 2 Stunden von Antrag bis Freigabe. Prozessbeschreibung, Sie-Form."
 **Erwartetes Artefakt:** Ein Approval-Workflow-Dokument (Spend-Schwellen / Antragsformular / Genehmigungspfad / Audit-Trail) plus ein Langdock-Workflow-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1579,7 +1579,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 2. Konfiguriere einen Monitoring-Workflow (15-Minuten-Trigger), der die aktuelle Stundenausgabe gegen die Baseline prüft; Schwelle z.B. >2,5x des Erwartungswerts oder >15% des Tagesbudgets in einem Fenster.
 3. Sende bei Überschreitung einen Slack-Alert mit Diagnose-Kontext (Top-Verursacher, Modell, Token der letzten 60 Minuten), damit die Reaktion gezielt erfolgen kann.
 4. Konfiguriere den Monitoring-Workflow als reinen API-Abruf ohne LLM-Schritt und mit eigenem Mini-Budget-Cap — der Wächter darf nicht selbst zur Kostenquelle werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Anomalie-Alerting-Architekt. Entwirf eine Kosten-Anomalie-Alert-Regel für unseren Workspace: gleitender Erwartungswert aus 7 Tagen, Intraday-Schwellenwert, Slack-Alert mit Diagnose-Kontext. Beschreibe den Monitoring-Workflow als reinen API-Abruf ohne eigene Token-Kosten. Stichpunkte, Sie-Form."
 **Erwartetes Artefakt:** Eine Alerting-Regel (gleitende Baseline / Schwellenwert / Diagnose-Inhalt) plus ein Langdock-Monitoring-Workflow-Template ohne LLM-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -1599,7 +1599,7 @@ Die folgenden Szenarien zeigen typische Modell- und Kostenentscheidungen (Model 
 3. Baue die Budget-Struktur: Fixkosten (Seats × Tier × 12) + variable Kosten (Token × Modell-Mix × EUR-Preis pro Token × Basispreis) + Adoptions-Reserve (≥30%) + Extra-Usage-Reserve.
 4. Formuliere die ROI-Aussage als erste Zahl im Pack: KI-Budget gegen Lohnkosten-Äquivalent der eingesparten Stunden, ergänzt um drei konkrete Kampagnen-Erfolge.
 5. Lege zwei Szenarien vor (Base + Wachstum) und eine günstigere Hebel-Liste (Modell-Downgrades, Routing-Matrix), die zeigt, wie das Budget bei Bedarf gesteuert wird — der Vorstand entscheidet zwischen Szenarien, nicht über die Methodik.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Board-Pack-Stratege für KI-Budgets. Erstelle aus den angehängten Usage-Daten ein vorstandsreifes Jahresbudget. Enthalte: ROI-Aussage zuerst (eingesparte Stunden × Stundensatz), dann Kostenstruktur (Lizenz + Token nach Modellklasse), 30% Adoptions-Reserve und zwei Szenarien (Base/Wachstum). Basis: EUR-Preise Stand Mai 2026, gegen langdock.com/models prüfen. Tabelle, EUR, Sie-Form."
 **Erwartetes Artefakt:** Ein Board-Pack (ROI-Aussage / Kostenstruktur / Szenarien / Steuerungshebel) im Controlling-Format als Vorstandsvorlage.
 **Fallstricke (≥2 spezifisch):**

@@ -95,7 +95,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Scheduled-Trigger auf Mittwoch früh setzen, damit vor dem Versand Pufferzeit bleibt.
 2. Einen AI-Node mit Web Search die relevanten Themen der Woche sammeln und in ein festes Format bringen lassen.
 3. Einen HITL-Node für die redaktionelle Freigabe vor dem Übergang in das E-Mail-Tool einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Du bist Marketing-Workflow-Architekt. Aufgabe: Skizziere einen zeitgesteuerten Workflow, der wöchentlich Newsletter-Themen kuratiert. Kontext: Versand donnerstags, Redaktion will Endfreigabe behalten. Format: Node-Liste mit Trigger, AI-Node, HITL und Übergabepunkt."
 **Erwartetes Artefakt:** Ein Workflow-Architektur-Entwurf (Canvas) mit Trigger-Zeitpunkt, AI-Node-Briefing und HITL-Punkt — bereit zur Umsetzung durch den Workspace-Admin.
 **Fallstricke (≥2 spezifisch):**
@@ -113,7 +113,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Form- oder Webhook-Trigger an das Website-Formular koppeln.
 2. Einen AI-Node mit erzwungenem JSON-Schema (Score + Begründung) konfigurieren, damit der Output maschinenlesbar bleibt.
 3. Bei hohem Score einen HITL-Node für die persönliche Vertriebsansprache einplanen, bei niedrigem Score automatisch ins Nurturing routen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Marketing-Workflow-Architekt. Aufgabe: Entwirf einen Scoring-Workflow für Formular-Leads. Kontext: Output muss als JSON ins CRM. Format: Trigger, AI-Node mit JSON-Schema (score, reason), Verzweigung hoch/niedrig."
 **Erwartetes Artefakt:** Ein Workflow-Entwurf inklusive JSON-Schema-Vorschlag für die Lead-Bewertung.
 **Fallstricke (≥2 spezifisch):**
@@ -131,7 +131,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Die URL-Liste in Chargen aufteilen, da ein Loop maximal 100 Items pro Durchlauf verarbeitet.
 2. Einen AI-Node mit klarer Längen- und Keyword-Vorgabe je Seite konfigurieren.
 3. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit (Standard 25 €) und die Warn-Schwellen prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: SEO-Workflow-Architekt. Aufgabe: Skizziere einen Batch-Workflow für Meta-Descriptions aus einer URL-Liste. Kontext: 800 Seiten, Budget begrenzt. Format: Trigger, Loop-Logik mit Chargen, AI-Node-Vorgaben, Kosten-Check."
 **Erwartetes Artefakt:** Ein Batch-Workflow-Entwurf mit Chargen-Logik und einer Kostenschätzung pro Lauf.
 **Fallstricke (≥2 spezifisch):**
@@ -149,7 +149,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Integration-Trigger an das Ticket-System (z. B. Zendesk) koppeln.
 2. Einen AI-Node mit festen Enum-Kategorien für Thema und Dringlichkeit konfigurieren.
 3. Eine Eskalations-Verzweigung definieren, die nur bei eindeutiger Hoch-Dringlichkeit automatisch alarmiert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Workflow-Architekt für Service-Marketing. Aufgabe: Entwirf einen Ticket-Klassifizierungs-Workflow. Kontext: Kategorien fix, Fehlalarme vermeiden. Format: Trigger, AI-Node mit Enum-Schema, Eskalations-Regel."
 **Erwartetes Artefakt:** Ein Workflow-Entwurf mit definierter Enum-Kategorienliste und Eskalationslogik.
 **Fallstricke (≥2 spezifisch):**
@@ -167,7 +167,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Manual-Trigger mit der Artikel-URL als Eingabe definieren.
 2. Einen AI-Node je Kanal konfigurieren, jeweils gebunden an den Brand-Voice-Wissensordner und die Plattform-Limits (z. B. LinkedIn-Hook in den ersten 40 Zeichen).
 3. Einen HITL-Node für die Freigabe aller Varianten vor der Veröffentlichung einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Content-Distribution-Architekt. Aufgabe: Skizziere einen Workflow, der einen Blog-Artikel in drei Kanal-Teaser überführt. Kontext: Markenstimme aus Wissensordner, je Kanal eigene Limits. Format: Trigger, drei AI-Nodes, HITL."
 **Erwartetes Artefakt:** Ein Distributions-Workflow-Entwurf mit kanal-spezifischen AI-Node-Briefings.
 **Fallstricke (≥2 spezifisch):**
@@ -185,7 +185,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Integration-Trigger an die CMS-Veröffentlichung koppeln.
 2. Eine DeepL-Integration die Rohübersetzung erzeugen lassen, gefolgt von einem AI-Node, der Tonalität und Fachbegriffe gegen den Brand-Voice-Wissensordner prüft.
 3. Einen HITL-Node vor der Veröffentlichung der lokalisierten Fassung einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Lokalisierungs-Workflow-Architekt. Aufgabe: Entwirf eine DE→EN-Transkreations-Pipeline für neue CMS-Artikel. Kontext: Brand-Voice muss erhalten bleiben, keine ungeprüfte Veröffentlichung. Format: Trigger, DeepL-Node, AI-Check-Node, HITL."
 **Erwartetes Artefakt:** Ein Lokalisierungs-Workflow-Entwurf mit Übersetzungs- und Prüfschritt.
 **Fallstricke (≥2 spezifisch):**
@@ -203,7 +203,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Scheduled-Trigger auf jeden Werktagmorgen setzen.
 2. Einen AI-Node mit Web Search die definierten Wettbewerber und Themen abfragen und auf maximal fünf Kernpunkte verdichten lassen.
 3. Eine Action den Digest in den internen Team-Kanal stellen — ohne externe Veröffentlichung, daher ohne HITL.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Market-Intelligence-Architekt. Aufgabe: Skizziere einen täglichen Wettbewerbs-Digest-Workflow. Kontext: feste Wettbewerberliste, max. fünf Kernpunkte, nur intern. Format: Scheduled-Trigger, Web-Search-AI-Node, interner Action-Node."
 **Erwartetes Artefakt:** Ein Digest-Workflow-Entwurf mit Quellen-Scope und Verdichtungsregel.
 **Fallstricke (≥2 spezifisch):**
@@ -221,7 +221,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Scheduled-Trigger auf einen täglichen Lauf setzen.
 2. Einen AI-Node die neuen Reviews klassifizieren und einen aggregierten Sentiment-Wert mit fester Skala ausgeben lassen.
 3. Einen Alarm nur auslösen, wenn der Wert eine vorab definierte Schwelle unterschreitet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Brand-Monitoring-Architekt. Aufgabe: Entwirf einen Sentiment-Monitoring-Workflow für Reviews. Kontext: nur bei echtem Negativ-Ausschlag alarmieren. Format: Scheduled-Trigger, AI-Node mit Sentiment-Skala, Schwellen-Alarm."
 **Erwartetes Artefakt:** Ein Monitoring-Workflow-Entwurf mit definierter Sentiment-Skala und Alarmschwelle.
 **Fallstricke (≥2 spezifisch):**
@@ -239,7 +239,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Scheduled-Trigger auf Montagmorgen setzen.
 2. Über Integrationen die Kennzahlen ziehen und einen AI-Node eine faktentreue Zusammenfassung mit benannten Veränderungen erstellen lassen.
 3. Einen HITL-Node einplanen, in dem die Leitung die Interpretation prüft, bevor der Report verteilt wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Marketing-Reporting-Architekt. Aufgabe: Skizziere einen wöchentlichen Reporting-Workflow aus mehreren Analytics-Quellen. Kontext: Zahlen faktentreu, Interpretation menschlich freigegeben. Format: Scheduled-Trigger, Integrations, AI-Summary-Node, HITL."
 **Erwartetes Artefakt:** Ein Reporting-Workflow-Entwurf mit Datenquellen-Liste und Interpretations-Freigabepunkt.
 **Fallstricke (≥2 spezifisch):**
@@ -257,7 +257,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Webhook-Trigger an die Anmelde-Bestätigung koppeln.
 2. Einen AI-Node einen personalisierten Entwurf auf Basis des Segment-Kontexts aus dem Wissensordner erstellen lassen.
 3. Einen HITL-Node vor jedem externen Versand zwingend einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Persona: Lifecycle-Workflow-Architekt. Aufgabe: Entwirf eine Follow-up-Pipeline nach Event-Anmeldung. Kontext: Personalisierung pro Segment, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Wissensordner, HITL vor Versand."
 **Erwartetes Artefakt:** Ein Follow-up-Workflow-Entwurf mit Personalisierungs-Logik und verpflichtendem Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -276,7 +276,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Condition-Node prüfen lassen, ob der Kontakt tatsächlich auf der Dormant-Liste steht und kein Bot-Flag gesetzt ist.
 3. Einen CRM-Action-Node den Kontakt aus der Dormant-Liste entfernen und zur Active-Liste hinzufügen lassen.
 4. Einen zweiten Action-Node eine interne Slack-Notification mit Kontaktname und Kampagne auslösen lassen — kein automatischer Folgeversand.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist CRM-Workflow-Architekt. Entwirf einen Webhook-Workflow, der bei einem E-Mail-Klick einen Kontakt von 'Dormant' auf 'Active' umschaltet. Kontext: HubSpot als CRM, Bot-Klicks müssen herausgefiltert werden. Format: Node-Liste mit Trigger, Condition, CRM-Action und Slack-Benachrichtigung."
 **Erwartetes Artefakt:** Ein Workflow-Entwurf mit Bot-Filter-Logik, CRM-Listenumschalt-Action und interner Benachrichtigung — ohne automatischen Kunden-Versand.
 **Fallstricke (≥2 spezifisch):**
@@ -295,7 +295,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die individuelle Frage analysieren und eine 2-Satz-Antwort als JSON-Feld ausgeben lassen — Structured Output erzwingen.
 3. Einen Action-Node den generierten Text als Custom-Property im CRM-Kontakt speichern lassen — kein direkter Versand.
 4. Einen HITL-Node aktivieren, der alle generierten Antworten zur Batch-Prüfung vorlegt, bevor das E-Mail-Tool die Injektion vornimmt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lifecycle-Workflow-Architekt. Entwirf einen Personalisierungs-Workflow für Webinar-Follow-ups. Kontext: 50 Teilnehmer, je eine offene Frage als CRM-Feld, kein automatischer Versand. Format: Integration-Trigger, AI-Node mit JSON-Schema (antwort_text), CRM-Action, HITL-Freigabe."
 **Erwartetes Artefakt:** Ein Personalisierungs-Workflow-Entwurf mit JSON-Schema-Vorlage für das CRM-Feld und verpflichtendem Batch-Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -314,7 +314,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node über die Sprachliste iterieren lassen und für jede Sprache einen AI-Node mit Flash-Modell und Glossar-Wissensordner triggern.
 3. Die Outputs als JSON-Array sammeln und einen HITL-Node für die native Muttersprachler-Prüfung je Sprache einplanen.
 4. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit prüfen und die Warn-Schwellen auf 75 % setzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungs-Workflow-Architekt. Entwirf eine Bulk-Lokalisierungs-Pipeline für 6 Sprachen aus einem Quelltext. Kontext: Flash-Modell für Kosteneffizienz, Glossar im Wissensordner, HITL vor Live-Gang. Format: Manual-Trigger, Loop-Node mit Sprach-Array, AI-Node-Konfiguration, HITL, Kostenschätzung."
 **Erwartetes Artefakt:** Ein Bulk-Lokalisierungs-Workflow-Entwurf mit Loop-Logik, Modell-Auswahl-Begründung und Kostenschätzung pro Lauf.
 **Fallstricke (≥2 spezifisch):**
@@ -333,7 +333,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Gate 2 nach dem Brand-Voice-Pass einplanen: Tonalitäts-Check — der Mensch entscheidet, ob Stimme und Botschaft konsistent sind.
 3. Gate 3 vor jedem externen Output einplanen: Rechts-Check — der Mensch bestätigt, dass keine rechtlichen Risiken (UWG, DSGVO) im Text vorliegen.
 4. Jeden HITL-Node mit einer klaren Prüf-Instruktion ausstatten, damit der Reviewer weiß, welche Dimension er genehmigt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workflow-Architekt für Content-Pipelines. Entwirf eine Briefing-Pipeline mit drei HITL-Gates. Kontext: Stufen sind Recherche, Brand-Voice-Pass, Legal-Review; kein Output ohne menschliche Freigabe. Format: Node-Liste mit Gate-Positionen und je einer Prüf-Instruktion pro HITL-Node."
 **Erwartetes Artefakt:** Ein Briefing-Workflow-Entwurf mit drei beschrifteten HITL-Gates und einer Prüf-Instruktions-Vorlage pro Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -352,7 +352,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Anfrage klassifizieren lassen — Structured Output mit Enum-Feldern: Typ (Lead/Support/Spam), Priorität (hoch/mittel/niedrig), zuständiges Team.
 3. Condition-Nodes für jede Routing-Option aufsetzen: Lead → Slack-Nachricht an Sales, Support → Ticket-System, Spam → Archivierung ohne Aktion.
 4. Einen HITL-Node nur für hoch-priorisierte Leads einplanen, bevor die CRM-Übergabe erfolgt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist E-Mail-Workflow-Architekt. Entwirf einen Email-Trigger-Workflow für die Marketing-Inbox. Kontext: Klassifizierung in Lead/Support/Spam, Routing an Sales oder Ticket-System, HITL nur bei hoher Priorität. Format: Email-Trigger, AI-Node mit Enum-Schema, Condition-Nodes, Routing-Actions, HITL."
 **Erwartetes Artefakt:** Ein E-Mail-Routing-Workflow-Entwurf mit Enum-Klassifizierungs-Schema und bedingter HITL-Logik.
 **Fallstricke (≥2 spezifisch):**
@@ -371,7 +371,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node den Entwurf gegen den Brand-Voice-Wissensordner prüfen lassen und einen strukturierten Review-Report (Tonalität, Fehler, Optimierungsvorschläge) als Structured Output erzeugen lassen.
 3. Einen HITL-Node den Report zusammen mit dem Originalentwurf dem designierten Freigeber präsentieren lassen.
 4. Nach Freigabe einen Slack-Action-Node den Autor über die Genehmigung benachrichtigen lassen — kein automatischer CMS-Upload.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Freigabe-Workflow-Architekt. Entwirf einen File-Watch-Workflow für Blog-Artikel-Entwürfe. Kontext: Brand-Voice-Check per Wissensordner, strukturierter Review-Report, Freigabe durch Redaktionsleitung. Format: New-File-Trigger, AI-Review-Node, HITL mit Report, Slack-Benachrichtigung."
 **Erwartetes Artefakt:** Ein Content-Freigabe-Workflow-Entwurf mit Brand-Voice-Check-Node, HITL-Präsentation und Benachrichtigungs-Action.
 **Fallstricke (≥2 spezifisch):**
@@ -390,7 +390,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Daten gegen den 7-Tage-Durchschnitt vergleichen lassen und Ausschläge mit festem Structured-Output-Schema (Metrik, Abweichung %, Schwere) identifizieren.
 3. Einen Condition-Node nur bei Abweichungen ≥ 20 % eine Slack-Eskalation auslösen lassen — darunter stille Protokollierung.
 4. Die Slack-Nachricht mit konkreten Werten, betroffener Kampagne und einem Empfehlungs-Satz befüllen — kein automatisches Steuern der Kampagne.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Performance-Monitoring-Architect. Entwirf einen täglichen Anomalie-Erkennungs-Workflow für Kampagnen-KPIs. Kontext: 7-Tage-Vergleich, Eskalation nur ab 20% Abweichung, keine automatische Kampagnen-Anpassung. Format: Scheduled-Trigger, Analytics-Integration, AI-Node mit Abweichungs-Schema, Condition, Slack-Action."
 **Erwartetes Artefakt:** Ein Anomalie-Workflow-Entwurf mit Abweichungs-Schema, Schwellenwert-Definition und Slack-Nachrichten-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -409,7 +409,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Im Fehler-Pfad einen Action-Node den fehlerhaften Datensatz (Input + Fehlermeldung + Timestamp) in ein Fehler-Protokoll-Sheet schreiben lassen.
 3. Einen Slack-Action-Node sofortige Benachrichtigung an den Workflow-Admin auslösen lassen — mit Workflow-Name, Fehlertyp und Link zum Log.
 4. Einen HITL-Node am Ende des Fehler-Pfads einplanen, der die manuelle Nachverarbeitung der fehlerhaften Items initiiert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workflow-Reliability-Architect. Entwirf ein Fehlerbehandlungs-Muster für einen produktiven Marketing-Workflow. Kontext: Fehler dürfen nicht still verschwinden, manuelle Nachverarbeitung muss möglich sein. Format: Error-Branch-Architektur, Dead-Letter-Sheet-Action, Slack-Alert-Node, HITL für Nachverarbeitung."
 **Erwartetes Artefakt:** Ein Fehlerbehandlungs-Architektur-Entwurf mit Error-Branch-Logik, Log-Schema und Slack-Alert-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -428,7 +428,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Phase 2 — Dry-Run: Den Workflow mit echten Daten ausführen, aber alle externen Actions (CRM-Update, E-Mail-Versand) auf Mock-Endpunkte umleiten.
 3. Phase 3 — Canary-Release: Den Workflow für 5–10 % realer Inputs live schalten und einen HITL-Node die ersten Outputs validieren lassen.
 4. Erst nach drei fehlerfreien Canary-Zyklen den Workflow vollständig in Produktion bringen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workflow-QA-Architect. Entwirf eine dreistufige Test-Strategie für einen neuen Marketing-Workflow vor dem Produktiv-Rollout. Kontext: Keine Live-Kunden-Interaktion während der Tests, HITL für Canary-Validierung. Format: Teststufen mit Beschreibung, synthetische Test-Cases, Canary-Kriterien."
 **Erwartetes Artefakt:** Eine Workflow-Test-Strategie mit drei Phasen, Beispiel-Test-Cases pro Phase und Canary-Freigabe-Kriterien.
 **Fallstricke (≥2 spezifisch):**
@@ -447,7 +447,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Rohdaten in drei CFO-KPIs übersetzen lassen: Lohnkosten-Äquivalent (Token-Verbrauch × Stunden-Basis), Time-to-Brief-Reduktion, Output-Volumen-Steigerung.
 3. Den Output als Structured-Output-Tabelle erzeugen, die direkt in das Quartalsbericht-Template einpastet werden kann.
 4. Einen HITL-Node die Interpretation durch die Marketing-Leitung freigeben lassen, bevor der Report ans CFO-Büro geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-ROI-Architect. Entwirf einen monatlichen Workflow-ROI-Reporting-Workflow für den CFO. Kontext: Drei KPIs (Lohnkosten-Äquivalent, Time-to-Brief, Output-Volumen), Zahlen aus der Usage-API, Interpretation durch Marketing-Leitung freigegeben. Format: Scheduled-Trigger, Usage-API-Integration, AI-Node mit KPI-Schema, HITL."
 **Erwartetes Artefakt:** Ein ROI-Reporting-Workflow-Entwurf mit KPI-Definitions-Schema und einem Quartalsbericht-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -465,7 +465,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Die vier Entscheidungsdimensionen prüfen: (a) Volumen >100 Items, (b) identisches Template pro Item, (c) JSON-Output erforderlich, (d) cron-getriggerter Lauf → wenn alle vier JA: Workflow.
 2. Wenn mindestens zwei Dimensionen NEIN: Agent-Chat-Sandwich als Prototyp-Phase empfehlen — mit explizitem Hinweis, dass Chat-Sandwich kein Produktionssystem ist.
 3. Eine Break-even-Tabelle ausgeben: Workflow amortisiert Setup-Kosten ab ca. 50 Runs/Monat; darunter lohnt sich Agent-Chat.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workflow-vs-Agent-Entscheidungsarchitekt. Analysiere den beschriebenen Prozess und empfehle Workflow oder Agent-Chat-Modus. Kontext: Vier Kriterien (Volumen, Determiniertheit, JSON-Output, Cron), Break-even bei 50 Runs/Monat. Format: Entscheidungsmatrix-Tabelle, Empfehlung mit Begründung, Break-even-Kalkulation."
 **Erwartetes Artefakt:** Eine Entscheidungsmatrix mit vier Kriterien, Break-even-Kalkulation und einer begründeten Architektur-Empfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -484,7 +484,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Intent-Themen gegen den Content-Bibliotheks-Wissensordner matchen lassen und das relevanteste Asset als Empfehlung ausgeben.
 3. Einen Condition-Node prüfen lassen, ob der Intent-Spike einen vordefinierten Score-Schwellenwert übersteigt — nur dann Eskalation.
 4. Einen HITL-Node dem Account-Executive die Empfehlung vorlegen lassen (Asset + Kontext + vorgeschlagener Outreach-Text) — kein automatischer Versand.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist ABM-Workflow-Architekt. Entwirf einen Intent-Signal-Eskalations-Workflow. Kontext: Webhook vom Intent-Tool, Content-Matching gegen Wissensordner, HITL vor Outreach, kein automatischer Kundenkontakt. Format: Webhook-Trigger, AI-Matching-Node, Score-Condition, HITL-Empfehlung, Slack-Action."
 **Erwartetes Artefakt:** Ein Intent-Eskalations-Workflow-Entwurf mit Score-Schwellenwert-Regel, Content-Matching-Logik und HITL-Präsentations-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -503,7 +503,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Ein Structured-Output-Handshake-Schema definieren, das beide Workflows verbindet: exakte Feldnamen, Typen und Pflichtfelder dokumentieren.
 3. Einen HITL-Node zwischen den Chains als optionales Gate einplanen — aktiviert für kritische Übergaben, deaktivierbar für vollständig validierte Pipelines.
 4. Im zweiten Workflow einen Validation-Condition-Node vorschalten, der das empfangene Payload gegen das Handshake-Schema prüft — bei Schema-Fehler in den Error-Branch.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workflow-Chaining-Architect. Entwirf eine Verkettung zwischen einem Content-Generierungs- und einem Distributions-Workflow. Kontext: HTTP-POST-Übergabe, JSON-Handshake-Schema, HITL-Gate zwischen den Chains, Schema-Validierung im Empfänger. Format: Chain-Architektur-Entwurf mit Handshake-Schema-Definition."
 **Erwartetes Artefakt:** Ein Workflow-Chain-Entwurf mit HTTP-POST-Übergabe-Logik, Handshake-Schema-Vorlage und optionalem HITL-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -522,7 +522,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Die Logs nach vier Monitoring-Dimensionen auswerten lassen: Laufzeit pro Workflow, Fehlerrate, Token-Kosten-pro-Run, HITL-Genehmigungsrate.
 3. Einen Condition-Node SLO-Verletzungen erkennen lassen (z. B. Fehlerrate > 5 % oder Kosten-pro-Run +30 % gegenüber Vorwoche) und bei Verletzung Slack-Alert auslösen.
 4. Eine Monitoring-Tabelle im Fehler-Log-Sheet kumulieren, damit Trends über Zeit sichtbar werden — Grundlage für den monatlichen ROI-Report (S-WF-020).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workflow-Monitoring-Architect. Entwirf einen täglichen Observability-Workflow für produktive Marketing-Workflows. Kontext: Vier SLO-Dimensionen (Laufzeit, Fehlerrate, Kosten, HITL-Rate), Eskalation nur bei Grenzwert-Verletzung. Format: Scheduled-Trigger, Audit-Log-Integration, SLO-Condition, Slack-Alert, kumulatives Log-Sheet."
 **Erwartetes Artefakt:** Ein Monitoring-Workflow-Entwurf mit vier SLO-Definitionen, Condition-Schwellenwerten und einem kumulativen Log-Schema.
 **Fallstricke (≥2 spezifisch):**
@@ -541,7 +541,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node fehlende strategische Felder ergänzen lassen (z. B. fehlende KPI-Vorschläge auf Basis des Kampagnentyps) und das komplette Briefing als Structured Output ausgeben.
 3. Einen Condition-Node das Briefing nach Ressourcenbedarf klassifizieren lassen: Design → Design-Slack-Kanal, Text → Copy-Kanal, Performance → Media-Kanal.
 4. Einen HITL-Node das ergänzte Briefing dem Anfragenden zur Bestätigung vorlegen lassen, bevor es als Notion-Seite angelegt und das Team benachrichtigt wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-Ops-Workflow-Architect. Entwirf einen Form-Trigger-Intake-Workflow für Kampagnen-Briefings. Kontext: Pflichtfelder im Form, KI ergänzt fehlende KPIs, Routing nach Ressourcentyp, HITL-Bestätigung vor Notion-Anlage. Format: Form-Trigger mit Feldliste, AI-Briefing-Node, Condition-Routing, HITL, Notion-Action, Slack-Benachrichtigungen."
 **Erwartetes Artefakt:** Ein Kampagnen-Intake-Workflow-Entwurf mit Form-Feldliste, KI-Ergänzungs-Logik, Routing-Matrix und HITL-Bestätigungs-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -560,7 +560,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. HITL-Gate 1 — Redaktions-Check: Reviewer prüft Inhalt und Fakten; bei Ablehnung Rückgabe an Autor ohne weiteres Fortschreiten.
 3. HITL-Gate 2 — Legal-Check: Reviewer prüft auf UWG/DSGVO-Risiken; nur bei Freigabe weiter.
 4. HITL-Gate 3 — Final-Publish-Gate: Letzte Freigabe vor der CMS-Action-Node, die den Artikel veröffentlicht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Pipeline-Architekt. Entwirf eine dreistufige Freigabe-Kette für Blog-Artikel. Kontext: Stufen Redaktion, Legal, Final-Publish; bei jeder Ablehnung Rückgabe ohne Weiterleitung. Format: Node-Liste mit HITL-Positionen, Prüf-Instruktion pro Gate und Bedingungslogik."
 **Erwartetes Artefakt:** Ein Freigabe-Ketten-Entwurf mit drei HITL-Gates, Ablehnungs-Routing und CMS-Action am Ende.
 **Fallstricke (≥2 spezifisch):**
@@ -579,7 +579,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node über die drei Segmente (z. B. Entscheider, Anwender, Partner) iterieren lassen und für jedes Segment einen AI-Node eine angepasste Variante erzeugen lassen.
 3. Alle drei Varianten als JSON-Array sammeln und dem HITL-Node zur Batch-Freigabe präsentieren — kein automatischer Versand.
 4. Nach Freigabe einen Action-Node die Varianten als Entwürfe in das E-Mail-Tool einspielen; Versand verbleibt beim Menschen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Newsletter-Workflow-Architekt. Entwirf eine Segment-Personalisierungs-Pipeline für drei Zielgruppen. Kontext: Basis-Text aus CRM-Trigger, Brand-Voice aus Wissensordner, Batch-Freigabe vor E-Mail-Tool-Übergabe. Format: Integration-Trigger, Loop-Node mit Segment-Array, AI-Node-Konfiguration, HITL-Batch, E-Mail-Action."
 **Erwartetes Artefakt:** Ein Personalisierungs-Workflow-Entwurf mit Segment-Definitions-Tabelle und Batch-Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -598,7 +598,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Condition-Node prüfen lassen, ob der Score den Kampagnen-Auslösewert überschreitet — darunter nur Protokollierung.
 3. Einen AI-Node die Intent-Themen gegen den Content-Bibliotheks-Wissensordner matchen und eine priorisierte Asset-Liste erzeugen lassen.
 4. Drei parallele Action-Nodes: (a) Slack-Alert an Account-Executive mit Asset-Empfehlung, (b) CRM-Task "Outreach vorbereiten" anlegen, (c) Kalender-Reminder für Follow-up in 3 Tagen setzen — alle vor dem HITL-Gate für den finalen Outreach-Entwurf.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist ABM-Workflow-Architekt. Entwirf eine dreistrangige Reaktionskette für Account-Score-Anstiege. Kontext: Integration-Trigger aus CRM, Score-Schwelle als Condition, Content-Matching gegen Wissensordner, HITL vor Kundenkontakt. Format: Trigger, Condition, AI-Node, drei parallele Actions, HITL."
 **Erwartetes Artefakt:** Ein ABM-Reaktions-Workflow-Entwurf mit Score-Schwellenwert-Definition, paralleler Action-Architektur und HITL-Outreach-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -617,7 +617,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node eine personalisierte Welcome-Nachricht auf Basis des Segment-Profils aus dem Wissensordner erstellen lassen — Structured Output mit Feldern: Betreff, Body, Ansprechpartner-Empfehlung.
 3. Parallele Actions: (a) Slack-Alert an Customer-Success-Manager, (b) Kalender-Link für Onboarding-Call als CRM-Feld hinterlegen, (c) Erstes Onboarding-To-do in CRM anlegen.
 4. HITL-Node: Customer-Success-Manager prüft die personalisierte Welcome-Nachricht und gibt sie frei — erst dann Übergabe an das E-Mail-Tool.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lifecycle-Workflow-Architekt. Entwirf eine Onboarding-Pipeline, die bei einem CRM-Stage-Wechsel zu 'Onboarding' startet. Kontext: Personalisierung per Segment-Wissensordner, Slack-Alert an CS-Manager, HITL vor Welcome-E-Mail-Versand. Format: Integration-Trigger, AI-Personalisierungs-Node, parallele Actions, HITL-Gate."
 **Erwartetes Artefakt:** Ein Onboarding-Pipeline-Entwurf mit Personalisierungs-Logik, parallelen Action-Strängen und CS-Manager-Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -636,7 +636,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen CRM-Lookup-Action-Node versuchen lassen, die Session-ID einer bekannten Kontakt-E-Mail zuzuordnen — bei keinem Match anonymes Signal protokollieren und Workflow beenden.
 3. Einen AI-Node Besuchs-Muster und CRM-Profil kombinieren und eine Signal-Stärke (hoch/mittel/niedrig) als Structured Output ausgeben lassen.
 4. Condition-Node: bei "hoch" → HITL-Node mit Outreach-Empfehlung an Account-Executive; bei "mittel" → automatische CRM-Task-Anlage; bei "niedrig" → stilles Protokoll.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retargeting-Workflow-Architekt. Entwirf einen Signal-Verarbeitungs-Workflow für Pricing-Page-Besuche. Kontext: Webhook vom Pixel-Tool, CRM-Lookup, Signal-Stärke-Klassifizierung, HITL nur bei hoher Priorität. Format: Webhook-Trigger, CRM-Lookup-Action, AI-Bewertungs-Node, Condition mit drei Pfaden, HITL."
 **Erwartetes Artefakt:** Ein Retargeting-Signal-Workflow-Entwurf mit CRM-Lookup-Logik, Signal-Stärke-Schema und dreistufiger Condition-Architektur.
 **Fallstricke (≥2 spezifisch):**
@@ -655,7 +655,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node aus dem Wissensordner (aktive Kampagnenziele, Saisonalitätskalender, Evergreen-Themen) einen Kalender-Entwurf für den Folgemonat generieren lassen — Structured Output: Titel, Kanal, Format, Deadline, verantwortliche Person.
 3. Einen HITL-Node den Entwurf dem Content-Lead zur Freigabe und Anpassung vorlegen lassen.
 4. Nach Freigabe einen Action-Node den Kalender als strukturierte Seite in Notion oder als Tabelle in Google Sheets anlegen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Kalender-Architekt. Entwirf einen monatlichen Kalender-Vorschlags-Workflow. Kontext: Kampagnenziele und Saisonalität im Wissensordner, Structured Output mit Titel/Kanal/Deadline/Owner, HITL-Freigabe vor Notion-Export. Format: Scheduled-Trigger, AI-Kalender-Node, HITL, Notion-Action."
 **Erwartetes Artefakt:** Ein Content-Kalender-Workflow-Entwurf mit Structured-Output-Schema für Kalendereinträge und HITL-Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -674,7 +674,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Parallele AI-Nodes für die fünf Kanäle: LinkedIn (300 Zeichen + Hashtags), X-Thread (5 Tweets), Blog-Teaser (150 Wörter), IR-Summary (100 Wörter sachlich), Journalisten-Pitch (150 Wörter mit News-Hook).
 3. Je Kanal einen HITL-Node einplanen — die PR-Leitung freigt jede Variante einzeln frei; eine abgelehnte Variante blockiert nur diesen Kanal, nicht die anderen.
 4. Nach Kanal-spezifischer Freigabe feuert je ein Action-Node — kein kanalübergreifender Automatismus.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Distributions-Workflow-Architekt. Entwirf eine fünfkanalige Pressemitteilungs-Pipeline. Kontext: Manuelle Eingabe der PM, parallele Kanal-Adaptionen, je Kanal eigener HITL, keine kanalübergreifende Automatik. Format: Trigger, fünf parallele AI-Nodes, fünf HITL-Nodes, fünf Actions."
 **Erwartetes Artefakt:** Ein Distributions-Pipeline-Entwurf mit Kanal-spezifischen AI-Node-Briefings, paralleler HITL-Architektur und Kanal-Freigabe-Matrix.
 **Fallstricke (≥2 spezifisch):**
@@ -693,7 +693,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node iterieren lassen; pro Item einen AI-Node eine 3-Satz-Personalisierung auf Basis der Gesprächsnotiz und des Produkt-Kontext-Wissensordners erzeugen lassen — Structured Output: Betreff + Body.
 3. Einen HITL-Node eine zufällige Stichprobe von 10 % der generierten E-Mails zur Qualitätsprüfung vorlegen lassen — erst nach Freigabe der Stichprobe läuft die Action.
 4. Einen Action-Node den generierten Text als Draft-Feld im CRM hinterlegen — der tatsächliche Versand bleibt beim Menschen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Messe-Follow-up-Workflow-Architekt. Entwirf einen Batch-Personalisierungs-Workflow für 120 Messe-Kontakte. Kontext: CSV-Input mit Gesprächsnotizen, Flash-Modell für Kosteneffizienz, 10%-Stichproben-HITL, Versand durch Menschen. Format: Manual-Trigger, Loop-Node mit Chargenlogik, AI-Node, HITL-Stichprobe, CRM-Draft-Action."
 **Erwartetes Artefakt:** Ein Messe-Follow-up-Workflow-Entwurf mit Loop-Chargenlogik, Stichproben-HITL-Definition und CRM-Draft-Action-Konfiguration.
 **Fallstricke (≥2 spezifisch):**
@@ -712,7 +712,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node über die aktiven Kanäle (LinkedIn, Instagram, X) iterieren lassen; pro Kanal und Thema einen AI-Node einen kanalgerechten Post mit Brand-Voice-Wissensordner erstellen lassen — Structured Output: Text, Hashtags, empfohlener Publish-Zeitpunkt.
 3. Einen HITL-Node alle Posts der Woche als Batch zur Freigabe präsentieren — Social-Media-Manager prüft und kann einzelne Posts ablehnen oder bearbeiten.
 4. Nach Freigabe sendet ein Action-Node die genehmigten Posts an die Scheduling-Tool-API — kein direktes Veröffentlichen durch den Workflow.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Media-Scheduling-Workflow-Architekt. Entwirf eine wöchentliche Post-Planungs-Pipeline. Kontext: Themen aus Content-Kalender, Loop über LinkedIn/Instagram/X, Brand-Voice aus Wissensordner, HITL-Batch-Freigabe vor Scheduling-Tool-Übergabe. Format: Scheduled-Trigger, Integration-Node, Loop, AI-Post-Node, HITL, Scheduling-Action."
 **Erwartetes Artefakt:** Ein Social-Media-Scheduling-Workflow-Entwurf mit Kanal-Loop-Logik, Structured-Output-Schema für Posts und HITL-Batch-Freigabe-Beschreibung.
 **Fallstricke (≥2 spezifisch):**
@@ -731,7 +731,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node Ausgaben gegen Budget-Pläne vergleichen lassen — Structured Output: Kanal, verbrauchte %, verbleibende Tage, Prognose zum Monatsende.
 3. Condition-Node: bei 80 % Budget-Verbrauch → Slack-Warning ohne HITL; bei 95 % → HITL-Node mit AI-generierter Umverteilungsempfehlung an die Kampagnen-Leitung.
 4. Die Umverteilungsempfehlung enthält konkrete Vorschläge (z. B. Kanal X pausieren, Budget nach Y verlagern) — Umsetzung nur durch den Menschen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Budget-Monitoring-Workflow-Architekt. Entwirf einen täglichen Budget-Alert-Workflow für Kampagnen-Ausgaben. Kontext: Integration mit Ad-Plattform, 80%-Warning ohne HITL, 95%-Eskalation mit Umverteilungsempfehlung per HITL, keine automatische Kampagnen-Steuerung. Format: Scheduled-Trigger, Integration-Node, AI-Analyse-Node, Condition mit zwei Schwellenwerten, Slack-Action, HITL."
 **Erwartetes Artefakt:** Ein Budget-Alert-Workflow-Entwurf mit zweistufiger Condition-Logik, Structured-Output-Schema für Ausgaben-Analyse und HITL-Umverteilungs-Briefing.
 **Fallstricke (≥2 spezifisch):**
@@ -750,7 +750,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node mit Web Search die definierten Quellen nach den Wettbewerber-Namen absuchen und jede Erwähnung mit Relevanz-Score (1–10), Quelle, Thema und Kurzzusammenfassung als Structured Output ausgeben lassen.
 3. Condition-Node: Relevanz ≥ 7 → Slack-Eskalation an Strategie-Team; Relevanz < 7 → stille Protokollierung im Notiz-Dokument.
 4. Die Slack-Nachricht enthält: Wettbewerber-Name, Quelle, Relevanz-Score, Kern-Aussage und Link — kein automatisches Handeln.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wettbewerbs-Monitoring-Architekt. Entwirf einen täglichen Erwähnungs-Alert-Workflow für drei Wettbewerber. Kontext: Web-Search-Scope auf Branchen-Whitelist begrenzt, Relevanz-Score 1–10, Eskalation nur ab Score 7, stille Protokollierung darunter. Format: Scheduled-Trigger, Web-Search-AI-Node mit Structured Output, Condition, Slack-Action."
 **Erwartetes Artefakt:** Ein Wettbewerber-Monitoring-Workflow-Entwurf mit Quellen-Whitelist, Relevanz-Score-Schema und zweistufiger Condition-Eskalation.
 **Fallstricke (≥2 spezifisch):**
@@ -769,7 +769,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node das Risiko-Profil gegen das Retention-Playbook im Wissensordner analysieren lassen und eine Risiko-Tier-Klassifikation (hoch/mittel) sowie eine Maßnahmen-Empfehlung ausgeben lassen.
 3. Condition-Node: Risiko-Tier "hoch" → HITL-Node mit personalisertem Retention-Angebot-Entwurf an Account-Manager; Risiko-Tier "mittel" → automatische CRM-Task "Eincheck-Anruf in 7 Tagen".
 4. HITL-Node: Account-Manager prüft den Entwurf und gibt die Kontaktaufnahme frei — kein automatischer Kunden-Kontakt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lifecycle-Retention-Workflow-Architekt. Entwirf einen At-Risk-Transitions-Workflow. Kontext: CRM-Integration-Trigger, Risiko-Analyse gegen Retention-Playbook-Wissensordner, HITL nur für hohes Risiko, CRM-Task für mittleres Risiko. Format: Integration-Trigger, AI-Analyse-Node, Condition mit zwei Pfaden, HITL-Gate, CRM-Task-Action."
 **Erwartetes Artefakt:** Ein Lifecycle-Transitions-Workflow-Entwurf mit Risiko-Tier-Definition, zweistufiger Condition-Architektur und HITL-Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -788,7 +788,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Condition-Node jeden Kontakt auf DSGVO-Opt-out-Status prüfen lassen — Kontakte mit Opt-out werden ohne weitere Aktion archiviert.
 3. Einen AI-Node für verbleibende Kontakte einen personalisierten Re-Engagement-E-Mail-Entwurf auf Basis des letzten Kaufs oder letzten Interaktionsthemas erstellen lassen.
 4. Einen HITL-Node eine Stichprobe von 10 % der Entwürfe zur Qualitätsprüfung vorlegen lassen; nach Freigabe startet ein CRM-Action-Node die Sequenz.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Re-Engagement-Workflow-Architekt. Entwirf einen wöchentlichen Inaktivitäts-Erkennungs-Workflow. Kontext: 90-Tage-Inaktivitäts-Schwelle, DSGVO-Opt-out-Filter als Condition, KI-Personalisierung per letzter Interaktion, HITL-Stichprobe, kein automatischer Versand. Format: Scheduled-Trigger, CRM-Integration, Condition (Opt-out), AI-Entwurf-Node, HITL, CRM-Sequenz-Action."
 **Erwartetes Artefakt:** Ein Re-Engagement-Workflow-Entwurf mit DSGVO-Opt-out-Filter-Logik, Stichproben-HITL-Definition und CRM-Sequenz-Action-Konfiguration.
 **Fallstricke (≥2 spezifisch):**
@@ -807,7 +807,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Condition-Node: Überziehung 1–24 h → automatische Slack-Erinnerung an Verantwortlichen; Überziehung > 24 h → HITL-Node mit Eskalations-Vorschlag an Teamleitung.
 3. Einen AI-Node eine kontextuelle Eskalations-Nachricht generieren lassen, die Task-Kontext, Auswirkung auf abhängige Kampagnen und einen Lösungsvorschlag enthält.
 4. HITL-Node: Teamleitung prüft die Eskalation und entscheidet über Maßnahme — kein automatisches Eingreifen in Task-Zuweisung oder Deadlines.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SLA-Eskalations-Workflow-Architekt. Entwirf einen Überziehungs-Erkennungs-Workflow für interne Marketing-Briefings. Kontext: PM-Tool-Integration-Trigger, zweistufige Condition (1–24 h Erinnerung, >24 h HITL-Eskalation), KI-Kontext-Nachricht mit Auswirkungsanalyse. Format: Integration-Trigger, Condition mit zwei Pfaden, AI-Eskalations-Node, Slack-Action, HITL."
 **Erwartetes Artefakt:** Ein SLA-Eskalations-Workflow-Entwurf mit zweistufiger Condition-Logik, AI-Eskalations-Nachrichts-Template und HITL-Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -826,7 +826,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node eine kompakte Change-Summary (max. 5 Sätze) aus dem neuen Dokument-Inhalt erzeugen lassen — was hat sich inhaltlich verändert, was sind die Implikationen für Agenten-Prompts.
 3. Action-Node: Slack-Benachrichtigung an alle Nutzer, die diesen Wissensordner in einem Agenten oder Workflow referenzieren — basierend auf einer RACI-Matrix im Wissensordner.
 4. HITL-Node nur bei Compliance-Dokumenten (Brand-Guidelines, Legal-Dokumente): Agent-Owner bestätigt explizit, dass er seine Agenten-Konfiguration auf Basis der Änderung geprüft hat.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Change-Management-Architekt. Entwirf einen Benachrichtigungs-Workflow für Wissensordner-Updates. Kontext: Integration-Trigger bei Dateiänderung, AI-Change-Summary, Slack-Routing nach RACI-Matrix, HITL nur bei Compliance-Dokumenten. Format: Integration-Trigger, AI-Summary-Node, Condition (Compliance ja/nein), Slack-Action, optionaler HITL."
 **Erwartetes Artefakt:** Ein Wissens-Update-Workflow-Entwurf mit Change-Summary-Node, RACI-Routing-Logik und selektivem HITL-Gate für Compliance-Dokumente.
 **Fallstricke (≥2 spezifisch):**
@@ -845,7 +845,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Pro Item bewertet ein AI-Node drei Dimensionen: Brand-Voice-Konformität (1–5), Faktentreue (1–5), Tonalitäts-Passgenauigkeit (1–5) — Structured Output: Scores + Begründung pro Dimension.
 3. Condition-Node: Gesamt-Score < 10/15 → HITL-Node mit Item + Begründung zur manuellen Überarbeitung; Score ≥ 10/15 → automatisch zur Freigabe-Queue.
 4. Die Freigabe-Queue wird als Notion-Seite oder Sheets-Export bereitgestellt — der finale Freigabe-Klick verbleibt beim Menschen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-QA-Workflow-Architekt. Entwirf einen Batch-QA-Workflow für KI-generierte Marketing-Texte. Kontext: Drei Bewertungsdimensionen (Brand-Voice, Faktentreue, Tonalität) je 1–5 Punkte, Schwelle 10/15, Ausreißer per HITL, Freigabe-Queue als Export. Format: Manual-Trigger, Loop-Node, AI-QA-Node mit Structured Output, Condition, HITL-Eskalation, Export-Action."
 **Erwartetes Artefakt:** Ein Content-QA-Workflow-Entwurf mit Bewertungs-Kriterien-Schema, Score-Schwellenwert-Definition und HITL-Eskalations-Logik.
 **Fallstricke (≥2 spezifisch):**
@@ -864,7 +864,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node alle Assets und Konfigurationen gegen eine Checkliste im Wissensordner prüfen lassen — Structured Output: Status pro Punkt (OK/Offen/Blocker) + Verantwortlicher.
 3. Condition-Node: mindestens ein Blocker vorhanden → HITL-Node mit vollständigem Report an Kampagnen-Leitung; keine Blocker → direkter Übergang zur Go-Bestätigung.
 4. Nach menschlicher Go/No-Go-Entscheidung einen Action-Node den Report als Notion-Seite archivieren lassen — revisionssicherer Nachweis des Launch-Checks.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kampagnen-Launch-Readiness-Architekt. Entwirf einen Pre-Launch-Check-Workflow für Kampagnen. Kontext: Asset-Liste als Trigger-Input, Checklisten-Wissensordner als Referenz, Blocker-Erkennung per Condition, HITL-Go/No-Go, Notion-Archivierung. Format: Manual-Trigger, AI-Check-Node mit Structured Output, Condition, HITL, Notion-Action."
 **Erwartetes Artefakt:** Ein Readiness-Check-Workflow-Entwurf mit Checklisten-Schema, Blocker-Condition-Logik und Go/No-Go-HITL-Beschreibung.
 **Fallstricke (≥2 spezifisch):**
@@ -883,7 +883,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Parallele Integration-Nodes die Rohdaten aus Google Ads, LinkedIn und dem E-Mail-Tool ziehen und auf denselben Zeitraum normalisieren.
 3. Einen AI-Node die aggregierten Daten in ein standardisiertes KPI-Set übersetzen lassen (Impressionen, Klicks, Conversions, CPL, ROAS) und eine faktentreue narrative Zusammenfassung erzeugen — kein Werturteil ohne Datenbasis.
 4. HITL-Node: Kampagnen-Manager prüft KPIs und Narrative, ergänzt strategische Interpretation; nach Freigabe sendet ein Action-Node den Report als PDF und Slack-Nachricht an den Stakeholder-Verteiler.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Post-Kampagnen-Reporting-Architekt. Entwirf einen automatisierten Reporting-Workflow nach Kampagnen-Ende. Kontext: Multi-Quellen-Integration (Google Ads, LinkedIn, E-Mail), KPI-Normalisierung, faktentreue KI-Narrative, HITL für Interpretation, PDF+Slack-Verteilung. Format: Integration-Trigger, parallele Daten-Nodes, AI-KPI-Node, HITL, Report-Action."
 **Erwartetes Artefakt:** Ein Post-Kampagnen-Reporting-Workflow-Entwurf mit Multi-Quellen-Normalisierungs-Logik, KPI-Schema und HITL-Interpretations-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -902,7 +902,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. HITL-Gate 1 (Kampagnen-Manager): inhaltliche Prüfung auf Kampagnenziel-Konsistenz.
 3. HITL-Gate 2 (Brand-Director): Markenstimme und kreative Leitlinien — Freigabe oder Ablehnung mit Kommentar.
 4. HITL-Gate 3 (Legal): UWG-Konformität und Influencer-Kennzeichnungspflicht prüfen; nach finaler Freigabe Action-Node: versioniertes PDF in Cloud-Storage ablegen und Talent-Manager per Slack benachrichtigen — kein direkter Versand an das Talent durch den Workflow.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Influencer-Briefing-Workflow-Architekt. Entwirf eine dreistufige Genehmigungs-Kette für Influencer-Briefings. Kontext: Pflichtfeld-Check durch KI, drei HITL-Gates (KM, Brand, Legal), UWG-Kennzeichnungspflicht im Legal-Gate, kein automatischer Versand ans Talent. Format: Manual-Trigger, AI-Check-Node, drei HITL-Nodes mit Prüfinstruktion, Cloud-Storage-Action, Slack-Benachrichtigung."
 **Erwartetes Artefakt:** Ein Influencer-Briefing-Genehmigungs-Workflow-Entwurf mit Pflichtfeld-Schema, dreistufiger HITL-Architektur und versionierter Cloud-Storage-Action.
 **Fallstricke (≥2 spezifisch):**
@@ -921,7 +921,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node jede Datei auf drei Dimensionen prüfen lassen: (a) Zeitliche Aktualität (letztes Änderungsdatum > 6 Monate → Flag), (b) inhaltliche Widersprüche zu anderen Dokumenten im Ordner, (c) fehlende Pflicht-Metadaten (Owner, Gültigkeitsdatum) — Structured Output: Dateiname, Flag-Typ, Begründung, Empfehlung.
 3. HITL-Node: Wissensordner-Owner erhält den vollständigen Audit-Report mit allen geflaggten Dateien und muss je Datei eine Entscheidung treffen (Behalten/Aktualisieren/Löschen).
 4. Nach der HITL-Entscheidung erstellt ein Action-Node eine versionierte Audit-Report-Seite in Notion und sendet einen Slack-Alert mit der Anzahl der offenen Aktionspunkte an den Team-Channel.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Audit-Architekt. Entwirf einen monatlichen Audit-Workflow für Langdock-Wissensordner. Kontext: API-Dateiliste als Trigger-Basis, drei Prüfdimensionen (Aktualität, Widersprüche, Metadaten), HITL mit Dreifach-Entscheidung (Behalten/Aktualisieren/Löschen), Notion-Archivierung und Slack-Alert. Format: Scheduled-Trigger, API-Integration, AI-Audit-Node, HITL-Gate, Notion+Slack-Actions."
 **Erwartetes Artefakt:** Ein Wissensordner-Audit-Workflow-Entwurf mit Dreifach-Flag-Schema, HITL-Entscheidungsmatrix und versionierter Notion-Archivierungs-Action.
 **Fallstricke (≥2 spezifisch):**
@@ -940,7 +940,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Logic-Node verzweigen lassen: Newsletter-Widerruf → Abbestellung in E-Mail-Tool; Cookie-Opt-out → Tracking-Flag im CRM; Vollständige Datenlöschung → HITL-Node für juristische Freigabe vor irreversiblem Löschen.
 3. Action-Nodes synchronisieren den Status in allen verknüpften Systemen (CRM, E-Mail-Tool, Analytics-Plattform); ein AI-Node generiert eine tonalitätsgerechte Bestätigungs-E-Mail an den Kontakt.
 4. Ein abschließender Action-Node schreibt Zeitstempel, Kontakt-ID, Einwilligungstyp und ausgeführte Aktionen in ein Audit-Log (z. B. Notion-Datenbank oder Compliance-CSV) für den Datenschutzbeauftragten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DSGVO-Workflow-Architekt. Entwirf einen Webhook-Workflow für Einwilligungswiderrufe. Kontext: Widerruf-Payload mit Kontakt-ID und Typ, Multi-System-Sync (CRM + E-Mail-Tool), HITL bei Vollständigem-Löschauftrag, revisionssicheres Audit-Log. Format: Trigger, Logic-Verzweigung nach Typ, Action-Nodes je System, AI-Bestätigungs-E-Mail, Audit-Log-Action."
 **Erwartetes Artefakt:** Ein DSGVO-konformer Widerruf-Workflow-Entwurf mit Einwilligungstyp-Verzweigung, Multi-System-Action-Nodes und Audit-Log-Architektur.
 **Fallstricke (≥2 spezifisch):**
@@ -959,7 +959,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node drei Textvarianten parallel generieren lassen: (a) Kunden-E-Mail (nutzenorientiert, 120 Wörter), (b) Slack-Nachricht für Sales (feature-fokussiert, 3 Bulletpoints), (c) Push-Benachrichtigung (≤90 Zeichen) — Structured Output mit je einem Feld pro Kanal.
 3. Einen HITL-Node einschalten, damit Product-Marketing alle drei Varianten vor dem Versand in einer Übersicht prüfen und bei Bedarf editieren kann.
 4. Nach Freigabe distribuieren parallele Action-Nodes die Varianten an E-Mail-Tool, Slack-Channel und Push-Service.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Produkt-Kommunikations-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Produkt-Updates. Kontext: PIM-Trigger mit Produktdaten-Payload, drei Kanäle (Kunden-E-Mail, Sales-Slack, App-Push), HITL-Freigabe vor Versand. Format: Trigger, parallele AI-Nodes je Kanal, HITL, drei Action-Nodes."
 **Erwartetes Artefakt:** Ein Produkt-Update-Workflow-Entwurf mit Parallel-AI-Nodes, Structured-Output-Schema und HITL-Freigabe-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -977,7 +977,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Den Webhook-Trigger an das interne DAM/CMS koppeln, das bei Asset-Aktualisierung feuert; Payload enthält Asset-ID, Asset-Typ und betroffene Partner-Segmente.
 2. Einen Logic-Node die Partner-Tiering-Logik abbilden lassen: Tier-1-Partner erhalten sofortige E-Mail-Benachrichtigung mit Kontext-Zusammenfassung; Tier-2-Partner erhalten eine wöchentliche Digest-Einreihung; ein AI-Node generiert den E-Mail-Text aus den Asset-Metadaten.
 3. Ein HITL-Node hält die Kommunikation bei strategisch sensiblen Materialien (z. B. neue Preislisten) für eine manuelle Freigabe an, bevor Action-Nodes das Portal-CMS aktualisieren und E-Mails auslösen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Partner-Enablement-Workflow-Architekt. Entwirf einen Webhook-Workflow für Partner-Portal-Updates. Kontext: DAM-Trigger bei Asset-Update, Tier-1-Sofort-E-Mail vs. Tier-2-Digest, HITL bei Preislisten-Updates. Format: Webhook-Trigger, Logic-Tier-Node, AI-E-Mail-Node, HITL, Portal-CMS-Action."
 **Erwartetes Artefakt:** Ein Partner-Portal-Update-Workflow-Entwurf mit Tier-Segmentierungslogik, AI-generierter Kommunikation und HITL-Gate für sensible Assets.
 **Fallstricke (≥2 spezifisch):**
@@ -995,7 +995,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 1. Ein Form-Trigger sammelt strukturierte Eingaben der Mitarbeiter: Name, Rolle, 3 Lieblingsaufgaben, ein persönliches Zitat und ein optionaler Fun-Fact — vordefinierte Felder erhöhen die Datenqualität für den AI-Node.
 2. Ein AI-Node generiert drei Textvarianten aus denselben Inputs: (a) Intranet-Kurzprofil (80 Wörter), (b) LinkedIn-Post (150 Wörter mit Hashtags), (c) Karriereseiten-Teaser (50 Wörter) — alle drei gegen den Employer-Branding-Wissensordner gebunden.
 3. Ein HITL-Node ermöglicht dem HR-Team und der betreffenden Person die Freigabe oder Anpassung aller Varianten; nach Freigabe legt ein Action-Node einen Notion-Entwurf für die weitere Veröffentlichung an.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Employer-Branding-Workflow-Architekt. Entwirf einen Form-Trigger-Workflow für Mitarbeiter-Spotlights. Kontext: Strukturiertes Eingabeformular, drei Textlängen (Intranet, LinkedIn, Karriere), Bindung an Employer-Branding-Wissensordner, HITL-Freigabe durch HR + Mitarbeiter. Format: Form-Trigger, AI-Node mit drei Outputs, HITL, Notion-Action."
 **Erwartetes Artefakt:** Ein Spotlight-Workflow-Entwurf mit Formular-Design, dreifachem AI-Output-Schema und Employer-Branding-gebundenem Wissensordner-Link.
 **Fallstricke (≥2 spezifisch):**
@@ -1014,7 +1014,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Logic-Node eine Wartezeit von 3–5 Tagen einplanen lassen (Zeitversatz-Node), danach nach Kundensegment verzweigen: B2B → G2/Capterra-Anfrage; B2C → Google/Trustpilot-Anfrage.
 3. Ein AI-Node generiert eine kurze, personalisierte Bewertungsanfrage-E-Mail mit direktem Bewertungslink — Structured Output: Betreffzeile, Body-Text, CTA-Button-Label; Tonalität richtet sich nach Kundensegment aus dem Wissensordner.
 4. Ein HITL-Node legt die segment-spezifischen E-Mail-Templates einmalig zur Freigabe vor und zieht bei jedem Lauf eine Stichprobe (z. B. 10 %) zur Qualitätskontrolle; erst nach Freigabe versendet ein Action-Node die E-Mail und protokolliert die Anfrage im CRM als Aktivität, damit Sales keine doppelten Anfragen stellt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Review-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Kundenbewertungsanfragen. Kontext: CRM-Kauf-Event, 3-5 Tage Verzögerung, B2B-vs-B2C-Segmentverzweigung, personalisierte KI-E-Mail mit Review-Link, HITL-Template-Freigabe vor Versand. Format: Trigger, Delay-Logic, Segment-Verzweigung, AI-E-Mail-Node, HITL-Gate, E-Mail-Action + CRM-Protokollierung."
 **Erwartetes Artefakt:** Ein Review-Anfrage-Workflow-Entwurf mit Timing-Logik, Segment-Verzweigung und personalisierten AI-E-Mail-Templates.
 **Fallstricke (≥2 spezifisch):**
@@ -1034,7 +1034,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Logic-Node prüfen lassen: (a) Gibt es Wartelisten-Einträge für dieses Produkt? (b) Ist die verfügbare Menge groß genug, um alle Wartelisten-Kunden zu bedienen? Falls ja, vollständige Liste; falls nein, nach Wartelistenposition priorisieren und ein Per-Execution-Limit setzen.
 3. Ein AI-Node befüllt ein zuvor per HITL freigegebenes Nachrichten-Template mit Produktname, direktem Checkout-Link und optionalem Scarcity-Element (z. B. „Nur noch 12 Stück verfügbar") — da der Echtzeit-Alert keinen Versand-HITL erlaubt, wird das Template einmalig vom Marketing freigegeben und runtime nur datenbefüllt.
 4. Action-Nodes versenden E-Mails und/oder Push-Benachrichtigungen auf Basis des freigegebenen Templates; nach Versand aktualisiert ein CRM-Action-Node den Wartelisten-Status des Kontakts auf „Benachrichtigt".
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist E-Commerce-Workflow-Architekt. Entwirf einen Webhook-Workflow für Produktverfügbarkeits-Alerts. Kontext: Lager-Webhook bei Bestandsänderung, Wartelisten-Abfrage, Priorisierung bei Teilmengen, vorab per HITL freigegebenes Alert-Template, das runtime nur datenbefüllt wird. Format: Webhook-Trigger, Logic-Wartelisten-Node, HITL-Template-Gate, AI-Befüllungs-Node, E-Mail-Action, CRM-Status-Update."
 **Erwartetes Artefakt:** Ein Verfügbarkeits-Alert-Workflow-Entwurf mit Priorisierungslogik, HITL-freigegebenem Template und CRM-Status-Protokollierung.
 **Fallstricke (≥2 spezifisch):**
@@ -1054,7 +1054,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Logic-Node prüfen: Welche Cross-Sell-Produkte aus der definierten Empfehlungsmatrix (hinterlegt im Wissensordner) passen zum gekauften Produkt, und hat der Kunde diese bereits gekauft? Nur nicht-gekaufte, kompatible Produkte passieren den Node.
 3. Ein AI-Node generiert eine E-Mail, die das Cross-Sell-Produkt explizit mit dem Kauf verknüpft (z. B. „Da du X gekauft hast, ergänzt Y perfekt, weil…") — Structured Output: Betreffzeile, Empfehlungsbegründung (2 Sätze), CTA.
 4. Einen Timing-Logic-Node eine Verzögerung von 7 Tagen nach Kauf einplanen, bevor der Action-Node die E-Mail versendet; ein HITL-Node hält neue Produktkombinationen für manuelle Prüfung an.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Cross-Sell-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für personalisierte Produktempfehlungen. Kontext: CRM-Kauf-Trigger, Empfehlungsmatrix im Wissensordner, 7-Tage-Verzögerung, KI-begründete E-Mail ohne bereits gekaufte Produkte. Format: Trigger, Logic-Ausschluss-Node, AI-E-Mail-Node, Timing-Node, E-Mail-Action."
 **Erwartetes Artefakt:** Ein Cross-Sell-Workflow-Entwurf mit Empfehlungsmatrix-Integration, Kaufhistorien-Filter und AI-begründetem E-Mail-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1073,7 +1073,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Logic-Node die drei Eskalationsstufen verwalten lassen: 60-Tage-E-Mail (weicher Hinweis + Verlängerungsangebot), 30-Tage-E-Mail (konkretes Angebot + Preisinfo), 7-Tage-E-Mail (Dringlichkeits-CTA + direkter Checkout-Link).
 3. Ein AI-Node generiert je Stufe eine tonalitätsgerechte E-Mail — Structured Output: Betreff, Eskalationsstufen-angepasster Body, CTA-Text; Inputs sind Kundenname, Produktbezeichnung, genaues Ablaufdatum und Verlängerungsoptionen aus dem Wissensordner.
 4. Ein HITL-Node legt die drei Stufen-Templates samt kommunizierten Preisen dem Retention-Lead einmalig zur Freigabe vor (bei Preisänderung erneut); erst nach Freigabe versenden Action-Nodes die datenbefüllte E-Mail und schreiben die Aktivität ins CRM, damit der Vertrieb den Kommunikationsverlauf nachverfolgen kann.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retention-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für Garantie-Ablauf-Erinnerungen. Kontext: Tägliche CRM-Abfrage nach 60/30/7-Tage-Ablauf, drei Eskalationsstufen mit unterschiedlichem Tonfall und CTA, HITL-Template- und Preis-Freigabe vor Versand. Format: Scheduled-Trigger, CRM-Abfrage-Node, Logic-Eskalation, AI-Node je Stufe, HITL-Gate, E-Mail-Action + CRM-Log."
 **Erwartetes Artefakt:** Ein Garantie-Erinnerungs-Workflow-Entwurf mit dreistufiger Eskalationslogik, stufenspezifischen AI-Prompt-Varianten, HITL-Preis-Freigabe und CRM-Aktivitätsprotokollierung.
 **Fallstricke (≥2 spezifisch):**
@@ -1092,7 +1092,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Logic-Node nach Schulungstyp verzweigen lassen: Pflichtschulungen → HITL-Node für HR-Freigabe, dann Einschreibung aller Zielgruppen und Fristkommunikation; optionale Schulungen → direkte Benachrichtigung ohne HITL.
 3. Ein AI-Node generiert je Zielgruppe eine rollenspezifische Ankündigungs-E-Mail (z. B. andere Betonung für Führungskräfte vs. Sachbearbeiter) — Structured Output: Betreff, relevante-Nutzen-Paragraph, CTA mit Kurs-Link und Fristangabe.
 4. Action-Nodes versenden E-Mails, erstellen einen optionalen Kalender-Block für synchrone Sessions und enrollen Zielgruppen im LMS, falls das System eine API bietet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist L&D-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Schulungsmaterial-Distribution. Kontext: LMS-Trigger bei Kursveröffentlichung, Pflicht-vs-Optional-Verzweigung, HITL bei Pflichtschulungen, rollenangepasste KI-Ankündigungs-E-Mail. Format: Trigger, Logic-Typ-Node, HITL für Pflicht, AI-Node mit Rollen-Anpassung, E-Mail+LMS-Actions."
 **Erwartetes Artefakt:** Ein Schulungsverteilungs-Workflow-Entwurf mit Pflicht/Optional-Logik, rollenspezifischem AI-E-Mail-Schema und LMS-Enrollment-Action.
 **Fallstricke (≥2 spezifisch):**
@@ -1111,7 +1111,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Ein AI-Node prüft jeden angereicherten Datensatz auf drei Plausibilitätsdimensionen: (a) Feldwerte passen logisch zusammen (z. B. 5-Personen-Unternehmen mit Fortune-500-Umsatz), (b) Felder enthalten keine offensichtlichen Formatfehler, (c) kritische Felder (E-Mail, Unternehmensname) stimmen mit vorhandenen CRM-Daten überein — Structured Output: Qualitäts-Score (0–100), Flag-Typ, betroffene Felder.
 3. Einen Logic-Node nach Qualitäts-Score verzweigen: Score >80 → direkte CRM-Aktualisierung; Score 50–80 → HITL-Node für manuelle Prüfung; Score <50 → Quarantäne-Tag im CRM, keine Aktualisierung.
 4. Action-Nodes schreiben entweder die validierten Felder ins CRM oder setzen den Quarantäne-Tag; alle Entscheidungen landen im Audit-Log.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Datenqualitäts-Workflow-Architekt. Entwirf einen Webhook-Validierungs-Workflow für CRM-Anreicherungsdaten. Kontext: Post-Anreicherungs-Webhook, AI-Plausibilitätsprüfung auf drei Dimensionen, Scoring-Routing (>80 direkt/50-80 HITL/<50 Quarantäne). Format: Webhook-Trigger, AI-Validierungs-Node mit Score-Schema, Logic-Routing, CRM-Update-Action + Quarantäne-Action."
 **Erwartetes Artefakt:** Ein Datenvalidierungs-Workflow-Entwurf mit dreistufigem Qualitäts-Routing, AI-Plausibilitäts-Score-Schema und CRM-Quarantäne-Logik.
 **Fallstricke (≥2 spezifisch):**
@@ -1130,7 +1130,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Ein AI-Node aggregiert die Rohdaten und priorisiert nach drei Kriterien: (1) Kostentreiber (hoher Token-Verbrauch + niedriger Output-Wert), (2) Sicherheitsrisiken (abgelaufene oder demnächst ablaufende API-Keys), (3) Workspace-Ballast (Agenten/Workflows seit >60 Tagen inaktiv) — Structured Output: je Kategorie eine priorisierte Handlungsliste.
 3. Ein HITL-Node präsentiert dem Workspace-Admin den priorisierten Action-Plan zur Freigabe oder Anpassung, bevor Maßnahmen empfohlen werden.
 4. Action-Nodes publizieren den Gesundheitsbericht als Notion-Seite und senden einen Slack-Alert mit den Top-3-Sofortmaßnahmen an den Admin-Channel.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workspace-Governance-Architekt. Entwirf einen monatlichen Health-Check-Workflow für einen Langdock-Workspace. Kontext: Workspace-API-Abfragen (Agenten, Workflows, API-Keys, Token-Verbrauch), AI-Priorisierung nach Kosten/Sicherheit/Ballast, HITL für Admin-Freigabe. Format: Scheduled-Trigger, API-Integration-Nodes, AI-Anomalie-Node, HITL, Slack+Notion-Actions."
 **Erwartetes Artefakt:** Ein Workspace-Health-Check-Workflow-Entwurf mit API-Integrations-Architektur, dreidimensionalem Priorisierungsschema und Admin-Freigabe-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -1149,7 +1149,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Ein AI-Node generiert saisonale Textvarianten für alle betroffenen Touchpoints (Hero-Headline, E-Mail-Betreffzeilen, Social-Media-Captions) auf Basis der saisonalen Briefing-Parameter im Wissensordner — Structured Output: ein Objekt je Touchpoint mit Kanal, Textvariante und Aktivierungsdatum.
 3. Ein HITL-Node präsentiert alle generierten Varianten und geplanten Asset-Swaps in einer Staging-Übersicht; das Content-Team prüft und gibt Kanal für Kanal frei oder blockt einzelne Swaps.
 4. Nach Freigabe führen parallele Action-Nodes die Asset-Swaps im CMS, E-Mail-Tool und Social-Scheduling-Tool durch; das Rollback-Snapshot-Datum wird für eine mögliche Rückabwicklung dokumentiert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Saisonaler-Content-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für saisonale Content-Swaps. Kontext: Aktivierungsdatum-Trigger, Rollback-Snapshot vor Swap, KI-generierte Text-Varianten je Touchpoint, HITL-Staging-Freigabe, parallele CMS+E-Mail+Social-Actions. Format: Trigger, Snapshot-Action, AI-Varianten-Node, HITL, parallele Swap-Actions."
 **Erwartetes Artefakt:** Ein Saisonaler-Content-Swap-Workflow-Entwurf mit Rollback-Snapshot-Architektur, HITL-Staging-Gate und parallelen Multi-Kanal-Swap-Actions.
 **Fallstricke (≥2 spezifisch):**
@@ -1168,7 +1168,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node die Zielsprachen iterieren lassen; für jede Sprache führt ein DeepL-Node die Rohübersetzung durch, gefolgt von einem AI-Node, der (a) Brand-Voice-Konformität, (b) Fachterminologie gegen das sprachspezifische Glossar im Wissensordner und (c) kulturelle Adäquatheit prüft — Structured Output: Korrektur-Flags + bereinigte Textversion.
 3. Für jede Sprache folgt ein HITL-Node, an dem der zuständige Sprachredakteur die bereinigte Version freigibt oder anpasst — parallele HITL-Gates ermöglichen gleichzeitige Bearbeitung durch verschiedene Redakteure.
 4. Nach Freigabe veröffentlicht ein CRM-/CMS-Action-Node die jeweilige Sprachversion automatisch.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Multilingual-Content-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für mehrsprachige Content-Synchronisation. Kontext: CMS-Trigger bei DE-Artikel-Publikation, Loop über Zielsprachen, DeepL-Rohübersetzung, AI-Brand-Voice+Glossar-Check je Sprache, parallele HITL-Gates, CMS-Veröffentlichungs-Actions. Format: Trigger, Loop-Node, DeepL+AI-Nodes, HITL je Sprache, CMS-Action."
 **Erwartetes Artefakt:** Ein Mehrsprachen-Sync-Workflow-Entwurf mit Loop-Architektur, sprachspezifischen AI-Check-Nodes, parallelen HITL-Gates und CMS-Publikations-Actions.
 **Fallstricke (≥2 spezifisch):**
@@ -1187,7 +1187,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Ein AI-Node analysiert jeden Freitext: Sentiment-Score (0–100), Kategorie (Bug/UX/Feature-Request/Preisbeschwerde/Lob), betroffene Produktkomponente und ein konkreter Lösungsvorschlag basierend auf der Wissensbasis — Structured Output mit allen vier Feldern.
 3. Einen Logic-Node nach Schwellenwert routen lassen: Sentiment <30 → sofortiges Jira-Ticket + Slack-Alert an Product-Owner; Sentiment 30–60 → Jira-Ticket in Backlog; >60 → Aggregation in Wochen-Digest ohne Sofort-Action; kritische Muster (≥3 ähnliche Beschwerden in 24 Stunden) → HITL-Node für Product-Manager-Freigabe.
 4. Action-Nodes erstellen strukturierte Jira-Tickets (mit Kategorie, Schweregrad und AI-Lösungsvorschlag) und senden bei kritischen Tickets eine Slack-Benachrichtigung an den zuständigen Product-Owner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Product-Feedback-Workflow-Architekt. Entwirf einen Webhook-Workflow für feedback-gesteuerte Produktverbesserungen. Kontext: Multi-Source-Feedback-Webhook, AI-Sentiment+Kategorisierung, Schwellenwert-Routing (<30 Sofort-Ticket/>30 Backlog/>60 Digest), Muster-Erkennung bei ≥3 ähnlichen Beschwerden in 24h → HITL. Format: Webhook-Trigger, AI-Analyse-Node, Logic-Routing, HITL bei Muster, Jira+Slack-Actions."
 **Erwartetes Artefakt:** Ein Feedback-Verarbeitungs-Workflow-Entwurf mit Sentiment-Score-Schema, mehrstufigem Routing, Muster-Erkennungs-Logik und strukturiertem Jira-Ticket-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1202,12 +1202,12 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 **Hands-on Ergebnis:** Ein Architektur-Entwurf für einen zeitgesteuerten Quartalsbericht-Workflow mit Multi-Source-Datenaggregation, AI-Narrativgenerierung und HITL-Editier-Gate.
 **Eingesetzte Langdock-Fähigkeit(en):** Workflow (Scheduled-Trigger), Integration-Nodes (GA4, HubSpot, Ad-Plattformen via HTTP-Request), AI-Node (Dateninterpretation + Executive-Narrative + KPI-Kommentar, Structured Output), HITL-Node, Action-Node (Google-Slides oder Notion-Deck-Export)
 **Vorgehen (5 Schritte):**
-1. Den Scheduled-Trigger auf den ersten Arbeitstag nach Quartalsende setzen; parallele Integration-Nodes rufen Daten ab: GA4 (Traffic, Conversions), HubSpot (Leads, MQL-SQL-Conversion), Ad-Plattformen (Spend, ROAS), Social (Reichweite, Engagement) — alle als strukturiertes JSON.
-2. Einen Aggregations-AI-Node alle Rohdaten in ein konsolidiertes Quartals-KPI-Objekt zusammenführen lassen: Vergleich zum Vorquartal, Delta je KPI, Top-3-Ausreißer (positiv/negativ) — Structured Output für die Weiterverarbeitung.
+1. Scheduled-Trigger auf den ersten Arbeitstag nach Quartalsende; parallele Integration-Nodes rufen Daten ab — GA4, HubSpot, Ad-Plattformen, Social — alle als strukturiertes JSON.
+2. Aggregations-AI-Node konsolidiert die Rohdaten zu einem Quartals-KPI-Objekt (Vergleich zum Vorquartal, Delta je KPI, Top-3-Ausreißer) als Structured Output.
 3. Einen zweiten AI-Node eine C-Level-Narrative aus dem KPI-Objekt generieren lassen: Executive-Summary (3 Bulletpoints), Slide-Empfehlungen je Kapitel (What worked/What didn't/What's next), kurze Speaker-Notes je Folie — Structured Output nach Deck-Struktur.
 4. Ein HITL-Node öffnet ein Editierfenster für die Marketing-Direktorin: Sie prüft KPI-Werte, ergänzt strategische Einordnungen und gibt die Narrative frei oder fordert Nachbesserung an.
 5. Nach Freigabe exportiert ein Action-Node den strukturierten Output als Google-Slides-Entwurf (via API) oder Notion-Seite und sendet einen Slack-Link an den CMO-Channel.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Quartalsbericht-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für den Marketing-Quartalsbericht. Kontext: Post-Quartals-Trigger, parallele Datenaggregation aus GA4+HubSpot+Ad-Plattformen, zweistufige AI-Nodes (KPI-Aggregation → Executive-Narrative), HITL-Editier-Gate, Google-Slides/Notion-Export. Format: Trigger, parallele Integration-Nodes, Aggregations-AI-Node, Narrativ-AI-Node, HITL, Deck-Export-Action."
 **Erwartetes Artefakt:** Ein Quartalsbericht-Workflow-Entwurf mit paralleler Daten-Integrations-Architektur, zweistufigem AI-Node-Design (KPI-Objekt → Deck-Narrative) und HITL-Editier-Gate vor dem Export.
 **Fallstricke (≥2 spezifisch):**
@@ -1226,7 +1226,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen HTTP-Request-Node die E-Mail-Domain gegen eine Firmographics-Quelle anreichern lassen (Branche, Größe, Region).
 3. Einen AI-Node einen Score mit erzwungenem JSON-Schema (score 0–100, begründung, negativ_signale) berechnen lassen — inklusive disqualifizierender Signale wie Freemail-Domain.
 4. Einen Condition-Node bei Score ≥ Schwelle den Kontakt als „Sales-Ready" markieren, sonst ins Nurturing routen — interne Markierung, kein automatischer Kunden-Kontakt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lead-Scoring-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow, der neue CRM-Kontakte anreichert und scort. Kontext: Firmographics-Enrichment via HTTP-Request, JSON-Score mit Negativ-Signalen, Schwellen-Routing. Format: Trigger, Enrichment-Node, AI-Node mit Score-Schema, Condition."
 **Erwartetes Artefakt:** Ein Scoring-Workflow-Entwurf mit Enrichment-Schritt und JSON-Score-Schema inklusive disqualifizierender Signale.
 **Fallstricke (≥2 spezifisch):**
@@ -1245,7 +1245,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node zwei Recovery-Mails entwerfen lassen, gebunden an das Einwandbehandlungs-Playbook: Mail 1 nimmt Implementierungs-Angst, Mail 2 betont den ROI.
 3. Einen HITL-Node vor jedem externen Versand zwingend einplanen, damit die Sequenz geprüft und freigegeben wird.
 4. Nach Freigabe einen Action-Node die freigegebene Sequenz an das E-Mail-Tool übergeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retention-Workflow-Architekt. Entwirf eine Abandoned-Cart-Pipeline für den Jahresplan. Kontext: Einwandbehandlung aus Wissensordner, keine vorschnellen Rabatte, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Playbook-Bindung, HITL vor Versand, Übergabe-Action."
 **Erwartetes Artefakt:** Ein Abandoned-Cart-Workflow-Entwurf mit zweistufiger Sequenz-Logik und verpflichtendem Freigabe-Schritt.
 **Fallstricke (≥2 spezifisch):**
@@ -1264,7 +1264,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node über die Kontakte iterieren und einen AI-Node je Kontakt das Segment (Preis-Interesse / Wettbewerb / Allgemein) sowie einen passenden Entwurf bestimmen lassen.
 3. Die Entwürfe als JSON-Array sammeln und einen HITL-Node die Batch-Freigabe vor dem Versand durchführen lassen.
 4. Nach Freigabe einen Action-Node die Entwürfe an das CRM/E-Mail-Tool übergeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Event-Follow-up-Architekt. Entwirf einen Loop-Workflow für Badge-Scan-Leads. Kontext: Segmentierung nach Notizen, drei Follow-up-Varianten, kein automatischer Versand. Format: Manual-Trigger, Loop-Node, AI-Node mit Segment-Schema, HITL-Batch-Freigabe."
 **Erwartetes Artefakt:** Ein Event-Follow-up-Workflow-Entwurf mit Segment-Schema und Batch-Freigabe-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1283,7 +1283,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Assets über den Monat verteilen lassen — fester Rhythmus (z. B. drei Posts pro Woche), Format-Mix, Strukturierung als JSON-Tabelle.
 3. Feiertage und Sperrtage als Parameter übergeben, damit keine Posts auf ungeeignete Tage fallen.
 4. Einen Action-Node den befüllten Plan in ein Google-Sheet schreiben lassen — interne Ablage als Entwurf, keine automatische Veröffentlichung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Kalender-Architekt. Entwirf einen Scheduled-Trigger-Workflow, der eine Asset-Liste über den Monat verteilt. Kontext: drei Posts pro Woche, Format-Mix, Feiertage berücksichtigen, nur interner Entwurf. Format: Trigger, AI-Node mit Verteilungs-Schema, Sheets-Action."
 **Erwartetes Artefakt:** Ein Kalender-Workflow-Entwurf mit Verteilungs-Schema und Feiertags-Parameter.
 **Fallstricke (≥2 spezifisch):**
@@ -1302,7 +1302,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Erwähnungen auf die Top-3-Themen verdichten und Sentiment sowie Volumen als Structured Output ausgeben lassen.
 3. Einen Condition-Node nur bei Volumen oder Negativ-Sentiment über Schwelle eine Slack-Meldung auslösen lassen — darunter stille Protokollierung.
 4. Die Slack-Nachricht mit Themen, Sentiment und einer Reaktiv-Idee befüllen — nur intern, kein automatischer Post.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Listening-Workflow-Architekt. Entwirf einen Webhook-Alert für Erwähnungs-Ausschläge. Kontext: Top-3-Themen, Sentiment, Schwellen-Eskalation, nur intern. Format: Webhook-Trigger, AI-Node mit Themen-Schema, Condition, Slack-Action."
 **Erwartetes Artefakt:** Ein Listening-Alert-Workflow-Entwurf mit Verdichtungs-Schema und Eskalations-Schwelle.
 **Fallstricke (≥2 spezifisch):**
@@ -1321,7 +1321,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Condition-Node prüfen lassen, ob der Kontakt nicht kürzlich bereits befragt wurde (Frequenz-Schutz).
 3. Einen AI-Node ein kurzes, segmentgerechtes NPS-Anschreiben mit Survey-Link entwerfen lassen.
 4. Einen HITL-Node vor jedem externen Versand zwingend einplanen; nach Freigabe übergibt ein Action-Node an das E-Mail-Tool.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lifecycle-Workflow-Architekt. Entwirf einen NPS-Dispatch-Workflow nach Lifecycle-Meilenstein. Kontext: Frequenz-Schutz gegen Doppelbefragung, segmentgerechtes Anschreiben, kein automatischer Versand. Format: Integration-Trigger, Condition, AI-Node, HITL vor Versand."
 **Erwartetes Artefakt:** Ein NPS-Dispatch-Workflow-Entwurf mit Frequenz-Schutz-Logik und Freigabe-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1340,7 +1340,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node eine Bestätigung entwerfen lassen, die passende Vorbereitungs-Ressourcen aus dem Wissensordner referenziert.
 3. Einen HITL-Node vor dem externen Versand einplanen, damit Inhalt und Ressourcen-Auswahl geprüft werden.
 4. Nach Freigabe einen Action-Node die Bestätigung samt Kalender-Asset (ICS-Link) an das E-Mail-Tool übergeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lifecycle-Workflow-Architekt. Entwirf eine Webinar-Bestätigungs-Pipeline. Kontext: Kalendereintrag plus Vorbereitungs-Ressourcen aus Wissensordner, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Ressourcen-Bindung, HITL, Versand-Action."
 **Erwartetes Artefakt:** Ein Bestätigungs-Workflow-Entwurf mit Ressourcen-Mapping und Freigabe-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1359,7 +1359,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node den aktuellen Stand gegen den gespeicherten Vorstand vergleichen und Änderungen als Structured Output (Tier, alt, neu, Delta) ausgeben lassen.
 3. Nur bei tatsächlicher Änderung eine Slack-Meldung mit konkreten Werten und kurzer Einordnung auslösen.
 4. Den neuen Stand als Referenz für den nächsten Lauf speichern — nur interne Meldung, keine automatische Reaktion.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Workflow-Architekt. Entwirf einen täglichen Preis-Monitoring-Workflow. Kontext: feste Pricing-Seiten, nur bei echter Änderung melden, intern. Format: Scheduled-Trigger, Abruf-Node, AI-Vergleichs-Node mit Delta-Schema, Slack-Action."
 **Erwartetes Artefakt:** Ein Preis-Monitoring-Workflow-Entwurf mit Delta-Schema und Referenz-Speicherung.
 **Fallstricke (≥2 spezifisch):**
@@ -1378,7 +1378,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node je Frage den passenden Baustein aus dem Wissensordner abrufen und eine Antwort mit Quellenverweis zusammenstellen lassen.
 3. Lücken (keine Quelle gefunden) explizit als „manuell ergänzen" markieren statt sie zu erfinden.
 4. Einen HITL-Node vor der Abgabe einplanen, in dem die Verantwortliche jede Antwort prüft und freigibt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RFP-Workflow-Architekt. Entwirf einen Assembly-Workflow für Ausschreibungs-Antworten. Kontext: Bausteine aus Wissensordner, Lücken markieren statt erfinden, menschliche Endkontrolle. Format: Manual-Trigger, AI-Node mit Baustein-Bindung, Lücken-Markierung, HITL vor Abgabe."
 **Erwartetes Artefakt:** Ein RFP-Assembly-Workflow-Entwurf mit Baustein-Mapping und Lücken-Markierungs-Logik.
 **Fallstricke (≥2 spezifisch):**
@@ -1397,7 +1397,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die aktuellen Blogs zusammenfassen und eine geprüfte Branchen-News aus der Web Search ergänzen lassen — gebunden an die Brand-Voice.
 3. Negativ-Keywords für die News-Suche setzen, damit keine Wettbewerber- oder Risiko-Inhalte einfließen.
 4. Einen HITL-Node für die redaktionelle Freigabe vor dem Übergang ins E-Mail-Tool zwingend einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Newsletter-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für den wöchentlichen Newsletter. Kontext: Blogs plus eine geprüfte Branchen-News, Brand-Voice, Negativ-Keywords, kein automatischer Versand. Format: Trigger, Web-Search-AI-Node, HITL vor Versand."
 **Erwartetes Artefakt:** Ein Newsletter-Assembly-Workflow-Entwurf mit Negativ-Keyword-Filter und Freigabe-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1416,7 +1416,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node iterieren und einen AI-Node je Kontakt eine lockere, plattformgerechte DM mit echtem Post-Bezug entwerfen lassen.
 3. Die Entwürfe als JSON-Array sammeln und einen HITL-Node die Batch-Prüfung vor dem Versand durchführen lassen.
 4. Nach Freigabe übergibt ein Action-Node die Entwürfe an das jeweilige Tool — kein automatischer Versand.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Influencer-Outreach-Workflow-Architekt. Entwirf einen Loop-Workflow für personalisierte DMs. Kontext: Bezug auf letzten Post, lockerer DM-Ton, kein automatischer Versand. Format: Manual-Trigger, Loop-Node, AI-Node mit DM-Schema, HITL-Batch-Freigabe."
 **Erwartetes Artefakt:** Ein Outreach-Workflow-Entwurf mit Personalisierungs-Logik und Batch-Freigabe-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1435,7 +1435,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Condition-Node die seit Übergabe verstrichene Zeit gegen die SLA-Frist prüfen lassen.
 3. Bei Überschreitung einen Action-Node eine eindeutige Slack-Eskalation mit Lead-Name, Owner und Verzugsdauer auslösen lassen.
 4. Eine zweite Eskalationsstufe an die Teamleitung einplanen, falls die Frist deutlich überschritten wird — interne Meldung, kein Kunden-Kontakt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RevOps-Workflow-Architekt. Entwirf einen SLA-Eskalations-Workflow für die Lead-Übergabe. Kontext: maximale Follow-up-Zeit, zweistufige interne Eskalation, kein Kunden-Kontakt. Format: Trigger/Check, Condition mit Zeitvergleich, Slack-Eskalations-Actions."
 **Erwartetes Artefakt:** Ein SLA-Eskalations-Workflow-Entwurf mit Frist-Logik und zweistufiger Eskalationskette.
 **Fallstricke (≥2 spezifisch):**
@@ -1454,7 +1454,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen Loop-Node iterieren und einen AI-Node mit Flash-Modell je String lokalisieren und die Anrede grammatikalisch korrekt umstellen lassen — gebunden an das Glossar.
 3. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit prüfen und die Warn-Schwellen setzen.
 4. Einen HITL-Node für die native Muttersprachler-Prüfung vor dem Live-Gang einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungs-Workflow-Architekt. Entwirf eine Batch-Pipeline für Tonalitäts-Umstellung (Du→Sie) vieler Text-Strings. Kontext: Flash-Modell für Kosten, Glossar im Wissensordner, native Prüfung vor Live-Gang. Format: Manual-Trigger, Loop-Node, AI-Node-Konfiguration, HITL, Kostenschätzung."
 **Erwartetes Artefakt:** Ein Lokalisierungs-Workflow-Entwurf mit Loop-Logik, Glossar-Bindung und Kostenschätzung pro Lauf.
 **Fallstricke (≥2 spezifisch):**
@@ -1473,7 +1473,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node den Asset-Typ mit festem Enum klassifizieren lassen (Design / Text / Web / Performance).
 3. Condition-Nodes je Typ den zuständigen Freigeber bestimmen und einen HITL-Node mit klarer Prüf-Instruktion ansteuern.
 4. Nach Freigabe einen Action-Node den Ersteller intern benachrichtigen lassen — kein automatisches Publizieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Asset-Routing-Workflow-Architekt. Entwirf einen Freigabe-Routing-Workflow für Kreativ-Assets. Kontext: Klassifizierung in Design/Text/Web/Performance, je Typ ein Freigeber, kein Auto-Publish. Format: Webhook-Trigger, AI-Node mit Enum-Schema, Condition-Routing, HITL, Benachrichtigung."
 **Erwartetes Artefakt:** Ein Freigabe-Routing-Workflow-Entwurf mit Enum-Klassifizierung und Freigeber-Zuordnung.
 **Fallstricke (≥2 spezifisch):**
@@ -1492,7 +1492,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node die Eingaben gegen die erlaubten Werte der UTM-Taxonomie prüfen und normalisieren lassen (z. B. Kleinschreibung erzwingen).
 3. Bei unzulässigen Werten den Nutzer auf die erlaubten Optionen hinweisen statt einen ungültigen Tag zu erzeugen.
 4. Einen Action-Node den finalen, vollständigen Tracking-Link intern ablegen — keine externe Aktion.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist UTM-Governance-Workflow-Architekt. Entwirf einen Form-Trigger-Workflow, der taxonomie-konforme UTM-Links erzeugt. Kontext: feste erlaubte Werte, Kleinschreibung erzwingen, ungültige Eingaben abweisen. Format: Form-Trigger, AI-Validierungs-Node mit Taxonomie, Ablage-Action."
 **Erwartetes Artefakt:** Ein UTM-Generator-Workflow-Entwurf mit Taxonomie-Validierung und Normalisierungs-Regeln.
 **Fallstricke (≥2 spezifisch):**
@@ -1511,7 +1511,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node Header normalisieren, PII entfernen und je Zeile ein Validitäts-Flag mit Begründung als Structured Output ausgeben lassen.
 3. Einen Condition-Node valide Zeilen in die Master-Datei und fehlerhafte Zeilen in eine Quarantäne-Ablage routen lassen.
 4. Eine interne Meldung über Anzahl und Art der Quarantäne-Fälle auslösen — keine stille Verwerfung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Data-Quality-Workflow-Architekt. Entwirf einen Validierungs-Workflow vor dem BI-Import. Kontext: Normalisierung, PII-Entfernung, Validitäts-Flag je Zeile, Quarantäne statt Verwerfen. Format: Webhook-Trigger, AI-Node mit Validitäts-Schema, Condition-Routing, Quarantäne-Action."
 **Erwartetes Artefakt:** Ein Validierungs-Workflow-Entwurf mit Validitäts-Schema und Quarantäne-Pfad.
 **Fallstricke (≥2 spezifisch):**
@@ -1530,7 +1530,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node mehrere Signale zu einem Risiko-Score mit Begründung und Auslöse-Event verdichten lassen — Structured Output.
 3. Nur bei Score über Schwelle eine Slack-Meldung an Customer Success mit konkretem Account und Treibern auslösen.
 4. Die Meldung um einen Empfehlungs-Satz ergänzen — interne Meldung, keine automatische Kunden-Aktion.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retention-Workflow-Architekt. Entwirf einen wöchentlichen Churn-Risiko-Workflow. Kontext: Nutzungs- plus NPS-Signale, Risiko-Score mit Treibern, Schwellen-Meldung an Customer Success, keine automatische Kunden-Aktion. Format: Scheduled-Trigger, Integration, AI-Node mit Risiko-Schema, Slack-Action."
 **Erwartetes Artefakt:** Ein Churn-Risiko-Workflow-Entwurf mit Signal-Aggregation und Risiko-Schema.
 **Fallstricke (≥2 spezifisch):**
@@ -1549,7 +1549,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node mit Web Search die öffentlichen Ziele und Werte des Partners recherchieren und mit der eigenen Mission abgleichen lassen.
 3. Drei konkrete gemeinsame Kampagnen-Ideen plus einen Pitch-Entwurf als Structured Output erzeugen lassen.
 4. Einen HITL-Node vor jeder Außenkommunikation einplanen, der Fakten und Tonalität prüft.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Partnership-Workflow-Architekt. Entwirf einen Co-Marketing-Brief-Workflow. Kontext: öffentliche Werte des Partners via Web Search, drei gemeinsame Kampagnen-Ideen, Prüfung vor Außenkommunikation. Format: Manual-Trigger, Web-Search-AI-Node mit Werte-Abgleich, HITL."
 **Erwartetes Artefakt:** Ein Co-Marketing-Brief-Workflow-Entwurf mit Werte-Abgleich und drei Kampagnen-Ideen.
 **Fallstricke (≥2 spezifisch):**
@@ -1568,7 +1568,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 2. Einen AI-Node mit Web Search themen-passende Journalisten (Name, Medium, letzter Beitrag) recherchieren lassen — ohne E-Mail-Adressen zu erfinden.
 3. Je Journalist einen kurzen, personalisierten Pitch entwerfen lassen, der den letzten Beitrag analytisch aufgreift.
 4. Einen HITL-Node vor jedem Versand zwingend einplanen, der Liste und Pitches prüft und freigibt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Distributions-Workflow-Architekt. Entwirf einen Workflow zur Verteilung einer Pressemitteilung an eine kuratierte Medienliste. Kontext: themen-passende Journalisten via Web Search, personalisierte Pitches, keine erfundenen Kontaktdaten, kein automatischer Versand. Format: Manual-Trigger, Web-Search-Node, AI-Pitch-Node, HITL vor Versand."
 **Erwartetes Artefakt:** Ein PR-Distributions-Workflow-Entwurf mit Medien-Recherche-Logik und Freigabe-Punkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1588,7 +1588,7 @@ Jedes Szenario beschreibt eine Workflow-Architektur, die Little Data **berät, a
 3. Einen AI-Node die Rohdaten zu einem KPI-Objekt mit Vorquartals-Delta und Top-Ausreißern aggregieren lassen — Structured Output, Daten von Deutung getrennt.
 4. Einen HITL-Node einplanen, in dem die Leitung Werte prüft und die strategische Interpretation freigibt.
 5. Nach Freigabe einen Action-Node die Kompilation intern bereitstellen — keine automatische externe Verteilung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Reporting-Workflow-Architekt. Entwirf einen Quartals-Reporting-Workflow aus mehreren Quellen. Kontext: parallele Datenaggregation, Vorquartals-Delta, Zahlen faktentreu, Interpretation menschlich freigegeben. Format: Scheduled-Trigger, parallele Integration-Nodes, Aggregations-AI-Node, HITL, interne Bereitstellung."
 **Erwartetes Artefakt:** Ein Quartals-Reporting-Workflow-Entwurf mit Multi-Source-Aggregation, KPI-Schema und Interpretations-Freigabepunkt.
 **Fallstricke (≥2 spezifisch):**

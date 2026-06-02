@@ -64,7 +64,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle einen Library Folder "Brand Guidelines" im Workspace und lade alle MD-Dateien hoch; prüfe dass keine Datei >10 MB und keine einzelne Datei >8M Zeichen hat.
 3. Binde diesen Library Folder an alle relevanten Agenten (Brand-Guardian, Briefing-Agent, Social-Planer) — jeder Agent zeigt auf denselben Ordner statt auf separate Kopien.
 4. Dokumentiere im Ordner eine "README-folder.md" die erklärt welche Datei welche Regelkategorie enthält und wann sie zuletzt aktualisiert wurde.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Brand-Berater [Persona]. Prüfe ob der folgende Entwurf unserer Kampagnen-Headline unserer Brand Voice entspricht [Task]. Kontext: Brand Voice ist sachlich-souverän, kein Konjunktiv, keine Superlative, kein Slang [Context]. Format: Bullet-Liste mit je 'OK' oder 'Problem: [Regelverstoß]' pro Satz [Format]."
 **Erwartetes Artefakt:** Ein Library Folder mit 4-6 separaten MD-Dateien pro Regelkategorie, verbunden mit allen Brand-Agenten des Workspaces.
 **Fallstricke (≥2 spezifisch):**
@@ -82,7 +82,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Lade die Top-Traffic-Blogposts als Text-Dateien in einen Wissensordner "Blog-Archiv" (MD-Format für beste Chunk-Qualität, eine Datei pro Artikel mit H1 als erstem Element).
 2. Stelle im Chat eine semantische Suchanfrage: "Suche in den Dokumenten nach Passagen, die das Thema Workflow-Automatisierung, Prozessoptimierung oder Event-basierte Triggerung erwähnen — nenne Dateiname, den exakten Satz und einen möglichen Ankertext unter 5 Wörtern."
 3. Exportiere die Tabelle aus dem Canvas in eine Google-Sheet-kompatible CSV für das CMS-Team.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Spezialist [Persona]. Finde interne Verlinkungsmöglichkeiten für unsere neue Pillar-Page zu 'Workflow-Automatisierung' [Task]. Durchsuche die Dokumente im Wissensordner nach Absätzen, die Workflow, Automatisierung, Trigger oder ähnliche Synonyme enthalten [Context]. Liefere eine Tabelle mit Spalten: Quelldokument, Ankertext-Vorschlag, exakter Satz im Original [Format]."
 **Erwartetes Artefakt:** Eine Tabelle mit 10-15 internen Link-Möglichkeiten inkl. Quelldokument, vorgeschlagenem Ankertext und Originalzitat.
 **Fallstricke (≥2 spezifisch):**
@@ -100,7 +100,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Erstelle einen Wissensordner "Community FAQ" mit separaten MD-Dateien pro Thema (Preise, Features, Support-Prozesse, Häufige Einwände) — jede Datei beginnt mit einem beschreibenden H1 als Retrieval-Anker.
 2. Öffne Chat mit dem Wissensordner; paste die ersten 5-10 Kommentare als Block; frage: "Generiere für jeden Kommentar eine 2-Satz-Antwort basierend ausschließlich auf dem FAQ-Wissensordner, Tonalität: freundlich aber sachlich, kein Marketing-Sprech."
 3. Prüfe manuell ob jede Antwort eine Quellenangabe aus dem Wissensordner hat — wenn nicht, ist die Antwort möglicherweise halluziniert; nur Antworten mit Quellennachweis verwenden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Community-Manager [Persona]. Erstelle Antworten auf die folgenden LinkedIn-Kommentare [Task]. Stütze jede Antwort ausschließlich auf Informationen aus dem FAQ-Wissensordner; wenn du eine Frage nicht beantworten kannst, schreibe 'Ich leite das weiter' [Context]. Max. 2 Sätze pro Antwort, freundlich und auf-Du-Basis [Format]."
 **Erwartetes Artefakt:** 5-10 qualitätsgesicherte Antwortvorlagen, je mit Quellennachweis aus dem Wissensordner.
 **Fallstricke (≥2 spezifisch):**
@@ -119,7 +119,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lasse den Agent die Top-3-Konkurrenz-Artikel per Web Search abrufen und deren H2-Strukturen extrahieren.
 3. Lasse den Agent die Konkurrenz-H2s gegen den eigenen Wissensordner prüfen: "Welche Subtopics decken die Konkurrenten ab, die in meinem Wissensordner nicht vorkommen?"
 4. Ausgabe als priorisierte Gap-Tabelle im Canvas: Spalten "Subtopic", "Konkurrent", "Priorität (Hoch/Mittel/Niedrig)", "Empfohlenes Format".
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Stratege [Persona]. Führe eine Content-Gap-Analyse für das Keyword 'Marketing-Automatisierung Mittelstand' durch [Task]. Nutze Web Search für die Top-3-Ergebnisse und vergleiche deren H2-Strukturen mit unseren Dokumenten im Wissensordner [Context]. Liefere eine Gap-Tabelle mit Spalten: Fehlendes Subtopic, Welcher Konkurrent deckt es ab, Priorität 1-3 [Format]."
 **Erwartetes Artefakt:** Eine Gap-Analyse-Tabelle mit 5-15 priorisierten Subtopics als direkter Content-Plan-Input.
 **Fallstricke (≥2 spezifisch):**
@@ -137,7 +137,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Öffne Chat; stelle die Frage: "Sind Langdock-Wissensordner-Embeddings personenbezogene Daten wenn die Quelltexte Kundennamen und -aussagen enthalten?"
 2. Lass den Agent die relevanten Punkte strukturieren: (a) Embedding-Natur (Vektor ≠ Klartext, aber Rückschluss möglich wenn PII in Quelltext), (b) EU-Hosting (Microsoft Azure, EU-Region), (c) Verschlüsselung at-rest, (d) Kein Training der Foundation Models, (e) AV-Vertrag-Prüfung empfohlen.
 3. Überführe die Strukturierung in ein Canvas-Memo für den DSB mit Abschnitt "Risikoeinstufung", "Bestehende Schutzmaßnahmen", "Empfohlene Maßnahmen".
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Datenschutz-Berater für Langdock-Deployments [Persona]. Beantworte: Sind Embeddings aus einem Langdock-Wissensordner, der Kunden-Feedback mit Namen enthält, personenbezogene Daten gemäß DSGVO Art. 4 Nr. 1? [Task]. Kontext: Wir nutzen EU-Hosting Frankfurt, kein Modell-Training auf unseren Daten laut AVV [Context]. Format: DSB-Memo mit Abschnitten Risikoeinstufung, Schutzmaßnahmen, Handlungsempfehlungen [Format]."
 **Erwartetes Artefakt:** Ein einseitiges DSB-Memo mit DSGVO-Einstufung der Embeddings und konkreten Maßnahmenempfehlungen.
 **Fallstricke (≥2 spezifisch):**
@@ -156,7 +156,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Definiere das Namensschema: `[Jahr]-[Quartal]-[Region]-[Thema]-[Version].md` — zum Beispiel `2025-Q3-DACH-Brand-Voice-Tonalitaet-v2.md`; halte das Schema in einer "README-naming-convention.md" fest.
 3. Benenne alle Dateien lokal nach Schema um; lade aktualisierte Versionen in den Ordner und lösche die alten Dateien physisch.
 4. Teste: Stelle eine Frage, die eine dieser Dateien triggert — prüfe, ob der Citation-Link jetzt aussagekräftig ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagement-Beraterin [Persona]. Erstelle eine Dateinamen-Konvention für unseren Marketing-Wissensordner [Task]. Kontext: Wir nutzen Library Folders in Langdock; Citation-Links zeigen den Dateinamen direkt im Chat; Dokumente kommen aus DACH-Marketing, Brand, SEO und PR [Context]. Format: Regel-Tabelle mit Muster, Pflichtfeldern, Beispiel-Gut und Beispiel-Schlecht [Format]."
 **Erwartetes Artefakt:** Eine einseitige Namenskonvention-MD-Datei und ein bereinigter Wissensordner mit sprechenden Dateinamen.
 **Fallstricke (≥2 spezifisch):**
@@ -176,7 +176,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 3. Stelle sicher, dass jede neue Datei die Produktbezeichnung im ersten Satz wiederholt (Retrieval-Anker gegen Per-Document-Cap).
 4. Lösche die ursprüngliche Multi-Themen-Datei aus dem Ordner.
 5. Führe einen Retrieval-Test durch: frage nach Preis, dann nach Specs — beide Antworten müssen unterschiedliche, korrekte Quellen zitieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensarchitekt [Persona]. Zerlege das folgende Produkthandbuch in atomare MD-Dateien nach dem Prinzip Ein-Thema-pro-Datei [Task]. Das Handbuch enthält: Preisstruktur, Technische Spezifikationen, Anwendungsbeispiele, Support-Kontakte [Context]. Erstelle für jedes Thema eine separate Datei mit H1-Überschrift, Produktname im ersten Satz, und allen relevanten Details [Format]."
 **Erwartetes Artefakt:** 3-5 separate MD-Dateien pro Produkt, jede thematisch geschlossen und mit Produktname im Eröffnungssatz.
 **Fallstricke (≥2 spezifisch):**
@@ -195,7 +195,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle in Langdock einen neuen Synced Folder, verbinde ihn mit dem SharePoint-Ordner via OAuth; stelle die Sync-Frequenz auf 24h.
 3. Binde den Synced Folder an den Vertriebs-Agenten als Wissensordner; entferne gleichzeitig den alten manuell gepflegten Library Folder mit den veralteten Preisen.
 4. Richte eine wöchentliche manuelle Sync-Kontrolle ein: Prüfe im Interface, ob der letzte Sync erfolgreich war; dokumentiere die Prüfung in einem Governance-Log.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Vertriebs-Assistent [Persona]. Beantworte die folgende Kundenfrage zum aktuellen Preis von Produkt X [Task]. Stütze dich ausschließlich auf die Preislisten im synchronisierten Wissensordner; wenn kein aktueller Preis gefunden wird, antworte 'Bitte direkt beim Vertrieb anfragen' [Context]. Format: Eine Zeile mit Preis und Quelle [Format]."
 **Erwartetes Artefakt:** Ein aktiver Synced Folder der sich täglich von SharePoint aktualisiert, verbunden mit dem Vertriebs-Agenten.
 **Fallstricke (≥2 spezifisch):**
@@ -214,7 +214,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Prüfe jede markierte Datei manuell: gibt es eine neuere Version? Wenn ja, lade die neue Version hoch und lösche die alte physisch — nie nur überschreiben.
 3. Für jede beibehaltene Datei: füge das Aktualisierungsdatum im ersten Absatz des Dokuments ein (z.B. "Stand: 2025-Q2") und lade die Datei mit beschreibendem Namen neu hoch.
 4. Erstelle eine "AUDIT-LOG-[Datum].md" im Ordner mit den Ergebnissen: Anzahl gelöschter Dateien, Anzahl aktualisierter Dateien, nächstes Audit-Datum.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Auditorin [Persona]. Analysiere die folgende Dateiliste unseres Library Folders [Task]. Kontext: Library Folders in Langdock löschen alte Vektor-Einträge nicht automatisch wenn Dateien entfernt werden — jede veraltete Datei vergiftet das Retrieval [Context]. Erstelle eine Audit-Tabelle mit Spalten: Dateiname, Upload-Datum, Auffälligkeit, Empfehlung (Behalten / Aktualisieren / Löschen) [Format]."
 **Erwartetes Artefakt:** Eine Audit-Tabelle mit Handlungsempfehlung pro Datei und ein bereinigter Library Folder.
 **Fallstricke (≥2 spezifisch):**
@@ -233,7 +233,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Stelle alle Canary-Prompts im Chat; dokumentiere für jede Antwort: (a) korrekte Citation vorhanden? (b) Inhalt faktisch korrekt? (c) "Keine Information"-Antwort obwohl Dokument vorhanden?
 3. Kategorisiere Misses: (A) Datei nicht im Ordner → Upload fehlt; (B) Datei vorhanden aber kein Chunk abgerufen → Per-Document-Cap oder schlechter Dateiname; (C) Falscher Chunk abgerufen → Multi-Themen-Datei atomisieren.
 4. Behebe pro Kategorie: (A) Datei hochladen; (B) Datei umbenennen + Anker-Begriff in ersten Satz; (C) Datei atomisieren wie in S-WR-007.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Diagnose-Assistentin [Persona]. Beantworte die folgende Frage und zeige mir explizit, welche Dokumente aus dem Wissensordner du für diese Antwort verwendet hast [Task]. Wenn du keine relevante Information findest, schreibe explizit 'Retrieval-Miss: kein Treffer für [Schlüsselbegriff]' statt die Frage zu umgehen [Context]. Antwort mit Citation, Dokumentname und Fundstelle [Format]."
 **Erwartetes Artefakt:** Ein Diagnose-Protokoll mit kategorisierten Retrieval-Misses und priorisierten Maßnahmen, wiederverwendbar als monatliches Qualitätscheck-Instrument.
 **Fallstricke (≥2 spezifisch):**
@@ -252,7 +252,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Wende die drei RAG-Optimierungsregeln an: (a) Jeder Absatz wiederholt den Schlüsselbegriff (kein "es", "das", "diese" ohne Nomen); (b) Jeder Absatz ist ohne Vorwissen verständlich; (c) H2-Überschriften sind keyword-reich und beschreibend.
 3. Überarbeite das Dokument im Canvas; prüfe: Ist jeder Absatz eigenständig lesbar? Enthält jeder Absatz den Hauptbegriff mindestens einmal?
 4. Lade die überarbeitete Version hoch, lösche die alte; führe Canary-Test erneut durch.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Redakteurin [Persona]. Überarbeite den folgenden Text für optimales Retrieval in einem Vektor-Datenbanksystem mit 2.000-Zeichen-Chunks [Task]. Regeln: Kein Absatz darf unaufgelöste Pronomen enthalten; der Hauptbegriff 'Brand Voice' muss in jedem Absatz mindestens einmal ausgeschrieben vorkommen; H2-Überschriften müssen keyword-reich sein [Context]. Liefere den überarbeiteten Text mit markierten Änderungen [Format]."
 **Erwartetes Artefakt:** Ein RAG-optimiertes Dokument, das bei Canary-Tests messbar häufiger den richtigen Chunk zurückgibt als die Originalversion.
 **Fallstricke (≥2 spezifisch):**
@@ -270,7 +270,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Zerlege die Sammel-Datei: eine MD-Datei pro Persona-Typ (z.B. `persona-entscheider-cmo-2025.md`, `persona-anwender-marketing-manager-2025.md`); H1 muss "Persona: [Name]" lauten damit der System-Prompt des Agenten verbatim darauf referenzieren kann.
 2. Füge in jede Persona-Datei einen Abschnitt "Tonalität nach Kanal" ein: LinkedIn (sachlich, Bullet-Punkte), E-Mail-Newsletter (persönlich, kurze Sätze), Social Ads (provokant, Frageformulierung) — jeder Kanal als eigener H2.
 3. Aktualisiere die System-Instructions des Agenten: "Rufe für Zielgruppenanalysen die Datei 'Persona: [Name]' aus dem Wissensordner ab" — der verbatim Anker-String stellt sicher dass das richtige Chunk abgerufen wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Brand-Voice-Spezialistin [Persona]. Verfasse eine Persona-Beschreibung für 'Marketing-Manager im Mittelstand' als eigenständige Wissensordner-Datei [Task]. Kontext: Die Datei wird in einem RAG-System mit 2.000-Zeichen-Chunks indiziert; jeder Absatz muss den Begriff 'Marketing-Manager' enthalten; H1 muss 'Persona: Marketing-Manager Mittelstand' lauten [Context]. Format: MD-Datei mit H1, Kurzprofil (3 Sätze), Motivationen, Schmerzpunkte, Tonalität nach Kanal [Format]."
 **Erwartetes Artefakt:** 2-4 separate Persona-MD-Dateien mit eindeutigem H1-Anker, Tonalitäts-Regeln pro Kanal und System-Prompt-kompatiblem Struktur.
 **Fallstricke (≥2 spezifisch):**
@@ -289,7 +289,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Frage im Chat mit aktiviertem Ordner: "Analysiere alle Dokumente im Ordner und extrahiere: (a) Satzlänge-Muster, (b) Vokabular-Präferenzen, (c) wiederkehrende rhetorische Devices, (d) Themen die vermieden werden."
 3. Überführe die Analyse in ein Canvas-Dokument mit Struktur: Tonalitäts-Beschreibung, Do's-and-Don'ts-Tabelle (max. 30 Zeilen), drei Vorher/Nachher-Beispiele.
 4. Exportiere als `brand-voice-manual-[Jahr]-v1.md`; lade in den produktiven Library Folder hoch; entferne den temporären Samples-Ordner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Brand-Stratege [Persona]. Analysiere alle Texte im verknüpften Wissensordner und extrahiere unsere implizite Brand Voice [Task]. Fokus auf: Satzlänge, Fachbegriffe, Formulierungen die wiederholt vorkommen, und Themen die konsequent vermieden werden [Context]. Erstelle ein Brand-Voice-Manual mit Tonalitäts-Beschreibung, Do's-and-Don'ts-Tabelle und drei Vorher/Nachher-Beispielen [Format]."
 **Erwartetes Artefakt:** Ein vollständiges Brand-Voice-MD-Dokument bereit für den Library Folder und die Agent-Anbindung.
 **Fallstricke (≥2 spezifisch):**
@@ -308,7 +308,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle separate Library Folders pro Agenten-Typ: "WO-SEO", "WO-Brand", "WO-Community"; lade nur die relevanten Dokumente in den jeweiligen Ordner (Duplikate sind erlaubt — besser doppelt als falsch zugeordnet).
 3. Aktualisiere die Agenten-Konfiguration: löse die Verbindung zum gemeinsamen Ordner; verbinde jeden Agenten ausschließlich mit seinem dedizierten Ordner.
 4. Dokumentiere die Ordner-Architektur in einer "WO-ARCHITEKTUR-[Datum].md" Datei im Workspace.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensarchitektin [Persona]. Erstelle eine Wissensordner-Architektur für fünf Marketing-Agenten: SEO, Brand, Community, Vertrieb, PR [Task]. Kontext: Jeder Agent soll nur auf seinen thematisch relevanten Dokumentenbestand zugreifen; ein Dokument kann in mehreren Ordnern liegen [Context]. Liefere eine Zuordnungs-Matrix mit Spalten: Dokument-Typ, SEO, Brand, Community, Vertrieb, PR [Format]."
 **Erwartetes Artefakt:** Eine dokumentierte Wissensordner-Architektur-Matrix und 3-5 konfigurierte spezialisierte Library Folders mit korrekter Agenten-Anbindung.
 **Fallstricke (≥2 spezifisch):**
@@ -326,7 +326,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Erstelle im Chat eine erste Rohdraft-Tabelle mit drei Spalten: "Dokument-Typ", "Empfohlener Upload-Weg", "Begründung" — befülle die Zeilen mit den häufigsten Marketing-Dokumenten (Preisliste, Brand Guidelines, Kampagnen-Brief, Performance-CSV, Meeting-Notiz, Pressemitteilung).
 2. Ergänze eine Spalte "Warnsignal": Situationen in denen ein Dokument vermeintlich in den Wissensordner gehört, aber tatsächlich nicht (z.B. CSV mit Performance-Daten: immer Data Analyst, nie Wissensordner).
 3. Speichere als `entscheidungsmatrix-upload-wissensordner-v1.md`; lade in den Library Folder "WO-BASIS"; referenziere im Onboarding-Dokument für neue Mitarbeiter.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Langdock-Onboarding-Trainerin [Persona]. Erstelle eine Entscheidungsmatrix für Upload-Entscheidungen in einem Marketing-Team [Task]. Kontext: Langdock unterstützt PDF, DOCX, MD, TXT, PPTX im Wissensordner; CSV/XLSX müssen als direkter Chat-Anhang für den Data Analyst hochgeladen werden; Bilder sind ausschließlich als Anhang geeignet [Context]. Format: Tabelle mit Dokument-Typ, empfohlenem Weg, Begründung und Warnsignal pro Zeile [Format]."
 **Erwartetes Artefakt:** Eine Ein-Seiten-Entscheidungsmatrix als MD-Datei, im Library Folder abgelegt und im Team-Onboarding verlinkt.
 **Fallstricke (≥2 spezifisch):**
@@ -345,7 +345,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Füge in die erste Zeile jedes Dokuments einen "Stand"-Header ein: "Stand: [JJJJ-MM] | Nächster Review: [JJJJ-MM]" — dieser Anker erscheint im Citation-Text und warnt den Nutzer aktiv.
 3. Richte für jeden Review-Rhythmus ein Kalender-Event ein (z.B. monatliche Erinnerung "Preislisten-Check im Wissensordner") mit dem Wissensordner-Owner als Verantwortlichem.
 4. Definiere eine Escalation-Regel: Dokumente die ihren Review-Termin um >30 Tage überschreiten werden mit Präfix "VERALTET-" im Dateinamen versehen bis zum nächsten Update.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagement-Koordinatorin [Persona]. Erstelle einen Freshness-Management-Plan für unseren Wissensordner [Task]. Kontext: Dokumente haben unterschiedliche Update-Rhythmen; Langdock zeigt Datei-Upload-Datum im Citation-Link aber kein Inhalt-Stand-Datum [Context]. Liefere eine Inventur-Tabelle mit Spalten: Dokument-Typ, Update-Rhythmus, Verantwortlich, Nächster-Review-Termin [Format]."
 **Erwartetes Artefakt:** Eine Freshness-Inventur-Tabelle mit definierten Review-Terminen und eine README-Datei im Library Folder die den Update-Prozess beschreibt.
 **Fallstricke (≥2 spezifisch):**
@@ -364,7 +364,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Füge in jede Krisen-Datei im ersten Absatz einen Trigger-Begriff ein der im Agenten-Prompt verbatim referenziert wird (z.B. "Krisentyp: Serverausfall" als H1).
 3. Erstelle einen dedizierten "Krisen-Agenten" mit System-Instruction: "Greife bei Krisenkomm-Anfragen sofort auf den Wissensordner WO-Krisenkomm zu; erfinde niemals ETAs oder Schadenszahlen."
 4. Teste den Agenten mit einer Simulationsfrage: "Serverausfall seit 2 Stunden — schreibe Tweet und LinkedIn-Statement"; prüfe ob beide Antworten aus dem Ordner stammen (Citations vorhanden).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikations-Direktor [Persona]. Verfasse ein Holding-Statement für Twitter und LinkedIn zum folgenden Krisenfall: Serverausfall seit 90 Minuten [Task]. Nutze ausschließlich die Richtlinien aus dem Wissensordner WO-Krisenkomm; erfinde keine Wiederherstellungszeiten und keine Schadenszahlen [Context]. Format: Twitter-Post (max. 280 Zeichen) + LinkedIn-Statement (max. 150 Wörter) [Format]."
 **Erwartetes Artefakt:** Ein vollständiger WO-Krisenkomm Library Folder mit atomisierten Dateien pro Krisen-Typ und ein getesteter Krisen-Agent mit nachgewiesenen Citations.
 **Fallstricke (≥2 spezifisch):**
@@ -383,7 +383,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Führe eine semantische Suche durch: "Suche in den Dokumenten nach Passagen die das Thema B2B-Automatisierung, Workflow-Optimierung oder API-Integration behandeln — nenne Dateiname, exakten Satz und Ankertext-Vorschlag unter 5 Wörtern."
 3. Prüfe alle Ergebnisse auf Citation-Vollständigkeit — nur Vorschläge mit Quellenangabe weiterverwenden; Tabelle aus Canvas in CMS-kompatibles Format exportieren.
 4. Aktualisiere den Wissensordner nach jedem neuen Artikel-Batch (monatlich); alte Artikel die depubliziert wurden sofort entfernen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Spezialistin [Persona]. Finde interne Verlinkungsmöglichkeiten für unsere neue Pillar-Page zu 'B2B-Automatisierung' [Task]. Durchsuche die Dokumente im Wissensordner nach Absätzen die Workflow, Automatisierung, API-Integration oder ähnliche Synonyme enthalten [Context]. Liefere eine Tabelle mit: Quelldokument, Ankertext-Vorschlag (max. 5 Wörter, kein 'hier klicken'), exakter Originalsatz [Format]."
 **Erwartetes Artefakt:** Eine Link-Tabelle mit 10-15 Einträgen, je mit Quelldokument, Ankertext und Originalzitat — direkt verwendbar für den CMS-Import.
 **Fallstricke (≥2 spezifisch):**
@@ -402,7 +402,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Weise den Agenten an beide Ordner explizit zu referenzieren: "Suche in WO-Blog-Archiv nach vorhandenen Inhalten zu [Thema] UND in WO-Konkurrenz-Analyse nach Subtopics der Top-3-Konkurrenten."
 3. Lasse den Agenten eine Gap-Tabelle erstellen: Spalten "Subtopic", "Im eigenen Archiv vorhanden (J/N)", "Konkurrent der es abdeckt", "Priorität (1-3)".
 4. Exportiere die Tabelle aus dem Canvas für das Redaktionsmeeting; priorisiere die Top-5-Gaps für den nächsten Content-Sprint.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Content-Strategin [Persona]. Führe eine Content-Gap-Analyse für das Keyword-Cluster 'Marketing-Automatisierung Mittelstand' durch [Task]. Suche in WO-Blog-Archiv nach vorhandenen Inhalten und in WO-Konkurrenz-Analyse nach Subtopics die Wettbewerber abdecken; ergänze fehlende Wettbewerber-Daten via Web Search [Context]. Liefere eine Gap-Tabelle mit Spalten: Subtopic, Eigener Content vorhanden, Konkurrent, Priorität 1-3, Empfohlenes Format [Format]."
 **Erwartetes Artefakt:** Eine Content-Gap-Tabelle mit 5-15 priorisierten Subtopics als direkter Input für das Redaktions-Backlog.
 **Fallstricke (≥2 spezifisch):**
@@ -421,7 +421,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle pro Kunden-Segment eine aggregierte Zusammenfassungs-Datei (z.B. "feedback-segment-kmu-2025-q2.md") statt einzelner Antworten — Aggregation ist DSGVO-freundlicher als Einzeldaten.
 3. Erstelle ein DSB-Memo im Canvas: Abschnitte "Datenquelle und Anonymisierungsprozess", "Embedding-Einschätzung (EU-Hosting Frankfurt, at-rest-Verschlüsselung)", "AV-Vertrag-Status", "Risikoeinstufung", "Freigabe-Empfehlung".
 4. Lade den anonymisierten Wissensordner erst nach schriftlicher DSB-Freigabe hoch; dokumentiere das Freigabedatum in der README-Datei des Ordners.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DSGVO-Beraterin für Marketing-KI-Deployments [Persona]. Erstelle ein Freigabe-Memo für den Datenschutzbeauftragten [Task]. Kontext: Wir möchten anonymisierte Kunden-Feedback-Zusammenfassungen in einen Langdock-Wissensordner laden; Langdock nutzt EU-Hosting Frankfurt, at-rest-Verschlüsselung, kein Modell-Training auf unseren Daten [Context]. Format: Einseitiges Memo mit Abschnitten Datenquelle, Anonymisierungsprozess, Embedding-Einschätzung, AV-Vertrag-Status, Risikoeinstufung [Format]."
 **Erwartetes Artefakt:** Ein DSB-Memo mit DSGVO-Einschätzung, ein anonymisierter Wissensordner mit Feedback-Zusammenfassungen und ein dokumentiertes Freigabe-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -440,7 +440,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Konvertiere testalweise die Brand-Guidelines-PDF in eine saubere MD-Datei (Pandoc-Kommandozeile oder manuelle Konvertierung): alle Tabellen als Markdown-Tabellen (max. 30 Zeilen), alle Bilder entfernen (Bilder werden von der Vektordatenbank ignoriert), alle Überschriften als #/## strukturieren.
 3. Lade beide Versionen in den Library Folder; führe identische Canary-Fragen durch und vergleiche die Citation-Qualität — die MD-Version liefert in der Regel präzisere Chunks.
 4. Schreibe die Faustregel in die Format-Entscheidungsmatrix: Redaktionelle Texte → MD; Offizielle Publizierungen die als PDF bleiben müssen → PDF nur wenn kein Mehrspaltenlayout; Präsentationen → PPTX akzeptiert aber MD-Export bevorzugt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Qualitätsprüferin [Persona]. Vergleiche die folgenden zwei Antworten auf dieselbe Frage — eine aus der PDF-Version und eine aus der MD-Version unserer Brand Guidelines [Task]. Kontext: Chunking-Algorithmus schneidet bei ~2.000 Zeichen; PDF-Chunks enthalten oft Seitenzahlen und Zeilenbrüche mitten im Satz [Context]. Bewerte Vollständigkeit und semantische Kohärenz jedes Chunks auf einer Skala 1-5 und nenne die Ursache der Unterschiede [Format]."
 **Erwartetes Artefakt:** Eine Format-Entscheidungsmatrix als MD-Datei und ein Canary-Test-Protokoll, das den Qualitätsunterschied zwischen PDF- und MD-Retrieval für 3 Kernfragen dokumentiert.
 **Fallstricke (≥2 spezifisch):**
@@ -459,7 +459,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Definiere pro Ordner eine Kapazitätsregel: WO-Brand max. 50 Dateien (statisch, selten >1 File/Monat), WO-Kampagnen-Archiv max. 400 Dateien (wächst monatlich); plane eine Archivierungsstrategie für Kampagnen-Ordner ab 300 Dateien.
 3. Konfiguriere jeden Agenten so dass er maximal 2-3 thematisch passende Ordner einbindet — niemals alle Ordner gleichzeitig; ein SEO-Agent braucht WO-SEO + WO-Basis, nicht WO-PR oder WO-Brand.
 4. Erstelle eine Ordner-Architektur-Übersicht als MD-Datei im WO-Basis-Ordner: Tabelle mit Ordner-Name, Zweck, max. Dateizahl, Verantwortlich, Agenten-Anbindung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Informationsarchitektin [Persona]. Entwirf eine Library-Folder-Hierarchie für ein 8-köpfiges Marketing-Team mit 350 Dokumenten [Task]. Kontext: Langdock Library Folders fassen max. 1.000 Dateien; ein Agent liefert bessere Resultate wenn er maximal 2-3 thematisch enge Ordner nutzt; Retrieval-Rauschen entsteht wenn zu viele thematisch unverwandte Dokumente konkurrieren [Context]. Liefere einen Blueprint mit Ordner-Namen, Zweck, empfohlene Datei-Obergrenze und Agenten-Zuordnung [Format]."
 **Erwartetes Artefakt:** Ein Ordner-Architektur-Blueprint als MD-Datei mit 4-6 Library Folders, Kapazitätsregeln und Agenten-Zuordnungsmatrix.
 **Fallstricke (≥2 spezifisch):**
@@ -478,7 +478,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Setze die Berechtigungsregel: Kritische Kern-Ordner (WO-Brand, WO-Compliance) nur Owner = Marketing-Direktion + 1 Backup; Editor-Rechte ausschließlich für Personen mit aktivem Update-Auftrag; alle anderen als Viewer.
 3. Konfiguriere die Sharing-Einstellungen im Workspace-Admin: verhindere dass Standard-Nutzer einen Wissensordner für die gesamte Organisation freigeben können (Restricted-Sharing-Einstellung aktivieren).
 4. Dokumentiere die Berechtigungs-Matrix in einer "WO-BERECHTIGUNGEN-[Datum].md" im Basis-Ordner: Tabelle mit Ordner, Owner, Editor, Viewer-Gruppe, Änderungsprotokoll-Pflicht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagement-Governance-Beraterin [Persona]. Erstelle eine Berechtigungs-Matrix für unsere 6 Library Folders [Task]. Kontext: Langdock unterscheidet Owner (volle Kontrolle), Editor (Upload und Umbenennung) und Viewer (Lesen und Abrufen im Chat); Standard-Nutzer können Ordner ggf. für die gesamte Organisation freigeben wenn der Workspace-Admin dies nicht einschränkt [Context]. Liefere eine Tabelle mit Ordner, Owner, Editor-Berechtigung (Personenkreis), Viewer-Berechtigung, Änderungsprotokoll-Pflicht (J/N) [Format]."
 **Erwartetes Artefakt:** Eine Berechtigungs-Matrix als MD-Datei und konfigurierte Ordner-Freigaben mit rollenspezifischen Zugriffsrechten, die unbeabsichtigte Dateiänderungen durch Standard-Nutzer verhindern.
 **Fallstricke (≥2 spezifisch):**
@@ -497,7 +497,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle einen Basis-Ordner mit sprachübergreifenden Dokumenten (globale Brand-Regeln, technische Produktspezifikationen die nicht marktspezifisch sind) — dieser Ordner wird allen DACH-Agenten gemeinsam angebunden.
 3. Konfiguriere marktspezifische Agenten: der Schweizer Agent erhält WO-Basis + WO-DE-CH + WO-FR-CH; der österreichische Agent erhält WO-Basis + WO-DE-AT; System-Instructions spezifizieren die Antwortsprache explizit.
 4. Füge in die System-Instructions ein: "Wenn die Anfrage in Deutsch erfolgt und kein Markt angegeben ist, frage nach dem Zielmarkt (DE, AT, oder CH) bevor du eine marktspezifische Antwort generierst."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DACH-Marketingassistentin für den Schweizer Markt [Persona]. Erstelle einen LinkedIn-Post zum Thema Produktneuheit unter Berücksichtigung der Schweizer Marktbesonderheiten [Task]. Nutze ausschließlich Dokumente aus dem Wissensordner WO-DE-CH und WO-Basis; verwende Schweizer Schreibkonventionen (kein ß, Franken statt Euro) [Context]. Format: LinkedIn-Post, max. 150 Wörter, ohne Emojis [Format]."
 **Erwartetes Artefakt:** Separate Library Folders pro Sprachraum, eine Agenten-Routing-Tabelle und eine README-Datei die erklärt welcher Agent für welchen Markt zuständig ist.
 **Fallstricke (≥2 spezifisch):**
@@ -516,7 +516,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Konvertiere komplexe Tabellen in ein hybrides Format: Behalte Tabellen mit max. 30 Zeilen in MD-Syntax; zerlege große Tabellen (>30 Zeilen) in thematische Blöcke mit erläuterndem Fließtext — z.B. "Produkt X kostet 299 EUR (DACH, Q2-2025). Mengenrabatt ab 10 Einheiten: 15 %. Mindestbestellmenge: 5 Einheiten."
 3. Füge vor jeder konvertierten Tabelle einen 2-3-Sätze-Zusammenfassungsabsatz ein, der die Kernaussage der Tabelle in Fließtext wiederholt — dieser Absatz wird als Retrieval-Anker vom Chunking-Algorithmus bevorzugt indiziert.
 4. Führe Canary-Tests durch: Frage nach spezifischen Preisen, Rabatten und Mengenstaffeln; prüfe ob Citations aus dem Tabellen-Dokument kommen und ob die Antworten faktisch korrekt sind.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Dokumenten-Optimiererin [Persona]. Konvertiere die folgende Preistabelle in ein RAG-optimiertes Markdown-Format [Task]. Kontext: Langdock zerlegt Dokumente in ~2.000-Zeichen-Chunks; Tabellen mit mehr als 30 Zeilen werden beim Chunking zerrissen; das System gibt pro Datei nur einen Chunk pro Suchanfrage zurück [Context]. Erstelle für jede Produktgruppe einen eigenständigen Absatz mit Fließtext-Zusammenfassung gefolgt von einer MD-Tabelle mit max. 10 Zeilen [Format]."
 **Erwartetes Artefakt:** Ein RAG-optimiertes MD-Dokument mit Fließtext-Zusammenfassungen vor jeder Tabelle, das bei Canary-Tests Preise und Rabatte korrekt zurückliefert.
 **Fallstricke (≥2 spezifisch):**
@@ -535,7 +535,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Binde den Ordner an alle für den Launch relevanten Agenten (Content-Agent, PR-Agent, Social-Agent) zusätzlich zu deren Standard-Ordnern — nach dem Launch wird der Launch-Ordner von allen Agenten wieder entfernt.
 3. Erstelle im Ordner eine "LAUNCH-STATUS.md" die den aktuellen Freigabe-Stand dokumentiert: welche Dokumente sind finalisiert, welche noch in Review — damit kein Agent auf unfertige Draft-Dokumente zugreift.
 4. Setze am Ende des Launches einen Archivierungs-Kalender-Eintrag: Launch-Ordner wird nach 30 Tagen in einen Archiv-Ordner verschoben und von allen Live-Agenten getrennt; Kern-Learnings werden in die dauerhaften Wissensordner überführt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Launch-Copywriter [Persona]. Verfasse eine LinkedIn-Ankündigung für unseren Produktlaunch [Task]. Nutze ausschließlich die Kernbotschaften, USPs und Zielgruppen-Definition aus dem Wissensordner WO-Launch; verwende keine Begriffe aus der Verbotenen-Begriffe-Liste im selben Ordner [Context]. Format: LinkedIn-Post, max. 200 Wörter, mit 3 Bullet-Points zu den Hauptvorteilen [Format]."
 **Erwartetes Artefakt:** Ein vollständig konfigurierter WO-Launch-Ordner mit allen Launch-Basis-Dokumenten, verbunden mit allen Launch-Agenten, und ein Archivierungs-Plan nach dem Launch.
 **Fallstricke (≥2 spezifisch):**
@@ -554,7 +554,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Führe einen Image-Text-Audit durch: öffne alle brand-kritischen Dokumente; markiere alle Inhalte die ausschließlich als Bild vorliegen (Farbpaletten, Logotype-Proportionen, Abstands-Regeln); liste diese Inhalte für die Überarbeitung.
 3. Füge zu jedem bild-basierten Brand-Element einen Textblock hinzu der dieselbe Information in Fließtext enthält: "Primärfarbe der Marke: #1A2B3C (Navy Blue). Sekundärfarbe: #FF6B35 (Coral Orange). Beide Farben erscheinen im Logo als einzige zulässige Farbkombination."
 4. Lade die überarbeiteten Dokumente hoch; Canary-Test: "Was ist die Primärfarbe unserer Marke?" muss jetzt mit Citation beantwortet werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Corporate-Identity-Redakteurin [Persona]. Extrahiere alle visuellen Brand-Angaben aus dem folgenden Brand-Manual und schreibe sie als eigenständige Textblöcke auf [Task]. Kontext: Das Dokument wird in einem RAG-System verarbeitet das Bilder ignoriert; alle Farb-HEX-Codes, Schriftgrößen und Abstands-Regeln müssen als Fließtext verfügbar sein [Context]. Format: Pro visuelles Element einen Absatz mit Bezeichnung, exaktem Wert und Verwendungsregel [Format]."
 **Erwartetes Artefakt:** Ein überarbeitetes Brand-Manual in dem alle visuellen Brand-Angaben als Textblöcke neben den Bildern stehen, mit Canary-Test-Nachweis für korrekte Farb- und CI-Retrieval.
 **Fallstricke (≥2 spezifisch):**
@@ -573,7 +573,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Verbinde den Agenten mit beiden Ordner-Typen: in der Agenten-Konfiguration sowohl den Library Folder als auch den Synced Folder als Wissensquellen eintragen — Langdock unterstützt diese Kombination nativ.
 3. Füge in die System-Instructions einen Hinweis ein: "Für Preis- und Konditionsfragen priorisiere den synchronisierten Ordner [Synced-Folder-Name]; für Brand- und Prozessfragen priorisiere den Library Folder [Folder-Name] — nenne immer beide Quellen wenn du beide Ordner nutzt."
 4. Dokumentiere die Update-Verantwortlichkeiten: Synced Folder = automatisch via SharePoint-Sync; Library Folder = manuell durch [Name], Update-Rhythmus quartalsweise — halte dies in der README-Datei des Library Folders fest.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Vertriebs-Assistent [Persona]. Beantworte die folgende Kundenfrage zu Preis und Produkteigenschaften von Produkt X [Task]. Prüfe den synchronisierten Preislisten-Ordner für aktuelle Preise und den Library Folder für Produkt-Beschreibungen und Brand-konforme Formulierungen [Context]. Format: Zwei-Absatz-Antwort mit Preis in Absatz 1 (mit Quelle) und Produktbeschreibung in Absatz 2 (mit Quelle) [Format]."
 **Erwartetes Artefakt:** Ein konfigurierter Hybrid-Agent mit dokumentierter Trennung von statischen und dynamischen Wissensquellen, inklusive Canary-Test-Protokoll das beide Ordner-Typen als Quellen nachweist.
 **Fallstricke (≥2 spezifisch):**
@@ -591,7 +591,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Erkläre die Vektor-Suchmechanik praxisnah: "Was kostet das Produkt?" erzeugt einen Embedding-Vektor der semantisch auch Dokumente zu "Wert", "Investition" und "Budget" zurückgibt; "Aktueller DACH-Listenpreis für Produkt X in EUR, Q2-2025" erzeugt einen spezifischen Vektor der direkt auf Preislisten-Chunks zeigt.
 2. Formuliere 5 Retrieval-Optimierungsregeln: (a) Produktname vollständig ausschreiben; (b) Zeitraum oder Markt-Region nennen wenn relevant; (c) Dokumenttyp andeuten ("in der Preisliste", "laut FAQ"); (d) Fachbegriff aus dem Dokument selbst verwenden; (e) Bei Misses den Prompt um Synonyme erweitern die im Quelldokument vorkommen.
 3. Erstelle 10 Vorher/Nachher-Prompt-Paare (schlecht→gut) als MD-Tabelle; speichere als `retrieval-suchanfragen-leitfaden-v1.md` im WO-Basis-Ordner; referenziere im Team-Onboarding.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retrieval-Trainerin [Persona]. Überarbeite die folgenden 10 Suchanfragen so dass sie präzises Retrieval aus einem Langdock-Wissensordner auslösen [Task]. Kontext: Langdock nutzt semantische Vektorsuche mit 1536-dimensionalen Embeddings; kurze generische Fragen liefern semantisch ähnliche aber thematisch falsche Chunks; spezifische Fachbegriffe aus dem Zieldokument verbessern die Trefferquote [Context]. Liefere eine Tabelle mit Original-Anfrage, überarbeiteter Anfrage und Begründung der Verbesserung [Format]."
 **Erwartetes Artefakt:** Ein Schulungs-Leitfaden mit 10 Vorher/Nachher-Prompt-Paaren als MD-Datei im WO-Basis-Ordner, verwendbar als Onboarding-Material für neue Team-Mitglieder.
 **Fallstricke (≥2 spezifisch):**
@@ -610,7 +610,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Priorisiere die 30 wichtigsten Dokumente (nach Nutzungshäufigkeit oder strategischer Relevanz) für die erste Migrations-Woche; handle diese manuell und sorgfältig; lade die restlichen 120 in drei Batches über vier Wochen hoch.
 3. Führe nach jedem Batch einen Canary-Test durch: 10 typische Fragen die das Team stellt; dokumentiere Retrieval-Misses und passe die Dokument-Aufbereitung an bevor der nächste Batch startet.
 4. Erstelle ein Migrations-Log als MD-Datei: Dokument-Name, Migrations-Status (Ausstehend / In Bearbeitung / Hochgeladen / Getestet), Auffälligkeiten, Verantwortliche Person.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dokumentenmigrations-Beraterin [Persona]. Kategorisiere die folgende Liste von 150 Dokumenten nach dem Aufwand für die Migration in Langdock-Wissensordner [Task]. Kontext: Langdock unterstützt PDF, DOCX, MD, TXT, PPTX; max. 1.000 Dateien pro Library Folder; eingescannte Dokumente mit schlechter OCR werden fehlerhaft indiziert; Markdown liefert bessere Chunk-Qualität als komplexe PDFs [Context]. Erstelle eine Tabelle mit Dokument-Name, Migrations-Aufwand (Niedrig/Mittel/Hoch), Begründung, Empfohlenes Zielformat [Format]."
 **Erwartetes Artefakt:** Ein Migrations-Tracking-Board mit priorisiertem Batch-Plan für 30 Tage und ein Canary-Test-Set, das nach jedem Batch-Upload ausgeführt wird.
 **Fallstricke (≥2 spezifisch):**
@@ -629,7 +629,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Zerlege das Gesamt-Dokument in atomare Dateien pro Themen-Cluster: `produkt-x-installation-v2.md`, `produkt-x-fehlerbehebung-verbindungsprobleme.md`; jede Datei beginnt mit dem Produktnamen und dem Thema in der H1-Überschrift.
 3. Erstelle eine "VERSIONSHISTORIE.md" als separate Datei die nur Changelog-Einträge enthält — diese Datei wird bei Software-Updates aktualisiert und stellt sicher dass der Agent immer auf die neueste Version verweist.
 4. Teste den Support-Agenten mit den 10 häufigsten Support-Tickets als Canary-Prompts; prüfe ob jede Antwort eine Quellenangabe aus dem WO-Produkt-Docs enthält.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Support-Assistent für Produkt X [Persona]. Beantworte die folgende Kunden-Support-Anfrage zu einem Installationsproblem [Task]. Stütze dich ausschließlich auf die Dokumente im Wissensordner WO-Produkt-Docs; wenn du keine Antwort findest, schreibe 'Ich eskaliere diesen Fall an den Level-2-Support' [Context]. Format: Klare Schritt-für-Schritt-Anleitung, max. 5 Schritte, mit Quellenangabe am Ende [Format]."
 **Erwartetes Artefakt:** Ein WO-Produkt-Docs Library Folder mit 15-30 atomaren MD-Dateien, ein getesteter Support-Agent mit nachgewiesenen Citations für die 10 häufigsten Support-Fragen.
 **Fallstricke (≥2 spezifisch):**
@@ -648,7 +648,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Definiere 10 Canary-Prompts die repräsentativ für echte Nutzeranfragen sind: mische einfache Direktfragen ("Welche Primärfarbe hat die Marke?"), komplexere Kombinations-Fragen ("Welche Tonalität und welche Farben dürfen in einer LinkedIn-Anzeige kombiniert werden?") und Edge-Cases.
 3. Stelle dieselben 10 Fragen jeweils mit WO-Test-A und WO-Test-B als aktivem Wissensordner; bewerte jede Antwort nach drei Kriterien: (a) Citation vorhanden (J/N), (b) Inhalt faktisch korrekt (1-5), (c) Vollständigkeit der Antwort (1-5).
 4. Aggregiere die Scores; das Layout mit dem höheren Gesamt-Score wird zur produktiven Ordner-Struktur; lösche den Verlierer-Ordner und dokumentiere das Test-Ergebnis im WO-Basis-Ordner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retrieval-Qualitätsprüferin [Persona]. Beantworte die folgende Frage zu unseren Brand Guidelines und zeige explizit welches Dokument aus dem Wissensordner du verwendet hast [Task]. Kontext: Dieser Test vergleicht zwei Wissensordner-Layouts; Citation mit Dateiname ist Pflicht für die Auswertung; schreibe explizit 'Kein Treffer' wenn kein relevantes Dokument gefunden wurde [Context]. Antwort mit Inhalt und Citation in getrennten Absätzen [Format]."
 **Erwartetes Artefakt:** Ein A/B-Test-Protokoll als MD-Tabelle mit Retrieval-Scores für beide Layouts und einer dokumentierten Entscheidung für die produktive Wissensordner-Struktur.
 **Fallstricke (≥2 spezifisch):**
@@ -668,7 +668,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 3. Qualitätsprüfung: prüfe jedes Dokument auf RAG-Tauglichkeit bevor es hochgeladen wird — klare H1, Fachbegriffe im Text ausgeschrieben, keine unaufgelösten Pronomen, kein komplexes Mehrspaltenlayout.
 4. Lade die Dokumente hoch und führe sofort die initiale Canary-Test-Runde durch: eine Frage pro Dokument; dokumentiere die Ergebnisse als "Baseline-Qualitätsscore".
 5. Optimiere Dokumente die beim ersten Test scheitern (Canary-Miss) bevor der Tender-Agent für das gesamte Team freigeschaltet wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Architektin [Persona]. Führe eine Bedarfsanalyse für einen neuen Tender-Agenten durch [Task]. Kontext: Der Agent soll Ausschreibungs-Antworten für B2B-Dienstleistungen vorbereiten; typische Fragen betreffen Referenzprojekte, Preisspannen, Compliance-Nachweise und Team-Qualifikationen [Context]. Erstelle eine Liste der benötigten Dokument-Typen mit Begründung, empfohlenem Format und Priorität (Muss/Soll/Kann) [Format]."
 **Erwartetes Artefakt:** Ein einsatzfähiger WO-Tender Library Folder mit 8-15 kuratierten Dokumenten, dokumentiertem Aufbau-Prozess und einem initialen Canary-Test-Set das als monatliches Qualitäts-Benchmark wiederverwendet wird.
 **Fallstricke (≥2 spezifisch):**
@@ -687,7 +687,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Einführung Technik 1: "Explizite Quellenangabe als Pflicht" — im Prompt: "Wenn du keinen direkten Quellenbeleg findest, schreibe 'Kein verlässlicher Treffer — bitte direkt im Originaldokument prüfen' statt zu halluzinieren."
 3. Einführung Technik 2: "Hypothesen-Marker" — im Prompt: "Markiere jeden Satz der auf Schlussfolgerung statt direktem Zitat basiert mit dem Präfix [Ableitung]."
 4. Überarbeite das System-Instruction-Template aller Wissensordner-Agenten: füge standardmäßig eine "Konfidenz-Klausel" ein die den Agenten anweist bei unsicheren Treffern zu eskalieren statt zu raten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Qualitätssicherungs-Agentin [Persona]. Beantworte die folgende Frage zu unseren Produktkonditionen und bewerte selbst deine Konfidenz [Task]. Kontext: Wenn du einen direkten Beleg im Wissensordner findest, zitiere ihn mit Dateiname; wenn der Treffer unsicher ist, schreibe '[Niedriger Konfidenz-Score — bitte Original prüfen]'; erfinde niemals fehlende Details [Context]. Format: Antwort in zwei Teilen: Inhalt (mit Citation) und Konfidenz-Einschätzung (Hoch/Mittel/Niedrig) [Format]."
 **Erwartetes Artefakt:** Ein überarbeitetes System-Instruction-Template für alle Wissensordner-Agenten mit Konfidenz-Klausel sowie ein Prompt-Design-Leitfaden mit 5 Konfidenz-Steuerungstechniken.
 **Fallstricke (≥2 spezifisch):**
@@ -706,7 +706,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lege die Vorlage im Google-Drive-Ordner des Produkt-Managers ab; Produkt-Manager füllt für jedes neue Feature eine Kopie aus und legt sie im selben Ordner ab; Langdock synchronisiert den Ordner täglich als Synced Folder.
 3. Verbinde den Marketing-Agenten mit dem WO-Roadmap-Synced-Folder als Wissensordner; der Agent kann jetzt Feature-Beschreibungen für LinkedIn, Blog, PR und Social Ads aus der validierten Quelle abrufen.
 4. Definiere einen Governance-Schritt: Marketing darf Feature-Beschreibungen nicht im Wissensordner ändern; wenn eine Beschreibung unvollständig ist, eskaliert der Agent zurück an Produkt-Management ("Fehlende Information: [Feld] — bitte Vorlage vervollständigen").
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Produktmarketing-Managerin [Persona]. Schreibe einen LinkedIn-Ankündigungs-Post für das neue Feature [Feature-Name] [Task]. Nutze ausschließlich die Feature-Beschreibung aus dem Wissensordner WO-Roadmap; wenn der Freigabe-Status 'Draft' ist, schreibe 'Dieses Feature ist noch nicht für externe Kommunikation freigegeben' [Context]. Format: LinkedIn-Post max. 200 Wörter, sachlich-enthousiast, mit einem Call-to-Action [Format]."
 **Erwartetes Artefakt:** Ein WO-Roadmap Synced Folder mit verbindlicher Feature-Vorlage, ein Marketing-Agent der Feature-Beschreibungen kanalspezifisch adaptiert, und eine Governance-Regel die unfertige Features blockiert.
 **Fallstricke (≥2 spezifisch):**
@@ -725,7 +725,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Führe den Spot-Check monatlich durch (30 Minuten): stelle alle 5 Canary-Prompts, dokumentiere Citation (J/N), inhaltliche Korrektheit (1-5) und Vollständigkeit (1-5) in der Protokoll-Tabelle.
 3. Eskalations-Trigger: wenn ≥2 von 5 Canary-Prompts einen Miss produzieren oder einen Score ≤3 erhalten, wird ein Diagnose-Audit nach S-WR-010 ausgelöst bevor der Agent weiter genutzt wird.
 4. Archiviere jeden Spot-Check-Bericht als `SPOT-CHECK-[JJJJ-MM]-[Agent-Name].md` im WO-Basis-Ordner; nach 12 Monaten ist der Trend-Verlauf der Qualitäts-Scores als Zeitreihe sichtbar.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Qualitäts-Auditeurin [Persona]. Beantworte die folgende Canary-Frage und gib explizit an welches Dokument aus dem Wissensordner du verwendet hast [Task]. Kontext: Dieser Test ist Teil eines monatlichen Spot-Check-Protokolls; Citation mit Dateiname ist Pflicht; schreibe explizit 'Retrieval-Miss: Kein Treffer für [Begriff]' wenn kein Beleg gefunden wird [Context]. Format: Antwort (1-3 Sätze) + Citation (Dateiname) + Konfidenz (Hoch/Mittel/Niedrig) [Format]."
 **Erwartetes Artefakt:** Ein wiederverwendbares Spot-Check-Protokoll als MD-Datei mit 5 permanenten Canary-Prompts, Bewertungs-Skala und Eskalations-Trigger, archiviert im WO-Basis-Ordner für Trend-Analyse.
 **Fallstricke (≥2 spezifisch):**
@@ -744,7 +744,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Für Canvas-erstellte Dokumente: exportiere quartalsweise als Markdown oder PDF; speichere im zentralen SharePoint-Ordner außerhalb der Plattform; Dateiname entspricht dem Langdock-Dateinamen für einfache Zuordnung.
 3. Dokumentiere den Wechsel-Drill: Eine jährliche Übung die das Team 30 Minuten lang den Ablauf eines Plattformwechsels simuliert — welche Dokumente existieren außerhalb? Welche müssen neu erstellt werden? Wo liegt die System-Instructions-Vorlage?
 4. Erstelle eine Export-Checkliste als MD-Datei: Welche Ordner enthalten kritische Inhalte, welche Formate werden für den Export gewählt, wer ist für den Export verantwortlich, wo werden die Backups gespeichert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagement-Risiko-Beraterin [Persona]. Erstelle eine Portabilitätsstrategie für unsere Langdock-Wissensordner [Task]. Kontext: Wir haben 6 Library Folders mit 280 Dokumenten; einige Dokumente wurden ausschließlich im Canvas erstellt und existieren nur in Langdock; ein Plattformwechsel muss in maximal 2 Wochen vollziehbar sein [Context]. Liefere eine Export-Checkliste mit Dokumententyp, Backup-Format, Backup-Ort und verantwortliche Person [Format]."
 **Erwartetes Artefakt:** Eine Export-Checkliste als MD-Datei im WO-Basis-Ordner, ein dokumentierter quartalsweiser Backup-Prozess und ein Wechsel-Drill-Plan für den Jahres-Review.
 **Fallstricke (≥2 spezifisch):**
@@ -763,7 +763,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lasse den Chat eine bereinigte Version des Textes erstellen: "Korrigiere alle OCR-Fehler im folgenden Text; wenn ein Begriff nicht lesbar ist, markiere ihn als [UNLESERLICH] statt zu raten."
 3. Zerlege den korrigierten Text nach dem Ein-Thema-pro-Datei-Prinzip in atomare MD-Dateien pro Produktgruppe; jede Datei enthält einen klaren H1 und den Produktnamen im ersten Satz.
 4. Führe Canary-Tests durch: spezifische Produktfragen müssen jetzt korrekte Citations aus den MD-Dateien liefern; ein [UNLESERLICH]-Tag in einer Antwort zeigt an wo noch manuelle Nacharbeit nötig ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dokumenten-Restauratorin [Persona]. Der folgende Text stammt aus einer fehlerhaften OCR-Erkennung eines eingescannten Produktkatalogs [Task]. Kontext: Häufige OCR-Fehler sind: 0 statt O, 1 statt l, Leerzeichen in Zahlen (2. 999 statt 2.999), fehlende Umlaute; markiere unleserliche Stellen als [UNLESERLICH] statt zu raten [Context]. Liefere den korrigierten Text als sauberes Markdown mit H1 für den Produktnamen und einer Tabelle für Preis und Spezifikationen [Format]."
 **Erwartetes Artefakt:** 3-5 saubere MD-Dateien aus dem eingescannten Katalog, bereit für den Library-Folder-Upload, mit dokumentierten [UNLESERLICH]-Stellen die manuell nachgeprüft werden müssen.
 **Fallstricke (≥2 spezifisch):**
@@ -782,7 +782,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle ein Änderungs-Antragsformular: ein 5-Zeilen-Template (Antragsteller, Ordner, Datei-Name, Art der Änderung, Begründung) das jeder Contributor vor einer Änderung ausfüllt und an den Approver sendet — verhindert unkontrollierten Wildwuchs.
 3. Richte einen monatlichen Governance-Termin ein (30 Minuten): offene Anträge prüfen, Spot-Check-Ergebnisse (S-WR-036) reviewen, nächste Audit-Fälligkeit prüfen.
 4. Schreibe das RACI-Dokument im Canvas und speichere es als `GOVERNANCE-RACI-[JJJJ].md` im WO-Basis-Ordner; verlinke im Team-Onboarding-Dokument.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagement-Governance-Beraterin [Persona]. Erstelle ein RACI-Dokument für die Governance unserer Langdock-Wissensordner [Task]. Kontext: 25-köpfiges Marketing-Team, 8 Library Folders, 340 Dokumente; die Direktion hat max. 2 Stunden pro Monat für Governance-Aufgaben; unkontrollierter Upload vergiftet das Retrieval [Context]. Liefere: RACI-Tabelle, Änderungs-Antragsformular (5 Zeilen), monatlicher Review-Agenda-Template [Format]."
 **Erwartetes Artefakt:** Ein RACI-Governance-Dokument als MD-Datei, ein Änderungs-Antragsformular und ein monatliches Review-Template, zusammen im WO-Basis-Ordner abgelegt.
 **Fallstricke (≥2 spezifisch):**
@@ -801,7 +801,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Wandle die drei wichtigsten vergangenen Post-Mortem-Berichte in das neue Format um; lade sie als separate MD-Dateien in den WO-Kampagnen-Learnings-Ordner hoch; Dateiname: `kampagne-[Jahr]-[Kampagnen-Name]-learnings.md`.
 3. Verbinde den Kampagnen-Planungs-Agenten mit WO-Kampagnen-Learnings als Wissensordner; füge in die System-Instructions ein: "Bei jeder neuen Kampagnen-Planung prüfe den Wissensordner WO-Kampagnen-Learnings nach ähnlichen historischen Kampagnen und zitiere relevante Learnings."
 4. Etabliere den Post-Mortem-Upload als Pflicht-Schritt im Kampagnen-Abschluss-Prozess: der Kampagnen-Manager fügt das fertige Post-Mortem-Dokument im neuen Format als letzte Aufgabe nach dem Kampagnen-Ende in den Ordner ein — kein Abschluss ohne Eintrag.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kampagnen-Planungsassistentin [Persona]. Wir planen eine B2B-LinkedIn-Kampagne im Mittelstand-Segment für Q3-2025 [Task]. Durchsuche den Wissensordner WO-Kampagnen-Learnings nach historischen Kampagnen mit ähnlichem Zielgruppen-Segment und Kanal; extrahiere die relevantesten Learnings und Empfehlungen [Context]. Format: Tabelle mit Spalten Kampagnen-Name, Jahres-Kontext, Relevantes Learning, Empfehlung für die neue Kampagne [Format]."
 **Erwartetes Artefakt:** Ein WO-Kampagnen-Learnings Library Folder mit verbindlicher Post-Mortem-Vorlage, 3 Pilot-Einträgen und einem Planungs-Agenten der bei jeder neuen Kampagnen-Planung automatisch auf historische Parallelen verweist.
 **Fallstricke (≥2 spezifisch):**
@@ -820,7 +820,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lass die Rechtsabteilung Marketing-freundliche Kurzfassungen in MD-Format erstellen (je Thema max. 1 Seite, klare Ge- und Verbote, Beispiele für erlaubte und verbotene Formulierungen); lade diese als atomare Dateien in WO-Compliance hoch.
 3. Setze WO-Compliance als Read-only (Viewer-Rechte für alle außer dem Compliance-Owner); konfiguriere den Marketing-Agenten so dass er Compliance-Fragen aus diesem Ordner beantwortet und bei Unsicherheit explizit auf Rechtsberatung verweist.
 4. Füge in die System-Instructions ein: "Antworte auf Compliance-Fragen ausschließlich auf Basis des Wissensordners WO-Compliance; wenn keine eindeutige Regel gefunden wird, antworte 'Bitte Rechtsabteilung konsultieren — dieser Fall ist nicht im Compliance-Leitfaden abgedeckt'."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-Compliance-Assistentin [Persona]. Prüfe ob die folgende Werbeaussage nach deutschem UWG zulässig ist [Task]. Stütze dich ausschließlich auf die Richtlinien im Wissensordner WO-Compliance; wenn der Fall nicht abgedeckt ist, nenne das explizit [Context]. Format: Kurze Einschätzung (erlaubt / nicht erlaubt / unklar), Begründung mit Regelreferenz, Empfehlung [Format]."
 **Erwartetes Artefakt:** Ein WO-Compliance Library Folder mit 5-10 freigegebenen Compliance-MD-Dateien, Read-only-Berechtigungen und einem Agenten der Compliance-Standardfragen eigenständig beantwortet.
 **Fallstricke (≥2 spezifisch):**
@@ -839,7 +839,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Konfiguriere den Synced Folder in Langdock mit dem SharePoint-Specs-Ordner; stelle sicher dass der Ordner max. 200 Dateien enthält (Archiv-Unterordner liegt außerhalb des Sync-Pfads).
 3. Füge in die System-Instructions des Produkt-Agenten ein: "Wenn du Produktspezifikationen zitierst, nenne immer die Versionsnummer und das Quartal aus dem Dateinamen — der Nutzer muss erkennen ob die Spezifikation aktuell ist."
 4. Führe nach jedem Quarterly-Update einen Canary-Test durch: "Was sind die technischen Spezifikationen für Produkt Alpha in Q3-2025?" — die Citation muss die neue v-Nummer im Dateinamen zeigen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Produkt-Dokumentations-Assistentin [Persona]. Beantworte die folgende Frage zu den technischen Spezifikationen von Produkt Alpha [Task]. Zitiere immer die Versionsnummer und das Quartal aus dem Dateinamen der verwendeten Spec-Datei; wenn die Spec älter als das aktuelle Quartal ist, weise aktiv darauf hin [Context]. Format: Technische Antwort in Bullet-Points mit Quellenangabe inkl. Versionsnummer [Format]."
 **Erwartetes Artefakt:** Ein konfigurierter Synced Folder mit versionierten Produktspecs, einem Canary-Test-Set für Quarterly-Updates und einem Agenten der Versionsnummern aktiv in Citations nennt.
 **Fallstricke (≥2 spezifisch):**
@@ -858,7 +858,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Kategorisiere die neuen Fragen nach Themenbereich; entscheide pro Frage ob sie (a) in eine bestehende FAQ-Datei ergänzt wird, (b) eine neue atomare Datei rechtfertigt (>3 Fragen zum selben neuen Thema), oder (c) nicht in den Wissensordner gehört (zu spezifisch für einen Einzelfall).
 3. Erstelle oder aktualisiere die FAQ-Dateien im MD-Format; jede FAQ-Datei enthält eine eindeutige H1, einen beschreibenden Einleitungssatz mit dem Schlüsselbegriff und maximal 10 Frage-Antwort-Paare (mehr → neue Datei).
 4. Führe nach dem Update einen Canary-Test mit den zuvor unbeantwortet gebliebenen Fragen durch; jede neue FAQ muss jetzt mit Citation beantwortet werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist FAQ-Wissensbasis-Kuratorin [Persona]. Analysiere die folgende Liste von Kundenfragen die unser Agent nicht beantworten konnte [Task]. Kontext: Die Fragen stammen aus dem vergangenen Monat; wir nutzen einen Library Folder mit max. 1.000 Dateien; jede FAQ-Datei enthält max. 10 Frage-Antwort-Paare um das Per-Document-Cap nicht zu unterlaufen [Context]. Kategorisiere die Fragen und empfehle welche in bestehende Dateien eingefügt werden und welche eine neue atomare Datei rechtfertigen [Format]."
 **Erwartetes Artefakt:** Eine aktualisierte FAQ-Wissensbasis mit abgedeckten Lücken, ein FAQ-Maintenance-Protokoll mit monatlichem Update-Rhythmus und einem Canary-Test-Nachweis für alle neu aufgenommenen Fragen.
 **Fallstricke (≥2 spezifisch):**
@@ -877,7 +877,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Teile das Dokument in zwei separate Dateien: `whitepaper-[name]-haupttext-[Jahr].md` (nur der argumentative Kern) und `whitepaper-[name]-anhang-[Jahr].md` (nur wenn der Anhang eigenständige Informationen enthält die retrievt werden sollen); Quellenangaben und Abkürzungsverzeichnisse komplett weglassen — diese erzeugen nie nützliche Chunks.
 3. Optimiere den Haupttext nach RAG-Regeln: jeder Absatz wiederholt den Schlüsselbegriff, H2-Überschriften sind keyword-reich, keine unaufgelösten Pronomen.
 4. Führe Canary-Tests durch: Fragen zum Kern-Argument des Whitepapers müssen Citations aus der Haupttext-Datei liefern, nicht aus der Anhang-Datei.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Dokumenten-Aufbereiterin [Persona]. Teile das folgende 48-seitige technische Whitepaper in RAG-optimierte Dateien auf [Task]. Kontext: Langdock zerlegt in ~2.000-Zeichen-Chunks; Anhänge (Tabellen, Abkürzungen, Quellenangaben) erzeugen irrelevante Chunks die den Haupttext verdrängen; Quellenangaben komplett entfernen [Context]. Erstelle zwei separate MD-Dateien: Haupttext und Anhang (nur wenn Anhang eigenständige abrufbare Informationen enthält) [Format]."
 **Erwartetes Artefakt:** Zwei separate MD-Dateien (Haupttext + optionaler Anhang) mit nachgewiesenem Retrieval aus dem Haupttext bei Canary-Tests zu Kern-Argumenten des Whitepapers.
 **Fallstricke (≥2 spezifisch):**
@@ -895,7 +895,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 1. Erkläre die technische Realität: Langdock indiziert Dokumente asynchron nach dem Upload — die Vektorisierung läuft im Hintergrund und kann bei Massen-Uploads (>20 Dateien) 10-30 Minuten in Anspruch nehmen; Dateien sind im Ordner sichtbar bevor sie retrievable sind.
 2. Definiere den Warm-up-Prozess: nach einem Massen-Upload von >10 Dateien mindestens 15 Minuten warten; führe dann einen einzelnen Canary-Test mit einer Frage durch die eindeutig auf eine der neu hochgeladenen Dateien zielen sollte — wenn dieser Test erfolgreich ist, sind alle Dokumente indiziert.
 3. Dokumentiere den Warm-up-Prozess im Upload-Protokoll des Ordners als obligatorischen Schritt: "Nach jedem Batch-Upload von >5 Dateien: 15 Minuten Wartezeit, dann einzelner Canary-Test, bei Erfolg: vollständiges Canary-Set ausführen."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Administratorin [Persona]. Wir haben soeben 35 neue Dokumente in unseren Library Folder hochgeladen [Task]. Erkläre den korrekten Warm-up-Prozess nach einem Massen-Upload und beschreibe wie wir überprüfen können ob die Indexierung abgeschlossen ist bevor wir Produktiv-Tests durchführen [Context]. Format: Schritt-für-Schritt-Anleitung mit Zeitangaben und einem Canary-Test-Vorschlag [Format]."
 **Erwartetes Artefakt:** Ein Upload-Protokoll mit Warm-up-Schritten, definierten Wartezeiten und einem Single-Canary-Test-Template für die Indexierungs-Bestätigung nach Massen-Uploads.
 **Fallstricke (≥2 spezifisch):**
@@ -914,7 +914,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lade verdächtige Paare als direkten Chat-Anhang hoch und frage: "Vergleiche diese zwei Dokumente und liste die inhaltlichen Unterschiede auf; sind sie inhaltliche Duplikate, Versionen desselben Inhalts mit Updates, oder thematisch verwandte aber verschiedene Inhalte?"
 3. Entscheide pro Paar nach der Regel: identischer Inhalt → behalte das neuere, lösche das ältere; inhaltlich aktualisierte Version → behalte die neuere, lösche die ältere; thematisch verwandt aber verschieden → beide behalten, sicherstellen dass Dateinamen den Unterschied klar kommunizieren.
 4. Dokumentiere alle Entscheidungen in einem Duplikat-Log; bei Löschungen immer den Dateinamen und Löschdatum festhalten für spätere Rückverfolgbarkeit.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Kuratorin [Persona]. Vergleiche die zwei angehängten Dokumente auf inhaltliche Duplikate [Task]. Kontext: In unserem Library Folder konkurrieren vermutlich identische oder fast-identische Dokumente um dieselben Retrieval-Slots; das Per-Document-Cap liefert pro Datei nur einen Chunk — Duplikate halbieren effektiv die Retrieval-Qualität [Context]. Liefere: Liste der inhaltlichen Unterschiede, Empfehlung welche Version behalten wird, Begründung [Format]."
 **Erwartetes Artefakt:** Ein bereinigter Wissensordner ohne inhaltliche Duplikate, ein Duplikat-Log als MD-Datei und eine Duplikat-Erkennungs-Regel im Governance-Dokument (S-WR-039).
 **Fallstricke (≥2 spezifisch):**
@@ -933,7 +933,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle atomare MD-Dateien pro Thema: `onboarding-brand-basics.md`, `onboarding-tool-zugaenge.md`, `onboarding-ansprechpartner.md`, `onboarding-interne-prozesse.md`, `onboarding-haeufige-fragen.md`; jede Datei endet mit "Für weitere Fragen: [Ansprechpartner + Kontakt]."
 3. Konfiguriere einen Onboarding-Agenten mit 3 Konversations-Startern: "Was sind unsere Brand-Grundregeln?", "Wie lautet der Onboarding-Prozess für Tool-Zugänge?", "An wen wende ich mich bei Fragen zu [Thema]?"
 4. Aktualisiere WO-Onboarding quartalsweise; lasse neue Mitarbeiter am Ende ihres ersten Monats Feedback geben welche Fragen der Agent nicht beantworten konnte — diese Lücken werden in den nächsten Quartal-Update aufgenommen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Onboarding-Assistent für neue Marketing-Mitarbeiter [Persona]. Beantworte die folgende Frage eines neuen Kollegen zu unserem Brand-Setup [Task]. Stütze dich ausschließlich auf den Wissensordner WO-Onboarding; wenn die Antwort nicht im Ordner liegt, empfehle den direkten Kontakt zu [Ansprechpartner] [Context]. Format: Direkte Antwort (max. 3 Sätze) mit Quellenangabe aus dem Onboarding-Wissensordner [Format]."
 **Erwartetes Artefakt:** Ein WO-Onboarding Library Folder mit 8-12 atomaren Dateien, ein Onboarding-Agent mit 3 Konversations-Startern und ein Feedback-Prozess für die quartalsweise Erweiterung.
 **Fallstricke (≥2 spezifisch):**
@@ -952,7 +952,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Definiere für jeden Press-Kit-Bestandteil einen Update-Rhythmus: Boilerplate = jährlich (nach Hauptversammlung), Bio-Texte = bei Personalwechsel, Fact-Sheet = quartalsweise, Approved-Quotes = nach jeder Pressekonferenz.
 3. Konfiguriere den PR-Agenten mit System-Instructions: "Antworte auf Journalisten-Anfragen mit ausschließlich aus WO-Press-Kit abgerufenen Inhalten; erfinde keine Fakten oder Zitate; wenn ein benötigtes Element nicht im Wissensordner vorliegt, eskaliere an den PR-Manager."
 4. Teste mit 5 typischen Journalisten-Fragen: Unternehmensgeschichte, aktuelle Mitarbeiterzahl, CEO-Zitat zum Thema Nachhaltigkeit — alle Antworten müssen Citations aus WO-Press-Kit enthalten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Assistentin [Persona]. Beantworte die folgende Anfrage eines Wirtschaftsjournalisten zu unserem Unternehmen [Task]. Nutze ausschließlich den Press-Kit-Wissensordner WO-Press-Kit; erfinde keine Fakten und verwende keine Zitate die nicht als 'approved' gekennzeichnet sind [Context]. Format: Direkte Antwort mit Quellenangabe aus dem Press-Kit, max. 3 Sätze [Format]."
 **Erwartetes Artefakt:** Ein WO-Press-Kit Library Folder mit aktuellen atomaren Press-Kit-Elementen, ein getesteter PR-Agent mit Citations-Nachweis für 5 typische Journalisten-Fragen und ein definierter Update-Rhythmus pro Press-Kit-Element.
 **Fallstricke (≥2 spezifisch):**
@@ -971,7 +971,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Strukturiere jede Segment-Datei einheitlich: H1 = Segment-Name (z.B. "Voice of Customer: Mittelstand-CMOs"), Abschnitt 1 = Top-3-Pain-Points mit O-Ton-Zitaten (anonymisiert), Abschnitt 2 = Top-3-Kaufmotive mit O-Ton-Zitaten, Abschnitt 3 = Häufig genannte Konkurrenten und Vergleichspunkte.
 3. Verbinde den Persona-Update-Agenten mit WO-Voice-of-Customer; füge System-Instruction ein: "Nutze die O-Ton-Zitate aus dem Wissensordner als Beweis für Persona-Eigenschaften — keine Eigenerfindung von Kundenzitaten."
 4. Führe jährlich eine Persona-Update-Session durch: Prompt "Welche Persona-Eigenschaften aus dem Vorjahr werden durch neue Voice-of-Customer-Daten bestätigt und welche müssen aktualisiert werden?"
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Persona-Forscherin [Persona]. Analysiere die Voice-of-Customer-Dokumente im Wissensordner WO-Voice-of-Customer für das Segment Mittelstand-CMOs [Task]. Kontext: Die Dokumente enthalten anonymisierte O-Ton-Zitate aus Kunden-Interviews; nutze ausschließlich diese Zitate als Belege für Persona-Eigenschaften [Context]. Liefere einen Persona-Update-Vorschlag mit Abschnitten Bestätigte Eigenschaften, Neue Erkenntnisse, Veraltete Annahmen — je mit Beleg-Zitat [Format]."
 **Erwartetes Artefakt:** Ein WO-Voice-of-Customer Library Folder mit anonymisierten Segment-Zusammenfassungen und ein Persona-Update-Agent der jährliche Revisions-Vorschläge mit O-Ton-Belegen liefert.
 **Fallstricke (≥2 spezifisch):**
@@ -990,7 +990,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle für jeden relevanten Mitbewerber eine initiale Profil-Datei nach diesem Template; lade in WO-Konkurrenz hoch; Dateiname: `konkurrenz-[name]-[JJJJ]-Q[N].md`.
 3. Aktualisiere die Profile quartalsweise: neue Datei für das neue Quartal erstellen (nicht die alte überschreiben — historische Versionen ermöglichen Trend-Analyse); alte Quartalsprofile bleiben im Ordner als historisches Archiv.
 4. Verbinde den Strategie-Agenten mit WO-Konkurrenz + Web Search; System-Instruction: "Ergänze Wissensordner-Insights mit aktuellen Web-Search-Ergebnissen; weise explizit auf den Zeitstempel der Wissensordner-Daten hin."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wettbewerbs-Analystin [Persona]. Vergleiche unsere aktuelle Positionierung mit Wettbewerber X basierend auf den Konkurrenz-Profilen im Wissensordner und aktuellen Web-Search-Daten [Task]. Zeige wie sich die Positionierung von Wettbewerber X über die letzten vier Quartale entwickelt hat [Context]. Format: Tabelle mit Quartal, Wettbewerber-Positionierung, Unsere Positionierung, Empfohlene Anpassung [Format]."
 **Erwartetes Artefakt:** Ein WO-Konkurrenz Library Folder mit Quartals-Profilen je Mitbewerber, ein Strategie-Agent mit Web Search + historischem Archiv, und ein quartalsweises Update-Protokoll.
 **Fallstricke (≥2 spezifisch):**
@@ -1009,7 +1009,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Konvertiere die 3-5 wichtigsten vergangenen Event-Debrief-Berichte in das neue Template-Format; lade als separate MD-Dateien in WO-Event-Debriefs hoch; Dateiname: `event-debrief-[name]-[JJJJ-MM].md`.
 3. Verbinde den Event-Planungs-Agenten mit WO-Event-Debriefs; System-Instruction: "Wenn ein neues Event-Briefing bearbeitet wird, prüfe WO-Event-Debriefs nach ähnlichen historischen Events und zitiere relevante Learnings explizit."
 4. Etabliere den Debrief-Upload als Pflicht im Event-Abschluss-Prozess (analog zu S-WR-040 für Kampagnen): kein Event-Abschluss ohne einen neuen Debrief-Eintrag im Wissensordner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Event-Planungsassistentin [Persona]. Wir planen unsere Teilnahme an der Marketing-Messe 2025 in München [Task]. Durchsuche den Wissensordner WO-Event-Debriefs nach historischen Messe-Teilnahmen mit ähnlichem Format und Zielgruppe; extrahiere Empfehlungen für Stand-Konzept, Botschaften und Follow-up-Aktionen [Context]. Format: Tabelle mit Historischem Event, Relevantem Learning, Empfehlung für 2025 [Format]."
 **Erwartetes Artefakt:** Ein WO-Event-Debriefs Library Folder mit 3-5 standardisierten Debrief-Einträgen, ein Event-Planungs-Agent der historische Learnings aktiv einbezieht und eine Debrief-Pflicht im Event-Abschluss-Prozess.
 **Fallstricke (≥2 spezifisch):**
@@ -1028,7 +1028,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Definiere den Heading-Style-Guide: H1 einmal pro Datei (Dokument-Titel mit Hauptkeyword); H2 für jeden thematischen Hauptabschnitt (enthält das Kapitel-Keyword); H3 für Unterabschnitte innerhalb eines Themas (enthält das Unter-Keyword); kein Fließtext länger als 2.000 Zeichen zwischen zwei H2-Überschriften.
 3. Überarbeite 2-3 Kerndokumente nach dem Guide; besonderer Fokus auf: H2-Überschriften müssen den Kern-Begriff des Abschnitts im Titel tragen, nicht nur eine Frage; nach jeder H2 sofort ein keyword-reicher Eröffnungssatz der das Thema des Abschnitts explizit nennt.
 4. Canary-Test vor und nach der Überarbeitung: für dasselbe Thema dieselbe Frage stellen und die Chunk-Kohärenz der Antwort vergleichen (vollständiger Abschnitt vs. fragmentierter Textausschnitt).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Redakteurin [Persona]. Überarbeite die Überschriften-Struktur des folgenden Dokuments so dass der Chunking-Algorithmus thematische Grenzen sauber erkennt [Task]. Kontext: Langdock zerlegt bei ~2.000 Zeichen und bevorzugt Markdown-Header als Schnittmarken; jede H2-Überschrift muss das Kapitel-Keyword im Titel tragen; nach jeder H2 muss ein keyword-reicher Eröffnungssatz folgen [Context]. Liefere das überarbeitete Dokument mit markierten Änderungen an der Überschriften-Hierarchie [Format]."
 **Erwartetes Artefakt:** Ein Heading-Style-Guide als MD-Datei im WO-Basis-Ordner und 2-3 überarbeitete Kerndokumente mit Canary-Test-Nachweis für verbesserte Chunk-Kohärenz.
 **Fallstricke (≥2 spezifisch):**
@@ -1047,7 +1047,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle die Scorecard-Vorlage im Canvas als MD-Tabelle: Spalten KPI, Aktueller Wert, Zielwert, Status (Grün/Gelb/Rot), Maßnahme wenn Rot.
 3. Lege den monatlichen Ausfüll-Prozess fest: Canary-Test (10 min), Freshness-Stichprobe (3 min), Datei-Auslastung prüfen (1 min), Duplikat-Verdächtige aus Dateiliste (3 min), Retrieval-Miss-Feedback einsammeln (3 min) — gesamt 20 Minuten.
 4. Archiviere jede monatliche Scorecard als `HEALTH-SCORECARD-[JJJJ-MM].md` im WO-Basis-Ordner; nach 12 Monaten ist ein Trend-Dashboard möglich.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensordner-Qualitätsmanagerin [Persona]. Erstelle eine monatliche Health-Scorecard für unsere 6 Library Folders [Task]. Kontext: Die Scorecard soll in 15 Minuten ausfüllbar sein; sie misst Canary-Score, Freshness-Index, Duplikat-Rate, Datei-Auslastung und Retrieval-Miss-Rate; Grün = Zielwert erreicht, Gelb = 80 % des Zielwerts, Rot = unter 80 % [Context]. Liefere die Scorecard-Vorlage als ausfüllbare MD-Tabelle mit Zielwerten und Maßnahmen-Spalte [Format]."
 **Erwartetes Artefakt:** Eine Health-Scorecard-Vorlage als MD-Datei mit fünf KPIs, definierten Zielwerten und einem monatlichen Ausfüll-Protokoll — archiviert als Zeitreihe im WO-Basis-Ordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1066,7 +1066,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle die Konditions-Übersicht-Vorlage: H1 = Kundensegment + Quartal, Abschnitt 1 = Standardpreise in diesem Quartal, Abschnitt 2 = Typische Rabattbandbreiten dieses Segments, Abschnitt 3 = Packaging-Optionen die in diesem Quartal genutzt wurden.
 3. Verbinde den Vertriebs-Agenten mit beiden Ordnern; System-Instruction: "Für Verhandlungs-Briefings kombiniere aktuelle Preise aus dem Synced Folder mit historischen Segment-Konditionen aus dem Library Folder und zeige die Preisentwicklung im Trend."
 4. Teste mit einer typischen Anfrage: "Bereite ein Verhandlungs-Briefing vor für ein Renewal-Gespräch mit einem Mittelstands-Kunden der seit 3 Jahren Kunde ist."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Verhandlungs-Vorbereitungsassistentin [Persona]. Erstelle ein Verhandlungs-Briefing für ein Renewal-Gespräch mit einem Mittelstands-Kunden der seit 2022 Kunde ist [Task]. Nutze die aktuellen Preislisten aus dem Synced Folder und die historischen Konditions-Übersichten aus dem Library Folder; zeige die Preisentwicklung über vier Quartale [Context]. Format: Einseitiges Briefing mit Abschnitten Aktuelle Preise, Historische Konditionen, Empfohlene Verhandlungsposition [Format]."
 **Erwartetes Artefakt:** Ein WO-Preis-Historik mit Synced Folder (aktuelle Preise) und Library Folder (historische Konditions-Übersichten), ein Vertriebs-Agent der Verhandlungs-Briefings mit Preis-Trendanalyse generiert.
 **Fallstricke (≥2 spezifisch):**
@@ -1085,7 +1085,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Führe nach jeder Wissensordner-Änderung das vollständige Test-Set aus und dokumentiere für jede Frage: (a) Antwort korrekt (J/N), (b) Citation korrekt (J/N), (c) Erwartete Quelldatei stimmt mit tatsächlicher Quelldatei überein (J/N).
 3. Klassifiziere Fehler in drei Typen: Typ A = Antwort falsch, Citation fehlt → Indexierungslatenz oder Datei nicht im Ordner; Typ B = Antwort falsch, Citation vorhanden aber falsche Datei → falsches Dokument retrievt (Duplikat oder schlechter Dateiname); Typ C = Antwort falsch, Citation korrekte Datei → Dokument-Qualitätsproblem (RAG-Optimierung nach S-WR-011 notwendig).
 4. Löse jeden Fehler-Typ mit der zugehörigen Maßnahme; re-teste nach der Maßnahme; erst wenn alle 10 Test-Fragen bestehen gilt die Umstrukturierung als erfolgreich abgeschlossen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retrieval-Debugging-Spezialistin [Persona]. Beantworte die folgende bekannte Testfrage und nenne explizit die Quelldatei und den Abschnitt aus dem die Antwort stammt [Task]. Kontext: Diese Frage ist Teil eines Goldstandard-Test-Sets nach einer Wissensordner-Umstrukturierung; die erwartete Antwort ist [bekannte Antwort] aus der Datei [erwartete Quelldatei]; wenn die Antwort oder Quelle abweicht, beschreibe die Abweichung explizit [Context]. Format: Antwort + Citation (Dateiname + Abschnitt) + Übereinstimmung mit Erwartung (J/N) [Format]."
 **Erwartetes Artefakt:** Ein Goldstandard-Test-Set als MD-Datei mit 10 Fragen, bekannten Antworten und erwarteten Citations — wiederverwendbarer Regressions-Test nach jeder Wissensordner-Änderung.
 **Fallstricke (≥2 spezifisch):**
@@ -1104,7 +1104,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Stelle sicher dass jede Datei die Marken-Kernbegriffe im ersten Satz wiederholt ("Die Fotografie-Richtlinien der Marke [Name] definieren...") und alle Regeln als konkrete Ge- und Verbote formuliert sind — keine abstrakten Beschreibungen ("modern und frisch"), sondern operative Anweisungen ("Verwende ausschließlich Tageslichtstimmungen zwischen 9 und 16 Uhr Mitteleuropäischer Zeit").
 3. Verbinde den Briefing-Agenten mit WO-Brand-Fotografie; konfiguriere Konversations-Starter: "Erstelle ein Foto-Briefing für Social Media", "Erstelle ein Foto-Briefing für Print-Kampagne".
 4. Teste mit einem realen Briefing-Auftrag: "Erstelle ein Briefing für einen Fotografen für unsere neue Sommer-Kampagne für Instagram" — der Agent muss kanalspezifische Stilangaben mit Citations aus WO-Brand-Fotografie liefern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Foto-Briefing-Assistentin [Persona]. Erstelle ein vollständiges Foto-Briefing für einen freien Fotografen für unsere Instagram-Sommer-Kampagne [Task]. Nutze ausschließlich die Richtlinien aus dem Wissensordner WO-Brand-Fotografie; liste explizit auf was erlaubt, empfohlen und verboten ist [Context]. Format: Strukturiertes Briefing mit Abschnitten Stil-Vorgaben, Motiv-Kategorien, Explizite Verbote, Technische Anforderungen [Format]."
 **Erwartetes Artefakt:** Ein WO-Brand-Fotografie Library Folder mit 5 atomaren Richtlinien-Dateien und ein Briefing-Agent der kanalspezifische Foto-Briefings mit Citations in 2 Minuten generiert.
 **Fallstricke (≥2 spezifisch):**
@@ -1123,7 +1123,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Wende die Entscheidungsregel an: Pro-Agent-Ordner empfohlen wenn (a) Agenten haben stark unterschiedliche Themengebiete (SEO vs. Compliance vs. PR) und (b) Retrieval-Qualität ist wichtiger als Governance-Effizienz; Shared Folder empfohlen wenn (a) Agenten arbeiten zu 70 % mit denselben Dokumenten und (b) kleines Team (<5 Personen).
 3. Wähle ein Hybrid-Modell als Best Practice für mittlere Teams (5-20 Personen): ein "WO-Basis" Shared Folder für alle Agenten (Unternehmensgeschichte, Brand-Basics, Glossar) + Pro-Agent-Ordner für themenspezifisches Wissen (WO-SEO, WO-PR, WO-Compliance).
 4. Dokumentiere die Entscheidung als ADR (Architecture Decision Record): Kontext, Entscheidung, Begründung, Konsequenzen — in WO-Basis-Ordner als `ADR-wissensordner-architektur-[JJJJ].md` ablegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Architekturberaterin [Persona]. Erstelle eine Entscheidungsmatrix für die Wahl zwischen Pro-Agent-Wissensordnern und einem gemeinsamen Shared Folder für ein 12-köpfiges Marketing-Team mit 7 Agenten [Task]. Kontext: Langdock Library Folders fassen max. 1.000 Dateien; Pro-Agent-Ordner reduzieren Retrieval-Rauschen aber erhöhen Governance-Aufwand; Synced Folders sind auf 200 Dateien und 5 pro Agent begrenzt [Context]. Liefere die Matrix mit Bewertung 1-5 pro Kriterium und eine begründete Empfehlung [Format]."
 **Erwartetes Artefakt:** Eine ADR-Datei mit Entscheidungsmatrix, begründeter Empfehlung (Pro-Agent / Shared / Hybrid) und einem Migrations-Plan für die gewählte Architektur.
 **Fallstricke (≥2 spezifisch):**
@@ -1142,7 +1142,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Entscheide pro Kapitel: behalten (Kernwissen), trimmen (kürzen auf wesentliche Aussagen), auslagern (in eigene Datei wenn eigenständiges Thema), weglassen (veraltet oder irrelevant für den Agent-Use-Case).
 3. Erstelle das getrimmte Dokument manuell oder via Chat-Assistent im Canvas; teile es nach dem Ein-Thema-pro-Datei-Prinzip auf; max. 30 Seiten Gesamtumfang nach dem Trimming — wenn mehr als 30 Seiten verbleiben ist das Dokument in zu viele Themen aufgeteilt.
 4. Dokumentiere das Trimming in einem Protokoll: Was wurde entfernt, Begründung, wo die entfernten Inhalte bei Bedarf auffindbar sind (Original-Speicherort).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dokumenten-Kuratorin [Persona]. Analysiere das angehängte 200-seitige Unternehmens-Kompendium und identifiziere Abschnitte die für einen Marketing-Agenten im Wissensordner irrelevant sind [Task]. Kontext: Der Agent beantwortet Marketing-Fragen zu Brand, Produkten und Zielgruppen; Abschnitte zu internen HR-Prozessen, Rechtskapiteln und Kapiteln älter als 2022 sind nicht relevant [Context]. Liefere eine Trimming-Empfehlungs-Tabelle mit Kapitel, Empfehlung (Behalten/Kürzen/Weglassen), Begründung [Format]."
 **Erwartetes Artefakt:** Ein getrimmtes Kern-Dokument (max. 30 Seiten gesamt, aufgeteilt in atomare MD-Dateien) mit einem Trimming-Protokoll das alle Entscheidungen dokumentiert.
 **Fallstricke (≥2 spezifisch):**
@@ -1161,7 +1161,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lade die vier Glossar-Dateien in WO-Lokalisierung hoch; Versionsnummer im Dateinamen ermöglicht klare Update-Verfolgung; ältere Versionen werden beim Update aus dem Ordner entfernt (nicht archiviert — Glossare wachsen nicht historisch).
 3. Verbinde den Übersetzungs-Agenten mit WO-Lokalisierung; System-Instruction: "Konsultiere das Glossar für den Zielsprach-Markt bevor du Produktbegriffe, Marken-Termini oder regulatorische Fachbegriffe übersetzt; verwende immer den Glossar-Begriff statt einer eigenen Übersetzung; wenn ein Begriff nicht im Glossar ist, markiere ihn mit [GLOSSAR-LÜCKE]."
 4. Etabliere einen vierteljährlichen Glossar-Pflegeprozess: [GLOSSAR-LÜCKE]-Markierungen aus den letzten drei Monaten sammeln; mit Sprach-Owner und Brand-Team die fehlenden Einträge ergänzen; neue Version hochladen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungsassistentin für den DACH-Markt [Persona]. Übersetze den folgenden Marketing-Text ins Schweizer Hochdeutsch (DE-CH) [Task]. Konsultiere das Glossar WO-Lokalisierung/glossar-de-ch für alle Produkt-Begriffe und Marken-Termini; markiere Begriffe die nicht im Glossar sind mit [GLOSSAR-LÜCKE] statt sie eigenständig zu übersetzen [Context]. Format: Übersetzter Text mit hervorgehobenen Glossar-Begriffen und Liste der [GLOSSAR-LÜCKE]-Markierungen am Ende [Format]."
 **Erwartetes Artefakt:** Ein WO-Lokalisierung Library Folder mit 4 Sprach-Glossar-Dateien (DE-DE, DE-AT, DE-CH, EN-INTL), ein Übersetzungs-Agent der Glossar-Begriffe verbindlich anwendet und ein vierteljährlicher Glossar-Pflege-Prozess.
 **Fallstricke (≥2 spezifisch):**
@@ -1177,11 +1177,11 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 **Eingesetzte Langdock-Fähigkeit(en):** Library Folder (Verwaltungsansicht) + Chat (Architektur-Planung) + Canvas (Skalierungs-Plan-Dokument)
 **Vorgehen (5 Schritte):**
 1. Analysiere den Ist-Zustand: Anzahl Dateien pro Ordner, Agenten-Anbindungen, Retrieval-Qualität (Spot-Check S-WR-053), bekannte Schwachstellen; dokumentiere als Ist-Zustand-Tabelle.
-2. Definiere die Ziel-Architektur für 25 Personen und 12 Agenten: mind. 1 WO-Basis (alle Agenten), 4-6 thematische Pro-Agenten-Ordner (WO-Brand, WO-SEO, WO-PR, WO-Compliance, WO-Produkt, WO-Kampagnen), Kapazitätsobergrenzen pro Ordner, Agenten-Zuordnungsmatrix.
-3. Plane die Migration in drei Phasen: Phase 1 (Woche 1-2) = Basis-Ordner bereinigen und neue Ordner-Struktur anlegen; Phase 2 (Woche 3-4) = Dokumente in neue Ordner migrieren und Agenten-Anbindungen aktualisieren; Phase 3 (Woche 5-6) = Canary-Tests für alle Agenten, Governance-RACI für neues Team aktualisieren.
+2. Ziel-Architektur für 25 Personen / 12 Agenten: 1 WO-Basis + 4–6 thematische Ordner (WO-Brand, WO-SEO, WO-PR, WO-Compliance, WO-Produkt, WO-Kampagnen), Kapazitätsobergrenzen je Ordner, Agenten-Zuordnungsmatrix.
+3. Migration in 3 Phasen: P1 (W1-2) Basis bereinigen + neue Struktur anlegen; P2 (W3-4) Dokumente migrieren + Agenten-Anbindungen aktualisieren; P3 (W5-6) Canary-Tests + Governance-RACI für neues Team.
 4. Aktualisiere das Governance-RACI (S-WR-039) für die neue Team-Größe: bei 25 Personen braucht jeder Ordner einen dedizierten Bereichs-Owner; Eskalationspfade und monatliche Review-Termine für alle neuen Ordner einrichten.
 5. Kommuniziere den Skalierungs-Plan aktiv an das Team: 30-Minuten-Briefing vor Phase 1 mit Erklärung der neuen Struktur und Antworten auf "Was ändert sich für mich?"
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Infrastruktur-Strategin für Marketing-Teams [Persona]. Erstelle einen Skalierungs-Plan für unsere Langdock-Wissensordner-Infrastruktur [Task]. Kontext: Wir wachsen von 8 auf 25 Personen und von 4 auf 12 Agenten; aktuell haben wir 80 Dateien in 3 Ordnern; Ziel sind 400 Dateien in 7-8 Ordnern; Library Folders fassen max. 1.000 Dateien, Synced Folders max. 200 Dateien [Context]. Liefere: Ist-Zustand-Tabelle, Ziel-Architektur-Übersicht, 3-Phasen-Migrations-Plan, aktualisiertes RACI für 25 Personen [Format]."
 **Erwartetes Artefakt:** Ein vollständiger Skalierungs-Plan als MD-Dokument mit Ist-Zustand, Ziel-Architektur, 3-Phasen-Migrations-Plan und aktualisiertem Governance-RACI — als Canvas-Dokument erstellt und im WO-Basis-Ordner abgelegt.
 **Fallstricke (≥2 spezifisch):**
@@ -1200,7 +1200,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lege das Scoring-Schema fest: pro Item drei Dimensionen — Citation korrekt (0/1), Quelldatei stimmt (0/1), Antwort faktisch korrekt (0/1); Gesamt-Score als Prozentsatz der erreichten Punkte von Maximum.
 3. Führe den Harness als Baseline aus (vor jeder Änderung), dokumentiere den Baseline-Score; nach jeder Wissensordner-Änderung erneut ausführen und Score-Delta berechnen.
 4. Speichere jeden Lauf als `EVAL-HARNESS-[JJJJ-MM-TT].md` im WO-Basis-Ordner; nur Änderungen mit positivem oder neutralem Score-Delta werden produktiv übernommen, Regressionen zurückgerollt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retrieval-Evaluations-Ingenieurin [Persona]. Beantworte die folgende Evaluations-Frage und gib explizit Quelldatei und Abschnitt an [Task]. Kontext: Dies ist Teil eines Evaluations-Harness; die erwartete Quelldatei ist [Datei], die Soll-Antwort ist [Antwort]; bewerte selbst ob deine Antwort übereinstimmt; schreibe 'Kein Treffer' wenn nichts gefunden wird [Context]. Format: Antwort + Citation + drei Scores (Citation/Quelldatei/Korrektheit je 0 oder 1) [Format]."
 **Erwartetes Artefakt:** Ein Retrieval-Evaluations-Harness als MD-Datei mit 15-20 gescorten Items, Baseline-Score und einem Score-Delta-Protokoll für jede Wissensordner-Änderung.
 **Fallstricke (≥2 spezifisch):**
@@ -1219,7 +1219,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Setze einen H2- oder H3-Header genau an die Stelle die der Chunk als Themengrenze haben sollte; halte die Faustregel ein, dass zwischen zwei H2-Headern nicht mehr als circa 2.000 Zeichen liegen, damit ein Thema in einen Chunk passt.
 3. Formuliere nach jedem Header einen keyword-reichen Eröffnungssatz, der das Thema des Abschnitts explizit benennt — dieser Satz wird zum semantischen Anker des Chunks.
 4. Canary-Test vor und nach dem Tuning: dieselbe Frage stellen und prüfen ob der Chunk jetzt sauber an der Header-Grenze beginnt und das vollständige Thema enthält.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RAG-Strukturoptimiererin [Persona]. Setze Markdown-Header so im folgenden Text, dass thematische Grenzen mit Chunk-Grenzen zusammenfallen [Task]. Kontext: Langdock schneidet bei ~2.000 Zeichen und bevorzugt Header als Schnittmarken; zwischen zwei H2 dürfen max. ~2.000 Zeichen liegen; nach jedem Header folgt ein keyword-reicher Eröffnungssatz [Context]. Format: überarbeiteter Text mit markierten neuen Headern und Begründung pro Header [Format]."
 **Erwartetes Artefakt:** Ein header-getuntes Dokument mit Canary-Nachweis für saubere Chunk-Grenzen und eine Header-Tuning-Checkliste als MD-Datei im WO-Basis-Ordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1238,7 +1238,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lege die erlaubten Tag-Werte fest (kontrolliertes Vokabular): region = DE/AT/CH/DACH/INTL; status = entwurf/review/freigegeben; kanal = LinkedIn/Blog/Print/Mail — uneinheitliche Freitext-Tags zerstören die Filterwirkung.
 3. Tagge 5-10 Pilotdokumente; weise den Agenten in der System-Instruction an: "Berücksichtige die [TAGS:]-Zeile am Dokumentanfang; bevorzuge bei mehreren Treffern Dokumente mit status=freigegeben und passender region."
 4. Teste mit gefilterten Anfragen ("Nutze nur freigegebene DACH-Dokumente aus 2025") und prüfe ob der Agent die Tags korrekt für die Auswahl heranzieht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissens-Taxonomie-Beraterin [Persona]. Entwirf eine Metadaten-Tagging-Konvention für unsere Wissensordner-Dokumente [Task]. Kontext: Langdock indiziert nur Volltext, es gibt keine separate Metadaten-Ebene; Tags müssen als Klartext-Zeile am Dokumentanfang stehen damit sie im Chunk landen; wir brauchen Region, Gültigkeit, Kanal und Freigabe-Status [Context]. Format: Tag-Schema mit kontrolliertem Vokabular pro Feld und drei Beispiel-Köpfen [Format]."
 **Erwartetes Artefakt:** Eine Metadaten-Tagging-Konvention als MD-Datei und 5-10 getaggte Pilotdokumente mit nachgewiesener tag-basierter Filterwirkung.
 **Fallstricke (≥2 spezifisch):**
@@ -1257,7 +1257,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Konfiguriere den Agenten mit allen drei Sprach-Ordnern, aber gib in den System-Instructions eine harte Routing-Regel: "Erkenne die Sprache der Nutzeranfrage; rufe ausschließlich Dokumente aus dem Ordner der entsprechenden Sprache ab; antworte in derselben Sprache."
 3. Lege für sprachneutrale Fakten (Zahlen, Produktnamen, technische Specs) einen separaten WO-Basis-Ordner an, der allen Sprachen gemeinsam dient — diese Inhalte sind sprachunabhängig.
 4. Führe ein mehrsprachiges Canary-Test-Set aus: dieselbe Frage in DE, EN und FR; jede Antwort muss in der Anfragesprache erfolgen und aus dem korrekten Sprach-Ordner zitieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mehrsprachige Wissens-Assistentin [Persona]. Beantworte die folgende Anfrage in der Sprache in der sie gestellt wurde [Task]. Kontext: Es existieren getrennte Sprach-Ordner WO-DE, WO-EN, WO-FR; rufe ausschließlich Dokumente aus dem Ordner der Anfragesprache ab; sprachneutrale Fakten kommen aus WO-Basis [Context]. Format: Antwort in der Anfragesprache mit Citation und Angabe des verwendeten Sprach-Ordners [Format]."
 **Erwartetes Artefakt:** Sprach-getrennte Library Folders mit Routing-Regel in den System-Instructions und ein mehrsprachiges Canary-Test-Protokoll, das Sprach-Treue für DE, EN und FR nachweist.
 **Fallstricke (≥2 spezifisch):**
@@ -1276,7 +1276,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Schreibe pro Klasse eine SLA-Zusage: maximale Veraltungs-Frist, verantwortliche Rolle, Reaktionszeit bei Überschreitung (z.B. Klasse A: Update binnen 5 Werktagen nach Ablauf).
 3. Verankere die SLA-Information im "Stand:"-Header jeder Datei (aus S-WR-016): "Stand: [JJJJ-MM] | SLA-Klasse: A | Review fällig: [JJJJ-MM]".
 4. Erstelle monatlich einen SLA-Compliance-Report: Anteil der Dokumente je Klasse die innerhalb der Frist liegen; Dokumente außerhalb der Frist werden eskaliert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissens-Service-Managerin [Persona]. Entwirf ein Freshness-SLA für unseren Marketing-Wissensordner [Task]. Kontext: Dokumente haben sehr unterschiedliche Aktualitäts-Kritikalität; Langdock zeigt das Upload-Datum aber kein inhaltliches Stand-Datum; wir brauchen verbindliche Update-Fristen je Dokumenttyp [Context]. Format: SLA-Tabelle mit Aktualitäts-Klasse, max. Veraltungs-Frist, verantwortliche Rolle, Reaktionszeit bei Überschreitung [Format]."
 **Erwartetes Artefakt:** Ein Freshness-SLA-Dokument mit Aktualitäts-Klassen und Fristen sowie ein monatlicher SLA-Compliance-Report-Vorlage im WO-Basis-Ordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1295,7 +1295,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Führe das Referenz-Set monatlich aus und dokumentiere pro Frage die tatsächlich zitierte Quelldatei; vergleiche mit dem Vormonat.
 3. Interpretiere Abweichungen: ändert sich die Quelldatei bei unverändertem Dokumentenbestand, deutet das auf systemseitige Embedding- oder Indizierungs-Verschiebung hin (Drift), nicht auf ein Dokumenten-Problem.
 4. Bei festgestelltem Drift: re-validiere die betroffenen Antworten manuell, informiere das Team und prüfe ob betroffene Dokumente nach den RAG-Regeln (S-WR-011) robuster gemacht werden müssen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retrieval-Stabilitäts-Analystin [Persona]. Beantworte die folgende Referenz-Frage und nenne ausschließlich die zitierte Quelldatei [Task]. Kontext: Dies ist ein monatlicher Drift-Check; der Wissensordner ist seit letztem Monat unverändert; ich vergleiche ob dieselbe Frage weiterhin dieselbe Quelldatei zurückgibt [Context]. Format: nur Quelldatei + Abschnitt, keine ausführliche Antwort [Format]."
 **Erwartetes Artefakt:** Ein Drift-Monitoring-Protokoll mit eingefrorenem Referenz-Set und einer Monats-Vergleichstabelle der zitierten Quelldateien, archiviert im WO-Basis-Ordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1314,7 +1314,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lege je Stufe einen eigenen Library Folder an (WO-Public, WO-Intern, WO-Vertraulich) und setze die Zugriffsrechte entsprechend restriktiv im Workspace-Admin — vertrauliche Ordner nur für den benannten Personenkreis.
 3. Binde Agenten gezielt an: ein team-weit nutzbarer Agent erhält ausschließlich WO-Public; ein Direktions-Agent darf zusätzlich WO-Vertraulich einbinden — kein breit freigegebener Agent sieht je vertrauliche Ordner.
 4. Dokumentiere die Zugriffs-Matrix als `ACCESS-CONTROL-[JJJJ].md`: Ordner, Vertraulichkeitsstufe, Personenkreis, welche Agenten den Ordner einbinden dürfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Informationssicherheits-Beraterin [Persona]. Erstelle ein Access-Control-Modell für unsere Wissensordner nach Vertraulichkeitsstufen [Task]. Kontext: Wir mischen aktuell öffentliche und vertrauliche Dokumente in einem Ordner; Agenten geben Inhalte an alle ihre Nutzer weiter; vertrauliche Margen-Daten dürfen nicht über team-weite Agenten abrufbar sein [Context]. Format: Klassifizierungs-Schema, Ordner-Struktur je Stufe und Agenten-Zugriffs-Matrix [Format]."
 **Erwartetes Artefakt:** Eine vertraulichkeits-getrennte Ordner-Struktur und eine Access-Control-Matrix als MD-Datei, die definiert welche Agenten welche Vertraulichkeitsstufe einbinden dürfen.
 **Fallstricke (≥2 spezifisch):**
@@ -1333,7 +1333,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lade jedes Verdachtspaar als direkten Chat-Anhang und führe den standardisierten Vergleichs-Prompt aus: inhaltlich identisch / aktualisierte Version / thematisch verwandt aber verschieden.
 3. Wende die Entscheidungsregel aus S-WR-046 an (neuere behalten, ältere löschen bei Identität/Update; beide behalten bei echter Themenverschiedenheit mit klarerer Benennung) und entferne Duplikate physisch.
 4. Pflege eine Dedup-Historie: Datum, Anzahl geprüfter Paare, Anzahl entfernter Duplikate — ein steigender Trend signalisiert ein Governance-Problem im Upload-Prozess (S-WR-039).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dedup-Prozess-Operatorin [Persona]. Vergleiche die zwei angehängten Dokumente und klassifiziere sie [Task]. Kontext: monatliche Dedup-Routine; das Per-Document-Cap liefert pro Datei nur einen Chunk, deshalb halbieren echte Duplikate die effektive Retrieval-Qualität; mögliche Klassen: inhaltlich identisch / aktualisierte Version / thematisch verwandt aber verschieden [Context]. Format: Klasse + inhaltliche Unterschiede + Empfehlung (behalten/löschen) je Datei [Format]."
 **Erwartetes Artefakt:** Ein wiederkehrendes Dedup-Routine-Protokoll mit monatlichem Trigger, standardisiertem Vergleichs-Prompt und einer Dedup-Historie als Trend-Indikator.
 **Fallstricke (≥2 spezifisch):**
@@ -1352,7 +1352,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Bewerte je Citation die Beleg-Stärke: 3 = Aussage wörtlich/eindeutig im Chunk belegt; 2 = sinngemäß belegt aber Interpretation nötig; 1 = nur thematisch verwandt, Aussage nicht belegt (Pseudo-Citation).
 3. Für jede Citation mit Score 1: prüfe ob die Aussage halluziniert war oder ob das Quelldokument die Information zwar enthält aber in einem nicht-abgerufenen Chunk steht (Per-Document-Cap-Effekt) — letzteres erfordert Atomisierung (S-WR-007).
 4. Dokumentiere die durchschnittliche Beleg-Stärke und leite Maßnahmen ab: Dokumente mit schwachen Belegen nach RAG-Regeln überarbeiten, halluzinationsanfällige Themen mit strengeren System-Instructions absichern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Citation-Auditorin [Persona]. Prüfe ob der folgende zitierte Chunk die behauptete Aussage tatsächlich belegt [Task]. Kontext: Ich gebe dir die Agenten-Aussage und den zitierten Quell-Chunk; bewerte ob der Chunk die Aussage wörtlich belegt, sinngemäß belegt oder nur thematisch verwandt ist [Context]. Format: Beleg-Stärke (3/2/1) + Begründung + Empfehlung wenn Score 1 [Format]."
 **Erwartetes Artefakt:** Ein Citation-Audit-Protokoll mit Beleg-Stärke-Scores für eine Stichprobe von 10 Antworten und einer Maßnahmenliste für schwach belegende Dokumente.
 **Fallstricke (≥2 spezifisch):**
@@ -1371,7 +1371,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Definiere die Pass-Bedingung: eine Frage gilt als bestanden wenn die Antwort inhaltlich der Soll-Antwort entspricht und die Soll-Quelldatei zitiert wird.
 3. Führe das Golden-Set vor jeder geplanten Änderung (Baseline) und nach der Änderung aus; jede Frage die von Pass auf Fail kippt ist eine Regression und blockiert die Freigabe.
 4. Pflege das Set bewusst: wenn ein Dokument-Update die korrekte Soll-Antwort legitim ändert, wird der Golden Record kontrolliert aktualisiert und die Änderung im Set protokolliert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Regressions-Test-Verantwortliche [Persona]. Beantworte die folgende Golden-Query und vergleiche mit dem hinterlegten Soll [Task]. Kontext: Soll-Antwort ist [Antwort], Soll-Quelldatei ist [Datei]; eine Frage besteht nur wenn Antwort und Quelldatei übereinstimmen; markiere jede Abweichung als Regression [Context]. Format: Antwort + Citation + Pass/Fail + bei Fail die Abweichung [Format]."
 **Erwartetes Artefakt:** Ein Golden-Query-Regressions-Set als MD-Datei mit 12-15 fixierten Frage-Antwort-Quelldatei-Tripeln, eingesetzt als Freigabe-Gate vor jeder Wissensordner-Änderung.
 **Fallstricke (≥2 spezifisch):**
@@ -1390,7 +1390,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Identifiziere innerhalb teurer Ordner die größten Dokumente (Zeichen-/Seitenzahl): große Dokumente mit vielen langen Chunks erhöhen den pro Abfrage übergebenen Kontext und damit die Kosten.
 3. Priorisiere Optimierungs-Kandidaten: Dokumente die groß sind UND häufig zitiert werden haben den höchsten Kosten-Hebel; markiere sie für Trimming (S-WR-058) und Atomisierung (S-WR-007).
 4. Dokumentiere die Kosten-Hypothesen in einem Report und re-messe nach der Optimierung den Token-Verbrauch der betroffenen Agenten, um die Einsparung zu belegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kosten-Analystin für KI-Wissensbasen [Persona]. Erstelle einen Wissensordner-Kosten-Report aus den folgenden Daten [Task]. Kontext: Ich liefere dir Token-Verbrauch je Agent und die Ordner-/Dokument-Zuordnung; große Dokumente blähen den Retrieval-Kontext auf; ich will die Dokumente mit dem höchsten Kosten-Hebel für Optimierung priorisieren [Context]. Format: Tabelle mit Ordner, geschätztem Verbrauchsanteil, teuerstem Dokument, Optimierungs-Empfehlung [Format]."
 **Erwartetes Artefakt:** Ein Wissensordner-Kosten-Report mit Verbrauchs-Zurechnung je Ordner und einer priorisierten Optimierungsliste der kostenintensivsten Dokumente.
 **Fallstricke (≥2 spezifisch):**
@@ -1409,7 +1409,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Bestimme je Kategorie das eine Master-Dokument (Source of Truth) — das aktuellste, freigegebene, vollständigste; trage es ins Source-of-Truth-Register ein.
 3. Löse Konflikte auf: veraltete oder redundante Sekundärquellen werden entweder entfernt (S-WR-046) oder so bereinigt dass sie auf das Master-Dokument verweisen statt eigene konkurrierende Werte zu nennen.
 4. Verankere die Regel in der Governance (S-WR-039): neue Dokumente die eine Master-Kategorie berühren dürfen die Master-Information nicht duplizieren, sondern referenzieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissens-Governance-Architektin [Persona]. Erstelle ein Source-of-Truth-Register für unsere Wissensordner [Task]. Kontext: Für mehrere Kerninformationen existieren konkurrierende Quellen, der Agent zitiert mal die eine mal die andere; pro Informationskategorie soll genau ein verbindliches Master-Dokument gelten [Context]. Format: Register-Tabelle mit Informationskategorie, Master-Dokument, konkurrierenden Quellen, Auflösungs-Maßnahme [Format]."
 **Erwartetes Artefakt:** Ein Source-of-Truth-Register als MD-Datei und ein bereinigter Wissensordner ohne konkurrierende Master-Quellen, verankert in der Governance.
 **Fallstricke (≥2 spezifisch):**
@@ -1428,7 +1428,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Wandle jede Zeile in einen selbsterklärenden Satz um, der Spaltenkontext mitführt: "Produkt Alpha (Kategorie Premium) kostet 499 EUR netto bei einer Mindestabnahme von 10 Stück." — so überlebt der Zeilen-Spalten-Bezug das Chunking.
 3. Ergänze pro Tabellenblock eine kompakte MD-Tabelle (max. 30 Zeilen) für Nutzer die die Struktur sehen wollen; größere Tabellen nach Kategorie auf mehrere Dateien aufteilen (Per-Document-Cap).
 4. Canary-Test: frage konkrete Zellwerte ab (Preis eines bestimmten Produkts in einer bestimmten Kategorie) und prüfe ob der Agent den richtigen Wert mit korrektem Spaltenkontext liefert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Tabellen-Aufbereiterin für RAG [Persona]. Wandle die angehängte PDF-Tabelle in retrievbares Markdown um [Task]. Kontext: Langdock zerreißt Tabellen beim Chunking, Spaltenüberschriften und Zeilen landen getrennt; jede Zeile muss als vollständiger Satz mit allen Spaltenbezügen ausformuliert werden, ergänzt um eine kompakte MD-Tabelle [Context]. Format: pro Zeile ein selbsterklärender Satz, danach die MD-Tabelle (max. 30 Zeilen) [Format]."
 **Erwartetes Artefakt:** Aus PDF-Tabellen aufbereitete MD-Dateien mit zeilenweise ausformulierten Fließtext-Sätzen plus kompakten Tabellen, mit Canary-Nachweis für korrekte Zellwert-Retrieval.
 **Fallstricke (≥2 spezifisch):**
@@ -1447,7 +1447,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Halte genau eine aktive Version je Dokument im Live-Ordner; ältere Versionen werden beim Update in einen Archiv-Ordner verschoben, der NICHT an Live-Agenten angebunden ist (kein Retrieval-Konflikt).
 3. Pflege je versionskritischem Dokument eine separate Changelog-Datei (oder einen Changelog-Abschnitt) der die Versions-Übergänge dokumentiert: Version, Datum, Was geändert, Wer freigegeben.
 4. Bei historischen Rückfragen: die belegende Fassung wird aus dem Archiv-Ordner herangezogen (nicht über den Live-Agenten), sodass die Live-Retrieval-Qualität unberührt bleibt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dokumenten-Versionsmanagerin [Persona]. Erstelle eine Versionierungs-Konvention für unsere versionskritischen Brand- und Compliance-Dokumente [Task]. Kontext: Wir brauchen belegbare historische Fassungen, aber veraltete Versionen dürfen das Live-Retrieval nicht mit konkurrierenden Inhalten stören; Langdock hält idealerweise nur eine aktive Version je Dokument im Live-Ordner [Context]. Format: Versions-Header-Schema, Archiv-Regel, Changelog-Vorlage [Format]."
 **Erwartetes Artefakt:** Eine Versionierungs-Konvention mit Versions-Header, einem retrieval-getrennten Archiv-Ordner und einer Changelog-Vorlage für versionskritische Dokumente.
 **Fallstricke (≥2 spezifisch):**
@@ -1466,7 +1466,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Sammle die Miss-Marker periodisch (aus Chat-Verläufen oder Nutzer-Meldungen) in ein Miss-Log mit Frage, Schlüsselbegriff und Datum.
 3. Clustere die Misses nach Themen und zähle die Häufigkeit; ein häufig fehlendes Thema signalisiert eine echte Wissenslücke, ein einmaliger Miss eher einen Spezialfall.
 4. Leite eine priorisierte Erweiterungs-Backlog ab: häufigste Miss-Themen zuerst schließen (neues Dokument erstellen oder bestehendes ergänzen), danach Canary-Test ob der Miss behoben ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Retrieval-Analytics-Spezialistin [Persona]. Clustere die folgende Liste von Retrieval-Miss-Markern nach Themen und priorisiere sie [Task]. Kontext: Jeder Marker steht für eine Nutzerfrage die der Agent nicht aus dem Wissensordner beantworten konnte; häufige Themen-Cluster signalisieren echte Wissenslücken, Einzelfälle eher Spezialbedarf [Context]. Format: Tabelle mit Themen-Cluster, Häufigkeit, Lücken-Typ (echte Lücke/Spezialfall), Erweiterungs-Empfehlung [Format]."
 **Erwartetes Artefakt:** Ein Miss-Log mit kategorisierten Fehlanfragen und eine priorisierte Erweiterungs-Backlog, die die Wissensordner-Pflege an tatsächlichem Nutzerbedarf ausrichtet.
 **Fallstricke (≥2 spezifisch):**
@@ -1485,7 +1485,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Schneide die Ordner neu entlang dieser Persona-Wissensbündel statt entlang Abteilungen; gemeinsame Grundlagen kommen in WO-Basis, das alle Personas zusätzlich einbinden.
 3. Binde jeden Persona-Agenten an genau seinen Persona-Ordner plus WO-Basis (max. 2-3 Ordner, um Rauschen zu minimieren).
 4. Belege den Vorteil per A/B-Test (S-WR-032): dieselben Persona-typischen Fragen gegen alte Abteilungs-Struktur und neue Persona-Struktur; die Persona-Struktur sollte präzisere, rauschärmere Treffer liefern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Informationsarchitektin [Persona]. Entwirf eine persona-zentrierte Wissensordner-Struktur für unsere Marketing-Agenten [Task]. Kontext: Aktuell sind Ordner nach Abteilungen geschnitten; Persona-Agenten müssen Wissen aus mehreren Ordnern zusammensuchen und erhalten Rauschen; ein Agent liefert bessere Resultate mit 2-3 thematisch engen Ordnern [Context]. Format: je Persona ein Wissensbündel mit Ordner-Zuordnung und gemeinsamem WO-Basis [Format]."
 **Erwartetes Artefakt:** Eine persona-zentrierte Ordner-Architektur mit Persona-zu-Ordner-Zuordnung und A/B-Test-Nachweis für reduzierte Fehl-Treffer gegenüber der Abteilungs-Struktur.
 **Fallstricke (≥2 spezifisch):**
@@ -1504,7 +1504,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Erstelle aus dem Inhaltsverzeichnis eine Schnitt-Liste: welche Kapitel/Abschnitte bilden ein eigenständiges Thema, welche gehören zusammen; Mindestlänge je Datei circa 300 Wörter, sonst zu kleinteilig.
 3. Schneide das Dokument entlang der Themengrenzen; bei jedem Schnitt alle internen Querverweise ("siehe Abschnitt 3") auflösen, da diese nach der Aufteilung gebrochen sind; jede Datei beginnt mit H1 und Themenname im ersten Satz.
 4. Canary-Test: je Teildatei eine repräsentative Frage; jede Datei muss ihr Thema eigenständig und vollständig beantworten ohne auf eine andere Datei zu verweisen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Dokument-Splitting-Strategin [Persona]. Erstelle eine Schnitt-Liste für das angehängte lange Dokument [Task]. Kontext: Aufteilung erfolgt nach semantischen Themengrenzen (ein Thema = eine Datei), nicht nach Seitenzahl; Mindestlänge ~300 Wörter je Datei; interne Querverweise müssen aufgelöst werden; jede Datei beginnt mit H1 und Themenname [Context]. Format: Schnitt-Liste mit Ziel-Dateiname, enthaltenen Abschnitten, aufzulösenden Querverweisen [Format]."
 **Erwartetes Artefakt:** Ein Splitting-Leitfaden mit Schnitt-Prinzip und Checkliste sowie ein aufgeteiltes Pilot-Dokument mit Canary-Nachweis für eigenständige Themen-Abdeckung je Teildatei.
 **Fallstricke (≥2 spezifisch):**
@@ -1523,7 +1523,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Lehre präzise Retrieval-Formulierung anhand des Leitfadens aus S-WR-029: Vorher/Nachher-Beispiele wie man vage Fragen in spezifische, treffsichere Anfragen verwandelt.
 3. Lehre Citation-Bewertung: wie man erkennt ob eine Antwort durch eine Quelle gestützt ist und wann man bei fehlender oder schwacher Citation nachhaken muss (Bezug zu S-WR-069).
 4. Schließe mit einer praktischen Übung ab: der neue Mitarbeiter beantwortet drei reale Arbeitsfragen über den Agenten und bewertet selbst die Citations — Erfolg wird im Onboarding-Log vermerkt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Knowledge-Onboarding-Trainerin [Persona]. Erstelle einen gestuften Onboarding-Pfad für die Wissensordner-Nutzung eines neuen Marketing-Mitarbeiters [Task]. Kontext: Neue Mitarbeiter kennen weder die relevanten Ordner noch gute Retrieval-Formulierung noch Citation-Bewertung; der Pfad soll in der ersten Woche absolvierbar sein [Context]. Format: gestufter Lernplan mit Lektionen, je Lektion ein Lernziel und eine Mini-Übung, plus Abschluss-Übung [Format]."
 **Erwartetes Artefakt:** Ein Knowledge-Onboarding-Pfad als MD-Datei mit gestuftem Lernplan und einer Abschluss-Übung, abgelegt im WO-Onboarding-Ordner (S-WR-047).
 **Fallstricke (≥2 spezifisch):**
@@ -1542,7 +1542,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Implementiere das Routing pragmatisch: entweder über einen Dispatcher-Agenten der in den System-Instructions eine Themen-zu-Ordner-Regel trägt ("Preis-/Konditionsfragen → WO-Preis; Tonalitätsfragen → WO-Brand"), oder über getrennte Konversations-Starter je Thema die den Nutzer direkt zum richtigen Pfad führen.
 3. Definiere das Verhalten bei Misch-Anfragen: der Dispatcher nennt explizit aus welchem Ordner welcher Antwort-Teil stammt und kombiniert die Teil-Antworten transparent mit getrennten Citations.
 4. Teste das Routing mit Misch-Anfragen und prüfe ob jeder Antwort-Teil aus dem korrekten Ordner zitiert und kein themenfremder Ordner Rauschen beisteuert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissens-Dispatcher-Agentin [Persona]. Beantworte die folgende Anfrage und leite jeden Teil aus dem thematisch passenden Ordner ab [Task]. Kontext: Preis-/Konditionsfragen aus WO-Preis, Tonalitätsfragen aus WO-Brand, Compliance-Fragen aus WO-Compliance; nenne je Antwort-Teil explizit den Quell-Ordner und die Citation; ziehe keinen themenfremden Ordner heran [Context]. Format: Antwort-Teile getrennt nach Quell-Ordner mit je eigener Citation [Format]."
 **Erwartetes Artefakt:** Eine dokumentierte Cross-Folder-Routing-Logik (Dispatcher-Regeln oder thematische Konversations-Starter) mit Test-Nachweis für rauschfreie, korrekt zugeordnete Misch-Anfragen.
 **Fallstricke (≥2 spezifisch):**
@@ -1561,7 +1561,7 @@ Citations (Quellenangaben) und Source-Tracking ermöglichen es Marketing-Direkto
 2. Normiere je Ordner die KPIs auf einen Ampel-Status (Grün/Gelb/Rot) und verdichte sie zu einem Ordner-Gesamtstatus nach einer klaren Regel (z.B. ein Rot dominiert den Ordner-Status).
 3. Aggregiere alle Ordner-Status zu einer Portfolio-Zeile; priorisiere die handlungsbedürftigen Ordner (rote zuerst) mit konkreter nächster Maßnahme je Ordner.
 4. Archiviere die Portfolio-Scorecard monatlich als `PORTFOLIO-HEALTH-[JJJJ-MM].md` im WO-Basis-Ordner; über die Monate entsteht ein Portfolio-Trend der strukturelle Probleme sichtbar macht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissens-Portfolio-Managerin [Persona]. Aggregiere die folgenden Einzel-KPIs je Wissensordner zu einer Portfolio-Health-Scorecard [Task]. Kontext: je Ordner liegen Harness-Score, Freshness-/SLA-Status, Drift-Status, Miss-Rate und Datei-Auslastung vor; ich brauche je Ordner einen Ampel-Gesamtstatus und einen Portfolio-Gesamtstatus mit priorisierten Maßnahmen [Context]. Format: Portfolio-Tabelle mit Ordner, KPI-Ampeln, Ordner-Gesamtstatus, nächster Maßnahme, plus Portfolio-Gesamtzeile [Format]."
 **Erwartetes Artefakt:** Eine aggregierte Portfolio-Health-Scorecard als MD-Datei mit Ampel-Status je Ordner, Portfolio-Gesamtstatus und priorisierter Maßnahmenliste, monatlich archiviert für den Portfolio-Trend.
 **Fallstricke (≥2 spezifisch):**

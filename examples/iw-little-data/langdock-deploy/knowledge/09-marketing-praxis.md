@@ -60,7 +60,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Ausführung einer Anomalie-Erkennung via Python-Skript im Data Analyst.
 3. Übergabe der isolierten Fehlerquellen an den Chat-Agenten zur strategischen Bewertung.
 4. Formulierung der finalen Handlungsempfehlungen im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du agierst als Senior CRM-Analyst. Ich lade dir den aktuellen Inxmail-Performance-Export hoch. Analysiere den Lead-Einbruch der letzten drei Wochen. Nutze das Prinzip der Falsifizierung: Suche aktiv nach Datenpunkten, die unserer Annahme widersprechen, dass das Inxmail-Update schuld sei. Welche anderen Variablen könnten den 30% Einbruch erklären? Erstelle eine priorisierte Liste der drei wahrscheinlichsten Ursachen."
 **Erwartetes Artefakt:** Ein zweiseitiges PDF-Memorandum mit den isolierten Fehlerquellen und einer tabellarischen Übersicht der sofortigen Gegenmaßnahmen.
 **Fallstricke (mind. 2 spezifisch):**
@@ -79,7 +79,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Retrieval der fehlerhaften Briefings und Abgleich mit den Brand-Voice-Guidelines im Wissensordner.
 3. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem), was passiert wäre, wenn die Mails unbemerkt rausgegangen wären.
 4. Iteratives Finetuning des System-Prompts im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist unser Head of Localization für die DACH-Region. Wir stehen kurz davor, diese Kampagne an unsere wichtigsten Enterprise-Kunden in der Schweiz auszurollen. Stell dir vor, die Kampagne scheitert monumental (Pre-Mortem), weil wir die formelle 'Sie'-Form und spezifische Schweizer Begriffe ignoriert haben. Überarbeite den Text so, dass er absolut wasserdicht für C-Level-Entscheider in Zürich ist."
 **Erwartetes Artefakt:** Ein sofort einsatzbereites, formelles B2B-E-Mail-Template im Canvas, das alle DACH-Formalitäten berücksichtigt.
 **Fallstricke (mind. 2 spezifisch):**
@@ -98,7 +98,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Infragestellung der Kernannahmen des MarketingOps-Prozesses durch gezielte Kontrastierung.
 3. Konsolidierung der Gegenargumente in einer Matrix.
 4. Ableitung von harten Abbruch-Kriterien für den Workflow.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du agierst als unser strengster Compliance-Officer. Wir wollen diesen neuen MarketingOps-Kanal für vollautomatisierte Transkreationen nutzen. Kontrastiere unser Vorgehen mit den striktesten Auslegungen des EU AI Acts und der DSGVO, die du in unserem Wissensordner findest. Zeige mir schonungslos die drei größten rechtlichen Logiklöcher in unserem aktuellen Setup."
 **Erwartetes Artefakt:** Eine Risiko-Matrix (Markdown-Tabelle), die rechtliche Schwachstellen und entsprechende Mitigationen gegenüberstellt.
 **Fallstricke (mind. 2 spezifisch):**
@@ -117,7 +117,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Anonymisierung der Token-Verbräuche und Performance-Metriken aus Adobe als CSV.
 3. Upload in den Data Analyst zur aggregierten, nicht-personenbezogenen Auswertung.
 4. Triangulation dieser Daten mit aktuellen Branchen-Benchmarks via Web Search.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist unser Social Media Lead Analyst. Ich lade anonymisierte Kampagnen-Daten hoch. Nutze Web Search, um aktuelle Branchen-Benchmarks für B2B-Social-Kampagnen im DACH-Raum zu triangulieren. Vergleiche unsere aggregierte Performance mit diesen Benchmarks und identifiziere Ineffizienzen in den Workflows, ohne auf individuelle Mitarbeiter-Leistungen einzugehen."
 **Erwartetes Artefakt:** Ein Management-Summary (PDF), das die Kampagnen-Performance anonymisiert darstellt und datengetriebene Handlungsempfehlungen liefert.
 **Fallstricke (mind. 2 spezifisch):**
@@ -136,7 +136,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Fütterung des Agenten mit den fehlerhaften Dynamics-Outputs.
 3. Identifikation der operativen Sollbruchstellen, warum der ursprüngliche Check versagt hat.
 4. Kollaborative Überarbeitung der Quality-Gates im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist ein adversarieller Brand-Auditor (Red Team). Deine einzige Aufgabe ist es, unsere neuesten Publikationen schonungslos auf Inkonsistenzen zu unseren Brand-Guidelines zu prüfen. Welche Tonalitäts-Brüche, verbotenen Anglizismen oder falschen Formulierungen fallen dir auf? Sei extrem pedantisch und liefere eine tabellarische Auflistung der Fehler."
 **Erwartetes Artefakt:** Eine tabellarische Fehleranalyse im Canvas, die Brand-Voice-Verstöße präzise benennt und Korrekturvorschläge liefert.
 **Fallstricke (mind. 2 spezifisch):**
@@ -155,7 +155,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Upload in den Data Analyst für eine unvoreingenommene Neuanalyse.
 3. Dekonstruktion der bisherigen Content-Annahmen auf ihre fundamentalsten Wahrheiten (First Principles).
 4. Ableitung einer neuen Distributions-Logik im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Senior Content Strategist. Wir müssen unsere Österreich-Strategie von Grund auf neu denken (First-Principles). Vergiss alle bisherigen Annahmen über 'Best Practices'. Basierend auf dem hochgeladenen Datensatz: Was ist die absolut grundlegendste Wahrheit über das Kaufverhalten dieser Zielgruppe, die wir ignorieren? Baue daraus drei radikal neue Content-Ansätze."
 **Erwartetes Artefakt:** Ein dreiteiliges Konzept-Papier, das die grundlegenden Wahrheiten definiert und daraus frische Content-Formate ableitet.
 **Fallstricke (mind. 2 spezifisch):**
@@ -174,7 +174,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Gegenüberstellung der alten Personas mit topaktuellen Branchen-Insights via Web Search.
 3. Analyse des 'Assumption Decay': Welche unserer Kernannahmen über den Markt sind im letzten Jahr nicht mehr wahr?
 4. Neudefinition der Targeting-Kriterien für die nächste Kampagne.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du agierst als kritischer Market-Researcher. Unsere letzte Kampagne basierte auf Personas aus dem Vorjahr und ist gefloppt. Nutze Web Search, um nach aktuellen Trend-Shifts und Marktveränderungen in unserer Branche im DACH-Raum zu suchen. Identifiziere den 'Assumption Decay': Welche drei unserer damaligen Kernannahmen sind heute schlichtweg falsch?"
 **Erwartetes Artefakt:** Eine aktualisierte Persona-Definition im Markdown-Format, die alte Annahmen explizit durch neue, belegte Datenpunkte ersetzt.
 **Fallstricke (mind. 2 spezifisch):**
@@ -193,7 +193,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Upload der internen Matomo-Daten in den Data Analyst.
 3. Abgleich: Ist unser Traffic-Verlust außergewöhnlich hoch oder entspricht er exakt der branchenweiten Base-Rate?
 4. Beruhigung des Teams durch datengetriebenes Reporting.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lead Data Scientist. Unser Team gerät in Panik wegen eines 50% Traffic-Drops nach dem Core-Update. Führe einen Deep Research durch, um die durchschnittliche branchenweite Base-Rate für diesen Drop zu ermitteln. Analysiere anschließend unsere hochgeladenen Matomo-Daten. Überreagieren wir, oder liegen wir signifikant unter der Benchmark? Liefere eine unaufgeregte Analyse."
 **Erwartetes Artefakt:** Ein nüchternes, einseitiges Executive Summary (PDF), das interne Metriken der globalen Base-Rate gegenüberstellt.
 **Fallstricke (mind. 2 spezifisch):**
@@ -212,7 +212,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Anwendung einer 'Adversarial Query Expansion': Wir bitten die KI, die extremsten Gegenargumente eines skeptischen CFOs zu simulieren.
 3. Einbau präventiver Entkräftungen in die Präsentation.
 4. Finalisierung des Scripts im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du spielst unseren extrem skeptischen, zahlengetriebenen CFO. Ich stelle dir gleich unseren ROI-Report zur Langdock-Einführung im CRM vor. Zerreiß ihn in der Luft (Adversarial Query). Finde die kleinsten methodischen Schwächen, greife die Adobe-Metriken an und zweifle jede Effizienzsteigerung an. Liefere mir die 5 härtesten Fragen, die du im Board-Meeting stellen würdest."
 **Erwartetes Artefakt:** Ein strukturiertes Q&A-Dokument, das die fünf wahrscheinlichsten CFO-Einwände mit datengestützten Antworten (inkl. Token-Kosten-Ersparnis) entkräftet.
 **Fallstricke (mind. 2 spezifisch):**
@@ -231,7 +231,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Strukturierte Infragestellung der Kernannahmen durch gezielte Kontrollfragen (Falsifikation).
 3. Konsolidierung der Gegenargumente in einer übersichtlichen Matrix.
 4. Festlegung harter Abbruch-Kriterien (What Would Change My Mind) für künftige Workflows.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du agierst als ABM-Notfall-Manager. Unser Inxmail-Workflow ist gecrasht. Lade die Original-Briefings aus dem Wissensordner. Wir müssen unsere Annahmen falsifizieren: Warum war das Setup von vornherein anfällig? Erstelle eine Fehler-Matrix und definiere drei harte Abbruch-Kriterien (What Would Change My Mind), bei denen der nächste Agent-Workflow sofort stoppen muss."
 **Erwartetes Artefakt:** Ein technisches Fehler-Protokoll (Markdown) inklusive drei präziser Quality-Gates, die vor dem nächsten Rollout zwingend im Agenten verankert werden müssen.
 **Fallstricke (mind. 2 spezifisch):**
@@ -250,7 +250,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Den Agenten anweisen, Tonalität, Satzlänge, bevorzugte Vokabeln und rhetorische Muster aus dem Korpus zu extrahieren.
 3. Draft des Leitfadens im Canvas erstellen und iterativ mit dem Brand-Team verfeinern.
 4. Finales Dokument als "Brand Voice v1.0" in den Wissensordner zurückspeichern und alle bestehenden Agenten darauf verlinken.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Brand-Stratege für ein DACH-B2B-SaaS-Unternehmen. Analysiere die Dokumente im verknüpften Ordner und extrahiere unsere Brand Voice. Achte auf Tonalität (formell vs. direkt), durchschnittliche Satzlänge und Fachsprache. Erstelle einen Leitfaden mit 'Do's and Don'ts' sowie drei Vorher/Nachher-Beispielen als Markdown-Dokument."
 **Erwartetes Artefakt:** Ein Tone-of-Voice-Leitfaden (Markdown, ca. 800 Wörter) mit Beispielen, bereit zur Ablage im Wissensordner und Einbettung in System-Prompts.
 **Fallstricke (≥2 spezifisch):**
@@ -269,7 +269,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent verteilt Assets auf 30 Tage mit einem Rhythmus von drei Posts pro Woche und variiert dabei Formate.
 3. Für jeden Post einen kurzen Entwurfstext generieren lassen, der die DACH-Feiertage (z.B. Tag der Deutschen Einheit, Nationalfeiertag AT/CH) berücksichtigt.
 4. Google-Sheets-Action-Node schreibt Plan, Datum, Entwurf und Formattyp direkt in das Team-Sheet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Media-Stratege für ein B2B-SaaS-Unternehmen im DACH-Raum. Erstelle einen Monats-Content-Plan für LinkedIn aus den übergebenen Asset-URLs. Sorge für einen Rhythmus von 3 Posts pro Woche, variiere zwischen Text-Posts, Kurzvideos und Umfragen und berücksichtige deutsche Feiertage im Oktober. Liefere das Ergebnis als strukturierte Tabelle mit Spalten: Datum, Format, Entwurfstext, Hashtags."
 **Erwartetes Artefakt:** Befülltes Google Sheet mit 12–15 datierten Posts, Entwurfstexten und Formatvorgaben, direkt exportbereit.
 **Fallstricke (≥2 spezifisch):**
@@ -287,7 +287,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 1. URL oder Dateianhang des Quell-Assets in den Agenten laden; Kernbotschaft in einem Satz als Kontext ergänzen.
 2. Agent generiert drei Varianten in einem Durchlauf, jeweils mit Plattform-Label und passendem Hashtag-Vorschlag.
 3. Varianten im Canvas nebeneinander prüfen und per Split-Screen iterativ anpassen, bevor sie an die Publish-Queue übergeben werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Social-Media-Manager für ein mittelständisches Industrieunternehmen in München. Adaptiere die Kernbotschaft des angehängten Case-Study-PDFs für drei Kanäle. LinkedIn: tiefgründiger Fachbeitrag mit Bullet-Points, ca. 250 Wörter, formelles 'Sie' gegenüber Entscheidern. Instagram: Community-fokussiert, max. 150 Wörter, 5 relevante Hashtags. Internes Newsletter-Snippet: neutral-informativ, max. 80 Wörter. Liefere alle drei Varianten klar getrennt."
 **Erwartetes Artefakt:** Drei fertige Post-Entwürfe mit Plattform-Label, Zeichenzahl-Angabe und Hashtag-Vorschlägen, im Canvas zur finalen Freigabe.
 **Fallstricke (≥2 spezifisch):**
@@ -306,7 +306,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agenten anweisen, für jeden Kommentar eine individuelle Antwort zu entwerfen — sachlich korrekt, max. zwei Sätze, freundlicher Ton.
 3. Negative oder trollige Kommentare explizit als solche markieren lassen; dafür Eskalationshinweis statt Direktantwort generieren.
 4. Entwürfe vom Social-Media-Manager im 4-Augen-Prinzip freigeben, bevor sie gepostet werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Community-Manager für ein B2B-SaaS-Unternehmen. Verfasse Antworten auf die folgenden 8 LinkedIn-Kommentare. Nutze den verknüpften FAQ-Ordner, um Produktfragen korrekt zu beantworten. Bleibe stets freundlich und professionell. Wenn ein Kommentar negativ oder trolli ist, schreibe statt einer Antwort nur: 'ESKALATION — bitte manuell prüfen'. Liefere für jeden Kommentar einen nummerierten Antwort-Entwurf von maximal 2 Sätzen."
 **Erwartetes Artefakt:** Nummerierte Antwort-Entwürfe (je max. 2 Sätze) plus Eskalations-Flags für problematische Kommentare, bereit zur manuellen Freigabe.
 **Fallstricke (≥2 spezifisch):**
@@ -325,7 +325,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Die drei rohen Stichpunkte des CEO als Input übergeben.
 3. Agent expandiert Stichpunkte zu einem vollständigen Post, der mit einer provokanten These öffnet und mit einer Frage ans Netzwerk schließt.
 4. Post im Canvas final abstimmen und ggf. per Workflow direkt an den LinkedIn-Scheduling-Tool übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Ghostwriter für den CEO eines mittelständischen DACH-Tech-Unternehmens. Formuliere diese drei Stichpunkte in einen LinkedIn-Post um: [Stichpunkte]. Der Ton ist direkt, ohne Emojis, mit kurzen Absätzen. Beginne mit einer konträren These, die die gängige Branchenansicht herausfordert. Schließe mit einer offenen Frage ans Netzwerk. Maximal 250 Wörter."
 **Erwartetes Artefakt:** Fertiger LinkedIn-Post (250 Wörter), im CEO-Tonfall, mit Hook und Abschlussfrage — zur unmittelbaren Freigabe durch den CEO per kurzer Slack-Bestätigung.
 **Fallstricke (≥2 spezifisch):**
@@ -343,7 +343,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 1. Die zu kommunizierenden Datenpunkte und die Zielplattform (z.B. Roll-up für Hannover Messe, LinkedIn-Banner, DMEXCO-Standbeschriftung) als rohen Text eingeben.
 2. Agent übersetzt die Informationen in ein strukturiertes Design-Briefing mit allen technisch relevanten Feldern.
 3. Briefing im Canvas kollaborativ mit dem Brand-Verantwortlichen finalisieren und als PDF exportieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Creative Director eines B2B-Tech-Unternehmens. Übersetze diese 5 Kernaussagen unserer Hannover-Messe-Kampagne in ein vollständiges visuelles Briefing für unsere externe Designagentur. Wir benötigen ein 2×1-m-Roll-up und einen LinkedIn-Event-Banner. Erstelle ein Briefing mit den Feldern: Format & Maße, Layout-Struktur (Aufbau des Sichtfelds), Farb-Mood, Typografie-Empfehlung, Icon-Stil, exakter Copy-Text und Hinweise zur Bildwelt."
 **Erwartetes Artefakt:** Strukturiertes Design-Briefing (Markdown, ca. 600 Wörter) mit allen technischen Feldern, direkt versendbar an die externe Agentur.
 **Fallstricke (≥2 spezifisch):**
@@ -362,7 +362,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. RFM-Analyse (Recency, Frequency, Monetary Value) via Python-Script ausführen lassen.
 3. Ergebnis-Cluster mit Handlungsempfehlungen pro Segment annotieren lassen.
 4. Segmentierte CSV für den direkten Import in HubSpot oder Salesforce exportieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist CRM-Data-Scientist für ein DACH-B2B-Unternehmen. Führe eine RFM-Analyse auf der angehängten, anonymisierten Kundendatenbank durch. Clustere alle Kontakte in drei Segmente: 'Loyal' (hohe Recency, Frequenz und Value), 'Gefährdet' (sinkende Aktivität) und 'Inaktiv' (kein Engagement seit 90+ Tagen). Gib eine Zusammenfassung der Segmentgrößen, die aktualisierte CSV mit Segment-Label sowie je eine Kommunikationsempfehlung pro Gruppe zurück."
 **Erwartetes Artefakt:** Segmentierte CSV mit Spalte "Segment-Label" plus ein kurzes Summary-Dokument mit Segmentgrößen und strategischen Empfehlungen.
 **Fallstricke (≥2 spezifisch):**
@@ -381,7 +381,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent generiert drei E-Mail-Entwürfe mit skalierbaren Personalisierungsfeldern; E-Mail 1 Bezug auf das Messegespräch, E-Mail 2 weiterführender Content, E-Mail 3 Call-to-Action.
 3. Entwürfe im Canvas finalisieren und auf formelles "Sie" (B2B-Standard DACH) prüfen.
 4. Sequenz in HubSpot oder Mailjet als automatisierten Workflow einrichten; Delay-Logik und Opt-out-Mechanismus gemäß DSGVO konfigurieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Senior CRM-Manager für ein Enterprise-SaaS-Unternehmen. Erstelle eine 3-teilige E-Mail-Nurturing-Sequenz für Leads, die wir auf der DMEXCO in Köln getroffen haben. E-Mail 1 (Tag 1): Persönlicher Nachfass mit Bezug auf das Messegespräch zu {{Gesprächsthema}}. E-Mail 2 (Tag 4): Weiterführender Fachartikel oder Case Study zum Thema. E-Mail 3 (Tag 10): Einladung zu einem 30-minütigen Discovery-Call. Durchgehend formelles 'Sie', max. 150 Wörter pro E-Mail."
 **Erwartetes Artefakt:** Drei E-Mail-Entwürfe mit Betreffzeilen, Variablen-Platzhaltern und Delay-Empfehlungen — direkt importierbar in das E-Mail-Automation-Tool.
 **Fallstricke (≥2 spezifisch):**
@@ -400,7 +400,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Churn-Indikatoren via Python-Skript berechnen lassen (z.B. >30 Tage kein Login + gestiegene Support-Tickets = Risikosignal).
 3. Risiko-Score-Tabelle im Data Analyst generieren und als strukturierte Ausgabe exportieren.
 4. Workflow einrichten: Bei Score "Hoch" automatische Slack-Nachricht an den verantwortlichen Account Manager mit Kontext-Summary.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Customer-Retention-Analyst. Ich lade einen anonymisierten Export unserer SaaS-Kundendatenbank hoch. Berechne für jeden Account einen Churn-Risiko-Score auf Basis folgender Signale: (1) letzte Login-Aktivität > 30 Tage, (2) Support-Ticket-Volumen gestiegen, (3) Feature-Nutzung unter 20% des Vormonats. Klassifiziere jeden Account als 'Hoch', 'Mittel' oder 'Niedrig'. Liefere eine sortierte Tabelle mit Account-ID, Score und den ausschlaggebenden Signalen."
 **Erwartetes Artefakt:** Priorisierte Churn-Risiko-Tabelle (CSV/Markdown) plus ein Python-Chart der Score-Verteilung — als Grundlage für die wöchentliche Retention-Review.
 **Fallstricke (≥2 spezifisch):**
@@ -419,7 +419,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Interne Verkaufsargumente, Case Studies und Einwands-Handling-Playbooks aus dem Wissensordner abrufen.
 3. Pro Mitarbeiterprofil einen individuellen Gesprächsleitfaden im Canvas erstellen: Elevator Pitch, Einwände, Asset-Verweise.
 4. PDFs exportieren und zwei Wochen vor der Messe ans Team verteilen; Feedback-Loop nach der Messe für die nächste Iteration einplanen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Sales-Enablement-Manager für ein B2B-SaaS-Unternehmen. Wir nehmen an der DMEXCO in Köln teil. Nutze Web Search, um die drei dominierenden Branchenthemen der diesjährigen DMEXCO zu identifizieren. Verknüpfe diese mit unseren Produktvorteilen aus dem Wissensordner. Erstelle einen kompakten Gesprächsleitfaden für Account Executives mit: 30-Sekunden-Elevator-Pitch, 3 häufigen Einwänden mit Antworten und 2 Anker-Fragen zur Lead-Qualifizierung."
 **Erwartetes Artefakt:** Ein zweiseitiger Gesprächsleitfaden pro Mitarbeiterprofil (Markdown/PDF), mit Elevator Pitch, Einwand-Antwort-Matrix und Qualifizierungsfragen.
 **Fallstricke (≥2 spezifisch):**
@@ -438,7 +438,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Gefundene Informationen in eine 3×5-Vergleichsmatrix überführen lassen.
 3. Für jede Dimension strategische Implikationen ableiten: Wo differenzieren wir uns, wo besteht Handlungsbedarf?
 4. Matrix und Empfehlungen als Canvas-Dokument für den Workshop aufbereiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Stratege für ein B2B-SaaS-Unternehmen im DACH-Markt. Recherchiere via Web Search die aktuellen Marktpositionen der Wettbewerber [Wettbewerber A], [B] und [C]. Analysiere für jeden: (1) Kern-Positionierung, (2) Messaging-Schwerpunkte der letzten 30 Tage, (3) neue Produkt-Features, (4) Preissignale, (5) Social-Media-Aktivität. Erstelle eine vergleichende Markdown-Tabelle und leite drei strategische Handlungsempfehlungen für unsere eigene Positionierung ab."
 **Erwartetes Artefakt:** Wettbewerbs-Matrix als Markdown-Tabelle (3 × 5) plus drei prägnante strategische Implikationen — direkt nutzbar als Workshop-Folie.
 **Fallstricke (≥2 spezifisch):**
@@ -457,7 +457,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Workflow weist verschiedene Derivate sequenziell zu: Blog-Post via Sonnet (für Tiefe), Social-Posts via Flash (für Volumen), Newsletter via Flash.
 3. Alle Derivate im Canvas nebeneinander anzeigen und auf Brand Voice aus dem Wissensordner prüfen.
 4. Freigabe-Loop mit einem Human-in-the-Loop-Checkpoint vor der Publikation; anschließend automatischer Export in Google Drive oder CMS.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Repurposing-Spezialist für einen B2B-Tech-Podcast. Ich lade das Transkript der aktuellen Episode hoch. Erstelle daraus: (1) Einen SEO-optimierten Blog-Post von 800 Wörtern mit H2-Überschriften und einem Call-to-Action am Ende. (2) Drei LinkedIn-Posts (je 150 Wörter) mit unterschiedlichen Aufhängern: Zitat, Statistik, Frage. (3) Ein Newsletter-Snippet von 120 Wörtern. Halte durchgehend den formellen B2B-Tonfall aus unserem Wissensordner."
 **Erwartetes Artefakt:** Vier Content-Derivate (Blog, 3× LinkedIn, Newsletter) in einem Canvas-Dokument — mit Formatbezeichnung, Wortanzahl und Tonalitäts-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -476,7 +476,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Web Search nutzen, um für zehn Zieljournalisten den letzten veröffentlichten Artikel mit Relevanz zum Thema zu finden.
 3. Pro Journalist eine kurze, personalisierte Pitch-E-Mail (max. 150 Wörter) erstellen, die an deren jüngsten Artikel anknüpft.
 4. Alle Entwürfe im Canvas finalisieren; CEO-Zitate zur Freigabe an die Geschäftsführung weiterleiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Manager eines DACH-B2B-Unternehmens. Verfasse eine Pressemitteilung zur Ankündigung unserer neuen KI-Partnerschaft. Nutze das inverted-pyramid-Format, integriere ein CEO-Zitat ('KI ist kein Werkzeug, sondern ein Wettbewerbsvorteil') und füge den Boilerplate-Text aus dem Wissensordner an. Halte dich an deutsche Pressestandards mit Dateline und Ansprechpartner am Ende. Anschließend: Schreibe via Web Search-Recherche eine personalisierte Pitch-E-Mail für den Journalisten [Name] von [Medium], der zuletzt über [Thema] geschrieben hat."
 **Erwartetes Artefakt:** Eine fertige Pressemitteilung (ca. 400 Wörter, DPA-Format) plus zehn personalisierte Pitch-E-Mails (je max. 150 Wörter) — versandbereit nach CEO-Freigabe der Zitate.
 **Fallstricke (≥2 spezifisch):**
@@ -495,7 +495,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Korrektur-E-Mail verfassen: transparent, entschuldigend, mit klarer Richtigstellung — ohne weitere Produktbehauptungen; im Canvas finalisieren.
 3. Incident-Report draften: Quelle des Fehlers (Wissensordner-Eintrag? Halluzination?), Reichweite (wie viele Empfänger?), geplante Gegenmaßnahmen.
 4. System-Prompt des verursachenden Agenten um Zero-Fabrication-Policy ergänzen: "Mache keine Aussagen über Wettbewerber, die nicht explizit im Wissensordner mit Quellenangabe belegt sind."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikations-Manager für ein B2B-SaaS-Unternehmen. Unser letzter Newsletter enthält eine nachweislich falsche Aussage über das Feature-Set eines Wettbewerbers. Verfasse eine Korrektur-E-Mail: transparent, direkt, ohne übertriebene Entschuldigung, mit klarer Richtigstellung in einem Satz. Maximal 120 Wörter. Tone: professionell, verantwortungsvoll. Kein Marketing-Tonfall. Schreibe außerdem einen kurzen Incident-Report (Stichpunkte): Fehlerquelle, Empfängerkreis, Sofortmaßnahme, Systemänderung."
 **Erwartetes Artefakt:** Versandfertige Korrektur-E-Mail (120 Wörter) plus ein Incident-Report (Stichpunkte, max. eine Seite) — beide zur Freigabe durch Legal und Geschäftsführung.
 **Fallstricke (≥2 spezifisch):**
@@ -514,7 +514,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Für Tag 1–3 drei einfache Konversations-Starter vorbereiten, die der neue Mitarbeiter selbst durchklickt (z.B. Brand-Voice-Check, Social-Post-Varianten, E-Mail-Betreffzeilen).
 3. Tag 7-Aufgabe: Mitarbeiter kalibriert eigenständig einen bestehenden Agenten auf einen neuen Use-Case und dokumentiert seine Änderungen.
 4. Tag-14-Self-Check: Mitarbeiter reicht drei selbst erstellte Konversations-Starter ein; KI-Champion gibt kurzes schriftliches Feedback im Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Onboarding-Coach für das Marketing-Team eines DACH-B2B-Unternehmens. Ein neuer Marketing-Manager startet heute. Erstelle einen strukturierten 14-Tage-Onboarding-Plan für unsere wichtigsten Langdock-Workflows. Tag 1–3: drei einfache Hands-on-Aufgaben mit Konversations-Starter. Tag 7: eine eigenständige Agent-Kalibrierung. Tag 14: Self-Check mit drei eigenen Konversations-Startern. Liefere den Plan als tabellarische Wochenübersicht mit Aufgabe, Ziel und Zeitaufwand."
 **Erwartetes Artefakt:** Ein 14-Tage-Onboarding-Plan als Markdown-Tabelle (Tag, Aufgabe, Ziel, Zeitaufwand) — direkt nutzbar als Confluence-Seite oder Notion-Dokument für neue Mitarbeiter.
 **Fallstricke (≥2 spezifisch):**
@@ -533,7 +533,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Workflow mit Loop-Node starten: für jede der drei Anzeigengruppen zehn Varianten generieren, je zwei pro Trigger-Typ (Nutzen, Dringlichkeit, Social Proof, FOMO, Frage).
 3. Alle Varianten automatisch per Google-Sheets-Action in eine vorbereitete Tabelle mit Spalten: Anzeigengruppe, Trigger, Headline 1–3, Description 1–2 schreiben.
 4. Human-in-the-Loop-Checkpoint: Performance-Marketer prüft die Tabelle auf Policy-Verstöße (z.B. Superlative wie "Bestes Tool") vor dem Upload in Google Ads.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Performance-Marketing-Texter für ein DACH-B2B-SaaS-Unternehmen. Erstelle 10 Google-Responsive-Search-Ad-Varianten für die Anzeigengruppe '{{Anzeigengruppe}}'. Schreibe je 3 Headlines (max. 30 Zeichen) und 2 Descriptions (max. 90 Zeichen). Variiere den Trigger: je zwei Varianten für Nutzen, Dringlichkeit, Social Proof, FOMO und Frage. Nutze formelles Deutsch ohne Ausrufezeichen am Satzende. Liefere das Ergebnis als strukturierte Tabelle mit Spalten: Trigger | H1 | H2 | H3 | D1 | D2."
 **Erwartetes Artefakt:** Google-Sheets-Tabelle mit 30 validierten Anzeigentexten, direkt importierbar in Google Ads Editor.
 **Fallstricke (≥2 spezifisch):**
@@ -552,7 +552,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Pro Segment fünf Anzeigenvarianten mit variierendem Aufhänger erzeugen: Pain-Point, Outcome-Fokus, Zahlen/Statistik, Social Proof, Frage.
 3. Varianten im Canvas nebeneinander anzeigen und auf DACH-Tonalität prüfen (formelles "Sie", keine Anglizismen, branchenspezifisches Vokabular).
 4. Pro Variante ein Visual-Briefing (ein Satz Bildkonzept) ergänzen; Paket an den Designer übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist LinkedIn-Ads-Texter für ein B2B-Enterprise-SaaS-Unternehmen. Erstelle 5 LinkedIn-Anzeigenvarianten für das Segment '{{Jobtitel}} in der {{Branche}}-Branche'. Jede Variante hat: einen Introtext (max. 150 Zeichen, formelles 'Sie'), eine Headline (max. 70 Zeichen) und einen Ein-Satz-Visual-Brief für den Designer. Variiere den Aufhänger: Pain-Point, Outcome, Statistik, Social Proof und Frage. Branchenspezifisches Deutsch, kein Marketinggeschwurbel."
 **Erwartetes Artefakt:** Fünf Anzeigen-Sets im Canvas (Introtext + Headline + Visual-Brief) — formatbereit für den LinkedIn-Campaign-Manager.
 **Fallstricke (≥2 spezifisch):**
@@ -572,7 +572,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Für jeden Node einen E-Mail-Entwurf generieren lassen — max. 150 Wörter, formelles "Sie", DSGVO-konformer Abmeldelink als Pflicht.
 4. Condition-Branch für inaktive Nutzer (kein Login seit Tag 3) mit spezifischem Re-Engagement-Text bestücken.
 5. Alle Entwürfe im Canvas finalisieren; Zero-Fabrication-Policy sicherstellen — keine Produktfeatures erwähnen, die nicht im Wissensordner belegt sind.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist CRM-Lifecycle-Stratege für ein DACH-SaaS-Unternehmen. Entwirf eine 5-teilige Onboarding-E-Mail-Sequenz für neue Trial-Nutzer. Journey: Tag 0 (Willkommen + erster Schritt), Tag 2 (Feature-Spotlight aus Wissensordner), Tag 5 (Split: aktiv → Profi-Tipp / inaktiv → Re-Engagement), Tag 8 (Kundenstimme als Social Proof), Tag 13 (Trial läuft ab — Upgrade-CTA). Formelles 'Sie', max. 150 Wörter pro E-Mail, DSGVO-Abmeldelink. Liefere: Delay | Betreff | Preheader | Body | CTA."
 **Erwartetes Artefakt:** Fünf E-Mail-Entwürfe mit Delay-Logik und Condition-Hinweis im Canvas — direkt importierbar in HubSpot als Enrollment-Workflow.
 **Fallstricke (≥2 spezifisch):**
@@ -591,7 +591,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Data Analyst wertet aus: Welche Aktionen (Pricing-Page-Besuch, Webinar-Teilnahme, Demo-Anfrage) korrelieren am stärksten mit Closed-Won?
 3. Scoring-Matrix im Canvas draften: positive Signale (0–100 Punkte), negative Signale (Disqualifikation), Zeitverfall (Punkte halbieren sich nach 30 Tagen Inaktivität).
 4. HubSpot-Property-Formel aus der Matrix generieren lassen (IF/THEN-Logik); gemeinsam mit Sales im Canvas finalisieren und als SLA-Dokument speichern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist RevOps-Analyst für ein DACH-B2B-SaaS-Unternehmen. Ich lade anonymisierte Closed-Won/Lost-Daten der letzten 90 Tage hoch. Identifiziere die fünf Aktionen mit der höchsten Korrelation zur Conversion. Erstelle eine Lead-Scoring-Matrix: weise Punktwerte (1–100) zu, definiere drei disqualifizierende Signale (z.B. Karriere-Seite-Besuch = -50 Punkte) und einen 30-Tage-Decay. Liefere die Matrix als Markdown-Tabelle und die entsprechende HubSpot-Formel im Code-Block."
 **Erwartetes Artefakt:** Lead-Scoring-Matrix (Markdown) plus HubSpot-Formel-Code — zur gemeinsamen Freigabe durch Marketing und Sales in einem Canvas-Dokument.
 **Fallstricke (≥2 spezifisch):**
@@ -610,7 +610,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Co-Branded One-Pager im Canvas draften: Produktvorteile aus Partnerperspektive formuliert, mit Platzhaltern für Partner-Logo und -Kontakt.
 3. Fünf LinkedIn-Post-Templates generieren, die der Partner mit minimalen Anpassungen (Firmenname, Branche) sofort nutzen kann.
 4. FAQ-Dokument mit den zehn häufigsten Endkunden-Fragen und verifizierten Antworten aus dem Wissensordner erstellen; Zero-Fabrication-Policy durchsetzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Partner-Marketing-Manager für ein B2B-SaaS-Unternehmen im DACH-Raum. Wir haben einen neuen Distributor im Bereich {{Branche}} gewonnen. Erstelle: (1) Einen Co-Branded One-Pager (400 Wörter) aus Partnerperspektive mit Platzhaltern für Partner-Logo und -Kontakt. (2) Fünf LinkedIn-Post-Templates (je 120 Wörter, formelles 'Sie') für den Partner. (3) Ein FAQ-Dokument mit 10 Fragen und Antworten, die ausschließlich auf verifizierten Fakten aus dem Wissensordner basieren."
 **Erwartetes Artefakt:** Partner-Enablement-Kit als Canvas-Dokument: One-Pager, fünf LinkedIn-Templates, FAQ — sofort versandbereit als ZIP an den Partner.
 **Fallstricke (≥2 spezifisch):**
@@ -629,7 +629,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Interne Case Studies, ROI-Daten und Produktroadmap-Informationen aus dem Wissensordner abrufen; auf Gartner-Bewertungsdimensionen mappen.
 3. Briefing-Struktur im Canvas erstellen: Market-Vision → Product-Demo-Narrative → Customer-Evidence → Competitive-Differentiation → Roadmap (nur freigegebene Inhalte).
 4. Adversariale Q&A-Liste erstellen: die sieben kritischsten Fragen, die ein skeptischer Analyst stellen könnte, mit präzisen, belegbaren Antworten — keine Marketingfloskeln.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Analyst-Relations-Manager für ein DACH-B2B-Technologieunternehmen. Bereite ein 60-minütiges Gartner-Briefing vor. Recherchiere via Web Search den aktuellen Gartner-Report zum Segment '{{Markt}}' und extrahiere die Bewertungskriterien. Mappe unsere Positionierung aus dem Wissensordner auf diese Kriterien. Erstelle ein Briefing-Dokument mit: Executive Summary (1 Seite), 3 Kunden-ROI-Belegen mit konkreten Zahlen, und einer Q&A-Liste mit 7 kritischen Analysten-Fragen samt präzisen Antworten. Kein Marketinggeschwurbel — nur belegbare Fakten."
 **Erwartetes Artefakt:** Analysten-Briefing-Dokument im Canvas (Markdown, ca. 2.000 Wörter) mit Q&A-Sektion — bereit zur CEO-Freigabe.
 **Fallstricke (≥2 spezifisch):**
@@ -648,7 +648,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Internes Reaktions-Memo draften: Fakten des Reports → eigene Interpretation → Gegennarrative mit belegten Stärken aus dem Wissensordner.
 3. Drei E-Mail-Templates erstellen: (a) Bestehende Kunden (beruhigend, Mehrwertfokus), (b) Prospects in der Pipeline (proaktiv, differenzierend), (c) Presse-Statement (neutral, faktenbasiert).
 4. Competitive-Messaging-Dokument im Wissensordner aktualisieren: Neue Gegenargumente zu den Report-Kritikpunkten ergänzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Stratege. Ein Gartner-Report hat uns im {{Quadrant}} schlechter als {{Wettbewerber}} eingestuft. Analysiere die Kritikpunkte aus dem hochgeladenen Report-Abschnitt. Erstelle: (1) Ein internes Memo (300 Wörter): Was sagt der Report, wie interpretieren wir es, was sind unsere Stärken dagegen? (2) Drei E-Mail-Templates für bestehende Kunden, Pipeline-Prospects und Presse. Bleibe sachlich — kein Analyst-Bashing, nur faktenbasierte Differenzierung aus dem Wissensordner."
 **Erwartetes Artefakt:** Reaktions-Paket im Canvas: internes Memo + drei E-Mail-Templates + aktualisiertes Competitive-Messaging — zur Freigabe durch Legal und CEO binnen 48 Stunden.
 **Fallstricke (≥2 spezifisch):**
@@ -667,7 +667,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Themen-Matrix im Canvas erstellen: Welche eigenen Expertise-Themen matchen mit welchen Redaktions-Schwerpunkten? Priorisierung nach Relevanz und Platzierungswahrscheinlichkeit.
 3. Drei Pitch-E-Mails schreiben (max. 180 Wörter): Aufhänger am letzten Artikel des Ziel-Redakteurs, klare These des Gastartikels, Qualifikation des Autors (CEO oder Fachexperte).
 4. Pitching-Rhythmus im Content-Kalender verankern: ein Pitch pro Woche, Nachfass nach sieben Werktagen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Stratege für ein B2B-Tech-Unternehmen im DACH-Raum. Wir wollen Gastartikel in Horizont, t3n und der Wirtschaftswoche platzieren. Nutze Web Search, um für jedes Medium den letzten relevanten Artikel zum Thema '{{Kernthema}}' zu finden. Erstelle dann: (1) Eine Matrix (Medium | Thema | Aufhänger | Ziel-Redakteur-Beat). (2) Drei Pitch-E-Mails (je max. 180 Wörter, Deutsch, formelles 'Sie'), die am jüngsten Artikel des Redakteurs anknüpfen und eine konkrete These für den Gastbeitrag formulieren."
 **Erwartetes Artefakt:** Pitching-Matrix plus drei versandfertige Pitch-E-Mails im Canvas — inkl. Hinweis auf manuell zu verifizierende Redakteur-Kontaktdaten.
 **Fallstricke (≥2 spezifisch):**
@@ -686,7 +686,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Jede Research-Zusammenfassung mit eigenen Lösungsbeschreibungen aus dem Wissensordner koppeln: Wo ist die direkte Relevanz-Brücke?
 3. Pro Account One-Pager, LinkedIn-Nachricht und E-Mail-Sequenz im Canvas generieren; Personalisierung auf die zwei bis drei stärksten Signale fokussieren.
 4. Human-in-the-Loop-Checkpoint: Account Executive prüft jeden One-Pager auf faktische Korrektheit der Account-Referenzen vor der Nutzung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist ABM-Stratege für ein B2B-Technologieunternehmen. Zielkunde: {{Unternehmensname}}. Nutze Web Search, um die drei aktuellsten strategischen Initiativen von {{Unternehmensname}} zu identifizieren (Pressemitteilungen, Earnings, Stellenausschreibungen der letzten 30 Tage). Erstelle: (1) Einen personalisierten One-Pager (400 Wörter), der unsere Lösung direkt als Antwort auf diese Initiativen positioniert. (2) Eine LinkedIn-Outreach-Nachricht (max. 300 Zeichen, formelles 'Sie'). (3) Zwei Follow-up-E-Mails (je 120 Wörter). Nur belegbare Account-Fakten — keine Erfindungen."
 **Erwartetes Artefakt:** Personalisiertes Account-Paket (One-Pager + LinkedIn-Nachricht + 2 E-Mails) im Canvas — nach AE-Review sofort einsetzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -706,7 +706,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Launch-Zeitplan als Gantt-ähnliche Markdown-Tabelle: Milestone-Datum, verantwortliches Team, Deliverable.
 4. Sales-Enablement-Checkliste: Battlecard, objection-handling-Ergänzungen, Demo-Script-Update, Pricing-FAQ.
 5. PR-Pitch-Paket: Pressemitteilung-Entwurf, drei personalisierte Journalisten-Pitches basierend auf Web-Search-Research.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Go-to-Market-Stratege für ein DACH-B2B-SaaS-Unternehmen. Wir launchen '{{Feature-Name}}' in sechs Wochen. Erstelle ein GTM-Playbook-Dokument mit: (1) Messaging-Architektur: Positionierungs-Statement (2 Sätze) + 3 Kernbotschaften für Endnutzer, Entscheider und Techniker. (2) Launch-Zeitplan als Tabelle (T-6W bis T+4W, Milestone, Team, Deliverable). (3) Sales-Enablement-Checkliste (5 Punkte). (4) PR-Pitch-Entwurf (300 Wörter). Nur belegbare Produktaussagen aus dem Wissensordner."
 **Erwartetes Artefakt:** Vollständiges GTM-Playbook im Canvas (ca. 2.500 Wörter) — als Kickoff-Dokument für das Launch-Meeting mit allen Stakeholdern.
 **Fallstricke (≥2 spezifisch):**
@@ -725,7 +725,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Interne Win/Loss-Analyse aus dem Wissensordner abrufen: Welche Argumente haben bisher in Competitive-Deals gewonnen?
 3. Battlecard-Struktur im Canvas aufbauen: Kopf (Logo, Key-Info), Stärken/Schwächen-Tabelle, Claim-Konter-Matrix, Qualifying-Fragen, Landmines.
 4. Battlecard vom Sales-Lead und Legal reviewen lassen: keine unbelegten Aussagen über den Wettbewerber; §6 UWG (Vergleichende Werbung) beachten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Analyst für ein DACH-B2B-SaaS-Unternehmen. Erstelle eine Battlecard gegen {{Wettbewerber}}. Nutze Web Search für aktuelle Produktseite, G2-Reviews und LinkedIn-Posts. Struktur: (1) Stärken/Schwächen-Tabelle (je 3 Punkte). (2) Die 3 häufigsten Wettbewerber-Claims mit unseren Konter-Argumenten aus dem Wissensordner. (3) 2 Qualifying-Fragen, die Wettbewerber-Schwächen aufdecken. (4) 2 Landmine-Fragen für Prospects. Nur belegbare, öffentlich zugängliche Fakten — kein Verleumden."
 **Erwartetes Artefakt:** Einseitige Battlecard im Canvas (Markdown-Tabellenformat) — nach Legal-Review als PDF für Sales exportierbar.
 **Fallstricke (≥2 spezifisch):**
@@ -744,7 +744,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Web Search: Pricing-Pages der drei stärksten Wettbewerber analysieren — welche Wertversprechen-Hierarchie und FAQ-Struktur nutzen sie?
 3. Im Canvas drei Varianten der eigenen Pricing-Page-Copy entwickeln: (a) Feature-First, (b) Outcome-First (ROI-Fokus), (c) Proof-First (Kundenstimmen und Zahlen im Hero).
 4. FAQ-Sektion mit den fünf häufigsten Pricing-Einwänden aus der CRM-Analyse ergänzen; A/B-Test-Plan mit Erfolgskennzahl (Conversion-Rate) und Laufzeit (4 Wochen) dokumentieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Conversion-Rate-Optimierung-Experte für ein DACH-B2B-SaaS-Unternehmen. Ich lade anonymisierte Closed-Lost-Notizen aus dem CRM hoch. Identifiziere die häufigsten Pricing-Einwände. Erstelle drei Varianten unserer Pricing-Page-Hero-Section (je ca. 80 Wörter) mit unterschiedlichem Fokus: (a) Feature-Liste, (b) ROI/Outcome, (c) Social Proof. Schreibe außerdem eine FAQ-Sektion mit den 5 häufigsten Kaufhindernissen und direkten, ehrlichen Antworten. Formelles Deutsch, kein Werbejargon."
 **Erwartetes Artefakt:** Drei Hero-Copy-Varianten + überarbeitete FAQ-Sektion im Canvas — plus ein A/B-Test-Plan (Variante, KPI, Laufzeit, Stichprobengröße).
 **Fallstricke (≥2 spezifisch):**
@@ -764,7 +764,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Tag 3: Rohtext im Canvas mit Kunden-Zitaten anreichern; auf formelles Deutsch und Brand Voice aus dem Wissensordner prüfen.
 4. Tag 4: Design-Briefing generieren (Layout-Vorgaben, Bild-Konzept, Zitat-Highlight, Logo-Platzierung).
 5. Tag 5: SEO-Metadaten (Title Tag, Meta-Description, Keywords) und Distribution-Plan (LinkedIn, Newsletter, Website) automatisch generieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Case-Study-Autor für ein DACH-B2B-Unternehmen. Ich lade das Interview-Transkript mit unserem Kunden {{Kundenname}} hoch. Erstelle eine Case Study im inverted-pyramid-Format: Headline (max. 12 Wörter, outcome-fokussiert), Situation (60 Wörter), Challenge (60 Wörter), Solution (80 Wörter mit konkreten Produktreferenzen aus dem Wissensordner), Results (80 Wörter mit spezifischen Zahlen aus dem Transkript). Formelles 'Sie', keine halluzinierten Zahlen — nur Fakten aus dem Transkript."
 **Erwartetes Artefakt:** Fertige Case-Study-Texte (400 Wörter) + Design-Briefing + SEO-Metadaten im Canvas — bereit für Design und Veröffentlichung an Tag 5.
 **Fallstricke (≥2 spezifisch):**
@@ -783,7 +783,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Script im Canvas nach der "Problem-Solution-Proof"-Struktur entwerfen; Hook muss eine Frage oder überraschende Statistik sein.
 3. Jede Script-Sektion mit einer Regieanweisung in eckigen Klammern versehen: [Screen zeigt Dashboard], [Voice-Over: ruhig, professionell], [Einblendung: Kunden-Logo].
 4. Script auf Lesbarkeit optimieren: max. 15 Wörter pro Satz, keine Passivkonstruktionen, keine Abkürzungen — alles muss im Voice-Over natürlich klingen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Video-Script-Autor für ein DACH-B2B-SaaS-Unternehmen. Schreibe ein 120-Sekunden-Produkt-Demo-Script für {{Produktname}}. Zielgruppe: {{Jobtitel}} im {{Branche}}-Segment. Nutze Fakten aus dem Wissensordner. Struktur: Hook (0–10 Sek., Frage oder Statistik), Problem (10–30 Sek.), Solution-Demo (30–100 Sek., 3 Feature-Vorteile mit je einem Screen-Hinweis in [Klammern]), Social Proof (100–110 Sek., reale Kunden-Zahl), CTA (110–120 Sek.). Max. 15 Wörter pro Satz, aktive Sprache, formelles 'Sie'."
 **Erwartetes Artefakt:** Vollständiges Video-Script (ca. 250 Wörter) mit Zeitmarkierungen und Regieanweisungen im Canvas — bereit für Produktion und Voice-Over-Aufnahme.
 **Fallstricke (≥2 spezifisch):**
@@ -802,7 +802,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Vier E-Mail-Entwürfe generieren: Ersteinladung (Neugier + Nutzen), T-7-Reminder (Social Proof + Agenda), Day-of (Logistik + Vorfreude), Post-Event (Replay + CTA für nächsten Schritt).
 3. Fünf LinkedIn-Posts mit variierenden Formaten: Speaker-Vorstellung, Key-Insight-Teaser, Countdown-Post, Live-Zitat aus dem Webinar (Post-Event), Replay-Announcement.
 4. HubSpot-Workflow-Konfiguration dokumentieren: Enrollment-Trigger (Formular-Ausfüllung), Delay-Nodes, Condition-Split (erschienen vs. nicht erschienen) für Post-Event-Sequenz.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Event-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir veranstalten ein Webinar zum Thema '{{Webinar-Thema}}' mit Speaker {{Name}} in 21 Tagen. Zielgruppe: {{Jobtitel}} im {{Branche}}-Bereich. Erstelle: (1) Vier E-Mail-Entwürfe (T-21, T-7, T-0, T+1) — je max. 120 Wörter, Betreff, Preheader, Body, CTA. (2) Fünf LinkedIn-Posts (je 100 Wörter, variierend: Ankündigung, Speaker-Teaser, Reminder, Live-Zitat, Replay). DSGVO-Abmeldelink in allen E-Mails. Formelles 'Sie'."
 **Erwartetes Artefakt:** Webinar-Promotions-Paket im Canvas (4 E-Mails + 5 LinkedIn-Posts + HubSpot-Workflow-Skizze) — direkt als Briefing für das CRM-Team nutzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -821,7 +821,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Lokalisierungs-Playbook im Canvas erstellen: sprachliche Do's & Don'ts (kein 'ß' für CH, 'Jänner' für AT, formelles 'Sie' im B2B), kulturelle Normen (Direktheit, Qualitätsfokus, Datenschutzsensibilität der DACH-Kunden).
 3. Kanal-Matrix entwickeln: LinkedIn als primärer Business-Kanal, XING für ältere Zielgruppen, Fachmedien (Horizont, Handelsblatt, Produktion) für Thought Leadership, Messen (Hannover Messe, embedded world) für persönliche Kontakte.
 4. DSGVO-Compliance-Checkliste für Content-Kampagnen: AVV-Pflicht für alle Tools, Opt-in-Dokumentation, Kennzeichnungspflicht für KI-generierte Werbeinhalte.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DACH-Market-Entry-Stratege für ein internationales B2B-Technologieunternehmen. Erstelle eine Content-Markteintritts-Strategie für die DACH-Region. Nutze Web Search für aktuelle DACH-Marktdaten. Liefere: (1) Lokalisierungs-Playbook: sprachliche und kulturelle Do's & Don'ts für DE, AT und CH. (2) Kanal-Matrix: welche Kanäle für welche Zielgruppen priorisieren (LinkedIn, XING, Fachmedien, Events)? (3) Starter-Content-Paket: 5 Asset-Ideen mit Briefing. (4) DSGVO-Compliance-Checkliste (5 Punkte) für internationale Unternehmen im DACH-Markt."
 **Erwartetes Artefakt:** DACH-Market-Entry-Content-Strategie im Canvas (ca. 1.500 Wörter) — als Kickoff-Dokument für das lokale Marketingteam.
 **Fallstricke (≥2 spezifisch):**
@@ -840,7 +840,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Stand-Design-Briefing im Canvas erstellen: Kernbotschaft, Layout-Konzept, Key-Visuals, Demonstration-Focus, technische Spezifikationen für Messebauer.
 3. Fünf rollenspezifische Gesprächsleitfäden (Sales, Pre-Sales, Technical, Marketing, CEO): je ein 30-Sekunden-Elevator-Pitch, drei häufige Einwände mit Antworten, zwei Qualifizierungsfragen.
 4. Post-Messe-Nachfass-Workflow: dreiteilige E-Mail-Sequenz (Tag 1 persönlicher Nachfass, Tag 5 weiterführender Content, Tag 12 Call-Einladung) mit HubSpot-Integration und DSGVO-Opt-in-Dokumentation.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Messe-Stratege für ein DACH-B2B-Industrieunternehmen. Wir nehmen an der Hannover Messe teil. Nutze Web Search, um die Top-3-Branchenthemen des aktuellen Jahrgangs zu identifizieren. Erstelle: (1) Stand-Design-Briefing (Kernbotschaft, 3 Key-Visuals, Demo-Fokus). (2) Gesprächsleitfaden für Account Executives (30-Sek.-Pitch + 3 Einwände + 2 Qualifizierungsfragen). (3) LinkedIn-Kampagnen-Plan für 3 Wochen vor der Messe (6 Posts mit Datumsangabe und Format). (4) Dreiteilige Nachfass-E-Mail-Sequenz mit Delay-Logik."
 **Erwartetes Artefakt:** Vollständiges Messe-Vorbereitungspaket im Canvas — verteilbar als Briefings an Agentur, Stand-Team und CRM-Verantwortliche.
 **Fallstricke (≥2 spezifisch):**
@@ -859,7 +859,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Data Analyst berechnet: Stunden-Ersparnis × Stundensatz = Lohnkosten-Äquivalent; Cost-per-Brief vor/nach; Anzahl der produzierten Assets im Zeitvergleich.
 3. Adversariale Simulation im Chat: "Spiele unseren skeptischen CFO — welche fünf Fragen stellst du zu diesem ROI-Report?" Antworten in den Bericht einbauen.
 4. Slide-Vorlage im Canvas erstellen: Executive Summary (3 KPIs), Payback-Period-Visualisierung, Kosten-Prognose für das nächste Jahr.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Financial-Analyst für eine DACH-B2B-Marketingabteilung. Ich lade Zeittracking-Daten vor und nach der KI-Einführung hoch. Berechne: (1) Lohnkosten-Äquivalent der Zeitersparnis (Stunden × {{Stundensatz}} €/h). (2) Cost-per-Brief-Reduktion in %. (3) Payback-Period in Monaten. Erstelle dann einen einseitigen CFO-Report mit diesen drei KPIs, einem Payback-Period-Chart (Python) und einer Prognose für das nächste Jahr. Keine KI-Fachbegriffe — nur Finanzsprache."
 **Erwartetes Artefakt:** Einseitiger CFO-ROI-Report (Markdown + Python-Chart) plus Board-Slide-Vorlage im Canvas — zur Präsentation im Quartalsbericht.
 **Fallstricke (≥2 spezifisch):**
@@ -878,7 +878,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Vier Säulen im Canvas ausarbeiten: Transparenz (KI-Kennzeichnung), Konsent (Opt-in für personalisierte Kommunikation), Reversibilität (jede KI-Entscheidung muss rückgängig machbar sein), Beweisbarkeit (Audit-Log für jede KI-Aktion).
 3. Ampel-Matrix erstellen: grün (Content-Drafts, Übersetzungen, Research-Zusammenfassungen), gelb (E-Mail-Kampagnen, Lead-Scoring, Personalisierung → HITL), rot (Mitarbeiterbewertungen, Preisgestaltung, rechtliche Erklärungen → kein KI).
 4. Prozess für jährliche Überprüfung dokumentieren: KI-Champions führen jährlichen Review durch; bei EU-AI-Act-Änderungen sofortige Ad-hoc-Aktualisierung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Ethik-Berater für eine DACH-B2B-Marketingabteilung. Erstelle einen 'KI-Ethik-Kompass für Marketing' basierend auf vier Säulen: Transparenz, Konsent, Reversibilität und Beweisbarkeit. Nutze Web Search für aktuelle EU-AI-Act-Art.-50-Anforderungen und UWG-Kennzeichnungspflichten. Liefere: (1) Die vier Säulen mit je einem Satz Definition und einem Marketing-Beispiel. (2) Eine Ampel-Matrix: grün (autonom OK), gelb (Human-Oversight erforderlich), rot (kein KI). (3) Einen Prozess für die jährliche Aktualisierung (3 Schritte). Sprache: juristisch präzise, aber für Nicht-Juristen verständlich."
 **Erwartetes Artefakt:** KI-Ethik-Kompass (Markdown, ca. 800 Wörter) mit Ampel-Matrix im Canvas — bereit zur gemeinsamen Überarbeitung mit Betriebsrat und Legal.
 **Fallstricke (≥2 spezifisch):**
@@ -898,7 +898,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Zwei Holding-Statements draften: LinkedIn (empathisch, kurz, keine Schuldzuweisungen, max. 100 Wörter) und Pressekontakt-Statement (formal, auf Medienanfragen ausgerichtet, max. 150 Wörter).
 4. Eskalations-Entscheidungsbaum erstellen: Eskalationsstufe 1 (Holding Statement reicht), Stufe 2 (CEO-Statement nötig), Stufe 3 (Pressekonferenz/Krisenstab).
 5. Zero-Fabrication-Anweisungsset für alle weiteren KI-Outputs in der Krise: "Keine Aussagen über den Vorfall ohne explizite Faktengrundlage aus dem Legal-genehmigten Wissensordner-Dokument."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikations-Direktor für ein DACH-B2B-Unternehmen. Ein viraler LinkedIn-Post behauptet, wir hätten {{falschen Claim}}. Wir haben 2 Stunden für die erste Reaktion. Erstelle: (1) Internes Fakten-Memo (Stichpunkte: bekannte Fakten, ungeklärte Fragen, was wir NICHT sagen dürfen). (2) LinkedIn-Holding-Statement (max. 100 Wörter, empathisch, keine Schuldzuweisungen, keine neuen Claims). (3) Pressekontakt-Statement (max. 150 Wörter, formal). (4) Eskalations-Entscheidungsbaum (3 Stufen). Kein KI-Optimismus — sachlich, vorsichtig, Legal-ready."
 **Erwartetes Artefakt:** Krisen-Reaktionspaket im Canvas (internes Memo + 2 Statements + Entscheidungsbaum) — zur sofortigen Freigabe durch Legal und Geschäftsführung.
 **Fallstricke (≥2 spezifisch):**
@@ -917,7 +917,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Jurybewertungskriterien des jeweiligen Awards als Prompt-Kontext einfügen; Agent mappt jedes Kriterium auf die stärksten Belege im Ordner.
 3. Im Canvas je Kriterium einen Entwurf mit spezifischen Kennzahlen (Conversion Rates, Reichweiten, CLV-Steigerungen) generieren; Zitate aus Kundenstimmen werden wörtlich eingebettet.
 4. Faktencheck: Alle Zahlen manuell gegen Quelldokumente prüfen, bevor die Bewerbung eingereicht wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Stratege für eine DACH-B2B-Marke. Wir bewerben uns beim Deutschen Marketing Award in der Kategorie 'Digitale Transformation'. Nutze die Case Studies im verknüpften Ordner. Belege jedes der drei Jurybewertungskriterien (Innovation, Messbarkeit, Relevanz) mit konkreten Kennzahlen. Schreibe pro Kriterium maximal 300 Wörter — sachlich, überzeugend, ohne Marketing-Floskeln."
 **Erwartetes Artefakt:** Druckfertiges Canvas-Dokument mit drei Antwortblöcken (je ≤300 Wörter) plus einer 150-Wort-Executive-Summary für die Jury.
 **Fallstricke (≥2 spezifisch):**
@@ -936,7 +936,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent synthetisiert Kernaussagen aus dem Wissensordner und mappt sie gegen die quantitativen Befunde — mit Auftrag, Widersprüche explizit zu flaggen.
 3. Deep Research ergänzt fehlende Marktdaten (z. B. Gesamtmarktgröße, aktuelle Branchenwachstumsraten) via Web Search.
 4. Finalen Report im Canvas zusammenstellen; Quellkonflikte in einem separaten Abschnitt "Datenwidersprüche — Interpretationshinweise" dokumentieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Senior Market Analyst für ein DACH-B2B-Unternehmen. Synthetisiere die Dokumente im Wissensordner und die hochgeladenen CSV-Daten zu einem Marktüberblick. Wichtig: Wenn Quellen sich widersprechen, dokumentiere dies explizit unter 'Quellkonflikte' — vertusche nichts. Leite am Ende drei strategische Handlungsempfehlungen ab. Format: dreiseitiger Report mit Executive Summary, Hauptbefunde und Empfehlungen."
 **Erwartetes Artefakt:** Dreiseitiger Synthese-Report im Canvas mit Quellenverweisen, einem dedizierten Quellkonflikte-Abschnitt und drei priorisierten Empfehlungen.
 **Fallstricke (≥2 spezifisch):**
@@ -955,7 +955,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Interne Compliance-Guidelines und Influencer-Marketing-Richtlinien aus dem Wissensordner als Referenzrahmen einbinden.
 3. Agent prüft den Vertrag gegen die Checkliste kritischer Klauseln: Kennzeichnungspflicht, Exklusivität, Content-Freigabeprozess, Haftungsausschluss, Rücktrittsrecht.
 4. Risiko-Checkliste im Canvas strukturieren; klare "An Legal übergeben"-Markierungen für strittige Klauseln setzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Legal-Analyst mit Schwerpunkt Influencer-Marketing-Recht in der DACH-Region. Ich lade dir den Vertragsentwurf hoch. Prüfe ihn auf: (1) fehlende Kennzeichnungspflicht nach §5a UWG, (2) Exklusivitätskonflikte mit Wettbewerbern, (3) fehlendes Rücktrittsrecht bei Reputationsschäden, (4) unklare Content-Freigabeprozesse. Erstelle eine strukturierte Risiko-Tabelle: Klausel | Risikostufe (Hoch/Mittel/Niedrig) | Empfohlene Änderung."
 **Erwartetes Artefakt:** Risiko-Tabelle mit allen geprüften Klauseln, Risikostufe und Handlungsempfehlung — als Briefing-Unterlage für den Legal-Review.
 **Fallstricke (≥2 spezifisch):**
@@ -975,7 +975,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Kunden-E-Mail in zwei Varianten draften: direkt Betroffene (klarer Handlungsaufruf + Rückgabeweg) und möglicherweise Betroffene (Informations-Mail ohne Panikerzeugung).
 4. Pressemitteilung im inverted-pyramid-Format erstellen; FAQ für den Kundendienst mit den häufigsten Fragen (Rückgabe, Erstattung, Gesundheitsrisiken) zusammenstellen.
 5. Internes Status-Memo für die Geschäftsführung im Canvas zusammenführen — alle Dokumente in einem einzigen Revisions-Pass durch Legal freigeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikations-Manager für ein DACH-Konsumgüterunternehmen. Wir müssen {{Produkt}} zurückrufen. Erstelle: (1) Kunden-E-Mail für direkt Betroffene (max. 200 Wörter, klarer CTA: Rückgabe, Erstattung), (2) Pressemitteilung (klassisches Format, sachlich, kein Schuldeingeständnis), (3) FAQ für den Kundendienst (8 Fragen mit Antworten). Ton: transparent, empathisch, kein Marketingsprech. Keine ungesicherten Ursachenbehauptungen."
 **Erwartetes Artefakt:** Canvas-Dokument mit allen vier Kommunikationsformaten (Kunden-Email, Pressemitteilung, FAQ, internes Memo) — strukturiert für parallele Legal-Freigabe.
 **Fallstricke (≥2 spezifisch):**
@@ -994,7 +994,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Botschaftsarchitektur im Canvas entwickeln: Was kommuniziert man zuerst — den Preis oder den Mehrwert? Für jedes Segment eine Kernbotschaft formulieren.
 3. Drei-Touchpoint-E-Mail-Sequenz draften: 6 Wochen vor Wirksamkeit (Ankündigung + Begründung), 2 Wochen vorher (Erinnerung + Upgrade-Angebot für Strategische Partner), 1 Woche danach (Dankeschön + Feedback-Einholung).
 4. Vertriebs-Argument-Leitfaden erstellen: Die häufigsten Einwände ("Zu teuer", "Mitbewerber ist günstiger") mit vorbereiteten Brückenantworten versehen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Chief Customer Officer eines DACH-B2B-SaaS-Unternehmens. Wir erhöhen die Preise um 10 % ab dem 1. Januar. Entwickle eine Kommunikationsstrategie für das Segment 'Strategische Partner' (Enterprise, >500 Mitarbeiter). Schwerpunkt: Wertpositionierung vor Preisnennung. Erstelle die Ankündigungs-E-Mail (max. 250 Wörter, formelles Sie), einen Einwand-Leitfaden für den Vertrieb (5 Einwände + Antworten) und eine Botschaftshierarchie für die drei Touchpoints."
 **Erwartetes Artefakt:** Canvas-Dokument mit Botschaftsarchitektur (pro Segment), drei E-Mail-Entwürfen und dem Vertriebsleitfaden als separate Abschnitte.
 **Fallstricke (≥2 spezifisch):**
@@ -1013,7 +1013,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Content-Strategie nach Engagement-Hebeln strukturieren: Gamification ("Du bist 200 Punkte vom Gold-Status entfernt"), Exklusivitätssignale ("Nur für Platin-Mitglieder"), Ablauf-Erinnerungen ("Deine Punkte verfallen am …").
 3. 12 Content-Pieces im Canvas ausformulieren — nach Kanal (E-Mail, Push, In-App) und Mitgliedersegment differenziert; Betreffzeilen-Paare für A/B-Tests einbauen.
 4. Prüfung: Kein Content darf generische "Belohnungs-Marketingsprache" verwenden; jedes Piece muss einen konkreten Mehrwert oder eine Dringlichkeit transportieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist CRM-Content-Stratege für ein DACH-Handelsunternehmen mit einem dreistufigen Loyalty-Programm (Bronze, Silber, Gold). Die Einlösungsquote liegt bei nur 12 %. Erstelle für das Gold-Segment drei E-Mails: (1) Punkte-Ablauf-Erinnerung, (2) Exklusiv-Angebot nur für Gold-Mitglieder, (3) Tier-Upgrade-Anreiz für Platin. Ton: persönlich, statusbewusst, keine Werbeklischees. Liefere je zwei Betreffzeilen-Varianten für A/B-Tests."
 **Erwartetes Artefakt:** Quarterly Loyalty Content Calendar als Canvas-Dokument mit 12 ausformulierten Content-Pieces, Kanal-Zuweisung und A/B-Betreffzeilen.
 **Fallstricke (≥2 spezifisch):**
@@ -1032,7 +1032,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Produktone-Pager im Canvas erstellen: Value Proposition, USPs, Top-3-Use-Cases, Preisrahmen — in B2B-Sprache ohne interne Jargon-Begriffe.
 3. Objection-Handling-Guide aus typischen Vertriebsgesprächen ableiten: 10 Einwände (Preis, Komplexität, Mitbewerber, DSGVO, Support) mit strukturierten Brückenantworten.
 4. Onboarding-Checkliste generieren: Woche 1–4 mit konkreten Meilensteinen (Produktschulung, erste Pipeline-Opportunity, erstes Co-Marketing-Event).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Channel-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir onboarden nächsten Monat 12 neue Reseller. Erstelle aus den Materialien im Wissensordner: (1) Einen Produktone-Pager (max. 400 Wörter, formelles Sie, Value Proposition an erster Stelle), (2) einen Objection-Handling-Guide für die 10 häufigsten Partner-Einwände, (3) eine 4-Wochen-Onboarding-Checkliste. Keine interne Abkürzungen — Partner kennen unsere Systeme nicht."
 **Erwartetes Artefakt:** Channel-Partner-Enablement-Kit als strukturiertes Canvas-Dokument in vier Abschnitten, exportierbar als PDF für die Partnerübergabe.
 **Fallstricke (≥2 spezifisch):**
@@ -1051,7 +1051,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Standthema und Tagline entwickeln: Muss die Hero Message des Quartals verkörpern und in unter 3 Sekunden verständlich sein.
 3. Drei Demo-Szenarien ausformulieren: je nach Besucherprofil (technischer Entscheider vs. kaufmännischer Entscheider vs. Endnutzer) mit spezifischen Gesprächseinstiegen.
 4. Nachfassstrategie im Canvas strukturieren: 5 Touchpoints (Dankes-E-Mail am Messetag, LinkedIn-Connect am Tag 2, inhaltliche Follow-up-E-Mail nach 3 Tagen, Sales-Call-Einladung nach 7 Tagen, Nurture-Eintritt nach 14 Tagen).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Field-Marketing-Stratege für ein DACH-Industrieunternehmen. Wir präsentieren auf der Hannover Messe in der Halle Digitale Ökosysteme. Entwickle ein Standkonzept mit: (1) Standthema und Tagline (max. 7 Wörter), (2) Botschaftshierarchie (1 Hero Message + 3 Supporting Messages), (3) drei Demo-Szenarien für unterschiedliche Besucherprofile, (4) Lead-Qualifizierungs-Kriterien für das Standpersonal, (5) Nachfassstrategie mit 5 Touchpoints. Fokus auf Pipeline-Generierung, nicht auf Besucheranzahl."
 **Erwartetes Artefakt:** Messebriefing-Dokument im Canvas (ca. 4 Seiten), direkt übergabefähig an Messebauer, Standpersonal und den Vertrieb.
 **Fallstricke (≥2 spezifisch):**
@@ -1070,7 +1070,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Web Search: Aktuelle Positionierung von Top-3-Wettbewerbern im betreffenden Analystensegment recherchieren; Differenzierungslücken identifizieren.
 3. Briefing-Deck im Canvas strukturieren: Executive Summary → Marktpositionierung → Produktvision → Kundennachweise (3 Case Studies mit messbarem ROI) → Roadmap-Preview.
 4. Q&A-Dokument erstellen: Die 10 kritischsten Fragen, die Analysten typischerweise stellen, mit vorbereiteten, belegten Antworten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Analyst-Relations-Manager für ein DACH-Enterprise-Software-Unternehmen. Wir briefen Gartner in 14 Tagen für den Magic Quadrant im Segment 'Cloud ERP'. Erstelle: (1) Gliederung des Briefing-Decks (8 Folien mit Titelvorschlägen), (2) Key Messages je Bewertungsdimension (Vision + Execution), (3) die 10 kritischsten Analyst-Fragen mit vorbereiteten Antworten. Alle Aussagen müssen mit konkreten Kunden-KPIs oder Feature-Releases belegt sein — keine Marketingversprechen ohne Nachweis."
 **Erwartetes Artefakt:** Briefing-Deck-Gliederung mit Kernbotschaften (Canvas) und ein separates Q&A-Dokument mit 10 Fragen und belegten Antworten.
 **Fallstricke (≥2 spezifisch):**
@@ -1089,7 +1089,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Gastprofil recherchieren (falls Interview): Letzten drei Veröffentlichungen, LinkedIn-Posts und bekannte Positionen des Gastes; Fragen auf dessen spezifische Expertise zuschneiden.
 3. 12 Interviewfragen im Canvas entwickeln: Von allgemeinen Kontextfragen über provokative Kernfragen bis zu handlungsorientierten Abschlussfragen.
 4. Intro-Skript, Outro mit CTA und Shownotes-Vorlage im selben Canvas-Dokument zusammenführen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Podcast-Produzent für ein DACH-B2B-Tech-Unternehmen. Wir planen eine Episode über 'KI-Adoption in mittelständischen Industrieunternehmen'. Der Gast ist ein CDO eines mittelständischen Maschinenbauers. Erstelle: (1) 12 Interviewfragen (3 Warm-up, 6 Kern, 3 Abschluss), (2) ein 60-Sekunden-Intro-Skript für den Host, (3) ein Outro mit zwei CTAs (Shownotes + Demo-Anfrage), (4) eine Shownotes-Vorlage mit Zeitmarken. Ton: professionell, aber nicht trocken — kein Unternehmens-PR-Sprecher-Stil."
 **Erwartetes Artefakt:** Episode-Briefing-Dokument im Canvas (ca. 3 Seiten) mit allen vier Komponenten, direkt verwendbar für Recording-Vorbereitung und Post-Production.
 **Fallstricke (≥2 spezifisch):**
@@ -1108,7 +1108,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Top-10-Kandidatenliste mit Begründung je Kandidat erstellen; Customer-Success-Manager erhält diese als Anfrage-Priorisierungsgrundlage.
 3. Interview-Leitfaden mit 10 Fragen generieren: Vor-Situation → Entscheidungsmoment → Implementierungserfahrung → messbare Ergebnisse → Empfehlungsbereitschaft.
 4. Story-Template im Canvas erstellen: Headline → Challenge → Solution → Results (mit Kennzahlen-Platzhaltern) → Quote → CTA; Freigabe-Workflow-Checkliste mit Verantwortlichkeiten anhängen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Customer-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Erstelle: (1) Auswahlkriterien für Story-Kandidaten (5 Kriterien mit Gewichtung), (2) einen Interview-Leitfaden mit 10 Fragen für ein 30-minütiges Gespräch, (3) ein Story-Template (Headline + 4 Abschnitte mit Schreibanweisungen und Kennzahlen-Platzhaltern), (4) eine Freigabe-Checkliste (Schritte: Entwurf → Kundenfreigabe → Legal-Check → Veröffentlichung). Ton des Templates: konkret, kennzahlengetrieben, keine Adjektiv-Wüste."
 **Erwartetes Artefakt:** Pipeline-Dokument im Canvas mit allen vier Komponenten; priorisierte Kandidatentabelle als separates CSV aus dem Data Analyst.
 **Fallstricke (≥2 spezifisch):**
@@ -1127,7 +1127,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Scheduled Workflow einrichten: Jede zweite Woche automatisch Performance-Daten (GA4-Export, HubSpot-Metriken) via HTTP-Request abrufen und in den Data Analyst zur Zusammenfassung senden.
 3. Agent fasst die Rohdaten in die passenden Rubriken des Templates zusammen; der Entwurf landet im Canvas zur Revision durch Julia.
 4. Human-in-the-Loop-Schritt definieren: Julia fügt "Team-Lernen" und "Nächste Prioritäten" manuell ein — diese Rubriken nicht durch KI befüllen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Redakteur des internen Marketing-Newsletters 'Marketing Pulse'. Erstelle eine Vorlage für eine zweiwöchige Ausgabe mit fünf Rubriken: (1) Kampagnen-Highlight der Woche (max. 80 Wörter), (2) Zahl der Woche (eine Kennzahl mit Kontext), (3) Tool-Tipp (150 Wörter), (4) Was haben wir gelernt? (anonymisierter Erfahrungsbericht, 100 Wörter), (5) Nächste Prioritäten (3 Bulletpoints). Ton: kollegial, direkt, kein Unternehmens-PR-Stil. Jede Rubrik enthält eine Schreibanweisung in Klammern."
 **Erwartetes Artefakt:** Wiederverwendbares Newsletter-Template im Canvas mit Schreibanweisungen pro Rubrik, plus Workflow-Beschreibung für die automatisierte Datenbefüllung.
 **Fallstricke (≥2 spezifisch):**
@@ -1146,7 +1146,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Umverteilungsvorschlag entwickeln: Welche Kanäle werden reduziert, welche aufgestockt? Data Analyst erstellt eine lineare Prognose für den verbleibenden Quartalszeitraum unter dem neuen Budget-Mix.
 3. Drei Szenarien (Best/Base/Worst Case) für den neuen Mix im Canvas strukturieren — mit erwarteten Pipeline-Auswirkungen je Szenario.
 4. Einseitiges Memo im CFO-Stil verfassen: Fakten zuerst, Empfehlung klar markiert, Risikobewertung am Ende — kein Marketingsprech.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Head of Marketing Finance. Ich lade dir den aktuellen Performance-Report hoch. Erstelle ein einseitiges Budget-Umverteilungsmemo für den CFO: (1) Ist-Performance der vier Hauptkanäle vs. Plan (Tabelle), (2) Umverteilungsvorschlag (konkrete Euro-Beträge), (3) drei Szenarien (Best/Base/Worst Case) mit erwarteter Pipeline-Auswirkung, (4) Empfehlung in einem Satz mit Risikobewertung (Niedrig/Mittel/Hoch). Stil: Executive Summary, kein Marketingsprech, kein Passiv."
 **Erwartetes Artefakt:** Einseitiges Budget-Umverteilungsmemo (Canvas) mit Ist-Tabelle, Umverteilungsvorschlag, Drei-Szenarien-Übersicht und klarer Empfehlung — zur direkten Vorlage beim CFO.
 **Fallstricke (≥2 spezifisch):**
@@ -1165,7 +1165,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Für jede Priorität ein Objective formulieren: ambitioniert, qualitativ, inspirierend — kein Prozessziel, sondern ein Ergebnisziel.
 3. Je Objective 3–4 Key Results mit numerischen Zielwerten, Baselines, Messmethoden und klarer Ownership entwickeln.
 4. Weekly-Check-in-Template und Ampelbewertungs-Rubrik (Grün: ≥70 % Zielerreichung; Gelb: 40–69 %; Rot: <40 %) im Canvas als wiederverwendbare Vorlage anhängen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist OKR-Coach für das Marketing-Team eines DACH-B2B-Unternehmens. Das übergeordnete Unternehmensziel ist Umsatzwachstum von 25 % im kommenden Jahr. Entwickle 3 Marketing-Objectives, die direkt auf dieses Ziel einzahlen. Je Objective: 3 Key Results mit SMART-Zielwerten (Baseline und Target), Messmethode und Owner-Rolle. Anschließend: ein Weekly-Check-in-Template (max. 5 Fragen) und eine Ampelbewertungs-Rubrik. Kein Prozessdenkmal — alle Key Results müssen einen messbaren Outcome benennen."
 **Erwartetes Artefakt:** OKR-Dokument im Canvas (3 Objectives × 3–4 Key Results mit Ownership und Messmethode), Weekly-Check-in-Template und Ampelrubrik — zum direkten Start des Quartals.
 **Fallstricke (≥2 spezifisch):**
@@ -1180,12 +1180,12 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 **Hands-on Ergebnis:** Ein DACH-Feiertagskampagnen-Kalender als tabellarisches Canvas-Dokument: alle relevanten Feiertage je Land (DE/AT/CH) mit Kampagnenrelevanz-Bewertung (Hoch/Mittel/Niedrig), empfohlenem Content-Typ, vorgeschlagenem Ausspielungsfenster (Vorlauf + Peak + Nachklang) und einer Spalte für geplante Kampagnen-Verknüpfung.
 **Eingesetzte Langdock-Fähigkeit(en):** Web Search, Canvas, Chat
 **Vorgehen (5 Schritte):**
-1. Web Search: Vollständige Liste der gesetzlichen und kommerziell relevanten Feiertage für DE, AT und CH für das relevante Jahr abrufen — inklusive regionaler Varianten (z. B. Fronleichnam nur in bestimmten deutschen Bundesländern).
+1. Web Search: gesetzliche und kommerziell relevante Feiertage für DE/AT/CH abrufen — inkl. regionaler Varianten (z. B. Fronleichnam nur in einzelnen Bundesländern).
 2. Feiertage nach kommerzieller Kampagnenrelevanz bewerten: Hoch (Weihnachten, Ostern, Muttertag, Black Friday, Nationalfeiertage AT/CH), Mittel (Tag der Deutschen Einheit, Mariä Himmelfahrt AT), Niedrig oder nicht relevant.
 3. Je Feiertag Kampagnenparameter definieren: empfohlener Vorlauf (Tage vor Feiertag), Peak-Phase (Feiertag ±1 Tag), Nachklang (3–7 Tage danach), bevorzugte Kanäle (E-Mail, Social, Paid).
-4. Länderspezifische Differenzierungen dokumentieren: Österreichische und Schweizer Feiertage, die in Deutschland nicht existieren (z. B. Nationalfeiertag CH am 1. August, Stefanitag AT am 26. Dezember); Hinweis auf sprachlich-kulturelle Anpassungspflicht (kein "ß" in CH).
+4. Länderspezifische Differenzierungen: AT/CH-Feiertage ohne DE-Pendant (z. B. CH-Nationalfeiertag 1.8., AT-Stefanitag 26.12.); sprachlich-kulturelle Anpassungspflicht (kein "ß" in CH).
 5. Kalender im Canvas als Tabelle zusammenstellen; Export-Hinweis für Google Calendar oder Notion ergänzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DACH-Kampagnenplaner für ein B2B-Unternehmen mit Kunden in Deutschland, Österreich und der Schweiz. Erstelle einen vollständigen Feiertagskampagnen-Kalender für das Jahr 2026. Tabellenstruktur: Datum | Feiertag | Land (DE/AT/CH/alle) | Kampagnenrelevanz (Hoch/Mittel/Niedrig) | empfohlener Content-Typ | Vorlauf-Tage | Peak-Phase | Nachklang-Tage | Kanal-Empfehlung. Nutze Web Search für vollständige und korrekte Feiertage je Land. Markiere Feiertage, die nur in bestimmten Bundesländern gelten, explizit."
 **Erwartetes Artefakt:** Vollständiger DACH-Feiertagskampagnen-Kalender 2026 als strukturierte Tabelle im Canvas — direkt nutzbar als Planungsgrundlage für alle Kanal-Teams.
 **Fallstricke (≥2 spezifisch):**
@@ -1204,7 +1204,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Buying-Center-Rollen (Economic Buyer, Champion, Technical Evaluator) aus dem Wissensordner-ICP ableiten und je Rolle einen spezifischen Pain dokumentieren.
 3. Messaging-Matrix im Agenten generieren: pro Rolle eine Kernbotschaft, die Trigger-Event und Lösungsangebot verknüpft.
 4. 5-Touchpoint-Sequenz mit Human-in-the-Loop-Freigabe je Account vor dem ersten Versand verankern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist ABM-Stratege für ein DACH-B2B-SaaS-Unternehmen. Zielkonto: {{Unternehmen}}. Nutze Web Search für die drei aktuellsten Trigger-Events der letzten 30 Tage. Erstelle: (1) Einen Account-Steckbrief (Trigger-Events mit Datum, vermutetes Buying-Center). (2) Eine Messaging-Matrix mit je einer Kernbotschaft für Economic Buyer, Champion und Technical Evaluator. (3) Eine 5-Touchpoint-Sequenz (LinkedIn-Connect, E-Mail 1, LinkedIn-Interaktion, E-Mail 2, Direct-Mail) mit je max. 80 Wörtern. Formelles 'Sie', nur belegbare Account-Fakten mit Quellendatum."
 **Erwartetes Artefakt:** ABM-Playbook-Dokument pro Account (Steckbrief + Messaging-Matrix + Touchpoint-Sequenz) im Canvas — nach AE-Review direkt einsetzbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1223,7 +1223,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent leitet aus dem Pillar-Thema die Asset-Kaskade ab und ordnet jedes Asset einer Funnel-Stufe und einem konkreten Suchintent zu.
 3. 90-Tage-Produktionsplan im Canvas erstellen: Asset, Funnel-Stufe, Owner, Veröffentlichungsdatum, primärer Conversion-CTA.
 4. Pro Asset einen Erfolgs-KPI definieren (ToFu: organische Sitzungen; MoFu: Whitepaper-Downloads; BoFu: Demo-Anfragen).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Demand-Generation-Stratege für ein DACH-B2B-SaaS-Unternehmen. Pillar-Thema: '{{Thema}}'. Erstelle eine Content-Engine: (1) Ein Pillar-Guide-Konzept (Titel + 5 H2). (2) Vier ToFu-Blogpost-Titel mit Suchintent. (3) Zwei MoFu-Whitepaper-Hooks. (4) Eine BoFu-Demo-Landingpage-Botschaft. Ordne jedem Asset Funnel-Stufe und KPI zu. Liefere zusätzlich einen 90-Tage-Produktionsplan als Tabelle: Asset | Funnel | Owner | Datum | KPI. Kein Marketinggeschwurbel."
 **Erwartetes Artefakt:** Content-Engine-Blueprint im Canvas (Asset-Kaskade + 90-Tage-Produktionsplan-Tabelle) — als operative Grundlage für das Content-Team.
 **Fallstricke (≥2 spezifisch):**
@@ -1242,7 +1242,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Python-basiertes semantisches Clustering ausführen lassen: Gruppierung nach Themen-Ähnlichkeit und Suchintent, je Cluster ein Pillar-Begriff.
 3. Pro Cluster kumuliertes Suchvolumen berechnen und eine Aufwand-Wirkung-Priorisierung (hohes Volumen, niedrige Difficulty zuerst) erstellen.
 4. Ergebnis als angereicherte CSV exportieren — bereit für die Content-Roadmap-Planung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Data-Analyst für ein DACH-B2B-Unternehmen. Ich lade eine CSV mit 1.000 Keywords (Spalten: Keyword, Suchvolumen, Difficulty) hoch. Clustere sie semantisch nach Themen und Suchintent. Weise jedem Cluster einen Pillar-Begriff zu, berechne das kumulierte Suchvolumen je Cluster und priorisiere nach Aufwand-Wirkung (hohes Volumen + niedrige Difficulty zuerst). Liefere eine angereicherte CSV mit Spalten: Keyword | Cluster | Pillar | Suchintent | Cluster-Volumen | Priorität."
 **Erwartetes Artefakt:** Topic-Cluster-Map als CSV (Keyword, Cluster, Pillar, Suchintent, Cluster-Volumen, Priorität) plus ein kurzes Summary der Top-5-Cluster nach Priorität.
 **Fallstricke (≥2 spezifisch):**
@@ -1261,7 +1261,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Pro Variable zwei Creative-Varianten generieren, sodass jeweils nur eine Variable verändert wird (saubere Isolation).
 3. ICE-Priorisierung (Impact, Confidence, Ease) der acht Varianten im Canvas; Testreihenfolge festlegen.
 4. Test-Matrix definieren: Variante, Hypothese, Erfolgs-KPI (CTR, CPL), Mindest-Impressionen für Signifikanz.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Paid-Social-Stratege für ein DACH-B2B-SaaS-Unternehmen. Erstelle ein Creative-Testing-Framework für eine LinkedIn-Lead-Gen-Kampagne. Formuliere für vier Variablen (Hook, Visual-Konzept, CTA, Format) je eine Test-Hypothese und je zwei Varianten — so dass pro Test nur eine Variable variiert. Priorisiere die acht Varianten per ICE-Score. Liefere eine Test-Matrix: Variante | getestete Variable | Hypothese | Erfolgs-KPI | Mindest-Impressionen für Signifikanz. Formelles 'Sie' in allen Texten."
 **Erwartetes Artefakt:** Creative-Testing-Framework im Canvas (8 Varianten + ICE-Priorisierung + Test-Matrix) — als Briefing für das Paid-Team und den Designer.
 **Fallstricke (≥2 spezifisch):**
@@ -1280,7 +1280,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Lifecycle-Phasen definieren und jeden bestehenden Flow einer Phase zuordnen; Mehrfachbelegungen markieren.
 3. Mermaid-Flowchart im Canvas generieren: Phasen als Knoten, Flows als Kanten, Lücken rot markiert.
 4. Priorisierten Maßnahmen-Backlog ableiten: Welche Lücke schließen, welche Überlappung auflösen — nach Pipeline-Impact sortiert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lifecycle-Marketing-Architekt für ein DACH-SaaS-Unternehmen. Hier ist die Liste unserer bestehenden E-Mail-Flows mit Auslöse-Bedingungen: [Liste]. Erstelle: (1) Eine Zuordnung jedes Flows zu einer Lifecycle-Phase (Lead, Trial, Onboarding, Aktiv, At-Risk, Churn, Win-Back). (2) Ein Mermaid-Flowchart der gesamten Lifecycle-Map. (3) Eine Lückenanalyse: Welche Phase hat keinen Flow, welche Phase hat mehrere überlappende Flows? (4) Einen priorisierten Maßnahmen-Backlog nach Pipeline-Impact. Sachlich, keine generischen Best-Practice-Floskeln."
 **Erwartetes Artefakt:** Lifecycle-Map als Mermaid-Flowchart im Canvas plus Lückenanalyse und priorisierter Maßnahmen-Backlog.
 **Fallstricke (≥2 spezifisch):**
@@ -1300,7 +1300,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Verhaltens-Segmente bilden: anwesend + engaged (heiß), anwesend + passiv (warm), abwesend (Replay-Nurture).
 4. Sales-Übergabe-Regel: Bei "heiß"-Segment automatische Slack-/HubSpot-Aufgabe an den zuständigen AE mit Kontext-Summary.
 5. Erfolgs-KPIs definieren: Show-up-Rate, Engagement-Rate, Teilnehmer-zu-SQL-Conversion.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Webinar-Funnel-Stratege für ein DACH-B2B-SaaS-Unternehmen. Konzipiere einen vollständigen Webinar-Funnel. Liefere: (1) Registrierungs-Qualifizierungsfragen (2 Fragen zur MQL-Erkennung). (2) Pre-Event-Sequenz (3 Touchpoints mit Timing). (3) Post-Event-Segmentierungslogik (anwesend+engaged, anwesend+passiv, abwesend) mit je einer Follow-up-Aktion. (4) Eine Sales-Übergabe-Regel für das heiße Segment. (5) Drei Funnel-KPIs. Formelles 'Sie', DSGVO-Abmeldelink in allen E-Mails."
 **Erwartetes Artefakt:** Webinar-Funnel-Konzept im Canvas (Registrierung + Pre-Event + Post-Event-Segmentierung + Sales-Übergabe + KPIs) plus eine HubSpot-Workflow-Skizze.
 **Fallstricke (≥2 spezifisch):**
@@ -1319,7 +1319,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. 90-Minuten-Agenda im Canvas strukturieren: Begrüßung, Roadmap-Vorstellung, moderierte Diskussion, Priorisierungs-Übung, Wrap-up.
 3. Diskussionsleitfaden mit offenen, nicht-suggestiven Fragen entwickeln, die ehrliches Feedback fördern statt Bestätigung einzuholen.
 4. Auswertungs-Template vorbereiten: Erkenntnis | Häufigkeit | strategische Implikation | Verantwortlicher für Follow-up.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Customer-Marketing-Direktor für ein DACH-B2B-Unternehmen. Wir starten ein Customer Advisory Board mit 8 Schlüsselkunden. Erstelle: (1) Fünf Auswahl-Kriterien für CAB-Mitglieder. (2) Eine 90-Minuten-Agenda mit Zeitblöcken. (3) Einen Moderations-Diskussionsleitfaden mit 8 offenen, nicht-suggestiven Fragen, die ehrliches Feedback fördern. (4) Ein Auswertungs-Template (Erkenntnis | Häufigkeit | Implikation | Follow-up-Owner). Ton: partnerschaftlich, nicht verkäuferisch — das CAB ist kein Sales-Termin."
 **Erwartetes Artefakt:** CAB-Vorbereitungspaket im Canvas (Kriterien + Agenda + Diskussionsleitfaden + Auswertungs-Template) — für Moderation und Nachbereitung.
 **Fallstricke (≥2 spezifisch):**
@@ -1338,7 +1338,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent extrahiert wiederkehrende Themen je Kategorie und quantifiziert deren Häufigkeit über die Transkripte hinweg.
 3. Zu jedem Top-Muster ein wörtliches, anonymisiertes Kundenzitat als Beleg auswählen lassen.
 4. Aus den Mustern drei konkrete Maßnahmen ableiten (Messaging-Anpassung, neue Battlecard-Sektion, Einwand-Skript) und im Canvas dokumentieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Analyst für ein DACH-B2B-SaaS-Unternehmen. Synthetisiere die 12 Win/Loss-Interview-Transkripte im verknüpften Ordner. Liefere: (1) Top-3-Gewinngründe mit Häufigkeit (in wie vielen Interviews genannt). (2) Top-3-Verlustgründe mit Häufigkeit. (3) Je ein wörtliches, anonymisiertes Kundenzitat pro Muster. (4) Drei konkrete Maßnahmen für Messaging und Sales-Enablement. Zähle nur Themen, die in mindestens drei Interviews vorkommen — keine Einzelmeinungen als Muster verkaufen."
 **Erwartetes Artefakt:** Win/Loss-Synthese-Report im Canvas (Gewinn-/Verlustgründe mit Häufigkeit + Zitate + 3 Maßnahmen) — als Input für Messaging-Refinement und Battlecard-Update.
 **Fallstricke (≥2 spezifisch):**
@@ -1357,7 +1357,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Drei strukturell unterschiedliche Hero-Copy-Varianten im Canvas entwerfen — nicht nur Wortlaut-, sondern Logik-Varianten.
 3. FAQ-Sektion mit den fünf häufigsten Verständnis- und Kaufhindernissen ergänzen.
 4. A/B-Test-Plan dokumentieren: Variante, Hypothese, Erfolgs-KPI (Conversion-Rate), Mindest-Stichprobe, Laufzeit (4 Wochen).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Conversion-Copywriter für ein DACH-B2B-SaaS-Unternehmen mit neuem nutzungsbasiertem Pricing. Erstelle drei strukturell unterschiedliche Pricing-Hero-Varianten (je ca. 90 Wörter): (a) Wert-zuerst, (b) Vergleichs-Tabelle, (c) Rechenbeispiel-zuerst. Schreibe außerdem eine FAQ mit den 5 häufigsten Verständnis- und Kaufhindernissen und ehrlichen Antworten. Liefere einen A/B-Test-Plan: Variante | Hypothese | KPI | Laufzeit | Mindest-Stichprobe. Formelles Deutsch, keine ROI-Garantieversprechen."
 **Erwartetes Artefakt:** Drei Pricing-Hero-Varianten + FAQ-Sektion + A/B-Test-Plan im Canvas — bereit für die Implementierung im Testing-Tool.
 **Fallstricke (≥2 spezifisch):**
@@ -1376,7 +1376,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Elevator Pitch (max. 30 Wörter, outcome-fokussiert) und ICP-Steckbrief im Canvas formulieren.
 3. Drei Differenzierungs-Punkte ableiten, die belegbar und nicht generisch ("führend", "innovativ") sind.
 4. Einwand-Antwort-Matrix und drei Discovery-Fragen ergänzen; Zero-Fabrication-Policy für alle Produktclaims durchsetzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Sales-Enablement-Manager für ein DACH-B2B-SaaS-Unternehmen. Erstelle einen einseitigen One-Pager für unser neues Produkt-Bundle '{{Name}}'. Liefere: (1) Elevator Pitch (max. 30 Wörter, outcome-fokussiert). (2) Ideales Kundenprofil (Branche, Größe, Auslöser). (3) Drei belegbare Differenzierungs-Punkte — keine Adjektive wie 'führend' oder 'innovativ'. (4) Drei häufige Einwände mit Antworten. (5) Drei Discovery-Fragen. Nur Produktaussagen, die im Wissensordner belegt sind; sonst Platzhalter '[zu verifizieren]'."
 **Erwartetes Artefakt:** Sales-Enablement-One-Pager im Canvas (≤1 Seite) — nach Legal-/Produkt-Review als PDF für das Sales-Team exportierbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1395,7 +1395,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent extrahiert Tonalität, durchschnittliche Satzlänge, rhetorische Muster und bevorzugtes Vokabular aus dem Korpus.
 3. Guideline-Draft im Canvas erstellen: Do's & Don'ts, Vokabular-Listen, drei Vorher/Nachher-Beispiele.
 4. Finales Dokument als "Brand Voice v1.0" im Wissensordner ablegen und alle bestehenden Agenten darauf verlinken.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Brand-Stratege für ein DACH-B2B-Unternehmen. Analysiere die zehn Dokumente im verknüpften Ordner und destilliere unsere Brand Voice. Achte auf Tonalität (formell vs. direkt), durchschnittliche Satzlänge, rhetorische Muster und bevorzugte Begriffe. Erstelle eine Guideline mit: Tonalitäts-Definition (3 Sätze), 5 Do's, 5 Don'ts, einer Liste bevorzugter und verbotener Begriffe und drei Vorher/Nachher-Beispielen. Fordere direkte, nutzenorientierte B2B-Sprache und verbiete Anglizismen und Marketinggeschwurbel explizit."
 **Erwartetes Artefakt:** Brand-Voice-Guideline (Markdown, ca. 800 Wörter) mit Vorher/Nachher-Beispielen — abgelegt im Wissensordner und in System-Prompts einbettbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1414,7 +1414,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. RACI-Rollen je Szenario im Canvas definieren (wer entscheidet, wer kommuniziert, wer informiert wird).
 3. Dreistufigen Eskalations-Entscheidungsbaum erstellen (Holding Statement / CEO-Statement / Krisenstab).
 4. Pro Szenario und Kanal (LinkedIn, Presse, Kunden-E-Mail) ein vorformuliertes, Legal-vorprüfbares Holding-Statement-Template ablegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikations-Direktor für ein DACH-B2B-Unternehmen. Erstelle ein Crisis-Comms-Playbook. Liefere: (1) Einen Katalog der 5 wahrscheinlichsten Krisen-Szenarien mit Wahrscheinlichkeit und Schadenspotenzial. (2) Eine RACI-Rollenverteilung je Szenario. (3) Einen dreistufigen Eskalations-Entscheidungsbaum. (4) Pro Szenario je ein Holding-Statement-Template für LinkedIn, Presse und Kunden-E-Mail (max. je 120 Wörter). Regeln: keine ETAs erfinden, keine Schuldeingeständnisse, jede Vorlage als Entwurf zur Legal-Freigabe kennzeichnen."
 **Erwartetes Artefakt:** Crisis-Comms-Playbook im Canvas (Szenario-Katalog + RACI + Eskalationsbaum + Statement-Templates) — abgelegt im Wissensordner für den Sofortzugriff im Ernstfall.
 **Fallstricke (≥2 spezifisch):**
@@ -1433,7 +1433,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Agent transkreiert nach DE-Hochdeutsch und identifiziert US-spezifische Beispiele (z. B. SEC → BaFin), die ersetzt werden müssen.
 3. Aus der DE-Basis die AT- und CH-Varianten ableiten: orthografische und lexikalische Anpassungen ('ss' statt 'ß', 'Jänner', 'parkieren'/'Velo').
 4. Alle drei Varianten im Canvas nebeneinander prüfen; manuelle Endkontrolle der regionalen Begriffe vor Freigabe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungs-Experte für die DACH-Region. Ich lade ein englisches Kampagnen-Asset hoch. Transkreiere es (keine wörtliche Übersetzung) in drei Varianten: DE, AT und CH. Ersetze US-spezifische Beispiele durch DACH-Äquivalente. Beachte: kein 'ß' in der CH-Variante (durchgängig 'ss'), 'Jänner' statt 'Januar' für AT, formelles 'Sie' im gesamten B2B-Text. Liefere die drei Varianten klar getrennt im Markdown-Format. Vermeide Anglizismen und passiven Cheerleader-Tonfall."
 **Erwartetes Artefakt:** Drei lokalisierte Asset-Varianten (DE/AT/CH) im Canvas — bereit für Design und Veröffentlichung nach manueller Begriffs-Endkontrolle.
 **Fallstricke (≥2 spezifisch):**
@@ -1452,7 +1452,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Gemeinsame Kampagnen-Kernbotschaft formulieren, die beide Marken gleichwertig repräsentiert.
 3. Co-Branded Whitepaper-Outline und Landingpage-Copy im Canvas erstellen; Platzhalter für beide Logos und Kontakte.
 4. Je Partner fünf Social-Posts generieren (jeweils aus der Perspektive der eigenen Audience) und einen Lead-Sharing-/Tracking-Plan (UTM-Logik, DSGVO-konformes Opt-in) dokumentieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Partnership-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir starten eine Co-Marketing-Kampagne mit dem Partner '{{Partner}}'. Nutze Web Search für deren aktuelle Schwerpunkte. Erstelle: (1) Eine gemeinsame Kampagnen-Kernbotschaft (2 Sätze, beide Marken gleichwertig). (2) Eine Co-Branded Whitepaper-Outline (6 Kapitel). (3) Eine Landingpage-Copy (120 Wörter) mit Logo-Platzhaltern. (4) Je fünf Social-Posts pro Partner. (5) Einen Lead-Sharing-Plan mit UTM-Logik und DSGVO-Opt-in-Hinweis. Formelles 'Sie', keine einseitige Marken-Dominanz."
 **Erwartetes Artefakt:** Co-Marketing-Kit im Canvas (Kernbotschaft + Whitepaper-Outline + Landingpage + Social-Posts + Lead-Sharing-Plan) — als ZIP-Übergabe an den Partner.
 **Fallstricke (≥2 spezifisch):**
@@ -1471,7 +1471,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Pro Journalist via Web Search den letzten themenrelevanten Artikel finden (nur Name, Medium, URL — keine E-Mail-Adressen generieren).
 3. Pro Journalist einen Pitch (max. 150 Wörter) schreiben, der am letzten Artikel anknüpft und den Nachrichtenwert klar macht.
 4. Pitch-Tracking-Tabelle im Canvas anlegen: Journalist | Medium | Aufhänger | Versanddatum | Nachfass-Datum (T+7).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist PR-Manager für ein DACH-B2B-Unternehmen. Wir pitchen unsere Produktankündigung an Fachjournalisten. Für den Journalisten {{Name}} von {{Medium}}, der zuletzt über {{Thema}} geschrieben hat: Schreibe einen personalisierten Pitch (max. 150 Wörter), der an diesen letzten Artikel anknüpft, den Nachrichtenwert in einem Satz klarmacht und mit einer konkreten, niedrigschwelligen Bitte schließt. Nutze den Boilerplate aus dem Wissensordner. Liefere KEINE erfundene E-Mail-Adresse — nur Name, Medium und Artikel-URL als Referenz."
 **Erwartetes Artefakt:** Zehn personalisierte Pitch-E-Mails plus eine Pitch-Tracking-Tabelle im Canvas — versandbereit nach manueller Verifikation der Kontaktdaten.
 **Fallstricke (≥2 spezifisch):**
@@ -1490,7 +1490,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Stichpunkte der Führungskraft als Input übergeben; relevante Belege aus dem Wissensordner verknüpfen.
 3. Agent entwickelt den Artikel: konträre Eröffnungsthese, drei argumentierte Abschnitte mit konkreten Beispielen, handlungsleitende Schlussfolgerung.
 4. Im Canvas final abstimmen und der Führungskraft zur Authentizitäts-Freigabe vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Ghostwriter für die CMO eines DACH-B2B-Unternehmens. Formuliere aus diesen Stichpunkten einen Thought-Leadership-Artikel (ca. 800 Wörter): [Stichpunkte]. Ton: direkt, meinungsstark, ohne Emojis, kurze Absätze. Beginne mit einer konträren These, die die gängige Branchenmeinung herausfordert. Drei argumentierte Abschnitte mit je einem konkreten Beispiel. Ende mit einer handlungsleitenden Schlussfolgerung — keine offene Floskel-Frage. Vermeide generischen LinkedIn-Broetry-Stil und jedes Marketinggeschwurbel."
 **Erwartetes Artefakt:** Thought-Leadership-Artikel (ca. 800 Wörter) im Canvas, in der Stimme der Führungskraft — zur finalen Authentizitäts-Freigabe.
 **Fallstricke (≥2 spezifisch):**
@@ -1509,7 +1509,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Sentiment-Triage-Matrix im Canvas definieren: je Sentiment-Typ eine Standard-Reaktionslogik (Direktantwort, Deeskalation, Eskalation).
 3. Eskalations-Regeln festlegen: Welche Kommentar-Typen (rechtliche Vorwürfe, Mitarbeiterbeschwerden) gehen ohne Direktantwort an HR/Legal.
 4. FAQ-Anker-Prozess dokumentieren: Antworten nur aus dem FAQ-Ordner; monatliche Aktualisierungspflicht der FAQ als Recurring Task.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Head of Community für ein DACH-B2B-SaaS-Unternehmen. Erstelle ein Community-Management-Playbook. Liefere: (1) Antwort-Tonalitäts-Standards (3 Regeln). (2) Eine Sentiment-Triage-Matrix (positiv, neutral, negativ, troll) mit je einer Reaktionslogik. (3) Eskalations-Regeln: welche Kommentar-Typen gehen ohne Direktantwort an HR/Legal. (4) Einen FAQ-Anker-Prozess. Wichtig: Bei negativem Sentiment keine Entschuldigung ohne vorherige Eskalation; bei Produktfragen nur Antworten aus dem FAQ-Ordner — keine Halluzination."
 **Erwartetes Artefakt:** Community-Management-Playbook im Canvas (Standards + Triage-Matrix + Eskalations-Regeln + FAQ-Prozess) — im Wissensordner abgelegt und für das Team verbindlich.
 **Fallstricke (≥2 spezifisch):**
@@ -1528,7 +1528,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Pro Segment eine 3-Touchpoint-Reaktivierungs-Sequenz im Canvas entwerfen: Mehrwert-Erinnerung, persönliches Hilfsangebot, Value-Recap.
 3. Value-Recap-Asset erstellen, das den bisher erzielten Nutzen des Accounts konkret aufzeigt (genutzte Features, eingesparte Zeit).
 4. Erfolgsmessung definieren: Behandlungsgruppe vs. unbehandelte Kontrollgruppe, KPI Verlängerungsrate über das Quartal.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Customer-Retention-Stratege für ein DACH-B2B-SaaS-Unternehmen. Wir haben gefährdete Accounts in drei Ursachen-Segmente geteilt: (a) geringe Feature-Nutzung, (b) gestiegene Support-Tickets, (c) kein dokumentierter ROI. Erstelle pro Segment eine 3-Touchpoint-Reaktivierungs-Sequenz (Mehrwert-Erinnerung, Hilfsangebot, Value-Recap), je max. 120 Wörter, formelles 'Sie'. Fokus auf Mehrwert, NICHT auf Rabatte. Definiere abschließend eine Erfolgsmessung gegen eine Kontrollgruppe (KPI: Verlängerungsrate)."
 **Erwartetes Artefakt:** Retention-Kampagne im Canvas (3 segmentspezifische Sequenzen + Value-Recap-Asset + Kontrollgruppen-Messplan) — als Briefing für das Customer-Success-Team.
 **Fallstricke (≥2 spezifisch):**
@@ -1547,7 +1547,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 2. Einladungs-E-Mail und Referral-Landingpage-Copy erstellen — Mehrwert für beide Seiten klar herausstellen, formelles 'Sie'.
 3. Zwei Reminder-Nachrichten mit unterschiedlichem Aufhänger (sozialer Nutzen, Anreiz-Erinnerung) entwerfen.
 4. DSGVO-Logik dokumentieren: Empfehler darf Kontaktdaten Dritter nur mit deren Einwilligung weitergeben; Einwilligungs-Formulierung und Opt-out vorgeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Growth-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Konzipiere ein Referral-Programm. Liefere: (1) Eine Mechanik-Beschreibung mit Double-Sided-Incentive und Auslöse-Logik (z. B. nach NPS ≥ 9). (2) Eine Einladungs-E-Mail (max. 130 Wörter). (3) Eine Referral-Landingpage-Copy (100 Wörter). (4) Zwei Reminder-Nachrichten mit unterschiedlichem Aufhänger. (5) Eine DSGVO-konforme Einwilligungs-Formulierung für die Weitergabe von Kontaktdaten Dritter. Formelles 'Sie', kein Spam-Ton, beide Seiten profitieren erkennbar."
 **Erwartetes Artefakt:** Referral-Programm-Paket im Canvas (Mechanik + Einladung + Landingpage + Reminder + DSGVO-Formulierung) — als Briefing für CRM und Legal.
 **Fallstricke (≥2 spezifisch):**
@@ -1567,7 +1567,7 @@ Die folgenden Marketing-Szenarien bilden das funktionale Herzstück der Langdock
 3. Kampagnen-Roadmap je Quartal im Canvas entwerfen: pro Quartal ein Leitthema, das auf eine strategische Priorität einzahlt.
 4. Budget-Allokations-Vorschlag je Kanal erstellen — datengestützt aus der Vorjahres-Performance, mit Begründung je Verschiebung.
 5. KPI-Framework (max. 5 Top-KPIs) und einen Quartals-Review-Rhythmus festlegen; Plan als CFO-taugliche Steuerungsvorlage finalisieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-Direktorin eines DACH-B2B-SaaS-Unternehmens. Synthetisiere aus den Dokumenten im Wissensordner und den Performance-Daten einen Jahres-Marketingplan: (1) 3–4 strategische Prioritäten aus den Vorjahresdaten, (2) Kampagnen-Roadmap mit Quartals-Leitthema, (3) Budget-Allokation je Kanal mit Begründung, (4) max. 5 Top-KPIs, (5) Quartals-Review-Rhythmus. Sprache: GF-tauglich, kein Marketingsprech, jede Priorität datenbelegt."
 **Erwartetes Artefakt:** Jahres-Marketingplan im Canvas (Prioritäten + Quartals-Roadmap + Budget-Allokation + KPI-Framework + Review-Rhythmus) — als verbindliche Steuerungsvorlage für GF und Team.
 **Fallstricke (≥2 spezifisch):**

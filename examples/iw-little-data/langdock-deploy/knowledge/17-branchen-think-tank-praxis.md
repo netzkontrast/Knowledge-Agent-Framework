@@ -48,7 +48,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten anweisen, den Kausalmechanismus in aktiver Sprache zu erklären und jede Zahl wörtlich aus dem Quelltext zu zitieren.
 3. Entwurf im Canvas redigieren und gegen das Original Wert für Wert abgleichen.
 4. Fachliche Freigabe durch die Autorin/den Autor des Reports einholen, bevor der Text in den iwd-Workflow geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist iwd-Redakteur am IW Köln. PERSONA: sachlich, evidenzbasiert, ohne Marketing-Superlative. TASK: Übersetze den angehängten IW-Report in einen Erklärtext von 400 Wörtern. CONTEXT: Zielgruppe ist die interessierte Öffentlichkeit; der Kausalmechanismus (Energiepreis-Durchschlag auf Kaufkraft) muss erhalten bleiben. Extrapoliere keine Daten und erfinde keine Kausalzusammenhänge, die nicht im Text stehen. FORMAT: Fließtext mit aktiver Sprache, jede Zahl exakt aus der Quelle."
 **Erwartetes Artefakt:** Ein iwd-Erklärtext (Markdown, ca. 400 Wörter) im Canvas, freigabebereit nach Fach-Review.
 **Fallstricke (≥2 spezifisch):**
@@ -67,7 +67,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten gezielt nach Konfidenzintervallen, Modellannahmen und explizit benannten Forschungslücken im Quelltext suchen lassen.
 3. Einen verständlichen Caveat-Absatz formulieren lassen, der nichts beschönigt.
 4. Absatz in den Erklärtext integrieren und durch die Autorin auf Vollständigkeit prüfen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissenschaftslektor. TASK: Extrahiere aus dem angehängten Report alle Unsicherheitsangaben (Konfidenzintervalle, Annahmen, Forschungsdesiderate). Formuliere daraus einen verständlichen Absatz für Laien, der diese Unsicherheiten ehrlich benennt, ohne sie zu dramatisieren oder zu verharmlosen. Erfinde keine Unsicherheiten, die nicht im Text stehen."
 **Erwartetes Artefakt:** Ein Caveat-Absatz (ca. 120 Wörter), der zur Einbettung in den Erklärtext freigegeben ist.
 **Fallstricke (≥2 spezifisch):**
@@ -87,7 +87,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 3. Pressemitteilung (400 Wörter), Visualisierungs-Outline (3 Slides) und LinkedIn-Sequenz (4 Posts) in einem Durchlauf generieren lassen.
 4. Alle Module im Canvas gegen den Kernbefund prüfen und konsistent halten.
 5. Paket erst nach Fach- und Kommunikationsfreigabe zur Distribution übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Stratege am IW Köln. TASK: Erzeuge aus dem Gutachten im Wissensordner ein Distributionspaket. CONTEXT: ordnungspolitische, sachliche Tonalität; Kernbefund darf in keinem Format verzerrt werden. FORMAT: (1) Pressemitteilung 400 Wörter mit journalistischer Headline, (2) 3-Slide-Outline für eine interaktive Grafik mit Angabe des wirkungsstärksten Datenpunkts, (3) 4-teilige LinkedIn-Sequenz für die Direktorin. Jede Zahl exakt aus dem Quelltext."
 **Erwartetes Artefakt:** Ein modulares Distributionspaket (Canvas-Dokument) mit drei klar getrennten Modulen.
 **Fallstricke (≥2 spezifisch):**
@@ -106,7 +106,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten einen tabellarischen Ablaufplan (T-48 h bis T+0) erstellen lassen.
 3. Sperrfrist-Anschreiben mit deutlich platziertem Embargo-Hinweis formulieren lassen.
 4. Verteiler und Sperrfristtext durch die Pressestelle freigeben, bevor versandt wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Pressereferent am IW Köln. TASK: Erstelle (1) einen Launch-Ablaufplan von T-48h bis Veröffentlichung und (2) ein Sperrfrist-Anschreiben an den Presseverteiler. CONTEXT: Veröffentlichung Dienstag 9:00 Uhr; Vorabversand 48 Stunden vorher. FORMAT: Ablaufplan als Tabelle; Anschreiben mit dem Embargo-Hinweis 'Gesperrt bis [Datum, Uhrzeit]' in der ersten Zeile. Keine Empfängernamen erfinden."
 **Erwartetes Artefakt:** Ablaufplan-Tabelle plus Sperrfrist-Anschreiben (Canvas), freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -125,7 +125,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten die fünf wahrscheinlichsten kritischen Fragen generieren lassen.
 3. Zu jeder Frage eine evidenzbasierte Antwort ausschließlich aus den Studiendaten ableiten lassen.
 4. Briefing mit der Ökonomin durchgehen und Off-the-record-Grenzen markieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Medien-Coach am IW Köln. TASK: Erstelle ein Briefing für eine Pressekonferenz. CONTEXT: Studie im Wissensordner; Ziel ist es, das ökonometrische Modell für Leitjournalisten verständlich zu machen. FORMAT: (1) drei Kernbotschaften, (2) fünf antizipierte kritische Fragen, (3) je eine Antwort, die ausschließlich auf Studiendaten basiert. Nenne keine Zahlen, die nicht in der Studie stehen."
 **Erwartetes Artefakt:** Ein Briefing-Dokument (Markdown) mit Q&A-Teil und markierten Off-the-record-Passagen.
 **Fallstricke (≥2 spezifisch):**
@@ -144,7 +144,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Platzierungen nach Tier und Tonalität klassifizieren lassen.
 3. Framing-Treue je Beitrag bewerten lassen (wurde das IW-Framing übernommen?).
 4. Share-of-Voice-Tabelle und Management-Summary erzeugen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Medienanalyst am IW Köln. TASK: Analysiere den angehängten Clipping-Export. FORMAT: (1) Tabelle der Tier-1-Platzierungen (FAZ, Handelsblatt, SZ) mit Tonalität, (2) Bewertung pro Beitrag, ob unser Kern-Framing übernommen wurde, (3) Share-of-Voice-Einordnung relativ zu genannten Peer-Instituten. Liefere ein nüchternes einseitiges Summary. Erfinde keine Reichweitenzahlen."
 **Erwartetes Artefakt:** Ein Resonanz-Report (PDF/Markdown) mit Tabellen und einseitigem Summary.
 **Fallstricke (≥2 spezifisch):**
@@ -163,7 +163,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Kernbefunde und ableitbare Handlungsempfehlungen extrahieren lassen.
 3. Brief im anhörungstauglichen Format strukturieren (Befund → Empfehlung).
 4. Transparenz-Footer zu Mandat und Drittmittel-Basis ergänzen und juristisch prüfen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Policy-Referent am IW Köln. TASK: Erstelle einen 6-seitigen Policy-Brief für eine Bundestags-Anhörung. CONTEXT: Studie im Wissensordner; ordnungspolitische Ausrichtung. FORMAT: (1) Zusammenfassung, (2) je Befund eine konkrete Handlungsempfehlung, (3) Transparenz-Hinweis zu Mandat und Förderbasis. Empfehlungen müssen aus den Befunden folgen, nicht umgekehrt."
 **Erwartetes Artefakt:** Ein Policy-Brief (Canvas, 4-8 Seiten) mit Empfehlungsteil und Transparenz-Footer.
 **Fallstricke (≥2 spezifisch):**
@@ -182,7 +182,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Vorhandene IW-Studien thematisch den Terminen zuordnen lassen.
 3. Lücken markieren, für die kurzfristig ein Kurzbericht sinnvoll wäre.
 4. Kalender im Canvas finalisieren und mit der Redaktionsleitung abstimmen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Redaktionsplaner am IW Köln. TASK: Führe einen Deep Research zu wirtschaftspolitischen Terminen der nächsten 8 Wochen durch (Haushaltsdebatten, Wahlen, EU-Semester, EZB-Sitzungen). Ordne die übergebene Liste vorhandener IW-Studien diesen Terminen zu und markiere thematische Lücken. FORMAT: Wochenkalender als Tabelle mit Spalten Termin, passende Studie, Lücke."
 **Erwartetes Artefakt:** Ein 8-Wochen-Themenkalender (Canvas-Tabelle) mit Termin-Studien-Zuordnung.
 **Fallstricke (≥2 spezifisch):**
@@ -201,7 +201,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Ergebnisse in eine Vergleichsmatrix überführen lassen.
 3. Differenzierungschancen für das IW ableiten lassen (z.B. interaktive Datenvisualisierung als Stärke).
 4. Matrix im Canvas finalisieren und gegen die research/11-Peer-Matrix plausibilisieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Strategie-Analyst am IW Köln. TASK: Erstelle ein Peer-Benchmarking für ifo, DIW und ZEW. FORMAT: Matrix mit Spalten Institut, Ausrichtung, Leitformate, Kanal-Mix, Kommunikations-Kernstärke. Ergänze drei konkrete Differenzierungschancen für das IW. Stütze dich auf belegbare Quellen, kennzeichne Unsicheres als solches."
 **Erwartetes Artefakt:** Eine Peer-Benchmark-Matrix (Canvas) plus drei Differenzierungsempfehlungen.
 **Fallstricke (≥2 spezifisch):**
@@ -220,7 +220,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. 5-Slide-Carousel-Skript im debattenorientierten, sachlichen Ton der Leitung erzeugen lassen.
 3. Vorschläge für sinnvolle Tags (Verbände, Fachjournalisten) ergänzen lassen — als Vorschlag, nicht als automatisches Markieren.
 4. Skript im Canvas mit der Person abstimmen, in deren Namen gepostet wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist B2P-Social-Stratege am IW Köln. TASK: Erstelle ein 5-Slide-LinkedIn-Carousel aus dem Gutachten im Wissensordner. CONTEXT: Stimme der Direktorin, sachlich-debattenorientiert, keine Emojis. FORMAT: Slide 1 kontraintuitiver, belegter Datenpunkt; Slides 2-4 Erklärung; Slide 5 ordnungspolitische Einordnung. Schlage 3-5 relevante Tags vor (Verbände, Journalisten), markiere sie aber nicht automatisch."
 **Erwartetes Artefakt:** Ein Carousel-Skript (5 Slides) plus Tagging-Vorschlagsliste, freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -239,7 +239,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Eingabeparameter und Ausgabelogik des Tools entwerfen lassen.
 3. Chart-Typ und narrative Botschaft je Zielgruppe empfehlen lassen.
 4. Konzept im Canvas für die IW-Medien-Designer aufbereiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Data-Journalism-Konzepter am IW Köln. TASK: Entwirf ein interaktives Tool aus der angehängten Datentabelle, analog zu 'Geld geht immer'. FORMAT: (1) personalisierbare Eingabeparameter, (2) Ausgabelogik (wo steht der Nutzer in der Verteilung), (3) empfohlener Chart-Typ mit Begründung. Nutze nur Werte aus der Tabelle."
 **Erwartetes Artefakt:** Ein Tool-Konzeptpapier (Canvas) mit Parametern, Logik und Chart-Empfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -258,7 +258,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Pillar-Page und thematische Cluster-Unterseiten strukturieren lassen.
 3. Vorhandene IW-Studien den Cluster-Seiten zuordnen lassen.
 4. Architektur im Canvas finalisieren und mit der iwd-Redaktion abstimmen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Content-Architekt am IW Köln. TASK: Entwirf einen Evergreen-Themen-Hub zum Thema [Schuldenbremse]. FORMAT: (1) Pillar-Page-Outline, (2) 5-7 Cluster-Unterseiten mit Suchintention und Keyword, (3) Zuordnung vorhandener IW-Studien. Sachlicher, erklärender Ton ohne Werbesprache."
 **Erwartetes Artefakt:** Eine Themen-Hub-Architektur (Canvas) mit Pillar/Cluster-Struktur und Keyword-Mapping.
 **Fallstricke (≥2 spezifisch):**
@@ -277,7 +277,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Je Beitrag einen prägnanten Teaser (max. 60 Wörter) generieren lassen.
 3. Aus dem stärksten Thema eine Podcast-Anmoderation für "Economic Challenges" ableiten lassen.
 4. Entwurf im Workflow in die Newsletter-Vorlage schreiben und redaktionell freigeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Newsletter-Redakteur am IW Köln. TASK: Erzeuge aus den Wochenpublikationen im Wissensordner (1) je einen Teaser von max. 60 Wörtern und (2) eine Podcast-Anmoderation von 80 Wörtern zum stärksten Thema. CONTEXT: serviceorientiert, nachrichtenwert-fokussiert, sachlich. Übernimm Zahlen exakt aus den Quellen."
 **Erwartetes Artefakt:** Newsletter-Entwurf mit Teasern plus Podcast-Anmoderation, freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -296,7 +296,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten den Entwurf auf ausgelassene Gegenbefunde und tendenziöse Kausalaussagen prüfen lassen (Spin-Check).
 3. Korrekten Transparenz-Footer aus den Bausteinen einfügen lassen.
 4. Ergebnis durch die Kommunikationsleitung freigeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Compliance-Lektor am IW Köln. TASK: Prüfe den Entwurf auf Spin (ausgelassene Gegenbefunde, tendenziöse Kausalität) und ergänze den Transparenz-Footer aus dem Wissensordner. FORMAT: (1) Spin-Check-Liste mit Fundstellen, (2) korrekter Transparenz-Footer mit Mandat und Förderbasis. Erfinde keine Registerangaben; nutze nur die Bausteine aus dem Wissensordner."
 **Erwartetes Artefakt:** Ein Spin-Check-Bericht plus eingefügter, geprüfter Transparenz-Footer.
 **Fallstricke (≥2 spezifisch):**
@@ -315,7 +315,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten jede Zahl im Entwurf der exakten Fundstelle in der Studie zuordnen lassen.
 3. Abweichungen, Rundungsfehler und nicht belegte Kausalaussagen markieren lassen.
 4. Protokoll prüfen; Entwurf erst nach Korrektur aller Abweichungen freigeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Fact-Checker am IW Köln. TASK: Gleiche jede Zahl im angehängten Pressemitteilungs-Entwurf gegen die angehängte Originalstudie ab. FORMAT: Tabelle mit Spalten Aussage im Entwurf, Wert, Fundstelle in der Studie, Status (korrekt/abweichend/nicht belegt). Markiere jede behauptete Kausalität, die die Studie nicht stützt. Verändere keine Werte selbst."
 **Erwartetes Artefakt:** Ein Verifikationsprotokoll (Tabelle) mit Status je Zahl und markierten nicht belegten Aussagen.
 **Fallstricke (≥2 spezifisch):**
@@ -334,7 +334,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Agenten die drei Governance-Tiers (rechtlich, organisatorisch, professionell) als Checkliste extrahieren lassen.
 3. Jede Regel auf konkrete IW-Workflows anwenden (z.B. keine unveröffentlichten Daten in externe Prompts).
 4. Checkliste im Canvas finalisieren und mit Datenschutz und Leitung abstimmen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Governance-Beauftragter am IW Köln. TASK: Leite aus den Frameworks im Wissensordner eine Publishing-Checkliste ab. FORMAT: drei Abschnitte (rechtliche Pflichten, organisatorische Schutzmaßnahmen, professionelle Standards) mit je konkreten, prüfbaren Regeln für unsere Workflows. Stütze dich nur auf die hinterlegten Dokumente."
 **Erwartetes Artefakt:** Eine Governance-Checkliste (Canvas) mit drei Tiers und prüfbaren Regeln.
 **Fallstricke (≥2 spezifisch):**
@@ -353,7 +353,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Je Region/Thema einen datenbezogenen Aufhänger formulieren lassen.
 3. Pitch-Bausteine mit Platzhaltern (z.B. {{Medium}}, {{Region}}) statt echter Kontaktdaten erstellen lassen.
 4. Bausteine durch die Pressestelle gegen den realen Verteiler abgleichen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Media-Relations-Manager am IW Köln. TASK: Erstelle aus der angehängten anonymisierten Datentabelle regionale Pitch-Aufhänger. FORMAT: je Region (1) der lokale Spitzenwert, (2) ein Pitch-Baustein von max. 80 Wörtern mit Platzhaltern {{Medium}}, {{Region}}. Nutze keine echten Journalistennamen oder -mails."
 **Erwartetes Artefakt:** Pitch-Bausteine mit Platzhaltern plus regionale Datenaufhänger.
 **Fallstricke (≥2 spezifisch):**
@@ -372,7 +372,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Politik-Zitationen und Anhörungs-Beteiligungen als Kernmetrik priorisiert auswerten lassen.
 3. Per Deep Research ergänzende öffentliche Erwähnungen verifizieren lassen.
 4. Impact-Report im Canvas zusammenstellen und Kennzahlen gegen die Rohdaten prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Impact-Analyst am IW Köln. TASK: Erstelle aus den angehängten Tracking-Daten einen Impact-Report. FORMAT: (1) Politik-Zitationen (Plenarprotokolle, Gesetzesentwürfe) als höchstwertige Metrik, (2) Anhörungs-Beteiligungen, (3) Tier-1-Medienresonanz. Liefere ein nüchternes Summary; erfinde keine Zitationen oder Reichweiten."
 **Erwartetes Artefakt:** Ein Impact-Report (Canvas) mit priorisierten KPIs und Summary.
 **Fallstricke (≥2 spezifisch):**
@@ -391,7 +391,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Den Einwand sachlich gegen die eigene Methodik und Daten spiegeln lassen.
 3. Ein zweistufiges Statement (3-Satz-Kurzfassung + ausführliche Klarstellung) erzeugen lassen.
 4. Statement durch Fachautorin und Kommunikationsleitung freigeben, bevor es nach außen geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikator am IW Köln. TASK: Verfasse eine Reaktion auf den angehängten öffentlichen Einwand gegen unsere Studie. CONTEXT: sachlich, ohne Polemik, methodisch transparent. FORMAT: (1) 3-Satz-Kurzstatement, (2) ausführliche Klarstellung mit Verweis auf Methodik und ehrlicher Einordnung verbleibender Unsicherheiten. Nur belegte Daten verwenden; keine Gegen-Angriffe."
 **Erwartetes Artefakt:** Ein zweistufiges Reaktions-Statement (Canvas), freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -410,7 +410,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Die Kernthese und drei tragende Argumente aus dem Transkript extrahieren lassen.
 3. Beitrag in der dokumentierten Stimme des Ökonomen verfassen lassen (sachlich, keine Emojis, ordnungspolitisch).
 4. Entwurf im Canvas abstimmen und durch die Person freigeben lassen, in deren Namen er erscheint.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Ghostwriter am IW Köln. TASK: Erstelle aus dem angehängten Interview-Transkript einen Op-Ed von 600 Wörtern in der Stimme des Ökonomen. CONTEXT: sachlich, ordnungspolitisch, keine Emojis, formelles Register. FORMAT: konträre, belegte These als Einstieg; drei tragende Argumente; Schluss mit klarer Empfehlung. Verwende nur Aussagen und Daten aus Transkript und verlinkter Studie."
 **Erwartetes Artefakt:** Ein Op-Ed/LinkedIn-Beitrag (Canvas, ca. 600 Wörter), freigabebereit durch den Ökonomen.
 **Fallstricke (≥2 spezifisch):**
@@ -427,7 +427,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 1. Die gemeinten Institute eingrenzen.
 2. Den Abschnitt „Peer-Landschaft" abrufen und die relevanten Zeilen zitieren.
 3. Die spezifische IW-Stärke (interaktive Datenvisualisierung, strukturpolitische Advocacy) einordnen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wettbewerbs-Analyst für Wirtschaftsinstitute. Vergleiche IW Köln, ifo und DIW nach Ausrichtung, Leitformaten und Kommunikations-Kernstärke. Kontext: Positionierung einer neuen IW-Studie. Format: kurze Tabelle plus ein Satz Empfehlung für die IW-Rahmung."
 **Erwartetes Artefakt:** Eine zitierte Peer-Vergleichstabelle für die angefragten Institute.
 **Fallstricke (≥2 spezifisch):**
@@ -444,7 +444,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 1. Den Anlass (Studie, Stellungnahme, Social-Post) klären.
 2. Den Abschnitt „Wissenschaftskommunikation: Übersetzung, Standards, Ethik" abrufen und die einschlägigen Grundsätze zitieren.
 3. Auf Faktentreue, Neutralität und Quellenangabe als nicht verhandelbar hinweisen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Standards-Berater für Wissenschaftskommunikation. Nenne die Regeln, die ein KI-gestützter Pressetext einhalten muss. Kontext: IW, arbeitgebernah, Lobbyregister-geführt. Format: Checkliste mit je einem Satz Begründung."
 **Erwartetes Artefakt:** Eine Standards-Checkliste für den konkreten Text.
 **Fallstricke (≥2 spezifisch):**
@@ -463,7 +463,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Datenquelle (z.B. SOEP), Modelltyp und die im Text genannten Limitationen extrahieren lassen.
 3. Einen Methodenkasten in Alltagssprache formulieren lassen, der jede Limitation benennt, ohne den Befund zu entwerten.
 4. Kasten durch die Autorin/den Autor auf methodische Korrektheit prüfen und freigeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissenschaftslektor am IW Köln. TASK: Formuliere aus dem angehängten Report einen Methodenkasten von 100 Wörtern. FORMAT: (1) Datenquelle, (2) Modellart in einem Laien-Satz, (3) zwei bis drei Limitationen. CONTEXT: interessierte Öffentlichkeit; sachlich, keine Superlative. Benenne nur Limitationen, die im Text stehen; überzeichne den Befund nicht."
 **Erwartetes Artefakt:** Ein Methodenkasten (Markdown, ca. 100 Wörter) im Canvas, freigabebereit nach Fach-Review.
 **Fallstricke (≥2 spezifisch):**
@@ -482,7 +482,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Eine ordnungspolitisch konsistente Kernthese und drei belegte Stützargumente ableiten lassen.
 3. Op-Ed im sachlich-ordnungspolitischen Register verfassen lassen (Standortwettbewerb, Bürokratieabbau als Vokabular), ohne Parteinahme.
 4. Entwurf im Canvas redigieren und durch die Person freigeben, in deren Namen er erscheint.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Gastautor-Ghostwriter am IW Köln. TASK: Erstelle einen Op-Ed von 650 Wörtern für ein überregionales Meinungsmedium. CONTEXT: ordnungspolitisch, sachlich, keine Emojis, formelles Register; These muss aus den Befunden im Wissensordner folgen. FORMAT: zugespitzte These im Einstieg, drei belegte Argumente, Empfehlung im Schluss. Keine parteipolitische Positionierung; nur belegte Daten."
 **Erwartetes Artefakt:** Ein Op-Ed-Entwurf (Canvas, ca. 650 Wörter), freigabebereit durch die zeichnende Person.
 **Fallstricke (≥2 spezifisch):**
@@ -501,7 +501,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Tenor je Beitrag (positiv/neutral/kritisch) und Reichweiten-Tier klassifizieren lassen.
 3. Drei bis fünf prägnante Originalzitate mit Quellenangabe extrahieren lassen.
 4. Report im Canvas zu einer Management-Seite verdichten und Kennzahlen gegen den Export prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Medienanalyst am IW Köln. TASK: Verdichte den angehängten Pressespiegel-Export zu einem Management-Resonanz-Report. FORMAT: (1) Tenor-Verteilung (positiv/neutral/kritisch), (2) Reichweiten-Einordnung nach Tier, (3) drei bis fünf belegte Schlüsselzitate mit Quelle. Liefere ein nüchternes einseitiges Summary; erfinde keine Reichweiten oder Zitate."
 **Erwartetes Artefakt:** Ein Management-Resonanz-Report (Canvas, eine Seite) mit Tenor, Reichweite und Zitaten.
 **Fallstricke (≥2 spezifisch):**
@@ -520,7 +520,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Die fünf wahrscheinlichsten Gegenargumente generieren lassen.
 3. Je Gegenargument eine sachliche, ausschließlich datengestützte Antwortlinie ableiten lassen.
 4. Sprachregelung mit Fachautorin und Kommunikationsleitung abstimmen und als intern kennzeichnen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Sprecher-Coach am IW Köln. TASK: Erstelle eine interne Q&A-Sprachregelung zum strittigen Befund im Wissensordner. FORMAT: fünf antizipierte Gegenargumente, je eine Antwortlinie aus den Studiendaten. CONTEXT: sachlich, ohne Polemik, methodisch transparent. Nur belegte Daten; keine Gegen-Angriffe. Kennzeichne das Dokument als intern."
 **Erwartetes Artefakt:** Eine Q&A-Sprachregelung (Canvas) mit Gegenargument-Antwort-Paaren, als intern markiert.
 **Fallstricke (≥2 spezifisch):**
@@ -539,7 +539,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Den Agenten den korrekten Baustein zur Finanzierungsart des Textes auswählen lassen.
 3. Den Disclosure-Block an der vorgesehenen Stelle (z.B. Fußzeile/Impressum des Dokuments) einfügen lassen.
 4. Platzierung und Wortlaut durch die Kommunikationsleitung und ggf. die Rechtsabteilung prüfen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Compliance-Lektor am IW Köln. TASK: Wähle aus den Disclosure-Bausteinen im Wissensordner den passenden Transparenz-Hinweis für eine auftragsfinanzierte Studie und platziere ihn korrekt. FORMAT: (1) Begründung der Platzierung, (2) eingefügter Disclosure-Block mit Auftraggeber, Förderbasis und Registernummer. Erfinde keine Register- oder Förderangaben; nutze nur die hinterlegten Bausteine."
 **Erwartetes Artefakt:** Ein platzierter Transparenz-/Disclosure-Block plus Platzierungsbegründung.
 **Fallstricke (≥2 spezifisch):**
@@ -558,7 +558,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Punktwert, Bandbreite/Intervall und die zugrunde liegenden Annahmen extrahieren lassen.
 3. Eine Kommunikationsvorlage formulieren lassen, die die Bandbreite gleichberechtigt neben den Punktwert stellt.
 4. Vorlage durch die Prognose-Autorin auf korrekte Intervalle und Annahmen prüfen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Konjunktur-Redakteur am IW Köln. TASK: Erstelle aus dem angehängten Prognose-Report eine Kommunikationsvorlage. FORMAT: (1) Punktschätzung, (2) Bandbreite/Intervall gleichwertig daneben, (3) zentrale Annahmen, (4) ein Risikohinweis. CONTEXT: sachlich, keine Scheingenauigkeit. Übernimm Werte und Intervalle exakt aus dem Quelltext; runde nicht eigenmächtig."
 **Erwartetes Artefakt:** Eine Prognose-Kommunikationsvorlage (Canvas) mit Punktwert, Bandbreite, Annahmen und Risikohinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -577,7 +577,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Drei Chart-Optionen (z.B. Linie absolut, indexiert, Veränderungsrate) vorschlagen lassen.
 3. Je Option das Aussage-Risiko (Achsenskalierung, Glättung, Zeitausschnitt) bewerten lassen.
 4. Eine risikoärmste Option empfehlen lassen und das Konzept im Canvas für die IW-Medien-Designer aufbereiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Data-Journalism-Konzepter am IW Köln. TASK: Entwirf aus der angehängten Zeitreihe drei Visualisierungs-Optionen. FORMAT: je Option (1) Chart-Typ, (2) Aussage-Risiko (Achse, Glättung, Ausschnitt), (3) Empfehlung. CONTEXT: sachlich, keine irreführende Skalierung. Nutze nur Werte aus der Tabelle; markiere jede potenzielle Verzerrung."
 **Erwartetes Artefakt:** Ein Visualisierungs-Optionspapier (Canvas) mit drei Optionen, Risiko-Bewertung und Empfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -596,7 +596,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Je Kernbefund die konkrete Implikation für die Maßnahme ableiten lassen ("Was bedeutet das für X?").
 3. Die Einordnung in knapper Entscheider-Sprache strukturieren lassen (Befund → Bedeutung → Handlungsoption).
 4. Text durch die Fachautorin auf Korrektheit der Implikationen prüfen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Policy-Referent am IW Köln. TASK: Überführe die Kernbefunde der Studie im Wissensordner in eine entscheidergerechte Einordnung von 250 Wörtern. FORMAT: je Befund (1) Bedeutung für die Maßnahme, (2) eine ableitbare Handlungsoption. CONTEXT: ordnungspolitisch, sachlich. Empfehlungen müssen aus den Befunden folgen; keine Aussage über die Datenlage hinaus."
 **Erwartetes Artefakt:** Eine entscheidergerechte Politik-Einordnung (Canvas, ca. 250 Wörter) mit Befund-Bedeutung-Paaren.
 **Fallstricke (≥2 spezifisch):**
@@ -615,7 +615,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Drei Optionen abwägen lassen: Embargo halten, vorziehen oder offiziell freigeben — mit je einer Konsequenz.
 3. Sofort-Statement und ein Nachzug-Anschreiben an den Restverteiler entwerfen lassen.
 4. Playbook und Statement durch die Pressestelle freigeben lassen, bevor etwas versendet wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Pressereferent am IW Köln. TASK: Erstelle ein Reaktions-Playbook für einen gebrochenen Embargo-Fall. FORMAT: (1) drei Handlungsoptionen mit Konsequenz, (2) Sofort-Statement-Entwurf, (3) Nachzug-Anschreiben an den Restverteiler, (4) Eskalations-Timeline. CONTEXT: sachlich, deeskalierend. Keine echten Journalistennamen erfinden; keine Schuldzuweisung im Statement."
 **Erwartetes Artefakt:** Ein Embargo-Bruch-Playbook (Canvas) mit Statement, Nachzug-Anschreiben und Timeline.
 **Fallstricke (≥2 spezifisch):**
@@ -634,7 +634,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Eine Fassung in einfacher Sprache erzeugen lassen: kurze Sätze, ein Gedanke pro Satz, Fachbegriffe erklärt.
 3. Zahlen und Kernbefund unverändert übernehmen lassen.
 4. Fassung redaktionell auf Verständlichkeit und Faktentreue prüfen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist iwd-Redakteur am IW Köln. TASK: Erstelle aus der angehängten Meldung eine Fassung in einfacher Sprache. FORMAT: kurze Sätze, ein Gedanke pro Satz, jeder Fachbegriff in einem Nebensatz erklärt. CONTEXT: breite Öffentlichkeit. Übernimm Zahlen und Kernbefund exakt; vereinfache die Sprache, nicht die Fakten."
 **Erwartetes Artefakt:** Eine Leichte-Sprache-Fassung (Canvas) der Studienmeldung, redaktionell freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -653,7 +653,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Veraltete Aussagen und Quellen identifizieren lassen, die ersetzt werden müssen.
 3. Aktualisierte Passagen und den Quellen-Swap einarbeiten lassen, ohne Überschriften-Struktur und Keywords zu zerstören.
 4. Änderungsliste erstellen und durch die iwd-Redaktion freigeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SEO-Content-Redakteur am IW Köln. TASK: Aktualisiere den Evergreen-Explainer im Wissensordner anhand der neuen Studie. FORMAT: (1) aktualisierter Text, (2) Änderungsliste (ersetzte Aussagen, getauschte Quellen). CONTEXT: Struktur, Überschriften und Keywords erhalten; sachlicher Ton. Übernimm neue Zahlen exakt; erfinde keine Quellen."
 **Erwartetes Artefakt:** Ein aktualisierter Evergreen-Explainer (Canvas) plus Änderungsliste.
 **Fallstricke (≥2 spezifisch):**
@@ -672,7 +672,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Eine Folgen-Gliederung (Einstieg, Kernthemen, Schluss) entwerfen lassen.
 3. Sechs bis acht Interviewfragen an die Forschenden formulieren lassen, die auf belegte Punkte zielen.
 4. Show-Notes mit Kernaussagen und Quellenverweisen erstellen und mit den Gästen abstimmen lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Podcast-Producer am IW Köln. TASK: Plane eine Folge zur Studie im Wissensordner. FORMAT: (1) Gliederung (Einstieg, drei Kernthemen, Schluss), (2) sechs bis acht Interviewfragen, (3) Show-Notes mit Kernaussagen und Quellen. CONTEXT: intellektuell-analytisch, dialogisch. Fragen müssen auf belegte Punkte zielen; keine erfundenen Befunde unterstellen."
 **Erwartetes Artefakt:** Ein Podcast-Folgenplan (Canvas) mit Gliederung, Interviewfragen und Show-Notes.
 **Fallstricke (≥2 spezifisch):**
@@ -691,7 +691,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Politik-Zitationen priorisiert vor Reichweiten-Metriken auswerten lassen.
 3. Tenor-Verteilung und drei Belegzitate ergänzen lassen.
 4. Aus den Ergebnissen eine 3-bis-5-Folien-Outline für das Leitungs-Deck im Canvas erstellen und gegen die Rohdaten prüfen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Impact-Analyst am IW Köln. TASK: Verdichte die angehängten Tracking-Daten zu einer Leitungs-Deck-Outline. FORMAT: Folie 1 Politik-Zitationen (höchstwertige Metrik), Folie 2 Reichweite/Tier, Folie 3 Tenor mit Belegzitaten, optional Folie 4-5 Empfehlung. Liefere ein nüchternes Deck; erfinde keine Zitationen oder Reichweiten."
 **Erwartetes Artefakt:** Eine Wirkungs-Report-Folien-Outline (Canvas, 3-5 Folien) mit priorisierten KPIs.
 **Fallstricke (≥2 spezifisch):**
@@ -710,7 +710,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Den Kritikpunkt sachlich gegen die dokumentierte Methodik prüfen lassen (berechtigt/teilweise/unbegründet).
 3. Eine belegte Replik plus drei Eskalationsstufen (Klarstellung, vertiefte Replik, formelle Stellungnahme) ableiten lassen.
 4. Statement durch Fachautorin und Kommunikationsleitung freigeben lassen, bevor es nach außen geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Krisenkommunikator am IW Köln. TASK: Verfasse ein Verteidigungs-Statement gegen die angehängte Methodikkritik. FORMAT: (1) Einordnung des Kritikpunkts (berechtigt/teilweise/unbegründet), (2) belegte Replik aus dem Methodenteil, (3) drei Eskalationsstufen. CONTEXT: sachlich, methodisch transparent. Räume Berechtigtes ehrlich ein; keine Polemik, keine Gegen-Angriffe."
 **Erwartetes Artefakt:** Ein Methodikkritik-Statement (Canvas) mit Replik und Eskalationsstufen, freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -729,7 +729,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Den korrekten Kontext der Zahl (Bezugsgröße, Zeitraum, Annahmen) aus der Studie extrahieren lassen.
 3. Eine Klarstellung formulieren lassen, die den Kontext nachliefert, ohne den Akteur oder dessen Partei zu bewerten.
 4. Klarstellung durch die Kommunikationsleitung auf Neutralität prüfen und freigeben lassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Sprecher am IW Köln. TASK: Formuliere eine Klarstellung zu einer aus dem Kontext gerissenen IW-Zahl. FORMAT: (1) korrekter Originalkontext (Bezugsgröße, Zeitraum, Annahmen), (2) sachliche Richtigstellung in zwei bis drei Sätzen. CONTEXT: überparteilich, neutral. Bewerte weder die Partei noch den Akteur; korrigiere nur die Einordnung der Zahl anhand der Studie."
 **Erwartetes Artefakt:** Eine sachliche Klarstellung (Canvas), neutral formuliert, freigabebereit.
 **Fallstricke (≥2 spezifisch):**
@@ -748,7 +748,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Den Agenten je verwendeter Quelle den Lizenzstatus und nötige Nachweise auflisten lassen.
 3. Bei KI-generierten Bildelementen den vorgeschriebenen Kennzeichnungs-Hinweis ergänzen lassen.
 4. Checkliste durch die Rechtsabteilung bzw. IW Medien prüfen lassen, bevor die Grafik veröffentlicht wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Rechte-Clearing-Assistent am IW Köln. TASK: Erstelle aus den Lizenz-Bausteinen im Wissensordner eine Freigabe-Checkliste für eine Mediengrafik. FORMAT: je Quelle (1) Lizenzstatus, (2) nötiger Nachweis; plus (3) Kennzeichnungs-Hinweis für KI-Bildelemente nach §50 EU AI Act. Erfinde keine Lizenzen; markiere unklare Fälle als zu prüfen."
 **Erwartetes Artefakt:** Eine Lizenz-Freigabe-Checkliste (Markdown) mit Status je Quelle und KI-Kennzeichnungs-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -767,7 +767,7 @@ Die folgenden 39 Szenarien übertragen die Branchenkonventionen der DACH-Wirtsch
 2. Den Vorhaben passende IW-Kompetenzfelder und vorhandene Studien zuordnen lassen.
 3. Lücken markieren, für die ein Kurzbericht oder Policy-Paper vorzubereiten wäre.
 4. Roadmap im Canvas finalisieren und mit der Redaktionsleitung abstimmen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Redaktionsplaner am IW Köln. TASK: Erstelle eine Themen-Roadmap entlang der Legislaturagenda. FORMAT: Tabelle mit Spalten Vorhaben (Koalitionsvertrag/Agenda), passendes IW-Kompetenzfeld, vorhandene Studie, Lücke. CONTEXT: proaktive Studien-PR, sachlich, überparteilich. Prüfe recherchierte Vorhaben gegen offizielle Quellen; kennzeichne Unsicheres."
 **Erwartetes Artefakt:** Eine Themen-Roadmap (Canvas-Tabelle) mit Vorhaben-Studien-Zuordnung und markierten Lücken.
 **Fallstricke (≥2 spezifisch):**

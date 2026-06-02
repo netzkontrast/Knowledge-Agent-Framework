@@ -67,7 +67,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Führe den PTCF-Prompt aus, der die KI zwingt, die Hypothese "Meta ist effizienter" aktiv zu widerlegen.
 4. Lass dir vom Data Analyst die wahren Lead-to-Customer Conversion-Raten pro Kanal ausrechnen.
 5. Exportiere die Gegenbeweis-Tabelle als PDF.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist skeptische Performance-Marketing-Analystin. TASK: Widerlege die Hypothese, dass Meta-Ads effizienter sind als LinkedIn-Ads. CONTEXT: Salesforce-Export der letzten drei Monate anbei; das Team argumentiert mit historischen CPLs. FORMAT: Tabelle mit CPA vs. CPL pro Kanal plus eine abschließende Action-Item-Zeile."
 **Erwartetes Artefakt:** Eine präzise Tabelle, die aufzeigt, in welchen spezifischen Kampagnen-Segmenten die Annahmen des Teams durch die aktuellen Daten entlarvt werden.
 **Fallstricke (mind. 2 spezifisch):**
@@ -87,7 +87,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Führe den Steelmanning-Prompt aus, um eine Verteidigung der Konkurrenz-Strategie zu erzwingen.
 4. Ergebnis im Canvas Editor formatieren.
 5. Memo mit der Lead-Agentur teilen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist Verhaltenspsychologin mit Marketing-Fokus. TASK: Konstruiere das stärkste Argument für den Erfolg der Konkurrenz-Kampagne. CONTEXT: Das Team nimmt die Bedrohung nicht ernst; Kampagnenvideo-Link anbei. FORMAT: Erklärung der psychologischen Trigger plus ein Abschnitt 'Unsere ungenutzten Gegenhebel'."
 **Erwartetes Artefakt:** Ein strukturiertes Canvas-Dokument mit H2-Überschriften, das die Konkurrenz-Strategie glorifiziert, um das eigene Team wachzurütteln.
 **Fallstricke (mind. 2 spezifisch):**
@@ -107,7 +107,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Nutze den Pre-Mortem-Prompt, um das fiktive Scheitern des Launches durchspielen zu lassen.
 4. Bewerte die von der KI identifizierten Risiken (z.B. defekte Personalisierungs-Token).
 5. Wandle die Risiken in eine konkrete QA-Checkliste für den HubSpot-Administrator um.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist Marketing-Ops-Lead mit HubSpot-Erfahrung. TASK: Simuliere ein Scheitern des Newsletter-Relaunches (Pre-Mortem). CONTEXT: Finaler HTML-Entwurf anbei; Versand läuft über HubSpot-Workflows. FORMAT: Die 5 wahrscheinlichsten technischen Ursachen für das Scheitern als QA-Checkliste."
 **Erwartetes Artefakt:** Eine harte, ungeschönte Liste an potenziellen Launch-Fehlern, formatiert als direkt anwendbare Checkliste.
 **Fallstricke (mind. 2 spezifisch):**
@@ -127,7 +127,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Triggere die KI, den aktuellen Entwurf zu analysieren und drei radikal konträre Stoßrichtungen zu entwickeln (Contrast Classes).
 4. Vergleiche die vorgeschlagenen Alternativen mit der ursprünglichen Route.
 5. Kopiere die stärksten Gegenentwürfe und sende sie als strategisches Feedback zurück an die Agentur.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist provokante Brand-Strategin. TASK: Entwickle drei völlig gegensätzliche 'Contrast Classes' zum vorliegenden Rebranding-Pitch. CONTEXT: Agentur-Deck als PDF anbei; rote Linien für Brand-Safety beachten. FORMAT: Drei radikale Gegenentwürfe mit je einem konkreten Slogan und einer visuellen Leitidee."
 **Erwartetes Artefakt:** Ein Dokument mit drei radikalen Alternativ-Ansätzen, das genutzt wird, um die Agentur beim nächsten Termin aus der Komfortzone zu zwingen.
 **Fallstricke (mind. 2 spezifisch):**
@@ -147,7 +147,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Führe den Bayesian-Prior-Prompt aus, um die KI zur Gegenüberstellung von Kosten und tatsächlich generiertem Umsatz zu zwingen.
 4. Lass dir ausrechnen, wie hoch die Conversion-Rate der Messe-Leads nach 12 Monaten wirklich war.
 5. Integriere die Ergebnisse direkt in die nächste Budget-Präsentation.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist Event-Marketing-Controllerin. TASK: Prüfe den Messe-Kanal auf echten ROI und mache die Vorjahres-Annahme explizit. CONTEXT: Lead-Tracking der letzten Messe als CSV anbei; Multi-Touch-Attribution falls vorhanden berücksichtigen. FORMAT: Tabelle mit Leads, Closed-Won, Messe-CPA und ausgewiesenem Rechenweg pro Datenpunkt."
 **Erwartetes Artefakt:** Eine schonungslose ROI-Auswertung, die interne Mythen über den Wert von Messen durch harte Salesforce-Daten widerlegt oder bestätigt.
 **Fallstricke (mind. 2 spezifisch):**
@@ -167,7 +167,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Nutze den Triangulations-Prompt, um die KI zur Suche nach Widersprüchen zwischen den vier Dokumenten zu zwingen.
 4. Identifiziere, welche Agentur mit 'Vanity Metrics' (z.B. Rankings für irrelevante Keywords) arbeitet.
 5. Nutze den Output, um die Verträge der unprofitablen Dienstleister zu kündigen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist forensische SEO-Auditorin. TASK: Finde Widersprüche zwischen den Agentur-Reports und unseren Google-Search-Console-Daten. CONTEXT: Drei Agentur-Reports plus GSC-Export anbei; alle Daten auf denselben Monat normalisieren, nur Klicks und Conversions zählen als Erfolg. FORMAT: Liste der drei größten Diskrepanzen."
 **Erwartetes Artefakt:** Ein strukturiertes Dokument, das unmissverständlich aufzeigt, an welchen Stellen externe Reports geschönt wurden.
 **Fallstricke (mind. 2 spezifisch):**
@@ -187,7 +187,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Zwinge die KI, basierend auf dem Playbook zu reagieren und attackiere jede Antwort der KI auf ihre Machbarkeit in Echtzeit.
 4. Dokumentiere, an welchen Stellen der Prozess (z.B. Freigabe durch Legal) zu langsam ist.
 5. Exportiere die gefundenen Schwachstellen zur sofortigen Überarbeitung des Playbooks.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist feindseliger Red-Team-Stratege; ignoriere Höflichkeit, dein Ziel ist es, unsere Reputation zu zerstören. TASK: Attackiere unseren Krisen-PR-Plan. CONTEXT: Krisen-Playbook als Wissensordner hinterlegt; Fokus auf externe Wahrnehmung und Medien-Echo, nicht IT-Sicherheit. FORMAT: 3 Szenarien, in denen der Plan gnadenlos scheitern würde, plus die jeweilige Schwachstelle."
 **Erwartetes Artefakt:** Ein schonungsloses Audit-Protokoll des Krisenplans, das zwingt, juristische Freigabeprozesse für den Notfall radikal zu kürzen.
 **Fallstricke (mind. 2 spezifisch):**
@@ -207,7 +207,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Überführe die vorgeschlagenen Metriken in den Canvas-Editor.
 4. Passe die Schwellenwerte kollaborativ mit dem MarketingOps-Lead an.
 5. Speichere das Dokument als PDF und mache es zur Bedingung für die Budget-Freigabe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist nüchterne MarketingOps-Beraterin. TASK: Definiere harte Pre-Commitments für das neue Attribution-Tool. CONTEXT: SLA und Pricing-Deck anbei; nutze nur Metriken, die wir bereits messen können. FORMAT: Checkliste für M3 und M6 mit absoluten Schwellenwerten (z.B. CPA-Diskrepanz unter 5%) inklusive Kill-Switch."
 **Erwartetes Artefakt:** Ein präziser Projektvertrag (Pre-Commitment-Log) im Canvas, der jede Form von Sunk-Cost-Fallacy präventiv ausschließt.
 **Fallstricke (mind. 2 spezifisch):**
@@ -227,7 +227,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Lass die KI die absolute Basis-Motivation der Zielgruppe identifizieren (ohne Rücksicht auf unsere aktuellen Tools).
 4. Fordere einen Neu-Entwurf, der maximal drei Touchpoints bis zum Sales-Call zulässt.
 5. Exportiere das neue Konzept zur sofortigen Implementierung im Marketing-Automation-Tool.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist First-Principles-Denkerin mit B2B-Funnel-Expertise. TASK: Dekonstruiere unseren B2B-Funnel auf First Principles, beginne mit einem weißen Blatt. CONTEXT: Aktuelle Funnel-Dokumentation als Wissensordner; DSGVO-konformes Double-Opt-In ist ein zwingendes First Principle. FORMAT: Fundamentale Kauf-Wahrheit und neuer Prozess mit maximal 3 Touchpoints bis zum Sales-Call."
 **Erwartetes Artefakt:** Ein kompromisslos gekürzter CRM-Workflow, der sämtliche historisch gewachsenen 'Nice-to-have'-E-Mails streicht und den Pfad zum Kauf befreit.
 **Fallstricke (mind. 2 spezifisch):**
@@ -247,7 +247,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 3. Nutze den Assumption-Decay-Prompt, damit die KI das Web nach aktuellen Gegenbeweisen zu den alten Persona-Aussagen durchkämmt.
 4. Überprüfe die von der KI gefundenen Diskrepanzen (z.B. Shift von LinkedIn zu spezialisierten Slack-Communities).
 5. Überführe die verifizierten Updates in das offizielle Brand-Wiki.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "PERSONA: Du bist Marktforscherin für B2B-Software-Einkäufer. TASK: Prüfe unsere Buyer-Personas auf 'Assumption Decay'. CONTEXT: Persona-PDF von 2023 anbei; Kontext strikt B2B-DACH; gib nur Quellen mit belegbarer URL an, sonst markiere die Annahme als ungeprüft. FORMAT: Tabelle (Alte Annahme / Gültigkeit / Harter Beleg)."
 **Erwartetes Artefakt:** Eine validierte 'Decay-Matrix', die aufzeigt, welche Marketing-Budgets sofort gestoppt werden müssen, weil die Zielgruppe nicht mehr über diese Kanäle erreichbar ist.
 **Fallstricke (mind. 2 spezifisch):**
@@ -266,7 +266,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade das Kampagnen-Briefing und den Redaktionsplan als PDF in einen Library Folder, der dem Projekt zugeordnet ist.
 3. Pinne die wichtigsten laufenden Chats in der Sidebar, damit das Team ohne Suche direkten Zugriff hat.
 4. Erstelle zwei bis drei Konversations-Starter pro Projekt (z.B. "Erstelle einen Post-Entwurf für dieses Kampagnen-Thema"), damit neue Teammitglieder sofort produktiv einsteigen können.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workspace-Administratorin für ein 15-köpfiges Marketing-Team. Schlage eine logische Projektstruktur für unsere drei parallelen Q3-Kampagnen vor. Kontext: Wir arbeiten mit LinkedIn-Content, Newsletter und bezahlten Anzeigen gleichzeitig. Format: Tabelle mit Projekt-Name, Zweck und empfohlenen Konversations-Startern."
 **Erwartetes Artefakt:** Eine Tabelle mit empfohlener Projekt-Architektur und fertigen Konversations-Starter-Texten, die direkt in die Agent-Konfiguration kopiert werden können.
 **Fallstricke (≥2 spezifisch):**
@@ -285,7 +285,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade den Export als CSV in den Data Analyst und berechne das Lohnkosten-Äquivalent: Token-Verbrauch je Task × durchschnittlicher Stundensatz des Teams = eingesparte Arbeitszeit in Euro.
 3. Ergänze qualitative KPIs: Time-to-First-Draft (vor vs. nach Langdock), Anzahl Revisionsrunden pro Asset, Iterations-Geschwindigkeit.
 4. Überführe die Ergebnisse in den Canvas Editor und formatiere ein einseitiges Executive-Summary-Slide.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist CFO-Kommunikations-Expertin. Übersetze die angehängten Langdock-Nutzungsdaten in drei CFO-relevante KPIs. Kontext: Unser Team hat 12 Personen, durchschnittlicher Stundensatz 85 Euro. Format: Tabelle mit KPI-Name, Messmethode, Ist-Wert und monetärer Bewertung."
 **Erwartetes Artefakt:** Ein Canvas-Dokument mit ROI-Tabelle (Lohnkosten-Äquivalent, Time-to-Draft-Reduktion, Cost-per-Brief) als Quartalsbericht-Anhang.
 **Fallstricke (≥2 spezifisch):**
@@ -303,7 +303,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 1. Liste im Chat alle aktuellen Marketing-Aufgaben auf und kategorisiere sie nach: Volumen (einmalig vs. wiederkehrend), strategischer Tiefe (Konzept vs. Ausführung) und Brand-Criticality (Krisenkommunikation vs. Routine-Content).
 2. Führe den PTCF-Prompt aus, um eine Entscheidungs-Matrix zu generieren, die für jede Kombination aus Volumen und Komplexität eine klare Empfehlung (Agentur/intern/hybrid) gibt.
 3. Speichere die Matrix im Canvas als wiederverwendbares Entscheidungs-Template, das bei jeder neuen Anfrage als Wissensordner-Referenz dient.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist strategische Marketing-Beraterin. Entwickle eine Entscheidungs-Matrix: Wann lösen wir Content-Aufgaben intern mit KI, wann beauftragen wir eine Agentur? Kontext: Wir haben 3 interne Texter und Langdock-Zugang. Format: 2x2-Matrix (Volumen vs. Strategische Tiefe) mit konkreten Schwellenwerten und Beispielen."
 **Erwartetes Artefakt:** Eine 2×2-Matrix im Canvas mit vier Quadranten (Intern/KI, Agentur, Hybrid, Führungs-Entscheidung) und konkreten Trigger-Kriterien pro Quadrant.
 **Fallstricke (≥2 spezifisch):**
@@ -322,7 +322,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lass die KI einen 30-Tage-Aktivierungsplan für die Champions erstellen: Woche 1 Onboarding, Woche 2-3 eigene Use-Case-Erprobung, Woche 4 erstes Team-Demo.
 3. Erstelle im Canvas einen gemeinsamen Konversations-Starter-Katalog, in den jeder Champion seinen besten Prompt einbringt.
 4. Plane ein monatliches 30-Minuten-Format (AI-Office-Hour): 1 Demo, 2 offene Fragen, 1 Ankündigung neuer Starter.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Change-Management-Expertin für KI-Adoption. Erstelle einen 30-Tage-Plan für unser KI-Champions-Programm. Kontext: 5 Champions aus verschiedenen Marketing-Teams, alle bereits Langdock-Nutzer. Format: Tabelle mit Woche, Aktivität, Verantwortlichem und erwartetes Ergebnis."
 **Erwartetes Artefakt:** Ein 30-Tage-Aktivierungsplan im Canvas mit Wochenzielen, Rollenzuweisungen und einem Template für den gemeinsamen Konversations-Starter-Katalog.
 **Fallstricke (≥2 spezifisch):**
@@ -341,7 +341,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Konfiguriere Agent 2 "Content-Kürzer": System-Prompt für Verdichtung auf 50 % ohne Inhaltsverlust, keine Wissensordner nötig, Konversations-Starter "Kürze diesen LinkedIn-Post auf 300 Zeichen".
 3. Konfiguriere Agent 3 "Meeting-Protokoll-Konverter": System-Prompt für Action-Item-Extraktion aus Fließtext, Konversations-Starter "Extrahiere alle To-dos aus diesem Protokoll".
 4. Teile alle drei Agenten mit der Marketing-Benutzergruppe und dokumentiere die Starter-Liste im Team-Wiki.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Langdock-Onboarding-Spezialistin. Schreibe einen präzisen System-Prompt für einen Brand-Voice-Check-Agenten. Kontext: Unser Tone of Voice ist professionell, direkt, ohne Floskeln. Format: Fertiger System-Prompt unter 500 Zeichen plus drei Konversations-Starter-Texte."
 **Erwartetes Artefakt:** Drei fertige System-Prompts und neun Konversations-Starter-Texte, direkt einsetzbar in der Langdock-Agent-Konfiguration.
 **Fallstricke (≥2 spezifisch):**
@@ -360,7 +360,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lass die KI einen 90-Tage-Plan in drei Phasen entwickeln: Phase 1 (Tage 1-30) Onboarding der Champions, Phase 2 (Tage 31-60) Rollout der Quick-Win-Agenten, Phase 3 (Tage 61-90) Skalierung auf das Gesamt-Team.
 3. Ergänze pro Phase harte Erfolgsmetriken und einen Pre-Commitment-Checkpoint (Szenario S-LU-008).
 4. Exportiere den Plan als PDF und verteile ihn als offizielles Kick-off-Dokument.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Rollout-Strategin. Erstelle einen 90-Tage-Pilotplan für die Langdock-Einführung in einem 20-köpfigen Marketing-Team. Kontext: Budget genehmigt, 3 Champions identifiziert, kein technisches IT-Team verfügbar. Format: Tabelle mit Phase, Tage, Hauptaktivität, KPI und Go/No-Go-Kriterium."
 **Erwartetes Artefakt:** Ein 90-Tage-Projektplan im Canvas mit drei Phasen, KPI-Tabelle und einem Pre-Commitment-Log, der als offizielles Kick-off-Dokument dient.
 **Fallstricke (≥2 spezifisch):**
@@ -378,7 +378,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 1. Öffne einen neuen Chat und lade alle relevanten Dateien als direkte Anhänge hoch (maximal 20 Dateien pro Session).
 2. Führe den PTCF-Prompt aus, der die KI zur Synthese und Priorisierung der wichtigsten Erkenntnisse zwingt.
 3. Kopiere die Zusammenfassung in die Meeting-Agenda oder sende sie als Slack-Nachricht an das Team.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Senior Marketing-Analytikerin. Lies alle angehängten Dokumente und identifiziere die drei wichtigsten strategischen Erkenntnisse für unsere Q3-Kampagnenplanung. Kontext: Wir fokussieren auf B2B-Software-Käufer in der DACH-Region. Format: Drei nummerierte Punkte mit je einer konkreten Handlungsempfehlung."
 **Erwartetes Artefakt:** Eine nummerierte Liste mit drei bis fünf priorisierten Erkenntnissen und konkreten Handlungsempfehlungen, fertig für den Meeting-Einsatz.
 **Fallstricke (≥2 spezifisch):**
@@ -397,7 +397,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade die aktuellen Masterdokumente hoch: Briefing-Template, Tone-of-Voice-Guide, Zielgruppen-Persona und aktuellen Kampagnenplan.
 3. Binde den Folder an den primären Content-Agenten an und teste mit einem Konversations-Starter, ob die KI korrekte Briefing-Inhalte abruft.
 4. Kommuniziere im Team: Dieser Folder ist die einzige autorisierte Quelle; alle anderen Versionen werden archiviert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Operations-Managerin. Erstelle eine Namenskonvention und Ordner-Struktur für unsere Kampagnen-Briefings in Langdock. Kontext: 3 parallele Kampagnen, 5 Freelancer, quartalsweiser Update-Rhythmus. Format: Checkliste mit Dateinamen-Muster, Pflicht-Dateien pro Ordner und Update-Prozess."
 **Erwartetes Artefakt:** Eine dokumentierte Ordnerstruktur mit Namenskonvention, Pflicht-Dateiliste und einem Update-Prozess, der im Team-Wiki veröffentlicht wird.
 **Fallstricke (≥2 spezifisch):**
@@ -416,7 +416,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Gib Eckdaten ein: Quartals-Themen, geplante Produkt-Launches und externe Events (Messen, Feiertage).
 3. Führe den PTCF-Prompt aus, um den Kalender zu generieren, und überführe ihn direkt in den Canvas Editor.
 4. Passe im Canvas-Split-Screen Engpässe (z.B. zu viele High-Effort-Assets in einer Woche) kollaborativ mit dem Team an.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Content-Strategin. Erstelle einen 90-Tage-Redaktionsplan für ein B2B-Software-Unternehmen. Kontext: Produkt-Launch am 15. des zweiten Monats, zwei Messen im Quartal, Team hat 3 Content-Produzierende. Format: Canvas-Tabelle mit Spalten Datum, Thema, Format (Blog/Social/Newsletter), Zielgruppe und Funnel-Stufe."
 **Erwartetes Artefakt:** Eine Canvas-Tabelle mit 90 Tagen, die alle Kampagnen-Themen, Formate und Ressourcen-Zuweisungen enthält und direkt als Basis für das Team-Briefing dient.
 **Fallstricke (≥2 spezifisch):**
@@ -435,7 +435,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe den strukturierten Recherche-Prompt aus: neue Kampagnen, Positionierungs-Änderungen, neue Produkt-Features, Pressemitteilungen der letzten 30 Tage.
 3. Überführe die Ergebnisse in den Canvas Editor und formatiere sie als monatlichen Monitoring-Report mit H2-Abschnitten pro Wettbewerber.
 4. Teile den Report mit dem strategischen Marketing-Team als Grundlage für die monatliche Strategie-Runde.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Analystin. Recherchiere die letzten 30 Tage der Wettbewerber-Aktivitäten für [Wettbewerber A, B, C] via Deep Research. Kontext: Wir sind im B2B-SaaS-Markt für HR-Software tätig. Format: Bericht mit H2 pro Wettbewerber, je drei Bullet Points zu neuen Kampagnen, Positioning-Änderungen und identifizierten Schwächen."
 **Erwartetes Artefakt:** Ein monatlicher Monitoring-Report im Canvas mit je drei Erkenntnissen pro Wettbewerber und einer abschließenden "Strategische Implikationen für uns"-Sektion.
 **Fallstricke (≥2 spezifisch):**
@@ -454,7 +454,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe einen Pre-Mortem-Prompt aus (Quelle: S-LU-003): "Was verlieren wir, wenn Langdock morgen nicht mehr verfügbar ist?"
 3. Definiere pro Abhängigkeitstyp eine Gegenstrategie: Wissensordner quartalsweise als Markdown exportieren, Agent-System-Prompts in Git versionieren, Workflow-Logik dokumentieren.
 4. Erstelle einen jährlichen "Wechsel-Drill-Kalender" als Canvas-Eintrag, der die Export-Routine und einen Fallback-Test auf einem alternativen Provider enthält.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist IT-Risiko-Beraterin mit Fokus auf SaaS-Abhängigkeiten. Bewerte unser Langdock-Lock-in-Risiko. Kontext: Wir haben 12 konfigurierte Agenten, 5 Wissensordner und 8 aktive Workflows. Format: Tabelle mit Abhängigkeitstyp, Risiko-Level (hoch/mittel/niedrig), Export-Möglichkeit und Gegenstrategie."
 **Erwartetes Artefakt:** Eine Risiko-Tabelle mit Gegenstrategie pro Abhängigkeitstyp und einem konkreten Aktionsplan für den jährlichen Wechsel-Drill.
 **Fallstricke (≥2 spezifisch):**
@@ -473,7 +473,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade das Template als Masterdokument in den Sales-Enablement-Wissensordner.
 3. Konfiguriere einen Sales-Agenten mit Konversations-Starter: "Erkläre mir die aktuelle Kampagne in 5 Minuten" → Output: kompakte Briefing-Zusammenfassung mit Einwand-Handling.
 4. Teste den Agenten mit drei echten Sales-Fragen und überarbeite das Template auf Basis der Lücken.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Sales-Enablement-Expertin. Erstelle ein Kampagnen-Briefing-Template, das Sales-Mitarbeitende in unter 5 Minuten auf eine neue Marketing-Kampagne vorbereitet. Kontext: B2B-Software, Sales-Cycle 3-6 Monate, Haupteinwände sind Preis und Implementierungsaufwand. Format: Strukturiertes Template mit Abschnitten Kampagnenziel, Kernbotschaft, Top-3-Argumente und Einwand-Handling-Tabelle."
 **Erwartetes Artefakt:** Ein standardisiertes Briefing-Template plus ein fertiger Konversations-Starter-Text für den Sales-Agenten, direkt einsetzbar in der Langdock-Konfiguration.
 **Fallstricke (≥2 spezifisch):**
@@ -492,7 +492,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe einen Falsifikations-Prompt aus: "Welche dieser Verbote sind übertrieben und warum könnten sie die Effizienz unnötig einschränken?" — um die Liste zu schärfen.
 3. Ergänze die vier Ethik-Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit) mit je einem konkreten Marketing-Beispiel pro Säule.
 4. Formuliere den finalen Leitfaden im Canvas als einseitigen 1-Pager, der im Team-Wiki und im Onboarding-Material verankert wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Ethik-Beraterin für ein B2B-Marketing-Team. Erstelle einen praxistauglichen KI-Ethik-Kompass. Kontext: Team nutzt KI für Content, Analyse und Personalisierung; EU AI Act ist relevant (Frist datums-sensitiv — gegen Primärquelle per Web-Suche verifizieren). Format: 1-Pager mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit), je einem Praxis-Beispiel und einer Nie-KI-Liste mit fünf Punkten."
 **Erwartetes Artefakt:** Ein einseitiger KI-Ethik-Leitfaden im Canvas mit vier Säulen, Praxis-Beispielen und einer verbindlichen "Nie-KI"-Liste für das Marketing-Team.
 **Fallstricke (≥2 spezifisch):**
@@ -511,7 +511,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Exportiere die Langdock-Nutzungsdaten monatlich als CSV und lade sie in den Data Analyst.
 3. Lass den Data Analyst die drei KPIs berechnen und als Trend-Tabelle (Monat-über-Monat) ausgeben.
 4. Überführe die Ergebnisse in ein Canvas-Board-Slide-Template, das mit jeder monatlichen Aktualisierung nur die Zahlen erfordert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-Analytics-Expertin mit Board-Reporting-Erfahrung. Berechne die drei AI-KPIs aus der angehängten CSV. Kontext: Monat Mai 2026, 12 Team-Mitglieder, 45 produzierte Assets, Langdock-Kosten 480 Euro. Format: Tabelle mit KPI-Name, Formel, Ist-Wert Mai, Vormonat-Vergleich und Trend-Pfeil."
 **Erwartetes Artefakt:** Eine Canvas-Slide-Vorlage mit drei berechneten KPIs, Trend-Tabelle und einem Platzhalter-Text für die Board-Interpretation.
 **Fallstricke (≥2 spezifisch):**
@@ -530,7 +530,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe den PTCF-Prompt aus, um ein RACI-Modell für jeden Agenten zu generieren: Owner (Konfiguration), Approver (Brand-Compliance), Consulted (Wissens-Quelle), Informed (Team-Nutzung).
 3. Definiere einen Quartals-Review-Prozess für Wissensordner: Prüfe Aktualität, archiviere veraltete Dokumente, aktualisiere System-Prompts bei Produkt-Änderungen.
 4. Lege Budget-Schwellenwerte fest: 80-%-Warnschwelle im Workspace-Admin, Eskalationsplan bei Überschreitung, monatlicher Token-Report an den CMO.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Workspace-Governance-Beraterin für ein 25-köpfiges Marketing-Team. Erstelle ein RACI-Modell für unsere 12 Langdock-Agenten. Kontext: Team-Struktur ist Content (5 Personen), Performance (4), Social (3), Brand (3), Analytics (2). Format: Tabelle mit Agent-Name, Owner, Approver, Consulted, Informed und Quartals-Review-Datum."
 **Erwartetes Artefakt:** Ein vollständiges Governance-Dokument im Canvas mit RACI-Tabelle für alle Agenten, Quartals-Review-Checkliste für Wissensordner und Budget-Eskalationsplan.
 **Fallstricke (≥2 spezifisch):**
@@ -549,7 +549,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade die CSV in den Data Analyst und identifiziere die Top-5 Token-Verbraucher: Agenten-Name, durchschnittliche Prompt-Länge, Häufigkeit und Kosten in Euro.
 3. Analysiere pro Heavy-Hitter: Ist der System-Prompt unnötig lang? Wird ein teures Modell (Opus) für eine Routine-Aufgabe genutzt? Könnte ein Flash-Modell denselben Output liefern?
 4. Erstelle die Refactor-Liste im Canvas: Alter Prompt (Zeichenanzahl), neuer kürzerer Prompt, Modell-Downgrade-Empfehlung und geschätzte monatliche Ersparnis.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Kostenoptimiererin. Analysiere die angehängte Usage-CSV unseres Langdock-Workspace. Identifiziere die 5 kostenintensivsten Agenten und schlage konkrete Kürzungsmaßnahmen vor. Kontext: Unser Monatsbudget beträgt 600 Euro, aktuell verbrauchen wir 920 Euro. Format: Tabelle mit Agent-Name, aktuellen Kosten, Einsparpotenzial und Maßnahme."
 **Erwartetes Artefakt:** Eine Refactor-Prioritätsliste im Canvas mit fünf Einträgen, geschätzter Ersparnis pro Maßnahme und einer Gesamteinsparungsprojektion für den Folgemonat.
 **Fallstricke (≥2 spezifisch):**
@@ -567,7 +567,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 1. Kategorisiere alle wiederkehrenden Marketing-Tasks nach zwei Dimensionen: Komplexität (Routine vs. Strategie) und Brand-Criticality (generisch vs. markenprägend).
 2. Führe den PTCF-Prompt aus, um die Modell-Zuordnungsregel zu generieren: Flash für Routine-Drafts, Übersetzungen und Klassifikation; Sonnet für Strategie-Reviews, Brand-Voice-kritische Texte und komplexe Argumentation.
 3. Überführe die Regel in den Canvas als 1-Pager und hinterlege sie als Konversations-Starter "Welches Modell für diese Aufgabe?" in allen relevanten Agenten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Modell-Stratege. Erstelle eine Daumenregel für unser Marketing-Team: Wann nutzen wir Flash, wann Sonnet, wann Opus? Kontext: 15 Personen, täglich ca. 200 Requests, Budget-Limit 500 Euro/Monat. Format: Tabelle mit Task-Typ, empfohlenem Modell, Begründung und geschätzten Kosten pro 1 000 Requests."
 **Erwartetes Artefakt:** Ein 1-Pager im Canvas mit Modell-Zuordnungstabelle (Task-Typ → Modell → Begründung → Kostenschätzung), direkt einsetzbar als Team-Referenzkarte.
 **Fallstricke (≥2 spezifisch):**
@@ -586,7 +586,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade die CSV in den Data Analyst: Berechne die Kosten im Inklusivangebot vs. direktem Provider-Preis (Anthropic/OpenAI) + 10 % Langdock-Aufschlag entfällt bei BYOK.
 3. Ergänze im Chat den operativen Aufwand für BYOK: API-Key-Rotation, Billing-Reconciliation, Security-Overhead — schätzungsweise 2–4 Stunden/Monat IT-Zeit.
 4. Erstelle im Canvas die Go/No-Go-Empfehlung: BYOK lohnt ab ca. 5 000 Euro/Monat Verbrauch; darunter überwiegt der Verwaltungsaufwand.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SaaS-Beschaffungsanalystin. Vergleiche für unser Langdock-Nutzungsprofil die Kosten von Inklusivangebot vs. BYOK. Kontext: Monatlicher Verbrauch laut CSV anbei, IT-Ressource für API-Management: 3 h/Monat à 90 Euro. Format: Break-even-Tabelle mit Monatsschwelle, Jahresersparnis ab Break-even und Empfehlung."
 **Erwartetes Artefakt:** Eine Break-even-Tabelle im Canvas mit Monatsschwelle, Jahresersparnis-Projektion und einer eindeutigen Empfehlung (BYOK Ja/Nein) mit Begründung.
 **Fallstricke (≥2 spezifisch):**
@@ -605,7 +605,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Definiere im Chat eine "Prioritätsliste der Workflows": Welche Prozesse dürfen bei Budget-Engpass weiterlaufen (Lead-Scoring, Krisen-PR), welche werden pausiert (Content-Volumen-Produktion)?
 3. Überführe den Plan in den Canvas und dokumentiere die Eskalationskette: Admin → Team-Lead → CMO → CFO mit Reaktionszeit-SLA pro Stufe.
 4. Speichere das Dokument im zentralen Governance-Wissensordner als Pflichtdokument für den monatlichen Budget-Review.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Infrastruktur-Managerin. Erstelle einen dreistufigen Token-Budget-Eskalationsplan für einen 20-köpfigen Marketing-Workspace. Kontext: Monatsbudget 800 Euro, häufige Überschreitungen in Kampagnen-Hochphasen. Format: Tabelle mit Stufe, Schwellenwert in %, auslösende Aktion, Verantwortliche und Reaktionszeit."
 **Erwartetes Artefakt:** Ein Canvas-Dokument mit Eskalationstabelle (drei Stufen), Priorisierungsliste der Workflows und einer Notfall-Fallback-Prozedur bei vollständigem Budget-Stop.
 **Fallstricke (≥2 spezifisch):**
@@ -624,7 +624,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Aktiviere den Deep Research Modus und recherchiere die aktuellen EU-AI-Act-Kategorien (Stand 2026) für Marketing-spezifische Anwendungen; fokussiere auf Art. 5 (verbotene Praktiken) und Annex III (Hoch-Risiko-Systeme).
 3. Klassifiziere jeden Use-Case in der Tabelle: Risikostufe, ob Human-Oversight-Log erforderlich ist, ob eine DPIA nötig wird, und welche Dokumentationspflichten gelten.
 4. Erstelle einen 6-Monats-Aktionsplan für alle als "limited" oder höher eingestuften Use-Cases: Verantwortlicher, Maßnahme und Deadline.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist EU-AI-Act-Compliance-Beraterin für ein B2B-Marketing-Team. Klassifiziere unsere 8 KI-Anwendungen nach EU-AI-Act-Risikokategorien. Kontext: Anwendungen umfassen Content-Erstellung, Lead-Scoring, Personalisierung und Wettbewerbs-Monitoring. Format: Tabelle mit Use-Case, Risikostufe, Human-Oversight-Pflicht (Ja/Nein) und nächster Maßnahme."
 **Erwartetes Artefakt:** Eine Klassifikationstabelle im Canvas mit allen Use-Cases, EU-AI-Act-Risikostufen und einem priorisierten Aktionsplan für compliance-relevante Anwendungen.
 **Fallstricke (≥2 spezifisch):**
@@ -642,7 +642,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 1. Definiere im Chat die zwei Analyse-Szenarien: (A) aggregierte Auswertung von 5 000 anonymisierten Feedbacks → Trend-Report ohne Personenbezug; (B) individuelle Sentiment-Bewertung pro Kontakt-ID → Profiling mit möglichem Personenbezug.
 2. Führe den PTCF-Prompt aus, um den datenschutzrechtlichen Unterschied zu erläutern: Szenario A ist bei korrekter Pseudonymisierung unbedenklich; Szenario B erfordert Rechtsgrundlage (Art. 6 (1) f DSGVO) plus Information an die betroffene Person.
 3. Erstelle das Entscheidungsblatt im Canvas mit einer "Ampel-Regel": Grün (aggregiert + pseudonymisiert), Gelb (individuell + Rechtsgrundlage vorhanden + DSB informiert), Rot (individuell + keine Rechtsgrundlage = STOP).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist DSGVO-Beraterin für Marketing-Teams. Erkläre den datenschutzrechtlichen Unterschied zwischen aggregierter Sentiment-Analyse und individuellem Sentiment-Profiling. Kontext: Wir verarbeiten Kundenfeedback-Texte in Langdock, Daten sind pseudonymisiert (nur Kontakt-IDs). Format: Ampel-Entscheidungsblatt mit drei Szenarien (Grün/Gelb/Rot), Rechtsgrundlage und empfohlener Maßnahme."
 **Erwartetes Artefakt:** Ein Canvas-Entscheidungsblatt mit Ampel-Regel (drei Szenarien), konkreter DSGVO-Rechtsgrundlage pro Szenario und einem empfohlenen Handlungspfad für das CRM-Team.
 **Fallstricke (≥2 spezifisch):**
@@ -661,7 +661,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Kategorisiere im Chat jeden Datenpunkt: Dient er der System-Optimierung (zulässig ohne Mitbestimmung) oder ermöglicht er Rückschlüsse auf individuelle Arbeitsleistung (mitbestimmungspflichtig nach BetrVG § 87 (1) Nr. 6)?
 3. Erstelle im Canvas einen RACI-Vorschlag: Workspace-Admin sieht aggregierte Team-Statistiken; individuelle User-Daten nur für den User selbst sichtbar; CMO erhält nur Team-Level-Reports.
 4. Formuliere einen Betriebsvereinbarungs-Entwurf (1 Seite): Zweck der Nutzungsanalyse, Datenzugriffs-RACI, Aufbewahrungsfrist und Mitbestimmungs-Vorbehalt bei Änderungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Arbeitsrechtsberaterin mit Fokus auf Digitalisierung. Erstelle ein Briefing für ein Betriebsratsgespräch über KI-Nutzungsanalysen. Kontext: Langdock erfasst anonymisierte Nutzungsdaten auf User-Ebene; Betriebsrat besorgt wegen Leistungsüberwachung (BetrVG § 87 (1) Nr. 6). Format: Zwei-seitiges Dokument mit Datenpunkt-Übersicht, RACI-Tabelle und Betriebsvereinbarungs-Entwurf."
 **Erwartetes Artefakt:** Ein zweiseitiges Canvas-Dokument mit Datenpunkt-Kategorisierung, RACI-Vorschlag und Betriebsvereinbarungs-Entwurf für das Gespräch mit dem Betriebsrat.
 **Fallstricke (≥2 spezifisch):**
@@ -680,7 +680,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe den Spot-Check einmal monatlich durch: Führe alle fünf Canary-Prompts aus und dokumentiere die Antworten in einer Tabelle (Datum, Prompt, Erwarteter Output, Tatsächlicher Output, Abweichung Ja/Nein).
 3. Definiere die Eskalationsschwelle: Zwei oder mehr Abweichungen von fünf → Agent-Owner wird benachrichtigt und hat 48 Stunden, um Wissensordner und System-Prompt zu prüfen.
 4. Archiviere alle Spot-Check-Protokolle im Governance-Wissensordner als Audit-Trail.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Qualitätssicherungsmanagerin. Erstelle ein Canary-Prompt-Set für unseren Brand-Voice-Agenten. Kontext: Der Agent soll Texte im formellen, direkten B2B-Ton ausgeben; Benchmark ist unser Tone-of-Voice-Guide. Format: Tabelle mit 5 Canary-Fragen, erwartetem Output (Schlüsselwort oder Stil-Merkmal) und Bewertungskriterium (bestanden/nicht bestanden)."
 **Erwartetes Artefakt:** Eine Canary-Prompt-Tabelle mit fünf Testfragen pro Agent, Bewertungskriterien und einem Eskalationsprotokoll-Template für den monatlichen Spot-Check-Prozess.
 **Fallstricke (≥2 spezifisch):**
@@ -699,7 +699,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Erstelle den 30-Tage-Plan in drei Phasen: Phase 1 (Tage 1–10) Infrastruktur — neue Nutzer anlegen, RACI aktualisieren, Budget-Limits anpassen; Phase 2 (Tage 11–20) Onboarding — Abteilungs-Champions aus dem Pilot briefen neue Teams; Phase 3 (Tage 21–30) Stabilisierung — erste Canary-Checks (S-LU-033), Feedback-Sammlung, Optimierungen.
 3. Definiere Kommunikations-Meilensteine: Kick-off-Mail an alle Abteilungen (Tag 1), Mid-Point-Update (Tag 15), Go-Live-Confirmation (Tag 30).
 4. Lege drei Skalierungs-KPIs fest: Adoption-Rate nach 30 Tagen (Ziel: 60 % aktive Nutzer), durchschnittliche Onboarding-Zeit pro neuer Abteilung und Anzahl kritischer Incidents.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Skalierungsstrategin für KI-Plattform-Rollouts. Erstelle einen 30-Tage-Plan für die unternehmensweite Ausweitung unseres Langdock-Piloten. Kontext: Pilot mit 20 Marketing-Nutzern war erfolgreich, Skalierung auf 120 Nutzer in 5 Abteilungen. Format: Tabelle mit Phase, Tage, Hauptaktivität, Verantwortlicher und KPI."
 **Erwartetes Artefakt:** Ein 30-Tage-Skalierungsplan im Canvas mit drei Phasen, Kommunikationsplan und drei messbaren Skalierungs-KPIs für den Vollrollout-Report an die Geschäftsführung.
 **Fallstricke (≥2 spezifisch):**
@@ -718,7 +718,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Erstelle sprachspezifische Konversations-Starter: "Erstelle einen LinkedIn-Post für die Schweizer Zielgruppe (DE-CH-Hochdeutsch, kein 'ss' durch 'ß')" vs. "Create a LinkedIn post for our UK audience (EN-GB)".
 3. Lade ein Glossar mit DACH-spezifischen Marketing-Begriffen (z. B. "Mwst." vs. "MwSt." vs. "MWST.") als Wissensordner-Dokument an alle relevanten Agenten an.
 4. Dokumentiere den Eskalationspfad: Dialekt-Anfragen (z. B. Schwiizerdütsch) werden mit dem Hinweis "Manuell überarbeiten: Dialekt nicht zuverlässig" flagged und an einen Human-Editor weitergeleitet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungsexpertin für DACH-Marketing. Erstelle einen System-Prompt für unseren Content-Agenten, der korrekt zwischen DE-DE, DE-AT und DE-CH-Hochdeutsch unterscheidet. Kontext: Team in Frankfurt, Wien und Zürich; gelegentliche englische Inputs von internationalen Kollegen. Format: Fertiger System-Prompt (max. 400 Zeichen) plus Tabelle mit sprachspezifischen Konversations-Startern."
 **Erwartetes Artefakt:** Ein überarbeiteter System-Prompt für den Content-Agenten plus eine Tabelle mit sprachspezifischen Konversations-Startern und Eskalationspfad für Dialekt-Anfragen.
 **Fallstricke (≥2 spezifisch):**
@@ -737,7 +737,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe einen A/B-Test mit den 10 wichtigsten Prompts durch: Führe jeden Prompt auf beiden Modellen aus und vergleiche Output-Qualität nach drei Dimensionen (Ton, Vollständigkeit, Format).
 3. Erstelle die Portierungsrichtlinie im Canvas: Welche Prompt-Muster funktionieren universell, welche müssen angepasst werden (Schätzung: 15–20 % der Prompts brauchen geringfügige Anpassung).
 4. Versioniere alle Prompts in Git (eine Markdown-Datei pro Prompt) als zukunftssichere Basis für Modell-Wechsel.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prompt-Engineering-Spezialistin. Analysiere die angehängten 10 Prompt-Texte auf Modell-spezifische Abhängigkeiten. Kontext: Wir erwägen Wechsel von Claude Sonnet auf GPT-4o. Format: Tabelle mit Prompt-Name, modell-spezifischen Elementen, Portierungsaufwand (gering/mittel/hoch) und konkretem Änderungsvorschlag."
 **Erwartetes Artefakt:** Eine Portierungsrisiko-Tabelle mit allen Prompts, Aufwandseinschätzung und einer Schritt-für-Schritt-Anleitung für den Modell-Wechsel ohne Qualitätsverlust.
 **Fallstricke (≥2 spezifisch):**
@@ -756,7 +756,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Bewerte jeden Wettbewerber nach einem 5-Punkte-KI-Reife-Scoring: (1) keine sichtbare KI-Nutzung, (3) selektiver Einsatz in einzelnen Kanälen, (5) vollintegrierte KI-First-Strategie.
 3. Identifiziere die strategischen Lücken: Wo nutzen Wettbewerber KI, wo tun wir es nicht (und umgekehrt)? Welche Differenzierung entsteht durch First-Party-Daten + KI-Komposition?
 4. Formuliere drei Differenzierungsempfehlungen als Aktionsplan und überführe den Report in den Canvas.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Competitive-Intelligence-Strategin. Bewerte die KI-Reife unserer drei Hauptwettbewerber im DACH-SaaS-Markt. Kontext: Wettbewerber A, B, C; Deep-Research-Quellen: Karriereseiten, Pressemitteilungen, LinkedIn-Posts, G2-Reviews. Format: Tabelle mit Wettbewerber, KI-Reife-Score (1–5), sichtbare KI-Anwendungen und strategische Implikation für uns."
 **Erwartetes Artefakt:** Ein quartalsweiser AI-Competitive-Report im Canvas mit Reife-Scoring-Tabelle, Lückenanalyse und drei priorisierten Differenzierungsempfehlungen.
 **Fallstricke (≥2 spezifisch):**
@@ -775,7 +775,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Exportiere die System-Prompts dieser drei kritischen Agenten als lokale Markdown-Dateien (offline verfügbar auf dem Laptop des Team-Leads).
 3. Erstelle das Notfall-Playbook: Link zu status.langdock.com für Statusprüfung, direkte URLs zu Claude.ai, ChatGPT und Gemini als Alternativ-Interfaces, Schritt-für-Schritt-Anleitung zum manuellen Ausführen der drei kritischen Prompts.
 4. Plane einen jährlichen "Fallback-Drill" (15 Minuten): Team-Lead simuliert einen Ausfall und führt alle drei kritischen Prompts manuell über ein Alternativ-Interface aus.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Business-Continuity-Planerin für ein Marketing-Team. Erstelle ein 2-Stunden-Notfall-Playbook für den Fall eines vollständigen KI-Plattform-Ausfalls. Kontext: 3 kritische Aufgaben (Krisen-PR, Newsletter-Draft, Lead-Scoring), Team hat Zugang zu Claude.ai und ChatGPT. Format: Checkliste mit Schritt-für-Schritt-Anleitung, Alternativ-Links und Eskalationsplan."
 **Erwartetes Artefakt:** Ein 1-seitiges Notfall-Playbook im Canvas, das lokal als PDF gespeichert wird, mit den drei kritischen Prompts als Markdown und einem Fallback-Drill-Termin im Jahreskalender.
 **Fallstricke (≥2 spezifisch):**
@@ -794,7 +794,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Kategorisiere im Chat alle Content-Typen des Teams nach Disclosure-Pflicht: (A) KI-generierter Text mit Faktenaussagen zu Produkten → Pflicht; (B) KI-assistiertes Redigieren → empfohlen; (C) KI-generierte Übersetzungen → nicht nötig.
 3. Erstelle das Disclosure-Wording für Szenario A: kurze, authentische Formulierungen, die Vertrauen aufbauen statt rechtliche Angst auszustrahlen (z. B. "Dieser Text wurde mit KI-Unterstützung erstellt und redaktionell geprüft.").
 4. Visualisiere den Entscheidungsbaum im Canvas: Wenn [Content-Typ] → dann [Disclosure-Stufe] → dann [Wording-Vorschlag].
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Medienrechtsspezialistin im DACH-Raum. Erstelle einen Entscheidungsbaum für KI-Disclosure in Marketing-Content. Kontext: Wir produzieren Blogposts, Social-Media-Posts, Produktbeschreibungen und Newsletter; EU AI Act Art. 50 und UWG § 5a sind relevant. Format: Entscheidungsbaum mit drei Pfaden (Pflicht/Empfohlen/Nicht nötig), fertigem Disclosure-Wording (DE) und Beispiel pro Pfad."
 **Erwartetes Artefakt:** Ein Canvas-Dokument mit Entscheidungsbaum (drei Pfade), fertigem Disclosure-Wording auf Deutsch und einer Zusammenfassung der relevanten Rechtsgrundlagen als Referenz für die Rechtsabteilung.
 **Fallstricke (≥2 spezifisch):**
@@ -813,7 +813,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Exportiere nach 30 Tagen die CRM-Daten: Welche Opportunities wurden durch Assets mit dem KI-Label beeinflusst (Touchpoint vorhanden)? Welche dieser Deals wurden zu Closed-Won?
 3. Lade den Export in den Data Analyst: Berechne den Pipeline-Beitrag (Summe der Opportunity-Values mit KI-Asset-Touchpoint) und den Closed-Won-Anteil als konkreten Umsatzbeitrag.
 4. Erstelle das Canvas-Template: KPI 1 = Pipeline-Beitrag KI-Assets in Euro; KPI 2 = Closed-Won-Deals mit KI-Asset-Touchpoint; KPI 3 = Anteil KI-Assets an gesamtem Content-Output.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Revenue-Marketing-Analystin. Erstelle ein Attribution-Template, das KI-generierte Marketing-Assets mit CRM-Pipeline-Daten verknüpft. Kontext: Wir nutzen Salesforce als CRM, Langdock für Content-Produktion, UTM-Labels für Asset-Tracking. Format: Tabelle mit KPI-Name, Tracking-Methode, Datenquelle, Berechnungsformel und Berichtszyklus."
 **Erwartetes Artefakt:** Ein Canvas-Template für den monatlichen Pipeline-Attribution-Report mit drei KPIs, Tracking-Methodik und einer Datenfluss-Übersicht (Langdock → UTM-Labels → CRM → Report).
 **Fallstricke (≥2 spezifisch):**
@@ -832,7 +832,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Erstelle im Canvas den täglichen Mini-Aufgaben-Kalender: Jede Aufgabe dauert max. 20 Minuten, hat ein konkretes Artefakt als Output und einen Ansprechpartner aus dem Champions-Programm (S-LU-014).
 3. Kuratiere einen Starter-Prompts-Katalog: fünf Prompts aus dem Team-Prompt-Library, die für den jeweiligen Aufgabenbereich der neuen Person am relevantesten sind.
 4. Erstelle den Day-14-Self-Check: fünf Fragen, die die Neue selbst beantwortet, um ihren Kompetenzstand einzuschätzen (z. B. "Welches Modell würdest du für einen Routine-Draft wählen?").
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Onboarding-Designerin. Erstelle einen 14-Tage-Onboarding-Plan für eine neue Marketing-Managerin bei Langdock-Einführung. Kontext: Sie hat keine KI-Vorerfahrung, ihr Fokus liegt auf Content-Marketing und Newsletter. Format: Tabelle mit Tag, Aufgabe, Dauer (max. 20 min), erwartetes Artefakt und Ansprechperson."
 **Erwartetes Artefakt:** Ein 14-Tage-Onboarding-Kalender im Canvas mit täglichen Mini-Aufgaben, einem kuratierten Starter-Prompts-Katalog und einem Day-14-Self-Check-Fragebogen.
 **Fallstricke (≥2 spezifisch):**
@@ -851,7 +851,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Baue im Workflow-Builder einen Loop-Workflow: Input = CSV-Zeile, Agent-Step = Übersetzung in EN und FR mit Flash-Modell + Glossar-Wissensordner, Output = JSON mit Produkt-ID + Übersetzungen.
 3. Aktiviere den Workflow und lass ihn asynchron im Hintergrund laufen (ca. 10–15 Minuten für 50 Zeilen).
 4. Exportiere das JSON-Ergebnis als drei separate CSVs (eine pro Sprache) und importiere sie direkt ins CMS; dokumentiere die Gesamtkosten im monatlichen Budget-Report.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Lokalisierungsworkflow-Architektin. Beschreibe den optimalen Workflow-Aufbau für die Bulk-Übersetzung von 50 Produktbeschreibungen in drei Sprachen mit Langdock. Kontext: Flash-Modell für Kosteneffizienz, Glossar als Wissensordner, Ausgabe als JSON. Format: Schritt-für-Schritt-Workflow-Beschreibung mit Node-Typen, geschätzten Kosten pro Übersetzung und Qualitätsprüfungs-Schritt."
 **Erwartetes Artefakt:** Eine Workflow-Konfigurationsbeschreibung plus drei übersetzte CSVs als Output des Workflow-Runs, mit dokumentierten Kosten pro Übersetzung für den Budget-Report.
 **Fallstricke (≥2 spezifisch):**
@@ -870,7 +870,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Definiere den PR-Review-Prozess: Prompt-Änderung → Branch anlegen → PR erstellen → Review durch Agent-Owner → Merge in Main → automatisches Update des Konversations-Starters in Langdock.
 3. Ergänze in jeder Prompt-Datei einen Header mit Metadaten: Zielmodell, letztes Testdatum, Qualitätsbewertung (1–5), Ansprechpartner.
 4. Führe einmal im Quartal einen "Prompt-Audit": Alle Prompts mit Qualitätsbewertung unter 3 oder Testdatum älter als 90 Tage werden überarbeitet oder archiviert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prompt-Engineering-Governerin. Erstelle eine Namenskonvention und einen Review-Prozess für unsere 35-Prompts-Bibliothek in Git. Kontext: Team von 15 Personen, monatlich 5–10 neue Prompts, Wechsel zwischen Claude und GPT möglich. Format: Namenskonvention-Regel, Markdown-Header-Template und 4-Schritte-PR-Prozess."
 **Erwartetes Artefakt:** Eine Namenskonventions-Regel, ein Markdown-Header-Template für Prompt-Metadaten und eine dokumentierte 4-Schritte-PR-Review-Prozessbeschreibung, direkt einsetzbar im Team-Git-Repository.
 **Fallstricke (≥2 spezifisch):**
@@ -889,7 +889,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Recherchiere im Chat die aktuellen CO₂-Faktoren pro 1 000 Token für die eingesetzten Modelle (Basis: ML.energy und Hugging Face-Schätzungen, Stand 2026); dokumentiere Quellen und Unsicherheitsranges.
 3. Lade den Token-Verbrauch als CSV in den Data Analyst: Berechne die Gesamt-CO₂-Schätzung (Token-Verbrauch × CO₂-Faktor pro Modell) und vergleiche sie mit Referenzwerten (z. B. CO₂ einer Transatlantik-Flugreise: ca. 1,8 t CO₂).
 4. Erstelle die Reporting-Tabelle im Canvas mit Methodikbeschreibung, Quellenangaben, Schätzwert und einer Einschränkungsklausel ("Schätzung basiert auf öffentlichen Durchschnittswerten; tatsächliche Werte können abweichen").
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Nachhaltigkeits-Reportingspezialistin. Erstelle eine CO₂-Schätzungsmethodik für unseren KI-Verbrauch in Langdock. Kontext: Jahresverbrauch laut CSV anbei, eingesetzte Modelle: Claude Sonnet, Flash; Basis: öffentliche ML.energy-Schätzwerte. Format: Tabelle mit Modell, Jahres-Token-Verbrauch, CO₂-Faktor, Gesamt-CO₂-Schätzung in kg und Quellenangabe."
 **Erwartetes Artefakt:** Eine CO₂-Schätzungstabelle im Canvas mit vollständiger Methodikbeschreibung, Quellenangaben und einer Einschränkungsklausel, direkt einsetzbar im Nachhaltigkeitsbericht unter Scope 3.
 **Fallstricke (≥2 spezifisch):**
@@ -908,7 +908,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Identifiziere Retirement-Kandidaten nach drei Kriterien: (a) 0 Sessions in 90 Tagen, (b) Wissensordner-Quelldaten veraltet (letztes Update > 6 Monate), (c) Use-Case durch neueren Agenten abgelöst.
 3. Führe für jeden Kandidaten den Pre-Retirement-Check durch: System-Prompt und Wissensordner-Dateien als Markdown exportieren und in einem "Archiv"-Ordner ablegen; Sunset-Memo an alle bisherigen Nutzer senden mit 14-Tage-Vorlauffrist.
 4. Deaktiviere den Agenten nach der Vorlauffrist und aktualisiere das RACI-Governance-Dokument (S-LU-025).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Workplace-Governerin. Erstelle ein Retirement-Protokoll für die Stilllegung veralteter Langdock-Agenten. Kontext: Vier Agenten mit 0 Sessions in 90 Tagen, Workspace mit 25 Nutzern. Format: Checkliste mit Schritten (Nutzungscheck, Owner-Konsultation, Archiv-Snapshot, Sunset-Memo, Deaktivierung), Zeitplan und Archivierungs-Vorlage."
 **Erwartetes Artefakt:** Ein Retirement-Protokoll im Canvas mit Schritt-für-Schritt-Checkliste, Archiv-Snapshot-Vorlage und einem Sunset-Memo-Template, das für jeden zu deaktivierenden Agenten angepasst wird.
 **Fallstricke (≥2 spezifisch):**
@@ -927,7 +927,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade den Export in den Data Analyst und berechne die vier Adoptionsmetriken pro Team-Einheit; visualisiere als Heatmap (Team × Metrik).
 3. Definiere Ampel-Schwellenwerte: Grün = Aktive-Nutzer-Rate ≥ 70 %; Gelb = 40–69 %; Rot = unter 40 % — und verbinde jeden Rot-Eintrag automatisch mit einer Champion-Intervention (S-LU-014).
 4. Veröffentliche das Dashboard monatlich im Team-Wiki und nutze es als Steuerungsinstrument für das CMO-Reporting.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Transformations-Controllerin. Erstelle ein Adoptionsmessmodell für Langdock in einem 30-köpfigen Marketing-Team. Kontext: 5 Team-Einheiten (Content, Performance, Social, Brand, Analytics), monatlicher Reporting-Zyklus. Format: Tabelle mit Metrik-Name, Definition, Messmethode, Zielwert und Ampel-Schwellenwert."
 **Erwartetes Artefakt:** Ein Canvas-Dashboard-Template mit vier Adoptionsmetriken, Team-Heatmap-Vorlage und einem Ampel-Handlungsplan für Rot-Einheiten.
 **Fallstricke (≥2 spezifisch):**
@@ -946,7 +946,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Definiere die Netzwerk-Rollen: Marketing-Champion = Moderator und Wissens-Hub; Abteilungs-Champions = Übersetzer zwischen Team-Bedarf und Plattform-Fähigkeiten.
 3. Etabliere ein monatliches 45-Minuten-Format: 15 Minuten Demo eines neuen Use-Cases, 20 Minuten Cross-Department-Problem-Solving, 10 Minuten Ankündigung neuer Features.
 4. Lege einen gemeinsamen Wissensordner "Champion-Network-Resources" an: Prompt-Katalog aller Departments, Best-Practice-Protokolle, Onboarding-Materialien für neue Champions.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Organisationsentwicklungs-Expertin für KI-Transformation. Erstelle ein Handbuch für ein abteilungsübergreifendes KI-Champion-Netzwerk. Kontext: 5 Departments, je 1 Champion, monatlicher Roundtable, Langdock als gemeinsame Plattform. Format: Handbuch mit Rollen-Beschreibung, Meeting-Agenda-Template und Wissensordner-Struktur."
 **Erwartetes Artefakt:** Ein Canvas-Handbuch mit Rollen-Definition, Meeting-Agenda-Template für den monatlichen Roundtable und einer dokumentierten Wissensordner-Struktur für das Netzwerk.
 **Fallstricke (≥2 spezifisch):**
@@ -965,7 +965,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Führe den PTCF-Prompt aus, um jeden Pain-Point in einen Use-Case-Vorschlag zu überführen: Beschreibung, benötigte Langdock-Funktion, geschätzte Zeitersparnis.
 3. Bewerte alle Vorschläge im Canvas nach ICE-Score (Impact 1–10, Confidence 1–10, Ease 1–10) und sortiere das Backlog absteigend nach Gesamt-Score.
 4. Weise den Top-5-Use-Cases je einen Owner aus dem Champions-Netzwerk zu und setze ein 30-Tage-Implementierungsziel.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Workshop-Moderatorin. Überführe die folgende Liste von Marketing-Pain-Points in priorisierte Langdock-Use-Cases. Kontext: B2B-Marketing-Team mit 15 Personen, Langdock seit 3 Monaten im Einsatz. Format: Tabelle mit Use-Case-Titel, Pain-Point, benötigter Langdock-Funktion, ICE-Score (Impact/Confidence/Ease) und vorgeschlagenem Owner."
 **Erwartetes Artefakt:** Ein priorisiertes Use-Case-Backlog im Canvas mit 10–15 Szenarien, ICE-Scores, Owner-Zuweisung und einem 30-Tage-Implementierungsplan für die Top-5-Prioritäten.
 **Fallstricke (≥2 spezifisch):**
@@ -983,7 +983,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 1. Richte im Canvas ein Feature-Request-Log mit Spalten an: Datum, Melder, Beschreibung, betroffene Funktion, Business-Impact (hoch/mittel/niedrig), Häufigkeit (wie viele Nutzer haben dasselbe gemeldet) und Status (offen/kommuniziert/umgesetzt).
 2. Führe monatlich einen PTCF-Prompt aus: "Clustere alle offenen Feature-Requests nach Funktionsbereich und priorisiere nach Häufigkeit × Business-Impact — erstelle eine Top-5-Liste."
 3. Verfasse mit dem Output ein einseitiges Anbieter-Kommunikations-Template: Top-5-Requests mit Use-Case-Kontext, geschätzter Nutzeranzahl und erwünschtem Umsetzungsdatum — und sende es an den zuständigen Customer-Success-Manager.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Product-Feedback-Managerin. Clustere die folgende Liste von 18 Feature-Requests für Langdock nach Funktionsbereich und Business-Impact. Kontext: 25 Marketing-Nutzer, häufigste Kategorien: Workflow-Erweiterungen, Agent-UI, Wissensordner-Performance. Format: Top-5-Priorisierungsliste mit Cluster-Name, Anzahl Meldungen, Impact-Begründung und vorgeschlagenem Kommunikations-Wording."
 **Erwartetes Artefakt:** Ein strukturiertes Feature-Request-Log im Canvas plus ein fertiges Anbieter-Kommunikations-Dokument mit Top-5-Priorisierung, direkt versandbereit an den Langdock-Customer-Success-Manager.
 **Fallstricke (≥2 spezifisch):**
@@ -1002,7 +1002,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Definiere die Backup-Methodik pro Asset-Typ: System-Prompts und Konversations-Starter → Git-Repository (S-LU-043); Wissensordner-Quelldateien → Google Drive mit Versionierung; Workflow-Logik → Dokumentation im Canvas.
 3. Etabliere einen quartalsweisen Backup-Rhythmus: Fester Termin im Teamkalender, 30 Minuten, Owner ist der Workspace-Admin; Backup-Protokoll im Wissensordner aktualisieren.
 4. Plane einen jährlichen Wiederherstellungs-Drill: Stelle einen archivierten Agenten aus dem Backup wieder her und prüfe, ob er ohne Qualitätsverlust funktioniert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist IT-Risikomanagerin für SaaS-Plattformen. Erstelle eine Backup-Strategie für einen Langdock-Workspace mit 12 Agenten, 5 Wissensordnern und 35 Prompts. Kontext: Keine nativen Backup-Funktionen verfügbar; manuelle Exportroutine erforderlich. Format: Tabelle mit Asset-Typ, Exportmethode, Speicherort, Backup-Rhythmus und Wiederherstellungstest-Verfahren."
 **Erwartetes Artefakt:** Ein Backup-Protokoll im Canvas mit Asset-Inventar, Export-Methodik pro Typ, Quartalsroutine und einem dokumentierten Wiederherstellungs-Drill-Verfahren.
 **Fallstricke (≥2 spezifisch):**
@@ -1021,7 +1021,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Erstelle ein Live-Protokoll-Canvas-Template: Abschnitte für Entscheidungen (mit Datum und Entscheidungsträger), offene Fragen und Action Items (wer, was, bis wann).
 3. Definiere den Post-Meeting-Konversations-Starter: "Extrahiere alle Action Items aus diesem Protokoll" → Output: nummerierte Liste mit Owner und Deadline, bereit für Slack-Versand.
 4. Trainiere das Team in einem 20-minütigen Workshop auf das Format; der erste Champion moderiert das erste Live-Meeting mit dem neuen Prozess.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Meeting-Effizienz-Beraterin. Erstelle ein Langdock-Canvas-Template für strukturierte Marketing-Meetings. Kontext: Wöchentliches 60-Minuten-Team-Meeting, 8 Teilnehmer, häufige Nacharbeit durch fehlende Protokolle. Format: Canvas-Template mit Abschnitten Agenda (mit Zeitblöcken), Entscheidungen (Tabelle), Action Items (wer/was/bis wann) und offenen Fragen."
 **Erwartetes Artefakt:** Ein Canvas-Meeting-Template mit drei Abschnitten plus ein fertiger System-Prompt für den Meeting-Prep-Agenten und ein Post-Meeting-Konversations-Starter.
 **Fallstricke (≥2 spezifisch):**
@@ -1040,7 +1040,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Migriere die wichtigsten Dokumente aus Google Drive und Confluence in die jeweiligen Tier-Ordner; lege klare Namenskonventionen (S-LU-018) fest.
 3. Konfiguriere den "Ask-the-Archive"-Agenten: System-Prompt "Du beantwortest Fragen aus dem Marketing-Wissensarchiv und gibst immer die Quell-Datei an"; Konversations-Starter "Was haben wir beim letzten LinkedIn-Kampagnen-Launch gelernt?"
 4. Kommuniziere im Team: Neue Kampagnen-Learnings werden ab sofort als 1-seitige Retro-Datei im Tier-2-Ordner abgelegt — nicht mehr als Slack-Thread.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensmanagement-Architektin. Entwickle eine dreistufige Wissensordner-Architektur für ein 15-köpfiges Marketing-Team in Langdock. Kontext: Aktuell 300 Dokumente verstreut auf Google Drive und Confluence; Ziel: retrieval-fähige Wissensbasis mit klarem Update-Rhythmus. Format: Tabelle mit Tier, Inhaltstyp, Owner, Update-Rhythmus und Zugriffsregel."
 **Erwartetes Artefakt:** Eine dreistufige Wissensarchitektur-Tabelle im Canvas, ein System-Prompt für den "Ask-the-Archive"-Agenten und eine Migrations-Checkliste für die wichtigsten 50 Dokumente.
 **Fallstricke (≥2 spezifisch):**
@@ -1059,7 +1059,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Bewerte jede Dimension auf einer 1–5-Skala: (1) nicht vorhanden, (3) selektiv implementiert, (5) systematisch und messbar; nutze konkrete Evidenz aus dem Workspace (Nutzungsdaten, Governance-Dokumente, Canary-Check-Protokolle).
 3. Aktiviere den Deep Research Modus, um den aktuellen KI-Reife-Benchmark für Marketing-Teams im B2B-SaaS-Segment zu recherchieren; identifiziere die drei größten Lücken zum Best Practice.
 4. Erstelle den 90-Tage-Entwicklungsplan: Top-3-Maßnahmen pro Lücke, Owner, KPI und Checkpoint-Datum.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Strategie-Beraterin für B2B-Marketing-Teams. Erstelle ein KI-Reife-Assessment-Framework in fünf Dimensionen. Kontext: Marketing-Team mit 6 Monaten Langdock-Erfahrung, 12 Personen, 8 aktive Agenten, Governance-Dokument vorhanden. Format: Bewertungsmatrix mit Dimension, Score (1–5), Evidenz, Lücke zum Best Practice und Top-Maßnahme."
 **Erwartetes Artefakt:** Ein Reife-Assessment-Report im Canvas mit Bewertungsmatrix (5 Dimensionen × Score), Benchmark-Vergleich und einem priorisierten 90-Tage-Entwicklungsplan.
 **Fallstricke (≥2 spezifisch):**
@@ -1078,7 +1078,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Konfiguriere einen dedizierten "External Partner Agent": System-Prompt mit expliziten Grenzen ("Du kannst nur auf die freigegebenen Ordner zugreifen"), Konversations-Starter für die häufigsten externen Aufgaben (Brand-Voice-Check, Briefing-Frage, Asset-Format-Anfrage).
 3. Erstelle den 2-Stunden-Schnell-Einstiegs-Guide im Canvas: Schritt 1 Account-Aktivierung, Schritt 2 die drei wichtigsten Agenten kennenlernen, Schritt 3 erste echte Aufgabe mit dem Brand-Voice-Agenten erledigen.
 4. Definiere den Offboarding-Prozess: Zugriffsentzug nach Projektende, Audit welche Daten der externe Nutzer gesehen hat.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist IT-Security-Beraterin für kollaborative KI-Plattformen. Erstelle eine Zugriffsrechte-Matrix für externe Agentur-Mitarbeitende in Langdock. Kontext: 3 externe Nutzer, Zugriff auf Brand-Guide und aktuelle Briefings, kein Zugriff auf CRM-Daten oder interne Analysen. Format: Tabelle mit Nutzer-Typ, freigegebene Wissensordner, erlaubte Aktionen, verbotene Aktionen und Offboarding-Prozess."
 **Erwartetes Artefakt:** Eine Zugriffsrechte-Matrix im Canvas, ein konfigurierter External-Partner-Agent und ein 2-Stunden-Onboarding-Guide für externe Partner.
 **Fallstricke (≥2 spezifisch):**
@@ -1097,7 +1097,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Definiere die drei Governance-Schichten: Schicht 1 (zwingend) — DSGVO-Konformität, Brand-Voice-Standard-Agent, Budget-Eskalationsplan; Schicht 2 (empfohlen) — Namenskonventionen, RACI-Modell, Canary-Check-Prozess; Schicht 3 (lokal frei) — spezifische Agenten, Workflow-Logik, Prompt-Katalog.
 3. Etabliere einen Cross-Workspace-Champions-Roundtable (quartalsweise, 60 Minuten): Workspace-Admins aller Business-Units tauschen Best Practices aus und koordinieren Schicht-1-Updates.
 4. Erstelle einen zentralen "Governance-Hub"-Wissensordner, der für alle Workspaces lesbar ist: zwingende Standards, aktuelle Compliance-Dokumente, Änderungsprotokoll.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Enterprise-KI-Governance-Beraterin. Entwickle ein Multi-Workspace-Governance-Modell für 4 Langdock-Workspaces in verschiedenen Business-Units. Kontext: DACH-Region, unterschiedliche Team-Größen (8–30 Nutzer), gemeinsame Brand-Standards aber unterschiedliche Use-Cases. Format: Drei-Schichten-Modell mit zwingenden Standards, Empfehlungen und lokalen Freiheiten — als Tabelle mit Maßnahme, Schicht, Verantwortlichkeit und Durchsetzungs-Mechanismus."
 **Erwartetes Artefakt:** Ein Multi-Workspace-Governance-Dokument im Canvas mit Drei-Schichten-Modell, einem Governance-Hub-Wissensordner-Plan und einer Quartals-Roundtable-Agenda-Vorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1116,7 +1116,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Integriere ein Kennzeichnungs-Pflichtfeld in die Content-Freigabe-Checkliste (S-LU-040): Kein Asset geht live ohne ausgefülltes Feld "KI-Anteil: voll generiert / assistiert / nicht genutzt" und "Disclosure angewendet: Ja/Nein".
 3. Baue einen monatlichen Stichproben-Audit-Workflow: Ziehe 10 zufällige veröffentlichte Assets aus dem CMS und prüfe via Agent, ob Disclosure korrekt angewendet wurde — Abweichungen werden direkt an den Asset-Owner kommuniziert.
 4. Dokumentiere das Kennzeichnungs-Setup im Governance-Wissensordner als Nachweis für eventuelle Compliance-Prüfungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Compliance-Managerin für KI-Content-Produktion. Erstelle einen operativen Kennzeichnungs-Workflow für ein 15-köpfiges Marketing-Team, das täglich KI-Inhalte produziert. Kontext: EU AI Act Art. 50 relevant, Produktion von Blogs, Social Posts und Newslettern. Format: Prozess-Checkliste mit Schritten, Verantwortlichkeiten, Tool-Integration und Audit-Mechanismus."
 **Erwartetes Artefakt:** Ein Kennzeichnungs-Workflow-Dokument im Canvas mit Agent-System-Prompt-Ergänzung, Freigabe-Checkliste und Audit-Prozess-Beschreibung.
 **Fallstricke (≥2 spezifisch):**
@@ -1135,7 +1135,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Priorisiere die drei vielversprechendsten Integrationspunkte nach Zeitersparnis und technischer Machbarkeit; nutze die native Langdock-Integrations-Liste (55+ native Integrationen, rund 754 Actions; exakte Zahl nicht offiziell dokumentiert) als Ausgangspunkt.
 3. Baue Workflow 1 (Quick Win): Wenn HubSpot ein neues Lead-Formular-Submission erhält → Langdock generiert automatisch eine personalisierte Follow-up-E-Mail → zurück in HubSpot als Draft.
 4. Dokumentiere alle Integrationen im Canvas als Martech-Stack-Karte: Tool, Verbindungstyp (native/MCP/Webhook), Trigger, Langdock-Aktion, Output-Ziel, Owner und Wartungsaufwand.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Martech-Integrationsarchitektin. Entwickle eine Integrations-Strategie für Langdock in einem Marketing-Stack mit HubSpot, Google Analytics und Slack. Kontext: Aktuell alle Übergaben manuell, Team will Automatisierung ohne IT-Ressourcen. Format: Integrations-Karte mit Tool-Kombination, Trigger, Langdock-Funktion, Output-Ziel, geschätzter Zeitersparnis/Monat und Implementierungsaufwand (h)."
 **Erwartetes Artefakt:** Eine Martech-Integrations-Karte im Canvas mit drei implementierten Verbindungen, Priorisierungsliste für weitere Integrationen und einer Wartungs-RACI-Tabelle.
 **Fallstricke (≥2 spezifisch):**
@@ -1154,7 +1154,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Aktiviere den Deep Research Modus für den Markt-Kontext: Wie hoch ist die KI-Adoptionsrate im B2B-Marketing-Segment? Was investieren vergleichbare Unternehmen? Welche regulatorischen Entwicklungen sind relevant?
 3. Entwickle das Deck-Narrativ im Canvas: Folie 1 (Executive Summary), Folien 2–4 (Ist-Zustand + Quick Wins mit Daten), Folien 5–7 (strategische Vision + nächste Schritte + Investitionsbedarf), Folien 8–10 (Risiken + Governance + ROI-Projektion), Folien 11–12 (Entscheidungsaufruf + Anhang).
 4. Teste die Präsentation mit dem Steel-Manning-Test (S-LU-002): "Was ist das stärkste Gegenargument gegen diese KI-Investition?" — und baue die Antwort in Folie 8 ein.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Board-Kommunikations-Expertin für digitale Transformation. Erstelle eine Gliederung für eine 20-minütige KI-Strategie-Präsentation für das Board. Kontext: CMO präsentiert nach 6 Monaten KI-Pilot im Marketing; Board will Investitionsgrundlage für den Vollrollout. Format: Slide-Struktur mit Folientitel, Kernbotschaft (1 Satz), empfohlene Visualisierung und wichtigste Daten-/Quellenangabe pro Folie."
 **Erwartetes Artefakt:** Eine 10–12-Slide-Präsentationsgliederung im Canvas mit Folientitel, Kernbotschaft, Visualisierungsempfehlung und Datenquellen — bereit für die Umsetzung in PowerPoint oder Google Slides.
 **Fallstricke (≥2 spezifisch):**
@@ -1173,7 +1173,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Erstelle für jeden Zyklus eine Aktivitätscheckliste mit Dauer, Owner und Output-Artefakt; integriere alle Termine in den Teamkalender als Wiederkehrende Events.
 3. Konfiguriere einen CI-Loop-Agenten als Moderation-Unterstützung: Konversations-Starter "Erstelle die Agenda für unseren monatlichen KI-Review" → Output: vorausgefüllte Meeting-Agenda mit Datenpunkten aus dem letzten Zyklus.
 4. Verankere die CI-Philosophie im Team-Onboarding (S-LU-041): Neue Mitarbeitende lernen ab Tag 7, wie sie Verbesserungsvorschläge einreichen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Prozess-Exzellenz-Beraterin mit KI-Fokus. Erstelle einen Continuous-Improvement-Loop für KI-Prozesse in einem Marketing-Team. Kontext: 15 Personen, Langdock seit 6 Monaten, Champions-Programm aktiv. Format: Drei-Zyklen-Tabelle (monatlich/quartalsweise/jährlich) mit Aktivität, Dauer, Owner, Input-Artefakt und Output-Artefakt."
 **Erwartetes Artefakt:** Ein CI-Prozess-Dokument im Canvas mit Drei-Zyklen-Tabelle, Wiederkehrenden-Termin-Liste und einem CI-Loop-Agenten-System-Prompt.
 **Fallstricke (≥2 spezifisch):**
@@ -1192,7 +1192,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Aktiviere den Deep Research Modus: Welche bestehenden KI-Marketing-Communities gibt es im DACH-Raum (Slack-Groups, LinkedIn-Gruppen, Verbände)? Identifiziere Kooperationspartner für das externe Event.
 3. Erstelle den ersten Jahresplan im Canvas: 12 interne Showcases, 2 externe Events, 4 Public-Content-Beiträge — mit Themenvorschlägen, die auf dem Use-Case-Backlog (S-LU-048) basieren.
 4. Konfiguriere einen Community-Content-Agenten: System-Prompt "Du hilfst dabei, interne Use-Cases für die externe Kommunikation zu anonymisieren und publikationsreif aufzubereiten"; Konversations-Starter "Bereite diesen internen Use-Case als LinkedIn-Artikel auf."
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Community-Building-Expertin für Technologie-Ökosysteme. Entwickle ein Community-of-Practice-Konzept für Marketing-KI im DACH-Raum. Kontext: Ausgangspunkt ist ein internes Champion-Netzwerk mit 6 Personen; Ziel ist schrittweise Öffnung nach außen. Format: Konzept mit drei Community-Formaten, Governance-Regeln (wer darf was teilen), erstem Jahresplan und KPIs für Community-Erfolg."
 **Erwartetes Artefakt:** Ein Community-of-Practice-Konzept im Canvas mit drei Formaten, Governance-Regeln, Jahresplan und einem System-Prompt für den Community-Content-Agenten.
 **Fallstricke (≥2 spezifisch):**
@@ -1211,7 +1211,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade die CSV in den Data Analyst und berechne die vier Dashboard-Kennzahlen plus den Vergleich zum Vorquartal.
 3. Überführe die Ergebnisse in ein Canvas-Kachel-Layout und ergänze pro Kachel eine 1-Satz-Interpretation für die Leitung.
 4. Speichere das Layout als Template, das im Folgequartal nur neue Zahlen erfordert; verlinke es im Governance-Wissensordner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Transformations-Controllerin. Baue aus der angehängten Quartals-CSV ein ROI-Dashboard für die Geschäftsführung. Kontext: 15 Nutzer, Stundensatz 85 Euro, Langdock-Quartalskosten 1.450 Euro. Format: Vier-Kachel-Layout (Gesamtnutzung, Kosten pro Asset, eingesparte Stunden, Top-3-Werttreiber) mit Vorquartals-Delta und je einem Interpretations-Satz."
 **Erwartetes Artefakt:** Ein Canvas-ROI-Dashboard-Template mit vier Kacheln, Quartals-Delta und Interpretations-Sätzen, direkt im Leitungs-Review präsentierbar.
 **Fallstricke (≥2 spezifisch):**
@@ -1230,7 +1230,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Ordne jeden Anlass einer der drei Kadenz-Ebenen zu und definiere pro Ebene das Format (1-Pager / Slide-Set / Deck) und die Pflicht-Kennzahlen.
 3. Lege Verantwortliche und feste Termine fest (z.B. Monats-Snapshot am 3. Werktag, Quartals-Review in KW-Schluss-Woche).
 4. Dokumentiere den Plan im Governance-Wissensordner und verteile ihn als verbindlichen Reporting-Standard.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Executive-Communications-Beraterin. Entwirf eine KI-Reporting-Kadenz für ein Marketing-Team mit CMO und Board. Kontext: Aktuell unregelmäßige Ad-hoc-Updates; gewünscht sind planbare Berichtsrhythmen. Format: Tabelle mit Kadenz-Ebene, Empfängerkreis, Format, Pflicht-Kennzahlen, Verantwortlicher und festem Termin."
 **Erwartetes Artefakt:** Ein Reporting-Kadenz-Plan im Canvas mit drei Ebenen, Empfängern, Formaten, Kennzahlen und festen Terminen.
 **Fallstricke (≥2 spezifisch):**
@@ -1249,7 +1249,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Strukturiere das Playbook in fünf Phasen mit je einem konkreten Artefakt pro Phase (z.B. Phase 1 = priorisierte Use-Case-Liste).
 3. Ergänze pro Phase einen "Adaptions-Hinweis": Was muss eine Abteilung anpassen (z.B. HR hat strengere Datenschutz-Auflagen als Marketing)?
 4. Lege das Playbook als Wissensordner-Dokument ab und benenne pro startender Abteilung einen Marketing-Paten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Adoptions-Strategin. Erstelle ein übertragbares Cross-Team-Adoptions-Playbook auf Basis unserer Marketing-Erfahrung. Kontext: Nächste Abteilungen sind Sales, HR und Produkt; jede hat eigene Use-Cases und Compliance-Anforderungen. Format: Fünf-Phasen-Tabelle mit Phase, Aktivität, Artefakt, typischer Stolperstein und abteilungsspezifischem Adaptions-Hinweis."
 **Erwartetes Artefakt:** Ein Cross-Team-Adoptions-Playbook im Canvas mit fünf Phasen, Artefakten pro Phase und Adaptions-Hinweisen je Abteilung.
 **Fallstricke (≥2 spezifisch):**
@@ -1268,7 +1268,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Bewerte pro Tool den Langdock-Abdeckungsgrad: Kann eine Säule (Chat, Agents, Workflows) den Kernnutzen voll, teilweise oder gar nicht ersetzen?
 3. Schätze pro ablösbares Tool den Migrationsaufwand (Stunden) und die jährliche Netto-Ersparnis (Lizenz minus Migrations- und Langdock-Mehrkosten).
 4. Erstelle die Konsolidierungs-Matrix im Canvas und markiere klare Ablöse-Kandidaten farblich.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SaaS-Portfolio-Analystin. Bewerte unsere KI-Punkt-Tools auf Ablösbarkeit durch Langdock. Kontext: Vier Tools mit zusammen 18.000 Euro Jahreskosten; Langdock ist bereits lizenziert. Format: Matrix mit Tool, Jahreskosten, Langdock-Abdeckungsgrad (voll/teilweise/keine), Migrationsaufwand in Stunden und Netto-Jahresersparnis."
 **Erwartetes Artefakt:** Eine Konsolidierungs-Matrix im Canvas mit Ablöse-Kandidaten, Migrationsaufwand und Gesamt-Jahresersparnis als Entscheidungsgrundlage für den CFO.
 **Fallstricke (≥2 spezifisch):**
@@ -1287,7 +1287,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lass die KI pro Gruppe eine gezielte Intervention vorschlagen (z.B. Skeptiker bekommen einen sichtbaren Quick-Win, Blockierer ein 1:1-Gespräch).
 3. Formuliere ein ehrliches Kommunikations-Narrativ: Was ändert sich, was bleibt, welche Ängste sind unbegründet, welche werden ernst genommen.
 4. Lege Check-in-Punkte fest (Tag 30/60/90), an denen die Stimmung neu gemessen wird.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Change-Management-Beraterin für KI-Transformation. Entwickle einen Fahrplan gegen Rollout-Widerstand in einem 15-köpfigen Marketing-Team. Kontext: Drei offene Skeptiker, zwei stille Verweigerer, Hauptsorge ist Jobverlust. Format: Stakeholder-Map (Gruppe, Kernsorge, Intervention) plus ein 3-Absatz-Kommunikations-Narrativ und Check-in-Punkte."
 **Erwartetes Artefakt:** Ein Change-Fahrplan im Canvas mit Stakeholder-Map, Interventionen pro Gruppe, Kommunikations-Narrativ und Stimmungs-Check-in-Terminen.
 **Fallstricke (≥2 spezifisch):**
@@ -1306,7 +1306,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Weise jeder Stufe 3–5 konkrete Übungen mit echten Team-Aufgaben zu (max. 30 Minuten pro Übung).
 3. Definiere pro Track einen Abschluss-Kompetenznachweis (z.B. Builder: einen funktionierenden Workflow demonstrieren).
 4. Lege einen Aufstiegspfad fest: Wann und wie wechselt jemand von Basis zu Fortgeschritten?
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Learning-Designerin. Entwickle drei rollendifferenzierte KI-Literacy-Tracks für ein Marketing-Team. Kontext: Mischung aus Einsteigern, erfahrenen Nutzern und einem technik-affinen Champion. Format: Tabelle pro Track mit Lernziel, drei Übungen (max. 30 min), Zeitaufwand gesamt und Abschluss-Kompetenznachweis."
 **Erwartetes Artefakt:** Ein Trainingspfad-Plan im Canvas mit drei Tracks, Übungen, Zeitaufwand, Kompetenznachweisen und einem Aufstiegspfad.
 **Fallstricke (≥2 spezifisch):**
@@ -1325,7 +1325,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Entwirf eine Quartals-Review-Agenda mit dem Customer-Success-Manager: Nutzungsentwicklung, offene Feature-Requests, Roadmap-Ausblick, Eskalations-Rückschau.
 3. Erstelle eine Eskalations-Kontaktmatrix: Wer wird bei welcher Schwere kontaktiert, mit welcher erwarteten Reaktionszeit?
 4. Liste die Verhandlungs-Hebel für den nächsten Vertragszyklus auf (Volumen, Mehrjahres-Commitment, Referenz-Bereitschaft).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Vendor-Management-Beraterin für SaaS-Plattformen. Strukturiere unsere Beziehung zum Langdock-Customer-Success-Team. Kontext: Aktuell rein reaktiver Kontakt, Vertragsverlängerung in 6 Monaten. Format: Quartals-Review-Agenda (Tagesordnungspunkte), Eskalations-Kontaktmatrix (Schweregrad/Kontakt/Reaktionszeit) und Liste der Verhandlungs-Hebel."
 **Erwartetes Artefakt:** Ein Vendor-Relationship-Plan im Canvas mit Quartals-Review-Agenda, Eskalations-Kontaktmatrix und Verhandlungs-Hebel-Liste für den Vertragszyklus.
 **Fallstricke (≥2 spezifisch):**
@@ -1344,7 +1344,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Aktiviere den Deep Research Modus, um die Datentransfer-Anforderungen je Region zu prüfen (z.B. DSG-Schweiz-Adäquanz, EU-Hosting für DACH).
 3. Definiere global zwingende Standards (Brand-Voice, Sicherheits-Baseline) und regional zulässige Abweichungen (Sprache, lokale Use-Cases).
 4. Lege einen Cross-Region-Governance-Owner und einen halbjährlichen Abgleich-Termin fest; dokumentiere alles im Governance-Hub-Wissensordner.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Enterprise-KI-Governance-Beraterin mit Datenschutz-Fokus. Entwickle ein Multi-Region-Governance-Modell für Langdock-Workspaces in DACH und zwei internationalen Regionen. Kontext: DACH unterliegt DSGVO/DSG-Schweiz; gemeinsame Brand-Standards, aber unterschiedliche Sprachen und Rechtsräume. Format: Tabelle mit Region, Datenresidenz-Anforderung, Primärsprache, zwingende Standards und erlaubte Abweichungen."
 **Erwartetes Artefakt:** Ein Multi-Region-Governance-Rahmen im Canvas mit Regional-Tabelle, zwingenden Standards, erlaubten Abweichungen und einem Cross-Region-Abgleich-Termin.
 **Fallstricke (≥2 spezifisch):**
@@ -1363,7 +1363,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Befülle die Kategorien mit konkreten Marketing-Beispielen (erlaubt: Content-Entwürfe; eingeschränkt: Kundendaten nur pseudonymisiert; verboten: sensible Personaldaten).
 3. Ergänze Datenschutz-Leitplanken (Verweis auf S-LU-031) und Verstoß-Konsequenzen in drei Eskalationsstufen.
 4. Lege das Dokument im Governance-Wissensordner ab und mache es zum Pflicht-Lesestoff im Onboarding (S-LU-041).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Policy-Autorin für ein DACH-Marketing-Team. Verfasse eine knappe, audit-fähige KI-Nutzungs-Policy. Kontext: Breite Langdock-Nutzung, DSGVO-Pflicht, kein bestehendes Regelwerk. Format: 1- bis 2-seitige Policy mit Geltungsbereich, Erlaubt/Eingeschränkt/Verboten-Listen (je 3 Beispiele), Datenschutz-Leitplanken und dreistufigen Verstoß-Konsequenzen."
 **Erwartetes Artefakt:** Eine KI-Nutzungs-Policy im Canvas mit Geltungsbereich, drei Nutzungs-Kategorien, Datenschutz-Regeln und Verstoß-Konsequenzen, ablagefertig im Governance-Wissensordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1382,7 +1382,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lege pro Dimension 1–2 Leitmetriken mit klarer Messmethode und Datenquelle fest (z.B. Qualität = Anteil revisionsfrei freigegebener Outputs).
 3. Bestimme realistische Zielwerte auf Basis vorhandener Baseline-Daten aus dem Workspace-Admin.
 4. Erstelle das Framework als Canvas-Referenz, die für jede neue Initiative als verbindliche Bewertungsvorlage dient.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Marketing-Performance-Architektin. Entwickle ein einheitliches Erfolgsmetrik-Framework für KI-Initiativen. Kontext: Mehrere parallele Langdock-Initiativen, bisher uneinheitlich bewertet. Format: Tabelle mit Dimension (Effizienz/Qualität/Adoption/Geschäftswert), 1–2 Leitmetriken, Messmethode, Zielwert und Datenquelle."
 **Erwartetes Artefakt:** Ein Erfolgsmetrik-Framework im Canvas mit vier Dimensionen, Leitmetriken, Messmethoden, Zielwerten und Datenquellen als verbindliche Bewertungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1401,7 +1401,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lade die CSV in den Data Analyst und berechne den jährlichen Ist-Verbrauch sowie den Break-even zwischen AI Models Included und BYOK.
 3. Gleiche die aktive Seat-Zahl mit den Volumenrabatt-Stufen ab und ermittle, wie viele Seats bis zur nächsten Rabattschwelle fehlen.
 4. Formuliere im Canvas drei priorisierte Verhandlungsforderungen (z.B. Wechsel auf BYOK ab Break-even, Rabattstufe bei Seat-Bündelung, fixierter Preis über die Laufzeit).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist SaaS-Einkaufs-Analystin. Erstelle aus den angehängten Langdock-Nutzungsdaten ein Verhandlungs-Briefing für die Vertragsverlängerung. Kontext: 15 aktive Seats, aktuelles Modell AI Models Included, Verlängerung in 4 Monaten. Format: Tabelle mit Ist-Verbrauch, Break-even Included vs. BYOK, fehlende Seats bis zur nächsten Rabattstufe und drei priorisierten Verhandlungsforderungen."
 **Erwartetes Artefakt:** Ein Verhandlungs-Briefing im Canvas mit Verbrauchs-Ist, Modell-Break-even, Rabattstufen-Abstand und drei Verhandlungsforderungen, vorlagefertig für das Renewal-Gespräch.
 **Fallstricke (≥2 spezifisch):**
@@ -1420,7 +1420,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Schätze für "Build" (Langdock-Workflow) den einmaligen Bau-Aufwand, die laufenden Run-Kosten und die Wartungslast; für "Buy" Lizenzkosten, Einführungsaufwand und Lock-in-Risiko.
 3. Stelle beide Optionen in einer Tabelle gegenüber (Jahres-Gesamtkosten, Time-to-Value, Wartung, Abhängigkeit) und leite eine begründete Empfehlung ab.
 4. Definiere im Memo die Kipp-Bedingungen: ab welchem Volumen oder welcher Komplexität die Empfehlung wechselt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist nüchterne MarketingOps-Beraterin. Erstelle ein Build-vs-Buy-Memo für eine wiederkehrende Lokalisierungs-Aufgabe. Kontext: ca. 200 Texte/Monat, ein Langdock-Workflow wäre baubar, ein Spezial-Tool kostet 6.000 Euro/Jahr. Format: Vergleichstabelle (Build vs. Buy) mit Jahres-Gesamtkosten, Time-to-Value, Wartungslast und Lock-in, plus Empfehlung und Kipp-Bedingungen."
 **Erwartetes Artefakt:** Ein Build-vs-Buy-Memo im Canvas mit Vergleichstabelle, begründeter Empfehlung und expliziten Kipp-Bedingungen als Entscheidungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1439,7 +1439,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Aktiviere den Deep Research Modus und recherchiere öffentlich belegbare Referenzwerte zur KI-Reife vergleichbarer B2B-SaaS-Marketing-Teams (Studien, Reports); markiere unbelegbare Werte als Schätzung.
 3. Stelle je Dimension den eigenen Score dem externen Referenzkorridor gegenüber und berechne den relativen Abstand.
 4. Priorisiere die drei Dimensionen mit dem größten Rückstand und ordne ihnen je eine konkrete Aufholmaßnahme zu.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Benchmarking-Analystin. Vergleiche unseren internen KI-Reife-Score mit externen Referenzwerten vergleichbarer B2B-SaaS-Marketing-Teams. Kontext: Fünf Dimensionen mit Eigenscores liegen vor; nur Quellen mit belegbarer URL gelten, sonst als Schätzung markieren. Format: Tabelle mit Dimension, Eigenscore, externem Referenzkorridor, relativem Abstand und Aufholmaßnahme für die drei größten Lücken."
 **Erwartetes Artefakt:** Ein Benchmark-Vergleich im Canvas mit Eigenscore vs. Referenzkorridor je Dimension und drei priorisierten Aufholmaßnahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1458,7 +1458,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Strukturiere das Deck in fünf feste Abschnitte und formuliere pro Abschnitt eine einzige Kernaussage (eine Zeile), bevor Details ergänzt werden.
 3. Ergänze pro Abschnitt nur die belegenden Daten und maximal eine Visualisierung; halte das Narrativ vor den Zahlen.
 4. Speichere das Gerüst als Template im Governance-Wissensordner, das im Folgequartal nur neue Aussagen und Zahlen erfordert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Executive-Storytelling-Beraterin. Baue aus den angehängten Quartalszahlen ein erzählendes KI-Business-Review-Deck-Gerüst. Kontext: Empfänger ist die Geschäftsführung, Vorquartals-Vergleich liegt vor. Format: Fünf Abschnitte (Highlights, KPI-Entwicklung, getroffene Entscheidungen, offene Risiken, Quartalsziele) mit je einer Kernaussage in einer Zeile plus belegenden Daten."
 **Erwartetes Artefakt:** Ein QBR-Deck-Gerüst im Canvas mit fünf Abschnitten, je einer Kernaussage und belegenden Daten, als wiederverwendbares Quartals-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1477,7 +1477,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Definiere Archivierungs-Regeln: Dateien älter als 12 Monate oder als überholt markiert wandern in einen separaten Archiv-Folder; aktiver Folder bleibt unter der vereinbarten Dateizahl.
 3. Lege eine Monats-Checkliste fest (Dubletten prüfen, Verfallsdaten kontrollieren, ein Canary-Retrieval-Test pro Agent) und benenne pro Folder einen Owner.
 4. Dokumentiere das Ritual im Governance-Wissensordner und verankere den Termin als festes Kalender-Item.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Knowledge-Operations-Managerin. Entwirf ein monatliches Kurations-Ritual für unsere Langdock-Wissensordner. Kontext: Fünf aktive Folder, Retrieval-Qualität sinkt, kein definierter Owner. Format: Monats-Checkliste mit Prüfschritten, Archivierungs-Regeln (Alter, Dubletten, Limit-Nähe) und einer Owner-Zuordnung pro Folder."
 **Erwartetes Artefakt:** Ein Kurations-Ritual im Canvas mit Monats-Checkliste, Archivierungs-Regeln und Folder-Owner-Zuordnung, abgelegt im Governance-Wissensordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1496,7 +1496,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Klassifiziere jede Kategorie: zentral-verbindlich (eine Master-Quelle, regional nur lesbar), regional-ergänzbar (Master plus lokaler Zusatz) oder rein-lokal.
 3. Prüfe mit Deep Research die Datenresidenz-Anforderungen je Region und ordne jeder Kategorie einen Hosting-/Ablage-Hinweis zu; Ergebnisse vom Datenschutzbeauftragten bestätigen lassen.
 4. Lege fest, wer zentrale Master-Folder pflegt und wie regionale Einheiten Änderungswünsche einbringen; dokumentiere alles im Governance-Hub.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Enterprise-Knowledge-Governance-Beraterin. Entwickle ein Folder-Governance-Modell für Wissensordner in DACH und zwei internationalen Regionen. Kontext: Brand-Kerndokumente existieren mehrfach, unterschiedliche Datenschutz-Regime, gemeinsame Marke. Format: Tabelle mit Inhaltskategorie, Klassifizierung (zentral-verbindlich/regional-ergänzbar/rein-lokal), Datenresidenz-Hinweis und Pflege-Verantwortlichem."
 **Erwartetes Artefakt:** Ein Folder-Governance-Modell im Canvas mit Inhalts-Klassifizierung, Datenresidenz-Hinweisen und Pflege-Verantwortlichen je Kategorie.
 **Fallstricke (≥2 spezifisch):**
@@ -1515,7 +1515,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Formuliere pro Einwand die dahinterliegende echte Sorge und eine ehrliche Antwort, die nichts verspricht, was nicht haltbar ist.
 3. Hinterlege pro Antwort einen konkreten Beleg (z.B. EU-Hosting-Nachweis, Brand-Voice-Agent als Anti-Generisch-Beispiel) oder einen sichtbaren Quick-Win.
 4. Lege das Playbook im Governance-Wissensordner ab und mache es zum Standard-Werkzeug für alle Führungskräfte in Adoptions-Gesprächen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Change-Kommunikations-Beraterin für KI-Adoption. Erstelle ein Einwand-Playbook gegen wiederkehrende Langdock-Skepsis. Kontext: Häufige Einwände sind Generik, kostenlose Chatbots, Halluzination und Jobangst; ehrliche, nicht beschönigende Antworten gefordert. Format: Tabelle mit Einwand, dahinterliegender Kernsorge, ehrlicher Antwort und konkretem Beleg oder Quick-Win."
 **Erwartetes Artefakt:** Ein Einwand-Playbook im Canvas mit Top-Einwänden, Kernsorgen, ehrlichen Antworten und Belegen, ablagefertig im Governance-Wissensordner.
 **Fallstricke (≥2 spezifisch):**
@@ -1534,7 +1534,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lege drei gestufte Konversations-Starter an: "Erkläre mir Langdock in 5 Minuten", "Begleite mich durch meine erste echte Aufgabe", "Stelle mir 3 Selbstcheck-Fragen".
 3. Lass den Agenten jede Übung an einer realen, anstehenden Aufgabe des Lernenden ansetzen, nicht an erfundenen Beispielen.
 4. Ergänze einen 1-seitigen Begleit-Leitfaden, der den Einstieg und den Übergang zum Fortgeschrittenen-Track (S-LU-066) beschreibt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Learning-Designerin. Schreibe einen System-Prompt für einen geduldigen Langdock-Lern-Agenten für absolute Einsteiger. Kontext: Nutzer trauen sich keine Fragen in Gruppenschulungen, sollen an echten Aufgaben üben. Format: System-Prompt unter 500 Zeichen plus drei gestufte Konversations-Starter (Grundlagen, erste Aufgabe, Selbstcheck)."
 **Erwartetes Artefakt:** Ein konfigurierter Lern-Agent mit drei gestuften Konversations-Startern und einem 1-seitigen Begleit-Leitfaden, teilbar mit der Einsteiger-Gruppe.
 **Fallstricke (≥2 spezifisch):**
@@ -1553,7 +1553,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Konfiguriere einen Snapshot-Agenten mit System-Prompt, der dieses Format erzwingt, und binde eine Beispiel-Vorlage als Wissensordner an.
 3. Lass den Agenten den über die Usage-Export-API gezogenen Monats-CSV im Data Analyst verarbeiten und das Format strikt befüllen.
 4. Teste mit zwei Monaten Realdaten, ob das Format stabil bleibt, und gib den Agenten dann für den festen Monatslauf frei.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist KI-Reporting-Architektin. Schreibe einen System-Prompt für einen Executive-Snapshot-Agenten, der aus dem monatlichen Usage-Export einen 1-Pager erzeugt. Kontext: Empfänger CMO, festes Format aus der Reporting-Kadenz, eine Datenquelle. Format: System-Prompt, der genau drei Kennzahlen, Vormonats-Delta und eine Kernaussage erzwingt und Abweichungen vom Format verbietet."
 **Erwartetes Artefakt:** Ein konfigurierter Snapshot-Agent plus ein Beispiel-1-Pager mit drei Kennzahlen, Vormonats-Delta und Kernaussage, freigegeben für den Monatslauf.
 **Fallstricke (≥2 spezifisch):**
@@ -1572,7 +1572,7 @@ Im Standard-Chat können Nutzer maximal 20 direkte Dateianhänge pro Session hoc
 2. Lege Vorher/Nachher-Qualitätskriterien fest (z.B. Output-Qualität, Durchlaufzeit, Fehlerquote) und erfasse die Baseline aus dem bestehenden Tool, bevor der Pilot startet.
 3. Baue die Langdock-Lösung (Agent oder Workflow) für den Pilot-Scope und lasse beide Wege parallel laufen, um real zu vergleichen.
 4. Definiere eine Abbruch-Schwelle und einen Go/No-Go-Termin: Nur bei erreichter Qualität und gemessener Ersparnis wird das Alt-Tool gekündigt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Migrations-Projektleiterin. Erstelle einen Migrations-Pilotplan für die Ablösung eines KI-Punkt-Tools durch Langdock. Kontext: Ein Kern-Workflow soll pilotiert werden, Kündigung erst nach Nachweis, Baseline aus dem Alt-Tool verfügbar. Format: Plan mit Pilot-Scope, Vorher/Nachher-Qualitätskriterien, Abbruch-Schwelle und Go/No-Go-Termin für die Kündigung."
 **Erwartetes Artefakt:** Ein Migrations-Pilotplan im Canvas mit Scope, Vorher/Nachher-Kriterien, Abbruch-Schwelle und Go/No-Go-Termin als Absicherung vor der Tool-Kündigung.
 **Fallstricke (≥2 spezifisch):**

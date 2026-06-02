@@ -46,7 +46,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Entwurf der Pressemitteilung im Canvas generieren — Überschrift, Lead, Beleg, Einordnung.
 3. Quellenzeile und Studientitel zwingend in den Fuß setzen; jede Zahl auf die Report-Tabelle zurückführen lassen.
 4. Entwurf zur menschlichen Freigabe an die Pressestelle übergeben; Versand erst nach Gegenzeichnung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du unterstützt die Pressestelle des IW Köln. Im verknüpften Ordner liegt der finale IW-Report. Entwirf eine Pressemitteilung von maximal 300 Wörtern: journalistische Überschrift, Lead-Absatz mit dem stärksten belastbaren Datenpunkt, zwei Belegabsätze und ein Platzhalter für ein Autoren-Zitat. Tonalität sachlich und evidenzbasiert, keine Zuspitzung über die Daten hinaus. Nenne im Fuß den exakten Studientitel als Quelle und markiere jede Zahl, deren Herkunft im Report nicht eindeutig belegt ist."
 **Erwartetes Artefakt:** Ein freigabebereiter Pressemitteilungs-Entwurf (Markdown, ca. 300 Wörter) mit Quellenzeile und markierten Unsicherheiten.
 **Fallstricke (≥2 spezifisch):**
@@ -65,7 +65,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Den überraschendsten belastbaren Datenpunkt in den Lead-Absatz heben.
 3. Akademische Caveats in klare, aber korrekte Alltagssprache überführen — ohne die Aussage zu überdehnen.
 4. Entwurf der iwd-Redaktion zur redaktionellen Freigabe vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Redakteur des iwd ('Wirtschaft verständlich erklärt'). Übersetze die verknüpfte IW-Analyse in einen Artikel von höchstens 400 Wörtern für die breite Öffentlichkeit. Beginne mit dem überraschendsten, belegbaren Befund. Nutze aktive Verben und kurze Sätze, ersetze Fachjargon durch Alltagssprache, aber verfälsche die Aussage nicht. Behalte die ordnungspolitische Einordnung bei. Nenne am Ende die Studie als Quelle."
 **Erwartetes Artefakt:** Ein iwd-Artikelentwurf (ca. 400 Wörter) mit Quellenhinweis, bereit zur redaktionellen Prüfung.
 **Fallstricke (≥2 spezifisch):**
@@ -83,7 +83,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 1. Kernforderung des Policy-Papers und den stärksten Beleg als Kontext an den Agenten übergeben.
 2. Entwurf generieren — formelle "Sie"-Ansprache, sachlicher Debattenton, abschließende Frage an die Fachcommunity.
 3. Entwurf im Canvas prüfen und zur persönlichen Freigabe durch den Kanalinhaber bereitstellen; Veröffentlichung nur durch ihn.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du formulierst LinkedIn-Beiträge für den Kommunikationsleiter des IW Köln. Erstelle aus der Kernforderung des angehängten IW-Policy-Papers einen Beitrag von maximal 200 Wörtern. Tonalität: professionell, debattenorientiert, formelles 'Sie', keine Emojis, keine Superlative. Beginne mit einer These, belege sie mit genau einer Kennzahl aus der Studie und schließe mit einer offenen Frage an Fachkolleginnen und Politik. Nenne die Studie als Quelle."
 **Erwartetes Artefakt:** Ein LinkedIn-Entwurf (ca. 200 Wörter) mit Quellenangabe, bereit zur Freigabe durch den Kanalinhaber.
 **Fallstricke (≥2 spezifisch):**
@@ -102,7 +102,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Die zwei Variablen mit dem stärksten, klar erzählbaren Kontrast bestimmen lassen.
 3. Chart-Typ (Balken, Linie, Streudiagramm) je Zielkanal empfehlen und Kernaussage in einem Satz festhalten.
 4. Briefing an das Grafikteam übergeben; finale Gestaltung und Freigabe liegen bei IW Medien.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Daten-Kommunikator beim IW. Im Data Analyst liegt eine Tabelle aus einer IW-Analyse. Bestimme die zwei Variablen, die für eine breite Zielgruppe den stärksten, korrekten Kontrast ergeben. Empfiehl je einen Chart-Typ für eine Instagram-Kachel und einen LinkedIn-Beitrag, formuliere die Kernaussage je Grafik in einem Satz und nenne die Achsenbeschriftungen. Keine irreführenden Achsenkürzungen vorschlagen."
 **Erwartetes Artefakt:** Ein Chart-Briefing (Markdown) mit Variablenauswahl, Chart-Typ, Kernaussage und Quellenverweis je Grafik.
 **Fallstricke (≥2 spezifisch):**
@@ -121,7 +121,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Teaser für den iwd-Verteiler generieren — journalistisch, zugänglich, nachrichtenwert-fokussiert.
 3. Teaser für den IW-Trends-Verteiler erzeugen — sachlich, methodisch, ohne Vereinfachung.
 4. Beide Sets an die Newsletter-Redaktion zur Freigabe übergeben; Versand erst nach Gegenzeichnung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du kuratierst die IW-Newsletter. Hier ist die Liste der diese Woche veröffentlichten Beiträge. Erzeuge zwei getrennte Teaser-Sets: (1) für den iwd-Verteiler journalistisch und allgemeinverständlich, (2) für den IW-Trends-Verteiler sachlich-wissenschaftlich. Pro Beitrag: Titel, ein bis zwei Zeilen Teaser, Link-Platzhalter. Keine Übertreibungen, behalte je den Originaltitel der Studie als Quelle bei."
 **Erwartetes Artefakt:** Zwei Teaser-Sets (Markdown) mit Titel, Teaser und Link-Platzhalter je Beitrag und Verteiler.
 **Fallstricke (≥2 spezifisch):**
@@ -140,7 +140,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Drei konkrete, ordnungspolitisch konsistente Handlungsempfehlungen ableiten und nach oben stellen.
 3. Jede Empfehlung mit genau einem belastbaren Datenpunkt aus den Studien unterlegen.
 4. Brief im Canvas finalisieren und vom Hauptstadtbüro freigeben lassen, bevor er an Adressaten geht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du unterstützt das Berliner Hauptstadtbüro des IW. Erstelle aus den verknüpften IW-Studien einen zweiseitigen Policy-Brief für Abgeordnete. Struktur: drei konkrete Handlungsempfehlungen ganz oben (im Sinne der Sozialen Marktwirtschaft), darunter je ein belegender Datenpunkt mit Quellenangabe, abschließend eine kurze ordnungspolitische Einordnung. Sachlich, prägnant, kein Alarmismus. Markiere offene Forschungsfragen als solche."
 **Erwartetes Artefakt:** Ein zweiseitiger Policy-Brief (Markdown) mit priorisierten Empfehlungen, Belegen und Quellen.
 **Fallstricke (≥2 spezifisch):**
@@ -158,7 +158,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 1. Kernbefund des Kurzberichts und die zentrale Einordnung als Kontext bereitstellen.
 2. Drei Zitatvarianten generieren — nüchtern, mittel, pointiert —, alle innerhalb der Datenlage.
 3. Varianten dem Forschenden zur Auswahl und persönlichen Freigabe vorlegen; nur autorisierte Zitate verwenden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du formulierst Zitatvorschläge für eine IW-Autorin. Erzeuge aus dem Kernbefund des angehängten IW-Kurzberichts drei Zitatvarianten von je maximal zwei Sätzen: eine nüchtern-beschreibende, eine mittlere, eine pointierte. Alle müssen durch die Studie gedeckt sein, sachlich bleiben und dürfen nicht über die Daten hinausgehen. Kennzeichne, falls eine Variante eine Unsicherheit benennen sollte."
 **Erwartetes Artefakt:** Drei freigabebereite Zitatvarianten mit Kennzeichnung der jeweiligen Aussageschärfe.
 **Fallstricke (≥2 spezifisch):**
@@ -177,7 +177,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Timeline mit Vorab-Tranche (Embargo), öffentlichem Versand und Social-Welle entwerfen lassen.
 3. Pressekit-Checkliste erstellen (Sperrfrist-Report, vorformulierte Statements, Grafiken, Kontaktnummern).
 4. Plan im Canvas finalisieren und von der Kommunikationsleitung freigeben lassen; Journalisten-Ansprache erst nach Freigabe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du planst den Launch eines IW-Reports unter Sperrfrist. Erstelle einen Embargo-Kommunikationsplan: Timeline mit Vorab-Tranche an ausgewählte Journalisten, öffentlichem Versand zum Sperrfristende und anschließender Social-Welle. Ergänze eine Pressekit-Checkliste (Sperrfrist-PDF, vorformulierte Statements, hochauflösende Grafiken, direkte Kontaktnummern der Ökonomen) und eine klare Regel, wie das Team auf einen Sperrfristbruch reagiert."
 **Erwartetes Artefakt:** Ein Embargo-Plan (Markdown) mit Timeline-Tabelle, Pressekit-Checkliste und Eskalationsregel.
 **Fallstricke (≥2 spezifisch):**
@@ -196,7 +196,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Zusammenfassung mit Bullet-Struktur erstellen — Befunde, Annahmen, Limitationen.
 3. Strategische Relevanz und mögliche Anschlusskommunikation kurz benennen.
 4. Entwurf der Geschäftsführung vorlegen; finale Bewertung bleibt bei der Leitung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du fasst ein IW-Gutachten für die Geschäftsführung zusammen. Erstelle eine zweiseitige, strukturierte Kurzfassung: zentrale Befunde als Bullet-Liste, zugrunde liegende Annahmen, methodische Limitationen explizit benannt, und eine kurze Einschätzung der strategischen Relevanz für das Institut. Sachlich, ohne Wertung über die Daten hinaus. Quellenverweis auf das Gutachten am Ende."
 **Erwartetes Artefakt:** Eine zweiseitige Management-Zusammenfassung (Markdown) mit Befunden, Limitationen und Relevanz.
 **Fallstricke (≥2 spezifisch):**
@@ -215,7 +215,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Deep Research auf die jüngste Berichterstattung und politische Statements ansetzen.
 3. Fundstellen nach korrekter Nutzung, verkürzter Nutzung und Fehlnutzung clustern lassen.
 4. Bericht mit Handlungsempfehlung an die Kommunikationsleitung übergeben; etwaige Richtigstellungen nur nach Freigabe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du beobachtest die wirtschaftspolitische Debatte für das IW. Führe einen Deep Research durch, wie unsere folgenden Kennzahlen [Liste] in den letzten zwei Wochen in Medien und politischen Statements aufgegriffen wurden. Clustere die Fundstellen in 'korrekt zitiert', 'verkürzt' und 'verzerrt/fehlgenutzt'. Benenne pro Cluster Beispiele mit Quelle und gib eine nüchterne Empfehlung, ob und wo eine sachliche Richtigstellung angebracht wäre."
 **Erwartetes Artefakt:** Ein Monitoring-Bericht (Markdown) mit Fundstellen-Tabelle, Cluster-Bewertung und Empfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -233,7 +233,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 1. Den Kernbefund und die belastbaren Zahlen einmal sauber als Single Source of Truth festhalten.
 2. Drei Varianten erzeugen — Politik (systemische Wirkung), Presse (Nachrichtenwert), Wirtschaft (Standort/Kosten).
 3. Konsistenz-Check: alle drei müssen auf derselben Datenlage fußen; danach Freigabe je Kanal.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du adaptierst einen IW-Befund für drei Zielgruppen. Hier ist der Kernbefund mit Zahlen. Erzeuge drei Kurztexte von je 120 Wörtern: (1) Politik-Newsletter mit Fokus auf legislative Wirkung, (2) Presse mit Fokus auf Nachrichtenwert, (3) Arbeitgeberverbände mit Fokus auf Wettbewerbsfähigkeit und Kostenlast. Die Faktenbasis muss in allen drei identisch sein. Keine Aussage darf je nach Publikum die Daten verbiegen. Quelle nennen."
 **Erwartetes Artefakt:** Drei Kurztexte (je ca. 120 Wörter) mit identischer Faktenbasis und kanalgerechtem Fokus.
 **Fallstricke (≥2 spezifisch):**
@@ -252,7 +252,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Die zehn kritischsten, auch unbequemen Fragen antizipieren lassen (Red-Team-Logik).
 3. Antworten ausschließlich aus der Studie und ihren Datenquellen formulieren; Unsicherheiten offen benennen.
 4. FAQ der Pressestelle und dem Autor zur Freigabe vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bereitest ein internes FAQ zu einer kontroversen IW-Studie vor. Antizipiere die zehn kritischsten Fragen von Journalisten und Kritikern, auch unbequeme zu möglicher Arbeitgebernähe. Formuliere zu jeder eine sachliche, belegte Antwort ausschließlich auf Basis der Studie und der verwendeten Datenquellen (z.B. SOEP). Wo die Datenlage Grenzen hat, benenne die Unsicherheit offen statt sie zu überspielen. Nenne je die Quelle."
 **Erwartetes Artefakt:** Ein internes FAQ (Markdown) mit zehn Frage-Antwort-Paaren inklusive Quellen und offen benannten Unsicherheiten.
 **Fallstricke (≥2 spezifisch):**
@@ -270,7 +270,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 1. Das IW-Terminologie-Glossar als Wissensordner verknüpfen und den Ausgangstext bereitstellen.
 2. Übersetzung mit zwingender Nutzung der freigegebenen Term-Entsprechungen generieren.
 3. Zweifelsfälle markieren lassen und an einen fachkundigen Menschen zur Endredaktion geben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du übersetzt eine IW-Pressemitteilung ins Englische für iwkoeln.de/en. Nutze ausschließlich die im verknüpften Glossar hinterlegten englischen Entsprechungen für Begriffe wie 'Soziale Marktwirtschaft', 'Tarifautonomie' und 'Allgemeinverbindlichkeitserklärung'. Übersetze idiomatisch und fachlich präzise, keine generischen Anglizismen. Markiere jede Stelle, an der keine eindeutige Glossar-Entsprechung existiert, für die menschliche Endredaktion."
 **Erwartetes Artefakt:** Eine englische Fassung mit glossarkonformer Terminologie und markierten Zweifelsfällen.
 **Fallstricke (≥2 spezifisch):**
@@ -289,7 +289,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Drei einprägsame, belegbare Kernbotschaften herausarbeiten.
 3. Erwartbare kritische Fragen generieren und je eine evidenzbasierte Antwort aus der Studie ableiten.
 4. Briefing den Sprechern zur Vorbereitung und Freigabe übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bereitest ein IW-Briefing für eine Pressekonferenz in Berlin vor. Aus der verknüpften Studie: formuliere drei prägnante, belegbare Kernbotschaften. Antizipiere anschließend die acht kritischsten Fragen von Wirtschaftsjournalisten und liefere zu jeder eine sachliche, durch die Studiendaten gedeckte Antwort. Benenne Unsicherheiten offen. Tonalität sachlich, ordnungspolitisch konsistent, kein Alarmismus."
 **Erwartetes Artefakt:** Ein Pressekonferenz-Briefing (Markdown) mit Kernbotschaften und Q&A-Block samt Quellen.
 **Fallstricke (≥2 spezifisch):**
@@ -308,7 +308,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Gemeinsame Kernaussagen und die wichtigsten Begriffe extrahieren.
 3. Explainer-Struktur im Canvas aufbauen — Einleitung, Definitionen, Datenlage, FAQ.
 4. Entwurf der iwd-Redaktion zur Freigabe vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du schreibst einen Evergreen-Explainer für iwd.de zum Thema Fachkräftemangel. Bündle die Kernaussagen der verknüpften IW-Studien zu einem allgemeinverständlichen Artikel von ca. 700 Wörtern: kurze Einleitung, klare Begriffsdefinitionen, die wichtigsten Datenpunkte mit Quellenangabe und ein FAQ-Block mit fünf Fragen. Aktive Sprache, kein Jargon, ordnungspolitische Einordnung beibehalten. Markiere veraltungsgefährdete Zahlen als aktualisierungsbedürftig."
 **Erwartetes Artefakt:** Ein Evergreen-Explainer (ca. 700 Wörter) mit Definitionen, Belegen, FAQ und Quellen.
 **Fallstricke (≥2 spezifisch):**
@@ -327,7 +327,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Pitch-Vorlage mit Platzhaltern wie {{Region}}, {{Kennzahl}}, {{Aufhänger}} definieren.
 3. Personalisierte Entwürfe je Journalist generieren lassen — kurz, relevant, mit O-Ton-Angebot.
 4. Entwürfe der Pressestelle vorlegen; Versand an Journalisten erst nach menschlicher Freigabe.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du personalisierst Journalisten-Pitches für eine IW-Studie mit regionalen Daten. Für jeden Journalisten in der Liste: ziehe aus dem Data Analyst den für seine Region relevantesten Datenpunkt und formuliere einen Pitch von maximal 90 Wörtern mit konkretem regionalem Aufhänger, der Sperrfrist und dem Angebot eines O-Tons. Formelles 'Sie', sachlich. Keine Region erhält erfundene Zahlen; bei fehlenden Daten Pitch ohne Regionalwert."
 **Erwartetes Artefakt:** Personalisierte Pitch-Entwürfe je Journalist mit regionalem Datenpunkt und Sperrfristhinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -346,7 +346,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Delta und Treiber der Revision herausarbeiten lassen.
 3. Kommunikationstext mit Kernzahl, Vergleich und ausdrücklich benannter Prognoseunsicherheit entwerfen.
 4. Paket an die Pressestelle zur Freigabe übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du kommunizierst eine revidierte IW-Konjunkturprognose. Vergleiche die aktuelle mit der vorherigen Prognose, benenne die Höhe und die Treiber der Revision und formuliere einen Kommunikationstext von 200 Wörtern. Stelle die Unsicherheitsspanne ausdrücklich dar und vermeide Scheingenauigkeit. Sachlich, evidenzbasiert, ordnungspolitisch konsistent. Quelle: aktuelle IW-Prognose."
 **Erwartetes Artefakt:** Ein Prognose-Kommunikationstext (ca. 200 Wörter) mit Vorjahresvergleich und ausgewiesener Unsicherheit.
 **Fallstricke (≥2 spezifisch):**
@@ -365,7 +365,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Pro Cluster einen Baustein mit zwei bis drei Highlights und Belegen erstellen lassen.
 3. Bausteine im Canvas zusammenführen und auf Dopplungen prüfen.
 4. Entwurf an die Redaktion des Jahresberichts zur Freigabe übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du erstellst Bausteine für den IW-Jahresbericht. Fasse je Themencluster die wichtigsten Veröffentlichungen, Medienauftritte und Veranstaltungen des Jahres in einem Abschnitt von ca. 150 Wörtern zusammen: zwei bis drei Highlights mit konkreten Kennzahlen und Quellenverweis. Sachlich, ohne Eigenlob über die Belege hinaus. Markiere Stellen, an denen mir Daten zur Vervollständigung fehlen."
 **Erwartetes Artefakt:** Modulare Jahresbericht-Bausteine je Cluster (Markdown) mit Highlights, Kennzahlen und Lücken-Markierungen.
 **Fallstricke (≥2 spezifisch):**
@@ -384,7 +384,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Themen den Anlässen zuordnen und das passende Format (Kurzbericht, iwd-Artikel, Policy-Brief) wählen lassen.
 3. Plan mit Datum, Anlass, Thema, Format und Kanal als Tabelle ausgeben.
 4. Plan dem Team zur Freigabe und Ressourcenplanung vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du erstellst einen Quartals-Redaktionsplan für das IW. Hier sind die politischen Termine des Quartals und die verfügbaren IW-Themen. Ordne jedem relevanten Termin ein passendes IW-Thema zu, wähle ein geeignetes Format (IW-Kurzbericht, iwd-Artikel, Policy-Brief, Social-Post) und benenne den Zielkanal. Liefere eine Tabelle: Datum, politischer Anlass, IW-Thema, Format, Kanal, Vorlauf. Markiere Termine, zu denen aktuell kein passendes Thema vorliegt."
 **Erwartetes Artefakt:** Ein Quartals-Redaktionsplan (Tabelle) mit Anlass, Thema, Format, Kanal und Vorlaufzeit.
 **Fallstricke (≥2 spezifisch):**
@@ -403,7 +403,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 2. Den zu prüfenden Text gegen die Linie checken lassen — Alarmismus, Umgangssprache, ordnungspolitische Konsistenz.
 3. Eine tabellarische Auflistung der Fundstellen mit konkreten, sachlichen Korrekturvorschlägen erzeugen.
 4. Report an den Autor zur Entscheidung übergeben; finale Textfreigabe bleibt menschlich.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist redaktioneller Gatekeeper für den IW-Markenton. Prüfe den folgenden Text gegen den verknüpften IW-Stilleitfaden. Markiere jede Stelle mit Alarmismus, emotionaler Zuspitzung, umgangssprachlichen Ausreißern oder Aussagen, die von der evidenzbasierten, ordnungspolitischen Linie abweichen. Liefere eine Tabelle: Fundstelle, Problem, sachlicher Korrekturvorschlag. Sei pedantisch, aber begründe jede Markierung mit dem Leitfaden."
 **Erwartetes Artefakt:** Ein Wording-Report (Tabelle) mit Fundstellen, Problemklasse und konkreten Korrekturvorschlägen.
 **Fallstricke (≥2 spezifisch):**
@@ -420,7 +420,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 1. Die Frage auf die gemeinten Formate eingrenzen.
 2. Den Abschnitt „IW-Publikationsformate im Überblick" abrufen und nur die relevanten Zeilen zitieren.
 3. Mit Quellenangabe antworten; bei nicht abgedecktem Format den exakten Verweigerungs-String nutzen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Wissensberater für die IW-Kommunikation. Erkläre den Unterschied zwischen IW-Report, IW-Kurzbericht und iwd. Kontext: neue Kollegin im Presseteam. Format: kurze Tabelle (Format, Zweck, Zielgruppe) plus ein Satz, wann welches Format passt."
 **Erwartetes Artefakt:** Eine zitierte Formattabelle mit ein bis drei Zeilen, passend zur Frage.
 **Fallstricke (≥2 spezifisch):**
@@ -437,7 +437,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 1. Anliegen und Zielgruppe(n) klären.
 2. Den Abschnitt „IW-Kanäle und Zielgruppen" abrufen und die passende Zuordnung extrahieren.
 3. Antwort mit Quellenangabe und einem nächsten Schritt (z. B. Asset-Variante) liefern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Kanal-Stratege für das IW. Empfiehl für die Verbreitung einer neuen Arbeitsmarkt-Studie je einen Kanal für Politik, Fachpresse und breite Öffentlichkeit. Kontext: IW-Kurzbericht liegt vor. Format: Tabelle (Zielgruppe, Kanal, Tonalität, Asset-Typ)."
 **Erwartetes Artefakt:** Eine Kanal-Zielgruppen-Matrix für den konkreten Verbreitungsfall.
 **Fallstricke (≥2 spezifisch):**

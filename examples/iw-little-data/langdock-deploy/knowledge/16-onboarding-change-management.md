@@ -34,7 +34,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas Pilot-Scope, drei messbare Erfolgskriterien und eine feste Laufzeit (z. B. 6 Wochen) definieren.
 3. Einen Pilot-Owner und zwei freiwillige Test-Anwender aus dem Kompetenzfeld benennen.
 4. Das Charter der Kommunikationsleitung zur Freigabe vorlegen (menschliche Entscheidung).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Rollout-Berater. Erstelle aus der Workflow-Beschreibung im Wissensordner ein einseitiges Pilot-Charter für den Langdock-Advisor im Kompetenzfeld 'Digitalisierung & Klimawandel'. Kontext: 6 Wochen Laufzeit, ein Pilot-Owner, zwei Test-Anwender. Format: Abschnitte Scope, Erfolgskriterien (drei messbare), Out-of-Scope, Verantwortlichkeiten. Erfinde keine Erfolgszahlen; markiere offene Punkte als 'mit Leitung zu klären'."
 **Erwartetes Artefakt:** Pilot-Charter (Canvas, ca. 1 Seite) mit Scope, drei Erfolgskriterien, Laufzeit und Verantwortlichkeiten.
 **Fallstricke (≥2 spezifisch):**
@@ -53,7 +53,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas je Stakeholder (Datenschutz / Recht / CISO) die jeweils relevanten Nachweise tabellarisch zuordnen.
 3. Jede Aussage mit dem konkreten Quelldokument belegen und offene Punkte als "offen" markieren.
 4. Das Dossier den drei Freigabe-Instanzen zur formalen Zeichnung übergeben (menschliche Entscheidung).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Compliance-Referent. Erstelle aus den Dokumenten im Wissensordner ein Governance-Freigabe-Dossier für Datenschutz, Rechtsabteilung und CISO des IW. Format: je Anforderung eine Zeile mit Status, Fundstelle und zuständiger Instanz. Belege EU-Hosting, AVV und Zero-Data-Retention je mit Quelle. Erfinde keine Klauseln; markiere Lücken explizit als 'offen'."
 **Erwartetes Artefakt:** Governance-Freigabe-Dossier mit Anforderungs-Status-Tabelle, Quellenverweisen und markierten offenen Punkten.
 **Fallstricke (≥2 spezifisch):**
@@ -72,7 +72,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas Datenklassen definieren: was nie in den Advisor darf (unveröffentlichte Gutachten, embargobehaftete Daten) vs. was erlaubt ist.
 3. Die Klausel der unteilbaren redaktionellen Verantwortung verankern: KI ist Assistenz, nie Autor.
 4. Den Entwurf der Geschäftsführung und dem Betriebsrat zur Abstimmung vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Policy-Berater. Entwirf aus den KI-Leitlinien im Wissensordner eine institutsweite KI-Nutzungs-Policy für das IW. Format: Abschnitte Geltungsbereich, erlaubte/verbotene Datenklassen, redaktionelle Verantwortung, Kennzeichnung, Schulungspflicht. Verankere die 'unteilbare redaktionelle Verantwortung'. Stütze jede Pflicht auf eine Quelle im Ordner; markiere Lücken."
 **Erwartetes Artefakt:** KI-Nutzungs-Policy-Entwurf mit Datenklassen, Verantwortungsklausel und Schulungspflicht.
 **Fallstricke (≥2 spezifisch):**
@@ -91,7 +91,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas die Lösung in IW-Sprache fassen: Assistenz für den Aufbereitungs-Schritt, Mensch entscheidet.
 3. Die drei wichtigsten Leitplanken (EU-Hosting, redaktionelle Verantwortung, Neutralität) sichtbar machen.
 4. Einen klaren Entscheidungs-Call-to-Action (Pilot-Freigabe) formulieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Leitungs-Kommunikation. Formuliere aus Pilot-Charter und Governance-Dossier im Wissensordner eine Change-Story für die IW-Geschäftsführung. Ton: sachlich, evidenzbasiert, ohne Werbe-Adjektive. Format: Problem, Lösung, drei Leitplanken, Entscheidungsfrage. Maximal eine Seite. Verzichte auf 'bahnbrechend' o. Ä."
 **Erwartetes Artefakt:** Change-Story-One-Pager (ca. 1 Seite) mit Problem, Lösung, Leitplanken und Entscheidungs-Call-to-Action.
 **Fallstricke (≥2 spezifisch):**
@@ -110,7 +110,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas je Bereich ein Champion-Profil definieren (Domänenkenntnis, Akzeptanz im Team, Compliance-Bewusstsein).
 3. Verantwortlichkeiten festlegen: Agenten bauen, Prompt-Bibliothek pflegen, Peer-Training geben.
 4. Die Landkarte den Bereichsleitungen zur Nominierung vorlegen (menschliche Entscheidung).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für KI-Champion-Strukturen. Erstelle aus dem Organigramm im Wissensordner eine Champion-Landkarte für die IW-Wissenschaftsbereiche. Format: Tabelle (Bereich, Champion-Profil/Auswahlkriterien, Verantwortlichkeiten, zentrale vs. dezentrale Aufgaben). Halte fest, dass Sicherheit und Abrechnung zentral bleiben, Agenten-Kreation dezentral."
 **Erwartetes Artefakt:** Champion-Landkarte (Tabelle) mit Profilen, Verantwortlichkeiten und föderierter Governance-Abgrenzung je Bereich.
 **Fallstricke (≥2 spezifisch):**
@@ -129,7 +129,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Woche 3-4 auf Wissensordner-Nutzung und Agenten-Konfiguration für IW-Formate ausrichten.
 3. Woche 5-7 auf Aufbereitung (iwd-Übersetzung), Workflows und Qualitätssicherung anlegen.
 4. Je Woche eine reale IW-Praxisaufgabe und ein Lernziel verankern; Plan der Leitung vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Lerndesign-Berater. Erstelle aus Policy und Format-Definitionen im Wissensordner ein 7-Wochen-Onboarding-Curriculum für das IW-Kommunikationsteam. Format: je Woche Lernziel, Inhalt, eine IW-Praxisaufgabe (z. B. iwd-Übersetzung eines Kurzberichts), Compliance-Hinweis. Beginne mit Datenschutz; ende mit Qualitätssicherung."
 **Erwartetes Artefakt:** 7-Wochen-Curriculum (Tabelle/Liste) mit Lernzielen, Inhalten, IW-Praxisaufgaben und Compliance-Hinweisen je Woche.
 **Fallstricke (≥2 spezifisch):**
@@ -148,7 +148,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas Vorher/Nachher-Beispiele kuratieren (akademischer Caveat → klare iwd-Aussage ohne Distortion).
 3. Anti-Tone-Drift-Regeln formulieren: keine Werbe-Superlative, Wahrung der Neutralität.
 4. Eine Abschlussübung verankern: Übersetzung eines IW-Reports mit Pflicht-Faktencheck durch einen Menschen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Wissenschaftskommunikation. Konzipiere aus den Leibniz-Grundsätzen und iwd-Stilbeispielen im Wissensordner eine Schulung 'Wissenschaftskommunikation mit KI' für das IW. Format: Module mit Lernziel, je ein Vorher/Nachher-Beispiel, Anti-Tone-Drift-Regeln, Abschlussübung. Betone: Unsicherheiten und Forschungslücken ehrlich ausweisen, KI nie als Faktenquelle."
 **Erwartetes Artefakt:** Schulungskonzept mit Modulen, Vorher/Nachher-Beispielen, Anti-Tone-Drift-Regeln und Abschlussübung.
 **Fallstricke (≥2 spezifisch):**
@@ -167,7 +167,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Je Kategorie zwei bis drei geprüfte PTCF-Prompts (Persona, Task, Context, Format) sammeln.
 3. Im Canvas Qualitätskriterien und ein Versions-/Freigabe-Feld je Prompt ergänzen.
 4. Die Bibliothek als "v1.0" im Wissensordner ablegen und alle Champions darauf verlinken.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Prompt-Bibliotheks-Kurator. Strukturiere aus den vorhandenen Team-Prompts im Wissensordner eine geteilte Prompt-Bibliothek für das IW. Format: Kategorien (iwd-Übersetzung, Pressemitteilung, Social-Atomisierung), je Prompt Persona/Task/Context/Format, Qualitätskriterium und Versionsfeld. Markiere ungeprüfte Prompts als 'Review offen'."
 **Erwartetes Artefakt:** Prompt-Bibliothek v1.0 (Wissensordner) mit kategorisierten, versionierten PTCF-Prompts und Qualitätskriterien.
 **Fallstricke (≥2 spezifisch):**
@@ -186,7 +186,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas eine Ordner-Taxonomie mit Sensitivitätsstufen (offen / bereichsintern / vertraulich) entwerfen.
 3. Je Ordner die Group-Sharing-Rolle und das RAG-Limit (max. Dateien) festlegen.
 4. Den Plan mit den Champions abstimmen und als Konvention verankern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Wissensordner-Architektur. Entwirf aus der Inhalts-Taxonomie im Wissensordner einen Strukturplan für das IW-Team. Format: Tabelle (Ordnername, Inhaltstyp, Sensitivitätsstufe, Group-Sharing-Rolle, RAG-Hinweis). Trenne offene Format-Vorlagen klar von vertraulichen Gutachten. Verweise auf das Datei-Limit pro Ordner."
 **Erwartetes Artefakt:** Wissensordner-Strukturplan mit Taxonomie, Sensitivitätsstufen und Freigabe-/RAG-Hinweisen.
 **Fallstricke (≥2 spezifisch):**
@@ -205,7 +205,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas ein Soll-Mapping erstellen: Job-Rolle → Plattform-Rolle (Owner/Editor/Viewer) → Ressource.
 3. Jede Über-Berechtigung markieren (z. B. externer Mitarbeiter mit Owner auf Gutachten-Ordner).
 4. Eine priorisierte Korrektur-Liste für den Admin ableiten, kritischste Fälle zuerst.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Access-Governance-Berater. Gleiche den Ist-Zustand der Rollen für Gutachten-Ressourcen im Wissensordner gegen Least Privilege ab. Format: Mapping-Tabelle (Job-Rolle, Soll-Rolle, Ressource) plus priorisierte Korrektur-Liste. Behandle embargobehaftete Gutachten als höchste Sensitivität. Erfinde keine Nutzer; arbeite nur mit der Liste."
 **Erwartetes Artefakt:** RBAC-Mapping-Tabelle für Gutachten-Ressourcen mit priorisierter Korrektur-Liste.
 **Fallstricke (≥2 spezifisch):**
@@ -224,7 +224,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas je Stufe den Advisor-Touchpoint benennen (z. B. iwd-Übersetzung in Stufe 2).
 3. Vor jeder Veröffentlichung ein verbindliches Human-in-the-Loop-Gate setzen.
 4. Die Übergabe-Artefakte je Stufe definieren und die Beschreibung mit dem Team validieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Workflow-Berater. Beschreibe aus der Workflow-Doku im Wissensordner die Advisor-Integration in den IW-Editorial-Funnel. Format: je Stufe (Forschung, Aufbereitung, Distribution, Amplifikation) ein Block mit Input, Advisor-Touchpoint, Human-Gate, Output-Artefakt. Mache klar, dass vor jeder Veröffentlichung ein Mensch freigibt."
 **Erwartetes Artefakt:** Workflow-Beschreibung mit Advisor-Touchpoints, Human-in-the-Loop-Gates und Artefakten je Stufe.
 **Fallstricke (≥2 spezifisch):**
@@ -243,7 +243,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas Prüfpunkte formulieren: keine Werbe-Superlative, Aussagen aus Daten abgeleitet, keine Datenauslassung (Spin).
 3. Einen Neutralitäts-Check ergänzen: Trennung von empirischer Aussage und Wertung.
 4. Die Checkliste als Pflicht-Gate in den Freigabe-Workflow integrieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Qualitäts- und Neutralitäts-Auditor. Erstelle aus den Brand-Voice-Standards im Wissensordner eine Guardrail-Checkliste für KI-gestützte IW-Texte. Format: Prüfpunkte zu Tonalität, Evidenzbindung, Anti-Spin (keine Datenauslassung) und Neutralität, je mit Bestanden/Nicht-bestanden. Sei pedantisch; markiere jeden Werbe-Superlativ als Verstoß."
 **Erwartetes Artefakt:** Guardrail-Checkliste mit Prüfpunkten zu Tonalität, Evidenzbindung, Anti-Spin und Neutralität.
 **Fallstricke (≥2 spezifisch):**
@@ -262,7 +262,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Wissensordner prüfen, welche Inhalte kennzeichnungspflichtig sind.
 3. Per Web-Search die aktuell gültige Art.-50-Frist gegen eine Primärquelle verifizieren und Quelle notieren.
 4. Im Canvas Disclaimer-Bausteine je Typ formulieren; KI-Bilder nie als empirische Evidenz zulassen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Transparenz-Compliance. Erstelle aus den AI-Act-Fristen im Wissensordner eine Kennzeichnungs-Policy für KI-Inhalte des IW. Format: Tabelle (Inhaltstyp, kennzeichnungspflichtig ja/nein, Disclaimer-Baustein). Verankere: KI-Bilder nie als empirische Evidenz. Verifiziere die aktuelle Art.-50-Frist per Web-Search und nenne die Quelle."
 **Erwartetes Artefakt:** Kennzeichnungs-Policy mit Disclaimer-Bausteinen je Inhaltstyp und verifizierter AI-Act-Frist.
 **Fallstricke (≥2 spezifisch):**
@@ -281,7 +281,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas je Einwand eine sachliche Anerkennung und eine belegte Antwort formulieren.
 3. Jede Antwort an eine reale Leitplanke knüpfen (z. B. "nur aus Quelltext", EU-Hosting, Human-Gate).
 4. Das Playbook den Champions als Gesprächsleitfaden übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Change-Kommunikation. Erstelle aus Policy und Guardrails im Wissensordner ein Einwand-Playbook für skeptische IW-Wissenschaftler. Format: je Einwand eine Zeile mit anerkennender Einleitung und belegter Antwort, gestützt auf eine konkrete Leitplanke. Ton: respektvoll, evidenzbasiert, ohne Marketing. Spiele die Sorgen nicht herunter."
 **Erwartetes Artefakt:** Einwand-Playbook (Q&A) mit anerkennenden Einleitungen und leitplanken-gestützten Antworten.
 **Fallstricke (≥2 spezifisch):**
@@ -300,7 +300,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas ein Format definieren: kurzer Impuls, Q&A, dokumentierte Fallstricke.
 3. Eine geteilte Ablage für neue Prompts und Lessons Learned mit der Bibliothek verknüpfen.
 4. Das Konzept den Champions zur Umsetzung übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Community-Berater. Entwirf aus Champion-Landkarte und Prompt-Bibliothek im Wissensordner ein Community-of-Practice-Konzept für den IW-Advisor. Format: Office-Hour-Rhythmus, Agenda-Vorlage, Rollen, Ablagestruktur für Lessons Learned. Verknüpfe neue Prompts mit der bestehenden Bibliothek."
 **Erwartetes Artefakt:** Community-of-Practice-Konzept mit Office-Hour-Rhythmus, Agenda-Vorlage, Rollen und Wissens-Ablage.
 **Fallstricke (≥2 spezifisch):**
@@ -319,7 +319,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas eine Zugriffsmatrix erstellen: Externe = Viewer/Editor auf freigegebene Ressourcen, kein Owner.
 3. NDA-/AVV-Bezug und Sensitivitätsregeln verankern (vertrauliche Ordner ausgeschlossen).
 4. Verbindliche Offboarding-Schritte definieren (Owner-Transfer vor Abgang, sofortiger Zugriffsentzug).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für externes Onboarding. Erstelle aus der RBAC-Doku im Wissensordner einen Agentur-Onboarding-Leitfaden für IW Medien. Kontext: externe Agentur, nur Social-Atomisierung, kein Gutachten-Zugriff. Format: Zugriffsmatrix (Ressource × Rolle), NDA-/AVV-Hinweis, Offboarding-Checkliste. Externe nie als Owner sensibler Ressourcen."
 **Erwartetes Artefakt:** Agentur-Onboarding-Leitfaden mit Zugriffsmatrix, NDA-/AVV-Bezug und Offboarding-Checkliste.
 **Fallstricke (≥2 spezifisch):**
@@ -338,7 +338,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas je Metrik Datenquelle und realistischen Zielwert festlegen.
 3. Sicherstellen, dass Metriken aggregiert/anonym sind (keine individuelle Leistungskontrolle, Betriebsrat-konform).
 4. Das Set der Leitung als Steuerungsgrundlage vorlegen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Adoptions-Analyst. Definiere aus den KPI-Prinzipien im Wissensordner ein Adoptionsmetrik-Set für den IW-Advisor. Format: Tabelle (Metrik, Definition, Datenquelle, Zielwert, Aggregationsebene). Mische qualitative (Zeitersparnis Aufbereitung) und quantitative Metriken. Schließe individuelle Leistungskontrolle aus."
 **Erwartetes Artefakt:** Adoptionsmetrik-Set (Tabelle) mit Definition, Datenquelle, Zielwert und Aggregationsebene je Kennzahl.
 **Fallstricke (≥2 spezifisch):**
@@ -357,7 +357,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas einen Ablauf festlegen: Erkennung → Stopp → Eskalation an Champion/Leitung → Korrektur → Lessons Learned.
 3. Je Fehlerklasse Rolle, Frist und ob ein veröffentlichter Inhalt zu korrigieren ist festhalten.
 4. Eine Dokumentationspflicht verankern, die in die Community of Practice zurückfließt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Incident-Prozesse. Entwirf aus Guardrails und Policy im Wissensordner einen Eskalations- und Korrektur-Prozess für KI-Fehler im IW. Format: Fehlerklassen-Tabelle (Klasse, Erkennung, Eskalationsrolle, Frist, Korrektur, Doku). Behandle Zahlen-/Faktenfehler als höchste Priorität wegen der Glaubwürdigkeit."
 **Erwartetes Artefakt:** Eskalations- und Korrektur-Prozess mit Fehlerklassen, Rollen, Fristen und Dokumentationspflicht.
 **Fallstricke (≥2 spezifisch):**
@@ -376,7 +376,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas die Lessons Learned und Eskalationsfälle des Quartals zusammenführen.
 3. Offene Governance-Punkte (Zertifikats-/Frist-Re-Prüfung) abhaken.
 4. Eine begründete Skalierungsempfehlung (ja/nein/teilweise) für die Leitung ableiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Quartals-Reviews. Werte die anonymisierten Adoptionsdaten gegen das Metrik-Set im Wissensordner aus und erstelle einen Review-Bericht für die IW-Leitung. Format: Metrik-Soll/Ist-Tabelle, Lessons-Learned-Abschnitt, offene Governance-Punkte, Skalierungsempfehlung mit Begründung. Nutze nur belegte Zahlen; markiere Datenlücken."
 **Erwartetes Artefakt:** Quartals-Review-Bericht mit Soll/Ist-Metriken, Lessons Learned, Governance-Status und begründeter Skalierungsempfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -395,7 +395,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 2. Im Canvas einen Wellen-Fahrplan erstellen: je Welle ein Bereich mit eigenem Mini-Pilot.
 3. Je Welle die Voraussetzungen festhalten (Governance-Freigabe geprüft, Champion benannt, Charter erstellt).
 4. Den Fahrplan der Leitung vorlegen; den Pilot-Pfad (S-OC-001) je neuem Bereich wieder anstoßen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Skalierungs-Berater. Erstelle aus Champion-Landkarte und Review-Bericht im Wissensordner einen Wellen-Fahrplan für die Skalierung des IW-Advisors auf weitere Wissenschaftsbereiche. Format: Tabelle (Welle, Bereich, Voraussetzungen, Champion, Mini-Pilot-Charter ja/nein). Schreibe fest, dass jeder Bereich einen eigenen Pilot- und Governance-Pfad durchläuft."
 **Erwartetes Artefakt:** Skalierungs-Fahrplan (Wellen-Tabelle) mit Bereichen, Voraussetzungen, Champions und Mini-Pilot-Pflicht je Welle.
 **Fallstricke (≥2 spezifisch):**
@@ -412,7 +412,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 1. Die Frage einer der drei Ebenen zuordnen (rechtlich/organisatorisch/professionell).
 2. Den Abschnitt „Governance-Rahmen für KI" abrufen und die zutreffende Regel zitieren.
 3. Bei rechtlicher Tragweite an Datenschutz/Recht verweisen (Beratung, keine Rechtsauskunft).
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Governance-Berater fürs IW-Kommunikationsteam. Beantworte: Dürfen wir eine noch nicht veröffentlichte IW-Studie in ein externes LLM geben? Kontext: FactoryWisskomm- und IQ_HKom-Leitlinien. Format: klare Ja/Nein-Antwort, einschlägige Regel, ein nächster Schritt."
 **Erwartetes Artefakt:** Eine zitierte Governance-Auskunft mit Regel und Eskalationshinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -429,7 +429,7 @@ Die folgenden achtundzwanzig Szenarien (Präfix S-OC) bilden den Einführungs- u
 1. Den Anlass (Textentwurf, Bildgenerierung, Übersetzung) klären.
 2. Den Abschnitt „Governance-Rahmen für KI" abrufen und die relevanten Risiken plus Gegenmaßnahmen zitieren.
 3. Auf die menschliche Faktenprüfung als nicht verhandelbaren Schritt hinweisen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist Risiko-Berater fürs IW. Liste die KI-Risiken beim Erstellen einer Pressemitteilung aus einer Studie und je eine Gegenmaßnahme. Kontext: Faktentreue und Neutralitätsanspruch. Format: Tabelle (Risiko, Gegenmaßnahme)."
 **Erwartetes Artefakt:** Eine Risiko-Gegenmaßnahmen-Tabelle mit Bezug zum Anlass.
 **Fallstricke (≥2 spezifisch):**

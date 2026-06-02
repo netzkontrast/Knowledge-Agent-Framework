@@ -58,7 +58,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt das IT-Briefing formulieren, das die native HubSpot-Integration in den Workspace-Integrationseinstellungen nennt und explizit nur Lese-Scopes anfordert.
 3. Du lässt den Hinweis aufnehmen, dass die Verbindung an die Identität des verbindenden Nutzers gebunden ist (kein Privilege-Escalation über den KI-Proxy).
 4. Du übergibst das Briefing an die IT zur Umsetzung — Little Data berät, konfiguriert aber nicht selbst.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater für unseren Langdock-Workspace (Persona). Erstelle ein IT-Briefing für die native HubSpot-Anbindung eines Reporting-Agenten (Aufgabe). Kontext: Der Agent soll wöchentlich Deal-Stage und Lead-Quelle lesen, niemals schreiben; unsere Marketing-Gruppe ist SCIM-synchronisiert (Kontext). Format: Tabelle mit Spalten Objekt, benötigter Scope, Begründung, plus drei Sätze Sicherheitshinweis (Format)."
 **Erwartetes Artefakt:** Ein einseitiges IT-Briefing (Tabelle plus Sicherheitsabsatz), das die IT direkt umsetzen kann.
 **Fallstricke (≥2 spezifisch):**
@@ -77,7 +77,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt eine schlanke Taxonomie vorschlagen, die breite Eltern-Ordner vermeidet, damit der Sync nicht an der Dateigrenze scheitert.
 3. Du lässt klären, dass nur Text-Formate (PDF, DOCX, MD) indexiert werden — XLSX und Bilder gehören nicht in den Synced Folder.
 4. Du übergibst Taxonomie und Sync-Erwartung (initialer Sync bis zu eine Stunde) als Umsetzungs-Briefing an die IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Wissensmanagement-Berater (Persona). Entwirf eine Ordner-Taxonomie für einen Google-Drive-Synced-Folder unseres Brand-Agenten (Aufgabe). Kontext: aktuell 140 Brand- und Tone-of-Voice-Dokumente, einige als Excel; Sync läuft alle 24 Stunden (Kontext). Format: Baumstruktur plus eine Liste der Dateien, die NICHT in den Synced Folder gehören und wohin sie stattdessen sollen (Format)."
 **Erwartetes Artefakt:** Eine Ordner-Taxonomie als Baumstruktur plus Ausschlussliste der nicht-indexierbaren Formate.
 **Fallstricke (≥2 spezifisch):**
@@ -95,7 +95,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die Themenfelder auflisten und je Feld die führende Quelle bestimmen (z. B. Positionierung → Confluence, Redaktionsplan → Notion).
 2. Du lässt prüfen, welche Inhalte heute doppelt liegen, und einen Migrations- statt Sync-Vorschlag formulieren, damit der Agent keine widersprüchlichen Versionen abruft.
 3. Du übergibst die Matrix an die Teams, damit Confluence und Notion sauber getrennt als Quellen angebunden werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Berater für Wissensarchitektur (Persona). Erstelle eine Source-of-Truth-Matrix für einen Agenten, der Confluence und Notion durchsucht (Aufgabe). Kontext: Positionierung liegt in Confluence, Redaktion und Briefings in Notion, einige Themen doppelt (Kontext). Format: Tabelle mit Themenfeld, führender Quelle, Begründung, Konfliktrisiko (Format)."
 **Erwartetes Artefakt:** Eine Source-of-Truth-Matrix als Tabelle mit Konfliktrisiko-Spalte.
 **Fallstricke (≥2 spezifisch):**
@@ -113,7 +113,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data bestätigen, dass Slack nativ integriert ist und ein Agent über die Slack-Action in einen Kanal posten kann.
 2. Du lässt klar abgrenzen: Die Auslöselogik (wann posten, an welche Bedingung gekoppelt) ist Workflow-Thema und gehört in die Workflow-Beratung, nicht in die Integrationsberatung.
 3. Du lässt das Memo schreiben, das beides verbindet, ohne die Integrationsgrenze zu überschreiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater (Persona). Schreibe ein Entscheidungsmemo, ob Slack-Freigabebenachrichtigungen über die native Integration laufen können (Aufgabe). Kontext: Entwürfe sollen bei Status 'review-ready' in #marketing-freigabe erscheinen (Kontext). Format: Memo mit Abschnitt 'native Integration' und Abschnitt 'gehört in die Workflow-Beratung' (Format)."
 **Erwartetes Artefakt:** Ein Entscheidungsmemo mit klarer Trennung Integration vs. Workflow-Auslösung.
 **Fallstricke (≥2 spezifisch):**
@@ -132,7 +132,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt definieren, welche Asset-Typen (Landingpage, Whitepaper, Social) über DeepL laufen und wo Transkreation statt Übersetzung gefordert ist.
 3. Du lässt einen verpflichtenden Review-Schritt durch Muttersprachler verankern, da KI-Transkreation Entwürfe liefert, keine finalen Texte.
 4. Du übergibst das Setup-Konzept an die IT für die DeepL-Anbindung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Lokalisierungs-Berater (Persona). Entwirf ein Setup für Transkreation DE↔EN über die DeepL-Integration mit Glossar-Steuerung (Aufgabe). Kontext: Kampagne mit Landingpages und einem Whitepaper, Markenton 'sachlich-souverän', vier Zielsprachen (Kontext). Format: Konzept mit Abschnitten Glossar-Ablage, Asset-Typen, Pflicht-Review (Format)."
 **Erwartetes Artefakt:** Ein Lokalisierungs-Setup-Konzept mit Glossar-Struktur und Review-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -150,7 +150,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data klären, welche Looker-Looks und welche GA4-Metriken für die Board-Summary überhaupt nötig sind, um den Datenzugriff klein zu halten.
 2. Du lässt einen Prompt-Rahmen formulieren, der verlangt, dass jede genannte Zahl die Quelle (Looker-Look oder GA4-Bericht) und den Zeitraum mitführt.
 3. Du übergibst Datenbedarf und Prompt-Rahmen an die IT zur Anbindung; Little Data bewertet, baut aber keine Verbindung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Reporting-Berater (Persona). Verfasse eine Board-Management-Summary aus Looker-Conversion-Daten und GA4-Traffic (Aufgabe). Kontext: Q2 gegen Q1, Zielgruppe Vorstand, deutsche Sprache, keine technischen Begriffe (Kontext). Format: drei Bulletpoints mit je Aussage, belegter Zahl plus Quelle und Zeitraum (Format)."
 **Erwartetes Artefakt:** Eine Board-taugliche Management-Summary mit quellenbelegten Kennzahlen.
 **Fallstricke (≥2 spezifisch):**
@@ -169,7 +169,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt im Briefing den Transport (STREAMABLE_HTTP oder Server-Sent Events) und die Authentifizierung über dynamische Platzhalter in Custom Headern festschreiben, damit keine Zugangsdaten offenliegen.
 3. Du lässt für schreibende oder kostenrelevante Tools eine zwingende Nutzerbestätigung im Chat-Interface vorsehen.
 4. Du übergibst das Briefing an die IT; die Server-Einrichtung selbst bleibt deren Aufgabe — Beratung, nicht Ausführung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein MCP-Integrations-Berater (Persona). Erstelle ein Anbindungs-Briefing für unseren internen MCP-Server an einen Marketing-Agenten (Aufgabe). Kontext: Server liefert Kampagnen-Lookups und einen Lösch-Endpoint, Auth per API-Key (Kontext). Format: Tabelle freigegebener Tools mit Spalte 'Bestätigung nötig?', plus Absatz zu Transport und Header-Auth (Format)."
 **Erwartetes Artefakt:** Ein MCP-Anbindungs-Briefing mit kuratierter Tool-Liste und Bestätigungs-Policy.
 **Fallstricke (≥2 spezifisch):**
@@ -187,7 +187,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data erklären, dass Langdock einen MCP-Server-Endpoint bereitstellt, über den Cursor und Claude Desktop den Brand-Agenten als Tool ansprechen.
 2. Du lässt festhalten, welche Agenten überhaupt exponiert werden sollen und dass die Authentifizierung den AGENT_API-Scope braucht.
 3. Du übergibst das Konzept an die IT, die den Endpoint und die API-Keys verwaltet; für rohe API-/Deployment-Details verweist du auf die Schwesterdatei `06-api-und-deployment`.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein MCP-Berater (Persona). Erkläre den technischen Marketern, wie sie unseren Brand-Agenten aus Cursor und Claude Desktop über Langdocks MCP-Server nutzen (Aufgabe). Kontext: zentral gepflegter Brand-Agent, Zugriff nur für die Marketing-Gruppe (Kontext). Format: kurzes Konzept mit Endpoint, den drei Tools, Auth-Hinweis und einer Abgrenzung, was in die API-Beratung gehört (Format)."
 **Erwartetes Artefakt:** Ein MCP-Server-Bereitstellungskonzept für die Client-Teams.
 **Fallstricke (≥2 spezifisch):**
@@ -205,7 +205,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data klarstellen, dass LinkedIn-, Twitter-/X- und Instagram-Publishing sowie Buffer, Hootsuite und Canva nicht nativ sind.
 2. Du lässt pro Plattform den Weg bewerten: über einen passenden MCP-Server (z. B. Zapier-MCP) oder über eine HTTP-Request-Anbindung, deren Bau die Workflow-Beratung verantwortet.
 3. Du lässt das Compliance-Risiko jedes Wegs benennen (Drittanbieter-Zugriff, AGB der Plattform), damit die Direktorin bewusst entscheidet.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater (Persona). Erstelle eine Gap-Analyse für unser geplantes Social-Publishing aus Langdock (Aufgabe). Kontext: Wir wollten LinkedIn und Instagram direkt bespielen, planen aber DSGVO-konform (Kontext). Format: Tabelle mit Plattform, nativ ja/nein, empfohlener Weg, Risiko (Format)."
 **Erwartetes Artefakt:** Eine Gap-Analyse-Tabelle mit Lösungsweg und Risiko je nicht-nativer Plattform.
 **Fallstricke (≥2 spezifisch):**
@@ -224,7 +224,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Eintrag bewerten, ob die Funktion bei einem CRM-Wechsel über eine andere native Integration ersetzbar ist oder eine Brücke braucht.
 3. Du lässt das Ausfallrisiko und die Reihenfolge der Umstellung priorisieren, damit Reporting nicht mitten in einer Kampagne abreißt.
 4. Du übergibst das Register an IT und Operations als Entscheidungsgrundlage; die Migration selbst ist deren Umsetzung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater (Persona). Erstelle ein Abhängigkeitsregister für einen möglichen CRM-Wechsel weg von Salesforce (Aufgabe). Kontext: mehrere Reporting- und Lead-Agenten nutzen Salesforce, Entscheidung steht im nächsten Quartal an (Kontext). Format: Tabelle mit Agent/Use-Case, genutztem Konnektor, Ersatzweg, Ausfallrisiko, Umstellungspriorität (Format)."
 **Erwartetes Artefakt:** Ein Integrations-Abhängigkeitsregister als priorisierte Tabelle.
 **Fallstricke (≥2 spezifisch):**
@@ -243,7 +243,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt eine flache Ordner-Taxonomie vorschlagen, die Brand-Dokumente, Tone-of-Voice und Kampagnen-Briefings sauber trennt, ohne die Dateigrenze zu überschreiten.
 3. Du lässt das Admin-Briefing formulieren, das die OAuth-Verbindung an einen technischen Service-Account (nicht an einen Mitarbeiter-Account) bindet.
 4. Du übergibst Konzept und Briefing an den SharePoint-Administrator zur Umsetzung — Little Data berät, konfiguriert nicht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Wissensarchitektur-Berater (Persona). Entwirf ein SharePoint-Synced-Folder-Konzept für unseren Brand-Agenten (Aufgabe). Kontext: ca. 120 Dokumente, teils PPTX und XLSX, SharePoint Online, Microsoft-365-Tenant (Kontext). Format: Baumstruktur mit Ordner-Namen, Ausschlussliste nicht indexierbarer Formate, drei Sätze Admin-Briefing zu Service-Account und OAuth (Format)."
 **Erwartetes Artefakt:** Ein SharePoint-Synced-Folder-Konzept mit Taxonomie, Ausschlussliste und Admin-Briefing.
 **Fallstricke (≥2 spezifisch):**
@@ -261,7 +261,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die konkreten GA4-Metriken (z. B. Sessions, Cost-per-Lead, Conversion-Rate) benennen, die für den Jour-fixe tatsächlich nötig sind — nicht mehr.
 2. Du lässt ein Zugriffs-Briefing formulieren, das der IT nur Lese-Scopes auf die relevante GA4-Property übergibt und den Zeitraum (rollierende 30 Tage) vorschreibt.
 3. Du lässt einen Prompt-Rahmen ausarbeiten, der jede Zahl mit Metrik-Name, Property und Zeitraum ausweist, damit die Direktorin vor dem Jour-fixe sofort Belege hat.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Performance-Berater (Persona). Erstelle ein GA4-Zugriffs-Briefing für einen Marketing-Agenten und einen Muster-Prompt für die Kampagnen-Zusammenfassung (Aufgabe). Kontext: Kampagnen-Vergleich letzter Monat vs. Vormonat, Zielgruppe Marketing-Direktorin, keine technischen Begriffe (Kontext). Format: Briefing als Tabelle mit Metrik, GA4-Scope, Begründung; Muster-Prompt separat als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein GA4-Zugriffs-Briefing (Tabelle) und ein einsatzbereiter Muster-Prompt für das Kampagnen-Reporting.
 **Fallstricke (≥2 spezifisch):**
@@ -280,7 +280,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Architektur skizzieren: Agent liest HubSpot-Felder → generiert personalisierten Mail-Draft → Menschen im Marketing-Ops schreiben den CRM-Datensatz nach Freigabe.
 3. Du lässt das IT-Briefing formulieren, das die benötigten HubSpot-Read-Scopes und den Service-Account benennt.
 4. Du übergibst Architektur und Briefing an die IT; der Schreib-Pfad verbleibt bei Marketing-Operations — Beratung, keine Ausführung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CRM-Integrations-Berater (Persona). Entwirf eine Lese-Architektur für HubSpot-Datenanreicherung in einem Webinar-Follow-up-Workflow (Aufgabe). Kontext: 50 Leads pro Webinar, Felder: Branche, Unternehmensgröße, letzter Touchpoint; Agent darf nie schreiben (Kontext). Format: Architektur-Skizze als nummerierter Datenpfad plus Tabelle mit Feld, HubSpot-Scope, Begründung (Format)."
 **Erwartetes Artefakt:** Eine Lese-Architektur-Skizze und ein HubSpot-Scope-Briefing für die IT.
 **Fallstricke (≥2 spezifisch):**
@@ -298,7 +298,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data das Nachrichtenformat für den Slack-Post entwerfen: Kampagnen-Name, Entwurfs-Link, kurze Kontext-Zusammenfassung, Freigabe-Deadline.
 2. Du lässt die Integrations-Grenze klar benennen: Die native Slack-Action postet die Nachricht; wann sie ausgelöst wird (Status-Wechsel, Cron, manuell), ist Workflow-Thema.
 3. Du übergibst das Format und die Schnittstellenbeschreibung an Marketing-Ops; die Workflow-Konfiguration wird separat in `04-workflows` beraten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater (Persona). Entwirf ein Slack-Benachrichtigungsformat für freigabereife Kampagnen-Entwürfe und beschreibe die Abgrenzung zur Workflow-Logik (Aufgabe). Kontext: Zielkanal #marketing-freigabe, Zielgruppe Marketingleitung, maximale Nachrichtenlänge drei kurze Sätze plus Link (Kontext). Format: Nachrichtenvorlage in Markdown plus zwei Sätze Schnittstellenbeschreibung Integration vs. Workflow (Format)."
 **Erwartetes Artefakt:** Eine Slack-Nachrichtenvorlage und eine Schnittstellen-Abgrenzung Integration vs. Workflow.
 **Fallstricke (≥2 spezifisch):**
@@ -317,7 +317,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt das Berechtigungs-Konzept formulieren: Connected App mit Lese-Profil, Ausschluss von PII-schweren Feldern wie persönliche E-Mails und Mobilnummern.
 3. Du lässt den Datenschutz-Hinweis einarbeiten: Salesforce-Einträge mit personenbezogenen Daten dürfen den Agent-Kontext nur anonymisiert (User-IDs statt Namen) verlassen.
 4. Du übergibst das Konzept an Salesforce-Admin und Datenschutzbeauftragten; die Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CRM-Datenschutz-Berater (Persona). Erstelle ein Salesforce-Berechtigungs-Konzept für einen Lese-Agenten in unserer ABM-Kampagne (Aufgabe). Kontext: Felder Account-Branche, ARR-Band, offene Opportunities; keine personenbezogenen Kontaktdaten; DSGVO-Konformität ist Pflicht (Kontext). Format: Tabelle mit Salesforce-Objekt, benötigtem Scope, PII-Risiko und Maßnahme; plus drei Sätze Datenschutz-Hinweis (Format)."
 **Erwartetes Artefakt:** Ein Salesforce-Berechtigungs-Konzept (Tabelle) mit PII-Risikobewertung und Datenschutz-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -336,7 +336,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt für jeden Stack bestimmen, ob eine native Integration oder ein MCP-Server der geeignete Anbindungsweg ist und welche Lese-Scopes nötig sind.
 3. Du lässt die Governance-Grenze benennen: Schreib-Aktionen (z. B. Lead-Status in HubSpot ändern) verbleiben bei Marketing-Operations, nicht beim Agent.
 4. Du übergibst die Architektur-Skizze an IT und Marketing-Ops als Entscheidungsgrundlage für die Konsolidierung.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Architekt (Persona). Entwirf eine Orchestrator-Architektur für Langdock über unseren drei Tool-Stacks HubSpot, Marketo und Klaviyo (Aufgabe). Kontext: Langdock ersetzt keinen Stack, soll aber Daten aus allen dreien für Personalisierung und Reporting lesend nutzen können (Kontext). Format: Tabelle mit Stack, Anbindungsweg (nativ/MCP), Lese-Scope, Governance-Verantwortung; plus zwei Sätze Abgrenzung was Langdock NICHT übernimmt (Format)."
 **Erwartetes Artefakt:** Eine Orchestrator-Architektur-Tabelle mit Anbindungswegen, Scopes und Governance-Grenzen.
 **Fallstricke (≥2 spezifisch):**
@@ -355,7 +355,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt eine Rotation-Policy definieren: API-Keys für MCP-Verbindungen alle 90 Tage rotieren, Zugangsdaten ausschließlich im Langdock-Admin-Secrets-Bereich hinterlegen.
 3. Du lässt eine Zuständigkeitsmatrix formulieren: IT rotiert und hinterlegt Keys; Marketing-Direktorin gibt Anforderungen vor; Marketing-Ops meldet Verbindungsfehler.
 4. Du übergibst das Konzept an IT-Security zur Umsetzung und Dokumentation.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein IT-Security-Berater für Langdock-Integrationen (Persona). Erstelle ein API-Key-Management-Konzept für unsere drei MCP-Verbindungen (Aufgabe). Kontext: Verbindungen zu Kampagnen-DB, GA4 und Jira; DSGVO-konformes EU-Hosting; keine Keys im Klartext (Kontext). Format: Konzept mit Abschnitten Platzhalter-Syntax, Rotation-Policy, Zuständigkeitsmatrix (Format)."
 **Erwartetes Artefakt:** Ein API-Key-Management-Konzept mit Rotation-Policy und Zuständigkeitsmatrix.
 **Fallstricke (≥2 spezifisch):**
@@ -373,7 +373,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data fünf Canary-Prompts je MCP-Verbindung definieren — einfache Abfragen mit erwartbarem Ergebnis, die wöchentlich manuell oder über einen Workflow ausgeführt werden.
 2. Du lässt Eskalations-Schwellen festlegen: Bei zwei von fünf Canary-Fehlern → sofortige IT-Meldung; bei Verbindungsabbruch → Fallback auf gecachte Wissensordner-Inhalte.
 3. Du lässt eine Verantwortlichkeitsmatrix erstellen: Marketing-Ops führt wöchentliche Spot-Checks durch; IT behebt Verbindungsfehler innerhalb von 24 Stunden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integration-Reliability-Berater (Persona). Erstelle ein Monitoring-Konzept für unsere drei aktiven MCP-Verbindungen (Aufgabe). Kontext: stiller Verbindungsabbruch ist dreimal aufgetreten, kein Alert-System vorhanden (Kontext). Format: Konzept mit Abschnitten Canary-Prompts-Beispiele, Eskalations-Schwellen, Verantwortlichkeitsmatrix (Format)."
 **Erwartetes Artefakt:** Ein Integration-Monitoring-Konzept mit Canary-Prompts, Eskalations-Schwellen und Zuständigkeitsmatrix.
 **Fallstricke (≥2 spezifisch):**
@@ -391,7 +391,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die SSO-Kernangaben sammeln, die die IT braucht: IdP-Typ (z. B. Azure AD, Okta), Assertion Consumer Service URL, SCIM-Endpoint und Attribut-Mapping für Marketing-Gruppen.
 2. Du lässt den SCIM-Nutzen klar machen: Neue Mitarbeiter werden automatisch in die Marketing-Gruppe provisioniert; ausscheidende Mitarbeiter verlieren sofort den Workspace-Zugang.
 3. Du lässt das IT-Briefing formulieren und dabei betonen, dass Little Data berät aber nicht konfiguriert — die Umsetzung liegt bei IT und Workspace-Admin.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Workspace-Governance-Berater (Persona). Erstelle eine SSO-Anforderungs-Liste für unseren Langdock-Marketing-Workspace (Aufgabe). Kontext: Identity-Provider Azure AD, ca. 25 Marketing-Mitarbeiter, DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Angabe, benötigtem Wert, Begründung; plus Abschnitt SCIM-Empfehlung mit drei Bulletpoints (Format)."
 **Erwartetes Artefakt:** Eine SSO-Anforderungs-Liste (Tabelle) und eine SCIM-Empfehlung für die IT.
 **Fallstricke (≥2 spezifisch):**
@@ -409,7 +409,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die Jira-Felder bestimmen, die für ein Marketing-Fehler-Ticket sinnvoll sind: Summary, Description mit Kontext aus dem Chat, Priority, Komponente (Tracking/Analytics) und Reporter.
 2. Du lässt ein Ticket-Template formulieren, das der Agent anhand des Chat-Kontexts befüllen soll, ohne Informationen hinzuzuerfinden.
 3. Du übergibst Template und Scope-Briefing (Issue-Create-Permission für Marketing-Projekt) an die IT; Little Data berät, erstellt keine Tickets.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Workflow-Integrations-Berater (Persona). Entwirf ein Jira-Ticket-Template für Marketing-Fehler-Meldungen, die aus einem Langdock-Chat heraus erstellt werden (Aufgabe). Kontext: Fehler betreffen Tracking-Links, UTMs und Analytics-Pixel; Reporter ist immer das Marketing-Team (Kontext). Format: Template mit Jira-Feldern als Tabelle plus drei Sätze IT-Briefing zu benötigter Jira-Permission (Format)."
 **Erwartetes Artefakt:** Ein Jira-Ticket-Template (Tabelle) und ein Permission-Briefing für die IT.
 **Fallstricke (≥2 spezifisch):**
@@ -428,7 +428,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt Entscheidungskriterien formulieren: Gibt es eine native Integration? Bietet der Anbieter einen MCP-Server an? Ist eigene JavaScript-Entwicklung vorhanden? Ist eine Drittanbieter-Brücke DSGVO-konform?
 3. Du lässt den Entscheidungsbaum als Tabelle mit Kriterium, empfohlenem Weg, Vorteil und Risiko ausarbeiten.
 4. Du übergibst den Rahmen an Marketing-Ops und IT als Orientierung für künftige Tool-Evaluierungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Architekt (Persona). Erstelle einen Entscheidungsrahmen für die Auswahl des Anbindungswegs neuer Marketing-Tools an Langdock (Aufgabe). Kontext: vier Pfade — nativ, MCP, Custom Builder, HTTP-Brücke; DSGVO-Konformität ist Pflichtkriterium (Kontext). Format: Entscheidungsbaum als Tabelle mit Kriterium, empfohlenem Pfad, Hauptvorteil, Risiko (Format)."
 **Erwartetes Artefakt:** Ein Entscheidungsbaum (Tabelle) für die Wahl des Anbindungswegs neuer Marketing-Tools.
 **Fallstricke (≥2 spezifisch):**
@@ -447,7 +447,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Einsparung je Integration in Stunden/Monat und Lohnkosten-Äquivalent übersetzen (Durchschnittssatz Marketingleitung × eingesparte Stunden).
 3. Du lässt den Break-even-Zeitraum berechnen: Einrichtungsaufwand (IT-Stunden) ÷ monatliche Einsparung = Break-even in Monaten.
 4. Du übergibst das Kalkulationsblatt an den CFO als Entscheidungsgrundlage; die Zahlen sind Schätzwerte und müssen vom Controlling validiert werden.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-ROI-Berater (Persona). Erstelle ein ROI-Kalkulationsblatt für drei Langdock-Integrationen (Aufgabe). Kontext: HubSpot-Daten-Export heute 3h/Woche, SharePoint-Dokumentenpflege 2h/Woche, Jira-Ticket-Erstellung 1h/Woche; Durchschnittssatz Marketingleitung 120 EUR/h (Kontext). Format: Tabelle mit Integration, heutigem Aufwand, prognostizierter Einsparung, Break-even in Monaten; plus ein Satz Validierungshinweis (Format)."
 **Erwartetes Artefakt:** Ein ROI-Kalkulationsblatt (Tabelle) mit Break-even-Zeitraum und Validierungshinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -466,7 +466,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Eintrag prüfen, ob eine direkt äquivalente Salesforce-Integration in Langdock nativ verfügbar ist oder ob ein Umbau via MCP-Server nötig wird.
 3. Du lässt das Migrationsrisiko je Eintrag einschätzen: niedriges Risiko (1:1-native-Ersatz), mittleres Risiko (Scope-Anpassung nötig), hohes Risiko (kein direkter Ersatz).
 4. Du übergibst die Impact-Analyse an IT, Marketing-Ops und die CRM-Entscheidungsgruppe; die Migration selbst liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater (Persona). Erstelle eine CRM-Wechsel-Impact-Analyse für den Umstieg von HubSpot auf Salesforce in unserem Langdock-Workspace (Aufgabe). Kontext: drei Reporting-Agenten, ein Lead-Anreicherungs-Workflow und ein Synced-Folder-Alias hängen an HubSpot-Daten (Kontext). Format: Tabelle mit Agent/Workflow, heutiger HubSpot-Abhängigkeit, Salesforce-Äquivalent, Migrationsrisiko niedrig/mittel/hoch (Format)."
 **Erwartetes Artefakt:** Eine CRM-Wechsel-Impact-Analyse (Tabelle) mit Migrationsrisiko je Agent und Workflow.
 **Fallstricke (≥2 spezifisch):**
@@ -485,7 +485,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die konkret benötigten API-Endpunkte der Lead-Scoring-Engine, die Input-Parameter (Lead-ID, Segment) und das erwartete Output-Format (Score 0–100, Reasoning-String) spezifizieren.
 3. Du lässt die Sicherheitsanforderungen formulieren: Sandbox läuft in abgeschottetem Container; keine Langtext-Einbindung von Drittbibliotheken ohne IT-Freigabe.
 4. Du übergibst den Anforderungs-Brief an das Entwicklungs-Team; die Implementierung liegt bei den Entwicklern.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Custom-Integration-Berater (Persona). Erstelle einen Anforderungs-Brief für den Langdock Custom Integration Builder, der unsere interne Lead-Scoring-API anbindet (Aufgabe). Kontext: Die API gibt Score (0–100) und Reasoning-String zurück; Auth per Bearer-Token; kein nativer Konnektor vorhanden (Kontext). Format: Anforderungs-Brief mit Abschnitten API-Endpunkt, Input-Schema, Output-Schema, Sicherheitsanforderungen (Format)."
 **Erwartetes Artefakt:** Ein Anforderungs-Brief für den Custom Integration Builder mit Input-/Output-Schemata und Sicherheitsanforderungen.
 **Fallstricke (≥2 spezifisch):**
@@ -504,7 +504,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Meilenstein einen Owner benennen: IT verantwortet SSO/SCIM und CRM-Scopes; Marketing-Ops verantwortet Synced-Folder-Taxonomie und Slack-Kanal.
 3. Du lässt die Advisory-Grenze explizit einbauen: Little Data liefert Briefings und Konzepte je Meilenstein; die Konfiguration übernehmen IT und Operations.
 4. Du übergibst den Rollout-Plan als Kick-off-Dokument an IT, Marketing-Ops und Workspace-Admin.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrationsplanungs-Berater für einen neuen Langdock-Workspace (Persona). Erstelle einen 30-Tage-Rollout-Plan für die wichtigsten Marketing-Integrationen (Aufgabe). Kontext: Team mit 20 Personen, Stack: Google Workspace, HubSpot, Slack, keine Salesforce-Anbindung geplant; DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Woche, Integration, Owner, erwartetes Ergebnis, Abhängigkeit; plus zwei Sätze zur Advisory-Grenze (Format)."
 **Erwartetes Artefakt:** Ein 30-Tage-Rollout-Plan (Tabelle) mit Meilensteinen, Ownern und Advisory-Grenze-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -523,7 +523,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt klären, dass der Agent ausschließlich Lese-Zugriff erhält — Notion-Einträge werden nie vom Agenten verändert; Statusänderungen bleiben bei den Redakteurinnen.
 3. Du lässt einen Query-Rahmen formulieren, der den Agenten anweist, beim Abfragen immer das heutige Datum als Filter zu nutzen, um nur aktuelle und anstehende Einträge zu laden.
 4. Du übergibst das Konzept und die benötigten Notion-API-Scopes (Datenbank lesen) an die IT zur Einrichtung der nativen Integration.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Content-Planungs-Berater (Persona). Entwirf ein Notion-Integrations-Konzept für unseren Content-Agenten, der den Redaktionsplan liest (Aufgabe). Kontext: zwei Notion-Datenbanken — Redaktionsplan mit Feldern Thema/Deadline/Status und Kampagnen-Board mit Feldern Name/Zielgruppe; Agent darf nie schreiben (Kontext). Format: Konzept mit Abschnitten Datenbank-Auswahl, benötigter API-Scope, Query-Rahmen mit Datum-Filter (Format)."
 **Erwartetes Artefakt:** Ein Notion-Integrations-Konzept mit Datenbank-Auswahl, Lese-Scope und Query-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -542,7 +542,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die für den Content-Agenten relevanten Airtable-Bases und Felder bestimmen und den Lese-Scope auf genau diese Tables begrenzen.
 3. Du lässt im Briefing festschreiben, dass alle schreibenden Airtable-Tools (Record erstellen, Record löschen) in der Langdock-MCP-Konfiguration mit Pflicht-Nutzerbestätigung versehen werden.
 4. Du übergibst das Briefing an die IT; Little Data berät, konfiguriert den MCP-Server nicht selbst.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein MCP-Integrations-Berater (Persona). Erstelle ein Anbindungs-Briefing für einen Airtable-MCP-Server, der unsere Content-Asset-Datenbank lesbar macht (Aufgabe). Kontext: Airtable-Base mit Tables Asset-Liste und Kampagnen-Varianten; Agent darf nur lesen; schreibende Endpunkte müssen Nutzerbestätigung erfordern (Kontext). Format: Briefing mit Abschnitten MCP-Server-Quelle, Lese-Scope, Tabelle freigegebener vs. gesperrter Tools, Transport-Angabe (Format)."
 **Erwartetes Artefakt:** Ein MCP-Anbindungs-Briefing mit Tool-Freigabe-Tabelle und Bestätigungs-Policy.
 **Fallstricke (≥2 spezifisch):**
@@ -560,7 +560,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data erklären, dass GA4 in Langdock ausschließlich lesend integriert ist — es gibt strukturell keinen Schreib-Scope; dieser Punkt ist im IT-Briefing explizit zu dokumentieren, um Missverständnisse bei zukünftigen Audits zu vermeiden.
 2. Du lässt die benötigten GA4-Lese-Scopes (analytics.readonly auf eine bestimmte Property) und die sinnvollen Abfrage-Parameter (Metriken, Dimensionen, Zeitraum) für typische Reporting-Fragen bestimmen.
 3. Du lässt ein Prompt-Template ausarbeiten, das bei jeder GA4-Abfrage Property-ID, Metrik-Name und Zeitraum mitführt und fehlende Werte als "keine Daten verfügbar" — niemals als Schätzwert — ausweist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Analytics-Governance-Berater (Persona). Erstelle ein GA4-Read-Only-Konzept für unseren Reporting-Agenten sowie ein Prompt-Template für Kampagnen-Abfragen (Aufgabe). Kontext: GA4-Property unserer Unternehmenswebsite, wöchentliche Reporting-Fragen zu Traffic, Conversions und Cost-per-Lead (Kontext). Format: Konzept mit Abschnitten GA4-Scope, strukturelle Schreibbeschränkung, Prompt-Template als Code-Block mit Pflichtfeldern Property/Metrik/Zeitraum (Format)."
 **Erwartetes Artefakt:** Ein GA4-Read-Only-Konzept und ein einsatzbereites Prompt-Template für Kampagnen-Reporting.
 **Fallstricke (≥2 spezifisch):**
@@ -579,7 +579,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die benötigten OAuth-Scopes bestimmen: r_ads (Kampagnendaten lesen) und r_ads_reporting (Performance-Metriken lesen); rw_ads (schreiben) ist explizit auszuschließen.
 3. Du lässt einen LinkedIn-AGB-Hinweis einarbeiten: Rohe Insights-Daten dürfen nicht an Drittplattformen weitergegeben werden; die Nutzung ist auf interne Reporting-Zwecke zu beschränken.
 4. Du übergibst das Briefing an die IT und den Datenschutzbeauftragten; die OAuth-App-Registrierung in LinkedIn liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Performance-Integrations-Berater (Persona). Erstelle ein Briefing für die Anbindung von LinkedIn Ads via MCP-Server an unseren Reporting-Agenten (Aufgabe). Kontext: Ziel ist Lesen von Kampagnenkosten, Impressions, CTR; Schreiben auf LinkedIn ist verboten; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten benötigte OAuth-Scopes, Tool-Freigabe-Tabelle mit Bestätigungs-Spalte, LinkedIn-AGB-Hinweis (Format)."
 **Erwartetes Artefakt:** Ein LinkedIn-Ads-MCP-Briefing mit Scope-Definition, Tool-Freigabe-Tabelle und AGB-Hinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -598,7 +598,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt den empfohlenen Weg für Lese-Reporting bewerten: MCP-Server für strukturierte API-Abfragen bevorzugen; HTTP-Brücke als Fallback, aber mit höherem Wartungsaufwand.
 3. Du lässt klar benennen, was Langdock bei Marketo strukturell nicht kann: E-Mail-Sends auslösen, Kampagnen-Flows konfigurieren oder Lead-Scoring-Regeln ändern — diese Aktionen verbleiben in Marketo.
 4. Du übergibst die Einschätzung an IT und Marketing-Ops als Entscheidungsgrundlage; die Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Marketing-Automation-Integrations-Berater (Persona). Erstelle eine Integrations-Einschätzung für die Anbindung von Marketo an unseren Langdock-Workspace (Aufgabe). Kontext: Ziel ist Lesen von Kampagnen-Performance und Lead-Zahlen; kein E-Mail-Versand über Langdock; DSGVO-konformes EU-Hosting (Kontext). Format: Einschätzung mit Abschnitten Anbindungsweg (MCP vs. HTTP-Brücke), Lese-Scope, was Langdock strukturell nicht übernimmt, Risiko je Pfad (Format)."
 **Erwartetes Artefakt:** Eine Marketo-Integrations-Einschätzung mit Anbindungsweg, Scope-Empfehlung und strukturellen Grenzen.
 **Fallstricke (≥2 spezifisch):**
@@ -617,7 +617,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Verbindung das DSGVO-Risiko einschätzen: Zapier-Server liegen zum Teil außerhalb der EU; für PII-Daten (Kontaktdaten aus Typeform) ist ein EU-Zapier-Account oder eine Alternative zu prüfen.
 3. Du lässt den Wartungsaufwand realistisch benennen: Zapier-Brücken können bei API-Änderungen der angebundenen Tools still abreißen; einen Owner je Brücke benennen.
 4. Du übergibst die Bewertung an IT und Datenschutzbeauftragten; Little Data empfiehlt, konfiguriert aber keine Zapier-Zaps.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Middleware-Integrations-Berater (Persona). Bewerte den Einsatz von Zapier als Brücke für Mailchimp, Typeform und Canva in unserem Langdock-Workspace (Aufgabe). Kontext: keine nativen Konnektoren für diese Tools, DSGVO-konformes EU-Hosting Pflicht, Team ohne eigene Entwickler (Kontext). Format: Tabelle mit Tool, MCP-Alternative ja/nein, DSGVO-Risiko, Wartungsaufwand, Empfehlung (Format)."
 **Erwartetes Artefakt:** Eine Zapier-Brücken-Bewertungstabelle mit DSGVO-Risiko, Wartungsaufwand und Empfehlung je Tool.
 **Fallstricke (≥2 spezifisch):**
@@ -635,7 +635,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data das Webhook-Muster erklären: Ein externes System sendet eine HTTP-POST-Payload an einen Langdock-Webhook-Endpoint; der Workflow-Builder empfängt und verarbeitet das Ereignis.
 2. Du lässt drei konkrete Marketing-Anwendungsfälle skizzieren und je Fall die Payload-Felder, die Sicherheitsanforderung (HMAC-Signatur oder Shared Secret) und den nächsten Verarbeitungsschritt benennen.
 3. Du lässt die Grenze klar ziehen: Die Webhook-Endpoint-Konfiguration und Payload-Verarbeitungslogik gehören in die Workflow-Beratung (`04-workflows`); hier wird nur das Architektur-Konzept beraten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Architekt (Persona). Erstelle ein Webhook-Architektur-Konzept für drei Marketing-Anwendungsfälle in unserem Langdock-Workspace (Aufgabe). Kontext: Anwendungsfälle — Formular-Lead-Eingang, Intent-Signal aus Bombora, Kampagnen-Status-Change in HubSpot; Sicherheitspflicht: HMAC-Signatur oder Shared Secret (Kontext). Format: Tabelle mit Anwendungsfall, Payload-Felder, Sicherheitsanforderung, nächster Verarbeitungsschritt; plus zwei Sätze Abgrenzung zur Workflow-Beratung (Format)."
 **Erwartetes Artefakt:** Ein Webhook-Architektur-Konzept (Tabelle) mit drei Anwendungsfällen und Sicherheitsanforderungen.
 **Fallstricke (≥2 spezifisch):**
@@ -654,7 +654,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die IAM-Rolle des Service Accounts auf BigQuery Data Viewer und BigQuery Job User beschränken; keine Owner- oder Editor-Rolle.
 3. Du lässt verbotene SQL-Operationen (DROP, DELETE, INSERT, UPDATE, CREATE) im MCP-Briefing als gesperrte Tool-Actions dokumentieren und eine Pflicht-Nutzerbestätigung für Abfragen über 1 TB Scan-Volumen vorsehen.
 4. Du übergibst das Briefing an den BigQuery-Administrator und die IT; Little Data berät, konfiguriert keine IAM-Rollen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Data-Warehouse-Integrations-Berater (Persona). Erstelle ein BigQuery-MCP-Briefing für einen Marketing-Agenten, der Kampagnen-Attribution-Daten liest (Aufgabe). Kontext: freigegebene Datasets: marketing_attribution, campaign_spend; kein DDL/DML; IAM-Prinzip der minimalen Berechtigung; Kostenschwelle 1 TB Scan (Kontext). Format: Briefing mit Abschnitten Dataset-Freigabe, IAM-Rolle, verbotene SQL-Operationen, Nutzerbestätigungs-Schwelle (Format)."
 **Erwartetes Artefakt:** Ein BigQuery-MCP-Briefing mit Dataset-Freigabe, IAM-Anforderungen, SQL-Verboten und Kostenschwelle.
 **Fallstricke (≥2 spezifisch):**
@@ -673,7 +673,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt ein dediziertes Virtual Warehouse (XS-Größe, Auto-Suspend nach 60 Sekunden) für Marketing-Agenten-Abfragen vorsehen, damit Snowflake-Credits kontrolliert bleiben.
 3. Du lässt die Bestätigungspflicht für Abfragen definieren, die mehr als drei Joins oder keine WHERE-Klausel enthalten — diese laufen Gefahr, das Warehouse unverhältnismäßig zu belasten.
 4. Du übergibst das Konzept an den Snowflake-Administrator; die Rollenkonfiguration und Warehouse-Einrichtung liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Data-Warehouse-Governance-Berater (Persona). Erstelle ein Snowflake-Anbindungs-Konzept für einen Marketing-Agenten mit Read-Only-Zugriff (Aufgabe). Kontext: Schemas MARKETING und CAMPAIGN_ANALYTICS; XS-Warehouse; kein DML; Snowflake-Credit-Kontrolle Priorität (Kontext). Format: Konzept mit Abschnitten Rollen-Definition, Warehouse-Konfiguration, zugelassene Schemas, Abfrage-Governance-Regeln (Format)."
 **Erwartetes Artefakt:** Ein Snowflake-MCP-Anbindungs-Konzept mit Rollen-Definition, Warehouse-Konfiguration und Abfrage-Governance.
 **Fallstricke (≥2 spezifisch):**
@@ -692,7 +692,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die benötigten API-Scopes definieren: Asset suchen (Keyword, Tag, Kampagnenname), Metadaten lesen (Asset-ID, Format, Freigabe-Status), Download-URL abrufen — kein Löschen, kein Statusändern.
 3. Du lässt eine Governance-Regel festschreiben: Der Agent gibt im Chat immer nur Asset-ID und Download-URL aus — er lädt keine Binärdateien in den Kontext, da das Kontext-Fenster überlastet würde.
 4. Du übergibst das Konzept an IT und DAM-Administrator; Little Data berät, konfiguriert keine API-Verbindungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein DAM-Integrations-Berater (Persona). Erstelle ein Anbindungs-Konzept für unser Bynder-DAM an den Content-Agenten in Langdock (Aufgabe). Kontext: Agent soll nach freigegebenen Kampagnen-Assets suchen und Asset-ID plus Download-URL liefern; kein Löschen, keine Statusänderung (Kontext). Format: Konzept mit Abschnitten Anbindungsweg (MCP vs. HTTP-Brücke), API-Scopes, Governance-Regeln, Kontext-Fenster-Hinweis (Format)."
 **Erwartetes Artefakt:** Ein DAM-Anbindungs-Konzept mit Anbindungsweg, Scope-Definition und Kontext-Fenster-Governance.
 **Fallstricke (≥2 spezifisch):**
@@ -711,7 +711,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Lese-Scopes auf aggregierte Event-Metriken beschränken: Gesamt-Registrierungen, Attend-Rate, Session-Engagement-Score — keine individuellen Teilnehmerdaten (Name, E-Mail) in den Agent-Kontext.
 3. Du lässt eine DSGVO-Governance-Regel formulieren: Individuelle Teilnehmerdaten bleiben im Event-System; der Agent erhält nur Aggregat-Zahlen, keine PII.
 4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die API-Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Event-Analytics-Berater (Persona). Erstelle ein MCP-Briefing für die Anbindung unserer Cvent-Event-Plattform an den Reporting-Agenten (Aufgabe). Kontext: Post-Event-Reporting für Webinare, aggregierte Metriken, keine PII im Agent-Kontext, DSGVO-Pflicht (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, Lese-Scopes, DSGVO-Governance-Regel, Post-Event-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein Event-Plattform-MCP-Briefing mit Lese-Scopes, DSGVO-Regel und Post-Event-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -730,7 +730,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Datenschutz-Governance definieren: Der Agent erhält ausschließlich aggregierte Antwortdaten (Durchschnittswerte, Themen-Cluster) — keine individuellen Antworten mit Respondenten-ID.
 3. Du lässt ein VoC-Analyse-Prompt-Template ausarbeiten, das den Agenten anweist, Top-3-Themen zu identifizieren, Sentiment je Thema auszuweisen und einen Handlungsvorschlag für das nächste Quartal zu formulieren.
 4. Du übergibst Konzept und Template an IT und Marketing-Ops; die API-Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein VoC-Integrations-Berater (Persona). Erstelle ein Anbindungs-Konzept für unsere Qualtrics-Befragungen an den Langdock-VoC-Analyse-Agenten (Aufgabe). Kontext: quartalsweise Kundenbefragung mit ca. 300 Antworten, nur aggregierte Daten in den Agenten-Kontext, DSGVO-konformes EU-Hosting (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Aggregat-Governance, DSGVO-Hinweis, VoC-Analyse-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein Qualtrics-Anbindungs-Konzept mit Aggregat-Governance, DSGVO-Hinweis und VoC-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -748,7 +748,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die Typeform-Webhook-Payload-Struktur beschreiben und bestimmen, welche Formularfelder (Antworttext, Thema) in den Workflow-Kontext übergeben werden — PII-Felder (Name, E-Mail) nur wenn für das Follow-up zwingend nötig.
 2. Du lässt die Signatur-Validierung spezifizieren: Typeform sendet eine HMAC-SHA256-Signatur im Header; der Langdock-Webhook-Empfänger muss diese vor der Verarbeitung validieren.
 3. Du lässt die Workflow-Skizze ausarbeiten: Typeform-Webhook → Payload-Validierung → Agent analysiert Antworten → Draft Follow-up → Human-Approval-Gate vor Versand; und verweist für die detaillierte Workflow-Konfiguration auf `04-workflows`.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Webhook-Integrations-Berater (Persona). Erstelle ein Typeform-Webhook-Konzept für einen Langdock-Workflow, der Formular-Einreichungen analysiert und ein Follow-up vorbereitet (Aufgabe). Kontext: Typeform mit Feldern Thema, Frage, optional E-Mail; HMAC-Signatur-Pflicht; DSGVO-Datensparsamkeit; Human-Approval vor Versand (Kontext). Format: Konzept mit Abschnitten Payload-Felder, Signatur-Validierung, DSGVO-Regel, Workflow-Skizze als nummerierte Schritte (Format)."
 **Erwartetes Artefakt:** Ein Typeform-Webhook-Konzept mit Payload-Felder, Signatur-Validierung, DSGVO-Regel und Workflow-Skizze.
 **Fallstricke (≥2 spezifisch):**
@@ -767,7 +767,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Lese-Scopes bestimmen: Prospect-Engagement-Score, Campaign-Performance (Opens, Clicks), List-Membership — keine Schreib-Scopes auf Prospect-Datensätze.
 3. Du lässt den Anwendungsfall skizzieren: Agent liest Pardot-Engagement-Daten → generiert personalisierten Nurturing-Content-Entwurf → Menschen in Marketing-Ops importieren den Entwurf in Pardot und konfigurieren den Send.
 4. Du übergibst die Einschätzung an IT und Salesforce-Admin; die CRM-Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein B2B-Marketing-Automation-Berater (Persona). Erstelle eine Pardot-Integrations-Einschätzung für unseren Langdock-Workspace (Aufgabe). Kontext: Pardot über Salesforce-API erreichbar; Ziel ist Lesen von Engagement-Scores und Generieren von Nurturing-Content-Entwürfen; kein automatischer E-Mail-Versand (Kontext). Format: Einschätzung mit Abschnitten Anbindungsweg, Lese-Scope, Anwendungsfall-Skizze, Advisory-Grenze was Langdock nicht übernimmt (Format)."
 **Erwartetes Artefakt:** Eine Pardot-Integrations-Einschätzung mit Anbindungsweg, Scope, Anwendungsfall und Advisory-Grenze.
 **Fallstricke (≥2 spezifisch):**
@@ -786,7 +786,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Tool bewerten, ob Langdock die Kernfunktion vollständig (100%), teilweise (50%) oder gar nicht (0%) abdeckt, und die Begründung dokumentieren.
 3. Du lässt Empfehlungen formulieren: Vollständig ersetzbar → Deaktivierung nach Migrationsplan; Hybride Nutzung → Beschränkung auf Kernfunktionen des Dritttools; Unersetzlich → Weiterführen und via MCP anbinden.
 4. Du übergibst das Assessment und den Executive-Summary an den CFO und die IT; Kündigungs- und Migrations-Entscheidungen liegen beim Management.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Tool-Konsolidierungs-Berater (Persona). Erstelle ein Tool-Konsolidierungs-Assessment für unseren Marketing-Tool-Stack auf Basis unseres Tool-Inventars im Wissensordner (Aufgabe). Kontext: CFO-Kostenziel, Bewertungsdimensionen Langdock-Abdeckung 0/50/100%, monatliche Kosten, Abhängigkeiten; fünf Tools im Inventar (Kontext). Format: Tabelle mit Tool, Monatkosten, Langdock-Abdeckung, Begründung, Empfehlung; plus drei Sätze Executive-Summary (Format)."
 **Erwartetes Artefakt:** Ein Tool-Konsolidierungs-Assessment (Tabelle) mit Executive-Summary für den CFO.
 **Fallstricke (≥2 spezifisch):**
@@ -804,7 +804,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die Kerneigenschaft von n8n hervorheben: self-hosted bedeutet, alle Daten verbleiben im eigenen Rechenzentrum — kein Drittanbieter-Datentransfer und volle DSGVO-Kontrolle, aber auch volle IT-Wartungsverantwortung.
 2. Du lässt den Vergleich entlang der Dimensionen DSGVO-Risiko, Wartungsaufwand, Lizenzkosten, Anzahl verfügbarer Konnektoren und Langdock-Webhook-Kompatibilität strukturieren.
 3. Du lässt eine priorisierte Migrations-Empfehlung formulieren: Zapier-Brücken mit PII-Transfer als erste Migrationskandidaten; Brücken ohne PII können bei Zapier verbleiben, wenn Wartungsaufwand für n8n zu hoch ist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Middleware-Architektur-Berater (Persona). Erstelle einen Vergleich von n8n (self-hosted) versus Zapier als Middleware-Brücke für unsere Langdock-Integrationen (Aufgabe). Kontext: DSGVO-Kontrolle hat Priorität; IT kann n8n selbst betreiben; drei bestehende Zapier-Brücken sind im Einsatz (Kontext). Format: Tabelle mit Bewertungsdimension, n8n-Bewertung, Zapier-Bewertung, Gewichtung; plus Migrations-Empfehlung in drei Bulletpoints (Format)."
 **Erwartetes Artefakt:** Ein n8n-vs.-Zapier-Vergleichs-Assessment (Tabelle) mit priorisierter Migrations-Empfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -823,7 +823,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt den Ausstiegsaufwand je Asset-Kategorie einschätzen: Stunden für Wissensordner-Export, Tage für Agenten-Prompt-Migration, Wochen für Workflow-Neukonfiguration in einer alternativen Plattform.
 3. Du lässt einen dreistufigen Notfall-Ausstiegsplan skizzieren: (1) Wissensordner-Snapshot erstellen und extern sichern, (2) Agenten-Prompts dokumentieren und versionieren, (3) kritische Workflows in alternativer Notation festhalten.
 4. Du übergibst den Plan an CDO und IT als Governance-Dokument; Little Data berät, führt keine Exporte durch.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein SaaS-Vendor-Risiko-Berater (Persona). Erstelle eine Vendor-Lock-in-Risikobewertung für unsere Langdock-Nutzung und einen dreistufigen Ausstiegsplan (Aufgabe). Kontext: CDO-Anforderung an Ausstiegsfähigkeit für alle kritischen SaaS-Tools; drei Wissensordner, fünf Agenten, zwei aktive Workflows (Kontext). Format: Tabelle mit Asset, Portierbarkeit, Ausstiegsaufwand, Alternative; plus dreistufiger Notfall-Ausstiegsplan als nummerierte Liste (Format)."
 **Erwartetes Artefakt:** Eine Vendor-Lock-in-Risikobewertung (Tabelle) und ein dreistufiger Notfall-Ausstiegsplan.
 **Fallstricke (≥2 spezifisch):**
@@ -842,7 +842,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt den Workflow skizzieren: Gmail-Trigger (neue Lead-E-Mail) → Agent liest E-Mail → generiert personalisierten Draft → Draft landet in Gmail als Entwurf → Mensch prüft, editiert und sendet.
 3. Du lässt die DSGVO-Datensparsamkeits-Regel einarbeiten: Nur der E-Mail-Body und das Thema gehen in den Agent-Kontext; vollständige E-Mail-Header mit PII werden minimiert.
 4. Du übergibst das Konzept und den Gmail-Scope-Bedarf an die IT; Little Data berät, konfiguriert keine OAuth-Verbindungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein E-Mail-Integrations-Berater (Persona). Erstelle ein Gmail-Integrations-Konzept für einen automatisierten Lead-Antwort-Entwurf-Workflow (Aufgabe). Kontext: Agent liest eingehende Lead-E-Mails, erstellt Draft, sendet niemals selbst; DSGVO-Datensparsamkeit; Human-Approval vor Versand Pflicht (Kontext). Format: Konzept mit Abschnitten Gmail-Scopes, Workflow-Skizze als nummerierte Schritte, DSGVO-Datensparsamkeits-Regel, Human-Approval-Gate-Beschreibung (Format)."
 **Erwartetes Artefakt:** Ein Gmail-Integrations-Konzept mit Scopes, Workflow-Skizze, DSGVO-Regel und Human-Approval-Gate.
 **Fallstricke (≥2 spezifisch):**
@@ -861,7 +861,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt diese Standards in eine 16-Punkte-Checkliste übersetzen, die für jede neue Integration abgearbeitet wird, bevor die IT die Verbindung produktiv schaltet.
 3. Du lässt eine einseitige Playbook-Zusammenfassung erstellen, die beim IT-Onboarding-Gespräch als gemeinsames Referenzdokument dient.
 4. Du übergibst das Playbook an IT, Marketing-Ops und Workspace-Admin; das Playbook wird im Wissensordner des Workspace-Admin-Agenten hinterlegt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integration-Governance-Berater (Persona). Erstelle ein Integration-Governance-Playbook mit einer 16-Punkte-Checkliste und einer einseitigen Onboarding-Zusammenfassung für alle zukünftigen Langdock-Integrationen (Aufgabe). Kontext: Mindeststandards aus Integrationen HubSpot, SharePoint, MCP-Server, Zapier-Brücken; DSGVO-konformes EU-Hosting; Advisory-Grenze ist nicht verhandelbar (Kontext). Format: Checkliste als nummerierte Liste mit Prüfpunkt und Begründung; Zusammenfassung als Absatz mit drei Schlüsselregeln (Format)."
 **Erwartetes Artefakt:** Ein Integration-Governance-Playbook (16-Punkte-Checkliste) und eine einseitige Onboarding-Zusammenfassung.
 **Fallstricke (≥2 spezifisch):**
@@ -880,7 +880,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Eintrag die Audit-Pflichtfelder ausfüllen: Systemname, Datenfluss-Richtung (lesen/schreiben), verarbeitete Datenkategorie (anonym/PII/besondere Kategorie), DSGVO-Rechtsgrundlage (Art. 6 Abs. 1), Löschfrist, Verantwortlicher.
 3. Du lässt einen Hinweis einarbeiten, dass das Verzeichnis als lebendes Dokument im Wissensordner gepflegt wird und bei jeder neuen oder geänderten Integration aktualisiert werden muss.
 4. Du übergibst das Verzeichnis an den Datenschutzbeauftragten und die IT; tiefergehende Compliance-Fragen werden an die Schwesterdatei `08-sicherheit-und-governance` übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Datenschutz-Audit-Berater (Persona). Erstelle ein Integrations-Audit-Verzeichnis für alle aktiven Langdock-Integrationen unseres Marketing-Workspace auf Basis unseres Integrations-Inventars im Wissensordner (Aufgabe). Kontext: externer Audit in zwei Wochen, DSGVO-Artikel-30-konformes Format, EU AI Act Inventory als Ergänzungspflicht (Kontext). Format: Tabelle mit Spalten Systemname, Datenfluss-Richtung, Datenkategorie, Rechtsgrundlage, Löschfrist, Verantwortlicher, letzter Review; plus Hinweis zur Pflege als lebendes Dokument (Format)."
 **Erwartetes Artefakt:** Ein Integrations-Audit-Verzeichnis (Tabelle) nach DSGVO-Artikel-30-Struktur mit Pflegehinweis.
 **Fallstricke (≥2 spezifisch):**
@@ -899,7 +899,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt den Anbindungsweg klären: Atlassian bietet offizielle MCP-Server für Confluence an; Authentifizierung über ein Service-Account-API-Token (nicht über persönliche Mitarbeiter-Tokens).
 3. Du lässt verbotene Operationen explizit sperren: Seiten erstellen, bearbeiten, löschen und Kommentare hinterlassen sind für den Marketing-Agenten nicht nötig — nur Read- und Search-Tools freigeben.
 4. Du übergibst das Briefing an den Confluence-Administrator und die IT; Little Data berät, konfiguriert keine MCP-Verbindungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Confluence-Integrations-Berater (Persona). Erstelle ein MCP-Anbindungs-Briefing für unseren Marketing-Agenten, der Confluence-Seiten lesen und durchsuchen soll (Aufgabe). Kontext: freigegebene Spaces PRODUCT und MARKETING; kein Schreibzugriff; Atlassian Cloud; Service-Account-API-Token (Kontext). Format: Briefing mit Abschnitten Space-Freigabeliste, freigegebene MCP-Tools, gesperrte Operationen, Authentifizierungsweg (Format)."
 **Erwartetes Artefakt:** Ein Confluence-MCP-Anbindungs-Briefing mit Space-Freigabeliste, zugelassenen Tools und Authentifizierungsweg.
 **Fallstricke (≥2 spezifisch):**
@@ -917,7 +917,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data den Anbindungsweg je Tool prüfen: Trello bietet eine REST-API (HTTP-Brücke via Custom Integration Builder); Asana verfügt über einen offiziellen MCP-Server — je Tool den einfachsten Weg benennen.
 2. Du lässt die Read-Scopes definieren: Boards und Karten lesen (Trello), Tasks und Projekte lesen (Asana) — keine Schreib-, Verschiebbe- oder Lösch-Operationen.
 3. Du lässt die Governance-Regel einarbeiten: Der Agent meldet offene Tasks und Deadlines, aber Status-Updates und Priorisierungen verbleiben ausschließlich bei den Projektverantwortlichen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Projektmanagement-Integrations-Berater (Persona). Erstelle eine Anbindungs-Einschätzung für Trello und Asana an unseren Koordinations-Agenten in Langdock (Aufgabe). Kontext: Kampagnenplanung in Trello, Redaktionsplan in Asana; Agent soll nur lesen, nie schreiben; DSGVO-konformes Hosting (Kontext). Format: Tabelle mit Tool, Anbindungsweg, benötigte Read-Scopes, gesperrte Operationen, Governance-Regel (Format)."
 **Erwartetes Artefakt:** Eine Projektmanagement-Anbindungs-Einschätzung (Tabelle) mit Anbindungsweg, Read-Scopes und Governance-Regel je Tool.
 **Fallstricke (≥2 spezifisch):**
@@ -935,7 +935,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data den Anbindungsweg klären: Teams-Benachrichtigungen laufen über Microsoft Graph API (Kanal-Nachrichten posten) oder über Incoming Webhooks — Incoming Webhooks sind der einfachere Einstieg ohne App-Registrierung.
 2. Du lässt das Nachrichtenformat entwerfen: Kampagnen-Name, Status-Update, Verantwortlicher, nächste Deadline — maximal drei Sätze, kein Marketing-Jargon.
 3. Du lässt die Schnittstellengrenze klar benennen: Die Integrations-Konfiguration (Webhook-URL, Auth) ist IT-Aufgabe; wann und durch welches Ereignis die Nachricht ausgelöst wird, ist Workflow-Thema.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Microsoft-Teams-Integrations-Berater (Persona). Entwirf ein Teams-Benachrichtigungs-Konzept für Kampagnen-Alerts aus unserem Langdock-Workspace (Aufgabe). Kontext: Ziel-Kanal #marketing-kampagnen; Incoming Webhook als Einstieg; DSGVO-konformes EU-Hosting; Trigger-Logik gehört in die Workflow-Beratung (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Nachrichtenformat-Vorlage, Authentifizierungs-Hinweis, Schnittstellengrenze zu Workflows (Format)."
 **Erwartetes Artefakt:** Ein Teams-Benachrichtigungs-Konzept mit Nachrichtenformat-Vorlage und Schnittstellengrenze zu Workflows.
 **Fallstricke (≥2 spezifisch):**
@@ -954,7 +954,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die API-Scopes auf das Minimum beschränken: `youtube.readonly` für Kanal-Metadaten und `yt-analytics.readonly` für Performance-Metriken — kein Upload- oder Management-Scope.
 3. Du lässt einen Prompt-Rahmen für wöchentliche Video-Performance-Berichte ausarbeiten, der jede Kennzahl mit Video-Titel und Messzeitraum belegt.
 4. Du übergibst Briefing und Prompt-Rahmen an die IT; Little Data berät, konfiguriert keine Google-API-Verbindungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Video-Analytics-Berater (Persona). Erstelle ein YouTube-Analytics-Anbindungs-Briefing und einen wöchentlichen Reporting-Prompt-Rahmen für unseren Performance-Agenten (Aufgabe). Kontext: Unternehmens-YouTube-Kanal mit 50 Videos; Metriken: Aufrufe, Watch-Time, CTR; kein Upload-Scope; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, API-Scopes, verbotene Scopes; Prompt-Rahmen separat als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein YouTube-Analytics-Anbindungs-Briefing (Scopes und Anbindungsweg) und ein wöchentlicher Reporting-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -972,7 +972,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die Pinterest-API-Scopes auf das Minimum beschränken: `boards:read`, `pins:read` und `user_accounts:read` für das eigene Business-Konto — kein `boards:write` oder `pins:write`.
 2. Du lässt eine DSGVO-Governance-Regel formulieren: Nur aggregierte Trend-Daten und öffentliche Pin-Metadaten in den Agent-Kontext; keine personalisierten Zielgruppen-Profile oder individuellen Nutzer-Daten.
 3. Du lässt ein Trend-Analyse-Prompt-Template ausarbeiten, das den Agenten anweist, Top-Trend-Kategorien, Farbpaletten und Content-Formate der Woche zu identifizieren und als Inspirations-Brief aufzubereiten.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Visual-Content-Strategie-Berater (Persona). Erstelle ein Pinterest-API-Anbindungs-Konzept für einen Trend-Analyse-Agenten und ein wöchentliches Inspirations-Prompt-Template (Aufgabe). Kontext: Fashion- und Lifestyle-Brand; nur öffentliche Trend-Daten; kein Pin-Posting; DSGVO-konforme Nutzung (Kontext). Format: Konzept mit Abschnitten API-Scopes, gesperrte Operationen, DSGVO-Regel; Prompt-Template separat als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein Pinterest-API-Anbindungs-Konzept mit Scopes und DSGVO-Governance sowie ein Trend-Analyse-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -990,7 +990,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die TikTok Business API auf verfügbare Endpunkte prüfen: Analytics-Daten (Video-Performance, Follower-Statistiken) sind über die Business API lesbar; organisches Posting ist über die API in vielen Märkten nicht verfügbar oder erfordert spezifische Partnerschafts-Zertifizierungen.
 2. Du lässt das DSGVO-Risiko einschätzen: TikTok (ByteDance) ist ein US-amerikanisches Unternehmen mit chinesischer Eigentümerschaft; Datentransfers aus EU-Kampagnendaten unterliegen besonderen Prüfpflichten — DSB und Datenschutzbeauftragten vor Anbindung konsultieren.
 3. Du lässt eine Handlungsempfehlung formulieren: TikTok-Analytics über eine Drittanbieter-Analytics-Plattform (z. B. Brandwatch) aggregieren statt direkt via API anbinden; so reduziert sich der Datentransfer-Footprint.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Social-API-Berater (Persona). Erstelle eine TikTok-Business-API-Einschätzung für unsere Marketing-Direktorin vor einer Investitionsentscheidung (Aufgabe). Kontext: B2B-Unternehmen in der EU, DSGVO-Pflicht, Interesse an Analytics-Integration und Posting-Automatisierung (Kontext). Format: Einschätzung mit Abschnitten erreichbare API-Funktionen, nicht erreichbare Funktionen, DSGVO-Risikoeinschätzung, Handlungsempfehlung (Format)."
 **Erwartetes Artefakt:** Eine TikTok-Business-API-Einschätzung mit Funktionsumfang, DSGVO-Risikoeinschätzung und Handlungsempfehlung.
 **Fallstricke (≥2 spezifisch):**
@@ -1009,7 +1009,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Aggregationsstufe definieren: Der Agent erhält nur Häufigkeitsverteilungen pro Themen-Cluster (z. B. "Top-10-Fragen diese Woche") — keine Einzeltickets.
 3. Du lässt ein Content-Insights-Prompt-Template ausarbeiten, das den Agenten anweist, aus den Top-Fragen drei Content-Ideen (FAQ-Artikel, Video-Tutorial, Onboarding-Tipp) abzuleiten.
 4. Du übergibst Konzept und Template an IT und Customer-Success; die API-Konfiguration liegt bei der IT, die DSGVO-Freigabe beim DSB.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Customer-Insights-Integrations-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Konzept für unsere Intercom-Ticket-Daten zur Content-Insights-Gewinnung (Aufgabe). Kontext: Marketing-Agent soll häufigste Kundenfragen aggregieren; keine PII; DSGVO-Pflicht; Ergebnisse als Content-Ideen-Brief (Kontext). Format: Konzept mit Abschnitten Datenzugriff-Governance, API-Scopes, Aggregationsstufe, Content-Insights-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein Intercom/Zendesk-Read-Only-Anbindungs-Konzept mit Datenschutz-Governance und Content-Insights-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1028,7 +1028,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Lese-Scopes definieren: Produkte, Produktmodelle, Kategorien und Attribute lesen — kein Schreibzugriff auf Produktdaten.
 3. Du lässt ein Content-Generierungs-Prompt-Template ausarbeiten, das den Agenten anweist, Produktattribute aus Akeneo als strukturierten Input für SEO-optimierte Beschreibungen zu nutzen.
 4. Du übergibst das Konzept an PIM-Administrator und IT; die API-Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein PIM-Integrations-Berater (Persona). Erstelle ein Akeneo-Anbindungs-Konzept für einen Produkt-Content-Agenten, der Produktbeschreibungen auf Basis aktueller PIM-Daten generiert (Aufgabe). Kontext: Akeneo Cloud, ca. 500 aktive Produkte, kein Schreibzugriff, SEO-optimierte Beschreibungen als Ziel (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Lese-Scopes, Governance-Regel, Content-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein Akeneo-Anbindungs-Konzept mit Anbindungsweg, Lese-Scopes, Governance-Regel und Content-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1047,7 +1047,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Lese-Scopes bestimmen: Projekt-Status, Translation-Memory (abgleichen für Konsistenz), Glossar (für Terminologie-Kontrolle) — das TMS-Glossar ersetzt oder ergänzt den Langdock-Wissensordner-Glossar.
 3. Du lässt den optionalen Draft-Write-Scope einordnen: Falls AI-Entwürfe direkt ins TMS als Draft hinterlegt werden sollen, ist ein eingeschränkter Write-Scope notwendig — aber nur für Draft-Status, kein direktes Publishen.
 4. Du übergibst das Konzept und die Workflow-Skizze an IT und Lokalisierungs-Management; Übersetzerinnen validieren alle AI-Entwürfe im TMS.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Lokalisierungs-Integrations-Berater (Persona). Erstelle ein TMS-Anbindungs-Konzept für Phrase an unseren Langdock-Lokalisierungs-Workflow (Aufgabe). Kontext: 4 Zielsprachen, Glossar in Phrase als führende Terminologie, AI-Entwürfe als Draft in Phrase hinterlegen, Übersetzer validieren final (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Lese-Scopes, Draft-Write-Governance, Workflow-Skizze als nummerierte Schritte (Format)."
 **Erwartetes Artefakt:** Ein TMS-Anbindungs-Konzept mit Anbindungsweg, Scopes, Draft-Write-Governance und Lokalisierungs-Workflow-Skizze.
 **Fallstricke (≥2 spezifisch):**
@@ -1065,7 +1065,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data den Workflow klar definieren: Langdock generiert Screen-Texte und Kampagnen-Copy auf Basis von Kampagnen-Briefings — die Outputs werden als Entwürfe im Wissensordner oder per HTTP-Übergabe an das Signage-System geliefert.
 2. Du lässt den Anbindungsweg für das Signage-System prüfen: Die meisten Signage-Plattformen bieten REST-APIs für Content-Upload; eine HTTP-Brücke via Custom Integration Builder ist der empfohlene Weg.
 3. Du lässt die Governance-Regel als unveränderlich einarbeiten: Kein KI-Agent darf Content ohne menschliche Freigabe auf öffentlich sichtbare Signage-Screens einspielen — das Publikations-Gate verbleibt bei Marketing-Ops oder IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Digital-Signage-Content-Berater (Persona). Erstelle eine Integrations-Einschätzung für die Anbindung unseres Yodeck-Signage-Systems an Langdock für automatisierte Content-Lieferung (Aufgabe). Kontext: 15 Screens in drei Filialen; Kampagnen-Content wöchentlich wechselnd; kein autonomes KI-Einspielen; Human-Approval-Pflicht (Kontext). Format: Einschätzung mit Abschnitten Workflow-Skizze, Anbindungsweg, Governance-Regel, Risiken (Format)."
 **Erwartetes Artefakt:** Eine Digital-Signage-Integrations-Einschätzung mit Workflow-Skizze, Anbindungsweg und Governance-Regel.
 **Fallstricke (≥2 spezifisch):**
@@ -1084,7 +1084,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die DSGVO-Governance-Regel formulieren: Individuelle Ticketkäufer-Daten (Name, E-Mail, Adresse) bleiben in Eventbrite; der Agent erhält nur Aggregat-Metriken (Gesamtverkäufe, Auslastungsgrad, Revenue-Summe).
 3. Du lässt ein Event-Performance-Prompt-Template ausarbeiten, das nach jedem Event automatisch eine Post-Event-Zusammenfassung mit KPI-Vergleich (Ziel vs. Ist) generiert.
 4. Du übergibst Briefing und Template an IT und Event-Marketing; die Datenschutz-Freigabe liegt beim DSB.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Event-Analytics-Berater (Persona). Erstelle ein Eventbrite-API-Anbindungs-Briefing und ein Post-Event-Prompt-Template für unseren Reporting-Agenten (Aufgabe). Kontext: 3–5 Events pro Quartal, aggregierte Ticket-Metriken, keine Käufer-PII im Agent-Kontext, DSGVO-Pflicht (Kontext). Format: Briefing mit Abschnitten OAuth-Scopes, gesperrte Daten, DSGVO-Governance-Regel; Post-Event-Prompt-Template als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein Eventbrite-API-Anbindungs-Briefing mit DSGVO-Governance und ein Post-Event-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1103,7 +1103,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt das Datenprinzip einarbeiten: Aggregierte Cohort-Metriken (Conversion-Rate, Median-Time-to-Convert, Drop-Off-Rate je Funnel-Schritt) statt individueller User-Events in den Agent-Kontext.
 3. Du lässt eine Query-Governance-Regel definieren: Abfragen ohne Zeitbereichs-Filter oder über alle historischen Daten erfordern eine Nutzerbestätigung, da sie ressourcenintensiv sein können.
 4. Du übergibst das Briefing an IT und Analytics-Team; Little Data berät, konfiguriert keine API-Verbindungen.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Product-Analytics-Integrations-Berater (Persona). Erstelle ein Amplitude-Anbindungs-Briefing für einen Marketing-Performance-Agenten, der Funnel-Conversion-Rates abfragt (Aufgabe). Kontext: B2B-SaaS-Funnel mit 5 Schritten; aggregierte Metriken, keine User-IDs; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, Datenprinzip, Query-Governance-Regel, Funnel-Analyse-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein Mixpanel/Amplitude-Anbindungs-Briefing mit Datenprinzip, Query-Governance und Funnel-Analyse-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1122,7 +1122,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die IAM-Rolle für den Marketing-Service-Account auf minimale Read-Only-Rechte beschränken: nur SELECT-Rechte auf freigegebene Schemas, keine DDL/DML-Operationen.
 3. Du lässt eine Query-Kostengrenze definieren: Abfragen, die mehr als 1 TB scannen (Athena) oder mehr als 100 DTUs verbrauchen (Synapse), erfordern eine Nutzerbestätigung im Chat.
 4. Du übergibst das Konzept an Data-Engineer und IT; die IAM- und Schema-Konfiguration liegt bei der IT, nicht bei Little Data.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Data-Lake-Governance-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Konzept für unseren AWS-Athena-Data-Lake für einen Marketing-Analyse-Agenten (Aufgabe). Kontext: freigegebene Schemas marketing_events und campaign_spend; Finance und HR sind gesperrt; Query-Kostengrenze 1 TB Scan; DSGVO-konformes EU-Hosting (Kontext). Format: Konzept mit Abschnitten Schema-Freigabeliste, gesperrte Schemas, IAM-Empfehlung, Query-Kostengrenze, verbotene SQL-Operationen (Format)."
 **Erwartetes Artefakt:** Ein Data-Lake-Read-Only-Anbindungs-Konzept mit Schema-Freigabeliste, IAM-Empfehlung und Query-Kostengrenze.
 **Fallstricke (≥2 spezifisch):**
@@ -1141,7 +1141,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Service-Account-Empfehlung formulieren: Ein dedizierter ERP-Lese-Service-Account mit minimalen Berechtigungen auf die freigegebenen Tabellen/Entitäten — kein Vollzugriff auf das ERP-System.
 3. Du lässt eine User-Confirmation-Regel für sensitive Preisabfragen einbauen: Abfragen, die mehr als 100 Produkte gleichzeitig liefern, erfordern eine Bestätigung, um unbeabsichtigte Massenexporte zu verhindern.
 4. Du übergibst das Briefing an ERP-Administrator und IT; die API-Konfiguration und Berechtigungsvergabe liegt ausschließlich bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein ERP-Integrations-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Briefing für unser SAP-System an einen Marketing-Content-Agenten, der Listenpreise und Produktstammdaten abfragt (Aufgabe). Kontext: SAP S/4HANA Cloud, freigegebene Daten: Produktnamen, Beschreibungen, Listenpreise; gesperrt: Einkaufspreise, Finanzbuchhaltung, HR; Service-Account-Prinzip (Kontext). Format: Briefing mit Abschnitten freigegebene Endpunkte, gesperrte Bereiche, Service-Account-Empfehlung, Preis-Lookup-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein ERP-Read-Only-Anbindungs-Briefing mit freigegebenen Endpunkten, gesperrten Bereichen und Preis-Lookup-Prompt-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1160,7 +1160,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Checkliste als Go/No-Go-Entscheidungsformat aufbereiten: Jeder Prüfpunkt ist mit "bestanden / offen / nicht anwendbar" bewertbar; bei mehr als zwei offenen Punkten → kein Go-Live.
 3. Du lässt den Hinweis einarbeiten: Diese Checkliste ersetzt keine vollständige DSGVO-DPIA — bei Hochrisiko-Verarbeitungen verweist sie an `08-sicherheit-und-governance`.
 4. Du übergibst die Checkliste an IT und Workspace-Admin als Standard-Go-Live-Gate; sie wird im Integration-Governance-Playbook (S-IM-044) als Pflicht-Schritt verankert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integration-Sicherheits-Berater (Persona). Erstelle eine 12-Punkte-Sicherheits-Review-Checkliste für den Go-Live jeder neuen Langdock-Integration und eine einseitige Go/No-Go-Entscheidungsvorlage (Aufgabe). Kontext: drei Kategorien Zugriffsminimalität, Datenschutz, Betrieb; bei mehr als zwei offenen Punkten kein Go-Live; Verweis auf tiefergehende DSGVO-Prüfung in Schwesterdatei (Kontext). Format: Checkliste als nummerierte Liste mit Kategorie, Prüfpunkt, Bewertungsoptionen; Go/No-Go-Vorlage als Absatz (Format)."
 **Erwartetes Artefakt:** Eine 12-Punkte-Integration-Sicherheits-Review-Checkliste (drei Kategorien) und eine einseitige Go/No-Go-Entscheidungsvorlage.
 **Fallstricke (≥2 spezifisch):**
@@ -1179,7 +1179,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt das Read-Sync-Briefing formulieren, das ausschließlich Lese-Scopes anfordert und Schreib-Scopes explizit ausschließt.
 3. Du lässt einen Reporting-Prompt-Rahmen entwerfen, der jede Zahl mit HubSpot-Objekt und Zeitraum belegt und fehlende Werte als "keine Daten" ausweist.
 4. Du übergibst das Briefing an die IT; die Verbindung wird an einen Service-Account gebunden — Little Data berät, konfiguriert nicht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CRM-Reporting-Berater (Persona). Erstelle ein HubSpot-Read-Sync-Briefing für einen Lifecycle-Reporting-Agenten (Aufgabe). Kontext: wöchentliches Funnel-Reporting MQL→SQL, nur Lesen, SCIM-synchronisierte Marketing-Gruppe, DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Feld, benötigtem Read-Scope, Begründung; plus Lifecycle-Stage-Mapping und drei Sätze Sicherheitshinweis (Format)."
 **Erwartetes Artefakt:** Ein HubSpot-Read-Sync-Briefing (Tabelle) mit Lifecycle-Mapping und Quellenbindungs-Prompt.
 **Fallstricke (≥2 spezifisch):**
@@ -1198,7 +1198,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt das Lese-Konzept über ein dediziertes Read-Only-Profil formulieren; die Anlage neuer Campaign Members (Q112) bleibt explizit bei Marketing-Operations.
 3. Du lässt einen PII-Hinweis einarbeiten: Lead-/Contact-Namen werden nur anonymisiert (IDs statt Namen) in den Agent-Kontext geladen.
 4. Du übergibst das Konzept an Salesforce-Admin und Datenschutzbeauftragten; die Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CRM-Attribution-Berater (Persona). Erstelle ein Salesforce-Read-Konzept für Campaign-Member-Attribution (Aufgabe). Kontext: Objekte Campaign, CampaignMember, Opportunity; nur Lesen; Anlage neuer Mitglieder bleibt bei Marketing-Ops; DSGVO-Pflicht (Kontext). Format: Tabelle mit Objekt, Read-Scope, PII-Risiko, Maßnahme; plus drei Sätze Lese-vs.-Schreib-Abgrenzung (Format)."
 **Erwartetes Artefakt:** Ein Salesforce-Read-Konzept (Tabelle) mit PII-Risikobewertung und Lese-/Schreib-Trennung.
 **Fallstricke (≥2 spezifisch):**
@@ -1217,7 +1217,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt den Read-Only-Scope (`analytics.readonly`) festschreiben und alle Admin-/Config-Tools des MCP-Servers in der Freigabe sperren.
 3. Du lässt einen Funnel-Query-Prompt-Rahmen entwerfen, der Property-ID, Metrik, Dimension und Zeitraum mitführt und leere Ergebnisse als "keine Daten" ausweist.
 4. Du übergibst das Briefing an die IT; Little Data berät, richtet keinen MCP-Server ein.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Analytics-Integrations-Berater (Persona). Erstelle ein GA4-MCP-Briefing für komplexe Funnel-Abfragen und grenze es zur nativen Integration ab (Aufgabe). Kontext: Abfragen über Quelle/Medium × Landingpage × Conversion, nur Lesen, eine GA4-Property (Kontext). Format: Briefing mit Abschnitten native-vs.-MCP-Abgrenzung, Read-Scope, Tool-Freigabe-Tabelle, Funnel-Query-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein GA4-MCP-Briefing mit Read-Scope, Tool-Freigabe und Funnel-Query-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1235,7 +1235,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data die SEO-Reporting-Fragen bestimmen (Top-Queries, CTR-Drops, Position-Veränderungen) und daraus den minimalen Read-Scope ableiten.
 2. Du lässt eine Tool-Freigabe-Tabelle erstellen: Search-Analytics-Query und URL-Inspection (read) freigeben; Sitemap-Submit und Property-Verwaltung sperren.
 3. Du lässt einen Prompt-Rahmen entwerfen, der jede Kennzahl mit Property, Query/Page und Zeitraum belegt und auf das 16-Monats-Datenfenster der Search Console hinweist.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein SEO-Analytics-Berater (Persona). Erstelle ein Search-Console-MCP-Briefing und einen wöchentlichen SEO-Reporting-Prompt-Rahmen (Aufgabe). Kontext: eine verifizierte Property, Fokus auf Top-Queries und Position-Drops, nur Lesen (Kontext). Format: Briefing mit Read-Scope, Tool-Freigabe-Tabelle, Datenfenster-Hinweis; Prompt-Rahmen separat als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein Search-Console-MCP-Briefing mit Read-Scope, Tool-Freigabe und SEO-Reporting-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1254,7 +1254,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Read-Scopes auf `r_ads` und `r_ads_reporting` beschränken; `rw_ads` (Schreiben) wird explizit ausgeschlossen.
 3. Du lässt einen AGB-Hinweis einarbeiten: Rohe Insights-Daten dürfen nicht an Drittplattformen weitergegeben werden; Nutzung nur für internes Reporting.
 4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die OAuth-App-Registrierung liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Performance-Reporting-Berater (Persona). Erstelle ein LinkedIn-Ads-Reporting-MCP-Briefing und einen Pipeline-Prompt-Rahmen (Aufgabe). Kontext: wöchentliche Auswertung Spend/Leads/CPL, Verknüpfung mit CRM-Zahlen, kein Schreiben auf LinkedIn (Kontext). Format: Briefing mit Read-Scopes, Tool-Freigabe-Tabelle, AGB-Hinweis; Prompt-Rahmen als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein LinkedIn-Ads-Reporting-MCP-Briefing mit Read-Scopes, AGB-Hinweis und Pipeline-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1273,7 +1273,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Permission auf `ads_read` (Insights lesen) beschränken; `ads_management` (schreiben) wird ausgeschlossen.
 3. Du lässt eine DSGVO-Governance-Regel einarbeiten: Keine Custom-Audience-Mitgliederlisten oder personenbezogenen Daten in den Agent-Kontext — nur aggregierte Kampagnen-Insights.
 4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die Meta-App-Registrierung liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Social-Performance-Berater (Persona). Erstelle ein Meta-Ads-Reporting-MCP-Briefing und einen Performance-Prompt-Rahmen (Aufgabe). Kontext: Auswertung Reach/CTR/Cost-per-Result, nur aggregierte Insights, keine Custom-Audience-PII, DSGVO-Pflicht (Kontext). Format: Briefing mit Read-Permission, DSGVO-Regel, Tool-Freigabe-Tabelle; Prompt-Rahmen als Code-Block (Format)."
 **Erwartetes Artefakt:** Ein Meta-Ads-Reporting-MCP-Briefing mit Read-Permission, DSGVO-Regel und Performance-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1292,7 +1292,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Read-Scopes auf Listen-/Audience-Statistiken und Kampagnen-Reports beschränken — kein Subscriber-Write, kein Send.
 3. Du lässt eine DSGVO-Regel formulieren: Nur aggregierte Segment-Größen und Raten in den Agent-Kontext; keine individuellen E-Mail-Adressen oder Profile.
 4. Du übergibst das Konzept an IT und Datenschutzbeauftragten; die API-Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein E-Mail-Marketing-Integrations-Berater (Persona). Erstelle ein Read-Konzept für Mailchimp-Listen-Reporting (Aufgabe). Kontext: Auswertung Listen-Wachstum, Open-/Click-Rate, Segment-Größe; keine Abonnenten-PII; kein Versand über Langdock; DSGVO-Pflicht (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Read-Scopes, DSGVO-Regel, Segment-Reporting-Prompt-Template (Format)."
 **Erwartetes Artefakt:** Ein Mailchimp/Klaviyo-Read-Konzept mit Anbindungsweg, Read-Scopes, DSGVO-Regel und Reporting-Template.
 **Fallstricke (≥2 spezifisch):**
@@ -1311,7 +1311,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Authentifizierung über eine dedizierte Notion-Integration (Service-Account-Token) festlegen, nicht über persönliche Tokens.
 3. Du lässt verbotene Operationen sperren: Seiten erstellen, bearbeiten, löschen — nur Read- und Search-Tools freigeben.
 4. Du übergibst das Briefing an die IT; Little Data berät, konfiguriert keinen MCP-Server.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Notion-Wissens-Integrations-Berater (Persona). Erstelle ein Notion-Knowledge-MCP-Briefing für einen Berater-Agenten, der Positionierung und FAQ live liest (Aufgabe). Kontext: freigegebene Datenbanken Positionierung, FAQ, Launch-Pläne; kein Schreibzugriff; Service-Account-Token (Kontext). Format: Briefing mit Datenbank-Freigabeliste, freigegebene Tools, gesperrte Operationen, Authentifizierungsweg (Format)."
 **Erwartetes Artefakt:** Ein Notion-Knowledge-MCP-Briefing mit Freigabeliste, zugelassenen Tools und Authentifizierungsweg.
 **Fallstricke (≥2 spezifisch):**
@@ -1330,7 +1330,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt eine Tool-Freigabe-Tabelle erstellen: Record-Read und List-Records freigeben; Create/Update/Delete sperren oder mit Pflicht-Nutzerbestätigung versehen.
 3. Du lässt einen Pipeline-Status-Prompt-Rahmen entwerfen, der überfällige und blockierte Tasks mit Verantwortlichem und Fälligkeitsdatum ausweist.
 4. Du übergibst das Briefing an die IT; der API-Key gehört in den Admin-Secrets-Bereich, nicht in die MCP-Konfiguration im Klartext.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Content-Ops-Integrations-Berater (Persona). Erstelle ein Airtable-Read-Briefing für einen Pipeline-Status-Agenten (Aufgabe). Kontext: Base Redaktionspipeline mit Status/Verantwortlicher/Datum; nur Lesen; schreibende Tools mit Pflichtbestätigung; DSGVO-Hosting (Kontext). Format: Briefing mit Base-Freigabe, Tool-Freigabe-Tabelle mit Bestätigungs-Spalte, Pipeline-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein Airtable-Content-Ops-Briefing mit Tool-Freigabe-Tabelle und Pipeline-Status-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1348,7 +1348,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data den Read-Scope auf Datei- und Komponenten-Metadaten beschränken: Frame-Namen, Komponenten-Namen, Datei-/Node-Links — kein Edit-Scope.
 2. Du lässt eine Kontext-Governance-Regel festschreiben: Der Agent gibt nur Asset-Namen und Figma-Links aus, lädt keine gerenderten PNG/JPEG-Binärdaten in den Kontext.
 3. Du lässt einen Referenz-Prompt-Rahmen entwerfen, der Briefings mit den korrekten Design-System-Komponenten und Frame-Links anreichert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Design-Ops-Integrations-Berater (Persona). Erstelle ein Figma-Read-Konzept für einen Content-Agenten, der Design-System-Komponenten referenziert (Aufgabe). Kontext: Figma-Datei mit Design-System und Kampagnen-Frames; nur Metadaten und Links, keine Bild-Binärdaten; DSGVO-Hosting (Kontext). Format: Konzept mit Abschnitten Read-Scope, Kontext-Governance-Regel, Referenz-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein Figma-Read-Konzept mit Read-Scope, Kontext-Governance und Referenz-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1367,7 +1367,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Read-Scopes auf Posts/Entries und Metadaten (Titel, URL, Datum, Status) beschränken; keine Publish-/Update-/Delete-Rechte.
 3. Du lässt einen Content-Inventar-Prompt-Rahmen entwerfen, der alte Beiträge nach Veröffentlichungsdatum und Performance-Indikatoren als Refresh-Kandidaten clustert.
 4. Du übergibst das Konzept an IT und CMS-Administrator; die API-Konfiguration liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein CMS-Integrations-Berater (Persona). Erstelle ein WordPress-Read-Konzept für einen Content-Audit-Agenten (Aufgabe). Kontext: WordPress-Blog mit ca. 400 Beiträgen; Ziel ist Refresh-Kandidaten finden; nur Lesen, kein Publish; DSGVO-Hosting (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Read-Scopes, Governance-Regel, Content-Inventar-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein CMS-Read-Konzept mit Anbindungsweg, Read-Scopes, Governance-Regel und Content-Inventar-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1386,7 +1386,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt das HITL-Gate verankern: Der Digest wird erst nach menschlicher Freigabe gepostet — der Agent erstellt einen Entwurf, ein Mensch bestätigt das Posten.
 3. Du lässt die Slack-Action an einen Bot-Token (nicht persönlichen Account) binden, damit das Posting bei Personalwechsel weiterläuft.
 4. Du lässt die Trigger-Logik (wann der Digest erzeugt wird) an die Workflow-Beratung in `04-workflows` übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Berater (Persona). Entwirf ein Slack-Digest-Konzept mit Pflicht-Freigabe vor dem Posten (Aufgabe). Kontext: wöchentlicher Performance-Digest in #marketing-weekly; KI darf nie ungeprüft posten; Bot-Token (Kontext). Format: Konzept mit Nachrichtenvorlage, HITL-Gate-Beschreibung, Auth-Hinweis, zwei Sätzen Abgrenzung zur Workflow-Beratung (Format)."
 **Erwartetes Artefakt:** Ein Slack-Digest-Konzept mit Nachrichtenvorlage, HITL-Gate und Schnittstellen-Abgrenzung.
 **Fallstricke (≥2 spezifisch):**
@@ -1404,7 +1404,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data das relevante Jira-Marketing-Projekt/Board bestimmen und den Read-Scope auf dieses Projekt begrenzen — kein workspace-weiter Issue-Zugriff.
 2. Du lässt die Governance-Regel festschreiben: nur Issue-Read und JQL-Search; Status-Transitions, Zuweisungen und Updates verbleiben bei den Ticket-Ownern.
 3. Du lässt einen Sprint-Übersichts-Prompt-Rahmen entwerfen, der offene, blockierte und überfällige Tickets je Sprint mit Assignee und Fälligkeit gruppiert.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Marketing-Ops-Integrations-Berater (Persona). Erstelle ein Jira-Read-Briefing für einen Sprint-Transparenz-Agenten (Aufgabe). Kontext: ein Marketing-Jira-Projekt mit Sprints; Agent fasst offene/blockierte Tickets zusammen, ändert nichts (Kontext). Format: Briefing mit Projekt-Freigabe, Read-Permission, gesperrte Operationen, Sprint-Übersichts-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein Jira-Read-Briefing mit Projekt-Freigabe, Read-Permission und Sprint-Übersichts-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1423,7 +1423,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt eine Datenqualitäts-Regel formulieren: Sheets brauchen klare Header-Zeilen und konsistente Datentypen, damit der Agent Spalten korrekt interpretiert.
 3. Du lässt einen Ad-hoc-Auswertungs-Prompt-Rahmen entwerfen, der jede abgeleitete Zahl mit Sheet-Name, Range und Stand-Datum belegt.
 4. Du übergibst das Konzept an die IT; die Verbindung wird an einen Service-Account gebunden — Little Data berät, konfiguriert nicht.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Reporting-Bridge-Berater (Persona). Erstelle ein Google-Sheets-Read-Konzept für Ad-hoc-Marketing-Auswertungen (Aufgabe). Kontext: drei Reporting-Sheets mit KPI-Tabellen; nur Lesen; Quellenbindung Pflicht; DSGVO-Hosting (Kontext). Format: Konzept mit Read-Scope, Sheet-/Range-Freigabe, Datenqualitäts-Regel, Ad-hoc-Auswertungs-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein Google-Sheets-Read-Konzept mit Scope, Range-Freigabe, Datenqualitäts-Regel und Auswertungs-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1442,7 +1442,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt eine strikte Governance-Regel festschreiben: keine Kartendaten, keine vollständigen Kunden-PII; nur aggregierte oder anonymisierte Revenue-Kennzahlen in den Agent-Kontext.
 3. Du lässt einen ROI-Bezug-Prompt-Rahmen entwerfen, der Marketing-Spend gegen aggregierten Umsatz stellt und jede Zahl mit Quelle und Zeitraum belegt.
 4. Du übergibst das Konzept an Finance, IT und Datenschutzbeauftragten; die Schlüsselvergabe liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Revenue-Kontext-Integrations-Berater (Persona). Erstelle ein Stripe-Read-Konzept für einen Marketing-ROI-Bezug (Aufgabe). Kontext: nur aggregierte Umsatzdaten (MRR, Charges-Summen); keine Kartendaten, keine Kunden-PII; Restricted-Key; DSGVO-/PCI-Pflicht (Kontext). Format: Konzept mit Abschnitten Key-Typ und Read-Scope, PII-/PCI-Governance-Regel, ROI-Bezug-Prompt-Rahmen (Format)."
 **Erwartetes Artefakt:** Ein Stripe-Read-Konzept mit Restricted-Key-Scope, PII-/PCI-Governance und ROI-Bezug-Prompt-Rahmen.
 **Fallstricke (≥2 spezifisch):**
@@ -1460,7 +1460,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 1. Du lässt Little Data je geplantem Tool prüfen, ob ein MCP-Server existiert — wenn ja, MCP bevorzugen; Zapier/Make erst als Fallback ohne MCP-Option.
 2. Du lässt die Bewertungsdimensionen strukturieren: DSGVO-Server-Standort (EU-Region wählbar?), Wartungsaufwand, Lizenzkosten, Konnektor-Abdeckung, Langdock-Webhook-Kompatibilität.
 3. Du lässt eine Entscheidungsempfehlung je Tool formulieren und für PII-tragende Verbindungen einen Auftragsverarbeitungsvertrag und EU-Region als Bedingung markieren.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Middleware-Bewertungs-Berater (Persona). Erstelle eine Bridge-Bewertungsmatrix Zapier vs. Make vs. MCP für drei geplante Tool-Anbindungen (Aufgabe). Kontext: DSGVO-Konformität Pflicht; teils PII-Transfer; Team ohne eigene Entwickler (Kontext). Format: Tabelle mit Tool, MCP-Option ja/nein, DSGVO-Standort, Wartung, Empfehlung (Format)."
 **Erwartetes Artefakt:** Eine Bridge-Bewertungsmatrix (Zapier vs. Make vs. MCP) mit Entscheidungsempfehlung je Tool.
 **Fallstricke (≥2 spezifisch):**
@@ -1479,7 +1479,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Secret-Verwaltung kontrollieren: Shared Secrets gehören in den Admin-Secrets-Bereich, werden rotiert und stehen nie im Klartext in der Konfiguration.
 3. Du lässt die Payload-Minimierung bewerten: Nur die für den Workflow nötigen Felder werden übernommen; PII-Felder nur wenn zwingend nötig.
 4. Du übergibst die Review-Checkliste an IT-Security; tiefe Security-Fragen werden an `08-sicherheit-und-governance` übergeben.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Webhook-Security-Berater (Persona). Erstelle eine Webhook-Security-Review-Checkliste für unsere eingehenden Langdock-Webhooks (Aufgabe). Kontext: drei externe Trigger (Formular-Tool, CRM-Event, E-Commerce); Signatur-Pflicht; DSGVO-Hosting (Kontext). Format: Checkliste als nummerierte Liste mit Prüfpunkt und Bewertung; plus Go/No-Go-Vermerk je Endpunkt (Format)."
 **Erwartetes Artefakt:** Eine Webhook-Security-Review-Checkliste mit Go/No-Go-Vermerk je Endpunkt.
 **Fallstricke (≥2 spezifisch):**
@@ -1498,7 +1498,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt die Differenz markieren: Scopes, die beantragt, aber nie genutzt werden (z. B. Write-Scopes bei reinen Reporting-Agenten), als Reduktionskandidaten ausweisen.
 3. Du lässt je Reduktion das Risiko der Beibehaltung benennen (z. B. ungenutzter Write-Scope = unnötige Angriffsfläche).
 4. Du übergibst die Matrix als Hardening-Briefing an die IT; die Scope-Reduktion in den jeweiligen Apps liegt bei der IT.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein OAuth-Hardening-Berater (Persona). Erstelle eine Scope-Minimierungs-Matrix für unsere aktiven Langdock-Integrationen auf Basis des Integrations-Inventars im Wissensordner (Aufgabe). Kontext: gewachsene Landschaft, einige Reporting-Agenten haben Write-Scopes; Prinzip minimaler Berechtigung (Kontext). Format: Tabelle mit Integration, beantragtem Scope, genutztem Scope, Reduktionsempfehlung, Risiko bei Beibehaltung (Format)."
 **Erwartetes Artefakt:** Eine OAuth-Scope-Minimierungs-Matrix mit Reduktionsempfehlungen und Hardening-Briefing.
 **Fallstricke (≥2 spezifisch):**
@@ -1517,7 +1517,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Server die Pflichtfelder ausfüllen: Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write-Klasse.
 3. Du lässt den Status bewerten: aktiv genutzt, ungenutzt (Kandidat für Deaktivierung), oder ohne Owner (sofort klären).
 4. Du übergibst das Inventar an IT-Security und Workspace-Admin; ungenutzte oder owner-lose Server werden im Deprecation-Plan (S-IM-080) behandelt.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein MCP-Governance-Berater (Persona). Erstelle ein vollständiges MCP-Server-Inventar für unseren Marketing-Workspace auf Basis der Agenten-Konfigurationen und des Wissensordners (Aufgabe). Kontext: gewachsene Landschaft, Verdacht auf ungenutzte und owner-lose Server (Kontext). Format: Tabelle mit Server, Zweck, Owner, freigegebene Tools, Auth-Methode, Read/Write, letzter Health-Check, Status (Format)."
 **Erwartetes Artefakt:** Ein MCP-Server-Inventar (Tabelle) mit Owner, Tools, Auth und Status je Server.
 **Fallstricke (≥2 spezifisch):**
@@ -1536,7 +1536,7 @@ Eine fundamentale Regel für die Interaktion mit dem Agenten 'Little Data' betri
 2. Du lässt je Verbindung einen Migrationspfad oder einen Ersatz benennen (oder dokumentieren, dass die Funktion ersatzlos entfällt).
 3. Du lässt ein gestaffeltes Abschaltdatum mit Rollback-Fenster festlegen: zuerst stilllegen (deaktivieren, aber wiederherstellbar), nach einer Beobachtungsphase endgültig entfernen.
 4. Du übergibst den Plan an IT und Marketing-Ops; die tatsächliche Abschaltung liegt bei der IT — Little Data berät, führt keine Deaktivierung durch.
-**Beispiel-Prompt (DE, PTCF):**
+**Beispiel-Prompt (DE):**
 > "Du bist mein Integrations-Lebenszyklus-Berater (Persona). Erstelle einen Integration-Deprecation-Plan für unsere abzulösenden Langdock-Verbindungen auf Basis von MCP-Inventar und Abhängigkeitsregister (Aufgabe). Kontext: mehrere ungenutzte und redundante Verbindungen; keine aktive Kampagne darf ihre Datenquelle verlieren (Kontext). Format: Tabelle mit Verbindung, Begründung, abhängige Agenten/Workflows, Migrationspfad, Abschaltdatum, Rollback-Fenster, Verantwortlicher (Format)."
 **Erwartetes Artefakt:** Ein Integration-Deprecation-Plan (Tabelle) mit Migrationspfad, gestaffelten Abschaltdaten und Rollback-Fenster.
 **Fallstricke (≥2 spezifisch):**
