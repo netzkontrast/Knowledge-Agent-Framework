@@ -883,12 +883,13 @@ Vorgehen:
 2. Pro Item bewertet ein AI-Node drei Dimensionen: Brand-Voice-Konformität (1–5), Faktentreue (1–5), Tonalitäts-Passgenauigkeit (1–5) — Structured Output: Scores + Begründung pro Dimension.
 3. Condition-Node: Gesamt-Score < 10/15 → HITL-Node mit Item + Begründung zur manuellen Überarbeitung; Score ≥ 10/15 → automatisch zur Freigabe-Queue.
 4. Die Freigabe-Queue wird als Notion-Seite oder Sheets-Export bereitgestellt — der finale Freigabe-Klick verbleibt beim Menschen.
-Prompt:
-> "Du bist Content-QA-Workflow-Architekt. Entwirf einen Batch-QA-Workflow für KI-generierte Marketing-Texte. Kontext: Drei Bewertungsdimensionen (Brand-Voice, Faktentreue, Tonalität) je 1–5 Punkte, Schwelle 10/15, Ausreißer per HITL, Freigabe-Queue als Export. Format: Manual-Trigger, Loop-Node, AI-QA-Node mit Structured Output, Condition, HITL-Eskalation, Export-Action."
+Workflow: Manual-Trigger (Content-Array Text+Typ) → Loop-Node → AI-Node (QA-Bewertung 3 Dimensionen je 1–5, Brand-Voice+Fakten-Referenz-Wissensordner, Structured Output Scores+Begruendung) → Condition (<10/15→HITL-Ueberarbeitung / ≥10/15→Freigabe-Queue) → Action-Node (Notion/Sheets-Queue; finaler Freigabe-Klick manuell).
+Budget: Ein QA-AI-Node je Item — bei woechentlich grossen Mengen relevant; ein guenstiges Modell genuegt fuers Scoring, mit Loop-Obergrenze und Warn-Schwelle 75 %.
 Artefakt: Ein Content-QA-Workflow-Entwurf mit Bewertungs-Kriterien-Schema, Score-Schwellenwert-Definition und HITL-Eskalations-Logik.
 Fallstricke:
 - Der AI-QA-Node bewertet seinen eigenen zuvor generierten Content generös, weil kein unabhängiger Prüfkontext vorhanden ist → den QA-Node als vollständig separaten Node mit eigenem System-Prompt und eigenem Wissensordner-Anker konfigurieren, unabhängig vom Generierungs-Node.
 - Zu strenge Schwellenwerte blockieren zu viele Items und lähmen die Pipeline → die Schwellenwerte in den ersten zwei Wochen manuell kalibrieren, bevor der Workflow in den Regelbetrieb geht.
+Empfehlung: Den QA-Node als vollstaendig separaten Node mit eigenem System-Prompt und eigenem Wissensordner-Anker konfigurieren — ein Node, der seinen eigenen Output prueft, bewertet zu generoes. Die Schwellenwerte zwei Wochen manuell kalibrieren, bevor der Regelbetrieb startet.
 Anschluss: S-WF-042
 
 ### S-WF-042 Kampagnen-Launch-Readiness-Check-Workflow (Manual Trigger)
@@ -902,12 +903,13 @@ Vorgehen:
 2. Einen AI-Node alle Assets und Konfigurationen gegen eine Checkliste im Wissensordner prüfen lassen — Structured Output: Status pro Punkt (OK/Offen/Blocker) + Verantwortlicher.
 3. Condition-Node: mindestens ein Blocker vorhanden → HITL-Node mit vollständigem Report an Kampagnen-Leitung; keine Blocker → direkter Übergang zur Go-Bestätigung.
 4. Nach menschlicher Go/No-Go-Entscheidung einen Action-Node den Report als Notion-Seite archivieren lassen — revisionssicherer Nachweis des Launch-Checks.
-Prompt:
-> "Du bist Kampagnen-Launch-Readiness-Architekt. Entwirf einen Pre-Launch-Check-Workflow für Kampagnen. Kontext: Asset-Liste als Trigger-Input, Checklisten-Wissensordner als Referenz, Blocker-Erkennung per Condition, HITL-Go/No-Go, Notion-Archivierung. Format: Manual-Trigger, AI-Check-Node mit Structured Output, Condition, HITL, Notion-Action."
+Workflow: Manual-Trigger (Kampagnen-ID + Asset-Liste + Kampagnentyp-Parameter) → AI-Node (Readiness-Check gegen typ-spezifische Checkliste, Structured Output Status OK/Offen/Blocker + Verantwortlicher) → Condition (Blocker→HITL-Report an Leitung / kein Blocker→Go-Bestaetigung) → Action-Node (Notion-Report archivieren).
+Budget: Ein AI-Node pro Launch — gering pro Lauf und selten ausgeloest.
 Artefakt: Ein Readiness-Check-Workflow-Entwurf mit Checklisten-Schema, Blocker-Condition-Logik und Go/No-Go-HITL-Beschreibung.
 Fallstricke:
 - Die Checkliste im Wissensordner wird nicht kampagnentyp-spezifisch gepflegt → eine separate Checkliste pro Kampagnentyp (Performance, Event, Content) anlegen und den Trigger mit einem Kampagnentyp-Parameter versehen.
 - Der Report enthält "Offen"-Punkte, die keine echten Blocker sind, und verzögert den Launch → die Checkliste klar zwischen "Blocker" (Launch nicht möglich) und "Empfehlung" (Launch möglich, aber suboptimal) unterscheiden lassen.
+Empfehlung: Eine separate Checkliste pro Kampagnentyp (Performance/Event/Content) pflegen und den Trigger mit einem Kampagnentyp-Parameter versehen. Die Checkliste klar zwischen 'Blocker' (Launch unmoeglich) und 'Empfehlung' (suboptimal, aber moeglich) trennen, sonst verzoegern Pseudo-Blocker den Launch.
 Anschluss: S-WF-043
 
 ### S-WF-043 Automatischer Reporting-Digest nach Kampagnen-Ende (Integration Trigger)
@@ -921,12 +923,13 @@ Vorgehen:
 2. Parallele Integration-Nodes die Rohdaten aus Google Ads, LinkedIn und dem E-Mail-Tool ziehen und auf denselben Zeitraum normalisieren.
 3. Einen AI-Node die aggregierten Daten in ein standardisiertes KPI-Set übersetzen lassen (Impressionen, Klicks, Conversions, CPL, ROAS) und eine faktentreue narrative Zusammenfassung erzeugen — kein Werturteil ohne Datenbasis.
 4. HITL-Node: Kampagnen-Manager prüft KPIs und Narrative, ergänzt strategische Interpretation; nach Freigabe sendet ein Action-Node den Report als PDF und Slack-Nachricht an den Stakeholder-Verteiler.
-Prompt:
-> "Du bist Post-Kampagnen-Reporting-Architekt. Entwirf einen automatisierten Reporting-Workflow nach Kampagnen-Ende. Kontext: Multi-Quellen-Integration (Google Ads, LinkedIn, E-Mail), KPI-Normalisierung, faktentreue KI-Narrative, HITL für Interpretation, PDF+Slack-Verteilung. Format: Integration-Trigger, parallele Daten-Nodes, AI-KPI-Node, HITL, Report-Action."
+Workflow: Integration-Trigger (Kampagnen-End-Event) → parallele Integration-Nodes (Google Ads/LinkedIn/E-Mail-Tool, auf Zeitraum normalisiert) → AI-Node (KPI-Set + delta-basierte Narrative, Structured Output) → HITL-Node (Manager ergaenzt Interpretation) → Action-Node (PDF + Slack an Verteiler).
+Budget: Ein AI-Node pro Kampagnen-Ende, selten ausgeloest — gering; die parallelen Integration-Reads zaehlen als Workflow-Schritte, nicht als Token-Kosten.
 Artefakt: Ein Post-Kampagnen-Reporting-Workflow-Entwurf mit Multi-Quellen-Normalisierungs-Logik, KPI-Schema und HITL-Interpretations-Gate.
 Fallstricke:
 - Unterschiedliche Attribution-Fenster der Plattformen verzerren den Gesamtvergleich → das Reporting-Node explizit auf einen einheitlichen Attribution-Zeitraum (z. B. 7-Tage-Klick-Attribution) normalisieren und im Report-Header dokumentieren.
 - Der AI-Node fügt wertende Aussagen ("Schlechte Performance") ohne Benchmarks ein → den Node anweisen, ausschließlich delta-basierte Aussagen ("+15 % vs. letzter Kampagne") zu verwenden; absolute Urteile dem menschlichen HITL-Reviewer überlassen.
+Empfehlung: Alle Quellen auf ein einheitliches Attribution-Fenster (z. B. 7-Tage-Klick) normalisieren und im Report-Header dokumentieren — sonst verzerren divergente Fenster den Vergleich. Den AI-Node auf delta-basierte Aussagen ('+15 % vs. Vorkampagne') beschraenken; absolute Werturteile dem HITL-Reviewer ueberlassen.
 Anschluss: S-WF-044
 
 ### S-WF-044 Influencer-Briefing-Genehmigungs-Workflow (Manual Trigger)
@@ -940,12 +943,13 @@ Vorgehen:
 2. HITL-Gate 1 (Kampagnen-Manager): inhaltliche Prüfung auf Kampagnenziel-Konsistenz.
 3. HITL-Gate 2 (Brand-Director): Markenstimme und kreative Leitlinien — Freigabe oder Ablehnung mit Kommentar.
 4. HITL-Gate 3 (Legal): UWG-Konformität und Influencer-Kennzeichnungspflicht prüfen; nach finaler Freigabe Action-Node: versioniertes PDF in Cloud-Storage ablegen und Talent-Manager per Slack benachrichtigen — kein direkter Versand an das Talent durch den Workflow.
-Prompt:
-> "Du bist Influencer-Briefing-Workflow-Architekt. Entwirf eine dreistufige Genehmigungs-Kette für Influencer-Briefings. Kontext: Pflichtfeld-Check durch KI, drei HITL-Gates (KM, Brand, Legal), UWG-Kennzeichnungspflicht im Legal-Gate, kein automatischer Versand ans Talent. Format: Manual-Trigger, AI-Check-Node, drei HITL-Nodes mit Prüfinstruktion, Cloud-Storage-Action, Slack-Benachrichtigung."
+Workflow: Manual-Trigger (Briefing-Entwurf + Talent-Profil) → AI-Node (Vollstaendigkeits- + Brand-Voice-Check) → HITL-Gate 1 (Kampagnen-Manager) → HITL-Gate 2 (Brand-Director) → HITL-Gate 3 (Legal: § 5a UWG-Kennzeichnung) → Action-Node (versioniertes PDF in Cloud-Storage + Slack an Talent-Manager); kein Direktversand ans Talent, jedes Gate mit Ablehnungs-Pfad.
+Budget: Ein AI-Node, Rest HITL — guenstig pro Lauf; die eigentlichen Kosten sind Reviewer-Zeit ueber drei Stufen.
 Artefakt: Ein Influencer-Briefing-Genehmigungs-Workflow-Entwurf mit Pflichtfeld-Schema, dreistufiger HITL-Architektur und versionierter Cloud-Storage-Action.
 Fallstricke:
 - Ein abgelehntes Briefing landet in einer Sackgasse, weil kein Überarbeitungs-Pfad definiert ist → jeden HITL-Gate-Node mit einem expliziten Ablehnungs-Pfad versehen, der den Entwurf mit Kommentar an den Kampagnen-Manager zurückgibt.
 - Die Influencer-Kennzeichnungspflicht (§ 5a UWG) wird vom Legal-Gate nicht explizit geprüft → den Legal-HITL-Node mit einer konkreten Prüf-Checkliste für Kennzeichnungspflicht-Elemente ausstatten.
+Empfehlung: Jeden HITL-Gate-Node mit einem expliziten Ablehnungs-Pfad versehen, der den Entwurf mit Kommentar an den Kampagnen-Manager zurueckgibt — sonst landet ein abgelehntes Briefing in der Sackgasse. Den Legal-Gate mit einer konkreten § 5a-UWG-Kennzeichnungs-Checkliste ausstatten.
 Anschluss: S-WF-045
 
 ### S-WF-045 Monatlicher Wissensordner-Audit-Workflow (Scheduled Trigger)
@@ -959,12 +963,13 @@ Vorgehen:
 2. Einen AI-Node jede Datei auf drei Dimensionen prüfen lassen: (a) Zeitliche Aktualität (letztes Änderungsdatum > 6 Monate → Flag), (b) inhaltliche Widersprüche zu anderen Dokumenten im Ordner, (c) fehlende Pflicht-Metadaten (Owner, Gültigkeitsdatum) — Structured Output: Dateiname, Flag-Typ, Begründung, Empfehlung.
 3. HITL-Node: Wissensordner-Owner erhält den vollständigen Audit-Report mit allen geflaggten Dateien und muss je Datei eine Entscheidung treffen (Behalten/Aktualisieren/Löschen).
 4. Nach der HITL-Entscheidung erstellt ein Action-Node eine versionierte Audit-Report-Seite in Notion und sendet einen Slack-Alert mit der Anzahl der offenen Aktionspunkte an den Team-Channel.
-Prompt:
-> "Du bist Wissensordner-Audit-Architekt. Entwirf einen monatlichen Audit-Workflow für Langdock-Wissensordner. Kontext: API-Dateiliste als Trigger-Basis, drei Prüfdimensionen (Aktualität, Widersprüche, Metadaten), HITL mit Dreifach-Entscheidung (Behalten/Aktualisieren/Löschen), Notion-Archivierung und Slack-Alert. Format: Scheduled-Trigger, API-Integration, AI-Audit-Node, HITL-Gate, Notion+Slack-Actions."
+Workflow: Scheduled-Trigger (erster Montag/Monat) → Integration-Node (Dateiliste via API mit Datumsmetadaten) → AI-Node (3 Dimensionen Aktualitaet/Widersprueche/Metadaten, Structured Output Flag-Typ+Empfehlung) → HITL-Node (Owner: Behalten/Aktualisieren/Loeschen je Datei) → Action-Node (Notion-Report + Slack-Alert); Sekundaer-Trigger eskaliert offene Requests nach 5 Tagen.
+Budget: Ein AI-Node ueber alle Dateien monatlich; bei grossen Ordnern als Batch fahren — Warn-Schwelle 75 %.
 Artefakt: Ein Wissensordner-Audit-Workflow-Entwurf mit Dreifach-Flag-Schema, HITL-Entscheidungsmatrix und versionierter Notion-Archivierungs-Action.
 Fallstricke:
 - Der AI-Node flaggt zu viele Dokumente als "veraltet", weil das Änderungsdatum-Kriterium zu eng ist (z. B. 3 Monate) → das Aktualitätsschwellenwert-Kriterium nach Dokumenttyp differenzieren: Brand-Guidelines alle 6 Monate, Compliance-Dokumente alle 3 Monate, Evergreen-Inhalte jährlich.
 - Der Owner ignoriert HITL-Requests systematisch, weil keine Eskalationsregel definiert ist → einen sekundären Scheduled-Trigger einrichten, der offene HITL-Requests nach 5 Arbeitstagen ohne Reaktion automatisch an die nächsthöhere Führungsebene eskaliert.
+Empfehlung: Den Aktualitaets-Schwellenwert nach Dokumenttyp differenzieren (Brand-Guidelines 6 Monate, Compliance 3 Monate, Evergreen jaehrlich), sonst flaggt der Node zu viel. Einen sekundaeren Scheduled-Trigger einrichten, der offene HITL-Requests nach 5 Arbeitstagen an die naechsthoehere Ebene eskaliert.
 Anschluss: S-WF-046
 
 ### S-WF-046 DSGVO-Einwilligungs-Widerruf-Verarbeitungs-Workflow (Webhook Trigger)
@@ -978,12 +983,13 @@ Vorgehen:
 2. Einen Logic-Node verzweigen lassen: Newsletter-Widerruf → Abbestellung in E-Mail-Tool; Cookie-Opt-out → Tracking-Flag im CRM; Vollständige Datenlöschung → HITL-Node für juristische Freigabe vor irreversiblem Löschen.
 3. Action-Nodes synchronisieren den Status in allen verknüpften Systemen (CRM, E-Mail-Tool, Analytics-Plattform); ein AI-Node generiert eine tonalitätsgerechte Bestätigungs-E-Mail an den Kontakt.
 4. Ein abschließender Action-Node schreibt Zeitstempel, Kontakt-ID, Einwilligungstyp und ausgeführte Aktionen in ein Audit-Log (z. B. Notion-Datenbank oder Compliance-CSV) für den Datenschutzbeauftragten.
-Prompt:
-> "Du bist DSGVO-Workflow-Architekt. Entwirf einen Webhook-Workflow für Einwilligungswiderrufe. Kontext: Widerruf-Payload mit Kontakt-ID und Typ, Multi-System-Sync (CRM + E-Mail-Tool), HITL bei Vollständigem-Löschauftrag, revisionssicheres Audit-Log. Format: Trigger, Logic-Verzweigung nach Typ, Action-Nodes je System, AI-Bestätigungs-E-Mail, Audit-Log-Action."
+Workflow: Webhook-Trigger (Einwilligungs-Management: Kontakt-ID/Typ/Zeitpunkt) → Idempotenz-Check (Kontakt-ID + Zeitstempel) → Logic-Node (Newsletter→Abbestellung / Cookie→Tracking-Flag / Vollstaendige Loeschung→HITL juristische Freigabe) → Action-Nodes (CRM/E-Mail-Tool/Analytics-Sync) + AI-Node (Bestaetigungs-E-Mail) → Audit-Log-Action (externe Compliance-DB/CSV).
+Budget: Ein AI-Node (Bestaetigungs-E-Mail) je Widerruf — gering; die Frist-Kritikalitaet treibt das Design, nicht die Token-Kosten.
 Artefakt: Ein DSGVO-konformer Widerruf-Workflow-Entwurf mit Einwilligungstyp-Verzweigung, Multi-System-Action-Nodes und Audit-Log-Architektur.
 Fallstricke:
 - Der Webhook feuert mehrfach bei Netzwerkfehlern und löscht Kontaktdaten doppelt → einen Idempotenz-Check (Deduplizierung per Kontakt-ID + Zeitstempel) vor den Action-Nodes einbauen.
 - Das Audit-Log wird in einem Langdock-eigenen Speicher abgelegt und ist bei Behördenanfragen nicht als eigenständiges Dokument exportierbar → externe Compliance-Datenbank oder unveränderliche CSV außerhalb von Langdock als Audit-Ziel wählen.
+Empfehlung: Einen Idempotenz-Check (Dedup per Kontakt-ID + Zeitstempel) VOR die Action-Nodes setzen — Webhook-Retries bei Netzwerkfehlern duerfen nicht doppelt loeschen. Das Audit-Log in eine unveraenderliche CSV/Compliance-DB AUSSERHALB von Langdock schreiben, damit es bei Behoerdenanfragen eigenstaendig exportierbar ist.
 Anschluss: S-WF-047
 
 ### S-WF-047 Produkt-Update-Benachrichtigungs-Workflow (Integration Trigger)
@@ -997,12 +1003,13 @@ Vorgehen:
 2. Einen AI-Node drei Textvarianten parallel generieren lassen: (a) Kunden-E-Mail (nutzenorientiert, 120 Wörter), (b) Slack-Nachricht für Sales (feature-fokussiert, 3 Bulletpoints), (c) Push-Benachrichtigung (≤90 Zeichen) — Structured Output mit je einem Feld pro Kanal.
 3. Einen HITL-Node einschalten, damit Product-Marketing alle drei Varianten vor dem Versand in einer Übersicht prüfen und bei Bedarf editieren kann.
 4. Nach Freigabe distribuieren parallele Action-Nodes die Varianten an E-Mail-Tool, Slack-Channel und Push-Service.
-Prompt:
-> "Du bist Produkt-Kommunikations-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Produkt-Updates. Kontext: PIM-Trigger mit Produktdaten-Payload, drei Kanäle (Kunden-E-Mail, Sales-Slack, App-Push), HITL-Freigabe vor Versand. Format: Trigger, parallele AI-Nodes je Kanal, HITL, drei Action-Nodes."
+Workflow: Integration-Trigger (PIM/CMS 'Release-bereit') → Logic-Node (nur aktive, nicht zurueckgezogene Produkte) → drei parallele AI-Nodes (Kunden-E-Mail 120 W. / Sales-Slack 3 Bullets / Push ≤90 Z.) → HITL-Node (Product-Marketing prueft alle drei) → parallele Action-Nodes (E-Mail-Tool/Slack/Push-Service).
+Budget: Drei AI-Node-Laeufe pro Release; mittleres Volumen, das der Release-Kadenz folgt — Warn-Schwelle 75 %.
 Artefakt: Ein Produkt-Update-Workflow-Entwurf mit Parallel-AI-Nodes, Structured-Output-Schema und HITL-Freigabe-Gate.
 Fallstricke:
 - Der AI-Node generiert für alle drei Kanäle denselben Text in leicht veränderter Form → für jeden Kanal einen eigenen AI-Node mit kanalspezifischem System-Prompt und explizitem Längen-Constraint konfigurieren.
 - Updates für zurückgezogene Produktvarianten werden trotzdem versendet, weil der Trigger keine Varianten-Prüfung enthält → einen Logic-Node vor den AI-Nodes einbauen, der nur aktive, nicht-zurückgezogene Produkte durchlässt.
+Empfehlung: Pro Kanal einen eigenen AI-Node mit kanalspezifischem System-Prompt und explizitem Laengen-Constraint — ein Sammel-Node produziert uniformen Text. Einen Logic-Node vor die AI-Nodes setzen, der zurueckgezogene Produktvarianten herausfiltert.
 Anschluss: S-WF-048
 
 ### S-WF-048 Partner-Portal-Content-Update-Workflow (Webhook Trigger)
@@ -1015,12 +1022,13 @@ Vorgehen:
 1. Den Webhook-Trigger an das interne DAM/CMS koppeln, das bei Asset-Aktualisierung feuert; Payload enthält Asset-ID, Asset-Typ und betroffene Partner-Segmente.
 2. Einen Logic-Node die Partner-Tiering-Logik abbilden lassen: Tier-1-Partner erhalten sofortige E-Mail-Benachrichtigung mit Kontext-Zusammenfassung; Tier-2-Partner erhalten eine wöchentliche Digest-Einreihung; ein AI-Node generiert den E-Mail-Text aus den Asset-Metadaten.
 3. Ein HITL-Node hält die Kommunikation bei strategisch sensiblen Materialien (z. B. neue Preislisten) für eine manuelle Freigabe an, bevor Action-Nodes das Portal-CMS aktualisieren und E-Mails auslösen.
-Prompt:
-> "Du bist Partner-Enablement-Workflow-Architekt. Entwirf einen Webhook-Workflow für Partner-Portal-Updates. Kontext: DAM-Trigger bei Asset-Update, Tier-1-Sofort-E-Mail vs. Tier-2-Digest, HITL bei Preislisten-Updates. Format: Webhook-Trigger, Logic-Tier-Node, AI-E-Mail-Node, HITL, Portal-CMS-Action."
+Workflow: Webhook-Trigger (DAM/CMS Asset-Update: Asset-ID/Typ/Partner-Segmente) → Content-Hash-Filter (nur inhaltliche Aenderungen) → Logic-Node (Tier-1→Sofort-E-Mail / Tier-2→Wochen-Digest) → AI-Node (Update-E-Mail aus Metadaten) → HITL-Node (bei Preislisten/sensiblen Assets) → Action-Nodes (Portal-CMS-Update + E-Mail-Versand).
+Budget: Ein AI-Node je inhaltlichem Update; der Hash-Filter verhindert Laeufe bei Metadaten-Only-Aenderungen und spart so Volumen.
 Artefakt: Ein Partner-Portal-Update-Workflow-Entwurf mit Tier-Segmentierungslogik, AI-generierter Kommunikation und HITL-Gate für sensible Assets.
 Fallstricke:
 - Der Webhook feuert auch bei Metadaten-Only-Änderungen (z. B. Tags umbenennen) und löst unnötige Partner-E-Mails aus → einen Filter-Node einbauen, der nur inhaltliche Änderungen (Content-Hash-Vergleich) durchlässt.
 - Partner-E-Mail-Adressen sind im Portal veraltet, sodass Updates ins Leere laufen → regelmäßigen Datenqualitäts-Check der Partner-Kontakte als Voraussetzung für den Workflow definieren (ggf. als separater S-WF-059).
+Empfehlung: Einen Content-Hash-Filter vorschalten, der Metadaten-Only-Aenderungen (z. B. Tag-Umbenennungen) blockiert — sonst loesen sie unnoetige Partner-E-Mails aus. Einen regelmaessigen Datenqualitaets-Check der Partner-Kontakte als Workflow-Voraussetzung definieren, sonst laufen Updates an veraltete Adressen.
 Anschluss: S-WF-049
 
 ### S-WF-049 Mitarbeiter-Spotlight-Generierungs-Workflow (Form Trigger)
