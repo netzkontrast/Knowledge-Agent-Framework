@@ -1136,16 +1136,19 @@ Ziel: Eine dokumentierte Backup-Routine einrichten, die alle exportierbaren Lang
 Ergebnis: Ein Backup-Protokoll im Wissensordner mit Exportcheckliste, Speicherort-Struktur (Git für Prompts, Cloud-Drive für Wissensordner-Dateien) und einem jährlichen Wiederherstellungs-Drill-Termin.
 Fähigkeit: Workspace-Admin / Chat / Canvas / Wissensordner
 Vorgehen:
-1. Inventarisiere alle exportierbaren Langdock-Assets: System-Prompts (Markdown), Konversations-Starter-Texte (Markdown), Wissensordner-Quelldateien (Original-PDFs/DOCX), Workflow-Konfigurationen (JSON-Export falls verfügbar).
-2. Definiere die Backup-Methodik pro Asset-Typ: System-Prompts und Konversations-Starter → Git-Repository (S-LU-043); Wissensordner-Quelldateien → Google Drive mit Versionierung; Workflow-Logik → Dokumentation im Canvas.
-3. Etabliere einen quartalsweisen Backup-Rhythmus: Fester Termin im Teamkalender, 30 Minuten, Owner ist der Workspace-Admin; Backup-Protokoll im Wissensordner aktualisieren.
-4. Plane einen jährlichen Wiederherstellungs-Drill: Stelle einen archivierten Agenten aus dem Backup wieder her und prüfe, ob er ohne Qualitätsverlust funktioniert.
-Prompt:
-> "Du bist IT-Risikomanagerin für SaaS-Plattformen. Erstelle eine Backup-Strategie für einen Langdock-Workspace mit 12 Agenten, 5 Wissensordnern und 35 Prompts. Kontext: Keine nativen Backup-Funktionen verfügbar; manuelle Exportroutine erforderlich. Format: Tabelle mit Asset-Typ, Exportmethode, Speicherort, Backup-Rhythmus und Wiederherstellungstest-Verfahren."
+1. Inventarisiere die exportierbaren Assets: System-Prompts, Konversations-Starter, Wissensordner-Quelldateien, Workflow-Configs (JSON falls verfuegbar).
+2. Lege die Backup-Methodik je Typ fest: Prompts/Starter -> Git (S-LU-043), Quelldateien -> versioniertes Cloud-Drive, Workflow-Logik -> Canvas-Doku.
+3. Etabliere einen quartalsweisen 30-Min-Rhythmus mit dem Workspace-Admin als Owner und plane einen jaehrlichen Wiederherstellungs-Drill (archivierten Agenten zurueckspielen und pruefen).
+Vorlage: Workspace-Backup-Protokoll (quartalsweise):
+1. Asset-Inventar - System-Prompts (MD), Konversations-Starter (MD), Wissensordner-Quelldateien (PDF/DOCX), Workflow-Configs (JSON falls verfuegbar).
+2. Methodik je Typ - Prompts/Starter -> Git (S-LU-043); Quelldateien -> Cloud-Drive mit Versionierung; Workflow-Logik -> Canvas-Doku.
+3. Quartalsrhythmus - fester 30-Min-Termin, Owner Workspace-Admin, Protokoll im Wissensordner aktualisieren.
+4. Jaehrlicher Wiederherstellungs-Drill - archivierten Agenten zurueckspielen, Funktion ohne Qualitaetsverlust pruefen.
 Artefakt: Ein Backup-Protokoll im Canvas mit Asset-Inventar, Export-Methodik pro Typ, Quartalsroutine und einem dokumentierten Wiederherstellungs-Drill-Verfahren.
 Fallstricke:
 - Embeddings werden als "gesichert" betrachtet, obwohl nur die Quelldateien portierbar sind → Im Backup-Protokoll explizit festhalten: Embeddings sind plattformspezifisch und müssen nach einer Migration neu generiert werden.
 - Der Backup-Termin wird immer wieder verschoben → Backup-Aufgabe als wiederkehrendes Kalender-Event mit dem Workspace-Admin als Pflicht-Teilnehmer und dem CMO als eskalierender Empfänger bei Nicht-Durchführung.
+Empfehlung: Halte im Backup-Protokoll explizit fest, dass Embeddings plattformspezifisch sind und nach einer Migration neu generiert werden muessen - nur die Quelldateien sind portierbar, alles andere taeuscht falsche Sicherheit vor. Verankere den Backup-Termin als wiederkehrendes Kalender-Event mit dem Workspace-Admin als Pflicht-Teilnehmer und dem CMO als Eskalationsempfaenger, sonst wird er im Tagesgeschaeft immer wieder verschoben.
 Anschluss: S-LU-051
 
 ### S-LU-051 KI-gestützte Meeting-Moderation und Protokollierung einführen
@@ -1159,12 +1162,16 @@ Vorgehen:
 2. Erstelle ein Live-Protokoll-Canvas-Template: Abschnitte für Entscheidungen (mit Datum und Entscheidungsträger), offene Fragen und Action Items (wer, was, bis wann).
 3. Definiere den Post-Meeting-Konversations-Starter: "Extrahiere alle Action Items aus diesem Protokoll" → Output: nummerierte Liste mit Owner und Deadline, bereit für Slack-Versand.
 4. Trainiere das Team in einem 20-minütigen Workshop auf das Format; der erste Champion moderiert das erste Live-Meeting mit dem neuen Prozess.
-Prompt:
-> "Du bist Meeting-Effizienz-Beraterin. Erstelle ein Langdock-Canvas-Template für strukturierte Marketing-Meetings. Kontext: Wöchentliches 60-Minuten-Team-Meeting, 8 Teilnehmer, häufige Nacharbeit durch fehlende Protokolle. Format: Canvas-Template mit Abschnitten Agenda (mit Zeitblöcken), Entscheidungen (Tabelle), Action Items (wer/was/bis wann) und offenen Fragen."
+Vorlage: Meeting-Moderation-Setup (drei Komponenten):
+1. Pre-Meeting-Agent - Starter 'Bereite die Agenda vor'; Input Thema/Teilnehmer/Ziel/Dauer -> Agenda mit Zeitbloecken.
+2. Live-Protokoll-Canvas - Abschnitte Entscheidungen (Datum/Traeger), offene Fragen, Action Items (wer/was/bis wann).
+3. Post-Meeting-Starter - 'Extrahiere alle Action Items' -> nummerierte Liste mit Owner/Deadline, Slack-versandbereit.
+4. Einfuehrung - 20-Min-Workshop, erster Champion moderiert das erste Live-Meeting.
 Artefakt: Ein Canvas-Meeting-Template mit drei Abschnitten plus ein fertiger System-Prompt für den Meeting-Prep-Agenten und ein Post-Meeting-Konversations-Starter.
 Fallstricke:
 - Das Canvas-Protokoll wird live nicht gepflegt, weil alle im Meeting-Fluss sind → Dedizierte Protokollantin für jedes Meeting festlegen; rotierend, 10-Minuten-Nachbearbeitung ist Pflichtbestandteil der Meeting-Kultur.
 - Action-Item-Extraktion übersieht implizite Zusagen ("ich schaue das mal an") → Im Konversations-Starter explizit: "Markiere auch implizite Zusagen als Action Items und frage nach Owner und Deadline."
+Empfehlung: Lege fuer jedes Meeting eine dedizierte (rotierende) Protokollantin fest und mache die 10-Minuten-Nachbearbeitung zum Pflichtbestandteil der Meeting-Kultur - sonst wird das Canvas-Protokoll im Gespraechsfluss nicht gepflegt. Formuliere im Post-Meeting-Starter ausdruecklich 'markiere auch implizite Zusagen (ich schaue das mal an) als Action Items und frage nach Owner und Deadline', damit nichts Unverbindliches verloren geht.
 Anschluss: S-LU-052
 
 ### S-LU-052 Langdock als Wissensmanagement-Layer für das Marketing-Team etablieren
@@ -1174,16 +1181,19 @@ Ziel: Langdock als zentrale Wissensmanagement-Schicht einsetzen, die strukturier
 Ergebnis: Eine dreistufige Wissensarchitektur im Canvas: Tier 1 (immer aktuell: Brand-Dokumente), Tier 2 (quartalsweise aktualisiert: Kampagnen-Learnings), Tier 3 (archiviert: abgeschlossene Projekte) — plus ein "Ask-the-Archive"-Agent.
 Fähigkeit: Wissensordner / Agents / Canvas / Konversations-Starter
 Vorgehen:
-1. Definiere die Wissensarchitektur: Tier-1-Ordner (Brand, Personas, Tone-of-Voice — Owner: CMO, Update-Rhythmus: bei Änderung), Tier-2-Ordner (Kampagnen-Retros, Agentur-Briefings — Owner: Team-Leads, Update-Rhythmus: quartalsweise), Tier-3-Ordner (archivierte Projekte — schreibgeschützt, read-only).
-2. Migriere die wichtigsten Dokumente aus Google Drive und Confluence in die jeweiligen Tier-Ordner; lege klare Namenskonventionen (S-LU-018) fest.
-3. Konfiguriere den "Ask-the-Archive"-Agenten: System-Prompt "Du beantwortest Fragen aus dem Marketing-Wissensarchiv und gibst immer die Quell-Datei an"; Konversations-Starter "Was haben wir beim letzten LinkedIn-Kampagnen-Launch gelernt?"
-4. Kommuniziere im Team: Neue Kampagnen-Learnings werden ab sofort als 1-seitige Retro-Datei im Tier-2-Ordner abgelegt — nicht mehr als Slack-Thread.
-Prompt:
-> "Du bist Wissensmanagement-Architektin. Entwickle eine dreistufige Wissensordner-Architektur für ein 15-köpfiges Marketing-Team in Langdock. Kontext: Aktuell 300 Dokumente verstreut auf Google Drive und Confluence; Ziel: retrieval-fähige Wissensbasis mit klarem Update-Rhythmus. Format: Tabelle mit Tier, Inhaltstyp, Owner, Update-Rhythmus und Zugriffsregel."
+1. Definiere die drei Tiers: Tier 1 Brand/Personas (Owner CMO), Tier 2 Kampagnen-Retros/Briefings (Owner Team-Leads, quartalsweise), Tier 3 archivierte Projekte (read-only).
+2. Migriere die wichtigsten Dokumente aus Drive/Confluence in die Tier-Ordner mit klaren Namenskonventionen (S-LU-018).
+3. Konfiguriere den Ask-the-Archive-Agenten (System-Prompt mit Quellenangabe-Pflicht) und kommuniziere: neue Learnings ab sofort als 1-seitige Retro-Datei in Tier 2, nicht als Slack-Thread.
+Vorlage: Dreistufige Wissensarchitektur:
+1. Tier 1 (immer aktuell) - Brand/Personas/Tone-of-Voice; Owner CMO; Update bei Aenderung.
+2. Tier 2 (quartalsweise) - Kampagnen-Retros/Agentur-Briefings; Owner Team-Leads.
+3. Tier 3 (archiviert, read-only) - abgeschlossene Projekte.
+4. Ask-the-Archive-Agent - System-Prompt 'beantworte aus dem Archiv, gib immer die Quell-Datei an'; Starter 'Was haben wir beim letzten LinkedIn-Launch gelernt?'.
 Artefakt: Eine dreistufige Wissensarchitektur-Tabelle im Canvas, ein System-Prompt für den "Ask-the-Archive"-Agenten und eine Migrations-Checkliste für die wichtigsten 50 Dokumente.
 Fallstricke:
 - Tier-3-Archivordner wächst unkontrolliert auf über 1.000 Dateien und beeinträchtigt die Retrieval-Qualität → Archivordner quartalsweise auf maximal 200 Dateien begrenzen; ältere Dateien in ein externes Drive auslagern.
 - Das Team nutzt den Agenten nicht, weil sie ihn nicht kennen → Onboarding-Konversations-Starter ist Pflichtbestandteil des 14-Tage-Onboarding-Plans (S-LU-041).
+Empfehlung: Begrenze den Tier-3-Archivordner quartalsweise auf max. 200 Dateien und lagere aeltere Dokumente in ein externes Drive aus - ein unkontrolliert wachsendes Archiv (>1.000 Dateien) senkt die Retrieval-Qualitaet aller Agenten. Mache den Ask-the-Archive-Onboarding-Starter zum Pflichtbestandteil des 14-Tage-Onboardings (S-LU-041), sonst nutzt das Team den Agenten nicht, weil es ihn nicht kennt.
 Anschluss: S-LU-053
 
 ### S-LU-053 KI-Reife-Assessment für das Marketing-Team durchführen
@@ -1197,12 +1207,16 @@ Vorgehen:
 2. Bewerte jede Dimension auf einer 1–5-Skala: (1) nicht vorhanden, (3) selektiv implementiert, (5) systematisch und messbar; nutze konkrete Evidenz aus dem Workspace (Nutzungsdaten, Governance-Dokumente, Canary-Check-Protokolle).
 3. Aktiviere den Deep Research Modus, um den aktuellen KI-Reife-Benchmark für Marketing-Teams im B2B-SaaS-Segment zu recherchieren; identifiziere die drei größten Lücken zum Best Practice.
 4. Erstelle den 90-Tage-Entwicklungsplan: Top-3-Maßnahmen pro Lücke, Owner, KPI und Checkpoint-Datum.
-Prompt:
-> "Du bist KI-Strategie-Beraterin für B2B-Marketing-Teams. Erstelle ein KI-Reife-Assessment-Framework in fünf Dimensionen. Kontext: Marketing-Team mit 6 Monaten Langdock-Erfahrung, 12 Personen, 8 aktive Agenten, Governance-Dokument vorhanden. Format: Bewertungsmatrix mit Dimension, Score (1–5), Evidenz, Lücke zum Best Practice und Top-Maßnahme."
+Vorlage: KI-Reife-Assessment (fuenf Dimensionen):
+1. Dimensionen - Strategie & Vision, Tooling & Infrastruktur, Kompetenz & Adoption, Governance & Compliance, Output-Qualitaet.
+2. Scoring 1-5 je Dimension - 1 nicht vorhanden, 3 selektiv, 5 systematisch & messbar; mit Workspace-Evidenz belegen.
+3. Benchmark (Deep Research) - B2B-SaaS-Marketing-Referenz; drei groesste Luecken zum Best Practice.
+4. 90-Tage-Plan - Top-3-Massnahmen je Luecke, Owner, KPI, Checkpoint-Datum.
 Artefakt: Ein Reife-Assessment-Report im Canvas mit Bewertungsmatrix (5 Dimensionen × Score), Benchmark-Vergleich und einem priorisierten 90-Tage-Entwicklungsplan.
 Fallstricke:
 - Das Assessment wird zu positiv, weil das Team die eigene Arbeit bewertet → Mindestens einen externen Champion (aus S-LU-047) oder einen Langdock-Customer-Success-Manager als neutrale Perspektive einbinden.
 - Das Assessment endet ohne Konsequenzen → 90-Tage-Entwicklungsplan muss innerhalb von 7 Tagen nach dem Assessment finalisiert und vom CMO freigegeben sein; sonst verliert es seine Steuerungswirkung.
+Empfehlung: Binde mindestens einen externen Champion (S-LU-047) oder den Langdock-Customer-Success-Manager als neutrale Perspektive ein - ein rein selbst durchgefuehrtes Assessment faellt regelmaessig zu positiv aus. Finalisiere den 90-Tage-Entwicklungsplan innerhalb von 7 Tagen nach dem Assessment und lass ihn vom CMO freigeben, sonst verliert das Assessment seine Steuerungswirkung.
 Anschluss: S-LU-054
 
 ### S-LU-054 Langdock-Onboarding für externe Agenturen und Freelancer strukturieren
@@ -1216,12 +1230,16 @@ Vorgehen:
 2. Konfiguriere einen dedizierten "External Partner Agent": System-Prompt mit expliziten Grenzen ("Du kannst nur auf die freigegebenen Ordner zugreifen"), Konversations-Starter für die häufigsten externen Aufgaben (Brand-Voice-Check, Briefing-Frage, Asset-Format-Anfrage).
 3. Erstelle den 2-Stunden-Schnell-Einstiegs-Guide im Canvas: Schritt 1 Account-Aktivierung, Schritt 2 die drei wichtigsten Agenten kennenlernen, Schritt 3 erste echte Aufgabe mit dem Brand-Voice-Agenten erledigen.
 4. Definiere den Offboarding-Prozess: Zugriffsentzug nach Projektende, Audit welche Daten der externe Nutzer gesehen hat.
-Prompt:
-> "Du bist IT-Security-Beraterin für kollaborative KI-Plattformen. Erstelle eine Zugriffsrechte-Matrix für externe Agentur-Mitarbeitende in Langdock. Kontext: 3 externe Nutzer, Zugriff auf Brand-Guide und aktuelle Briefings, kein Zugriff auf CRM-Daten oder interne Analysen. Format: Tabelle mit Nutzer-Typ, freigegebene Wissensordner, erlaubte Aktionen, verbotene Aktionen und Offboarding-Prozess."
+Vorlage: Externes Onboarding-Kit:
+1. Zugriffsrechte-Matrix - Externe: Lese-Zugriff auf freigegebene Ordner (Brand-Guide, Briefings); keine Agent-/Ordner-Bearbeitung.
+2. External-Partner-Agent - System-Prompt mit Grenzen ('nur freigegebene Ordner'); Starter fuer Brand-Voice-Check, Briefing-Frage, Asset-Format.
+3. 2-Stunden-Schnell-Einstieg - Account-Aktivierung -> drei Kern-Agenten -> erste echte Aufgabe.
+4. Offboarding - Zugriffsentzug nach Projektende, Audit der gesehenen Daten.
 Artefakt: Eine Zugriffsrechte-Matrix im Canvas, ein konfigurierter External-Partner-Agent und ein 2-Stunden-Onboarding-Guide für externe Partner.
 Fallstricke:
 - Externe Nutzer erhalten versehentlich Zugriff auf interne Governance-Dokumente oder CRM-verknüpfte Wissensordner → Separate Wissensordner-Struktur für externe Partner anlegen; nie denselben Ordner intern und extern freigeben.
 - Externer Nutzer verlässt die Agentur, der Zugang bleibt aktiv → Offboarding-Prozess mit Ablaufdatum bei Projektvergabe als Standard festlegen; Workspace-Admin prüft monatlich aktive externe Zugänge.
+Empfehlung: Lege eine separate Wissensordner-Struktur fuer externe Partner an und gib nie denselben Ordner intern und extern frei - sonst sehen Externe versehentlich Governance-Dokumente oder CRM-verknuepfte Inhalte. Setze ein Ablaufdatum schon bei der Projektvergabe und lass den Workspace-Admin monatlich aktive externe Zugaenge pruefen, damit kein Zugang nach dem Weggang aktiv bleibt.
 Anschluss: S-LU-055
 
 ### S-LU-055 Multi-Workspace-Governance für größere Marketing-Organisationen aufbauen
@@ -1235,12 +1253,16 @@ Vorgehen:
 2. Definiere die drei Governance-Schichten: Schicht 1 (zwingend) — DSGVO-Konformität, Brand-Voice-Standard-Agent, Budget-Eskalationsplan; Schicht 2 (empfohlen) — Namenskonventionen, RACI-Modell, Canary-Check-Prozess; Schicht 3 (lokal frei) — spezifische Agenten, Workflow-Logik, Prompt-Katalog.
 3. Etabliere einen Cross-Workspace-Champions-Roundtable (quartalsweise, 60 Minuten): Workspace-Admins aller Business-Units tauschen Best Practices aus und koordinieren Schicht-1-Updates.
 4. Erstelle einen zentralen "Governance-Hub"-Wissensordner, der für alle Workspaces lesbar ist: zwingende Standards, aktuelle Compliance-Dokumente, Änderungsprotokoll.
-Prompt:
-> "Du bist Enterprise-KI-Governance-Beraterin. Entwickle ein Multi-Workspace-Governance-Modell für 4 Langdock-Workspaces in verschiedenen Business-Units. Kontext: DACH-Region, unterschiedliche Team-Größen (8–30 Nutzer), gemeinsame Brand-Standards aber unterschiedliche Use-Cases. Format: Drei-Schichten-Modell mit zwingenden Standards, Empfehlungen und lokalen Freiheiten — als Tabelle mit Maßnahme, Schicht, Verantwortlichkeit und Durchsetzungs-Mechanismus."
+Vorlage: Multi-Workspace-Governance (Global Standards, Local Execution):
+1. Inventar - je Workspace Teams, Nutzer, Agenten, Ordner, Governance-Stand.
+2. Schicht 1 (zwingend) - DSGVO, Brand-Voice-Standard-Agent, Budget-Eskalationsplan.
+3. Schicht 2 (empfohlen) - Namenskonventionen, RACI, Canary-Check.
+4. Schicht 3 (lokal frei) - spezifische Agenten, Workflow-Logik, Prompt-Katalog; plus Cross-Workspace-Roundtable (quartalsweise) und Governance-Hub-Ordner.
 Artefakt: Ein Multi-Workspace-Governance-Dokument im Canvas mit Drei-Schichten-Modell, einem Governance-Hub-Wissensordner-Plan und einer Quartals-Roundtable-Agenda-Vorlage.
 Fallstricke:
 - Zwingende Standards werden von lokalen Teams als Bevormundung empfunden und ignoriert → Co-Creation der Schicht-1-Standards mit je einem Vertreter pro Business-Unit; keine Standards ohne lokalen Input.
 - Der Governance-Hub-Wissensordner veraltet, weil keine klare Ownership → CMO oder Head of Marketing Ops ist Owner; Änderungen an Schicht-1-Standards erfordern explizite Freigabe und Update-Protokoll im Hub.
+Empfehlung: Co-kreiere die Schicht-1-Standards mit je einem Vertreter pro Business-Unit - zwingende Standards ohne lokalen Input werden als Bevormundung empfunden und ignoriert. Mach CMO oder Head of Marketing Ops zum Owner des Governance-Hub-Ordners und verlange fuer Schicht-1-Aenderungen explizite Freigabe plus Update-Protokoll, sonst veraltet der Hub.
 Anschluss: S-LU-056
 
 ### S-LU-056 KI-Content-Kennzeichnungsstrategie teamweit umsetzen
@@ -1254,12 +1276,16 @@ Vorgehen:
 2. Integriere ein Kennzeichnungs-Pflichtfeld in die Content-Freigabe-Checkliste (S-LU-040): Kein Asset geht live ohne ausgefülltes Feld "KI-Anteil: voll generiert / assistiert / nicht genutzt" und "Disclosure angewendet: Ja/Nein".
 3. Baue einen monatlichen Stichproben-Audit-Workflow: Ziehe 10 zufällige veröffentlichte Assets aus dem CMS und prüfe via Agent, ob Disclosure korrekt angewendet wurde — Abweichungen werden direkt an den Asset-Owner kommuniziert.
 4. Dokumentiere das Kennzeichnungs-Setup im Governance-Wissensordner als Nachweis für eventuelle Compliance-Prüfungen.
-Prompt:
-> "Du bist Compliance-Managerin für KI-Content-Produktion. Erstelle einen operativen Kennzeichnungs-Workflow für ein 15-köpfiges Marketing-Team, das täglich KI-Inhalte produziert. Kontext: EU AI Act Art. 50 relevant, Produktion von Blogs, Social Posts und Newslettern. Format: Prozess-Checkliste mit Schritten, Verantwortlichkeiten, Tool-Integration und Audit-Mechanismus."
+Vorlage: KI-Content-Kennzeichnung (operativ):
+1. Agent-Ergaenzung - System-Prompt-Zeile '[KI-assistiert, redaktionell geprueft]' fuer externe Outputs.
+2. Freigabe-Pflichtfeld - in Checkliste (S-LU-040): 'KI-Anteil: voll/assistiert/nicht' und 'Disclosure: Ja/Nein'.
+3. Monats-Audit - 10 zufaellige CMS-Assets per Agent auf korrekte Disclosure pruefen; Abweichungen an Asset-Owner.
+4. Nachweis - Setup im Governance-Ordner dokumentieren (Compliance-Pruefung).
 Artefakt: Ein Kennzeichnungs-Workflow-Dokument im Canvas mit Agent-System-Prompt-Ergänzung, Freigabe-Checkliste und Audit-Prozess-Beschreibung.
 Fallstricke:
 - Die Disclosure-Zeile im Agent-Output wird vom Redakteur beim Copy-Paste-Schritt gelöscht, ohne es zu bemerken → Disclosure als Pflichtfeld im CMS-Upload-Formular einrichten — unabhängig von der Langdock-Integration.
 - Stichproben-Audit ohne klare Konsequenz bei Nicht-Einhaltung ist zahnlos → Im Governance-Dokument definieren: Erster Verstoß = Erinnerung, zweiter Verstoß = Eskalation an Teamlead, dritter Verstoß = Compliance-Review.
+Empfehlung: Richte das Disclosure-Pflichtfeld direkt im CMS-Upload-Formular ein, unabhaengig von der Langdock-Integration - die Disclosure-Zeile im Agent-Output wird beim Copy-Paste-Schritt sonst unbemerkt geloescht. Hinterlege im Governance-Dokument klare Konsequenzen (1. Verstoss Erinnerung, 2. Eskalation an Teamlead, 3. Compliance-Review), denn ein Stichproben-Audit ohne Konsequenz ist zahnlos.
 Anschluss: S-LU-057
 
 ### S-LU-057 Langdock in den bestehenden Martech-Stack integrieren
@@ -1269,16 +1295,19 @@ Ziel: Langdock als KI-Schicht in den bestehenden Martech-Stack einbetten — min
 Ergebnis: Eine Martech-Integrations-Karte im Canvas mit drei implementierten Workflows (HubSpot → Langdock → HubSpot, Google Analytics → Langdock → Slack, CMS → Langdock → Freigabe-Workflow) und einer Priorisierung weiterer Integrations-Kandidaten.
 Fähigkeit: Workflows / Integrations / Canvas / Agents
 Vorgehen:
-1. Kartiere den aktuellen Martech-Stack: Welche Tools werden täglich genutzt? Wo entstehen manuelle Übergabeschritte zwischen Langdock und anderen Systemen (z. B. Langdock-Output → manuell in HubSpot)?
-2. Priorisiere die drei vielversprechendsten Integrationspunkte nach Zeitersparnis und technischer Machbarkeit; nutze die native Langdock-Integrations-Liste (55+ native Integrationen, rund 754 Actions; exakte Zahl nicht offiziell dokumentiert) als Ausgangspunkt.
-3. Baue Workflow 1 (Quick Win): Wenn HubSpot ein neues Lead-Formular-Submission erhält → Langdock generiert automatisch eine personalisierte Follow-up-E-Mail → zurück in HubSpot als Draft.
-4. Dokumentiere alle Integrationen im Canvas als Martech-Stack-Karte: Tool, Verbindungstyp (native/MCP/Webhook), Trigger, Langdock-Aktion, Output-Ziel, Owner und Wartungsaufwand.
-Prompt:
-> "Du bist Martech-Integrationsarchitektin. Entwickle eine Integrations-Strategie für Langdock in einem Marketing-Stack mit HubSpot, Google Analytics und Slack. Kontext: Aktuell alle Übergaben manuell, Team will Automatisierung ohne IT-Ressourcen. Format: Integrations-Karte mit Tool-Kombination, Trigger, Langdock-Funktion, Output-Ziel, geschätzter Zeitersparnis/Monat und Implementierungsaufwand (h)."
+1. Kartiere den Martech-Stack und die manuellen Uebergabeschritte zwischen Langdock und den anderen Systemen.
+2. Priorisiere die drei vielversprechendsten Integrationspunkte nach Zeitersparnis und Machbarkeit (native Integrations-Liste als Ausgangspunkt).
+3. Baue Workflow 1 als Quick Win (HubSpot-Lead -> Langdock-Follow-up -> HubSpot-Draft) und dokumentiere alle Integrationen als Stack-Karte (Tool, Verbindungstyp, Trigger, Aktion, Output, Owner).
+Vorlage: Martech-Integrations-Karte:
+1. Stack-Kartierung - taeglich genutzte Tools; manuelle Uebergabeschritte zwischen Langdock und Systemen.
+2. Priorisierung - drei Integrationspunkte nach Zeitersparnis x Machbarkeit; native Integrations-Liste als Ausgangspunkt.
+3. Quick-Win-Workflow - HubSpot-Lead-Submission -> Langdock-Follow-up-E-Mail -> HubSpot-Draft.
+4. Doku - Tool, Verbindungstyp (native/MCP/Webhook), Trigger, Aktion, Output-Ziel, Owner, Wartungsaufwand.
 Artefakt: Eine Martech-Integrations-Karte im Canvas mit drei implementierten Verbindungen, Priorisierungsliste für weitere Integrationen und einer Wartungs-RACI-Tabelle.
 Fallstricke:
 - Native HubSpot-Integration überträgt sensible Kontaktdaten nach Langdock → DSGVO-Prüfung (S-LU-031) vor jeder CRM-Integration zwingend; nur anonymisierte oder aggregierte Daten in KI-Layer übertragen.
 - Workflow-Automatisierung bricht bei API-Änderungen des Tool-Anbieters → Monatlichen Integration-Health-Check in den Governance-Review (S-LU-025) aufnehmen; bei Bruch des Workflows wird sofort der Workflow-Owner benachrichtigt.
+Empfehlung: Fuehre vor jeder CRM-Integration eine DSGVO-Pruefung (S-LU-031) durch und uebertrage nur anonymisierte oder aggregierte Daten in den KI-Layer - eine native HubSpot-Anbindung schiebt sonst sensible Kontaktdaten nach Langdock. Nimm einen monatlichen Integration-Health-Check in den Governance-Review (S-LU-025) auf, da Workflow-Automatisierungen bei API-Aenderungen des Anbieters brechen und der Workflow-Owner sofort benachrichtigt werden muss.
 Anschluss: S-LU-058
 
 ### S-LU-058 KI-Strategie-Präsentation für das Board vorbereiten
@@ -1288,16 +1317,17 @@ Ziel: Eine überzeugende, datengestützte KI-Strategie-Präsentation für das Bo
 Ergebnis: Ein Board-Ready-Präsentations-Deck im Canvas (10–12 Slides) mit sechs Kernbotschaften: Ist-Zustand, strategische Vision, Quick Wins (realisiert), nächste Investitionen, Risiken und Governance.
 Fähigkeit: Chat / Canvas / Data Analyst / Deep Research
 Vorgehen:
-1. Sammle alle relevanten Datenpunkte im Chat: Adoption-Rate (S-LU-046), ROI-KPIs (S-LU-012), Reife-Assessment-Score (S-LU-053), Pipeline-Attribution (S-LU-040) und CO₂-Fußabdruck (S-LU-044).
-2. Aktiviere den Deep Research Modus für den Markt-Kontext: Wie hoch ist die KI-Adoptionsrate im B2B-Marketing-Segment? Was investieren vergleichbare Unternehmen? Welche regulatorischen Entwicklungen sind relevant?
-3. Entwickle das Deck-Narrativ im Canvas: Folie 1 (Executive Summary), Folien 2–4 (Ist-Zustand + Quick Wins mit Daten), Folien 5–7 (strategische Vision + nächste Schritte + Investitionsbedarf), Folien 8–10 (Risiken + Governance + ROI-Projektion), Folien 11–12 (Entscheidungsaufruf + Anhang).
-4. Teste die Präsentation mit dem Steel-Manning-Test (S-LU-002): "Was ist das stärkste Gegenargument gegen diese KI-Investition?" — und baue die Antwort in Folie 8 ein.
+1. Sammle die Datenpunkte: Adoption (S-LU-046), ROI-KPIs (S-LU-012), Reife-Score (S-LU-053), Pipeline-Attribution (S-LU-040), CO2 (S-LU-044).
+2. Recherchiere per Deep Research den Markt-Kontext (B2B-Marketing-KI-Adoption, Vergleichsinvestitionen, regulatorische Entwicklungen).
+3. Entwickle das 10-12-Slide-Narrativ im Canvas (Executive Summary, Ist + Quick Wins, Vision + Investition, Risiken + Governance + ROI, Entscheidungsaufruf).
+4. Teste mit dem Steel-Manning-Test (S-LU-002) und baue das staerkste Gegenargument in die Risiken-Folie ein.
 Prompt:
 > "Du bist Board-Kommunikations-Expertin für digitale Transformation. Erstelle eine Gliederung für eine 20-minütige KI-Strategie-Präsentation für das Board. Kontext: CMO präsentiert nach 6 Monaten KI-Pilot im Marketing; Board will Investitionsgrundlage für den Vollrollout. Format: Slide-Struktur mit Folientitel, Kernbotschaft (1 Satz), empfohlene Visualisierung und wichtigste Daten-/Quellenangabe pro Folie."
 Artefakt: Eine 10–12-Slide-Präsentationsgliederung im Canvas mit Folientitel, Kernbotschaft, Visualisierungsempfehlung und Datenquellen — bereit für die Umsetzung in PowerPoint oder Google Slides.
 Fallstricke:
 - Die Präsentation enthält zu viele operative Details und verliert das Board → Faustregel: Pro Folie eine Kernbotschaft, maximal drei Datenpunkte; alles andere in den Anhang.
 - ROI-Projektion basiert auf zu optimistischen Annahmen und verliert Glaubwürdigkeit → Projiziere konservativ (unteres Drittel der realistischen Bandbreite) und kommuniziere die Annahmen transparent auf der Folie.
+Empfehlung: Zieh als Datengrundlage zuerst die belastbaren Kennzahlen zusammen - Adoption (S-LU-046), ROI-KPIs (S-LU-012), Reife-Score (S-LU-053), Pipeline-Attribution (S-LU-040), CO2 (S-LU-044) - und halte pro Folie genau eine Kernbotschaft mit maximal drei Datenpunkten; alles andere gehoert in den Anhang, sonst verlierst du das Board. Projiziere den ROI konservativ (unteres Drittel der realistischen Bandbreite) und mach die Annahmen auf der Folie transparent, da zu optimistische Zahlen die Glaubwuerdigkeit der gesamten Praesentation kosten.
 Anschluss: S-LU-059
 
 ### S-LU-059 Kontinuierlicher Verbesserungskreislauf für KI-Prozesse einrichten
@@ -1307,16 +1337,19 @@ Ziel: Einen strukturierten Continuous-Improvement-Loop für alle KI-Prozesse eta
 Ergebnis: Ein CI-Prozess-Dokument im Canvas mit drei Zyklen (monatlich: Canary-Checks + Nutzungs-Feedback; quartalsweise: Governance-Review + Backlog-Priorisierung; jährlich: Reife-Assessment + Board-Update) und klaren Ownership-Zuweisungen.
 Fähigkeit: Chat / Canvas / Agents / Wissensordner
 Vorgehen:
-1. Definiere die drei CI-Zyklen mit Aktivitäten: Monatszyklus (Canary-Checks S-LU-033, Adoptions-Dashboard S-LU-046, Feature-Request-Clustering S-LU-049), Quartalszyklus (Governance-Review S-LU-025, Use-Case-Backlog-Priorisierung S-LU-048, Wissensordner-Hygiene S-LU-018), Jahreszyklus (Reife-Assessment S-LU-053, Board-Präsentation S-LU-058, Wechsel-Drill S-LU-050).
-2. Erstelle für jeden Zyklus eine Aktivitätscheckliste mit Dauer, Owner und Output-Artefakt; integriere alle Termine in den Teamkalender als Wiederkehrende Events.
-3. Konfiguriere einen CI-Loop-Agenten als Moderation-Unterstützung: Konversations-Starter "Erstelle die Agenda für unseren monatlichen KI-Review" → Output: vorausgefüllte Meeting-Agenda mit Datenpunkten aus dem letzten Zyklus.
-4. Verankere die CI-Philosophie im Team-Onboarding (S-LU-041): Neue Mitarbeitende lernen ab Tag 7, wie sie Verbesserungsvorschläge einreichen.
-Prompt:
-> "Du bist Prozess-Exzellenz-Beraterin mit KI-Fokus. Erstelle einen Continuous-Improvement-Loop für KI-Prozesse in einem Marketing-Team. Kontext: 15 Personen, Langdock seit 6 Monaten, Champions-Programm aktiv. Format: Drei-Zyklen-Tabelle (monatlich/quartalsweise/jährlich) mit Aktivität, Dauer, Owner, Input-Artefakt und Output-Artefakt."
+1. Definiere die drei Zyklen mit Aktivitaeten: monatlich (S-LU-033/046/049), quartalsweise (S-LU-025/048/018), jaehrlich (S-LU-053/058/050).
+2. Erstelle je Zyklus eine Aktivitaetscheckliste (Dauer, Owner, Output) und lege alle Termine als wiederkehrende Kalender-Events an.
+3. Konfiguriere einen CI-Loop-Agenten (Starter 'Erstelle die Agenda fuer unseren monatlichen KI-Review') und verankere die CI-Philosophie im Onboarding (S-LU-041).
+Vorlage: Continuous-Improvement-Loop (drei Zyklen):
+1. Monatlich - Canary-Checks (S-LU-033), Adoptions-Dashboard (S-LU-046), Feature-Request-Clustering (S-LU-049).
+2. Quartalsweise - Governance-Review (S-LU-025), Use-Case-Backlog (S-LU-048), Wissensordner-Hygiene (S-LU-018).
+3. Jaehrlich - Reife-Assessment (S-LU-053), Board-Update (S-LU-058), Wechsel-Drill (S-LU-050).
+4. CI-Loop-Agent - Starter 'Erstelle die Agenda fuer unseren monatlichen KI-Review' -> vorausgefuellte Agenda mit Vorzyklus-Daten.
 Artefakt: Ein CI-Prozess-Dokument im Canvas mit Drei-Zyklen-Tabelle, Wiederkehrenden-Termin-Liste und einem CI-Loop-Agenten-System-Prompt.
 Fallstricke:
 - Der monatliche Zyklus wird im operativen Stress übersprungen → Monatszyklus auf maximal 60 Minuten begrenzen; wenn es länger dauert, wird das Format sofort vereinfacht — nicht der Termin gestrichen.
 - Die jährliche Strategie-Neubewertung findet statt, aber keine Konsequenzen werden gezogen → Das Reife-Assessment (S-LU-053) schreibt vor, dass innerhalb von 14 Tagen ein aktualisierter 90-Tage-Plan vorliegen muss.
+Empfehlung: Begrenze den Monatszyklus hart auf 60 Minuten und vereinfache bei Ueberschreitung sofort das Format statt den Termin zu streichen - im operativen Stress wird der Monatszyklus sonst als Erstes geopfert. Koppele die jaehrliche Strategie-Neubewertung an eine 14-Tage-Frist fuer einen aktualisierten 90-Tage-Plan (S-LU-053), sonst findet das Review statt, ohne Konsequenzen zu erzeugen.
 Anschluss: S-LU-060
 
 ### S-LU-060 Community of Practice für Marketing-KI aufbauen und verstetigen
@@ -1326,16 +1359,20 @@ Ziel: Eine nachhaltige Community of Practice für Marketing-KI aufbauen, die int
 Ergebnis: Ein Community-of-Practice-Konzept im Canvas mit drei Formaten (internem monatlichem Showcase, halbjährlichem externem Event, Public-Content-Beitrag), Governance-Regeln und einem ersten Jahresplan.
 Fähigkeit: Chat / Canvas / Deep Research / Agents
 Vorgehen:
-1. Definiere die drei Community-Formate: (1) Interner monatlicher Showcase — 30 Minuten, ein Use-Case-Demo, offen für alle Langdock-Nutzer im Unternehmen; (2) Halbjährliches externes Event — 2 Stunden, 2–3 externe Referenten aus anderen DACH-Unternehmen, kein Sales-Pitch; (3) Public-Content-Beitrag — quartalsweise einen anonymisierten Use-Case als LinkedIn-Post oder Blog-Artikel publizieren.
-2. Aktiviere den Deep Research Modus: Welche bestehenden KI-Marketing-Communities gibt es im DACH-Raum (Slack-Groups, LinkedIn-Gruppen, Verbände)? Identifiziere Kooperationspartner für das externe Event.
-3. Erstelle den ersten Jahresplan im Canvas: 12 interne Showcases, 2 externe Events, 4 Public-Content-Beiträge — mit Themenvorschlägen, die auf dem Use-Case-Backlog (S-LU-048) basieren.
-4. Konfiguriere einen Community-Content-Agenten: System-Prompt "Du hilfst dabei, interne Use-Cases für die externe Kommunikation zu anonymisieren und publikationsreif aufzubereiten"; Konversations-Starter "Bereite diesen internen Use-Case als LinkedIn-Artikel auf."
-Prompt:
-> "Du bist Community-Building-Expertin für Technologie-Ökosysteme. Entwickle ein Community-of-Practice-Konzept für Marketing-KI im DACH-Raum. Kontext: Ausgangspunkt ist ein internes Champion-Netzwerk mit 6 Personen; Ziel ist schrittweise Öffnung nach außen. Format: Konzept mit drei Community-Formaten, Governance-Regeln (wer darf was teilen), erstem Jahresplan und KPIs für Community-Erfolg."
+1. Definiere die drei Formate: interner Monats-Showcase (30 Min), halbjaehrliches externes Event (2 h, externe Referenten, kein Sales-Pitch), quartalsweiser Public-Content-Beitrag.
+2. Recherchiere per Deep Research bestehende DACH-KI-Marketing-Communities und Kooperationspartner fuers externe Event.
+3. Erstelle den ersten Jahresplan (12 Showcases, 2 Events, 4 Public-Beitraege) mit Themen aus dem Use-Case-Backlog (S-LU-048).
+4. Konfiguriere einen Community-Content-Agenten zur Anonymisierung interner Use-Cases (Starter 'Bereite diesen Use-Case als LinkedIn-Artikel auf').
+Vorlage: Community-of-Practice-Konzept (Marketing-KI):
+1. Drei Formate - interner Monats-Showcase (30 Min), halbjaehrliches externes Event (2 h, externe Referenten, kein Sales-Pitch), quartalsweiser Public-Content-Beitrag.
+2. Recherche (Deep Research) - bestehende DACH-KI-Marketing-Communities und Kooperationspartner.
+3. Jahresplan - 12 Showcases, 2 Events, 4 Public-Beitraege; Themen aus dem Use-Case-Backlog (S-LU-048).
+4. Community-Content-Agent - anonymisiert interne Use-Cases publikationsreif; Starter 'Bereite diesen Use-Case als LinkedIn-Artikel auf'.
 Artefakt: Ein Community-of-Practice-Konzept im Canvas mit drei Formaten, Governance-Regeln, Jahresplan und einem System-Prompt für den Community-Content-Agenten.
 Fallstricke:
 - Externe Teilnehmende erwarten Exklusivwissen und sind enttäuscht von zu allgemeinen Inhalten → Jedes externe Event braucht mindestens einen konkreten, anonymisierten Praxisfall mit echten Zahlen — keine reinen Tool-Demos.
 - Public-Content-Beiträge enthalten versehentlich sensible Business-Daten → Jeder externe Content-Beitrag muss den Community-Content-Agenten zur Anonymisierung durchlaufen und dann von der Rechtsabteilung (10 Minuten Durchsicht) freigegeben werden.
+Empfehlung: Gib jedem externen Event mindestens einen konkreten, anonymisierten Praxisfall mit echten Zahlen statt reiner Tool-Demos - externe Teilnehmende erwarten Substanz und sind von Allgemeinplaetzen enttaeuscht. Lass jeden Public-Content-Beitrag zwingend durch den Anonymisierungs-Agenten laufen und danach von der Rechtsabteilung (10 Min) freigeben, damit keine sensiblen Business-Daten nach aussen gelangen.
 Anschluss: S-LU-061
 
 ### S-LU-061 Workspace-ROI-Dashboard für das vierteljährliche Leitungs-Review bauen
@@ -1349,12 +1386,16 @@ Vorgehen:
 2. Lade die CSV in den Data Analyst und berechne die vier Dashboard-Kennzahlen plus den Vergleich zum Vorquartal.
 3. Überführe die Ergebnisse in ein Canvas-Kachel-Layout und ergänze pro Kachel eine 1-Satz-Interpretation für die Leitung.
 4. Speichere das Layout als Template, das im Folgequartal nur neue Zahlen erfordert; verlinke es im Governance-Wissensordner.
-Prompt:
-> "Du bist KI-Transformations-Controllerin. Baue aus der angehängten Quartals-CSV ein ROI-Dashboard für die Geschäftsführung. Kontext: 15 Nutzer, Stundensatz 85 Euro, Langdock-Quartalskosten 1.450 Euro. Format: Vier-Kachel-Layout (Gesamtnutzung, Kosten pro Asset, eingesparte Stunden, Top-3-Werttreiber) mit Vorquartals-Delta und je einem Interpretations-Satz."
+Vorlage: Workspace-ROI-Dashboard (vier Kacheln, quartalsweise):
+1. Datenexport - Token, Agent-Runs, aktive Nutzer, Workflow-Laeufe als CSV.
+2. Vier Kacheln - Gesamtnutzung, Kosten pro Asset, eingesparte Stunden (netto), Top-3-Werttreiber; je mit Vorquartals-Delta.
+3. Interpretation - pro Kachel ein Ein-Satz-Kommentar fuer die Leitung.
+4. Template - Layout speichern, Folgequartal nur neue Zahlen; im Governance-Ordner verlinken.
 Artefakt: Ein Canvas-ROI-Dashboard-Template mit vier Kacheln, Quartals-Delta und Interpretations-Sätzen, direkt im Leitungs-Review präsentierbar.
 Fallstricke:
 - Eingesparte Stunden werden als reine Drafting-Zeit gerechnet, ohne Review-Aufwand abzuziehen → Im Data-Analyst-Prompt explizit Netto-Ersparnis (Drafting minus Review) anfordern, sonst wirkt das Dashboard unglaubwürdig.
 - Das Dashboard wird einmal gebaut und dann nicht gepflegt → Quartals-Aktualisierung als wiederkehrenden 30-Minuten-Kalendertermin mit dem Workspace-Admin als Owner verankern.
+Empfehlung: Fordere im Data-Analyst-Prompt explizit die Netto-Ersparnis (Drafting-Zeit minus Review-Aufwand) an - eingesparte Stunden als reine Drafting-Zeit wirken unglaubwuerdig und beschaedigen das Dashboard. Verankere die Quartals-Aktualisierung als wiederkehrenden 30-Minuten-Kalendertermin mit dem Workspace-Admin als Owner, sonst wird das Dashboard einmal gebaut und nie gepflegt.
 Anschluss: S-LU-062
 
 ### S-LU-062 Executive-KI-Reporting-Kadenz festlegen statt Ad-hoc-Updates
@@ -1368,12 +1409,16 @@ Vorgehen:
 2. Ordne jeden Anlass einer der drei Kadenz-Ebenen zu und definiere pro Ebene das Format (1-Pager / Slide-Set / Deck) und die Pflicht-Kennzahlen.
 3. Lege Verantwortliche und feste Termine fest (z.B. Monats-Snapshot am 3. Werktag, Quartals-Review in KW-Schluss-Woche).
 4. Dokumentiere den Plan im Governance-Wissensordner und verteile ihn als verbindlichen Reporting-Standard.
-Prompt:
-> "Du bist Executive-Communications-Beraterin. Entwirf eine KI-Reporting-Kadenz für ein Marketing-Team mit CMO und Board. Kontext: Aktuell unregelmäßige Ad-hoc-Updates; gewünscht sind planbare Berichtsrhythmen. Format: Tabelle mit Kadenz-Ebene, Empfängerkreis, Format, Pflicht-Kennzahlen, Verantwortlicher und festem Termin."
+Vorlage: KI-Reporting-Kadenz (drei Ebenen):
+1. Monats-Snapshot - Empfaenger Team/CMO; 1-Pager; max. 3 Pflicht-Kennzahlen; fester Termin (z. B. 3. Werktag).
+2. Quartals-Review - Empfaenger CMO/Board; Slide-Set; KPI-Entwicklung + Entscheidungen.
+3. Jahres-Strategie-Update - Empfaenger Board; Deck; Vision + Investitionsbedarf.
+4. Datenquelle - eine einzige (Workspace-Admin-Export) fuer alle Ebenen; Verantwortliche und Termine fixieren.
 Artefakt: Ein Reporting-Kadenz-Plan im Canvas mit drei Ebenen, Empfängern, Formaten, Kennzahlen und festen Terminen.
 Fallstricke:
 - Die Kadenz erzeugt mehr Reporting-Aufwand als Erkenntnis → Pro Ebene maximal drei Pflicht-Kennzahlen; alles andere nur auf Nachfrage als Anhang.
 - Monats- und Quartalsbericht zeigen inkonsistente Zahlen, weil Datenquellen abweichen → Eine einzige Datenquelle (Workspace-Admin-Export) für alle Ebenen festschreiben; abweichende manuelle Schätzungen sind verboten.
+Empfehlung: Begrenze jede Ebene auf maximal drei Pflicht-Kennzahlen und liefere alles Weitere nur auf Nachfrage als Anhang - eine ueberladene Kadenz erzeugt mehr Reporting-Aufwand als Erkenntnis. Schreibe eine einzige Datenquelle (Workspace-Admin-Export) fuer alle Ebenen fest und verbiete abweichende manuelle Schaetzungen, sonst zeigen Monats- und Quartalsbericht inkonsistente Zahlen.
 Anschluss: S-LU-063
 
 ### S-LU-063 Cross-Team-Adoptions-Playbook für Nicht-Marketing-Abteilungen erstellen
@@ -1387,12 +1432,16 @@ Vorgehen:
 2. Strukturiere das Playbook in fünf Phasen mit je einem konkreten Artefakt pro Phase (z.B. Phase 1 = priorisierte Use-Case-Liste).
 3. Ergänze pro Phase einen "Adaptions-Hinweis": Was muss eine Abteilung anpassen (z.B. HR hat strengere Datenschutz-Auflagen als Marketing)?
 4. Lege das Playbook als Wissensordner-Dokument ab und benenne pro startender Abteilung einen Marketing-Paten.
-Prompt:
-> "Du bist KI-Adoptions-Strategin. Erstelle ein übertragbares Cross-Team-Adoptions-Playbook auf Basis unserer Marketing-Erfahrung. Kontext: Nächste Abteilungen sind Sales, HR und Produkt; jede hat eigene Use-Cases und Compliance-Anforderungen. Format: Fünf-Phasen-Tabelle mit Phase, Aktivität, Artefakt, typischer Stolperstein und abteilungsspezifischem Adaptions-Hinweis."
+Vorlage: Cross-Team-Adoptions-Playbook (fuenf Phasen):
+1. Use-Case-Findung - priorisierte Use-Case-Liste je Abteilung.
+2. Quick-Win-Agent - ein eigener konfigurierter Agent (nicht kopiert).
+3. Onboarding - abteilungsangepasster Einstieg.
+4. Messung & Skalierung - Adoptionsmetriken + naechste Use-Cases; je Phase ein Artefakt und ein Adaptions-Hinweis (z. B. HR strengere Datenschutz-Auflagen).
 Artefakt: Ein Cross-Team-Adoptions-Playbook im Canvas mit fünf Phasen, Artefakten pro Phase und Adaptions-Hinweisen je Abteilung.
 Fallstricke:
 - Marketing-Agenten werden 1:1 übernommen, obwohl die Use-Cases anders sind → Das Playbook schreibt vor, dass jede Abteilung mindestens einen eigenen Quick-Win-Agenten neu konfiguriert, statt Marketing-Agenten zu kopieren.
 - Das Playbook bleibt theoretisch, weil kein Pate die neue Abteilung begleitet → Jede startende Abteilung bekommt einen benannten Marketing-Champion mit 2 Stunden/Woche für die ersten 30 Tage.
+Empfehlung: Schreibe im Playbook vor, dass jede Abteilung mindestens einen eigenen Quick-Win-Agenten neu konfiguriert, statt Marketing-Agenten 1:1 zu uebernehmen - die Use-Cases unterscheiden sich, und kopierte Agenten enttaeuschen. Stelle jeder startenden Abteilung einen benannten Marketing-Paten mit 2 Stunden/Woche fuer die ersten 30 Tage zur Seite, sonst bleibt das Playbook theoretisch.
 Anschluss: S-LU-064
 
 ### S-LU-064 Langdock vs. Punkt-Tools: Konsolidierungs-Analyse für den Tool-Stack
@@ -1406,12 +1455,16 @@ Vorgehen:
 2. Bewerte pro Tool den Langdock-Abdeckungsgrad: Kann eine Säule (Chat, Agents, Workflows) den Kernnutzen voll, teilweise oder gar nicht ersetzen?
 3. Schätze pro ablösbares Tool den Migrationsaufwand (Stunden) und die jährliche Netto-Ersparnis (Lizenz minus Migrations- und Langdock-Mehrkosten).
 4. Erstelle die Konsolidierungs-Matrix im Canvas und markiere klare Ablöse-Kandidaten farblich.
-Prompt:
-> "Du bist SaaS-Portfolio-Analystin. Bewerte unsere KI-Punkt-Tools auf Ablösbarkeit durch Langdock. Kontext: Vier Tools mit zusammen 18.000 Euro Jahreskosten; Langdock ist bereits lizenziert. Format: Matrix mit Tool, Jahreskosten, Langdock-Abdeckungsgrad (voll/teilweise/keine), Migrationsaufwand in Stunden und Netto-Jahresersparnis."
+Vorlage: Tool-Konsolidierungs-Matrix (Langdock vs. Punkt-Tools):
+1. Inventar - aktive KI-Punkt-Tools mit Jahreskosten, Hauptnutzen, Nutzerzahl.
+2. Abdeckungsgrad - je Tool: deckt eine Saeule (Chat/Agents/Workflows) den Kernnutzen voll/teilweise/gar nicht?
+3. Aufwand & Ersparnis - Migrationsaufwand (h) und Netto-Jahresersparnis (Lizenz minus Migration und Mehrkosten).
+4. Matrix - Abloese-Kandidaten farblich markieren.
 Artefakt: Eine Konsolidierungs-Matrix im Canvas mit Ablöse-Kandidaten, Migrationsaufwand und Gesamt-Jahresersparnis als Entscheidungsgrundlage für den CFO.
 Fallstricke:
 - Ein Tool wird als "voll ablösbar" markiert, obwohl es eine Spezialfunktion hat, die Langdock nicht bietet (z.B. native Social-Scheduling-Queue) → Abdeckungsgrad immer am konkreten Kern-Workflow prüfen, nicht am Marketing-Versprechen des Tools.
 - Migrationsaufwand wird unterschätzt und die Ersparnis dadurch überschätzt → Migration eines Tools als Pilot durchführen und den realen Aufwand messen, bevor die Gesamtersparnis dem CFO zugesagt wird.
+Empfehlung: Pruefe den Abdeckungsgrad immer am konkreten Kern-Workflow, nicht am Marketing-Versprechen des Tools - sonst markierst du ein Tool als 'voll abloesbar', obwohl ihm eine Spezialfunktion (z. B. native Social-Scheduling-Queue) in Langdock fehlt. Fuehre die Migration eines Tools erst als Pilot (S-LU-080) durch und miss den realen Aufwand, bevor du dem CFO eine Gesamtersparnis zusagst, da unterschaetzter Migrationsaufwand die Ersparnis verzerrt.
 Anschluss: S-LU-065
 
 ### S-LU-065 Change-Management-Fahrplan gegen KI-Rollout-Widerstand aufsetzen
@@ -1425,12 +1478,16 @@ Vorgehen:
 2. Lass die KI pro Gruppe eine gezielte Intervention vorschlagen (z.B. Skeptiker bekommen einen sichtbaren Quick-Win, Blockierer ein 1:1-Gespräch).
 3. Formuliere ein ehrliches Kommunikations-Narrativ: Was ändert sich, was bleibt, welche Ängste sind unbegründet, welche werden ernst genommen.
 4. Lege Check-in-Punkte fest (Tag 30/60/90), an denen die Stimmung neu gemessen wird.
-Prompt:
-> "Du bist Change-Management-Beraterin für KI-Transformation. Entwickle einen Fahrplan gegen Rollout-Widerstand in einem 15-köpfigen Marketing-Team. Kontext: Drei offene Skeptiker, zwei stille Verweigerer, Hauptsorge ist Jobverlust. Format: Stakeholder-Map (Gruppe, Kernsorge, Intervention) plus ein 3-Absatz-Kommunikations-Narrativ und Check-in-Punkte."
+Vorlage: Change-Management-Fahrplan (gegen Rollout-Widerstand):
+1. Stakeholder-Map - Promotoren/Skeptiker/Blockierer mit jeweiliger Kernsorge.
+2. Interventionen je Gruppe - Skeptiker: sichtbarer Quick-Win; Blockierer: 1:1-Gespraech.
+3. Kommunikations-Narrativ - was sich aendert, was bleibt, welche Aengste unbegruendet/ernst sind.
+4. Check-in-Punkte - Tag 30/60/90, Stimmung neu messen.
 Artefakt: Ein Change-Fahrplan im Canvas mit Stakeholder-Map, Interventionen pro Gruppe, Kommunikations-Narrativ und Stimmungs-Check-in-Terminen.
 Fallstricke:
 - Das Narrativ verspricht "kein Stellenabbau", obwohl das nicht zugesichert werden kann → Nur kommunizieren, was die Führung tatsächlich garantieren kann; falsche Beruhigung zerstört Vertrauen dauerhaft.
 - Skeptiker werden überredet statt eingebunden → Mindestens einen früheren Skeptiker als Champion (S-LU-014) gewinnen; seine sichtbare Wandlung wirkt stärker als jede Top-down-Botschaft.
+Empfehlung: Kommuniziere im Narrativ ausschliesslich, was die Fuehrung tatsaechlich garantieren kann - ein leeres Versprechen 'kein Stellenabbau' zerstoert Vertrauen dauerhaft, wenn es nicht haltbar ist. Gewinne mindestens einen frueheren Skeptiker als Champion (S-LU-014): seine sichtbare Wandlung ueberzeugt staerker als jede Top-down-Botschaft, und Einbinden wirkt besser als Ueberreden.
 Anschluss: S-LU-066
 
 ### S-LU-066 KI-Literacy-Trainingspfade nach Rollen differenzieren
@@ -1444,12 +1501,16 @@ Vorgehen:
 2. Weise jeder Stufe 3–5 konkrete Übungen mit echten Team-Aufgaben zu (max. 30 Minuten pro Übung).
 3. Definiere pro Track einen Abschluss-Kompetenznachweis (z.B. Builder: einen funktionierenden Workflow demonstrieren).
 4. Lege einen Aufstiegspfad fest: Wann und wie wechselt jemand von Basis zu Fortgeschritten?
-Prompt:
-> "Du bist KI-Learning-Designerin. Entwickle drei rollendifferenzierte KI-Literacy-Tracks für ein Marketing-Team. Kontext: Mischung aus Einsteigern, erfahrenen Nutzern und einem technik-affinen Champion. Format: Tabelle pro Track mit Lernziel, drei Übungen (max. 30 min), Zeitaufwand gesamt und Abschluss-Kompetenznachweis."
+Vorlage: Rollendifferenzierte KI-Literacy-Tracks:
+1. Basis - Chat + Konversations-Starter nutzen.
+2. Fortgeschritten - Agenten kalibrieren, Wissensordner pflegen.
+3. Builder - Workflows bauen, Prompts versionieren; je Track 3-5 Uebungen (max. 30 Min) an echten Aufgaben.
+4. Abschluss & Aufstieg - Kompetenznachweis je Track (Builder: funktionierender Workflow); definierter Aufstiegspfad.
 Artefakt: Ein Trainingspfad-Plan im Canvas mit drei Tracks, Übungen, Zeitaufwand, Kompetenznachweisen und einem Aufstiegspfad.
 Fallstricke:
 - Die Tracks bleiben theoretisch, weil die Übungen keine echten Aufgaben sind → Jede Übung muss an einer realen, anstehenden Team-Aufgabe ansetzen, damit das Gelernte sofort Wert schafft.
 - Niemand steigt vom Basis-Track auf, weil kein Anreiz besteht → Aufstieg sichtbar machen (z.B. Champion-Rolle für Builder-Absolventen) und im Onboarding (S-LU-041) als Pfad verankern.
+Empfehlung: Lass jede Uebung an einer realen, anstehenden Team-Aufgabe ansetzen statt an erfundenen Beispielen - nur so schafft das Gelernte sofort Wert und die Tracks bleiben nicht theoretisch. Mach den Aufstieg sichtbar (z. B. Champion-Rolle fuer Builder-Absolventen) und verankere ihn im Onboarding (S-LU-041), sonst steigt niemand vom Basis-Track auf, weil der Anreiz fehlt.
 Anschluss: S-LU-067
 
 ### S-LU-067 Vendor-Relationship mit Langdock-Customer-Success strukturiert steuern
@@ -1463,12 +1524,16 @@ Vorgehen:
 2. Entwirf eine Quartals-Review-Agenda mit dem Customer-Success-Manager: Nutzungsentwicklung, offene Feature-Requests, Roadmap-Ausblick, Eskalations-Rückschau.
 3. Erstelle eine Eskalations-Kontaktmatrix: Wer wird bei welcher Schwere kontaktiert, mit welcher erwarteten Reaktionszeit?
 4. Liste die Verhandlungs-Hebel für den nächsten Vertragszyklus auf (Volumen, Mehrjahres-Commitment, Referenz-Bereitschaft).
-Prompt:
-> "Du bist Vendor-Management-Beraterin für SaaS-Plattformen. Strukturiere unsere Beziehung zum Langdock-Customer-Success-Team. Kontext: Aktuell rein reaktiver Kontakt, Vertragsverlängerung in 6 Monaten. Format: Quartals-Review-Agenda (Tagesordnungspunkte), Eskalations-Kontaktmatrix (Schweregrad/Kontakt/Reaktionszeit) und Liste der Verhandlungs-Hebel."
+Vorlage: Vendor-Relationship-Plan (Langdock Customer Success):
+1. Beruehrungspunkte - Support-Tickets, Feature-Requests (S-LU-049), Vertragsdaten, Ansprechpartner.
+2. Quartals-Review-Agenda - Nutzungsentwicklung, offene Requests, Roadmap-Ausblick, Eskalations-Rueckschau.
+3. Eskalations-Kontaktmatrix - wer bei welcher Schwere, mit welcher Reaktionszeit.
+4. Verhandlungs-Hebel - Volumen, Mehrjahres-Commitment, Referenz-Bereitschaft fuer den naechsten Vertragszyklus.
 Artefakt: Ein Vendor-Relationship-Plan im Canvas mit Quartals-Review-Agenda, Eskalations-Kontaktmatrix und Verhandlungs-Hebel-Liste für den Vertragszyklus.
 Fallstricke:
 - Feature-Requests werden im Review als verbindliche Zusagen des Anbieters missverstanden → Roadmap-Aussagen immer als unverbindlich protokollieren; nur schriftlich Zugesichertes als Planungsgrundlage nutzen.
 - Die Verhandlungs-Hebel werden erst kurz vor Vertragsende gesammelt → Hebel-Liste ab Vertragsmitte pflegen; Nutzungs- und Referenzdaten frühzeitig dokumentieren, um Verhandlungsmacht aufzubauen.
+Empfehlung: Protokolliere Roadmap-Aussagen des Anbieters immer als unverbindlich und nutze nur schriftlich Zugesichertes als Planungsgrundlage - Feature-Requests im Review werden sonst als verbindliche Zusagen missverstanden. Pflege die Verhandlungs-Hebel-Liste ab Vertragsmitte und dokumentiere Nutzungs- und Referenzdaten frueh, statt erst kurz vor Vertragsende Verhandlungsmacht aufbauen zu wollen.
 Anschluss: S-LU-068
 
 ### S-LU-068 Multi-Region-Workspace-Governance für DACH plus internationale Einheiten
@@ -1482,12 +1547,16 @@ Vorgehen:
 2. Aktiviere den Deep Research Modus, um die Datentransfer-Anforderungen je Region zu prüfen (z.B. DSG-Schweiz-Adäquanz, EU-Hosting für DACH).
 3. Definiere global zwingende Standards (Brand-Voice, Sicherheits-Baseline) und regional zulässige Abweichungen (Sprache, lokale Use-Cases).
 4. Lege einen Cross-Region-Governance-Owner und einen halbjährlichen Abgleich-Termin fest; dokumentiere alles im Governance-Hub-Wissensordner.
-Prompt:
-> "Du bist Enterprise-KI-Governance-Beraterin mit Datenschutz-Fokus. Entwickle ein Multi-Region-Governance-Modell für Langdock-Workspaces in DACH und zwei internationalen Regionen. Kontext: DACH unterliegt DSGVO/DSG-Schweiz; gemeinsame Brand-Standards, aber unterschiedliche Sprachen und Rechtsräume. Format: Tabelle mit Region, Datenresidenz-Anforderung, Primärsprache, zwingende Standards und erlaubte Abweichungen."
+Vorlage: Multi-Region-Governance (DACH + international):
+1. Inventar - regionale Workspaces mit Nutzerzahl, Datenschutz-Regime, Primaersprache.
+2. Datenresidenz (Deep Research) - Transfer-Anforderungen je Region (DSG-Schweiz-Adaequanz, EU-Hosting DACH).
+3. Standards - global zwingend (Brand-Voice, Sicherheits-Baseline) vs. regional zulaessig (Sprache, lokale Use-Cases).
+4. Steuerung - Cross-Region-Owner + halbjaehrlicher Abgleich; Doku im Governance-Hub.
 Artefakt: Ein Multi-Region-Governance-Rahmen im Canvas mit Regional-Tabelle, zwingenden Standards, erlaubten Abweichungen und einem Cross-Region-Abgleich-Termin.
 Fallstricke:
 - Datenresidenz-Annahmen der KI werden ohne juristische Prüfung übernommen → Die Deep-Research-Ergebnisse sind Arbeitsgrundlage; jede Datentransfer-Regel muss durch den Datenschutzbeauftragten bestätigt werden.
 - Globale Standards werden international als DACH-Bevormundung empfunden → Standards mit je einem Vertreter pro Region co-kreieren, statt das DACH-Modell unverändert zu exportieren.
+Empfehlung: Behandle die Deep-Research-Datenresidenz-Ergebnisse nur als Arbeitsgrundlage und lass jede Datentransfer-Regel vom Datenschutzbeauftragten bestaetigen - juristisch ungepruefte KI-Annahmen sind keine belastbare Compliance-Basis. Co-kreiere die globalen Standards mit je einem Vertreter pro Region, statt das DACH-Modell unveraendert zu exportieren, sonst werden sie international als Bevormundung empfunden.
 Anschluss: S-LU-069
 
 ### S-LU-069 KI-Nutzungs-Policy für das Marketing-Team verfassen
@@ -1501,12 +1570,16 @@ Vorgehen:
 2. Befülle die Kategorien mit konkreten Marketing-Beispielen (erlaubt: Content-Entwürfe; eingeschränkt: Kundendaten nur pseudonymisiert; verboten: sensible Personaldaten).
 3. Ergänze Datenschutz-Leitplanken (Verweis auf S-LU-031) und Verstoß-Konsequenzen in drei Eskalationsstufen.
 4. Lege das Dokument im Governance-Wissensordner ab und mache es zum Pflicht-Lesestoff im Onboarding (S-LU-041).
-Prompt:
-> "Du bist KI-Policy-Autorin für ein DACH-Marketing-Team. Verfasse eine knappe, audit-fähige KI-Nutzungs-Policy. Kontext: Breite Langdock-Nutzung, DSGVO-Pflicht, kein bestehendes Regelwerk. Format: 1- bis 2-seitige Policy mit Geltungsbereich, Erlaubt/Eingeschränkt/Verboten-Listen (je 3 Beispiele), Datenschutz-Leitplanken und dreistufigen Verstoß-Konsequenzen."
+Vorlage: KI-Nutzungs-Policy (1-2 Seiten, audit-faehig):
+1. Geltungsbereich - Tools, Daten, Nutzergruppen.
+2. Erlaubt/Eingeschraenkt/Verboten - je 3 konkrete Beispiele (erlaubt: Content-Entwuerfe; eingeschraenkt: Kundendaten nur pseudonymisiert; verboten: sensible Personaldaten).
+3. Datenschutz-Leitplanken - Verweis auf S-LU-031.
+4. Verstoss-Konsequenzen - drei Eskalationsstufen; Ablage im Governance-Ordner, Pflicht-Lesestoff im Onboarding (S-LU-041).
 Artefakt: Eine KI-Nutzungs-Policy im Canvas mit Geltungsbereich, drei Nutzungs-Kategorien, Datenschutz-Regeln und Verstoß-Konsequenzen, ablagefertig im Governance-Wissensordner.
 Fallstricke:
 - Die Policy ist zu abstrakt und gibt im Zweifel keine Antwort → Jede Kategorie braucht konkrete Marketing-Beispiele, keine reinen Prinzipien; das Team muss eine echte Frage daran entscheiden können.
 - Die Policy wird ohne Einbindung von Datenschutzbeauftragtem und Betriebsrat als verbindlich kommuniziert → Vor Inkraftsetzung DSB- und (bei Mitbestimmung) Betriebsrats-Freigabe einholen; Freigabe-Datum im Dokument vermerken.
+Empfehlung: Versieh jede Kategorie mit konkreten Marketing-Beispielen statt reiner Prinzipien - eine zu abstrakte Policy gibt im Zweifelsfall keine Antwort, und das Team muss eine echte Frage daran entscheiden koennen. Hol vor Inkraftsetzung die Freigabe von Datenschutzbeauftragtem und (bei Mitbestimmung) Betriebsrat ein und vermerke das Freigabe-Datum im Dokument, sonst ist die Policy nicht verbindlich kommunizierbar.
 Anschluss: S-LU-070
 
 ### S-LU-070 Erfolgsmetrik-Framework für KI-Initiativen definieren
@@ -1520,12 +1593,16 @@ Vorgehen:
 2. Lege pro Dimension 1–2 Leitmetriken mit klarer Messmethode und Datenquelle fest (z.B. Qualität = Anteil revisionsfrei freigegebener Outputs).
 3. Bestimme realistische Zielwerte auf Basis vorhandener Baseline-Daten aus dem Workspace-Admin.
 4. Erstelle das Framework als Canvas-Referenz, die für jede neue Initiative als verbindliche Bewertungsvorlage dient.
-Prompt:
-> "Du bist Marketing-Performance-Architektin. Entwickle ein einheitliches Erfolgsmetrik-Framework für KI-Initiativen. Kontext: Mehrere parallele Langdock-Initiativen, bisher uneinheitlich bewertet. Format: Tabelle mit Dimension (Effizienz/Qualität/Adoption/Geschäftswert), 1–2 Leitmetriken, Messmethode, Zielwert und Datenquelle."
+Vorlage: Erfolgsmetrik-Framework (vier Dimensionen):
+1. Effizienz - z. B. Zeitersparnis pro Asset.
+2. Qualitaet - z. B. Anteil revisionsfrei freigegebener Outputs.
+3. Adoption - z. B. aktive-Nutzer-Rate.
+4. Geschaeftswert - z. B. Pipeline-Beitrag; je 1-2 Leitmetriken mit Messmethode, Zielwert, Datenquelle.
 Artefakt: Ein Erfolgsmetrik-Framework im Canvas mit vier Dimensionen, Leitmetriken, Messmethoden, Zielwerten und Datenquellen als verbindliche Bewertungsvorlage.
 Fallstricke:
 - Nur Effizienz wird gemessen, weil sie am leichtesten quantifizierbar ist → Mindestens eine Qualitäts- und eine Geschäftswert-Metrik sind pro Initiative Pflicht, sonst werden reine Vielnutzer fälschlich als Erfolg gewertet.
 - Zielwerte werden ohne Baseline gesetzt und sind willkürlich → Jeder Zielwert braucht einen dokumentierten Ist-Wert als Ausgangspunkt; ohne Baseline gilt das erste Quartal als Messphase, nicht als Bewertung.
+Empfehlung: Mach pro Initiative mindestens eine Qualitaets- und eine Geschaeftswert-Metrik verpflichtend - wird nur Effizienz gemessen (weil am leichtesten quantifizierbar), gelten reine Vielnutzer faelschlich als Erfolg. Unterlege jeden Zielwert mit einem dokumentierten Ist-Wert; ohne Baseline gilt das erste Quartal als Messphase, nicht als Bewertung, sonst sind die Ziele willkuerlich.
 Anschluss: S-LU-071
 
 ### S-LU-071 KI-Vendor-Vertragsverlängerung mit Faktenbasis verhandeln
@@ -1539,12 +1616,16 @@ Vorgehen:
 2. Lade die CSV in den Data Analyst und berechne den jährlichen Ist-Verbrauch sowie den Break-even zwischen AI Models Included und BYOK.
 3. Gleiche die aktive Seat-Zahl mit den Volumenrabatt-Stufen ab und ermittle, wie viele Seats bis zur nächsten Rabattschwelle fehlen.
 4. Formuliere im Canvas drei priorisierte Verhandlungsforderungen (z.B. Wechsel auf BYOK ab Break-even, Rabattstufe bei Seat-Bündelung, fixierter Preis über die Laufzeit).
-Prompt:
-> "Du bist SaaS-Einkaufs-Analystin. Erstelle aus den angehängten Langdock-Nutzungsdaten ein Verhandlungs-Briefing für die Vertragsverlängerung. Kontext: 15 aktive Seats, aktuelles Modell AI Models Included, Verlängerung in 4 Monaten. Format: Tabelle mit Ist-Verbrauch, Break-even Included vs. BYOK, fehlende Seats bis zur nächsten Rabattstufe und drei priorisierten Verhandlungsforderungen."
+Vorlage: Vertragsverlaengerungs-Briefing (faktenbasiert):
+1. Verbrauchs-Export - 12-Monats-Daten (Seats, Token, Workflow-Laeufe) als CSV.
+2. Break-even - Included vs. BYOK im Data Analyst rechnen (inkl. Verwaltungsaufwand).
+3. Rabattstufe - aktive Seats gegen Volumenstufen; fehlende Seats bis zur naechsten Schwelle.
+4. Forderungen - drei priorisierte Verhandlungsforderungen (BYOK ab Break-even, Rabatt bei Seat-Buendelung, Preisfixierung).
 Artefakt: Ein Verhandlungs-Briefing im Canvas mit Verbrauchs-Ist, Modell-Break-even, Rabattstufen-Abstand und drei Verhandlungsforderungen, vorlagefertig für das Renewal-Gespräch.
 Fallstricke:
 - Der BYOK-Break-even wird ohne den Verwaltungsaufwand (API-Key-Management, Billing-Abgleich) gerechnet und wirkt zu attraktiv → Den Mehraufwand als Stundenwert in die Vergleichsrechnung aufnehmen, sonst kippt die Empfehlung in der Praxis.
 - Verhandlungsforderungen ohne Priorität verwässern das Gespräch → Maximal drei Forderungen, klar nach Hebelwirkung sortiert; alles Weitere nur als Verhandlungsmasse vermerken.
+Empfehlung: Nimm den Verwaltungsaufwand (API-Key-Management, Billing-Abgleich) als Stundenwert in die BYOK-Break-even-Rechnung auf - ohne ihn wirkt BYOK zu attraktiv und die Empfehlung kippt in der Praxis. Beschraenke dich auf maximal drei nach Hebelwirkung sortierte Verhandlungsforderungen und vermerke alles Weitere nur als Verhandlungsmasse, sonst verwaessert das Gespraech.
 Anschluss: S-LU-072
 
 ### S-LU-072 Build-vs-Buy-Memo: eigener Langdock-Workflow oder zugekauftes Spezial-Tool
@@ -1558,8 +1639,7 @@ Vorgehen:
 2. Schätze für "Build" (Langdock-Workflow) den einmaligen Bau-Aufwand, die laufenden Run-Kosten und die Wartungslast; für "Buy" Lizenzkosten, Einführungsaufwand und Lock-in-Risiko.
 3. Stelle beide Optionen in einer Tabelle gegenüber (Jahres-Gesamtkosten, Time-to-Value, Wartung, Abhängigkeit) und leite eine begründete Empfehlung ab.
 4. Definiere im Memo die Kipp-Bedingungen: ab welchem Volumen oder welcher Komplexität die Empfehlung wechselt.
-Prompt:
-> "Du bist nüchterne MarketingOps-Beraterin. Erstelle ein Build-vs-Buy-Memo für eine wiederkehrende Lokalisierungs-Aufgabe. Kontext: ca. 200 Texte/Monat, ein Langdock-Workflow wäre baubar, ein Spezial-Tool kostet 6.000 Euro/Jahr. Format: Vergleichstabelle (Build vs. Buy) mit Jahres-Gesamtkosten, Time-to-Value, Wartungslast und Lock-in, plus Empfehlung und Kipp-Bedingungen."
+Empfehlung: Entscheide Build vs. Buy ueber die Jahres-Gesamtkosten, nicht ueber den Lizenzpreis allein: 'Build' (Langdock-Workflow) = einmaliger Bau-Aufwand + laufende Run-Kosten + jaehrliche Wartungs-Pauschale (Tests, Anpassung an Modell-/API-Aenderungen); 'Buy' = Lizenz + Einfuehrung + Exit-/Lock-in-Aufwand als eigene Vergleichszeile. Faustregel: Bei stabilem, klar abgegrenztem Bedarf und vorhandener Workflow-Kompetenz gewinnt meist Build; bei hoher Spezialfunktionalitaet, geringem Volumen oder fehlender Bau-Kapazitaet gewinnt Buy. Schreib die Kipp-Bedingung explizit ins Memo (z. B. 'ab >X Laeufen/Monat oder >Y Sonderfaellen kippt die Empfehlung'). Rechne den Workflow-Bau-Aufwand nie nur als Erstkonfiguration und verstecke Lock-in/Exit nie im Preis, sonst ist die Entscheidung verzerrt.
 Artefakt: Ein Build-vs-Buy-Memo im Canvas mit Vergleichstabelle, begründeter Empfehlung und expliziten Kipp-Bedingungen als Entscheidungsvorlage.
 Fallstricke:
 - Der Bau-Aufwand des Workflows wird unterschätzt, weil nur die Erstkonfiguration, nicht die Wartung gerechnet wird → Eine jährliche Wartungs-Pauschale (Tests, Anpassung an Modell-/API-Änderungen) verbindlich einplanen.
@@ -1577,12 +1657,16 @@ Vorgehen:
 2. Aktiviere den Deep Research Modus und recherchiere öffentlich belegbare Referenzwerte zur KI-Reife vergleichbarer B2B-SaaS-Marketing-Teams (Studien, Reports); markiere unbelegbare Werte als Schätzung.
 3. Stelle je Dimension den eigenen Score dem externen Referenzkorridor gegenüber und berechne den relativen Abstand.
 4. Priorisiere die drei Dimensionen mit dem größten Rückstand und ordne ihnen je eine konkrete Aufholmaßnahme zu.
-Prompt:
-> "Du bist KI-Benchmarking-Analystin. Vergleiche unseren internen KI-Reife-Score mit externen Referenzwerten vergleichbarer B2B-SaaS-Marketing-Teams. Kontext: Fünf Dimensionen mit Eigenscores liegen vor; nur Quellen mit belegbarer URL gelten, sonst als Schätzung markieren. Format: Tabelle mit Dimension, Eigenscore, externem Referenzkorridor, relativem Abstand und Aufholmaßnahme für die drei größten Lücken."
+Vorlage: Externer KI-Reife-Benchmark:
+1. Basis - fuenf Dimensionen + Eigenscores aus dem internen Assessment (S-LU-053).
+2. Recherche (Deep Research) - oeffentlich belegbare Referenzwerte vergleichbarer B2B-SaaS-Marketing-Teams; Unbelegtes als Schaetzung markieren.
+3. Gegenueberstellung - Eigenscore vs. Referenzkorridor je Dimension; relativer Abstand.
+4. Aufholmassnahmen - drei groesste Rueckstaende mit je einer konkreten Massnahme.
 Artefakt: Ein Benchmark-Vergleich im Canvas mit Eigenscore vs. Referenzkorridor je Dimension und drei priorisierten Aufholmaßnahmen.
 Fallstricke:
 - Deep Research erfindet plausibel klingende Benchmark-Zahlen ohne belastbare Quelle → Jeden Referenzwert mit URL belegen lassen; unbelegte Werte ausdrücklich als Schätzung kennzeichnen und nicht für Entscheidungen nutzen.
 - Externe Benchmarks aus anderen Branchen werden 1:1 übernommen → Den Vergleichskorridor strikt auf B2B-SaaS-Marketing in vergleichbarer Teamgröße einschränken, sonst täuscht der Abstand.
+Empfehlung: Lass jeden Referenzwert mit URL belegen und kennzeichne unbelegte Werte ausdruecklich als Schaetzung, die nicht fuer Entscheidungen genutzt wird - Deep Research erfindet sonst plausibel klingende Benchmark-Zahlen. Schraenke den Vergleichskorridor strikt auf B2B-SaaS-Marketing in vergleichbarer Teamgroesse ein, da Benchmarks aus anderen Branchen den Abstand verfaelschen.
 Anschluss: S-LU-074
 
 ### S-LU-074 Quartals-KI-Business-Review-Paket als erzählendes Deck schnüren
@@ -1596,12 +1680,17 @@ Vorgehen:
 2. Strukturiere das Deck in fünf feste Abschnitte und formuliere pro Abschnitt eine einzige Kernaussage (eine Zeile), bevor Details ergänzt werden.
 3. Ergänze pro Abschnitt nur die belegenden Daten und maximal eine Visualisierung; halte das Narrativ vor den Zahlen.
 4. Speichere das Gerüst als Template im Governance-Wissensordner, das im Folgequartal nur neue Aussagen und Zahlen erfordert.
-Prompt:
-> "Du bist Executive-Storytelling-Beraterin. Baue aus den angehängten Quartalszahlen ein erzählendes KI-Business-Review-Deck-Gerüst. Kontext: Empfänger ist die Geschäftsführung, Vorquartals-Vergleich liegt vor. Format: Fünf Abschnitte (Highlights, KPI-Entwicklung, getroffene Entscheidungen, offene Risiken, Quartalsziele) mit je einer Kernaussage in einer Zeile plus belegenden Daten."
+Vorlage: QBR-Deck-Geruest (fuenf Abschnitte):
+1. Highlights - Quartals-Kernergebnisse.
+2. KPI-Entwicklung - aus ROI-Dashboard (S-LU-061) und Erfolgs-Framework (S-LU-070).
+3. Getroffene Entscheidungen.
+4. Offene Risiken - Pflicht: mind. ein konkretes, ungeloestes Problem mit Verantwortlichem.
+5. Quartalsziele; je Abschnitt genau eine Kernaussage vor den Zahlen.
 Artefakt: Ein QBR-Deck-Gerüst im Canvas mit fünf Abschnitten, je einer Kernaussage und belegenden Daten, als wiederverwendbares Quartals-Template.
 Fallstricke:
 - Das Deck wird zur Zahlenwüste ohne roten Faden → Jeder Abschnitt beginnt mit genau einer Kernaussage; Zahlen dienen nur als Beleg, nicht als Ersatz für die Aussage.
 - Risiken werden geschönt oder weggelassen, um gut dazustehen → Der Abschnitt "offene Risiken" ist Pflicht und nennt mindestens ein konkretes, ungelöstes Problem mit Verantwortlichem.
+Empfehlung: Beginne jeden Abschnitt mit genau einer Kernaussage und nutze Zahlen nur als Beleg, nicht als Ersatz - sonst wird das Deck zur Zahlenwueste ohne roten Faden. Mach den Abschnitt 'offene Risiken' verpflichtend mit mindestens einem konkreten, ungeloesten Problem und Verantwortlichem, damit Risiken nicht geschoent oder weggelassen werden.
 Anschluss: S-LU-075
 
 ### S-LU-075 Wissens-Kurations-Ritual für saubere Wissensordner verankern
@@ -1615,12 +1704,16 @@ Vorgehen:
 2. Definiere Archivierungs-Regeln: Dateien älter als 12 Monate oder als überholt markiert wandern in einen separaten Archiv-Folder; aktiver Folder bleibt unter der vereinbarten Dateizahl.
 3. Lege eine Monats-Checkliste fest (Dubletten prüfen, Verfallsdaten kontrollieren, ein Canary-Retrieval-Test pro Agent) und benenne pro Folder einen Owner.
 4. Dokumentiere das Ritual im Governance-Wissensordner und verankere den Termin als festes Kalender-Item.
-Prompt:
-> "Du bist Knowledge-Operations-Managerin. Entwirf ein monatliches Kurations-Ritual für unsere Langdock-Wissensordner. Kontext: Fünf aktive Folder, Retrieval-Qualität sinkt, kein definierter Owner. Format: Monats-Checkliste mit Prüfschritten, Archivierungs-Regeln (Alter, Dubletten, Limit-Nähe) und einer Owner-Zuordnung pro Folder."
+Vorlage: Wissens-Kurations-Ritual (monatlich):
+1. Inventar-Export - je Ordner Name/Datum/Groesse in den Data Analyst; veraltete Dateien, Dubletten, Limit-Naehe (8-Mio-Zeichen) finden.
+2. Archivierungs-Regeln - Dateien >12 Monate oder ueberholt -> Archiv-Folder; aktiver Folder unter vereinbarter Dateizahl.
+3. Monats-Checkliste - Dubletten, Verfallsdaten, ein Canary-Retrieval-Test je Agent; Owner je Folder.
+4. Verankerung - Ritual im Governance-Ordner, fester Kalendertermin.
 Artefakt: Ein Kurations-Ritual im Canvas mit Monats-Checkliste, Archivierungs-Regeln und Folder-Owner-Zuordnung, abgelegt im Governance-Wissensordner.
 Fallstricke:
 - Alte Dateien werden gelöscht statt archiviert und gehen als Nachweis verloren → Überholte Dokumente immer in einen Archiv-Folder verschieben, nie löschen; das aktive Retrieval bleibt trotzdem sauber.
 - Das Ritual wird nach zwei Monaten vergessen, weil kein Owner verantwortlich ist → Pro Folder einen namentlichen Owner mit fixem Monatstermin festschreiben; ohne Owner gilt der Folder als nicht freigegeben.
+Empfehlung: Verschiebe ueberholte Dokumente immer in einen Archiv-Folder, statt sie zu loeschen - sonst gehen Nachweise verloren, waehrend das aktive Retrieval trotzdem sauber bleibt. Schreibe pro Folder einen namentlichen Owner mit fixem Monatstermin fest; ohne Owner gilt der Folder als nicht freigegeben, sonst wird das Ritual nach zwei Monaten vergessen.
 Anschluss: S-LU-076
 
 ### S-LU-076 Wissensordner-Governance über Regionen: zentral vs. lokal abgrenzen
@@ -1634,12 +1727,16 @@ Vorgehen:
 2. Klassifiziere jede Kategorie: zentral-verbindlich (eine Master-Quelle, regional nur lesbar), regional-ergänzbar (Master plus lokaler Zusatz) oder rein-lokal.
 3. Prüfe mit Deep Research die Datenresidenz-Anforderungen je Region und ordne jeder Kategorie einen Hosting-/Ablage-Hinweis zu; Ergebnisse vom Datenschutzbeauftragten bestätigen lassen.
 4. Lege fest, wer zentrale Master-Folder pflegt und wie regionale Einheiten Änderungswünsche einbringen; dokumentiere alles im Governance-Hub.
-Prompt:
-> "Du bist Enterprise-Knowledge-Governance-Beraterin. Entwickle ein Folder-Governance-Modell für Wissensordner in DACH und zwei internationalen Regionen. Kontext: Brand-Kerndokumente existieren mehrfach, unterschiedliche Datenschutz-Regime, gemeinsame Marke. Format: Tabelle mit Inhaltskategorie, Klassifizierung (zentral-verbindlich/regional-ergänzbar/rein-lokal), Datenresidenz-Hinweis und Pflege-Verantwortlichem."
+Vorlage: Wissensordner-Governance ueber Regionen:
+1. Inventar - Ordner je Region mit Inhaltskategorien (Brand, Compliance, Kampagnen, lokale Marktdaten).
+2. Klassifizierung - zentral-verbindlich (Master, regional read-only) / regional-ergaenzbar (Master + Zusatz) / rein-lokal.
+3. Datenresidenz (Deep Research) - Hosting-/Ablage-Hinweis je Kategorie; vom Datenschutzbeauftragten bestaetigen.
+4. Pflege - Owner der Master-Folder + Aenderungs-Einbringungsweg; Doku im Governance-Hub.
 Artefakt: Ein Folder-Governance-Modell im Canvas mit Inhalts-Klassifizierung, Datenresidenz-Hinweisen und Pflege-Verantwortlichen je Kategorie.
 Fallstricke:
 - Datenresidenz-Aussagen der KI werden ohne juristische Prüfung übernommen → Die Deep-Research-Ergebnisse sind nur Arbeitsgrundlage; jede Ablage-Regel muss der Datenschutzbeauftragte bestätigen.
 - Zentrale Master-Folder werden als Bevormundung empfunden und regional umgangen → Einen verbindlichen Änderungs-Einbringungsweg definieren, damit Regionen Master-Inhalte mitgestalten statt Schatten-Kopien anzulegen.
+Empfehlung: Behandle KI-Datenresidenz-Aussagen nur als Arbeitsgrundlage und lass jede Ablage-Regel vom Datenschutzbeauftragten bestaetigen - ungepruefte Annahmen taugen nicht als Compliance-Grundlage. Definiere einen verbindlichen Aenderungs-Einbringungsweg, damit Regionen Master-Inhalte mitgestalten statt Schatten-Kopien anzulegen, wenn sie zentrale Folder als Bevormundung empfinden.
 Anschluss: S-LU-077
 
 ### S-LU-077 Einwand-Playbook gegen wiederkehrende KI-Skepsis erstellen
@@ -1653,12 +1750,16 @@ Vorgehen:
 2. Formuliere pro Einwand die dahinterliegende echte Sorge und eine ehrliche Antwort, die nichts verspricht, was nicht haltbar ist.
 3. Hinterlege pro Antwort einen konkreten Beleg (z.B. EU-Hosting-Nachweis, Brand-Voice-Agent als Anti-Generisch-Beispiel) oder einen sichtbaren Quick-Win.
 4. Lege das Playbook im Governance-Wissensordner ab und mache es zum Standard-Werkzeug für alle Führungskräfte in Adoptions-Gesprächen.
-Prompt:
-> "Du bist Change-Kommunikations-Beraterin für KI-Adoption. Erstelle ein Einwand-Playbook gegen wiederkehrende Langdock-Skepsis. Kontext: Häufige Einwände sind Generik, kostenlose Chatbots, Halluzination und Jobangst; ehrliche, nicht beschönigende Antworten gefordert. Format: Tabelle mit Einwand, dahinterliegender Kernsorge, ehrlicher Antwort und konkretem Beleg oder Quick-Win."
+Vorlage: Einwand-Playbook (KI-Skepsis):
+1. Sammlung & Gruppierung - real geaeusserte Einwaende (Qualitaet, Kosten/kostenlose Tools, Datensicherheit, Jobangst, Halluzination).
+2. Kernsorge - die echte Sorge hinter jedem Einwand.
+3. Ehrliche Antwort - nichts versprechen, was nicht haltbar ist.
+4. Beleg/Quick-Win - pro Antwort ein konkreter Beleg (EU-Hosting-Nachweis, Brand-Voice-Agent als Anti-Generisch-Beispiel) oder sichtbarer Quick-Win.
 Artefakt: Ein Einwand-Playbook im Canvas mit Top-Einwänden, Kernsorgen, ehrlichen Antworten und Belegen, ablagefertig im Governance-Wissensordner.
 Fallstricke:
 - Die Antworten beschönigen oder versprechen "kein Stellenabbau", was nicht garantiert werden kann → Nur kommunizieren, was die Führung tatsächlich zusichern kann; falsche Beruhigung zerstört Vertrauen dauerhaft.
 - Das Playbook bleibt abstrakt und überzeugt niemanden → Jede Antwort braucht einen nachprüfbaren Beleg oder einen erlebbaren Quick-Win, keine reinen Behauptungen.
+Empfehlung: Kommuniziere nur, was die Fuehrung tatsaechlich zusichern kann - eine beschoenigende Antwort wie 'kein Stellenabbau' zerstoert Vertrauen dauerhaft, wenn sie nicht garantiert ist. Hinterlege zu jeder Antwort einen nachpruefbaren Beleg oder einen erlebbaren Quick-Win, da ein abstraktes Playbook ohne Belege niemanden ueberzeugt.
 Anschluss: S-LU-078
 
 ### S-LU-078 Selbstlern-Agent als KI-Literacy-Trainingsspur bereitstellen
@@ -1672,12 +1773,16 @@ Vorgehen:
 2. Lege drei gestufte Konversations-Starter an: "Erkläre mir Langdock in 5 Minuten", "Begleite mich durch meine erste echte Aufgabe", "Stelle mir 3 Selbstcheck-Fragen".
 3. Lass den Agenten jede Übung an einer realen, anstehenden Aufgabe des Lernenden ansetzen, nicht an erfundenen Beispielen.
 4. Ergänze einen 1-seitigen Begleit-Leitfaden, der den Einstieg und den Übergang zum Fortgeschrittenen-Track (S-LU-066) beschreibt.
-Prompt:
-> "Du bist KI-Learning-Designerin. Schreibe einen System-Prompt für einen geduldigen Langdock-Lern-Agenten für absolute Einsteiger. Kontext: Nutzer trauen sich keine Fragen in Gruppenschulungen, sollen an echten Aufgaben üben. Format: System-Prompt unter 500 Zeichen plus drei gestufte Konversations-Starter (Grundlagen, erste Aufgabe, Selbstcheck)."
+Vorlage: Selbstlern-Agent (KI-Literacy-Spur):
+1. Agent-Konfiguration - geduldiger, erklaerender System-Prompt; Grundlagen-Dokumente (diese Uebersicht, Quick-Win-Liste) als Wissensordner.
+2. Gestufte Starter - 'Erklaere mir Langdock in 5 Minuten', 'Begleite mich durch meine erste echte Aufgabe', 'Stelle mir 3 Selbstcheck-Fragen'.
+3. Praxisbezug - jede Uebung an einer realen, anstehenden Aufgabe.
+4. Begleit-Leitfaden - 1-seitig, Einstieg + Uebergang zum Fortgeschrittenen-Track (S-LU-066).
 Artefakt: Ein konfigurierter Lern-Agent mit drei gestuften Konversations-Startern und einem 1-seitigen Begleit-Leitfaden, teilbar mit der Einsteiger-Gruppe.
 Fallstricke:
 - Der Lern-Agent übt an erfundenen Beispielen, sodass kein Praxistransfer entsteht → Jede Übung muss an einer echten, anstehenden Aufgabe des Lernenden ansetzen; das System-Prompt fordert das ausdrücklich ein.
 - Einsteiger bleiben dauerhaft im Selbstlern-Modus und steigen nie auf → Der Begleit-Leitfaden definiert ein klares Signal (z.B. erste eigene Aufgabe ohne Hilfe gelöst), das den Wechsel in den Fortgeschrittenen-Track (S-LU-066) auslöst.
+Empfehlung: Fordere im System-Prompt ausdruecklich ein, dass jede Uebung an einer echten, anstehenden Aufgabe des Lernenden ansetzt - uebt der Agent an erfundenen Beispielen, entsteht kein Praxistransfer. Definiere im Begleit-Leitfaden ein klares Aufstiegssignal (z. B. erste eigene Aufgabe ohne Hilfe geloest), das den Wechsel in den Fortgeschrittenen-Track (S-LU-066) ausloest, sonst bleiben Einsteiger dauerhaft im Selbstlern-Modus.
 Anschluss: S-LU-079
 
 ### S-LU-079 Executive-Snapshot-Agent für den monatlichen 1-Pager bauen
@@ -1691,12 +1796,16 @@ Vorgehen:
 2. Konfiguriere einen Snapshot-Agenten mit System-Prompt, der dieses Format erzwingt, und binde eine Beispiel-Vorlage als Wissensordner an.
 3. Lass den Agenten den über die Usage-Export-API gezogenen Monats-CSV im Data Analyst verarbeiten und das Format strikt befüllen.
 4. Teste mit zwei Monaten Realdaten, ob das Format stabil bleibt, und gib den Agenten dann für den festen Monatslauf frei.
-Prompt:
-> "Du bist KI-Reporting-Architektin. Schreibe einen System-Prompt für einen Executive-Snapshot-Agenten, der aus dem monatlichen Usage-Export einen 1-Pager erzeugt. Kontext: Empfänger CMO, festes Format aus der Reporting-Kadenz, eine Datenquelle. Format: System-Prompt, der genau drei Kennzahlen, Vormonats-Delta und eine Kernaussage erzwingt und Abweichungen vom Format verbietet."
+Vorlage: Executive-Snapshot-Agent (monatlicher 1-Pager):
+1. Festes Format - aus der Reporting-Kadenz (S-LU-062): genau 3 Pflicht-Kennzahlen, Vormonats-Delta, eine Kernaussage.
+2. Agent-Konfiguration - System-Prompt erzwingt das Format; Beispiel-Vorlage als Wissensordner.
+3. Verarbeitung - Monats-CSV (Usage-Export-API) im Data Analyst strikt ins Format fuellen.
+4. Freigabe - mit zwei Monaten Realdaten auf Formatstabilitaet testen, dann Monatslauf freigeben.
 Artefakt: Ein konfigurierter Snapshot-Agent plus ein Beispiel-1-Pager mit drei Kennzahlen, Vormonats-Delta und Kernaussage, freigegeben für den Monatslauf.
 Fallstricke:
 - Der Agent variiert Format und Kennzahlen von Monat zu Monat, sodass keine Vergleichbarkeit entsteht → Das System-Prompt fixiert genau drei Kennzahlen und verbietet Format-Abweichungen; Memory bleibt deaktiviert, um Drift zu vermeiden.
 - Der Snapshot übernimmt die Export-Zahlen ungeprüft, auch bei fehlerhaftem Export → Eine Plausibilitäts-Zeile (z.B. aktive Seats vs. Vormonat) einbauen, die unrealistische Sprünge sichtbar markiert.
+Empfehlung: Fixiere im System-Prompt genau drei Kennzahlen, verbiete Format-Abweichungen und halte Memory deaktiviert - sonst variiert der Agent Format und Kennzahlen von Monat zu Monat und es entsteht keine Vergleichbarkeit. Baue eine Plausibilitaets-Zeile ein (z. B. aktive Seats vs. Vormonat), die unrealistische Spruenge markiert, damit der Snapshot fehlerhafte Export-Zahlen nicht ungeprueft uebernimmt.
 Anschluss: S-LU-080
 
 ### S-LU-080 Migrations-Pilot nach dem Konsolidierungs-Entscheid sauber aufsetzen
@@ -1710,10 +1819,14 @@ Vorgehen:
 2. Lege Vorher/Nachher-Qualitätskriterien fest (z.B. Output-Qualität, Durchlaufzeit, Fehlerquote) und erfasse die Baseline aus dem bestehenden Tool, bevor der Pilot startet.
 3. Baue die Langdock-Lösung (Agent oder Workflow) für den Pilot-Scope und lasse beide Wege parallel laufen, um real zu vergleichen.
 4. Definiere eine Abbruch-Schwelle und einen Go/No-Go-Termin: Nur bei erreichter Qualität und gemessener Ersparnis wird das Alt-Tool gekündigt.
-Prompt:
-> "Du bist Migrations-Projektleiterin. Erstelle einen Migrations-Pilotplan für die Ablösung eines KI-Punkt-Tools durch Langdock. Kontext: Ein Kern-Workflow soll pilotiert werden, Kündigung erst nach Nachweis, Baseline aus dem Alt-Tool verfügbar. Format: Plan mit Pilot-Scope, Vorher/Nachher-Qualitätskriterien, Abbruch-Schwelle und Go/No-Go-Termin für die Kündigung."
+Vorlage: Migrations-Pilotplan (nach Konsolidierungs-Entscheid):
+1. Scope - ein konkreter Kern-Workflow des abzuloesenden Tools, definierter Zeitraum, repraesentative Aufgabenmenge.
+2. Vorher/Nachher-Kriterien - Output-Qualitaet, Durchlaufzeit, Fehlerquote; Baseline aus dem Alt-Tool vor Start erfassen.
+3. Parallelbetrieb - Langdock-Loesung (Agent/Workflow) bauen und parallel zum Alt-Tool laufen lassen.
+4. Go/No-Go - Abbruch-Schwelle und Termin; Kuendigung erst bei erreichter Qualitaet und gemessener Ersparnis.
 Artefakt: Ein Migrations-Pilotplan im Canvas mit Scope, Vorher/Nachher-Kriterien, Abbruch-Schwelle und Go/No-Go-Termin als Absicherung vor der Tool-Kündigung.
 Fallstricke:
 - Das Alt-Tool wird gekündigt, bevor der Pilot die Qualität belegt hat → Kündigung erst nach erreichtem Go/No-Go-Kriterium; bis dahin laufen beide Wege parallel, auch wenn das kurzzeitig doppelte Kosten verursacht.
 - Der Pilot misst nur Kosten, nicht die Output-Qualität → Mindestens ein Qualitätskriterium mit dokumentierter Baseline ist Pflicht; reine Kostenersparnis bei schlechterem Output ist ein Fehlschlag.
+Empfehlung: Kuendige das Alt-Tool erst nach erreichtem Go/No-Go-Kriterium und lass bis dahin beide Wege parallel laufen, auch wenn das kurzzeitig doppelte Kosten verursacht - eine Kuendigung vor dem Qualitaetsnachweis ist das groesste Risiko. Mach mindestens ein Qualitaetskriterium mit dokumentierter Baseline zur Pflicht, da reine Kostenersparnis bei schlechterem Output ein Fehlschlag ist.
 Anschluss: S-LU-001
