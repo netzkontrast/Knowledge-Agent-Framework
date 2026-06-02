@@ -137,7 +137,8 @@ rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-
     - **G (31, reusable policy/template/matrix-tool/process/protocol/forecast/schema):** S-MK-003, 013, 014, 015, 016, 018, 019, 022, 025, 029, 031, 033, 039, 040, 041, 042, 043, 044, 045, 049, 052, 055, 059, 061, 062, 063, 064, 072, 073, 077, 080.
     - **D (41, one-time model/cost recommendation, often + break-even/cost-calc; Empfehlung = slot-6):** S-MK-001, 002, 004, 005, 006, 007, 008, 009, 010, 011, 012, 020, 021, 024, 026, 027, 028, 030, 032, 034, 035, 036, 037, 038, 046, 047, 048, 050, 051, 053, 054, 056, 065, 066, 067, 069, 070, 071, 074, 075, 076.
     - R7a: every scenario gets Empfehlung (for D it IS the slot-6 payload; for G/W it is slot-9). Watch chunk band (median 2562 B start; condense Vorgehen on warns as in files 02/03).
-  - [ ] **Then:** 08–09, 14/16/17.
+  - [ ] **File 08 (Sicherheit & Governance) IN PROGRESS** — classified: essentially all **Guide-Vorlage** (78) — the domain is governance/compliance reusable artifacts (dossiers, policies, matrices, registers, playbooks, checklists, charters, gap-analyses, SLAs, frameworks, protocols), exactly G-dominant like file 06. Only **2 Decision**: S-SG-009 (Datenresidenz-Entscheidungsvorlage mit klarer Empfehlung) and S-SG-014 (Embedding: AVV-Ergaenzung vs. Status-quo, binary). R7a on all. Watch chunk band (median 2885 B start; condense Vorgehen on warns).
+  - [ ] **Then:** 09, 14/16/17.
 - [ ] **R7a Empfehlung rollout** to the 13 remaining content files (combined with each R20 file touch).
 - [ ] **Critical-thinking scenarios (R20.3) + scenario chains (R20.4)** added opportunistically per file.
 - [ ] **File 08 chunk-trim** (22 scenarios 3200-3800 B) during its R20 pass.
