@@ -273,12 +273,16 @@ Vorgehen:
 2. Identifiziere den größten Business-Value der neuen Agents API (schnelleres Streaming, moderne UIs).
 3. Übersetze die technischen Vorteile (UIMessage Format) in Marketing-Vorteile.
 4. Schreibe ein beruhigendes Memo an die Stakeholder.
-Prompt:
-> "Little Data, die IT will Budget für ein Refactoring, weil Langdock die 'Assistants API' abschaltet und auf die 'Agents API' wechselt. Ich muss das intern rechtfertigen. Verfasse ein kurzes Memo. Erkläre, dass die neue API kompatibel zum Vercel AI SDK ist und wir dadurch in Zukunft viel flüssigere, echtzeit-streamende Chat-Interfaces in unseren Tools haben werden. Der Tonfall muss beruhigend und zukunftsorientiert sein."
+Vorlage: Change-Management-Memo Agents-API-Migration (intern):
+1. Anlass — Assistants-/Agents-Schnittstelle wird abgeschaltet (Deprecation-Datum im Langdock-Changelog verifizieren).
+2. Business-Value — Agents API ist Vercel-AI-SDK-kompatibel: fluessigeres Echtzeit-Streaming, moderne Chat-UIs.
+3. Beruhigung — parallele Migrations-Strategie statt Big-Bang; keine monatelange Downtime.
+4. Ton — zukunftsorientiert, ohne UIMessage-JSON-Tiefe.
 Artefakt: Ein internes Change-Management Memo.
 Fallstricke:
 - Das Memo enthält zu tiefe Details über das "UIMessage" JSON-Format, was die Marketing-Direktorin nicht interessiert.
 - Das Risiko von Downtimes wird ignoriert, anstatt eine parallele Migrations-Strategie zu empfehlen.
+Empfehlung: Eine parallele Migrations-Strategie empfehlen (altes und neues Tool laufen uebergangsweise nebeneinander), damit keine Downtime entsteht — das Downtime-Risiko nie verschweigen. Technische Details wie das UIMessage-JSON-Format aus dem Memo heraushalten und den Nutzen in Marketing-Sprache uebersetzen.
 Anschluss: S-API-010
 
 ### S-API-010 Audit-Logs für DSGVO-Auskunftsanfragen
@@ -291,12 +295,16 @@ Vorgehen:
 2. Instruiere Little Data, den Abruf via Audit Logs API zu spezifizieren.
 3. Berücksichtige die Pagination der Audit Logs API (Seitengröße in der Größenordnung weniger Dutzend Einträge pro Request — exakten Wert in der Langdock-API-Doku verifizieren; in jedem Fall ist eine Schleife über alle Seiten nötig).
 4. Dokumentiere den Prozess für den Datenschutzbeauftragten.
-Prompt:
-> "Du bist ein Compliance-Berater. Unser Datenschutzbeauftragter braucht einen Export aller System-Aktivitäten des letzten Monats wegen einer DSGVO-Anfrage. Wir müssen das über die Langdock Audit Logs API automatisieren. Schreibe einen Prozess-Guide für die IT. Erkläre zwingend, dass die API paginiert ist und nur eine begrenzte Seitengröße pro Request liefert (exakten Wert vorab verifizieren), sie müssen also eine Schleife über alle Seiten programmieren. Das Dokument muss formal und präzise sein."
+Vorlage: DSGVO-Auskunftsprozess Audit-Logs (Legal & Compliance):
+1. Anforderung — Art. 15 DSGVO: lueckenloser Nachweis der System-Aktivitaeten zu einem Agenten.
+2. Abruf — Audit Logs API (NICHT Usage-Logs: Audit = Konfigurations-/System-Aktivitaet, Usage = Token-Verbrauch).
+3. Pagination — Seitengroesse begrenzt (Wert in der API-Doku verifizieren); Schleife ueber alle Seiten zwingend.
+4. Datenschutz — PII in den Logs selbst als Risiko bewerten und im Prozess adressieren.
 Artefakt: Ein DSGVO-Auskunftsprozess Dokument.
 Fallstricke:
 - Die KI verwechselt Audit-Logs (Wer hat das System konfiguriert?) mit Usage-Logs (Wer hat welche Tokens verbraucht?).
 - Der Datenschutzaspekt (PII-Daten in Logs) wird in der Risikoanalyse vergessen.
+Empfehlung: Strikt Audit-Logs (wer hat konfiguriert?) von Usage-Logs (wer hat Tokens verbraucht?) trennen — die Auskunftsanfrage zielt auf Audit-Logs. Die Pagination zwingend als Schleife ueber alle Seiten implementieren und PII in den Logs selbst in der Risikoanalyse mitfuehren.
 Anschluss: S-API-011
 
 ### S-API-011 Vendor-Lock-in-Prävention durch BYOK-Strategie
@@ -310,12 +318,16 @@ Vorgehen:
 2. Beauftrage Little Data, eine BYOK-Strategie zu erläutern — eigene Anthropic- oder OpenAI-Keys im Langdock-Admin hinterlegen, sodass Inferenz-Kosten und Modell-Verträge jederzeit portierbar bleiben.
 3. Definiere eine jährliche Export-Pflicht: alle Wissensordner-Dokumente als Markdown sichern, alle Agenten-System-Prompts in einem Git-Repository versionieren.
 4. Skizziere einen "Wechsel-Drill" (1 Tag/Jahr), bei dem ein Testsetup auf direktem Anthropic-API-Zugriff läuft.
-Prompt:
-> "Du bist ein IT-Beschaffungsberater. Unser CTO will das Vendor-Lock-in-Risiko bei Langdock bewerten. Analysiere: Welche Komponenten unseres Setups (Agenten, Wissensordner, Workflows) sind portierbar, welche nicht? Empfehle konkrete Maßnahmen — insbesondere eine BYOK-Strategie und einen jährlichen Wechsel-Drill. Formatiere die Ausgabe als Executive-Risikobericht mit einer Ampel-Bewertung pro Komponente."
+Vorlage: Vendor-Lock-in-Executive-Risikobericht (Ampel + BYOK-Plan):
+1. Inventar — Agenten, Wissensordner, Workflows, API-Integrationen je mit Portabilitaets-Ampel (rot/gelb/gruen).
+2. BYOK-Setup — eigene Anthropic-/OpenAI-Keys im Langdock-Admin; Inferenz-Kosten und Modell-Vertraege portierbar.
+3. Export-Pflicht — Wissensordner jaehrlich als Markdown sichern, System-Prompts in Git versionieren.
+4. Wechsel-Drill — 1 Tag/Jahr Testsetup auf direktem Anthropic-API-Zugriff.
 Artefakt: Ein Executive-Risikobericht (Ampel-Tabelle + BYOK-Aktionsplan).
 Fallstricke:
 - Das Modell bewertet alle Komponenten als "niedrig riskant", weil Langdock OpenAI-kompatibel ist — ignoriert dabei aber, dass proprietäre Workflow-Konfigurationen nicht exportierbar sind.
 - Die BYOK-Empfehlung vergisst, dass im BYOK-Modus die internen Token-Preise für das Dashboard manuell vom Admin gepflegt werden müssen.
+Empfehlung: Proprietaere Workflow-Konfigurationen explizit als 'nicht exportierbar' (rot) bewerten — die OpenAI-Kompatibilitaet macht nur die API-Schicht portabel, nicht die No-Code-Workflows. Im BYOK-Modus daran denken, dass die internen Token-Preise fuers Dashboard manuell vom Admin gepflegt werden muessen.
 Anschluss: S-API-012
 
 ### S-API-012 Prompt-Caching-ROI-Kalkulation für Briefing-Templates
@@ -329,12 +341,16 @@ Vorgehen:
 2. Lass Little Data den Break-even berechnen: Prompt-Caching lohnt sich, wenn der Template-Anteil über 2.048 Tokens liegt UND mindestens 5 Requests pro Minute gesendet werden.
 3. Formuliere das technische Briefing für die IT: Cache-Prefix im System-Prompt markieren, TTL (Time-to-Live) verstehen, Monitoring der Cache-Hit-Rate einrichten.
 4. Definiere eine Erfolgsmessung: monatliche Token-Kostenvergleich vor und nach Caching-Aktivierung.
-Prompt:
-> "Du bist ein FinOps-Berater für KI-Infrastruktur. Wir senden täglich ca. 500 Requests an unseren Brand-Voice-Agenten mit einem System-Prompt von 3.200 Tokens. Berechne den monatlichen Einspar-Effekt, wenn wir Prompt-Caching aktivieren. Erkläre dabei den technischen Mechanismus (Cache-Prefix, TTL) so, dass ich es unserer IT in einem 5-minütigen Meeting erklären kann. Liefere die Kalkulation als Tabelle mit Vorher-Nachher-Vergleich."
+Vorlage: Prompt-Caching-ROI-Briefing (max. 1 DIN-A4):
+1. Parameter — Template-Laenge in Tokens, Requests/Tag, Token-Preis des Modells.
+2. Break-even — Caching lohnt ab Template-Anteil >2.048 Tokens UND mindestens 5 Requests/Minute.
+3. Mechanik — nur statischen System-Prompt-Anteil als Cache-Prefix markieren (variabler User-Input ist nicht cacheaehig), TTL verstehen, Cache-Hit-Rate monitoren.
+4. Erfolgsmessung — monatlicher Token-Kostenvergleich vorher/nachher.
 Artefakt: Eine ROI-Tabelle + technisches IT-Briefing (max. 1 DIN-A4-Seite).
 Fallstricke:
 - Die Kalkulation vernachlässigt den 10%-Aufschlag auf Token-Preise bei Langdock API-Nutzung (gegenüber direktem Provider-Zugriff), was die ROI-Schwelle nach oben verschiebt.
 - Das Modell empfiehlt, den gesamten Prompt zu cachen, obwohl nur der statische System-Prompt-Anteil cacheähig ist — der variable User-Input ist es nicht.
+Empfehlung: Nur den statischen System-Prompt-Anteil cachen, nie den variablen User-Input — und in die ROI-Schwelle den 10-%-Langdock-API-Aufschlag auf Token-Preise einrechnen, der den Break-even nach oben verschiebt. Die Cache-Hit-Rate monitoren, um den realen Effekt zu belegen.
 Anschluss: S-API-013
 
 ### S-API-013 Langdock als Backend für das interne Marketing-Dashboard
@@ -348,12 +364,16 @@ Vorgehen:
 2. Beauftrage Little Data, das BFF-Pattern zu beschreiben: internes Backend hält den Langdock API-Key in Environment Variables, leitet Anfragen an den Agent-Endpoint weiter und streamt die Antwort zurück an den Browser.
 3. Kläre die CORS-Posture: direkte Browser-to-Langdock-Aufrufe sind architektonisch blockiert — das BFF ist zwingend, nicht optional.
 4. Definiere Sicherheitsanforderungen: Authentifizierung der Dashboard-Nutzer vor dem BFF, Rate Limiting auf dem eigenen Server, kein Logging sensibler Kontextdaten.
-Prompt:
-> "Du bist ein Backend-Architekt. Wir wollen unseren spezifischen Langdock-Marketing-Agenten in unser internes React-Dashboard einbetten. Nutzer sollen KI-Analysen anfordern können, ohne Langdock direkt zu nutzen. Erkläre das Backend-for-Frontend Pattern: Wie leitet unser Node.js-Server Anfragen sicher an die Langdock Agent API weiter? Erwähne explizit, warum direkte Frontend-Aufrufe wegen CORS scheitern würden. Liefere einen Architektur-Blueprint als strukturierten Text."
+Vorlage: BFF-Architektur-Blueprint Marketing-Dashboard (Agent API):
+1. User-Flow — Klick 'KI-Analyse' sendet Graph-Kontext ans interne Backend.
+2. BFF — Node-Backend haelt den Langdock-Key in Environment Variables, ruft den Agent-Endpoint (eigener Pfad, nicht Chat-Completions), streamt zurueck.
+3. CORS — direkte Browser-to-Langdock-Aufrufe sind blockiert; BFF ist zwingend.
+4. Security — Dashboard-Nutzer vor dem BFF authentifizieren, Server-seitiges Rate Limiting, kein Logging sensibler Kontextdaten.
 Artefakt: Ein Architektur-Blueprint-Dokument (Komponenten, Datenfluss, Sicherheitsanforderungen).
 Fallstricke:
 - Der Blueprint vergisst, dass der Agent-Endpoint einen anderen URL-Pfad nutzt als der Chat-Completions-Endpoint — Verwechslung führt zu Laufzeitfehlern.
 - Die Empfehlung setzt voraus, dass das Streaming der Antwort (Server-Sent Events) im BFF korrekt durchgereicht wird — ohne expliziten Hinweis implementiert die IT dies oft als blockierenden Single-Response-Call.
+Empfehlung: Den Agent-Endpoint-Pfad explizit vom Chat-Completions-Pfad unterscheiden — die Verwechslung erzeugt Laufzeitfehler. Server-Sent-Events im BFF korrekt durchreichen, sonst implementiert die IT versehentlich einen blockierenden Single-Response-Call statt echtem Streaming.
 Anschluss: S-API-014
 
 ### S-API-014 API-Key-Lifecycle-Management und Rotation
@@ -367,12 +387,15 @@ Vorgehen:
 2. Definiere den Sofortmaßnahmen-Plan: Key sofort im Workspace-Adminbereich invalidieren und einen neuen Key generieren.
 3. Erarbeite mit Little Data einen proaktiven Lifecycle-Prozess: separate Keys pro Projekt/Agentur, automatische 90-Tage-Rotation, Key-Inventar in einer geschützten Passwort-Datenbank.
 4. Dokumentiere den Prozess als Offboarding-Checkliste für HR und IT.
-Prompt:
-> "Du bist ein IT-Security-Berater. Ein externer Entwickler, der unseren Langdock API-Key kannte, ist ausgeschieden. Ich muss sofort handeln und langfristige Prozesse etablieren. Erstelle: (1) eine Sofortmaßnahmen-Liste (was tue ich in den nächsten 2 Stunden?), (2) einen Prozessplan für API-Key-Lifecycle-Management mit 90-Tage-Rotation, und (3) eine Offboarding-Checkliste. Erkläre auch, wie ich via Audit Logs API prüfe, ob der Key missbraucht wurde."
+Vorlage: API-Key-Lifecycle-Sicherheitsdokument (dreiteilig):
+1. Sofortmassnahmen (2 h) — Key im Admin invalidieren, neuen generieren, Audit Logs API auf Anomalien pruefen.
+2. Lifecycle-Prozess — separate Keys pro Projekt/Agentur, automatische 90-Tage-Rotation, Key-Inventar in geschuetzter Passwort-DB.
+3. Offboarding-Checkliste — HR meldet Abgang sofort, IT rotiert betroffene Keys binnen 24 h.
 Artefakt: Ein dreiteiliges Sicherheitsdokument (Sofortmaßnahmen, Lifecycle-Prozess, Offboarding-Checkliste).
 Fallstricke:
 - Das Modell schlägt vor, API-Keys in Slack zu teilen "für schnellen Zugriff" — dies ist ein klassisches Anti-Pattern, das die Exposition massiv erhöht.
 - Die Audit-Log-Abfrage wird als Entwarnung missverstanden, wenn keine Anomalien gefunden werden — tatsächlich könnte der Angreifer unterhalb des Logging-Thresholds geblieben sein.
+Empfehlung: Keys niemals in Slack o. Ae. teilen — das Anti-Pattern erhoeht die Exposition massiv; pro Projekt/Agentur einen separaten Key mit 90-Tage-Rotation fuehren. Ein leeres Audit-Log nicht als Entwarnung lesen: ein Angreifer kann unter der Logging-Schwelle geblieben sein, daher den Key trotzdem rotieren.
 Anschluss: S-API-015
 
 ### S-API-015 Search API für Custom Retrieval in der internen Wissensdatenbank
@@ -386,12 +409,16 @@ Vorgehen:
 2. Bewerte den Use-Case: semantische Suche über 800 Dokumente ist ein starker Fit für die Search API, solange die Dokumente korrekt in den Langdock-Wissensordner hochgeladen und indexiert sind.
 3. Skizziere die Integrationsarchitektur: SharePoint-Suchfeld sendet Query via BFF an Langdock Search API, Ergebnisse (Chunks + Scores) werden im SharePoint-UI gerendert.
 4. Weise auf Grenzen hin: die Search API liefert Chunks, nicht vollständige Dokumente — für Volltext-Download ist ein separater Step nötig.
-Prompt:
-> "Du bist ein Lösungsarchitekt. Wir wollen die Langdock Search API nutzen, um unserem internen SharePoint-Wiki eine semantische Suchfunktion hinzuzufügen. Erkläre: Wie funktioniert der Search-API-Endpoint technisch (Input, Output, Chunk-Format, Relevanz-Score)? Welche Grenzen muss die IT kennen? Liefere einen Architektur-Entwurf als Stichpunktliste mit einem Datenfluss-Diagramm in Textform."
+Vorlage: Search-API-Integrationskonzept (semantische SharePoint-Suche):
+1. Mechanik — Search API nimmt natuerlichsprachliche Query, gibt relevanteste Chunks + Relevanz-Score zurueck (retrievet, generiert NICHT).
+2. Fit — 800 indexierte Wissensordner-Dokumente sind ein starker Fit.
+3. Architektur — SharePoint-Suchfeld → BFF → Search API → Chunks/Scores im SharePoint-UI rendern.
+4. Grenzen — liefert Chunks, keine Volltext-Dokumente; Volltext-Download als separater Step.
 Artefakt: Ein Integrations-Architektur-Dokument mit Datenfluss-Diagramm (Textform) und Grenzen-Übersicht.
 Fallstricke:
 - Die Search API wird mit dem Agent-Endpoint verwechselt: die Search API retrievet nur Chunks aus dem Wissensordner, generiert aber keinen neuen Text — das ist ein fundamentaler Unterschied.
 - Das Konzept vergisst, dass die Relevanz-Scores kontextuell sind und nicht als absolute Qualitätsbewertung interpretiert werden dürfen (ein Score von 0.6 ist nicht zwingend "gut").
+Empfehlung: Die Search API klar vom Agent-Endpoint abgrenzen — sie retrievet nur Chunks aus dem Wissensordner, generiert keinen neuen Text. Relevanz-Scores als kontextuell behandeln, nicht als absolute Qualitaet (0.6 ist nicht automatisch 'gut'), und fuer Volltext einen separaten Download-Step einplanen.
 Anschluss: S-API-016
 
 ### S-API-016 Batch-Content-Generierung für saisonale Kampagnen
@@ -406,12 +433,17 @@ Vorgehen:
 3. Erstelle eine Kostenschätzung auf Basis der Prompt-Länge (Produktdaten-Input + 80-Wörter-Output) und des gewählten Modells.
 4. Plane den Monitoring-Punkt: Usage Export API am nächsten Morgen abfragen, um tatsächliche Token-Kosten mit der Schätzung zu vergleichen.
 5. Weise auf die Budget-Grenzen hin: das Per-Workflow-Limit liegt standardmäßig bei ca. 25 Euro pro Lauf, das Workspace-Budget bei ca. 500 Euro pro Monat (Stand 2026-06, im Admin erhöhbar — aktuelle Werte vorab verifizieren) — bei großen Jobs müssen beide vor dem Lauf angepasst und ein optionales Per-Execution-Limit gegen Endlosschleifen gesetzt werden.
-Prompt:
-> "Du bist ein technischer Projektleiter. Wir müssen 2.000 Produktbeschreibungen via Langdock Completion API über ein Wochenende generieren. Der Katalog liegt als CSV vor. Skizziere eine Batch-Architektur: Wie teilen wir die CSV auf? Wie implementieren wir Exponential-Backoff bei Rate Limit Fehlern? Welche Kosten erwarten uns bei durchschnittlich 500 Input-Tokens und 120 Output-Tokens pro Request mit Haiku? Liefere Architektur-Briefing und Kostenübersicht."
+Vorlage: Batch-Content-Architektur-Briefing (2.000 Beschreibungen):
+1. Volumen — 2.000 Requests bei ~500 RPM = min. 4 Min., mit Puffer 15–30 Min.
+2. Queue — Batches à 50, Exponential-Backoff bei HTTP 429, max. 3 Retries.
+3. Kosten — Schaetzung auf Input (Produktdaten) + 80-Woerter-Output mit Haiku; Streaming gegen 100-s-Non-Streaming-Timeout.
+4. Budget — Per-Lauf-Limit ~25 €, Workspace-Budget ~500 €/Monat (Stand 2026-06, im Admin erhoehbar, vorab verifizieren); beide vor grossen Jobs anpassen.
+5. Monitoring — Usage Export API am Folgetag gegen die Schaetzung abgleichen.
 Artefakt: Ein Architektur-Briefing (Queue-Strategie, Fehlerbehandlung) + Kosten-Schätzungssheet.
 Fallstricke:
 - Das Modell vergisst das 100-Sekunden Timeout für Non-Streaming-Requests — bei langen Produktbeschreibungen kann dies Timeouts verursachen, wenn kein Streaming aktiviert ist.
 - Die Kostenschätzung basiert auf Netto-Token-Preisen und ignoriert den Langdock-API-Aufschlag von 10 % auf Modell-Provider-Preise.
+Empfehlung: Streaming aktivieren, um das 100-s-Non-Streaming-Timeout bei langen Beschreibungen zu vermeiden, und in die Kostenschaetzung den 10-%-Langdock-API-Aufschlag auf die Netto-Token-Preise einrechnen. Per-Lauf- und Workspace-Budget vor dem Wochenend-Job anheben und ein Per-Execution-Limit gegen Endlosschleifen setzen.
 Anschluss: S-API-017
 
 ### S-API-017 BYOM-Architektur-Entscheidung für sensible Marketingdaten
