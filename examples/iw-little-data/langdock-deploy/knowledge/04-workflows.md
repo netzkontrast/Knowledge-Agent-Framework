@@ -1203,12 +1203,13 @@ Vorgehen:
 2. Ein AI-Node generiert saisonale Textvarianten für alle betroffenen Touchpoints (Hero-Headline, E-Mail-Betreffzeilen, Social-Media-Captions) auf Basis der saisonalen Briefing-Parameter im Wissensordner — Structured Output: ein Objekt je Touchpoint mit Kanal, Textvariante und Aktivierungsdatum.
 3. Ein HITL-Node präsentiert alle generierten Varianten und geplanten Asset-Swaps in einer Staging-Übersicht; das Content-Team prüft und gibt Kanal für Kanal frei oder blockt einzelne Swaps.
 4. Nach Freigabe führen parallele Action-Nodes die Asset-Swaps im CMS, E-Mail-Tool und Social-Scheduling-Tool durch; das Rollback-Snapshot-Datum wird für eine mögliche Rückabwicklung dokumentiert.
-Prompt:
-> "Du bist Saisonaler-Content-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für saisonale Content-Swaps. Kontext: Aktivierungsdatum-Trigger, Rollback-Snapshot vor Swap, KI-generierte Text-Varianten je Touchpoint, HITL-Staging-Freigabe, parallele CMS+E-Mail+Social-Actions. Format: Trigger, Snapshot-Action, AI-Varianten-Node, HITL, parallele Swap-Actions."
+Workflow: Scheduled-Trigger (Aktivierungsdatum) → Vollstaendigkeits-Check-Node (alle Asset-IDs im CMS?) → Rollback-Snapshot-Action (zwingend erster Swap-Schritt) → AI-Node (saisonale Textvarianten je Touchpoint, Structured Output) → HITL-Node (Staging-Freigabe, Kanal fuer Kanal) → parallele Swap-Actions (CMS/E-Mail/Social).
+Budget: Ein AI-Node je Aktivierung, saisonal selten ausgeloest — gering; das Risiko ist die Swap-Reversibilitaet, nicht die Token-Kosten.
 Artefakt: Ein Saisonaler-Content-Swap-Workflow-Entwurf mit Rollback-Snapshot-Architektur, HITL-Staging-Gate und parallelen Multi-Kanal-Swap-Actions.
 Fallstricke:
 - Der Workflow läuft zur definierten Zeit, aber noch nicht alle saisonalen Assets wurden hochgeladen → einen Vollständigkeits-Check-Node einbauen, der prüft, ob alle erwarteten Asset-IDs im CMS vorhanden sind, und den Workflow andernfalls abbricht und eine Slack-Warnung sendet.
 - Ein fehlerhafter Asset-Swap im CMS ist schwer rückgängig zu machen, wenn kein Snapshot existiert → den Rollback-Snapshot-Action-Node als zwingend ersten Schritt konfigurieren, der den Workflow bei Fehler abbricht, bevor ein einziger Swap durchgeführt wird.
+Empfehlung: Den Rollback-Snapshot-Action-Node als zwingend ersten Schritt konfigurieren, der den Workflow bei Fehler abbricht, bevor ein einziger Swap laeuft. Einen Vollstaendigkeits-Check vorschalten, der prueft, ob alle erwarteten Asset-IDs vorliegen, und sonst abbricht plus Slack-Warnung sendet.
 Anschluss: S-WF-058
 
 ### S-WF-058 Mehrsprachiger Content-Synchronisierungs-Workflow (Integration Trigger)
@@ -1222,12 +1223,13 @@ Vorgehen:
 2. Einen Loop-Node die Zielsprachen iterieren lassen; für jede Sprache führt ein DeepL-Node die Rohübersetzung durch, gefolgt von einem AI-Node, der (a) Brand-Voice-Konformität, (b) Fachterminologie gegen das sprachspezifische Glossar im Wissensordner und (c) kulturelle Adäquatheit prüft — Structured Output: Korrektur-Flags + bereinigte Textversion.
 3. Für jede Sprache folgt ein HITL-Node, an dem der zuständige Sprachredakteur die bereinigte Version freigibt oder anpasst — parallele HITL-Gates ermöglichen gleichzeitige Bearbeitung durch verschiedene Redakteure.
 4. Nach Freigabe veröffentlicht ein CRM-/CMS-Action-Node die jeweilige Sprachversion automatisch.
-Prompt:
-> "Du bist Multilingual-Content-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für mehrsprachige Content-Synchronisation. Kontext: CMS-Trigger bei DE-Artikel-Publikation, Loop über Zielsprachen, DeepL-Rohübersetzung, AI-Brand-Voice+Glossar-Check je Sprache, parallele HITL-Gates, CMS-Veröffentlichungs-Actions. Format: Trigger, Loop-Node, DeepL+AI-Nodes, HITL je Sprache, CMS-Action."
+Workflow: Integration-Trigger (CMS 'DE-Masterartikel veroeffentlicht': Artikel-ID/Inhalt/Zielsprachen) → Loop-Node (Zielsprachen, in Chargen) → DeepL-Node (Rohuebersetzung) → AI-Node (Brand-Voice + sprachspez. Glossar + kulturelle Adaequatheit, Structured Output) → parallele HITL-Nodes je Sprache → CMS-Action je Sprachversion.
+Budget: DeepL plus ein AI-Node je Sprache — bei 8 Sprachen × langen Artikeln kosten-kritisch; in zwei Chargen splitten, das Per-Lauf-Limit vorab pruefen, Warn-Schwelle 75 %.
 Artefakt: Ein Mehrsprachen-Sync-Workflow-Entwurf mit Loop-Architektur, sprachspezifischen AI-Check-Nodes, parallelen HITL-Gates und CMS-Publikations-Actions.
 Fallstricke:
 - Der Loop-Node läuft bei 8 Zielsprachen und langen Artikeln in die Per-Execution-Kosten-Grenze → die Sprachen in zwei Chargen aufteilen (z. B. Batch 1: EN+FR+ES, Batch 2: NL+PL+IT+PT) und das Per-Execution-Limit vor dem Start gegen die kalkulierten Kosten prüfen.
 - Das Glossar im Wissensordner deckt nicht alle sprachlichen Varianten ab, sodass der AI-Node Terminologie als fehlerhaft flaggt, die eigentlich korrekt ist → ein sprachspezifisches Glossar-Dokument je Zielsprache anlegen und klar von der Brand-Voice-Datei trennen.
+Empfehlung: Die Sprachen in zwei Chargen aufteilen (z. B. EN+FR+ES / NL+PL+IT+PT) und das Per-Lauf-Limit vor dem Start gegen die kalkulierten Kosten pruefen. Je Zielsprache ein eigenes Glossar-Dokument anlegen und klar von der Brand-Voice-Datei trennen, sonst flaggt der Node korrekte Terminologie faelschlich.
 Anschluss: S-WF-059
 
 ### S-WF-059 Feedback-gesteuerter Verbesserungs-Workflow (Webhook Trigger)
@@ -1241,12 +1243,13 @@ Vorgehen:
 2. Ein AI-Node analysiert jeden Freitext: Sentiment-Score (0–100), Kategorie (Bug/UX/Feature-Request/Preisbeschwerde/Lob), betroffene Produktkomponente und ein konkreter Lösungsvorschlag basierend auf der Wissensbasis — Structured Output mit allen vier Feldern.
 3. Einen Logic-Node nach Schwellenwert routen lassen: Sentiment <30 → sofortiges Jira-Ticket + Slack-Alert an Product-Owner; Sentiment 30–60 → Jira-Ticket in Backlog; >60 → Aggregation in Wochen-Digest ohne Sofort-Action; kritische Muster (≥3 ähnliche Beschwerden in 24 Stunden) → HITL-Node für Product-Manager-Freigabe.
 4. Action-Nodes erstellen strukturierte Jira-Tickets (mit Kategorie, Schweregrad und AI-Lösungsvorschlag) und senden bei kritischen Tickets eine Slack-Benachrichtigung an den zuständigen Product-Owner.
-Prompt:
-> "Du bist Product-Feedback-Workflow-Architekt. Entwirf einen Webhook-Workflow für feedback-gesteuerte Produktverbesserungen. Kontext: Multi-Source-Feedback-Webhook, AI-Sentiment+Kategorisierung, Schwellenwert-Routing (<30 Sofort-Ticket/>30 Backlog/>60 Digest), Muster-Erkennung bei ≥3 ähnlichen Beschwerden in 24h → HITL. Format: Webhook-Trigger, AI-Analyse-Node, Logic-Routing, HITL bei Muster, Jira+Slack-Actions."
+Workflow: Webhook-Trigger (Feedback-System(e): Kanal/Bewertung/Freitext/Nutzer-ID) → Kurz-Text-Filter (<10 Woerter→'Unzureichender-Kontext') → AI-Node (Sentiment 0–100 + Kategorie + Komponente + Loesungsvorschlag, Structured Output) → Logic-Node (<30→Sofort-Jira+Slack / 30–60→Backlog / >60→Digest; ≥3 aehnliche/24 h→HITL) → Action-Nodes (Jira + Slack).
+Budget: Ein AI-Node je Feedback-Paket; bei hohem Feedback-Volumen relevant — der Kurz-Text-Filter spart Laeufe, Warn-Schwelle 75 %.
 Artefakt: Ein Feedback-Verarbeitungs-Workflow-Entwurf mit Sentiment-Score-Schema, mehrstufigem Routing, Muster-Erkennungs-Logik und strukturiertem Jira-Ticket-Template.
 Fallstricke:
 - Kurze Feedback-Texte (z. B. „Schlecht") bieten dem AI-Node zu wenig Kontext für aussagekräftige Kategorisierung → einen Filter-Node einbauen, der Texte unter 10 Wörtern in eine „Unzureichender-Kontext"-Kategorie leitet statt sie falsch zu klassifizieren.
 - Der Workflow generiert Jira-Tickets ohne ausreichend Nutzerkontext, sodass das Product-Team nicht nachvollziehen kann, wer das Feedback gegeben hat → Nutzer-ID und Quellkanal immer als Pflichtfelder im Jira-Ticket-Action-Node hinterlegen, unter Beachtung der DSGVO-Anforderungen zur Datensparsamkeit.
+Empfehlung: Einen Filter-Node vorschalten, der Texte unter 10 Woertern in 'Unzureichender Kontext' leitet statt sie falsch zu klassifizieren. Nutzer-ID und Quellkanal als Jira-Pflichtfelder hinterlegen — unter Beachtung der DSGVO-Datensparsamkeit —, damit das Product-Team Feedback nachvollziehen kann.
 Anschluss: S-WF-060
 
 ### S-WF-060 Quartalsbericht-Deck-Automatisierungs-Workflow (Scheduled Trigger)
@@ -1261,12 +1264,13 @@ Vorgehen:
 3. Einen zweiten AI-Node eine C-Level-Narrative aus dem KPI-Objekt generieren lassen: Executive-Summary (3 Bulletpoints), Slide-Empfehlungen je Kapitel (What worked/What didn't/What's next), kurze Speaker-Notes je Folie — Structured Output nach Deck-Struktur.
 4. Ein HITL-Node öffnet ein Editierfenster für die Marketing-Direktorin: Sie prüft KPI-Werte, ergänzt strategische Einordnungen und gibt die Narrative frei oder fordert Nachbesserung an.
 5. Nach Freigabe exportiert ein Action-Node den strukturierten Output als Google-Slides-Entwurf (via API) oder Notion-Seite und sendet einen Slack-Link an den CMO-Channel.
-Prompt:
-> "Du bist Quartalsbericht-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für den Marketing-Quartalsbericht. Kontext: Post-Quartals-Trigger, parallele Datenaggregation aus GA4+HubSpot+Ad-Plattformen, zweistufige AI-Nodes (KPI-Aggregation → Executive-Narrative), HITL-Editier-Gate, Google-Slides/Notion-Export. Format: Trigger, parallele Integration-Nodes, Aggregations-AI-Node, Narrativ-AI-Node, HITL, Deck-Export-Action."
+Workflow: Scheduled-Trigger (erster Arbeitstag nach Quartalsende) → parallele Integration-Nodes (GA4/HubSpot/Ad-Plattformen, je mit Error-Handler) → Aggregations-AI-Node (Quartals-KPI-Objekt, Delta, Top-3-Ausreisser) → Narrativ-AI-Node (Executive-Summary + Slide-Empfehlungen + Speaker-Notes, Structured Output) → HITL-Node (Marketing-Direktorin editiert) → Action-Node (Google-Slides/Notion-Export + Slack).
+Budget: Zwei AI-Nodes (Aggregation + Narrative) je Quartal, selten ausgeloest — gering pro Lauf bei hohem Zeitwert.
 Artefakt: Ein Quartalsbericht-Workflow-Entwurf mit paralleler Daten-Integrations-Architektur, zweistufigem AI-Node-Design (KPI-Objekt → Deck-Narrative) und HITL-Editier-Gate vor dem Export.
 Fallstricke:
 - Einer der Integration-Nodes schlägt fehl (z. B. Ad-Plattform-API-Timeout), und der Workflow produziert einen unvollständigen Bericht ohne Fehlermarkierung → jeden Integration-Node mit einem Error-Handler koppeln, der fehlende Datenquellen explizit als „Nicht verfügbar — manuell ergänzen" im KPI-Objekt markiert statt den Workflow stillschweigend abzubrechen.
 - Der AI-Narrativ-Node interpretiert kurzfristige Ausreißer (z. B. Traffic-Spike durch Presse-Erwähnung) als strategischen Trend → den Narrativ-Prompt explizit anweisen, Einzel-Event-Spikes von strukturellen Trends zu unterscheiden und Kausalitätsaussagen als Hypothesen zu formulieren, die die Marketing-Direktorin im HITL-Gate bestätigt oder verwirft.
+Empfehlung: Jeden Integration-Node mit einem Error-Handler koppeln, der fehlende Quellen als 'Nicht verfuegbar — manuell ergaenzen' im KPI-Objekt markiert, statt den Workflow still abzubrechen. Den Narrativ-Node anweisen, Einzel-Event-Spikes von strukturellen Trends zu trennen und Kausalitaet als Hypothese zu formulieren, die im HITL-Gate bestaetigt wird.
 Anschluss: S-WF-061
 
 ### S-WF-061 Lead-Scoring-Anreicherung bei neuem CRM-Kontakt (Integration Trigger)
@@ -1280,12 +1284,13 @@ Vorgehen:
 2. Einen HTTP-Request-Node die E-Mail-Domain gegen eine Firmographics-Quelle anreichern lassen (Branche, Größe, Region).
 3. Einen AI-Node einen Score mit erzwungenem JSON-Schema (score 0–100, begründung, negativ_signale) berechnen lassen — inklusive disqualifizierender Signale wie Freemail-Domain.
 4. Einen Condition-Node bei Score ≥ Schwelle den Kontakt als „Sales-Ready" markieren, sonst ins Nurturing routen — interne Markierung, kein automatischer Kunden-Kontakt.
-Prompt:
-> "Du bist Lead-Scoring-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow, der neue CRM-Kontakte anreichert und scort. Kontext: Firmographics-Enrichment via HTTP-Request, JSON-Score mit Negativ-Signalen, Schwellen-Routing. Format: Trigger, Enrichment-Node, AI-Node mit Score-Schema, Condition."
+Workflow: Integration-Trigger ('Neuer Kontakt' CRM, Felder als Payload) → HTTP-Request-Node (Firmographics-Enrichment: Branche/Groesse/Region) → Error-Branch (API-Fehler→'manuell pruefen') → AI-Node (Score 0–100 + Begruendung + negativ_signale, erzwungenes JSON) → Condition-Node (≥Schwelle→'Sales-Ready' / sonst→Nurturing); interne Markierung.
+Budget: Ein AI-Node je neuem Kontakt plus ein Enrichment-API-Call; das Volumen folgt dem Lead-Zufluss — Warn-Schwelle 75 %.
 Artefakt: Ein Scoring-Workflow-Entwurf mit Enrichment-Schritt und JSON-Score-Schema inklusive disqualifizierender Signale.
 Fallstricke:
 - Der AI-Node vergibt nur positive Punkte und übersieht Negativ-Signale → das Schema um ein Feld für disqualifizierende Aktionen (z. B. Freemail, Karriereseite) erweitern.
 - Schlägt die Enrichment-API fehl, scort der AI-Node auf Lückendaten → einen Error-Branch einplanen, der unvollständige Datensätze als „manuell prüfen" markiert statt blind zu scoren.
+Empfehlung: Das Score-Schema um ein Pflichtfeld fuer disqualifizierende Signale (Freemail, Karriereseite) erweitern — sonst vergibt der Node nur positive Punkte. Einen Error-Branch einplanen, der bei Enrichment-API-Ausfall unvollstaendige Datensaetze als 'manuell pruefen' markiert statt auf Lueckendaten zu scoren.
 Anschluss: S-WF-062
 
 ### S-WF-062 Warenkorb-Abbruch-Nurturing für Self-Serve-Checkout (Webhook Trigger)
@@ -1299,12 +1304,13 @@ Vorgehen:
 2. Einen AI-Node zwei Recovery-Mails entwerfen lassen, gebunden an das Einwandbehandlungs-Playbook: Mail 1 nimmt Implementierungs-Angst, Mail 2 betont den ROI.
 3. Einen HITL-Node vor jedem externen Versand zwingend einplanen, damit die Sequenz geprüft und freigegeben wird.
 4. Nach Freigabe einen Action-Node die freigegebene Sequenz an das E-Mail-Tool übergeben lassen.
-Prompt:
-> "Du bist Retention-Workflow-Architekt. Entwirf eine Abandoned-Cart-Pipeline für den Jahresplan. Kontext: Einwandbehandlung aus Wissensordner, keine vorschnellen Rabatte, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Playbook-Bindung, HITL vor Versand, Übergabe-Action."
+Workflow: Webhook-Trigger (Checkout-Abbruch: Kontakt + Plan) → AI-Node (zwei Recovery-Mails, gebunden an Einwandbehandlungs-Playbook: Mail 1 Implementierungs-Angst, Mail 2 ROI) → HITL-Node (zwingend vor Versand) → Action-Node (Sequenz ans E-Mail-Tool).
+Budget: Ein AI-Node je Abbruch; das Volumen folgt der Abbruchrate — gering bis mittel pro Lauf.
 Artefakt: Ein Abandoned-Cart-Workflow-Entwurf mit zweistufiger Sequenz-Logik und verpflichtendem Freigabe-Schritt.
 Fallstricke:
 - Ein automatischer Versand ohne Freigabe verletzt die Kontrolle über die Kunden-Kommunikation → HITL vor jeder externen Aktion zwingend setzen.
 - Der AI-Node greift reflexhaft zu Rabatten und entwertet den B2B-Preis → den Node strikt auf wertorientierte Argumente aus dem Playbook festlegen.
+Empfehlung: Einen HITL-Node vor jeder externen Aktion zwingend setzen — ein automatischer Versand verletzt die Kontrolle ueber die Kunden-Kommunikation. Den AI-Node strikt auf wertorientierte Argumente aus dem Playbook festlegen, sonst greift er reflexhaft zu Rabatten und entwertet den B2B-Preis.
 Anschluss: S-WF-063
 
 ### S-WF-063 Event-Follow-up-Sequenz nach Badge-Scan-Segmentierung (Manual Trigger + Loop)
@@ -1318,12 +1324,13 @@ Vorgehen:
 2. Einen Loop-Node über die Kontakte iterieren und einen AI-Node je Kontakt das Segment (Preis-Interesse / Wettbewerb / Allgemein) sowie einen passenden Entwurf bestimmen lassen.
 3. Die Entwürfe als JSON-Array sammeln und einen HITL-Node die Batch-Freigabe vor dem Versand durchführen lassen.
 4. Nach Freigabe einen Action-Node die Entwürfe an das CRM/E-Mail-Tool übergeben lassen.
-Prompt:
-> "Du bist Event-Follow-up-Architekt. Entwirf einen Loop-Workflow für Badge-Scan-Leads. Kontext: Segmentierung nach Notizen, drei Follow-up-Varianten, kein automatischer Versand. Format: Manual-Trigger, Loop-Node, AI-Node mit Segment-Schema, HITL-Batch-Freigabe."
+Workflow: Manual-Trigger (Badge-Scan-Liste mit Notizen, in Chargen ≤100) → Loop-Node → AI-Node je Kontakt (Segment Preis/Wettbewerb/Allgemein + Entwurf, Structured Output) → JSON-Array → HITL-Node (Batch-Freigabe) → Action-Node (CRM/E-Mail-Tool).
+Budget: Ein AI-Node je Kontakt im Loop; bei hunderten Items in Chargen ≤100 fahren und das Per-Lauf-Limit pruefen, Warn-Schwelle 75 %.
 Artefakt: Ein Event-Follow-up-Workflow-Entwurf mit Segment-Schema und Batch-Freigabe-Punkt.
 Fallstricke:
 - Unscharfe oder leere Notizen führen zu Fehl-Segmentierung → einen Fallback-Pfad „Allgemeines Interesse" für nicht eindeutige Notizen definieren.
 - Mehr als 100 Kontakte sprengen den Loop → die Liste vorab in Chargen aufteilen und das Per-Execution-Limit prüfen.
+Empfehlung: Einen Fallback-Pfad 'Allgemeines Interesse' fuer unscharfe oder leere Notizen definieren, damit Fehl-Segmentierung vermieden wird. Die Liste vorab in Chargen ≤100 aufteilen und das Per-Lauf-Limit pruefen, sonst sprengt der Loop das Budget.
 Anschluss: S-WF-064
 
 ### S-WF-064 Content-Kalender-Auto-Befüllung aus Asset-Liste (Scheduled Trigger)
@@ -1337,12 +1344,13 @@ Vorgehen:
 2. Einen AI-Node die Assets über den Monat verteilen lassen — fester Rhythmus (z. B. drei Posts pro Woche), Format-Mix, Strukturierung als JSON-Tabelle.
 3. Feiertage und Sperrtage als Parameter übergeben, damit keine Posts auf ungeeignete Tage fallen.
 4. Einen Action-Node den befüllten Plan in ein Google-Sheet schreiben lassen — interne Ablage als Entwurf, keine automatische Veröffentlichung.
-Prompt:
-> "Du bist Content-Kalender-Architekt. Entwirf einen Scheduled-Trigger-Workflow, der eine Asset-Liste über den Monat verteilt. Kontext: drei Posts pro Woche, Format-Mix, Feiertage berücksichtigen, nur interner Entwurf. Format: Trigger, AI-Node mit Verteilungs-Schema, Sheets-Action."
+Workflow: Scheduled-Trigger (Monatsanfang, Asset-Links + Feiertags-/Sperrtag-Parameter) → AI-Node (Verteilungs-Logik: fester Rhythmus, Format-Mix, JSON-Tabelle) → Action-Node (Google-Sheets-Ablage; interner Entwurf, keine Veroeffentlichung).
+Budget: Ein AI-Node monatlich — pro Lauf vernachlaessigbar.
 Artefakt: Ein Kalender-Workflow-Entwurf mit Verteilungs-Schema und Feiertags-Parameter.
 Fallstricke:
 - Der AI-Node kennt keine nationalen Feiertage → die Sperrtage explizit als Parameter übergeben, sonst landen Posts an ungeeigneten Tagen.
 - Hochaufwändige Assets häufen sich in einer Woche → eine Obergrenze pro Format und Woche im Node-Briefing setzen.
+Empfehlung: Die Sperr- und Feiertage explizit als Parameter uebergeben — der AI-Node kennt nationale Feiertage nicht, sonst landen Posts an ungeeigneten Tagen. Eine Obergrenze pro Format und Woche im Node-Briefing setzen, damit sich hochaufwaendige Assets nicht in einer Woche haeufen.
 Anschluss: S-WF-065
 
 ### S-WF-065 Social-Listening-Alert bei Erwähnungs-Ausschlag (Webhook Trigger)
