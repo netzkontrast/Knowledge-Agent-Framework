@@ -1524,12 +1524,13 @@ Vorgehen:
 2. Einen Loop-Node iterieren und einen AI-Node mit Flash-Modell je String lokalisieren und die Anrede grammatikalisch korrekt umstellen lassen — gebunden an das Glossar.
 3. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit prüfen und die Warn-Schwellen setzen.
 4. Einen HITL-Node für die native Muttersprachler-Prüfung vor dem Live-Gang einplanen.
-Prompt:
-> "Du bist Lokalisierungs-Workflow-Architekt. Entwirf eine Batch-Pipeline für Tonalitäts-Umstellung (Du→Sie) vieler Text-Strings. Kontext: Flash-Modell für Kosten, Glossar im Wissensordner, native Prüfung vor Live-Gang. Format: Manual-Trigger, Loop-Node, AI-Node-Konfiguration, HITL, Kostenschätzung."
+Workflow: Manual-Trigger (Text-Strings als JSON-Array, in Chargen ≤100) → Loop-Node → AI-Node (Flash-Modell, Lokalisierung + Anrede-Umstellung Du→Sie, Glossar-Wissensordner, Structured Output) → HITL-Node (native Muttersprachler-Pruefung vor Live-Gang).
+Budget: Flash-Modell je String × bis zu 100/Charge — kosten-getrieben; die Kostenschaetzung vor dem Start gegen das Per-Lauf-Limit pruefen und Warn-Schwellen setzen.
 Artefakt: Ein Lokalisierungs-Workflow-Entwurf mit Loop-Logik, Glossar-Bindung und Kostenschätzung pro Lauf.
 Fallstricke:
 - Reflexivpronomen werden bei der Anrede-Umstellung falsch konvertiert (z. B. „Dich" → „Sich") → konkrete Beispiel-Konversionen ins Node-Briefing aufnehmen und im HITL prüfen.
 - Mehr als 100 Strings sprengen den Loop → die Liste vorab in Chargen aufteilen und das Limit prüfen.
+Empfehlung: Konkrete Beispiel-Konversionen (z. B. 'Dich'→'Sie'/'Ihnen', nicht 'Sich') ins Node-Briefing aufnehmen und im HITL pruefen — Reflexivpronomen werden bei der Anrede-Umstellung sonst falsch konvertiert. Die Liste vorab in Chargen ≤100 aufteilen und das Per-Lauf-Limit pruefen.
 Anschluss: S-WF-074
 
 ### S-WF-074 Asset-Freigabe-Routing nach Inhalts-Klassifizierung (Webhook Trigger)
@@ -1543,12 +1544,13 @@ Vorgehen:
 2. Einen AI-Node den Asset-Typ mit festem Enum klassifizieren lassen (Design / Text / Web / Performance).
 3. Condition-Nodes je Typ den zuständigen Freigeber bestimmen und einen HITL-Node mit klarer Prüf-Instruktion ansteuern.
 4. Nach Freigabe einen Action-Node den Ersteller intern benachrichtigen lassen — kein automatisches Publizieren.
-Prompt:
-> "Du bist Asset-Routing-Workflow-Architekt. Entwirf einen Freigabe-Routing-Workflow für Kreativ-Assets. Kontext: Klassifizierung in Design/Text/Web/Performance, je Typ ein Freigeber, kein Auto-Publish. Format: Webhook-Trigger, AI-Node mit Enum-Schema, Condition-Routing, HITL, Benachrichtigung."
+Workflow: Webhook-Trigger (Asset-Ablage: Metadaten + Inhalts-Auszug) → AI-Node (Klassifizierung festes Enum Design/Text/Web/Performance, Structured Output, mehrere Tags moeglich) → Condition-Nodes je Typ (zustaendiger Freigeber) → HITL-Node (klare Pruef-Instruktion) → Action-Node (Ersteller intern benachrichtigen; kein Auto-Publish).
+Budget: Ein AI-Node je Asset; das Volumen folgt der Asset-Produktion — gering bis mittel pro Lauf.
 Artefakt: Ein Freigabe-Routing-Workflow-Entwurf mit Enum-Klassifizierung und Freigeber-Zuordnung.
 Fallstricke:
 - Cross-funktionale Assets passen in mehrere Kategorien → die Condition-Logik muss mehrere Tags gleichzeitig verarbeiten können.
 - Ein HITL-Node ohne klare Prüf-Instruktion wird übersprungen → jede Freigeber-Node mit einer konkreten Entscheidungsfrage ausstatten.
+Empfehlung: Die Condition-Logik so bauen, dass sie mehrere Tags gleichzeitig verarbeitet — cross-funktionale Assets passen in mehrere Kategorien. Jede Freigeber-Node mit einer konkreten Entscheidungsfrage ausstatten, sonst wird ein instruktionsloses HITL-Gate uebersprungen.
 Anschluss: S-WF-075
 
 ### S-WF-075 UTM-Parameter-Generierung nach Taxonomie (Form Trigger)
@@ -1562,12 +1564,13 @@ Vorgehen:
 2. Einen AI-Node die Eingaben gegen die erlaubten Werte der UTM-Taxonomie prüfen und normalisieren lassen (z. B. Kleinschreibung erzwingen).
 3. Bei unzulässigen Werten den Nutzer auf die erlaubten Optionen hinweisen statt einen ungültigen Tag zu erzeugen.
 4. Einen Action-Node den finalen, vollständigen Tracking-Link intern ablegen — keine externe Aktion.
-Prompt:
-> "Du bist UTM-Governance-Workflow-Architekt. Entwirf einen Form-Trigger-Workflow, der taxonomie-konforme UTM-Links erzeugt. Kontext: feste erlaubte Werte, Kleinschreibung erzwingen, ungültige Eingaben abweisen. Format: Form-Trigger, AI-Validierungs-Node mit Taxonomie, Ablage-Action."
+Workflow: Form-Trigger (Pflicht-Auswahlfelder Quelle/Medium/Kampagne/Content) → AI-Node (Validierung gegen UTM-Taxonomie + Normalisierung, z. B. Kleinschreibung erzwingen, Structured Output; unzulaessige Werte→Hinweis statt Tag) → Action-Node (vollstaendiger Tracking-Link intern ablegen).
+Budget: Ein AI-Node je Tag-Erzeugung — minimal; rein interne Validierung ohne Aussen-Aktion.
 Artefakt: Ein UTM-Generator-Workflow-Entwurf mit Taxonomie-Validierung und Normalisierungs-Regeln.
 Fallstricke:
 - Zu komplexe Regeln werden von Marketern umgangen → die Taxonomie schlank halten und im Form-Trigger als Auswahl vorgeben statt Freitext.
 - Freitext-Eingaben erzeugen inkonsistente Tags → erlaubte Werte als feste Auswahl im Form-Trigger erzwingen.
+Empfehlung: Die Taxonomie schlank halten und im Form-Trigger als feste Auswahl statt Freitext vorgeben — zu komplexe Regeln werden umgangen und Freitext erzeugt inkonsistente Tags. Bei unzulaessigen Werten auf die erlaubten Optionen hinweisen statt einen ungueltigen Tag zu erzeugen.
 Anschluss: S-WF-076
 
 ### S-WF-076 Daten-Qualitäts-Validierung vor BI-Import (Webhook Trigger)
@@ -1581,12 +1584,13 @@ Vorgehen:
 2. Einen AI-Node Header normalisieren, PII entfernen und je Zeile ein Validitäts-Flag mit Begründung als Structured Output ausgeben lassen.
 3. Einen Condition-Node valide Zeilen in die Master-Datei und fehlerhafte Zeilen in eine Quarantäne-Ablage routen lassen.
 4. Eine interne Meldung über Anzahl und Art der Quarantäne-Fälle auslösen — keine stille Verwerfung.
-Prompt:
-> "Du bist Data-Quality-Workflow-Architekt. Entwirf einen Validierungs-Workflow vor dem BI-Import. Kontext: Normalisierung, PII-Entfernung, Validitäts-Flag je Zeile, Quarantäne statt Verwerfen. Format: Webhook-Trigger, AI-Node mit Validitäts-Schema, Condition-Routing, Quarantäne-Action."
+Workflow: Webhook-Trigger (eingehende Datenlieferung) → AI-Node (Header normalisieren + PII entfernen + Validitaets-Flag je Zeile mit Begruendung, Structured Output) → Condition-Node (valide→Master-Datei / fehlerhaft→Quarantaene) → Action-Node (interne Meldung ueber Anzahl/Art der Quarantaene-Faelle; keine stille Verwerfung).
+Budget: Ein AI-Node je Datenlieferung; bei grossen CSVs zeilenweise relevant — als Batch fahren, Warn-Schwelle 75 %.
 Artefakt: Ein Validierungs-Workflow-Entwurf mit Validitäts-Schema und Quarantäne-Pfad.
 Fallstricke:
 - Radikal unterschiedliche Datumsformate lassen die Normalisierung scheitern → ein erwartetes Zielformat definieren und Abweichungen in Quarantäne schicken.
 - Fehlerhafte Zeilen werden still verworfen → einen Quarantäne-Pfad mit interner Meldung statt stiller Verwerfung einplanen.
+Empfehlung: Ein erwartetes Zielformat (insb. Datumsformat) definieren und Abweichungen in Quarantaene schicken statt die Normalisierung scheitern zu lassen. Fehlerhafte Zeilen ueber einen Quarantaene-Pfad mit interner Meldung behandeln, nie still verwerfen.
 Anschluss: S-WF-077
 
 ### S-WF-077 Churn-Risiko-Alert aus Verhaltens- und Feedback-Signalen (Scheduled Trigger)
@@ -1600,12 +1604,13 @@ Vorgehen:
 2. Einen AI-Node mehrere Signale zu einem Risiko-Score mit Begründung und Auslöse-Event verdichten lassen — Structured Output.
 3. Nur bei Score über Schwelle eine Slack-Meldung an Customer Success mit konkretem Account und Treibern auslösen.
 4. Die Meldung um einen Empfehlungs-Satz ergänzen — interne Meldung, keine automatische Kunden-Aktion.
-Prompt:
-> "Du bist Retention-Workflow-Architekt. Entwirf einen wöchentlichen Churn-Risiko-Workflow. Kontext: Nutzungs- plus NPS-Signale, Risiko-Score mit Treibern, Schwellen-Meldung an Customer Success, keine automatische Kunden-Aktion. Format: Scheduled-Trigger, Integration, AI-Node mit Risiko-Schema, Slack-Action."
+Workflow: Scheduled-Trigger (woechentlich) → Integration-Node (Nutzungs- + NPS-Verbatim-Daten) → Kurz-Verbatim-Filter → AI-Node (Signal-Aggregation zu Risiko-Score + Begruendung + Ausloese-Event, Structured Output) → Schwellen-Condition → Action-Node (Slack an Customer Success mit Account/Treibern + Empfehlungs-Satz; keine automatische Kunden-Aktion).
+Budget: Ein AI-Node woechentlich ueber aggregierte Signale — gering pro Lauf.
 Artefakt: Ein Churn-Risiko-Workflow-Entwurf mit Signal-Aggregation und Risiko-Schema.
 Fallstricke:
 - Eine einzelne Schwankung löst Fehlalarm aus → mehrere Signale aggregieren und einen Glättungszeitraum definieren.
 - Sehr kurze NPS-Verbatims liefern keinen Mehrwert → Antworten unter wenigen Wörtern aus der Bewertung herausfiltern.
+Empfehlung: Mehrere Signale aggregieren und einen Glaettungszeitraum definieren, damit eine einzelne Schwankung keinen Fehlalarm ausloest. NPS-Verbatims unter wenigen Woertern aus der Bewertung herausfiltern, da sie keinen Mehrwert liefern.
 Anschluss: S-WF-078
 
 ### S-WF-078 Partner-Co-Marketing-Brief aus Recherche (Manual Trigger)
@@ -1619,12 +1624,13 @@ Vorgehen:
 2. Einen AI-Node mit Web Search die öffentlichen Ziele und Werte des Partners recherchieren und mit der eigenen Mission abgleichen lassen.
 3. Drei konkrete gemeinsame Kampagnen-Ideen plus einen Pitch-Entwurf als Structured Output erzeugen lassen.
 4. Einen HITL-Node vor jeder Außenkommunikation einplanen, der Fakten und Tonalität prüft.
-Prompt:
-> "Du bist Partnership-Workflow-Architekt. Entwirf einen Co-Marketing-Brief-Workflow. Kontext: öffentliche Werte des Partners via Web Search, drei gemeinsame Kampagnen-Ideen, Prüfung vor Außenkommunikation. Format: Manual-Trigger, Web-Search-AI-Node mit Werte-Abgleich, HITL."
+Workflow: Manual-Trigger (Partnername + eigene Mission) → AI-Node mit Web Search (oeffentliche Ziele/Werte des Partners recherchieren + mit eigener Mission abgleichen, Recherche-Scope auf letzte Monate) → AI-Output (drei gemeinsame Kampagnen-Ideen + Pitch-Entwurf, Structured Output) → HITL-Node (Fakten + Tonalitaet + Branchen-Constraints vor Aussenkommunikation).
+Budget: Ein AI-Node mit Web Search je Brief, selten ausgeloest — gering pro Lauf.
 Artefakt: Ein Co-Marketing-Brief-Workflow-Entwurf mit Werte-Abgleich und drei Kampagnen-Ideen.
 Fallstricke:
 - Der AI-Node schlägt Ideen vor, die regulatorische Grenzen der Partnerbranche verletzen → eine Prüfung der Branchen-Constraints in das HITL-Gate aufnehmen.
 - Web Search zieht veraltete Partner-News → den Recherche-Scope auf die letzten Monate beschränken.
+Empfehlung: Eine Pruefung der Branchen-Constraints des Partners ins HITL-Gate aufnehmen — der AI-Node schlaegt sonst Ideen vor, die regulatorische Grenzen der Partnerbranche verletzen. Den Web-Search-Recherche-Scope auf die letzten Monate beschraenken, damit keine veralteten Partner-News einfliessen.
 Anschluss: S-WF-079
 
 ### S-WF-079 Pressemitteilungs-Distribution an kuratierte Medienliste (Manual Trigger)
@@ -1638,12 +1644,13 @@ Vorgehen:
 2. Einen AI-Node mit Web Search themen-passende Journalisten (Name, Medium, letzter Beitrag) recherchieren lassen — ohne E-Mail-Adressen zu erfinden.
 3. Je Journalist einen kurzen, personalisierten Pitch entwerfen lassen, der den letzten Beitrag analytisch aufgreift.
 4. Einen HITL-Node vor jedem Versand zwingend einplanen, der Liste und Pitches prüft und freigibt.
-Prompt:
-> "Du bist PR-Distributions-Workflow-Architekt. Entwirf einen Workflow zur Verteilung einer Pressemitteilung an eine kuratierte Medienliste. Kontext: themen-passende Journalisten via Web Search, personalisierte Pitches, keine erfundenen Kontaktdaten, kein automatischer Versand. Format: Manual-Trigger, Web-Search-Node, AI-Pitch-Node, HITL vor Versand."
+Workflow: Manual-Trigger (freigegebene PM + Themen-Scope) → AI-Node mit Web Search (themen-passende Journalisten: Name/Medium/letzter Beitrag, ohne E-Mail-Adressen zu erfinden) → AI-Node (je Journalist personalisierter Pitch, der den letzten Beitrag analytisch aufgreift) → HITL-Node (Liste + Pitches pruefen + freigeben vor Versand).
+Budget: Ein AI-Node mit Web Search plus Pitch-Generierung je Journalist; selten — gering bis mittel pro Lauf.
 Artefakt: Ein PR-Distributions-Workflow-Entwurf mit Medien-Recherche-Logik und Freigabe-Punkt.
 Fallstricke:
 - Web Search halluziniert E-Mail-Adressen → den Node strikt auf Name, Medium und URL beschränken und Kontaktdaten manuell ergänzen.
 - Ein automatischer Massen-Versand ohne Freigabe schadet PR-Beziehungen → HITL vor jedem Versand zwingend setzen.
+Empfehlung: Den Recherche-Node strikt auf Name, Medium und URL beschraenken und Kontaktdaten manuell ergaenzen — Web Search halluziniert sonst E-Mail-Adressen. Einen HITL-Node vor jedem Versand zwingend setzen, da ein automatischer Massen-Versand PR-Beziehungen schadet.
 Anschluss: S-WF-080
 
 ### S-WF-080 Quartals-Reporting-Kompilation aus Mehrquellen-Daten (Scheduled Trigger)
@@ -1658,12 +1665,13 @@ Vorgehen:
 3. Einen AI-Node die Rohdaten zu einem KPI-Objekt mit Vorquartals-Delta und Top-Ausreißern aggregieren lassen — Structured Output, Daten von Deutung getrennt.
 4. Einen HITL-Node einplanen, in dem die Leitung Werte prüft und die strategische Interpretation freigibt.
 5. Nach Freigabe einen Action-Node die Kompilation intern bereitstellen — keine automatische externe Verteilung.
-Prompt:
-> "Du bist Reporting-Workflow-Architekt. Entwirf einen Quartals-Reporting-Workflow aus mehreren Quellen. Kontext: parallele Datenaggregation, Vorquartals-Delta, Zahlen faktentreu, Interpretation menschlich freigegeben. Format: Scheduled-Trigger, parallele Integration-Nodes, Aggregations-AI-Node, HITL, interne Bereitstellung."
+Workflow: Scheduled-Trigger (erster Arbeitstag nach Quartalsende) → parallele Integration-Nodes (GA4/CRM/Ad-Plattformen, je mit Error-Handler) → AI-Node (Aggregation zu KPI-Objekt + Vorquartals-Delta + Top-Ausreisser, Daten von Deutung getrennt, Structured Output) → HITL-Node (Leitung prueft Werte + gibt Interpretation frei) → Action-Node (interne Bereitstellung; keine externe Verteilung).
+Budget: Ein AI-Node je Quartal, selten ausgeloest — gering pro Lauf bei hohem Zeitwert.
 Artefakt: Ein Quartals-Reporting-Workflow-Entwurf mit Multi-Source-Aggregation, KPI-Schema und Interpretations-Freigabepunkt.
 Fallstricke:
 - Schlägt eine Integration fehl, entsteht ein unvollständiger Report ohne Hinweis → jeden Integration-Node mit Error-Handler versehen, der fehlende Quellen als „nicht verfügbar" markiert statt still abzubrechen.
 - Der AI-Node interpretiert Zahlen eigenmächtig → Daten und Deutung trennen und die Interpretation dem HITL-Gate überlassen.
+Empfehlung: Jeden Integration-Node mit einem Error-Handler versehen, der fehlende Quellen als 'nicht verfuegbar' markiert statt still abzubrechen — sonst entsteht ein unvollstaendiger Report ohne Hinweis. Daten und Deutung strikt trennen und die Interpretation dem HITL-Gate ueberlassen, damit der AI-Node Zahlen nicht eigenmaechtig interpretiert.
 Anschluss: S-WF-001
 
 ## Hinweise & Quellen-Konflikte

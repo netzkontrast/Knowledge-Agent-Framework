@@ -2619,8 +2619,8 @@
     {
       "name": "04-workflows.md",
       "kind": "content",
-      "lines": 1632,
-      "bytes": 204526,
+      "lines": 1680,
+      "bytes": 222915,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -2884,7 +2884,7 @@
           "noun": "Messe",
           "anschluss": "S-WF-034",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-034",
@@ -2892,7 +2892,7 @@
           "noun": "Social-Media-Team",
           "anschluss": "S-WF-035",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-035",
@@ -2900,7 +2900,7 @@
           "noun": "Media-Budget",
           "anschluss": "S-WF-036",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-036",
@@ -2908,7 +2908,7 @@
           "noun": "Wettbewerber",
           "anschluss": "S-WF-037",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-037",
@@ -2916,7 +2916,7 @@
           "noun": "Kunden",
           "anschluss": "S-WF-038",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-038",
@@ -2924,7 +2924,7 @@
           "noun": "CRM-Kontakte",
           "anschluss": "S-WF-039",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-039",
@@ -2932,7 +2932,7 @@
           "noun": "Intern",
           "anschluss": "S-WF-040",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-040",
@@ -2940,7 +2940,7 @@
           "noun": "Wissensordner-Inhalte",
           "anschluss": "S-WF-041",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-041",
@@ -2948,7 +2948,7 @@
           "noun": "Menge",
           "anschluss": "S-WF-042",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-042",
@@ -2956,7 +2956,7 @@
           "noun": "Assets",
           "anschluss": "S-WF-043",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-043",
@@ -2964,7 +2964,7 @@
           "noun": "Abschluss-Reporting",
           "anschluss": "S-WF-044",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-044",
@@ -2972,7 +2972,7 @@
           "noun": "Influencer-Briefings",
           "anschluss": "S-WF-045",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-045",
@@ -2980,7 +2980,7 @@
           "noun": "Dokumente",
           "anschluss": "S-WF-046",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-046",
@@ -2988,7 +2988,7 @@
           "noun": "Kontakt",
           "anschluss": "S-WF-047",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-047",
@@ -2996,7 +2996,7 @@
           "noun": "Immer",
           "anschluss": "S-WF-048",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-048",
@@ -3004,7 +3004,7 @@
           "noun": "Vertriebs",
           "anschluss": "S-WF-049",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-049",
@@ -3012,7 +3012,7 @@
           "noun": "Mitarbeiter-Portraits",
           "anschluss": "S-WF-050",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-050",
@@ -3020,7 +3020,7 @@
           "noun": "Abschluss",
           "anschluss": "S-WF-051",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-051",
@@ -3028,7 +3028,7 @@
           "noun": "Kunden",
           "anschluss": "S-WF-052",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-052",
@@ -3036,7 +3036,7 @@
           "noun": "Produkt",
           "anschluss": "S-WF-053",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-053",
@@ -3044,7 +3044,7 @@
           "noun": "Kunden",
           "anschluss": "S-WF-054",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-054",
@@ -3052,7 +3052,7 @@
           "noun": "Sobald",
           "anschluss": "S-WF-055",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-055",
@@ -3060,7 +3060,7 @@
           "noun": "Anreicherung",
           "anschluss": "S-WF-056",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-056",
@@ -3068,7 +3068,7 @@
           "noun": "Langdock-Workspaces",
           "anschluss": "S-WF-057",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-057",
@@ -3076,7 +3076,7 @@
           "noun": "Anlässen",
           "anschluss": "S-WF-058",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-058",
@@ -3084,7 +3084,7 @@
           "noun": "Content-Artikel",
           "anschluss": "S-WF-059",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-059",
@@ -3092,7 +3092,7 @@
           "noun": "Sobald",
           "anschluss": "S-WF-060",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-060",
@@ -3100,7 +3100,7 @@
           "noun": "Vorbereitung",
           "anschluss": "S-WF-061",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-061",
@@ -3108,7 +3108,7 @@
           "noun": "Kontakte",
           "anschluss": "S-WF-062",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-062",
@@ -3116,7 +3116,7 @@
           "noun": "Nutzer",
           "anschluss": "S-WF-063",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-063",
@@ -3124,7 +3124,7 @@
           "noun": "Messe",
           "anschluss": "S-WF-064",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-064",
@@ -3132,7 +3132,7 @@
           "noun": "Social-Content-Kalender",
           "anschluss": "S-WF-065",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-065",
@@ -3140,7 +3140,7 @@
           "noun": "Social-Listening-Tool",
           "anschluss": "S-WF-066",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-066",
@@ -3148,7 +3148,7 @@
           "noun": "Kunden",
           "anschluss": "S-WF-067",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-067",
@@ -3156,7 +3156,7 @@
           "noun": "Webinar-Anmeldung",
           "anschluss": "S-WF-068",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-068",
@@ -3164,7 +3164,7 @@
           "noun": "Ändert",
           "anschluss": "S-WF-069",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-069",
@@ -3172,7 +3172,7 @@
           "noun": "Ausschreibung",
           "anschluss": "S-WF-070",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-070",
@@ -3180,7 +3180,7 @@
           "noun": "Newsletter",
           "anschluss": "S-WF-071",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-071",
@@ -3188,7 +3188,7 @@
           "noun": "Outreach-Nachrichten",
           "anschluss": "S-WF-072",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-072",
@@ -3196,7 +3196,7 @@
           "noun": "SQL-SLA",
           "anschluss": "S-WF-073",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-073",
@@ -3204,7 +3204,7 @@
           "noun": "Große",
           "anschluss": "S-WF-074",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-074",
@@ -3212,7 +3212,7 @@
           "noun": "Kreativ-Assets",
           "anschluss": "S-WF-075",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-075",
@@ -3220,7 +3220,7 @@
           "noun": "Teams",
           "anschluss": "S-WF-076",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-076",
@@ -3228,7 +3228,7 @@
           "noun": "Import",
           "anschluss": "S-WF-077",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-077",
@@ -3236,7 +3236,7 @@
           "noun": "Abwanderungsgefährdete",
           "anschluss": "S-WF-078",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-078",
@@ -3244,7 +3244,7 @@
           "noun": "Co-Marketing-Kampagne",
           "anschluss": "S-WF-079",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-079",
@@ -3252,7 +3252,7 @@
           "noun": "Pressemitteilung",
           "anschluss": "S-WF-080",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-080",
@@ -3260,16 +3260,15 @@
           "noun": "Quartals-Reporting-Kompilation",
           "anschluss": "S-WF-001",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
       "advice_style": 1,
       "types": {
-        "W": 31,
-        "D": 1,
-        "P": 48
+        "W": 79,
+        "D": 1
       }
     },
     {
@@ -11784,8 +11783,8 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 954,
-    "W": 31,
+    "P": 906,
+    "W": 79,
     "D": 11,
     "K": 110
   },
