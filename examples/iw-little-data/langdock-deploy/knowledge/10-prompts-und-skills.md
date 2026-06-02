@@ -1383,12 +1383,16 @@ Vorgehen:
 2. Formuliere den Vertrag explizit: Spaltennamen, Reihenfolge, Datentypen, und ein Negativ-Constraint ("keine Einleitung, kein Text nach der Struktur").
 3. Ergänze eine Selbstprüf-Zeile als letzte Ausgabe ("Format-Check: Spaltenzahl korrekt? Pflichtfelder befüllt? ja/nein").
 4. Validiere den ersten Output gegen das Zielsystem (CSV-Import-Test bzw. JSON-Validator aus S-PS-011/022), bevor der Prompt in Serie geht.
-Prompt:
-> "Du bist Reporting-Daten-Engineer. Erstelle aus den folgenden Kampagnendaten eine Markdown-Tabelle nach diesem verbindlichen Vertrag: exakt diese Spalten in dieser Reihenfolge — Kanal | Impressionen (Ganzzahl) | Klicks (Ganzzahl) | CTR (% mit 2 Dezimalstellen) | CPL (€ mit 2 Dezimalstellen). Regeln: keine zusätzlichen Spalten, keine Einleitung, kein Text nach der Tabelle. Letzte Zeile: 'Format-Check: Spaltenzahl 5/5 ja, alle Zellen befüllt ja/nein'. Daten: [Rohdaten einfügen]."
+Vorlage: Output-Format-Vertraege (3 Muster):
+1. Vertrags-Muster — Markdown-Tabelle mit fixierten Spalten / JSON mit Schema-Block / nummerierte Markdown-Struktur; je Zielsystem das exakt erwartete Format.
+2. Explizite Vertragsregeln — Spaltennamen, Reihenfolge, Datentypen + Negativ-Constraint ('keine Einleitung, kein Text nach der Struktur').
+3. Selbstpruef-Zeile — als letzte Ausgabe ('Format-Check: Spaltenzahl korrekt? Pflichtfelder befuellt? ja/nein').
+4. Validierung gegen das Zielsystem (CSV-Import/JSON-Validator, S-PS-011/022) vor Serieneinsatz.
 Artefakt: Strukturkonformer Output (Tabelle/JSON/Struktur) mit Selbstprüf-Zeile; direkt vom Zielsystem verarbeitbar ohne manuelle Nachformatierung.
 Fallstricke:
 - Die Selbstprüf-Zeile ist ein Hinweis, keine Garantie — der Agent kann sich verzählen; bei programmatischer Weiterverarbeitung immer einen echten Parser/Validator nachschalten (vgl. S-PS-022).
 - Ändert sich das Zielsystem-Schema (neue CMS-Pflichtfelder), bricht der alte Vertrag still; den Output-Vertrag mit Versionsnummer und Stand-Datum führen und bei Schema-Änderung aktiv anpassen.
+Empfehlung: Die Selbstpruef-Zeile ist nur ein Hinweis, keine Garantie — bei programmatischer Weiterverarbeitung immer einen echten Parser/Validator nachschalten (S-PS-022). Den Output-Vertrag mit Versionsnummer und Stand-Datum fuehren und bei Schema-Aenderungen des Zielsystems aktiv anpassen, da ein alter Vertrag sonst still bricht.
 Anschluss: S-PS-065
 
 ### S-PS-065 Selbstkritik-Prompt: Den Agenten seinen eigenen Entwurf bewerten lassen
@@ -1408,6 +1412,7 @@ Artefakt: Selbstkritik-Bewertungstabelle (4 Dimensionen) + gezielt überarbeitet
 Fallstricke:
 - Selbstkritik im selben Turn wie die Erstellung ist schwächer als in einem getrennten Turn — der Agent verteidigt sonst seinen eigenen Text; immer als separaten zweiten Pass mit explizitem "bewerte kritisch, nicht wohlwollend" fahren.
 - Der Agent neigt zu Optimismus-Bias und vergibt selten 1–2; im Prompt eine Quote erzwingen ("mindestens eine Dimension muss <4 sein") verhindert pauschale Bestnoten ohne echte Prüfung.
+Empfehlung: Die Selbstkritik immer in einem getrennten zweiten Turn fahren ('bewerte kritisch, nicht wohlwollend') — im selben Turn wie die Erstellung verteidigt der Agent seinen eigenen Text. Eine Quote erzwingen ('mindestens eine Dimension muss <4 sein'), da der Agent zu Optimismus-Bias neigt und sonst pauschal Bestnoten ohne echte Pruefung vergibt.
 Anschluss: S-PS-066
 
 ### S-PS-066 Few-Shot-Beispiele kuratieren: Anker-Auswahl mit Qualitätssignal
@@ -1421,12 +1426,16 @@ Vorgehen:
 2. Lass den Agenten Kandidaten-Beispiele gegen diese Kriterien prüfen und nur konforme als Anker freigeben.
 3. Speichere die kuratierten Anker je Content-Typ in der Library (`fewshot-rsa.md`, `fewshot-linkedin.md`).
 4. Teste denselben Prompt mit kuratierten vs. willkürlichen Ankern und vergleiche die Output-Qualität (A/B, vgl. S-PS-072).
-Prompt:
-> "Du bist Few-Shot-Kurator. Prüfe die folgenden Kandidaten-Beispiele auf Eignung als Anker für {{Content-Typ}}: [Kandidaten einfügen]. Kriterien: (1) liegt ein Performance-Beleg vor (CTR/Conversion über Durchschnitt)?, (2) stammen alle aus derselben Produkt-Domäne?, (3) stilistisch konsistent zur Brand Voice in @brand-voice-guide?, (4) sind es maximal 3? Format: Tabelle Kandidat | Kriterium 1–4 (ja/nein) | Verdikt (aufnehmen/ablehnen) | 1-Satz-Begründung. Empfiehl am Ende die 2–3 stärksten Anker."
+Vorlage: Few-Shot-Kurations-Guide:
+1. 4 Aufnahmekriterien — (a) belegte Top-Performance (z. B. ueberdurchschnittliche CTR), (b) gleiche Produkt-/Themen-Domaene, (c) Stil-Konsistenz zur Brand Voice, (d) max. 3 Anker.
+2. Pruefung — Kandidaten gegen die 4 Kriterien; nur konforme als Anker freigeben.
+3. Ablage — kuratierte Anker je Content-Typ (fewshot-rsa.md, fewshot-linkedin.md).
+4. A/B — kuratierte vs. willkuerliche Anker (S-PS-072).
 Artefakt: Kuratierte Anker-Auswahl mit Begründung je Beispiel; kuratierte Few-Shot-Bibliothek je Content-Typ in der Library.
 Fallstricke:
 - Anker aus unterschiedlichen Produktkategorien senden widersprüchliche Stil-Signale und senken die Reproduzierbarkeit — Domänen-Gleichheit ist das härteste Kriterium, nie zugunsten eines "schönen" Beispiels aufweichen.
 - Mehr als 3 Anker erhöhen die Token-Last ohne Qualitätsgewinn und können den eigentlichen Task in den Hintergrund drängen; bei Bedarf rotieren statt akkumulieren.
+Empfehlung: Domaenen-Gleichheit ist das haerteste Kriterium — nie zugunsten eines 'schoenen' Beispiels aufweichen, da Anker aus fremden Kategorien widerspruechliche Stil-Signale senden und die Reproduzierbarkeit senken. Maximal 3 Anker verwenden und bei Bedarf rotieren statt akkumulieren, da mehr Anker nur Token-Last ohne Qualitaetsgewinn erzeugen.
 Anschluss: S-PS-067
 
 ### S-PS-067 Retrieval-augmentierte Prompts: Wissensordner gezielt im Prompt verankern
@@ -1446,6 +1455,7 @@ Artefakt: Faktentreuer Absatz mit Inline-Quellenangaben + Quellenliste; jede Aus
 Fallstricke:
 - RAG liefert nur Ausschnitte (Chunks), nicht das ganze Dokument; bei Aufgaben, die den Gesamtkontext brauchen (lange Verträge, Reports), stattdessen Direktanlage nutzen (vgl. S-PS-044/060).
 - Ohne explizite Zitierpflicht zitiert der Agent gar nicht oder erfindet plausible Dateinamen; die Klammer-Zitat-Anweisung UND der stichprobenartige Mensch-Check sind beide Pflicht, nicht optional.
+Empfehlung: Eine Zitierpflicht (Quelldatei in Klammern nach jeder Aussage) UND einen stichprobenartigen Mensch-Check kombinieren — ohne explizite Zitierpflicht zitiert der Agent gar nicht oder erfindet plausible Dateinamen. Bei Aufgaben, die den Gesamtkontext brauchen (lange Vertraege/Reports), Direktanlage statt RAG nutzen, da RAG nur Chunks liefert.
 Anschluss: S-PS-068
 
 ### S-PS-068 Tabellarische Extraktion: Fakten aus Fließtext in feste Spalten zwingen
@@ -1465,6 +1475,7 @@ Artefakt: Strukturkonforme Extraktionstabelle mit Quellbeleg und Konfidenz je Ze
 Fallstricke:
 - Bei mehreren Kandidatenwerten im Text (mehrere Zahlen/Firmen) extrahiert der Agent ohne Regel den erstgenannten, nicht den relevantesten; eine Priorisierungsregel ergänzen ("bei mehreren Werten den prominentesten/aktuellsten, mit Begründung").
 - Ohne wörtliche Quellbeleg-Spalte sind Extraktionsfehler nicht nachprüfbar; das Quell-Zitat ist der einzige praktikable Halluzinations-Check bei Massen-Extraktion.
+Empfehlung: Eine Priorisierungsregel ergaenzen ('bei mehreren Werten den prominentesten/aktuellsten, mit Begruendung') — ohne sie extrahiert der Agent bei mehreren Kandidaten den erstgenannten, nicht den relevantesten. Eine woertliche Quellbeleg-Spalte erzwingen: sie ist bei Massen-Extraktion der einzige praktikable Halluzinations-Check.
 Anschluss: S-PS-069
 
 ### S-PS-069 Mehrsprachige Prompt-Muster für DACH plus internationale Märkte
@@ -1484,6 +1495,7 @@ Artefakt: Drei kulturell adaptierte Sprachversionen mit gebundener Terminologie 
 Fallstricke:
 - Ohne bindendes Glossar werden Produktnamen und Claims pro Sprache frei übersetzt und brechen die Markenkonsistenz; das Adjektiv "bindend/unveränderlich" ist entscheidend (vgl. S-PS-024).
 - Long-Tail-Sprachen und Dialekte (Schwiizerdütsch, Bairisch) sind für aktuelle LLMs unzuverlässig; solche Anfragen im Muster auf Standardhochdeutsch umleiten und Dialekt manuell prüfen lassen (vgl. A-46).
+Empfehlung: Ein bindendes Terminologie-Glossar ('unveraenderlich') vorgeben — ohne es werden Produktnamen und Claims pro Sprache frei uebersetzt und brechen die Markenkonsistenz. Long-Tail-Dialekte (Schwiizerduetsch/Bairisch) auf Standardhochdeutsch umleiten und manuell pruefen lassen, da sie fuer aktuelle LLMs unzuverlaessig sind.
 Anschluss: S-PS-070
 
 ### S-PS-070 Tone-Transfer-Prompts: Denselben Inhalt zwischen Tonalitäten übertragen
@@ -1497,12 +1509,13 @@ Vorgehen:
 2. Weise den Agenten an, ausschließlich Stil-Merkmale zu ändern und Fakten/Zahlen wörtlich zu erhalten ("paraphrasiere Formulierungen, aber ändere keine Zahl und keinen Fakt").
 3. Fordere einen Invarianz-Block: "Liste alle Zahlen und Kernfakten aus Original und Zielversion gegenüber — sie müssen identisch sein."
 4. Bei Abweichung im Invarianz-Block: Transformation verwerfen und neu anfordern.
-Prompt:
-> "Du bist Tone-Transfer-Spezialist. Übertrage den folgenden Text vom Ton 'formell-technisch' in 'nahbar-nutzerorientiert'. Ziel-Ton-Profil: kurze Sätze (max. 18 Wörter), du-Anrede, Nutzen vor Mechanik, ein konkretes Beispiel, ein klarer CTA. Regel: Ändere nur den Stil — jede Zahl und jeder Fakt bleibt wörtlich identisch. Original: [Text einfügen]. Format: (1) Zielversion, (2) Invarianz-Block: Tabelle Original-Fakt | Zielversion-Fakt | identisch (ja/nein)."
+Skill: Tone-Transfer-Skill (tone-transfer-skill.md) — uebertraegt denselben Inhalt zwischen Tonalitaeten (z. B. formell-technisch → nahbar-nutzerorientiert); je Ziel-Ton ein Profil aus 5 Merkmalen (Satzlaenge/Vokabular/Direktheit/Emotionsgrad/CTA-Form) als Checkliste; aendert nur den Stil, Zahlen und Fakten bleiben woertlich invariant; obligatorischer Invarianz-Block (Original-Fakt vs. Zielversion-Fakt, identisch ja/nein) als Schlussblock.
+Trigger-Woerter: "Tone-Transfer", "Ton uebertragen", "formell zu nahbar", "technisch zu nutzerorientiert umschreiben".
 Artefakt: Tonal transformierte Version + Fakten-Invarianz-Tabelle, die die Substanzgleichheit belegt; sofort wiederverwendbar im neuen Kanal.
 Fallstricke:
 - "Fakten dürfen nicht verändert werden" wird oft als Erlaubnis zur wörtlichen Wiederholung missverstanden; ergänzen: "paraphrasiere die Formulierung, erfinde aber keine neuen Zahlen" (vgl. S-PS-009).
 - Starker Ton-Shift (z.B. ins Saloppe) lädt zu Übertreibungen ein, die unbelegte Claims erzeugen; den Invarianz-Block immer ausgeben lassen und bei jeder nein-Zelle die Transformation zurückweisen.
+Empfehlung: 'Aendere nur den Stil' um 'paraphrasiere die Formulierung, erfinde aber keine neuen Zahlen' ergaenzen — sonst wird die Fakten-Invarianz als Erlaubnis zur woertlichen Wiederholung missverstanden. Den Invarianz-Block immer ausgeben lassen und die Transformation bei jeder 'nein'-Zelle zurueckweisen, da starker Ton-Shift (ins Saloppe) zu unbelegten Uebertreibungen verleitet.
 Anschluss: S-PS-071
 
 ### S-PS-071 Mehrstufige Chain-Prompts: Aufgaben in geprüfte Teilschritte zerlegen
@@ -1522,6 +1535,7 @@ Artefakt: Vier geprüfte Zwischenartefakte + finales Dokument; Fehler werden an 
 Fallstricke:
 - Ohne explizite "halte an"-Gates führt der Agent alle Stufen sofort durch und der Prüfeffekt entfällt; die Stopp-Anweisung nach jeder Stufe ist der Kern des Musters.
 - Chat-Chains sind für einmalige, variable Aufgaben gedacht; bei wiederkehrendem, deterministischem Ablauf ist ein Workflow robuster und reproduzierbarer — die Chain dann nur als Prototyp nutzen (vgl. A-40).
+Empfehlung: Nach jeder Stufe ein Gate setzen ('halte an, zeige das Zwischenergebnis, fahre erst auf weiter fort') und jede Stufe das Zwischenartefakt der Vorstufe explizit zitieren lassen — so werden Fehler frueh sichtbar und kein Kontext geht verloren. Ab >5 Stufen oder bei deterministischem Output auf einen echten Workflow (04-workflows) wechseln statt einer Chat-Chain.
 Anschluss: S-PS-072
 
 ### S-PS-072 Fact-Checking-Prompt: Behauptungen gegen Quellen verifizieren
