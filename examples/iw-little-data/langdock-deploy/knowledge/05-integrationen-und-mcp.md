@@ -757,12 +757,14 @@ Vorgehen:
 2. Du lässt die IAM-Rolle des Service Accounts auf BigQuery Data Viewer und BigQuery Job User beschränken; keine Owner- oder Editor-Rolle.
 3. Du lässt verbotene SQL-Operationen (DROP, DELETE, INSERT, UPDATE, CREATE) im MCP-Briefing als gesperrte Tool-Actions dokumentieren und eine Pflicht-Nutzerbestätigung für Abfragen über 1 TB Scan-Volumen vorsehen.
 4. Du übergibst das Briefing an den BigQuery-Administrator und die IT; Little Data berät, konfiguriert keine IAM-Rollen.
-Prompt:
-> "Du bist mein Data-Warehouse-Integrations-Berater (Persona). Erstelle ein BigQuery-MCP-Briefing für einen Marketing-Agenten, der Kampagnen-Attribution-Daten liest (Aufgabe). Kontext: freigegebene Datasets: marketing_attribution, campaign_spend; kein DDL/DML; IAM-Prinzip der minimalen Berechtigung; Kostenschwelle 1 TB Scan (Kontext). Format: Briefing mit Abschnitten Dataset-Freigabe, IAM-Rolle, verbotene SQL-Operationen, Nutzerbestätigungs-Schwelle (Format)."
+MCP: BigQuery-MCP-Server (Read-Only Data-Warehouse-Zugriff); Service Account; Auth/Transport laut MCP-Server-Doku.
+Tool: SQL-Abfrage-Tools nur auf freigegebene Datasets (marketing_attribution, campaign_spend); andere Datasets explizit gesperrt; DDL/DML (DROP/DELETE/INSERT/UPDATE/CREATE) als gesperrte Actions.
+Scope: IAM nur BigQuery Data Viewer + Job User (kein Owner/Editor); Pflicht-Nutzerbestaetigung fuer Abfragen >1 TB Scan-Volumen.
 Artefakt: Ein BigQuery-MCP-Briefing mit Dataset-Freigabe, IAM-Anforderungen, SQL-Verboten und Kostenschwelle.
 Fallstricke:
 - Service Account mit Owner-Rolle ausstatten → Principle of Least Privilege erzwingen; BigQuery Data Viewer und Job User sind die einzigen benötigten Rollen für lesende Agenten.
 - Unbegrenzte Scan-Abfragen ohne Kostenwarnung freigeben → BigQuery-Kosten entstehen pro gescanntem TB; eine Nutzerbestätigungs-Pflicht ab 1 TB Scan-Volumen verhindert unerwartete Kostenpitzen.
+Empfehlung: Principle of Least Privilege erzwingen — fuer einen lesenden Agenten sind BigQuery Data Viewer und Job User die einzigen noetigen IAM-Rollen; eine Owner-Rolle gaebe Zugriff auf alle Datenbanken. Eine Nutzerbestaetigungs-Pflicht ab 1 TB Scan-Volumen setzen, da BigQuery-Kosten pro gescanntem TB entstehen und unbegrenzte Scans Kostenspitzen erzeugen.
 Anschluss: S-IM-034
 
 ### S-IM-034 Snowflake als Read-Only Data-Warehouse-Quelle advisory planen
@@ -776,12 +778,14 @@ Vorgehen:
 2. Du lässt ein dediziertes Virtual Warehouse (XS-Größe, Auto-Suspend nach 60 Sekunden) für Marketing-Agenten-Abfragen vorsehen, damit Snowflake-Credits kontrolliert bleiben.
 3. Du lässt die Bestätigungspflicht für Abfragen definieren, die mehr als drei Joins oder keine WHERE-Klausel enthalten — diese laufen Gefahr, das Warehouse unverhältnismäßig zu belasten.
 4. Du übergibst das Konzept an den Snowflake-Administrator; die Rollenkonfiguration und Warehouse-Einrichtung liegt bei der IT.
-Prompt:
-> "Du bist mein Data-Warehouse-Governance-Berater (Persona). Erstelle ein Snowflake-Anbindungs-Konzept für einen Marketing-Agenten mit Read-Only-Zugriff (Aufgabe). Kontext: Schemas MARKETING und CAMPAIGN_ANALYTICS; XS-Warehouse; kein DML; Snowflake-Credit-Kontrolle Priorität (Kontext). Format: Konzept mit Abschnitten Rollen-Definition, Warehouse-Konfiguration, zugelassene Schemas, Abfrage-Governance-Regeln (Format)."
+MCP: Snowflake-MCP-Server (lesende, SQL-basierte Analysequelle); dedizierter Service-User.
+Tool: SELECT-Tools nur auf freigegebene Schemas (MARKETING, CAMPAIGN_ANALYTICS); kein DML.
+Scope: Dedizierte Rolle MARKETING_READ_ONLY (kein ACCOUNTADMIN/SYSADMIN); dediziertes XS-Virtual-Warehouse mit Auto-Suspend nach 60 s; Pflichtbestaetigung fuer Abfragen mit >3 Joins oder ohne WHERE-Klausel.
 Artefakt: Ein Snowflake-MCP-Anbindungs-Konzept mit Rollen-Definition, Warehouse-Konfiguration und Abfrage-Governance.
 Fallstricke:
 - ACCOUNTADMIN- oder SYSADMIN-Rolle für den Langdock-Service-User verwenden → Ausschließlich eine dedizierte MARKETING_READ_ONLY-Rolle mit minimalen Grants zuweisen; hohe Rollen würden dem Agenten Zugriff auf alle Datenbanken geben.
 - Virtual Warehouse ohne Auto-Suspend konfigurieren → Ohne Auto-Suspend läuft das Warehouse stundenlang und verbraucht Credits, auch wenn kein Agent aktiv abfragt.
+Empfehlung: Ausschliesslich eine dedizierte MARKETING_READ_ONLY-Rolle mit minimalen Grants zuweisen, nie ACCOUNTADMIN/SYSADMIN — hohe Rollen gaeben dem Agenten Zugriff auf alle Datenbanken. Das Virtual Warehouse mit Auto-Suspend (60 s) konfigurieren, sonst laeuft es stundenlang und verbraucht Snowflake-Credits, auch ohne aktive Abfrage.
 Anschluss: S-IM-035
 
 ### S-IM-035 Digital Asset Management (DAM) via MCP-Brücke für Content-Agenten erschließen
@@ -795,12 +799,16 @@ Vorgehen:
 2. Du lässt die benötigten API-Scopes definieren: Asset suchen (Keyword, Tag, Kampagnenname), Metadaten lesen (Asset-ID, Format, Freigabe-Status), Download-URL abrufen — kein Löschen, kein Statusändern.
 3. Du lässt eine Governance-Regel festschreiben: Der Agent gibt im Chat immer nur Asset-ID und Download-URL aus — er lädt keine Binärdateien in den Kontext, da das Kontext-Fenster überlastet würde.
 4. Du übergibst das Konzept an IT und DAM-Administrator; Little Data berät, konfiguriert keine API-Verbindungen.
-Prompt:
-> "Du bist mein DAM-Integrations-Berater (Persona). Erstelle ein Anbindungs-Konzept für unser Bynder-DAM an den Content-Agenten in Langdock (Aufgabe). Kontext: Agent soll nach freigegebenen Kampagnen-Assets suchen und Asset-ID plus Download-URL liefern; kein Löschen, keine Statusänderung (Kontext). Format: Konzept mit Abschnitten Anbindungsweg (MCP vs. HTTP-Brücke), API-Scopes, Governance-Regeln, Kontext-Fenster-Hinweis (Format)."
+Vorlage: DAM-Anbindungs-Konzept (Content-Agent):
+1. Anbindungsweg — offizieller DAM-MCP-Server (Bynder/Canto/Brandfolder), falls vorhanden; sonst HTTP-Bruecke (Custom Builder/Zapier).
+2. API-Scopes — Asset suchen (Keyword/Tag/Kampagne), Metadaten lesen (Asset-ID/Format/Freigabe-Status), Download-URL; kein Loeschen/Statusaendern.
+3. Governance — Agent gibt nur Asset-ID + Download-URL aus, laedt keine Binaerdateien in den Kontext.
+4. Filter — Freigabe-Status (approved) als Pflicht-Filter.
 Artefakt: Ein DAM-Anbindungs-Konzept mit Anbindungsweg, Scope-Definition und Kontext-Fenster-Governance.
 Fallstricke:
 - Binärdateien (JPEG, MP4) direkt in den Agenten-Kontext laden → Binärdateien überlasten das Kontext-Fenster und verursachen unnötige Kosten; ausschließlich Asset-ID und Download-URL in den Chat-Output übergeben.
 - DAM-Scopes ohne Freigabe-Status-Filter einrichten → Ohne Filter liefert der Agent auch nicht freigegebene Entwurfs-Assets; den Freigabe-Status (approved) als Pflicht-Filter in alle Abfragen einbauen.
+Empfehlung: Niemals Binaerdateien (JPEG/MP4) in den Agenten-Kontext laden — sie ueberlasten das Kontext-Fenster und verursachen unnoetige Kosten; nur Asset-ID und Download-URL in den Chat-Output uebergeben. Den Freigabe-Status (approved) als Pflicht-Filter in alle Abfragen einbauen, sonst liefert der Agent auch nicht freigegebene Entwurfs-Assets.
 Anschluss: S-IM-036
 
 ### S-IM-036 Event-Plattform (Cvent oder Hopin) via MCP für Teilnehmer-Reporting anbinden
@@ -814,12 +822,14 @@ Vorgehen:
 2. Du lässt die Lese-Scopes auf aggregierte Event-Metriken beschränken: Gesamt-Registrierungen, Attend-Rate, Session-Engagement-Score — keine individuellen Teilnehmerdaten (Name, E-Mail) in den Agent-Kontext.
 3. Du lässt eine DSGVO-Governance-Regel formulieren: Individuelle Teilnehmerdaten bleiben im Event-System; der Agent erhält nur Aggregat-Zahlen, keine PII.
 4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die API-Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein Event-Analytics-Berater (Persona). Erstelle ein MCP-Briefing für die Anbindung unserer Cvent-Event-Plattform an den Reporting-Agenten (Aufgabe). Kontext: Post-Event-Reporting für Webinare, aggregierte Metriken, keine PII im Agent-Kontext, DSGVO-Pflicht (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, Lese-Scopes, DSGVO-Governance-Regel, Post-Event-Prompt-Template (Format)."
+MCP: Event-Plattform-MCP-Server (Cvent/Hopin) fuer Post-Event-Analytics; falls kein MCP, HTTP-Bruecke (04-workflows) als Fallback.
+Tool: Lese-Tools nur auf aggregierte Event-Metriken (Gesamt-Registrierungen, Attend-Rate, Session-Engagement-Score).
+Scope: Keine individuellen Teilnehmerdaten (Name/E-Mail) in den Agent-Kontext (DSGVO-Datensparsamkeit); IT-Owner fuer Verbindungsueberwachung.
 Artefakt: Ein Event-Plattform-MCP-Briefing mit Lese-Scopes, DSGVO-Regel und Post-Event-Prompt-Template.
 Fallstricke:
 - Individuelle Teilnehmerlisten (Name, E-Mail, Anwesenheitszeit) in den Agent-Kontext laden → DSGVO-Datensparsamkeit erfordert ausschließlich aggregierte Metriken; PII verbleibt im Event-System.
 - Event-API als dauerhaft stabile Verbindung behandeln → Event-Plattformen ändern ihre APIs häufig nach Major-Releases; einen IT-Owner für die Verbindungsüberwachung benennen.
+Empfehlung: Ausschliesslich aggregierte Metriken in den Agent-Kontext laden — individuelle Teilnehmerlisten (Name/E-Mail/Anwesenheitszeit) verbleiben DSGVO-konform im Event-System. Einen IT-Owner fuer die Verbindungsueberwachung benennen, da Event-Plattformen ihre APIs nach Major-Releases haeufig aendern.
 Anschluss: S-IM-037
 
 ### S-IM-037 Qualtrics-Feedback-Plattform für automatisierte VoC-Analyse anbinden
@@ -833,12 +843,16 @@ Vorgehen:
 2. Du lässt die Datenschutz-Governance definieren: Der Agent erhält ausschließlich aggregierte Antwortdaten (Durchschnittswerte, Themen-Cluster) — keine individuellen Antworten mit Respondenten-ID.
 3. Du lässt ein VoC-Analyse-Prompt-Template ausarbeiten, das den Agenten anweist, Top-3-Themen zu identifizieren, Sentiment je Thema auszuweisen und einen Handlungsvorschlag für das nächste Quartal zu formulieren.
 4. Du übergibst Konzept und Template an IT und Marketing-Ops; die API-Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein VoC-Integrations-Berater (Persona). Erstelle ein Anbindungs-Konzept für unsere Qualtrics-Befragungen an den Langdock-VoC-Analyse-Agenten (Aufgabe). Kontext: quartalsweise Kundenbefragung mit ca. 300 Antworten, nur aggregierte Daten in den Agenten-Kontext, DSGVO-konformes EU-Hosting (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Aggregat-Governance, DSGVO-Hinweis, VoC-Analyse-Prompt-Template (Format)."
+Vorlage: Qualtrics-VoC-Anbindungs-Konzept:
+1. Anbindungsweg — offizieller MCP-Server oder REST-API fuer Ergebnis-Exports; einfachsten Weg benennen.
+2. Aggregat-Governance — nur aggregierte Antwortdaten (Durchschnitte, Themen-Cluster); keine individuellen Antworten mit Respondenten-ID.
+3. DSGVO-Hinweis — individuelle Antworten verbleiben in Qualtrics.
+4. VoC-Prompt-Template — Top-3-Themen + Sentiment je Thema + Handlungsvorschlag; Vorquartals-Benchmark als Pflichtfeld.
 Artefakt: Ein Qualtrics-Anbindungs-Konzept mit Aggregat-Governance, DSGVO-Hinweis und VoC-Prompt-Template.
 Fallstricke:
 - Individuelle Befragungsantworten mit Respondenten-ID in den Agenten-Kontext laden → DSGVO-konform sind nur anonymisierte Aggregat-Daten; individuelle Antworten verbleiben in Qualtrics.
 - VoC-Analyse ohne Vergleichsperiode anfordern → Ohne Vorquartals-Vergleich fehlt der Trend; im Prompt-Template immer Vorperioden-Benchmark als Pflichtfeld vorgeben.
+Empfehlung: Nur anonymisierte Aggregat-Daten in den Agenten-Kontext laden — individuelle Befragungsantworten mit Respondenten-ID verbleiben DSGVO-konform in Qualtrics. Im VoC-Prompt-Template immer einen Vorquartals-Benchmark als Pflichtfeld vorgeben, sonst fehlt der Trend und die Analyse bleibt aussagelos.
 Anschluss: S-IM-038
 
 ### S-IM-038 Typeform-Daten via Webhook automatisch in Langdock-Workflows einspeisen
@@ -851,12 +865,16 @@ Vorgehen:
 1. Du lässt Little Data die Typeform-Webhook-Payload-Struktur beschreiben und bestimmen, welche Formularfelder (Antworttext, Thema) in den Workflow-Kontext übergeben werden — PII-Felder (Name, E-Mail) nur wenn für das Follow-up zwingend nötig.
 2. Du lässt die Signatur-Validierung spezifizieren: Typeform sendet eine HMAC-SHA256-Signatur im Header; der Langdock-Webhook-Empfänger muss diese vor der Verarbeitung validieren.
 3. Du lässt die Workflow-Skizze ausarbeiten: Typeform-Webhook → Payload-Validierung → Agent analysiert Antworten → Draft Follow-up → Human-Approval-Gate vor Versand; und verweist für die detaillierte Workflow-Konfiguration auf `04-workflows`.
-Prompt:
-> "Du bist mein Webhook-Integrations-Berater (Persona). Erstelle ein Typeform-Webhook-Konzept für einen Langdock-Workflow, der Formular-Einreichungen analysiert und ein Follow-up vorbereitet (Aufgabe). Kontext: Typeform mit Feldern Thema, Frage, optional E-Mail; HMAC-Signatur-Pflicht; DSGVO-Datensparsamkeit; Human-Approval vor Versand (Kontext). Format: Konzept mit Abschnitten Payload-Felder, Signatur-Validierung, DSGVO-Regel, Workflow-Skizze als nummerierte Schritte (Format)."
+Vorlage: Typeform-Webhook-Konzept (Lead-Follow-up):
+1. Payload-Felder — Antworttext/Thema in den Workflow; PII (Name/E-Mail) nur wenn fuers Follow-up zwingend.
+2. Signatur-Validierung — Typeform sendet HMAC-SHA256 im Header; vor der Verarbeitung validieren.
+3. DSGVO — Datensparsamkeit bei der Felduebergabe.
+4. Workflow-Skizze — Webhook → Validierung → Agent analysiert → Draft Follow-up → Human-Approval vor Versand (Details in 04-workflows).
 Artefakt: Ein Typeform-Webhook-Konzept mit Payload-Felder, Signatur-Validierung, DSGVO-Regel und Workflow-Skizze.
 Fallstricke:
 - Typeform-Webhook ohne Signatur-Validierung empfangen → Ohne HMAC-Validierung kann jeder beliebige HTTP-Sender den Workflow auslösen; Signatur-Check als erste Bedingung im Workflow erzwingen.
 - Alle Formularfelder inklusive E-Mail automatisch in den Agent-Kontext laden → Datensparsamkeit: Nur die für die Follow-up-Generierung nötigen Felder (Thema, Frage) übergeben; E-Mail nur wenn der Workflow sie für den Versand zwingend braucht.
+Empfehlung: Die HMAC-SHA256-Signatur als erste Bedingung im Workflow erzwingen — ohne Validierung kann jeder beliebige HTTP-Sender den Workflow ausloesen. Nur die fuer die Follow-up-Generierung noetigen Felder (Thema, Frage) uebergeben; die E-Mail nur, wenn der Workflow sie fuer den Versand zwingend braucht (Datensparsamkeit).
 Anschluss: S-IM-039
 
 ### S-IM-039 Pardot-Integration advisory einordnen — Anbindung für B2B-Lead-Nurturing planen
@@ -870,12 +888,16 @@ Vorgehen:
 2. Du lässt die Lese-Scopes bestimmen: Prospect-Engagement-Score, Campaign-Performance (Opens, Clicks), List-Membership — keine Schreib-Scopes auf Prospect-Datensätze.
 3. Du lässt den Anwendungsfall skizzieren: Agent liest Pardot-Engagement-Daten → generiert personalisierten Nurturing-Content-Entwurf → Menschen in Marketing-Ops importieren den Entwurf in Pardot und konfigurieren den Send.
 4. Du übergibst die Einschätzung an IT und Salesforce-Admin; die CRM-Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein B2B-Marketing-Automation-Berater (Persona). Erstelle eine Pardot-Integrations-Einschätzung für unseren Langdock-Workspace (Aufgabe). Kontext: Pardot über Salesforce-API erreichbar; Ziel ist Lesen von Engagement-Scores und Generieren von Nurturing-Content-Entwürfen; kein automatischer E-Mail-Versand (Kontext). Format: Einschätzung mit Abschnitten Anbindungsweg, Lese-Scope, Anwendungsfall-Skizze, Advisory-Grenze was Langdock nicht übernimmt (Format)."
+Vorlage: Pardot-Integrations-Einschaetzung (B2B-Nurturing):
+1. Anbindungsweg — Pardot via Salesforce-API; die bestehende native Salesforce-Integration dient als Zugangspunkt (keine separate Pardot-Integration noetig).
+2. Lese-Scope — Prospect-Engagement-Score, Campaign-Performance (Opens/Clicks), List-Membership; keine Schreib-Scopes.
+3. Anwendungsfall — Agent liest Engagement → generiert Nurturing-Content-Entwurf → Marketing-Ops importiert nach Pardot und konfiguriert den Send.
+4. Advisory-Grenze — Langdock loest keine Sends/Engagement-Studio-Flows aus.
 Artefakt: Eine Pardot-Integrations-Einschätzung mit Anbindungsweg, Scope, Anwendungsfall und Advisory-Grenze.
 Fallstricke:
 - Erwarten, dass Langdock Pardot-E-Mail-Sends oder Engagement-Studio-Flows auslöst → Kampagnen-Ausführung verbleibt in Pardot; Langdock generiert Inhalte und Analysen, aber kein Send-Trigger.
 - Pardot-Prospect-PII (Name, E-Mail, Unternehmen) unnötig in den Agent-Kontext laden → Nur Engagement-Score und Kampagnen-Metriken übergeben; Datensparsamkeit gemäß DSGVO.
+Empfehlung: Klarstellen, dass Langdock keine Pardot-E-Mail-Sends oder Engagement-Studio-Flows ausloest — die Kampagnen-Ausfuehrung bleibt in Pardot; Langdock generiert nur Inhalte und Analysen. Nur Engagement-Score und Kampagnen-Metriken uebergeben, keine Prospect-PII (Name/E-Mail/Unternehmen) in den Agent-Kontext (DSGVO-Datensparsamkeit).
 Anschluss: S-IM-040
 
 ### S-IM-040 Tool-Konsolidierungsassessment mit Langdock als Bewertungsrahmen durchführen
@@ -889,12 +911,16 @@ Vorgehen:
 2. Du lässt je Tool bewerten, ob Langdock die Kernfunktion vollständig (100%), teilweise (50%) oder gar nicht (0%) abdeckt, und die Begründung dokumentieren.
 3. Du lässt Empfehlungen formulieren: Vollständig ersetzbar → Deaktivierung nach Migrationsplan; Hybride Nutzung → Beschränkung auf Kernfunktionen des Dritttools; Unersetzlich → Weiterführen und via MCP anbinden.
 4. Du übergibst das Assessment und den Executive-Summary an den CFO und die IT; Kündigungs- und Migrations-Entscheidungen liegen beim Management.
-Prompt:
-> "Du bist mein Tool-Konsolidierungs-Berater (Persona). Erstelle ein Tool-Konsolidierungs-Assessment für unseren Marketing-Tool-Stack auf Basis unseres Tool-Inventars im Wissensordner (Aufgabe). Kontext: CFO-Kostenziel, Bewertungsdimensionen Langdock-Abdeckung 0/50/100%, monatliche Kosten, Abhängigkeiten; fünf Tools im Inventar (Kontext). Format: Tabelle mit Tool, Monatkosten, Langdock-Abdeckung, Begründung, Empfehlung; plus drei Sätze Executive-Summary (Format)."
+Vorlage: Tool-Konsolidierungs-Assessment (CFO):
+1. Tool-Inventar — alle Marketing-Tools mit Monatskosten und Hauptfunktionen.
+2. Langdock-Abdeckung — je Tool 0/50/100 % mit Begruendung.
+3. Empfehlung — vollstaendig ersetzbar → Deaktivierung nach Migrationsplan; hybrid → Beschraenkung auf Kernfunktionen; unersetzlich → weiterfuehren + via MCP anbinden.
+4. Executive-Summary fuer den CFO.
 Artefakt: Ein Tool-Konsolidierungs-Assessment (Tabelle) mit Executive-Summary für den CFO.
 Fallstricke:
 - Tools als vollständig ersetzbar einstufen, ohne Migrations-Risiko zu bewerten → Jede "vollständig ersetzbar"-Einschätzung muss einen Migrationsplan und einen Zeitpuffer beinhalten; überstürzte Kündigungen reißen laufende Kampagnen.
 - Assessment ohne Controlling-Validierung präsentieren → Tool-Kosten-Daten stammen aus Schätzungen; Controlling muss Vertragsdaten und Laufzeiten vor einer CFO-Präsentation validieren.
+Empfehlung: Jede 'vollstaendig ersetzbar'-Einschaetzung mit einem Migrationsplan und Zeitpuffer hinterlegen — ueberstuerzte Kuendigungen reissen laufende Kampagnen. Das Assessment vor der CFO-Praesentation vom Controlling validieren lassen, da die Tool-Kosten-Daten Schaetzungen sind und Vertragsdaten/Laufzeiten gegengeprueft werden muessen.
 Anschluss: S-IM-041
 
 ### S-IM-041 n8n als Self-Hosted Middleware-Alternative zu Zapier evaluieren
