@@ -779,12 +779,16 @@ Vorgehen:
 2. Erstelle den 30-Tage-Plan in drei Phasen: Phase 1 (Tage 1–10) Infrastruktur — neue Nutzer anlegen, RACI aktualisieren, Budget-Limits anpassen; Phase 2 (Tage 11–20) Onboarding — Abteilungs-Champions aus dem Pilot briefen neue Teams; Phase 3 (Tage 21–30) Stabilisierung — erste Canary-Checks (S-LU-033), Feedback-Sammlung, Optimierungen.
 3. Definiere Kommunikations-Meilensteine: Kick-off-Mail an alle Abteilungen (Tag 1), Mid-Point-Update (Tag 15), Go-Live-Confirmation (Tag 30).
 4. Lege drei Skalierungs-KPIs fest: Adoption-Rate nach 30 Tagen (Ziel: 60 % aktive Nutzer), durchschnittliche Onboarding-Zeit pro neuer Abteilung und Anzahl kritischer Incidents.
-Prompt:
-> "Du bist Skalierungsstrategin für KI-Plattform-Rollouts. Erstelle einen 30-Tage-Plan für die unternehmensweite Ausweitung unseres Langdock-Piloten. Kontext: Pilot mit 20 Marketing-Nutzern war erfolgreich, Skalierung auf 120 Nutzer in 5 Abteilungen. Format: Tabelle mit Phase, Tage, Hauptaktivität, Verantwortlicher und KPI."
+Vorlage: 30-Tage-Company-wide-Skalierungsplan:
+1. Inventar — alle Pilot-Artefakte (Agenten/Wissensordner/Governance S-LU-025/Ethik S-LU-023).
+2. Phasen — P1 (T1–10) Infrastruktur (Nutzer/RACI/Budget), P2 (T11–20) Onboarding (Abteilungs-Champions briefen), P3 (T21–30) Stabilisierung (Canary S-LU-033/Feedback).
+3. Kommunikation — Kick-off (T1), Mid-Point (T15), Go-Live (T30).
+4. KPIs — Adoption nach 30 T (Ziel 60 %), Onboarding-Zeit/Abteilung, kritische Incidents.
 Artefakt: Ein 30-Tage-Skalierungsplan im Canvas mit drei Phasen, Kommunikationsplan und drei messbaren Skalierungs-KPIs für den Vollrollout-Report an die Geschäftsführung.
 Fallstricke:
 - Neue Abteilungen erhalten denselben Agenten wie Marketing, obwohl ihre Use-Cases völlig verschieden sind → Jede Abteilung bekommt einen dedizierten Onboarding-Champion, der den Marketing-Agenten als Vorlage anpasst, nicht 1:1 übernimmt.
 - Das Budget-Limit aus dem Pilot wird unverändert übernommen und reicht für 120 Nutzer nicht aus → Token-Budget für den Vollrollout auf Basis der Pilot-Nutzungsdaten hochrechnen und vor Tag 1 mit dem CFO abstimmen.
+Empfehlung: Jeder Abteilung einen dedizierten Onboarding-Champion geben, der den Marketing-Agenten als Vorlage ANPASST statt 1:1 zu uebernehmen — fremde Use-Cases unterscheiden sich grundlegend. Das Token-Budget vor Tag 1 auf Basis der Pilot-Nutzungsdaten auf 120 Nutzer hochrechnen und mit dem CFO abstimmen, da das Pilot-Limit nicht reicht.
 Anschluss: S-LU-035
 
 ### S-LU-035 Mehrsprachiges Team-Setup: DACH-Lokalisierung plus internationale Arbeitsteilung
@@ -798,12 +802,16 @@ Vorgehen:
 2. Erstelle sprachspezifische Konversations-Starter: "Erstelle einen LinkedIn-Post für die Schweizer Zielgruppe (DE-CH-Hochdeutsch, kein 'ss' durch 'ß')" vs. "Create a LinkedIn post for our UK audience (EN-GB)".
 3. Lade ein Glossar mit DACH-spezifischen Marketing-Begriffen (z. B. "Mwst." vs. "MwSt." vs. "MWST.") als Wissensordner-Dokument an alle relevanten Agenten an.
 4. Dokumentiere den Eskalationspfad: Dialekt-Anfragen (z. B. Schwiizerdütsch) werden mit dem Hinweis "Manuell überarbeiten: Dialekt nicht zuverlässig" flagged und an einen Human-Editor weitergeleitet.
-Prompt:
-> "Du bist Lokalisierungsexpertin für DACH-Marketing. Erstelle einen System-Prompt für unseren Content-Agenten, der korrekt zwischen DE-DE, DE-AT und DE-CH-Hochdeutsch unterscheidet. Kontext: Team in Frankfurt, Wien und Zürich; gelegentliche englische Inputs von internationalen Kollegen. Format: Fertiger System-Prompt (max. 400 Zeichen) plus Tabelle mit sprachspezifischen Konversations-Startern."
+Vorlage: DACH-Mehrsprachen-Agenten-Konfiguration:
+1. Sprachregeln im System-Prompt — 'immer Hochdeutsch; EN-Input → EN-Output; keine Dialektausdruecke'.
+2. Sprachspezifische Starter — z. B. 'LinkedIn-Post fuer CH (DE-CH-Hochdeutsch, kein ß)' vs. 'EN-GB post'.
+3. Glossar — DACH-Marketing-Begriffe (MwSt.-Varianten) als Wissensordner.
+4. Eskalation — Dialekt-Anfragen mit 'manuell ueberarbeiten' flaggen → Human-Editor.
 Artefakt: Ein überarbeiteter System-Prompt für den Content-Agenten plus eine Tabelle mit sprachspezifischen Konversations-Startern und Eskalationspfad für Dialekt-Anfragen.
 Fallstricke:
 - De-CH-Hochdeutsch wird mit Schwiizerdütsch verwechselt, das Modell liefert unzuverlässige Dialekt-Texte → Im System-Prompt explizit: "DE-CH bedeutet schweizerisches Standardhochdeutsch ohne Dialekt; für Mundart-Texte immer Human-Review-Flag setzen."
 - Das Glossar-Dokument wird zu groß und beeinträchtigt die Retrieval-Qualität → Maximal 50 Einträge pro Glossar-Datei; nach Themenbereich (Produkt, Recht, Zahlen) trennen.
+Empfehlung: Im System-Prompt klarstellen, dass DE-CH schweizerisches Standardhochdeutsch OHNE Dialekt bedeutet und Mundart-Texte immer ein Human-Review-Flag bekommen — sonst liefert das Modell unzuverlaessiges Schwiizerduetsch. Das Glossar auf max. 50 Eintraege je Datei begrenzen und nach Themenbereich (Produkt/Recht/Zahlen) trennen, da grosse Glossare die Retrieval-Qualitaet senken.
 Anschluss: S-LU-036
 
 ### S-LU-036 Modell-agnostische Prompt-Strategie: Prompts zwischen GPT und Claude portieren
@@ -817,12 +825,16 @@ Vorgehen:
 2. Führe einen A/B-Test mit den 10 wichtigsten Prompts durch: Führe jeden Prompt auf beiden Modellen aus und vergleiche Output-Qualität nach drei Dimensionen (Ton, Vollständigkeit, Format).
 3. Erstelle die Portierungsrichtlinie im Canvas: Welche Prompt-Muster funktionieren universell, welche müssen angepasst werden (Schätzung: 15–20 % der Prompts brauchen geringfügige Anpassung).
 4. Versioniere alle Prompts in Git (eine Markdown-Datei pro Prompt) als zukunftssichere Basis für Modell-Wechsel.
-Prompt:
-> "Du bist Prompt-Engineering-Spezialistin. Analysiere die angehängten 10 Prompt-Texte auf Modell-spezifische Abhängigkeiten. Kontext: Wir erwägen Wechsel von Claude Sonnet auf GPT-4o. Format: Tabelle mit Prompt-Name, modell-spezifischen Elementen, Portierungsaufwand (gering/mittel/hoch) und konkretem Änderungsvorschlag."
+Vorlage: Modell-agnostische Prompt-Portierungs-Richtlinie:
+1. Kategorisierung — modell-neutral / Claude-spezifisch (XML-Tags, thinking) / GPT-spezifisch (act-as).
+2. A/B-Test — Top-10-Prompts auf beiden Modellen (Ton/Vollstaendigkeit/Format vergleichen).
+3. Aufwandseinschaetzung — ~15–20 % brauchen geringfuegige Anpassung.
+4. Git-Versionierung — eine Markdown-Datei pro Prompt als zukunftssichere Basis.
 Artefakt: Eine Portierungsrisiko-Tabelle mit allen Prompts, Aufwandseinschätzung und einer Schritt-für-Schritt-Anleitung für den Modell-Wechsel ohne Qualitätsverlust.
 Fallstricke:
 - Das Team nimmt an, dass PTCF-Prompts automatisch modell-agnostisch sind — das stimmt für einfache Tasks, aber nicht für komplexe mehrstufige Anweisungen → Mehrstufige Prompts (mehr als drei Anweisungsblöcke) immer manuell testen, bevor ein Modell-Wechsel produktiv geht.
 - Versionshistorie der Prompts fehlt, sodass nach einem fehlgeschlagenen Wechsel kein Rollback möglich ist → Git-Versionierung der Prompts ist kein Luxus, sondern Pflicht ab mehr als 20 aktiven Prompt-Templates.
+Empfehlung: Mehrstufige Prompts (mehr als drei Anweisungsbloecke) vor einem Modell-Wechsel immer manuell testen — die Annahme 'PTCF ist automatisch modell-agnostisch' stimmt nur fuer einfache Tasks. Die Git-Versionierung der Prompts ab >20 aktiven Templates als Pflicht behandeln, sonst ist nach einem fehlgeschlagenen Wechsel kein Rollback moeglich.
 Anschluss: S-LU-037
 
 ### S-LU-037 Wettbewerber-KI-Landschaft monitoren: Competitive AI Intelligence aufbauen
@@ -836,12 +848,16 @@ Vorgehen:
 2. Bewerte jeden Wettbewerber nach einem 5-Punkte-KI-Reife-Scoring: (1) keine sichtbare KI-Nutzung, (3) selektiver Einsatz in einzelnen Kanälen, (5) vollintegrierte KI-First-Strategie.
 3. Identifiziere die strategischen Lücken: Wo nutzen Wettbewerber KI, wo tun wir es nicht (und umgekehrt)? Welche Differenzierung entsteht durch First-Party-Daten + KI-Komposition?
 4. Formuliere drei Differenzierungsempfehlungen als Aktionsplan und überführe den Report in den Canvas.
-Prompt:
-> "Du bist Competitive-Intelligence-Strategin. Bewerte die KI-Reife unserer drei Hauptwettbewerber im DACH-SaaS-Markt. Kontext: Wettbewerber A, B, C; Deep-Research-Quellen: Karriereseiten, Pressemitteilungen, LinkedIn-Posts, G2-Reviews. Format: Tabelle mit Wettbewerber, KI-Reife-Score (1–5), sichtbare KI-Anwendungen und strategische Implikation für uns."
+Vorlage: Competitive-AI-Intelligence-Report (quartalsweise):
+1. Recherche (Deep Research) je Wettbewerber — sichtbare KI-Tools, KI-Job-Ausschreibungen, offizielle KI-Statements.
+2. KI-Reife-Scoring (1–5) — 1 keine Nutzung, 3 selektiv, 5 vollintegrierte KI-First-Strategie.
+3. Luecken — wo nutzen sie KI, wo wir nicht (und umgekehrt); First-Party-Daten + KI als Differenzierung.
+4. Drei Differenzierungsempfehlungen als Aktionsplan.
 Artefakt: Ein quartalsweiser AI-Competitive-Report im Canvas mit Reife-Scoring-Tabelle, Lückenanalyse und drei priorisierten Differenzierungsempfehlungen.
 Fallstricke:
 - Deep Research wertet Selbst-PR der Wettbewerber als Beweis für echte KI-Reife — überschätzt den Fortschritt → Jobanzeigen und Kundenbeschwerden (G2/Capterra) als Gegenindikator explizit in den Recherche-Scope aufnehmen.
 - Der Report wird produziert, aber keine Konsequenzen gezogen → Jeder Report muss mit einer "Was ändert sich an unserer Strategie nächstes Quartal?"-Sektion enden; sonst hat er keinen geschäftlichen Wert.
+Empfehlung: Job-Ausschreibungen und Kundenbeschwerden (G2/Capterra) als Gegenindikator in den Recherche-Scope aufnehmen — Deep Research ueberschaetzt sonst die KI-Reife anhand der Selbst-PR der Wettbewerber. Jeden Report mit einer 'Was aendert sich an unserer Strategie naechstes Quartal?'-Sektion abschliessen, sonst bleibt er folgenlos.
 Anschluss: S-LU-038
 
 ### S-LU-038 Langdock-Ausfall-Fallback: 2-Stunden-Notfall-Playbook aufstellen
@@ -855,12 +871,16 @@ Vorgehen:
 2. Exportiere die System-Prompts dieser drei kritischen Agenten als lokale Markdown-Dateien (offline verfügbar auf dem Laptop des Team-Leads).
 3. Erstelle das Notfall-Playbook: Link zu status.langdock.com für Statusprüfung, direkte URLs zu Claude.ai, ChatGPT und Gemini als Alternativ-Interfaces, Schritt-für-Schritt-Anleitung zum manuellen Ausführen der drei kritischen Prompts.
 4. Plane einen jährlichen "Fallback-Drill" (15 Minuten): Team-Lead simuliert einen Ausfall und führt alle drei kritischen Prompts manuell über ein Alternativ-Interface aus.
-Prompt:
-> "Du bist Business-Continuity-Planerin für ein Marketing-Team. Erstelle ein 2-Stunden-Notfall-Playbook für den Fall eines vollständigen KI-Plattform-Ausfalls. Kontext: 3 kritische Aufgaben (Krisen-PR, Newsletter-Draft, Lead-Scoring), Team hat Zugang zu Claude.ai und ChatGPT. Format: Checkliste mit Schritt-für-Schritt-Anleitung, Alternativ-Links und Eskalationsplan."
+Vorlage: Langdock-Ausfall-Notfall-Playbook (2 Stunden):
+1. Kritische Aufgaben — die drei zeitkritischsten (Krisen-PR, Newsletter, Lead-Scoring).
+2. Offline-Prompts — System-Prompts dieser drei als lokale Markdown-Dateien (Laptop Team-Lead).
+3. Playbook — status.langdock.com-Check, direkte URLs zu Claude.ai/ChatGPT/Gemini, Schritt-fuer-Schritt-Anleitung.
+4. Jaehrlicher Fallback-Drill (15 Min).
 Artefakt: Ein 1-seitiges Notfall-Playbook im Canvas, das lokal als PDF gespeichert wird, mit den drei kritischen Prompts als Markdown und einem Fallback-Drill-Termin im Jahreskalender.
 Fallstricke:
 - Das Playbook liegt nur in Langdock selbst und ist beim Ausfall nicht erreichbar → Die finale PDF plus die drei System-Prompt-Markdowns müssen offline (lokaler Laptop des Team-Leads, geteiltes Cloud-Drive) gespeichert sein, nie ausschließlich im Workspace.
 - Die exportierten System-Prompts referenzieren Wissensordner-Inhalte, die im Alternativ-Interface fehlen → Bei kritischen Prompts die benötigten Kernfakten (Brand-Voice-Regeln, Krisen-Eskalationskontakte) direkt in den offline-Prompt einbetten, statt auf den nicht-portablen Wissensordner zu verweisen.
+Empfehlung: Das finale PDF und die drei System-Prompt-Markdowns offline speichern (lokaler Laptop, geteiltes Cloud-Drive), nie ausschliesslich im Workspace — beim Ausfall ist Langdock selbst nicht erreichbar. Bei kritischen Prompts die benoetigten Kernfakten (Brand-Voice, Krisen-Kontakte) direkt in den Offline-Prompt einbetten, da der nicht-portable Wissensordner im Alternativ-Interface fehlt.
 Anschluss: S-LU-039
 
 ### S-LU-039 AI-Disclosure-Strategie für KI-assistierten Content entwickeln
@@ -874,12 +894,16 @@ Vorgehen:
 2. Kategorisiere im Chat alle Content-Typen des Teams nach Disclosure-Pflicht: (A) KI-generierter Text mit Faktenaussagen zu Produkten → Pflicht; (B) KI-assistiertes Redigieren → empfohlen; (C) KI-generierte Übersetzungen → nicht nötig.
 3. Erstelle das Disclosure-Wording für Szenario A: kurze, authentische Formulierungen, die Vertrauen aufbauen statt rechtliche Angst auszustrahlen (z. B. "Dieser Text wurde mit KI-Unterstützung erstellt und redaktionell geprüft.").
 4. Visualisiere den Entscheidungsbaum im Canvas: Wenn [Content-Typ] → dann [Disclosure-Stufe] → dann [Wording-Vorschlag].
-Prompt:
-> "Du bist Medienrechtsspezialistin im DACH-Raum. Erstelle einen Entscheidungsbaum für KI-Disclosure in Marketing-Content. Kontext: Wir produzieren Blogposts, Social-Media-Posts, Produktbeschreibungen und Newsletter; EU AI Act Art. 50 und UWG § 5a sind relevant. Format: Entscheidungsbaum mit drei Pfaden (Pflicht/Empfohlen/Nicht nötig), fertigem Disclosure-Wording (DE) und Beispiel pro Pfad."
+Vorlage: AI-Disclosure-Entscheidungsbaum (DACH):
+1. Recherche (Deep Research) — EU-AI-Act Art. 50 (synthetische Medien) + UWG §5a; Stand datums-sensitiv.
+2. Drei Pfade — (A) KI-Text mit Produkt-Faktenaussagen → Pflicht; (B) KI-Redigieren → empfohlen; (C) KI-Uebersetzung → nicht noetig.
+3. Wording (DE) — authentische Formulierung, die Vertrauen schafft statt rechtlicher Angst.
+4. Entscheidungsbaum im Canvas (Content-Typ → Disclosure-Stufe → Wording).
 Artefakt: Ein Canvas-Dokument mit Entscheidungsbaum (drei Pfade), fertigem Disclosure-Wording auf Deutsch und einer Zusammenfassung der relevanten Rechtsgrundlagen als Referenz für die Rechtsabteilung.
 Fallstricke:
 - KI-generiertes Wording zur Disclosure wird selbst von der KI geschrieben und klingt unnatürlich → Das Disclosure-Wording muss redaktionell überarbeitet werden; der Mensch schreibt die finale Formulierung, die KI liefert Entwürfe.
 - Die Policy wird ohne Einbindung der Rechtsabteilung als verbindlich kommuniziert → Klarer Hinweis im Dokument: "Entwurf, erfordert Rechtsprüfung vor Veröffentlichung"; Freigabe-Datum im Dateinamen vermerken.
+Empfehlung: Das Disclosure-Wording redaktionell ueberarbeiten — KI-geschriebene Disclosure-Texte klingen unnatuerlich; der Mensch schreibt die finale Formulierung, die KI liefert nur Entwuerfe. Die Policy als 'Entwurf, erfordert Rechtspruefung vor Veroeffentlichung' kennzeichnen und das Freigabe-Datum im Dateinamen vermerken, nie ohne Rechtsabteilung verbindlich kommunizieren.
 Anschluss: S-LU-040
 
 ### S-LU-040 Langdock-ROI mit Business-KPIs verknüpfen: Pipeline-Attribution für KI-Assets
@@ -893,12 +917,16 @@ Vorgehen:
 2. Exportiere nach 30 Tagen die CRM-Daten: Welche Opportunities wurden durch Assets mit dem KI-Label beeinflusst (Touchpoint vorhanden)? Welche dieser Deals wurden zu Closed-Won?
 3. Lade den Export in den Data Analyst: Berechne den Pipeline-Beitrag (Summe der Opportunity-Values mit KI-Asset-Touchpoint) und den Closed-Won-Anteil als konkreten Umsatzbeitrag.
 4. Erstelle das Canvas-Template: KPI 1 = Pipeline-Beitrag KI-Assets in Euro; KPI 2 = Closed-Won-Deals mit KI-Asset-Touchpoint; KPI 3 = Anteil KI-Assets an gesamtem Content-Output.
-Prompt:
-> "Du bist Revenue-Marketing-Analystin. Erstelle ein Attribution-Template, das KI-generierte Marketing-Assets mit CRM-Pipeline-Daten verknüpft. Kontext: Wir nutzen Salesforce als CRM, Langdock für Content-Produktion, UTM-Labels für Asset-Tracking. Format: Tabelle mit KPI-Name, Tracking-Methode, Datenquelle, Berechnungsformel und Berichtszyklus."
+Vorlage: KI-Asset-Pipeline-Attribution-Report (monatlich):
+1. Tracking — jedes Langdock-Asset erhaelt ein UTM-Tag/internes Label (z. B. AI-generated-Q2-2026) beim CMS/CRM-Upload.
+2. CRM-Export (nach 30 T) — Opportunities mit KI-Asset-Touchpoint, davon Closed-Won.
+3. KPIs — Pipeline-Beitrag (EUR), Closed-Won mit KI-Touchpoint, KI-Anteil am Content-Output.
+4. Datenfluss Langdock → UTM → CRM → Report.
 Artefakt: Ein Canvas-Template für den monatlichen Pipeline-Attribution-Report mit drei KPIs, Tracking-Methodik und einer Datenfluss-Übersicht (Langdock → UTM-Labels → CRM → Report).
 Fallstricke:
 - Multi-Touch-Attribution überschätzt den letzten KI-Asset-Touchpoint und ignoriert frühere Berührungspunkte → Im Prompt explizit festlegen, ob First-Touch, Last-Touch oder lineares Attributionsmodell genutzt wird; Modell-Wahl mit dem Revenue-Team abstimmen.
 - CRM-Daten sind unvollständig, weil nicht alle Assets konsequent gelabelt werden → Labeling-Pflicht als Schritt in die Inhaltsfreigabe-Checkliste aufnehmen; kein Asset geht ohne Label live.
+Empfehlung: Das Attributionsmodell (First-/Last-Touch/linear) explizit festlegen und mit dem Revenue-Team abstimmen — Last-Touch ueberschaetzt den letzten KI-Asset-Touchpoint und ignoriert fruehere Beruehrungspunkte. Die Labeling-Pflicht in die Inhaltsfreigabe-Checkliste aufnehmen (kein Asset ohne Label live), sonst sind die CRM-Daten unvollstaendig und die Attribution wertlos.
 Anschluss: S-LU-041
 
 ### S-LU-041 Neuen Marketing-Manager in 14 Tagen auf KI-Workflows onboarden
@@ -912,12 +940,16 @@ Vorgehen:
 2. Erstelle im Canvas den täglichen Mini-Aufgaben-Kalender: Jede Aufgabe dauert max. 20 Minuten, hat ein konkretes Artefakt als Output und einen Ansprechpartner aus dem Champions-Programm (S-LU-014).
 3. Kuratiere einen Starter-Prompts-Katalog: fünf Prompts aus dem Team-Prompt-Library, die für den jeweiligen Aufgabenbereich der neuen Person am relevantesten sind.
 4. Erstelle den Day-14-Self-Check: fünf Fragen, die die Neue selbst beantwortet, um ihren Kompetenzstand einzuschätzen (z. B. "Welches Modell würdest du für einen Routine-Draft wählen?").
-Prompt:
-> "Du bist KI-Onboarding-Designerin. Erstelle einen 14-Tage-Onboarding-Plan für eine neue Marketing-Managerin bei Langdock-Einführung. Kontext: Sie hat keine KI-Vorerfahrung, ihr Fokus liegt auf Content-Marketing und Newsletter. Format: Tabelle mit Tag, Aufgabe, Dauer (max. 20 min), erwartetes Artefakt und Ansprechperson."
+Vorlage: 14-Tage-KI-Onboarding-Plan (neuer Manager):
+1. Phasen — T1 drei Starter ausprobieren; T3 bestehenden Agenten fuer echte Aufgabe nutzen; T7 eigene Starter-Variante erstellen + teilen; T14 einfachen Workflow nachstellen.
+2. Mini-Aufgaben-Kalender — max. 20 Min/Tag, je ein konkretes Artefakt + Ansprechpartner aus dem Champions-Programm (S-LU-014).
+3. Starter-Katalog — 5 fuer den Aufgabenbereich relevanteste Prompts.
+4. Day-14-Self-Check — 5 Fragen zur Kompetenzeinschaetzung.
 Artefakt: Ein 14-Tage-Onboarding-Kalender im Canvas mit täglichen Mini-Aufgaben, einem kuratierten Starter-Prompts-Katalog und einem Day-14-Self-Check-Fragebogen.
 Fallstricke:
 - Der Plan ist zu ambitiös und neue Mitarbeitende fühlen sich überfordert → Jeder Tag hat maximal eine Hauptaufgabe; Abweichungen von der Reihenfolge sind erlaubt, die Reihenfolge ist ein Vorschlag, keine Pflicht.
 - Der Onboarding-Plan wird einmalig erstellt und für jede neue Person ohne Anpassung kopiert → Plan quartalsweise mit den neuesten Agenten und Prompts aktualisieren; veraltete Starter-Prompts raus, neue Champions-Erkenntnisse rein.
+Empfehlung: Maximal eine Hauptaufgabe pro Tag und die Reihenfolge als Vorschlag (nicht Pflicht) positionieren — ein zu ambitionierter Plan ueberfordert und fuehrt zum Rueckfall in manuelle Arbeit. Den Plan quartalsweise mit den neuesten Agenten/Prompts aktualisieren (veraltete Starter raus, neue Champions-Erkenntnisse rein), statt ihn unveraendert fuer jede neue Person zu kopieren.
 Anschluss: S-LU-042
 
 ### S-LU-042 Bulk-Lokalisierungsjob für 50 Produktbeschreibungen kostenoptimiert durchführen
