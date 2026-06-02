@@ -6549,8 +6549,8 @@
     {
       "name": "10-prompts-und-skills.md",
       "kind": "content",
-      "lines": 1580,
-      "bytes": 212170,
+      "lines": 1607,
+      "bytes": 217812,
       "scenarios": [
         {
           "id": "S-PS-001",
@@ -6574,7 +6574,7 @@
           "noun": "Onboarding",
           "anschluss": "S-PS-004",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-004",
@@ -6582,7 +6582,7 @@
           "noun": "Prompt",
           "anschluss": "S-PS-005",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-005",
@@ -6590,7 +6590,7 @@
           "noun": "Audit",
           "anschluss": "S-PS-006",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-006",
@@ -6622,7 +6622,7 @@
           "noun": "Whitepaper",
           "anschluss": "S-PS-010",
           "advice_style": false,
-          "type": "P"
+          "type": "S"
         },
         {
           "id": "S-PS-010",
@@ -6630,7 +6630,7 @@
           "noun": "Briefing-Prompt",
           "anschluss": "S-PS-011",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-011",
@@ -7197,7 +7197,9 @@
       "faq": [],
       "advice_style": 0,
       "types": {
-        "P": 80
+        "P": 75,
+        "G": 4,
+        "S": 1
       }
     },
     {
@@ -11788,11 +11790,12 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 747,
+    "P": 742,
     "W": 80,
     "D": 19,
-    "G": 134,
+    "G": 138,
     "M": 16,
+    "S": 1,
     "K": 110
   },
   "typed": 1106

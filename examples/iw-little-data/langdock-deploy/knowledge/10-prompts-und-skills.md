@@ -248,12 +248,13 @@ Vorgehen:
 1. Definiere in `tone-shift-skill.md` die drei Ton-Profile mit je 5 Merkmalen (Satzlänge, Vokabular, Emoji-Policy, CTA-Form, Personalisierungsgrad) — nicht als Abstract, sondern als Checkliste für den Agenten.
 2. Schreibe einen Wrapper-Prompt, der den Agenten anweist, denselben Input-Text dreimal zu transformieren (je Kanal ein Abschnitt im Canvas), Fakten identisch zu halten, Struktur kanalgerecht anzupassen.
 3. Validiere das Ergebnis gegen Brand-Voice-Guidelines mit dem Brand-Guardian-Agenten.
-Prompt:
-> "Du bist Senior Content-Stratege. Transformiere den folgenden B2B-Whitepaper-Absatz in drei Kanal-Versionen. LinkedIn-Version: Peer-to-Peer-Ton, 1 300 Zeichen max., keine Emojis, endet mit offener Frage. E-Mail-Teaser: direkt, 120 Wörter max., ein CTA. Twitter-Thread: 5 Tweets à max. 280 Zeichen, nummeriert. Fakten und Kernaussage dürfen nicht verändert werden. Kontext: [Absatz einfügen]. Ausgabe: drei klar getrennte Blöcke."
+Skill: Tone-Shift-Inline-Skill (tone-shift-skill.md) — transformiert denselben Input-Text in drei kanalspezifische Ton-Profile (LinkedIn-Peer-Ton 1.300 Z. + offene Frage; E-Mail-Direktton 120 Woerter + 1 CTA; Twitter-Thread 5 Tweets à 280 Z.); je Profil 5 Merkmale (Satzlaenge/Vokabular/Emoji-Policy/CTA-Form/Personalisierung) als Checkliste; Fakten bleiben identisch, nur die Struktur wird kanalgerecht.
+Trigger-Woerter: "Tone-Shift", "Kanalwechsel", "fuer LinkedIn/E-Mail/Twitter umschreiben", "Whitepaper verwerten".
 Artefakt: Drei fertige Kanal-Varianten in einem Canvas-Dokument; direkt kopierbar in die jeweilige Publishing-Oberfläche.
 Fallstricke:
 - Wenn der Input-Absatz zu lang ist (>500 Wörter), komprimiert der Agent für Twitter stark und verliert dabei tragende Argumente — Input auf 200–300 Wörter begrenzen.
 - "Fakten dürfen nicht verändert werden" wird vom Agenten oft als Erlaubnis zur wörtlichen Wiederholung interpretiert; explizit hinzufügen: "paraphrasiere, aber erfinde keine neuen Zahlen".
+Empfehlung: Den Input-Absatz auf 200–300 Woerter begrenzen — bei laengeren Texten komprimiert der Skill fuer Twitter zu stark und verliert tragende Argumente. Explizit 'paraphrasiere, aber erfinde keine neuen Zahlen' ergaenzen, da 'Fakten nicht veraendern' sonst als Erlaubnis zur woertlichen Wiederholung interpretiert wird.
 Anschluss: S-PS-010
 
 ### S-PS-010 Prompt-Debugging: Fehlerdiagnose bei unerwartetem Output
@@ -267,12 +268,16 @@ Vorgehen:
 2. Stelle dem Agenten den Meta-Diagnose-Prompt: "Hier ist meine Anweisung und hier ist dein Output — benenne, welche Anweisung du nicht befolgt hast und warum."
 3. Prüfe die System-Ebene: War das Modell in diesem Chat gewechselt? Ist Memory aktiv und kontaminiert den Kontext?
 4. Dokumentiere die Ursache in `prompt-changelog.md` (→ S-PS-004) unter "Testergebnis: FAIL" mit Notiz der Modell-Version.
-Prompt:
-> "Du bist Prompt-Qualitätsprüfer. Ich zeige dir einen Prompt und deinen Output. Prompt: [Prompt einfügen]. Output: [Output einfügen]. Analysiere: (1) Welche der Formatanweisungen wurden nicht eingehalten? (2) Welcher Satz im Prompt ist am wahrscheinlichsten missverständlich? (3) Formuliere eine konkrete Verbesserung für den missverständlichen Satz. Ausgabe: nummerierte Antworten auf alle drei Fragen."
+Vorlage: Prompt-Debugging-Methodik (Checkliste + Diagnose):
+1. Isolation — Prompt in P/T/C/F zerlegen und jede Sektion einzeln mit Minimal-Input testen.
+2. Meta-Diagnose — dem Agenten Prompt + Output gemeinsam vorlegen: 'welche Anweisung wurde nicht befolgt und warum?'
+3. System-Ebene — Modell gewechselt? Memory aktiv und kontaminiert den Kontext?
+4. Dokumentation — Ursache in prompt-changelog.md (S-PS-004) als 'FAIL' + Modell-Version.
 Artefakt: Diagnose-Bericht mit identifizierter Fehler-Sektion, Verbesserungsvorschlag und überarbeitetem Prompt-Satz.
 Fallstricke:
 - Den Agenten nach seiner eigenen Fehler-Ursache zu fragen ist wirkungslos, wenn er keinen vollständigen Kontext (Prompt + Output) bekommt — immer beides im selben Chat-Turn einfügen.
 - Prompt-Fehler nach Modell-Wechsel sind nicht immer reproduzierbar; Diagnose immer im selben Modell durchführen, das den fehlerhaften Output produziert hat.
+Empfehlung: Den Agenten nie ohne vollstaendigen Kontext nach seiner Fehlerursache fragen — Prompt UND Output muessen im selben Chat-Turn stehen, sonst ist die Selbstdiagnose wirkungslos. Die Diagnose immer im selben Modell durchfuehren, das den fehlerhaften Output erzeugt hat, da Fehler nach einem Modell-Wechsel nicht reproduzierbar sind.
 Anschluss: S-PS-011
 
 ### S-PS-011 JSON-Output-Prompts für CMS-Import strukturieren
@@ -292,6 +297,7 @@ Artefakt: Valides JSON-Objekt, copy-paste-bereit für CMS-Import oder API-Call.
 Fallstricke:
 - Modelle fügen standardmäßig Markdown-Code-Fences (```json ... ```) ein — die Anweisung "ohne Markdown-Wrapper" ist Pflicht, sonst scheitert der programmatische Import.
 - Bei langen Body-Texten bricht das Modell manchmal mitten im JSON ab (Token-Limit) — für Artikel >800 Wörter den Body separat generieren und erst im zweiten Schritt ins JSON einfügen.
+Empfehlung: Im Format-Feld 'ausschliesslich valides JSON ohne Markdown-Wrapper' erzwingen — Modelle fuegen sonst json-Code-Fences ein, an denen der programmatische Import scheitert. Bei Body-Texten ueber ~800 Woerter den Body separat generieren und erst im zweiten Schritt ins JSON einfuegen, da das Modell sonst mitten im JSON am Token-Limit abbricht.
 Anschluss: S-PS-012
 
 ### S-PS-012 Competitor-Ad-Analyse-Prompt mit Screenshot-Input
@@ -310,6 +316,7 @@ Artefakt: Wettbewerbsanalyse-Tabelle + 5 zeichengeprüfte Konter-Headlines, expo
 Fallstricke:
 - Bei komprimierten oder niedrig aufgelösten Screenshots extrahiert der Vision-Modell Text unvollständig — Screenshots immer als PNG in voller Auflösung exportieren, nicht als JPEG-Thumbnail.
 - Der Agent neigt dazu, Konter-Headlines inhaltlich zu stark auf die Schwäche der Konkurrenz zu fixieren statt auf die eigene Stärke — im Format-Feld explizit fordern: "Headline betont UNSEREN Benefit, nicht den Konkurrenz-Nachteil".
+Empfehlung: Wettbewerber-Screenshots als PNG in voller Aufloesung uebergeben, nie als JPEG-Thumbnail — bei niedriger Aufloesung extrahiert das Vision-Modell den Anzeigentext unvollstaendig. Im Format-Feld erzwingen, dass jede Konter-Headline UNSEREN Benefit betont, nicht den Konkurrenz-Nachteil, sonst fixiert sich der Agent auf die Schwaeche der Konkurrenz.
 Anschluss: S-PS-013
 
 ### S-PS-013 Performance-Max-Asset-Matrix mit strikter Format-Kontrolle
@@ -329,6 +336,7 @@ Artefakt: Vollständige PMax-Asset-Tabelle mit Inline-Validierung; direkt in Goo
 Fallstricke:
 - PMax kombiniert Assets dynamisch — wenn alle Headlines mit demselben Verb beginnen, entstehen schwache automatische Kombinationen; Varianz der Eröffnungs-Hooks ist wichtiger als hohe Sprachqualität einzelner Assets.
 - Die Selbst-Validierungszeile ist ein Hinweis, kein Garantie-Check; finale manuelle Zeichenzählung in einem separaten Tool (Google Ads Editor Preview) ist vor dem Upload Pflicht.
+Empfehlung: Die Varianz der Eroeffnungs-Hooks wichtiger nehmen als die Sprachqualitaet einzelner Assets — PMax kombiniert Assets dynamisch, und gleichlautende Headline-Anfaenge erzeugen schwache Kombinationen (kein Verb in >2 Assets). Die Selbst-Validierungszeile ist nur ein Hinweis: vor dem Upload die Zeichenzahl manuell im Google Ads Editor Preview gegenpruefen.
 Anschluss: S-PS-014
 
 ### S-PS-014 Retargeting-Ad-Sequenz mit Ton-Progressions-Prompt
@@ -347,6 +355,7 @@ Artefakt: Canvas-Dokument mit 3 Stage-Blöcken (Primary Text + Headline je), ton
 Fallstricke:
 - Stage 3 mit erfundener Knappheit ("Nur noch 3 Plätze!") erzeugt UWG-Risiko — den Negativconstraint "keine Falschaussagen zur Verfügbarkeit" niemals aus dem Prompt streichen.
 - Wenn alle drei Stages in einem einzigen langen Prompt stehen, tendiert der Agent dazu, Stage 2 inhaltlich mit Stage 3 zu vermischen; Stages als nummerierte Blöcke mit Trennzeile trennen.
+Empfehlung: Den Negativ-Constraint 'keine Falschaussagen zur Verfuegbarkeit' in Stage 3 niemals streichen — erfundene Knappheit ('Nur noch 3 Plaetze!') erzeugt ein UWG-Risiko. Die drei Stages als nummerierte Bloecke mit Trennzeile fuehren, sonst vermischt der Agent Stage 2 (Einwandbehandlung) inhaltlich mit Stage 3 (Dringlichkeit).
 Anschluss: S-PS-015
 
 ### S-PS-015 Chain-of-Thought-Prompt für strategische Positionierungsanalyse
@@ -366,6 +375,7 @@ Artefakt: Canvas-Dokument mit sichtbarem Reasoning-Pfad (4 Schritte + Konklusion
 Fallstricke:
 - Ohne explizite Zwischenkonklusionen nach jedem Schritt tendiert CoT zum "Reasoning-Theater" — der Agent zeigt viele Schritte, zieht aber keine tragfähigen Schlüsse daraus.
 - CoT-Prompts sind signifikant token-intensiver als Standard-Prompts; für Routine-Analysen auf PTCF zurückwechseln, CoT nur bei strategisch gewichtigen Entscheidungen einsetzen.
+Empfehlung: Nach jedem Reasoning-Schritt eine explizite Zwischenkonklusion erzwingen — ohne sie verfaellt Chain-of-Thought in 'Reasoning-Theater' (viele Schritte, keine tragfaehigen Schluesse). CoT nur fuer strategisch gewichtige Entscheidungen einsetzen und fuer Routine-Analysen auf PTCF zurueckwechseln, da CoT deutlich token-intensiver ist.
 Anschluss: S-PS-016
 
 ### S-PS-016 Prompt-Output-Validierung: Automatischer Qualitäts-Check vor Übergabe
@@ -385,6 +395,7 @@ Artefakt: 5-Zeilen-PASS/FAIL-Tabelle mit Korrektur-Vorschlägen für jede fehlge
 Fallstricke:
 - Der Agent validiert seine eigenen Outputs mit Optimismus-Bias; bei sicherheitskritischen Texten (rechtliche Claims, Pricing) muss ein zweiter Mensch die ja-Einträge stichprobenartig gegenchecken.
 - Zu viele Prüfdimensionen (>7) überfordern den Agenten und führen zu oberflächlichen Begründungen; 5 Dimensionen sind das produktive Maximum.
+Empfehlung: Den Validierungs-Run als separaten zweiten Chat-Turn fahren (Output + Validierungs-Template gemeinsam einreichen) — eine Selbstpruefung im selben Generierungs-Turn ist unzuverlaessig. Je Dimension eine binaere JA/NEIN-Prueffrage plus Korrektur-Vorschlag bei NEIN verlangen, damit das Protokoll handlungsleitend statt nur diagnostisch ist.
 Anschluss: S-PS-017
 
 ### S-PS-017 Prompt-Sharing-Workflow: Bewährte Prompts aus dem Chat in die Library überführen

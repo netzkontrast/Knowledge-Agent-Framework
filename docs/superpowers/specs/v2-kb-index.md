@@ -16,7 +16,7 @@
 | `07-modelle-und-kosten.md` | content | 1609 | 224940 | 80 |  |
 | `08-sicherheit-und-governance.md` | content | 1575 | 242759 | 80 |  |
 | `09-marketing-praxis.md` | content | 1581 | 215495 | 80 |  |
-| `10-prompts-und-skills.md` | content | 1580 | 212170 | 80 |  |
+| `10-prompts-und-skills.md` | content | 1607 | 217812 | 80 |  |
 | `11-persona-core.md` | persona | 906 | 84795 | 40 |  |
 | `12-persona-julia-modus.md` | persona | 702 | 70982 | 31 |  |
 | `13-data-agent-anweisungen-pro-thema.md` | anweisung | 904 | 71328 | 39 | data-anw×11 |
