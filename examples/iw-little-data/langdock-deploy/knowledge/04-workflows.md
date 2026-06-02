@@ -1041,12 +1041,13 @@ Vorgehen:
 1. Ein Form-Trigger sammelt strukturierte Eingaben der Mitarbeiter: Name, Rolle, 3 Lieblingsaufgaben, ein persönliches Zitat und ein optionaler Fun-Fact — vordefinierte Felder erhöhen die Datenqualität für den AI-Node.
 2. Ein AI-Node generiert drei Textvarianten aus denselben Inputs: (a) Intranet-Kurzprofil (80 Wörter), (b) LinkedIn-Post (150 Wörter mit Hashtags), (c) Karriereseiten-Teaser (50 Wörter) — alle drei gegen den Employer-Branding-Wissensordner gebunden.
 3. Ein HITL-Node ermöglicht dem HR-Team und der betreffenden Person die Freigabe oder Anpassung aller Varianten; nach Freigabe legt ein Action-Node einen Notion-Entwurf für die weitere Veröffentlichung an.
-Prompt:
-> "Du bist Employer-Branding-Workflow-Architekt. Entwirf einen Form-Trigger-Workflow für Mitarbeiter-Spotlights. Kontext: Strukturiertes Eingabeformular, drei Textlängen (Intranet, LinkedIn, Karriere), Bindung an Employer-Branding-Wissensordner, HITL-Freigabe durch HR + Mitarbeiter. Format: Form-Trigger, AI-Node mit drei Outputs, HITL, Notion-Action."
+Workflow: Form-Trigger (Name/Rolle/3 Lieblingsaufgaben/Zitat/Fun-Fact) → AI-Node (drei Laengen: Intranet 80 W. / LinkedIn 150 W. / Karriere 50 W., Employer-Branding-Wissensordner) → HITL-Node (HR + betreffende Person) → Action-Node (Notion-Entwurf).
+Budget: Ein AI-Node mit drei Outputs je Spotlight bei niedrigem Volumen — gering pro Lauf.
 Artefakt: Ein Spotlight-Workflow-Entwurf mit Formular-Design, dreifachem AI-Output-Schema und Employer-Branding-gebundenem Wissensordner-Link.
 Fallstricke:
 - Das persönliche Zitat des Mitarbeiters wird vom AI-Node umformuliert und verliert seine Authentizität → das Zitat-Feld als unveränderlichen Platzhalter im Prompt definieren, der direkt in den Text injiziert wird, ohne KI-Paraphrase.
 - Der Workflow geht ohne DSGVO-Einwilligung der Mitarbeitenden live → das Formular muss eine explizite Einwilligungsabfrage für die Veröffentlichung der Personendaten enthalten.
+Empfehlung: Das Mitarbeiter-Zitat als unveraenderlichen Platzhalter direkt injizieren, nie vom AI-Node paraphrasieren lassen — sonst verliert es Authentizitaet. Eine explizite DSGVO-Einwilligungsabfrage zur Veroeffentlichung der Personendaten ins Formular aufnehmen, bevor der Workflow live geht.
 Anschluss: S-WF-050
 
 ### S-WF-050 Kunden-Bewertungsanfrage-Workflow (Integration Trigger)
@@ -1060,13 +1061,14 @@ Vorgehen:
 2. Einen Logic-Node eine Wartezeit von 3–5 Tagen einplanen lassen (Zeitversatz-Node), danach nach Kundensegment verzweigen: B2B → G2/Capterra-Anfrage; B2C → Google/Trustpilot-Anfrage.
 3. Ein AI-Node generiert eine kurze, personalisierte Bewertungsanfrage-E-Mail mit direktem Bewertungslink — Structured Output: Betreffzeile, Body-Text, CTA-Button-Label; Tonalität richtet sich nach Kundensegment aus dem Wissensordner.
 4. Ein HITL-Node legt die segment-spezifischen E-Mail-Templates einmalig zur Freigabe vor und zieht bei jedem Lauf eine Stichprobe (z. B. 10 %) zur Qualitätskontrolle; erst nach Freigabe versendet ein Action-Node die E-Mail und protokolliert die Anfrage im CRM als Aktivität, damit Sales keine doppelten Anfragen stellt.
-Prompt:
-> "Du bist Review-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Kundenbewertungsanfragen. Kontext: CRM-Kauf-Event, 3-5 Tage Verzögerung, B2B-vs-B2C-Segmentverzweigung, personalisierte KI-E-Mail mit Review-Link, HITL-Template-Freigabe vor Versand. Format: Trigger, Delay-Logic, Segment-Verzweigung, AI-E-Mail-Node, HITL-Gate, E-Mail-Action + CRM-Protokollierung."
+Workflow: Integration-Trigger (CRM/E-Commerce 'Kauf abgeschlossen') → Filter-Node (Intern/Demo-Tags raus) → Delay-Logic (3–5 Tage) + Segment-Verzweigung (B2B→G2/Capterra / B2C→Google/Trustpilot) → AI-Node (personalisierte E-Mail, Structured Output Betreff/Body/CTA) → HITL-Node (Template-Freigabe + 10 %-Stichprobe) → Action-Node (E-Mail + CRM-Aktivitaet).
+Budget: Ein AI-Node je Anfrage; das Volumen folgt der Kaufrate — Warn-Schwelle 75 %.
 Artefakt: Ein Review-Anfrage-Workflow-Entwurf mit Timing-Logik, Segment-Verzweigung und personalisierten AI-E-Mail-Templates.
 Fallstricke:
 - Der Workflow feuert auch bei B2B-Testkunden oder internen Demo-Konten → einen Filter-Node einbauen, der Kunden mit dem Tag „Intern" oder „Demo" herausfiltert.
 - Die Review-Plattform-URL im E-Mail-CTA ist hart kodiert und bricht bei Plattformwechsel → die Ziel-URL als konfigurierbaren Workflow-Parameter hinterlegen, nicht als statischen String im Prompt.
 - Ohne Freigabe-Gate gehen fehlerhaft personalisierte Anfragen ungeprüft an Kunden → den HITL-Node als Template-Freigabe plus laufende 10-%-Stichprobe verankern; der finale Versand an den Kunden bleibt an die menschliche Freigabe gebunden.
+Empfehlung: Einen Filter-Node setzen, der 'Intern'/'Demo'-getaggte Kontakte herausnimmt, und die Review-Plattform-URL als konfigurierbaren Workflow-Parameter hinterlegen, nicht als statischen Prompt-String. Der finale Versand bleibt an die HITL-Template-Freigabe plus laufende 10 %-Stichprobe gebunden.
 Anschluss: S-WF-051
 
 ### S-WF-051 Produktverfügbarkeits-Alert-Workflow (Webhook Trigger)
@@ -1080,13 +1082,14 @@ Vorgehen:
 2. Einen Logic-Node prüfen lassen: (a) Gibt es Wartelisten-Einträge für dieses Produkt? (b) Ist die verfügbare Menge groß genug, um alle Wartelisten-Kunden zu bedienen? Falls ja, vollständige Liste; falls nein, nach Wartelistenposition priorisieren und ein Per-Execution-Limit setzen.
 3. Ein AI-Node befüllt ein zuvor per HITL freigegebenes Nachrichten-Template mit Produktname, direktem Checkout-Link und optionalem Scarcity-Element (z. B. „Nur noch 12 Stück verfügbar") — da der Echtzeit-Alert keinen Versand-HITL erlaubt, wird das Template einmalig vom Marketing freigegeben und runtime nur datenbefüllt.
 4. Action-Nodes versenden E-Mails und/oder Push-Benachrichtigungen auf Basis des freigegebenen Templates; nach Versand aktualisiert ein CRM-Action-Node den Wartelisten-Status des Kontakts auf „Benachrichtigt".
-Prompt:
-> "Du bist E-Commerce-Workflow-Architekt. Entwirf einen Webhook-Workflow für Produktverfügbarkeits-Alerts. Kontext: Lager-Webhook bei Bestandsänderung, Wartelisten-Abfrage, Priorisierung bei Teilmengen, vorab per HITL freigegebenes Alert-Template, das runtime nur datenbefüllt wird. Format: Webhook-Trigger, Logic-Wartelisten-Node, HITL-Template-Gate, AI-Befüllungs-Node, E-Mail-Action, CRM-Status-Update."
+Workflow: Webhook-Trigger (Lager: Bestand 0→>0, Produkt-ID/Menge) → Dedup-Node (30-Min-Cooldown/Produkt) → Logic-Node (Wartelisten-Abfrage + Mengen-Priorisierung + Per-Lauf-Limit) → AI-Node (befuellt HITL-freigegebenes Template, optionales Scarcity nur aus Lager-Payload) → Action-Nodes (E-Mail/Push) + CRM-Status 'Benachrichtigt'.
+Budget: Ein AI-Node (Template-Befuellung) je Alert; der 30-Min-Dedup-Cooldown begrenzt Laeufe bei Lager-Korrekturbuchungen.
 Artefakt: Ein Verfügbarkeits-Alert-Workflow-Entwurf mit Priorisierungslogik, HITL-freigegebenem Template und CRM-Status-Protokollierung.
 Fallstricke:
 - Der Webhook feuert mehrfach in kurzer Zeit (Lager-Korrekturbuchungen), was mehrfache Alerts an dieselben Kunden auslöst → einen Deduplizierungs-Node mit Cooldown-Fenster (z. B. 30 Minuten pro Produkt) einbauen.
 - Ein per-Send-HITL würde den Sub-5-Minuten-Alert unmöglich machen, ein völlig ungeprüfter Versand verletzt aber die Kontrolle über Kunden-Kommunikation → die Lösung ist das einmalig freigegebene Template-Gate; nur freie Felder (Name, Bestand, Link) werden runtime befüllt, der Template-Text bleibt menschlich autorisiert.
 - Scarcity-Formulierungen im AI-Node werden juristisch problematisch, wenn die Bestandsangabe nicht exakt stimmt → Scarcity-Element nur aktivieren, wenn der Bestand direkt aus dem Lager-Payload kommt, kein AI-generierter Schätzwert.
+Empfehlung: Das Nachrichten-Template einmalig per HITL freigeben und runtime nur die freien Felder (Name/Bestand/Link) befuellen — ein Per-Send-HITL wuerde den Sub-5-Minuten-Alert unmoeglich machen. Das Scarcity-Element nur aktivieren, wenn der Bestand direkt aus dem Lager-Payload stammt, nie als AI-Schaetzwert.
 Anschluss: S-WF-052
 
 ### S-WF-052 Cross-Sell-Empfehlungs-Workflow (Integration Trigger)
@@ -1100,12 +1103,13 @@ Vorgehen:
 2. Einen Logic-Node prüfen: Welche Cross-Sell-Produkte aus der definierten Empfehlungsmatrix (hinterlegt im Wissensordner) passen zum gekauften Produkt, und hat der Kunde diese bereits gekauft? Nur nicht-gekaufte, kompatible Produkte passieren den Node.
 3. Ein AI-Node generiert eine E-Mail, die das Cross-Sell-Produkt explizit mit dem Kauf verknüpft (z. B. „Da du X gekauft hast, ergänzt Y perfekt, weil…") — Structured Output: Betreffzeile, Empfehlungsbegründung (2 Sätze), CTA.
 4. Einen Timing-Logic-Node eine Verzögerung von 7 Tagen nach Kauf einplanen, bevor der Action-Node die E-Mail versendet; ein HITL-Node hält neue Produktkombinationen für manuelle Prüfung an.
-Prompt:
-> "Du bist Cross-Sell-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für personalisierte Produktempfehlungen. Kontext: CRM-Kauf-Trigger, Empfehlungsmatrix im Wissensordner, 7-Tage-Verzögerung, KI-begründete E-Mail ohne bereits gekaufte Produkte. Format: Trigger, Logic-Ausschluss-Node, AI-E-Mail-Node, Timing-Node, E-Mail-Action."
+Workflow: Integration-Trigger (CRM 'Kauf abgeschlossen', gekaufte IDs + Kaufverlauf) → Logic-Node (Empfehlungsmatrix-Wissensordner; bereits gekaufte ausschliessen) → AI-Node (Cross-Sell-Begruendung + E-Mail, Structured Output) → Timing-Node (7 Tage) → Action-Node (E-Mail); HITL bei neuen Produktkombinationen.
+Budget: Ein AI-Node je Kauf; das Volumen folgt der Kaufrate — Warn-Schwelle 75 %.
 Artefakt: Ein Cross-Sell-Workflow-Entwurf mit Empfehlungsmatrix-Integration, Kaufhistorien-Filter und AI-begründetem E-Mail-Template.
 Fallstricke:
 - Die Empfehlungsmatrix im Wissensordner wird nicht aktualisiert, wenn neue Produkte hinzukommen → einen monatlichen Review-Reminder-Workflow (→ S-WF-045) für die Empfehlungsmatrix einrichten.
 - Kunden erhalten die Cross-Sell-E-Mail direkt nach dem Kauf und fühlen sich sofort wieder angesprochen → die 7-Tage-Verzögerung als Mindeststandard dokumentieren und im Timing-Node als konfigurierbaren Parameter hinterlegen.
+Empfehlung: Die 7-Tage-Verzoegerung als Mindeststandard und konfigurierbaren Timing-Parameter dokumentieren — eine E-Mail direkt nach dem Kauf wirkt aufdringlich. Die Empfehlungsmatrix in den monatlichen Wissensordner-Audit (S-WF-045) aufnehmen, damit neue Produkte nachgepflegt werden.
 Anschluss: S-WF-053
 
 ### S-WF-053 Garantie-Ablauf-Erinnerungs-Workflow (Scheduled Trigger)
@@ -1119,12 +1123,13 @@ Vorgehen:
 2. Einen Logic-Node die drei Eskalationsstufen verwalten lassen: 60-Tage-E-Mail (weicher Hinweis + Verlängerungsangebot), 30-Tage-E-Mail (konkretes Angebot + Preisinfo), 7-Tage-E-Mail (Dringlichkeits-CTA + direkter Checkout-Link).
 3. Ein AI-Node generiert je Stufe eine tonalitätsgerechte E-Mail — Structured Output: Betreff, Eskalationsstufen-angepasster Body, CTA-Text; Inputs sind Kundenname, Produktbezeichnung, genaues Ablaufdatum und Verlängerungsoptionen aus dem Wissensordner.
 4. Ein HITL-Node legt die drei Stufen-Templates samt kommunizierten Preisen dem Retention-Lead einmalig zur Freigabe vor (bei Preisänderung erneut); erst nach Freigabe versenden Action-Nodes die datenbefüllte E-Mail und schreiben die Aktivität ins CRM, damit der Vertrieb den Kommunikationsverlauf nachverfolgen kann.
-Prompt:
-> "Du bist Retention-Workflow-Architekt. Entwirf einen Scheduled-Trigger-Workflow für Garantie-Ablauf-Erinnerungen. Kontext: Tägliche CRM-Abfrage nach 60/30/7-Tage-Ablauf, drei Eskalationsstufen mit unterschiedlichem Tonfall und CTA, HITL-Template- und Preis-Freigabe vor Versand. Format: Scheduled-Trigger, CRM-Abfrage-Node, Logic-Eskalation, AI-Node je Stufe, HITL-Gate, E-Mail-Action + CRM-Log."
+Workflow: Scheduled-Trigger (taeglich) → Integration-Node (CRM: Ablauf in 60/30/7 Tagen) → Dedup-Node (eine E-Mail/Kunde/Tag, Produkte buendeln) → Logic-Node (3 Eskalationsstufen) → AI-Node je Stufe (tonalitaetsgerechte E-Mail, Structured Output) → HITL-Node (Template + Preis-Freigabe) → Action-Nodes (E-Mail + CRM-Log).
+Budget: Ein AI-Node je Stufe je Kunde taeglich; das Volumen folgt der Ablaufdichte — Warn-Schwelle 75 %.
 Artefakt: Ein Garantie-Erinnerungs-Workflow-Entwurf mit dreistufiger Eskalationslogik, stufenspezifischen AI-Prompt-Varianten, HITL-Preis-Freigabe und CRM-Aktivitätsprotokollierung.
 Fallstricke:
 - Derselbe Kunde erhält an einem Tag mehrere Erinnerungen, weil er mehrere ablaufende Produkte hat → einen Deduplizierungs-Node einbauen, der pro Kunde nur eine E-Mail pro Tag zulässt und mehrere Produkte bündelt.
 - Die Verlängerungspreise im AI-Node-Wissensordner sind veraltet, sodass die E-Mail falsche Preise kommuniziert → Preisliste im Wissensordner als „Prüf-alle-30-Tage"-Dokument kennzeichnen, in den monatlichen Wissensordner-Audit (→ S-WF-045) aufnehmen und Preisänderungen über den HITL-Node erneut freigeben lassen, bevor der erste Versand mit neuem Preis erfolgt.
+Empfehlung: Einen Dedup-Node setzen, der pro Kunde nur eine E-Mail/Tag zulaesst und mehrere ablaufende Produkte buendelt. Die Verlaengerungspreise als 'Pruef-alle-30-Tage'-Dokument in den Wissensordner-Audit (S-WF-045) aufnehmen und Preisaenderungen vor dem ersten Versand erneut per HITL freigeben.
 Anschluss: S-WF-054
 
 ### S-WF-054 Internes Schulungsmaterial-Verteilungs-Workflow (Integration Trigger)
@@ -1138,12 +1143,13 @@ Vorgehen:
 2. Einen Logic-Node nach Schulungstyp verzweigen lassen: Pflichtschulungen → HITL-Node für HR-Freigabe, dann Einschreibung aller Zielgruppen und Fristkommunikation; optionale Schulungen → direkte Benachrichtigung ohne HITL.
 3. Ein AI-Node generiert je Zielgruppe eine rollenspezifische Ankündigungs-E-Mail (z. B. andere Betonung für Führungskräfte vs. Sachbearbeiter) — Structured Output: Betreff, relevante-Nutzen-Paragraph, CTA mit Kurs-Link und Fristangabe.
 4. Action-Nodes versenden E-Mails, erstellen einen optionalen Kalender-Block für synchrone Sessions und enrollen Zielgruppen im LMS, falls das System eine API bietet.
-Prompt:
-> "Du bist L&D-Workflow-Architekt. Entwirf einen Integration-Trigger-Workflow für Schulungsmaterial-Distribution. Kontext: LMS-Trigger bei Kursveröffentlichung, Pflicht-vs-Optional-Verzweigung, HITL bei Pflichtschulungen, rollenangepasste KI-Ankündigungs-E-Mail. Format: Trigger, Logic-Typ-Node, HITL für Pflicht, AI-Node mit Rollen-Anpassung, E-Mail+LMS-Actions."
+Workflow: Integration-Trigger (LMS/CMS 'Kurs veroeffentlicht': Typ/Zielgruppe/Frist) → Logic-Node (Pflicht→HITL HR-Freigabe + Enrollment / Optional→direkte Benachrichtigung) → AI-Node je Zielgruppe (rollenangepasste Ankuendigung, Structured Output) → Action-Nodes (E-Mail/Slack + Kalender-Block + LMS-Enrollment).
+Budget: Ein AI-Node je Zielgruppe je Kurs; mittleres Volumen, das der Kurs-Kadenz folgt.
 Artefakt: Ein Schulungsverteilungs-Workflow-Entwurf mit Pflicht/Optional-Logik, rollenspezifischem AI-E-Mail-Schema und LMS-Enrollment-Action.
 Fallstricke:
 - Mitarbeitende erhalten Schulungsankündigungen für Kurse, die für ihre Rolle irrelevant sind → das Zielgruppen-Segmentierungsfeld im LMS-Payload muss präzise gepflegt sein; ein fehlerhaftes Segment-Tag im LMS überträgt sich direkt in den Workflow.
 - Die Abschlussfrist in der E-Mail und im LMS-System stimmen nicht überein, weil der AI-Node die Frist aus dem Payload interpretiert statt direkt übernimmt → das Frist-Datum als unveränderlichen Platzhalter {{deadline}} in den Prompt injizieren, ohne KI-Reformulierung.
+Empfehlung: Das Frist-Datum als unveraenderlichen Platzhalter {{deadline}} direkt injizieren, nie vom AI-Node interpretieren lassen — sonst weichen E-Mail- und LMS-Frist voneinander ab. Das Zielgruppen-Segment-Tag im LMS praezise pflegen, da ein fehlerhaftes Tag sich direkt in irrelevante Ankuendigungen uebertraegt.
 Anschluss: S-WF-055
 
 ### S-WF-055 Daten-Anreicherungs-Validierungs-Workflow (Webhook Trigger)
@@ -1157,12 +1163,13 @@ Vorgehen:
 2. Ein AI-Node prüft jeden angereicherten Datensatz auf drei Plausibilitätsdimensionen: (a) Feldwerte passen logisch zusammen (z. B. 5-Personen-Unternehmen mit Fortune-500-Umsatz), (b) Felder enthalten keine offensichtlichen Formatfehler, (c) kritische Felder (E-Mail, Unternehmensname) stimmen mit vorhandenen CRM-Daten überein — Structured Output: Qualitäts-Score (0–100), Flag-Typ, betroffene Felder.
 3. Einen Logic-Node nach Qualitäts-Score verzweigen: Score >80 → direkte CRM-Aktualisierung; Score 50–80 → HITL-Node für manuelle Prüfung; Score <50 → Quarantäne-Tag im CRM, keine Aktualisierung.
 4. Action-Nodes schreiben entweder die validierten Felder ins CRM oder setzen den Quarantäne-Tag; alle Entscheidungen landen im Audit-Log.
-Prompt:
-> "Du bist Datenqualitäts-Workflow-Architekt. Entwirf einen Webhook-Validierungs-Workflow für CRM-Anreicherungsdaten. Kontext: Post-Anreicherungs-Webhook, AI-Plausibilitätsprüfung auf drei Dimensionen, Scoring-Routing (>80 direkt/50-80 HITL/<50 Quarantäne). Format: Webhook-Trigger, AI-Validierungs-Node mit Score-Schema, Logic-Routing, CRM-Update-Action + Quarantäne-Action."
+Workflow: Webhook-Trigger (nach Anreicherungs-Batch: Kontakt-ID + Felder + Quelle) → AI-Node (3 Plausibilitaetsdimensionen, Structured Output Qualitaets-Score 0–100 + Flag) → Logic-Node (>80→CRM-Update / 50–80→HITL / <50→Quarantaene-Tag) → Action-Nodes (CRM-Update / Quarantaene); alle Entscheidungen ins Audit-Log.
+Budget: Ein AI-Node je Datensatz — bei grossen Anreicherungs-Batches kosten-kritisch; Webhook-Batching erzwingen und Warn-Schwelle 75 % setzen.
 Artefakt: Ein Datenvalidierungs-Workflow-Entwurf mit dreistufigem Qualitäts-Routing, AI-Plausibilitäts-Score-Schema und CRM-Quarantäne-Logik.
 Fallstricke:
 - Der AI-Node bewertet Datensätze aus Nischenmärkten systematisch zu niedrig, weil die Plausibilitätskriterien auf Mainstream-Unternehmen kalibriert sind → Branchen-Kontext als Variable in den AI-Node-Prompt injizieren und Qualitätsschwellen nach Branchensegment differenzieren.
 - Der Webhook läuft nach jeder Einzelanreicherung und erzeugt tausende AI-Node-Aufrufe täglich → Webhook-Batching konfigurieren, sodass der Node nur nach vollständiger Batch-Verarbeitung feuert und mehrere Datensätze pro Ausführung validiert.
+Empfehlung: Webhook-Batching konfigurieren, sodass der AI-Node nur nach vollstaendiger Batch-Verarbeitung feuert und mehrere Datensaetze pro Lauf validiert — sonst tausende Einzelaufrufe taeglich. Den Branchen-Kontext als Variable in den Prompt injizieren und Qualitaetsschwellen nach Branchensegment differenzieren, damit Nischenmaerkte nicht systematisch zu niedrig bewertet werden.
 Anschluss: S-WF-056
 
 ### S-WF-056 Workspace-Health-Check-Workflow (Scheduled Trigger)
@@ -1176,12 +1183,13 @@ Vorgehen:
 2. Ein AI-Node aggregiert die Rohdaten und priorisiert nach drei Kriterien: (1) Kostentreiber (hoher Token-Verbrauch + niedriger Output-Wert), (2) Sicherheitsrisiken (abgelaufene oder demnächst ablaufende API-Keys), (3) Workspace-Ballast (Agenten/Workflows seit >60 Tagen inaktiv) — Structured Output: je Kategorie eine priorisierte Handlungsliste.
 3. Ein HITL-Node präsentiert dem Workspace-Admin den priorisierten Action-Plan zur Freigabe oder Anpassung, bevor Maßnahmen empfohlen werden.
 4. Action-Nodes publizieren den Gesundheitsbericht als Notion-Seite und senden einen Slack-Alert mit den Top-3-Sofortmaßnahmen an den Admin-Channel.
-Prompt:
-> "Du bist Workspace-Governance-Architekt. Entwirf einen monatlichen Health-Check-Workflow für einen Langdock-Workspace. Kontext: Workspace-API-Abfragen (Agenten, Workflows, API-Keys, Token-Verbrauch), AI-Priorisierung nach Kosten/Sicherheit/Ballast, HITL für Admin-Freigabe. Format: Scheduled-Trigger, API-Integration-Nodes, AI-Anomalie-Node, HITL, Slack+Notion-Actions."
+Workflow: Scheduled-Trigger (erster Werktag/Monat) → Integration-Nodes (Workspace-API: Agenten/Workflow-Logs/API-Key-Status/Top-Token-Nutzer) → AI-Node (Anomalie-Priorisierung nach Kosten/Sicherheit/Ballast, Structured Output) → HITL-Node (Admin-Freigabe Action-Plan) → Action-Nodes (Notion-Report + Slack Top-3); Eskalation nach 5 Tagen.
+Budget: Ein AI-Node monatlich ueber aggregierte Workspace-Daten — gering; der Workflow spart Budget (Kostentreiber-Identifikation), statt es zu treiben.
 Artefakt: Ein Workspace-Health-Check-Workflow-Entwurf mit API-Integrations-Architektur, dreidimensionalem Priorisierungsschema und Admin-Freigabe-Gate.
 Fallstricke:
 - Der AI-Node markiert Agenten als „inaktiv", obwohl sie saisonal genutzt werden (z. B. Messe-Vorbereitung alle 6 Monate) → einen Saisonalitäts-Tag für Agenten und Workflows einführen, der verhindert, dass selten genutzte, aber wichtige Ressourcen fälschlicherweise als Ballast markiert werden.
 - Der Bericht wird generiert, aber kein Admin reagiert auf die Slack-Nachricht → einen Eskalations-Trigger einrichten: Wird kein HITL innerhalb von 5 Werktagen abgeschlossen, sendet ein zweiter Reminder-Node eine Eskalation an die nächsthöhere Führungsebene.
+Empfehlung: Einen Saisonalitaets-Tag fuer Agenten/Workflows einfuehren, damit selten, aber gezielt genutzte Ressourcen (z. B. Messe-Vorbereitung alle 6 Monate) nicht faelschlich als Ballast markiert werden. Einen Eskalations-Trigger setzen, der nach 5 Werktagen ohne HITL-Abschluss an die naechsthoehere Ebene eskaliert.
 Anschluss: S-WF-057
 
 ### S-WF-057 Saisonaler Content-Swap-Workflow (Scheduled Trigger)
