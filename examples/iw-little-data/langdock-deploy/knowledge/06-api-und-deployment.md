@@ -457,8 +457,7 @@ Vorgehen:
 2. Beauftrage Little Data, das BYOM-Konzept zu erläutern: self-hosted Open-Source-Modell (z.B. Llama-Derivat) in der eigenen Cloud/VPC, Langdock als Orchestrierungsebene verbindet sich per BYOM-Konfiguration mit dem internen Modell-Endpoint.
 3. Bewerte die Einschränkungen: self-hosted Modelle sind typischerweise schwächer als Frontier-Modelle; Performance-Tests für den spezifischen Use-Case sind zwingend vor dem Commitment.
 4. Formuliere eine klare Empfehlung: BYOM für Hochrisiko-Daten, BYOC/SaaS für Standard-Marketing-Tasks.
-Prompt:
-> "Du bist ein KI-Infrastrukturberater. Unser DSB hat Bedenken, Kundendaten an externe Modell-Provider zu senden. Unser CTO fragt, ob wir ein internes Modell via BYOM in Langdock integrieren können. Erkläre das BYOM-Konzept, seine technischen Voraussetzungen und seine Grenzen (Modell-Performance, Wartungsaufwand). Liefere eine Entscheidungsmatrix: Wann BYOM, wann BYOC, wann Standard-SaaS? Formatiere als strukturierte Tabelle mit Empfehlung."
+Empfehlung: BYOM (Bring Your Own Model) nur fuer Hochrisiko-Daten waehlen, die nachweislich nicht an externe Provider duerfen — fuer Standard-Marketing-Tasks bleiben BYOC oder SaaS ueberlegen. Matrix: BYOM = self-hosted Open-Source-Modell in der eigenen VPC, Langdock orchestriert ueber den internen Modell-Endpoint; der Preis ist erheblicher Betriebsaufwand (GPU-Infrastruktur, Modell-Updates, Security-Patching) und schwaechere Leistung als Frontier-Modelle. Vor dem Commitment zwingend Performance-Tests fuer den konkreten Use-Case (Tonalitaetspruefung, multilinguale Texte). BYOM nie pauschal als 'sicherste Option' empfehlen, ohne diesen Aufwand und die Qualitaetseinbussen offen zu benennen.
 Artefakt: Eine Entscheidungsmatrix (Tabelle) + Empfehlung mit Begründung für DSB und CTO.
 Fallstricke:
 - Das Modell empfiehlt BYOM pauschal als "sicherste Option", ohne auf den erheblichen Betriebsaufwand (GPU-Infrastruktur, Modell-Updates, Security-Patching) hinzuweisen.
@@ -476,12 +475,17 @@ Vorgehen:
 2. Implementiere harte Limits: im Workspace-Admin monatliche Budgets pro User-Gruppe und per-Workflow-Kostenobergrenze (Standard: 25 Euro/Lauf) konfigurieren.
 3. Definiere Soft-Limit-Warnschwellen: ab 80 % des Monatsbudgets automatisch eine E-Mail-Warnung an den Admin auslösen.
 4. Richte ein wöchentliches Kosten-Reporting ein: Usage Export API-Daten automatisch jeden Montag in ein Power-BI-Dashboard laden.
-Prompt:
-> "Du bist ein FinOps-Berater. Ein Mitarbeiter hat versehentlich einen Workflow mit Claude Opus in einer Endlosschleife laufen lassen und 70 % unseres Q1-KI-Budgets verbrannt. Erkläre: (1) Wie identifiziere ich via Usage Export API den Verursacher? (2) Welche Budgetgrenzen kann ich im Langdock-Admin einrichten? (3) Wie setze ich eine Soft-Limit-Warnung auf 80 % des Monatsbudgets? Liefere eine Schritt-für-Schritt-Prozessdokumentation für unseren Workspace-Admin."
+Vorlage: Token-Budget-Governance-Prozess (Workspace-Admin):
+1. Schadensanalyse — Usage Export API der letzten Wochen: Verursacher per User-ID + Agent-ID + Modell isolieren.
+2. Harte Limits — Monatsbudget pro User-Gruppe + Per-Workflow-Obergrenze (Standard ~25 €/Lauf).
+3. Soft-Limit — ab 80 % Monatsbudget automatische E-Mail-Warnung an den Admin.
+4. Modell-Gating — teure Modelle (Opus-Klasse) nur mit expliziter Admin-Freigabe.
+5. Reporting — Usage Export API jeden Montag in ein Power-BI-Dashboard laden.
 Artefakt: Eine Prozessdokumentation für den Workspace-Admin (Sofortmaßnahmen + dauerhafte Budget-Governance).
 Fallstricke:
 - Das Modell verwechselt das Workflow-Run-Limit (25 Euro/Lauf) mit dem Workspace-Monatslimit (500 Euro) — beide Grenzen sind unabhängig und müssen separat konfiguriert werden.
 - Die Empfehlung setzt auf rein reaktive Maßnahmen (Limits setzen nach dem Schaden) ohne präventives Modell-Gating — teure Modelle wie Opus sollten nur mit expliziter Admin-Freigabe nutzbar sein.
+Empfehlung: Workflow-Run-Limit (~25 €/Lauf) und Workspace-Monatslimit (~500 €) sind unabhaengig und muessen separat konfiguriert werden. Rein reaktive Limits genuegen nicht — teure Modelle wie Opus praeventiv per Modell-Gating hinter eine Admin-Freigabe legen, damit ein schleifender Premium-Workflow gar nicht erst das Budget verbrennt.
 Anschluss: S-API-019
 
 ### S-API-019 Programmatische Wissensordner-Aktualisierung aus dem CMS
@@ -495,12 +499,17 @@ Vorgehen:
 2. Spezifiziere den Prozess: CMS-Artikel als Markdown oder Plain-Text exportieren (XLSX und komplexe HTML-Layouts müssen konvertiert werden), dann via Knowledge Folder API hochladen.
 3. Implementiere Deduplizierung: vor jedem Upload prüfen, ob ein Dokument mit gleichem Titel bereits existiert (List-Endpoint), um doppelte Einträge zu vermeiden.
 4. Weise auf Grenzen hin: maximale Dateigröße 256 MB, maximale Anzahl Dateien pro Ordner 1.000 — bei Überschreitung müssen ältere Artikel archiviert und gelöscht werden.
-Prompt:
-> "Du bist ein Integrations-Architekt. Unser CMS soll neue Blog-Artikel automatisch in unseren Langdock-Wissensordner pushen. Skizziere den Sync-Prozess: CMS-Webhook → Dateikonvertierung → Knowledge Folder API Upload. Welche Formate akzeptiert die API? Wie vermeide ich Duplikate? Was sind die harten Grenzen (Dateigröße, Dateianzahl pro Ordner)? Liefere ein technisches Integrationskonzept als strukturierte Stichpunktliste."
+Vorlage: CMS-zu-Wissensordner-Sync-Integrationskonzept:
+1. Trigger — CMS-Webhook feuert bei Veroeffentlichung eines neuen Artikels.
+2. Konvertierung — Artikel als Markdown/Plain-Text exportieren (XLSX und komplexes HTML vorher konvertieren).
+3. Dedup — vor Upload per List-Endpoint pruefen, ob ein Dokument gleichen Titels existiert.
+4. Upload + Grenzen — Knowledge Folder API; max. 256 MB/Datei, max. 1.000 Dateien/Ordner (aeltere archivieren/loeschen).
+5. Indexierung — Vektorisierung dauert nach Upload einige Minuten (keine Echtzeit-Garantie).
 Artefakt: Ein technisches Integrationskonzept (Prozessablauf, Formatvorgaben, Grenzwerte, Fehlerbehandlung).
 Fallstricke:
 - Das Konzept vergisst, dass die Knowledge Folder API keine Real-time-Indexierung garantiert — nach dem Upload kann die Vektorisierung einige Minuten dauern, was bei zeitkritischen Inhalten relevant ist.
 - Der Webhook sendet CMS-Artikel als HTML; das Modell empfiehlt, HTML direkt hochzuladen, obwohl komplexes HTML die Chunking-Qualität der Vektorindexierung stark verschlechtert.
+Empfehlung: CMS-Artikel als Markdown/Plain-Text hochladen, nie komplexes HTML — letzteres verschlechtert die Chunking-Qualitaet der Vektorindexierung erheblich. Einplanen, dass die Indexierung nach dem Upload einige Minuten braucht (keine Echtzeit), und das 1.000-Dateien-Limit per Archivierungs-Regel von Beginn an respektieren.
 Anschluss: S-API-020
 
 ### S-API-020 Agent-Observability mit Audit-Log-Export in BI-Tools
@@ -514,12 +523,16 @@ Vorgehen:
 2. Spezifiziere den Datenexport: Audit Logs API täglich abfragen (Pagination beachten: max. 50 Einträge pro Request), Usage Export API für Token-Kosten.
 3. Skizziere das Dashboard-Design: eine Ansicht pro Agent mit Trend-Linien für alle drei SLOs plus Kosten-Overlay.
 4. Definiere Eskalations-Regeln: bei mehr als zwei aufeinanderfolgenden Wochen mit SLO-Verletzung → Agent-Review und System-Prompt-Überarbeitung.
-Prompt:
-> "Du bist ein Platform-Engineer für Marketing-KI-Infrastruktur. Wir betreiben 8 Langdock-Agenten und haben keinerlei Observability. Ich will SLOs definieren und die Daten via Audit Logs API in Power BI visualisieren. Welche SLOs sind für Marketing-Agenten sinnvoll? Wie exportiere ich die Daten täglich (Pagination!)? Liefere ein Observability-Konzept mit Dashboard-Anforderungen und Eskalationsregeln."
+Vorlage: Agent-Observability-Konzept (8 Agenten):
+1. SLOs — Response-Time P95 <8 s, Retrieval-Hit-Rate >=70 %, Refusal-Rate <5 % (pro Agent-Typ differenziert).
+2. Export — Audit Logs API taeglich (Pagination beachten) + Usage Export API fuer Token-Kosten.
+3. Dashboard — je Agent eine Ansicht mit Trend-Linien fuer alle SLOs + Kosten-Overlay (Power BI/Grafana).
+4. Eskalation — >2 Wochen SLO-Verletzung in Folge → Agent-Review + System-Prompt-Ueberarbeitung.
 Artefakt: Ein Observability-Konzept-Dokument (SLOs, Export-Prozess, Dashboard-Anforderungen, Eskalationsregeln).
 Fallstricke:
 - Audit Logs und Usage Logs werden gleichgesetzt: Audit Logs erfassen Konfigurations- und Sicherheitsereignisse, Usage Logs erfassen Token-Verbrauch — beide sind für Observability nötig, aber über unterschiedliche Endpoints abrufbar.
 - Die definierten SLOs sind für alle Agenten gleich — ein einfacher FAQ-Agent und ein tiefer Recherche-Agent haben fundamental unterschiedliche Response-Time-Profile.
+Empfehlung: Audit-Logs (Konfigurations-/Sicherheitsereignisse) und Usage-Logs (Token-Verbrauch) sind getrennte Endpoints — beide fuer vollstaendige Observability einbinden. SLOs nicht pauschal gleichsetzen: ein FAQ-Agent und ein Recherche-Agent haben fundamental unterschiedliche Response-Time-Profile, daher pro Agent-Typ kalibrieren.
 Anschluss: S-API-021
 
 ### S-API-021 Fallback-Playbook für Langdock-Ausfälle
@@ -533,12 +546,16 @@ Vorgehen:
 2. Definiere die Fallback-Ressourcen: Die drei wichtigsten Agent-System-Prompts als Markdown lokal sichern, direkter Anthropic Claude-Webzugriff (claude.ai) oder OpenAI ChatGPT als Ad-hoc-Ersatz.
 3. Dokumentiere das SLA-Monitoring: status.langdock.com als erster Check-Punkt; Kommunikationskanal für das Team im Ausfall-Fall (z.B. Slack-Channel #ki-fallback).
 4. Definiere einen Wiederherstellungs-Test: einmal pro Quartal einen simulierten 30-minütigen Ausfall üben, um die Reaktionszeit des Teams zu messen.
-Prompt:
-> "Du bist ein Business-Continuity-Berater. Langdock war heute 90 Minuten ausgefallen und hat unsere Kampagnen-Arbeit blockiert. Erstelle ein einseitiges Fallback-Playbook. Es muss beinhalten: (1) Sofortmaßnahmen in den ersten 15 Minuten, (2) welche Prozesse wir manuell weiterführen vs. pausieren, (3) lokale Backup-Ressourcen (Agent-Prompts als Markdown, alternative KI-Tools), (4) SLA-Monitoring via status.langdock.com. Tonfall: operativ, klar, ohne Marketing-Jargon."
+Vorlage: Business-Continuity-Fallback-Playbook (einseitig):
+1. Sofortmassnahmen (15 Min) — status.langdock.com pruefen, Team in #ki-fallback alarmieren, zeitkritische Tasks identifizieren.
+2. Weiterfuehren vs. pausieren — Publishing-Deadlines manuell, Unkritisches pausiert.
+3. Backup-Ressourcen — drei wichtigste Agent-System-Prompts lokal als Markdown; Ad-hoc-Ersatz (claude.ai/ChatGPT) NUR fuer nicht-sensible Daten.
+4. Quartals-Drill — simulierter 30-Min-Ausfall, Reaktionszeit messen.
 Artefakt: Ein einseitiges Fallback-Playbook (Sofortmaßnahmen, Backup-Ressourcen, Monitoring, Test-Drill).
 Fallstricke:
 - Das Playbook empfiehlt, proprietäre Kunden- oder Unternehmensdaten in externe KI-Tools (claude.ai, ChatGPT) im Ausfall-Fall einzugeben — dies kann gegen die eigene Datenschutzrichtlinie verstoßen.
 - Der Wiederherstellungs-Test wird als einmaliges Event geplant, statt als quartalsweise Pflichtübung — ohne Wiederholung verkommt das Playbook zur Makulatur.
+Empfehlung: Im Playbook ausdruecklich verbieten, proprietaere Kunden- oder Unternehmensdaten im Ausfall in externe Tools (claude.ai, ChatGPT) einzugeben — das verstoesst gegen die eigene Datenschutzrichtlinie. Den Wiederherstellungs-Test als quartalsweise Pflichtuebung verankern, nicht als Einmal-Event, sonst verkommt das Playbook zur Makulatur.
 Anschluss: S-API-022
 
 ### S-API-022 Integrations-Test-Strategie vor dem Go-Live
@@ -552,12 +569,16 @@ Vorgehen:
 2. Definiere für jeden Integrationspunkt drei Testszenarien: Happy Path (alles funktioniert), Edge Case (ungewöhnliche Inputs), Failure Case (API-Timeout oder ungültige Daten).
 3. Lege Abnahmekriterien fest: welche Fehlerrate ist akzeptabel, welche Response-Time ist maximal tolerierbar, wer ist die finale Abnahme-Person?
 4. Plane einen UAT (User Acceptance Test) mit zwei tatsächlichen Marketing-Team-Mitgliedern, die typische Arbeitsaufgaben durchführen.
-Prompt:
-> "Du bist ein QA-Stratege für KI-Integrationen. Wir launchen nächste Woche einen Langdock-Agenten, der via API mit HubSpot, unserem CMS und Mailchimp verbunden ist. Erstelle eine Integrations-Test-Checkliste. Trenne technische Tests (API-Konnektivität) von inhaltlichen Tests (Output-Qualität). Definiere für jeden Integrationspunkt: Happy Path, Edge Case, Failure Case. Füge Abnahmekriterien hinzu."
+Vorlage: Integrations-Test-Checkliste + Abnahmekriterien:
+1. Trennung — technische Tests (API-Konnektivitaet) getrennt von inhaltlichen (Output-Qualitaet, Brand-Voice).
+2. Szenarien je Integrationspunkt (CRM/CMS/E-Mail) — Happy Path, Edge Case, Failure Case (Timeout/ungueltige Daten).
+3. Abnahmekriterien — tolerierbare Fehlerrate, max. Response-Time, benannte Abnahme-Person.
+4. UAT — zwei echte Team-Mitglieder fuehren typische Aufgaben VOR dem Go-Live durch; Rollback-Plan definiert.
 Artefakt: Eine Integrations-Test-Checkliste mit Abnahmekriterien-Dokument.
 Fallstricke:
 - Die Test-Checkliste fokussiert rein auf technische Konnektivität und ignoriert inhaltliche Qualitätstests — ein Agent, der korrekte API-Antworten liefert, aber Brand-Voice-Fehler macht, besteht den Test zu Unrecht.
 - Der UAT wird erst nach dem Go-Live-Datum eingeplant ("wir testen im Live-Betrieb") — damit fehlt ein expliziter Rollback-Plan für den Fall von Fehlfunktionen.
+Empfehlung: Inhaltliche Qualitaetstests gleichwertig zu technischen fuehren — ein Agent mit korrekten API-Antworten, aber Brand-Voice-Fehlern darf den Test nicht bestehen. Den UAT zwingend VOR dem Go-Live-Datum einplanen und einen expliziten Rollback-Plan definieren, nie 'im Live-Betrieb testen'.
 Anschluss: S-API-023
 
 ### S-API-023 Rate-Limit-Planung für internationale Kampagnenwellen
@@ -571,12 +592,16 @@ Vorgehen:
 2. Entscheide, ob ein Quota Increase nötig ist: für einen kontrollierten Ein-Tages-Job ist das Default-Limit ausreichend, sofern die Requests gequeued und nicht gleichzeitig gesendet werden.
 3. Formuliere bei Bedarf den Business Case für den Customer Success Manager: Datum, Umfang, Modell, erwartete Token-Menge, Bereitschaft zur Kostenübernahme.
 4. Definiere einen technischen Ausführungsplan: Request-Queue mit Pacing (400 RPM als Safety-Margin), Monitoring-Alert bei 429-Fehlern, Checkpoint alle 1.000 Requests.
-Prompt:
-> "Du bist ein technischer Kampagnenplaner. Wir launchen in zwei Wochen eine globale Kampagne und müssen 8.000 personalisierte E-Mail-Texte via Langdock API generieren — alles an einem Tag. Erkläre: Brauchen wir ein Quota Increase? Wenn nein, wie strukturieren wir die Request-Queue, um die 500 RPM Grenze sicher zu unterschreiten? Wenn ja, wie formuliere ich einen Business Case für den CSM? Liefere einen Ausführungsplan als Timeline."
+Vorlage: Quota-/Ausfuehrungsplan internationale Kampagne (8.000 E-Mails):
+1. Bedarf — 8.000 / ~500 RPM = 16 Min. reine Zeit; mit Personalisierung + Retries realistisch 45–60 Min.
+2. Quota-Entscheid — fuer einen gequeueten Ein-Tages-Job genuegt das Default-Limit; nur bei Gleichzeitigkeit Increase noetig.
+3. Business Case (falls noetig) — Datum, Umfang, Modell, erwartete Token-Menge, Kostenuebernahme an den CSM.
+4. Ausfuehrung — Queue mit Pacing (~400 RPM Safety-Margin), 429-Alert, Checkpoint alle 1.000 Requests.
 Artefakt: Ein technischer Ausführungsplan (Timeline + Queue-Strategie) und ein Business-Case-Template für Quota Increases.
 Fallstricke:
 - Das Modell empfiehlt, alle 8.000 Requests simultan zu senden ("parallel processing"), was sofort HTTP 429 Fehler auslöst und das System instabilisiert.
 - Der Business Case für den CSM enthält keine Angabe zur erwarteten Token-Menge — ohne diese Information kann Langdock das Limit nicht sinnvoll hochsetzen.
+Empfehlung: Nie alle 8.000 Requests simultan senden — das loest sofort HTTP 429 aus; stattdessen mit ~400 RPM Safety-Margin queuen und alle 1.000 Requests einen Checkpoint setzen. Falls ein Quota Increase noetig ist, im Business Case zwingend die erwartete Token-Menge angeben, sonst kann der CSM das Limit nicht sinnvoll anheben.
 Anschluss: S-API-024
 
 ### S-API-024 BYOK-Kostentransparenz und Billing-Reconciliation
@@ -590,12 +615,16 @@ Vorgehen:
 2. Definiere den Match-Key: Request-Timestamp + Modell-Name + approximative Token-Menge als Verknüpfungsschlüssel zwischen beiden Datenquellen.
 3. Weise auf die Preispflege-Pflicht hin: im BYOK-Modus zeigt das Langdock-Dashboard geschätzte Kosten basierend auf manuell hinterlegten Token-Preisen — diese müssen bei jedem Azure-Preisupdate aktualisiert werden.
 4. Skizziere das monatliche Reconciliation-Meeting: Finance + Marketing-Ops + IT, 30 Minuten, erster Werktag des Monats.
-Prompt:
-> "Du bist ein FinOps-Berater. Wir nutzen Langdock mit BYOK (eigenem Azure-OpenAI-Key). Wir erhalten zwei separate Rechnungen: Langdock-Plattformlizenz und Azure-Modellkosten. Unser Controlling verliert den Überblick. Erkläre: Welche Daten liefert die Langdock Usage Export API? Wie matche ich diese mit den Azure-Kosten? Welche Fallstricke gibt es bei der BYOK-Preispflege im Langdock-Dashboard? Liefere einen Reconciliation-Prozessplan."
+Vorlage: BYOK-Billing-Reconciliation-Prozess (Finance + Marketing-Ops):
+1. Datenquellen — (a) Langdock Usage Export API (Token-Zaehlung pro User/Agent/Modell), (b) Azure Cost Management Portal (tatsaechliche USD-Inferenzkosten).
+2. Match-Key — Request-Timestamp + Modell-Name + approximative Token-Menge.
+3. Preispflege — BYOK-Dashboard zeigt nur geschaetzte Kosten aus manuell hinterlegten Token-Preisen; bei jedem Azure-Preisupdate aktualisieren.
+4. Monats-Meeting — Finance + Marketing-Ops + IT, 30 Min, erster Werktag.
 Artefakt: Eine Billing-Reconciliation-Prozessdokumentation (Datenquellen, Match-Key, Preispflege-Checkliste, Meeting-Template).
 Fallstricke:
 - Das Modell schlägt vor, Azure-Kosten direkt aus dem Langdock-Dashboard zu lesen — im BYOK-Modus zeigt das Dashboard nur geschätzte Kosten basierend auf manuell hinterlegten Preisen, nicht die tatsächliche Azure-Abrechnung.
 - Der Reconciliation-Prozess wird als einmaliges Setup betrachtet und vergisst, dass Azure regelmäßig Preise ändert, was die manuell hinterlegten Token-Preise im Langdock-Admin veralten lässt.
+Empfehlung: Im BYOK-Modus die tatsaechlichen Kosten aus dem Azure Cost Management Portal ziehen, nie aus dem Langdock-Dashboard — dort stehen nur Schaetzwerte aus manuell hinterlegten Preisen. Die Reconciliation als wiederkehrenden Monatsprozess aufsetzen und die hinterlegten Token-Preise bei jeder Azure-Preisaenderung nachpflegen.
 Anschluss: S-API-025
 
 ### S-API-025 API-Sicherheits-Audit vor Enterprise-Rollout
