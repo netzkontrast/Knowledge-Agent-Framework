@@ -139,6 +139,7 @@ names 90 d, platform limits 180 d). Re-run the gates each review.
 
 - `templates/` — blanks to start a new agent (knowledge-file, AGENT_PROMPT, research-prompt).
 - `tools/` — the validators (canonical copies).
+- `docs/building-knowledge-agents.md` — **the meta-playbook**: how to build, research, test, and optimize a knowledge agent end-to-end (the conceptual companion to this file's step-by-step pipeline).
 - `docs/` — framework methodology: `knowledge-file-authoring-spec.md`, `knowledge-build-plan-design.md`, `knowledge-build-plan.md`, and the restructure record.
 - `docs/examples/` — the IW reference example's design + critique.
 - `examples/iw-little-data/` — the full reference build (Institut der deutschen Wirtschaft).
