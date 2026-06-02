@@ -8,3 +8,4 @@ IW Neutralitätsanspruch on partisan-risk scenarios. Verify IW facts vs research
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified green (39 scenarios). Neutrality enforced on partisan-risk scenarios.

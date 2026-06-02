@@ -8,3 +8,4 @@ Verify IW facts vs research 10/14. Distinct nouns held. Consider advice-style ad
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified green (39 scenarios). IW facts grounded vs research 10/14.

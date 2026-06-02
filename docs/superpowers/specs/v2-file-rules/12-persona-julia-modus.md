@@ -8,3 +8,4 @@ Preserve anchor. Sharpen the mode delta (what changes vs core).
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified anchor intact. TODO next persona pass: sharpen mode-delta; consider source-discipline echo from 11.

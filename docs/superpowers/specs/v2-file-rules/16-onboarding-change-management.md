@@ -8,3 +8,4 @@ Strong advice-style (R7) fit. Expand toward fuller depth with grounded onboardin
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified green (28 scenarios). TODO review: advice-style (R7) expansion opportunity.

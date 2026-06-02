@@ -8,3 +8,4 @@ Exemplar. Workflow budget = pro Lauf (not /Monat). Citations on factual triggers
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified green (exemplar; API facts intact, duration 5-30). Citations complete.

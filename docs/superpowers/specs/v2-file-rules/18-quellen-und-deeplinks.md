@@ -8,3 +8,4 @@ Dead-link check each loop. Extend clusters to cover new 14/17 scenarios. Only re
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified green (8 clusters/64 links). TODO review: add links for new 14/17 scenario topics; dead-link check.

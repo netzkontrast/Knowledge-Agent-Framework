@@ -8,3 +8,4 @@ Exemplar file — keep pristine. Other files must match these numbers.
 
 ## Decisions & residual TODOs (append during each pass)
 - (loop 1) seeded from gap log; deep pass pending.
+- (loop 2) Verified green (exemplar; canonical RAG facts intact). No change.
