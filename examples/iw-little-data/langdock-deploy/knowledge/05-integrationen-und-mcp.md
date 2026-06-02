@@ -403,12 +403,15 @@ Vorgehen:
 2. Du lässt eine Rotation-Policy definieren: API-Keys für MCP-Verbindungen alle 90 Tage rotieren, Zugangsdaten ausschließlich im Langdock-Admin-Secrets-Bereich hinterlegen.
 3. Du lässt eine Zuständigkeitsmatrix formulieren: IT rotiert und hinterlegt Keys; Marketing-Direktorin gibt Anforderungen vor; Marketing-Ops meldet Verbindungsfehler.
 4. Du übergibst das Konzept an IT-Security zur Umsetzung und Dokumentation.
-Prompt:
-> "Du bist mein IT-Security-Berater für Langdock-Integrationen (Persona). Erstelle ein API-Key-Management-Konzept für unsere drei MCP-Verbindungen (Aufgabe). Kontext: Verbindungen zu Kampagnen-DB, GA4 und Jira; DSGVO-konformes EU-Hosting; keine Keys im Klartext (Kontext). Format: Konzept mit Abschnitten Platzhalter-Syntax, Rotation-Policy, Zuständigkeitsmatrix (Format)."
+Vorlage: MCP-API-Key-Management-Konzept:
+1. Platzhalter-Syntax — dynamische Platzhalter in Custom Headern, die auf im Langdock-Admin gespeicherte Secrets verweisen (nie Klartext in der Agenten-Config).
+2. Rotation-Policy — Keys alle 90 Tage rotieren; Secrets nur im Admin-Secrets-Bereich.
+3. Zustaendigkeitsmatrix — IT rotiert/hinterlegt; Direktorin gibt Anforderungen vor; Marketing-Ops meldet Verbindungsfehler.
 Artefakt: Ein API-Key-Management-Konzept mit Rotation-Policy und Zuständigkeitsmatrix.
 Fallstricke:
 - API-Keys direkt im MCP-Server-Setup als Klartext eintragen → Ausschließlich dynamische Platzhalter nutzen, die auf im Langdock-Admin gespeicherte Secrets verweisen.
 - Keys nie rotieren → Mindestens 90-Tage-Rotation vorschreiben und im IT-Ticket-System als wiederkehrende Aufgabe verankern; abgelaufene Keys führen zu stillen Verbindungsabbrüchen.
+Empfehlung: Ausschliesslich dynamische Platzhalter nutzen, die auf Admin-gespeicherte Secrets verweisen — ein Klartext-Key im MCP-Server-Setup ist das Kernrisiko. Mindestens 90-Tage-Rotation vorschreiben und im IT-Ticket-System als wiederkehrende Aufgabe verankern, da abgelaufene Keys zu stillen Verbindungsabbruechen fuehren.
 Anschluss: S-IM-018
 
 ### S-IM-018 Integration-Monitoring-Konzept für laufende MCP-Verbindungen aufsetzen
@@ -421,12 +424,15 @@ Vorgehen:
 1. Du lässt Little Data fünf Canary-Prompts je MCP-Verbindung definieren — einfache Abfragen mit erwartbarem Ergebnis, die wöchentlich manuell oder über einen Workflow ausgeführt werden.
 2. Du lässt Eskalations-Schwellen festlegen: Bei zwei von fünf Canary-Fehlern → sofortige IT-Meldung; bei Verbindungsabbruch → Fallback auf gecachte Wissensordner-Inhalte.
 3. Du lässt eine Verantwortlichkeitsmatrix erstellen: Marketing-Ops führt wöchentliche Spot-Checks durch; IT behebt Verbindungsfehler innerhalb von 24 Stunden.
-Prompt:
-> "Du bist mein Integration-Reliability-Berater (Persona). Erstelle ein Monitoring-Konzept für unsere drei aktiven MCP-Verbindungen (Aufgabe). Kontext: stiller Verbindungsabbruch ist dreimal aufgetreten, kein Alert-System vorhanden (Kontext). Format: Konzept mit Abschnitten Canary-Prompts-Beispiele, Eskalations-Schwellen, Verantwortlichkeitsmatrix (Format)."
+Vorlage: Integration-Monitoring-Konzept (MCP + nativ):
+1. Canary-Prompts — fuenf einfache Abfragen je Verbindung mit erwartbarem Ergebnis, woechentlich (manuell oder Workflow).
+2. Eskalations-Schwellen — 2 von 5 Canary-Fehlern → IT-Meldung; Verbindungsabbruch → Fallback auf gecachte Wissensordner-Inhalte.
+3. Verantwortlichkeitsmatrix — Marketing-Ops macht Spot-Checks; IT behebt Fehler binnen 24 h.
 Artefakt: Ein Integration-Monitoring-Konzept mit Canary-Prompts, Eskalations-Schwellen und Zuständigkeitsmatrix.
 Fallstricke:
 - Monitoring rein reaktiv betreiben → Wöchentliche Canary-Runs proaktiv im Kalender als feste Routine verankern, nicht erst auf Beschwerden warten.
 - Fallback-Strategie vergessen → Für jede kritische Verbindung definieren, was der Agent tut, wenn der MCP-Server nicht antwortet (z. B. gecachten Wissensordner nutzen und den Nutzer auf veraltete Daten hinweisen).
+Empfehlung: Die woechentlichen Canary-Runs proaktiv im Kalender als feste Routine verankern, nicht erst auf Beschwerden warten — ein stiller Verbindungsabbruch liefert sonst tagelang veraltete Daten. Fuer jede kritische Verbindung einen Fallback definieren (gecachten Wissensordner nutzen + Nutzer auf veraltete Daten hinweisen), wenn der MCP-Server nicht antwortet.
 Anschluss: S-IM-019
 
 ### S-IM-019 SSO-Einrichtung für den Marketing-Workspace beraten
@@ -439,12 +445,15 @@ Vorgehen:
 1. Du lässt Little Data die SSO-Kernangaben sammeln, die die IT braucht: IdP-Typ (z. B. Azure AD, Okta), Assertion Consumer Service URL, SCIM-Endpoint und Attribut-Mapping für Marketing-Gruppen.
 2. Du lässt den SCIM-Nutzen klar machen: Neue Mitarbeiter werden automatisch in die Marketing-Gruppe provisioniert; ausscheidende Mitarbeiter verlieren sofort den Workspace-Zugang.
 3. Du lässt das IT-Briefing formulieren und dabei betonen, dass Little Data berät aber nicht konfiguriert — die Umsetzung liegt bei IT und Workspace-Admin.
-Prompt:
-> "Du bist mein Workspace-Governance-Berater (Persona). Erstelle eine SSO-Anforderungs-Liste für unseren Langdock-Marketing-Workspace (Aufgabe). Kontext: Identity-Provider Azure AD, ca. 25 Marketing-Mitarbeiter, DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Angabe, benötigtem Wert, Begründung; plus Abschnitt SCIM-Empfehlung mit drei Bulletpoints (Format)."
+Vorlage: SSO-Anforderungs-Liste (Marketing-Workspace):
+1. SSO-Kernangaben — IdP-Typ (Azure AD/Okta), Assertion Consumer Service URL, SCIM-Endpoint, Attribut-Mapping fuer Marketing-Gruppen.
+2. SCIM-Nutzen — neue Mitarbeiter automatisch in die Marketing-Gruppe provisioniert; Ausscheidende verlieren sofort den Zugang.
+3. Owner — Verbindung an einen Service-Account/technischen Owner binden.
 Artefakt: Eine SSO-Anforderungs-Liste (Tabelle) und eine SCIM-Empfehlung für die IT.
 Fallstricke:
 - SSO-Verbindung an einen persönlichen Admin-Account binden → Immer einen Service-Account oder technischen Owner benennen, damit der Workspace-Zugang bei Personalwechsel nicht unterbrochen wird.
 - SCIM-Provisionierung weglassen → Ohne SCIM müssen neue Teammitglieder manuell im Workspace angelegt werden; das erzeugt Onboarding-Verzüge und vergessene Offboarding-Schritte.
+Empfehlung: Die SSO-Verbindung an einen Service-Account oder technischen Owner binden, nie an einen persoenlichen Admin-Account, damit der Workspace-Zugang bei Personalwechsel nicht abreisst. SCIM-Provisionierung von Beginn an einplanen — ohne sie entstehen Onboarding-Verzuege und vergessene Offboarding-Schritte.
 Anschluss: S-IM-020
 
 ### S-IM-020 Jira-Integration für Marketing-IT-Tickets aus dem Chat nutzen
@@ -457,12 +466,15 @@ Vorgehen:
 1. Du lässt Little Data die Jira-Felder bestimmen, die für ein Marketing-Fehler-Ticket sinnvoll sind: Summary, Description mit Kontext aus dem Chat, Priority, Komponente (Tracking/Analytics) und Reporter.
 2. Du lässt ein Ticket-Template formulieren, das der Agent anhand des Chat-Kontexts befüllen soll, ohne Informationen hinzuzuerfinden.
 3. Du übergibst Template und Scope-Briefing (Issue-Create-Permission für Marketing-Projekt) an die IT; Little Data berät, erstellt keine Tickets.
-Prompt:
-> "Du bist mein Workflow-Integrations-Berater (Persona). Entwirf ein Jira-Ticket-Template für Marketing-Fehler-Meldungen, die aus einem Langdock-Chat heraus erstellt werden (Aufgabe). Kontext: Fehler betreffen Tracking-Links, UTMs und Analytics-Pixel; Reporter ist immer das Marketing-Team (Kontext). Format: Template mit Jira-Feldern als Tabelle plus drei Sätze IT-Briefing zu benötigter Jira-Permission (Format)."
+Vorlage: Jira-Marketing-Fehler-Ticket-Template:
+1. Felder — Summary, Description (Chat-Kontext), Priority, Komponente (Tracking/Analytics), Reporter (Marketing-Team).
+2. Befuell-Regel — Agent fuellt anhand des Chat-Kontexts, ohne Informationen zu erfinden; fehlende Felder als 'offen — bitte ergaenzen'.
+3. Permission-Briefing — nur Issue-Create-Recht fuer das Marketing-Projekt (kein Admin, keine Project-Config).
 Artefakt: Ein Jira-Ticket-Template (Tabelle) und ein Permission-Briefing für die IT.
 Fallstricke:
 - Agent erfindet Ticket-Details, wenn der Chat-Kontext lückenhaft ist → Im Prompt anweisen, fehlende Felder explizit als "offen — bitte ergänzen" zu markieren, statt zu raten.
 - Jira-Permission zu breit erteilen → Nur Issue-Create-Rechte für das Marketing-Projekt anfragen; kein Admin-Zugang, keine Project-Konfiguration.
+Empfehlung: Den Agenten anweisen, fehlende Ticket-Felder explizit als 'offen — bitte ergaenzen' zu markieren statt zu raten — ein lueckenhafter Chat-Kontext verleitet sonst zu erfundenen Details. Nur Issue-Create-Rechte fuer das Marketing-Projekt anfragen, nie Admin-Zugang oder Project-Konfiguration.
 Anschluss: S-IM-021
 
 ### S-IM-021 MCP vs. native Integration entscheiden — Entscheidungsrahmen für neue Tools
@@ -476,12 +488,15 @@ Vorgehen:
 2. Du lässt Entscheidungskriterien formulieren: Gibt es eine native Integration? Bietet der Anbieter einen MCP-Server an? Ist eigene JavaScript-Entwicklung vorhanden? Ist eine Drittanbieter-Brücke DSGVO-konform?
 3. Du lässt den Entscheidungsbaum als Tabelle mit Kriterium, empfohlenem Weg, Vorteil und Risiko ausarbeiten.
 4. Du übergibst den Rahmen an Marketing-Ops und IT als Orientierung für künftige Tool-Evaluierungen.
-Prompt:
-> "Du bist mein Integrations-Architekt (Persona). Erstelle einen Entscheidungsrahmen für die Auswahl des Anbindungswegs neuer Marketing-Tools an Langdock (Aufgabe). Kontext: vier Pfade — nativ, MCP, Custom Builder, HTTP-Brücke; DSGVO-Konformität ist Pflichtkriterium (Kontext). Format: Entscheidungsbaum als Tabelle mit Kriterium, empfohlenem Pfad, Hauptvorteil, Risiko (Format)."
+Vorlage: Anbindungsweg-Entscheidungsbaum (neue Tools):
+1. Pfade — nativ → MCP-Server → Custom Builder → HTTP-Bruecke, je mit Voraussetzung und Einsatzfall.
+2. Kriterien — native Integration vorhanden? MCP-Server des Anbieters? Eigene JS-Entwicklung? DSGVO-konforme Drittanbieter-Bruecke?
+3. Tabelle — Kriterium, empfohlener Weg, Hauptvorteil, Risiko.
 Artefakt: Ein Entscheidungsbaum (Tabelle) für die Wahl des Anbindungswegs neuer Marketing-Tools.
 Fallstricke:
 - Direkt zum Custom Builder greifen, weil er flexibel wirkt → Custom-Entwicklung schafft Wartungsaufwand; zuerst prüfen, ob eine native Integration oder ein verfügbarer MCP-Server die Anforderung bereits erfüllt.
 - HTTP-Brücken als gleichwertig zu nativen Integrationen behandeln → Auf das höhere Bruchrisiko bei API-Änderungen und den Drittanbieter-Datentransfer hinweisen; DSGVO-Konformität des Brücken-Anbieters prüfen lassen.
+Empfehlung: Nie reflexhaft zum Custom Builder greifen, weil er flexibel wirkt — zuerst pruefen, ob eine native Integration oder ein verfuegbarer MCP-Server die Anforderung bereits erfuellt; Custom-Entwicklung schafft dauerhaften Wartungsaufwand. HTTP-Bruecken nicht als gleichwertig zu nativen Integrationen behandeln: auf das hoehere Bruchrisiko bei API-Aenderungen und den Drittanbieter-Datentransfer (DSGVO-Pruefung) hinweisen.
 Anschluss: S-IM-022
 
 ### S-IM-022 Integration-ROI für den CFO berechnen und kommunizieren
@@ -495,12 +510,16 @@ Vorgehen:
 2. Du lässt die Einsparung je Integration in Stunden/Monat und Lohnkosten-Äquivalent übersetzen (Durchschnittssatz Marketingleitung × eingesparte Stunden).
 3. Du lässt den Break-even-Zeitraum berechnen: Einrichtungsaufwand (IT-Stunden) ÷ monatliche Einsparung = Break-even in Monaten.
 4. Du übergibst das Kalkulationsblatt an den CFO als Entscheidungsgrundlage; die Zahlen sind Schätzwerte und müssen vom Controlling validiert werden.
-Prompt:
-> "Du bist mein Integrations-ROI-Berater (Persona). Erstelle ein ROI-Kalkulationsblatt für drei Langdock-Integrationen (Aufgabe). Kontext: HubSpot-Daten-Export heute 3h/Woche, SharePoint-Dokumentenpflege 2h/Woche, Jira-Ticket-Erstellung 1h/Woche; Durchschnittssatz Marketingleitung 120 EUR/h (Kontext). Format: Tabelle mit Integration, heutigem Aufwand, prognostizierter Einsparung, Break-even in Monaten; plus ein Satz Validierungshinweis (Format)."
+Vorlage: Integrations-ROI-Kalkulationsblatt (einseitig):
+1. Aufwand heute — je Integration Wochenstunden (CSV-Export/Dokumentenpflege/Ticket-Erstellung).
+2. Einsparung — Stunden/Monat × Durchschnittssatz (Lohnkosten-Aequivalent).
+3. Break-even — Einrichtungsaufwand (IT-Stunden) / monatliche Einsparung = Monate.
+4. Validierungshinweis — Schaetzwerte, vom Controlling zu validieren.
 Artefakt: Ein ROI-Kalkulationsblatt (Tabelle) mit Break-even-Zeitraum und Validierungshinweis.
 Fallstricke:
 - ROI-Zahlen als präzise Garantie präsentieren → Explizit als Schätzwerte kennzeichnen und Controlling um Validierung mit echten Zeiterfassungsdaten bitten.
 - Einrichtungsaufwand unterschätzen → IT-Stunden für Setup, Testen und Dokumentation in die Break-even-Rechnung einbeziehen, nicht nur die laufenden Einsparungen.
+Empfehlung: Die ROI-Zahlen explizit als Schaetzwerte kennzeichnen und das Controlling um Validierung mit echten Zeiterfassungsdaten bitten — als Garantie praesentiert untergraben sie die Glaubwuerdigkeit beim CFO. Den Einrichtungsaufwand (IT-Stunden fuer Setup, Test, Doku) in die Break-even-Rechnung einbeziehen, nicht nur die laufenden Einsparungen.
 Anschluss: S-IM-023
 
 ### S-IM-023 HubSpot vs. Salesforce — Integrations-Entscheidung für einen Stack-Wechsel beraten
@@ -514,12 +533,16 @@ Vorgehen:
 2. Du lässt je Eintrag prüfen, ob eine direkt äquivalente Salesforce-Integration in Langdock nativ verfügbar ist oder ob ein Umbau via MCP-Server nötig wird.
 3. Du lässt das Migrationsrisiko je Eintrag einschätzen: niedriges Risiko (1:1-native-Ersatz), mittleres Risiko (Scope-Anpassung nötig), hohes Risiko (kein direkter Ersatz).
 4. Du übergibst die Impact-Analyse an IT, Marketing-Ops und die CRM-Entscheidungsgruppe; die Migration selbst liegt bei der IT.
-Prompt:
-> "Du bist mein Integrations-Berater (Persona). Erstelle eine CRM-Wechsel-Impact-Analyse für den Umstieg von HubSpot auf Salesforce in unserem Langdock-Workspace (Aufgabe). Kontext: drei Reporting-Agenten, ein Lead-Anreicherungs-Workflow und ein Synced-Folder-Alias hängen an HubSpot-Daten (Kontext). Format: Tabelle mit Agent/Workflow, heutiger HubSpot-Abhängigkeit, Salesforce-Äquivalent, Migrationsrisiko niedrig/mittel/hoch (Format)."
+Vorlage: CRM-Wechsel-Impact-Analyse (HubSpot → Salesforce):
+1. Inventar — alle Agenten/Workflows, die auf HubSpot-Felder/-Actions zugreifen.
+2. Salesforce-Aequivalent — nativ verfuegbar oder Umbau via MCP noetig.
+3. Migrationsrisiko — niedrig (1:1-Ersatz)/mittel (Scope-Anpassung)/hoch (kein direkter Ersatz).
+4. Prioritaet — welcher Reporting-Pfad laeuft weiter, welcher hat Uebergangsfristen.
 Artefakt: Eine CRM-Wechsel-Impact-Analyse (Tabelle) mit Migrationsrisiko je Agent und Workflow.
 Fallstricke:
 - Annehmen, Salesforce und HubSpot hätten identische API-Feldnamen → Salesforce nutzt andere Objekt-Bezeichner (z. B. "Opportunity" statt "Deal"); alle Agenten-Prompts, die Feldnamen hartcodiert haben, müssen angepasst werden.
 - Migration als reines IT-Thema behandeln → Die fachliche Priorisierung (welcher Reporting-Pfad läuft weiter, welcher hat Übergangsfristen) muss die Marketing-Direktorin vorgeben, nicht die IT.
+Empfehlung: Nicht annehmen, Salesforce und HubSpot haetten identische API-Feldnamen — Salesforce nutzt andere Objekt-Bezeichner (z. B. 'Opportunity' statt 'Deal'); alle Agenten-Prompts mit hartcodierten Feldnamen muessen angepasst werden. Die fachliche Migrationspriorisierung gibt die Direktorin vor, nicht die IT, damit kein laufendes Kampagnen-Reporting unkoordiniert ausfaellt.
 Anschluss: S-IM-024
 
 ### S-IM-024 Custom Integration Builder für proprietäres Lead-Scoring-Tool planen
@@ -533,12 +556,17 @@ Vorgehen:
 2. Du lässt die konkret benötigten API-Endpunkte der Lead-Scoring-Engine, die Input-Parameter (Lead-ID, Segment) und das erwartete Output-Format (Score 0–100, Reasoning-String) spezifizieren.
 3. Du lässt die Sicherheitsanforderungen formulieren: Sandbox läuft in abgeschottetem Container; keine Langtext-Einbindung von Drittbibliotheken ohne IT-Freigabe.
 4. Du übergibst den Anforderungs-Brief an das Entwicklungs-Team; die Implementierung liegt bei den Entwicklern.
-Prompt:
-> "Du bist mein Custom-Integration-Berater (Persona). Erstelle einen Anforderungs-Brief für den Langdock Custom Integration Builder, der unsere interne Lead-Scoring-API anbindet (Aufgabe). Kontext: Die API gibt Score (0–100) und Reasoning-String zurück; Auth per Bearer-Token; kein nativer Konnektor vorhanden (Kontext). Format: Anforderungs-Brief mit Abschnitten API-Endpunkt, Input-Schema, Output-Schema, Sicherheitsanforderungen (Format)."
+Vorlage: Custom-Integration-Builder-Anforderungs-Brief (Lead-Scoring):
+1. Sandbox — isolierte JavaScript-Sandbox, kein Netzwerk-/Host-Zugriff ausserhalb; abgeschotteter Container.
+2. API-Endpunkt — der Lead-Scoring-Engine; Auth per Bearer-Token.
+3. Input-Schema — Lead-ID, Segment.
+4. Output-Schema — Score (Integer 0-100), Reasoning (String) explizit typisiert.
+5. Security — Drittbibliotheken nur nach IT-Security-Freigabe.
 Artefakt: Ein Anforderungs-Brief für den Custom Integration Builder mit Input-/Output-Schemata und Sicherheitsanforderungen.
 Fallstricke:
 - Externe Bibliotheken unkontrolliert in die Sandbox laden → Drittbibliotheken müssen vor Einbindung durch die IT-Security geprüft werden; die Sandbox schützt zwar das Langdock-System, aber unkontrollierte Abhängigkeiten erhöhen das Supply-Chain-Risiko.
 - Output-Schema vage lassen → Ein schlecht definiertes Output-Schema führt dazu, dass das KI-Modell die Rückgabe falsch interpretiert; Score als Integer und Reasoning als String explizit typisieren.
+Empfehlung: Drittbibliotheken vor Einbindung in die Sandbox durch IT-Security pruefen lassen — die Sandbox schuetzt zwar das Langdock-System, aber unkontrollierte Abhaengigkeiten erhoehen das Supply-Chain-Risiko. Das Output-Schema explizit typisieren (Score als Integer, Reasoning als String), sonst interpretiert das KI-Modell die Rueckgabe falsch.
 Anschluss: S-IM-025
 
 ### S-IM-025 Integrations-Strategie für einen neuen Langdock-Workspace in 30 Tagen planen
