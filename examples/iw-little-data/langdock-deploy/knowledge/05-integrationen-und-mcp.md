@@ -1457,12 +1457,14 @@ Vorgehen:
 2. Du lässt die Read-Scopes auf `r_ads` und `r_ads_reporting` beschränken; `rw_ads` (Schreiben) wird explizit ausgeschlossen.
 3. Du lässt einen AGB-Hinweis einarbeiten: Rohe Insights-Daten dürfen nicht an Drittplattformen weitergegeben werden; Nutzung nur für internes Reporting.
 4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die OAuth-App-Registrierung liegt bei der IT.
-Prompt:
-> "Du bist mein Performance-Reporting-Berater (Persona). Erstelle ein LinkedIn-Ads-Reporting-MCP-Briefing und einen Pipeline-Prompt-Rahmen (Aufgabe). Kontext: wöchentliche Auswertung Spend/Leads/CPL, Verknüpfung mit CRM-Zahlen, kein Schreiben auf LinkedIn (Kontext). Format: Briefing mit Read-Scopes, Tool-Freigabe-Tabelle, AGB-Hinweis; Prompt-Rahmen als Code-Block (Format)."
+MCP: LinkedIn-Ads-MCP-Server (read-only); Reporting-Anbindung ueber die LinkedIn Ads API (Konfiguration nicht nativ); OAuth-App-Registrierung bei der IT.
+Tool: Lese-Tools fuer Performance-Daten (Spend/Leads/CPL); schreibende Endpunkte mit Pflichtbestaetigung.
+Scope: r_ads + r_ads_reporting; rw_ads (schreiben) explizit ausschliessen; Pipeline-Prompt-Rahmen zur Verknuepfung mit CRM-Zahlen.
 Artefakt: Ein LinkedIn-Ads-Reporting-MCP-Briefing mit Read-Scopes, AGB-Hinweis und Pipeline-Prompt-Rahmen.
 Fallstricke:
 - `rw_ads`-Scope mitbeantragen → Dieser Scope erlaubt Budget- und Targeting-Änderungen; im OAuth-Setup ausschließen und im Briefing als "verboten" markieren.
 - LinkedIn-Insights mit CRM-Daten in einen externen BI-Export schreiben → LinkedIn AGB verbieten die Weitergabe von API-Daten an Dritte; die Auswertung im Langdock-/internen Reporting halten.
+Empfehlung: Den rw_ads-Scope explizit ausschliessen — er erlaubt Budget- und Targeting-Aenderungen; im OAuth-Setup nur r_ads und r_ads_reporting vergeben. Rohe LinkedIn-Insights gemaess LinkedIn-AGB nicht in einen externen BI-Export schreiben; die Auswertung im Langdock-/internen Reporting halten.
 Anschluss: S-IM-066
 
 ### S-IM-066 Meta Ads Reporting via MCP für Social-Performance-Auswertung anbinden
@@ -1476,12 +1478,14 @@ Vorgehen:
 2. Du lässt die Permission auf `ads_read` (Insights lesen) beschränken; `ads_management` (schreiben) wird ausgeschlossen.
 3. Du lässt eine DSGVO-Governance-Regel einarbeiten: Keine Custom-Audience-Mitgliederlisten oder personenbezogenen Daten in den Agent-Kontext — nur aggregierte Kampagnen-Insights.
 4. Du übergibst das Briefing an IT und Datenschutzbeauftragten; die Meta-App-Registrierung liegt bei der IT.
-Prompt:
-> "Du bist mein Social-Performance-Berater (Persona). Erstelle ein Meta-Ads-Reporting-MCP-Briefing und einen Performance-Prompt-Rahmen (Aufgabe). Kontext: Auswertung Reach/CTR/Cost-per-Result, nur aggregierte Insights, keine Custom-Audience-PII, DSGVO-Pflicht (Kontext). Format: Briefing mit Read-Permission, DSGVO-Regel, Tool-Freigabe-Tabelle; Prompt-Rahmen als Code-Block (Format)."
+MCP: Meta-Marketing-API-MCP-Server (read-only); Reporting-Anbindung ueber die Meta Marketing API (nicht nativ); Meta-App-Registrierung bei der IT.
+Tool: Lese-Tools fuer aggregierte Kampagnen-Insights (Reach/CTR/Cost-per-Result); ads_management gesperrt.
+Scope: ads_read; keine Custom-Audience-Mitgliederlisten/PII (DSGVO-Datensparsamkeit); Social-Performance-Prompt-Rahmen.
 Artefakt: Ein Meta-Ads-Reporting-MCP-Briefing mit Read-Permission, DSGVO-Regel und Performance-Prompt-Rahmen.
 Fallstricke:
 - `ads_management`-Permission mitbeantragen → Diese erlaubt das Ändern von Kampagnen und Budgets; ausschließlich `ads_read` anfordern und Schreib-Permission technisch ausschließen.
 - Custom-Audience-Daten in den Agent-Kontext laden → Audience-Mitgliederlisten enthalten PII; ausschließlich aggregierte Insights übergeben, gemäß DSGVO-Datensparsamkeit.
+Empfehlung: Ausschliesslich ads_read anfordern und ads_management (Aendern von Kampagnen/Budgets) technisch ausschliessen. Niemals Custom-Audience-Mitgliederlisten in den Agent-Kontext laden — sie enthalten PII; nur aggregierte Insights uebergeben (DSGVO-Datensparsamkeit).
 Anschluss: S-IM-067
 
 ### S-IM-067 Mailchimp- oder Klaviyo-Listen read-only für Segment-Reporting anbinden
@@ -1495,12 +1499,16 @@ Vorgehen:
 2. Du lässt die Read-Scopes auf Listen-/Audience-Statistiken und Kampagnen-Reports beschränken — kein Subscriber-Write, kein Send.
 3. Du lässt eine DSGVO-Regel formulieren: Nur aggregierte Segment-Größen und Raten in den Agent-Kontext; keine individuellen E-Mail-Adressen oder Profile.
 4. Du übergibst das Konzept an IT und Datenschutzbeauftragten; die API-Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein E-Mail-Marketing-Integrations-Berater (Persona). Erstelle ein Read-Konzept für Mailchimp-Listen-Reporting (Aufgabe). Kontext: Auswertung Listen-Wachstum, Open-/Click-Rate, Segment-Größe; keine Abonnenten-PII; kein Versand über Langdock; DSGVO-Pflicht (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Read-Scopes, DSGVO-Regel, Segment-Reporting-Prompt-Template (Format)."
+Vorlage: Mailchimp/Klaviyo-Read-Konzept (Segment-Reporting):
+1. Anbindungsweg — offizieller MCP-Server falls verfuegbar, sonst HTTP-Bruecke (Custom Builder); beide bieten REST-APIs.
+2. Read-Scopes — Listen-/Audience-Statistiken und Kampagnen-Reports; kein Subscriber-Write, kein Send.
+3. DSGVO — nur aggregierte Segment-Groessen und Raten; keine individuellen E-Mail-Adressen/Profile.
+4. Segment-Reporting-Prompt-Template.
 Artefakt: Ein Mailchimp/Klaviyo-Read-Konzept mit Anbindungsweg, Read-Scopes, DSGVO-Regel und Reporting-Template.
 Fallstricke:
 - Erwarten, dass der Agent E-Mails versendet oder Abonnenten taggt → Kampagnen-Ausführung verbleibt in Mailchimp/Klaviyo; der Agent liest Statistiken und generiert Analysen.
 - Abonnenten-E-Mail-Adressen für "personalisierte Auswertung" laden → Ausschließlich aggregierte Segment-Metriken übergeben; individuelle Adressen sind PII und bleiben im E-Mail-Tool.
+Empfehlung: Klarstellen, dass der Agent keine E-Mails versendet oder Abonnenten taggt — Kampagnen-Ausfuehrung verbleibt in Mailchimp/Klaviyo; der Agent liest Statistiken und generiert Analysen. Ausschliesslich aggregierte Segment-Metriken uebergeben; individuelle Abonnenten-E-Mail-Adressen sind PII und bleiben im E-Mail-Tool.
 Anschluss: S-IM-068
 
 ### S-IM-068 Notion-Knowledge-MCP für Live-Wissensabfragen anbinden
@@ -1514,12 +1522,14 @@ Vorgehen:
 2. Du lässt die Authentifizierung über eine dedizierte Notion-Integration (Service-Account-Token) festlegen, nicht über persönliche Tokens.
 3. Du lässt verbotene Operationen sperren: Seiten erstellen, bearbeiten, löschen — nur Read- und Search-Tools freigeben.
 4. Du übergibst das Briefing an die IT; Little Data berät, konfiguriert keinen MCP-Server.
-Prompt:
-> "Du bist mein Notion-Wissens-Integrations-Berater (Persona). Erstelle ein Notion-Knowledge-MCP-Briefing für einen Berater-Agenten, der Positionierung und FAQ live liest (Aufgabe). Kontext: freigegebene Datenbanken Positionierung, FAQ, Launch-Pläne; kein Schreibzugriff; Service-Account-Token (Kontext). Format: Briefing mit Datenbank-Freigabeliste, freigegebene Tools, gesperrte Operationen, Authentifizierungsweg (Format)."
+MCP: Notion-MCP-Server (read-only) fuer Live-Wissensabfragen; Auth ueber eine dedizierte Notion-Integration (Service-Account-Token), nicht persoenliche Tokens.
+Tool: Nur Read- und Search-Tools (Page-Content, Search); Seiten erstellen/bearbeiten/loeschen sperren.
+Scope: Positivliste freigegebener Datenbanken/Seiten (Positionierung/FAQ/Launch-Plaene); alle anderen ausschliessen; User-Confirmation fuer uebergreifende Suchen.
 Artefakt: Ein Notion-Knowledge-MCP-Briefing mit Freigabeliste, zugelassenen Tools und Authentifizierungsweg.
 Fallstricke:
 - Den gesamten Notion-Workspace pauschal freigeben → Private oder HR-Bereiche enthalten sensible Daten; immer eine explizite Positivliste freigegebener Datenbanken dokumentieren.
 - Persönliche Notion-Tokens verwenden → Bei Personalwechsel bricht die Verbindung ab; eine dedizierte Notion-Integration als Service-Account-Inhaber benennen.
+Empfehlung: Niemals den gesamten Notion-Workspace pauschal freigeben — private oder HR-Bereiche enthalten sensible Daten; immer eine explizite Positivliste freigegebener Datenbanken dokumentieren. Eine dedizierte Notion-Integration als Service-Account-Inhaber benennen, da persoenliche Tokens bei Personalwechsel die Verbindung abreissen lassen.
 Anschluss: S-IM-069
 
 ### S-IM-069 Airtable Content-Ops als Read-Only-Pipeline-Quelle anbinden
@@ -1533,12 +1543,14 @@ Vorgehen:
 2. Du lässt eine Tool-Freigabe-Tabelle erstellen: Record-Read und List-Records freigeben; Create/Update/Delete sperren oder mit Pflicht-Nutzerbestätigung versehen.
 3. Du lässt einen Pipeline-Status-Prompt-Rahmen entwerfen, der überfällige und blockierte Tasks mit Verantwortlichem und Fälligkeitsdatum ausweist.
 4. Du übergibst das Briefing an die IT; der API-Key gehört in den Admin-Secrets-Bereich, nicht in die MCP-Konfiguration im Klartext.
-Prompt:
-> "Du bist mein Content-Ops-Integrations-Berater (Persona). Erstelle ein Airtable-Read-Briefing für einen Pipeline-Status-Agenten (Aufgabe). Kontext: Base Redaktionspipeline mit Status/Verantwortlicher/Datum; nur Lesen; schreibende Tools mit Pflichtbestätigung; DSGVO-Hosting (Kontext). Format: Briefing mit Base-Freigabe, Tool-Freigabe-Tabelle mit Bestätigungs-Spalte, Pipeline-Prompt-Rahmen (Format)."
+MCP: Airtable-MCP-Server fuer den Content-Ops-Pipeline-Status; API-Key nur im Admin-Secrets-Bereich (dynamische Platzhalter in Custom Headern).
+Tool: Record-Read und List-Records auf die relevante Base/Tables (Redaktionspipeline/Verantwortliche); Create/Update/Delete sperren oder mit Pflichtbestaetigung.
+Scope: Read-Scope auf die freigegebene Base; Pipeline-Status-Prompt-Rahmen (ueberfaellige/blockierte Tasks mit Verantwortlichem + Faelligkeitsdatum).
 Artefakt: Ein Airtable-Content-Ops-Briefing mit Tool-Freigabe-Tabelle und Pipeline-Status-Prompt-Rahmen.
 Fallstricke:
 - Alle auto-entdeckten Airtable-Tools freigeben → Der Airtable-MCP liefert auch Create-/Delete-Endpunkte; nur Read-Tools kuratiert freigeben, schreibende mit Pflichtbestätigung.
 - Airtable-API-Key im Klartext in der MCP-Konfiguration hinterlegen → Dynamische Platzhalter in Custom Headern verwenden; der Key gehört in den Langdock-Admin-Secrets-Bereich.
+Empfehlung: Nur Read-Tools kuratiert freigeben — der Airtable-MCP liefert auch Create-/Delete-Endpunkte; schreibende mit Pflichtbestaetigung versehen. Den Airtable-API-Key nie im Klartext in der MCP-Konfiguration hinterlegen, sondern dynamische Platzhalter in Custom Headern nutzen (Key im Langdock-Admin-Secrets-Bereich).
 Anschluss: S-IM-070
 
 ### S-IM-070 Figma-Asset-Referenz für Design-Konsistenz read-only anbinden
@@ -1551,12 +1563,16 @@ Vorgehen:
 1. Du lässt Little Data den Read-Scope auf Datei- und Komponenten-Metadaten beschränken: Frame-Namen, Komponenten-Namen, Datei-/Node-Links — kein Edit-Scope.
 2. Du lässt eine Kontext-Governance-Regel festschreiben: Der Agent gibt nur Asset-Namen und Figma-Links aus, lädt keine gerenderten PNG/JPEG-Binärdaten in den Kontext.
 3. Du lässt einen Referenz-Prompt-Rahmen entwerfen, der Briefings mit den korrekten Design-System-Komponenten und Frame-Links anreichert.
-Prompt:
-> "Du bist mein Design-Ops-Integrations-Berater (Persona). Erstelle ein Figma-Read-Konzept für einen Content-Agenten, der Design-System-Komponenten referenziert (Aufgabe). Kontext: Figma-Datei mit Design-System und Kampagnen-Frames; nur Metadaten und Links, keine Bild-Binärdaten; DSGVO-Hosting (Kontext). Format: Konzept mit Abschnitten Read-Scope, Kontext-Governance-Regel, Referenz-Prompt-Rahmen (Format)."
+Vorlage: Figma-Read-Konzept (Design-Konsistenz):
+1. Anbindungsweg — Figma-API (read-only) via HTTP-Bruecke oder MCP-Server.
+2. Read-Scope — Datei-/Komponenten-Metadaten (Frame-Namen, Komponenten-Namen, Datei-/Node-Links); kein Edit-Scope.
+3. Kontext-Governance — nur Asset-Namen und Figma-Links; keine gerenderten PNG/JPEG-Binaerdaten in den Kontext.
+4. Referenz-Prompt-Rahmen fuer design-konsistente Briefings.
 Artefakt: Ein Figma-Read-Konzept mit Read-Scope, Kontext-Governance und Referenz-Prompt-Rahmen.
 Fallstricke:
 - Gerenderte Figma-Bilder als Binärdaten in den Agent-Kontext laden → Binärdaten überlasten das Kontext-Fenster und verursachen Kosten; nur Frame-Namen und Links übergeben.
 - Edit-/Write-Zugriff auf Figma-Dateien beantragen → Der Agent referenziert nur; Design-Änderungen bleiben beim Kreativteam, ein Read-Only-Token genügt.
+Empfehlung: Niemals gerenderte Figma-Bilder als Binaerdaten in den Agent-Kontext laden — sie ueberlasten das Kontext-Fenster und verursachen Kosten; nur Frame-Namen und Links uebergeben. Ein Read-Only-Token genuegt: der Agent referenziert nur, Design-Aenderungen bleiben beim Kreativteam (kein Edit-/Write-Zugriff beantragen).
 Anschluss: S-IM-071
 
 ### S-IM-071 WordPress- oder Contentful-CMS read-only für Content-Inventar anbinden
@@ -1570,12 +1586,15 @@ Vorgehen:
 2. Du lässt die Read-Scopes auf Posts/Entries und Metadaten (Titel, URL, Datum, Status) beschränken; keine Publish-/Update-/Delete-Rechte.
 3. Du lässt einen Content-Inventar-Prompt-Rahmen entwerfen, der alte Beiträge nach Veröffentlichungsdatum und Performance-Indikatoren als Refresh-Kandidaten clustert.
 4. Du übergibst das Konzept an IT und CMS-Administrator; die API-Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein CMS-Integrations-Berater (Persona). Erstelle ein WordPress-Read-Konzept für einen Content-Audit-Agenten (Aufgabe). Kontext: WordPress-Blog mit ca. 400 Beiträgen; Ziel ist Refresh-Kandidaten finden; nur Lesen, kein Publish; DSGVO-Hosting (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Read-Scopes, Governance-Regel, Content-Inventar-Prompt-Rahmen (Format)."
+Vorlage: CMS-Read-Konzept (Content-Inventar/Refresh):
+1. Anbindungsweg — WordPress-REST-API bzw. Contentful-Content-Delivery-API (read-only) via HTTP-Bruecke oder MCP-Server.
+2. Read-Scopes — Posts/Entries + Metadaten (Titel/URL/Datum/Status); keine Publish-/Update-/Delete-Rechte.
+3. Content-Inventar-Prompt-Rahmen — alte Beitraege nach Datum + Performance als Refresh-Kandidaten clustern.
 Artefakt: Ein CMS-Read-Konzept mit Anbindungsweg, Read-Scopes, Governance-Regel und Content-Inventar-Prompt-Rahmen.
 Fallstricke:
 - Publish-/Update-Rechte "für späteres direktes Veröffentlichen" mitbeantragen → KI-Content muss vor Veröffentlichung redaktionell freigegeben werden; ein Read-Only-Application-Password/CDA-Token genügt.
 - Das gesamte CMS inklusive Entwurfs- und privater Inhalte laden → Auf veröffentlichte Beiträge filtern; Entwürfe und passwortgeschützte Inhalte gehören nicht in den Audit-Kontext.
+Empfehlung: Keine Publish-/Update-Rechte 'fuer spaeteres Veroeffentlichen' mitbeantragen — KI-Content muss vor Veroeffentlichung redaktionell freigegeben werden; ein Read-Only-Application-Password/CDA-Token genuegt. Auf veroeffentlichte Beitraege filtern: Entwuerfe und passwortgeschuetzte Inhalte gehoeren nicht in den Audit-Kontext.
 Anschluss: S-IM-072
 
 ### S-IM-072 Slack-Digest-Posting mit HITL-Freigabe konzipieren
@@ -1589,12 +1608,16 @@ Vorgehen:
 2. Du lässt das HITL-Gate verankern: Der Digest wird erst nach menschlicher Freigabe gepostet — der Agent erstellt einen Entwurf, ein Mensch bestätigt das Posten.
 3. Du lässt die Slack-Action an einen Bot-Token (nicht persönlichen Account) binden, damit das Posting bei Personalwechsel weiterläuft.
 4. Du lässt die Trigger-Logik (wann der Digest erzeugt wird) an die Workflow-Beratung in `04-workflows` übergeben.
-Prompt:
-> "Du bist mein Integrations-Berater (Persona). Entwirf ein Slack-Digest-Konzept mit Pflicht-Freigabe vor dem Posten (Aufgabe). Kontext: wöchentlicher Performance-Digest in #marketing-weekly; KI darf nie ungeprüft posten; Bot-Token (Kontext). Format: Konzept mit Nachrichtenvorlage, HITL-Gate-Beschreibung, Auth-Hinweis, zwei Sätzen Abgrenzung zur Workflow-Beratung (Format)."
+Vorlage: Slack-Digest-Konzept (HITL-Freigabe):
+1. Nachrichtenvorlage — drei KPI-Highlights (je Zahl/Quelle/Zeitraum) + Link zum vollstaendigen Report.
+2. HITL-Gate — Agent erstellt Entwurf; ein Mensch bestaetigt das Posten; kein ungeprueftes Posten.
+3. Auth — Bot-Token (nicht persoenlicher Account).
+4. Schnittstellengrenze — Trigger-Logik (wann erzeugen) gehoert in 04-workflows.
 Artefakt: Ein Slack-Digest-Konzept mit Nachrichtenvorlage, HITL-Gate und Schnittstellen-Abgrenzung.
 Fallstricke:
 - Digest ohne HITL-Gate automatisch posten → Eine falsch interpretierte Zahl wäre sofort öffentlich im Team-Kanal; ein menschliches Freigabe-Gate vor dem Posten ist bei schreibenden Slack-Actions Pflicht.
 - Trigger-Bedingung ("wann erzeugen") in der Integrationsberatung mitlösen → Die Auslöselogik gehört in den Workflow-Builder (`04-workflows`), nicht in die Integrationsberatung.
+Empfehlung: Bei schreibenden Slack-Actions ein menschliches Freigabe-Gate vor dem Posten zwingend setzen — eine falsch interpretierte Zahl waere sonst sofort oeffentlich im Team-Kanal. Die Slack-Action an einen Bot-Token binden (nicht an einen persoenlichen Account) und die Ausloeselogik an die Workflow-Beratung (04-workflows) abgeben.
 Anschluss: S-IM-073
 
 ### S-IM-073 Jira-Marketing-Ops-Board read-only für Sprint-Transparenz anbinden
