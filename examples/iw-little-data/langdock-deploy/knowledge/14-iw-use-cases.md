@@ -52,6 +52,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell formuliert eine reißerische Schlagzeile, die der IW-Neutralität widerspricht → Im Prompt "keine Alarmismus-Rhetorik, statistische Schwere statt Dramatik" hart vorgeben.
 - Eine Zahl wird aus dem Kontext gerissen und überdehnt → Verlangen, dass jede Kennzahl mit Seitenverweis auf den Report belegt wird; nicht belegbare Zahlen streichen.
+**Konkrete Empfehlung:** Jede Zahl im Pressemitteilungs-Entwurf bis zur Seite im Report belegen lassen, nicht belegbare streichen — und im Prompt „keine Alarmismus-Rhetorik, statistische Schwere statt Dramatik" hart vorgeben. Versand erst nach Gegenzeichnung der Pressestelle; ohne Quellenzeile im Fuß geht keine Mitteilung raus.
 **Anschluss-Szenario:** S-IW-002
 
 ### S-IW-002 iwd-Artikel aus einer Studie (Fachsprache → allgemeinverständlich)
@@ -71,6 +72,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Beim Vereinfachen fallen wichtige Einschränkungen weg und die Aussage wird falsch → Verlangen, dass kritische Caveats in einem Satz erhalten bleiben statt ersatzlos gestrichen zu werden.
 - Das Modell erfindet eingängige, aber unbelegte Beispiele → Zero-Fabrication-Regel: nur Inhalte aus der Studie, keine zusätzlichen Anekdoten.
+**Konkrete Empfehlung:** Beim Vereinfachen müssen kritische Caveats in einem Satz erhalten bleiben, statt ersatzlos gestrichen zu werden — Lesbarkeit erhöht sich, ohne dass die Aussage kippt. Zero-Fabrication: nur Inhalte aus der Studie, keine eingängigen Zusatz-Anekdoten erfinden.
 **Anschluss-Szenario:** S-IW-003
 
 ### S-IW-003 LinkedIn-Posts aus einer Studie
@@ -89,6 +91,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Generischer "LinkedIn-Broetry"-Tonfall mit leeren Floskeln → Drei Negativbeispiele ("klingt NICHT wie das IW") im System-Prompt verankern.
 - Der Beitrag driftet in parteipolitische Wertung ab → Institutionelle Zurückhaltung erzwingen: Aussagen als Deduktion aus Daten rahmen, nicht als Meinung.
+**Konkrete Empfehlung:** Drei Negativbeispiele („klingt NICHT wie das IW") im System-Prompt verankern, damit der Beitrag nicht in generischen LinkedIn-Broetry-Tonfall driftet. Aussagen als Deduktion aus Daten rahmen, nicht als parteipolitische Wertung — Veröffentlichung nur durch den Kanalinhaber selbst.
 **Anschluss-Szenario:** S-IW-004
 
 ### S-IW-004 Grafik- und Chart-Briefing aus Studiendaten
@@ -108,6 +111,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Multi-Sheet-Excel im RAG-Wissensordner führt zu Lesefehlern → Tabellarische Daten ausschließlich im Data Analyst verarbeiten.
 - Vorschlag einer manipulativen Achsen-Skalierung, die die Aussage überzeichnet → Explizit eine ehrliche, bei Null beginnende Skala und korrekte Bezugsgrößen fordern.
+**Konkrete Empfehlung:** Tabellarische Daten ausschließlich im Data Analyst verarbeiten, nicht im RAG-Wissensordner — Multi-Sheet-Excel führt dort zu Lesefehlern. Im Briefing eine ehrliche, bei Null beginnende Skala und korrekte Bezugsgrößen explizit fordern, damit die Aussage nicht durch Achsenkürzung überzeichnet wird.
 **Anschluss-Szenario:** S-IW-005
 
 ### S-IW-005 Newsletter-Zusammenstellung
@@ -127,6 +131,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - iwd- und IW-Trends-Tonalität verschwimmen zu einem Einheitsbrei → Beide Register im Prompt scharf trennen und je ein Beispiel vorgeben.
 - Veraltete Links oder falsch zugeordnete Studien → Link-Platzhalter statt erfundener URLs verwenden; Zuordnung manuell prüfen.
+**Konkrete Empfehlung:** iwd- und IW-Trends-Tonalität im Prompt scharf trennen und je ein Beispiel vorgeben (iwd = journalistisch-zugänglich; IW-Trends = sachlich-methodisch) — sonst entsteht Einheitsbrei. Link-Platzhalter statt erfundener URLs, Zuordnung manuell prüfen.
 **Anschluss-Szenario:** S-IW-006
 
 ### S-IW-006 Policy-Brief / Stellungnahme-Entwurf für Ministerien und Bundestag
@@ -146,6 +151,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Empfehlungen gehen über die Datenlage hinaus → Jede Empfehlung muss durch eine zitierbare Studie gedeckt sein; ungedeckte Aussagen entfernen.
 - Der Brief liest sich wie Lobbyismus statt evidenzbasierte Beratung → Schlussfolgerungen als Ableitung aus Daten rahmen, nicht als ideologische Forderung.
+**Konkrete Empfehlung:** Jede Handlungsempfehlung muss durch eine zitierbare Studie gedeckt sein — ungedeckte Aussagen entfernen, nicht beschönigen. Schlussfolgerungen als Ableitung aus Daten rahmen, niemals als ideologische Forderung, sonst liest sich der Brief wie Lobbyismus statt evidenzbasierter Beratung.
 **Anschluss-Szenario:** S-IW-007
 
 ### S-IW-007 O-Ton- und Zitat-Vorschläge für Forschende
@@ -164,6 +170,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Die pointierte Variante überdehnt die Aussage zur Schlagzeile → Auch die schärfste Variante muss durch einen konkreten Datenpunkt belegbar bleiben.
 - Zitat wird ohne Autoren-Freigabe versendet → Strikte Regel: kein O-Ton ohne persönliche Autorisierung des Forschenden.
+**Konkrete Empfehlung:** Auch die schärfste Zitatvariante muss durch einen konkreten Datenpunkt belegbar bleiben — die Pointe darf die Aussage nicht überdehnen. Strikte Regel: kein O-Ton ohne persönliche Autorisierung des Forschenden; die Pressestelle gibt nur autorisierte Zitate weiter.
 **Anschluss-Szenario:** S-IW-008
 
 ### S-IW-008 Sperrfrist- und Embargo-Kommunikationsplan für einen Studien-Launch
@@ -183,6 +190,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Sperrfristzeitpunkt und Social-Posts kollidieren, Inhalte gehen zu früh raus → Social-Welle erst nach Sperrfristende terminieren und im Plan hart als Abhängigkeit markieren.
 - Pressekit ohne direkte Erreichbarkeit der Ökonomen → Kontaktnummern und Ansprechpartner als Pflichtfeld der Checkliste führen.
+**Konkrete Empfehlung:** Sperrfrist und Social-Welle nicht überschneiden lassen — Social-Posts erst nach Sperrfristende terminieren und die Abhängigkeit hart im Plan markieren. Direkte Kontaktnummern der Ökonomen als Pflichtfeld der Pressekit-Checkliste führen, sonst können Journalisten nicht zeitnah recherchieren.
 **Anschluss-Szenario:** S-IW-009
 
 ### S-IW-009 Kurzzusammenfassung eines Gutachtens für die Geschäftsführung
@@ -202,6 +210,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Limitationen des Gutachtens werden weggekürzt und die Befunde wirken sicherer als sie sind → Methodische Einschränkungen als Pflichtabschnitt erzwingen.
 - Bei Auftragsforschung wird der Auftraggeberkontext ignoriert → Im Entwurf vermerken, dass es sich um beauftragte Forschung handelt, sofern relevant für die Einordnung.
+**Konkrete Empfehlung:** Methodische Limitationen als Pflichtabschnitt erzwingen — werden sie weggekürzt, wirken Befunde sicherer als sie sind. Bei Auftragsforschung den Auftraggeberkontext im Entwurf vermerken, sofern er für die Einordnung relevant ist.
 **Anschluss-Szenario:** S-IW-010
 
 ### S-IW-010 Media-Monitoring der wirtschaftspolitischen Debatte
@@ -221,6 +230,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Deep Research kann mehrere Minuten dauern und ist limitiert → Das Team einplanen lassen und die Suchanker eng fassen, um Läufe zu sparen.
 - Quellen werden halluziniert oder falsch zitiert → Jede Fundstelle muss mit verifizierbarer URL belegt sein; unbelegte Treffer verwerfen.
+**Konkrete Empfehlung:** Deep Research mit eng gefassten Such-Ankern beauftragen, um die wenigen verfügbaren Läufe nicht zu verbrennen. Jede gemeldete Fundstelle braucht eine verifizierbare URL — unbelegte Treffer kompromisslos verwerfen. Richtigstellungen nur nach Freigabe der Kommunikationsleitung.
 **Anschluss-Szenario:** S-IW-011
 
 ### S-IW-011 Zielgruppenspezifische Botschaften (Politik vs. Presse vs. Wirtschaft)
@@ -239,6 +249,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell überdehnt die Aussage in der Wirtschafts-Variante zugunsten der Geldgeber → Neutralitäts-Check: Kern und Zahlen müssen in allen drei Versionen deckungsgleich sein.
 - Drei Versionen widersprechen sich in Details → Single Source of Truth zuerst fixieren, dann erst variieren.
+**Konkrete Empfehlung:** Denselben Kern faktentreu in drei Frames spielen — Politik (Policy-Wirkung), Presse (Nachrichtenwert), Wirtschaft (Wettbewerbsfähigkeit) — die Aussage darf je nach Publikum nicht kippen. Eine Master-Quellenzeile bleibt in allen drei Versionen identisch, damit die gemeinsame Datengrundlage sichtbar ist.
 **Anschluss-Szenario:** S-IW-012
 
 ### S-IW-012 FAQ zu einer kontroversen Studie
@@ -258,6 +269,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Defensive Antworten verschweigen die Auftraggebernähe und wirken unglaubwürdig → Transparenz über Finanzierung und Methodik als bewusste Stärke einbauen.
 - Das Modell erfindet beschwichtigende Zahlen → Zero-Fabrication: nur Werte aus der Studie; fehlende Belege als "nicht belegbar" markieren.
+**Konkrete Empfehlung:** Die zehn unbequemsten Fragen Red-Team-mäßig antizipieren — gerade die unbequemen über Arbeitgebernähe, nicht nur die naheliegenden. Transparenz über Finanzierung und Methodik als bewusste Stärke einbauen statt defensiv zu kaschieren. Zero-Fabrication: nur Werte aus der Studie; fehlende Belege als „nicht belegbar" markieren.
 **Anschluss-Szenario:** S-IW-013
 
 ### S-IW-013 Übersetzung DE↔EN eines IW-Reports
@@ -276,6 +288,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell übersetzt Fachtermini frei und inkonsistent → Glossar als verbindliche Quelle verankern; freie Übersetzung der Kernbegriffe untersagen.
 - Idiomatische Glättung verändert eine fachliche Aussage → Bei Bedeutungsverschiebung lieber wörtlicher bleiben und Stelle zur Prüfung markieren.
+**Konkrete Empfehlung:** Das IW-Glossar als verbindliche Quelle für ordnungspolitische Termini („Tarifautonomie", „Allgemeinverbindlichkeitserklärung") verankern — freie Übersetzung der Kernbegriffe untersagen. Bei Bedeutungsverschiebung lieber wörtlicher bleiben und die Stelle zur menschlichen Endredaktion markieren als idiomatisch glätten und die fachliche Aussage verlieren.
 **Anschluss-Szenario:** S-IW-014
 
 ### S-IW-014 Veranstaltungs- und Pressekonferenz-Vorbereitung
@@ -295,6 +308,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Vorbereitete Antworten überdehnen die Studie unter Erwartungsdruck → Jede Antwort an einen konkreten Datenpunkt binden; spekulative Antworten als solche kennzeichnen.
 - Die schwierigsten Fragen werden ausgespart → Explizit die unbequemsten Fragen anfordern, nicht nur die naheliegenden.
+**Konkrete Empfehlung:** Jede vorbereitete Antwort an einen konkreten Datenpunkt binden — spekulative Antworten als solche kennzeichnen. Explizit die unbequemsten Fragen anfordern, nicht nur die naheliegenden, damit die Sprecher unter Erwartungsdruck nicht überdehnen.
 **Anschluss-Szenario:** S-IW-015
 
 ### S-IW-015 Themen-Hub / Evergreen-Explainer
@@ -314,6 +328,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Daten aus verschiedenen Studienjahrgängen werden vermischt und wirken aktueller als sie sind → Jede Zahl mit Studienjahr und Quelle ausweisen; Veraltungsrisiken markieren.
 - SEO-Optimierung kippt in Keyword-Stuffing auf Kosten der Sachlichkeit → Lesbarkeit und Korrektheit priorisieren; Keywords nur natürlich einbinden.
+**Konkrete Empfehlung:** Jede Zahl mit Studienjahr und Quelle ausweisen — verschiedene Studienjahrgänge dürfen nicht vermischt werden, sonst wirken Daten aktueller als sie sind. Veraltungsgefährdete Zahlen als aktualisierungsbedürftig markieren. Keywords nur natürlich einbinden — Lesbarkeit und Korrektheit vor SEO-Stuffing.
 **Anschluss-Szenario:** S-IW-016
 
 ### S-IW-016 Verteiler-gerechte Pitch-Personalisierung für Journalisten
@@ -333,6 +348,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Für Regionen ohne Datenpunkt wird ein Wert halluziniert → Strikte Regel: kein Pitch mit erfundener Regionalzahl; fehlende Werte leer lassen.
 - Personalisierte Pitches gehen ohne Freigabe an den Verteiler → Versand an Journalisten zwingend mit menschlicher Gegenzeichnung.
+**Konkrete Empfehlung:** Kein Pitch mit erfundener Regionalzahl — fehlende Werte leer lassen oder Pitch ohne Regionalwert versenden. Versand an Journalisten zwingend mit menschlicher Gegenzeichnung; personalisierte Pitches gehen nie automatisch raus.
 **Anschluss-Szenario:** S-IW-017
 
 ### S-IW-017 Konjunkturprognose-Kommunikation
@@ -352,6 +368,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Prognosewerte werden als sichere Tatsachen kommuniziert → Unsicherheitsspanne und Annahmen verpflichtend ausweisen.
 - Die Revision wird dramatisiert ("Absturz", "Boom") → Neutrale, quantifizierte Formulierungen erzwingen statt wertender Schlagworte.
+**Konkrete Empfehlung:** Unsicherheitsspanne und Annahmen verpflichtend ausweisen — Prognosewerte nie als sichere Tatsachen kommunizieren. Neutrale, quantifizierte Formulierungen erzwingen statt wertender Schlagworte wie „Absturz" oder „Boom"; die Revision sachlich einordnen.
 **Anschluss-Szenario:** S-IW-018
 
 ### S-IW-018 Jahresbericht-Bausteine
@@ -371,6 +388,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Selbstdarstellung kippt in werbliche Übertreibung → Aussagen an konkrete Veröffentlichungen und Zahlen binden; Superlative streichen.
 - Dieselbe Studie taucht in mehreren Clustern auf → Im Canvas auf Redundanzen prüfen und eindeutig zuordnen.
+**Konkrete Empfehlung:** Aussagen an konkrete Veröffentlichungen und Zahlen binden, Superlative streichen — Selbstdarstellung darf nicht in werbliche Übertreibung kippen. Im Canvas auf Redundanzen prüfen und dieselbe Studie eindeutig einem Cluster zuordnen.
 **Anschluss-Szenario:** S-IW-019
 
 ### S-IW-019 Redaktionsplan aus dem politischen Kalender
@@ -390,6 +408,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell erfindet politische Termine oder Daten → Nur die vorgegebenen Kalendertermine verwenden; keine Termine halluzinieren.
 - Themen werden zu eng an Tagespolitik gekoppelt und kompromittieren die wahrgenommene Neutralität → Anlassbezug sachlich halten, keine parteipolitische Positionierung.
+**Konkrete Empfehlung:** Nur die vorgegebenen Kalendertermine verwenden — keine Termine halluzinieren lassen. Anlassbezug sachlich halten, keine parteipolitische Positionierung; eine zu enge Kopplung an Tagespolitik kompromittiert die wahrgenommene Neutralität des Hauses.
 **Anschluss-Szenario:** S-IW-020
 
 ### S-IW-020 Wording-Check auf Neutralität und Ordnungspolitik-Konsistenz
@@ -409,6 +428,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Der Check beschränkt sich auf Rechtschreibung statt Tonalität → Prompt muss explizit Tonalität, Alarmismus und ordnungspolitische Konsistenz adressieren.
 - Das Modell glättet jede Schärfe weg und entkernt die Aussage → Ziel ist Neutralität, nicht Verwässerung; belegte, pointierte Aussagen dürfen bestehen bleiben.
+**Konkrete Empfehlung:** Der Prompt muss explizit Tonalität, Alarmismus und ordnungspolitische Konsistenz adressieren — nicht nur Rechtschreibung. Ziel ist Neutralität, nicht Verwässerung; belegte, pointierte Aussagen dürfen bestehen bleiben. Finale Textfreigabe bleibt menschlich.
 **Anschluss-Szenario:** S-IW-021
 
 ### S-IW-021 Faktenfrage: Welche IW-Publikationsformate gibt es und wofür?
@@ -426,6 +446,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell vermengt iwd (journalistisch) mit IW-Report (akademisch) → die Formatgrenzen aus dem Überblick strikt einhalten.
 - Ein nicht gelistetes Format wird frei beschrieben → bei fehlender Deckung den exakten Verweigerungs-String nutzen, nichts erfinden.
+**Konkrete Empfehlung:** Die IW-Formatgrenzen aus dem Überblick strikt einhalten (iwd journalistisch, IW-Report akademisch, IW-Kurzbericht kompakt) — niemals vermengen. Bei einem nicht gelisteten Format den exakten Verweigerungs-String nutzen, statt frei zu beschreiben — nichts erfinden.
 **Anschluss-Szenario:** S-IW-022
 
 ### S-IW-022 Faktenfrage: Welcher Kanal und welche Tonalität für welche Zielgruppe?
@@ -443,6 +464,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Akademische Tonalität wird auf Instagram @iwd_de übertragen → dort gilt zugänglich und visuell, nicht formell-akademisch.
 - Veröffentlichung wird als automatisch angenommen → das Posten bleibt eine menschlich freigegebene Handlung (HITL).
+**Konkrete Empfehlung:** Akademische Tonalität niemals auf Instagram @iwd_de übertragen — dort gilt zugänglich und visuell, nicht formell-akademisch. Veröffentlichung ist immer eine menschlich freigegebene Handlung (HITL), nie automatisch.
 **Anschluss-Szenario:** S-IW-001
 
 ### S-IW-023 Sharepic-Briefing und Zitatkachel-Text aus einer Studienkernaussage
@@ -462,6 +484,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Die Kachel-Verdichtung verliert die Einschränkung der Aussage und suggeriert Allgemeingültigkeit → Bezugsgröße und Studienjahr in der Fußnote zwingend mitführen.
 - Das Zitat wird ohne Quellenfußnote gestaltet und ist später nicht rückführbar → Quellenfußnote als Pflichtelement des Bildbriefings markieren.
+**Konkrete Empfehlung:** Bezugsgröße und Studienjahr in der Quellenfußnote zwingend mitführen — die Kachel-Verdichtung darf nicht in Allgemeingültigkeit kippen. Quellenfußnote als Pflichtelement des Bildbriefings markieren, damit das Zitat später rückführbar bleibt; Post erst nach Redaktions-Freigabe.
 **Anschluss-Szenario:** S-IW-025
 
 ### S-IW-024 Ein-Seiten-Faktenblatt für Journalisten und Politik
@@ -481,6 +504,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Kernzahlen erscheinen ohne Bezugsgröße und werden missverständlich (Prozent vs. Prozentpunkte, absolut vs. relativ) → jede Zahl mit expliziter Bezugsgröße und Einheit ausweisen.
 - Der Methodik-Kasten wird weggelassen, das Blatt wirkt wie PR statt Evidenz → Methodik-Kasten als Pflichtblock führen, auch bei knappem Platz.
+**Konkrete Empfehlung:** Jede Kernzahl mit expliziter Bezugsgröße und Einheit ausweisen (Prozent vs. Prozentpunkte, absolut vs. relativ) — ohne Bezugsgröße werden Daten missverständlich. Methodik-Kasten als Pflichtblock führen, auch bei knappem Platz — sonst wirkt das Blatt wie PR statt Evidenz.
 **Anschluss-Szenario:** S-IW-023
 
 ### S-IW-025 Reel-Skript aus einem Studienergebnis (30–60 Sekunden)
@@ -500,6 +524,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Der Hook übertreibt für Reichweite und kippt in Alarmismus → Hook an einen belegten Datenpunkt binden, reißerische Zuspitzung untersagen.
 - Zahlen werden fürs Tempo grob gerundet und verzerren die Aussage → korrekte Rundungsregel vorgeben und Bezugsgröße im On-Screen-Text mitführen.
+**Konkrete Empfehlung:** Den Hook strikt an einen belegten Datenpunkt binden, reißerische Zuspitzung für Reichweite untersagen — sonst kippt das Reel in Alarmismus. Korrekte Rundungsregel vorgeben und Bezugsgröße im On-Screen-Text mitführen, damit Tempo nicht die Aussage verzerrt.
 **Anschluss-Szenario:** S-IW-027
 
 ### S-IW-026 Sprechzettel und Talking Points für ein Präsidenten-Statement zum Studien-Launch
@@ -520,6 +545,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Talking Points geraten unter Bühnendruck zu Maximalaussagen ohne Deckung → jeden Punkt an einen konkreten Datenpunkt binden, freie Steigerung unterbinden.
 - Der Zettel ist zu schriftsprachlich und nicht frei sprechbar → kurze Hauptsätze und Sie-Form erzwingen, Schachtelsätze vermeiden.
+**Konkrete Empfehlung:** Jeden Talking Point an einen konkreten Datenpunkt binden, freie Steigerung unter Bühnendruck unterbinden — Maximalaussagen ohne Deckung sind tabu. Kurze Hauptsätze in Sie-Form erzwingen, keine Schachtelsätze — der Zettel muss frei sprechbar sein, nicht schriftsprachlich verschachtelt.
 **Anschluss-Szenario:** S-IW-014
 
 ### S-IW-027 LinkedIn-Karussell aus einer Studie (5–7 Slides)
@@ -539,6 +565,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Slides werden mit Text überladen und auf dem Smartphone unlesbar → harte Wortobergrenze je Slide vorgeben und eine Aussage pro Slide erzwingen.
 - Die Slide-Reihenfolge ergibt keine Argumentationslogik, sondern lose Fakten → vor dem Texten die Slide-Dramaturgie als Gliederung festlegen.
+**Konkrete Empfehlung:** Harte Wortobergrenze je Slide (≤18 Wörter) und eine Aussage pro Slide erzwingen — sonst wird das Karussell auf dem Smartphone unlesbar. Slide-Dramaturgie als Gliederung VOR dem Texten festlegen, damit eine Argumentationslogik entsteht statt loser Fakten.
 **Anschluss-Szenario:** S-IW-003
 
 ### S-IW-028 Save-the-Date- und Einladungstexte plus Reminder-Sequenz für eine IW-Veranstaltung
@@ -558,6 +585,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell erfindet Redner, Uhrzeiten oder Programmpunkte → ausschließlich vorgegebene Eckdaten verwenden, Lücken als Platzhalter markieren.
 - Die Reminder wirken aufdringlich und beschädigen den seriösen Ton → Frequenz auf zwei begrenzen und sachlich-serviceorientiert formulieren.
+**Konkrete Empfehlung:** Ausschließlich vorgegebene Eckdaten verwenden — keine Redner, Uhrzeiten oder Programmpunkte erfinden lassen; Lücken als Platzhalter markieren. Reminder-Frequenz auf zwei begrenzen und sachlich-serviceorientiert formulieren, damit der seriöse Ton nicht durch Aufdringlichkeit beschädigt wird.
 **Anschluss-Szenario:** S-IW-014
 
 ### S-IW-029 Plattform-native Kurzpost-Varianten aus einem Kernbefund (X, Bluesky, LinkedIn)
@@ -577,6 +605,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Die X-Variante verkürzt den Befund so stark, dass die Bezugsgröße verloren geht → Kernzahl und Bezug auch in der kürzesten Variante mitführen.
 - Identischer Text wird auf allen Plattformen gepostet und wirkt automatisiert → je Plattform Länge und Register anpassen, nicht bloß kopieren.
+**Konkrete Empfehlung:** Kernzahl und Bezugsgröße auch in der kürzesten Variante (X) mitführen — sonst geht der Befund in der Verkürzung verloren. Je Plattform Länge und Register echt anpassen, nicht denselben Text duplizieren — sonst wirkt es automatisiert und untergräbt die Plattform-Konvention.
 **Anschluss-Szenario:** S-IW-011
 
 ### S-IW-030 Reaktiv-Statement zu einer aktuellen wirtschaftspolitischen Entwicklung
@@ -596,6 +625,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Unter Zeitdruck wird zu einer Entwicklung Stellung genommen, die die vorhandene Forschung nicht deckt → nur belegte Aussagen treffen; Deckungslücke offen markieren oder auf Statement verzichten.
 - Das Statement rutscht in tagespolitische Bewertung und gefährdet die Neutralität → Aussagen als Ableitung aus Daten rahmen, keine Partei- oder Personenwertung.
+**Konkrete Empfehlung:** Nur belegte Aussagen treffen — wenn die vorhandene Forschung den Anlass nicht deckt, die Deckungslücke offen markieren oder auf das Statement ganz verzichten. Aussagen als Ableitung aus Daten rahmen, keine Partei- oder Personenwertung — Tagespolitik gefährdet die Neutralität.
 **Anschluss-Szenario:** S-IW-010
 
 ### S-IW-031 iwd-Teaser mit SEO-Title und Meta-Description aus einem Langfassungs-Artikel
@@ -615,6 +645,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Title oder Description versprechen mehr als der Artikel liefert → Aussagen strikt am Artikelinhalt spiegeln, keine überzogenen Versprechen.
 - Zeichengrenzen werden überschritten und in der Suchergebnisliste abgeschnitten → Längen hart prüfen (Title ≤60, Description ≤155 Zeichen).
+**Konkrete Empfehlung:** Title und Description müssen den Artikelinhalt strikt spiegeln — keine überzogenen Versprechen, die der Text nicht einlöst. Zeichengrenzen hart prüfen (Title ≤60, Description ≤155 Zeichen), sonst werden sie in den Suchergebnissen abgeschnitten. Keywords natürlich einbinden, kein Stuffing.
 **Anschluss-Szenario:** S-IW-002
 
 ### S-IW-032 Rundfunk-O-Ton-Vorbereitung mit zitierfähigen Sätzen und Brückensätzen
@@ -634,6 +665,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Die Sätze sind schriftsprachlich verschachtelt und im Radio nicht sprechbar → kurze Hauptsätze in gesprochener Sprache erzwingen.
 - Brückensätze weichen Fragen aus und wirken wie Ablenkung → Brücken sachlich an die belegte Kernaussage koppeln, nicht das Thema verlassen.
+**Konkrete Empfehlung:** Kurze Hauptsätze in gesprochener Sprache erzwingen — schriftsprachlich verschachtelte Sätze sind im Radio nicht sprechbar. Brückensätze sachlich an die belegte Kernaussage koppeln, nicht das Thema verlassen — sonst wirken sie wie Ablenkung statt souveräner Rückführung.
 **Anschluss-Szenario:** S-IW-007
 
 ### S-IW-033 EN-Executive-Summary und EN-Press-Note aus einem deutschen IW-Report
@@ -653,6 +685,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Ordnungspolitische Termini werden frei und inkonsistent übersetzt → Glossar als verbindliche Quelle verankern, freie Übertragung der Kernbegriffe untersagen.
 - Die englische Fassung glättet eine fachliche Aussage idiomatisch weg → bei Bedeutungsverschiebung wörtlicher bleiben und Stelle zur Prüfung markieren.
+**Konkrete Empfehlung:** Das IW-Glossar als verbindliche Quelle für ordnungspolitische Termini verankern — freie Übertragung der Kernbegriffe untersagen. Bei Bedeutungsverschiebung wörtlicher bleiben und die Stelle zur fachkundigen Endredaktion markieren statt idiomatisch zu glätten und die Aussage zu verlieren.
 **Anschluss-Szenario:** S-IW-013
 
 ### S-IW-034 Redaktionsplan aus Sitzungswochen und Gesetzgebungsvorhaben ableiten
@@ -672,6 +705,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Modell erfindet Sitzungswochen, Gesetzentwürfe oder Verfahrensstände → ausschließlich vorgegebene Termine nutzen, fehlende als Lücke markieren.
 - Themen werden zu eng an ein Vorhaben gekoppelt und kompromittieren die Neutralität → Anlassbezug sachlich halten, keine parteipolitische Positionierung.
+**Konkrete Empfehlung:** Ausschließlich vorgegebene Sitzungswochen und Gesetzentwürfe nutzen — keine Termine halluzinieren lassen, fehlende als Lücke markieren. Anlassbezug sachlich halten, keine parteipolitische Positionierung — sonst kompromittiert der Plan die wahrgenommene Neutralität.
 **Anschluss-Szenario:** S-IW-019
 
 ### S-IW-035 Jahresbericht-Narrativ aus dem Jahres-Studienportfolio synthetisieren
@@ -692,6 +726,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Das Narrativ konstruiert eine rote Linie, die die Studien so nicht hergeben → Leitthese und Verknüpfungen aus belegten Befunden ableiten, keine nachträgliche Bedeutungszuschreibung.
 - Die Highlight-Auswahl bleibt unbegründet und wirkt beliebig → Auswahlkriterien je Highlight transparent ausweisen.
+**Konkrete Empfehlung:** Leitthese und Cluster-Verknüpfungen ausschließlich aus belegten Befunden ableiten — keine nachträgliche Bedeutungszuschreibung, die die Studien so nicht hergeben. Auswahlkriterien je Highlight transparent ausweisen (Resonanz, Relevanz, Datenstärke), sonst wirkt die Auswahl beliebig.
 **Anschluss-Szenario:** S-IW-018
 
 ### S-IW-036 Zitatfreigabe-Workflow für O-Töne und Pressezitate
@@ -711,6 +746,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Eine nachträglich geänderte Zitatfassung geht ohne erneute Freigabe raus → Regel verankern, dass jede Änderung nach Freigabe eine neue Autorisierung erzwingt.
 - Verantwortlichkeiten bleiben unklar und Zitate versanden im Status → je Schritt genau einen Verantwortlichen und ein Pflicht-Statusfeld führen.
+**Konkrete Empfehlung:** Regel verankern, dass jede nachträgliche Änderung am Zitat eine neue Autorisierung des genannten Forschenden erzwingt — sonst gehen modifizierte Fassungen ohne Freigabe raus. Je Schritt genau einen Verantwortlichen und ein Pflicht-Statusfeld führen, damit Zitate nicht im Status versanden.
 **Anschluss-Szenario:** S-IW-007
 
 ### S-IW-037 Social-Infografik-Serie aus einem Befund mit konsistentem Bildbriefing
@@ -730,6 +766,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Die drei Grafiken nutzen uneinheitliche Skalen und sind nicht vergleichbar → einheitliche Bezugsgrößen und Skalen über die Serie festschreiben.
 - Multi-Sheet-Tabellen im RAG-Wissensordner führen zu Lesefehlern → tabellarische Daten ausschließlich im Data Analyst verarbeiten.
+**Konkrete Empfehlung:** Einheitliche Bezugsgrößen und Skalen über alle drei Grafiken festschreiben — sonst sind die Grafiken nicht vergleichbar und die Erzählung bricht. Tabellarische Daten ausschließlich im Data Analyst verarbeiten, nie im RAG-Wissensordner — Multi-Sheet-Excel führt dort zu Lesefehlern.
 **Anschluss-Szenario:** S-IW-004
 
 ### S-IW-038 Geschäftsführungs-Briefing mit Entscheidungs-Optionen
@@ -750,6 +787,7 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Die Empfehlung geht über die Datenlage hinaus und wird zur Meinung → Empfehlung strikt aus belegten Befunden ableiten, Annahmen offenlegen.
 - Optionen werden als Scheinalternativen formuliert, die faktisch auf eine hinauslaufen → echte, unterscheidbare Handlungswege mit realen Trade-offs ausweisen.
+**Konkrete Empfehlung:** Die Empfehlung strikt aus belegten Befunden ableiten und Annahmen offenlegen — sonst wird die Empfehlung zur Meinung. Echte, unterscheidbare Handlungswege mit realen Trade-offs ausweisen, keine Scheinalternativen, die faktisch auf eine Option hinauslaufen.
 **Anschluss-Szenario:** S-IW-009
 
 ### S-IW-039 Laienverständliche Förder-Kommunikation aus einem Antragstext
@@ -769,4 +807,5 @@ Die folgenden Szenarien übertragen die generische Langdock-Praxis (00–10) auf
 **Fallstricke (≥2 spezifisch):**
 - Geplante Projektziele werden als bereits erreichte Ergebnisse dargestellt → noch offene Ziele klar als 'geplant' kennzeichnen, keine vorweggenommenen Wirkungen.
 - Der Förderhinweis und etwaige Auftraggeber fehlen, die Darstellung wirkt intransparent → Förderquelle und Projektkontext als Pflichtangabe führen.
+**Konkrete Empfehlung:** Geplante Projektziele klar als „geplant" kennzeichnen — niemals als bereits erreichte Ergebnisse darstellen. Förderquelle und Auftraggeber-Kontext als Pflichtangabe führen — fehlende Transparenz lässt die Darstellung wie verdeckte Eigenwerbung wirken.
 **Anschluss-Szenario:** S-IW-002
