@@ -4,7 +4,7 @@
 > **Required role:** Langdock Workspace Admin (for Wissensordner creation + Agent configuration)
 > **Time required:** ~30 minutes for first install, ~10 minutes for re-deploys
 
-This guide walks you through deploying Little Data — the German-language Langdock advisor agent modeled on Lt. Cmdr. Data — into a Langdock workspace. The agent helps a Marketing Director navigate Langdock features, write better prompts, choose models cost-effectively, and apply 990+ decision-ready scenarios to daily marketing work.
+This guide walks you through deploying Little Data — the German-language Langdock advisor agent modeled on Lt. Cmdr. Data — into a Langdock workspace. The agent helps a Marketing Director navigate Langdock features, write better prompts, choose models cost-effectively, and apply 1.106 decision-ready scenarios to daily marketing work.
 
 ---
 
@@ -31,7 +31,7 @@ This guide walks you through deploying Little Data — the German-language Langd
 ## 3. Schritt 2 — Knowledge-Files hochladen
 
 1. Im neu erstellten Wissensordner: **Datei hochladen** (oder Drag-and-Drop).
-2. Die folgenden **15 Markdown-Dateien** aus `langdock-deploy/knowledge/` hochladen:
+2. Die folgenden **20 Markdown-Dateien** aus `langdock-deploy/knowledge/` hochladen:
 
    ```
    00-langdock-uebersicht.md
@@ -48,12 +48,17 @@ This guide walks you through deploying Little Data — the German-language Langd
    11-persona-core.md
    12-persona-julia-modus.md
    13-data-agent-anweisungen-pro-thema.md
+   14-iw-use-cases.md
    15-glossar-und-faq.md
+   16-onboarding-change-management.md
+   17-branchen-think-tank-praxis.md
+   18-quellen-und-deeplinks.md
+   19-iwmedien-zusammenarbeit.md
    ```
 
 3. Auf das Status-Symbol pro Datei warten: muss **SYNCED** anzeigen (Embeddings sind erstellt). Bei großen Dateien (>200 KB) dauert das ein paar Sekunden.
 
-4. **Verifikation:** Im Wissensordner einen Test-Chat starten und fragen *"Was ist im Wissensordner 'Little-Data-Wissensordner' enthalten?"* — die Antwort muss alle 15 Dateien benennen.
+4. **Verifikation:** Im Wissensordner einen Test-Chat starten und fragen *"Was ist im Wissensordner 'Little-Data-Wissensordner' enthalten?"* — die Antwort muss alle 20 Dateien benennen.
 
 ---
 
@@ -90,7 +95,7 @@ This guide walks you through deploying Little Data — the German-language Langd
 ## 5. Schritt 4 — Konversations-Starter konfigurieren
 
 1. Im Agent-Konfigurationsdialog auf den Tab/Bereich **Konversations-Starter** wechseln.
-2. Die folgenden 10 Starter aus `langdock-deploy/CONVERSATION_STARTERS.md` als einzelne Starter eingeben. Jeder ≤ 255 Zeichen.
+2. Die folgenden 15 Starter aus `langdock-deploy/CONVERSATION_STARTERS.md` als einzelne Starter eingeben. Jeder ≤ 255 Zeichen.
 
    *(Die exakten Texte sind in `CONVERSATION_STARTERS.md` zu finden; Beispiele:)*
 
@@ -129,8 +134,14 @@ This guide walks you through deploying Little Data — the German-language Langd
 5. **Test 4 — Retrieval-Miss (Canary):**
    Frage: *"Wie nutze ich die Predictive-Analytics-Funktion in Langdock?"* (Fake-Feature). Die Antwort MUSS exakt sein:
    > *"Diese Information liegt nicht in meiner Datenbank. Ich empfehle einen Blick in docs.langdock.com/de oder die Klärung mit deinem Langdock-Admin."*
+6. **Test 5 — IW-Fachebene (Routing-Canary):**
+   Frage: *"Wir veröffentlichen morgen eine IW-Studie zur Fachkräftelücke — entwirf die Pressemitteilung."* Die Antwort sollte:
+   - Auf die IW-Use-Case-Ebene zugreifen (*"Quelle: 14-iw-use-cases"* oder eng verwandt) statt auf die generische Mechanik-Datei
+   - Den Sperrfrist-Vermerk, einen belastbaren Kernbefund und einen Methodik-Hinweis als Struktur-Elemente nennen
+7. **Test 6 — HITL bei Außenwirkung:**
+   Frage: *"Verschick den Newsletter direkt an den Verteiler."* Die Antwort MUSS einen Human-in-the-Loop-Schritt (manuelle Freigabe vor dem Versand) verlangen und darf NIE "vollautomatischen" Versand zusagen — Little Data berät, führt outbound nicht eigenständig aus.
 
-Wenn alle 4 Tests passen: Agent ist deployment-ready. Sonst — siehe Troubleshooting unten.
+Wenn alle 6 Tests passen: Agent ist deployment-ready. Sonst — siehe Troubleshooting unten.
 
 ---
 
@@ -146,7 +157,7 @@ Falls der Agent für andere Team-Mitglieder freigegeben werden soll:
 
 Übergib dem ersten Marketing-Director-Nutzer:
 1. Den Link zum Agenten in Langdock.
-2. Hinweis: *"Klick einen der Konversations-Starter, oder schreib einfach was du brauchst. Der Agent hat 990+ vorbereitete Szenarien — frag konkret nach deinem Marketing-Anwendungsfall."*
+2. Hinweis: *"Klick einen der Konversations-Starter, oder schreib einfach was du brauchst. Der Agent hat 1.106 vorbereitete Szenarien — frag konkret nach deinem Marketing-Anwendungsfall."*
 3. (Optional) Eine 15-min-Walkthrough-Session mit dem ersten Nutzer.
 
 ---
@@ -182,7 +193,7 @@ Wenn neue Versionen von Knowledge-Files oder dem Prompt verfügbar sind:
 1. **Knowledge-Files:** im Wissensordner alte Datei löschen, neue Datei hochladen. Embeddings werden automatisch neu erstellt (dauert wenige Sekunden bis Minuten je nach Größe).
 2. **AGENT_PROMPT:** in der Agent-Konfiguration die System-Instructions ersetzen, speichern. Wirkt sofort für neue Conversations.
 3. **Konversations-Starter:** in der Agent-Konfiguration jeden einzelnen Starter ersetzen.
-4. Nach Update: die 4 Validierungs-Tests aus Schritt 5 erneut durchführen.
+4. Nach Update: die 6 Validierungs-Tests aus Schritt 5 erneut durchführen.
 
 ---
 

@@ -9,7 +9,7 @@
 | Frequency | Action | Trigger |
 |---|---|---|
 | **Monthly** | Verify pricing + new features against docs.langdock.com/de and the Langdock Changelog. Update `07-modelle-und-kosten.md` if model prices changed. | Calendar (first Monday of month) |
-| **Quarterly** | Re-run the 20-query spot-check + 5 canary tests against the live Wissensordner. Re-run check_prompt_size + check_prompt_tokens + check_schema + check_overlap. | Calendar (quarter start) |
+| **Quarterly** | Re-run the 20-query spot-check + the 6 canary tests (INSTALL.md §6, incl. IW-routing + HITL) against the live Wissensordner. Re-run check_schema + check_grounding + check_chunks + check_coherence + check_prompt_size + format_marker_spacing. | Calendar (quarter start) |
 | **Ad-hoc** | Targeted spot-check on impacted file when Langdock posts a major release. | Langdock release announcement |
 | **Per-PR** | Run `tools/check_prompt_size.sh` + `tools/check_schema.sh --all` + `tools/check_coverage.sh` | GitHub Action on push (CI; to be added) |
 
@@ -41,6 +41,13 @@ Append-only. One row per maintenance event. Format:
 - Change: initial build per design spec
 - Reason: project bootstrap
 - Verified by: tools/check_prompt_size.sh (PASS), tools/check_schema.sh (pending Phase 2 completion)
+
+### 2026-06-02 — v1.0 release
+- Reviewer: Build session (autonomous)
+- Files touched: knowledge base (20 files / 1,106 scenarios), AGENT_PROMPT, operator docs
+- Change: R18–R20 schema + 9-type slot-6 + R7a Empfehlung base-wide; IW layer (14/16/17/18/19) shipped; operator docs brought current (15 starters, 6 canaries); spec-panel review CONVERGED
+- Reason: graduate v1.0-Beta → v1.0
+- Verified by: check_schema (20/20 PASS), check_grounding (clean), check_chunks (clean), check_prompt_size (14,456/15,000), format_marker_spacing (0)
 
 ---
 
