@@ -2619,8 +2619,8 @@
     {
       "name": "04-workflows.md",
       "kind": "content",
-      "lines": 1618,
-      "bytes": 198496,
+      "lines": 1624,
+      "bytes": 201395,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -2756,7 +2756,7 @@
           "noun": "Kampagnen-KPIs",
           "anschluss": "S-WF-018",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-018",
@@ -2764,7 +2764,7 @@
           "noun": "Workflow",
           "anschluss": "S-WF-019",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-019",
@@ -2772,7 +2772,7 @@
           "noun": "Workflow",
           "anschluss": "S-WF-020",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-020",
@@ -2780,15 +2780,15 @@
           "noun": "Quartalsbericht",
           "anschluss": "S-WF-021",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-021",
           "trigger": "Das Team diskutiert, ob ein neuer Prozess als deterministischer Workflow oder als zwei Agenten im Chat-Dialog aufgebaut werden soll — die Entscheidung ist unklar.",
           "noun": "Prozess",
           "anschluss": "S-WF-022",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-WF-022",
@@ -2796,7 +2796,7 @@
           "noun": "Intent-Daten-Tool",
           "anschluss": "S-WF-023",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-023",
@@ -2804,7 +2804,7 @@
           "noun": "Workflows",
           "anschluss": "S-WF-024",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-024",
@@ -2812,7 +2812,7 @@
           "noun": "Produktive",
           "anschluss": "S-WF-025",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-025",
@@ -3265,10 +3265,11 @@
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 0,
+      "advice_style": 1,
       "types": {
-        "W": 16,
-        "P": 64
+        "W": 23,
+        "D": 1,
+        "P": 56
       }
     },
     {
@@ -11779,14 +11780,14 @@
     }
   ],
   "total_scenarios": 1106,
-  "total_advice": 10,
+  "total_advice": 11,
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 970,
-    "W": 16,
-    "K": 110,
-    "D": 10
+    "P": 962,
+    "W": 23,
+    "D": 11,
+    "K": 110
   },
   "typed": 1106
 }

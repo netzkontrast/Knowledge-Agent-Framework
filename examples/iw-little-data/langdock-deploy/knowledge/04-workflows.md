@@ -406,12 +406,13 @@ Vorgehen:
 2. Einen AI-Node die Daten gegen den 7-Tage-Durchschnitt vergleichen lassen und Ausschläge mit festem Structured-Output-Schema (Metrik, Abweichung %, Schwere) identifizieren.
 3. Einen Condition-Node nur bei Abweichungen ≥ 20 % eine Slack-Eskalation auslösen lassen — darunter stille Protokollierung.
 4. Die Slack-Nachricht mit konkreten Werten, betroffener Kampagne und einem Empfehlungs-Satz befüllen — kein automatisches Steuern der Kampagne.
-Prompt:
-> "Du bist Performance-Monitoring-Architect. Entwirf einen täglichen Anomalie-Erkennungs-Workflow für Kampagnen-KPIs. Kontext: 7-Tage-Vergleich, Eskalation nur ab 20% Abweichung, keine automatische Kampagnen-Anpassung. Format: Scheduled-Trigger, Analytics-Integration, AI-Node mit Abweichungs-Schema, Condition, Slack-Action."
+Workflow: Scheduled-Trigger (Werktagmorgen) → Analytics-Integration (KPI-Daten) → AI-Node (Vergleich gegen 7-Tage-Schnitt gleicher Wochentage, Structured Output: Metrik, Abweichung %, Schwere) → Condition-Node (≥20 % → eskalieren, sonst stilles Protokoll) → Slack-Action (Werte + Kampagne + Empfehlungssatz). Kein automatisches Kampagnen-Steuern.
+Budget: Ein Lauf pro Werktag; Efficient-Default; nur Tagesdelta verarbeiten. (Quelle: sources/10 S-072)
 Artefakt: Ein Anomalie-Workflow-Entwurf mit Abweichungs-Schema, Schwellenwert-Definition und Slack-Nachrichten-Template.
 Fallstricke:
 - Saisonale Schwankungen (z. B. Feiertage) lösen Fehlalarme aus → den Vergleichszeitraum auf gleichartige Wochentage beschränken.
 - Jede kleine Abweichung löst Slack-Flut aus → den Condition-Node auf einen klar definierten Schwellenwert halten und ihn dokumentieren.
+Empfehlung: Vergleiche nur gleichartige Wochentage, sonst lösen Wochenend- und Feiertags-Muster Fehlalarme aus. Halte den Eskalations-Schwellenwert (≥20 %) explizit und dokumentiert — ein unscharfer Wert produziert entweder Slack-Flut oder verpasste Anomalien.
 Anschluss: S-WF-018
 
 ### S-WF-018 Workflow-Fehlerbehandlung und Dead-Letter-Queue-Muster (Manual Trigger)
@@ -425,12 +426,13 @@ Vorgehen:
 2. Im Fehler-Pfad einen Action-Node den fehlerhaften Datensatz (Input + Fehlermeldung + Timestamp) in ein Fehler-Protokoll-Sheet schreiben lassen.
 3. Einen Slack-Action-Node sofortige Benachrichtigung an den Workflow-Admin auslösen lassen — mit Workflow-Name, Fehlertyp und Link zum Log.
 4. Einen HITL-Node am Ende des Fehler-Pfads einplanen, der die manuelle Nachverarbeitung der fehlerhaften Items initiiert.
-Prompt:
-> "Du bist Workflow-Reliability-Architect. Entwirf ein Fehlerbehandlungs-Muster für einen produktiven Marketing-Workflow. Kontext: Fehler dürfen nicht still verschwinden, manuelle Nachverarbeitung muss möglich sein. Format: Error-Branch-Architektur, Dead-Letter-Sheet-Action, Slack-Alert-Node, HITL für Nachverarbeitung."
+Workflow: Manual-Trigger → kritische Action-Nodes je mit Error-Branch (kein Abbruch, Umleitung in Fehler-Pfad) → Fehler-Pfad: Action-Node (Datensatz + Fehlermeldung + Timestamp in Fehler-Log-Sheet) → Slack-Alert (Workflow-Name, Fehlertyp, Log-Link) → HITL-Node (manuelle Nachverarbeitung). Retry-Limit max. 2.
+Budget: Fehlerbehandlung verursacht nur im Fehlerfall Kosten; Retry-Limit verhindert Kosten-Loops. (Quelle: A-40, 04-workflows)
 Artefakt: Ein Fehlerbehandlungs-Architektur-Entwurf mit Error-Branch-Logik, Log-Schema und Slack-Alert-Template.
 Fallstricke:
 - Kein Error-Branch an der richtigen Node → Fehler propagieren still und korrumpieren Downstream-Daten; jeden External-Call absichern.
 - Das Fehler-Log füllt sich mit Duplikaten, wenn der Workflow zu oft retried → eine Retry-Limit-Regel (max. 2 Versuche) vorab definieren.
+Empfehlung: Sichere jeden externen Call mit einem Error-Branch — ohne ihn verschwinden Fehler still und korrumpieren Downstream-Daten. Definiere ein Retry-Limit (max. 2), sonst flutet ein dauerhaft fehlschlagender Call das Fehler-Log mit Duplikaten.
 Anschluss: S-WF-019
 
 ### S-WF-019 Workflow-Teststrategien vor Produktiv-Rollout (Manual Trigger)
@@ -444,12 +446,13 @@ Vorgehen:
 2. Phase 2 — Dry-Run: Den Workflow mit echten Daten ausführen, aber alle externen Actions (CRM-Update, E-Mail-Versand) auf Mock-Endpunkte umleiten.
 3. Phase 3 — Canary-Release: Den Workflow für 5–10 % realer Inputs live schalten und einen HITL-Node die ersten Outputs validieren lassen.
 4. Erst nach drei fehlerfreien Canary-Zyklen den Workflow vollständig in Produktion bringen.
-Prompt:
-> "Du bist Workflow-QA-Architect. Entwirf eine dreistufige Test-Strategie für einen neuen Marketing-Workflow vor dem Produktiv-Rollout. Kontext: Keine Live-Kunden-Interaktion während der Tests, HITL für Canary-Validierung. Format: Teststufen mit Beschreibung, synthetische Test-Cases, Canary-Kriterien."
+Workflow: Phase 1 Unit-Test (synthetische Edge-Case-Inputs: leer/zu lang/Sonderzeichen, jede Node prüfen) → Phase 2 Dry-Run (echte Daten, externe Actions auf Mock-Endpunkte) → Phase 3 Canary (5–10 % realer Inputs, HITL validiert erste Outputs) → Vollproduktion erst nach 3 fehlerfreien Canary-Zyklen.
+Budget: Testläufe mit Efficient-Default günstig halten; Mock-Endpunkte vermeiden reale Action-Kosten. (Quelle: A-40)
 Artefakt: Eine Workflow-Test-Strategie mit drei Phasen, Beispiel-Test-Cases pro Phase und Canary-Freigabe-Kriterien.
 Fallstricke:
 - Direkt auf Produktiv-Daten testen → real Kunden-E-Mails oder CRM-Einträge werden ungewollt modifiziert; Mock-Endpunkte sind nicht optional.
 - Kein Canary-Release → Fehler treten erst unter voller Last auf; 5 % Canary-Traffic entdeckt Skalierungs-Probleme rechtzeitig.
+Empfehlung: Teste nie direkt auf Produktiv-Daten — Mock-Endpunkte für CRM und E-Mail sind nicht optional, sonst modifizierst du echte Kundeneinträge. Ein 5-%-Canary-Release entdeckt Skalierungsprobleme, bevor sie unter Volllast auftreten.
 Anschluss: S-WF-020
 
 ### S-WF-020 Workflow-ROI-Messung und Reporting für den CFO (Scheduled Trigger)
@@ -463,12 +466,13 @@ Vorgehen:
 2. Einen AI-Node die Rohdaten in drei CFO-KPIs übersetzen lassen: Lohnkosten-Äquivalent (Token-Verbrauch × Stunden-Basis), Time-to-Brief-Reduktion, Output-Volumen-Steigerung.
 3. Den Output als Structured-Output-Tabelle erzeugen, die direkt in das Quartalsbericht-Template einpastet werden kann.
 4. Einen HITL-Node die Interpretation durch die Marketing-Leitung freigeben lassen, bevor der Report ans CFO-Büro geht.
-Prompt:
-> "Du bist Marketing-ROI-Architect. Entwirf einen monatlichen Workflow-ROI-Reporting-Workflow für den CFO. Kontext: Drei KPIs (Lohnkosten-Äquivalent, Time-to-Brief, Output-Volumen), Zahlen aus der Usage-API, Interpretation durch Marketing-Leitung freigegeben. Format: Scheduled-Trigger, Usage-API-Integration, AI-Node mit KPI-Schema, HITL."
+Workflow: Scheduled-Trigger (Monatsende) → Usage-Export-API (Lauf-Anzahl, Token-Verbrauch, Ausführungszeiten) → AI-Node (drei CFO-KPIs: Lohnkosten-Äquivalent, Time-to-Brief-Reduktion, Output-Volumen; Structured-Output-Tabelle) → HITL-Node (Marketing-Leitung gibt Interpretation frei) → Quartalsbericht-Template.
+Budget: Ein Aggregations-Lauf pro Monat; Efficient-Default. (Quelle: A-01, 06-api-und-deployment)
 Artefakt: Ein ROI-Reporting-Workflow-Entwurf mit KPI-Definitions-Schema und einem Quartalsbericht-Template.
 Fallstricke:
 - Der AI-Node überschätzt Einsparungen durch unrealistische Stunden-Baseline → die Basis-Stundenrate für das Lohnkosten-Äquivalent mit dem CFO vorab abstimmen.
 - Usage-API-Daten fehlen für ältere Workflows → historische Daten frühzeitig exportieren und im Reporting-Sheet kumulieren, bevor der erste Bericht fällig ist.
+Empfehlung: Stimme die Basis-Stundenrate fürs Lohnkosten-Äquivalent vorab mit dem CFO ab — eine unrealistische Baseline lässt den AI-Node Einsparungen überschätzen und untergräbt die Glaubwürdigkeit. Exportiere historische Usage-Daten früh, sonst fehlt dem ersten Bericht die Vergleichsbasis.
 Anschluss: S-WF-021
 
 ### S-WF-021 Batch-Verarbeitung vs. Agenten-Chat-Sandwich — Entscheidungsworkflow (Manual Trigger)
@@ -481,8 +485,7 @@ Vorgehen:
 1. Die vier Entscheidungsdimensionen prüfen: (a) Volumen >100 Items, (b) identisches Template pro Item, (c) JSON-Output erforderlich, (d) cron-getriggerter Lauf → wenn alle vier JA: Workflow.
 2. Wenn mindestens zwei Dimensionen NEIN: Agent-Chat-Sandwich als Prototyp-Phase empfehlen — mit explizitem Hinweis, dass Chat-Sandwich kein Produktionssystem ist.
 3. Eine Break-even-Tabelle ausgeben: Workflow amortisiert Setup-Kosten ab ca. 50 Runs/Monat; darunter lohnt sich Agent-Chat.
-Prompt:
-> "Du bist Workflow-vs-Agent-Entscheidungsarchitekt. Analysiere den beschriebenen Prozess und empfehle Workflow oder Agent-Chat-Modus. Kontext: Vier Kriterien (Volumen, Determiniertheit, JSON-Output, Cron), Break-even bei 50 Runs/Monat. Format: Entscheidungsmatrix-Tabelle, Empfehlung mit Begründung, Break-even-Kalkulation."
+Empfehlung: Wähle den Workflow nur, wenn alle vier Kriterien zutreffen: Volumen über 100 Items, identisches Template pro Item, JSON-Output nötig, cron-getriggert. Treffen zwei oder mehr nicht zu, baue zunächst ein Agent-Chat-Sandwich als Prototyp — betreibe es aber nie als Produktionssystem (kein Monitoring, keine Fehlerbehandlung, keine Kostenkontrolle). Break-even: ein Workflow amortisiert seine Setup-Kosten ab rund 50 Läufen pro Monat; darunter lohnt sich Agent-Chat. Häufigster Fehler ist ein komplexer Workflow für einen Prozess, der nur 5-mal im Monat läuft — die Setup-Kosten amortisieren sich nie.
 Artefakt: Eine Entscheidungsmatrix mit vier Kriterien, Break-even-Kalkulation und einer begründeten Architektur-Empfehlung.
 Fallstricke:
 - Das Team baut sofort einen komplexen Workflow für einen Prozess, der nur 5× pro Monat läuft → Setup-Kosten nie amortisiert; Agent-Chat ist hier die richtige Wahl.
@@ -500,12 +503,13 @@ Vorgehen:
 2. Einen AI-Node die Intent-Themen gegen den Content-Bibliotheks-Wissensordner matchen lassen und das relevanteste Asset als Empfehlung ausgeben.
 3. Einen Condition-Node prüfen lassen, ob der Intent-Spike einen vordefinierten Score-Schwellenwert übersteigt — nur dann Eskalation.
 4. Einen HITL-Node dem Account-Executive die Empfehlung vorlegen lassen (Asset + Kontext + vorgeschlagener Outreach-Text) — kein automatischer Versand.
-Prompt:
-> "Du bist ABM-Workflow-Architekt. Entwirf einen Intent-Signal-Eskalations-Workflow. Kontext: Webhook vom Intent-Tool, Content-Matching gegen Wissensordner, HITL vor Outreach, kein automatischer Kundenkontakt. Format: Webhook-Trigger, AI-Matching-Node, Score-Condition, HITL-Empfehlung, Slack-Action."
+Workflow: Webhook-Trigger (Intent-Provider, Payload: Account + Intent-Themen) → AI-Node (Themen gegen Content-Bibliothek-Wissensordner matchen, relevantestes Asset, nur bei ≥2 Keyword-Überlappung) → Condition-Node (Score-Schwellenwert übersteigen?) → HITL-Node (Account-Executive: Asset + Kontext + Outreach-Vorschlag). Kein automatischer Versand.
+Budget: Pro Signal ein Matching-Aufruf; Efficient-Default; nur oberhalb der Score-Schwelle. (Quelle: sources/10 S-072)
 Artefakt: Ein Intent-Eskalations-Workflow-Entwurf mit Score-Schwellenwert-Regel, Content-Matching-Logik und HITL-Präsentations-Template.
 Fallstricke:
 - Zu breite Intent-Themen führen zur Empfehlung generischer Assets → den AI-Node anweisen, nur Assets mit thematischer Überlappung ≥ 2 Keywords zu empfehlen.
 - Der Workflow feuert für jeden minimalen Intent-Anstieg → den Score-Schwellenwert klar definieren und im Condition-Node dokumentieren.
+Empfehlung: Lass den AI-Node nur Assets mit mindestens zwei thematischen Keyword-Überlappungen empfehlen, sonst landen generische Inhalte beim Account-Executive. Definiere den Intent-Score-Schwellenwert explizit im Condition-Node, sonst feuert der Workflow bei jedem minimalen Anstieg.
 Anschluss: S-WF-023
 
 ### S-WF-023 Workflow-Chaining — Ausgabe eines Workflows als Trigger des nächsten (Webhook Trigger)
@@ -519,12 +523,13 @@ Vorgehen:
 2. Ein Structured-Output-Handshake-Schema definieren, das beide Workflows verbindet: exakte Feldnamen, Typen und Pflichtfelder dokumentieren.
 3. Einen HITL-Node zwischen den Chains als optionales Gate einplanen — aktiviert für kritische Übergaben, deaktivierbar für vollständig validierte Pipelines.
 4. Im zweiten Workflow einen Validation-Condition-Node vorschalten, der das empfangene Payload gegen das Handshake-Schema prüft — bei Schema-Fehler in den Error-Branch.
-Prompt:
-> "Du bist Workflow-Chaining-Architect. Entwirf eine Verkettung zwischen einem Content-Generierungs- und einem Distributions-Workflow. Kontext: HTTP-POST-Übergabe, JSON-Handshake-Schema, HITL-Gate zwischen den Chains, Schema-Validierung im Empfänger. Format: Chain-Architektur-Entwurf mit Handshake-Schema-Definition."
+Workflow: Workflow 1 Abschluss-Action (Output als JSON-Payload per HTTP-POST an Webhook-URL von Workflow 2) → versioniertes Handshake-Schema (exakte Feldnamen/Typen/Pflichtfelder) → optionales HITL-Gate zwischen den Chains → Workflow 2: Validation-Condition (Payload gegen Schema; bei Fehler Error-Branch). Strikt Einwegrichtung.
+Budget: Chaining selbst ist günstig (HTTP-Action); die Kosten liegen in den verketteten Workflows. (Quelle: A-40)
 Artefakt: Ein Workflow-Chain-Entwurf mit HTTP-POST-Übergabe-Logik, Handshake-Schema-Vorlage und optionalem HITL-Gate.
 Fallstricke:
 - Das Handshake-Schema ist undokumentiert → bei Änderung an Workflow 1 bricht Workflow 2 still ab; Schema-Versionierung und Änderungs-Protokoll sind Pflicht.
 - Endlosschleifen entstehen, wenn Workflow 2 fälschlicherweise zurück an Workflow 1 postet → jede Chain-Verbindung nur als Einwegrichtung auslegen.
+Empfehlung: Dokumentiere und versioniere das Handshake-Schema — ändert sich Workflow 1, bricht Workflow 2 sonst still ab. Lege jede Chain-Verbindung strikt als Einwegrichtung aus, sonst entstehen Endlosschleifen zwischen den Workflows.
 Anschluss: S-WF-024
 
 ### S-WF-024 Workflow-Monitoring und Laufzeit-Observability (Scheduled Trigger)
@@ -538,12 +543,13 @@ Vorgehen:
 2. Die Logs nach vier Monitoring-Dimensionen auswerten lassen: Laufzeit pro Workflow, Fehlerrate, Token-Kosten-pro-Run, HITL-Genehmigungsrate.
 3. Einen Condition-Node SLO-Verletzungen erkennen lassen (z. B. Fehlerrate > 5 % oder Kosten-pro-Run +30 % gegenüber Vorwoche) und bei Verletzung Slack-Alert auslösen.
 4. Eine Monitoring-Tabelle im Fehler-Log-Sheet kumulieren, damit Trends über Zeit sichtbar werden — Grundlage für den monatlichen ROI-Report (S-WF-020).
-Prompt:
-> "Du bist Workflow-Monitoring-Architect. Entwirf einen täglichen Observability-Workflow für produktive Marketing-Workflows. Kontext: Vier SLO-Dimensionen (Laufzeit, Fehlerrate, Kosten, HITL-Rate), Eskalation nur bei Grenzwert-Verletzung. Format: Scheduled-Trigger, Audit-Log-Integration, SLO-Condition, Slack-Alert, kumulatives Log-Sheet."
+Workflow: Scheduled-Trigger (täglich, fixer Zeitpunkt) → Audit-Log-Export-API (letzte 24 h) → AI-Node (vier Dimensionen: Laufzeit, Fehlerrate, Kosten-pro-Run, HITL-Rate) → Condition-Node (SLO-Verletzung, z. B. Fehlerrate >5 % oder Kosten +30 % WoW → Slack-Alert) → kumulatives Log-Sheet (Trends, Basis für S-WF-020).
+Budget: Ein Aggregations-Lauf pro Tag; Efficient-Default. (Quelle: A-36, 06-api-und-deployment)
 Artefakt: Ein Monitoring-Workflow-Entwurf mit vier SLO-Definitionen, Condition-Schwellenwerten und einem kumulativen Log-Schema.
 Fallstricke:
 - Der Monitoring-Workflow selbst hat kein Fehler-Monitoring → ein separater manueller Check-in oder externer Uptime-Monitor ist als Backup nötig.
 - Zu viele SLO-Dimensionen führen zu Alert-Fatigue → mit vier Kernmetriken starten und erst bei gesicherter Datenbasis erweitern.
+Empfehlung: Der Monitoring-Workflow braucht selbst ein Backup — ein externer Uptime-Monitor oder ein manueller Check, sonst überwacht niemand den Wächter. Starte mit vier Kernmetriken; zu viele SLO-Dimensionen erzeugen Alert-Fatigue.
 Anschluss: S-WF-025
 
 ### S-WF-025 Kampagnen-Brief-Intake per Form-Trigger mit automatischer Routing-Logik (Form Trigger)
