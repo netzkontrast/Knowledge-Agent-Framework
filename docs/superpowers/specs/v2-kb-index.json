@@ -4,7 +4,7 @@
       "name": "00-langdock-uebersicht.md",
       "kind": "content",
       "lines": 1582,
-      "bytes": 205306,
+      "bytes": 204826,
       "scenarios": [
         {
           "id": "S-LU-001",
@@ -1146,7 +1146,7 @@
       "name": "02-agenten-konfiguration.md",
       "kind": "content",
       "lines": 1615,
-      "bytes": 243116,
+      "bytes": 242636,
       "scenarios": [
         {
           "id": "S-AK-001",
@@ -1717,7 +1717,7 @@
       "name": "03-wissensordner-und-rag.md",
       "kind": "content",
       "lines": 1571,
-      "bytes": 260927,
+      "bytes": 260287,
       "scenarios": [
         {
           "id": "S-WR-001",
@@ -2288,7 +2288,7 @@
       "name": "04-workflows.md",
       "kind": "content",
       "lines": 1602,
-      "bytes": 206159,
+      "bytes": 205506,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -2859,7 +2859,7 @@
       "name": "05-integrationen-und-mcp.md",
       "kind": "content",
       "lines": 1553,
-      "bytes": 233816,
+      "bytes": 233336,
       "scenarios": [
         {
           "id": "S-IM-001",
@@ -3430,7 +3430,7 @@
       "name": "06-api-und-deployment.md",
       "kind": "content",
       "lines": 1611,
-      "bytes": 233879,
+      "bytes": 233240,
       "scenarios": [
         {
           "id": "S-API-001",
@@ -4001,7 +4001,7 @@
       "name": "07-modelle-und-kosten.md",
       "kind": "content",
       "lines": 1609,
-      "bytes": 238480,
+      "bytes": 238000,
       "scenarios": [
         {
           "id": "S-MK-001",
@@ -4572,7 +4572,7 @@
       "name": "08-sicherheit-und-governance.md",
       "kind": "content",
       "lines": 1575,
-      "bytes": 256553,
+      "bytes": 255819,
       "scenarios": [
         {
           "id": "S-SG-001",
@@ -5143,7 +5143,7 @@
       "name": "09-marketing-praxis.md",
       "kind": "content",
       "lines": 1581,
-      "bytes": 229224,
+      "bytes": 228585,
       "scenarios": [
         {
           "id": "S-MP-001",
@@ -5714,7 +5714,7 @@
       "name": "10-prompts-und-skills.md",
       "kind": "content",
       "lines": 1580,
-      "bytes": 225693,
+      "bytes": 225219,
       "scenarios": [
         {
           "id": "S-PS-001",
@@ -6284,521 +6284,521 @@
     {
       "name": "11-persona-core.md",
       "kind": "persona",
-      "lines": 866,
-      "bytes": 78415,
+      "lines": 906,
+      "bytes": 91715,
       "scenarios": [
         {
           "id": "S-LC-001",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-002",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-003",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-004",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-005",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-006",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-007",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-008",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-009",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-010",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-011",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-012",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-013",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-014",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-015",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-016",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-017",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-018",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-019",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-020",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-021",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-022",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-023",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-024",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-025",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-026",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-027",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-028",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-029",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-030",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-031",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-032",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-033",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-034",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-035",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-036",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-037",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-038",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-039",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-LC-040",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 0
+      "advice_style": 40
     },
     {
       "name": "12-persona-julia-modus.md",
       "kind": "persona",
-      "lines": 671,
-      "bytes": 65986,
+      "lines": 702,
+      "bytes": 76345,
       "scenarios": [
         {
           "id": "S-JL-001",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-002",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-003",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-004",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-005",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-006",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-007",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-008",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-009",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-010",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-011",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-012",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-013",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-014",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-015",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-016",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-017",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-018",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-019",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-020",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-021",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-022",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-023",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-024",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-025",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-026",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-027",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-028",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-029",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-030",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-JL-031",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 0
+      "advice_style": 31
     },
     {
       "name": "13-data-agent-anweisungen-pro-thema.md",
@@ -7099,286 +7099,286 @@
     {
       "name": "14-iw-use-cases.md",
       "kind": "content",
-      "lines": 773,
-      "bytes": 87075,
+      "lines": 812,
+      "bytes": 98806,
       "scenarios": [
         {
           "id": "S-IW-001",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-002",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-003",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-004",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-005",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-006",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-007",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-008",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-009",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-010",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-011",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-012",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-013",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-014",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-015",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-016",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-017",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-018",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-019",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-020",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-021",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-022",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-023",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-024",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-025",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-026",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-027",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-028",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-029",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-030",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-031",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-032",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-033",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-034",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-035",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-036",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-037",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-038",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         },
         {
           "id": "S-IW-039",
           "trigger": "",
           "noun": "",
           "anschluss": "",
-          "advice_style": false
+          "advice_style": true
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 0
+      "advice_style": 39
     },
     {
       "name": "15-glossar-und-faq.md",
@@ -7475,7 +7475,7 @@
       "name": "16-onboarding-change-management.md",
       "kind": "content",
       "lines": 554,
-      "bytes": 69157,
+      "bytes": 69025,
       "scenarios": [
         {
           "id": "S-OC-001",
@@ -7682,7 +7682,7 @@
       "name": "17-branchen-think-tank-praxis.md",
       "kind": "content",
       "lines": 777,
-      "bytes": 83205,
+      "bytes": 82971,
       "scenarios": [
         {
           "id": "S-TT-001",
@@ -8057,7 +8057,7 @@
   "collisions": [],
   "reserved_violations": [],
   "total_scenarios": 1106,
-  "total_advice": 10,
+  "total_advice": 120,
   "file_count": 20,
   "file_cap": 30
 }

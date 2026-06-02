@@ -78,12 +78,19 @@ and renamed `S-XXX-NNN` → `S-XXX-Y-NNN`. Each scenario's payload field is
 re-authored to match its type (a workflow scenario gets a `**Workflow-Architektur:**`
 instead of a `**Beispiel-Prompt:**`, etc.). This is the loop-4 deep-pass agenda:
 
-- [ ] **L4-0:** Extend `check_schema.sh` to parse type code from ID header and dispatch
-      type-specific payload checks; extend `kb_index.py` to report per-type coverage.
-- [ ] **L4-1..15:** Per-file classification + rename + payload re-authoring (file order
-      in the catalog). Each file is one commit. Anschluss-Szenario references in the
-      same file are renamed together. Cross-file Anschluss references are renamed when
-      the target file lands.
+- [ ] **L4-0a:** Extend `check_schema.sh` to (i) parse type code from ID header and dispatch
+      type-specific payload checks (R18), (ii) accept BOTH old verbose markers and new
+      terse markers (R19) during migration. Extend `kb_index.py` to report per-type coverage.
+- [ ] **L4-0b:** Add the schema-definition section to AGENT_PROMPT (~700 chars) defining
+      the terse markers and the type-specific slot-6 markers per R19. Trim the WISSENS-
+      NAVIGATION section by the same amount to keep AGENT_PROMPT ≤ 15 000 chars.
+- [ ] **L4-1..15:** Per-file work — one commit per file, doing R18 + R19 together:
+      (i) classify each scenario into P/A/M/S/T/W/C/D/G via individual read,
+      (ii) re-author the payload field for the new type if it changes,
+      (iii) bulk-rename `S-XXX-NNN` → `S-XXX-Y-NNN` in the file + same-file Anschluss
+      references, (iv) bulk-rename all 10 verbose markers to the terse R19 form,
+      (v) re-validate (schema dispatches per type + accepts terse markers).
+      Cross-file Anschluss references are renamed when the target file lands.
 - [ ] **L4-final:** Spec-panel review of the type distribution and per-type quality.
 
 Loop-4 entry condition: catalog + R18 committed (done in loop 3 close).

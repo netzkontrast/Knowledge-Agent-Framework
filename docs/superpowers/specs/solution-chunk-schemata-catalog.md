@@ -82,6 +82,27 @@ All nine kinds keep the **8 universal fields** (Wann nutzen Trigger, Strategisch
 
 ---
 
+## Terse markers per type (per R19)
+
+The R18 catalog above used verbose markdown markers for readability. In the
+final on-disk format (per R19), chunks use terse, line-anchored markers. Each
+type's slot-6 payload uses these short keywords:
+
+| Type | Slot-6 marker(s) |
+|---|---|
+| P | `Prompt:` |
+| A | `API:` + `RateLimit:` |
+| M | `MCP:` + `Tool:` + `Scope:` |
+| S | `Skill:` + `Trigger-Wörter:` |
+| T | `Code:` + `IO:` |
+| W | `Workflow:` + `Budget:` |
+| C | `Pfad:` + `Diff:` + `Rollback:` |
+| D | `Empfehlung:` (occupies slot 6, no separate slot-9 Empfehlung) |
+| G | `Vorlage:` |
+
+The universal slots use: `Trigger:` `Ziel:` `Ergebnis:` `Fähigkeit:` `Vorgehen:`
+(slot-6 above) `Artefakt:` `Fallstricke:` `Empfehlung:` `Anschluss:`.
+
 ## Universal fields (all 9 chunk types keep these)
 
 | # | Field | Note |

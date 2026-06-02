@@ -191,6 +191,83 @@ commit as its target's rename to keep coherence gates green.
 `check_schema.sh` parses the type code from the ID header and dispatches the
 type-specific payload check; `kb_index.py` reports coverage per type.
 
+## R19 — Terse field-marker schema (chunks carry substance, not boilerplate)
+
+Today every scenario repeats ten verbose markdown field labels
+(`**Wann nutzen (Trigger):**`, `**Strategisches Ziel:**`, …). Across the 1 106
+scenarios that's ~285 KB of identical token boilerplate which (a) bloats every
+chunk by ~12 % and (b) dominates the embedding signal, making chunks look
+semantically similar even when their substance differs.
+
+**Rule:** scenarios use short, line-anchored field markers. The schema (which
+marker means what, in which order) is taught **once** in the AGENT_PROMPT, not
+in every chunk. The chunk's bytes belong to the substance, not the label.
+
+### The terse schema (10 fields in fixed order)
+
+| # | Terse marker (BoL) | Replaces |
+|---|---|---|
+| 1 | `Trigger:` | `**Wann nutzen (Trigger):**` |
+| 2 | `Ziel:` | `**Strategisches Ziel:**` |
+| 3 | `Ergebnis:` | `**Hands-on Ergebnis:**` |
+| 4 | `Fähigkeit:` | `**Eingesetzte Langdock-Fähigkeit(en):**` |
+| 5 | `Vorgehen:` | `**Vorgehen (N Schritte):**` |
+| 6 | *type-specific marker (see below)* | `**Beispiel-Prompt (DE):**` |
+| 7 | `Artefakt:` | `**Erwartetes Artefakt:**` |
+| 8 | `Fallstricke:` | `**Fallstricke (≥2 spezifisch):**` |
+| 9 | `Empfehlung:` | `**Konkrete Empfehlung:**` |
+| 10 | `Anschluss:` | `**Anschluss-Szenario:**` |
+
+### Type-specific payload markers (slot 6) — combined with R18
+
+| R18 type | Slot-6 marker |
+|---|---|
+| P (Prompt) | `Prompt:` |
+| A (API) | `API:` + `RateLimit:` |
+| M (MCP) | `MCP:` + `Tool:` + `Scope:` |
+| S (Skill) | `Skill:` + `Trigger-Wörter:` |
+| T (Tool/Code) | `Code:` + `IO:` |
+| W (Workflow) | `Workflow:` + `Budget:` |
+| C (Config) | `Pfad:` + `Diff:` + `Rollback:` |
+| D (Decision) | `Empfehlung:` IS the slot-6 payload (no separate slot-9 Empfehlung) |
+| G (Guide) | `Vorlage:` |
+
+### Disambiguation
+
+All markers are matched **at the start of a line** (`^Marker:`). Prose containing
+the word "Trigger" mid-sentence is unaffected (same convention as today's
+`**…**` markers). The validator regex is BoL-anchored.
+
+### Reader experience
+
+Headers (`### S-XXX-Y-NNN <Titel>`) stay. The fields below the header lose their
+markdown bolding but keep their semantic identity through the short keyword.
+Inline emphasis inside a field (e.g. **bold** within Vorgehen prose) is unchanged.
+
+### Migration policy
+
+- **Permitted as a bulk concrete-string replacement** (per the no-programmatic
+  rule's exception for "concrete wording replacements"): the marker swap does
+  not synthesize new content, it renames labels.
+- **Combined with R18 type-classification** in loop 4 — each file is read
+  individually to classify scenarios into P/A/M/S/T/W/C/D/G; in the same per-file
+  commit, the bulk marker rename is applied. One touch, two improvements.
+- **Gate co-evolution (R17):** `check_schema.sh` must accept BOTH the old verbose
+  markers AND the new terse markers during migration. Once all files are migrated,
+  the old markers are removed from the validator.
+- **AGENT_PROMPT schema section** is added in the same commit as the first file
+  migration, so the agent sees both the schema definition and at least one file
+  using it. The section is ~700 chars; the loop-3 WISSENS-NAVIGATION can be
+  trimmed by the same amount to keep AGENT_PROMPT ≤ 15 000.
+
+### Expected impact
+
+- ~167 bytes saved per scenario × 1 106 = **~185 KB total boilerplate removed**.
+- Median chunk in file 14: 2 431 B → ~2 273 B (squarely in the 2 000–2 300 B
+  retrieval-optimal band).
+- Embedding signal becomes substance-dominated (Pressemitteilung, Faktenblatt,
+  Workflow-Budget) instead of label-dominated, improving retrieval precision.
+
 ---
 
 ## Change log (rulebook improves each loop)
