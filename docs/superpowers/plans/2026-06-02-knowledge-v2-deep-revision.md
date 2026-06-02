@@ -123,7 +123,9 @@ rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-
 - [x] **PILOT** — file 19 migrated to terse markers (D-type), full gate suite validated. Commit 74c9ec6.
 - [x] **R19 base-wide** — terse-marker sweep across all 17 scenario files; 179,466 B removed; all gates green. Commit 7b75946. Type baseline: P=986, K=110, D=10.
 - [ ] **L4-0b** — AGENT_PROMPT schema-definition section (~700 chars) + nav trim. (Do with first R20 file.)
-- [ ] **R20 best-type re-authoring** (per file): P → Workflow/MCP/Skill/Code/Config/Decision/Guide where genuinely better, source-grounded. Order: 04 (pure W) → 06 (G/D/A) → 05 (G-dominant) → 10 (S/P) → 00-03,07-09 → 14/16/17.
+- [~] **R20 best-type re-authoring** (per file): P → Workflow/MCP/Skill/Code/Config/Decision/Guide where genuinely better, source-grounded. Order: 04 (pure W) → 06 (G/D/A) → 05 (G-dominant) → 10 (S/P) → 00-03,07-09 → 14/16/17.
+  - [x] **File 04 (Workflows) DONE** — all 80 scenarios best-typed: 79 `Workflow:`+`Budget:`+`Empfehlung:`, 1 `Decision` (S-WF-021 Workflow-vs-Agent-Matrix). R7a Empfehlung coverage 80/80. Commits 2d152ae, b9ca3d4, 6a678f3, 103325b (b4), b9ca3d4-chain, batches 4–10 (…→ file04 fully Workflow-typed). All gates green; median chunk 2 500 B.
+  - [ ] **File 06 next** (API/Integrationen) — expect G ~50 % / D ~25 % / A ~19 % per loop-3 review; author `Vorlage:` skeletons for architecture briefings, reserve `API:`+`RateLimit:` for true integration calls.
 - [ ] **R7a Empfehlung rollout** to the 13 remaining content files (combined with each R20 file touch).
 - [ ] **Critical-thinking scenarios (R20.3) + scenario chains (R20.4)** added opportunistically per file.
 - [ ] **File 08 chunk-trim** (22 scenarios 3200-3800 B) during its R20 pass.
