@@ -148,6 +148,49 @@ relevant validator (`check_schema.sh`, `check_grounding.sh`, `check_chunks.sh`,
 `kb_index.py`) is **updated in the same commit** so the kind is recognised and
 verified. Without this co-update, a new kind silently slips past the gates.
 
+## R18 — Solution-Chunk-Schemata (chunk-type codes in scenario IDs)
+
+Not every solution is a prompt. Real marketing/comms problems map to different
+deliverables: an API call, an MCP integration, a built Skill, in-agent Python
+code, a workflow, a config change, a decision, a template document. A copy-paste
+prompt covers only the chat-instruction kind. Forcing every scenario into the
+prompt schema produces shallow answers when the real deliverable is code or
+configuration.
+
+**Rule:** every scenario carries a **chunk-type code** as the middle letter of
+its ID — `S-XXX-Y-NNN` where Y ∈ {P, A, M, S, T, W, C, D, G}:
+
+| Code | Kind | Payload field (replaces the 9th slot) |
+|---|---|---|
+| **P** | Prompt-driven (today's default) | `**Beispiel-Prompt (DE):**` |
+| **A** | API-driven | `**API-Aufruf:**` + `**Rate-Limit-Rahmen:**` |
+| **M** | MCP-driven | `**MCP-Server:**` + `**Tool-Aufruf:**` + `**Berechtigungs-Scope:**` |
+| **S** | Skill-Definition | `**Skill-Definition:**` + `**Auslöser-Wörter:**` |
+| **T** | Tool / Agentic (in-agent code) | `**Code-Snippet:**` + `**Input-/Output-Schema:**` |
+| **W** | Workflow-driven | `**Workflow-Architektur:**` + `**Workflow-Budget:**` |
+| **C** | Configuration-change | `**Einstellungs-Pfad:**` + `**Vorher → Nachher:**` + `**Rollback-Plan:**` |
+| **D** | Decision / Advice (today's R7b) | `**Konkrete Empfehlung:**` IS the deliverable; no Beispiel-Prompt |
+| **G** | Guide / Document template | `**Artefakt-Vorlage:**` (markdown skeleton, ≥3 sections) |
+
+All 9 universal fields (Trigger · Strategisches Ziel · Hands-on Ergebnis ·
+Eingesetzte Langdock-Fähigkeit · Vorgehen ≤5 · Erwartetes Artefakt · Fallstricke
+≥2 · Konkrete Empfehlung · Anschluss-Szenario) stay required regardless of type.
+The type-specific payload field is the **6th slot** between Vorgehen and
+Erwartetes Artefakt.
+
+**Full catalog** (rationale, migration candidates, gate dispatch logic):
+`docs/superpowers/specs/solution-chunk-schemata-catalog.md`.
+
+**Migration policy:** classification is a deep-pass task (loop 4+) and follows
+the no-programmatic rule — every scenario read individually. Bulk ID renames
+(`S-LC-020` → `S-LC-P-020`) are concrete-string operations and ARE permitted
+en masse per file. Each Anschluss-Szenario reference is updated in the same
+commit as its target's rename to keep coherence gates green.
+
+**Gate evolution (per R17):** in the same commit that migrates the first file,
+`check_schema.sh` parses the type code from the ID header and dispatches the
+type-specific payload check; `kb_index.py` reports coverage per type.
+
 ---
 
 ## Change log (rulebook improves each loop)

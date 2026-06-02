@@ -70,6 +70,24 @@ For EACH file `NN`, in order 00 → 18, then AGENT_PROMPT + CONVERSATION_STARTER
 | 18 | links: dead-link check; cluster coverage vs new scenarios |
 | AGENT_PROMPT | reflect against final knowledge; keep ≤15 000 chars; anchors intact |
 
+## Loop-4 task — Solution-Chunk-Schemata migration (per R18)
+
+Per the catalog in `docs/superpowers/specs/solution-chunk-schemata-catalog.md`,
+every scenario gets classified into one of nine chunk-type codes (P/A/M/S/T/W/C/D/G)
+and renamed `S-XXX-NNN` → `S-XXX-Y-NNN`. Each scenario's payload field is
+re-authored to match its type (a workflow scenario gets a `**Workflow-Architektur:**`
+instead of a `**Beispiel-Prompt:**`, etc.). This is the loop-4 deep-pass agenda:
+
+- [ ] **L4-0:** Extend `check_schema.sh` to parse type code from ID header and dispatch
+      type-specific payload checks; extend `kb_index.py` to report per-type coverage.
+- [ ] **L4-1..15:** Per-file classification + rename + payload re-authoring (file order
+      in the catalog). Each file is one commit. Anschluss-Szenario references in the
+      same file are renamed together. Cross-file Anschluss references are renamed when
+      the target file lands.
+- [ ] **L4-final:** Spec-panel review of the type distribution and per-type quality.
+
+Loop-4 entry condition: catalog + R18 committed (done in loop 3 close).
+
 ## End-of-pass review (subagent — the only subagent use)
 
 - [ ] Dispatch a spec-panel **review subagent**: re-run M01–M13 as TEST criteria over the whole base; return a prioritized improvement ledger ([C]/[M]/[m]).
