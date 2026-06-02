@@ -3928,8 +3928,8 @@
     {
       "name": "06-api-und-deployment.md",
       "kind": "content",
-      "lines": 1611,
-      "bytes": 220180,
+      "lines": 1898,
+      "bytes": 230900,
       "scenarios": [
         {
           "id": "S-API-001",
@@ -3937,7 +3937,7 @@
           "noun": "Review",
           "anschluss": "S-API-002",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-002",
@@ -3945,7 +3945,7 @@
           "noun": "Chief",
           "anschluss": "S-API-003",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-003",
@@ -3953,7 +3953,7 @@
           "noun": "Pflicht",
           "anschluss": "S-API-004",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-004",
@@ -3961,7 +3961,7 @@
           "noun": "Digitalagentur",
           "anschluss": "S-API-005",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-005",
@@ -3969,15 +3969,15 @@
           "noun": "Produkt-Agent",
           "anschluss": "S-API-006",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-006",
           "trigger": "Der neue CTO möchte alle KI-Projekte auf Microsoft Azure konsolidieren. Die Marketing-Direktorin befürchtet, dass sie dadurch die komfortable Langdock-UI verliert und wieder auf langsame interne IT-Projekte angewiesen ist — der BYOC-Mittelweg ist die Steelman-Antwort auf das CTO-Anliegen.",
           "noun": "KI-Projekte",
           "anschluss": "S-API-007",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-007",
@@ -3985,7 +3985,7 @@
           "noun": "Web-Agentur",
           "anschluss": "S-API-008",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-008",
@@ -3993,7 +3993,7 @@
           "noun": "PR-Desaster",
           "anschluss": "S-API-009",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-009",
@@ -4001,7 +4001,7 @@
           "noun": "IT-Abteilung",
           "anschluss": "S-API-010",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-010",
@@ -4009,7 +4009,7 @@
           "noun": "Recht",
           "anschluss": "S-API-011",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-011",
@@ -4017,7 +4017,7 @@
           "noun": "Langdock",
           "anschluss": "S-API-012",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-012",
@@ -4025,7 +4025,7 @@
           "noun": "Token-System-Prompt",
           "anschluss": "S-API-013",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-013",
@@ -4033,7 +4033,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-014",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-014",
@@ -4041,7 +4041,7 @@
           "noun": "Entwickler",
           "anschluss": "S-API-015",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-015",
@@ -4049,7 +4049,7 @@
           "noun": "Dokumente",
           "anschluss": "S-API-016",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-016",
@@ -4057,15 +4057,15 @@
           "noun": "E-Commerce-Marketing-Team",
           "anschluss": "S-API-017",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-017",
           "trigger": "Der Datenschutzbeauftragte signalisiert, dass bestimmte Kundensegmentierungsdaten (personenbezogene Kaufhistorien) nicht an externe Modell-Provider gesendet werden dürfen. Das Marketing-Team möchte trotzdem KI-gestützte Segmentierungsvorschläge generieren. Der CTO fragt, ob Langdock mit einem internen, self-hosted Modell (BYOM) kombiniert werden kann.",
           "noun": "Kundensegmentierungsdaten",
           "anschluss": "S-API-018",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-018",
@@ -4073,7 +4073,7 @@
           "noun": "Budget",
           "anschluss": "S-API-019",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-019",
@@ -4081,7 +4081,7 @@
           "noun": "Blog-Artikel",
           "anschluss": "S-API-020",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-020",
@@ -4089,7 +4089,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-021",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-021",
@@ -4097,7 +4097,7 @@
           "noun": "Langdock",
           "anschluss": "S-API-022",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-022",
@@ -4105,7 +4105,7 @@
           "noun": "Langdock-Agent",
           "anschluss": "S-API-023",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-023",
@@ -4113,7 +4113,7 @@
           "noun": "Marketingkampagne",
           "anschluss": "S-API-024",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-024",
@@ -4121,7 +4121,7 @@
           "noun": "Bring",
           "anschluss": "S-API-025",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-025",
@@ -4129,7 +4129,7 @@
           "noun": "Langdock",
           "anschluss": "S-API-026",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-026",
@@ -4137,15 +4137,15 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-027",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-027",
           "trigger": "Das Unternehmen hat Niederlassungen in Deutschland, Österreich und der Schweiz sowie einer Schweizer Tochtergesellschaft, die DSG-konform arbeiten muss. Die IT fragt, ob Langdock-Daten regionenübergreifend fließen dürfen oder ob separate Workspace-Instanzen nötig sind.",
           "noun": "Niederlassungen",
           "anschluss": "S-API-028",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-028",
@@ -4153,7 +4153,7 @@
           "noun": "Entwicklungsteam",
           "anschluss": "S-API-029",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-029",
@@ -4161,7 +4161,7 @@
           "noun": "Kommunikationsteam",
           "anschluss": "S-API-030",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-030",
@@ -4169,7 +4169,7 @@
           "noun": "E-Commerce-Team",
           "anschluss": "S-API-031",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-031",
@@ -4177,7 +4177,7 @@
           "noun": "SEO-Team",
           "anschluss": "S-API-032",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-032",
@@ -4185,7 +4185,7 @@
           "noun": "Produktionseinsatz",
           "anschluss": "S-API-033",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-033",
@@ -4193,7 +4193,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-034",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-034",
@@ -4201,7 +4201,7 @@
           "noun": "Wissensmanagemant-Team",
           "anschluss": "S-API-035",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-035",
@@ -4209,7 +4209,7 @@
           "noun": "Chatbot",
           "anschluss": "S-API-036",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-036",
@@ -4217,7 +4217,7 @@
           "noun": "Kategorien",
           "anschluss": "S-API-037",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-037",
@@ -4225,7 +4225,7 @@
           "noun": "IT-Team",
           "anschluss": "S-API-038",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-038",
@@ -4233,7 +4233,7 @@
           "noun": "Langdock-Ausfällen",
           "anschluss": "S-API-039",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-039",
@@ -4241,7 +4241,7 @@
           "noun": "Finanzabteilung",
           "anschluss": "S-API-040",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-040",
@@ -4249,15 +4249,15 @@
           "noun": "Langdock-Ausfall",
           "anschluss": "S-API-041",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-041",
           "trigger": "Die Finanzabteilung prüft, ob der Wechsel auf BYOK (Bring Your Own Key) mit eigenem Azure-Vertrag wirtschaftlich sinnvoll ist. Das Team verbraucht derzeit rund 2.800 Euro pro Monat über das Standard-Langdock-Modell-Bundle. Der CTO hat Azure-Enterprise-Rabatte von 20 % auf Token-Preise in Aussicht.",
           "noun": "Finanzabteilung",
           "anschluss": "S-API-042",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-042",
@@ -4265,7 +4265,7 @@
           "noun": "Produktberatungs-Chatbot",
           "anschluss": "S-API-043",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-043",
@@ -4273,7 +4273,7 @@
           "noun": "Langdock",
           "anschluss": "S-API-044",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-044",
@@ -4281,7 +4281,7 @@
           "noun": "Kreativ-Team",
           "anschluss": "S-API-045",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-045",
@@ -4289,7 +4289,7 @@
           "noun": "Nachhaltigkeitsbeauftragte",
           "anschluss": "S-API-046",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-046",
@@ -4297,15 +4297,15 @@
           "noun": "Marketing-SaaS-Anbieter",
           "anschluss": "S-API-047",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-047",
           "trigger": "Das Entwicklungsteam diskutiert, ob eine neue Marketing-Daten-Plattform die Langdock-API über REST oder GraphQL ansprechen soll. Die Marketing-Direktorin wird in ein Architektur-Review einbezogen und muss die strategische Abwägung verstehen.",
           "noun": "Entwicklungsteam",
           "anschluss": "S-API-048",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-048",
@@ -4313,7 +4313,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-049",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-049",
@@ -4321,7 +4321,7 @@
           "noun": "Agenturen",
           "anschluss": "S-API-050",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-050",
@@ -4329,7 +4329,7 @@
           "noun": "Black-Friday-Kampagne",
           "anschluss": "S-API-051",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-051",
@@ -4337,7 +4337,7 @@
           "noun": "Frontend-Team",
           "anschluss": "S-API-052",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-052",
@@ -4345,7 +4345,7 @@
           "noun": "Langdock-Integration",
           "anschluss": "S-API-053",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-053",
@@ -4353,7 +4353,7 @@
           "noun": "Teams",
           "anschluss": "S-API-054",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-054",
@@ -4361,7 +4361,7 @@
           "noun": "Produktberatungs-Chatbot",
           "anschluss": "S-API-055",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-055",
@@ -4369,7 +4369,7 @@
           "noun": "Werbebanner",
           "anschluss": "S-API-056",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-056",
@@ -4377,7 +4377,7 @@
           "noun": "Marketingleitung",
           "anschluss": "S-API-057",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-057",
@@ -4385,7 +4385,7 @@
           "noun": "KI-Workflows",
           "anschluss": "S-API-058",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-058",
@@ -4393,7 +4393,7 @@
           "noun": "Langdock",
           "anschluss": "S-API-059",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-API-059",
@@ -4401,7 +4401,7 @@
           "noun": "KI-Prompt-Strategien",
           "anschluss": "S-API-060",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-060",
@@ -4409,7 +4409,7 @@
           "noun": "Dienstleister",
           "anschluss": "S-API-061",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-061",
@@ -4417,7 +4417,7 @@
           "noun": "Langdock-Workspace-API-Key",
           "anschluss": "S-API-062",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-062",
@@ -4425,7 +4425,7 @@
           "noun": "Localization-Workflow",
           "anschluss": "S-API-063",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-063",
@@ -4433,7 +4433,7 @@
           "noun": "Netzwerk-Timeout",
           "anschluss": "S-API-064",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-064",
@@ -4441,7 +4441,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-065",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-065",
@@ -4449,7 +4449,7 @@
           "noun": "Marketing-Integrationen",
           "anschluss": "S-API-066",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-066",
@@ -4457,7 +4457,7 @@
           "noun": "Langdock-Teilausfall",
           "anschluss": "S-API-067",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-067",
@@ -4465,7 +4465,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-068",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-068",
@@ -4473,7 +4473,7 @@
           "noun": "Updates",
           "anschluss": "S-API-069",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-069",
@@ -4481,7 +4481,7 @@
           "noun": "Vorfall",
           "anschluss": "S-API-070",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-070",
@@ -4489,23 +4489,23 @@
           "noun": "Langdock-Kosten",
           "anschluss": "S-API-071",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-071",
           "trigger": "Das Entwicklungsteam soll eine neue Integration gegen die OpenAI-kompatible Langdock-API bauen und diskutiert, ob es das offizielle OpenAI-SDK, das Vercel AI SDK oder einen rohen HTTP-Client nutzen soll. Die Direktorin wird in die Architekturentscheidung einbezogen.",
           "noun": "Entwicklungsteam",
           "anschluss": "S-API-072",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-072",
           "trigger": "Das Team setzt aus Gewohnheit für jeden Use-Case Streaming ein — auch für einen nächtlichen Massen-Job, bei dem niemand zuschaut. Gleichzeitig wartet die Chatbot-UI ohne Streaming sekundenlang auf die volle Antwort. Die Direktorin will eine klare Entscheidungsregel.",
           "noun": "Gewohnheit",
           "anschluss": "S-API-073",
-          "advice_style": false,
-          "type": "P"
+          "advice_style": true,
+          "type": "D"
         },
         {
           "id": "S-API-073",
@@ -4513,7 +4513,7 @@
           "noun": "Deep-Research-getriebener",
           "anschluss": "S-API-074",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-074",
@@ -4521,7 +4521,7 @@
           "noun": "Schema-Änderung",
           "anschluss": "S-API-075",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-075",
@@ -4529,7 +4529,7 @@
           "noun": "Entwickler",
           "anschluss": "S-API-076",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-076",
@@ -4537,7 +4537,7 @@
           "noun": "Inventur",
           "anschluss": "S-API-077",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-077",
@@ -4545,7 +4545,7 @@
           "noun": "Marketing-Ops-Team",
           "anschluss": "S-API-078",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-078",
@@ -4553,7 +4553,7 @@
           "noun": "Produktberatungs-Chatbot",
           "anschluss": "S-API-079",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-079",
@@ -4561,7 +4561,7 @@
           "noun": "Kampagnen-Chatbot",
           "anschluss": "S-API-080",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-API-080",
@@ -4569,14 +4569,16 @@
           "noun": "Langdock-Integrationsschicht",
           "anschluss": "S-API-001",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 0,
+      "advice_style": 7,
       "types": {
-        "P": 80
+        "G": 72,
+        "D": 7,
+        "W": 1
       }
     },
     {
@@ -11779,13 +11781,14 @@
     }
   ],
   "total_scenarios": 1106,
-  "total_advice": 11,
+  "total_advice": 18,
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 906,
-    "W": 79,
-    "D": 11,
+    "P": 826,
+    "W": 80,
+    "D": 18,
+    "G": 72,
     "K": 110
   },
   "typed": 1106
