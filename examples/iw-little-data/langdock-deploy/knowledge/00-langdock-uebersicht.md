@@ -963,12 +963,13 @@ Vorgehen:
 2. Baue im Workflow-Builder einen Loop-Workflow: Input = CSV-Zeile, Agent-Step = Übersetzung in EN und FR mit Flash-Modell + Glossar-Wissensordner, Output = JSON mit Produkt-ID + Übersetzungen.
 3. Aktiviere den Workflow und lass ihn asynchron im Hintergrund laufen (ca. 10–15 Minuten für 50 Zeilen).
 4. Exportiere das JSON-Ergebnis als drei separate CSVs (eine pro Sprache) und importiere sie direkt ins CMS; dokumentiere die Gesamtkosten im monatlichen Budget-Report.
-Prompt:
-> "Du bist Lokalisierungsworkflow-Architektin. Beschreibe den optimalen Workflow-Aufbau für die Bulk-Übersetzung von 50 Produktbeschreibungen in drei Sprachen mit Langdock. Kontext: Flash-Modell für Kosteneffizienz, Glossar als Wissensordner, Ausgabe als JSON. Format: Schritt-für-Schritt-Workflow-Beschreibung mit Node-Typen, geschätzten Kosten pro Übersetzung und Qualitätsprüfungs-Schritt."
+Workflow: Manual-Trigger (CSV mit 50 Zeilen) -> Loop-Node (je Zeile) -> AI-Node (Flash-Modell, Uebersetzung EN+FR mit Glossar-Wissensordner, UTF-8 erzwungen) -> JSON-Output je Zeile -> Export in drei CSVs (DE/EN/FR). Vor Start: Kostenschaetzung gegen das Per-Execution-Limit.
+Budget: Per-Execution-Limit Standard EUR 25 pro Lauf; Flash-Default-Modell fuer Faktor 5-10 Kostensenkung gegenueber synchronem Chat; Auto Mode aus; Kosten pro Uebersetzung im Budget-Report dokumentieren. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Eine Workflow-Konfigurationsbeschreibung plus drei übersetzte CSVs als Output des Workflow-Runs, mit dokumentierten Kosten pro Übersetzung für den Budget-Report.
 Fallstricke:
 - Das Flash-Modell übersetzt Fachbegriffe ohne Glossar-Anbindung falsch → Glossar-Wissensordner mit Produktterminologie muss vor dem Workflow-Start angebunden sein; ohne Glossar qualitative Stichproben aus 10 % der Outputs machen.
 - JSON-Output enthält Sonderzeichen, die beim CSV-Export korrumpiert werden → Encoding im Workflow explizit auf UTF-8 setzen; insbesondere für Französisch (é, à, ç) und Deutsche Umlaute (ä, ö, ü).
+Empfehlung: Binde den Glossar-Wissensordner mit Produktterminologie vor dem ersten Lauf an - ohne ihn uebersetzt das Flash-Modell Fachbegriffe falsch und du musst an 10 % der Outputs Stichproben machen. Setze das Encoding im Workflow explizit auf UTF-8, sonst korrumpieren franzoesische Akzente (e, a, c) und Umlaute (ae, oe, ue) beim CSV-Export.
 Anschluss: S-LU-043
 
 ### S-LU-043 Prompt-Bibliothek versionieren und zwischen Modellen portieren
@@ -982,12 +983,16 @@ Vorgehen:
 2. Definiere den PR-Review-Prozess: Prompt-Änderung → Branch anlegen → PR erstellen → Review durch Agent-Owner → Merge in Main → automatisches Update des Konversations-Starters in Langdock.
 3. Ergänze in jeder Prompt-Datei einen Header mit Metadaten: Zielmodell, letztes Testdatum, Qualitätsbewertung (1–5), Ansprechpartner.
 4. Führe einmal im Quartal einen "Prompt-Audit": Alle Prompts mit Qualitätsbewertung unter 3 oder Testdatum älter als 90 Tage werden überarbeitet oder archiviert.
-Prompt:
-> "Du bist Prompt-Engineering-Governerin. Erstelle eine Namenskonvention und einen Review-Prozess für unsere 35-Prompts-Bibliothek in Git. Kontext: Team von 15 Personen, monatlich 5–10 neue Prompts, Wechsel zwischen Claude und GPT möglich. Format: Namenskonvention-Regel, Markdown-Header-Template und 4-Schritte-PR-Prozess."
+Vorlage: Prompt-Bibliothek-Versionierung (Git):
+1. Export & Ablage - alle Prompts als Markdown ins Git-Repo, Namensschema 'YYYY-MM_Domaene_Aufgabe.md'.
+2. Metadaten-Header je Datei - Zielmodell, letztes Testdatum, Qualitaetsbewertung (1-5), Ansprechpartner.
+3. PR-Review-Prozess - Branch -> PR -> Review durch Agent-Owner -> Merge -> Update Konversations-Starter.
+4. Quartals-Audit - Prompts mit Bewertung <3 oder Testdatum >90 Tage ueberarbeiten oder archivieren.
 Artefakt: Eine Namenskonventions-Regel, ein Markdown-Header-Template für Prompt-Metadaten und eine dokumentierte 4-Schritte-PR-Review-Prozessbeschreibung, direkt einsetzbar im Team-Git-Repository.
 Fallstricke:
 - Git-Kenntnisse fehlen bei nicht-technischen Team-Mitgliedern → Für nicht-technische Nutzer eine vereinfachte GitHub-Web-UI-Anleitung erstellen; der Git-Prozess läuft primär über den Champion, nicht alle Teammitglieder müssen Git beherrschen.
 - Der automatische Build-Step zur Langdock-Integration existiert noch nicht → Bis zur Automatisierung: Manueller Copy-Paste-Prozess nach jedem PR-Merge; Automatisierung als Milestone für Quartal 2 einplanen.
+Empfehlung: Lass den Git-Prozess primaer ueber den Champion laufen und gib nicht-technischen Teammitgliedern eine vereinfachte GitHub-Web-UI-Anleitung - nicht alle 15 Personen muessen Git beherrschen. Bis der automatische Build-Step zur Langdock-Integration existiert, halte den Copy-Paste-Schritt nach jedem Merge bewusst manuell und plane die Automatisierung als Quartal-2-Milestone ein.
 Anschluss: S-LU-044
 
 ### S-LU-044 KI-Carbon-Footprint messen und ins Nachhaltigkeits-Reporting integrieren
@@ -1001,12 +1006,16 @@ Vorgehen:
 2. Recherchiere im Chat die aktuellen CO₂-Faktoren pro 1 000 Token für die eingesetzten Modelle (Basis: ML.energy und Hugging Face-Schätzungen, Stand 2026); dokumentiere Quellen und Unsicherheitsranges.
 3. Lade den Token-Verbrauch als CSV in den Data Analyst: Berechne die Gesamt-CO₂-Schätzung (Token-Verbrauch × CO₂-Faktor pro Modell) und vergleiche sie mit Referenzwerten (z. B. CO₂ einer Transatlantik-Flugreise: ca. 1,8 t CO₂).
 4. Erstelle die Reporting-Tabelle im Canvas mit Methodikbeschreibung, Quellenangaben, Schätzwert und einer Einschränkungsklausel ("Schätzung basiert auf öffentlichen Durchschnittswerten; tatsächliche Werte können abweichen").
-Prompt:
-> "Du bist Nachhaltigkeits-Reportingspezialistin. Erstelle eine CO₂-Schätzungsmethodik für unseren KI-Verbrauch in Langdock. Kontext: Jahresverbrauch laut CSV anbei, eingesetzte Modelle: Claude Sonnet, Flash; Basis: öffentliche ML.energy-Schätzwerte. Format: Tabelle mit Modell, Jahres-Token-Verbrauch, CO₂-Faktor, Gesamt-CO₂-Schätzung in kg und Quellenangabe."
+Vorlage: KI-CO2-Schaetzung (Scope 3, jaehrlich):
+1. Token-Verbrauch - Jahresexport aus dem Admin-Dashboard, aufgeschluesselt nach Modell (Flash/Sonnet/Opus).
+2. CO2-Faktoren - pro 1.000 Token je Modell (Basis ML.energy, Hugging Face; Stand vermerken), mit Unsicherheitsrange.
+3. Berechnung - Token x Faktor je Modell im Data Analyst; Referenzwert (z. B. Transatlantikflug ~1,8 t) zum Einordnen.
+4. Reporting-Tabelle (Canvas) - Modell, Verbrauch, Faktor, CO2-Schaetzung, Quelle, Einschraenkungsklausel.
 Artefakt: Eine CO₂-Schätzungstabelle im Canvas mit vollständiger Methodikbeschreibung, Quellenangaben und einer Einschränkungsklausel, direkt einsetzbar im Nachhaltigkeitsbericht unter Scope 3.
 Fallstricke:
 - CO₂-Faktoren aus 2024 werden für 2026 verwendet, ohne zu prüfen, ob aktuellere Werte vorliegen → Quelldaten jährlich zum Reporting-Zeitpunkt aktualisieren; Veröffentlichungsdatum der verwendeten Studie im Dokument vermerken.
 - Die Schätzung wird als exakter Wert kommuniziert und erzeugt bei kritischen Stakeholdern Vertrauensverlust → Im Nachhaltigkeitsbericht immer als "Schätzung ±40 % Unsicherheitsrange" kommunizieren und die Methodik vollständig transparent darstellen.
+Empfehlung: Aktualisiere die CO2-Faktoren jaehrlich zum Reporting-Zeitpunkt und vermerke das Veroeffentlichungsdatum der Studie im Dokument - sonst rechnest du 2026 unbemerkt mit 2024er-Werten. Kommuniziere den Wert immer als 'Schaetzung +/-40 % Unsicherheitsrange' mit vollstaendig transparenter Methodik, da eine als exakt kommunizierte Zahl bei kritischen Stakeholdern Vertrauen kostet.
 Anschluss: S-LU-045
 
 ### S-LU-045 Agent-Rentenplan: Veraltete Agenten systematisch stilllegen
@@ -1020,12 +1029,16 @@ Vorgehen:
 2. Identifiziere Retirement-Kandidaten nach drei Kriterien: (a) 0 Sessions in 90 Tagen, (b) Wissensordner-Quelldaten veraltet (letztes Update > 6 Monate), (c) Use-Case durch neueren Agenten abgelöst.
 3. Führe für jeden Kandidaten den Pre-Retirement-Check durch: System-Prompt und Wissensordner-Dateien als Markdown exportieren und in einem "Archiv"-Ordner ablegen; Sunset-Memo an alle bisherigen Nutzer senden mit 14-Tage-Vorlauffrist.
 4. Deaktiviere den Agenten nach der Vorlauffrist und aktualisiere das RACI-Governance-Dokument (S-LU-025).
-Prompt:
-> "Du bist KI-Workplace-Governerin. Erstelle ein Retirement-Protokoll für die Stilllegung veralteter Langdock-Agenten. Kontext: Vier Agenten mit 0 Sessions in 90 Tagen, Workspace mit 25 Nutzern. Format: Checkliste mit Schritten (Nutzungscheck, Owner-Konsultation, Archiv-Snapshot, Sunset-Memo, Deaktivierung), Zeitplan und Archivierungs-Vorlage."
+Vorlage: Agenten-Retirement-Protokoll:
+1. Nutzungs-Export - letzte Nutzung, Sessions/90 Tage, Owner aus dem Admin-Dashboard.
+2. Kandidaten-Kriterien - (a) 0 Sessions/90 Tage, (b) Quelldaten >6 Monate alt, (c) durch neueren Agenten abgeloest.
+3. Pre-Retirement-Check - System-Prompt + Wissensordner als Markdown ins Archiv; Sunset-Memo mit 14-Tage-Vorlauf.
+4. Deaktivierung - nach Vorlauffrist abschalten und RACI-Governance-Dokument (S-LU-025) aktualisieren.
 Artefakt: Ein Retirement-Protokoll im Canvas mit Schritt-für-Schritt-Checkliste, Archiv-Snapshot-Vorlage und einem Sunset-Memo-Template, das für jeden zu deaktivierenden Agenten angepasst wird.
 Fallstricke:
 - Ein "ungenutzter" Agent wird gelöscht, aber eine automatisierte Workflow-Komponente hat ihn still im Hintergrund gerufen → Vor Deaktivierung im Workflow-Builder nach Referenzen auf den Agenten suchen; Workflow-Abhängigkeiten sind unsichtbar im Nutzungs-Dashboard.
 - Das Archiv-Snapshot-Verfahren wird übersprungen und das Wissen geht verloren → Kein Agent wird ohne exportierten System-Prompt und Wissensordner-Backup deaktiviert; Pre-Retirement-Export ist Pflichtschritt in der Checkliste.
+Empfehlung: Suche vor jeder Deaktivierung im Workflow-Builder nach Referenzen auf den Agenten - eine automatisierte Workflow-Komponente kann ihn still im Hintergrund rufen, und solche Abhaengigkeiten sind im Nutzungs-Dashboard unsichtbar. Mache den Archiv-Snapshot (exportierter System-Prompt + Wissensordner-Backup) zum Pflichtschritt der Checkliste, damit kein Agentenwissen verloren geht.
 Anschluss: S-LU-046
 
 ### S-LU-046 KI-Adoptionsrate teamübergreifend messen und steuern
@@ -1039,12 +1052,16 @@ Vorgehen:
 2. Lade den Export in den Data Analyst und berechne die vier Adoptionsmetriken pro Team-Einheit; visualisiere als Heatmap (Team × Metrik).
 3. Definiere Ampel-Schwellenwerte: Grün = Aktive-Nutzer-Rate ≥ 70 %; Gelb = 40–69 %; Rot = unter 40 % — und verbinde jeden Rot-Eintrag automatisch mit einer Champion-Intervention (S-LU-014).
 4. Veröffentliche das Dashboard monatlich im Team-Wiki und nutze es als Steuerungsinstrument für das CMO-Reporting.
-Prompt:
-> "Du bist KI-Transformations-Controllerin. Erstelle ein Adoptionsmessmodell für Langdock in einem 30-köpfigen Marketing-Team. Kontext: 5 Team-Einheiten (Content, Performance, Social, Brand, Analytics), monatlicher Reporting-Zyklus. Format: Tabelle mit Metrik-Name, Definition, Messmethode, Zielwert und Ampel-Schwellenwert."
+Vorlage: KI-Adoptions-Dashboard (monatlich):
+1. Daten-Export - aktive Nutzer (>=1 Session/Woche), Sessions/Kopf, Agenten-Typen, Library-Beitraege je Team.
+2. Vier Metriken - Aktive-Nutzer-Rate, Sessions-pro-Person, Agenten-Aktivierungstiefe, Prompt-Library-Beitraege; als Team-x-Metrik-Heatmap.
+3. Ampel-Schwellen - gruen >=70 %, gelb 40-69 %, rot <40 %; jeder Rot-Eintrag -> Champion-Intervention (S-LU-014).
+4. Veroeffentlichung - monatlich im Team-Wiki, als Steuerungsinstrument fuers CMO-Reporting.
 Artefakt: Ein Canvas-Dashboard-Template mit vier Adoptionsmetriken, Team-Heatmap-Vorlage und einem Ampel-Handlungsplan für Rot-Einheiten.
 Fallstricke:
 - Nutzungsstatistiken werden als Leistungsbeurteilung missverstanden → Kommuniziere ausdrücklich: Das Dashboard misst Werkzeugnutzung, nicht individuelle Performance; Datenschutz-Hinweis (S-LU-032) voranstellen.
 - Hohe Session-Zahlen ohne Output-Qualität gelten als Erfolg → Ergänze mindestens eine Output-Qualitäts-Metrik (z. B. Anteil der Agenten-Outputs, die ohne Revision freigegeben werden).
+Empfehlung: Stelle dem Dashboard den Datenschutz-Hinweis (S-LU-032) voran und kommuniziere ausdruecklich, dass es Werkzeugnutzung misst, nicht individuelle Performance - sonst wird die Nutzungsstatistik als Leistungsbeurteilung missverstanden. Ergaenze mindestens eine Output-Qualitaets-Metrik (z. B. Anteil der ohne Revision freigegebenen Agenten-Outputs), damit hohe Session-Zahlen ohne Qualitaet nicht als Erfolg gelten.
 Anschluss: S-LU-047
 
 ### S-LU-047 Abteilungsübergreifendes KI-Champion-Netzwerk aufbauen
@@ -1058,12 +1075,16 @@ Vorgehen:
 2. Definiere die Netzwerk-Rollen: Marketing-Champion = Moderator und Wissens-Hub; Abteilungs-Champions = Übersetzer zwischen Team-Bedarf und Plattform-Fähigkeiten.
 3. Etabliere ein monatliches 45-Minuten-Format: 15 Minuten Demo eines neuen Use-Cases, 20 Minuten Cross-Department-Problem-Solving, 10 Minuten Ankündigung neuer Features.
 4. Lege einen gemeinsamen Wissensordner "Champion-Network-Resources" an: Prompt-Katalog aller Departments, Best-Practice-Protokolle, Onboarding-Materialien für neue Champions.
-Prompt:
-> "Du bist Organisationsentwicklungs-Expertin für KI-Transformation. Erstelle ein Handbuch für ein abteilungsübergreifendes KI-Champion-Netzwerk. Kontext: 5 Departments, je 1 Champion, monatlicher Roundtable, Langdock als gemeinsame Plattform. Format: Handbuch mit Rollen-Beschreibung, Meeting-Agenda-Template und Wissensordner-Struktur."
+Vorlage: Abteilungsuebergreifendes KI-Champion-Netzwerk:
+1. Champion-Auswahl - je Department ein Champion nach S-LU-014-Kriterien (aktivste Nutzer, Wissensweitergabe, Fuehrungsunterstuetzung).
+2. Rollen - Marketing-Champion = Moderator/Wissens-Hub; Abteilungs-Champions = Uebersetzer Bedarf <-> Plattform.
+3. Monatsformat (45 Min) - 15 Min Use-Case-Demo, 20 Min Cross-Department-Problem-Solving, 10 Min Feature-Ankuendigungen.
+4. Gemeinsamer Wissensordner - Prompt-Katalog, Best-Practice-Protokolle, Champion-Onboarding-Material.
 Artefakt: Ein Canvas-Handbuch mit Rollen-Definition, Meeting-Agenda-Template für den monatlichen Roundtable und einer dokumentierten Wissensordner-Struktur für das Netzwerk.
 Fallstricke:
 - Abteilungs-Champions werden nominiert, ohne dass ihre Führungskraft Zeit freigibt → Verbindliche Ressourcen-Zusage (2 Stunden/Monat) muss vor der Nominierung schriftlich vorliegen — dieselbe Bedingung wie in S-LU-014.
 - Der gemeinsame Prompt-Katalog enthält sensible Marketing-Insights, die nicht alle Departments sehen sollen → Berechtigungsstruktur im Wissensordner vorab definieren: öffentliche Prompts vs. department-interne Prompts.
+Empfehlung: Lass die verbindliche Ressourcen-Zusage (2 Stunden/Monat) der Fuehrungskraft schriftlich vorliegen, bevor du einen Abteilungs-Champion nominierst - dieselbe Bedingung wie in S-LU-014, sonst verhungert die Rolle. Definiere die Berechtigungsstruktur im gemeinsamen Wissensordner vorab (oeffentliche vs. department-interne Prompts), da der Katalog sensible Marketing-Insights enthaelt, die nicht alle Departments sehen sollen.
 Anschluss: S-LU-048
 
 ### S-LU-048 KI-Ideation-Workshop für neue Marketing-Use-Cases moderieren
@@ -1083,6 +1104,7 @@ Artefakt: Ein priorisiertes Use-Case-Backlog im Canvas mit 10–15 Szenarien, IC
 Fallstricke:
 - Alle Use-Cases landen im "Workflow-Automatisierung"-Bereich und ignorieren strategische Chat-Anwendungen → Workshop-Moderation muss explizit auch Formate wie Deep-Research, Canvas-Kollaboration und Agent-Beratung adressieren.
 - ICE-Scores werden subjektiv vergeben und Lieblingsideen gewinnen → Ease-Score muss technisch validiert werden; Champion schätzt Implementierungsaufwand, nicht der Use-Case-Einreicher.
+Empfehlung: Adressiere in der Moderation explizit auch Formate jenseits der Workflow-Automatisierung - Deep-Research, Canvas-Kollaboration, Agent-Beratung - sonst landen alle Use-Cases im Automatisierungs-Bereich und strategische Chat-Anwendungen bleiben unentdeckt. Lass den Ease-Score vom Champion technisch validieren, nicht vom Use-Case-Einreicher, damit subjektive Lieblingsideen nicht das ICE-Ranking verzerren.
 Anschluss: S-LU-049
 
 ### S-LU-049 Langdock-Feature-Request-Prozess strukturieren und an den Anbieter kommunizieren
@@ -1095,12 +1117,16 @@ Vorgehen:
 1. Richte im Canvas ein Feature-Request-Log mit Spalten an: Datum, Melder, Beschreibung, betroffene Funktion, Business-Impact (hoch/mittel/niedrig), Häufigkeit (wie viele Nutzer haben dasselbe gemeldet) und Status (offen/kommuniziert/umgesetzt).
 2. Führe monatlich einen PTCF-Prompt aus: "Clustere alle offenen Feature-Requests nach Funktionsbereich und priorisiere nach Häufigkeit × Business-Impact — erstelle eine Top-5-Liste."
 3. Verfasse mit dem Output ein einseitiges Anbieter-Kommunikations-Template: Top-5-Requests mit Use-Case-Kontext, geschätzter Nutzeranzahl und erwünschtem Umsetzungsdatum — und sende es an den zuständigen Customer-Success-Manager.
-Prompt:
-> "Du bist Product-Feedback-Managerin. Clustere die folgende Liste von 18 Feature-Requests für Langdock nach Funktionsbereich und Business-Impact. Kontext: 25 Marketing-Nutzer, häufigste Kategorien: Workflow-Erweiterungen, Agent-UI, Wissensordner-Performance. Format: Top-5-Priorisierungsliste mit Cluster-Name, Anzahl Meldungen, Impact-Begründung und vorgeschlagenem Kommunikations-Wording."
+Vorlage: Feature-Request-Prozess (intern -> Anbieter):
+1. Request-Log (Canvas) - Datum, Melder, Beschreibung, Funktion, Business-Impact (hoch/mittel/niedrig), Haeufigkeit, Status.
+2. Monats-Clustering - PTCF-Prompt: nach Funktionsbereich clustern, nach Haeufigkeit x Impact Top-5 priorisieren.
+3. Anbieter-Template - einseitig: Top-5 mit Use-Case-Kontext, Nutzeranzahl, Wunsch-Umsetzungsdatum -> Customer-Success-Manager.
+4. Log-Hygiene - quartalsweise 30-Min-Session im Champion-Roundtable (S-LU-047).
 Artefakt: Ein strukturiertes Feature-Request-Log im Canvas plus ein fertiges Anbieter-Kommunikations-Dokument mit Top-5-Priorisierung, direkt versandbereit an den Langdock-Customer-Success-Manager.
 Fallstricke:
 - Feature-Requests werden als Produktversprechen missverstanden → Das Kommunikations-Template muss explizit formulieren: "Dies sind interne Nutzerwünsche, keine vertraglichen Anforderungen."
 - Das Log wird nie aktualisiert, weil der Prozess zu aufwändig ist → Quartalsweise 30-minütige Log-Hygiene-Session im Champion-Netzwerk-Roundtable (S-LU-047) einplanen; nicht jeden Monat neu starten.
+Empfehlung: Formuliere im Anbieter-Template ausdruecklich 'interne Nutzerwuensche, keine vertraglichen Anforderungen' - sonst werden kommunizierte Feature-Requests als Produktversprechen missverstanden. Verankere die Log-Hygiene als quartalsweise 30-Minuten-Session im Champion-Netzwerk-Roundtable (S-LU-047) statt als monatlichen Neustart, sonst wird das Log wegen des Aufwands nie aktualisiert.
 Anschluss: S-LU-050
 
 ### S-LU-050 Workspace-Backup- und Export-Strategie implementieren
