@@ -6549,8 +6549,8 @@
     {
       "name": "10-prompts-und-skills.md",
       "kind": "content",
-      "lines": 1607,
-      "bytes": 217812,
+      "lines": 1734,
+      "bytes": 240619,
       "scenarios": [
         {
           "id": "S-PS-001",
@@ -6686,7 +6686,7 @@
           "noun": "Redakteur",
           "anschluss": "S-PS-018",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-018",
@@ -6694,7 +6694,7 @@
           "noun": "Langdock-Modell-Update",
           "anschluss": "S-PS-019",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-019",
@@ -6710,7 +6710,7 @@
           "noun": "Aufgaben",
           "anschluss": "S-PS-021",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-021",
@@ -6782,7 +6782,7 @@
           "noun": "Agenten-Outputs",
           "anschluss": "S-PS-030",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-030",
@@ -6798,7 +6798,7 @@
           "noun": "Prompts",
           "anschluss": "S-PS-032",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-032",
@@ -6806,7 +6806,7 @@
           "noun": "Langdock-Nutzung",
           "anschluss": "S-PS-033",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-033",
@@ -6814,7 +6814,7 @@
           "noun": "Versuche",
           "anschluss": "S-PS-034",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-034",
@@ -6822,7 +6822,7 @@
           "noun": "Teammitglieder",
           "anschluss": "S-PS-035",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-035",
@@ -6830,7 +6830,7 @@
           "noun": "Teammitglieder",
           "anschluss": "S-PS-036",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-036",
@@ -6846,7 +6846,7 @@
           "noun": "Bestimmte",
           "anschluss": "S-PS-038",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-038",
@@ -6862,7 +6862,7 @@
           "noun": "Julias",
           "anschluss": "S-PS-040",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-040",
@@ -6870,7 +6870,7 @@
           "noun": "Library",
           "anschluss": "S-PS-041",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-041",
@@ -6974,7 +6974,7 @@
           "noun": "Interne",
           "anschluss": "S-PS-054",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-054",
@@ -7038,7 +7038,7 @@
           "noun": "Prompt-Bibliothek",
           "anschluss": "S-PS-062",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-062",
@@ -7046,7 +7046,7 @@
           "noun": "Unerfahrene",
           "anschluss": "S-PS-063",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-063",
@@ -7062,7 +7062,7 @@
           "noun": "Derselbe",
           "anschluss": "S-PS-065",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-065",
@@ -7078,7 +7078,7 @@
           "noun": "Few-Shot-Beispiele",
           "anschluss": "S-PS-067",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-067",
@@ -7110,7 +7110,7 @@
           "noun": "Tonalität",
           "anschluss": "S-PS-071",
           "advice_style": false,
-          "type": "P"
+          "type": "S"
         },
         {
           "id": "S-PS-071",
@@ -7142,7 +7142,7 @@
           "noun": "Wiederkehrende",
           "anschluss": "S-PS-075",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-075",
@@ -7150,7 +7150,7 @@
           "noun": "Prompt",
           "anschluss": "S-PS-076",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-076",
@@ -7158,7 +7158,7 @@
           "noun": "Prompt-Varianten",
           "anschluss": "S-PS-077",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-077",
@@ -7182,7 +7182,7 @@
           "noun": "Texte",
           "anschluss": "S-PS-080",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         },
         {
           "id": "S-PS-080",
@@ -7190,16 +7190,16 @@
           "noun": "Marketing-Kolleginnen",
           "anschluss": "S-PS-001",
           "advice_style": false,
-          "type": "P"
+          "type": "G"
         }
       ],
       "data_anweisungen": [],
       "faq": [],
       "advice_style": 0,
       "types": {
-        "P": 75,
-        "G": 4,
-        "S": 1
+        "P": 52,
+        "G": 26,
+        "S": 2
       }
     },
     {
@@ -11790,12 +11790,12 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 742,
+    "P": 719,
     "W": 80,
     "D": 19,
-    "G": 138,
+    "G": 160,
     "M": 16,
-    "S": 1,
+    "S": 2,
     "K": 110
   },
   "typed": 1106

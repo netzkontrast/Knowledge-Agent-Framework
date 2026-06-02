@@ -1555,6 +1555,7 @@ Artefakt: Claim-für-Claim-Verifikationstabelle mit Quellen und Korrekturen; jed
 Fallstricke:
 - Der Agent kann eine Quelle "halluzinieren", die seine eigene Behauptung scheinbar belegt; bei kritischen Claims (Pricing, rechtliche/Gesundheits-Aussagen) muss ein Mensch die zitierte Quelle stichprobenartig öffnen und gegenprüfen.
 - Web-Search-Quellen können veraltet sein; immer das Quell-Datum erfassen und bei zeitkritischen Zahlen ein Höchstalter (z.B. 12 Monate) als Akzeptanzkriterium setzen.
+Empfehlung: Eigenes Modellwissen zaehlt nicht als Quelle — jede Behauptung gegen @[Quellordner] oder Web Search mit Datei/URL + Datum belegen. Bei kritischen Claims (Pricing, rechtliche/Gesundheits-Aussagen) die zitierte Quelle stichprobenartig von einem Menschen oeffnen lassen, da der Agent eine Quelle 'halluzinieren' kann, die seine eigene Behauptung scheinbar belegt; bei zeitkritischen Zahlen ein Quell-Hoechstalter (z. B. 12 Monate) setzen.
 Anschluss: S-PS-073
 
 ### S-PS-073 Lange-PDF-Zusammenfassung mit Direktanlage und Zitierpflicht
@@ -1574,6 +1575,7 @@ Artefakt: Dreistufige, belegte Zusammenfassung mit Abschnitts-/Seitenbezug; dire
 Fallstricke:
 - Geht das Dokument über das Kontextfenster, liefert RAG nur Fragmente und die Kapitelhierarchie geht verloren; bei >50 Seiten vorab in Sektionen splitten und Teil-Summaries zusammenführen (vgl. S-PS-023).
 - Ohne Zitierpflicht halluziniert der Agent Seitenzahlen; die Klammer-Beleg-Anweisung und ein stichprobenartiger Mensch-Check sind beide erforderlich (vgl. S-PS-067).
+Empfehlung: Lange Dokumente per Direktanlage statt RAG zusammenfassen — RAG liefert nur Fragmente und die Kapitelhierarchie geht verloren; ab >50 Seiten vorab in Sektionen splitten und Teil-Summaries zusammenfuehren. Jede Kernaussage mit Abschnitts-/Seitenbeleg in Klammern erzwingen und stichprobenartig pruefen, da der Agent ohne Zitierpflicht Seitenzahlen halluziniert.
 Anschluss: S-PS-074
 
 ### S-PS-074 Inline-Skill-Design: Mikro-Tasks für den täglichen Workflow definieren
@@ -1587,12 +1589,15 @@ Vorgehen:
 2. Formuliere je Skill eine extrem enge Anweisung mit genau einem messbaren Ergebnis ("Kürze um exakt 30%, ohne Fakten zu entfernen").
 3. Ergänze je Skill genau ein Negativ-Constraint (was der Skill NICHT tun darf), um Scope-Creep zu verhindern.
 4. Lege jeden Skill als Konversations-Starter mit kurzem Label an; der vollständige Skill liegt im Starter-Body.
-Prompt:
-> "Du bist Inline-Editor für genau eine Mikro-Aufgabe. Skill: 'Length-Cut 30%'. Aufgabe: Kürze den folgenden Text um exakt 30% (Wortzahl), ohne Fakten, Zahlen oder das zentrale Argument zu entfernen — eliminiere nur Füllwörter und Redundanz. Verboten: Tonalität ändern, neue Inhalte hinzufügen, umstrukturieren. Text: [Text einfügen]. Format: nur der gekürzte Text + Schlusszeile 'Wortzahl vorher/nachher: X → Y'."
+Vorlage: Inline-Skill-Katalog (Mikro-Tasks):
+1. Skill-Sammlung — >=8 Mikro-Skills (Length-Cut, Bullet-Points, Tonfall-Shift, Anti-Floskel-Scrub, Aktiv-Umbau, Subject-Line, CTA-Schaerfung, Stilkorrektur).
+2. Je Skill — extrem enge Anweisung mit genau einem messbaren Ergebnis ('kuerze um exakt 30 %, ohne Fakten zu entfernen') + genau ein Negativ-Constraint (was er NICHT tun darf).
+3. Abruf — jeder Skill als Konversations-Starter (kurzes Label, voller Skill im Body).
 Artefakt: Konsistentes Mikro-Task-Ergebnis (z.B. exakt gekürzter Text) mit messbarer Erfolgszeile; Skill als wiederabrufbarer Konversations-Starter.
 Fallstricke:
 - Inline-Skills, die zu viel auf einmal tun (kürzen UND Ton ändern UND umstrukturieren), verlieren ihren engen Fokus und werden unzuverlässig — ein Skill = genau eine Transformation.
 - Für Aufgaben mit >2 Sätzen strategischer Erwartung ist ein Inline-Skill das falsche Werkzeug; dort auf PTCF oder einen Metaprompt wechseln (Abgrenzung im Katalog dokumentieren).
+Empfehlung: Ein Skill = genau eine Transformation — Inline-Skills, die zu viel auf einmal tun (kuerzen UND Ton aendern UND umstrukturieren), verlieren ihren Fokus und werden unzuverlaessig. Fuer Aufgaben mit mehr als zwei Saetzen strategischer Erwartung ist ein Inline-Skill das falsche Werkzeug; dort auf PTCF oder einen Metaprompt wechseln (Abgrenzung im Katalog dokumentieren).
 Anschluss: S-PS-075
 
 ### S-PS-075 Prompt-Versionierung mit Changelog und Wiederherstellungspunkt
@@ -1606,12 +1611,16 @@ Vorgehen:
 2. Bewahre bei jeder Änderung den vollständigen Vorgänger-Text in einem auskommentierten Block (`<!-- v1.0 ... -->`), damit ein Rollback per Copy möglich ist.
 3. Dokumentiere je Version: Datum, Änderungsgrund, Testergebnis (PASS/FAIL) und das Modell, mit dem getestet wurde.
 4. Nutze den Editor-Versionsverlauf (Langdock → Editor → Versionshistorie) ergänzend für Canvas-Dokumente, aber verlasse dich für Prompts auf den expliziten Changelog.
-Prompt:
-> "Du bist Prompt-Versionierungs-Assistent. Ich gebe dir die alte und die neue Fassung eines Prompts sowie das Ziel der Änderung. Erstelle einen Changelog-Eintrag: Version (semantisch hochzählen) | Datum | Änderungsgrund | konkrete Diff-Punkte (was wurde geändert) | empfohlenes Testergebnis-Feld (PASS/FAIL) | Modell. Bewahre die alte Fassung als auskommentierten Block. Alt: [v_alt]. Neu: [v_neu]. Ziel: [Grund]. Format: Changelog-Zeile + `<!-- Vorgängerversion -->`-Block."
+Vorlage: Prompt-Versionierungs-Standard (Changelog + Rollback):
+1. Semantische Version — je Schluessel-Prompt (v1.0, v1.1 …); aktueller Stand als Baseline.
+2. Vorgaenger-Bewahrung — bei jeder Aenderung den vollstaendigen alten Text in <!-- v1.0 ... --> bewahren (Rollback per Copy).
+3. Doku je Version — Datum, Aenderungsgrund, Testergebnis (PASS/FAIL), Test-Modell.
+4. Ergaenzend — Editor-Versionshistorie fuer Canvas, aber fuer Prompts der explizite Changelog.
 Artefakt: Changelog-Eintrag mit Diff, Testfeld und bewahrtem Vorgänger-Text; jederzeit rollback-fähig.
 Fallstricke:
 - Library-Dateien sind nicht wie Git versioniert; ohne den auskommentierten Vorgänger-Block ist die Vorversion nach dem Überschreiben verloren — der Bewahrungsschritt ist nicht optional (vgl. S-PS-004).
 - Ein Changelog-Eintrag ohne festen Testinput ist nicht reproduzierbar; Testfixtures (Standard-Inputs) separat speichern und im Eintrag referenzieren.
+Empfehlung: Den auskommentierten Vorgaenger-Block nie weglassen — Library-Dateien sind nicht git-versioniert, sodass die Vorversion nach dem Ueberschreiben sonst verloren ist. Test-Fixtures (Standard-Inputs) separat speichern und im Changelog-Eintrag referenzieren, da ein Eintrag ohne festen Testinput nicht reproduzierbar ist.
 Anschluss: S-PS-076
 
 ### S-PS-076 Prompt-A/B-Evaluation: Zwei Varianten kontrolliert vergleichen
@@ -1625,12 +1634,16 @@ Vorgehen:
 2. Lege gewichtete Kriterien fest (z.B. Format-Compliance 30%, Brand-Voice 25%, Faktentreue 25%, Diversität 20%).
 3. Lass beide Varianten je Testinput laufen und vom Agenten blind (ohne Variantenbezeichnung) gegen die Kriterien scoren.
 4. Berechne den gewichteten Gesamtscore je Variante und dokumentiere die Sieger-Empfehlung mit Begründung im Changelog (vgl. S-PS-075).
-Prompt:
-> "Du bist Prompt-Evaluator. Hier sind Variante A und Variante B desselben Prompts sowie 3 feste Testinputs. Lass jede Variante gegen jeden Input laufen und bewerte die Outputs gegen diese gewichteten Kriterien: Format-Compliance (30%), Brand-Voice (25%), Faktentreue (25%), Varianten-Diversität (20%), je 1–5. Bewerte die Outputs blind, ohne A/B im Urteil zu bevorzugen. A: [Prompt A]. B: [Prompt B]. Inputs: [3 Inputs]. Format: Scoring-Tabelle je Input + gewichteter Gesamtscore je Variante + Sieger-Empfehlung mit 2-Satz-Begründung."
+Vorlage: Prompt-A/B-Evaluations-Framework:
+1. Feste Testinputs — 3 Inputs (typisch + Randfaelle); beide Varianten laufen gegen exakt dieselben.
+2. Gewichtete Kriterien — z. B. Format-Compliance 30 %, Brand-Voice 25 %, Faktentreue 25 %, Diversitaet 20 % (je 1–5).
+3. Blind-Scoring — Outputs ohne A/B-Bezeichnung bewerten.
+4. Gesamtscore je Variante + begruendete Sieger-Empfehlung, dokumentiert im Changelog (S-PS-075).
 Artefakt: Gewichtete Scoring-Tabelle über feste Testinputs + begründete Sieger-Empfehlung; reproduzierbar bei jeder Wiederholung.
 Fallstricke:
 - Unterschiedliche Testinputs je Variante machen den Vergleich wertlos; beide Varianten müssen gegen exakt dieselben Inputs laufen — sonst misst man den Input, nicht den Prompt.
 - Der Agent kann eine Variante systematisch bevorzugen, wenn er weiß, welche „neuer" ist; Varianten neutral als A/B labeln und das Urteil ausdrücklich als blind anfordern.
+Empfehlung: Beide Varianten gegen exakt dieselben Testinputs laufen lassen — unterschiedliche Inputs machen den Vergleich wertlos (man misst den Input, nicht den Prompt). Die Varianten neutral als A/B labeln und das Urteil ausdruecklich als blind anfordern, da der Agent sonst die vermeintlich 'neuere' Variante systematisch bevorzugt.
 Anschluss: S-PS-077
 
 ### S-PS-077 Guardrail- und Refusal-Prompts für sichere Ablehnung außerhalb des Scopes
@@ -1650,6 +1663,7 @@ Artefakt: System-Prompt mit Scope-Definition und konsistentem Refusal-Verhalten 
 Fallstricke:
 - Zu enge Guardrails blockieren legitime Edge-Cases und erzeugen Produktivitätsverlust; den Scope breit genug für reale Nutzung definieren und mit echten Edge-Cases gegentesten (vgl. S-PS-025).
 - Refusal-Prompts schützen nicht gegen raffinierte Adversarial-Angriffe und ersetzen keine Berechtigungssteuerung; sicherheitskritische Entscheidungen brauchen immer menschliche Endkontrolle.
+Empfehlung: Den erlaubten Scope breit genug fuer reale Nutzung definieren und mit echten Edge-Cases gegentesten — zu enge Guardrails blockieren legitime Anfragen und erzeugen Produktivitaetsverlust. Bei Unsicherheit ablehnen und auf menschliche Klaerung verweisen statt zu raten; Refusal-Prompts ersetzen aber keine Berechtigungssteuerung und schuetzen nicht gegen raffinierte Adversarial-Angriffe.
 Anschluss: S-PS-078
 
 ### S-PS-078 Competitive-Analysis-Prompt mit Web Search und kritischer Quellenwertung
@@ -1669,6 +1683,7 @@ Artefakt: Quellenbelegte Wettbewerbs-Matrix mit Claim-vs-Fakt-Wertung und Stand-
 Fallstricke:
 - Web Search liefert nur öffentliche Listenpreise, keine Vertragspreise; Preis-Zellen immer mit "Stand: Datum" versehen und vor Kundenpräsentationen manuell verifizieren (vgl. S-PS-043).
 - Wettbewerber mit schwacher Web-Präsenz werden systematisch zu schlecht bewertet; die "keine öffentlichen Daten"-Regel verhindert, dass Datenlücken als reale Schwächen fehlinterpretiert werden.
+Empfehlung: Preis-Zellen immer mit 'Stand: Datum' versehen und vor Kundenpraesentationen manuell verifizieren — Web Search liefert nur oeffentliche Listenpreise, keine Vertragspreise. Wettbewerber-Eigenaussagen kritisch als 'Claim' kennzeichnen und fehlende Daten als 'keine oeffentlichen Daten' (nicht als Schwaeche) werten, damit Datenluecken nicht als reale Schwaechen fehlinterpretiert werden.
 Anschluss: S-PS-079
 
 ### S-PS-079 Persona-konsistente Copy mit verankerter Stimme über alle Texte
@@ -1682,12 +1697,16 @@ Vorgehen:
 2. Hinterlege 2–3 kuratierte, aktuelle Referenztexte (max. 18 Monate alt) als Few-Shot-Anker (vgl. S-PS-066).
 3. Ergänze einen Verbots-Cluster mit persona-untypischen Formulierungen.
 4. Prüfe jeden neuen Text mit einem Konsistenz-Check gegen die Referenz (Übereinstimmung ≥70% = Freigabe).
-Prompt:
-> "Du bist Ghostwriter für die CEO-Persona. Stimm-Merkmale: kurze Sätze (max. 16 Wörter), keine Emojis, direkte These zuerst, ein konkretes Beispiel pro Punkt, endet mit offener Frage. Referenz-Stil (verbindlich): '[2–3 Referenz-Absätze einfügen]'. Verboten: 'innovativ', 'führend', generische LinkedIn-Broetry, rhetorische Fragen-Ketten. Aufgabe: Forme die folgenden Stichpunkte in einen LinkedIn-Post in dieser Stimme. Stichpunkte: [einfügen]. Format: Post + Schlusszeile 'Stimm-Konsistenz vs. Referenz: hoch/mittel/niedrig + Begründung'."
+Vorlage: Persona-Voice-Anchor (je Persona):
+1. Stimm-Merkmale (5) — Satzlaenge, Emoji-Policy, Direktheit, typische Satzfiguren, Tabu-Themen (nicht ueber Keyword-Liste, vgl. S-PS-033).
+2. Referenztexte — 2–3 kuratierte, aktuelle Anker (max. 18 Monate alt, vgl. S-PS-066).
+3. Verbots-Cluster — persona-untypische Formulierungen.
+4. Konsistenz-Check — neuer Text gegen die Referenz, >=70 % = Freigabe.
 Artefakt: Persona-konsistenter Text + Konsistenz-Selbsteinschätzung gegen die Referenz; reproduzierbar über Verfasser und Kanäle.
 Fallstricke:
 - Referenztexte aus unterschiedlichen Zeiträumen senden widersprüchliche Stil-Signale; nur aktuelle Anker aus einem definierten Zeitfenster (max. 18 Monate) verwenden (vgl. S-PS-033).
 - Eine über Keyword-Listen statt Stil-Parameter kodierte Persona erzeugt mechanische, steife Texte; die Stimme über Merkmale + Referenz verankern, nicht über Vokabel-Wiederholung.
+Empfehlung: Die Persona ueber Stil-Merkmale + Referenztexte verankern, nicht ueber Keyword-Listen — Letztere erzeugen mechanische, steife Texte. Nur aktuelle Anker aus einem definierten Zeitfenster (max. 18 Monate) verwenden, da Referenztexte aus verschiedenen Zeitraeumen widerspruechliche Stil-Signale senden und die Reproduzierbarkeit der Stimme untergraben.
 Anschluss: S-PS-080
 
 ### S-PS-080 Prompt-Onboarding-Kit für neue Teammitglieder
@@ -1701,10 +1720,14 @@ Vorgehen:
 2. Baue einen 4-Tage-Lernpfad: Tag 1 — PTCF-Leitfaden + 3 Starter durchspielen; Tag 2 — Variablen-Template befüllen; Tag 3 — einen eigenen Prompt im Sandbox testen (S-PS-031); Tag 4 — einen Prompt zur Library nominieren (S-PS-017).
 3. Verlinke die Kern-Standards (PTCF, Variablen-Design, Governance, Versionierung) als Pflichtlektüre, je 1 Seite.
 4. Schließe mit einem Mini-Check ab: neue Kollegin schreibt einen PTCF-Prompt, der den PTCF-Checker (S-PS-005) ohne Fehlfeld besteht.
-Prompt:
-> "Du bist Prompt-Onboarding-Coach. Erstelle für eine neue Marketing-Kollegin einen 4-Tage-Lernpfad zum produktiven Prompten mit unseren Standards. Eingaben: vorhandene Standards [@ptcf-leitfaden, @variablen-design-guide, @prompt-governance-modell] und die 10 Team-Konversations-Starter. Pro Tag: Lernziel, 1 konkrete Übung mit erwartetem Ergebnis, 1 Selbstcheck. Tag 4 endet mit einer Prüfaufgabe (eigener PTCF-Prompt, der den PTCF-Checker ohne Fehlfeld besteht). Format: Tabelle Tag | Lernziel | Übung | Selbstcheck + abschließende Prüfaufgabe."
+Vorlage: Prompt-Onboarding-Kit (4-Tage-Lernpfad):
+1. Starter-Sammlung — 10 gepruefte Prompts im 'Team-Prompt-Starter'-Agenten (S-PS-003).
+2. 4-Tage-Pfad — Tag 1 PTCF-Leitfaden + 3 Starter; Tag 2 Variablen-Template; Tag 3 eigener Prompt im Sandbox (S-PS-031); Tag 4 Prompt zur Library nominieren (S-PS-017).
+3. Kern-Standards verlinken — PTCF (S-PS-005), Variablen-Design (S-PS-062), Governance (S-PS-061), je 1 Seite.
+4. Abschluss — Mini-Check: eigener PTCF-Prompt besteht den PTCF-Checker (S-PS-005) ohne Fehlfeld.
 Artefakt: `prompt-onboarding-kit.md` mit 4-Tage-Lernpfad, Starter-Sammlung und Abschluss-Prüfaufgabe; messbar an verkürzter Time-to-first-productive-Prompt.
 Fallstricke:
 - Ein Onboarding-Kit ohne Pflege veraltet schneller als andere Dokumente (Starter, Standards, Modelle ändern sich); an den Quarterly Health-Review koppeln (S-PS-040), damit das Kit aktuell bleibt.
 - Zu viel Stoff an Tag 1 überfordert und führt zum Rückfall in manuelle Arbeit; den Pfad bewusst auf je eine Übung pro Tag begrenzen und Komplexität graduell steigern (vgl. S-PS-034).
+Empfehlung: Das Onboarding-Kit an den Quarterly Health-Review (S-PS-040) koppeln — es veraltet schneller als andere Dokumente (Starter/Standards/Modelle aendern sich) und muss aktuell bleiben. Den Pfad bewusst auf eine Uebung pro Tag begrenzen und die Komplexitaet graduell steigern (S-PS-034), da zu viel Stoff an Tag 1 ueberfordert und zum Rueckfall in manuelle Arbeit fuehrt.
 Anschluss: S-PS-001
