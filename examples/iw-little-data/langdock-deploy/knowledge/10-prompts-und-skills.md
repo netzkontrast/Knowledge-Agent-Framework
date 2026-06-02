@@ -409,12 +409,16 @@ Vorgehen:
 2. Konfiguriere einen "Prompt-Nominierung"-Konversations-Starter: Kollegin fügt Roh-Prompt ein → Agent normiert auf PTCF → liefert Normierungs-Vorschlag + Begründung ob Kriterien erfüllt.
 3. Julia reviewed normierten Prompt (2-Minuten-Check) und lädt die freigegebene Version in die Library hoch.
 4. Quartals-Review der Library: Prompts mit <3 Verwendungen in 3 Monaten werden archiviert.
-Prompt:
-> "Du bist Prompt-Bibliothekar. Ich reiche folgenden Roh-Prompt zur Library-Aufnahme ein: [Prompt einfügen]. Prüfe: (1) Lässt er sich auf PTCF normieren? (2) Gibt es {{Variablen}}, die parametrisiert werden sollten? (3) Sind alle drei Aufnahme-Kriterien erfüllt? Ausgabe: normierter PTCF-Prompt-Entwurf + Checkliste der drei Kriterien (ja/nein) + Empfehlung: aufnehmen / überarbeiten / ablehnen."
+Vorlage: Prompt-Sharing-SOP (Chat -> Library):
+1. Aufnahme-Kriterien — (a) Prompt erzeugte >=3x direkt nutzbaren Output, (b) auf PTCF normierbar, (c) mit {{Variablen}} parametrisierbar.
+2. Nominierungs-Starter — Roh-Prompt einreichen -> Agent normiert auf PTCF + prueft Kriterien.
+3. Freigabe — Reviewer (Julia/Team-Lead) prueft (2-Min) und laedt in die Library.
+4. Quartals-Review — Prompts mit <3 Verwendungen in 3 Monaten archivieren.
 Artefakt: PTCF-normierter Prompt-Entwurf + Aufnahme-Entscheidung mit Begründung.
 Fallstricke:
 - Ohne definierten Reviewer (Julia oder Team-Lead) landen unkurierte Prompts in der Library und senken die Gesamtqualität — der Freigabe-Step ist nicht optional.
 - Prompts, die von einem bestimmten Modell abhängen (z.B. nur mit Claude Opus stabil), müssen in der Library mit Modell-Hinweis getaggt werden, damit Kollegen das richtige Modell wählen.
+Empfehlung: Den Freigabe-Step durch einen benannten Reviewer nie ueberspringen — ohne Kuration landen unkurierte Prompts in der Library und senken die Gesamtqualitaet. Modellabhaengige Prompts (z. B. nur mit Opus stabil) in der Library mit Modell-Hinweis taggen, damit Kollegen das richtige Modell waehlen.
 Anschluss: S-PS-018
 
 ### S-PS-018 Prompt-Deprecation bei Modell-Drift: Ruhestands-Prozess für veraltete Prompts
@@ -428,12 +432,16 @@ Vorgehen:
 2. Definiere den Canary-Test: 3 Standard-Inputs mit bekanntem erwarteten Output; FAIL = Output weicht in Format, Tonalität oder Vollständigkeit ab.
 3. Führe nach jedem Langdock-Modell-Update den Canary-Test für alle 10 Schlüssel-Prompts durch (Aufwand: ~20 Min.).
 4. Prompts mit 2 von 3 Canary-FAILs werden auf "Under-Review" gesetzt; nach erfolglosem Repair-Versuch auf "Deprecated" — kein Löschen, nur Archivierung.
-Prompt:
-> "Du bist Prompt-Tester. Führe einen Canary-Test für den folgenden Prompt durch: [Prompt einfügen]. Testinput: [Standard-Input 1]. Erwarteter Output: [Beschreibung]. Bewerte: (1) Format eingehalten? (2) Tonalität korrekt? (3) Alle geforderten Elemente vorhanden? Ausgabe: Tabelle mit Dimension | Ergebnis (PASS/FAIL) | Abweichung | Schweregrad (kritisch/minor)."
+Vorlage: Prompt-Deprecation-Prozess (Modell-Drift):
+1. Log — prompt-deprecation-log.md: Prompt-Name | Letzter-Test | Modell | Status (Active/Under-Review/Deprecated) | Nachfolger.
+2. Canary-Test — 3 fixe Standard-Inputs mit bekanntem Soll-Output; FAIL = Abweichung in Format/Tonalitaet/Vollstaendigkeit.
+3. Trigger — nach jedem Langdock-Modell-Update alle 10 Schluessel-Prompts testen (~20 Min).
+4. Statuslogik — 2 von 3 FAILs -> Under-Review; nach erfolglosem Repair -> Deprecated (archivieren, nicht loeschen).
 Artefakt: Canary-Test-Protokoll mit PASS/FAIL je Dimension + Empfehlung: Active / Under-Review / Deprecated.
 Fallstricke:
 - Canary-Tests ohne fixierte Standard-Inputs sind nicht reproduzierbar und liefern kein echtes Signal über Modell-Drift — Testinputs einmalig festlegen und nie ändern.
 - "Deprecated" als Label ist kein Lösch-Befehl; archivierte Prompts dokumentieren den historischen Kontext und helfen beim Rebuild, wenn ein neues Modell den alten Ansatz wieder besser unterstützt.
+Empfehlung: Die Canary-Test-Inputs einmalig fixieren und nie aendern — ohne reproduzierbare Inputs liefert der Test kein echtes Modell-Drift-Signal. 'Deprecated' ist kein Loesch-Befehl: archivierte Prompts dokumentieren den historischen Kontext und helfen beim Rebuild, wenn ein neues Modell den alten Ansatz wieder besser unterstuetzt.
 Anschluss: S-PS-019
 
 ### S-PS-019 DACH-Lokalisierungs-Prompt für kulturelle Nuancen in Ad-Copy
@@ -453,6 +461,7 @@ Artefakt: Canvas-Dokument mit drei Markt-Varianten (DE/AT/CH) + Diff-Blöcke fü
 Fallstricke:
 - Schwiizerdütsch ist für aktuelle LLMs nicht zuverlässig produzierbar — jede Anfrage nach Dialekt-Content für CH muss im Prompt auf "CH-Standardhochdeutsch" umgeleitet werden; Dialekt-Texte müssen manuell überprüft oder erstellt werden.
 - AT-Preisangaben unterliegen dem UWG-AT und PAngV-Äquivalent (Angabe von Bruttopreisen); der Prompt muss explizit auf Preisdarstellungs-Compliance hinweisen und darf keine Nettopreise als Endpreise kommunizieren.
+Empfehlung: Schwiizerduetsch-Anfragen grundsaetzlich auf CH-Standardhochdeutsch umlenken — aktuelle LLMs produzieren keinen zuverlaessigen Dialekt; Dialekt-Texte muessen manuell erstellt/geprueft werden. Den Prompt explizit auf AT-Preisdarstellungs-Compliance (Bruttopreise gemaess UWG-AT/PAngV) hinweisen und nie Nettopreise als Endpreise kommunizieren.
 Anschluss: S-PS-020
 
 ### S-PS-020 CO-STAR vs. PTCF Entscheidungsmatrix: Das richtige Framework wählen
@@ -465,12 +474,15 @@ Vorgehen:
 1. Baue die Entscheidungsmatrix mit 3 Schwellenwerten: (a) Ist die Zielgruppe intern (Team) oder extern mit Reputationsrisiko? (b) Hat die Aufgabe >2 gleichzeitig zu steuernde Dimensionen? (c) Ist Tonalität und Audience kritisch verschieden (z.B. CFO vs. Endkunde)? → 2+ JA = CO-STAR; sonst PTCF.
 2. Konfiguriere den Entscheidungs-Starter: Aufgabe kurz beschreiben → Agent stellt die 3 Schwellenwert-Fragen → empfiehlt Framework mit Begründung + befüllt direkt das empfohlene Skeleton.
 3. Ergänze in der Matrix 5 konkrete Use-Case-Beispiele (je 2–3 PTCF, je 2–3 CO-STAR) aus dem Alltag des Marketing-Teams.
-Prompt:
-> "Du bist Prompt-Framework-Berater. Ich beschreibe meine Aufgabe: [Aufgabe]. Stelle mir diese drei Fragen nacheinander: (1) Ist die Zielgruppe extern mit Reputationsrisiko (Kunde, Presse, C-Level)? (2) Muss ich gleichzeitig Stil, Tonalität UND Audience-Spezifika steuern? (3) Ist ein Fehler in Ton oder Format hier geschäftlich schädlich? Bei 2+ JA empfehle CO-STAR mit befülltem Skeleton. Bei <2 JA empfehle PTCF mit befülltem Skeleton. Begründe die Wahl in 2 Sätzen."
+Vorlage: PTCF-vs-CO-STAR-Entscheidungsmatrix:
+1. Drei Schwellenwert-Fragen — (a) Zielgruppe extern mit Reputationsrisiko? (b) >2 gleichzeitig zu steuernde Dimensionen? (c) Tonalitaet/Audience kritisch verschieden? -> 2+ JA = CO-STAR, sonst PTCF.
+2. Entscheidungs-Starter — Aufgabe beschreiben -> 3 Fragen -> Framework-Empfehlung + befuelltes Skeleton.
+3. Beispiele — 5 Use-Cases aus dem Team-Alltag (2-3 PTCF, 2-3 CO-STAR).
 Artefakt: Framework-Empfehlung (PTCF oder CO-STAR) mit Begründung + direkt befülltes Prompt-Skeleton für die aktuelle Aufgabe.
 Fallstricke:
 - Teams neigen dazu, CO-STAR für alle Aufgaben zu nutzen, sobald sie es kennen — das erzeugt unnötig lange Prompts und erhöht Latenz; die Matrix muss explizit PTCF als Default positionieren.
 - CO-STAR ohne klar ausgefülltes Audience-Feld produziert generische Outputs, die nicht besser sind als PTCF — der A-Parameter ist der häufigste CO-STAR-Ausfüll-Fehler; im Leitfaden explizit warnen.
+Empfehlung: PTCF explizit als Default positionieren — Teams nutzen CO-STAR sonst reflexhaft fuer alles, was unnoetig lange Prompts und hoehere Latenz erzeugt. Vor dem CO-STAR-Einsatz das Audience-Feld klar ausfuellen: ein leeres A-Feld ist der haeufigste CO-STAR-Fehler und produziert generische Outputs, die nicht besser sind als PTCF.
 Anschluss: S-PS-021
 
 ### S-PS-021 Strukturierten Tabellen-Output für Medienplanung prompten
@@ -490,6 +502,7 @@ Artefakt: Vollständige Markdown-Tabelle des Medienplans mit Budgetsummen-Validi
 Fallstricke:
 - Ohne explizite Summen-Validierungszeile überschreitet der Agent regelmäßig das Gesamtbudget durch Rundungsfehler — Pflichtzeile am Ende der Tabelle.
 - Modelle fügen häufig erklärenden Fließtext vor der Tabelle ein; die Anweisung "keine Einleitung" muss wörtlich im Format-Feld stehen, nicht nur impliziert werden.
+Empfehlung: Eine Summen-Validierungszeile am Tabellenende als Pflicht setzen — ohne sie ueberschreitet der Agent durch Rundungsfehler regelmaessig das Gesamtbudget. Die Anweisung 'keine Einleitung, kein Text nach der Tabelle' woertlich ins Format-Feld schreiben, da Modelle sonst erklaerenden Fliesstext vor die Tabelle setzen und den CSV-Export brechen.
 Anschluss: S-PS-022
 
 ### S-PS-022 JSON- und YAML-Output für Marketing-Automatisierung prompten
@@ -509,6 +522,7 @@ Artefakt: Valides JSON- oder YAML-Objekt, direkt für API-Calls oder CMS-Import 
 Fallstricke:
 - Anführungszeichen im Input-Text brechen JSON-Strings — im Prompt explizit anweisen: "Escape alle Anführungszeichen in String-Werten mit Backslash."
 - YAML-Einrückungsfehler sind unsichtbar im Chat-Output; immer mit einem Validator prüfen, bevor ein YAML-Output in ein Produktivsystem eingespeist wird.
+Empfehlung: System-Anweisung und Nutzdaten mit einem deutlichen Delimiter (z. B. ---DATA---) trennen und 'alle Anfuehrungszeichen in String-Werten mit Backslash escapen' anweisen — sonst brechen Anfuehrungszeichen im Input das JSON. YAML-Output immer mit einem Validator pruefen, bevor er in ein Produktivsystem geht, da Einrueckungsfehler im Chat unsichtbar bleiben.
 Anschluss: S-PS-023
 
 ### S-PS-023 Lange Dokumente strukturiert zusammenfassen ohne Informationsverlust
@@ -528,6 +542,7 @@ Artefakt: Canvas-Dokument mit allen drei Summary-Formaten; direkt als Basis für
 Fallstricke:
 - Wenn das Dokument über das Kontextfenster hinausgeht, wechsle zum Wissensordner-RAG-Modus — dieser liefert aber nur Ausschnitte; für >50-Seiten-Dokumente das Dokument vorab in thematische Sektionen aufteilen.
 - Ohne explizite Abschnittsbezug-Anweisung halluziniert der Agent Quellenangaben; die Klammer-Zitat-Anweisung ist Pflicht, nicht optional.
+Empfehlung: Die Klammer-Quellenangabe nach jeder Kernaussage (Abschnitt/Seitenzahl) als Pflicht verankern — ohne sie halluziniert der Agent Quellenangaben. Bei Dokumenten ueber das Kontextfenster hinaus (>50 Seiten) vorab in thematische Sektionen aufteilen, statt auf den RAG-Modus zu wechseln, der nur Ausschnitte liefert.
 Anschluss: S-PS-024
 
 ### S-PS-024 Übersetzungsqualitäts-Prompt für DACH-Märkte mit Glossar-Bindung
@@ -547,6 +562,7 @@ Artefakt: Fertige CH-Übersetzung + Abweichungsreport; Grundlage für menschlich
 Fallstricke:
 - Ohne "bindende Terminologie"-Formulierung behandelt der Agent Glossar-Terme als Vorschläge; das Adjektiv "bindend" (nicht "empfohlen") ist der entscheidende Unterschied.
 - Schwiizerdütsch (Dialekt) ist für aktuelle LLMs nicht zuverlässig produzierbar — jede Dialekt-Anfrage muss im Prompt auf CH-Standardhochdeutsch umgeleitet werden (vgl. S-PS-019).
+Empfehlung: Das firmenspezifische Marken-Glossar per @-Mention fest an den Uebersetzungs-Prompt binden und 'Produktnamen nicht uebersetzen' erzwingen — sonst lokalisiert der Agent Markennamen falsch. Fuer CH konsequent Standardhochdeutsch (CHF statt €, kein 'ß') vorgeben; Schweizer Dialekt ist nicht zuverlaessig generierbar.
 Anschluss: S-PS-025
 
 ### S-PS-025 Robuste System-Prompts gegen Prompt-Injection schreiben
