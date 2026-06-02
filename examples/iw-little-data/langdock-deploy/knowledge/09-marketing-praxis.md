@@ -66,6 +66,7 @@ Artefakt: Ein zweiseitiges PDF-Memorandum mit den isolierten Fehlerquellen und e
 Fallstricke:
 - Das Hochladen von Multi-Sheet-Excels in den normalen RAG-Wissensordner anstatt in den Data Analyst führt zu Lesefehlern → Immer Data Analyst für tabellarische Daten nutzen.
 - Agent tendiert zu generischen Tipps → Im Prompt zwingend die Falsifizierung interner Annahmen fordern.
+Empfehlung: Lade tabellarische Performance-Daten immer in den Data Analyst, nie in den RAG-Wissensordner - Multi-Sheet-Excels erzeugen dort Lesefehler. Fordere im Prompt zwingend die Falsifizierung der internen Annahme ('Suche aktiv nach Datenpunkten, die widerlegen, dass das Update schuld ist'), sonst liefert der Agent generische Tipps statt einer belastbaren Ursachenanalyse.
 Anschluss: S-MP-002
 
 ### S-MP-002 Lokalisierungs-Krisenmanagement bei B2B-Kampagnen
@@ -79,12 +80,15 @@ Vorgehen:
 2. Retrieval der fehlerhaften Briefings und Abgleich mit den Brand-Voice-Guidelines im Wissensordner.
 3. Simulation eines 'Worst-Case'-Szenarios (Pre-Mortem), was passiert wäre, wenn die Mails unbemerkt rausgegangen wären.
 4. Iteratives Finetuning des System-Prompts im Canvas.
-Prompt:
-> "Du bist unser Head of Localization für die DACH-Region. Wir stehen kurz davor, diese Kampagne an unsere wichtigsten Enterprise-Kunden in der Schweiz auszurollen. Stell dir vor, die Kampagne scheitert monumental (Pre-Mortem), weil wir die formelle 'Sie'-Form und spezifische Schweizer Begriffe ignoriert haben. Überarbeite den Text so, dass er absolut wasserdicht für C-Level-Entscheider in Zürich ist."
+Vorlage: Lokalisierungs-Playbook (DACH):
+1. Regeln je Markt - DE/AT/CH; CH kein 'ß' (immer 'ss'), AT regionales Vokabular ('Jaenner', 'Offert').
+2. Do's & Don'ts + Negativbeispiele.
+3. Ablage im Wissensordner; Memory fuer Lokalisierungs-Tasks deaktiviert.
 Artefakt: Ein sofort einsatzbereites, formelles B2B-E-Mail-Template im Canvas, das alle DACH-Formalitäten berücksichtigt.
 Fallstricke:
 - 'Memory Pollution' durch vorherige B2C-Chats → Memory-Funktion für diese Aufgabe zwingend deaktivieren.
 - Modell halluziniert deutsche Rechtschreibung für Schweizer Texte → Prompt muss das explizite Verbot des 'ß' enthalten.
+Empfehlung: Deaktiviere die Memory-Funktion fuer Lokalisierungs-Tasks zwingend - vorherige B2C-Chats verfaelschen sonst den Ton ('Memory Pollution'). Schreibe das explizite Verbot des 'ß' fuer Schweizer Texte in den Prompt UND ins Playbook, da das Modell sonst deutsche Rechtschreibung halluziniert.
 Anschluss: S-MP-003
 
 ### S-MP-003 MarketingOps-Stresstest für neue Tool-Initiativen
@@ -104,6 +108,7 @@ Artefakt: Eine Risiko-Matrix (Markdown-Tabelle), die rechtliche Schwachstellen u
 Fallstricke:
 - KI zitiert veraltete oder halluzinierte DSGVO-Artikel → Zero-Fabrication-Policy im Prompt durchsetzen und auf den Wissensordner limitieren.
 - Zu abstrakte Risikoanalyse → Prompt muss zwingend nach 'den drei größten Logiklöchern' fragen.
+Empfehlung: Setze eine Zero-Fabrication-Policy durch und limitiere den Agenten auf den Wissensordner - sonst zitiert er veraltete oder halluzinierte DSGVO-Artikel. Frag im Prompt explizit nach 'den drei groessten Logikloechern' der Kampagne, statt eine abstrakte Risikoanalyse zu erhalten.
 Anschluss: S-MP-004
 
 ### S-MP-004 Social-Media-ROI durch Triangulation validieren
@@ -117,8 +122,7 @@ Vorgehen:
 2. Anonymisierung der Token-Verbräuche und Performance-Metriken aus Adobe als CSV.
 3. Upload in den Data Analyst zur aggregierten, nicht-personenbezogenen Auswertung.
 4. Triangulation dieser Daten mit aktuellen Branchen-Benchmarks via Web Search.
-Prompt:
-> "Du bist unser Social Media Lead Analyst. Ich lade anonymisierte Kampagnen-Daten hoch. Nutze Web Search, um aktuelle Branchen-Benchmarks für B2B-Social-Kampagnen im DACH-Raum zu triangulieren. Vergleiche unsere aggregierte Performance mit diesen Benchmarks und identifiziere Ineffizienzen in den Workflows, ohne auf individuelle Mitarbeiter-Leistungen einzugehen."
+Empfehlung: Triff die Stopp/Anpassen/Skalieren-Roadmap fuer die Social-Workflows datenbasiert - anonymisiere die CSV strikt vor dem Upload (keine Copywriter-Namen) und fokussiere die Web-Search explizit auf den DACH-Raum, sonst ziehen irrelevante US-Benchmarks die Priorisierung schief. Stoppe sofort, was rechtlich/transparenz-kritisch ist; passe an, was Tonalitaet/Performance betrifft; skaliere nur, was nachweislich konvertiert.
 Artefakt: Ein Management-Summary (PDF), das die Kampagnen-Performance anonymisiert darstellt und datengetriebene Handlungsempfehlungen liefert.
 Fallstricke:
 - Versehentlicher Upload von Klardaten (Namen der Copywriter) → Strikte Anonymisierung der CSV vor dem Upload erforderlich.
@@ -136,12 +140,15 @@ Vorgehen:
 2. Fütterung des Agenten mit den fehlerhaften Dynamics-Outputs.
 3. Identifikation der operativen Sollbruchstellen, warum der ursprüngliche Check versagt hat.
 4. Kollaborative Überarbeitung der Quality-Gates im Canvas.
-Prompt:
-> "Du bist ein adversarieller Brand-Auditor (Red Team). Deine einzige Aufgabe ist es, unsere neuesten Publikationen schonungslos auf Inkonsistenzen zu unseren Brand-Guidelines zu prüfen. Welche Tonalitäts-Brüche, verbotenen Anglizismen oder falschen Formulierungen fallen dir auf? Sei extrem pedantisch und liefere eine tabellarische Auflistung der Fehler."
+Vorlage: Brand-Check-Notfall-Playbook:
+1. Schwachstellen-Audit - automatisierte Brand-Checks aus Red-Team-Sicht.
+2. Sofort-Massnahmen je Schwachstelle.
+3. Haertung - Tonalitaets-Brueche, nicht nur Rechtschreibung; HITL-Gate vor Publish.
 Artefakt: Eine tabellarische Fehleranalyse im Canvas, die Brand-Voice-Verstöße präzise benennt und Korrekturvorschläge liefert.
 Fallstricke:
 - Der Agent ist zu 'höflich' bei der Fehlersuche → Die Rolle 'adversarieller Brand-Auditor (Red Team)' muss hart erzwungen werden.
 - Fokus auf reine Rechtschreibung statt Markenstimme → Prompt muss explizit nach 'Tonalitäts-Brüchen' verlangen.
+Empfehlung: Erzwinge die Rolle 'adversarieller Brand-Auditor (Red Team)' hart - ein zu hoeflicher Agent findet die echten Schwachstellen nicht. Verlange explizit nach 'Tonalitaets-Bruechen', nicht nur nach Rechtschreibfehlern, da die markenkritischen Risiken im Ton liegen.
 Anschluss: S-MP-006
 
 ### S-MP-006 Content-Performance-Reset durch First-Principles
@@ -161,6 +168,7 @@ Artefakt: Ein dreiteiliges Konzept-Papier, das die grundlegenden Wahrheiten defi
 Fallstricke:
 - Agent reproduziert alte Agentur-Platitüden → Prompt muss 'Vergiss alle bisherigen Annahmen' stark betonen.
 - Fehlende lokale Nuancen für Österreich → Manuelle Überprüfung von Begriffen wie 'Jänner' oder 'Offert' ist weiterhin nötig.
+Empfehlung: Betone im Prompt stark 'Vergiss alle bisherigen Annahmen', damit der Agent nicht alte Agentur-Platitueden reproduziert. Pruefe oesterreichische Begriffe ('Jaenner', 'Offert') weiterhin manuell, da dem Modell die lokalen Nuancen fehlen.
 Anschluss: S-MP-007
 
 ### S-MP-007 Research-Budget-Optimierung bei veralteten Annahmen
@@ -180,6 +188,7 @@ Artefakt: Eine aktualisierte Persona-Definition im Markdown-Format, die alte Ann
 Fallstricke:
 - Web Search liefert nur oberflächliche PR-Artikel → Gezielte Anweisung, nach Primärstudien oder harten Statistiken zu suchen.
 - Bestätigungsfehler des LLMs → Prompt fordert aktiv die Identifikation falscher Kernannahmen.
+Empfehlung: Weise den Agenten gezielt an, nach Primaerstudien oder harten Statistiken zu suchen, statt oberflaechliche PR-Artikel zu uebernehmen. Fordere im Prompt aktiv die Identifikation falscher Kernannahmen ein, um den Bestaetigungsfehler des LLMs zu durchbrechen.
 Anschluss: S-MP-008
 
 ### S-MP-008 ABM-Strategie-Kalibrierung mittels Base-Rates
@@ -193,8 +202,7 @@ Vorgehen:
 2. Upload der internen Matomo-Daten in den Data Analyst.
 3. Abgleich: Ist unser Traffic-Verlust außergewöhnlich hoch oder entspricht er exakt der branchenweiten Base-Rate?
 4. Beruhigung des Teams durch datengetriebenes Reporting.
-Prompt:
-> "Du bist Lead Data Scientist. Unser Team gerät in Panik wegen eines 50% Traffic-Drops nach dem Core-Update. Führe einen Deep Research durch, um die durchschnittliche branchenweite Base-Rate für diesen Drop zu ermitteln. Analysiere anschließend unsere hochgeladenen Matomo-Daten. Überreagieren wir, oder liegen wir signifikant unter der Benchmark? Liefere eine unaufgeregte Analyse."
+Empfehlung: Priorisiere die ABM-Workflow-Roadmap (anpassen vs. pausieren) auf Basis einer Deep-Research-Analyse - plane bis zu 30 Minuten Laufzeit ein und bereinige Multi-Sheet-Excels vorher (nur relevante Sheets, max. 30 MB), sonst ueberfordert der Kontext das Context-Window. Pausiere Workflows ohne belastbares Signal und passe nur die mit nachweisbarem Pipeline-Beitrag an.
 Artefakt: Ein nüchternes, einseitiges Executive Summary (PDF), das interne Metriken der globalen Base-Rate gegenüberstellt.
 Fallstricke:
 - Deep Research braucht bis zu 30 Minuten → Team muss wissen, dass dieses Szenario Geduld erfordert.
@@ -218,6 +226,7 @@ Artefakt: Ein strukturiertes Q&A-Dokument, das die fünf wahrscheinlichsten CFO-
 Fallstricke:
 - Das Modell simuliert einen zu weichen Gegner → Die Persona 'extrem skeptischer, zahlengetriebener CFO' muss hart verankert sein.
 - Ignorieren der Modellkosten → CFO wird nach den konkreten Kosten für Opus vs. Flash fragen; diese müssen im Report zwingend ausgewiesen sein.
+Empfehlung: Verankere die Persona 'extrem skeptischer, zahlengetriebener CFO' hart, damit das Modell keinen zu weichen Gegner simuliert und das Board-Script wirklich wasserdicht wird. Weise die konkreten Modellkosten (Opus vs. Flash) im Report zwingend aus, da der CFO genau danach fragt.
 Anschluss: S-MP-010
 
 ### S-MP-010 ABM-Kampagnen-Stresstest nach Workflow-Crash
@@ -237,6 +246,7 @@ Artefakt: Ein technisches Fehler-Protokoll (Markdown) inklusive drei präziser Q
 Fallstricke:
 - KI erzeugt generische 'Best Practices' statt technischer Abbruch-Kriterien → Prompt muss explizit harte, messbare Quality-Gates einfordern.
 - Wissensordner-Limit → Sicherstellen, dass die Briefings nicht in einem Ordner mit >1000 Dateien liegen, um Retrieval-Ungenauigkeiten zu vermeiden.
+Empfehlung: Fordere im Prompt explizit harte, messbare Quality-Gates (Abbruch-Kriterien) ein, statt generischer 'Best Practices'. Lege die Briefings nicht in einen Ordner mit >1000 Dateien, um Retrieval-Ungenauigkeiten zu vermeiden.
 Anschluss: S-MP-011
 
 ### S-MP-011 Brand-Voice-Leitfaden aus bestehendem Content reverse-engineeren
@@ -250,12 +260,15 @@ Vorgehen:
 2. Den Agenten anweisen, Tonalität, Satzlänge, bevorzugte Vokabeln und rhetorische Muster aus dem Korpus zu extrahieren.
 3. Draft des Leitfadens im Canvas erstellen und iterativ mit dem Brand-Team verfeinern.
 4. Finales Dokument als "Brand Voice v1.0" in den Wissensordner zurückspeichern und alle bestehenden Agenten darauf verlinken.
-Prompt:
-> "Du bist Brand-Stratege für ein DACH-B2B-SaaS-Unternehmen. Analysiere die Dokumente im verknüpften Ordner und extrahiere unsere Brand Voice. Achte auf Tonalität (formell vs. direkt), durchschnittliche Satzlänge und Fachsprache. Erstelle einen Leitfaden mit 'Do's and Don'ts' sowie drei Vorher/Nachher-Beispielen als Markdown-Dokument."
+Vorlage: Tone-of-Voice-Dokument:
+1. Tonalitaets-Definition - direkte, nutzenorientierte B2B-Sprache; kein Marketinggeschwurbel.
+2. Do's & Don'ts + bevorzugtes/verbotenes Vokabular.
+3. Drei Vorher/Nachher-Beispiele; Ablage im Wissensordner.
 Artefakt: Ein Tone-of-Voice-Leitfaden (Markdown, ca. 800 Wörter) mit Beispielen, bereit zur Ablage im Wissensordner und Einbettung in System-Prompts.
 Fallstricke:
 - Wenn die hochgeladenen Texte selbst inkonsistent sind, produziert der Agent einen widersprüchlichen Leitfaden → Nur nachweislich erfolgreichen, manuell kuratierten Content uploaden.
 - LLMs neigen zu generischen Anglizismen und Cheerleader-Tonfall → Prompt muss explizit "direkte, nutzenorientierte B2B-Sprache" und "kein Marketinggeschwurbel" einfordern.
+Empfehlung: Lade nur nachweislich erfolgreichen, manuell kuratierten Content als Analysebasis hoch - inkonsistente Quelltexte erzeugen einen widerspruechlichen Leitfaden. Fordere im Prompt explizit 'direkte, nutzenorientierte B2B-Sprache' und 'kein Marketinggeschwurbel', da LLMs sonst zu generischen Anglizismen und Cheerleader-Ton neigen.
 Anschluss: S-MP-012
 
 ### S-MP-012 Content-Kalender-Generierung für LinkedIn und XING
@@ -269,12 +282,15 @@ Vorgehen:
 2. Agent verteilt Assets auf 30 Tage mit einem Rhythmus von drei Posts pro Woche und variiert dabei Formate.
 3. Für jeden Post einen kurzen Entwurfstext generieren lassen, der die DACH-Feiertage (z.B. Tag der Deutschen Einheit, Nationalfeiertag AT/CH) berücksichtigt.
 4. Google-Sheets-Action-Node schreibt Plan, Datum, Entwurf und Formattyp direkt in das Team-Sheet.
-Prompt:
-> "Du bist Social-Media-Stratege für ein B2B-SaaS-Unternehmen im DACH-Raum. Erstelle einen Monats-Content-Plan für LinkedIn aus den übergebenen Asset-URLs. Sorge für einen Rhythmus von 3 Posts pro Woche, variiere zwischen Text-Posts, Kurzvideos und Umfragen und berücksichtige deutsche Feiertage im Oktober. Liefere das Ergebnis als strukturierte Tabelle mit Spalten: Datum, Format, Entwurfstext, Hashtags."
+Vorlage: Social-Redaktionsplan (Google Sheets):
+1. Spalten - Datum, Format (Text-Post/Video-Teaser/Umfrage), Entwurfstext, Owner.
+2. Feiertage - DE/AT/CH explizit als Liste im Wissensordner/Prompt.
+3. Google-Sheets-Action - Sheet-ID vorab in der Sandbox testen.
 Artefakt: Befülltes Google Sheet mit 12–15 datierten Posts, Entwurfstexten und Formatvorgaben, direkt exportbereit.
 Fallstricke:
 - Der Agent kennt nationale Feiertage nicht automatisch → Feiertage für DE, AT und CH explizit im Prompt oder als Liste im Wissensordner hinterlegen.
 - Google-Sheets-Action schlägt fehl, wenn die Sheet-ID falsch konfiguriert ist → Workflow-Verbindung vor dem ersten Live-Run in der Sandbox testen.
+Empfehlung: Hinterlege die nationalen Feiertage fuer DE, AT und CH explizit im Prompt oder als Liste im Wissensordner - der Agent kennt sie nicht automatisch. Teste die Google-Sheets-Verbindung (Sheet-ID) vor dem ersten Live-Run in der Sandbox, da die Action bei falscher Konfiguration fehlschlaegt.
 Anschluss: S-MP-013
 
 ### S-MP-013 Plattform-native Post-Varianten aus einer Quelle erzeugen
@@ -293,6 +309,7 @@ Artefakt: Drei fertige Post-Entwürfe mit Plattform-Label, Zeichenzahl-Angabe un
 Fallstricke:
 - Instagram-Captions ohne Bildvorgabe sind für Designer nutzlos → Prompt muss explizit nach einem begleitenden Visual-Konzept fragen ("beschreibe ein passendes Bild in einem Satz").
 - Tonalität driftet zwischen Varianten → System-Prompt muss die Brand Voice aus dem Wissensordner verankern, nicht nur den Einzelprompt.
+Empfehlung: Lass jede Instagram-Caption ein begleitendes Visual-Konzept mitliefern ('beschreibe ein passendes Bild in einem Satz'), sonst ist sie fuer den Designer nutzlos. Verankere die Brand Voice im System-Prompt aus dem Wissensordner, nicht nur im Einzelprompt, damit die Tonalitaet nicht zwischen den Varianten driftet.
 Anschluss: S-MP-014
 
 ### S-MP-014 Community-Management bei viralem Beitrags-Ansturm
@@ -312,6 +329,7 @@ Artefakt: Nummerierte Antwort-Entwürfe (je max. 2 Sätze) plus Eskalations-Flag
 Fallstricke:
 - Bei negativem Sentiment produziert das Modell übermäßig entschuldigende Antworten, die das Problem verschlimmern → Explizit anweisen: "Keine Entschuldigung ohne vorherige Eskalation an HR/Legal."
 - FAQ-Ordner veraltet → Monatliche Pflicht-Aktualisierung des FAQ-Ordners als Recurring Task im Team-Kalender festlegen.
+Empfehlung: Weise explizit an 'keine Entschuldigung ohne vorherige Eskalation an HR/Legal', da das Modell bei negativem Sentiment uebermaessig entschuldigende Antworten produziert, die das Problem verschlimmern. Lege die monatliche Aktualisierung des FAQ-Ordners als Recurring Task im Team-Kalender fest, damit die Antworten nicht veralten.
 Anschluss: S-MP-015
 
 ### S-MP-015 CEO-Ghostwriting für LinkedIn-Thought-Leadership
@@ -331,6 +349,7 @@ Artefakt: Fertiger LinkedIn-Post (250 Wörter), im CEO-Tonfall, mit Hook und Abs
 Fallstricke:
 - Memory-Funktion speichert irrtümlich alte Kampagneninhalte und färbt den CEO-Tonfall → Memory für diesen Agenten auf reine Sprach-Präferenzen beschränken und niemals automatisch auf frühere Posts zugreifen lassen.
 - Generischer "LinkedIn-Broetry"-Tonfall entsteht, wenn die Persona nicht hart genug definiert ist → Drei konkrete Negativ-Beispiele ("Das klingt NICHT wie unser CEO") im System-Prompt verankern.
+Empfehlung: Beschraenke die Memory dieses Agenten auf reine Sprach-Praeferenzen und lass ihn nie automatisch auf fruehere Posts zugreifen, da Memory sonst alte Kampagneninhalte einfaerbt. Verankere drei konkrete Negativ-Beispiele ('Das klingt NICHT wie unser CEO') im System-Prompt, sonst entsteht generischer 'LinkedIn-Broetry'-Ton.
 Anschluss: S-MP-016
 
 ### S-MP-016 Visuelle Kampagnenbriefings für externe Designer erstellen
@@ -349,6 +368,7 @@ Artefakt: Strukturiertes Design-Briefing (Markdown, ca. 600 Wörter) mit allen t
 Fallstricke:
 - Vision-Capability kann keine exakten HEX-Codes aus Referenzbildern auslesen → HEX-Werte aus dem offiziellen Corporate-Design-Guide manuell eintragen, niemals aus Screenshots übernehmen.
 - Zu detaillierte Vorgaben engen Kreativraum der Designer ein → Briefing explizit mit "Interpretationsspielraum erwünscht" für ästhetische Entscheidungen kennzeichnen.
+Empfehlung: Trag HEX-Werte manuell aus dem offiziellen Corporate-Design-Guide ein und uebernimm sie nie aus Screenshots - die Vision-Capability liest exakte HEX-Codes aus Referenzbildern nicht zuverlaessig aus. Kennzeichne das Briefing fuer aesthetische Entscheidungen explizit mit 'Interpretationsspielraum erwuenscht', damit zu detaillierte Vorgaben den Kreativraum des Designers nicht einengen.
 Anschluss: S-MP-017
 
 ### S-MP-017 Lead-Segmentierung mit RFM-Analyse
@@ -368,6 +388,7 @@ Artefakt: Segmentierte CSV mit Spalte "Segment-Label" plus ein kurzes Summary-Do
 Fallstricke:
 - Upload von Klardaten (echte E-Mail-Adressen, Namen) verletzt DSGVO-Grundsätze → Vor jedem Upload zwingend pseudonymisieren; nur User-IDs dürfen in den Data Analyst.
 - Multi-Sheet-Excels im normalen Wissensordner-RAG verarbeiten → Strukturierte Daten immer über den Data Analyst, nie über den Wissensordner.
+Empfehlung: Pseudonymisiere den Lead-Export vor jedem Upload zwingend (nur User-IDs in den Data Analyst) - echte Namen/E-Mails verletzen die DSGVO-Grundsaetze. Verarbeite strukturierte Daten immer ueber den Data Analyst, nie ueber den Wissensordner-RAG, da Multi-Sheet-Excels dort Lesefehler erzeugen.
 Anschluss: S-MP-018
 
 ### S-MP-018 Personalisierte Nurturing-Sequenz für warme Leads
@@ -387,6 +408,7 @@ Artefakt: Drei E-Mail-Entwürfe mit Betreffzeilen, Variablen-Platzhaltern und De
 Fallstricke:
 - Agent halluziniert Produktfeatures im Soft-Pitch → Zero-Fabrication-Policy im System-Prompt durchsetzen; nur Inhalte aus dem Wissensordner dürfen als Faktengrundlage dienen.
 - DSGVO-Opt-out fehlt in der Sequenz → Jede E-Mail muss einen funktionierenden Abmeldelink enthalten; dies als zwingende Anforderung im Prompt verankern.
+Empfehlung: Setze eine Zero-Fabrication-Policy im System-Prompt durch und lass nur Wissensordner-Inhalte als Faktengrundlage zu, damit der Agent im Soft-Pitch keine Produktfeatures halluziniert. Verankere im Prompt, dass jede E-Mail einen funktionierenden Abmeldelink enthalten muss, da der DSGVO-Opt-out sonst in der Sequenz fehlt.
 Anschluss: S-MP-019
 
 ### S-MP-019 Churn-Signale aus CRM-Daten identifizieren
@@ -406,6 +428,7 @@ Artefakt: Priorisierte Churn-Risiko-Tabelle (CSV/Markdown) plus ein Python-Chart
 Fallstricke:
 - PII im CRM-Export → Vor dem Data-Analyst-Upload zwingend alle Klarnamen und E-Mail-Adressen durch pseudonyme Account-IDs ersetzen.
 - Churn-Score-Logik berücksichtigt keine saisonalen Nutzungspausen (z.B. Sommerurlaub im August) → Saisonale Baseline im Skript als Parameter definieren.
+Empfehlung: Ersetze vor dem Data-Analyst-Upload zwingend alle Klarnamen und E-Mail-Adressen durch pseudonyme Account-IDs (PII im CRM-Export). Definiere die saisonale Baseline als Parameter im Churn-Score-Skript, damit Nutzungspausen (z. B. Sommerurlaub im August) nicht faelschlich als Churn-Risiko gewertet werden.
 Anschluss: S-MP-020
 
 ### S-MP-020 DMEXCO-Vorbereitung: Gesprächsleitfaden und Hotspot-Briefing
@@ -425,6 +448,7 @@ Artefakt: Ein zweiseitiger Gesprächsleitfaden pro Mitarbeiterprofil (Markdown/P
 Fallstricke:
 - Web Search liefert veraltete DMEXCO-Programmdaten → Recherche auf die offizielle DMEXCO-Website und aktuelle Fachmedien (Horizont, W&V) beschränken.
 - Elevator Pitch klingt nach generischer Produktbeschreibung → Prompt muss "konkrete Kunden-Outcome in Zahlen" als zwingendes Element einfordern.
+Empfehlung: Beschraenke die Recherche auf die offizielle DMEXCO-Website und aktuelle Fachmedien (Horizont, W&V), da Web Search sonst veraltete Programmdaten liefert. Fordere im Prompt 'konkrete Kunden-Outcomes in Zahlen' als zwingendes Element des Elevator Pitch, damit er nicht nach generischer Produktbeschreibung klingt.
 Anschluss: S-MP-021
 
 ### S-MP-021 Wettbewerbsanalyse für Quartalsplanung
@@ -444,6 +468,7 @@ Artefakt: Wettbewerbs-Matrix als Markdown-Tabelle (3 × 5) plus drei prägnante 
 Fallstricke:
 - Web Search findet vorrangig US-amerikanische Quellen → Explizit DACH-Markt und deutschsprachige Fachmedien im Prompt spezifizieren.
 - Wettbewerbsdaten können veraltet sein → Jede Quelle mit Datum ausweisen lassen; Informationen älter als 60 Tage als "ungesichert" markieren.
+Empfehlung: Schraenke jede Wettbewerber-Query explizit auf den DACH-Markt und deutschsprachige Fachmedien ein, sonst dominieren US-Quellen die Matrix. Lass jede Fundstelle mit Datum ausweisen und markiere alles aelter als 60 Tage als 'ungesichert', damit der Workshop nicht auf veralteten Positionierungen plant.
 Anschluss: S-MP-022
 
 ### S-MP-022 Podcast-to-Content-Repurposing-Pipeline
@@ -463,6 +488,7 @@ Artefakt: Vier Content-Derivate (Blog, 3× LinkedIn, Newsletter) in einem Canvas
 Fallstricke:
 - Flash-Modell produziert bei Blog-Posts flache Argumentationstiefe → Blog-Post explizit dem Sonnet-Modell zuweisen, Social-Posts können via Flash laufen.
 - Transkript enthält Eigennahmen oder Markennamen mit Tippfehlern aus der automatischen Transkription → Vor dem Upload kurzes Korrekturlesing des Transkripts einplanen.
+Empfehlung: Weise den Blog-Post zwingend dem staerkeren Sonnet-Modell zu (Flash liefert flache Argumentationstiefe), waehrend die kurzen Social-Posts via Flash guenstig laufen koennen. Plane vor dem Upload ein kurzes Korrekturlesen des Auto-Transkripts ein, da Tippfehler in Eigen- und Markennamen sonst in alle Repurposing-Formate durchschlagen.
 Anschluss: S-MP-023
 
 ### S-MP-023 Pressemitteilung und Journalisten-Pitch für DACH-Medien
@@ -482,6 +508,7 @@ Artefakt: Eine fertige Pressemitteilung (ca. 400 Wörter, DPA-Format) plus zehn 
 Fallstricke:
 - Agent erfindet Journalisten-E-Mail-Adressen → Web Search darf nur Namen, Medium und URL liefern; E-Mail-Adressen müssen manuell über XING oder LinkedIn verifiziert werden.
 - CEO-Zitate klingen roboterhaft → Zitate zwingend als Entwurf kennzeichnen und vom CEO persönlich freigeben lassen — nie ohne menschliche Genehmigung veröffentlichen.
+Empfehlung: Lass Web Search ausschliesslich Name, Medium und URL liefern - E-Mail-Adressen muessen manuell ueber XING oder LinkedIn verifiziert werden, da der Agent sie sonst erfindet. Kennzeichne jedes CEO-Zitat als Entwurf und hole die persoenliche Freigabe ein; ein roboterhaftes, nie autorisiertes Zitat ist ein Reputationsrisiko.
 Anschluss: S-MP-024
 
 ### S-MP-024 KI-Fehler-Korrektur bei falschen Wettbewerbs-Claims im Newsletter
@@ -501,6 +528,7 @@ Artefakt: Versandfertige Korrektur-E-Mail (120 Wörter) plus ein Incident-Report
 Fallstricke:
 - Korrektur-E-Mail enthält neue, ungeprüfte Claims → Prompt muss explizit verbieten, Produktaussagen in der Korrektur zu machen; ausschließlich Richtigstellung und Entschuldigung.
 - UWG-Risiko wird unterschätzt → Jede Aussage über Wettbewerber gilt als vergleichende Werbung (§ 6 UWG); Legal muss Korrektur vor Versand prüfen.
+Empfehlung: Verbiete im Prompt strikt jede neue Produktaussage in der Korrektur - ausschliesslich Richtigstellung und Entschuldigung, sonst entsteht aus einem Fehler der naechste. Lass Legal die Korrektur vor Versand pruefen, da jede Wettbewerber-Aussage als vergleichende Werbung (Paragraf 6 UWG) gilt.
 Anschluss: S-MP-025
 
 ### S-MP-025 Neuen Marketing-Manager in KI-Workflows onboarden
@@ -514,12 +542,15 @@ Vorgehen:
 2. Für Tag 1–3 drei einfache Konversations-Starter vorbereiten, die der neue Mitarbeiter selbst durchklickt (z.B. Brand-Voice-Check, Social-Post-Varianten, E-Mail-Betreffzeilen).
 3. Tag 7-Aufgabe: Mitarbeiter kalibriert eigenständig einen bestehenden Agenten auf einen neuen Use-Case und dokumentiert seine Änderungen.
 4. Tag-14-Self-Check: Mitarbeiter reicht drei selbst erstellte Konversations-Starter ein; KI-Champion gibt kurzes schriftliches Feedback im Canvas.
-Prompt:
-> "Du bist KI-Onboarding-Coach für das Marketing-Team eines DACH-B2B-Unternehmens. Ein neuer Marketing-Manager startet heute. Erstelle einen strukturierten 14-Tage-Onboarding-Plan für unsere wichtigsten Langdock-Workflows. Tag 1–3: drei einfache Hands-on-Aufgaben mit Konversations-Starter. Tag 7: eine eigenständige Agent-Kalibrierung. Tag 14: Self-Check mit drei eigenen Konversations-Startern. Liefere den Plan als tabellarische Wochenübersicht mit Aufgabe, Ziel und Zeitaufwand."
+Vorlage: KI-Onboarding-Plan (Marketing-Manager):
+1. Wochenstruktur - je Tag ein Thema (Chat/Prompts, Wissensordner, Agenten, Workflows, Governance).
+2. Hands-on-Aufgabe je Tag, die ihr Ergebnis in Canvas oder Google Sheets dokumentiert - keine reine Theorie.
+3. Memory-Policy - Onboarding-Agent nur auf anonymes Sprach-Feedback beschraenkt, keine Briefings speichern.
 Artefakt: Ein 14-Tage-Onboarding-Plan als Markdown-Tabelle (Tag, Aufgabe, Ziel, Zeitaufwand) — direkt nutzbar als Confluence-Seite oder Notion-Dokument für neue Mitarbeiter.
 Fallstricke:
 - Onboarding-Plan ist zu theoretisch ohne praktische Hands-on-Aufgaben → Jeder Tag muss mit einer konkreten Langdock-Aktion enden, die das Ergebnis in Canvas oder Google Sheets dokumentiert.
 - Memory-Funktion des Onboarding-Agenten speichert vertrauliche Briefings des neuen Mitarbeiters → Memory für den Onboarding-Agenten auf anonyme Sprach-Feedback-Daten beschränken; keine Kampagneninhalte speichern.
+Empfehlung: Beende jeden Onboarding-Tag mit einer konkreten Langdock-Aktion, deren Ergebnis in Canvas oder Sheets landet - ein rein theoretischer Plan bleibt wirkungslos. Beschraenke die Memory des Onboarding-Agenten strikt auf anonyme Sprach-Feedback-Daten, damit vertrauliche Briefings des neuen Mitarbeiters nicht gespeichert werden.
 Anschluss: S-MP-026
 
 ### S-MP-026 Google Ads Copy-Varianten für B2B-Kampagnen skaliert erstellen
@@ -539,6 +570,7 @@ Artefakt: Google-Sheets-Tabelle mit 30 validierten Anzeigentexten, direkt import
 Fallstricke:
 - Agent überschreitet Zeichenlimits systematisch → Zeichenzählung explizit im System-Prompt erzwingen und im Workflow einen Validierungs-Node ergänzen, der Überschreitungen markiert.
 - Google-Policy-Verstöße (Clickbait, Großschreibung ganzer Wörter) bleiben unentdeckt → Human-Review-Step mit Checkliste aus den aktuellen Google-Ads-Richtlinien als Pflicht-Gate einbauen.
+Empfehlung: Erzwinge die Zeichenzaehlung hart im System-Prompt und ergaenze im Workflow einen Validierungs-Node, der Limit-Ueberschreitungen markiert - der Agent ueberschreitet Google-Ads-Limits sonst systematisch. Baue einen Human-Review-Step mit Checkliste aus den aktuellen Google-Ads-Richtlinien als Pflicht-Gate ein, sonst bleiben Policy-Verstoesse (Clickbait, Vollgrossschreibung) unentdeckt.
 Anschluss: S-MP-027
 
 ### S-MP-027 LinkedIn-Ads-Copy für DACH-B2B-Zielgruppen testen
@@ -558,6 +590,7 @@ Artefakt: Fünf Anzeigen-Sets im Canvas (Introtext + Headline + Visual-Brief) �
 Fallstricke:
 - Zu generische Ansprache übersieht Branchenspezifika → System-Prompt muss branchenspezifische Schmerzpunkte aus dem Wissensordner laden; niemals ein Einheitstext für alle Segmente.
 - Visual-Briefings zu vage für Designer → Prompt muss explizit "beschreibe ein konkretes Bild in einem Satz (Motiv, Stimmung, Farbraum)" verlangen, nicht nur "professionelles Bild".
+Empfehlung: Lass den System-Prompt branchenspezifische Schmerzpunkte aus dem Wissensordner laden - ein Einheitstext fuer alle Segmente uebersieht die Branchenspezifika. Verlange im Visual-Briefing 'beschreibe ein konkretes Bild in einem Satz (Motiv, Stimmung, Farbraum)', damit der Designer nicht mit einem vagen 'professionelles Bild' alleingelassen wird.
 Anschluss: S-MP-028
 
 ### S-MP-028 E-Mail-Drip-Kampagne für SaaS-Onboarding-Lifecycle entwerfen
@@ -572,12 +605,13 @@ Vorgehen:
 3. Für jeden Node einen E-Mail-Entwurf generieren lassen — max. 150 Wörter, formelles "Sie", DSGVO-konformer Abmeldelink als Pflicht.
 4. Condition-Branch für inaktive Nutzer (kein Login seit Tag 3) mit spezifischem Re-Engagement-Text bestücken.
 5. Alle Entwürfe im Canvas finalisieren; Zero-Fabrication-Policy sicherstellen — keine Produktfeatures erwähnen, die nicht im Wissensordner belegt sind.
-Prompt:
-> "Du bist CRM-Lifecycle-Stratege für ein DACH-SaaS-Unternehmen. Entwirf eine 5-teilige Onboarding-E-Mail-Sequenz für neue Trial-Nutzer. Journey: Tag 0 (Willkommen + erster Schritt), Tag 2 (Feature-Spotlight aus Wissensordner), Tag 5 (Split: aktiv → Profi-Tipp / inaktiv → Re-Engagement), Tag 8 (Kundenstimme als Social Proof), Tag 13 (Trial läuft ab — Upgrade-CTA). Formelles 'Sie', max. 150 Wörter pro E-Mail, DSGVO-Abmeldelink. Liefere: Delay | Betreff | Preheader | Body | CTA."
+Workflow: Trigger (neuer Onboarding-Kontakt / Lifecycle-Stage-Wechsel) -> Agent-Node (E-Mail-Texter, Input: Lifecycle-Stage + Wissensordner-Features) -> Condition-Node (Feature-Spotlight nur wenn Feature im Wissensordner belegt, sonst F8-Refusal) -> Template-Output mit Pflicht-Platzhalter {{Abmeldelink}} -> HITL-Freigabe vor Aktivierung in der Marketing-Automation. Kein Auto-Versand.
+Budget: Pro Lauf guenstig (kurze, strukturierte Inputs); Efficient-Default-Modell genuegt fuers Drafting; HITL statt automatischem Versand. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Fünf E-Mail-Entwürfe mit Delay-Logik und Condition-Hinweis im Canvas — direkt importierbar in HubSpot als Enrollment-Workflow.
 Fallstricke:
 - Agent halluziniert Produktfeatures in Feature-Spotlight-E-Mail → System-Prompt muss strikt auf Wissensordner-Inhalte limitiert werden; bei Unsicherheit F8-Refusal-Antwort ausgeben.
 - DSGVO-Abmeldelink fehlt in Entwürfen → Jede E-Mail-Vorlage muss als letzte Zeile zwingend "{{Abmeldelink}}-Platzhalter" enthalten; dies als Non-Negotiable im System-Prompt verankern.
+Empfehlung: Limitiere den Agenten in der Feature-Spotlight-Mail strikt auf Wissensordner-Inhalte und gib bei Unsicherheit die F8-Refusal-Antwort aus - sonst halluziniert er Produktfeatures. Verankere den {{Abmeldelink}}-Platzhalter als Non-Negotiable letzte Zeile jeder Vorlage im System-Prompt, da der DSGVO-Opt-out sonst fehlt.
 Anschluss: S-MP-029
 
 ### S-MP-029 Lead-Scoring-Modell für HubSpot kalibrieren und dokumentieren
@@ -591,12 +625,15 @@ Vorgehen:
 2. Data Analyst wertet aus: Welche Aktionen (Pricing-Page-Besuch, Webinar-Teilnahme, Demo-Anfrage) korrelieren am stärksten mit Closed-Won?
 3. Scoring-Matrix im Canvas draften: positive Signale (0–100 Punkte), negative Signale (Disqualifikation), Zeitverfall (Punkte halbieren sich nach 30 Tagen Inaktivität).
 4. HubSpot-Property-Formel aus der Matrix generieren lassen (IF/THEN-Logik); gemeinsam mit Sales im Canvas finalisieren und als SLA-Dokument speichern.
-Prompt:
-> "Du bist RevOps-Analyst für ein DACH-B2B-SaaS-Unternehmen. Ich lade anonymisierte Closed-Won/Lost-Daten der letzten 90 Tage hoch. Identifiziere die fünf Aktionen mit der höchsten Korrelation zur Conversion. Erstelle eine Lead-Scoring-Matrix: weise Punktwerte (1–100) zu, definiere drei disqualifizierende Signale (z.B. Karriere-Seite-Besuch = -50 Punkte) und einen 30-Tage-Decay. Liefere die Matrix als Markdown-Tabelle und die entsprechende HubSpot-Formel im Code-Block."
+Vorlage: Lead-Scoring-Dokumentation (HubSpot):
+1. Property-Referenz - exakte HubSpot-API-Feldnamen (vorab exportiert), nicht die Anzeigenamen.
+2. Positiv-Signale mit Punktwerten + zwingend Disqualifikations-/Minus-Kriterien.
+3. Kalibrierungs-Logik + Review-Kadenz; nachvollziehbare Begruendung je Gewicht.
 Artefakt: Lead-Scoring-Matrix (Markdown) plus HubSpot-Formel-Code — zur gemeinsamen Freigabe durch Marketing und Sales in einem Canvas-Dokument.
 Fallstricke:
 - CRM-Feldnamen im Prompt stimmen nicht mit HubSpot-API-Namen überein → Vor der Formel-Generierung alle Property-Namen aus HubSpot exportieren und als Referenz-Liste im Prompt bereitstellen.
 - Scoring-Modell berücksichtigt keine negativen Signale → Explizit nach Disqualifikations-Kriterien fragen; ein Modell ohne Minus-Punkte überflutet Sales mit unqualifizierten Leads.
+Empfehlung: Exportiere alle HubSpot-Property-Namen vor der Formel-Generierung und gib sie als Referenz-Liste in den Prompt - im Prompt geratene Feldnamen stimmen nicht mit der API ueberein und brechen das Scoring. Verlange explizit Disqualifikations-Kriterien (Minus-Punkte); ein Modell ohne negative Signale ueberflutet Sales mit unqualifizierten Leads.
 Anschluss: S-MP-030
 
 ### S-MP-030 Partner- und Channel-Marketing-Content-Paket erstellen
@@ -610,12 +647,15 @@ Vorgehen:
 2. Co-Branded One-Pager im Canvas draften: Produktvorteile aus Partnerperspektive formuliert, mit Platzhaltern für Partner-Logo und -Kontakt.
 3. Fünf LinkedIn-Post-Templates generieren, die der Partner mit minimalen Anpassungen (Firmenname, Branche) sofort nutzen kann.
 4. FAQ-Dokument mit den zehn häufigsten Endkunden-Fragen und verifizierten Antworten aus dem Wissensordner erstellen; Zero-Fabrication-Policy durchsetzen.
-Prompt:
-> "Du bist Partner-Marketing-Manager für ein B2B-SaaS-Unternehmen im DACH-Raum. Wir haben einen neuen Distributor im Bereich {{Branche}} gewonnen. Erstelle: (1) Einen Co-Branded One-Pager (400 Wörter) aus Partnerperspektive mit Platzhaltern für Partner-Logo und -Kontakt. (2) Fünf LinkedIn-Post-Templates (je 120 Wörter, formelles 'Sie') für den Partner. (3) Ein FAQ-Dokument mit 10 Fragen und Antworten, die ausschließlich auf verifizierten Fakten aus dem Wissensordner basieren."
+Vorlage: Partner-/Channel-Content-Paket:
+1. Co-Brandable-Templates - bewusst neutral, aus Partner-Perspektive formuliert (nicht als Hersteller).
+2. FAQ - nur durch den Wissensordner belegbare Antworten; sonst 'Bitte direkt anfragen'.
+3. Nutzungs-/Brand-Hinweise fuer den Partner; klare Quellenangabe.
 Artefakt: Partner-Enablement-Kit als Canvas-Dokument: One-Pager, fünf LinkedIn-Templates, FAQ — sofort versandbereit als ZIP an den Partner.
 Fallstricke:
 - Partner-Tonalität weicht stark von eigener Brand Voice ab → Templates müssen bewusst neutraler formuliert werden; im System-Prompt definieren: "Schreibe aus Partner-Perspektive, nicht als [Unternehmensname]".
 - FAQ enthält halluzinierte Produktdetails → Zero-Fabrication-Policy im System-Prompt zwingend: "Beantworte nur Fragen, die durch den Wissensordner belegbar sind; sonst: 'Bitte direkt anfragen'."
+Empfehlung: Formuliere die Templates bewusst neutraler und definiere im System-Prompt 'Schreibe aus Partner-Perspektive, nicht als [Unternehmen]', da die Partner-Tonalitaet sonst mit der eigenen Brand Voice kollidiert. Erzwinge eine Zero-Fabrication-Policy fuer die FAQ ('nur belegbare Fragen beantworten, sonst: Bitte direkt anfragen'), damit keine Produktdetails halluziniert werden.
 Anschluss: S-MP-031
 
 ### S-MP-031 Analysten-Briefing für Gartner/IDC vorbereiten
@@ -635,6 +675,7 @@ Artefakt: Analysten-Briefing-Dokument im Canvas (Markdown, ca. 2.000 Wörter) mi
 Fallstricke:
 - Roadmap-Informationen werden in das Briefing aufgenommen, die noch nicht öffentlich freigegeben sind → System-Prompt muss "NDA-Pflicht: keine unveröffentlichten Roadmap-Details" als harte Regel enthalten.
 - Analysten-Fragen werden zu moderat simuliert → Prompt muss explizit "sei ein extrem skeptischer, zahlengetriebener Analyst" erzwingen; weiche Fragen liefern keine Vorbereitungsqualität.
+Empfehlung: Verankere 'NDA-Pflicht: keine unveroeffentlichten Roadmap-Details' als harte Regel im System-Prompt, sonst landen vertrauliche Features im Briefing. Erzwinge die Persona 'extrem skeptischer, zahlengetriebener Analyst' - weiche, moderate Simulationsfragen liefern keine belastbare Vorbereitungsqualitaet.
 Anschluss: S-MP-032
 
 ### S-MP-032 Analyst-Report-Response-Strategie entwickeln
@@ -654,6 +695,7 @@ Artefakt: Reaktions-Paket im Canvas: internes Memo + drei E-Mail-Templates + akt
 Fallstricke:
 - E-Mail-Templates klingen defensiv oder klagen Analysten an → Prompt muss "sachlich, zuversichtlich, niemals den Report oder Analysten angreifen" erzwingen; Ton: "Wir sehen das anders und hier ist warum."
 - Neue Produktaussagen in Kunden-E-Mails ohne Verifikation → Zero-Fabrication-Policy; alle Produktclaims müssen aus dem Wissensordner belegt sein.
+Empfehlung: Erzwinge den Ton 'sachlich, zuversichtlich, niemals den Report oder Analysten angreifen' (Haltung: 'Wir sehen das anders, und hier ist warum'), da defensive oder anklagende E-Mails die Beziehung beschaedigen. Setze eine Zero-Fabrication-Policy durch - jeder Produktclaim in den Kunden-E-Mails muss aus dem Wissensordner belegt sein.
 Anschluss: S-MP-033
 
 ### S-MP-033 Fachmedien-Platzierungsstrategie für DACH-Publikationen
@@ -673,6 +715,7 @@ Artefakt: Pitching-Matrix plus drei versandfertige Pitch-E-Mails im Canvas — i
 Fallstricke:
 - Web Search halluziniert Redakteur-E-Mail-Adressen → Explizit anweisen: "Liefere ausschließlich Namen, Medium und URL; keine E-Mail-Adressen generieren" — Kontakte müssen manuell über XING/LinkedIn verifiziert werden.
 - Pitch klingt wie eine Pressemitteilung statt wie ein Editorial-Pitch → Prompt muss betonen: "Schreibe aus der Perspektive des Mehrwerts für die Leser, nicht aus Marketing-Sicht; vermeide Produktnennungen im Pitch."
+Empfehlung: Weise explizit an 'liefere ausschliesslich Name, Medium und URL; keine E-Mail-Adressen generieren' - Redakteurs-Kontakte muessen manuell ueber XING/LinkedIn verifiziert werden. Betone 'schreibe aus der Perspektive des Leser-Mehrwerts, vermeide Produktnennungen', damit der Pitch wie ein Editorial-Anstoss klingt und nicht wie eine Pressemitteilung.
 Anschluss: S-MP-034
 
 ### S-MP-034 ABM-Content-Personalisierung für Tier-1-Zielkunden
@@ -692,6 +735,7 @@ Artefakt: Personalisiertes Account-Paket (One-Pager + LinkedIn-Nachricht + 2 E-M
 Fallstricke:
 - Web Search liefert veraltete Informationen (ältere Pressemitteilungen) → Search-Query explizit auf "letzte 30 Tage" begrenzen und Quellen-Datum in der Zusammenfassung ausweisen lassen.
 - One-Pager klingt arrogant ("Sie haben dieses Problem, wir lösen es") → Ton als "kollaborativ und neugierig" im System-Prompt definieren; nie implizieren, dass das Zielunternehmen "versagt".
+Empfehlung: Begrenze die Web-Search-Query explizit auf 'letzte 30 Tage' und lass das Quellen-Datum ausweisen, da veraltete Pressemitteilungen den One-Pager entwerten. Definiere den Ton als 'kollaborativ und neugierig'; eine Formulierung wie 'Sie haben dieses Problem, wir loesen es' wirkt arrogant und impliziert ein Versagen des Zielkunden.
 Anschluss: S-MP-035
 
 ### S-MP-035 Produkt-Launch-Go-to-Market-Playbook erstellen
@@ -706,12 +750,15 @@ Vorgehen:
 3. Launch-Zeitplan als Gantt-ähnliche Markdown-Tabelle: Milestone-Datum, verantwortliches Team, Deliverable.
 4. Sales-Enablement-Checkliste: Battlecard, objection-handling-Ergänzungen, Demo-Script-Update, Pricing-FAQ.
 5. PR-Pitch-Paket: Pressemitteilung-Entwurf, drei personalisierte Journalisten-Pitches basierend auf Web-Search-Research.
-Prompt:
-> "Du bist Go-to-Market-Stratege für ein DACH-B2B-SaaS-Unternehmen. Wir launchen '{{Feature-Name}}' in sechs Wochen. Erstelle ein GTM-Playbook-Dokument mit: (1) Messaging-Architektur: Positionierungs-Statement (2 Sätze) + 3 Kernbotschaften für Endnutzer, Entscheider und Techniker. (2) Launch-Zeitplan als Tabelle (T-6W bis T+4W, Milestone, Team, Deliverable). (3) Sales-Enablement-Checkliste (5 Punkte). (4) PR-Pitch-Entwurf (300 Wörter). Nur belegbare Produktaussagen aus dem Wissensordner."
+Vorlage: Go-to-Market-Playbook (Produkt-Launch):
+1. Phasen-Timeline mit realistischem Puffer - je Deliverable 3 Werktage Freigabe-Zyklus einplanen.
+2. Expliziter Legal-Review-Meilenstein vor jeder Veroeffentlichung von Produktclaims.
+3. Kanal- und Asset-Matrix mit Owner je Meilenstein.
 Artefakt: Vollständiges GTM-Playbook im Canvas (ca. 2.500 Wörter) — als Kickoff-Dokument für das Launch-Meeting mit allen Stakeholdern.
 Fallstricke:
 - Zeitplan zu optimistisch (alle Meilensteine in Woche 1 gehäuft) → Explizit realistischen Puffer einfordern: "Berücksichtige Freigabe-Zyklen von 3 Werktagen pro Deliverable."
 - Produktaussagen im PR-Material nicht mit Legal abgestimmt → GTM-Playbook muss einen expliziten "Legal-Review"-Meilenstein im Zeitplan enthalten; keine Produktclaims ohne Rechts-Freigabe publizieren.
+Empfehlung: Fordere realistische Puffer ein ('Freigabe-Zyklen von 3 Werktagen pro Deliverable'), sonst haeufen sich alle Meilensteine optimistisch in Woche 1. Verankere einen expliziten Legal-Review-Meilenstein im Zeitplan; keine Produktclaims im PR-Material ohne Rechts-Freigabe.
 Anschluss: S-MP-036
 
 ### S-MP-036 Sales-Battlecard für Wettbewerbs-Situationen entwickeln
@@ -725,12 +772,15 @@ Vorgehen:
 2. Interne Win/Loss-Analyse aus dem Wissensordner abrufen: Welche Argumente haben bisher in Competitive-Deals gewonnen?
 3. Battlecard-Struktur im Canvas aufbauen: Kopf (Logo, Key-Info), Stärken/Schwächen-Tabelle, Claim-Konter-Matrix, Qualifying-Fragen, Landmines.
 4. Battlecard vom Sales-Lead und Legal reviewen lassen: keine unbelegten Aussagen über den Wettbewerber; §6 UWG (Vergleichende Werbung) beachten.
-Prompt:
-> "Du bist Competitive-Intelligence-Analyst für ein DACH-B2B-SaaS-Unternehmen. Erstelle eine Battlecard gegen {{Wettbewerber}}. Nutze Web Search für aktuelle Produktseite, G2-Reviews und LinkedIn-Posts. Struktur: (1) Stärken/Schwächen-Tabelle (je 3 Punkte). (2) Die 3 häufigsten Wettbewerber-Claims mit unseren Konter-Argumenten aus dem Wissensordner. (3) 2 Qualifying-Fragen, die Wettbewerber-Schwächen aufdecken. (4) 2 Landmine-Fragen für Prospects. Nur belegbare, öffentlich zugängliche Fakten — kein Verleumden."
+Vorlage: Sales-Battlecard (Wettbewerb):
+1. Positionierung je Wettbewerber - sachlich, belegbar (Paragraf 6 UWG: vergleichende Werbung muss belegbar sein).
+2. Einwand-/Konter-Argumente, gestuetzt auf technisch spezifische, detaillierte G2-Reviews.
+3. Legal-Review-Vermerk als Pflicht-Gate vor jeder Vertriebsnutzung.
 Artefakt: Einseitige Battlecard im Canvas (Markdown-Tabellenformat) — nach Legal-Review als PDF für Sales exportierbar.
 Fallstricke:
 - Battlecard enthält irreführende oder unbelegte Wettbewerber-Aussagen → §6 UWG-Risiko: Vergleichende Werbung muss sachlich und belegbar sein; Legal-Review ist zwingend vor jeder Vertriebsnutzung.
 - G2-Reviews enthalten gefälschte Bewertungen als Datengrundlage → Explizit auf technisch spezifische, detaillierte Reviews fokussieren; allgemeine Lobeshymnen aus der Analyse ausschließen.
+Empfehlung: Lass Legal jede Battlecard vor Vertriebsnutzung pruefen - unbelegte Wettbewerber-Aussagen sind als vergleichende Werbung (Paragraf 6 UWG) abmahnfaehig. Fokussiere die Review-Analyse auf technisch spezifische, detaillierte G2-Bewertungen und schliesse allgemeine Lobeshymnen aus, da diese gefaelscht sein koennen.
 Anschluss: S-MP-037
 
 ### S-MP-037 Pricing-Page-Copy für B2B-SaaS optimieren
@@ -750,6 +800,7 @@ Artefakt: Drei Hero-Copy-Varianten + überarbeitete FAQ-Sektion im Canvas — pl
 Fallstricke:
 - Pricing-Copy-Varianten sind zu ähnlich für validen A/B-Test → Varianten müssen strukturell unterschiedlich sein (verschiedene Wertversprechen-Hierarchie, nicht nur Wortlaut-Variationen); im Prompt explizit "fundamental unterschiedlich" einfordern.
 - FAQ-Antworten versprechen ROI-Garantien, die das Unternehmen nicht halten kann → Legal-Review der FAQ zwingend; keine Performanceversprechen ohne Disclaimer.
+Empfehlung: Fordere im Prompt 'fundamental unterschiedliche Wertversprechen-Hierarchien' je Variante - reine Wortlaut-Variationen liefern keinen validen A/B-Test. Lass Legal die FAQ pruefen und verbiete ROI-Garantien ohne Disclaimer, da das Unternehmen Performanceversprechen sonst nicht halten kann.
 Anschluss: S-MP-038
 
 ### S-MP-038 Case-Study-Produktionspipeline standardisieren
@@ -764,12 +815,15 @@ Vorgehen:
 3. Tag 3: Rohtext im Canvas mit Kunden-Zitaten anreichern; auf formelles Deutsch und Brand Voice aus dem Wissensordner prüfen.
 4. Tag 4: Design-Briefing generieren (Layout-Vorgaben, Bild-Konzept, Zitat-Highlight, Logo-Platzierung).
 5. Tag 5: SEO-Metadaten (Title Tag, Meta-Description, Keywords) und Distribution-Plan (LinkedIn, Newsletter, Website) automatisch generieren.
-Prompt:
-> "Du bist Case-Study-Autor für ein DACH-B2B-Unternehmen. Ich lade das Interview-Transkript mit unserem Kunden {{Kundenname}} hoch. Erstelle eine Case Study im inverted-pyramid-Format: Headline (max. 12 Wörter, outcome-fokussiert), Situation (60 Wörter), Challenge (60 Wörter), Solution (80 Wörter mit konkreten Produktreferenzen aus dem Wissensordner), Results (80 Wörter mit spezifischen Zahlen aus dem Transkript). Formelles 'Sie', keine halluzinierten Zahlen — nur Fakten aus dem Transkript."
+Vorlage: Case-Study-Produktionspipeline:
+1. Standard-Story-Struktur - Ausgangslage, Loesung, Ergebnis (nur explizit im Transkript genannte Zahlen).
+2. Zero-Fabrication-Regel - keine geschaetzten oder hochgerechneten ROI-Werte.
+3. Kunden-Freigabe von Zitaten und Zahlen als Pflicht-Milestone vor Publikation.
 Artefakt: Fertige Case-Study-Texte (400 Wörter) + Design-Briefing + SEO-Metadaten im Canvas — bereit für Design und Veröffentlichung an Tag 5.
 Fallstricke:
 - Agent erfindet ROI-Zahlen, die im Transkript nicht erwähnt wurden → Zero-Fabrication-Policy zwingend: "Verwende ausschließlich Zahlen, die im Transkript explizit genannt wurden; keine Schätzungen oder Hochrechnungen."
 - Kunde muss Zitate und Zahlen vor Veröffentlichung genehmigen → Freigabe-Schritt mit dem Kunden als Pflicht-Milestone im Workflow-Zeitplan verankern; ohne schriftliche Genehmigung keine Publikation.
+Empfehlung: Erzwinge eine Zero-Fabrication-Policy ('verwende ausschliesslich im Transkript explizit genannte Zahlen, keine Schaetzungen') - der Agent erfindet sonst plausible ROI-Werte. Verankere die schriftliche Kunden-Freigabe von Zitaten und Zahlen als Pflicht-Milestone im Workflow-Zeitplan; ohne Genehmigung keine Veroeffentlichung.
 Anschluss: S-MP-039
 
 ### S-MP-039 Video-Script für Produkt-Demo-Video schreiben
@@ -789,6 +843,7 @@ Artefakt: Vollständiges Video-Script (ca. 250 Wörter) mit Zeitmarkierungen und
 Fallstricke:
 - Script ist zu lang für 120 Sekunden → Tempomessung: 130 Wörter pro Minute für deutschsprachigen Voice-Over ist Standard; Skript vor Produktion laut vorlesen und stoppen.
 - Halluzinierte Kunden-Zahlen im Social-Proof-Segment → Zero-Fabrication-Policy: Nur Zahlen aus dem Wissensordner oder dem vorliegenden Case-Study-Korpus nutzen; keine "typischen Ergebnisse" erfinden.
+Empfehlung: Kalibriere die Skriptlaenge auf 130 Woerter pro Minute fuer deutschen Voice-Over und lies den Entwurf vor der Produktion laut mit Stoppuhr gegen, da er sonst die 120 Sekunden sprengt. Setze eine Zero-Fabrication-Policy durch - nur Zahlen aus dem Wissensordner oder dem Case-Study-Korpus, keine erfundenen 'typischen Ergebnisse' im Social-Proof-Segment.
 Anschluss: S-MP-040
 
 ### S-MP-040 Webinar-Promotions-Sequenz für B2B-Event aufbauen
@@ -802,12 +857,13 @@ Vorgehen:
 2. Vier E-Mail-Entwürfe generieren: Ersteinladung (Neugier + Nutzen), T-7-Reminder (Social Proof + Agenda), Day-of (Logistik + Vorfreude), Post-Event (Replay + CTA für nächsten Schritt).
 3. Fünf LinkedIn-Posts mit variierenden Formaten: Speaker-Vorstellung, Key-Insight-Teaser, Countdown-Post, Live-Zitat aus dem Webinar (Post-Event), Replay-Announcement.
 4. HubSpot-Workflow-Konfiguration dokumentieren: Enrollment-Trigger (Formular-Ausfüllung), Delay-Nodes, Condition-Split (erschienen vs. nicht erschienen) für Post-Event-Sequenz.
-Prompt:
-> "Du bist Event-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir veranstalten ein Webinar zum Thema '{{Webinar-Thema}}' mit Speaker {{Name}} in 21 Tagen. Zielgruppe: {{Jobtitel}} im {{Branche}}-Bereich. Erstelle: (1) Vier E-Mail-Entwürfe (T-21, T-7, T-0, T+1) — je max. 120 Wörter, Betreff, Preheader, Body, CTA. (2) Fünf LinkedIn-Posts (je 100 Wörter, variierend: Ankündigung, Speaker-Teaser, Reminder, Live-Zitat, Replay). DSGVO-Abmeldelink in allen E-Mails. Formelles 'Sie'."
+Workflow: Trigger (Webinar-Registrierung + Event-Ende-Signal) -> Agent-Node (Sequenz-Texter, Input: Registrierungs-/Teilnahmestatus) -> Condition-Split (erschienen vs. nicht erschienen) -> zwei T+1-Mail-Varianten (Replay vs. Recap) + social-native LinkedIn-Posts -> HITL-Freigabe vor Aktivierung. Kein Auto-Versand.
+Budget: Pro Lauf guenstig (kurze Inputs, regelbasierter Split); Efficient-Default-Modell genuegt; HITL statt Auto-Versand. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Webinar-Promotions-Paket im Canvas (4 E-Mails + 5 LinkedIn-Posts + HubSpot-Workflow-Skizze) — direkt als Briefing für das CRM-Team nutzbar.
 Fallstricke:
 - Post-Event-E-Mail geht auch an nicht-erschienene Teilnehmer mit falschem Tonfall → HubSpot-Workflow muss Condition-Split "erschienen vs. nicht erschienen" zwingend enthalten; Prompt muss beide Varianten des T+1-Mails anfordern.
 - LinkedIn-Posts klingen wie E-Mails (zu lang, zu formal) → Explizit "social-media-nativ, conversational, max. 120 Wörter, kein 'Sehr geehrte Damen und Herren'" im Prompt verankern.
+Empfehlung: Erzwinge im Workflow den Condition-Split 'erschienen vs. nicht erschienen' und lass beide T+1-Varianten anfordern, sonst geht die Post-Event-Mail mit falschem Tonfall an Nicht-Teilnehmer. Verankere 'social-media-nativ, conversational, max. 120 Woerter, kein Sehr-geehrte-Damen-und-Herren' fuer die LinkedIn-Posts, damit sie nicht wie E-Mails klingen.
 Anschluss: S-MP-041
 
 ### S-MP-041 DACH-Markteintritts-Content-Strategie entwickeln
@@ -821,12 +877,15 @@ Vorgehen:
 2. Lokalisierungs-Playbook im Canvas erstellen: sprachliche Do's & Don'ts (kein 'ß' für CH, 'Jänner' für AT, formelles 'Sie' im B2B), kulturelle Normen (Direktheit, Qualitätsfokus, Datenschutzsensibilität der DACH-Kunden).
 3. Kanal-Matrix entwickeln: LinkedIn als primärer Business-Kanal, XING für ältere Zielgruppen, Fachmedien (Horizont, Handelsblatt, Produktion) für Thought Leadership, Messen (Hannover Messe, embedded world) für persönliche Kontakte.
 4. DSGVO-Compliance-Checkliste für Content-Kampagnen: AVV-Pflicht für alle Tools, Opt-in-Dokumentation, Kennzeichnungspflicht für KI-generierte Werbeinhalte.
-Prompt:
-> "Du bist DACH-Market-Entry-Stratege für ein internationales B2B-Technologieunternehmen. Erstelle eine Content-Markteintritts-Strategie für die DACH-Region. Nutze Web Search für aktuelle DACH-Marktdaten. Liefere: (1) Lokalisierungs-Playbook: sprachliche und kulturelle Do's & Don'ts für DE, AT und CH. (2) Kanal-Matrix: welche Kanäle für welche Zielgruppen priorisieren (LinkedIn, XING, Fachmedien, Events)? (3) Starter-Content-Paket: 5 Asset-Ideen mit Briefing. (4) DSGVO-Compliance-Checkliste (5 Punkte) für internationale Unternehmen im DACH-Markt."
+Vorlage: DACH-Markteintritts-Content-Strategie:
+1. Transkreation statt Uebersetzung - DE/AT/CH-Marktunterschiede je Botschaft explizit anpassen.
+2. DSGVO-Checkliste mit DACH-Spezifika (BDSG, DSG-AT, DSG-CH) + Betriebsrats-Mitbestimmung.
+3. Kanal-/Themen-Roadmap je Markt mit lokalisierten Beispielen.
 Artefakt: DACH-Market-Entry-Content-Strategie im Canvas (ca. 1.500 Wörter) — als Kickoff-Dokument für das lokale Marketingteam.
 Fallstricke:
 - Lokalisierung reduziert sich auf reine Übersetzung statt Transkreation → Prompt muss "kulturelle Anpassung, nicht wörtliche Übersetzung" betonen; Schweizer, österreichische und deutsche Marktunterschiede explizit addressieren.
 - DSGVO-Checkliste zu generisch ohne DACH-spezifische Besonderheiten → Prompt muss Bundesländer-spezifische Regelungen (BDSG, DSG-AT, DSG-CH) und Betriebsrats-Mitbestimmungsrechte explizit einfordern.
+Empfehlung: Erzwinge 'kulturelle Anpassung, nicht woertliche Uebersetzung' und addressiere Schweizer, oesterreichische und deutsche Unterschiede explizit - reine Uebersetzung verfehlt den Markt. Verlange eine DACH-spezifische DSGVO-Checkliste (BDSG, DSG-AT, DSG-CH, Betriebsrats-Mitbestimmung) statt einer generischen, sonst fehlen rechtliche Besonderheiten.
 Anschluss: S-MP-042
 
 ### S-MP-042 Hannover Messe / embedded world Messevorbereitung
@@ -840,12 +899,15 @@ Vorgehen:
 2. Stand-Design-Briefing im Canvas erstellen: Kernbotschaft, Layout-Konzept, Key-Visuals, Demonstration-Focus, technische Spezifikationen für Messebauer.
 3. Fünf rollenspezifische Gesprächsleitfäden (Sales, Pre-Sales, Technical, Marketing, CEO): je ein 30-Sekunden-Elevator-Pitch, drei häufige Einwände mit Antworten, zwei Qualifizierungsfragen.
 4. Post-Messe-Nachfass-Workflow: dreiteilige E-Mail-Sequenz (Tag 1 persönlicher Nachfass, Tag 5 weiterführender Content, Tag 12 Call-Einladung) mit HubSpot-Integration und DSGVO-Opt-in-Dokumentation.
-Prompt:
-> "Du bist Messe-Stratege für ein DACH-B2B-Industrieunternehmen. Wir nehmen an der Hannover Messe teil. Nutze Web Search, um die Top-3-Branchenthemen des aktuellen Jahrgangs zu identifizieren. Erstelle: (1) Stand-Design-Briefing (Kernbotschaft, 3 Key-Visuals, Demo-Fokus). (2) Gesprächsleitfaden für Account Executives (30-Sek.-Pitch + 3 Einwände + 2 Qualifizierungsfragen). (3) LinkedIn-Kampagnen-Plan für 3 Wochen vor der Messe (6 Posts mit Datumsangabe und Format). (4) Dreiteilige Nachfass-E-Mail-Sequenz mit Delay-Logik."
+Vorlage: Messevorbereitungs-Paket (Hannover Messe / embedded world):
+1. Programm-/Aussteller-Recherche - nur offizielle Messe-Website des aktuellen Jahres, Quellen-Datum ausweisen.
+2. Pre-Show-Outreach + Nachfass-Mails mit dokumentiertem Opt-in-Status.
+3. Lead-Capture-/Follow-up-Logik (Opt-in als Enrollment-Bedingung).
 Artefakt: Vollständiges Messe-Vorbereitungspaket im Canvas — verteilbar als Briefings an Agentur, Stand-Team und CRM-Verantwortliche.
 Fallstricke:
 - Web Search liefert Vorjahres-Programmdaten der Hannover Messe → Search-Query auf aktuelles Jahr einschränken und Quellen-Datum zwingend ausweisen lassen; offizielle Messe-Website als primäre Quelle vorschreiben.
 - Nachfass-E-Mails ohne DSGVO-Opt-in-Dokumentation verstoßen gegen §7 UWG → Workflow muss Opt-in-Status aus dem Messe-Kontaktformular als Enrollment-Bedingung enthalten; ohne nachgewiesene Einwilligung kein automatisierter Versand.
+Empfehlung: Schraenke die Recherche auf die offizielle Messe-Website des aktuellen Jahres ein und lass das Quellen-Datum ausweisen, da Web Search sonst Vorjahres-Programmdaten liefert. Verankere den Opt-in-Status aus dem Messe-Kontaktformular als Enrollment-Bedingung; ohne nachgewiesene Einwilligung kein automatisierter Nachfass (Paragraf 7 UWG).
 Anschluss: S-MP-043
 
 ### S-MP-043 CFO-Sprachübersetzer: KI-ROI in Board-Sprache übersetzen
@@ -865,6 +927,7 @@ Artefakt: Einseitiger CFO-ROI-Report (Markdown + Python-Chart) plus Board-Slide-
 Fallstricke:
 - Zeittracking-Daten enthalten Klarnamen von Mitarbeitern → Vor Data-Analyst-Upload zwingend pseudonymisieren; BetrVG §87(1)6 untersagt die Nutzung von personenbezogenen Leistungsdaten ohne Betriebsrats-Zustimmung.
 - ROI-Berechnung erscheint zu optimistisch und wird vom CFO als "Marketing-Zahlen" abgetan → Adversariale Simulation einbauen ("Wie würde der CFO diesen Wert angreifen?") und konservative Annahmen explizit ausweisen.
+Empfehlung: Pseudonymisiere die Zeittracking-Daten vor dem Data-Analyst-Upload zwingend - BetrVG Paragraf 87(1)6 untersagt die Nutzung personenbezogener Leistungsdaten ohne Betriebsrats-Zustimmung. Baue eine adversariale Simulation ein ('Wie greift der CFO diesen Wert an?') und weise konservative Annahmen explizit aus, damit die ROI-Zahl nicht als 'Marketing-Zahl' abgetan wird.
 Anschluss: S-MP-044
 
 ### S-MP-044 KI-Ethik-Kompass für das Marketing-Team entwickeln
@@ -878,12 +941,15 @@ Vorgehen:
 2. Vier Säulen im Canvas ausarbeiten: Transparenz (KI-Kennzeichnung), Konsent (Opt-in für personalisierte Kommunikation), Reversibilität (jede KI-Entscheidung muss rückgängig machbar sein), Beweisbarkeit (Audit-Log für jede KI-Aktion).
 3. Ampel-Matrix erstellen: grün (Content-Drafts, Übersetzungen, Research-Zusammenfassungen), gelb (E-Mail-Kampagnen, Lead-Scoring, Personalisierung → HITL), rot (Mitarbeiterbewertungen, Preisgestaltung, rechtliche Erklärungen → kein KI).
 4. Prozess für jährliche Überprüfung dokumentieren: KI-Champions führen jährlichen Review durch; bei EU-AI-Act-Änderungen sofortige Ad-hoc-Aktualisierung.
-Prompt:
-> "Du bist KI-Ethik-Berater für eine DACH-B2B-Marketingabteilung. Erstelle einen 'KI-Ethik-Kompass für Marketing' basierend auf vier Säulen: Transparenz, Konsent, Reversibilität und Beweisbarkeit. Nutze Web Search für aktuelle EU-AI-Act-Art.-50-Anforderungen und UWG-Kennzeichnungspflichten. Liefere: (1) Die vier Säulen mit je einem Satz Definition und einem Marketing-Beispiel. (2) Eine Ampel-Matrix: grün (autonom OK), gelb (Human-Oversight erforderlich), rot (kein KI). (3) Einen Prozess für die jährliche Aktualisierung (3 Schritte). Sprache: juristisch präzise, aber für Nicht-Juristen verständlich."
+Vorlage: KI-Ethik-Kompass (Marketing-Team):
+1. Ampel-Matrix (gruen/gelb/rot) je KI-Anwendungsfall - gemeinsam mit Betriebsrat kalibriert.
+2. Regulatorischer Anker - EU-AI-Act-Bezuege, jede Artikel-Nummer manuell gegen eur-lex.europa.eu verifiziert.
+3. Eskalations- und Review-Pfad; Kompass als lebendes Dokument.
 Artefakt: KI-Ethik-Kompass (Markdown, ca. 800 Wörter) mit Ampel-Matrix im Canvas — bereit zur gemeinsamen Überarbeitung mit Betriebsrat und Legal.
 Fallstricke:
 - Web Search halluziniert EU-AI-Act-Artikel-Nummern oder Inkrafttreten-Daten → Zero-Fabrication-Policy für regulatorische Angaben: alle Artikel-Nummern und Fristen müssen manuell gegen die offizielle EU-AI-Act-Quelle verifiziert werden (eur-lex.europa.eu).
 - Ampel-Matrix zu restriktiv und bremst die KI-Adoption aus → Betriebsrat und Marketing müssen die Matrix gemeinsam kalibrieren; der erste KI-generierte Entwurf ist ein Gesprächsstarter, kein fertiges Dokument.
+Empfehlung: Verifiziere jede EU-AI-Act-Artikel-Nummer und Frist manuell gegen die offizielle Quelle (eur-lex.europa.eu) - der Agent halluziniert hier plausible, aber falsche Angaben. Kalibriere die Ampel-Matrix gemeinsam mit Betriebsrat und Marketing; der KI-Entwurf ist ein Gespraechsstarter, kein fertiges Dokument, sonst bremst eine zu restriktive Matrix die KI-Adoption aus.
 Anschluss: S-MP-045
 
 ### S-MP-045 KI-gestützte Krisenreaktion bei viralem negativem Content
@@ -898,12 +964,15 @@ Vorgehen:
 3. Zwei Holding-Statements draften: LinkedIn (empathisch, kurz, keine Schuldzuweisungen, max. 100 Wörter) und Pressekontakt-Statement (formal, auf Medienanfragen ausgerichtet, max. 150 Wörter).
 4. Eskalations-Entscheidungsbaum erstellen: Eskalationsstufe 1 (Holding Statement reicht), Stufe 2 (CEO-Statement nötig), Stufe 3 (Pressekonferenz/Krisenstab).
 5. Zero-Fabrication-Anweisungsset für alle weiteren KI-Outputs in der Krise: "Keine Aussagen über den Vorfall ohne explizite Faktengrundlage aus dem Legal-genehmigten Wissensordner-Dokument."
-Prompt:
-> "Du bist Krisenkommunikations-Direktor für ein DACH-B2B-Unternehmen. Ein viraler LinkedIn-Post behauptet, wir hätten {{falschen Claim}}. Wir haben 2 Stunden für die erste Reaktion. Erstelle: (1) Internes Fakten-Memo (Stichpunkte: bekannte Fakten, ungeklärte Fragen, was wir NICHT sagen dürfen). (2) LinkedIn-Holding-Statement (max. 100 Wörter, empathisch, keine Schuldzuweisungen, keine neuen Claims). (3) Pressekontakt-Statement (max. 150 Wörter, formal). (4) Eskalations-Entscheidungsbaum (3 Stufen). Kein KI-Optimismus — sachlich, vorsichtig, Legal-ready."
+Vorlage: Krisenreaktions-Set (viraler Negativ-Content):
+1. Holding Statement - nur 'Wir nehmen das ernst und pruefen die Sachlage', keine neuen Gegenclaims.
+2. Eskalations- und Freigabe-Kette (Legal + Geschaeftsfuehrung) als nicht ueberspringbares Gate.
+3. Kanal-Varianten + fette Entwurfs-Warnung im Canvas-Dokument.
 Artefakt: Krisen-Reaktionspaket im Canvas (internes Memo + 2 Statements + Entscheidungsbaum) — zur sofortigen Freigabe durch Legal und Geschäftsführung.
 Fallstricke:
 - Holding Statements enthalten neue, ungeprüfte Gegenclaims → Prompt muss explizit verbieten, neue Produktbehauptungen in der Krisenreaktion zu machen; ausschließlich: "Wir nehmen das ernst und prüfen die Sachlage."
 - KI-generierte Krisenaussagen ohne Legal-Freigabe veröffentlicht → Krisenreaktion durch KI ist IMMER nur ein Entwurf; der Freigabe-Step durch Legal und Geschäftsführung darf nie übersprungen werden — dies als fette Warnung im Canvas-Dokument kennzeichnen.
+Empfehlung: Verbiete im Prompt jede neue Produktbehauptung in der Krisenreaktion - ausschliesslich 'Wir nehmen das ernst und pruefen die Sachlage'. Kennzeichne jede KI-generierte Krisenaussage als Entwurf mit fetter Warnung im Canvas und ueberspringe nie den Freigabe-Step durch Legal und Geschaeftsfuehrung.
 Anschluss: S-MP-046
 
 ### S-MP-046 Award-Bewerbung für den Deutschen Marketing Award vorbereiten
@@ -923,6 +992,7 @@ Artefakt: Druckfertiges Canvas-Dokument mit drei Antwortblöcken (je ≤300 Wör
 Fallstricke:
 - KI kombiniert Kennzahlen aus zwei verschiedenen Kampagnen zu einer fiktiven Zahl → Jede Ziffer muss direkt gegen das Quelldokument im Ordner verifiziert werden; im Prompt explizit fordern: "Keine Zahlen ohne Quellenangabe."
 - Bewerbungstext klingt nach Unternehmens-Eigenlob ohne Nachweis → Juryanforderungen explizit als Kontext mitliefern; Prompt muss die Falsifizierungs-Hürde einbauen: "Streiche jede Aussage, die du nicht mit einem konkreten Datum und einer Kennzahl belegen kannst."
+Empfehlung: Lass jede Kennzahl direkt gegen das Quelldokument im Ordner verifizieren ('keine Zahlen ohne Quellenangabe'), da die KI sonst Werte aus zwei Kampagnen zu einer fiktiven Zahl kombiniert. Liefere die Juryanforderungen als Kontext mit und baue die Falsifizierungs-Huerde ein ('streiche jede Aussage, die du nicht mit Datum und Kennzahl belegen kannst'), damit der Text nicht nach Eigenlob klingt.
 Anschluss: S-MP-047
 
 ### S-MP-047 Marktforschungssynthese aus heterogenen Quellen
@@ -942,6 +1012,7 @@ Artefakt: Dreiseitiger Synthese-Report im Canvas mit Quellenverweisen, einem ded
 Fallstricke:
 - KI glättet Quellwidersprüche statt sie zu benennen → Prompt muss explizit fordern: "Wenn Quellen A und B sich widersprechen, schreibe: 'Laut [Quelle A] …, während [Quelle B] …' — keine eigene Auflösung ohne Kennzeichnung."
 - Strukturierte CSV-Daten (Befragungsexport) im Wissensordner statt im Data Analyst abgelegt → Ordner kann Tabellen nicht zuverlässig auswerten; CSV immer direkt in den Data Analyst laden.
+Empfehlung: Fordere im Prompt explizit, Quellwidersprueche zu benennen statt zu glaetten ('schreibe: Laut [A] ..., waehrend [B] ... - keine eigene Aufloesung ohne Kennzeichnung'). Lade strukturierte Befragungsexporte (CSV) immer direkt in den Data Analyst, nie in den Wissensordner, da der RAG Tabellen nicht zuverlaessig auswertet.
 Anschluss: S-MP-048
 
 ### S-MP-048 Influencer-Vertragscheck mit KI-Unterstützung
@@ -961,6 +1032,7 @@ Artefakt: Risiko-Tabelle mit allen geprüften Klauseln, Risikostufe und Handlung
 Fallstricke:
 - KI-Output ersetzt keinen Rechtsanwalt → Checkliste ist ein Vorprüfungswerkzeug; Prompt muss einen expliziten Disclaimer im Output erzwingen: "Dieses Dokument ist keine Rechtsberatung."
 - Vertrag im Wissensordner statt als Dateianhang geladen → RAG liefert nur Auszüge; für vollständige Vertragsanalyse immer den direkten Dateianhang nutzen, damit das gesamte Dokument im Kontext bleibt.
+Empfehlung: Erzwinge im Output den Disclaimer 'Dieses Dokument ist keine Rechtsberatung' - die Checkliste ist ein Vorpruefungswerkzeug und ersetzt keinen Anwalt. Lade den Vertrag als direkten Dateianhang statt in den Wissensordner, damit das gesamte Dokument im Kontext bleibt; der RAG liefert nur Auszuege und uebersieht Klauseln.
 Anschluss: S-MP-049
 
 ### S-MP-049 Produktrückruf-Kommunikation koordinieren
@@ -981,6 +1053,7 @@ Artefakt: Canvas-Dokument mit allen vier Kommunikationsformaten (Kunden-Email, P
 Fallstricke:
 - KI baut Schuldeingeständnisse oder Ursachenbehauptungen in die Pressemitteilung ein → Prompt muss explizit anweisen: "Keine kausalen Aussagen über die Fehlerursache, bevor die interne Untersuchung abgeschlossen ist."
 - Kundensegmentierungs-CSV in den Wissensordner statt in den Data Analyst geladen → Segmentierung schlägt fehl; strukturierte Daten immer über den Data Analyst verarbeiten.
+Empfehlung: Weise explizit an 'keine kausalen Aussagen ueber die Fehlerursache vor Abschluss der internen Untersuchung', da vorschnelle Ursachenbehauptungen in der Pressemitteilung rechtlich gefaehrlich sind. Verarbeite die Kundensegmentierungs-CSV immer ueber den Data Analyst, nie ueber den Wissensordner, sonst schlaegt die Segmentierung fehl.
 Anschluss: S-MP-050
 
 ### S-MP-050 Preiserhöhungs-Kommunikationsstrategie entwickeln
@@ -1000,6 +1073,7 @@ Artefakt: Canvas-Dokument mit Botschaftsarchitektur (pro Segment), drei E-Mail-E
 Fallstricke:
 - KI formuliert die Preiserhöhung als erste Information statt als letzte → Prompt muss die Kommunikationsreihenfolge vorgeben: Mehrwert → Investitionsreferenz → Preisanpassung.
 - Generische Formulierungen ohne Bezug zum konkreten Kundennutzen → Wissensordner mit aktuellen Release Notes und Case Studies als Pflichtquelle einbinden, damit jede Botschaft mit einem spezifischen Feature oder ROI-Beleg untermauert wird.
+Empfehlung: Gib die Kommunikationsreihenfolge fest vor - Mehrwert, dann Investitionsreferenz, dann Preisanpassung -, da die KI die Preiserhoehung sonst als erste statt als letzte Information formuliert. Binde aktuelle Release Notes und Case Studies als Pflichtquelle ein, damit jede Botschaft mit einem konkreten Feature oder ROI-Beleg untermauert ist statt generisch zu bleiben.
 Anschluss: S-MP-051
 
 ### S-MP-051 Loyalty-Programm-Engagement-Content erstellen
@@ -1013,12 +1087,15 @@ Vorgehen:
 2. Content-Strategie nach Engagement-Hebeln strukturieren: Gamification ("Du bist 200 Punkte vom Gold-Status entfernt"), Exklusivitätssignale ("Nur für Platin-Mitglieder"), Ablauf-Erinnerungen ("Deine Punkte verfallen am …").
 3. 12 Content-Pieces im Canvas ausformulieren — nach Kanal (E-Mail, Push, In-App) und Mitgliedersegment differenziert; Betreffzeilen-Paare für A/B-Tests einbauen.
 4. Prüfung: Kein Content darf generische "Belohnungs-Marketingsprache" verwenden; jedes Piece muss einen konkreten Mehrwert oder eine Dringlichkeit transportieren.
-Prompt:
-> "Du bist CRM-Content-Stratege für ein DACH-Handelsunternehmen mit einem dreistufigen Loyalty-Programm (Bronze, Silber, Gold). Die Einlösungsquote liegt bei nur 12 %. Erstelle für das Gold-Segment drei E-Mails: (1) Punkte-Ablauf-Erinnerung, (2) Exklusiv-Angebot nur für Gold-Mitglieder, (3) Tier-Upgrade-Anreiz für Platin. Ton: persönlich, statusbewusst, keine Werbeklischees. Liefere je zwei Betreffzeilen-Varianten für A/B-Tests."
+Vorlage: Loyalty-Engagement-Content (nach Status-Stufe):
+1. Stufen-Logik - jedes Piece nennt explizit die Stufe des Empfaengers und einen exklusiven Vorteil.
+2. Dringlichkeits-Element - konkretes Ablaufdatum / Zeitfenster je relevantem Content-Piece.
+3. Kanal-Varianten je Stufe; Ton exklusiv statt Massen-Mail.
 Artefakt: Quarterly Loyalty Content Calendar als Canvas-Dokument mit 12 ausformulierten Content-Pieces, Kanal-Zuweisung und A/B-Betreffzeilen.
 Fallstricke:
 - Content klingt wie generische Massen-E-Mail statt exklusiv → Prompt muss Statusorientierung hard-coden: "Jedes Piece muss explizit die Stufe des Empfängers nennen und einen Vorteil kommunizieren, den andere Stufen nicht erhalten."
 - Fehlende Dringlichkeit führt zu Prokrastination → Ablaufdaten und konkrete Zeitfenster müssen in jeden relevanten Content-Piece eingebaut werden; KI neigt zu vagen Formulierungen ohne Deadline.
+Empfehlung: Codiere die Statusorientierung hart ('jedes Piece nennt die Stufe des Empfaengers und einen Vorteil, den andere Stufen nicht erhalten'), sonst klingt der Content wie eine generische Massen-Mail. Baue konkrete Ablaufdaten und Zeitfenster in jeden relevanten Content ein, da die KI sonst zu vagen Formulierungen ohne Deadline neigt und Prokrastination foerdert.
 Anschluss: S-MP-052
 
 ### S-MP-052 Channel-Partner-Enablement-Materialien entwickeln
@@ -1032,12 +1109,15 @@ Vorgehen:
 2. Produktone-Pager im Canvas erstellen: Value Proposition, USPs, Top-3-Use-Cases, Preisrahmen — in B2B-Sprache ohne interne Jargon-Begriffe.
 3. Objection-Handling-Guide aus typischen Vertriebsgesprächen ableiten: 10 Einwände (Preis, Komplexität, Mitbewerber, DSGVO, Support) mit strukturierten Brückenantworten.
 4. Onboarding-Checkliste generieren: Woche 1–4 mit konkreten Meilensteinen (Produktschulung, erste Pipeline-Opportunity, erstes Co-Marketing-Event).
-Prompt:
-> "Du bist Channel-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir onboarden nächsten Monat 12 neue Reseller. Erstelle aus den Materialien im Wissensordner: (1) Einen Produktone-Pager (max. 400 Wörter, formelles Sie, Value Proposition an erster Stelle), (2) einen Objection-Handling-Guide für die 10 häufigsten Partner-Einwände, (3) eine 4-Wochen-Onboarding-Checkliste. Keine interne Abkürzungen — Partner kennen unsere Systeme nicht."
+Vorlage: Channel-Partner-Enablement-Kit:
+1. Pitch-/Argumentations-Materialien - jargonfrei, jeder Begriff fuer Reseller ohne Produktvorwissen verstaendlich.
+2. Co-Branding-Richtlinien - ausschliesslich aus der aktuellen Brand-Guidelines-PDF zitiert.
+3. Verkaufshilfen (FAQ, Einwand-Konter) mit klarer Quellenbindung.
 Artefakt: Channel-Partner-Enablement-Kit als strukturiertes Canvas-Dokument in vier Abschnitten, exportierbar als PDF für die Partnerübergabe.
 Fallstricke:
 - Materialien enthalten interne Fachbegriffe, die Partner nicht verstehen → Prompt muss explizit fordern: "Kein interner Jargon — teste jeden Begriff: Würde ein Reseller ohne Produktvorkenntnis das verstehen?"
 - Co-Branding-Richtlinien zu restriktiv oder zu vage formuliert → Wissensordner muss die aktuelle Brand-Guidelines-PDF enthalten; KI darf keine eigenen Logoregeln erfinden, sondern nur aus dem Quelldokument zitieren.
+Empfehlung: Verlange 'kein interner Jargon - teste jeden Begriff: wuerde ein Reseller ohne Produktvorkenntnis das verstehen?', da Partnermaterialien sonst unbrauchbar werden. Binde die aktuelle Brand-Guidelines-PDF in den Wissensordner ein und lass die KI nur daraus zitieren statt eigene Logoregeln zu erfinden.
 Anschluss: S-MP-053
 
 ### S-MP-053 Messestand-Konzept für Fachmessen entwickeln
@@ -1057,6 +1137,7 @@ Artefakt: Messebriefing-Dokument im Canvas (ca. 4 Seiten), direkt übergabefähi
 Fallstricke:
 - Standthema wird zu abstrakt oder zu produktgetrieben → Hero Message muss immer aus einem Kundenproblem heraus formuliert werden, nicht aus Produktfeatures; im Prompt erzwingen: "Formuliere das Thema aus der Perspektive des Messebesuchers, nicht aus Unternehmenssicht."
 - Web Search liefert Konzepte vergangener Messen ohne Jahr-Filter → Immer aktuelles Jahr und Messeedition im Search-Query spezifizieren, um nicht veraltete Wettbewerber-Infos zu verwenden.
+Empfehlung: Formuliere die Hero Message immer aus einem Kundenproblem heraus ('aus der Perspektive des Messebesuchers, nicht aus Unternehmenssicht'), damit das Standthema nicht zu abstrakt oder zu produktgetrieben wird. Spezifiziere im Search-Query immer aktuelles Jahr und Messeedition, sonst liefert Web Search Konzepte und Wettbewerber-Infos vergangener Messen.
 Anschluss: S-MP-054
 
 ### S-MP-054 Analyst-Relations-Briefing für Gartner/Forrester vorbereiten
@@ -1076,6 +1157,7 @@ Artefakt: Briefing-Deck-Gliederung mit Kernbotschaften (Canvas) und ein separate
 Fallstricke:
 - Briefing enthält ungesicherte Roadmap-Ankündigungen → Prompt muss explizit untersagen, Features zu nennen, die noch nicht öffentlich kommuniziert wurden; Legal-Freigabe für Roadmap-Aussagen ist Pflicht.
 - Differenzierungsargumente sind generisch ("führend in Innovation") → Wissensordner muss aktuelle Release Notes und messbare Customer-Success-Daten enthalten; jede Kernbotschaft muss mit einer Zahl oder einem Kundenzitat belegt sein.
+Empfehlung: Untersage im Prompt explizit, noch nicht oeffentlich kommunizierte Features zu nennen - Roadmap-Aussagen brauchen Legal-Freigabe. Binde aktuelle Release Notes und messbare Customer-Success-Daten in den Wissensordner ein, damit jede Kernbotschaft mit einer Zahl oder einem Kundenzitat belegt ist statt generisch ('fuehrend in Innovation') zu bleiben.
 Anschluss: S-MP-055
 
 ### S-MP-055 B2B-Podcast-Episode planen und vorbereiten
@@ -1095,6 +1177,7 @@ Artefakt: Episode-Briefing-Dokument im Canvas (ca. 3 Seiten) mit allen vier Komp
 Fallstricke:
 - Interviewfragen zu produktnah formuliert → Podcast-Inhalte mit offensichtlichem Verkaufsinteresse verlieren Hörer; Prompt muss fordern: "Mindestens 8 der 12 Fragen dürfen keinen direkten Produktbezug haben — Fokus auf Branchenerkenntnisse."
 - Thema bereits von führenden Branchenpodcasts erschöpfend behandelt → Web Search muss explizit auf Duplikat-Check ausgerichtet werden: "Suche nach den letzten 5 Podcast-Episoden zu diesem Thema und identifiziere den noch nicht besetzten Blickwinkel."
+Empfehlung: Fordere 'mindestens 8 der 12 Fragen ohne direkten Produktbezug - Fokus auf Branchenerkenntnisse', da produktnahe Interviewfragen Hoerer verlieren. Richte Web Search auf einen Duplikat-Check aus ('suche die letzten 5 Podcast-Episoden zum Thema und identifiziere den noch nicht besetzten Blickwinkel'), damit das Thema nicht bereits erschoepfend behandelt ist.
 Anschluss: S-MP-056
 
 ### S-MP-056 Customer-Success-Story-Pipeline aufbauen
@@ -1108,12 +1191,15 @@ Vorgehen:
 2. Top-10-Kandidatenliste mit Begründung je Kandidat erstellen; Customer-Success-Manager erhält diese als Anfrage-Priorisierungsgrundlage.
 3. Interview-Leitfaden mit 10 Fragen generieren: Vor-Situation → Entscheidungsmoment → Implementierungserfahrung → messbare Ergebnisse → Empfehlungsbereitschaft.
 4. Story-Template im Canvas erstellen: Headline → Challenge → Solution → Results (mit Kennzahlen-Platzhaltern) → Quote → CTA; Freigabe-Workflow-Checkliste mit Verantwortlichkeiten anhängen.
-Prompt:
-> "Du bist Customer-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Erstelle: (1) Auswahlkriterien für Story-Kandidaten (5 Kriterien mit Gewichtung), (2) einen Interview-Leitfaden mit 10 Fragen für ein 30-minütiges Gespräch, (3) ein Story-Template (Headline + 4 Abschnitte mit Schreibanweisungen und Kennzahlen-Platzhaltern), (4) eine Freigabe-Checkliste (Schritte: Entwurf → Kundenfreigabe → Legal-Check → Veröffentlichung). Ton des Templates: konkret, kennzahlengetrieben, keine Adjektiv-Wüste."
+Vorlage: Customer-Success-Story-Pipeline:
+1. Story-Template - Kundenstimme steht immer vor der Produktbeschreibung; liest sich nicht wie Werbung.
+2. Kandidaten-Priorisierung im Data Analyst - NPS plus ARR und strategische Vertikalabdeckung als Gewichtung.
+3. Freigabe- und Repurposing-Schritte je Story.
 Artefakt: Pipeline-Dokument im Canvas mit allen vier Komponenten; priorisierte Kandidatentabelle als separates CSV aus dem Data Analyst.
 Fallstricke:
 - KI-generiertes Story-Template klingt nach Werbepros statt nach echtem Kundenbericht → Prompt muss fordern: "Das Template muss so gestaltet sein, dass der Leser vergisst, dass es ein Unternehmensmedium ist — Kundenstimme steht immer vor Produktbeschreibung."
 - Kandidatenliste basiert nur auf NPS ohne wirtschaftliche Relevanz → Data-Analyst-Priorisierung muss ARR und strategische Vertikalabdeckung als Gewichtungsfaktoren enthalten, damit die Stories tatsächlich für Sales-Situationen brauchbar sind.
+Empfehlung: Fordere ein Template, bei dem 'der Leser vergisst, dass es ein Unternehmensmedium ist - Kundenstimme vor Produktbeschreibung', sonst klingt die Story nach Werbeprosa. Gewichte die Data-Analyst-Priorisierung mit ARR und strategischer Vertikalabdeckung statt nur NPS, damit die Stories tatsaechlich fuer Sales-Situationen brauchbar sind.
 Anschluss: S-MP-057
 
 ### S-MP-057 Internes Marketing-Team-Newsletter erstellen
@@ -1123,16 +1209,16 @@ Ziel: Den Informationsstand und das strategische Alignment im Marketing-Team erh
 Ergebnis: Eine wiederverwendbare Newsletter-Vorlage im Canvas plus ein Workflow, der die relevanten Performance-Daten (aus GA4, HubSpot, Google Ads) automatisch als Rohentwurf aufbereitet, der nur noch redigiert werden muss.
 Fähigkeit: Canvas, Workflows, Data Analyst
 Vorgehen:
-1. Newsletter-Template im Canvas definieren: Feste Rubriken (Kampagnen-Highlight, Zahl der Woche, Tool-Tipp, Team-Lernen, Nächste Prioritäten) mit Schreibanweisungen pro Rubrik.
-2. Scheduled Workflow einrichten: Jede zweite Woche automatisch Performance-Daten (GA4-Export, HubSpot-Metriken) via HTTP-Request abrufen und in den Data Analyst zur Zusammenfassung senden.
-3. Agent fasst die Rohdaten in die passenden Rubriken des Templates zusammen; der Entwurf landet im Canvas zur Revision durch Julia.
-4. Human-in-the-Loop-Schritt definieren: Julia fügt "Team-Lernen" und "Nächste Prioritäten" manuell ein — diese Rubriken nicht durch KI befüllen lassen.
-Prompt:
-> "Du bist Redakteur des internen Marketing-Newsletters 'Marketing Pulse'. Erstelle eine Vorlage für eine zweiwöchige Ausgabe mit fünf Rubriken: (1) Kampagnen-Highlight der Woche (max. 80 Wörter), (2) Zahl der Woche (eine Kennzahl mit Kontext), (3) Tool-Tipp (150 Wörter), (4) Was haben wir gelernt? (anonymisierter Erfahrungsbericht, 100 Wörter), (5) Nächste Prioritäten (3 Bulletpoints). Ton: kollegial, direkt, kein Unternehmens-PR-Stil. Jede Rubrik enthält eine Schreibanweisung in Klammern."
+1. Newsletter-Template im Canvas mit festen Rubriken + Schreibanweisungen je Rubrik definieren.
+2. Scheduled Workflow: Performance-Daten via HTTP-Request abrufen, in den Data Analyst zur Zusammenfassung senden.
+3. Agent befuellt nur die Daten-Rubriken; HITL: Julia ergaenzt 'Team-Lernen' und 'Naechste Prioritaeten' manuell.
+Workflow: Scheduled-Trigger (monatlich) -> HTTP-Request-Nodes (versionierte Report-URLs) -> Condition-Node (Daten vorhanden? sonst Platzhalter-Hinweis) -> Agent-Node (befuellt nur Daten-Rubriken) -> Canvas-Entwurf mit leeren strategischen Rubriken (Learnings/Prioritaeten) -> HITL: Marketing-Direktion befuellt Strategie-Teil persoenlich.
+Budget: Pro Lauf guenstig (interne Datenaggregation, kurze Texte); Efficient-Default-Modell genuegt; quartalsweiser URL-Check. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Wiederverwendbares Newsletter-Template im Canvas mit Schreibanweisungen pro Rubrik, plus Workflow-Beschreibung für die automatisierte Datenbefüllung.
 Fallstricke:
 - Alle Rubriken durch KI befüllen lassen → Der Newsletter verliert Authentizität und wird zur reinen Datenliste; strategische Rubriken (Learnings, Prioritäten) müssen immer durch die Marketing-Direktion persönlich befüllt werden.
 - Workflow liest veraltete Daten, weil Report-URLs sich geändert haben → HTTP-Request-URLs im Workflow müssen versioniert und quartalsweise geprüft werden; Fallback-Schritt einbauen, der auf fehlende Daten mit einem Platzhalter-Hinweis reagiert.
+Empfehlung: Lass die KI nur die Daten-Rubriken befuellen und reserviere die strategischen Rubriken (Learnings, Prioritaeten) fuer die Marketing-Direktion persoenlich - sonst verliert der Newsletter Authentizitaet und wird zur Datenliste. Versioniere die HTTP-Request-URLs, pruefe sie quartalsweise und baue einen Fallback-Schritt ein, der auf fehlende Daten mit einem Platzhalter-Hinweis reagiert.
 Anschluss: S-MP-058
 
 ### S-MP-058 Budget-Umverteilungsmemo für die Geschäftsführung erstellen
@@ -1146,8 +1232,7 @@ Vorgehen:
 2. Umverteilungsvorschlag entwickeln: Welche Kanäle werden reduziert, welche aufgestockt? Data Analyst erstellt eine lineare Prognose für den verbleibenden Quartalszeitraum unter dem neuen Budget-Mix.
 3. Drei Szenarien (Best/Base/Worst Case) für den neuen Mix im Canvas strukturieren — mit erwarteten Pipeline-Auswirkungen je Szenario.
 4. Einseitiges Memo im CFO-Stil verfassen: Fakten zuerst, Empfehlung klar markiert, Risikobewertung am Ende — kein Marketingsprech.
-Prompt:
-> "Du bist Head of Marketing Finance. Ich lade dir den aktuellen Performance-Report hoch. Erstelle ein einseitiges Budget-Umverteilungsmemo für den CFO: (1) Ist-Performance der vier Hauptkanäle vs. Plan (Tabelle), (2) Umverteilungsvorschlag (konkrete Euro-Beträge), (3) drei Szenarien (Best/Base/Worst Case) mit erwarteter Pipeline-Auswirkung, (4) Empfehlung in einem Satz mit Risikobewertung (Niedrig/Mittel/Hoch). Stil: Executive Summary, kein Marketingsprech, kein Passiv."
+Empfehlung: Triff die Budget-Umverteilung datenbasiert, aber weise den Data Analyst explizit auf Saisonalitaet hin (Weihnachtsgeschaeft, Messesaison) und lass dokumentieren, wo lineare Projektionen durch bekannte saisonale Muster verzerrt sein koennten. Begrenze das Memo hart auf 400 Woerter ('priorisiere Entscheidungsrelevanz ueber Vollstaendigkeit') - umverteile zugunsten der Kanaele mit nachgewiesenem, saisonbereinigtem Beitrag und friere die ohne belastbares Signal ein.
 Artefakt: Einseitiges Budget-Umverteilungsmemo (Canvas) mit Ist-Tabelle, Umverteilungsvorschlag, Drei-Szenarien-Übersicht und klarer Empfehlung — zur direkten Vorlage beim CFO.
 Fallstricke:
 - Lineare Prognose unterschätzt saisonale Effekte → Data Analyst muss explizit auf Saisonalität hingewiesen werden (z. B. Weihnachtsgeschäft, Messesaison); Prompt muss fordern: "Erkenne und dokumentiere, wenn die linearen Projektionen durch bekannte saisonale Muster verzerrt sein könnten."
@@ -1165,12 +1250,15 @@ Vorgehen:
 2. Für jede Priorität ein Objective formulieren: ambitioniert, qualitativ, inspirierend — kein Prozessziel, sondern ein Ergebnisziel.
 3. Je Objective 3–4 Key Results mit numerischen Zielwerten, Baselines, Messmethoden und klarer Ownership entwickeln.
 4. Weekly-Check-in-Template und Ampelbewertungs-Rubrik (Grün: ≥70 % Zielerreichung; Gelb: 40–69 %; Rot: <40 %) im Canvas als wiederverwendbare Vorlage anhängen.
-Prompt:
-> "Du bist OKR-Coach für das Marketing-Team eines DACH-B2B-Unternehmens. Das übergeordnete Unternehmensziel ist Umsatzwachstum von 25 % im kommenden Jahr. Entwickle 3 Marketing-Objectives, die direkt auf dieses Ziel einzahlen. Je Objective: 3 Key Results mit SMART-Zielwerten (Baseline und Target), Messmethode und Owner-Rolle. Anschließend: ein Weekly-Check-in-Template (max. 5 Fragen) und eine Ampelbewertungs-Rubrik. Kein Prozessdenkmal — alle Key Results müssen einen messbaren Outcome benennen."
+Vorlage: Marketing-Team-OKR-Dokumentation:
+1. Objective je Quartal - qualitativ, ambitioniert, richtungsweisend.
+2. Key Results als Ergebnis-Zustaende ('organischer Traffic +30 %'), nie als Aktivitaeten ('X Blogposts').
+3. Kalibrierung auf 70-Prozent-Erfolgsschwelle; erreichbar-anspruchsvolle Stretch Goals.
 Artefakt: OKR-Dokument im Canvas (3 Objectives × 3–4 Key Results mit Ownership und Messmethode), Weekly-Check-in-Template und Ampelrubrik — zum direkten Start des Quartals.
 Fallstricke:
 - Key Results beschreiben Aktivitäten statt Ergebnisse ("X Blogposts erstellen" statt "organischer Traffic um 30 % steigern") → Prompt muss Aktivitäts-KRs explizit zurückweisen: "Ein Key Result ist nur valide, wenn es den Zustand des Unternehmens beschreibt, nicht die Handlung des Teams."
 - OKRs werden zu ambitioniert gesetzt und erzeugen demotivierende Frustration → Im Prompt den Benchmark einfordern: "Kalibriere jeden Zielwert so, dass er bei 70 % Erreichung als Erfolg gilt — Stretch Goals müssen erreichbar-anspruchsvoll sein, nicht illusorisch."
+Empfehlung: Weise Aktivitaets-KRs explizit zurueck ('ein Key Result ist nur valide, wenn es den Zustand des Unternehmens beschreibt, nicht die Handlung des Teams'), sonst entstehen 'X Blogposts erstellen' statt 'Traffic +30 %'. Kalibriere jeden Zielwert auf eine 70-Prozent-Erfolgsschwelle, damit Stretch Goals erreichbar-anspruchsvoll statt demotivierend illusorisch sind.
 Anschluss: S-MP-060
 
 ### S-MP-060 DACH-Feiertagskampagnen-Kalender erstellen
@@ -1180,17 +1268,18 @@ Ziel: Einen vollständigen, länderspezifisch differenzierten DACH-Feiertagskamp
 Ergebnis: Ein DACH-Feiertagskampagnen-Kalender als tabellarisches Canvas-Dokument: alle relevanten Feiertage je Land (DE/AT/CH) mit Kampagnenrelevanz-Bewertung (Hoch/Mittel/Niedrig), empfohlenem Content-Typ, vorgeschlagenem Ausspielungsfenster (Vorlauf + Peak + Nachklang) und einer Spalte für geplante Kampagnen-Verknüpfung.
 Fähigkeit: Web Search, Canvas, Chat
 Vorgehen:
-1. Web Search: gesetzliche und kommerziell relevante Feiertage für DE/AT/CH abrufen — inkl. regionaler Varianten (z. B. Fronleichnam nur in einzelnen Bundesländern).
-2. Feiertage nach kommerzieller Kampagnenrelevanz bewerten: Hoch (Weihnachten, Ostern, Muttertag, Black Friday, Nationalfeiertage AT/CH), Mittel (Tag der Deutschen Einheit, Mariä Himmelfahrt AT), Niedrig oder nicht relevant.
-3. Je Feiertag Kampagnenparameter definieren: empfohlener Vorlauf (Tage vor Feiertag), Peak-Phase (Feiertag ±1 Tag), Nachklang (3–7 Tage danach), bevorzugte Kanäle (E-Mail, Social, Paid).
-4. Länderspezifische Differenzierungen: AT/CH-Feiertage ohne DE-Pendant (z. B. CH-Nationalfeiertag 1.8., AT-Stefanitag 26.12.); sprachlich-kulturelle Anpassungspflicht (kein "ß" in CH).
-5. Kalender im Canvas als Tabelle zusammenstellen; Export-Hinweis für Google Calendar oder Notion ergänzen.
-Prompt:
-> "Du bist DACH-Kampagnenplaner für ein B2B-Unternehmen mit Kunden in Deutschland, Österreich und der Schweiz. Erstelle einen vollständigen Feiertagskampagnen-Kalender für das Jahr 2026. Tabellenstruktur: Datum | Feiertag | Land (DE/AT/CH/alle) | Kampagnenrelevanz (Hoch/Mittel/Niedrig) | empfohlener Content-Typ | Vorlauf-Tage | Peak-Phase | Nachklang-Tage | Kanal-Empfehlung. Nutze Web Search für vollständige und korrekte Feiertage je Land. Markiere Feiertage, die nur in bestimmten Bundesländern gelten, explizit."
+1. Web Search: Feiertage DE/AT/CH inkl. regionaler Varianten abrufen; Quellen-Datum ausweisen.
+2. Je Feiertag Kampagnenrelevanz (hoch/mittel/niedrig) und Parameter (Vorlauf, Peak, Nachklang, Kanaele) festlegen.
+3. Laenderspezifika markieren (CH 1.8., AT Stefanitag; kein 'ss'-statt-'ß'-Fehler); Kalender als Canvas-Tabelle finalisieren.
+Vorlage: DACH-Feiertagskampagnen-Kalender:
+1. Feiertags-Liste DE/AT/CH - bundesland-/kantonsabhaengige Feiertage (Fronleichnam, Allerheiligen) explizit markiert.
+2. B2B-Logik - Feiertage als Ausspiel-Pausen (keine Mails) und Themen-Anlaesse, nicht als Sales-Push.
+3. Content-Themen je Anlass mit Vorlauf-Planung.
 Artefakt: Vollständiger DACH-Feiertagskampagnen-Kalender 2026 als strukturierte Tabelle im Canvas — direkt nutzbar als Planungsgrundlage für alle Kanal-Teams.
 Fallstricke:
 - Feiertage ohne regionalen Differenzierungshinweis → Fronleichnam, Allerheiligen und andere Feiertage gelten nur in ausgewählten Bundesländern; Prompt muss fordern: "Markiere alle bundesland- oder kantonsabhängigen Feiertage explizit — keine gesamtdeutsche Verallgemeinerung."
 - Kampagnenkalender ignoriert die unterschiedliche Bedeutung von Feiertagen für B2B vs. B2C → Im B2B-DACH-Kontext sind Feiertage vor allem als Ausspiel-Pausen (keine Mails an Feiertagen) und als Themen-Anlässe für inhaltlich passende Content-Pieces relevant, nicht als Sales-Push-Momente; Prompt muss diese B2B-Perspektive explizit einfordern.
+Empfehlung: Lass alle bundesland- oder kantonsabhaengigen Feiertage explizit markieren ('keine gesamtdeutsche Verallgemeinerung'), da Fronleichnam und Allerheiligen nur regional gelten. Erzwinge die B2B-Perspektive - Feiertage als Ausspiel-Pausen und Themen-Anlaesse, nicht als Sales-Push-Momente, sonst missversteht der Kalender den B2B-DACH-Kontext.
 Anschluss: S-MP-061
 
 ### S-MP-061 ABM-Target-Account-Playbook für Tier-1-Konten aufbauen
@@ -1204,12 +1293,15 @@ Vorgehen:
 2. Buying-Center-Rollen (Economic Buyer, Champion, Technical Evaluator) aus dem Wissensordner-ICP ableiten und je Rolle einen spezifischen Pain dokumentieren.
 3. Messaging-Matrix im Agenten generieren: pro Rolle eine Kernbotschaft, die Trigger-Event und Lösungsangebot verknüpft.
 4. 5-Touchpoint-Sequenz mit Human-in-the-Loop-Freigabe je Account vor dem ersten Versand verankern.
-Prompt:
-> "Du bist ABM-Stratege für ein DACH-B2B-SaaS-Unternehmen. Zielkonto: {{Unternehmen}}. Nutze Web Search für die drei aktuellsten Trigger-Events der letzten 30 Tage. Erstelle: (1) Einen Account-Steckbrief (Trigger-Events mit Datum, vermutetes Buying-Center). (2) Eine Messaging-Matrix mit je einer Kernbotschaft für Economic Buyer, Champion und Technical Evaluator. (3) Eine 5-Touchpoint-Sequenz (LinkedIn-Connect, E-Mail 1, LinkedIn-Interaktion, E-Mail 2, Direct-Mail) mit je max. 80 Wörtern. Formelles 'Sie', nur belegbare Account-Fakten mit Quellendatum."
+Vorlage: ABM-Target-Account-Playbook (Tier-1):
+1. Account-Steckbrief je Konto - Trigger-Events nur mit Quellen-URL und Datum (letzte 30 Tage).
+2. Buying-Center-Map - rollenspezifischer Pain je Rolle aus dem ICP.
+3. Touchpoint-Sequenz mit belegtem Event-Bezug je Touch.
 Artefakt: ABM-Playbook-Dokument pro Account (Steckbrief + Messaging-Matrix + Touchpoint-Sequenz) im Canvas — nach AE-Review direkt einsetzbar.
 Fallstricke:
 - Web Search liefert veraltete oder unbelegte Trigger-Events → Search-Query auf "letzte 30 Tage" begrenzen und jedes Event mit Quellen-URL und Datum ausweisen lassen; ohne Beleg kein Touchpoint-Bezug.
 - Messaging klingt für alle Rollen identisch → System-Prompt muss pro Rolle einen rollenspezifischen Pain aus dem ICP erzwingen; ein Einheitstext für das gesamte Buying-Center senkt die Antwortrate.
+Empfehlung: Begrenze die Web-Search-Trigger-Events auf 'letzte 30 Tage' und lass jedes Event mit Quellen-URL und Datum ausweisen - ohne Beleg kein Touchpoint-Bezug. Erzwinge pro Rolle einen rollenspezifischen Pain aus dem ICP; ein Einheitstext fuer das gesamte Buying-Center senkt die Antwortrate.
 Anschluss: S-MP-062
 
 ### S-MP-062 Demand-Gen-Content-Engine für kontinuierliche Pipeline aufsetzen
@@ -1223,12 +1315,15 @@ Vorgehen:
 2. Agent leitet aus dem Pillar-Thema die Asset-Kaskade ab und ordnet jedes Asset einer Funnel-Stufe und einem konkreten Suchintent zu.
 3. 90-Tage-Produktionsplan im Canvas erstellen: Asset, Funnel-Stufe, Owner, Veröffentlichungsdatum, primärer Conversion-CTA.
 4. Pro Asset einen Erfolgs-KPI definieren (ToFu: organische Sitzungen; MoFu: Whitepaper-Downloads; BoFu: Demo-Anfragen).
-Prompt:
-> "Du bist Demand-Generation-Stratege für ein DACH-B2B-SaaS-Unternehmen. Pillar-Thema: '{{Thema}}'. Erstelle eine Content-Engine: (1) Ein Pillar-Guide-Konzept (Titel + 5 H2). (2) Vier ToFu-Blogpost-Titel mit Suchintent. (3) Zwei MoFu-Whitepaper-Hooks. (4) Eine BoFu-Demo-Landingpage-Botschaft. Ordne jedem Asset Funnel-Stufe und KPI zu. Liefere zusätzlich einen 90-Tage-Produktionsplan als Tabelle: Asset | Funnel | Owner | Datum | KPI. Kein Marketinggeschwurbel."
+Vorlage: Demand-Gen-Content-Engine:
+1. Funnel-Verteilung - ausgewogen ToFu/MoFu/BoFu, BoFu-Assets verpflichtend.
+2. Produktionsplan mit Wochenkapazitaet als harter Obergrenze.
+3. Themen-Backlog + Wiederverwendungs-/Repurposing-Logik je Stufe.
 Artefakt: Content-Engine-Blueprint im Canvas (Asset-Kaskade + 90-Tage-Produktionsplan-Tabelle) — als operative Grundlage für das Content-Team.
 Fallstricke:
 - Alle Assets häufen sich auf einer Funnel-Stufe (meist ToFu) → Prompt muss eine ausgewogene Verteilung über alle drei Stufen erzwingen; eine Engine ohne BoFu-Assets erzeugt Reichweite, aber keine Pipeline.
 - Produktionsplan ohne realistische Kapazitätsprüfung → Pro Woche maximal die tatsächlich verfügbare Redaktionskapazität einplanen; im Prompt die Wochenkapazität als harte Obergrenze vorgeben.
+Empfehlung: Erzwinge eine ausgewogene Verteilung ueber alle drei Funnel-Stufen - eine Engine ohne BoFu-Assets erzeugt Reichweite, aber keine Pipeline. Gib die tatsaechlich verfuegbare Redaktionskapazitaet als harte Wochen-Obergrenze vor, sonst plant der Agent unrealistisch viele Assets.
 Anschluss: S-MP-063
 
 ### S-MP-063 SEO-Topic-Cluster-Planung mit Keyword-Datenbasis
@@ -1242,12 +1337,15 @@ Vorgehen:
 2. Python-basiertes semantisches Clustering ausführen lassen: Gruppierung nach Themen-Ähnlichkeit und Suchintent, je Cluster ein Pillar-Begriff.
 3. Pro Cluster kumuliertes Suchvolumen berechnen und eine Aufwand-Wirkung-Priorisierung (hohes Volumen, niedrige Difficulty zuerst) erstellen.
 4. Ergebnis als angereicherte CSV exportieren — bereit für die Content-Roadmap-Planung.
-Prompt:
-> "Du bist SEO-Data-Analyst für ein DACH-B2B-Unternehmen. Ich lade eine CSV mit 1.000 Keywords (Spalten: Keyword, Suchvolumen, Difficulty) hoch. Clustere sie semantisch nach Themen und Suchintent. Weise jedem Cluster einen Pillar-Begriff zu, berechne das kumulierte Suchvolumen je Cluster und priorisiere nach Aufwand-Wirkung (hohes Volumen + niedrige Difficulty zuerst). Liefere eine angereicherte CSV mit Spalten: Keyword | Cluster | Pillar | Suchintent | Cluster-Volumen | Priorität."
+Vorlage: SEO-Topic-Cluster-Plan:
+1. Pillar-Themen + Cluster-Keywords aus bereinigter Keyword-Datenbasis (Suchvolumen-Format vorab normalisiert).
+2. Suchintent je Keyword (Info / Navigation / Transaktion) als Pflichtspalte.
+3. Content-Format-Zuordnung je Cluster, abgeleitet aus dem Suchintent.
 Artefakt: Topic-Cluster-Map als CSV (Keyword, Cluster, Pillar, Suchintent, Cluster-Volumen, Priorität) plus ein kurzes Summary der Top-5-Cluster nach Priorität.
 Fallstricke:
 - Suchvolumen-Spalte mit deutschen Tausenderpunkten oder gemischten Formaten lässt das Python-Skript abbrechen → Daten vor dem Upload bereinigen oder den Agenten anweisen, Formatierungsfehler robust zu behandeln.
 - Cluster ohne Suchintent-Differenzierung mischen Info- und Transaktions-Keywords → Prompt muss zwingend nach Suchintent je Keyword fragen, damit die spätere Content-Format-Zuordnung valide ist.
+Empfehlung: Bereinige die Suchvolumen-Spalte vor dem Upload (deutsche Tausenderpunkte / gemischte Formate) oder weise den Agenten an, Formatfehler robust zu behandeln, sonst bricht das Python-Skript ab. Fordere zwingend den Suchintent je Keyword ab, damit Info- und Transaktions-Keywords nicht in einem Cluster vermischt werden und die Format-Zuordnung valide bleibt.
 Anschluss: S-MP-064
 
 ### S-MP-064 Paid-Social-Creative-Testing-Framework strukturieren
@@ -1261,12 +1359,15 @@ Vorgehen:
 2. Pro Variable zwei Creative-Varianten generieren, sodass jeweils nur eine Variable verändert wird (saubere Isolation).
 3. ICE-Priorisierung (Impact, Confidence, Ease) der acht Varianten im Canvas; Testreihenfolge festlegen.
 4. Test-Matrix definieren: Variante, Hypothese, Erfolgs-KPI (CTR, CPL), Mindest-Impressionen für Signifikanz.
-Prompt:
-> "Du bist Paid-Social-Stratege für ein DACH-B2B-SaaS-Unternehmen. Erstelle ein Creative-Testing-Framework für eine LinkedIn-Lead-Gen-Kampagne. Formuliere für vier Variablen (Hook, Visual-Konzept, CTA, Format) je eine Test-Hypothese und je zwei Varianten — so dass pro Test nur eine Variable variiert. Priorisiere die acht Varianten per ICE-Score. Liefere eine Test-Matrix: Variante | getestete Variable | Hypothese | Erfolgs-KPI | Mindest-Impressionen für Signifikanz. Formelles 'Sie' in allen Texten."
+Vorlage: Paid-Social-Creative-Testing-Framework:
+1. Test-Design - pro Test nur eine Variable variieren (Hook / Visual / CTA).
+2. Stichproben-Schwelle - Mindest-Impressionen fuer statistische Signifikanz vorab definiert.
+3. Auswertungs- und Lern-Protokoll mit klarer Gewinner-Regel.
 Artefakt: Creative-Testing-Framework im Canvas (8 Varianten + ICE-Priorisierung + Test-Matrix) — als Briefing für das Paid-Team und den Designer.
 Fallstricke:
 - Mehrere Variablen gleichzeitig verändert → kein valides Lernen möglich; Prompt muss "pro Test nur eine Variable variieren" als harte Regel enthalten.
 - Test wird bei zu kleiner Stichprobe vorzeitig ausgewertet → Mindest-Impressionen für statistische Signifikanz vorab definieren; KI neigt dazu, "Gewinner" bei volatilen Kleinstdaten zu benennen.
+Empfehlung: Codiere 'pro Test nur eine Variable variieren' als harte Regel - mehrere gleichzeitig veraenderte Variablen machen valides Lernen unmoeglich. Definiere die Mindest-Impressionen fuer Signifikanz vorab, da die KI sonst 'Gewinner' bei volatilen Kleinstdaten benennt.
 Anschluss: S-MP-065
 
 ### S-MP-065 E-Mail-Lifecycle-Mapping über alle Kundenphasen
@@ -1280,12 +1381,15 @@ Vorgehen:
 2. Lifecycle-Phasen definieren und jeden bestehenden Flow einer Phase zuordnen; Mehrfachbelegungen markieren.
 3. Mermaid-Flowchart im Canvas generieren: Phasen als Knoten, Flows als Kanten, Lücken rot markiert.
 4. Priorisierten Maßnahmen-Backlog ableiten: Welche Lücke schließen, welche Überlappung auflösen — nach Pipeline-Impact sortiert.
-Prompt:
-> "Du bist Lifecycle-Marketing-Architekt für ein DACH-SaaS-Unternehmen. Hier ist die Liste unserer bestehenden E-Mail-Flows mit Auslöse-Bedingungen: [Liste]. Erstelle: (1) Eine Zuordnung jedes Flows zu einer Lifecycle-Phase (Lead, Trial, Onboarding, Aktiv, At-Risk, Churn, Win-Back). (2) Ein Mermaid-Flowchart der gesamten Lifecycle-Map. (3) Eine Lückenanalyse: Welche Phase hat keinen Flow, welche Phase hat mehrere überlappende Flows? (4) Einen priorisierten Maßnahmen-Backlog nach Pipeline-Impact. Sachlich, keine generischen Best-Practice-Floskeln."
+Vorlage: E-Mail-Lifecycle-Map:
+1. Phasen-Raster (Akquise bis Retention) - nur die explizit uebergebene Flow-Liste als Faktengrundlage.
+2. Trigger-Logik je Flow praezise dokumentiert (Ausloesebedingung, Ziel, Exit).
+3. Ueberschneidungs-/Luecken-Analyse auf Basis der dokumentierten Trigger.
 Artefakt: Lifecycle-Map als Mermaid-Flowchart im Canvas plus Lückenanalyse und priorisierter Maßnahmen-Backlog.
 Fallstricke:
 - KI erfindet plausibel klingende Flows, die gar nicht existieren → Nur die explizit übergebene Flow-Liste als Faktengrundlage zulassen; im Prompt verbieten, Flows zu ergänzen, die nicht im Input stehen.
 - Überlappungen werden übersehen, weil Auslöse-Bedingungen unklar formuliert sind → Vor der Analyse jede Flow-Bedingung präzise dokumentieren; ohne klare Trigger-Logik ist die Überschneidungsprüfung wertlos.
+Empfehlung: Lass nur die explizit uebergebene Flow-Liste als Faktengrundlage zu und verbiete im Prompt das Ergaenzen nicht gelisteter Flows, da die KI sonst plausible, nicht existierende Flows erfindet. Dokumentiere jede Ausloesebedingung praezise vor der Analyse; ohne klare Trigger-Logik ist die Ueberschneidungspruefung wertlos.
 Anschluss: S-MP-066
 
 ### S-MP-066 Webinar-Funnel von Registrierung bis Sales-Übergabe konzipieren
@@ -1300,12 +1404,15 @@ Vorgehen:
 3. Verhaltens-Segmente bilden: anwesend + engaged (heiß), anwesend + passiv (warm), abwesend (Replay-Nurture).
 4. Sales-Übergabe-Regel: Bei "heiß"-Segment automatische Slack-/HubSpot-Aufgabe an den zuständigen AE mit Kontext-Summary.
 5. Erfolgs-KPIs definieren: Show-up-Rate, Engagement-Rate, Teilnehmer-zu-SQL-Conversion.
-Prompt:
-> "Du bist Webinar-Funnel-Stratege für ein DACH-B2B-SaaS-Unternehmen. Konzipiere einen vollständigen Webinar-Funnel. Liefere: (1) Registrierungs-Qualifizierungsfragen (2 Fragen zur MQL-Erkennung). (2) Pre-Event-Sequenz (3 Touchpoints mit Timing). (3) Post-Event-Segmentierungslogik (anwesend+engaged, anwesend+passiv, abwesend) mit je einer Follow-up-Aktion. (4) Eine Sales-Übergabe-Regel für das heiße Segment. (5) Drei Funnel-KPIs. Formelles 'Sie', DSGVO-Abmeldelink in allen E-Mails."
+Vorlage: Webinar-Funnel (Registrierung bis Sales-Uebergabe):
+1. Funnel-Stufen mit Condition-Split nach Anwesenheit (erschienen: Recap / abwesend: Replay).
+2. Qualifizierungs-Fragen + Engagement-Signal je Teilnehmer.
+3. Sales-Uebergabe-Summary - beantwortete Fragen + Signal als Kontext fuer den AE.
 Artefakt: Webinar-Funnel-Konzept im Canvas (Registrierung + Pre-Event + Post-Event-Segmentierung + Sales-Übergabe + KPIs) plus eine HubSpot-Workflow-Skizze.
 Fallstricke:
 - Post-Event-Mail geht undifferenziert an alle → Workflow muss zwingend einen Condition-Split nach Anwesenheit enthalten; abwesende Teilnehmer brauchen Replay, nicht "Danke für die Teilnahme".
 - Sales-Übergabe ohne Kontext überfordert den AE → Übergabe-Aufgabe muss die beantworteten Qualifizierungsfragen und das Engagement-Signal als Summary enthalten, sonst ist die Übergabe wertlos.
+Empfehlung: Erzwinge im Funnel einen Condition-Split nach Anwesenheit - abwesende Teilnehmer brauchen ein Replay, nicht 'Danke fuer die Teilnahme'. Lass die Sales-Uebergabe die beantworteten Qualifizierungsfragen und das Engagement-Signal als Summary enthalten, sonst ueberfordert die kontextlose Uebergabe den AE.
 Anschluss: S-MP-067
 
 ### S-MP-067 Customer-Advisory-Board-Sitzung vorbereiten
@@ -1319,12 +1426,15 @@ Vorgehen:
 2. 90-Minuten-Agenda im Canvas strukturieren: Begrüßung, Roadmap-Vorstellung, moderierte Diskussion, Priorisierungs-Übung, Wrap-up.
 3. Diskussionsleitfaden mit offenen, nicht-suggestiven Fragen entwickeln, die ehrliches Feedback fördern statt Bestätigung einzuholen.
 4. Auswertungs-Template vorbereiten: Erkenntnis | Häufigkeit | strategische Implikation | Verantwortlicher für Follow-up.
-Prompt:
-> "Du bist Customer-Marketing-Direktor für ein DACH-B2B-Unternehmen. Wir starten ein Customer Advisory Board mit 8 Schlüsselkunden. Erstelle: (1) Fünf Auswahl-Kriterien für CAB-Mitglieder. (2) Eine 90-Minuten-Agenda mit Zeitblöcken. (3) Einen Moderations-Diskussionsleitfaden mit 8 offenen, nicht-suggestiven Fragen, die ehrliches Feedback fördern. (4) Ein Auswertungs-Template (Erkenntnis | Häufigkeit | Implikation | Follow-up-Owner). Ton: partnerschaftlich, nicht verkäuferisch — das CAB ist kein Sales-Termin."
+Vorlage: Customer-Advisory-Board-Vorbereitung:
+1. Agenda - reiner Strategie-Dialog, kein Produktverkauf.
+2. Diskussionsfragen - offen und nicht-suggestiv, lassen kritisches Feedback zu.
+3. Moderations-Leitfaden + Dokumentations-Raster.
 Artefakt: CAB-Vorbereitungspaket im Canvas (Kriterien + Agenda + Diskussionsleitfaden + Auswertungs-Template) — für Moderation und Nachbereitung.
 Fallstricke:
 - Diskussionsfragen sind suggestiv und holen nur Bestätigung ein → Prompt muss explizit "offene, nicht-suggestive Fragen, die auch kritisches Feedback zulassen" fordern; ein CAB, das nur Lob produziert, ist wertlos.
 - CAB wird als verdeckter Sales-Termin wahrgenommen → Agenda und Leitfaden müssen jeglichen Pitch-Charakter vermeiden; Prompt muss "kein Produktverkauf, reiner Strategie-Dialog" verankern, sonst kündigen die Kunden die Teilnahme.
+Empfehlung: Fordere 'offene, nicht-suggestive Fragen, die auch kritisches Feedback zulassen' - ein CAB, das nur Lob produziert, ist wertlos. Verankere 'kein Produktverkauf, reiner Strategie-Dialog' in Agenda und Leitfaden, sonst wird das CAB als verdeckter Sales-Termin wahrgenommen und die Kunden kuendigen die Teilnahme.
 Anschluss: S-MP-068
 
 ### S-MP-068 Win/Loss-Analyse aus Sales-Interviews synthetisieren
@@ -1344,6 +1454,7 @@ Artefakt: Win/Loss-Synthese-Report im Canvas (Gewinn-/Verlustgründe mit Häufig
 Fallstricke:
 - KI hebt eine Einzelmeinung zum "Muster" hoch → Prompt muss eine Mindesthäufigkeit (z. B. in ≥3 von 12 Interviews) als Schwelle für ein valides Muster setzen.
 - Zitate werden paraphrasiert statt wörtlich übernommen und verlieren damit ihre Beweiskraft → Explizit wörtliche, mit Anführungszeichen markierte Zitate aus den Transkripten einfordern; keine geglätteten Umschreibungen.
+Empfehlung: Setze eine Mindesthaeufigkeit als Muster-Schwelle ('valide nur in mindestens 3 von 12 Interviews'), damit die KI keine Einzelmeinung zum Muster hochstuft. Fordere woertliche, mit Anfuehrungszeichen markierte Zitate aus den Transkripten ein - paraphrasierte, geglaettete Umschreibungen verlieren ihre Beweiskraft.
 Anschluss: S-MP-069
 
 ### S-MP-069 Pricing-Page-Copy-Varianten für A/B-Test entwickeln
@@ -1363,6 +1474,7 @@ Artefakt: Drei Pricing-Hero-Varianten + FAQ-Sektion + A/B-Test-Plan im Canvas �
 Fallstricke:
 - Varianten unterscheiden sich nur im Wortlaut, nicht in der Erklärlogik → kein erkenntnisreicher Test; Prompt muss "fundamental unterschiedliche Erklärlogik je Variante" erzwingen.
 - FAQ verspricht garantierte Einsparungen, die das Unternehmen nicht halten kann → Legal-Review der FAQ zwingend; keine Performance- oder Kostengarantien ohne Disclaimer.
+Empfehlung: Erzwinge 'fundamental unterschiedliche Erklaerlogik je Variante' - Varianten, die sich nur im Wortlaut unterscheiden, liefern keinen erkenntnisreichen Test. Lass Legal die FAQ pruefen und verbiete garantierte Einsparungen ohne Disclaimer, da das Unternehmen solche Kostengarantien nicht halten kann.
 Anschluss: S-MP-070
 
 ### S-MP-070 Sales-Enablement-One-Pager für neues Produkt erstellen
@@ -1376,12 +1488,15 @@ Vorgehen:
 2. Elevator Pitch (max. 30 Wörter, outcome-fokussiert) und ICP-Steckbrief im Canvas formulieren.
 3. Drei Differenzierungs-Punkte ableiten, die belegbar und nicht generisch ("führend", "innovativ") sind.
 4. Einwand-Antwort-Matrix und drei Discovery-Fragen ergänzen; Zero-Fabrication-Policy für alle Produktclaims durchsetzen.
-Prompt:
-> "Du bist Sales-Enablement-Manager für ein DACH-B2B-SaaS-Unternehmen. Erstelle einen einseitigen One-Pager für unser neues Produkt-Bundle '{{Name}}'. Liefere: (1) Elevator Pitch (max. 30 Wörter, outcome-fokussiert). (2) Ideales Kundenprofil (Branche, Größe, Auslöser). (3) Drei belegbare Differenzierungs-Punkte — keine Adjektive wie 'führend' oder 'innovativ'. (4) Drei häufige Einwände mit Antworten. (5) Drei Discovery-Fragen. Nur Produktaussagen, die im Wissensordner belegt sind; sonst Platzhalter '[zu verifizieren]'."
+Vorlage: Sales-Enablement-One-Pager (neues Produkt):
+1. Differenzierungs-Punkte - je Punkt ein konkreter, pruefbarer Beleg statt leerer Superlative.
+2. Feature-/Nutzen-Mapping - nur durch den Wissensordner belegte Claims; Unbelegtes als '[zu verifizieren]'.
+3. Einwand-Konter + Ein-Satz-Pitch.
 Artefakt: Sales-Enablement-One-Pager im Canvas (≤1 Seite) — nach Legal-/Produkt-Review als PDF für das Sales-Team exportierbar.
 Fallstricke:
 - Differenzierungs-Punkte sind leere Superlative ohne Beleg → Prompt muss generische Adjektive explizit verbieten und je Punkt einen konkreten, prüfbaren Beleg fordern.
 - One-Pager enthält halluzinierte Produktfeatures → Zero-Fabrication-Policy: nur durch den Wissensordner belegte Claims; nicht belegbare Aussagen als '[zu verifizieren]' markieren statt zu erfinden.
+Empfehlung: Verbiete generische Adjektive explizit und fordere je Differenzierungs-Punkt einen konkreten, pruefbaren Beleg - leere Superlative ueberzeugen keinen Interessenten. Erzwinge eine Zero-Fabrication-Policy (nur durch den Wissensordner belegte Claims) und lass nicht belegbare Aussagen als '[zu verifizieren]' markieren statt sie zu erfinden.
 Anschluss: S-MP-071
 
 ### S-MP-071 Brand-Voice-Guideline aus Bestands-Content authoring
@@ -1395,12 +1510,15 @@ Vorgehen:
 2. Agent extrahiert Tonalität, durchschnittliche Satzlänge, rhetorische Muster und bevorzugtes Vokabular aus dem Korpus.
 3. Guideline-Draft im Canvas erstellen: Do's & Don'ts, Vokabular-Listen, drei Vorher/Nachher-Beispiele.
 4. Finales Dokument als "Brand Voice v1.0" im Wissensordner ablegen und alle bestehenden Agenten darauf verlinken.
-Prompt:
-> "Du bist Brand-Stratege für ein DACH-B2B-Unternehmen. Analysiere die zehn Dokumente im verknüpften Ordner und destilliere unsere Brand Voice. Achte auf Tonalität (formell vs. direkt), durchschnittliche Satzlänge, rhetorische Muster und bevorzugte Begriffe. Erstelle eine Guideline mit: Tonalitäts-Definition (3 Sätze), 5 Do's, 5 Don'ts, einer Liste bevorzugter und verbotener Begriffe und drei Vorher/Nachher-Beispielen. Fordere direkte, nutzenorientierte B2B-Sprache und verbiete Anglizismen und Marketinggeschwurbel explizit."
+Vorlage: Brand-Voice-Guideline (aus Bestands-Content):
+1. Tonalitaets-Definition - direkte, nutzenorientierte B2B-Sprache, kein Marketinggeschwurbel.
+2. Do's & Don'ts + bevorzugtes/verbotenes Vokabular (keine Anglizismen-Haeufung).
+3. Drei Vorher/Nachher-Beispiele aus kuratiertem, erfolgreichem Content.
 Artefakt: Brand-Voice-Guideline (Markdown, ca. 800 Wörter) mit Vorher/Nachher-Beispielen — abgelegt im Wissensordner und in System-Prompts einbettbar.
 Fallstricke:
 - Inkonsistenter Input-Korpus erzeugt eine widersprüchliche Guideline → Nur manuell kuratierten, nachweislich erfolgreichen Content uploaden; ein gemischter Korpus produziert keinen klaren Goldstandard.
 - LLM neigt zu generischem Cheerleader-Tonfall und Anglizismen → Prompt muss "direkte, nutzenorientierte B2B-Sprache, kein Marketinggeschwurbel" als harte Vorgabe enthalten.
+Empfehlung: Lade nur manuell kuratierten, nachweislich erfolgreichen Content als Analysebasis hoch - ein gemischter Korpus erzeugt eine widerspruechliche Guideline. Codiere 'direkte, nutzenorientierte B2B-Sprache, kein Marketinggeschwurbel' als harte Vorgabe, da das LLM sonst zu generischem Cheerleader-Ton und Anglizismen neigt.
 Anschluss: S-MP-072
 
 ### S-MP-072 Crisis-Comms-Playbook für vordefinierte Szenarien erstellen
@@ -1414,12 +1532,15 @@ Vorgehen:
 2. RACI-Rollen je Szenario im Canvas definieren (wer entscheidet, wer kommuniziert, wer informiert wird).
 3. Dreistufigen Eskalations-Entscheidungsbaum erstellen (Holding Statement / CEO-Statement / Krisenstab).
 4. Pro Szenario und Kanal (LinkedIn, Presse, Kunden-E-Mail) ein vorformuliertes, Legal-vorprüfbares Holding-Statement-Template ablegen.
-Prompt:
-> "Du bist Krisenkommunikations-Direktor für ein DACH-B2B-Unternehmen. Erstelle ein Crisis-Comms-Playbook. Liefere: (1) Einen Katalog der 5 wahrscheinlichsten Krisen-Szenarien mit Wahrscheinlichkeit und Schadenspotenzial. (2) Eine RACI-Rollenverteilung je Szenario. (3) Einen dreistufigen Eskalations-Entscheidungsbaum. (4) Pro Szenario je ein Holding-Statement-Template für LinkedIn, Presse und Kunden-E-Mail (max. je 120 Wörter). Regeln: keine ETAs erfinden, keine Schuldeingeständnisse, jede Vorlage als Entwurf zur Legal-Freigabe kennzeichnen."
+Vorlage: Crisis-Comms-Playbook (vordefinierte Szenarien):
+1. Szenario-Matrix mit Holding-Statement-Templates - ETAs und Ursachen als Platzhalter, nie vorformuliert.
+2. Eskalations-/Freigabe-Kette; jedes Template als 'Entwurf - Legal-Freigabe vor Veroeffentlichung zwingend'.
+3. Kanal-Varianten + Zustaendigkeiten je Szenario.
 Artefakt: Crisis-Comms-Playbook im Canvas (Szenario-Katalog + RACI + Eskalationsbaum + Statement-Templates) — abgelegt im Wissensordner für den Sofortzugriff im Ernstfall.
 Fallstricke:
 - Holding-Statements enthalten erfundene Wiederherstellungszeiten oder Ursachen → Prompt muss explizit verbieten, ETAs oder kausale Ursachenaussagen vorzuformulieren; im Krisenfall sind diese Felder Platzhalter.
 - Playbook wird ohne Legal-Vorabfreigabe genutzt → Jedes Template muss als "Entwurf — Legal-Freigabe vor Veröffentlichung zwingend" markiert sein; ein KI-Playbook ersetzt keine rechtliche Prüfung im Einzelfall.
+Empfehlung: Verbiete im Prompt vorformulierte Wiederherstellungszeiten oder kausale Ursachenaussagen - im Krisenfall sind diese Felder Platzhalter. Markiere jedes Template als 'Entwurf - Legal-Freigabe vor Veroeffentlichung zwingend', da ein KI-Playbook keine rechtliche Pruefung im Einzelfall ersetzt.
 Anschluss: S-MP-073
 
 ### S-MP-073 DACH-Lokalisierung eines internationalen Kampagnen-Assets
@@ -1439,6 +1560,7 @@ Artefakt: Drei lokalisierte Asset-Varianten (DE/AT/CH) im Canvas — bereit für
 Fallstricke:
 - Modell verwendet in der CH-Variante deutsche Rechtschreibung ('ß') → System-Prompt muss das 'ß'-Verbot für CH hart codieren und die Variante manuell gegenprüfen.
 - Lokalisierung bleibt eine reine Übersetzung ohne kulturelle Anpassung → Prompt muss Transkreation (Beispiel-Ersetzung, kulturelle Norm) explizit von wörtlicher Übersetzung abgrenzen.
+Empfehlung: Codiere das 'ss'-Gebot (Verbot des 'ß') fuer die CH-Variante hart im System-Prompt und pruefe sie manuell gegen, da das Modell sonst deutsche Rechtschreibung halluziniert. Grenze Transkreation (Beispiel-Ersetzung, kulturelle Norm) explizit von woertlicher Uebersetzung ab, damit die Lokalisierung mehr ist als eine Uebersetzung.
 Anschluss: S-MP-074
 
 ### S-MP-074 Partner-Co-Marketing-Kit für gemeinsame Kampagne entwickeln
@@ -1452,12 +1574,15 @@ Vorgehen:
 2. Gemeinsame Kampagnen-Kernbotschaft formulieren, die beide Marken gleichwertig repräsentiert.
 3. Co-Branded Whitepaper-Outline und Landingpage-Copy im Canvas erstellen; Platzhalter für beide Logos und Kontakte.
 4. Je Partner fünf Social-Posts generieren (jeweils aus der Perspektive der eigenen Audience) und einen Lead-Sharing-/Tracking-Plan (UTM-Logik, DSGVO-konformes Opt-in) dokumentieren.
-Prompt:
-> "Du bist Partnership-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Wir starten eine Co-Marketing-Kampagne mit dem Partner '{{Partner}}'. Nutze Web Search für deren aktuelle Schwerpunkte. Erstelle: (1) Eine gemeinsame Kampagnen-Kernbotschaft (2 Sätze, beide Marken gleichwertig). (2) Eine Co-Branded Whitepaper-Outline (6 Kapitel). (3) Eine Landingpage-Copy (120 Wörter) mit Logo-Platzhaltern. (4) Je fünf Social-Posts pro Partner. (5) Einen Lead-Sharing-Plan mit UTM-Logik und DSGVO-Opt-in-Hinweis. Formelles 'Sie', keine einseitige Marken-Dominanz."
+Vorlage: Partner-Co-Marketing-Kit:
+1. Gemeinsame Botschaft - beide Marken gleichwertig, keine dominiert.
+2. Lead-Sharing-Plan - Opt-in der Kontakte dokumentiert, Rechtsgrundlage je Datenfluss.
+3. Co-Brandable Assets + Nutzungshinweise fuer beide Seiten.
 Artefakt: Co-Marketing-Kit im Canvas (Kernbotschaft + Whitepaper-Outline + Landingpage + Social-Posts + Lead-Sharing-Plan) — als ZIP-Übergabe an den Partner.
 Fallstricke:
 - Eine Marke dominiert die Botschaft → Prompt muss "beide Marken gleichwertig" hart codieren; ein unausgewogenes Kit gefährdet die Partnerschaft.
 - Lead-Sharing ohne DSGVO-konforme Einwilligung → Der geteilte Lead-Fluss zwischen zwei Unternehmen erfordert ein explizites Opt-in der Kontakte; Tracking-Plan muss die Rechtsgrundlage dokumentieren, sonst drohen Bußgelder.
+Empfehlung: Codiere 'beide Marken gleichwertig' hart - ein unausgewogenes Kit, in dem eine Marke die Botschaft dominiert, gefaehrdet die Partnerschaft. Dokumentiere im Tracking-Plan die Rechtsgrundlage des geteilten Lead-Flusses; der Austausch zwischen zwei Unternehmen erfordert ein explizites Opt-in der Kontakte, sonst drohen Bussgelder.
 Anschluss: S-MP-075
 
 ### S-MP-075 PR-Pitch-Personalisierung für DACH-Fachjournalisten
@@ -1477,6 +1602,7 @@ Artefakt: Zehn personalisierte Pitch-E-Mails plus eine Pitch-Tracking-Tabelle im
 Fallstricke:
 - Agent erfindet Journalisten-E-Mail-Adressen → Web Search darf nur Name, Medium und URL liefern; Kontaktdaten müssen manuell über XING/LinkedIn verifiziert werden.
 - Pitch liest sich wie eine Pressemitteilung statt wie ein persönlicher Editorial-Anstoß → Prompt muss den Aufhänger am konkreten letzten Artikel erzwingen und reinen Produkt-Sprech verbieten.
+Empfehlung: Weise an 'liefere nur Name, Medium und URL; keine E-Mail-Adressen generieren' - Journalisten-Kontaktdaten muessen manuell ueber XING/LinkedIn verifiziert werden. Erzwinge den Aufhaenger am konkreten letzten Artikel des Journalisten und verbiete reinen Produkt-Sprech, damit der Pitch wie ein persoenlicher Editorial-Anstoss klingt und nicht wie eine Pressemitteilung.
 Anschluss: S-MP-076
 
 ### S-MP-076 Thought-Leadership-Artikel für Führungskraft ghostwriten
@@ -1496,6 +1622,7 @@ Artefakt: Thought-Leadership-Artikel (ca. 800 Wörter) im Canvas, in der Stimme 
 Fallstricke:
 - Memory zieht alte Kampagneninhalte heran und verfälscht die persönliche Stimme → Memory des Agenten strikt auf Sprach-Präferenzen beschränken; niemals automatisch auf frühere Kampagnen oder Posts zugreifen lassen.
 - Artikel klingt nach generischem Branchen-Allgemeinplatz → Drei konkrete Negativ-Beispiele im System-Prompt verankern und eine konträre, belegbare These statt Konsens-Aussagen erzwingen.
+Empfehlung: Beschraenke die Memory des Agenten strikt auf Sprach-Praeferenzen und lass ihn nie automatisch auf fruehere Kampagnen oder Posts zugreifen, da Memory sonst die persoenliche Stimme der Fuehrungskraft verfaelscht. Verankere drei konkrete Negativ-Beispiele im System-Prompt und erzwinge eine kontraere, belegbare These statt Konsens-Aussagen, damit der Artikel nicht nach Branchen-Allgemeinplatz klingt.
 Anschluss: S-MP-077
 
 ### S-MP-077 Community-Management-Playbook für skalierbares Engagement
@@ -1509,12 +1636,15 @@ Vorgehen:
 2. Sentiment-Triage-Matrix im Canvas definieren: je Sentiment-Typ eine Standard-Reaktionslogik (Direktantwort, Deeskalation, Eskalation).
 3. Eskalations-Regeln festlegen: Welche Kommentar-Typen (rechtliche Vorwürfe, Mitarbeiterbeschwerden) gehen ohne Direktantwort an HR/Legal.
 4. FAQ-Anker-Prozess dokumentieren: Antworten nur aus dem FAQ-Ordner; monatliche Aktualisierungspflicht der FAQ als Recurring Task.
-Prompt:
-> "Du bist Head of Community für ein DACH-B2B-SaaS-Unternehmen. Erstelle ein Community-Management-Playbook. Liefere: (1) Antwort-Tonalitäts-Standards (3 Regeln). (2) Eine Sentiment-Triage-Matrix (positiv, neutral, negativ, troll) mit je einer Reaktionslogik. (3) Eskalations-Regeln: welche Kommentar-Typen gehen ohne Direktantwort an HR/Legal. (4) Einen FAQ-Anker-Prozess. Wichtig: Bei negativem Sentiment keine Entschuldigung ohne vorherige Eskalation; bei Produktfragen nur Antworten aus dem FAQ-Ordner — keine Halluzination."
+Vorlage: Community-Management-Playbook:
+1. Reaktions-Matrix nach Sentiment - bei Negativ-Sentiment keine Entschuldigung ohne Eskalation an HR/Legal.
+2. FAQ-Anker mit monatlicher Aktualisierung (Recurring Task im Team-Kalender).
+3. Eskalations-Pfade + Tonalitaets-Leitplanken je Kanal.
 Artefakt: Community-Management-Playbook im Canvas (Standards + Triage-Matrix + Eskalations-Regeln + FAQ-Prozess) — im Wissensordner abgelegt und für das Team verbindlich.
 Fallstricke:
 - Bei negativem Sentiment werden vorschnelle Entschuldigungen produziert, die das Problem verschärfen → Playbook muss "keine Entschuldigung ohne vorherige Eskalation an HR/Legal" als harte Regel enthalten.
 - Veralteter FAQ-Ordner führt zu falschen Produktantworten → Monatliche FAQ-Aktualisierung als Recurring Task im Team-Kalender verankern; ohne aktuellen Anker ist das Playbook unzuverlässig.
+Empfehlung: Verankere 'keine Entschuldigung ohne vorherige Eskalation an HR/Legal' als harte Regel, da vorschnelle Entschuldigungen bei negativem Sentiment das Problem verschaerfen. Lege die monatliche FAQ-Aktualisierung als Recurring Task im Team-Kalender fest, sonst liefert ein veralteter Anker falsche Produktantworten.
 Anschluss: S-MP-078
 
 ### S-MP-078 Retention-/Loyalty-Kampagne für gefährdete Accounts
@@ -1528,12 +1658,15 @@ Vorgehen:
 2. Pro Segment eine 3-Touchpoint-Reaktivierungs-Sequenz im Canvas entwerfen: Mehrwert-Erinnerung, persönliches Hilfsangebot, Value-Recap.
 3. Value-Recap-Asset erstellen, das den bisher erzielten Nutzen des Accounts konkret aufzeigt (genutzte Features, eingesparte Zeit).
 4. Erfolgsmessung definieren: Behandlungsgruppe vs. unbehandelte Kontrollgruppe, KPI Verlängerungsrate über das Quartal.
-Prompt:
-> "Du bist Customer-Retention-Stratege für ein DACH-B2B-SaaS-Unternehmen. Wir haben gefährdete Accounts in drei Ursachen-Segmente geteilt: (a) geringe Feature-Nutzung, (b) gestiegene Support-Tickets, (c) kein dokumentierter ROI. Erstelle pro Segment eine 3-Touchpoint-Reaktivierungs-Sequenz (Mehrwert-Erinnerung, Hilfsangebot, Value-Recap), je max. 120 Wörter, formelles 'Sie'. Fokus auf Mehrwert, NICHT auf Rabatte. Definiere abschließend eine Erfolgsmessung gegen eine Kontrollgruppe (KPI: Verlängerungsrate)."
+Vorlage: Retention-/Loyalty-Kampagne (gefaehrdete Accounts):
+1. Reaktivierungs-Stufen - Mehrwert vor Rabatt; Discount erst als letzte Eskalation.
+2. Messplan mit unbehandelter Kontrollgruppe zur Effektmessung.
+3. Account-Segmentierung nach Churn-Risiko + Massnahme je Segment.
 Artefakt: Retention-Kampagne im Canvas (3 segmentspezifische Sequenzen + Value-Recap-Asset + Kontrollgruppen-Messplan) — als Briefing für das Customer-Success-Team.
 Fallstricke:
 - Reaktivierung greift sofort zu Rabatten und entwertet das B2B-Angebot → Prompt muss "Mehrwert vor Rabatt" hart codieren; ein vorschneller Discount signalisiert, dass der reguläre Preis nicht gerechtfertigt ist.
 - Erfolg wird ohne Kontrollgruppe gemessen und ist damit nicht belegbar → Messplan muss eine unbehandelte Vergleichsgruppe definieren, sonst lässt sich der Kampagneneffekt nicht vom natürlichen Verlauf trennen.
+Empfehlung: Codiere 'Mehrwert vor Rabatt' hart - ein vorschneller Discount entwertet das B2B-Angebot und signalisiert, dass der regulaere Preis nicht gerechtfertigt ist. Definiere im Messplan eine unbehandelte Vergleichsgruppe, sonst laesst sich der Kampagneneffekt nicht vom natuerlichen Verlauf trennen.
 Anschluss: S-MP-079
 
 ### S-MP-079 Referral-Programm-Content und Mechanik gestalten
@@ -1547,12 +1680,15 @@ Vorgehen:
 2. Einladungs-E-Mail und Referral-Landingpage-Copy erstellen — Mehrwert für beide Seiten klar herausstellen, formelles 'Sie'.
 3. Zwei Reminder-Nachrichten mit unterschiedlichem Aufhänger (sozialer Nutzen, Anreiz-Erinnerung) entwerfen.
 4. DSGVO-Logik dokumentieren: Empfehler darf Kontaktdaten Dritter nur mit deren Einwilligung weitergeben; Einwilligungs-Formulierung und Opt-out vorgeben.
-Prompt:
-> "Du bist Growth-Marketing-Manager für ein DACH-B2B-SaaS-Unternehmen. Konzipiere ein Referral-Programm. Liefere: (1) Eine Mechanik-Beschreibung mit Double-Sided-Incentive und Auslöse-Logik (z. B. nach NPS ≥ 9). (2) Eine Einladungs-E-Mail (max. 130 Wörter). (3) Eine Referral-Landingpage-Copy (100 Wörter). (4) Zwei Reminder-Nachrichten mit unterschiedlichem Aufhänger. (5) Eine DSGVO-konforme Einwilligungs-Formulierung für die Weitergabe von Kontaktdaten Dritter. Formelles 'Sie', kein Spam-Ton, beide Seiten profitieren erkennbar."
+Vorlage: Referral-Programm (Content + Mechanik):
+1. Double-Sided-Incentive - Empfehler und Empfohlener werden beide belohnt.
+2. Einwilligungs-Mechanik - Empfohlener willigt aktiv ein (z. B. eigener Landingpage-Besuch), bevor er kontaktiert wird.
+3. Content-Bausteine (Einladung, Reminder, Danke) + Tracking.
 Artefakt: Referral-Programm-Paket im Canvas (Mechanik + Einladung + Landingpage + Reminder + DSGVO-Formulierung) — als Briefing für CRM und Legal.
 Fallstricke:
 - Weitergabe von Kontaktdaten Dritter ohne Einwilligung verletzt die DSGVO → Mechanik muss vorsehen, dass der Empfohlene aktiv einwilligt (z. B. selbst die Landingpage besucht), bevor er kontaktiert wird; Legal-Review zwingend.
 - Anreiz ist nur einseitig und demotiviert den Empfohlenen → Double-Sided-Incentive im Prompt erzwingen; ein Programm, das nur den Empfehler belohnt, erzeugt geringe Conversion auf der Empfänger-Seite.
+Empfehlung: Gestalte die Mechanik so, dass der Empfohlene aktiv einwilligt (z. B. selbst die Landingpage besucht), bevor er kontaktiert wird - die Weitergabe von Kontaktdaten Dritter ohne Einwilligung verletzt die DSGVO (Legal-Review zwingend). Erzwinge ein Double-Sided-Incentive; ein Programm, das nur den Empfehler belohnt, erzeugt geringe Conversion auf der Empfaenger-Seite.
 Anschluss: S-MP-080
 
 ### S-MP-080 Jahres-Marketingplan aus Teil-Inputs synthetisieren
@@ -1562,17 +1698,18 @@ Ziel: Einen integrierten, priorisierten Jahres-Marketingplan erstellen, der stra
 Ergebnis: Ein Jahres-Marketingplan-Dokument mit: strategischen Prioritäten (3–4), abgeleiteter Kampagnen-Roadmap (Quartals-Themen), Budget-Allokations-Vorschlag je Kanal, KPI-Framework und einem Quartals-Review-Rhythmus.
 Fähigkeit: Wissensordner, Data Analyst, Canvas
 Vorgehen:
-1. Qualitative Inputs (Wettbewerbsanalysen, Team-Vorschläge, GF-Vorgaben) in den Wissensordner laden; quantitative Performance-Daten (CSV) in den Data Analyst.
-2. Aus den Vorjahresdaten die stärksten und schwächsten Kanäle quantifizieren; daraus 3–4 strategische Prioritäten für das neue Jahr ableiten.
-3. Kampagnen-Roadmap je Quartal im Canvas entwerfen: pro Quartal ein Leitthema, das auf eine strategische Priorität einzahlt.
-4. Budget-Allokations-Vorschlag je Kanal erstellen — datengestützt aus der Vorjahres-Performance, mit Begründung je Verschiebung.
-5. KPI-Framework (max. 5 Top-KPIs) und einen Quartals-Review-Rhythmus festlegen; Plan als CFO-taugliche Steuerungsvorlage finalisieren.
-Prompt:
-> "Du bist Marketing-Direktorin eines DACH-B2B-SaaS-Unternehmens. Synthetisiere aus den Dokumenten im Wissensordner und den Performance-Daten einen Jahres-Marketingplan: (1) 3–4 strategische Prioritäten aus den Vorjahresdaten, (2) Kampagnen-Roadmap mit Quartals-Leitthema, (3) Budget-Allokation je Kanal mit Begründung, (4) max. 5 Top-KPIs, (5) Quartals-Review-Rhythmus. Sprache: GF-tauglich, kein Marketingsprech, jede Priorität datenbelegt."
+1. Qualitative Inputs in den Wissensordner, quantitative Performance-CSV in den Data Analyst laden.
+2. Aus Vorjahresdaten starke/schwache Kanaele quantifizieren und 3-4 strategische Prioritaeten ableiten.
+3. Quartals-Roadmap + datengestuetzten Budget-Vorschlag + max. 5 Top-KPIs als CFO-taugliche Steuerungsvorlage finalisieren.
+Vorlage: Jahres-Marketingplan (aus Teil-Inputs synthetisiert):
+1. Datentrennung - quantitative CSV/XLSX in den Data Analyst, qualitative Dokumente in den Wissensordner.
+2. Priorisierung - jede Prioritaet mit Budgetallokation und messbarem KPI gekoppelt.
+3. Kanal-/Quartals-Roadmap mit Ressourcen- und Messlogik.
 Artefakt: Jahres-Marketingplan im Canvas (Prioritäten + Quartals-Roadmap + Budget-Allokation + KPI-Framework + Review-Rhythmus) — als verbindliche Steuerungsvorlage für GF und Team.
 Fallstricke:
 - Strukturierte Performance-Daten landen im Wissensordner statt im Data Analyst → Budget- und Kanalanalysen scheitern; quantitative CSV/XLSX immer über den Data Analyst, qualitative Dokumente über den Wissensordner.
 - Plan bleibt eine unpriorisierte Wunschliste ohne Budget-Kopplung → Prompt muss erzwingen, dass jede Priorität mit einer Budgetallokation und einem messbaren KPI verknüpft ist; ein Jahresplan ohne Ressourcen- und Messlogik ist nicht steuerungstauglich.
+Empfehlung: Lade strukturierte Performance-Daten immer in den Data Analyst und qualitative Dokumente in den Wissensordner - Budget- und Kanalanalysen im RAG scheitern. Erzwinge, dass jede Prioritaet mit einer Budgetallokation und einem messbaren KPI verknuepft ist, da ein Jahresplan ohne Ressourcen- und Messlogik nicht steuerungstauglich ist.
 Anschluss: S-MP-001
 
 ## Hinweise & Quellen-Konflikte
