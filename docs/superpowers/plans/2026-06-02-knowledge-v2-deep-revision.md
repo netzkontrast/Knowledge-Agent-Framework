@@ -93,7 +93,16 @@ instead of a `**Beispiel-Prompt:**`, etc.). This is the loop-4 deep-pass agenda:
       Cross-file Anschluss references are renamed when the target file lands.
 - [ ] **L4-final:** Spec-panel review of the type distribution and per-type quality.
 
-Loop-4 entry condition: catalog + R18 committed (done in loop 3 close).
+Loop-4 entry condition: catalog + R18 + R19 committed and v0.9-RC tagged (loop 3 close).
+
+### Loop-4 priorities (from spec-panel loop-3 review verdict)
+
+1. **R7a rollout across 13 remaining files** (~770 fields) — every Empfehlung hand-crafted per R7a-rollout-discipline. Spot-check confirmed 4/20 files done are persona-faithful and zero template feel; that bar is the floor.
+2. **L4-1 file 06 classification with corrected expectation** — NOT A-dominated; expect **G ~50 % / D ~25 % / A ~19 %**. Author Guide-type `Vorlage:` skeletons for architecture briefings; reserve `API:` for true integration scenarios.
+3. **L4-0a gate evolution** — extend `check_schema.sh` to parse type code + dispatch payload check (R18) and accept both old and terse markers (R19); extend `kb_index.py` to report per-type coverage.
+4. **File 08 chunk-trim** — 22 scenarios in 3200–3800 B band incl. S-SG-060 at 3801 B; bring below 3200 B warn line in the L4-6 pass.
+
+After priorities 1+2+4 close → tag **v1.0-Beta**.
 
 ## End-of-pass review (subagent — the only subagent use)
 

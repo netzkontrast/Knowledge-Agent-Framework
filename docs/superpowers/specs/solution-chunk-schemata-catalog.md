@@ -139,6 +139,25 @@ For each scenario, ask:
 
 `tools/kb_index.py` reports coverage per type (e.g. "P=940, D=10, A=0, …") so the rollout is visible.
 
+## Loop-3 review spot-check — actual type distribution surprise
+
+The loop-3 spec-panel review sampled 40 scenarios across files 04/05/06/10 to
+validate the catalog. **All scenarios mapped to one of the 9 codes; no 10th
+type is needed.** But the actual distribution per file differs from filename
+intuition:
+
+| File | Filename suggests | Actually (spot-check %) | Implication |
+|---|---|---|---|
+| 04 | Workflows | **W = 100 %** | pure type, easiest L4 migration |
+| 05 | Integrations & MCP | **G ~62 %, D ~19 %, M ~10 %, C ~6 %** | M is rare — most scenarios are docs/decisions about integrations |
+| 06 | API & Deployment | **G ~50 %, D ~25 %, A ~19 %** | NOT A-dominated — mostly architecture briefings + decision pitches |
+| 10 | Prompts & Skills | **S ~44 %, P ~37 %, G ~12 %, D ~6 %** | Skill share higher than expected |
+
+**Key takeaway for L4 planning:** type **G (Guide/Document)** is far more common
+than the original catalog intuition suggested. The L4 file-order in the plan
+should not assume A-heavy for file 06 — expect to author many G-type
+`Vorlage:` skeletons there.
+
 ## Migration plan (added to active plan)
 
 Phase-by-phase per file. **No bulk programmatic rename of payload bodies** — each scenario read individually (per the no-programmatic discipline). Bulk ID renames are concrete-string operations and are permitted.
