@@ -276,12 +276,16 @@ Vorgehen:
 2. Lade das Kampagnen-Briefing und den Redaktionsplan als PDF in einen Library Folder, der dem Projekt zugeordnet ist.
 3. Pinne die wichtigsten laufenden Chats in der Sidebar, damit das Team ohne Suche direkten Zugriff hat.
 4. Erstelle zwei bis drei Konversations-Starter pro Projekt (z.B. "Erstelle einen Post-Entwurf für dieses Kampagnen-Thema"), damit neue Teammitglieder sofort produktiv einsteigen können.
-Prompt:
-> "Du bist Workspace-Administratorin für ein 15-köpfiges Marketing-Team. Schlage eine logische Projektstruktur für unsere drei parallelen Q3-Kampagnen vor. Kontext: Wir arbeiten mit LinkedIn-Content, Newsletter und bezahlten Anzeigen gleichzeitig. Format: Tabelle mit Projekt-Name, Zweck und empfohlenen Konversations-Startern."
+Vorlage: Kampagnen-Saison-Workspace-Struktur:
+1. Projekte — ein Projekt pro aktiver Kampagne/Produktlinie (z. B. Q3-Launch-ProductX); thematische Daueraufgaben (Brand Voice) als eigener Agent, nicht als Projekt.
+2. Library — Briefing + Redaktionsplan je Projekt-Folder.
+3. Pinning — wichtigste laufende Chats in der Sidebar anpinnen.
+4. Konversations-Starter — 2–3 je Projekt, jeder mit Produkt, Kanal und Output-Format.
 Artefakt: Eine Tabelle mit empfohlener Projekt-Architektur und fertigen Konversations-Starter-Texten, die direkt in die Agent-Konfiguration kopiert werden können.
 Fallstricke:
 - Zu viele Projekte angelegt, sodass der Überblick verloren geht → Maximal ein Projekt pro laufender Kampagne; thematisch übergreifende Daueraufgaben (z.B. Brand Voice) als eigenen Agenten, nicht als Projekt.
 - Konversations-Starter sind zu generisch formuliert → Jeder Starter muss Produkt, Kanal und gewünschtes Output-Format enthalten, damit er echten Mehrwert bringt.
+Empfehlung: Maximal ein Projekt pro laufender Kampagne anlegen — zu viele Projekte zerstoeren den Ueberblick; thematisch uebergreifende Daueraufgaben als eigenen Agenten fuehren. Jeden Konversations-Starter mit Produkt, Kanal und gewuenschtem Output-Format ausstatten, sonst bleibt er zu generisch fuer echten Mehrwert.
 Anschluss: S-LU-012
 
 ### S-LU-012 ROI des Langdock-Setups für den CFO aufbereiten
@@ -301,6 +305,7 @@ Artefakt: Ein Canvas-Dokument mit ROI-Tabelle (Lohnkosten-Äquivalent, Time-to-D
 Fallstricke:
 - Token-Verbrauch wird mit tatsächlicher Zeitersparnis gleichgesetzt, ohne die Qualitäts-Review-Zeit zu berücksichtigen → Im Prompt explizit nach Netto-Ersparnis (Drafting minus Review-Aufwand) fragen.
 - Der CFO akzeptiert keine Hochrechnungen ohne Baseline-Daten → Lege vor der Langdock-Einführung einen Benchmark-Wert für "Stunden pro Asset" fest, um einen echten Vorher/Nachher-Vergleich zu ermöglichen.
+Empfehlung: Im Prompt nach Netto-Ersparnis fragen (Drafting minus Qualitaets-Review-Aufwand), nicht nach Token-Verbrauch gleich Zeitersparnis — sonst ueberzeichnet die ROI-Rechnung. Vor der Langdock-Einfuehrung einen Baseline-Wert 'Stunden pro Asset' festlegen, da der CFO keine Hochrechnungen ohne echten Vorher/Nachher-Vergleich akzeptiert.
 Anschluss: S-LU-013
 
 ### S-LU-013 Entscheidungs-Matrix: Agentur beauftragen oder intern mit Langdock lösen
@@ -313,12 +318,15 @@ Vorgehen:
 1. Liste im Chat alle aktuellen Marketing-Aufgaben auf und kategorisiere sie nach: Volumen (einmalig vs. wiederkehrend), strategischer Tiefe (Konzept vs. Ausführung) und Brand-Criticality (Krisenkommunikation vs. Routine-Content).
 2. Führe den PTCF-Prompt aus, um eine Entscheidungs-Matrix zu generieren, die für jede Kombination aus Volumen und Komplexität eine klare Empfehlung (Agentur/intern/hybrid) gibt.
 3. Speichere die Matrix im Canvas als wiederverwendbares Entscheidungs-Template, das bei jeder neuen Anfrage als Wissensordner-Referenz dient.
-Prompt:
-> "Du bist strategische Marketing-Beraterin. Entwickle eine Entscheidungs-Matrix: Wann lösen wir Content-Aufgaben intern mit KI, wann beauftragen wir eine Agentur? Kontext: Wir haben 3 interne Texter und Langdock-Zugang. Format: 2x2-Matrix (Volumen vs. Strategische Tiefe) mit konkreten Schwellenwerten und Beispielen."
+Vorlage: Agentur-vs-intern-Entscheidungs-Matrix (2x2):
+1. Achsen — Volumen (einmalig/wiederkehrend) × strategische Tiefe (Konzept/Ausfuehrung); dritte Dimension Brand-Criticality.
+2. Quadranten — Intern/KI, Agentur, Hybrid, Fuehrungs-Entscheidung; je konkrete Schwellenwerte (z. B. ab 20 Assets/Monat intern; <5 Assets mit hoher Tiefe → Agentur).
+3. Ablage — als wiederverwendbares Entscheidungs-Template im Wissensordner.
 Artefakt: Eine 2×2-Matrix im Canvas mit vier Quadranten (Intern/KI, Agentur, Hybrid, Führungs-Entscheidung) und konkreten Trigger-Kriterien pro Quadrant.
 Fallstricke:
 - Die Matrix ist zu abstrakt und gibt keine Zahlen → Verlange konkrete Schwellenwerte (z.B. "ab 20 Assets/Monat intern; unter 5 Assets mit hoher strategischer Tiefe → Agentur").
 - Brand-Crisis-Szenarien werden fälschlicherweise als intern lösbar eingestuft → Ergänze im Prompt: "Krisen-PR und Investor-Kommunikation sind immer Agentur-Pflichtig."
+Empfehlung: Konkrete Schwellenwerte (Zahlen) in jeden Quadranten schreiben, nicht abstrakte Kriterien — eine Matrix ohne Zahlen ('ab 20 Assets/Monat intern') ist nicht entscheidungsfaehig. Krisen-PR und Investor-Kommunikation immer als Agentur-Pflicht markieren, damit sie nicht faelschlich als intern loesbar eingestuft werden.
 Anschluss: S-LU-014
 
 ### S-LU-014 KI-Champions-Programm für das Marketing-Team aufsetzen
@@ -332,12 +340,16 @@ Vorgehen:
 2. Lass die KI einen 30-Tage-Aktivierungsplan für die Champions erstellen: Woche 1 Onboarding, Woche 2-3 eigene Use-Case-Erprobung, Woche 4 erstes Team-Demo.
 3. Erstelle im Canvas einen gemeinsamen Konversations-Starter-Katalog, in den jeder Champion seinen besten Prompt einbringt.
 4. Plane ein monatliches 30-Minuten-Format (AI-Office-Hour): 1 Demo, 2 offene Fragen, 1 Ankündigung neuer Starter.
-Prompt:
-> "Du bist Change-Management-Expertin für KI-Adoption. Erstelle einen 30-Tage-Plan für unser KI-Champions-Programm. Kontext: 5 Champions aus verschiedenen Marketing-Teams, alle bereits Langdock-Nutzer. Format: Tabelle mit Woche, Aktivität, Verantwortlichem und erwartetes Ergebnis."
+Vorlage: KI-Champions-Programm (30-Tage-Aktivierung):
+1. Champions — 5 aktivste User, je einer pro Bereich (Content/Performance/Social/Brand/Analytics).
+2. 30-Tage-Plan — Woche 1 Onboarding, Woche 2–3 Use-Case-Erprobung, Woche 4 erstes Team-Demo.
+3. Starter-Katalog — gemeinsamer Konversations-Starter-Katalog, jeder Champion bringt seinen besten Prompt ein.
+4. AI-Office-Hour — monatlich 30 Min (1 Demo, 2 Fragen, 1 neuer Starter).
 Artefakt: Ein 30-Tage-Aktivierungsplan im Canvas mit Wochenzielen, Rollenzuweisungen und einem Template für den gemeinsamen Konversations-Starter-Katalog.
 Fallstricke:
 - Champions werden ohne Freistellung nominiert und haben keine Zeit → Commitment von 2 Stunden/Woche muss vor Programmstart schriftlich von der Führungskraft bestätigt werden.
 - Der Konversations-Starter-Katalog wird nie aktualisiert → Quartalsweise Pflege-Ritual als festes Agenda-Item in der AI-Office-Hour einplanen.
+Empfehlung: Das 2-Stunden/Woche-Commitment der Champions vor Programmstart schriftlich von der Fuehrungskraft bestaetigen lassen — ohne Freistellung haben sie keine Zeit und das Programm stagniert. Die Katalog-Pflege als festes Agenda-Item der AI-Office-Hour verankern, sonst veraltet der Starter-Katalog.
 Anschluss: S-LU-015
 
 ### S-LU-015 Drei Quick-Win-Agenten für Marketing-Einsteiger konfigurieren
@@ -351,12 +363,16 @@ Vorgehen:
 2. Konfiguriere Agent 2 "Content-Kürzer": System-Prompt für Verdichtung auf 50 % ohne Inhaltsverlust, keine Wissensordner nötig, Konversations-Starter "Kürze diesen LinkedIn-Post auf 300 Zeichen".
 3. Konfiguriere Agent 3 "Meeting-Protokoll-Konverter": System-Prompt für Action-Item-Extraktion aus Fließtext, Konversations-Starter "Extrahiere alle To-dos aus diesem Protokoll".
 4. Teile alle drei Agenten mit der Marketing-Benutzergruppe und dokumentiere die Starter-Liste im Team-Wiki.
-Prompt:
-> "Du bist Langdock-Onboarding-Spezialistin. Schreibe einen präzisen System-Prompt für einen Brand-Voice-Check-Agenten. Kontext: Unser Tone of Voice ist professionell, direkt, ohne Floskeln. Format: Fertiger System-Prompt unter 500 Zeichen plus drei Konversations-Starter-Texte."
+Vorlage: Drei Quick-Win-Einsteiger-Agenten:
+1. Brand Voice Check — System-Prompt mit Tone-Regeln + Library (Corporate Design); Starter 'Pruefe diesen Text auf Brand Voice'.
+2. Content-Kuerzer — Verdichtung auf 50 % ohne Inhaltsverlust; Starter 'Kuerze diesen LinkedIn-Post auf 300 Zeichen'.
+3. Meeting-Protokoll-Konverter — Action-Item-Extraktion; Starter 'Extrahiere alle To-dos'.
+4. Teilen mit der Marketing-Gruppe + Starter-Liste im Team-Wiki.
 Artefakt: Drei fertige System-Prompts und neun Konversations-Starter-Texte, direkt einsetzbar in der Langdock-Agent-Konfiguration.
 Fallstricke:
 - Der Brand-Voice-Agent gibt zu vage Feedback → System-Prompt muss konkrete Beispiele für "verboten" und "erwünscht" enthalten, nicht nur abstrakte Adjektive.
 - Zu viele Konversations-Starter überfordern Anfänger → Maximal drei pro Agent; der wichtigste Anwendungsfall kommt als erster Starter.
+Empfehlung: Den Brand-Voice-System-Prompt mit konkreten 'verboten'/'erwuenscht'-Beispielen ausstatten, nicht nur abstrakten Adjektiven — sonst gibt der Agent zu vages Feedback. Maximal drei Konversations-Starter pro Agent, der wichtigste zuerst, da mehr Starter Anfaenger ueberfordern.
 Anschluss: S-LU-016
 
 ### S-LU-016 AI-Pilot-Strategie für die ersten 90 Tage planen
@@ -370,12 +386,15 @@ Vorgehen:
 2. Lass die KI einen 90-Tage-Plan in drei Phasen entwickeln: Phase 1 (Tage 1-30) Onboarding der Champions, Phase 2 (Tage 31-60) Rollout der Quick-Win-Agenten, Phase 3 (Tage 61-90) Skalierung auf das Gesamt-Team.
 3. Ergänze pro Phase harte Erfolgsmetriken und einen Pre-Commitment-Checkpoint (Szenario S-LU-008).
 4. Exportiere den Plan als PDF und verteile ihn als offizielles Kick-off-Dokument.
-Prompt:
-> "Du bist KI-Rollout-Strategin. Erstelle einen 90-Tage-Pilotplan für die Langdock-Einführung in einem 20-köpfigen Marketing-Team. Kontext: Budget genehmigt, 3 Champions identifiziert, kein technisches IT-Team verfügbar. Format: Tabelle mit Phase, Tage, Hauptaktivität, KPI und Go/No-Go-Kriterium."
+Vorlage: 90-Tage-AI-Pilot-Plan (3 Phasen):
+1. Pilot-Ziele — Adoption-Rate, erste messbare Zeitersparnis, ein dokumentierter CFO-Use-Case.
+2. Phasen — P1 (T1–30) Champions-Onboarding, P2 (T31–60) Quick-Win-Agenten-Rollout, P3 (T61–90) Skalierung aufs Gesamt-Team.
+3. Je Phase harte KPIs + Pre-Commitment-Checkpoint (S-LU-008) + Go/No-Go-Kriterium.
 Artefakt: Ein 90-Tage-Projektplan im Canvas mit drei Phasen, KPI-Tabelle und einem Pre-Commitment-Log, der als offizielles Kick-off-Dokument dient.
 Fallstricke:
 - Phase 1 dauert zu lange und das Team verliert die Motivation → Quick Wins müssen innerhalb der ersten 14 Tage erlebbar sein; mindestens einen Agenten in Woche 2 aktivieren.
 - Der Plan wird nie wieder angeschaut → Wöchentliches 15-Minuten-Standup für Pilot-Status als festes Format in Teamkalender verankern.
+Empfehlung: Mindestens einen Quick-Win-Agenten in Woche 2 aktivieren — erlebbare Erfolge in den ersten 14 Tagen sind entscheidend, sonst verliert das Team in einer langen Phase 1 die Motivation. Ein woechentliches 15-Minuten-Pilot-Standup im Teamkalender verankern, damit der Plan nicht nach dem Kick-off in Vergessenheit geraet.
 Anschluss: S-LU-017
 
 ### S-LU-017 Dateianhänge im Chat für schnelle Kampagnen-Recherche nutzen
@@ -394,6 +413,7 @@ Artefakt: Eine nummerierte Liste mit drei bis fünf priorisierten Erkenntnissen 
 Fallstricke:
 - Bei mehr als 10 Dateien verliert die KI den Überblick und zitiert falsche Quellen → Priorisiere die wichtigsten fünf Dateien, wenn der Zeitdruck hoch ist; für Vollanalysen auf Wissensordner-Agenten (S-LU-015) wechseln.
 - Das 20-Datei-Limit pro Chat-Session wird übersehen → Bei größeren Dokumentenmengen einen Library Folder anlegen statt direkte Anhänge zu nutzen.
+Empfehlung: Bei hohem Zeitdruck die wichtigsten fuenf Dateien priorisieren — ab ~10 direkten Anhaengen verliert die KI den Ueberblick und zitiert falsche Quellen; fuer Vollanalysen auf einen Wissensordner-Agenten (S-LU-015/018) wechseln. Das 20-Datei-Limit pro Chat-Session beachten und bei groesseren Mengen einen Library Folder statt direkter Anhaenge nutzen.
 Anschluss: S-LU-018
 
 ### S-LU-018 Wissensordner als Single Source of Truth für Kampagnen-Briefings einrichten
@@ -407,12 +427,16 @@ Vorgehen:
 2. Lade die aktuellen Masterdokumente hoch: Briefing-Template, Tone-of-Voice-Guide, Zielgruppen-Persona und aktuellen Kampagnenplan.
 3. Binde den Folder an den primären Content-Agenten an und teste mit einem Konversations-Starter, ob die KI korrekte Briefing-Inhalte abruft.
 4. Kommuniziere im Team: Dieser Folder ist die einzige autorisierte Quelle; alle anderen Versionen werden archiviert.
-Prompt:
-> "Du bist Content-Operations-Managerin. Erstelle eine Namenskonvention und Ordner-Struktur für unsere Kampagnen-Briefings in Langdock. Kontext: 3 parallele Kampagnen, 5 Freelancer, quartalsweiser Update-Rhythmus. Format: Checkliste mit Dateinamen-Muster, Pflicht-Dateien pro Ordner und Update-Prozess."
+Vorlage: Kampagnen-Briefing-Single-Source-of-Truth:
+1. Folder — 'Kampagnen-Briefings 2026' mit Namenskonvention (YYYY-MM_Kampagne_Briefing_v1.pdf).
+2. Masterdokumente — Briefing-Template, Tone-of-Voice, Persona, aktueller Kampagnenplan.
+3. Anbindung — an den primaeren Content-Agenten; mit einem Starter testen, ob die KI korrekte Inhalte abruft.
+4. Kommunikation — dieser Folder ist die einzige autorisierte Quelle; alle anderen Versionen archivieren.
 Artefakt: Eine dokumentierte Ordnerstruktur mit Namenskonvention, Pflicht-Dateiliste und einem Update-Prozess, der im Team-Wiki veröffentlicht wird.
 Fallstricke:
 - Der Folder wird schnell veraltet, weil kein Update-Owner definiert ist → Jedes Briefing-Dokument bekommt einen namentlichen Verantwortlichen und ein Verfallsdatum im Dateinamen.
 - Zu viele Dokumente (über 200) machen die Retrieval-Qualität schlechter → Archiviere Dokumente älter als 12 Monate in einem separaten "Archiv"-Folder; aktiver Folder bleibt unter 100 Dateien.
+Empfehlung: Jedem Briefing-Dokument einen namentlichen Verantwortlichen und ein Verfallsdatum im Dateinamen geben — ohne Update-Owner veraltet der Folder schnell. Den aktiven Folder unter 100 Dateien halten und Dokumente aelter als 12 Monate in einen 'Archiv'-Folder verschieben, da >200 Dateien die Retrieval-Qualitaet senken.
 Anschluss: S-LU-019
 
 ### S-LU-019 Redaktionskalender für 90 Tage mit dem Content-Agenten erstellen
