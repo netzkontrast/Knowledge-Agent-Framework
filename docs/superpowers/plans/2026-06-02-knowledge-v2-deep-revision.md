@@ -151,4 +151,8 @@ rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-
 - [ ] **R7a Empfehlung rollout** to the 13 remaining content files (combined with each R20 file touch).
 - [ ] **Critical-thinking scenarios (R20.3) + scenario chains (R20.4)** added opportunistically per file.
 - [ ] **File 08 chunk-trim** (22 scenarios 3200-3800 B) during its R20 pass.
-- [ ] **Loop-4 review subagent** → then v1.0-Beta.
+- [x] **Loop-4 review subagent DONE** — spec-panel re-ran M01–M13 as test criteria over all 20 files / 1106 scenarios. VERDICT: **CONVERGED** — 0 [C], 0 [M]. Invisible-scaffolding clean (0 method-name leaks), source-grounding clean (0 uncited content Triggers), HITL clean (no outward auto-send), hard disciplines clean (Vorgehen ≤5, Fallstricke ≥2, emoji-free, no first-person prose leak), R7a Empfehlungen strong (0 exact dups, Data-voice faithful). 3 [m] polish items:
+    - [x] **[m]1 closed** — 4 G `Vorlage:` blocks were 2-section (gate doesn't enforce ≥3); extended to 3: S-WR-079 (Test-Nachweis), S-IM-042 (Aktualisierungs-Kadenz), S-MK-062 (Schwellen-Staffelung 50/75/90 %), S-SG-074 (4. Dimension Wissensordner-Zugriff + adversarieller Review).
+    - [x] **[m]2 closed** — S-IM-080 was 4088 B (8 B under hard limit); condensed Vorgehen to 3 steps → 3802 B (294 B margin). Remaining 04/05 >3200 B soft-warns are non-blocking (all <4096, no FAIL).
+    - [ ] **[m]3 noted (optional, non-blocking)** — two near-twin scenario pairs share opening Empfehlung wording (internal-linking pair in 03; budget-reserve "30 %" pair); both valid + grounded, mild retrieval overlap only.
+- [ ] **v1.0-Beta tag** — all gates green; CONVERGED. Tag push is rejected by the git proxy → user tags via GitHub UI.

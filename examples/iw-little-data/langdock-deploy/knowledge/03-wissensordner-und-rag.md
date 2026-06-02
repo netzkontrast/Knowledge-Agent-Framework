@@ -2468,6 +2468,7 @@ Vorgehen:
 Vorlage: Multi-Ordner-Routing:
 1. Routing-Regeln oder thematische Konversations-Starter - ordnen Anfragen dem korrekten Spezial-Ordner zu.
 2. Misch-Anfragen - explizit festlegen, wie Teil-Antworten aus mehreren Ordnern kombiniert und getrennt zitiert werden.
+3. Test-Nachweis - mit reinen und gemischten Anfragen pruefen und die rauschfreie, korrekt zugeordnete Zitierung dokumentieren.
 
 Artefakt: Eine dokumentierte Cross-Folder-Routing-Logik (Dispatcher-Regeln oder thematische Konversations-Starter) mit Test-Nachweis für rauschfreie, korrekt zugeordnete Misch-Anfragen.
 

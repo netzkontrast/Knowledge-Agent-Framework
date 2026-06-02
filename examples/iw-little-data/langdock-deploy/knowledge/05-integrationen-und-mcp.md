@@ -1331,6 +1331,7 @@ Vorgehen:
 Vorlage: Langdock-Vendor-Lock-in-Risikobewertung + Ausstiegsplan:
 1. Asset-Portierbarkeits-Tabelle — Wissensordner (Markdown-Export, gering), Agenten-Prompts (Text, gering), Workflow-Logik (plattformspezifisch, mittel), native Integrationen (API-Standard, gering); je Ausstiegsaufwand + Alternative.
 2. Notfall-Ausstiegsplan (dreistufig) — (1) Wissensordner-Snapshot extern sichern, (2) Agenten-Prompts dokumentieren/versionieren, (3) kritische Workflows in plattformunabhaengiger Notation festhalten.
+3. Aktualisierungs-Kadenz — Asset-Register quartalsweise pruefen (neue Agenten/Wissensordner aufnehmen); je kritische Workflow-Logik eine plattformunabhaengige Beschreibung (Prosa/BPMN) hinterlegen.
 
 Artefakt: Eine Vendor-Lock-in-Risikobewertung (Tabelle) und ein dreistufiger Notfall-Ausstiegsplan.
 
@@ -2496,10 +2497,9 @@ Ergebnis: Ein Integration-Deprecation-Plan (Tabelle) mit je Verbindung: Begründ
 Fähigkeit: Advisory-Beratung zu Integrations-Lebenszyklus, Wissensordner für Abhängigkeitsregister, Advisory-Grenze.
 
 Vorgehen:
-1. Du lässt Little Data je abzulösende Integration die abhängigen Agenten und Workflows aus dem Abhängigkeitsregister ermitteln, damit keine stille Abhängigkeit übersehen wird.
-2. Du lässt je Verbindung einen Migrationspfad oder einen Ersatz benennen (oder dokumentieren, dass die Funktion ersatzlos entfällt).
-3. Du lässt ein gestaffeltes Abschaltdatum mit Rollback-Fenster festlegen: zuerst stilllegen (deaktivieren, aber wiederherstellbar), nach einer Beobachtungsphase endgültig entfernen.
-4. Du übergibst den Plan an IT und Marketing-Ops; die tatsächliche Abschaltung liegt bei der IT — Little Data berät, führt keine Deaktivierung durch.
+1. Je abzulösende Integration die abhängigen Agenten/Workflows aus dem Abhängigkeitsregister ermitteln (gegen stille Abhängigkeiten).
+2. Je Verbindung einen Migrationspfad oder Ersatz benennen (oder ersatzlosen Wegfall dokumentieren).
+3. Gestaffeltes Abschaltdatum + Rollback-Fenster festlegen; Plan an IT/Marketing-Ops übergeben — Little Data berät, schaltet nicht ab.
 
 Vorlage: Integration-Deprecation-Plan (geordnete Abloesung):
 1. Abhaengigkeiten — je abzuloesende Verbindung die abhaengigen Agenten/Workflows aus dem Abhaengigkeitsregister (gegen stille Abhaengigkeiten).

@@ -1846,6 +1846,7 @@ Vorgehen:
 Vorlage: Mehrschichtige Budget-Guardrails:
 1. Drei Schichten - globales Workspace-Limit + Per-User-Schicht + Workflow-Schicht.
 2. Eskalations-Sheet - jede Schwelle an einen namentlichen Verantwortlichen mit Reaktionszeit gekoppelt.
+3. Schwellen-Staffelung - Alerts bei 50/75/90 %; je Stufe eine guenstigere Sofortmassnahme (Modell-Downgrade) und eine staerkere (Workflow-Pause).
 
 Artefakt: Eine Guardrail-Architektur (Schicht / Schwellenwert / Verantwortlicher / Sofortmaßnahme) plus ein konfiguriertes Alert-Set im Workspace-Admin.
 

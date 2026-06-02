@@ -2322,6 +2322,7 @@ Vorgehen:
 Vorlage: Rollen-Restriktions-Matrix:
 1. Je Job-Rolle - erlaubte Modelle, Agenten, Faehigkeiten (Web-Search, Image-Gen, Data Analyst).
 2. Bedarfsorientiert + schneller Freigabe-Prozess fuer begruendete Ausnahmen.
+3. Vierte Dimension + Review - auch den Wissensordner-Zugriff je Rolle fuehren (nicht nur die Modellwahl) und die Matrix regelmaessig adversariell pruefen (S-SG-075).
 
 Artefakt: Rollen-Restriktions-Matrix mit erlaubten Modellen, Agenten und Fähigkeiten je Job-Rolle.
 
