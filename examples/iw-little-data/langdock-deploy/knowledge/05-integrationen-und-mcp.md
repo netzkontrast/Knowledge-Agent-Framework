@@ -933,12 +933,15 @@ Vorgehen:
 1. Du lässt Little Data die Kerneigenschaft von n8n hervorheben: self-hosted bedeutet, alle Daten verbleiben im eigenen Rechenzentrum — kein Drittanbieter-Datentransfer und volle DSGVO-Kontrolle, aber auch volle IT-Wartungsverantwortung.
 2. Du lässt den Vergleich entlang der Dimensionen DSGVO-Risiko, Wartungsaufwand, Lizenzkosten, Anzahl verfügbarer Konnektoren und Langdock-Webhook-Kompatibilität strukturieren.
 3. Du lässt eine priorisierte Migrations-Empfehlung formulieren: Zapier-Brücken mit PII-Transfer als erste Migrationskandidaten; Brücken ohne PII können bei Zapier verbleiben, wenn Wartungsaufwand für n8n zu hoch ist.
-Prompt:
-> "Du bist mein Middleware-Architektur-Berater (Persona). Erstelle einen Vergleich von n8n (self-hosted) versus Zapier als Middleware-Brücke für unsere Langdock-Integrationen (Aufgabe). Kontext: DSGVO-Kontrolle hat Priorität; IT kann n8n selbst betreiben; drei bestehende Zapier-Brücken sind im Einsatz (Kontext). Format: Tabelle mit Bewertungsdimension, n8n-Bewertung, Zapier-Bewertung, Gewichtung; plus Migrations-Empfehlung in drei Bulletpoints (Format)."
+Vorlage: n8n-vs-Zapier-Middleware-Vergleich:
+1. Dimensionen-Tabelle — DSGVO-Kontrolle, Wartungsaufwand, Lizenz-/Server-Kosten, verfuegbare Konnektoren, Langdock-Webhook-Kompatibilitaet; je n8n-/Zapier-Bewertung + Gewichtung.
+2. n8n-Kern — self-hosted: Daten bleiben im eigenen RZ (kein Drittanbieter-Transfer, volle DSGVO-Kontrolle), aber volle IT-Wartungsverantwortung.
+3. Migrations-Empfehlung — Zapier-Bruecken mit PII-Transfer zuerst migrieren; PII-freie koennen bei Zapier bleiben, wenn n8n-Wartung zu teuer ist.
 Artefakt: Ein n8n-vs.-Zapier-Vergleichs-Assessment (Tabelle) mit priorisierter Migrations-Empfehlung.
 Fallstricke:
 - n8n als kostenlos einschätzen → n8n ist Open-Source, aber self-hosting erzeugt Server- und Wartungskosten; diese müssen in den Kostenvergleich eingerechnet werden.
 - n8n-Migration ohne IT-Ressourcen-Check planen → Self-hosting erfordert DevOps-Kapazität für Updates, Backups und Fehlerdiagnose; ohne ausreichende IT-Ressourcen ist Zapier trotz DSGVO-Nachteilen die praktikablere Wahl.
+Empfehlung: n8n nicht als 'kostenlos' einschaetzen — Open-Source, aber self-hosting erzeugt Server- und Wartungskosten, die in den Vergleich gehoeren. Vor einer n8n-Migration den IT-Ressourcen-Check machen: self-hosting braucht DevOps-Kapazitaet (Updates/Backups/Fehlerdiagnose); ohne sie ist Zapier trotz DSGVO-Nachteilen praktikabler.
 Anschluss: S-IM-042
 
 ### S-IM-042 Vendor-Lock-in-Risiko bei Langdock-Integrationen bewerten und Ausstiegsplan entwickeln
@@ -952,12 +955,14 @@ Vorgehen:
 2. Du lässt den Ausstiegsaufwand je Asset-Kategorie einschätzen: Stunden für Wissensordner-Export, Tage für Agenten-Prompt-Migration, Wochen für Workflow-Neukonfiguration in einer alternativen Plattform.
 3. Du lässt einen dreistufigen Notfall-Ausstiegsplan skizzieren: (1) Wissensordner-Snapshot erstellen und extern sichern, (2) Agenten-Prompts dokumentieren und versionieren, (3) kritische Workflows in alternativer Notation festhalten.
 4. Du übergibst den Plan an CDO und IT als Governance-Dokument; Little Data berät, führt keine Exporte durch.
-Prompt:
-> "Du bist mein SaaS-Vendor-Risiko-Berater (Persona). Erstelle eine Vendor-Lock-in-Risikobewertung für unsere Langdock-Nutzung und einen dreistufigen Ausstiegsplan (Aufgabe). Kontext: CDO-Anforderung an Ausstiegsfähigkeit für alle kritischen SaaS-Tools; drei Wissensordner, fünf Agenten, zwei aktive Workflows (Kontext). Format: Tabelle mit Asset, Portierbarkeit, Ausstiegsaufwand, Alternative; plus dreistufiger Notfall-Ausstiegsplan als nummerierte Liste (Format)."
+Vorlage: Langdock-Vendor-Lock-in-Risikobewertung + Ausstiegsplan:
+1. Asset-Portierbarkeits-Tabelle — Wissensordner (Markdown-Export, gering), Agenten-Prompts (Text, gering), Workflow-Logik (plattformspezifisch, mittel), native Integrationen (API-Standard, gering); je Ausstiegsaufwand + Alternative.
+2. Notfall-Ausstiegsplan (dreistufig) — (1) Wissensordner-Snapshot extern sichern, (2) Agenten-Prompts dokumentieren/versionieren, (3) kritische Workflows in plattformunabhaengiger Notation festhalten.
 Artefakt: Eine Vendor-Lock-in-Risikobewertung (Tabelle) und ein dreistufiger Notfall-Ausstiegsplan.
 Fallstricke:
 - Workflow-Logik als leicht portierbar einschätzen → Langdock-Workflow-Konfigurationen sind plattformspezifisch; für jede kritische Workflow-Logik eine plattformunabhängige Beschreibung in Prosa oder BPMN-Notation anlegen.
 - Ausstiegsplan als einmalig behandeln → Jedes Quartal prüfen, ob neue Agenten oder Wissensordner zum Asset-Register hinzugefügt wurden; veraltete Ausstiegspläne sind keine Ausstiegspläne.
+Empfehlung: Workflow-Logik nicht als leicht portierbar einschaetzen — Langdock-Workflow-Konfigurationen sind plattformspezifisch; fuer jede kritische Logik eine plattformunabhaengige Beschreibung (Prosa oder BPMN) anlegen. Den Ausstiegsplan quartalsweise pruefen, ob neue Agenten/Wissensordner ins Asset-Register gehoeren — ein veralteter Ausstiegsplan ist keiner.
 Anschluss: S-IM-043
 
 ### S-IM-043 Gmail-Integration für automatisierte Lead-Antwort-Entwürfe advisory planen
@@ -971,12 +976,16 @@ Vorgehen:
 2. Du lässt den Workflow skizzieren: Gmail-Trigger (neue Lead-E-Mail) → Agent liest E-Mail → generiert personalisierten Draft → Draft landet in Gmail als Entwurf → Mensch prüft, editiert und sendet.
 3. Du lässt die DSGVO-Datensparsamkeits-Regel einarbeiten: Nur der E-Mail-Body und das Thema gehen in den Agent-Kontext; vollständige E-Mail-Header mit PII werden minimiert.
 4. Du übergibst das Konzept und den Gmail-Scope-Bedarf an die IT; Little Data berät, konfiguriert keine OAuth-Verbindungen.
-Prompt:
-> "Du bist mein E-Mail-Integrations-Berater (Persona). Erstelle ein Gmail-Integrations-Konzept für einen automatisierten Lead-Antwort-Entwurf-Workflow (Aufgabe). Kontext: Agent liest eingehende Lead-E-Mails, erstellt Draft, sendet niemals selbst; DSGVO-Datensparsamkeit; Human-Approval vor Versand Pflicht (Kontext). Format: Konzept mit Abschnitten Gmail-Scopes, Workflow-Skizze als nummerierte Schritte, DSGVO-Datensparsamkeits-Regel, Human-Approval-Gate-Beschreibung (Format)."
+Vorlage: Gmail-Lead-Antwort-Integrations-Konzept (HITL):
+1. Scopes — gmail.readonly (lesen) + gmail.compose (Draft); gmail.send explizit ausschliessen.
+2. Workflow-Skizze — Gmail-Trigger (neue Lead-E-Mail) → Agent liest → generiert Draft → Draft in Gmail → Mensch prueft, editiert, sendet.
+3. DSGVO-Datensparsamkeit — nur Body + Betreff in den Agent-Kontext; vollstaendige Header mit PII minimieren.
+4. Human-Approval-Gate — kein Versand ohne menschliche Freigabe.
 Artefakt: Ein Gmail-Integrations-Konzept mit Scopes, Workflow-Skizze, DSGVO-Regel und Human-Approval-Gate.
 Fallstricke:
 - gmail.send-Scope mitbeantragen → Dieser Scope erlaubt dem Agenten, E-Mails zu senden, ohne dass ein Mensch sie liest; explizit nur gmail.compose erlauben und gmail.send im IT-Briefing als verboten markieren.
 - Vollständige E-Mail-Header (CC-Liste, Reply-To, alle Empfänger) in den Agent-Kontext laden → Nur E-Mail-Body und Betreff sind für die Draft-Generierung nötig; vollständige Header erhöhen PII-Exposure ohne Mehrwert.
+Empfehlung: Den gmail.send-Scope niemals beantragen — er erlaubt Versand ohne menschliche Pruefung; nur gmail.compose erlauben und gmail.send im IT-Briefing als verboten markieren. Nur E-Mail-Body und Betreff in den Agent-Kontext laden, nicht die vollstaendigen Header (CC/Reply-To/alle Empfaenger), die PII-Exposure ohne Mehrwert erhoehen.
 Anschluss: S-IM-044
 
 ### S-IM-044 Integration-Governance-Playbook für den gesamten Marketing-Workspace erstellen
@@ -990,12 +999,15 @@ Vorgehen:
 2. Du lässt diese Standards in eine 16-Punkte-Checkliste übersetzen, die für jede neue Integration abgearbeitet wird, bevor die IT die Verbindung produktiv schaltet.
 3. Du lässt eine einseitige Playbook-Zusammenfassung erstellen, die beim IT-Onboarding-Gespräch als gemeinsames Referenzdokument dient.
 4. Du übergibst das Playbook an IT, Marketing-Ops und Workspace-Admin; das Playbook wird im Wissensordner des Workspace-Admin-Agenten hinterlegt.
-Prompt:
-> "Du bist mein Integration-Governance-Berater (Persona). Erstelle ein Integration-Governance-Playbook mit einer 16-Punkte-Checkliste und einer einseitigen Onboarding-Zusammenfassung für alle zukünftigen Langdock-Integrationen (Aufgabe). Kontext: Mindeststandards aus Integrationen HubSpot, SharePoint, MCP-Server, Zapier-Brücken; DSGVO-konformes EU-Hosting; Advisory-Grenze ist nicht verhandelbar (Kontext). Format: Checkliste als nummerierte Liste mit Prüfpunkt und Begründung; Zusammenfassung als Absatz mit drei Schlüsselregeln (Format)."
+Vorlage: Integration-Governance-Playbook (16-Punkte-Checkliste):
+1. Mindeststandards — Advisory-Grenze, Scope-Minimalitaet, Owner-Benennung, Service-Account statt Person, API-Key-Rotation, Monitoring-Canary, Datenschutz-Governance.
+2. Checkliste — je Pruefpunkt + Begruendung, abzuarbeiten bevor die IT eine Verbindung produktiv schaltet.
+3. Onboarding-Zusammenfassung — einseitig, drei Schluesselregeln; im Wissensordner des Workspace-Admin-Agenten.
 Artefakt: Ein Integration-Governance-Playbook (16-Punkte-Checkliste) und eine einseitige Onboarding-Zusammenfassung.
 Fallstricke:
 - Playbook als einmalig abgehaktes Dokument behandeln → Integrationsstandards müssen bei jedem neuen Tool erneut angewendet werden; das Playbook als lebende Checkliste im Wissensordner pflegen und bei neuen Erkenntnissen aktualisieren.
 - Advisory-Grenze im Playbook abschwächen → Die Regel "Little Data konfiguriert keine Integrationen" ist nicht verhandelbar; sie explizit als unveränderlichen Grundsatz in der Playbook-Einleitung verankern.
+Empfehlung: Das Playbook als lebende Checkliste im Wissensordner pflegen und bei jedem neuen Tool erneut anwenden — ein einmalig abgehaktes Dokument verfehlt seinen Zweck. Die Advisory-Grenze ('Little Data konfiguriert keine Integrationen') als unveraenderlichen Grundsatz in der Playbook-Einleitung verankern, nie abschwaechen.
 Anschluss: S-IM-045
 
 ### S-IM-045 Integrationslandschaft für einen Audit vorbereiten und dokumentieren
@@ -1009,12 +1021,15 @@ Vorgehen:
 2. Du lässt je Eintrag die Audit-Pflichtfelder ausfüllen: Systemname, Datenfluss-Richtung (lesen/schreiben), verarbeitete Datenkategorie (anonym/PII/besondere Kategorie), DSGVO-Rechtsgrundlage (Art. 6 Abs. 1), Löschfrist, Verantwortlicher.
 3. Du lässt einen Hinweis einarbeiten, dass das Verzeichnis als lebendes Dokument im Wissensordner gepflegt wird und bei jeder neuen oder geänderten Integration aktualisiert werden muss.
 4. Du übergibst das Verzeichnis an den Datenschutzbeauftragten und die IT; tiefergehende Compliance-Fragen werden an die Schwesterdatei `08-sicherheit-und-governance` übergeben.
-Prompt:
-> "Du bist mein Datenschutz-Audit-Berater (Persona). Erstelle ein Integrations-Audit-Verzeichnis für alle aktiven Langdock-Integrationen unseres Marketing-Workspace auf Basis unseres Integrations-Inventars im Wissensordner (Aufgabe). Kontext: externer Audit in zwei Wochen, DSGVO-Artikel-30-konformes Format, EU AI Act Inventory als Ergänzungspflicht (Kontext). Format: Tabelle mit Spalten Systemname, Datenfluss-Richtung, Datenkategorie, Rechtsgrundlage, Löschfrist, Verantwortlicher, letzter Review; plus Hinweis zur Pflege als lebendes Dokument (Format)."
+Vorlage: Integrations-Audit-Verzeichnis (DSGVO Art. 30):
+1. Inventar — jede aktive Verbindung (native/MCP/HTTP-Bruecke/Synced Folder) als eigener Eintrag.
+2. Pflichtfelder je Eintrag — Systemname, Datenfluss-Richtung (lesen/schreiben), Datenkategorie (anonym/PII/besondere Kategorie), DSGVO-Rechtsgrundlage (Art. 6 Abs. 1), Loeschfrist, Verantwortlicher, letzter Review.
+3. Pflege — lebendes Dokument; bei jeder neuen/geaenderten Integration aktualisieren; Tiefe an 08-sicherheit-und-governance.
 Artefakt: Ein Integrations-Audit-Verzeichnis (Tabelle) nach DSGVO-Artikel-30-Struktur mit Pflegehinweis.
 Fallstricke:
 - Verzeichnis einmalig erstellen und nie aktualisieren → Ohne regelmäßige Aktualisierung ist das Verzeichnis beim nächsten Audit bereits veraltet; einen festen Quartals-Review-Termin im Kalender verankern und den Datenschutzbeauftragten einbeziehen.
 - Compliance-Detailfragen (DPIA-Pflicht, AI-Act-Risikoklassen) im Integrationsverzeichnis mitbeantworten → Diese Tiefe gehört in die Governance-Beratung in `08-sicherheit-und-governance`; hier wird das Verzeichnis erstellt, nicht das gesamte Compliance-Framework.
+Empfehlung: Einen festen Quartals-Review-Termin im Kalender verankern und den Datenschutzbeauftragten einbeziehen — ein einmalig erstelltes Verzeichnis ist beim naechsten Audit bereits veraltet. Compliance-Detailfragen (DPIA-Pflicht, AI-Act-Risikoklassen) nicht hier mitbeantworten, sondern an die Governance-Beratung (08-sicherheit-und-governance) uebergeben.
 Anschluss: S-IM-046
 
 ### S-IM-046 Confluence MCP-Server für interne Wissensabfragen anbinden
@@ -1028,12 +1043,14 @@ Vorgehen:
 2. Du lässt den Anbindungsweg klären: Atlassian bietet offizielle MCP-Server für Confluence an; Authentifizierung über ein Service-Account-API-Token (nicht über persönliche Mitarbeiter-Tokens).
 3. Du lässt verbotene Operationen explizit sperren: Seiten erstellen, bearbeiten, löschen und Kommentare hinterlassen sind für den Marketing-Agenten nicht nötig — nur Read- und Search-Tools freigeben.
 4. Du übergibst das Briefing an den Confluence-Administrator und die IT; Little Data berät, konfiguriert keine MCP-Verbindungen.
-Prompt:
-> "Du bist mein Confluence-Integrations-Berater (Persona). Erstelle ein MCP-Anbindungs-Briefing für unseren Marketing-Agenten, der Confluence-Seiten lesen und durchsuchen soll (Aufgabe). Kontext: freigegebene Spaces PRODUCT und MARKETING; kein Schreibzugriff; Atlassian Cloud; Service-Account-API-Token (Kontext). Format: Briefing mit Abschnitten Space-Freigabeliste, freigegebene MCP-Tools, gesperrte Operationen, Authentifizierungsweg (Format)."
+MCP: Confluence-MCP-Server (offizieller Atlassian-MCP); Auth ueber ein Service-Account-API-Token (nicht persoenliche Mitarbeiter-Tokens).
+Tool: Nur Read- und Search-Tools (Read Page Content, Search Spaces); Seiten erstellen/bearbeiten/loeschen/kommentieren sperren.
+Scope: Positivliste freigegebener Spaces (PRODUCT/MARKETING/COMPETITIVE); alle anderen explizit ausschliessen; User-Confirmation fuer Space-uebergreifende Suchen.
 Artefakt: Ein Confluence-MCP-Anbindungs-Briefing mit Space-Freigabeliste, zugelassenen Tools und Authentifizierungsweg.
 Fallstricke:
 - Alle Confluence-Spaces pauschal freigeben → Spaces wie HR oder Finance enthalten sensible Mitarbeiterdaten; immer eine explizite Positivliste freigegebener Spaces dokumentieren.
 - Persönliche Mitarbeiter-API-Tokens verwenden → Bei Kündigung oder Passwort-Rotation bricht die MCP-Verbindung ab; immer einen dedizierten Service-Account mit eigenem API-Token als Verbindungsinhaber benennen.
+Empfehlung: Niemals alle Confluence-Spaces pauschal freigeben — Spaces wie HR oder Finance enthalten sensible Mitarbeiterdaten; immer eine explizite Positivliste freigegebener Spaces dokumentieren. Einen dedizierten Service-Account mit eigenem API-Token als Verbindungsinhaber benennen, da persoenliche Mitarbeiter-Tokens bei Kuendigung/Passwort-Rotation die MCP-Verbindung abreissen lassen.
 Anschluss: S-IM-047
 
 ### S-IM-047 Trello- und Asana-Projektmanagement-Integration für Kampagnenplanung advisory einordnen
@@ -1046,12 +1063,15 @@ Vorgehen:
 1. Du lässt Little Data den Anbindungsweg je Tool prüfen: Trello bietet eine REST-API (HTTP-Brücke via Custom Integration Builder); Asana verfügt über einen offiziellen MCP-Server — je Tool den einfachsten Weg benennen.
 2. Du lässt die Read-Scopes definieren: Boards und Karten lesen (Trello), Tasks und Projekte lesen (Asana) — keine Schreib-, Verschiebbe- oder Lösch-Operationen.
 3. Du lässt die Governance-Regel einarbeiten: Der Agent meldet offene Tasks und Deadlines, aber Status-Updates und Priorisierungen verbleiben ausschließlich bei den Projektverantwortlichen.
-Prompt:
-> "Du bist mein Projektmanagement-Integrations-Berater (Persona). Erstelle eine Anbindungs-Einschätzung für Trello und Asana an unseren Koordinations-Agenten in Langdock (Aufgabe). Kontext: Kampagnenplanung in Trello, Redaktionsplan in Asana; Agent soll nur lesen, nie schreiben; DSGVO-konformes Hosting (Kontext). Format: Tabelle mit Tool, Anbindungsweg, benötigte Read-Scopes, gesperrte Operationen, Governance-Regel (Format)."
+Vorlage: Projektmanagement-Anbindungs-Einschaetzung (Trello/Asana):
+1. Anbindungsweg je Tool — Trello: REST-API (HTTP-Bruecke via Custom Builder); Asana: offizieller MCP-Server.
+2. Read-Scopes — Boards/Karten lesen (Trello), Tasks/Projekte lesen (Asana); keine Schreib-/Verschiebe-/Loesch-Operationen.
+3. Governance — Agent meldet offene Tasks/Deadlines; Status-Updates/Priorisierungen bleiben bei den Projektverantwortlichen.
 Artefakt: Eine Projektmanagement-Anbindungs-Einschätzung (Tabelle) mit Anbindungsweg, Read-Scopes und Governance-Regel je Tool.
 Fallstricke:
 - Schreib-Scopes mitbeantragen "für spätere Erweiterungen" → Scope-Creep erhöht das Risiko versehentlicher Task-Änderungen durch den Agenten; nur die heute benötigten Read-Scopes beantragen.
 - Trello und Asana gleichzeitig als vollwertige Quellen anbinden ohne Source-of-Truth-Klärung → Widersprüchliche Task-Zustände in beiden Systemen erzeugen inkonsistente Agent-Antworten; pro Kampagnen-Phase das führende System festlegen.
+Empfehlung: Keine Schreib-Scopes 'fuer spaetere Erweiterungen' mitbeantragen — Scope-Creep erhoeht das Risiko versehentlicher Task-Aenderungen; nur die heute noetigen Read-Scopes anfordern. Pro Kampagnen-Phase ein fuehrendes System (Trello oder Asana) festlegen, sonst erzeugen widerspruechliche Task-Zustaende in beiden inkonsistente Agent-Antworten.
 Anschluss: S-IM-048
 
 ### S-IM-048 Microsoft-Teams-Benachrichtigungs-Integration für Kampagnen-Alerts konzipieren
@@ -1064,12 +1084,16 @@ Vorgehen:
 1. Du lässt Little Data den Anbindungsweg klären: Teams-Benachrichtigungen laufen über Microsoft Graph API (Kanal-Nachrichten posten) oder über Incoming Webhooks — Incoming Webhooks sind der einfachere Einstieg ohne App-Registrierung.
 2. Du lässt das Nachrichtenformat entwerfen: Kampagnen-Name, Status-Update, Verantwortlicher, nächste Deadline — maximal drei Sätze, kein Marketing-Jargon.
 3. Du lässt die Schnittstellengrenze klar benennen: Die Integrations-Konfiguration (Webhook-URL, Auth) ist IT-Aufgabe; wann und durch welches Ereignis die Nachricht ausgelöst wird, ist Workflow-Thema.
-Prompt:
-> "Du bist mein Microsoft-Teams-Integrations-Berater (Persona). Entwirf ein Teams-Benachrichtigungs-Konzept für Kampagnen-Alerts aus unserem Langdock-Workspace (Aufgabe). Kontext: Ziel-Kanal #marketing-kampagnen; Incoming Webhook als Einstieg; DSGVO-konformes EU-Hosting; Trigger-Logik gehört in die Workflow-Beratung (Kontext). Format: Konzept mit Abschnitten Anbindungsweg, Nachrichtenformat-Vorlage, Authentifizierungs-Hinweis, Schnittstellengrenze zu Workflows (Format)."
+Vorlage: Microsoft-Teams-Benachrichtigungs-Konzept:
+1. Anbindungsweg — Microsoft Graph API (Kanal-Nachrichten) oder Incoming Webhooks (einfacherer Einstieg ohne App-Registrierung).
+2. Nachrichtenformat — Kampagnen-Name, Status-Update, Verantwortlicher, naechste Deadline (max. drei Saetze, kein Jargon; optional Adaptive Card).
+3. Auth — OAuth-App im Azure-AD-Tenant bzw. Webhook-URL.
+4. Schnittstellengrenze — Konfiguration ist IT-Aufgabe; wann ausgeloest gehoert in 04-workflows.
 Artefakt: Ein Teams-Benachrichtigungs-Konzept mit Nachrichtenformat-Vorlage und Schnittstellengrenze zu Workflows.
 Fallstricke:
 - Trigger-Logik ("wann posten") in der Integrationsberatung mitlösen → Die Auslöse-Bedingungen gehören in den Workflow-Builder (`04-workflows`); sie hier zu spezifizieren erzeugt Governance-Konflikte.
 - Incoming Webhook ohne Ablauf-Monitoring einrichten → Teams-Webhooks können ohne Vorwarnung deaktiviert werden; einen IT-Owner für die Webhook-Gesundheitsprüfung benennen und einen monatlichen Canary-Test einplanen.
+Empfehlung: Die Trigger-Logik ('wann posten') nicht in der Integrationsberatung mitloesen — die Ausloese-Bedingungen gehoeren in den Workflow-Builder (04-workflows); sie hier zu spezifizieren erzeugt Governance-Konflikte. Einen IT-Owner fuer die Webhook-Gesundheitspruefung benennen und einen monatlichen Canary-Test einplanen, da Teams-Incoming-Webhooks ohne Vorwarnung deaktiviert werden koennen.
 Anschluss: S-IM-049
 
 ### S-IM-049 YouTube-Analytics-MCP für Performance-Reporting des Video-Kanals einrichten
