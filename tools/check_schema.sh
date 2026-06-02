@@ -40,6 +40,8 @@ check_one() {
     11-persona-core*|12-persona-julia-modus*) kind="persona" ;;
     13-data-agent-anweisungen*) kind="anweisung" ;;
     15-glossar*) kind="glossar" ;;
+    18-quellen*|18-links*|*-deeplinks*) kind="links" ;;
+    19-iwmedien*|20-iw-medien*) kind="iw-brand" ;;
   esac
 
   # H1: exactly one
@@ -109,6 +111,31 @@ check_one() {
     fi
   fi
 
+  # Links kind (file 18): a domain-clustered catalogue of external links + search contexts
+  # that RAG surfaces so the agent can point to authoritative deep-links. Requires ≥4 cluster
+  # H2 sections and ≥15 markdown links to http(s) URLs.
+  if [ "$kind" = "links" ]; then
+    local clusters; clusters=$(grep -cE '^## ' "$file")
+    local links; links=$(grep -coE '\]\(https?://' "$file")
+    if [ "$clusters" -lt 4 ]; then
+      echo "[FAIL] $name: domain cluster H2 sections = $clusters (expected ≥4)"
+      fail=1
+    fi
+    if [ "$links" -lt 15 ]; then
+      echo "[FAIL] $name: external links = $links (expected ≥15)"
+      fail=1
+    fi
+    local file_lines; file_lines=$(wc -l < "$file")
+    local file_bytes; file_bytes=$(wc -c < "$file")
+    if [ "$fail" -eq 0 ]; then
+      echo "[PASS] $name: $file_lines lines / $file_bytes bytes / $clusters Cluster, $links Links"
+      return 0
+    else
+      echo "[FAIL] $name: $file_lines lines / $file_bytes bytes / $clusters Cluster, $links Links"
+      return 1
+    fi
+  fi
+
   # Scenario-H2 section — name varies by kind
   local szen_h2_re
   if [ "$kind" = "persona" ]; then
@@ -127,45 +154,66 @@ check_one() {
   # H3 scenario count threshold by kind:
   #   content files (00-10): ≥40 (pivot 2026-05-31: full source-grounded rebuild; current target 80).
   #   persona files (11/12): ≥20 (per build-plan Phase-2 gate — different scale than content scenarios).
+  #   IW supplement files (14/16/17): ≥20 (client-specific scenario packs).
   local szen_min=40
   if [ "$kind" = "persona" ]; then szen_min=20; fi
+  case "$name" in 14-*|16-*|17-*) szen_min=20 ;; esac
+  # iw-brand (file 19/20): R7 advice-style file — boutique scale, decision-focused;
+  # threshold deliberately low so the file stays chunk-optimised (R13) and on-topic (R14).
+  if [ "$kind" = "iw-brand" ]; then szen_min=5; fi
   local szen_count; szen_count=$(grep -c '^### S-' "$file")
   if [ "$szen_count" -lt "$szen_min" ]; then
     echo "[FAIL] $name: scenario count = $szen_count (expected ≥$szen_min)"
     fail=1
   fi
 
-  # Mandatory field lines per scenario
-  # NOTE: Critical-Thinking-Method is intentionally NOT a visible field —
-  # per spec §6.2, methods M01-M13 are used as authoring + testing scaffolding,
-  # not output content.
-  # Vorgehen step-count is flexible: spec says "3-5" but authors emit e.g. "(4 Schritte)".
-  local fields=(
-    "Wann nutzen (Trigger):"
-    "Strategisches Ziel:"
-    "Hands-on Ergebnis:"
-    "Eingesetzte Langdock-Fähigkeit"
-    "Erwartetes Artefakt:"
-    "Fallstricke"
+  # Mandatory field lines per scenario.
+  # R19: each field accepts BOTH the verbose markdown marker AND the terse
+  # line-anchored marker (Trigger: / Ziel: / ...). During migration both forms
+  # coexist; once all files are terse the verbose alternatives can be dropped.
+  # NOTE: M01-M13 stay invisible authoring scaffolding (R5) EXCEPT where a
+  # critical-thinking scenario makes the method its explicit subject (R20.3).
+  # field label | ERE matching verbose-or-terse at start of line
+  local field_res=(
+    "Trigger|^(\*\*Wann nutzen \(Trigger\):|Trigger:)"
+    "Ziel|^(\*\*Strategisches Ziel:|Ziel:)"
+    "Ergebnis|^(\*\*Hands-on Ergebnis:|Ergebnis:)"
+    "Fähigkeit|^(\*\*Eingesetzte Langdock-Fähigkeit|Fähigkeit:)"
+    "Artefakt|^(\*\*Erwartetes Artefakt:|Artefakt:)"
+    "Fallstricke|^(\*\*Fallstricke|Fallstricke:)"
   )
-  for field in "${fields[@]}"; do
-    local field_count; field_count=$(grep -cF "**${field}" "$file")
+  for pair in "${field_res[@]}"; do
+    local label="${pair%%|*}"; local re="${pair#*|}"
+    local field_count; field_count=$(grep -cE "$re" "$file")
     if [ "$field_count" -lt "$szen_count" ]; then
-      echo "[WARN] $name: '${field}' appears $field_count times (expected ≥$szen_count)"
-      # Warning, not hard fail — some scenarios may use the field in prose
+      echo "[WARN] $name: '${label}' appears $field_count times (expected ≥$szen_count)"
     fi
   done
 
-  # Example field — accept either Beispiel-Prompt or Beispiel-Konversation
-  local example_count; example_count=$(grep -cE '^\*\*Beispiel-(Prompt|Konversation)' "$file")
+  # Slot-6 payload (R18/R19/R7b) — the solution-type field. Accept verbose
+  # Beispiel-Prompt|Konversation|Konkrete Empfehlung OR any terse type marker:
+  # Prompt: API: MCP: Skill: Code: Workflow: Pfad: Empfehlung: Vorlage:
+  local example_count; example_count=$(grep -cE '^(\*\*(Beispiel-(Prompt|Konversation)|Konkrete Empfehlung)|(Prompt|Konversation|API|MCP|Skill|Code|Workflow|Pfad|Empfehlung|Vorlage):)' "$file")
   if [ "$example_count" -lt "$szen_count" ]; then
-    echo "[WARN] $name: 'Beispiel-Prompt/Konversation' appears $example_count times (expected ≥$szen_count)"
+    echo "[WARN] $name: slot-6 payload (Prompt/API/MCP/Skill/Code/Workflow/Pfad/Empfehlung/Vorlage or verbose) appears $example_count times (expected ≥$szen_count)"
   fi
 
-  # Vorgehen field — accept any step count, e.g. "Vorgehen (3 Schritte):", "Vorgehen (3-5 Schritte):"
-  local vorgehen_count; vorgehen_count=$(grep -cE '^\*\*Vorgehen \([0-9]+(-[0-9]+)? Schritte?\):\*\*' "$file")
+  # Konkrete Empfehlung (R7a) — universal field. SOFT WARN during rollout.
+  # Accept verbose **Konkrete Empfehlung: OR terse Empfehlung: (the latter also
+  # serves as the D-type slot-6 payload, per R19).
+  case "$kind" in
+    content|persona)
+      local emp_count; emp_count=$(grep -cE '^(\*\*Konkrete Empfehlung:|Empfehlung:)' "$file")
+      if [ "$emp_count" -lt "$szen_count" ]; then
+        echo "[WARN] $name: R7a Empfehlung coverage: $emp_count/$szen_count scenarios"
+      fi
+      ;;
+  esac
+
+  # Vorgehen field — verbose "Vorgehen (N Schritte):" OR terse "Vorgehen:".
+  local vorgehen_count; vorgehen_count=$(grep -cE '^(\*\*Vorgehen \([0-9]+(-[0-9]+)? Schritte?\):\*\*|Vorgehen:)' "$file")
   if [ "$vorgehen_count" -lt "$szen_count" ]; then
-    echo "[WARN] $name: 'Vorgehen (N Schritte):' appears $vorgehen_count times (expected ≥$szen_count)"
+    echo "[WARN] $name: 'Vorgehen' appears $vorgehen_count times (expected ≥$szen_count)"
   fi
 
   # NEW: ensure NO Critical-Thinking-Method field leaked into scenarios
