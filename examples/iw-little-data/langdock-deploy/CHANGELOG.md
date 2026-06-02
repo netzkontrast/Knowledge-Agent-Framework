@@ -1,5 +1,35 @@
 # Changelog — Little Data (Langdock Advisor Agent)
 
+## v1.0 — 2026-06-02
+
+Final release — graduates v1.0-Beta after a consolidate-and-validate pass. The knowledge
+content was already complete and CONVERGED at Beta; v1.0 makes the operator deliverables,
+the agent's self-description, and the packaging current and trustworthy.
+
+### Operator deliverables brought current to the 20-file base
+- **INSTALL.md:** uploads all **20** files (was 15); quotes **1,106** scenarios (was 990+);
+  **15** conversation starters (was 10); adds **Test 5 (IW-routing)** and **Test 6 (HITL)**
+  to the deployment canaries (now 6 total).
+- **CONVERSATION_STARTERS.md:** 10 → **15** — five IW-layer starters routing to files
+  14/16/17/19 and the glossar (15).
+- **MAINTENANCE.md:** full gate suite + 6-canary re-run in the quarterly cadence; v1.0 log row.
+
+### Agent self-description
+- **Glossar (15):** +9 source-grounded entries for the IW deliverable formats files 14/17
+  ship (Faktenblatt, Gastbeitrag/Op-Ed, Karussell-Post, Leichte Sprache, Methodenkasten,
+  Pressespiegel, Sharepic, Sprechzettel, Zitatkachel) — **114 → 123 terms**.
+- **AGENT_PROMPT.md:** added the IW-Fachebene + HITL calibration example (routing to file 14,
+  manual-release framing); **14,925 / 15,000** chars.
+
+### Quality
+- All 20 files PASS schema; grounding clean; chunks in [600, 4096] B; coherence PASS;
+  emoji-free; marker-spacing 0. Spec-panel review: **CONVERGED** (0 critical, 0 major).
+
+### Roadmap (not in this release)
+- **v2.0** is specified in `docs/superpowers/plans/2026-06-02-knowledge-v2.0-roadmap.md`:
+  an offline RAG simulator (`tools/rag_sim/`) + a behavioral run-book, and the self-improving
+  "maxbuild" architecture (Workflows + Agents + MCP + Skills, own RAG pipeline).
+
 ## v1.0-Beta — 2026-06-02
 
 Knowledge-base v2 deep revision. Builds on v1.0; adds the IW-tailored layers and the

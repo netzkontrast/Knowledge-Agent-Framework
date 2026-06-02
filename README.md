@@ -63,7 +63,7 @@ an example, or set `KNOWLEDGE_DIR=examples/<name>/langdock-deploy/knowledge`.
 `examples/iw-little-data/` is a complete, deployed knowledge agent — **"Little Data"**, a
 German-language Langdock advisor for the Institut der deutschen Wirtschaft: 20 knowledge files
 (1,106 source-grounded scenarios across content, persona, anweisung, and glossar kinds), a
-calibrated system prompt, and a packaged v1.0-Beta release. It is the worked proof of every
+calibrated system prompt, and a packaged v1.0 release. It is the worked proof of every
 step in `CLAUDE.md`.
 
 ## License
