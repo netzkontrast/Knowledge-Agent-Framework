@@ -639,12 +639,17 @@ Vorgehen:
 3. Bewerte die Datenpfade: Welche Daten verlassen das Unternehmensnetz? (Prompts an Modell-Provider) Wo liegen sie? (EU-Hosting, Zero-Data-Retention Policy) Welche bleiben intern? (BYOC/BYOM-Szenarien).
 4. Identifiziere residuale Risiken: API-Key-Rotation-Frequenz, Abwesenheit von IP-Whitelisting ohne Static-IP-Feature, Risiko bei kompromittierten Keys.
 5. Formuliere eine Security-Empfehlung: Static IP aktivieren, 90-Tage-Key-Rotation mandatory, Audit Logs in SIEM integrieren.
-Prompt:
-> "Du bist ein IT-Security-Auditor. Unser CISO braucht vor dem Enterprise-Rollout von Langdock auf 200 Nutzer ein API-Sicherheits-Audit-Dokument. Erstelle es. Dokumentiere: alle genutzten API-Endpoints und deren Zweck, die Authentifizierungsarchitektur (Bearer Token, BFF-Pattern, CORS-Block), die Datenpfade (EU-Hosting, Zero-Data-Retention), und residuale Risiken. Liefere abschließend 5 konkrete Sicherheitsempfehlungen. Formatiere formal wie ein IT-Sicherheitsbericht."
+Vorlage: API-Sicherheits-Audit (Enterprise-Rollout 200 Nutzer):
+1. Endpoint-Inventar — Completion/Knowledge-Folder/Usage-Export/Audit-Logs/Agent API je mit Zweck, Auth (Bearer Token), Datensensitivitaet.
+2. Auth-Architektur — Workspace-Level-Keys, keine Client-Side-Exposition (CORS-Block), BFF fuer alle Web-Integrationen.
+3. Datenpfade — was verlaesst das Netz (Prompts an Provider, EU-Hosting, Zero-Data-Retention), was bleibt intern (BYOC/BYOM).
+4. Residualrisiken — Key-Rotation, fehlendes IP-Whitelisting ohne Static-IP, kompromittierte Keys.
+5. Empfehlungen — Static IP aktivieren, 90-Tage-Rotation mandatory, Audit Logs ins SIEM.
 Artefakt: Ein formelles API-Sicherheits-Audit-Dokument (Endpoint-Inventar, Authentifizierungsarchitektur, Datenpfad-Analyse, Risikoübersicht, Empfehlungen).
 Fallstricke:
 - Der Audit-Bericht listet Risiken auf, ohne zwischen "akzeptablem Restrisiko bei Standardkonfiguration" und "kritischem Risiko ohne Sofortmaßnahme" zu unterscheiden — damit ist er für den CISO nicht entscheidungsfähig.
 - Das Dokument behandelt die Zero-Data-Retention Policy als absolute Garantie, ohne darauf hinzuweisen, dass diese Policy modellabhängig ist und bei BYOC/BYOM separat mit dem jeweiligen Provider verifiziert werden muss.
+Empfehlung: Jedes Risiko klar als 'akzeptables Restrisiko bei Standardkonfiguration' oder 'kritisch ohne Sofortmassnahme' einstufen — ein undifferenzierter Risiko-Katalog ist fuer den CISO nicht entscheidungsfaehig. Die Zero-Data-Retention nicht als absolute Garantie darstellen: sie ist modellabhaengig und bei BYOC/BYOM separat mit dem jeweiligen Provider zu verifizieren.
 Anschluss: S-API-026
 
 ### S-API-026 Streaming API für Echtzeit-KPI-Dashboards
@@ -658,12 +663,16 @@ Vorgehen:
 2. Beschreibe den serverseitigen Durchreicheprozess: das interne BFF-Backend öffnet eine SSE-Verbindung zum Langdock-Completion-Endpoint und leitet jeden empfangenen Chunk sofort an den Browser weiter — kein Puffern.
 3. Definiere die Fehlerbehandlung: bei Verbindungsabbruch nach Beginn des Streams muss die UI den unvollständigen Text klar als abgebrochen markieren, nicht als fertig; ein "Retry"-Button ist Pflicht.
 4. Weise auf die Browser-Limit-Falle hin: ältere HTTP/1.1-Browser erlauben maximal 6 gleichzeitige SSE-Verbindungen pro Domain — bei mehreren Dashboard-Kacheln kann dies zu Queue-Effekten führen.
-Prompt:
-> "Du bist ein Backend-Architekt. Unser internes Marketing-Dashboard soll KI-Kommentare zu Kampagnen-KPIs per Streaming anzeigen, statt 10 Sekunden auf den vollen Text zu warten. Erkläre, wie wir den Langdock Completion-Endpoint im Streaming-Modus via Server-Sent Events nutzen. Wie reicht unser Node.js-BFF die SSE-Chunks zum Browser durch? Nenne das 100-Sekunden-Timeout-Risiko bei Non-Streaming und erkläre die Fehlerbehandlung bei abgebrochenen Streams. Liefere ein Architektur-Konzept als strukturierte Stichpunktliste."
+Vorlage: Streaming-Architektur-Konzept (SSE im Dashboard):
+1. Unterschied — Non-Streaming riskiert das 100-s-Timeout; Streaming sendet Token-fuer-Token via Server-Sent Events, kein Gesamt-Timeout.
+2. Durchreichen — BFF oeffnet SSE zum Completion-Endpoint und leitet jeden Chunk sofort weiter (kein Puffern).
+3. Fehlerbehandlung — Abbruch nach Stream-Start: UI markiert Text als abgebrochen (nicht fertig), Retry-Button Pflicht.
+4. Browser-Limit — HTTP/1.1 erlaubt max. 6 parallele SSE-Verbindungen/Domain → Queue-Effekte bei vielen Kacheln.
 Artefakt: Ein Architektur-Konzept (SSE-Datenfluss, Fehlerbehandlung, Browser-Limits) als IT-Briefing.
 Fallstricke:
 - Das Konzept empfiehlt, den Stream direkt vom Browser an Langdock zu öffnen — dies scheitert an der CORS-Posture von Langdock und legt den API-Key im Frontend offen.
 - Die Fehlerbehandlung wird vergessen: ein abgebrochener Stream hinterlässt einen halb fertigen Text im UI, den Nutzer fälschlicherweise als vollständige KI-Antwort interpretieren.
+Empfehlung: Den SSE-Stream immer ueber das BFF fuehren, nie direkt vom Browser — Letzteres scheitert an der CORS-Posture und legt den API-Key offen. Einen abgebrochenen Stream in der UI eindeutig als unvollstaendig markieren plus Retry-Button, sonst lesen Nutzer einen halbfertigen Text als vollstaendige Antwort.
 Anschluss: S-API-027
 
 ### S-API-027 Multi-Region-Deployment für DACH und EU-Zweigstellen
@@ -677,8 +686,7 @@ Vorgehen:
 2. Bewerte die Ein-Workspace-Option: solange keine personenbezogenen CH-Kundendaten verarbeitet werden, ist ein gemeinsamer EU-Workspace für alle DACH-Entitäten vertretbar — Kostenvorteil und einfachere Administration.
 3. Bewerte die Zwei-Workspace-Option: wenn die CH-Tochter personenbezogene Daten im Workspace verarbeitet, kann ein separater CH-Workspace mit dediziertem EU-Hosting-Nachweis die Nachweislast gegenüber dem EDÖB vereinfachen.
 4. Empfehle einen Entscheidungsbaum: Enthält der Workspace personenbezogene Daten von CH-Kunden? Nein → ein Workspace reicht. Ja → DSB und Rechtabteilung einbeziehen, Standardvertragsklauseln prüfen.
-Prompt:
-> "Du bist ein Datenschutz-Berater für DACH-Unternehmen. Wir haben Marketing-Teams in DE, AT und einer Schweizer Tochtergesellschaft. Alle nutzen denselben Langdock-Workspace. Ist das DSGVO- und DSG-Schweiz-konform? Wann brauchen wir separate Instanzen? Erkläre die Rolle des EDÖB-Adäquanzentscheids und der Standardvertragsklauseln. Liefere eine Entscheidungsvorlage mit Empfehlung und regulatorischer Begründung."
+Empfehlung: Entscheidungsbaum: Verarbeitet der Workspace personenbezogene Daten von CH-Kunden? Nein → ein gemeinsamer EU-Workspace (Frankfurt) deckt DSGVO fuer DE/AT ab und ist auch fuer die CH-Tochter vertretbar (Kostenvorteil, einfachere Administration). Ja → DSB und Rechtsabteilung einbeziehen, einen separaten CH-Workspace mit dediziertem EU-Hosting-Nachweis erwaegen, Standardvertragsklauseln pruefen. Wichtig: Die Schweiz ist kein EU-Mitglied — DSGVO-Konformitaet erfuellt nicht automatisch die DSG-Schweiz-Anforderungen. Der EDOEB-Adaequanzentscheid (EU als adaequates Schutzniveau) kann jederzeit revidiert werden, daher Standardvertragsklauseln als Backup vorhalten und nicht dauerhaft allein auf die Adaequanz bauen.
 Artefakt: Eine Entscheidungsvorlage (Ein-Workspace vs. Multi-Workspace, regulatorische Begründung, Empfehlung).
 Fallstricke:
 - Das Modell behandelt die Schweiz wie einen EU-Mitgliedstaat und vergisst, dass CH eigene DSG-Anforderungen hat, die nicht automatisch durch DSGVO-Konformität erfüllt sind.
@@ -696,12 +704,16 @@ Vorgehen:
 2. Definiere ein Deprecation-Monitoring: Langdock-Changelog (Changelog-URL oder Developer-Newsletter) wöchentlich auf Deprecation-Notices prüfen; Verantwortlichen im IT-Team benennen.
 3. Entwickle ein Migrations-Scoring: für jedes betroffene Tool — Nutzungsfrequenz × Abhängigkeitstiefe × geschätzter Migrationsaufwand = Prioritäts-Score.
 4. Plane den Migrations-Workflow: Staging-Umgebung auf neuer API-Version testen, parallelen Betrieb für 4 Wochen, dann Cutover mit Rollback-Option.
-Prompt:
-> "Du bist ein IT-Change-Manager. Langdock hat angekündigt, eine API-Version in 6 Monaten abzuschalten. Wir haben 3 interne Tools, die sie nutzen. Erstelle ein Deprecation-Management-Framework: (1) API-Inventar-Template, (2) Monitoring-Prozess für zukünftige Deprecations, (3) Migrations-Playbook mit Prioritäts-Scoring. Erkläre, was bei der Migration von der alten auf die neue Agents API technisch zu beachten ist. Tonfall: operativ, nicht alarmistisch."
+Vorlage: API-Deprecation-Management-Framework:
+1. Versions-Inventar — welche API-Version nutzt welches interne Tool, seit wann, welche Features sind versionsspezifisch.
+2. Monitoring — Langdock-Changelog/Developer-Newsletter woechentlich auf Deprecation-Notices pruefen; Verantwortlichen benennen.
+3. Migrations-Scoring — Nutzungsfrequenz × Abhaengigkeitstiefe × Aufwand = Prioritaet je Tool.
+4. Migrations-Workflow — Staging auf neuer Version, 4 Wochen Parallelbetrieb, dann Cutover mit Rollback.
 Artefakt: Ein Deprecation-Management-Framework (Inventar-Template, Monitoring-Prozess, Migrations-Playbook).
 Fallstricke:
 - Das Framework ignoriert, dass Langdock typischerweise eine Übergangsperiode von mehreren Monaten gewährt — das Team reagiert panisch statt geplant.
 - Das Migrations-Playbook empfiehlt den direkten Cutover ohne Staging-Phase, was bei produktiven Tools zu ungeplanten Ausfällen führt.
+Empfehlung: Die ueblicherweise mehrmonatige Uebergangsperiode einplanen und geplant statt panisch reagieren. Nie direkt cutovern — immer eine Staging-Phase und mehrwoechigen Parallelbetrieb vorschalten, sonst drohen ungeplante Ausfaelle produktiver Tools.
 Anschluss: S-API-029
 
 ### S-API-029 Intranet-Chatbot via Langdock Agent API
@@ -715,12 +727,16 @@ Vorgehen:
 2. Kläre die Nutzerauthentifizierung: nur Mitarbeiter mit aktivem SSO-Login dürfen den BFF-Proxy nutzen; der Langdock API-Key bleibt ausschließlich im BFF-Server in Umgebungsvariablen.
 3. Spezifiziere den Wissensordner-Setup: Brand-Guidelines (PDF), FAQ-Dokumente (Markdown), Kampagnenbriefings (wöchentlich via Knowledge Folder API aktualisiert) — alle Dokumente werden im gleichen Langdock-Wissensordner gebündelt, den der Chatbot-Agent nutzt.
 4. Definiere Nutzungsgrenzen: Rate Limiting auf BFF-Ebene (max. 20 Requests pro Nutzer pro Stunde), um API-Kosten-Ausreißer durch einzelne Heavy-User zu verhindern.
-Prompt:
-> "Du bist ein Enterprise-Architekt. Wir wollen einen internen Chatbot auf unserem Intranet bauen, der auf unseren Langdock-Marketing-Agenten zugreift. 200 Mitarbeiter sollen ihn nutzen, ohne direkt Langdock zu öffnen. Beschreibe die vollständige Architektur: SSO-Authentifizierung, BFF-Pattern, Wissensordner-Anbindung und Rate Limiting. Erkläre explizit, warum direkte Browser-zu-Langdock-Aufrufe nicht möglich sind. Liefere ein Architekturdiagramm als Textform."
+Vorlage: Intranet-Chatbot-Integrationskonzept (Agent API, 200 Nutzer):
+1. Architektur — Intranet-Frontend → eigener BFF (SSO via SAML/OIDC) → Agent API → Wissensordner (Brand-Guidelines, FAQ, Kampagnen).
+2. Auth — nur aktive SSO-Logins duerfen den BFF nutzen; API-Key bleibt ausschliesslich in BFF-Umgebungsvariablen.
+3. Wissensordner — Brand-Guidelines (PDF), FAQ (Markdown), Kampagnenbriefings (woechentlich via Knowledge Folder API) gebuendelt.
+4. Rate Limiting — BFF-seitig max. 20 Requests/Nutzer/Stunde gegen Kosten-Ausreisser.
 Artefakt: Ein Enterprise-Integrationskonzept (Authentifizierungsarchitektur, BFF-Design, Wissensordner-Setup, Rate-Limiting-Strategie).
 Fallstricke:
 - Das Konzept verzichtet auf SSO-Integration und empfiehlt stattdessen eigene Username/Passwort-Verwaltung — dies widerspricht typischen Enterprise-Sicherheitsrichtlinien und schafft ein zusätzliches Credential-Management-Problem.
 - Der BFF-Server implementiert kein Rate Limiting auf Nutzerebene; ein einziger Heavy-User kann den gesamten API-Kostenrahmen des Unternehmens überschreiten.
+Empfehlung: SSO (SAML/OIDC) statt eigener Username/Passwort-Verwaltung nutzen — Letztere widerspricht Enterprise-Sicherheitsrichtlinien und schafft ein zusaetzliches Credential-Problem. Rate Limiting zwingend auf Nutzerebene im BFF setzen, sonst kann ein einzelner Heavy-User den gesamten API-Kostenrahmen sprengen.
 Anschluss: S-API-030
 
 ### S-API-030 Webhook-Empfänger-Architektur für externe Trigger
@@ -734,12 +750,16 @@ Vorgehen:
 2. Erkläre idempotente Verarbeitung: PIM-Systeme können Webhooks bei Netzwerkproblemen mehrfach senden — der Receiver muss anhand der Ereignis-ID prüfen, ob dieser Event bereits verarbeitet wurde, und Duplikate verwerfen.
 3. Definiere den Langdock-Aufruf: nach erfolgreicher Webhook-Validierung sendet der Receiver eine Anfrage an den Langdock Completion- oder Agent-Endpoint, inklusive der relevanten Produktdaten aus dem Webhook-Payload.
 4. Plane die Fehlerbehandlung: bei Langdock-Timeout oder 429-Fehler wird der Job in eine Retry-Queue gelegt (max. 3 Versuche mit Exponential-Backoff); nach dreimaligem Fehlschlag Alert an Marketing-Ops.
-Prompt:
-> "Du bist ein Backend-Architekt. Unser PIM soll bei jedem neuen Produkt einen Webhook senden, der in Langdock eine Produkttext-Generierung auslöst. Skizziere die vollständige Webhook-Receiver-Architektur: Wie prüfen wir die Echtheit des eingehenden Webhooks (HMAC-Signatur)? Wie verhindern wir doppelte Verarbeitung (Idempotenz)? Was passiert bei einem Langdock-Ausfall — Retry-Queue? Liefere ein technisches Konzept als strukturierten Text."
+Vorlage: Webhook-Receiver-Architektur (PIM → Langdock):
+1. Empfang + Auth — PIM sendet HTTP POST an eigenen Receiver; HMAC-SHA256-Signaturpruefung mit Shared Secret.
+2. Idempotenz — anhand der Ereignis-ID pruefen, ob der Event bereits verarbeitet wurde; Duplikate verwerfen.
+3. Langdock-Aufruf — nach Validierung Completion-/Agent-Endpoint mit Produktdaten aus dem Payload.
+4. Fehlerbehandlung — bei Timeout/429 Retry-Queue (max. 3, Exponential-Backoff); danach Alert an Marketing-Ops.
 Artefakt: Ein Webhook-Receiver-Architektur-Konzept (Signaturprüfung, Idempotenz, Fehlerbehandlung, Retry-Queue).
 Fallstricke:
 - Das Konzept vergisst die Webhook-Authentifizierung und akzeptiert jeden eingehenden POST — dies erlaubt es Angreifern, beliebig viele Langdock-Requests auf Unternehmenskosten auszulösen.
 - Idempotenz wird nicht implementiert: bei Netzwerkproblemen sendet das PIM den gleichen Webhook dreimal und erzeugt dreifach-duplizierte Produkttexte im System.
+Empfehlung: Den eingehenden Webhook zwingend per HMAC-Signatur authentifizieren — ein offener Receiver erlaubt Angreifern, beliebig viele Langdock-Requests auf Unternehmenskosten auszuloesen. Idempotenz per Ereignis-ID implementieren, sonst erzeugen mehrfach gesendete Webhooks (Netzwerkprobleme) dreifach duplizierte Produkttexte.
 Anschluss: S-API-031
 
 ### S-API-031 Async-Batch-Job-Muster für nächtliche Massenverarbeitung
@@ -753,12 +773,16 @@ Vorgehen:
 2. Erkläre den Worker-Prozess: ein Worker-Prozess zieht Jobs aus der Queue, sendet die Langdock-API-Anfrage, schreibt das Ergebnis zurück in die Datenbank und markiert den Job als erledigt — maximal 10 parallele Worker, um die 500-RPM-Grenze zu respektieren.
 3. Definiere den Checkpoint-Mechanismus: jeder verarbeitete Job wird sofort in der Datenbank als "done" markiert; bei Systemabsturz kann der Job morgens am letzten Checkpoint fortgesetzt werden, ohne von vorne zu starten.
 4. Plane das morgendliche Reporting plus die HITL-Freigabe-Queue: um 07:00 Uhr generiert ein automatischer Report via Usage Export API die Token-Kosten und listet alle fehlgeschlagenen Jobs auf; die generierten Vorschläge landen mit Diff-Vorschau in einer Freigabe-Queue, und nur explizit freigegebene Artikel werden ins Live-CMS gespielt — keine automatische Live-Aktualisierung.
-Prompt:
-> "Du bist ein Job-Orchestrierungs-Architekt. Wir wollen jeden Sonntag 500 Blog-Artikel via Langdock API nachts prüfen und Verbesserungsvorschläge generieren — die Übernahme ins Live-CMS bleibt an eine HITL-Freigabe am Morgen gebunden. Erkläre das Async-Batch-Job-Muster: Cron-Trigger, Job-Queue, Worker-Prozesse mit Rate-Limit-Kontrolle, Checkpoint-Mechanismus bei Absturz, morgendliches Fehler-Reporting via Usage Export API und eine Freigabe-Queue mit Diff-Vorschau. Die Verarbeitungsphase läuft ohne menschliche Überwachung, jede Live-Änderung erfordert Freigabe. Liefere das Konzept als Architektur-Briefing."
+Vorlage: Async-Batch-Job-Briefing (500 Artikel naechtlich):
+1. Orchestrierung — Cron (So 22:00) liest 500 IDs in eine persistente Job-Queue (Redis/DB).
+2. Worker — max. 10 parallele Worker (respektiert ~500 RPM), Ergebnis in DB, Job als 'done' markieren.
+3. Checkpoint — jeder Job sofort 'done'; bei Absturz am letzten Checkpoint fortsetzen, nicht von vorn.
+4. Morgens (07:00) — Usage-Export-Report (Kosten + Fehljobs); Vorschlaege mit Diff-Vorschau in Freigabe-Queue, nur freigegebene Artikel ins Live-CMS.
 Artefakt: Ein Architektur-Briefing (Job-Queue, Worker-Prozesse, Checkpoint, morgendliches Reporting).
 Fallstricke:
 - Das Konzept verwendet ein synchrones Muster (warte auf jede API-Antwort, bevor du weitermachst) statt asynchroner Worker — bei 500 Artikeln dauert dies Stunden statt Minuten.
 - Es gibt keinen Checkpoint-Mechanismus: bei einem Systemabsturz um 02:00 Uhr müssen alle bereits verarbeiteten 300 Artikel nochmals verarbeitet werden, was Kosten verdoppelt.
+Empfehlung: Asynchrone Worker statt synchroner Verarbeitung verwenden — 500 sequenzielle Wartezyklen dauern Stunden statt Minuten. Einen Checkpoint-Mechanismus zwingend einbauen (jeder Job sofort 'done'), sonst verdoppelt ein naechtlicher Absturz die Kosten durch erneute Verarbeitung; die Live-Uebernahme bleibt an die morgendliche HITL-Freigabe gebunden.
 Anschluss: S-API-032
 
 ### S-API-032 Fehlerbehandlung und Retry-Logik — Beratungskonzept
@@ -772,12 +796,16 @@ Vorgehen:
 2. Beschreibe Exponential-Backoff: bei HTTP 429 zunächst 1 Sekunde warten, dann 2, dann 4, dann 8 — maximal 3 Versuche; bei HTTP 429 den `Retry-After`-Header auslesen, falls vorhanden.
 3. Erkläre Circuit-Breaker-Muster: nach fünf aufeinanderfolgenden Fehlern innerhalb einer Minute den Circuit "öffnen" (alle Requests pausieren für 60 Sekunden) und danach mit einem Test-Request prüfen, ob der Service wieder erreichbar ist.
 4. Definiere Monitoring-Hooks: jeder Retry und jede Circuit-Breaker-Aktivierung wird geloggt; bei mehr als 10 Retries pro Stunde automatisch eine Alert-E-Mail an Marketing-Ops senden.
-Prompt:
-> "Du bist ein Resilience-Engineer. Unsere Langdock-API-Integration hat sporadische 429- und 500-Fehler sowie Timeouts. Erstelle einen Fehlerbehandlungs-Leitfaden für unser Entwicklungsteam. Erkläre: (1) Fehlerklassifikation — welche Fehler sind retrybar? (2) Exponential-Backoff-Strategie mit konkreten Wartezeiten, (3) Circuit-Breaker-Muster, (4) Monitoring-Hooks für automatische Alerts. Liefere das Konzept als strukturierten Leitfaden."
+Vorlage: API-Fehlerbehandlungs-Leitfaden:
+1. Fehlerklassen — 429 (transient, Backoff), 500/503 (transient, kurz warten), 400/401/403 (permanent, kein Retry), Timeout (ambiguous → idempotente Requests).
+2. Exponential-Backoff — 1/2/4/8 s, max. 3 Versuche; bei 429 'Retry-After'-Header auslesen.
+3. Circuit-Breaker — nach 5 Fehlern/Minute Circuit 60 s oeffnen, dann Test-Request.
+4. Monitoring-Hooks — jeden Retry/Circuit-Event loggen; >10 Retries/Stunde → Alert an Marketing-Ops.
 Artefakt: Ein Fehlerbehandlungs-Leitfaden (Fehlerklassen, Retry-Strategie, Circuit-Breaker, Monitoring-Hooks).
 Fallstricke:
 - Das Konzept empfiehlt, auch HTTP-400-Fehler zu retrien — dies ist sinnlos und verschwendet Rate-Limit-Quota, da HTTP 400 auf einen fehlerhaften Request hindeutet, der sich durch Wiederholung nicht verbessert.
 - Der Retry-Mechanismus ignoriert Idempotenz: bei einem Verbindungs-Timeout könnte der erste Request bereits verarbeitet worden sein — blindes Retry erzeugt doppelte Ausgaben.
+Empfehlung: HTTP-400-Fehler nie retrien — sie zeigen einen fehlerhaften Request, den Wiederholung nicht heilt und der nur Rate-Limit-Quota verschwendet. Bei Verbindungs-Timeouts Idempotenz sicherstellen (Idempotency-Key), da der erste Request bereits verarbeitet sein koennte und blindes Retry doppelte Ausgaben erzeugt.
 Anschluss: S-API-033
 
 ### S-API-033 API-Monitoring mit Langfuse und Datadog
