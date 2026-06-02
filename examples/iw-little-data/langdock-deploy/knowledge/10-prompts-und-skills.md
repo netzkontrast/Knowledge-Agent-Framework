@@ -89,6 +89,7 @@ Artefakt: Markdown-Tabelle mit 15 Headlines (geprüfte Zeichenzahl) + 4 Descript
 Fallstricke:
 - Ohne explizite Zeichenzahl-Spalte überschreitet der Agent regelmäßig 30/90 Zeichen – Tabellenspalte ist Pflicht.
 - Library-Dateien werden nicht automatisch aktualisiert; nach jedem Kampagnen-Relaunch die Platzhalter-Datei neu hochladen.
+Empfehlung: Im RSA-Template die Zeichenzahl-Spalte als Pflichtfeld verankern — ohne sie ueberschreitet der Agent regelmaessig die 30/90-Zeichen-Grenzen von Google Ads. Die Library-Datei nach jedem Kampagnen-Relaunch neu hochladen, da Library-Dokumente nicht automatisch aktualisiert werden.
 Anschluss: S-PS-002
 
 ### S-PS-002 {{Variablen}}-System für wiederkehrende Kampagnen-Prompts einführen
@@ -108,6 +109,7 @@ Artefakt: Ausgefüllter LinkedIn-Draft + ein gespeicherter Konversations-Starter
 Fallstricke:
 - Variablen ohne Glossar führen zu inkonsistenten Befüllungen (z.B. {{TONALITAET}} = "gut" statt "sachlich") – Glossar ist Pflicht.
 - Konversations-Starter sind agent-gebunden; bei Agenten-Wechsel Template neu eintragen.
+Empfehlung: Ein Variablen-Glossar (z. B. {{TONALITAET}} = sachlich/inspirierend/provokant) als Pflicht-Begleitdokument fuehren — ohne klare Wertebereiche befuellen Teammitglieder die Platzhalter inkonsistent. Daran denken, dass Konversations-Starter agent-gebunden sind: bei einem Agenten-Wechsel das Template neu eintragen.
 Anschluss: S-PS-003
 
 ### S-PS-003 Team-Prompt-Katalog über Konversations-Starter aufbauen
@@ -121,12 +123,16 @@ Vorgehen:
 2. Normiere alle Prompts auf PTCF-Struktur und benenne sie nach Aufgabentyp (z.B. „SEO-Blogpost erstellen", „Kampagnen-Briefing ausfüllen").
 3. Lege einen neuen Agenten „Marketing-Prompt-Starter" an; trage alle 10 Prompts als Konversations-Starter ein (Langdock-Limit: 255 Zeichen pro Starter-Label → Label kurz halten, vollständiger Prompt im Starter-Body).
 4. Verlinke den Agenten in der Team-Dokumentation und trainiere das Team in einer 30-Minuten-Session.
-Prompt:
-> "Du bist Marketing-Assistent. Erstelle ein strukturiertes Kampagnen-Briefing für [Kampagnenname]. Pflichtfelder: Ziel (SMART), Zielgruppe (Persona), Kanal-Mix, Budget, KPIs, Timeline, Verantwortliche. Format: ausgefüllte Markdown-Tabelle, eine Zeile pro Feld."
+Vorlage: Team-Prompt-Katalog-Aufbau (Konversations-Starter):
+1. Sammeln — die 10 meistgenutzten Prompts aus Team-Chats (Export/Befragung).
+2. Normieren — alle auf PTCF, benannt nach Aufgabentyp (SEO-Blogpost, Kampagnen-Briefing …).
+3. Agent — neuer Agent 'Marketing-Prompt-Starter'; 10 Prompts als Konversations-Starter (Label ≤255 Zeichen, voller Prompt im Body).
+4. Verankern — in der Team-Doku verlinken + 30-Min-Schulung.
 Artefakt: Befülltes Briefing-Dokument im Canvas + persistenter Konversations-Starter für das gesamte Team.
 Fallstricke:
 - Konversations-Starter-Labels haben 255-Zeichen-Limit: Label muss Aufgabe eindeutig benennen, nicht den vollen Prompt enthalten.
 - Ohne regelmäßige Pflege veralten Starter-Prompts; Quartals-Review als Kalender-Event anlegen.
+Empfehlung: Das Konversations-Starter-Label kurz und aufgaben-eindeutig halten (255-Zeichen-Limit); den vollstaendigen Prompt in den Starter-Body legen, nicht ins Label. Einen Quartals-Review als Kalender-Event anlegen — ohne Pflege veralten Starter-Prompts und das Onboarding-Versprechen bricht.
 Anschluss: S-PS-004
 
 ### S-PS-004 Prompt-Versionierung in der Library: Prompt-Lifecycle tracken
@@ -140,12 +146,16 @@ Vorgehen:
 2. Trage die aktuelle Version aller kritischen Prompts (RSA, Briefing, Persona-Match) als v1.0 ein.
 3. Bei jedem Prompt-Update: neue Zeile in der Tabelle, alten Prompt-Text in einem auskommentierten Block (`<!-- v1.0 ... -->`) bewahren.
 4. Nach Modell-Updates: einen Canary-Test mit 3 Standard-Inputs fahren; Testergebnis in die Tabelle eintragen.
-Prompt:
-> "Du bist Prompt-Engineer. Ich zeige dir zwei Versionen eines RSA-Copy-Prompts. Bewerte, welche Version bei [Modell] konsistentere Ergebnisse liefert: Version A = [Prompt A], Version B = [Prompt B]. Testkriterien: Einhaltung Zeichenlimit, Brand-Voice-Konformität, Varianten-Diversität. Ausgabe: strukturierte Bewertungstabelle + Empfehlung."
+Vorlage: Prompt-Versionierungs-Standard (Library-Changelog):
+1. Schema — prompt-changelog.md: Version | Datum | Prompt-Titel | Aenderung | Testergebnis (PASS/FAIL) | Modell.
+2. Baseline — alle kritischen Prompts (RSA/Briefing/Persona-Match) als v1.0 eintragen.
+3. Update-Regel — bei jedem Update neue Zeile; alten Prompt-Text in <!-- v1.0 ... --> bewahren.
+4. Canary nach Modell-Updates — 3 Standard-Inputs, Ergebnis in die Tabelle.
 Artefakt: Ausgefüllte `prompt-changelog.md` mit eingetragenem Vergleichs-Testergebnis; klare Empfehlung, welche Prompt-Version weiter genutzt wird.
 Fallstricke:
 - Library-Dateien sind nicht versioniert wie Git; bei jedem Update die alte Datei vor dem Upload umbenennen (z.B. `prompt-changelog-2026-04.md`), sonst gehen ältere Versionen verloren.
 - Canary-Tests ohne feste Eingabe-Fixtures sind nicht reproduzierbar – Testinputs in einer separaten Datei speichern.
+Empfehlung: Library-Dateien sind nicht git-versioniert — bei jedem Update die alte Datei vor dem Upload datiert umbenennen (z. B. prompt-changelog-2026-04.md), sonst gehen aeltere Versionen verloren. Canary-Test-Inputs als feste Fixtures in einer separaten Datei speichern, damit die Tests reproduzierbar bleiben.
 Anschluss: S-PS-005
 
 ### S-PS-005 PTCF als Team-Standard in Onboarding und Konversations-Startern verankern
@@ -158,12 +168,15 @@ Vorgehen:
 1. Schreibe `ptcf-leitfaden.md` mit Definition der vier Felder, je 2 Gut/Schlecht-Beispielen aus dem eigenen Marketing-Kontext und einer Checkliste (4 Punkte: P ja T ja C ja F ja).
 2. Konfiguriere einen PTCF-Checker-Konversations-Starter: Prompt-Draft einfügen → Agent prüft die vier Felder und gibt Missing-Fields als Bullet-Liste zurück.
 3. Integriere den PTCF-Leitfaden als Pflichtlektüre ins Onboarding-Dokument (1 Seite, Link zum Library-Dokument).
-Prompt:
-> "Du bist Prompt-Reviewer. Prüfe den folgenden Prompt auf PTCF-Vollständigkeit: [Prompt-Draft einfügen]. Bewerte jeden der vier Bereiche (Persona, Task, Context, Format): vorhanden (ja) oder fehlend (nein). Für fehlende Bereiche: formuliere einen konkreten Ergänzungsvorschlag. Ausgabe: 4-Zeilen-Tabelle + überarbeiteter Prompt-Entwurf."
+Vorlage: PTCF-Team-Standard (Leitfaden + Checker):
+1. Leitfaden — ptcf-leitfaden.md: Definition der vier Felder (Persona/Task/Context/Format), je 2 Gut/Schlecht-Beispiele, 4-Punkte-Checkliste.
+2. Checker — Konversations-Starter, der einen Draft-Prompt gegen das Schema prueft und Missing-Fields als Bullet-Liste zurueckgibt.
+3. Onboarding — Leitfaden als 1-seitige Pflichtlektuere verlinken.
 Artefakt: PTCF-Analyse-Tabelle des Draft-Prompts + überarbeiteter Prompt mit allen vier Feldern befüllt.
 Fallstricke:
 - PTCF ist kein Allheilmittel für einfache Mikro-Tasks (Rechtschreib-Check, kurze Umformulierung) – den Leitfaden auf Prompts mit >2 Sätzen Erwartung beschränken.
 - Der Checker-Prompt neigt dazu, „Context" zu weit auszulegen; im Leitfaden klarstellen: Context = spezifische Hintergrunddaten, NICHT die Aufgabe selbst.
+Empfehlung: PTCF nur auf Prompts mit mehr als zwei Saetzen Erwartung anwenden — fuer einfache Mikro-Tasks (Rechtschreib-Check, kurze Umformulierung) ist der Standard Overhead. Im Leitfaden 'Context' klar abgrenzen (spezifische Hintergrunddaten, NICHT die Aufgabe selbst), da der Checker dazu neigt, Context zu weit auszulegen.
 Anschluss: S-PS-006
 
 ### S-PS-006 RSA-Copy für verschiedene Funnel-Stufen mit Few-Shot-Beispielen strukturieren
@@ -183,6 +196,7 @@ Artefakt: Drei Markdown-Tabellen (ToFu/MoFu/BoFu) mit 15 Headlines und 4 Descrip
 Fallstricke:
 - Few-Shot-Anker, die aus unterschiedlichen Produktkategorien stammen, verwirren den Agenten — alle Anker müssen aus der gleichen Produkt-Domäne kommen.
 - Zu viele Few-Shot-Beispiele (>3 pro Stufe) erhöhen die Token-Last, ohne die Qualität zu verbessern; 2 Anker pro Stufe sind das Optimum.
+Empfehlung: Alle Few-Shot-Anker aus derselben Produkt-Domaene waehlen — Anker aus fremden Kategorien verwirren den Agenten und verwaschen die Funnel-Differenzierung. Maximal 2 Anker pro Funnel-Stufe verwenden: mehr erhoeht nur die Token-Last, ohne die Qualitaet zu steigern.
 Anschluss: S-PS-007
 
 ### S-PS-007 LinkedIn-Ads-Copy mit CO-STAR für C-Level-Zielgruppen
@@ -202,6 +216,7 @@ Artefakt: Canvas-Tabelle mit 3 CFO-zielgruppenspezifischen LinkedIn-Ad-Varianten
 Fallstricke:
 - CO-STAR-Prompts ohne expliziten Zeichenlimit im Response-Feld produzieren zu lange Texte; LinkedIn-Limits müssen im R-Feld hart kodiert werden.
 - „Sachlich-autoritär" wird oft als kalt interpretiert; ein Satz positiver Kontext im Tone-Feld ("respektvoller Peer-to-Peer-Ton") verhindert kalte, distanzierte Formulierungen.
+Empfehlung: Die LinkedIn-Zeichenlimits hart im CO-STAR-Response-Feld kodieren — ohne explizites Limit produziert der Agent zu lange Texte. Den Tone nicht nur als 'sachlich-autoritaer' angeben, sondern um einen positiven Kontext ('respektvoller Peer-to-Peer-Ton') ergaenzen, sonst werden die Texte kalt und distanziert.
 Anschluss: S-PS-008
 
 ### S-PS-008 A/B-Test-Prompt-Varianten für Subject-Lines systematisch generieren
@@ -220,6 +235,7 @@ Artefakt: Canvas-Tabelle mit 8 zeichengeprüften Subject-Lines, hypothesenbasier
 Fallstricke:
 - Ohne Hypothesen-Spalte gibt es nach dem Test keine Lerngrundlage — die Spalte ist strategisch wichtiger als der ICE-Score selbst.
 - "Loss Aversion" neigt zu negativen Formulierungen, die Spam-Filter triggern; explizit anweisen, keine Formulierungen mit "Verlust", "Risiko", "verpassen" zu verwenden.
+Empfehlung: Eine Hypothesen-Spalte je Variante erzwingen — sie ist strategisch wichtiger als der ICE-Score, weil sie nach dem A/B-Test die Lerngrundlage liefert. Beim Loss-Aversion-Framework Formulierungen mit 'Verlust/Risiko/verpassen' ausschliessen, da sie Spam-Filter triggern.
 Anschluss: S-PS-009
 
 ### S-PS-009 Tone-Shift-Skill für Kanalwechsel (B2B-Whitepaper zu LinkedIn-Post)
