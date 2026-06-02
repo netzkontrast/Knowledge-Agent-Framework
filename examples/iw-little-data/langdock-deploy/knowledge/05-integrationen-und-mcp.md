@@ -58,12 +58,15 @@ Vorgehen:
 2. Du lässt das IT-Briefing formulieren, das die native HubSpot-Integration in den Workspace-Integrationseinstellungen nennt und explizit nur Lese-Scopes anfordert.
 3. Du lässt den Hinweis aufnehmen, dass die Verbindung an die Identität des verbindenden Nutzers gebunden ist (kein Privilege-Escalation über den KI-Proxy).
 4. Du übergibst das Briefing an die IT zur Umsetzung — Little Data berät, konfiguriert aber nicht selbst.
-Prompt:
-> "Du bist mein Integrations-Berater für unseren Langdock-Workspace (Persona). Erstelle ein IT-Briefing für die native HubSpot-Anbindung eines Reporting-Agenten (Aufgabe). Kontext: Der Agent soll wöchentlich Deal-Stage und Lead-Quelle lesen, niemals schreiben; unsere Marketing-Gruppe ist SCIM-synchronisiert (Kontext). Format: Tabelle mit Spalten Objekt, benötigter Scope, Begründung, plus drei Sätze Sicherheitshinweis (Format)."
+Vorlage: HubSpot-Anbindungs-IT-Briefing (einseitig):
+1. Scope-Tabelle — je HubSpot-Objekt (Deals/Contacts/Pipelines): benoetigter Scope (nur *.read), Begruendung.
+2. Identitaet — Verbindung an die Identitaet des verbindenden Nutzers gebunden (kein Privilege-Escalation ueber den KI-Proxy); technischer Service-Owner als Inhaber.
+3. Sicherheitsabsatz — Schreibrechte explizit ausschliessen.
 Artefakt: Ein einseitiges IT-Briefing (Tabelle plus Sicherheitsabsatz), das die IT direkt umsetzen kann.
 Fallstricke:
 - Schreib-Scopes versehentlich mitbeantragen → Im Briefing ausdrücklich nur `contacts.read`/`deals.read` anfordern und Schreibrechte explizit ausschließen.
 - Verbindung an einen Mitarbeiter gebunden, der das Unternehmen verlässt → Im Briefing einen technischen Service-Owner als Verbindungsinhaber vorschlagen, damit der Reporting-Agent bei Personalwechsel nicht abreißt.
+Empfehlung: Im Briefing ausdruecklich nur contacts.read/deals.read anfordern und Schreibrechte explizit ausschliessen — versehentlich mitbeantragte Schreib-Scopes sind das Hauptrisiko. Einen technischen Service-Owner als Verbindungsinhaber vorschlagen, damit der Reporting-Agent bei Personalwechsel nicht abreisst.
 Anschluss: S-IM-006
 
 ### S-IM-002 Google-Drive-Synced-Folder als lebende Wissensquelle planen
@@ -77,12 +80,16 @@ Vorgehen:
 2. Du lässt eine schlanke Taxonomie vorschlagen, die breite Eltern-Ordner vermeidet, damit der Sync nicht an der Dateigrenze scheitert.
 3. Du lässt klären, dass nur Text-Formate (PDF, DOCX, MD) indexiert werden — XLSX und Bilder gehören nicht in den Synced Folder.
 4. Du übergibst Taxonomie und Sync-Erwartung (initialer Sync bis zu eine Stunde) als Umsetzungs-Briefing an die IT.
-Prompt:
-> "Du bist mein Wissensmanagement-Berater (Persona). Entwirf eine Ordner-Taxonomie für einen Google-Drive-Synced-Folder unseres Brand-Agenten (Aufgabe). Kontext: aktuell 140 Brand- und Tone-of-Voice-Dokumente, einige als Excel; Sync läuft alle 24 Stunden (Kontext). Format: Baumstruktur plus eine Liste der Dateien, die NICHT in den Synced Folder gehören und wohin sie stattdessen sollen (Format)."
+Vorlage: Google-Drive-Synced-Folder-Plan (Taxonomie + Sync):
+1. Baumstruktur — schlanke Taxonomie, breite Eltern-Ordner vermeiden (Sync scheitert sonst an der Dateigrenze).
+2. Grenzen — max. 200 Dateien/Synced Folder (hart), max. fuenf Synced Folder/Agent; bei Bedarf nach Region/Asset-Typ splitten.
+3. Formate — nur Text (PDF/DOCX/MD) indexiert; XLSX/Bilder ausschliessen (+ Ausschlussliste, wohin stattdessen).
+4. Sync — 24-Stunden-Zyklus, initialer Sync bis zu eine Stunde; dauerhafter Verbindungs-Owner.
 Artefakt: Eine Ordner-Taxonomie als Baumstruktur plus Ausschlussliste der nicht-indexierbaren Formate.
 Fallstricke:
 - Mehr als 200 Dateien im Synced Folder → Den Ordner nach Region oder Asset-Typ splitten (maximal fünf Synced Folder pro Agent) statt einen Sammelordner zu syncen.
 - OAuth-Token hängt am Ersteller → Einen dauerhaften Owner für die Drive-Verbindung benennen, sonst bricht der Sync, sobald dessen Account deaktiviert wird.
+Empfehlung: Den Ordner unter der harten 200-Dateien-Grenze halten und bei Bedarf nach Region oder Asset-Typ in mehrere Synced Folder splitten — ein wachsender Sammelordner laesst den Sync scheitern. Einen dauerhaften Owner fuer die Drive-Verbindung benennen, sonst bricht der Sync, sobald dessen Account deaktiviert wird.
 Anschluss: S-IM-003
 
 ### S-IM-003 Confluence- und Notion-Wissen ohne Doppelpflege anbinden
@@ -95,12 +102,16 @@ Vorgehen:
 1. Du lässt Little Data die Themenfelder auflisten und je Feld die führende Quelle bestimmen (z. B. Positionierung → Confluence, Redaktionsplan → Notion).
 2. Du lässt prüfen, welche Inhalte heute doppelt liegen, und einen Migrations- statt Sync-Vorschlag formulieren, damit der Agent keine widersprüchlichen Versionen abruft.
 3. Du übergibst die Matrix an die Teams, damit Confluence und Notion sauber getrennt als Quellen angebunden werden.
-Prompt:
-> "Du bist mein Berater für Wissensarchitektur (Persona). Erstelle eine Source-of-Truth-Matrix für einen Agenten, der Confluence und Notion durchsucht (Aufgabe). Kontext: Positionierung liegt in Confluence, Redaktion und Briefings in Notion, einige Themen doppelt (Kontext). Format: Tabelle mit Themenfeld, führender Quelle, Begründung, Konfliktrisiko (Format)."
+Vorlage: Confluence/Notion-Source-of-Truth-Matrix:
+1. Themenfeld — je Feld die fuehrende Quelle (z. B. Positionierung → Confluence, Redaktionsplan → Notion).
+2. Begruendung — warum diese Quelle fuehrt.
+3. Konfliktrisiko — wo Inhalte heute doppelt liegen; Migration statt Sync.
+4. Anbindung — beide Quellen sauber getrennt anbinden; Indexierungsverzug einplanen.
 Artefakt: Eine Source-of-Truth-Matrix als Tabelle mit Konfliktrisiko-Spalte.
 Fallstricke:
 - Beide Quellen ungewichtet anbinden → Pro Thema eine führende Quelle definieren, sonst zieht die semantische Suche widersprüchliche Chunks und der Agent halluziniert Konsens.
 - Annahme, Confluence- und Notion-Suche seien gleich aktuell → Klären, dass Inhalte erst nach Indexierung abrufbar sind, und Redakteurinnen den Indexierungsverzug einplanen lassen.
+Empfehlung: Pro Thema genau eine fuehrende Quelle definieren — bindet man beide ungewichtet an, zieht die semantische Suche widerspruechliche Chunks und der Agent halluziniert einen Konsens. Den Indexierungsverzug einplanen: Inhalte sind erst nach Indexierung abrufbar, nicht sofort nach Bearbeitung.
 Anschluss: S-IM-009
 
 ### S-IM-004 Slack-Integration für Freigabe-Benachrichtigungen einordnen
@@ -113,8 +124,7 @@ Vorgehen:
 1. Du lässt Little Data bestätigen, dass Slack nativ integriert ist und ein Agent über die Slack-Action in einen Kanal posten kann.
 2. Du lässt klar abgrenzen: Die Auslöselogik (wann posten, an welche Bedingung gekoppelt) ist Workflow-Thema und gehört in die Workflow-Beratung, nicht in die Integrationsberatung.
 3. Du lässt das Memo schreiben, das beides verbindet, ohne die Integrationsgrenze zu überschreiten.
-Prompt:
-> "Du bist mein Integrations-Berater (Persona). Schreibe ein Entscheidungsmemo, ob Slack-Freigabebenachrichtigungen über die native Integration laufen können (Aufgabe). Kontext: Entwürfe sollen bei Status 'review-ready' in #marketing-freigabe erscheinen (Kontext). Format: Memo mit Abschnitt 'native Integration' und Abschnitt 'gehört in die Workflow-Beratung' (Format)."
+Empfehlung: Die native Slack-Integration als Action-Baustein nutzen — ein Agent kann ueber die Slack-Action direkt in einen Kanal (z. B. #marketing-freigabe) posten. Aber strikt abgrenzen: Die Ausloeselogik (wann posten, an welche Bedingung gekoppelt) ist Workflow-Thema und gehoert in die Workflow-Beratung (04-workflows), nicht in die Integrationsberatung — diese Grenze nicht ueberschreiten. Die Slack-Verbindung an einen Team- oder Bot-Kontext binden, nie an einen persoenlichen Account, damit Benachrichtigungen bei Personalwechsel weiterlaufen.
 Artefakt: Ein Entscheidungsmemo mit klarer Trennung Integration vs. Workflow-Auslösung.
 Fallstricke:
 - Auslöse-Bedingungen in dieser Integrationsberatung mitlösen wollen → Die Trigger-/Bedingungslogik an die Workflow-Beratung in `04-workflows` übergeben statt sie hier zu erfinden.
@@ -132,12 +142,16 @@ Vorgehen:
 2. Du lässt definieren, welche Asset-Typen (Landingpage, Whitepaper, Social) über DeepL laufen und wo Transkreation statt Übersetzung gefordert ist.
 3. Du lässt einen verpflichtenden Review-Schritt durch Muttersprachler verankern, da KI-Transkreation Entwürfe liefert, keine finalen Texte.
 4. Du übergibst das Setup-Konzept an die IT für die DeepL-Anbindung.
-Prompt:
-> "Du bist mein Lokalisierungs-Berater (Persona). Entwirf ein Setup für Transkreation DE↔EN über die DeepL-Integration mit Glossar-Steuerung (Aufgabe). Kontext: Kampagne mit Landingpages und einem Whitepaper, Markenton 'sachlich-souverän', vier Zielsprachen (Kontext). Format: Konzept mit Abschnitten Glossar-Ablage, Asset-Typen, Pflicht-Review (Format)."
+Vorlage: DeepL-Transkreations-Setup-Konzept:
+1. Glossar-Ablage — Glossar + Tone-of-Voice im Wissensordner, auf den der Uebersetzungs-Agent zugreift; Claims als 'nicht woertlich' markieren.
+2. Asset-Typen — definieren, was ueber DeepL laeuft (Landingpage/Whitepaper/Social) und wo Transkreation statt Uebersetzung gefordert ist.
+3. Pflicht-Review — verpflichtender Muttersprachler-Review; KI liefert Entwuerfe, keine finalen Texte.
+4. Uebergabe — Setup an die IT fuer die DeepL-Anbindung.
 Artefakt: Ein Lokalisierungs-Setup-Konzept mit Glossar-Struktur und Review-Gate.
 Fallstricke:
 - Headlines und Claims wörtlich übersetzen lassen → Für Claims ausdrücklich Transkreation statt Übersetzung im Prompt anfordern und im Glossar als 'nicht wörtlich' markieren.
 - KI-Output als finalen Text behandeln → Einen Muttersprachler-Review als unverzichtbares Gate setzen, da die Integration ein Entwurfsbeschleuniger ist, keine Endabnahme.
+Empfehlung: Fuer Headlines und Claims ausdruecklich Transkreation statt woertlicher Uebersetzung anfordern und sie im Glossar als 'nicht woertlich' markieren — woertlich uebersetzte Claims zerstoeren den Markenton. Einen Muttersprachler-Review als unverzichtbares Gate setzen: die Integration ist ein Entwurfsbeschleuniger, keine Endabnahme.
 Anschluss: S-IM-007
 
 ### S-IM-006 BI-Daten aus Looker und GA4 in Management-Reports holen
@@ -156,6 +170,7 @@ Artefakt: Eine Board-taugliche Management-Summary mit quellenbelegten Kennzahlen
 Fallstricke:
 - Agent erfindet plausible Zahlen, wenn ein Look leer zurückkommt → Im Prompt anweisen, fehlende Daten als 'keine Daten' auszuweisen statt zu schätzen.
 - Looker und GA4 vermischen Zeiträume → Pro Kennzahl Zeitraum und Quelle erzwingen, damit Vorstandsentscheidungen nicht auf verrutschten Vergleichsfenstern beruhen.
+Empfehlung: Empfehlung: Den Prompt-Rahmen so bauen, dass jede genannte Zahl ihre Quelle (Looker-Look oder GA4-Bericht) und ihren Zeitraum mitfuehrt und fehlende Daten als 'keine Daten' ausgewiesen werden statt geschaetzt — ein leerer Look verfuehrt den Agenten sonst zu plausiblen Erfindungen. Pro Kennzahl Zeitraum und Quelle erzwingen, damit Vorstandsentscheidungen nicht auf verrutschten Vergleichsfenstern beruhen.
 Anschluss: S-IM-010
 
 ### S-IM-007 Eigenen MCP-Server an einen Langdock-Agenten anbinden
@@ -169,12 +184,14 @@ Vorgehen:
 2. Du lässt im Briefing den Transport (STREAMABLE_HTTP oder Server-Sent Events) und die Authentifizierung über dynamische Platzhalter in Custom Headern festschreiben, damit keine Zugangsdaten offenliegen.
 3. Du lässt für schreibende oder kostenrelevante Tools eine zwingende Nutzerbestätigung im Chat-Interface vorsehen.
 4. Du übergibst das Briefing an die IT; die Server-Einrichtung selbst bleibt deren Aufgabe — Beratung, nicht Ausführung.
-Prompt:
-> "Du bist mein MCP-Integrations-Berater (Persona). Erstelle ein Anbindungs-Briefing für unseren internen MCP-Server an einen Marketing-Agenten (Aufgabe). Kontext: Server liefert Kampagnen-Lookups und einen Lösch-Endpoint, Auth per API-Key (Kontext). Format: Tabelle freigegebener Tools mit Spalte 'Bestätigung nötig?', plus Absatz zu Transport und Header-Auth (Format)."
+MCP: Interner Kampagnen-MCP-Server; Transport STREAMABLE_HTTP oder Server-Sent Events; Auth ueber dynamische Platzhalter in Custom Headern (kein Klartext-Key).
+Tool: Nur die fuer Marketing noetigen Lese-Tools aus der Auto-Discovery (bis 50 Tools) kuratieren; Loesch-/Schreib-Endpoints sperren.
+Scope: Schreibende oder kostenrelevante Tools mit zwingender Nutzerbestaetigung im Chat-Interface; Server-Einrichtung bleibt IT-Aufgabe.
 Artefakt: Ein MCP-Anbindungs-Briefing mit kuratierter Tool-Liste und Bestätigungs-Policy.
 Fallstricke:
 - Alle 50 auto-entdeckten Tools ungeprüft freigeben → Nur die für Marketing nötigen Lese-Tools kuratieren und destruktive Endpoints sperren oder mit Pflichtbestätigung versehen.
 - API-Keys direkt in der Konfiguration hinterlegen → Dynamische Platzhalter in Custom Headern vorschreiben, sodass das Geheimnis nicht im Klartext im Agenten-Setup steht.
+Empfehlung: Nur die wirklich benoetigten Lese-Tools aus der 50er-Auto-Discovery freigeben und destruktive Endpoints sperren oder mit Pflichtbestaetigung versehen — eine ungepruefte Vollfreigabe ist das Hauptrisiko. API-Keys nie im Klartext in der Konfiguration hinterlegen, sondern dynamische Platzhalter in Custom Headern vorschreiben.
 Anschluss: S-IM-008
 
 ### S-IM-008 Langdock als MCP-Server für Cursor und Claude Desktop bereitstellen
@@ -187,12 +204,14 @@ Vorgehen:
 1. Du lässt Little Data erklären, dass Langdock einen MCP-Server-Endpoint bereitstellt, über den Cursor und Claude Desktop den Brand-Agenten als Tool ansprechen.
 2. Du lässt festhalten, welche Agenten überhaupt exponiert werden sollen und dass die Authentifizierung den AGENT_API-Scope braucht.
 3. Du übergibst das Konzept an die IT, die den Endpoint und die API-Keys verwaltet; für rohe API-/Deployment-Details verweist du auf die Schwesterdatei `06-api-und-deployment`.
-Prompt:
-> "Du bist mein MCP-Berater (Persona). Erkläre den technischen Marketern, wie sie unseren Brand-Agenten aus Cursor und Claude Desktop über Langdocks MCP-Server nutzen (Aufgabe). Kontext: zentral gepflegter Brand-Agent, Zugriff nur für die Marketing-Gruppe (Kontext). Format: kurzes Konzept mit Endpoint, den drei Tools, Auth-Hinweis und einer Abgrenzung, was in die API-Beratung gehört (Format)."
+MCP: Langdock als MCP-Server ueber den /mcp-Endpoint; Cursor und Claude Desktop sprechen den zentralen Brand-Agenten als Tool an.
+Tool: find_agent / ask_agent / ask_custom_agent.
+Scope: AGENT_API-Scope, Bearer- oder x-api-key-Auth; Zugriff nur fuer die Marketing-Gruppe; rohe API-/Deployment-Details an 06-api-und-deployment.
 Artefakt: Ein MCP-Server-Bereitstellungskonzept für die Client-Teams.
 Fallstricke:
 - Brand-Logik lokal in Cursor nachbauen → Den zentralen Agenten über den MCP-Endpoint ansprechen, damit Tonalität und Guidelines an einer Stelle gepflegt bleiben.
 - API-Key-Rotation und Endpoint-Konfiguration hier ausdetaillieren → Diese rohen API-Themen an `06-api-und-deployment` übergeben statt sie in der Integrationsberatung zu lösen.
+Empfehlung: Den zentralen Brand-Agenten ueber den /mcp-Endpoint ansprechen, statt die Brand-Logik lokal in Cursor nachzubauen — so bleiben Tonalitaet und Guidelines an einer Stelle gepflegt. API-Key-Rotation und Endpoint-Konfiguration nicht hier ausdetaillieren, sondern an 06-api-und-deployment uebergeben.
 Anschluss: S-IM-009
 
 ### S-IM-009 Nicht-native Plattform (LinkedIn-Publishing) als Lücke einordnen
