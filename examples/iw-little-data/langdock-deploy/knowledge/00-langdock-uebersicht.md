@@ -456,6 +456,7 @@ Artefakt: Eine Canvas-Tabelle mit 90 Tagen, die alle Kampagnen-Themen, Formate u
 Fallstricke:
 - Die KI häuft aufwändige Assets (Whitepapers, Videos) in einer einzigen Woche — Produktionskapazitäten ignoriert → Im Prompt explizit eine wöchentliche Kapazitätsgrenze angeben (z.B. "max. 1 Long-Form-Asset pro Woche").
 - Nationale Feiertage und Urlaubszeiten werden nicht berücksichtigt → Füge einen Kontext-Block mit DACH-Feiertagen und Urlaubs-Perioden des Teams ein.
+Empfehlung: Eine woechentliche Kapazitaetsgrenze im Prompt vorgeben (z. B. 'max. 1 Long-Form-Asset pro Woche') — sonst haeuft die KI aufwaendige Assets (Whitepaper/Video) in einer Woche und ignoriert die Produktionskapazitaet. Einen Kontext-Block mit DACH-Feiertagen und Team-Urlaubszeiten mitgeben, damit der Kalender keine Inhalte auf ungeeignete Tage legt.
 Anschluss: S-LU-020
 
 ### S-LU-020 Deep Research für Wettbewerbs-Monitoring automatisieren
@@ -475,6 +476,7 @@ Artefakt: Ein monatlicher Monitoring-Report im Canvas mit je drei Erkenntnissen 
 Fallstricke:
 - Deep Research liefert PR-Selbstdarstellung statt kritischer Analyse → Den Prompt explizit auf "identifiziere auch Schwächen und Kundenbeschwerden" ausrichten und Bewertungsplattformen (G2, Capterra) als Quelle nennen.
 - Der monatliche Report wird produziert, aber niemand liest ihn → Report immer mit einer "Top-3-Handlungsempfehlungen"-Box beginnen; diese Box ist das einzige Pflichtstück für die Strategie-Runde.
+Empfehlung: Den Prompt explizit auf 'identifiziere auch Schwaechen und Kundenbeschwerden' ausrichten und Bewertungsplattformen (G2/Capterra) als Quelle nennen — sonst liefert Deep Research nur PR-Selbstdarstellung. Jeden Monatsreport mit einer 'Top-3-Handlungsempfehlungen'-Box beginnen, da der Report sonst produziert, aber nicht gelesen wird.
 Anschluss: S-LU-021
 
 ### S-LU-021 Vendor-Lock-in-Risiko bei Langdock strukturiert bewerten
@@ -488,12 +490,16 @@ Vorgehen:
 2. Führe einen Pre-Mortem-Prompt aus (Quelle: S-LU-003): "Was verlieren wir, wenn Langdock morgen nicht mehr verfügbar ist?"
 3. Definiere pro Abhängigkeitstyp eine Gegenstrategie: Wissensordner quartalsweise als Markdown exportieren, Agent-System-Prompts in Git versionieren, Workflow-Logik dokumentieren.
 4. Erstelle einen jährlichen "Wechsel-Drill-Kalender" als Canvas-Eintrag, der die Export-Routine und einen Fallback-Test auf einem alternativen Provider enthält.
-Prompt:
-> "Du bist IT-Risiko-Beraterin mit Fokus auf SaaS-Abhängigkeiten. Bewerte unser Langdock-Lock-in-Risiko. Kontext: Wir haben 12 konfigurierte Agenten, 5 Wissensordner und 8 aktive Workflows. Format: Tabelle mit Abhängigkeitstyp, Risiko-Level (hoch/mittel/niedrig), Export-Möglichkeit und Gegenstrategie."
+Vorlage: Langdock-Lock-in-Risiko-Assessment + Exit-Strategie:
+1. Abhaengigkeiten — Wissensordner-Inhalte, Agent-Konfigs, Workflow-Logiken, gespeicherte Prompts; je Risiko-Level (hoch/mittel/niedrig) + Export-Moeglichkeit + Gegenstrategie.
+2. Pre-Mortem (S-LU-003) — 'Was verlieren wir, wenn Langdock morgen weg ist?'
+3. Gegenstrategien — Wissensordner quartalsweise als Markdown, System-Prompts in Git, Workflow-Logik dokumentieren.
+4. Jaehrlicher Wechsel-Drill (Datum + Person im Pre-Commitment-Log, S-LU-008).
 Artefakt: Eine Risiko-Tabelle mit Gegenstrategie pro Abhängigkeitstyp und einem konkreten Aktionsplan für den jährlichen Wechsel-Drill.
 Fallstricke:
 - Wissensordner-Inhalte werden als exportiert angenommen, obwohl nur die Rohdateien (nicht die Embeddings) portierbar sind → Klarstellen: Embeddings sind plattformspezifisch; nur die Quelldateien sichern.
 - Der Wechsel-Drill wird nie durchgeführt → Konkrete Person und Datum im Pre-Commitment-Log (S-LU-008) festhalten; ohne Datum bleibt es eine Absicht.
+Empfehlung: Klarstellen, dass nur die Quelldateien portierbar sind, nicht die Embeddings (plattformspezifisch) — die Wissensordner-Rohdateien sichern, nicht auf einen Embedding-Export bauen. Den Wechsel-Drill mit konkreter Person UND Datum im Pre-Commitment-Log (S-LU-008) festhalten, sonst bleibt er eine folgenlose Absicht.
 Anschluss: S-LU-022
 
 ### S-LU-022 Sales-Enablement-Übergabe mit Langdock strukturieren
@@ -507,12 +513,16 @@ Vorgehen:
 2. Lade das Template als Masterdokument in den Sales-Enablement-Wissensordner.
 3. Konfiguriere einen Sales-Agenten mit Konversations-Starter: "Erkläre mir die aktuelle Kampagne in 5 Minuten" → Output: kompakte Briefing-Zusammenfassung mit Einwand-Handling.
 4. Teste den Agenten mit drei echten Sales-Fragen und überarbeite das Template auf Basis der Lücken.
-Prompt:
-> "Du bist Sales-Enablement-Expertin. Erstelle ein Kampagnen-Briefing-Template, das Sales-Mitarbeitende in unter 5 Minuten auf eine neue Marketing-Kampagne vorbereitet. Kontext: B2B-Software, Sales-Cycle 3-6 Monate, Haupteinwände sind Preis und Implementierungsaufwand. Format: Strukturiertes Template mit Abschnitten Kampagnenziel, Kernbotschaft, Top-3-Argumente und Einwand-Handling-Tabelle."
+Vorlage: Sales-Enablement-Uebergabe-Routine:
+1. Briefing-Template — Kampagnenziel, Kernbotschaft, Persona, Top-3-Argumente, haeufigste Einwaende + Antworten.
+2. Wissensordner — Template als Masterdokument im Sales-Enablement-Folder.
+3. Sales-Agent — Konversations-Starter 'Erklaere mir die aktuelle Kampagne in 5 Minuten' → kompakte Zusammenfassung mit Einwand-Handling.
+4. Test — mit drei echten Sales-Fragen, Template anhand der Luecken nachschaerfen.
 Artefakt: Ein standardisiertes Briefing-Template plus ein fertiger Konversations-Starter-Text für den Sales-Agenten, direkt einsetzbar in der Langdock-Konfiguration.
 Fallstricke:
 - Das Einwand-Handling ist zu generisch und deckt nicht die echten Kundenfragen ab → Interview vorher drei Sales-Mitarbeitende und integriere die Top-5 echten Einwände aus CRM-Notizen.
 - Sales nutzt den Agenten nicht, weil sie nicht wissen, dass er existiert → Onboarding-Ritual: Jede neue Kampagne wird mit einem Slack-Link zum Agenten-Konversations-Starter an den Sales-Kanal kommuniziert.
+Empfehlung: Das Einwand-Handling aus echten CRM-Notizen und Interviews mit drei Sales-Mitarbeitenden speisen (Top-5 reale Einwaende), nicht generisch — sonst trifft es die echten Kundenfragen nicht. Jede neue Kampagne mit einem Slack-Link zum Agenten-Starter an den Sales-Kanal kommunizieren, da Sales den Agenten sonst gar nicht kennt und nicht nutzt.
 Anschluss: S-LU-023
 
 ### S-LU-023 AI-Ethik-Leitlinien für das Marketing-Team erstellen
@@ -526,12 +536,16 @@ Vorgehen:
 2. Führe einen Falsifikations-Prompt aus: "Welche dieser Verbote sind übertrieben und warum könnten sie die Effizienz unnötig einschränken?" — um die Liste zu schärfen.
 3. Ergänze die vier Ethik-Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit) mit je einem konkreten Marketing-Beispiel pro Säule.
 4. Formuliere den finalen Leitfaden im Canvas als einseitigen 1-Pager, der im Team-Wiki und im Onboarding-Material verankert wird.
-Prompt:
-> "Du bist KI-Ethik-Beraterin für ein B2B-Marketing-Team. Erstelle einen praxistauglichen KI-Ethik-Kompass. Kontext: Team nutzt KI für Content, Analyse und Personalisierung; EU AI Act ist relevant (Frist datums-sensitiv — gegen Primärquelle per Web-Suche verifizieren). Format: 1-Pager mit vier Säulen (Transparenz, Konsent, Reversibilität, Beweisbarkeit), je einem Praxis-Beispiel und einer Nie-KI-Liste mit fünf Punkten."
+Vorlage: KI-Ethik-Kompass (Marketing-Team, 1-Pager):
+1. Nie-KI-Liste — Strategie-Entscheidungen, Brand-Krisenkommunikation, Mitarbeiter-Feedback, Kompensations-Verhandlungen, Investor-Kommunikation.
+2. Falsifikations-Schaerfung — 'welche Verbote sind uebertrieben?' um die Liste zu praezisieren.
+3. Vier Saeulen — Transparenz, Konsent, Reversibilitaet, Beweisbarkeit, je mit 'Wenn ... dann ...'-Praxis-Beispiel.
+4. EU-AI-Act-Bezug (Frist datums-sensitiv, gegen Primaerquelle verifizieren).
 Artefakt: Ein einseitiger KI-Ethik-Leitfaden im Canvas mit vier Säulen, Praxis-Beispielen und einer verbindlichen "Nie-KI"-Liste für das Marketing-Team.
 Fallstricke:
 - Der Leitfaden ist zu abstrakt und gibt dem Team keine Handlungssicherheit → Jede Säule muss mit einem "Wenn ... dann ..."-Beispiel konkretisiert sein, das direkt aus dem eigenen Marketing-Alltag stammt.
 - Die "Nie-KI"-Liste wird nie aktualisiert → Quartalsweise Review als festes Agenda-Item in der AI-Office-Hour (S-LU-014) einplanen; EU-AI-Act-Fristen sind im Kalender zu verankern.
+Empfehlung: Jede Saeule mit einem 'Wenn ... dann ...'-Beispiel aus dem eigenen Marketing-Alltag konkretisieren — ein abstrakter Leitfaden gibt dem Team keine Handlungssicherheit. Die Nie-KI-Liste quartalsweise in der AI-Office-Hour (S-LU-014) reviewen und die EU-AI-Act-Fristen im Kalender verankern, da der Rechtsrahmen datums-sensitiv ist.
 Anschluss: S-LU-024
 
 ### S-LU-024 Wöchentliche AI-Nutzungs-Kennzahlen für das Board-Deck aufbereiten
@@ -545,12 +559,16 @@ Vorgehen:
 2. Exportiere die Langdock-Nutzungsdaten monatlich als CSV und lade sie in den Data Analyst.
 3. Lass den Data Analyst die drei KPIs berechnen und als Trend-Tabelle (Monat-über-Monat) ausgeben.
 4. Überführe die Ergebnisse in ein Canvas-Board-Slide-Template, das mit jeder monatlichen Aktualisierung nur die Zahlen erfordert.
-Prompt:
-> "Du bist Marketing-Analytics-Expertin mit Board-Reporting-Erfahrung. Berechne die drei AI-KPIs aus der angehängten CSV. Kontext: Monat Mai 2026, 12 Team-Mitglieder, 45 produzierte Assets, Langdock-Kosten 480 Euro. Format: Tabelle mit KPI-Name, Formel, Ist-Wert Mai, Vormonat-Vergleich und Trend-Pfeil."
+Vorlage: Board-AI-KPI-Slide (monatlich):
+1. Drei KPIs — AI-Assisted-Output-Ratio, Cost-per-Brief (Langdock-Kosten / Briefings), Time-from-Brief-to-Draft.
+2. Datenbasis — Usage-CSV monatlich in den Data Analyst; KPIs als Monat-ueber-Monat-Trend-Tabelle.
+3. Slide-Template — Canvas-Board-Slide, das mit jeder Aktualisierung nur die Zahlen braucht.
+4. Optionale 4. Metrik — Umsatz-Pipeline-Beitrag, nur bei sauberer Attribution.
 Artefakt: Eine Canvas-Slide-Vorlage mit drei berechneten KPIs, Trend-Tabelle und einem Platzhalter-Text für die Board-Interpretation.
 Fallstricke:
 - Die KPIs werden ohne Baseline-Daten gestartet und der Trend ist nichtssagend → KPI-Messung beginnt am ersten Tag der Langdock-Nutzung; rückwirkende Erhebung ist meist unmöglich.
 - Das Board akzeptiert nur Umsatz-relevante Kennzahlen → Ergänze optional eine vierte Metrik: "Durch KI-beschleunigte Assets, die zu X Euro Umsatz-Pipeline beigetragen haben" — nur wenn Attribution sauber messbar ist.
+Empfehlung: Die KPI-Messung am ersten Tag der Langdock-Nutzung beginnen — eine rueckwirkende Baseline-Erhebung ist meist unmoeglich, und ohne Baseline ist der Trend nichtssagend. Eine umsatzrelevante vierte Metrik nur ergaenzen, wenn die Attribution sauber messbar ist, da das Board sonst die Glaubwuerdigkeit der ganzen Slide anzweifelt.
 Anschluss: S-LU-025
 
 ### S-LU-025 Langdock-Governance-Rahmen für den Workspace-Admin aufsetzen
@@ -564,12 +582,16 @@ Vorgehen:
 2. Führe den PTCF-Prompt aus, um ein RACI-Modell für jeden Agenten zu generieren: Owner (Konfiguration), Approver (Brand-Compliance), Consulted (Wissens-Quelle), Informed (Team-Nutzung).
 3. Definiere einen Quartals-Review-Prozess für Wissensordner: Prüfe Aktualität, archiviere veraltete Dokumente, aktualisiere System-Prompts bei Produkt-Änderungen.
 4. Lege Budget-Schwellenwerte fest: 80-%-Warnschwelle im Workspace-Admin, Eskalationsplan bei Überschreitung, monatlicher Token-Report an den CMO.
-Prompt:
-> "Du bist Workspace-Governance-Beraterin für ein 25-köpfiges Marketing-Team. Erstelle ein RACI-Modell für unsere 12 Langdock-Agenten. Kontext: Team-Struktur ist Content (5 Personen), Performance (4), Social (3), Brand (3), Analytics (2). Format: Tabelle mit Agent-Name, Owner, Approver, Consulted, Informed und Quartals-Review-Datum."
+Vorlage: Langdock-Workspace-Governance-Rahmen:
+1. Inventar — alle Agenten/Wissensordner: Name, Zweck, letztes Update, Owner.
+2. RACI je Agent — Owner (Konfiguration), Approver (Brand-Compliance), Consulted (Wissens-Quelle), Informed (Team).
+3. Quartals-Review — Wissensordner auf Aktualitaet pruefen, Veraltetes archivieren, System-Prompts bei Produkt-Aenderungen aktualisieren.
+4. Budget — 80-%-Warnschwelle, Eskalationsplan, monatlicher Token-Report an den CMO.
 Artefakt: Ein vollständiges Governance-Dokument im Canvas mit RACI-Tabelle für alle Agenten, Quartals-Review-Checkliste für Wissensordner und Budget-Eskalationsplan.
 Fallstricke:
 - Das RACI-Modell wird einmalig erstellt und nie gepflegt → Jeder neue Agent bekommt das RACI-Template als Pflicht-Schritt in der Konfigurations-Checkliste; kein Agent ohne Owner.
 - Token-Budget-Limits werden zu restriktiv gesetzt und bremsen produktive Nutzung → Starte mit einem großzügigen Limit (120 % des erwarteten Verbrauchs) und justiere nach drei Monaten Nutzungsdaten.
+Empfehlung: Das RACI-Template als Pflicht-Schritt in die Agenten-Konfigurations-Checkliste aufnehmen — kein Agent ohne Owner, sonst wird das Modell einmalig erstellt und nie gepflegt. Token-Budget-Limits zunaechst grosszuegig setzen (120 % des erwarteten Verbrauchs) und erst nach drei Monaten Nutzungsdaten justieren, damit Limits die produktive Nutzung nicht bremsen.
 Anschluss: S-LU-026
 
 ### S-LU-026 Token-Verbrauch der teuersten Prompts identifizieren und senken
@@ -583,12 +605,16 @@ Vorgehen:
 2. Lade die CSV in den Data Analyst und identifiziere die Top-5 Token-Verbraucher: Agenten-Name, durchschnittliche Prompt-Länge, Häufigkeit und Kosten in Euro.
 3. Analysiere pro Heavy-Hitter: Ist der System-Prompt unnötig lang? Wird ein teures Modell (Opus) für eine Routine-Aufgabe genutzt? Könnte ein Flash-Modell denselben Output liefern?
 4. Erstelle die Refactor-Liste im Canvas: Alter Prompt (Zeichenanzahl), neuer kürzerer Prompt, Modell-Downgrade-Empfehlung und geschätzte monatliche Ersparnis.
-Prompt:
-> "Du bist KI-Kostenoptimiererin. Analysiere die angehängte Usage-CSV unseres Langdock-Workspace. Identifiziere die 5 kostenintensivsten Agenten und schlage konkrete Kürzungsmaßnahmen vor. Kontext: Unser Monatsbudget beträgt 600 Euro, aktuell verbrauchen wir 920 Euro. Format: Tabelle mit Agent-Name, aktuellen Kosten, Einsparpotenzial und Maßnahme."
+Vorlage: Token-Kosten-Refactor-Liste (Heavy-Hitter):
+1. Daten — Admin-Usage-Report nach Token/Agent/User sortieren, als CSV.
+2. Top-5-Analyse — je Heavy-Hitter: Prompt-Laenge, Haeufigkeit, Kosten (EUR); unnoetig langer System-Prompt? Opus fuer Routine?
+3. Refactor — alter vs. neuer (kuerzerer) Prompt, Modell-Downgrade-Empfehlung, geschaetzte Monats-Ersparnis.
+4. Gesamteinsparungsprojektion fuer den Folgemonat.
 Artefakt: Eine Refactor-Prioritätsliste im Canvas mit fünf Einträgen, geschätzter Ersparnis pro Maßnahme und einer Gesamteinsparungsprojektion für den Folgemonat.
 Fallstricke:
 - Token-Kosten werden mit Modell-Provider-Listenpreisen verwechselt, ohne den Langdock-Aufschlag (10 %) einzurechnen → Immer den Brutto-Betrag aus dem Admin-Export als Basis nehmen, nicht die Provider-API-Preisliste.
 - Das günstigste Modell liefert für Brand-Voice-kritische Texte schlechte Qualität → Für jeden Refactor-Schritt eine Qualitätsprüfung mit drei Canary-Prompts durchführen, bevor der Rollout erfolgt.
+Empfehlung: Immer den Brutto-Betrag aus dem Admin-Export als Basis nehmen, nicht die Provider-API-Listenpreise — der Langdock-Aufschlag (10 %) muss eingerechnet sein. Vor jedem Modell-Downgrade eine Qualitaetspruefung mit drei Canary-Prompts fahren, da das guenstigste Modell fuer Brand-Voice-kritische Texte schlechtere Qualitaet liefert.
 Anschluss: S-LU-027
 
 ### S-LU-027 Auto-Modus vs. explizite Modellwahl: Operative Entscheidungsregel einführen
