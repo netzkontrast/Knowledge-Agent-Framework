@@ -252,8 +252,10 @@ Vorgehen:
 3. Pressekit-Checkliste erstellen (Sperrfrist-Report, vorformulierte Statements, Grafiken, Kontaktnummern).
 4. Plan im Canvas finalisieren und von der Kommunikationsleitung freigeben lassen; Journalisten-Ansprache erst nach Freigabe.
 
-Prompt:
-> "Du planst den Launch eines IW-Reports unter Sperrfrist. Erstelle einen Embargo-Kommunikationsplan: Timeline mit Vorab-Tranche an ausgewählte Journalisten, öffentlichem Versand zum Sperrfristende und anschließender Social-Welle. Ergänze eine Pressekit-Checkliste (Sperrfrist-PDF, vorformulierte Statements, hochauflösende Grafiken, direkte Kontaktnummern der Ökonomen) und eine klare Regel, wie das Team auf einen Sperrfristbruch reagiert."
+Vorlage: Embargo-Kommunikationsplan (Studien-Launch):
+1. Timeline - Vorab-Tranche (Embargo an ausgewaehlte Journalisten), oeffentlicher Versand zum Sperrfristende, anschliessende Social-Welle (erst nach Sperrfristende terminiert, als harte Abhaengigkeit markiert).
+2. Pressekit-Checkliste - Sperrfrist-PDF, vorformulierte Statements, hochaufloesende Grafiken, direkte Kontaktnummern der Oekonomen (Pflichtfeld).
+3. Verteiler-Tranchen + Eskalationsregel bei Sperrfristbruch; Freigabe der Kommunikationsleitung vor jeder Journalisten-Ansprache.
 
 Artefakt: Ein Embargo-Plan (Markdown) mit Timeline-Tabelle, Pressekit-Checkliste und Eskalationsregel.
 
@@ -569,8 +571,10 @@ Vorgehen:
 3. Plan mit Datum, Anlass, Thema, Format und Kanal als Tabelle ausgeben.
 4. Plan dem Team zur Freigabe und Ressourcenplanung vorlegen.
 
-Prompt:
-> "Du erstellst einen Quartals-Redaktionsplan für das IW. Hier sind die politischen Termine des Quartals und die verfügbaren IW-Themen. Ordne jedem relevanten Termin ein passendes IW-Thema zu, wähle ein geeignetes Format (IW-Kurzbericht, iwd-Artikel, Policy-Brief, Social-Post) und benenne den Zielkanal. Liefere eine Tabelle: Datum, politischer Anlass, IW-Thema, Format, Kanal, Vorlauf. Markiere Termine, zu denen aktuell kein passendes Thema vorliegt."
+Vorlage: Quartals-Redaktionsplan (politischer Kalender):
+1. Tabellenspalten - Datum, politischer Anlass, IW-Thema, Format (IW-Kurzbericht/iwd-Artikel/Policy-Brief/Social-Post), Kanal, Vorlauf.
+2. Zuordnungsregel - ausschliesslich vorgegebene Kalendertermine; Termine ohne passendes Thema explizit als Luecke markieren, nichts halluzinieren.
+3. Neutralitaets-Leitplanke - Anlassbezug sachlich, keine parteipolitische Positionierung; Plan dem Team zur Freigabe und Ressourcenplanung vorlegen.
 
 Artefakt: Ein Quartals-Redaktionsplan (Tabelle) mit Anlass, Thema, Format, Kanal und Vorlaufzeit.
 
@@ -1003,8 +1007,10 @@ Vorgehen:
 3. Plan als Tabelle ausgeben: Sitzungswoche, Vorhaben, IW-Thema, Format, Kanal, Redaktionsvorlauf.
 4. Plan dem Team und dem Hauptstadtbüro zur Freigabe und Ressourcenplanung vorlegen.
 
-Prompt:
-> "Du verfeinerst den IW-Quartals-Redaktionsplan entlang des parlamentarischen Betriebs. Eingabe: die vorgegebenen Bundestags-Sitzungswochen, die benannten Gesetzgebungsvorhaben und die verfügbaren IW-Themen. Ordne je Vorhaben ein IW-Thema, ein Format (IW-Kurzbericht, Policy-Brief, iwd-Artikel) und einen Kanal zu und berücksichtige den Verfahrensstand. Liefere eine Tabelle: Sitzungswoche, Vorhaben, IW-Thema, Format, Kanal, Redaktionsvorlauf. Verwende ausschließlich die vorgegebenen Termine; erfinde keine Sitzungswochen oder Gesetzentwürfe."
+Vorlage: Quartalsplan (Sitzungswochen + Gesetzgebungsvorhaben):
+1. Tabellenspalten - Sitzungswoche, Gesetzgebungsvorhaben, Verfahrensstand (Anhoerung/Lesung), IW-Thema, Format, Kanal, Redaktionsvorlauf.
+2. Zuordnungsregel - ausschliesslich vorgegebene Sitzungswochen/Gesetzentwuerfe; fehlende als Luecke markieren, keine Termine erfinden.
+3. Neutralitaets-Leitplanke - Anlassbezug sachlich, keine parteipolitische Kopplung; Freigabe durch Team und Hauptstadtbuero.
 
 Artefakt: Ein verfeinerter Quartalsplan (Tabelle) mit Sitzungswoche, Vorhaben, Thema, Format, Kanal und Vorlauf.
 
@@ -1062,8 +1068,8 @@ Vorgehen:
 3. Eine Eskalationsregel ergänzen, falls nach Freigabe noch Änderungen am Zitat gewünscht werden.
 4. Workflow der Pressestelle zur Abstimmung vorlegen; produktiver Einsatz erst nach Freigabe.
 
-Prompt:
-> "Du entwirfst einen Zitatfreigabe-Workflow für IW-O-Töne und Pressezitate. Liefere eine Schrittfolge: Zitatentwurf, persönliche Autoren-Freigabe, redaktionelle Endfassung, Versand — je mit Verantwortlichem und Statusfeld (offen, freigegeben, gesperrt). Ergänze eine klare Regel: Nur die vom genannten Forschenden freigegebene Fassung darf veröffentlicht werden; nachträgliche Änderungen lösen eine erneute Freigabe aus. Stelle dies als kompakte Tabelle plus Regeltext dar."
+Workflow: Zitatentwurf -> persoenliche Autoren-Freigabe (vom genannten Forschenden) -> redaktionelle Endfassung -> Versand; je Schritt genau ein Verantwortlicher + Statusfeld (offen/freigegeben/gesperrt). Regel: nur die freigegebene Fassung geht raus; jede nachtraegliche Aenderung erzwingt eine erneute Autorisierung. Kein Versand vor Freigabe.
+Budget: Reines Prozess-/Governance-Artefakt ohne Modellkosten; Pflege als Canvas-Tabelle plus Regeltext; produktiver Einsatz erst nach Abstimmung mit der Pressestelle. (Quelle: research/10 §5 Media; §6 Zitier- und Quellendisziplin)
 
 Artefakt: Ein Zitatfreigabe-Workflow (Tabelle plus Regeltext) mit Schritten, Verantwortlichen, Status und Eskalationsregel.
 

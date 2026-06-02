@@ -144,7 +144,8 @@ rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-
     - **G (~36, reusable artifact):** S-MP-002, 005, 011, 012, 025, 029, 030, 035, 036, 038, 041, 042, 044, 045, 051, 052, 056, 059, 060, 061, 062, 063, 064, 065, 066, 067, 070, 071, 072, 074, 077, 078, 079, 080.
     - **P (~38, content/analysis output):** all remaining S-MP (001,003,006,007,009,010,013,014,015,016,017,018,019,020,021,022,023,024,026,027,031,032,033,034,037,039,043,046,047,048,049,050,053,054,055,068,069,073,075,076). R20.3: method-named prompts (Falsifikation etc.) stay P.
     - R7a on all; chunk band (median 2539 start; D/P keep tight, G adds ~300 B; condense Vorgehen on warns).
-  - [ ] **Then:** 14/16/17.
+  - [x] **File 14 (iw-use-cases) DONE** — best-type review (Empfehlung already present on 39/39). 35 P / 3 G (S-IW-008 embargo-plan, 019/034 editorial plans) / 1 W (S-IW-036 quote-approval workflow). S-IW-038 decision-briefing kept P (structured content doc, not bare recommendation); S-IW-010 monitoring kept P (one-shot Deep Research report). median 2266 B; all gates PASS.
+  - [ ] **Then:** 16/17.
 - [ ] **R7a Empfehlung rollout** to the 13 remaining content files (combined with each R20 file touch).
 - [ ] **Critical-thinking scenarios (R20.3) + scenario chains (R20.4)** added opportunistically per file.
 - [ ] **File 08 chunk-trim** (22 scenarios 3200-3800 B) during its R20 pass.
