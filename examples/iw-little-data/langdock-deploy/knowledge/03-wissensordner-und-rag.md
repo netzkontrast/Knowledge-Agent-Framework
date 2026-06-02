@@ -472,10 +472,9 @@ Ziel: Einen DSGVO-konformen Prozess für die Nutzung von Kundenfeedback im Wisse
 Ergebnis: Ein einseitiges DSGVO-Freigabe-Memo für den DSB sowie ein anonymisierter Wissensordner mit Kundenfeedback-Zusammenfassungen statt Roh-Antworten.
 Fähigkeit: Chat + Canvas (Memo-Erstellung) + Library Folder (anonymisierte Daten)
 Vorgehen:
-1. Anonymisiere alle Kunden-Rohdaten vor dem Upload: Namen, E-Mail-Adressen, Unternehmensnamen ersetzen durch generische Tags (z.B. "[Kunde-A]", "[Branche: Handel]"); verwende den Data Analyst als direkten Anhang für die Anonymisierung — nie Roh-PII in den Wissensordner laden.
-2. Erstelle pro Kunden-Segment eine aggregierte Zusammenfassungs-Datei (z.B. "feedback-segment-kmu-2025-q2.md") statt einzelner Antworten — Aggregation ist DSGVO-freundlicher als Einzeldaten.
-3. Erstelle ein DSB-Memo im Canvas: Abschnitte "Datenquelle und Anonymisierungsprozess", "Embedding-Einschätzung (EU-Hosting Frankfurt, at-rest-Verschlüsselung)", "AV-Vertrag-Status", "Risikoeinstufung", "Freigabe-Empfehlung".
-4. Lade den anonymisierten Wissensordner erst nach schriftlicher DSB-Freigabe hoch; dokumentiere das Freigabedatum in der README-Datei des Ordners.
+1. Anonymisiere die Rohdaten via Data Analyst (Tags statt PII); nie Roh-PII in den Wissensordner.
+2. Erstelle je Segment eine aggregierte Zusammenfassungs-Datei (mind. 5 Antworten).
+3. Verfasse das DSB-Memo und lade den Ordner erst nach schriftlicher Freigabe hoch.
 Vorlage: DSGVO-konformer Kundenfeedback-Wissensordner:
 1. Anonymisierung - vor Upload Namen/E-Mail/Firmen durch Tags ([Kunde-A], [Branche: Handel]) ersetzen (via Data Analyst als Anhang); nie Roh-PII in den Wissensordner.
 2. Aggregation - je Segment eine Zusammenfassungs-Datei (mind. 5 Antworten) statt Einzelantworten.
@@ -495,10 +494,9 @@ Ziel: Eine verbindliche Format-Entscheidungsregel einführen, die für jeden Dok
 Ergebnis: Eine Ein-Seiten-Format-Entscheidungsmatrix als MD-Datei im Library Folder sowie eine konvertierte Pilotdatei (Brand Guidelines als MD statt PDF) mit messbarem Retrieval-Vergleich.
 Fähigkeit: Library Folder + Wissensordner-Upload + Chat (Canary-Test)
 Vorgehen:
-1. Analysiere die Chunk-Problematik: PDFs mit Mehrspaltenlayout, Seitennummern und Wasserzeichen erzeugen Chunks in denen Textzeilen mitten im Satz brechen; Markdown produziert saubere, semantisch abgeschlossene Absätze die dem 2.000-Zeichen-Chunking-Algorithmus folgen.
-2. Konvertiere testalweise die Brand-Guidelines-PDF in eine saubere MD-Datei (Pandoc-Kommandozeile oder manuelle Konvertierung): alle Tabellen als Markdown-Tabellen (max. 30 Zeilen), alle Bilder entfernen (Bilder werden von der Vektordatenbank ignoriert), alle Überschriften als #/## strukturieren.
-3. Lade beide Versionen in den Library Folder; führe identische Canary-Fragen durch und vergleiche die Citation-Qualität — die MD-Version liefert in der Regel präzisere Chunks.
-4. Schreibe die Faustregel in die Format-Entscheidungsmatrix: Redaktionelle Texte → MD; Offizielle Publizierungen die als PDF bleiben müssen → PDF nur wenn kein Mehrspaltenlayout; Präsentationen → PPTX akzeptiert aber MD-Export bevorzugt.
+1. Analysiere die Chunk-Problematik der PDFs (Mehrspalten/Seitenzahlen brechen Saetze mitten im Satz).
+2. Konvertiere die Pilotdatei in saubere MD (Tabellen <=30 Zeilen, Bilder raus, #/##-Ueberschriften).
+3. Vergleiche PDF- vs. MD-Retrieval per Canary und halte die Faustregel in der Format-Matrix fest.
 Vorlage: PDF-vs-Markdown Format-Entscheidung:
 1. Problem - PDFs mit Mehrspalten/Seitenzahlen/Wasserzeichen erzeugen Chunks mit Zeilenbruechen mitten im Satz; MD liefert saubere, semantisch abgeschlossene Absaetze.
 2. Konvertierung - Brand-Guidelines-PDF -> saubere MD (Tabellen als MD max. 30 Zeilen, Bilder entfernen, Ueberschriften als #/##).
@@ -564,10 +562,9 @@ Ziel: Eine mehrsprachige Wissensordner-Architektur aufbauen, in der sprachspezif
 Ergebnis: Separate Library Folders pro Sprachraum (DE-DE, DE-AT, DE-CH, FR-CH) mit einer Agenten-Routing-Logik, die die korrekte Sprachversion abruft.
 Fähigkeit: Library Folder (mehrere) + Agent-Konfiguration + System-Instructions
 Vorgehen:
-1. Trenne alle Dokumente nach Sprach-Markt-Kombination: Datei-Präfix `[DE-DE]`, `[DE-AT]`, `[DE-CH]`, `[FR-CH]`; lege separate Library Folders pro Sprachraum an.
-2. Erstelle einen Basis-Ordner mit sprachübergreifenden Dokumenten (globale Brand-Regeln, technische Produktspezifikationen die nicht marktspezifisch sind) — dieser Ordner wird allen DACH-Agenten gemeinsam angebunden.
-3. Konfiguriere marktspezifische Agenten: der Schweizer Agent erhält WO-Basis + WO-DE-CH + WO-FR-CH; der österreichische Agent erhält WO-Basis + WO-DE-AT; System-Instructions spezifizieren die Antwortsprache explizit.
-4. Füge in die System-Instructions ein: "Wenn die Anfrage in Deutsch erfolgt und kein Markt angegeben ist, frage nach dem Zielmarkt (DE, AT, oder CH) bevor du eine marktspezifische Antwort generierst."
+1. Trenne Dokumente nach Sprach-Markt (Praefix) in separate Library Folders.
+2. Lege einen sprachuebergreifenden Basis-Ordner an und binde marktspezifische Agenten an Basis + Sprach-Ordner.
+3. Setze Antwortsprache + Markt-Rueckfrage in die System-Instructions; Canary je Sprache.
 Vorlage: Mehrsprachige Wissensordner-Architektur (DACH):
 1. Trennung - Datei-Praefix [DE-DE]/[DE-AT]/[DE-CH]/[FR-CH]; separate Library Folders pro Sprachraum.
 2. Basis-Ordner - sprachuebergreifende Dokumente (globale Brand-Regeln, technische Specs) fuer alle DACH-Agenten.
@@ -587,10 +584,9 @@ Ziel: Tabellen-reiche Dokumente für das RAG-System aufbereiten, sodass tabellar
 Ergebnis: Eine überarbeitete Tabellen-Datei als strukturiertes MD-Dokument mit erklärendem Fließtext pro Tabellenzeile, das Canary-Tests für Tabellen-Inhalte besteht.
 Fähigkeit: Library Folder + Chat (Dokument-Optimierung)
 Vorgehen:
-1. Verstehe die Einschränkung: Tabellen mit mehr als 30 Zeilen oder komplexen Mehrfach-Spalten werden beim Chunking häufig zerrissen — eine Tabellenzeile landet in einem Chunk, die Spaltenüberschriften in einem anderen Chunk und damit fehlt der semantische Kontext.
-2. Konvertiere komplexe Tabellen in ein hybrides Format: Behalte Tabellen mit max. 30 Zeilen in MD-Syntax; zerlege große Tabellen (>30 Zeilen) in thematische Blöcke mit erläuterndem Fließtext — z.B. "Produkt X kostet 299 EUR (DACH, Q2-2025). Mengenrabatt ab 10 Einheiten: 15 %. Mindestbestellmenge: 5 Einheiten."
-3. Füge vor jeder konvertierten Tabelle einen 2-3-Sätze-Zusammenfassungsabsatz ein, der die Kernaussage der Tabelle in Fließtext wiederholt — dieser Absatz wird als Retrieval-Anker vom Chunking-Algorithmus bevorzugt indiziert.
-4. Führe Canary-Tests durch: Frage nach spezifischen Preisen, Rabatten und Mengenstaffeln; prüfe ob Citations aus dem Tabellen-Dokument kommen und ob die Antworten faktisch korrekt sind.
+1. Verstehe die Tabellen-Chunking-Grenze (>30 Zeilen werden zerrissen).
+2. Konvertiere in Hybridformat (kleine MD-Tabellen + Fliesstext-Bloecke je Produktgruppe) mit Anker-Absatz.
+3. Canary-Test auf Preise, Rabatte und Mengenstaffeln.
 Vorlage: Tabellen-reiche Dokumente RAG-optimieren:
 1. Einschraenkung - Tabellen >30 Zeilen werden beim Chunking zerrissen (Zeile und Spaltenkopf in getrennten Chunks).
 2. Hybridformat - Tabellen <=30 Zeilen in MD behalten; grosse zerlegen in thematische Bloecke mit Fliesstext ('Produkt X kostet 299 EUR (DACH, Q2-2025), Mengenrabatt ab 10 Stueck 15 %').
@@ -610,10 +606,9 @@ Ziel: Einen temporären, kampagnen-spezifischen Library Folder als Single Source
 Ergebnis: Ein "WO-Launch-[Produktname]-[Jahr]" Library Folder mit Kernbotschaften, Zielgruppen-Definitionen, Sprachleitfaden und Freigabe-Status-Dokument, der allen Launch-Agenten angebunden ist.
 Fähigkeit: Library Folder + Agent-Konfiguration + Wissensordner-Anbindung
 Vorgehen:
-1. Erstelle den kampagnen-spezifischen Ordner `WO-Launch-[Produkt]-[JJJJ]`; lade die unveränderlichen Launch-Basis-Dokumente hoch: Produktpositionierung, USP-Liste, Zielgruppen-Persona, Verbotene-Begriffe-Liste, Freigabe-Status.
-2. Binde den Ordner an alle für den Launch relevanten Agenten (Content-Agent, PR-Agent, Social-Agent) zusätzlich zu deren Standard-Ordnern — nach dem Launch wird der Launch-Ordner von allen Agenten wieder entfernt.
-3. Erstelle im Ordner eine "LAUNCH-STATUS.md" die den aktuellen Freigabe-Stand dokumentiert: welche Dokumente sind finalisiert, welche noch in Review — damit kein Agent auf unfertige Draft-Dokumente zugreift.
-4. Setze am Ende des Launches einen Archivierungs-Kalender-Eintrag: Launch-Ordner wird nach 30 Tagen in einen Archiv-Ordner verschoben und von allen Live-Agenten getrennt; Kern-Learnings werden in die dauerhaften Wissensordner überführt.
+1. Lege WO-Launch-[Produkt]-[JJJJ] an und lade die Launch-Basis-Dokumente hoch.
+2. Binde den Ordner an alle Launch-Agenten zusaetzlich zu den Standard-Ordnern; LAUNCH-STATUS.md fuehren.
+3. Plane die Archivierung nach 30 Tagen (Ordner von Agenten trennen, Learnings ueberfuehren).
 Vorlage: Kampagnen-spezifischer Wissensordner:
 1. Ordner WO-Launch-[Produkt]-[JJJJ] - Launch-Basis hochladen: Positionierung, USP-Liste, Zielgruppen-Persona, Verbotene-Begriffe, Freigabe-Status.
 2. Anbindung - an alle Launch-Agenten (Content/PR/Social) zusaetzlich zu Standard-Ordnern.
@@ -633,10 +628,9 @@ Ziel: Klären was das RAG-System aus Bildern in Dokumenten extrahieren kann und 
 Ergebnis: Ein überarbeitetes Brand-Manual in dem alle bildinformativen Angaben (Farb-HEX-Codes, Schriftgrößen, Abstände) als Fließtext neben den Bildern stehen, sodass Retrieval-Anfragen zu visuellen Brand-Elementen korrekt beantwortet werden.
 Fähigkeit: Library Folder + Chat (Dokument-Audit)
 Vorgehen:
-1. Verstehe die technische Grenze: Eingebettete Bilder in PDFs und DOCX-Dateien werden von der Vektordatenbank vollständig ignoriert — nur der Textteil eines Dokuments wird indiziert; PPTX-Bilder ebenfalls; reiner Bildinhalt ist unsichtbar für RAG.
-2. Führe einen Image-Text-Audit durch: öffne alle brand-kritischen Dokumente; markiere alle Inhalte die ausschließlich als Bild vorliegen (Farbpaletten, Logotype-Proportionen, Abstands-Regeln); liste diese Inhalte für die Überarbeitung.
-3. Füge zu jedem bild-basierten Brand-Element einen Textblock hinzu der dieselbe Information in Fließtext enthält: "Primärfarbe der Marke: #1A2B3C (Navy Blue). Sekundärfarbe: #FF6B35 (Coral Orange). Beide Farben erscheinen im Logo als einzige zulässige Farbkombination."
-4. Lade die überarbeiteten Dokumente hoch; Canary-Test: "Was ist die Primärfarbe unserer Marke?" muss jetzt mit Citation beantwortet werden.
+1. Verstehe die Grenze: eingebettete Bilder werden ignoriert, nur Text wird indiziert.
+2. Image-Text-Audit: rein bildbasierte Inhalte (Farben, Proportionen, Abstaende) markieren.
+3. Ergaenze je Element einen Textblock und pruefe per Canary ('Was ist die Primaerfarbe?').
 Vorlage: Bild-Informationen RAG-zugaenglich machen:
 1. Grenze - eingebettete Bilder in PDF/DOCX/PPTX werden von der Vektordatenbank ignoriert; nur Text wird indiziert.
 2. Image-Text-Audit - brand-kritische Dokumente durchgehen, rein bildbasierte Inhalte (Farbpaletten, Proportionen, Abstaende) markieren.
@@ -656,10 +650,9 @@ Ziel: Einen Agenten konfigurieren der sowohl Library Folder als auch Synced Fold
 Ergebnis: Ein konfigurierter Hybrid-Agent mit einem Library Folder für statisches Kern-Wissen und einem Synced Folder für täglich aktualisierte Daten, inklusive dokumentierter Update-Verantwortlichkeiten.
 Fähigkeit: Library Folder + Synced Folder (SharePoint) + Agent-Konfiguration
 Vorgehen:
-1. Trenne klipp und klar: Library Folder = statisches Wissen das selten wechselt (Brand-Regeln, Produkt-Beschreibungen, Persona-Definitionen, Support-Prozesse); Synced Folder = dynamisches Wissen das wöchentlich oder täglich wechselt (Preislisten, Aktions-Konditionen, aktuelle Kampagnen-Briefs vom SharePoint).
-2. Verbinde den Agenten mit beiden Ordner-Typen: in der Agenten-Konfiguration sowohl den Library Folder als auch den Synced Folder als Wissensquellen eintragen — Langdock unterstützt diese Kombination nativ.
-3. Füge in die System-Instructions einen Hinweis ein: "Für Preis- und Konditionsfragen priorisiere den synchronisierten Ordner [Synced-Folder-Name]; für Brand- und Prozessfragen priorisiere den Library Folder [Folder-Name] — nenne immer beide Quellen wenn du beide Ordner nutzt."
-4. Dokumentiere die Update-Verantwortlichkeiten: Synced Folder = automatisch via SharePoint-Sync; Library Folder = manuell durch [Name], Update-Rhythmus quartalsweise — halte dies in der README-Datei des Library Folders fest.
+1. Trenne statisches Wissen (Library Folder) von dynamischem (Synced Folder).
+2. Binde beide Ordner-Typen am Agenten an und setze eine Ordner-Priorisierungs-Regel in die System-Instructions.
+3. Dokumentiere die Update-Verantwortung je Ordner in der README.
 Vorlage: Hybrid-Agent (Library + Synced Folder):
 1. Trennung - Library Folder = statisches Wissen (Brand, Specs, Personas, Prozesse); Synced Folder = dynamisches (Preise, Aktions-Konditionen, aktuelle Briefs).
 2. Anbindung - beide Ordner-Typen als Wissensquellen am Agenten (native Kombination).
@@ -679,9 +672,9 @@ Ziel: Das Team in der Formulierung semantisch präziser Retrieval-Anfragen schul
 Ergebnis: Ein Schulungs-Leitfaden mit 5 Retrieval-Optimierungsregeln und 10 Vorher/Nachher-Prompt-Paaren der als Onboarding-Material im WO-Basis-Ordner abgelegt wird.
 Fähigkeit: Wissensordner + Chat (Retrieval-Optimierung)
 Vorgehen:
-1. Erkläre die Vektor-Suchmechanik praxisnah: "Was kostet das Produkt?" erzeugt einen Embedding-Vektor der semantisch auch Dokumente zu "Wert", "Investition" und "Budget" zurückgibt; "Aktueller DACH-Listenpreis für Produkt X in EUR, Q2-2025" erzeugt einen spezifischen Vektor der direkt auf Preislisten-Chunks zeigt.
-2. Formuliere 5 Retrieval-Optimierungsregeln: (a) Produktname vollständig ausschreiben; (b) Zeitraum oder Markt-Region nennen wenn relevant; (c) Dokumenttyp andeuten ("in der Preisliste", "laut FAQ"); (d) Fachbegriff aus dem Dokument selbst verwenden; (e) Bei Misses den Prompt um Synonyme erweitern die im Quelldokument vorkommen.
-3. Erstelle 10 Vorher/Nachher-Prompt-Paare (schlecht→gut) als MD-Tabelle; speichere als `retrieval-suchanfragen-leitfaden-v1.md` im WO-Basis-Ordner; referenziere im Team-Onboarding.
+1. Erklaere die Vektor-Suchmechanik praxisnah (generische vs. spezifische Anfrage).
+2. Formuliere 5 Optimierungsregeln und 10 Vorher/Nachher-Paare.
+3. Lege den Leitfaden als MD im WO-Basis ab und verlinke ihn im Onboarding.
 Vorlage: Retrieval-Suchanfragen-Leitfaden:
 1. Mechanik erklaeren - 'Was kostet X?' trifft auch 'Wert/Investition/Budget'; 'Aktueller DACH-Listenpreis Produkt X in EUR, Q2-2025' zeigt direkt auf Preislisten-Chunks.
 2. 5 Optimierungsregeln - Produktname ausschreiben; Zeitraum/Region nennen; Dokumenttyp andeuten ('in der Preisliste'); Fachbegriff aus dem Dokument; bei Miss um Synonyme erweitern.
@@ -700,10 +693,9 @@ Ziel: Einen strukturierten Migrations-Workflow definieren der bestehende Dokumen
 Ergebnis: Ein Migrations-Tracking-Board mit 150 Dokumenten, kategorisiert nach Migrations-Aufwand (Niedrig/Mittel/Hoch), und ein priorisierter Batch-Plan für die ersten 30 Tage.
 Fähigkeit: Chat (Migrations-Assistent) + Library Folder + Canvas (Tracking-Board)
 Vorgehen:
-1. Kategorisiere alle 150 Dokumente nach Migrations-Aufwand: Niedrig = saubere DOCX/PDF ohne Scan-Probleme (direkt hochladen); Mittel = strukturiertes PDF mit Mehrspaltenlayout (Konvertierung in MD empfohlen); Hoch = eingescannte Dokumente mit schlechter OCR-Qualität (manuelle Neuschreibung oder OCR-Re-Processing nötig).
-2. Priorisiere die 30 wichtigsten Dokumente (nach Nutzungshäufigkeit oder strategischer Relevanz) für die erste Migrations-Woche; handle diese manuell und sorgfältig; lade die restlichen 120 in drei Batches über vier Wochen hoch.
-3. Führe nach jedem Batch einen Canary-Test durch: 10 typische Fragen die das Team stellt; dokumentiere Retrieval-Misses und passe die Dokument-Aufbereitung an bevor der nächste Batch startet.
-4. Erstelle ein Migrations-Log als MD-Datei: Dokument-Name, Migrations-Status (Ausstehend / In Bearbeitung / Hochgeladen / Getestet), Auffälligkeiten, Verantwortliche Person.
+1. Kategorisiere alle Dokumente nach Migrations-Aufwand (Niedrig/Mittel/Hoch).
+2. Priorisiere die Top-30 fuer Woche 1, restliche in 3 Batches mit Test-Gate je Batch.
+3. Fuehre ein Migrations-Log (Datei, Status, Auffaelligkeiten, Verantwortliche).
 Vorlage: RAG-Migrations-Workflow:
 1. Aufwands-Kategorisierung - Niedrig (saubere DOCX/PDF), Mittel (Mehrspalten-PDF -> MD), Hoch (Scan/schlechte OCR -> Neuschreibung/Re-OCR).
 2. Priorisierung - Top-30 (Nutzung/Relevanz) in Woche 1 manuell; restliche 120 in 3 Batches ueber 4 Wochen.
@@ -723,10 +715,9 @@ Ziel: Die Produkt-Dokumentation in einen Wissensordner mit atomaren, thematisch 
 Ergebnis: Ein "WO-Produkt-Docs" Library Folder mit 15-30 atomaren MD-Dateien pro Themenbereich (Installation, Fehlermeldungen, Konfiguration, FAQ, Versionshistorie), verbunden mit dem Support-Agenten.
 Fähigkeit: Library Folder + Chat (Dokumenten-Atomisierung) + Agent-Konfiguration
 Vorgehen:
-1. Analysiere die Produkt-Dokumentation auf ihre Themenstruktur: liste alle H1/H2-Kapitel auf; identifiziere Themen-Cluster die eigenständig für sich stehen (Installation, Konfiguration, Fehlerbehebung, Glossar, Versionshistorie, häufige Fragen).
-2. Zerlege das Gesamt-Dokument in atomare Dateien pro Themen-Cluster: `produkt-x-installation-v2.md`, `produkt-x-fehlerbehebung-verbindungsprobleme.md`; jede Datei beginnt mit dem Produktnamen und dem Thema in der H1-Überschrift.
-3. Erstelle eine "VERSIONSHISTORIE.md" als separate Datei die nur Changelog-Einträge enthält — diese Datei wird bei Software-Updates aktualisiert und stellt sicher dass der Agent immer auf die neueste Version verweist.
-4. Teste den Support-Agenten mit den 10 häufigsten Support-Tickets als Canary-Prompts; prüfe ob jede Antwort eine Quellenangabe aus dem WO-Produkt-Docs enthält.
+1. Analysiere die Themenstruktur und identifiziere eigenstaendige Cluster.
+2. Atomisiere je Cluster eine MD-Datei (Produktname+Thema im H1); Versionshistorie als separate Datei.
+3. Teste mit den 10 haeufigsten Support-Tickets als Canary.
 Vorlage: Produkt-Dokumentation als Support-Wissensordner:
 1. Themenstruktur - H1/H2-Kapitel auflisten, eigenstaendige Cluster identifizieren (Installation, Konfiguration, Fehlerbehebung, Glossar, Versionshistorie, FAQ).
 2. Atomisieren - je Cluster eine Datei (produkt-x-installation-v2.md, produkt-x-fehlerbehebung-verbindung.md); Produktname + Thema im H1.
@@ -746,10 +737,9 @@ Ziel: Einen systematischen A/B-Vergleich zweier Wissensordner-Strukturen durchf�
 Ergebnis: Ein A/B-Test-Protokoll mit 10 Canary-Prompts, Retrieval-Scores für beide Layouts und eine klare Empfehlung welche Struktur produktiv eingesetzt werden soll.
 Fähigkeit: Library Folder (zwei Test-Ordner) + Chat (Canary-Test) + Citations-Analyse
 Vorgehen:
-1. Erstelle zwei identisch benannte aber unterschiedlich strukturierte Test-Ordner: "WO-Test-A" (3 große Dateien, jede ~10 Seiten) und "WO-Test-B" (12 kleine atomare Dateien, jede ~1-2 Seiten, strikt Ein-Thema-pro-Datei).
-2. Definiere 10 Canary-Prompts die repräsentativ für echte Nutzeranfragen sind: mische einfache Direktfragen ("Welche Primärfarbe hat die Marke?"), komplexere Kombinations-Fragen ("Welche Tonalität und welche Farben dürfen in einer LinkedIn-Anzeige kombiniert werden?") und Edge-Cases.
-3. Stelle dieselben 10 Fragen jeweils mit WO-Test-A und WO-Test-B als aktivem Wissensordner; bewerte jede Antwort nach drei Kriterien: (a) Citation vorhanden (J/N), (b) Inhalt faktisch korrekt (1-5), (c) Vollständigkeit der Antwort (1-5).
-4. Aggregiere die Scores; das Layout mit dem höheren Gesamt-Score wird zur produktiven Ordner-Struktur; lösche den Verlierer-Ordner und dokumentiere das Test-Ergebnis im WO-Basis-Ordner.
+1. Erstelle zwei Test-Ordner (3 grosse vs. 12 atomare Dateien).
+2. Definiere 10 repraesentative Canary-Prompts (einfach/mittel/komplex).
+3. Stelle die Fragen je Ordner einzeln, bewerte Citation/Korrektheit/Vollstaendigkeit, waehle den Sieger.
 Vorlage: A/B-Test Wissensordner-Layouts:
 1. Zwei Test-Ordner - WO-Test-A (3 grosse Dateien) vs. WO-Test-B (12 atomare Dateien, Ein-Thema-pro-Datei).
 2. 10 Canary-Prompts - Mix aus Direktfragen, Kombinations-Fragen, Edge-Cases (im Wortlaut realer Anfragen).
@@ -769,11 +759,9 @@ Ziel: Einen strukturierten Aufbau-Prozess für einen neuen Agenten-Wissensordner
 Ergebnis: Einen einsatzfähigen Library Folder mit 8-15 kuratierten Dokumenten, einem dokumentierten Aufbau-Prozess und einem initialen Canary-Test-Set für den Tender-Agenten.
 Fähigkeit: Library Folder + Agent-Konfiguration + Chat (Bedarfsanalyse)
 Vorgehen:
-1. Bedarfsanalyse: liste alle Fragen die der Tender-Agent realistisch beantworten muss (z.B. "Referenz-Projekte für Branche X", "Preisspanne für Service Y", "Compliance-Zertifizierungen", "Team-Credentials") — diese Fragen definieren die benötigten Dokumente.
-2. Selektiere Dokumente: für jede Fragen-Kategorie identifiziere das eine präziseste Dokument das die Antwort enthält; bevorzuge atomare Einzeldateien (je Referenz-Projekt eine Datei, je Zertifizierung eine Datei) statt Sammel-Dokumente.
-3. Qualitätsprüfung: prüfe jedes Dokument auf RAG-Tauglichkeit bevor es hochgeladen wird — klare H1, Fachbegriffe im Text ausgeschrieben, keine unaufgelösten Pronomen, kein komplexes Mehrspaltenlayout.
-4. Lade die Dokumente hoch und führe sofort die initiale Canary-Test-Runde durch: eine Frage pro Dokument; dokumentiere die Ergebnisse als "Baseline-Qualitätsscore".
-5. Optimiere Dokumente die beim ersten Test scheitern (Canary-Miss) bevor der Tender-Agent für das gesamte Team freigeschaltet wird.
+1. Bedarfsanalyse: alle Fragen auflisten, die der Agent beantworten muss.
+2. Selektiere je Kategorie das praeziseste Dokument (atomar) und pruefe RAG-Tauglichkeit.
+3. Upload + initialer Canary als Baseline-Score; Misses vor Freigabe optimieren.
 Vorlage: Neuen Agenten-Wissensordner aufbauen:
 1. Bedarfsanalyse - alle Fragen auflisten, die der Agent beantworten muss (Referenz-Projekte, Preisspanne, Zertifizierungen, Team-Credentials); diese definieren die Dokumente.
 2. Selektion - je Fragen-Kategorie das praeziseste Dokument; atomare Einzeldateien statt Sammel-Dokumente.
@@ -793,10 +781,9 @@ Ziel: Den Retrieval-Scoring-Mechanismus von Langdock praxisnah erklären und kon
 Ergebnis: Ein Prompt-Design-Leitfaden mit 5 Techniken zur Konfidenz-Steuerung im Retrieval-Kontext sowie ein überarbeitetes System-Instruction-Template für alle Wissensordner-Agenten.
 Fähigkeit: Wissensordner + Agent-Konfiguration + System-Instructions
 Vorgehen:
-1. Erkläre den Scoring-Mechanismus: k=50 gibt die 50 semantisch ähnlichsten Chunks zurück unabhängig davon ob die Übereinstimmung hoch oder niedrig ist; ein Chunk über "Produktpreise 2023" kann bei einer Frage zu "Produktwert 2025" als Treffer erscheinen weil "Produkt" + "Preis" semantisch ähnlich sind — das System kennt keine Konfidenz-Schwelle die automatisch blockiert.
-2. Einführung Technik 1: "Explizite Quellenangabe als Pflicht" — im Prompt: "Wenn du keinen direkten Quellenbeleg findest, schreibe 'Kein verlässlicher Treffer — bitte direkt im Originaldokument prüfen' statt zu halluzinieren."
-3. Einführung Technik 2: "Hypothesen-Marker" — im Prompt: "Markiere jeden Satz der auf Schlussfolgerung statt direktem Zitat basiert mit dem Präfix [Ableitung]."
-4. Überarbeite das System-Instruction-Template aller Wissensordner-Agenten: füge standardmäßig eine "Konfidenz-Klausel" ein die den Agenten anweist bei unsicheren Treffern zu eskalieren statt zu raten.
+1. Erklaere den Scoring-Mechanismus (k=50 ohne Konfidenz-Schwelle).
+2. Fuehre Konfidenz-Techniken ein (Quellenpflicht, [Ableitung]-Marker).
+3. Ueberarbeite das zentrale System-Instruction-Template mit Konfidenz-Klausel.
 Vorlage: Konfidenz-Steuerung (Retrieval-Scoring):
 1. Mechanik - k=50 liefert die 50 aehnlichsten Chunks unabhaengig von der Treffer-Guete; es gibt keine automatische Konfidenz-Schwelle, die blockiert.
 2. Technik 1 - 'Wenn kein direkter Quellenbeleg: "Kein verlaesslicher Treffer - bitte im Original pruefen" statt halluzinieren.'
@@ -816,10 +803,9 @@ Ziel: Einen Wissensordner als zentrales Interface zwischen Produkt-Management un
 Ergebnis: Ein "WO-Roadmap" Synced Folder (verbunden mit dem Google-Drive-Ordner des Produkt-Managers) mit einer Datei-Vorlage für Feature-Beschreibungen, die der Marketing-Agent für SEO-Texte, Social-Posts und Pressemitteilungen verwendet.
 Fähigkeit: Synced Folder (Google Drive) + Library Folder + Agent-Konfiguration
 Vorgehen:
-1. Erstelle eine verbindliche Feature-Beschreibungs-Vorlage als MD-Template: H1 = Feature-Name, Abschnitt 1 = Kurzbeschreibung (1-2 Sätze, marketing-tauglich), Abschnitt 2 = Technische Details (für FAQ), Abschnitt 3 = Zielgruppe + Nutzen, Abschnitt 4 = Freigabe-Status und Launch-Datum.
-2. Lege die Vorlage im Google-Drive-Ordner des Produkt-Managers ab; Produkt-Manager füllt für jedes neue Feature eine Kopie aus und legt sie im selben Ordner ab; Langdock synchronisiert den Ordner täglich als Synced Folder.
-3. Verbinde den Marketing-Agenten mit dem WO-Roadmap-Synced-Folder als Wissensordner; der Agent kann jetzt Feature-Beschreibungen für LinkedIn, Blog, PR und Social Ads aus der validierten Quelle abrufen.
-4. Definiere einen Governance-Schritt: Marketing darf Feature-Beschreibungen nicht im Wissensordner ändern; wenn eine Beschreibung unvollständig ist, eskaliert der Agent zurück an Produkt-Management ("Fehlende Information: [Feld] — bitte Vorlage vervollständigen").
+1. Erstelle die Feature-Beschreibungs-Vorlage (MD) mit Pflichtfeldern.
+2. Lege die Vorlage in den Drive des Produkt-Managers; taeglicher Synced Folder.
+3. Binde den Marketing-Agenten an; bei Luecken eskaliert er an Produkt-Management.
 Vorlage: Roadmap-Wissensordner (Produkt<->Marketing):
 1. Feature-Vorlage (MD) - H1 Feature-Name; Kurzbeschreibung (marketing-tauglich), Technische Details (FAQ), Zielgruppe+Nutzen, Freigabe-Status+Launch-Datum.
 2. Synced Folder - Vorlage im Google-Drive des Produkt-Managers; je Feature eine ausgefuellte Kopie; taeglicher Sync.
@@ -839,16 +825,19 @@ Ziel: Einen monatlichen Spot-Check-Prozess einführen, der Retrieval-Qualitätsv
 Ergebnis: Ein wiederverwendbares Spot-Check-Protokoll als MD-Datei mit 5 Canary-Prompts, einer Bewertungs-Skala und einem Eskalations-Trigger, das monatlich in 30 Minuten durchgeführt werden kann.
 Fähigkeit: Wissensordner + Chat (Canary-Test) + Library Folder (Protokoll-Ablage)
 Vorgehen:
-1. Definiere 5 permanente Canary-Prompts die über alle Agenten-Versionen hinweg dieselben Fragen stellen: je eine Frage zu den fünf wichtigsten Themen im Wissensordner (z.B. "Was ist unsere Primärfarbe?", "Welcher Preis gilt für Produkt X im DACH?", "Welche Kanal-Regeln gelten für LinkedIn?"); diese Fragen werden nie geändert.
-2. Führe den Spot-Check monatlich durch (30 Minuten): stelle alle 5 Canary-Prompts, dokumentiere Citation (J/N), inhaltliche Korrektheit (1-5) und Vollständigkeit (1-5) in der Protokoll-Tabelle.
-3. Eskalations-Trigger: wenn ≥2 von 5 Canary-Prompts einen Miss produzieren oder einen Score ≤3 erhalten, wird ein Diagnose-Audit nach S-WR-010 ausgelöst bevor der Agent weiter genutzt wird.
-4. Archiviere jeden Spot-Check-Bericht als `SPOT-CHECK-[JJJJ-MM]-[Agent-Name].md` im WO-Basis-Ordner; nach 12 Monaten ist der Trend-Verlauf der Qualitäts-Scores als Zeitreihe sichtbar.
-Prompt:
-> "Du bist Qualitäts-Auditeurin [Persona]. Beantworte die folgende Canary-Frage und gib explizit an welches Dokument aus dem Wissensordner du verwendet hast [Task]. Kontext: Dieser Test ist Teil eines monatlichen Spot-Check-Protokolls; Citation mit Dateiname ist Pflicht; schreibe explizit 'Retrieval-Miss: Kein Treffer für [Begriff]' wenn kein Beleg gefunden wird [Context]. Format: Antwort (1-3 Sätze) + Citation (Dateiname) + Konfidenz (Hoch/Mittel/Niedrig) [Format]."
+1. Definiere 5 permanente Canary-Prompts zu den 5 wichtigsten Themen.
+2. Fuehre den Spot-Check monatlich durch (Citation/Korrektheit/Vollstaendigkeit).
+3. Eskaliere ab >=2 Misses zum Diagnose-Audit; archiviere je Bericht fuer die Trend-Zeitreihe.
+Vorlage: Spot-Check-Protokoll (Retrieval-Drift):
+1. 5 permanente Canary-Prompts - je eine Frage zu den 5 wichtigsten Themen; werden nie geaendert.
+2. Monatslauf (30 Min) - Citation (J/N), Korrektheit (1-5), Vollstaendigkeit (1-5) in Tabelle.
+3. Eskalations-Trigger - >=2 Misses oder Score <=3 -> Diagnose-Audit (S-WR-010) vor Weiternutzung.
+4. Archiv - SPOT-CHECK-[JJJJ-MM]-[Agent].md im WO-Basis; nach 12 Monaten Trend-Zeitreihe.
 Artefakt: Ein wiederverwendbares Spot-Check-Protokoll als MD-Datei mit 5 permanenten Canary-Prompts, Bewertungs-Skala und Eskalations-Trigger, archiviert im WO-Basis-Ordner für Trend-Analyse.
 Fallstricke:
 - Canary-Prompts nach jeder Wissensordner-Änderung anpassen → Canary-Prompts dürfen sich nicht verändern wenn sich der Wissensordner ändert; das ist Sinn des Tests; wenn neue Themen hinzukommen, werden neue Canary-Prompts zu einem separaten Erweiterungs-Set hinzugefügt ohne die alten zu ersetzen.
 - Spot-Check-Protokoll ohne kalendarische Pflicht-Erinnerung einführen → ohne feste Kalender-Einträge wird das Protokoll nach zwei Monaten nicht mehr gelebt; je Agent eine monatliche Kalender-Erinnerung mit dem Protokoll als Anhang einrichten.
+Empfehlung: Halte die 5 Canary-Prompts unveraendert, auch wenn sich der Wissensordner aendert - genau das ist der Sinn des Tests; neue Themen kommen in ein separates Erweiterungs-Set, ohne die alten zu ersetzen. Richte je Agent eine monatliche Kalender-Erinnerung mit dem Protokoll als Anhang ein, sonst wird der Spot-Check nach zwei Monaten nicht mehr gelebt.
 Anschluss: S-WR-037
 
 ### S-WR-037 Wissensordner-Export und Portabilitätsstrategie für Vendor-Risiko-Management
@@ -858,16 +847,19 @@ Ziel: Eine Portabilitätsstrategie für alle Wissensordner-Inhalte entwickeln, d
 Ergebnis: Ein Backup-Protokoll das quartalsweise alle Library-Folder-Inhalte in einem neutralen Format (MD/PDF) außerhalb der Plattform sichert, sowie eine Export-Checkliste für einen etwaigen Plattformwechsel.
 Fähigkeit: Library Folder (Export-Management) + Chat (Backup-Planung)
 Vorgehen:
-1. Inventarisiere den gesamten Wissensordner-Bestand nach Portabilitäts-Risiko: Dateien die in Langdock hochgeladen wurden (niedrig — externe Kopie existiert), Dokumente die ausschließlich im Langdock-Canvas erstellt wurden (hoch — Originalformat ist die Plattform) und Synced-Folder-Inhalte (kein Risiko — Original liegt im SharePoint/Drive).
-2. Für Canvas-erstellte Dokumente: exportiere quartalsweise als Markdown oder PDF; speichere im zentralen SharePoint-Ordner außerhalb der Plattform; Dateiname entspricht dem Langdock-Dateinamen für einfache Zuordnung.
-3. Dokumentiere den Wechsel-Drill: Eine jährliche Übung die das Team 30 Minuten lang den Ablauf eines Plattformwechsels simuliert — welche Dokumente existieren außerhalb? Welche müssen neu erstellt werden? Wo liegt die System-Instructions-Vorlage?
-4. Erstelle eine Export-Checkliste als MD-Datei: Welche Ordner enthalten kritische Inhalte, welche Formate werden für den Export gewählt, wer ist für den Export verantwortlich, wo werden die Backups gespeichert.
-Prompt:
-> "Du bist Wissensmanagement-Risiko-Beraterin [Persona]. Erstelle eine Portabilitätsstrategie für unsere Langdock-Wissensordner [Task]. Kontext: Wir haben 6 Library Folders mit 280 Dokumenten; einige Dokumente wurden ausschließlich im Canvas erstellt und existieren nur in Langdock; ein Plattformwechsel muss in maximal 2 Wochen vollziehbar sein [Context]. Liefere eine Export-Checkliste mit Dokumententyp, Backup-Format, Backup-Ort und verantwortliche Person [Format]."
+1. Inventarisiere den Bestand nach Portabilitaets-Risiko.
+2. Exportiere Canvas-Dokumente quartalsweise als MD/PDF nach SharePoint (Dateiname = Langdock-Name).
+3. Dokumentiere die Export-Checkliste und einen jaehrlichen Wechsel-Drill.
+Vorlage: Wissensordner-Portabilitaetsstrategie:
+1. Risiko-Inventar - hochgeladene Dateien (niedrig, Kopie existiert), Canvas-erstellte (hoch, nur in Langdock), Synced (kein Risiko, Original extern).
+2. Quartals-Backup - Canvas-Dokumente als MD/PDF in SharePoint exportieren; Dateiname = Langdock-Name.
+3. Wechsel-Drill (jaehrlich, 30 Min) - was existiert extern, was muss neu erstellt werden, wo liegt die System-Instructions-Vorlage.
+4. Export-Checkliste (MD) - kritische Ordner, Format, Verantwortliche, Backup-Ort.
 Artefakt: Eine Export-Checkliste als MD-Datei im WO-Basis-Ordner, ein dokumentierter quartalsweiser Backup-Prozess und ein Wechsel-Drill-Plan für den Jahres-Review.
 Fallstricke:
 - Synced-Folder-Inhalte als gesichert betrachten weil "sie im SharePoint liegen" → SharePoint-Ordner können ebenfalls gelöscht oder verschoben werden; sicherstellen dass SharePoint-Quellordner eigene Backup-Regeln haben unabhängig von Langdock.
 - Canvas-Dokumente manuell exportieren ohne Namenskonvention → ohne eindeutige Namenskonvention ist nach einem Jahr nicht mehr klar welcher Export zu welchem Langdock-Dokument gehört; Backup-Dateinamen müssen dem Langdock-Dateinamen 1:1 entsprechen.
+Empfehlung: Behandle Synced-Folder-Inhalte nicht automatisch als gesichert - SharePoint-Quellordner brauchen eigene Backup-Regeln unabhaengig von Langdock, da auch sie geloescht oder verschoben werden koennen. Benenne Backup-Dateien 1:1 wie das Langdock-Dokument, sonst ist nach einem Jahr nicht mehr klar, welcher Export zu welchem Dokument gehoert.
 Anschluss: S-WR-038
 
 ### S-WR-038 Einscankataloge mit schlechter OCR-Qualität vor dem Upload reparieren
@@ -877,16 +869,19 @@ Ziel: Einen praktischen Workflow für die Aufbereitung von OCR-problematischen S
 Ergebnis: 3-5 saubere MD-Dateien aus dem eingescannten Produktkatalog (atomisiert nach Produktgruppen), die Canary-Tests mit korrekten Citations bestehen.
 Fähigkeit: Chat (direkter Anhang für OCR-Korrekturen) + Library Folder
 Vorgehen:
-1. Lade das fehlerhafte Scan-PDF als direkten Chat-Anhang (nicht in den Wissensordner) hoch; nutze das Vision-Modell oder Chat um die OCR-Fehler zu identifizieren: "Identifiziere alle Zeichen-Fehler in diesem Dokument und liste die korrumpierten Passagen auf."
-2. Lasse den Chat eine bereinigte Version des Textes erstellen: "Korrigiere alle OCR-Fehler im folgenden Text; wenn ein Begriff nicht lesbar ist, markiere ihn als [UNLESERLICH] statt zu raten."
-3. Zerlege den korrigierten Text nach dem Ein-Thema-pro-Datei-Prinzip in atomare MD-Dateien pro Produktgruppe; jede Datei enthält einen klaren H1 und den Produktnamen im ersten Satz.
-4. Führe Canary-Tests durch: spezifische Produktfragen müssen jetzt korrekte Citations aus den MD-Dateien liefern; ein [UNLESERLICH]-Tag in einer Antwort zeigt an wo noch manuelle Nacharbeit nötig ist.
-Prompt:
-> "Du bist Dokumenten-Restauratorin [Persona]. Der folgende Text stammt aus einer fehlerhaften OCR-Erkennung eines eingescannten Produktkatalogs [Task]. Kontext: Häufige OCR-Fehler sind: 0 statt O, 1 statt l, Leerzeichen in Zahlen (2. 999 statt 2.999), fehlende Umlaute; markiere unleserliche Stellen als [UNLESERLICH] statt zu raten [Context]. Liefere den korrigierten Text als sauberes Markdown mit H1 für den Produktnamen und einer Tabelle für Preis und Spezifikationen [Format]."
+1. Lade das Scan-PDF als Direktanhang und identifiziere die OCR-Fehler.
+2. Erstelle eine bereinigte Version ([UNLESERLICH] statt raten); atomisiere nach Produktgruppe.
+3. Canary-Test; Zahlenwerte gegen das Original verifizieren.
+Vorlage: OCR-Scan-Aufbereitung:
+1. Direktanhang (nicht Wissensordner) - Scan-PDF in den Chat; OCR-Fehler per Vision/Chat identifizieren.
+2. Korrektur - bereinigte Version erstellen; Unlesbares als [UNLESERLICH] markieren statt raten.
+3. Atomisieren - korrigierten Text nach Ein-Thema-pro-Datei in MD-Dateien (H1 + Produktname im ersten Satz).
+4. Canary-Test - Produktfragen liefern korrekte Citations; [UNLESERLICH] zeigt manuelle Nacharbeit.
 Artefakt: 3-5 saubere MD-Dateien aus dem eingescannten Katalog, bereit für den Library-Folder-Upload, mit dokumentierten [UNLESERLICH]-Stellen die manuell nachgeprüft werden müssen.
 Fallstricke:
 - OCR-Korrekturen an das Modell delegieren ohne Human-Review der Zahlenwerte → bei Preisangaben kann ein OCR-Fehler "€2.999" in "€299" korrumpieren; alle Zahlen im korrigierten Text müssen gegen die Original-Quelle (gedruckter Katalog) manuell verifiziert werden.
 - Korrigiertes Dokument als ein Gesamt-PDF speichern statt in atomare MD-Dateien aufzuteilen → ein 80-seitiges korrigiertes Dokument hat dasselbe Per-Document-Cap-Problem wie das Original; atomare Aufteilung ist auch nach der OCR-Korrektur Pflicht.
+Empfehlung: Verifiziere alle Zahlenwerte im korrigierten Text manuell gegen den gedruckten Original-Katalog - ein OCR-Fehler kann '2.999 EUR' in '299 EUR' korrumpieren, und das Modell raet plausibel falsch. Teile das korrigierte Dokument in atomare MD-Dateien auf; ein 80-seitiges korrigiertes Gesamt-PDF hat dasselbe Per-Document-Cap-Problem wie das Original.
 Anschluss: S-WR-039
 
 ### S-WR-039 Wissensordner-Governance-Board für Marketing-Direktoren etablieren
@@ -896,16 +891,19 @@ Ziel: Ein schlankes Governance-Board für alle Wissensordner einrichten, das Ver
 Ergebnis: Ein Governance-RACI-Dokument als MD-Datei im WO-Basis-Ordner mit definierten Rollen (Owner, Approver, Contributor, Informed), einem Änderungs-Antragsformular und einem monatlichen Review-Kalender.
 Fähigkeit: Library Folder + Chat (RACI-Entwurf) + Canvas
 Vorgehen:
-1. Definiere das RACI-Modell für die Wissensordner-Governance: Owner = Marketing-Direktion (genehmigt Strukturänderungen), Approver = Team-Leads pro Bereich (genehmigen neue Dokumente in ihrem Fachbereich), Contributor = Team-Mitglieder (laden Dokumente vor, Owner genehmigt), Informed = alle Nutzer der Agenten.
-2. Erstelle ein Änderungs-Antragsformular: ein 5-Zeilen-Template (Antragsteller, Ordner, Datei-Name, Art der Änderung, Begründung) das jeder Contributor vor einer Änderung ausfüllt und an den Approver sendet — verhindert unkontrollierten Wildwuchs.
-3. Richte einen monatlichen Governance-Termin ein (30 Minuten): offene Anträge prüfen, Spot-Check-Ergebnisse (S-WR-036) reviewen, nächste Audit-Fälligkeit prüfen.
-4. Schreibe das RACI-Dokument im Canvas und speichere es als `GOVERNANCE-RACI-[JJJJ].md` im WO-Basis-Ordner; verlinke im Team-Onboarding-Dokument.
-Prompt:
-> "Du bist Wissensmanagement-Governance-Beraterin [Persona]. Erstelle ein RACI-Dokument für die Governance unserer Langdock-Wissensordner [Task]. Kontext: 25-köpfiges Marketing-Team, 8 Library Folders, 340 Dokumente; die Direktion hat max. 2 Stunden pro Monat für Governance-Aufgaben; unkontrollierter Upload vergiftet das Retrieval [Context]. Liefere: RACI-Tabelle, Änderungs-Antragsformular (5 Zeilen), monatlicher Review-Agenda-Template [Format]."
+1. Definiere das RACI-Modell (Owner/Approver/Contributor/Informed).
+2. Erstelle ein 5-Zeilen-Aenderungs-Antragsformular.
+3. Richte einen monatlichen 30-Min-Governance-Termin ein; RACI im WO-Basis ablegen und im Onboarding verlinken.
+Vorlage: Wissensordner-Governance-Board (RACI):
+1. RACI - Owner (Direktion, Strukturaenderungen), Approver (Team-Leads je Bereich), Contributor (laedt vor), Informed (Nutzer).
+2. Aenderungs-Antragsformular (5 Zeilen) - Antragsteller, Ordner, Datei, Art, Begruendung.
+3. Monats-Termin (30 Min) - offene Antraege, Spot-Check-Ergebnisse (S-WR-036), naechste Audit-Faelligkeit.
+4. GOVERNANCE-RACI-[JJJJ].md im WO-Basis, im Onboarding verlinkt.
 Artefakt: Ein RACI-Governance-Dokument als MD-Datei, ein Änderungs-Antragsformular und ein monatliches Review-Template, zusammen im WO-Basis-Ordner abgelegt.
 Fallstricke:
 - Governance-Prozess zu komplex gestalten (mehrere Freigabeschritte, wöchentliche Meetings) → bei zu hohem Overhead wird der Prozess nach zwei Monaten umgangen; RACI-Modell muss schlanker sein als das Problem das es löst; max. 2 Stunden/Monat ist die harte Grenze.
 - RACI-Dokument im Basis-Ordner ablegen ohne dem Team davon zu erzählen → ein Governance-Dokument das niemand kennt existiert nicht; aktive Kommunikation im Team-Meeting und Verlinkung im Onboarding-Dokument sind Pflicht beim Rollout.
+Empfehlung: Halte das RACI-Modell schlanker als das Problem, das es loest - max. 2 Stunden/Monat ist die harte Grenze; bei zu vielen Freigabeschritten oder woechentlichen Meetings wird der Prozess nach zwei Monaten umgangen. Kommuniziere das RACI aktiv im Team-Meeting und verlinke es im Onboarding; ein Governance-Dokument, das niemand kennt, existiert nicht.
 Anschluss: S-WR-040
 
 ### S-WR-040 Wissensordner als Langzeit-Lernarchiv für kampagnen-übergreifende Insights
@@ -915,16 +913,19 @@ Ziel: Einen "WO-Kampagnen-Learnings" Library Folder als Langzeit-Lernarchiv aufb
 Ergebnis: Ein "WO-Kampagnen-Learnings" Library Folder mit einer verbindlichen Post-Mortem-Vorlage, 3 exemplarischen Einträgen aus vergangenen Kampagnen und einem Planungs-Agenten der bei neuen Kampagnen automatisch nach historischen Parallelen sucht.
 Fähigkeit: Library Folder + Agent-Konfiguration + Chat (semantische Ähnlichkeitssuche)
 Vorgehen:
-1. Erstelle eine standardisierte Post-Mortem-Vorlage als MD-Template: H1 = Kampagnen-Name und Jahr, Abschnitt 1 = Kampagnen-Typ und Zielgruppe, Abschnitt 2 = Was funktioniert hat (max. 3 Bullet-Points mit konkreten Zahlen), Abschnitt 3 = Was nicht funktioniert hat (max. 3 Bullet-Points), Abschnitt 4 = Empfehlungen für zukünftige ähnliche Kampagnen — jede Datei ist eine Kampagne.
-2. Wandle die drei wichtigsten vergangenen Post-Mortem-Berichte in das neue Format um; lade sie als separate MD-Dateien in den WO-Kampagnen-Learnings-Ordner hoch; Dateiname: `kampagne-[Jahr]-[Kampagnen-Name]-learnings.md`.
-3. Verbinde den Kampagnen-Planungs-Agenten mit WO-Kampagnen-Learnings als Wissensordner; füge in die System-Instructions ein: "Bei jeder neuen Kampagnen-Planung prüfe den Wissensordner WO-Kampagnen-Learnings nach ähnlichen historischen Kampagnen und zitiere relevante Learnings."
-4. Etabliere den Post-Mortem-Upload als Pflicht-Schritt im Kampagnen-Abschluss-Prozess: der Kampagnen-Manager fügt das fertige Post-Mortem-Dokument im neuen Format als letzte Aufgabe nach dem Kampagnen-Ende in den Ordner ein — kein Abschluss ohne Eintrag.
-Prompt:
-> "Du bist Kampagnen-Planungsassistentin [Persona]. Wir planen eine B2B-LinkedIn-Kampagne im Mittelstand-Segment für Q3-2025 [Task]. Durchsuche den Wissensordner WO-Kampagnen-Learnings nach historischen Kampagnen mit ähnlichem Zielgruppen-Segment und Kanal; extrahiere die relevantesten Learnings und Empfehlungen [Context]. Format: Tabelle mit Spalten Kampagnen-Name, Jahres-Kontext, Relevantes Learning, Empfehlung für die neue Kampagne [Format]."
+1. Erstelle die kompakte Post-Mortem-Vorlage (MD, 4 Abschnitte).
+2. Wandle 3 vergangene Berichte ins Format und lade sie hoch.
+3. Binde den Planungs-Agenten an und mache den Post-Mortem-Upload zum Pflicht-Abschlussschritt.
+Vorlage: Kampagnen-Learnings-Lernarchiv:
+1. Post-Mortem-Vorlage (MD) - H1 Kampagne+Jahr; Typ+Zielgruppe, Was funktionierte (3 Bullets, Zahlen), Was nicht (3 Bullets), Empfehlungen.
+2. Pilot - 3 wichtigste vergangene Berichte ins Format; je Datei kampagne-[Jahr]-[Name]-learnings.md.
+3. Planungs-Agent - System-Instruction: bei neuer Planung WO-Kampagnen-Learnings nach Parallelen pruefen und zitieren.
+4. Pflicht-Schritt - Post-Mortem-Upload als letzte Aufgabe im Kampagnen-Abschluss.
 Artefakt: Ein WO-Kampagnen-Learnings Library Folder mit verbindlicher Post-Mortem-Vorlage, 3 Pilot-Einträgen und einem Planungs-Agenten der bei jeder neuen Kampagnen-Planung automatisch auf historische Parallelen verweist.
 Fallstricke:
 - Post-Mortem-Einträge zu lang und unstrukturiert gestalten (5+ Seiten Fließtext) → das Per-Document-Cap liefert pro Kampagnen-Datei nur einen einzigen Chunk; Vorlage muss kompakt sein (max. 1-2 Seiten) damit alle vier Abschnitte in einem einzigen Chunk Platz haben.
 - Kampagnen-Learnings-Ordner nie auf Relevanz bereinigen → nach 30+ Kampagnen enthält der Ordner auch Learnings aus veralteten Kanal-Strategien (z.B. organische Reichweite auf Facebook 2020) die aktuelle Empfehlungen kontaminieren; jährlicher Relevanz-Audit mit explizitem Archivierungs-Schritt für Kampagnen-Einträge die älter als 3 Jahre sind.
+Empfehlung: Halte jeden Post-Mortem-Eintrag kompakt (1-2 Seiten), damit alle vier Abschnitte in einen einzigen Chunk passen - das Per-Document-Cap liefert pro Datei nur einen Chunk. Fuehre einen jaehrlichen Relevanz-Audit mit Archivierungs-Schritt fuer Eintraege aelter als 3 Jahre durch, sonst kontaminieren Learnings aus veralteten Kanal-Strategien aktuelle Empfehlungen.
 Anschluss: S-WR-041
 
 ### S-WR-041 Legal- und Compliance-Dokumente im Wissensordner sicher bereitstellen
@@ -934,16 +935,19 @@ Ziel: Einen "WO-Compliance" Library Folder aufsetzen, der juristisch freigegeben
 Ergebnis: Ein WO-Compliance Library Folder mit 5-10 atomaren MD-Dateien pro Compliance-Thema (Werbeaussagen, Disclaimer, Preisangaben, Testimonials, UWG-Grundregeln), verbunden mit dem Marketing-Agenten als Read-only-Wissensquelle.
 Fähigkeit: Library Folder + Agent-Wissensordner-Anbindung + Berechtigungskonzept
 Vorgehen:
-1. Koordiniere mit der Rechtsabteilung welche Compliance-Dokumente für Marketing-Mitarbeiter zur Selbstauskunft geeignet sind (Werberegeln, Disclaimer-Pflichten, Preisangaben-Regeln, Testimonial-Richtlinien) — nicht jedes Rechtsdokument gehört in den Wissensordner.
-2. Lass die Rechtsabteilung Marketing-freundliche Kurzfassungen in MD-Format erstellen (je Thema max. 1 Seite, klare Ge- und Verbote, Beispiele für erlaubte und verbotene Formulierungen); lade diese als atomare Dateien in WO-Compliance hoch.
-3. Setze WO-Compliance als Read-only (Viewer-Rechte für alle außer dem Compliance-Owner); konfiguriere den Marketing-Agenten so dass er Compliance-Fragen aus diesem Ordner beantwortet und bei Unsicherheit explizit auf Rechtsberatung verweist.
-4. Füge in die System-Instructions ein: "Antworte auf Compliance-Fragen ausschließlich auf Basis des Wissensordners WO-Compliance; wenn keine eindeutige Regel gefunden wird, antworte 'Bitte Rechtsabteilung konsultieren — dieser Fall ist nicht im Compliance-Leitfaden abgedeckt'."
-Prompt:
-> "Du bist Marketing-Compliance-Assistentin [Persona]. Prüfe ob die folgende Werbeaussage nach deutschem UWG zulässig ist [Task]. Stütze dich ausschließlich auf die Richtlinien im Wissensordner WO-Compliance; wenn der Fall nicht abgedeckt ist, nenne das explizit [Context]. Format: Kurze Einschätzung (erlaubt / nicht erlaubt / unklar), Begründung mit Regelreferenz, Empfehlung [Format]."
+1. Klaere mit der Rechtsabteilung, welche Dokumente zur Selbstauskunft taugen.
+2. Lass marketing-freundliche MD-Kurzfassungen erstellen und atomar (Read-only) hochladen.
+3. Setze die System-Instruction: nur aus WO-Compliance antworten, sonst an die Rechtsabteilung verweisen.
+Vorlage: Compliance-Wissensordner (Read-only):
+1. Abstimmung - mit der Rechtsabteilung klaeren, welche Dokumente zur Selbstauskunft taugen (Werberegeln, Disclaimer, Preisangaben, Testimonials).
+2. Kurzfassungen - Legal erstellt marketing-freundliche MD (je Thema max. 1 Seite, Ge-/Verbote, Beispiele); atomar hochladen.
+3. Berechtigung - WO-Compliance Read-only (Viewer ausser Owner).
+4. System-Instruction - nur aus WO-Compliance antworten; bei Unsicherheit 'Bitte Rechtsabteilung konsultieren'.
 Artefakt: Ein WO-Compliance Library Folder mit 5-10 freigegebenen Compliance-MD-Dateien, Read-only-Berechtigungen und einem Agenten der Compliance-Standardfragen eigenständig beantwortet.
 Fallstricke:
 - Agent gibt eine abschließende Rechtsaussage statt einer Ersteinschätzung → Compliance-Wissensordner entbindet nicht von juristischer Prüfpflicht; System-Instructions müssen explizit formulieren "Diese Antwort ersetzt keine Rechtsberatung."
 - Compliance-Dokumente werden nach Gesetzesänderungen nicht aktualisiert → Compliance-Owner muss quartalsweise prüfen ob neue Gesetzesänderungen (z.B. EU AI Act, UWG-Novelle) die Dokumente betreffen; Freshness-Header "Stand: [JJJJ-MM]" in jede Datei.
+Empfehlung: Formuliere im System-Prompt explizit 'Diese Antwort ersetzt keine Rechtsberatung' - der Compliance-Wissensordner entbindet nicht von der juristischen Pruefpflicht; der Agent darf keine abschliessende Rechtsaussage treffen. Lass den Compliance-Owner quartalsweise auf Gesetzesaenderungen (EU AI Act, UWG-Novelle) pruefen und einen 'Stand: JJJJ-MM'-Header in jede Datei setzen.
 Anschluss: S-WR-042
 
 ### S-WR-042 Versionierte Produktspezifikationen im Synced Folder verwalten
@@ -953,16 +957,19 @@ Ziel: Versionierte Produktspezifikationen über einen Synced Folder automatisch 
 Ergebnis: Ein Synced Folder (SharePoint) für Produktspecs mit einer Versionierungskonvention im Dateinamen, einem automatischen Sync-Protokoll und einem Canary-Test-Set das nach jedem Quarterly-Update ausgeführt wird.
 Fähigkeit: Synced Folder (SharePoint) + Agent-Konfiguration + Citations-Analyse
 Vorgehen:
-1. Definiere die Versionierungskonvention im SharePoint-Quellordner: Dateiname-Schema `[Produkt]-spec-[JJJJ]-Q[N]-v[Major].md` (z.B. `produkt-alpha-spec-2025-Q3-v2.md`); ältere Versionen werden aus dem Sync-Ordner in einen Archiv-Unterordner verschoben (außerhalb des Sync-Bereichs), nicht gelöscht.
-2. Konfiguriere den Synced Folder in Langdock mit dem SharePoint-Specs-Ordner; stelle sicher dass der Ordner max. 200 Dateien enthält (Archiv-Unterordner liegt außerhalb des Sync-Pfads).
-3. Füge in die System-Instructions des Produkt-Agenten ein: "Wenn du Produktspezifikationen zitierst, nenne immer die Versionsnummer und das Quartal aus dem Dateinamen — der Nutzer muss erkennen ob die Spezifikation aktuell ist."
-4. Führe nach jedem Quarterly-Update einen Canary-Test durch: "Was sind die technischen Spezifikationen für Produkt Alpha in Q3-2025?" — die Citation muss die neue v-Nummer im Dateinamen zeigen.
-Prompt:
-> "Du bist Produkt-Dokumentations-Assistentin [Persona]. Beantworte die folgende Frage zu den technischen Spezifikationen von Produkt Alpha [Task]. Zitiere immer die Versionsnummer und das Quartal aus dem Dateinamen der verwendeten Spec-Datei; wenn die Spec älter als das aktuelle Quartal ist, weise aktiv darauf hin [Context]. Format: Technische Antwort in Bullet-Points mit Quellenangabe inkl. Versionsnummer [Format]."
+1. Pruefe/konvertiere den SharePoint-Ordner (Formate, Versionierung im Dateinamen).
+2. Lege den Synced Folder an und binde ihn an den Marketing-Agenten; alten Library Folder entfernen.
+3. Canary-Test nach jedem Quarterly-Update.
+Vorlage: Versionierte Produktspecs (Synced Folder):
+1. Synced Folder (SharePoint) - quartalsweise Spec-Sheets; Versionierung im Dateinamen ([Produkt]-specs-v[Q]-[JJJJ]).
+2. Anbindung - an Marketing-Agenten; alten Library Folder mit Vorquartal-Specs entfernen.
+3. Sync-Protokoll - 24h-Sync + woechentliche Kontrolle des letzten erfolgreichen Syncs.
+4. Canary-Test - nach jedem Quarterly-Update spezifische Spec-Fragen; aktuelle Version zitiert?
 Artefakt: Ein konfigurierter Synced Folder mit versionierten Produktspecs, einem Canary-Test-Set für Quarterly-Updates und einem Agenten der Versionsnummern aktiv in Citations nennt.
 Fallstricke:
 - Alte und neue Spec-Version gleichzeitig im Sync-Ordner lassen → der Agent zitiert beide Versionen und liefert widersprüchliche Spezifikationen; alte Versionen müssen vor dem nächsten Sync in den Archiv-Unterordner verschoben werden.
 - Versionierungskonvention im Dateinamen nicht konsequent durchsetzen → wenn Produkt-Manager Dateien nach eigenem Schema benennen, versagt das automatische Versions-Tracking; Naming-Konvention muss im SharePoint-Ordner als README hinterlegt und verbindlich kommuniziert sein.
+Empfehlung: Schreibe die Version in den Dateinamen UND in den ersten Absatz des Dokuments, damit der Agent und der Nutzer im Citation-Link sofort die aktuelle Version erkennen. Halte den SharePoint-Ordner sauber (nur die aktuelle Spec-Version je Produkt), sonst synchronisiert Langdock auch Vorquartal-Versionen und der Agent zitiert die falsche.
 Anschluss: S-WR-043
 
 ### S-WR-043 FAQ-Wissensbasis systematisch pflegen und erweitern
@@ -976,12 +983,16 @@ Vorgehen:
 2. Kategorisiere die neuen Fragen nach Themenbereich; entscheide pro Frage ob sie (a) in eine bestehende FAQ-Datei ergänzt wird, (b) eine neue atomare Datei rechtfertigt (>3 Fragen zum selben neuen Thema), oder (c) nicht in den Wissensordner gehört (zu spezifisch für einen Einzelfall).
 3. Erstelle oder aktualisiere die FAQ-Dateien im MD-Format; jede FAQ-Datei enthält eine eindeutige H1, einen beschreibenden Einleitungssatz mit dem Schlüsselbegriff und maximal 10 Frage-Antwort-Paare (mehr → neue Datei).
 4. Führe nach dem Update einen Canary-Test mit den zuvor unbeantwortet gebliebenen Fragen durch; jede neue FAQ muss jetzt mit Citation beantwortet werden.
-Prompt:
-> "Du bist FAQ-Wissensbasis-Kuratorin [Persona]. Analysiere die folgende Liste von Kundenfragen die unser Agent nicht beantworten konnte [Task]. Kontext: Die Fragen stammen aus dem vergangenen Monat; wir nutzen einen Library Folder mit max. 1.000 Dateien; jede FAQ-Datei enthält max. 10 Frage-Antwort-Paare um das Per-Document-Cap nicht zu unterlaufen [Context]. Kategorisiere die Fragen und empfehle welche in bestehende Dateien eingefügt werden und welche eine neue atomare Datei rechtfertigen [Format]."
+Vorlage: FAQ-Maintenance-Protokoll:
+1. Monats-Workflow - unbeantwortet gebliebene Fragen sammeln, in die FAQ-Wissensbasis einarbeiten.
+2. FAQ-Luecken-Tabelle - offene Fragen, Haeufigkeit, Ziel-Datei.
+3. Struktur - max. 10 Frage-Antwort-Paare pro Datei; thematisch getrennte FAQ-Dateien.
+4. Canary-Test nach jedem Update.
 Artefakt: Eine aktualisierte FAQ-Wissensbasis mit abgedeckten Lücken, ein FAQ-Maintenance-Protokoll mit monatlichem Update-Rhythmus und einem Canary-Test-Nachweis für alle neu aufgenommenen Fragen.
 Fallstricke:
 - Zu viele Frage-Antwort-Paare in eine FAQ-Datei aufnehmen (>15 Paare) → Per-Document-Cap liefert nur einen Chunk; wenn eine FAQ-Datei 20 Fragen enthält, werden die letzten 10 nie retrievt; max. 10 Paare pro Datei ist die Faustregel.
 - FAQ-Erweiterung ohne Canary-Test-Kontrolle einspielen → neue FAQ-Einträge können bestehendes Retrieval stören wenn der neue Text semantisch ähnliche Keywords wie bestehende Dateien enthält; immer den vollständigen Canary-Test nach jedem Update ausführen.
+Empfehlung: Begrenze jede FAQ-Datei auf maximal 10 Frage-Antwort-Paare - der Per-Document-Cap liefert nur einen Chunk, sodass bei 20 Fragen die letzten 10 nie retrievt werden. Fuehre nach jedem FAQ-Update den vollstaendigen Canary-Test aus, da neue Eintraege mit aehnlichen Keywords bestehendes Retrieval stoeren koennen.
 Anschluss: S-WR-044
 
 ### S-WR-044 Chunk-Optimierung für lange technische PDFs mit Anhang-Struktur
@@ -991,16 +1002,18 @@ Ziel: Lange technische PDFs mit Anhang-Struktur so für das Chunking optimieren,
 Ergebnis: Ein aufgeteiltes Whitepaper (Haupttext als separate MD-Datei, Anhang als separate Datei wenn relevant, Quellenangaben entfernt) das bei Canary-Tests konsistent Chunks aus dem Haupttext statt dem Anhang zurückgibt.
 Fähigkeit: Library Folder + Chat (Dokument-Splitting) + Canary-Test
 Vorgehen:
-1. Analysiere die Seitenverteilung: wie viel Prozent des Dokuments ist Haupttext vs. Anhang? Wenn Anhang >30 % des Volumens ausmacht, ist eine Aufteilung zwingend notwendig um Retrieval-Verzerrung zu vermeiden.
-2. Teile das Dokument in zwei separate Dateien: `whitepaper-[name]-haupttext-[Jahr].md` (nur der argumentative Kern) und `whitepaper-[name]-anhang-[Jahr].md` (nur wenn der Anhang eigenständige Informationen enthält die retrievt werden sollen); Quellenangaben und Abkürzungsverzeichnisse komplett weglassen — diese erzeugen nie nützliche Chunks.
-3. Optimiere den Haupttext nach RAG-Regeln: jeder Absatz wiederholt den Schlüsselbegriff, H2-Überschriften sind keyword-reich, keine unaufgelösten Pronomen.
-4. Führe Canary-Tests durch: Fragen zum Kern-Argument des Whitepapers müssen Citations aus der Haupttext-Datei liefern, nicht aus der Anhang-Datei.
-Prompt:
-> "Du bist RAG-Dokumenten-Aufbereiterin [Persona]. Teile das folgende 48-seitige technische Whitepaper in RAG-optimierte Dateien auf [Task]. Kontext: Langdock zerlegt in ~2.000-Zeichen-Chunks; Anhänge (Tabellen, Abkürzungen, Quellenangaben) erzeugen irrelevante Chunks die den Haupttext verdrängen; Quellenangaben komplett entfernen [Context]. Erstelle zwei separate MD-Dateien: Haupttext und Anhang (nur wenn Anhang eigenständige abrufbare Informationen enthält) [Format]."
+1. Teile das Whitepaper (Haupttext + ggf. Anhang als separate Dateien).
+2. Entferne das Literaturverzeichnis vor dem Upload.
+3. Canary-Test: Antworten zitieren Haupttext-Chunks, nicht Anhang/Quellen.
+Vorlage: Whitepaper RAG-aufbereiten:
+1. Aufteilung - Haupttext als separate MD-Datei; Anhang nur als eigene Datei, wenn substantieller erklaerender Text.
+2. Quellenangaben entfernen - Literaturverzeichnis raus, bevor es in den Wissensordner kommt.
+3. Canary-Test - Antworten zitieren konsistent Haupttext-Chunks, nicht Anhang/Quellen.
 Artefakt: Zwei separate MD-Dateien (Haupttext + optionaler Anhang) mit nachgewiesenem Retrieval aus dem Haupttext bei Canary-Tests zu Kern-Argumenten des Whitepapers.
 Fallstricke:
 - Quellenangaben im Haupttext belassen weil "sie zum Dokument gehören" → Quellenangaben erzeugen Chunks wie "[1] Müller, K. (2023). Journal of..." die bei fast jeder Frage als semantisch ähnlich bewertet werden; Quellenangaben immer entfernen bevor das Dokument in den Wissensordner kommt.
 - Anhang als eigene Datei hochladen wenn er nur Abkürzungen enthält → ein Abkürzungsverzeichnis ist kein sinnvolles RAG-Dokument; nur Anhänge mit substantiellem erklärendem Text (z.B. Methodik-Anhang) als separate Datei hochladen.
+Empfehlung: Entferne Quellenangaben vor dem Upload - Eintraege wie '[1] Mueller, K. (2023). Journal of...' erzeugen Chunks, die bei fast jeder Frage als semantisch aehnlich bewertet werden und echtes Retrieval verdraengen. Lade einen Anhang nur als eigene Datei hoch, wenn er substantiellen erklaerenden Text enthaelt; ein reines Abkuerzungsverzeichnis ist kein sinnvolles RAG-Dokument.
 Anschluss: S-WR-045
 
 ### S-WR-045 Indexierungslatenz nach Massen-Upload managen
@@ -1013,12 +1026,16 @@ Vorgehen:
 1. Erkläre die technische Realität: Langdock indiziert Dokumente asynchron nach dem Upload — die Vektorisierung läuft im Hintergrund und kann bei Massen-Uploads (>20 Dateien) 10-30 Minuten in Anspruch nehmen; Dateien sind im Ordner sichtbar bevor sie retrievable sind.
 2. Definiere den Warm-up-Prozess: nach einem Massen-Upload von >10 Dateien mindestens 15 Minuten warten; führe dann einen einzelnen Canary-Test mit einer Frage durch die eindeutig auf eine der neu hochgeladenen Dateien zielen sollte — wenn dieser Test erfolgreich ist, sind alle Dokumente indiziert.
 3. Dokumentiere den Warm-up-Prozess im Upload-Protokoll des Ordners als obligatorischen Schritt: "Nach jedem Batch-Upload von >5 Dateien: 15 Minuten Wartezeit, dann einzelner Canary-Test, bei Erfolg: vollständiges Canary-Set ausführen."
-Prompt:
-> "Du bist Wissensordner-Administratorin [Persona]. Wir haben soeben 35 neue Dokumente in unseren Library Folder hochgeladen [Task]. Erkläre den korrekten Warm-up-Prozess nach einem Massen-Upload und beschreibe wie wir überprüfen können ob die Indexierung abgeschlossen ist bevor wir Produktiv-Tests durchführen [Context]. Format: Schritt-für-Schritt-Anleitung mit Zeitangaben und einem Canary-Test-Vorschlag [Format]."
+Vorlage: Upload- und Indexierungs-Protokoll:
+1. Wartezeit - nach jedem Upload-Batch mind. 10-15 Minuten vor Retrieval-Test.
+2. Status-Check - im Interface pruefen, ob die Indexierung abgeschlossen ist.
+3. Warm-up - dokumentierter Prozess fuer neue Wissensordner vor Produktiv-Nutzung.
+4. Diagnose-Schwelle - erst nach 30 Min auf Format-Fehler diagnostizieren.
 Artefakt: Ein Upload-Protokoll mit Warm-up-Schritten, definierten Wartezeiten und einem Single-Canary-Test-Template für die Indexierungs-Bestätigung nach Massen-Uploads.
 Fallstricke:
 - Sofort nach Upload Produktiv-Anfragen an den Agenten stellen ohne Warm-up → "Keine Information gefunden"-Antworten führen zu falschen Diagnosen (Datei-Format-Fehler vermutet statt Indexierungslatenz erkannt); immer mindestens 15 Minuten warten.
 - Indexierungslatenz mit Datei-Format-Fehler verwechseln → wenn nach 30 Minuten ein Canary-Test immer noch fehlschlägt, liegt ein tatsächlicher Fehler vor (falsches Format, Datei zu groß, Text nicht extrahierbar); erst nach 30 Minuten auf Format-Fehler diagnosieren.
+Empfehlung: Warte nach jedem Upload mindestens 15 Minuten vor Produktiv-Anfragen - sofortige 'Keine Information'-Antworten fuehren sonst zu Fehldiagnosen (Format-Fehler vermutet statt Indexierungslatenz). Diagnostiziere erst nach 30 Minuten auf einen echten Format-Fehler (falsches Format, zu gross, Text nicht extrahierbar), wenn ein Canary-Test dann immer noch fehlschlaegt.
 Anschluss: S-WR-046
 
 ### S-WR-046 Duplikat-Erkennung und Bereinigung im Wissensordner
@@ -1028,16 +1045,18 @@ Ziel: Einen systematischen Duplikat-Erkennungs-Prozess einführen, der inhaltlic
 Ergebnis: Eine bereinigte Wissensordner-Dateiliste ohne inhaltliche Duplikate, ein Duplikat-Erkennungs-Protokoll und eine Regel wann Inhalte als "zu ähnlich" gelten und welche Version behalten wird.
 Fähigkeit: Library Folder (Verwaltungsansicht) + Chat (inhaltlicher Duplikat-Check)
 Vorgehen:
-1. Exportiere alle Dateinamen und Upload-Daten; identifiziere Dateiname-Verdächtige: Paare mit identischen Thema-Keywords im Namen oder Versionshinweisen ("v1" vs. "v2", "final" vs. "final-v2", "_alt" vs. kein Suffix).
-2. Lade verdächtige Paare als direkten Chat-Anhang hoch und frage: "Vergleiche diese zwei Dokumente und liste die inhaltlichen Unterschiede auf; sind sie inhaltliche Duplikate, Versionen desselben Inhalts mit Updates, oder thematisch verwandte aber verschiedene Inhalte?"
-3. Entscheide pro Paar nach der Regel: identischer Inhalt → behalte das neuere, lösche das ältere; inhaltlich aktualisierte Version → behalte die neuere, lösche die ältere; thematisch verwandt aber verschieden → beide behalten, sicherstellen dass Dateinamen den Unterschied klar kommunizieren.
-4. Dokumentiere alle Entscheidungen in einem Duplikat-Log; bei Löschungen immer den Dateinamen und Löschdatum festhalten für spätere Rückverfolgbarkeit.
-Prompt:
-> "Du bist Wissensordner-Kuratorin [Persona]. Vergleiche die zwei angehängten Dokumente auf inhaltliche Duplikate [Task]. Kontext: In unserem Library Folder konkurrieren vermutlich identische oder fast-identische Dokumente um dieselben Retrieval-Slots; das Per-Document-Cap liefert pro Datei nur einen Chunk — Duplikate halbieren effektiv die Retrieval-Qualität [Context]. Liefere: Liste der inhaltlichen Unterschiede, Empfehlung welche Version behalten wird, Begründung [Format]."
+1. Vergleiche Kandidaten inhaltlich als Direktanhang (nicht nur Dateinamen).
+2. Definiere die Aehnlichkeits-Regel (wann 'zu aehnlich', welche Version behalten).
+3. Bestaetige die neuere Version explizit, archiviere bei Zweifel die aeltere.
+Vorlage: Duplikat-Erkennung und -Bereinigung:
+1. Inhaltlicher Vergleich - nicht nur Dateinamen; Kandidaten als Direktanhang vergleichen.
+2. Aehnlichkeits-Regel - wann Inhalte als 'zu aehnlich' gelten, welche Version behalten.
+3. Bestaetigung - neuere Version explizit bestaetigen, dann aeltere loeschen.
 Artefakt: Ein bereinigter Wissensordner ohne inhaltliche Duplikate, ein Duplikat-Log als MD-Datei und eine Duplikat-Erkennungs-Regel im Governance-Dokument (S-WR-039).
 Fallstricke:
 - Duplikat-Erkennung nur auf Dateinamen-Basis durchführen → zwei Dateien mit verschiedenen Namen können identischen Inhalt haben (z.B. `brand-guide-2025.md` und `markenleitfaden-q1-2025.md`); immer inhaltlichen Vergleich als direkten Anhang durchführen.
 - Beide Versionen eines Duplikat-Paars löschen aus Unsicherheit → Datenverlust-Risiko; immer die neuere Version explizit bestätigen bevor die ältere gelöscht wird; bei Unsicherheit die ältere archivieren statt löschen.
+Empfehlung: Fuehre den Duplikat-Vergleich inhaltlich durch, nicht nur ueber Dateinamen - zwei Dateien mit verschiedenen Namen (brand-guide-2025.md vs. markenleitfaden-q1-2025.md) koennen identischen Inhalt haben. Loesche nie beide Versionen aus Unsicherheit; bestaetige die neuere explizit, und archiviere bei Zweifel die aeltere statt sie zu loeschen.
 Anschluss: S-WR-047
 
 ### S-WR-047 Wissensordner für das Onboarding neuer Marketing-Mitarbeiter
@@ -1047,16 +1066,18 @@ Ziel: Einen "WO-Onboarding" Library Folder als selbstbedienbare Wissensquelle f�
 Ergebnis: Ein WO-Onboarding Library Folder mit 8-12 atomaren MD-Dateien (Unternehmensstruktur, Brand-Basics, Tool-Zugänge, interne Prozesse, häufige Fragen, Ansprechpartner-Verzeichnis), verbunden mit einem Onboarding-Agenten der neue Mitarbeiter durch die erste Arbeitswoche führt.
 Fähigkeit: Library Folder + Agent-Konfiguration + Konversations-Starter
 Vorgehen:
-1. Definiere die 10 häufigsten Fragen neuer Mitarbeiter in den ersten 30 Tagen (durch Befragung von Mitarbeitern im zweiten Monat oder HR-Daten); diese Fragen definieren die Mindest-Dokumentation für WO-Onboarding.
-2. Erstelle atomare MD-Dateien pro Thema: `onboarding-brand-basics.md`, `onboarding-tool-zugaenge.md`, `onboarding-ansprechpartner.md`, `onboarding-interne-prozesse.md`, `onboarding-haeufige-fragen.md`; jede Datei endet mit "Für weitere Fragen: [Ansprechpartner + Kontakt]."
-3. Konfiguriere einen Onboarding-Agenten mit 3 Konversations-Startern: "Was sind unsere Brand-Grundregeln?", "Wie lautet der Onboarding-Prozess für Tool-Zugänge?", "An wen wende ich mich bei Fragen zu [Thema]?"
-4. Aktualisiere WO-Onboarding quartalsweise; lasse neue Mitarbeiter am Ende ihres ersten Monats Feedback geben welche Fragen der Agent nicht beantworten konnte — diese Lücken werden in den nächsten Quartal-Update aufgenommen.
-Prompt:
-> "Du bist Onboarding-Assistent für neue Marketing-Mitarbeiter [Persona]. Beantworte die folgende Frage eines neuen Kollegen zu unserem Brand-Setup [Task]. Stütze dich ausschließlich auf den Wissensordner WO-Onboarding; wenn die Antwort nicht im Ordner liegt, empfehle den direkten Kontakt zu [Ansprechpartner] [Context]. Format: Direkte Antwort (max. 3 Sätze) mit Quellenangabe aus dem Onboarding-Wissensordner [Format]."
+1. Erstelle 8-12 atomare Onboarding-MD-Dateien (Rollen statt Personendaten).
+2. Konfiguriere den Onboarding-Agenten fuer die erste Woche.
+3. Plane einen quartalsweisen Review.
+Vorlage: Onboarding-Wissensordner:
+1. 8-12 atomare MD-Dateien - Unternehmensstruktur, Brand-Basics, Tool-Zugaenge, interne Prozesse, FAQ, Ansprechpartner (Rollen, keine Personendaten).
+2. Onboarding-Agent - fuehrt neue Mitarbeiter durch die erste Woche.
+3. Pflege - mind. quartalsweiser Review.
 Artefakt: Ein WO-Onboarding Library Folder mit 8-12 atomaren Dateien, ein Onboarding-Agent mit 3 Konversations-Startern und ein Feedback-Prozess für die quartalsweise Erweiterung.
 Fallstricke:
 - Ansprechpartner-Verzeichnis mit persönlichen E-Mail-Adressen und Telefonnummern direkt in den Wissensordner laden → Onboarding-Wissensordner ist oft für das gesamte Team freigegeben; persönliche Kontaktdaten gehören nicht in öffentlich zugängliche Wissensordner; Rollen-Beschreibungen ohne persönliche Daten verwenden.
 - Onboarding-Wissensordner nach dem ersten Aufbau nie aktualisieren → in wachsenden Teams ändern sich Ansprechpartner, Prozesse und Tools laufend; veraltetes Onboarding-Wissen frustriert neue Mitarbeiter; mindestens quartalsweiser Review ist Pflicht.
+Empfehlung: Verwende Rollen-Beschreibungen statt persoenlicher E-Mails/Telefonnummern - der Onboarding-Ordner ist oft team-weit freigegeben, und persoenliche Kontaktdaten gehoeren nicht in oeffentlich zugaengliche Wissensordner. Reviewe den Ordner mindestens quartalsweise, da sich Ansprechpartner, Prozesse und Tools in wachsenden Teams laufend aendern und veraltetes Onboarding-Wissen neue Mitarbeiter frustriert.
 Anschluss: S-WR-048
 
 ### S-WR-048 Press-Kit-Management im Wissensordner für schnelle Journalisten-Anfragen
@@ -1066,16 +1087,18 @@ Ziel: Das gesamte Press-Kit als sofort abrufbaren Wissensordner strukturieren, d
 Ergebnis: Ein "WO-Press-Kit" Library Folder mit atomaren MD-Dateien pro Press-Kit-Element (Boilerplate, Bio-Texte, Fact-Sheet, Approved-Quotes, Logo-Verweise), verbunden mit einem PR-Agenten der Journalisten-Anfragen selbstständig bearbeitet.
 Fähigkeit: Library Folder + Agent-Konfiguration + Freshness-Management
 Vorgehen:
-1. Inventarisiere alle Press-Kit-Elemente und trenne in atomare Dateien: `presskit-boilerplate-de-[Jahr].md`, `presskit-bio-ceo-[Jahr].md`, `presskit-factsheet-unternehmen-[Jahr].md`, `presskit-approved-quotes-[Jahr].md`; jede Datei beginnt mit "Stand: [JJJJ-MM]" als ersten Satz.
-2. Definiere für jeden Press-Kit-Bestandteil einen Update-Rhythmus: Boilerplate = jährlich (nach Hauptversammlung), Bio-Texte = bei Personalwechsel, Fact-Sheet = quartalsweise, Approved-Quotes = nach jeder Pressekonferenz.
-3. Konfiguriere den PR-Agenten mit System-Instructions: "Antworte auf Journalisten-Anfragen mit ausschließlich aus WO-Press-Kit abgerufenen Inhalten; erfinde keine Fakten oder Zitate; wenn ein benötigtes Element nicht im Wissensordner vorliegt, eskaliere an den PR-Manager."
-4. Teste mit 5 typischen Journalisten-Fragen: Unternehmensgeschichte, aktuelle Mitarbeiterzahl, CEO-Zitat zum Thema Nachhaltigkeit — alle Antworten müssen Citations aus WO-Press-Kit enthalten.
-Prompt:
-> "Du bist PR-Assistentin [Persona]. Beantworte die folgende Anfrage eines Wirtschaftsjournalisten zu unserem Unternehmen [Task]. Nutze ausschließlich den Press-Kit-Wissensordner WO-Press-Kit; erfinde keine Fakten und verwende keine Zitate die nicht als 'approved' gekennzeichnet sind [Context]. Format: Direkte Antwort mit Quellenangabe aus dem Press-Kit, max. 3 Sätze [Format]."
+1. Atomisiere die Press-Kit-Elemente je Datei.
+2. Kennzeichne jedes Zitat mit Kontext + Freigabe-Status.
+3. Binde den PR-Agenten an und verknuepfe den Update-Rhythmus mit Unternehmens-Ereignissen.
+Vorlage: Press-Kit-Wissensordner:
+1. Atomare Dateien je Element - Boilerplate, Bio-Texte, Fact-Sheet, Approved-Quotes, Logo-Verweise.
+2. Kontext-Kennzeichnung - jedes Zitat mit Kontext + Freigabe-Status.
+3. PR-Agent - bearbeitet Journalisten-Anfragen selbststaendig aus dem Ordner.
 Artefakt: Ein WO-Press-Kit Library Folder mit aktuellen atomaren Press-Kit-Elementen, ein getesteter PR-Agent mit Citations-Nachweis für 5 typische Journalisten-Fragen und ein definierter Update-Rhythmus pro Press-Kit-Element.
 Fallstricke:
 - Approved-Quotes aus unterschiedlichen Kontexten (Pressekonferenz vs. interne Rede) ohne Kontext-Kennzeichnung in den Ordner laden → Agent verwendet ein Zitat das für eine interne Veranstaltung gedacht war in einem Presse-Statement; jedes Zitat muss mit Kontext und Freigabe-Status gekennzeichnet sein.
 - Press-Kit nach Unternehmensveränderungen (Führungswechsel, Rebranding) nicht aktualisieren → Journalisten erhalten veraltete Bio-Texte oder alte Unternehmens-Kennzahlen; Update-Rhythmus muss mit dem Kalender der Unternehmens-Ereignisse verknüpft sein.
+Empfehlung: Kennzeichne jedes Approved-Quote mit Kontext und Freigabe-Status - sonst verwendet der Agent ein fuer eine interne Veranstaltung gedachtes Zitat in einem Presse-Statement. Verknuepfe den Update-Rhythmus mit dem Kalender der Unternehmens-Ereignisse (Fuehrungswechsel, Rebranding), damit Journalisten keine veralteten Bio-Texte oder Kennzahlen erhalten.
 Anschluss: S-WR-049
 
 ### S-WR-049 Voice-of-Customer-Archiv im Wissensordner für Persona-Updates nutzen
@@ -1085,16 +1108,18 @@ Ziel: Ein anonymisiertes "WO-Voice-of-Customer"-Archiv aufbauen, das aggregierte
 Ergebnis: Ein WO-Voice-of-Customer Library Folder mit 5-10 aggregierten Segment-Zusammenfassungen (je Kunden-Segment eine Datei, vollständig anonymisiert), verbunden mit einem Persona-Update-Agenten der jährliche Persona-Revisionen vorbereitet.
 Fähigkeit: Library Folder + Chat (Persona-Update-Analyse) + DSGVO-konformer Upload-Prozess
 Vorgehen:
-1. Anonymisiere alle Kunden-Rohdaten vor dem Upload nach dem Prozess aus S-WR-020: aggregiere mind. 5 Kunden-Aussagen pro Zusammenfassungs-Datei; jede Datei enthält das Segment-Profil (nicht individuelle Kunden-Namen).
-2. Strukturiere jede Segment-Datei einheitlich: H1 = Segment-Name (z.B. "Voice of Customer: Mittelstand-CMOs"), Abschnitt 1 = Top-3-Pain-Points mit O-Ton-Zitaten (anonymisiert), Abschnitt 2 = Top-3-Kaufmotive mit O-Ton-Zitaten, Abschnitt 3 = Häufig genannte Konkurrenten und Vergleichspunkte.
-3. Verbinde den Persona-Update-Agenten mit WO-Voice-of-Customer; füge System-Instruction ein: "Nutze die O-Ton-Zitate aus dem Wissensordner als Beweis für Persona-Eigenschaften — keine Eigenerfindung von Kundenzitaten."
-4. Führe jährlich eine Persona-Update-Session durch: Prompt "Welche Persona-Eigenschaften aus dem Vorjahr werden durch neue Voice-of-Customer-Daten bestätigt und welche müssen aktualisiert werden?"
-Prompt:
-> "Du bist Persona-Forscherin [Persona]. Analysiere die Voice-of-Customer-Dokumente im Wissensordner WO-Voice-of-Customer für das Segment Mittelstand-CMOs [Task]. Kontext: Die Dokumente enthalten anonymisierte O-Ton-Zitate aus Kunden-Interviews; nutze ausschließlich diese Zitate als Belege für Persona-Eigenschaften [Context]. Liefere einen Persona-Update-Vorschlag mit Abschnitten Bestätigte Eigenschaften, Neue Erkenntnisse, Veraltete Annahmen — je mit Beleg-Zitat [Format]."
+1. Anonymisiere und aggregiere je Segment eine Zusammenfassungs-Datei.
+2. Binde den Persona-Update-Agenten an.
+3. Ersetze die Zusammenfassungen jaehrlich vollstaendig (nicht kumulativ).
+Vorlage: Voice-of-Customer-Wissensordner:
+1. 5-10 aggregierte Segment-Zusammenfassungen - je Segment eine Datei, vollstaendig anonymisiert.
+2. Persona-Update-Agent - bereitet jaehrliche Persona-Revisionen vor.
+3. Anonymisierung - keine Namen, keine unternehmens-spezifischen Details.
 Artefakt: Ein WO-Voice-of-Customer Library Folder mit anonymisierten Segment-Zusammenfassungen und ein Persona-Update-Agent der jährliche Revisions-Vorschläge mit O-Ton-Belegen liefert.
 Fallstricke:
 - O-Ton-Zitate ohne Anonymisierungsprüfung hochladen → auch kurze Kundenaussagen können in Kombination mit Segment-Angaben zur Re-Identifikation führen; jedes Zitat muss ohne Namen und ohne unternehmens-spezifische Details abrufbar sein.
 - Archiv nur jährlich mit neuen Daten befüllen und alte Segment-Zusammenfassungen nie löschen → veraltete Kundenstimmen aus 2021 können 2025er Persona-Updates verzerren; Segment-Zusammenfassungen jährlich vollständig ersetzen statt kumulativ erweitern.
+Empfehlung: Pruefe jedes O-Ton-Zitat auf Re-Identifikation - auch kurze Aussagen koennen in Kombination mit Segment-Angaben jemanden identifizieren; nur ohne Namen und unternehmens-spezifische Details abrufbar machen. Ersetze die Segment-Zusammenfassungen jaehrlich vollstaendig statt kumulativ zu erweitern, da Kundenstimmen aus 2021 die 2025er Persona-Updates verzerren.
 Anschluss: S-WR-050
 
 ### S-WR-050 Konkurrenz-Recherche-Archiv im Wissensordner strukturieren
@@ -1104,16 +1129,19 @@ Ziel: Einen "WO-Konkurrenz" Library Folder aufbauen, der quartalsweise Konkurren
 Ergebnis: Ein WO-Konkurrenz Library Folder mit atomaren Konkurrenz-Profil-Dateien (je Mitbewerber eine Datei, quartalsweise aktualisiert) und einem Strategie-Agenten der Positioning-Fragen mit historischem Kontext beantwortet.
 Fähigkeit: Library Folder + Agent (Web Search für Live-Updates) + Citations-Analyse
 Vorgehen:
-1. Definiere das Konkurrenz-Profil-Template als MD-Datei: H1 = Wettbewerber-Name + Quartal, Abschnitt 1 = Aktuelle Positionierung und Kernbotschaften, Abschnitt 2 = Produkt/Feature-Neuheiten dieses Quartals, Abschnitt 3 = Preispositionierung (soweit öffentlich bekannt), Abschnitt 4 = Stärken und Schwächen aus Marketing-Perspektive.
-2. Erstelle für jeden relevanten Mitbewerber eine initiale Profil-Datei nach diesem Template; lade in WO-Konkurrenz hoch; Dateiname: `konkurrenz-[name]-[JJJJ]-Q[N].md`.
-3. Aktualisiere die Profile quartalsweise: neue Datei für das neue Quartal erstellen (nicht die alte überschreiben — historische Versionen ermöglichen Trend-Analyse); alte Quartalsprofile bleiben im Ordner als historisches Archiv.
-4. Verbinde den Strategie-Agenten mit WO-Konkurrenz + Web Search; System-Instruction: "Ergänze Wissensordner-Insights mit aktuellen Web-Search-Ergebnissen; weise explizit auf den Zeitstempel der Wissensordner-Daten hin."
-Prompt:
-> "Du bist Wettbewerbs-Analystin [Persona]. Vergleiche unsere aktuelle Positionierung mit Wettbewerber X basierend auf den Konkurrenz-Profilen im Wissensordner und aktuellen Web-Search-Daten [Task]. Zeige wie sich die Positionierung von Wettbewerber X über die letzten vier Quartale entwickelt hat [Context]. Format: Tabelle mit Quartal, Wettbewerber-Positionierung, Unsere Positionierung, Empfohlene Anpassung [Format]."
+1. Erstelle je Mitbewerber eine quartalsweise aktualisierte Profil-Datei.
+2. Belege jede Aussage oder kennzeichne sie als 'interne Einschaetzung'.
+3. Binde den Strategie-Agenten an; Profile aelter als 8 Quartale ins Archiv.
+Vorlage: Konkurrenz-Wissensordner:
+1. Atomare Profil-Dateien - je Mitbewerber eine Datei, quartalsweise aktualisiert.
+2. Belege - jede Aussage mit oeffentlicher Quelle oder als 'interne Einschaetzung' gekennzeichnet.
+3. Strategie-Agent - beantwortet Positioning-Fragen mit historischem Kontext.
+4. Archiv - Profile aelter als 8 Quartale in Archiv-Unterordner.
 Artefakt: Ein WO-Konkurrenz Library Folder mit Quartals-Profilen je Mitbewerber, ein Strategie-Agent mit Web Search + historischem Archiv, und ein quartalsweises Update-Protokoll.
 Fallstricke:
 - Konkurrenz-Profile aus internen Bewertungen ohne externe Belege hochladen → interne Meinungen ohne Quellen-Verweis im Wissensordner werden vom Agenten als Fakten behandelt; jede Aussage in den Profilen muss mit öffentlichen Quellen belegt oder als "interne Einschätzung" gekennzeichnet sein.
 - Alle historischen Quartalsprofile behalten ohne Archivierungsregel → nach 3 Jahren sind 48 Konkurrenz-Profil-Dateien je Wettbewerber im Ordner; Faustregel: Profile älter als 8 Quartale in einen Archiv-Unterordner verschieben außerhalb des aktiven Sync-Bereichs.
+Empfehlung: Kennzeichne interne Bewertungen ohne externe Belege als 'interne Einschaetzung' - sonst behandelt der Agent ungestuetzte Meinungen als Fakten. Verschiebe Profile aelter als 8 Quartale in einen Archiv-Unterordner ausserhalb des aktiven Sync-Bereichs, sonst sammeln sich nach 3 Jahren 48 Dateien je Wettbewerber.
 Anschluss: S-WR-051
 
 ### S-WR-051 Event-Debrief-Archiv im Wissensordner für Follow-up-Planung nutzen
@@ -1123,16 +1151,18 @@ Ziel: Einen "WO-Event-Debriefs" Library Folder als strukturiertes Event-Lernarch
 Ergebnis: Ein WO-Event-Debriefs Library Folder mit 3-5 standardisierten Debrief-MD-Dateien aus vergangenen Events, verbunden mit einem Event-Planungs-Agenten der bei neuen Event-Briefings automatisch historische Parallelen zieht.
 Fähigkeit: Library Folder + Agent-Konfiguration + semantische Suche
 Vorgehen:
-1. Erstelle eine standardisierte Event-Debrief-Vorlage als MD-Template: H1 = Event-Name + Datum, Abschnitt 1 = Event-Typ und Ziel, Abschnitt 2 = Was funktioniert hat (max. 3 Punkte mit konkreten Zahlen), Abschnitt 3 = Was nicht funktioniert hat, Abschnitt 4 = Empfehlungen für das nächste ähnliche Event — kompakt auf max. 1,5 Seiten.
-2. Konvertiere die 3-5 wichtigsten vergangenen Event-Debrief-Berichte in das neue Template-Format; lade als separate MD-Dateien in WO-Event-Debriefs hoch; Dateiname: `event-debrief-[name]-[JJJJ-MM].md`.
-3. Verbinde den Event-Planungs-Agenten mit WO-Event-Debriefs; System-Instruction: "Wenn ein neues Event-Briefing bearbeitet wird, prüfe WO-Event-Debriefs nach ähnlichen historischen Events und zitiere relevante Learnings explizit."
-4. Etabliere den Debrief-Upload als Pflicht im Event-Abschluss-Prozess (analog zu S-WR-040 für Kampagnen): kein Event-Abschluss ohne einen neuen Debrief-Eintrag im Wissensordner.
-Prompt:
-> "Du bist Event-Planungsassistentin [Persona]. Wir planen unsere Teilnahme an der Marketing-Messe 2025 in München [Task]. Durchsuche den Wissensordner WO-Event-Debriefs nach historischen Messe-Teilnahmen mit ähnlichem Format und Zielgruppe; extrahiere Empfehlungen für Stand-Konzept, Botschaften und Follow-up-Aktionen [Context]. Format: Tabelle mit Historischem Event, Relevantem Learning, Empfehlung für 2025 [Format]."
+1. Standardisiere 3-5 Debrief-MD-Dateien (max. 1,5 Seiten).
+2. Binde den Event-Planungs-Agenten an.
+3. Regle die Vertraulichkeit ueber Zugriffsrechte (S-WR-023), nicht ueber Nicht-Upload.
+Vorlage: Event-Debrief-Wissensordner:
+1. 3-5 standardisierte Debrief-MD-Dateien aus vergangenen Events.
+2. Event-Planungs-Agent - zieht bei neuen Briefings automatisch historische Parallelen.
+3. Laengen-Grenze - max. 1,5 Seiten pro Debrief (Per-Document-Cap).
 Artefakt: Ein WO-Event-Debriefs Library Folder mit 3-5 standardisierten Debrief-Einträgen, ein Event-Planungs-Agent der historische Learnings aktiv einbezieht und eine Debrief-Pflicht im Event-Abschluss-Prozess.
 Fallstricke:
 - Debrief-Dateien zu lang und detailliert erstellen (>3 Seiten) → Per-Document-Cap liefert nur einen Chunk pro Datei; lange Debriefs werden unvollständig retrievt; die 1,5-Seiten-Grenze in der Vorlage ist keine Empfehlung sondern eine technische Notwendigkeit.
 - Event-Debriefs als vertrauliche interne Dokumente werten und nicht in den Wissensordner hochladen → Debriefs die nur in SharePoint liegen helfen dem Agenten nicht; Vertraulichkeit der Debriefs kann durch rollenbasierte Zugriffsrechte (S-WR-023) geregelt werden, nicht durch Nicht-Upload.
+Empfehlung: Halte jede Debrief-Datei unter 1,5 Seiten - das ist keine Empfehlung, sondern technische Notwendigkeit, da der Per-Document-Cap nur einen Chunk pro Datei liefert und lange Debriefs unvollstaendig retrievt werden. Regle die Vertraulichkeit ueber rollenbasierte Zugriffsrechte (S-WR-023), nicht durch Nicht-Upload; nur in SharePoint liegende Debriefs helfen dem Agenten nicht.
 Anschluss: S-WR-052
 
 ### S-WR-052 Markdown-Header-Struktur für optimale Chunk-Grenzen nutzen
@@ -1142,16 +1172,18 @@ Ziel: Die Markdown-Überschriften-Hierarchie als aktives Steuerungsinstrument f�
 Ergebnis: Ein Heading-Style-Guide als MD-Datei im WO-Basis-Ordner sowie 2-3 nach dem Guide überarbeitete Kerndokumente mit messbarer Verbesserung der Chunk-Kohärenz in Canary-Tests.
 Fähigkeit: Library Folder + Chat (Dokument-Überarbeitung) + Canary-Test
 Vorgehen:
-1. Erkläre den Chunk-Grenzen-Effekt von Headers: Langdocks Chunking-Algorithmus behandelt Markdown-Überschriften (# H1, ## H2, ### H3) als bevorzugte Schnittmarken — thematische Blöcke die mit einem Header beginnen haben eine höhere Wahrscheinlichkeit als zusammenhängende Chunks abgerufen zu werden.
-2. Definiere den Heading-Style-Guide: H1 einmal pro Datei (Dokument-Titel mit Hauptkeyword); H2 für jeden thematischen Hauptabschnitt (enthält das Kapitel-Keyword); H3 für Unterabschnitte innerhalb eines Themas (enthält das Unter-Keyword); kein Fließtext länger als 2.000 Zeichen zwischen zwei H2-Überschriften.
-3. Überarbeite 2-3 Kerndokumente nach dem Guide; besonderer Fokus auf: H2-Überschriften müssen den Kern-Begriff des Abschnitts im Titel tragen, nicht nur eine Frage; nach jeder H2 sofort ein keyword-reicher Eröffnungssatz der das Thema des Abschnitts explizit nennt.
-4. Canary-Test vor und nach der Überarbeitung: für dasselbe Thema dieselbe Frage stellen und die Chunk-Kohärenz der Antwort vergleichen (vollständiger Abschnitt vs. fragmentierter Textausschnitt).
-Prompt:
-> "Du bist RAG-Redakteurin [Persona]. Überarbeite die Überschriften-Struktur des folgenden Dokuments so dass der Chunking-Algorithmus thematische Grenzen sauber erkennt [Task]. Kontext: Langdock zerlegt bei ~2.000 Zeichen und bevorzugt Markdown-Header als Schnittmarken; jede H2-Überschrift muss das Kapitel-Keyword im Titel tragen; nach jeder H2 muss ein keyword-reicher Eröffnungssatz folgen [Context]. Liefere das überarbeitete Dokument mit markierten Änderungen an der Überschriften-Hierarchie [Format]."
+1. Definiere den Heading-Style-Guide (keyword-reiche H2, >=300 Woerter/Abschnitt).
+2. Ueberarbeite 2-3 Kerndokumente nach dem Guide.
+3. Pruefe die Chunk-Kohaerenz im Canary-Test.
+Vorlage: Heading-Style-Guide (Chunk-Kohaerenz):
+1. H2-Regel - keyword-reiche Aussagen ('Preis und Rabattstruktur DACH 2025') statt Einwort-Begriffe ('Preis').
+2. Abschnitts-Mindestlaenge - >=300 Woerter pro Abschnitt.
+3. Pilot - 2-3 Kerndokumente nach dem Guide ueberarbeiten; Chunk-Kohaerenz im Canary-Test pruefen.
 Artefakt: Ein Heading-Style-Guide als MD-Datei im WO-Basis-Ordner und 2-3 überarbeitete Kerndokumente mit Canary-Test-Nachweis für verbesserte Chunk-Kohärenz.
 Fallstricke:
 - H2-Überschriften als kurze Einwort-Begriffe formulieren ("Preis", "Eigenschaften") statt als keyword-reiche Aussagen → einwörtige Überschriften erzeugen schlechte Embedding-Vektoren; H2-Überschriften müssen den Kontext des Abschnitts transportieren: "Preis und Rabattstruktur für DACH-Kunden 2025" ist besser als "Preis".
 - Header-Struktur so granular gestalten dass jeder H3-Abschnitt kürzer als 300 Wörter ist → Abschnitte unter 300 Wörtern erzeugen sehr kleine Chunks die zusammen mit dem nächsten Abschnitt verarbeitet werden und die Themen-Trennung aufheben; Mindestlänge pro Abschnitt: 300 Wörter.
+Empfehlung: Formuliere H2-Ueberschriften als keyword-reiche Aussagen, die den Abschnittskontext transportieren - Einwort-Begriffe wie 'Preis' erzeugen schlechte Embedding-Vektoren. Halte jeden Abschnitt bei mindestens 300 Woertern; kuerzere Abschnitte erzeugen Mini-Chunks, die mit dem naechsten Abschnitt verschmelzen und die Themen-Trennung aufheben.
 Anschluss: S-WR-053
 
 ### S-WR-053 Wissensordner-Health-Scorecard etablieren
@@ -1165,12 +1197,15 @@ Vorgehen:
 2. Erstelle die Scorecard-Vorlage im Canvas als MD-Tabelle: Spalten KPI, Aktueller Wert, Zielwert, Status (Grün/Gelb/Rot), Maßnahme wenn Rot.
 3. Lege den monatlichen Ausfüll-Prozess fest: Canary-Test (10 min), Freshness-Stichprobe (3 min), Datei-Auslastung prüfen (1 min), Duplikat-Verdächtige aus Dateiliste (3 min), Retrieval-Miss-Feedback einsammeln (3 min) — gesamt 20 Minuten.
 4. Archiviere jede monatliche Scorecard als `HEALTH-SCORECARD-[JJJJ-MM].md` im WO-Basis-Ordner; nach 12 Monaten ist ein Trend-Dashboard möglich.
-Prompt:
-> "Du bist Wissensordner-Qualitätsmanagerin [Persona]. Erstelle eine monatliche Health-Scorecard für unsere 6 Library Folders [Task]. Kontext: Die Scorecard soll in 15 Minuten ausfüllbar sein; sie misst Canary-Score, Freshness-Index, Duplikat-Rate, Datei-Auslastung und Retrieval-Miss-Rate; Grün = Zielwert erreicht, Gelb = 80 % des Zielwerts, Rot = unter 80 % [Context]. Liefere die Scorecard-Vorlage als ausfüllbare MD-Tabelle mit Zielwerten und Maßnahmen-Spalte [Format]."
+Vorlage: Wissensordner-Scorecard (monatlich):
+1. 5 KPIs - Canary-Score, Freshness-Index, Duplikat-Rate, Datei-Auslastung, Retrieval-Miss-Rate.
+2. Ausfuell-Prozess - 15 Min/Monat, fester Termin + namentliche Ownership.
+3. Schwellen je KPI mit Ampel.
 Artefakt: Eine Health-Scorecard-Vorlage als MD-Datei mit fünf KPIs, definierten Zielwerten und einem monatlichen Ausfüll-Protokoll — archiviert als Zeitreihe im WO-Basis-Ordner.
 Fallstricke:
 - Scorecard mit zu vielen KPIs überladen (>7) → eine Scorecard die 30 Minuten zur Ausfüllung braucht wird nicht monatlich ausgefüllt; 5 KPIs sind das Maximum für ein nachhaltiges Monitoring-Instrument.
 - Scorecard als einmaliges Projekt behandeln und nie in den monatlichen Rhythmus integrieren → ohne Kalender-Eintrag und namentliche Ownership der Scorecard verschwindet das Instrument nach zwei Monaten; monatlicher 20-Minuten-Termin ist Pflicht beim Rollout.
+Empfehlung: Beschraenke die Scorecard auf maximal 5 KPIs - eine Scorecard, die 30 Minuten zum Ausfuellen braucht, wird nicht monatlich gepflegt. Verankere einen monatlichen 20-Minuten-Termin mit namentlicher Ownership beim Rollout, sonst verschwindet das Instrument nach zwei Monaten.
 Anschluss: S-WR-054
 
 ### S-WR-054 Preis- und Packaging-Historik im Wissensordner für Verhandlungsvorbereitung
@@ -1180,16 +1215,19 @@ Ziel: Eine strukturierte Preis- und Packaging-Historik im Wissensordner aufbauen
 Ergebnis: Ein "WO-Preis-Historik" Synced Folder mit Quartals-Preislisten und einer separaten Konditions-Übersicht je Kundensegment, aus dem der Vertriebs-Agent Verhandlungs-Briefings in unter 5 Minuten generiert.
 Fähigkeit: Synced Folder + Library Folder + Agent-Konfiguration
 Vorgehen:
-1. Trenne zwei Dokumententypen: (a) Aktuelle Preislisten = Synced Folder (SharePoint, täglich aktuell); (b) Historische Konditions-Übersichten je Kundensegment = Library Folder (manuell gepflegt, quartalsweise aktualisiert); nie Roh-Kundenverträge in den Wissensordner — nur aggregierte Segment-Konditionen.
-2. Erstelle die Konditions-Übersicht-Vorlage: H1 = Kundensegment + Quartal, Abschnitt 1 = Standardpreise in diesem Quartal, Abschnitt 2 = Typische Rabattbandbreiten dieses Segments, Abschnitt 3 = Packaging-Optionen die in diesem Quartal genutzt wurden.
-3. Verbinde den Vertriebs-Agenten mit beiden Ordnern; System-Instruction: "Für Verhandlungs-Briefings kombiniere aktuelle Preise aus dem Synced Folder mit historischen Segment-Konditionen aus dem Library Folder und zeige die Preisentwicklung im Trend."
-4. Teste mit einer typischen Anfrage: "Bereite ein Verhandlungs-Briefing vor für ein Renewal-Gespräch mit einem Mittelstands-Kunden der seit 3 Jahren Kunde ist."
-Prompt:
-> "Du bist Verhandlungs-Vorbereitungsassistentin [Persona]. Erstelle ein Verhandlungs-Briefing für ein Renewal-Gespräch mit einem Mittelstands-Kunden der seit 2022 Kunde ist [Task]. Nutze die aktuellen Preislisten aus dem Synced Folder und die historischen Konditions-Übersichten aus dem Library Folder; zeige die Preisentwicklung über vier Quartale [Context]. Format: Einseitiges Briefing mit Abschnitten Aktuelle Preise, Historische Konditionen, Empfohlene Verhandlungsposition [Format]."
+1. Lege den Synced Folder mit Quartals-Preislisten + Segment-Konditionen an (anonymisiert).
+2. Binde den Vertriebs-Agenten an.
+3. Verschiebe Preisuebersichten aelter als 8 Quartale ins Archiv.
+Vorlage: Preis-Historik-Wissensordner (Synced):
+1. Synced Folder - Quartals-Preislisten + separate Konditions-Uebersicht je Segment.
+2. Vertriebs-Agent - generiert Verhandlungs-Briefings in <5 Min.
+3. Anonymisierung - nur Segment-Konditionen, keine individuellen Kundennamen/Vertraege.
+4. Archiv - Preisuebersichten aelter als 8 Quartale auslagern.
 Artefakt: Ein WO-Preis-Historik mit Synced Folder (aktuelle Preise) und Library Folder (historische Konditions-Übersichten), ein Vertriebs-Agent der Verhandlungs-Briefings mit Preis-Trendanalyse generiert.
 Fallstricke:
 - Individuelle Kundennamen und Vertragskonditionen direkt in den Wissensordner laden → Wissensordner sind für das gesamte Sales-Team zugänglich; individuelle Kundendaten sind DSGVO-relevant und dürfen nicht in Team-Wissensordnern liegen; nur anonymisierte Segment-Konditionen hochladen.
 - Historische Preisübersichten nie löschen → nach fünf Jahren enthält der Ordner Preishistorien aus 2019 die für aktuelle Verhandlungen irrelevant sind und Trend-Analysen verzerren; Preisübersichten die älter als 8 Quartale sind in einen Archiv-Ordner verschieben.
+Empfehlung: Lade nur anonymisierte Segment-Konditionen hoch, keine individuellen Kundennamen oder Vertragskonditionen - der Ordner ist team-weit zugaenglich und individuelle Kundendaten sind DSGVO-relevant. Verschiebe Preisuebersichten aelter als 8 Quartale in ein Archiv, sonst verzerren Preishistorien aus 2019 aktuelle Verhandlungen und Trend-Analysen.
 Anschluss: S-WR-055
 
 ### S-WR-055 Retrieval-Debugging mit bekannt-guten Testanfragen
@@ -1199,16 +1237,18 @@ Ziel: Eine Retrieval-Debugging-Methodik einführen, die mit bekannt-guten Testan
 Ergebnis: Ein Goldstandard-Test-Set mit 10 Fragen, bekannten Antworten und erwarteten Citations, das als Regressions-Test nach jeder Wissensordner-Änderung in unter 15 Minuten ausgeführt werden kann.
 Fähigkeit: Wissensordner + Chat (Debugging) + Citations-Analyse
 Vorgehen:
-1. Erstelle das Goldstandard-Test-Set: 10 Fragen für die du die exakte richtige Antwort kennst und weißt aus welcher Datei (und idealerweise welchem Abschnitt) die Antwort stammen muss; je 2 Fragen pro Top-5-Thema des Wissensordners.
-2. Führe nach jeder Wissensordner-Änderung das vollständige Test-Set aus und dokumentiere für jede Frage: (a) Antwort korrekt (J/N), (b) Citation korrekt (J/N), (c) Erwartete Quelldatei stimmt mit tatsächlicher Quelldatei überein (J/N).
-3. Klassifiziere Fehler in drei Typen: Typ A = Antwort falsch, Citation fehlt → Indexierungslatenz oder Datei nicht im Ordner; Typ B = Antwort falsch, Citation vorhanden aber falsche Datei → falsches Dokument retrievt (Duplikat oder schlechter Dateiname); Typ C = Antwort falsch, Citation korrekte Datei → Dokument-Qualitätsproblem (RAG-Optimierung nach S-WR-011 notwendig).
-4. Löse jeden Fehler-Typ mit der zugehörigen Maßnahme; re-teste nach der Maßnahme; erst wenn alle 10 Test-Fragen bestehen gilt die Umstrukturierung als erfolgreich abgeschlossen.
-Prompt:
-> "Du bist Retrieval-Debugging-Spezialistin [Persona]. Beantworte die folgende bekannte Testfrage und nenne explizit die Quelldatei und den Abschnitt aus dem die Antwort stammt [Task]. Kontext: Diese Frage ist Teil eines Goldstandard-Test-Sets nach einer Wissensordner-Umstrukturierung; die erwartete Antwort ist [bekannte Antwort] aus der Datei [erwartete Quelldatei]; wenn die Antwort oder Quelle abweicht, beschreibe die Abweichung explizit [Context]. Format: Antwort + Citation (Dateiname + Abschnitt) + Übereinstimmung mit Erwartung (J/N) [Format]."
+1. Erstelle 10 Goldstandard-Fragen mit Soll-Antworten und erwarteten Citations.
+2. Fuehre den Test nach jeder Aenderung aus (>=15 Min Wartezeit).
+3. Zieh die Soll-Antworten bei legitimen Inhaltsaenderungen bewusst nach.
+Vorlage: Goldstandard-Regressions-Test:
+1. 10 Fragen - mit bekannten Soll-Antworten und erwarteten Citations.
+2. Lauf - nach jeder Wissensordner-Aenderung in <15 Min.
+3. Pflege - Soll-Antworten mit legitimen Inhaltsaenderungen bewusst mitziehen (protokolliert).
 Artefakt: Ein Goldstandard-Test-Set als MD-Datei mit 10 Fragen, bekannten Antworten und erwarteten Citations — wiederverwendbarer Regressions-Test nach jeder Wissensordner-Änderung.
 Fallstricke:
 - Goldstandard-Test-Set nach Wissensordner-Updates anpassen → wenn sich die richtige Antwort für eine Test-Frage durch ein Dokument-Update ändert, muss das Test-Set ebenfalls aktualisiert werden; veraltete Test-Sets liefern falsch-positive Fehler und sabotieren die Diagnose.
 - Debugging-Session durchführen bevor die Indexierungslatenz nach dem Upload abgeklungen ist → nach einer Umstrukturierung immer mind. 15 Minuten warten (S-WR-045) bevor Goldstandard-Tests ausgeführt werden; Latenz-Fehler werden sonst als Struktur-Fehler fehldiagnostiziert.
+Empfehlung: Aktualisiere das Goldstandard-Set, wenn ein Dokument-Update die richtige Antwort aendert - ein veraltetes Test-Set liefert falsch-positive Fehler und sabotiert die Diagnose. Warte nach einer Umstrukturierung mindestens 15 Minuten (S-WR-045), bevor du das Set laufen laesst, sonst werden Latenz-Effekte als Struktur-Fehler fehldiagnostiziert.
 Anschluss: S-WR-056
 
 ### S-WR-056 Brand-Fotografie-Guidelines im Wissensordner für Bild-Redaktion bereitstellen
@@ -1218,16 +1258,18 @@ Ziel: Die Brand-Fotografie-Guidelines als abrufbaren Wissensordner strukturieren
 Ergebnis: Ein WO-Brand-Fotografie Library Folder mit atomaren MD-Dateien (Stil-Leitfaden, Motiv-Kategorien, Verbotene-Motive-Liste, Kanal-spezifische Anforderungen), verbunden mit einem Briefing-Agenten für Fotografen und Content-Creator.
 Fähigkeit: Library Folder + Agent-Konfiguration + Wissensordner-Anbindung
 Vorgehen:
-1. Zerlege die 40-seitige PDF-Guidelines in atomare Themenblöcke: `fotografie-stil-leitfaden.md` (Stimmung, Farb-Temperatur, Kompositionsregeln), `fotografie-motiv-kategorien.md` (zugelassene Motiv-Typen), `fotografie-verbote.md` (explizit verbotene Motive, Stilrichtungen, Bearbeitungen), `fotografie-kanalregeln-social.md`, `fotografie-kanalregeln-print.md`.
-2. Stelle sicher dass jede Datei die Marken-Kernbegriffe im ersten Satz wiederholt ("Die Fotografie-Richtlinien der Marke [Name] definieren...") und alle Regeln als konkrete Ge- und Verbote formuliert sind — keine abstrakten Beschreibungen ("modern und frisch"), sondern operative Anweisungen ("Verwende ausschließlich Tageslichtstimmungen zwischen 9 und 16 Uhr Mitteleuropäischer Zeit").
-3. Verbinde den Briefing-Agenten mit WO-Brand-Fotografie; konfiguriere Konversations-Starter: "Erstelle ein Foto-Briefing für Social Media", "Erstelle ein Foto-Briefing für Print-Kampagne".
-4. Teste mit einem realen Briefing-Auftrag: "Erstelle ein Briefing für einen Fotografen für unsere neue Sommer-Kampagne für Instagram" — der Agent muss kanalspezifische Stilangaben mit Citations aus WO-Brand-Fotografie liefern.
-Prompt:
-> "Du bist Foto-Briefing-Assistentin [Persona]. Erstelle ein vollständiges Foto-Briefing für einen freien Fotografen für unsere Instagram-Sommer-Kampagne [Task]. Nutze ausschließlich die Richtlinien aus dem Wissensordner WO-Brand-Fotografie; liste explizit auf was erlaubt, empfohlen und verboten ist [Context]. Format: Strukturiertes Briefing mit Abschnitten Stil-Vorgaben, Motiv-Kategorien, Explizite Verbote, Technische Anforderungen [Format]."
+1. Atomisiere die Fotografie-Guidelines je Thema (alles als Text, S-WR-027).
+2. Uebersetze subjektive Vorgaben in operative Anweisungen.
+3. Binde den Briefing-Agenten fuer Fotografen/Creator an.
+Vorlage: Brand-Fotografie-Wissensordner:
+1. Atomare MD-Dateien - Stil-Leitfaden, Motiv-Kategorien, Verbotene-Motive, Kanal-Anforderungen.
+2. Briefing-Agent - fuer Fotografen und Content-Creator.
+3. Textbeschreibung - alle visuellen Regeln als Text (S-WR-027), Beispielbilder nur als Link-Referenzen.
 Artefakt: Ein WO-Brand-Fotografie Library Folder mit 5 atomaren Richtlinien-Dateien und ein Briefing-Agent der kanalspezifische Foto-Briefings mit Citations in 2 Minuten generiert.
 Fallstricke:
 - Fotografie-Guidelines nur als visuelle Referenz-Bilder in den Wissensordner hochladen → Bilder werden von der Vektordatenbank vollständig ignoriert; alle visuellen Regeln müssen als Textbeschreibung vorliegen (S-WR-027); Beispielbilder können separat als Link-Referenzen im Text erwähnt werden.
 - Stil-Vorgaben zu subjektiv formulieren ("authentisch", "lebendig", "modern") → subjektive Beschreibungen erzeugen inkonsistente Briefings; jede Stil-Vorgabe muss in operative Anweisungen übersetzt werden die ein Fotograf ohne Rückfragen umsetzen kann.
+Empfehlung: Lege alle Fotografie-Regeln als Textbeschreibung an, nicht nur als Referenz-Bilder - Bilder werden von der Vektordatenbank ignoriert (S-WR-027); Beispielbilder koennen als Link-Referenzen im Text erwaehnt werden. Uebersetze subjektive Stil-Vorgaben ('authentisch', 'lebendig') in operative Anweisungen, die ein Fotograf ohne Rueckfragen umsetzen kann.
 Anschluss: S-WR-057
 
 ### S-WR-057 Pro-Agent vs. Shared-Folder-Strategie abwägen und dokumentieren
@@ -1237,12 +1279,10 @@ Ziel: Eine strukturierte Entscheidungsmatrix für die Pro-Agent-vs.-Shared-Folde
 Ergebnis: Eine dokumentierte Architektur-Entscheidung (ADR) als MD-Datei mit Entscheidungsmatrix, begründeter Empfehlung und einem Migrations-Plan für die gewählte Architektur.
 Fähigkeit: Library Folder + Agent-Konfiguration + Chat (Architektur-Beratung)
 Vorgehen:
-1. Definiere die Entscheidungskriterien in einer Matrix: (a) Retrieval-Qualität (höher bei Pro-Agent da weniger thematisches Rauschen); (b) Governance-Aufwand (höher bei Pro-Agent da mehr Ordner zu pflegen); (c) Dokument-Duplikation (höher bei Pro-Agent wenn Basis-Dokumente in jedem Ordner liegen); (d) Agilität bei neuen Agenten (einfacher bei Shared Folder); (e) Skalierbarkeit bei wachsendem Team.
-2. Wende die Entscheidungsregel an: Pro-Agent-Ordner empfohlen wenn (a) Agenten haben stark unterschiedliche Themengebiete (SEO vs. Compliance vs. PR) und (b) Retrieval-Qualität ist wichtiger als Governance-Effizienz; Shared Folder empfohlen wenn (a) Agenten arbeiten zu 70 % mit denselben Dokumenten und (b) kleines Team (<5 Personen).
-3. Wähle ein Hybrid-Modell als Best Practice für mittlere Teams (5-20 Personen): ein "WO-Basis" Shared Folder für alle Agenten (Unternehmensgeschichte, Brand-Basics, Glossar) + Pro-Agent-Ordner für themenspezifisches Wissen (WO-SEO, WO-PR, WO-Compliance).
-4. Dokumentiere die Entscheidung als ADR (Architecture Decision Record): Kontext, Entscheidung, Begründung, Konsequenzen — in WO-Basis-Ordner als `ADR-wissensordner-architektur-[JJJJ].md` ablegen.
-Prompt:
-> "Du bist KI-Architekturberaterin [Persona]. Erstelle eine Entscheidungsmatrix für die Wahl zwischen Pro-Agent-Wissensordnern und einem gemeinsamen Shared Folder für ein 12-köpfiges Marketing-Team mit 7 Agenten [Task]. Kontext: Langdock Library Folders fassen max. 1.000 Dateien; Pro-Agent-Ordner reduzieren Retrieval-Rauschen aber erhöhen Governance-Aufwand; Synced Folders sind auf 200 Dateien und 5 pro Agent begrenzt [Context]. Liefere die Matrix mit Bewertung 1-5 pro Kriterium und eine begründete Empfehlung [Format]."
+1. Liste die Use-Cases und Dokumentenbestaende auf.
+2. Vergleiche Shared- vs. Pro-Agent-Architektur per A/B-Test (S-WR-032) auf Retrieval-Qualitaet.
+3. Dokumentiere die Wahl als ADR mit Entscheidungsmatrix und Migrations-Plan.
+Empfehlung: Entscheide Shared- vs. Pro-Agent-Wissensordner-Architektur datenbasiert, nicht nach 'einfacher': Ein Shared Folder mit 300 Dokumenten liefert messbar schlechteres Retrieval als drei thematische Ordner mit je 100 - fuehre vor der finalen Entscheidung einen A/B-Test (S-WR-032) durch. Waehle die Pro-Agent-Architektur fuer thematisch klar trennbare Use-Cases, aber dupliziere Basis-Dokumente nicht in jeden Ordner; lege gemeinsam genutzte Inhalte in einen WO-Basis-Ordner, den alle Agenten zusaetzlich einbinden, sonst steigt der Governance-Aufwand ohne Retrieval-Benefit. Dokumentiere die Wahl als ADR mit Entscheidungsmatrix, begruendeter Empfehlung und Migrations-Plan.
 Artefakt: Eine ADR-Datei mit Entscheidungsmatrix, begründeter Empfehlung (Pro-Agent / Shared / Hybrid) und einem Migrations-Plan für die gewählte Architektur.
 Fallstricke:
 - Entscheidung für Shared Folder treffen weil "einfacher" ohne Retrieval-Qualität zu testen → ein Shared Folder mit 300 Dokumenten liefert messbar schlechtere Retrieval-Ergebnisse als drei thematische Ordner mit je 100 Dokumenten; immer A/B-Test (S-WR-032) vor der finalen Entscheidung.
@@ -1256,16 +1296,18 @@ Ziel: Einen strukturierten Trimming-Prozess für übermäßig lange Dokumente vo
 Ergebnis: Ein getrimmtes Kern-Dokument (max. 20-30 Seiten) aus dem ursprünglichen 200-seitigen Kompendium, aufgeteilt in atomare Dateien nach dem Ein-Thema-pro-Datei-Prinzip, mit einem dokumentierten Trimming-Protokoll das erklärt was entfernt wurde und warum.
 Fähigkeit: Chat (direkter Anhang für Trimming-Analyse) + Library Folder + Canvas
 Vorgehen:
-1. Lade das lange Dokument als direkten Chat-Anhang (nicht in den Wissensordner); frage: "Erstelle ein Inhaltsverzeichnis mit Seitenzahl-Schätzungen; identifiziere Abschnitte die (a) älter als 3 Jahre sind, (b) rein rechtlicher/administrativer Natur sind ohne Marketing-Relevanz, (c) thematische Duplikate anderer Abschnitte sind."
-2. Entscheide pro Kapitel: behalten (Kernwissen), trimmen (kürzen auf wesentliche Aussagen), auslagern (in eigene Datei wenn eigenständiges Thema), weglassen (veraltet oder irrelevant für den Agent-Use-Case).
-3. Erstelle das getrimmte Dokument manuell oder via Chat-Assistent im Canvas; teile es nach dem Ein-Thema-pro-Datei-Prinzip auf; max. 30 Seiten Gesamtumfang nach dem Trimming — wenn mehr als 30 Seiten verbleiben ist das Dokument in zu viele Themen aufgeteilt.
-4. Dokumentiere das Trimming in einem Protokoll: Was wurde entfernt, Begründung, wo die entfernten Inhalte bei Bedarf auffindbar sind (Original-Speicherort).
-Prompt:
-> "Du bist Dokumenten-Kuratorin [Persona]. Analysiere das angehängte 200-seitige Unternehmens-Kompendium und identifiziere Abschnitte die für einen Marketing-Agenten im Wissensordner irrelevant sind [Task]. Kontext: Der Agent beantwortet Marketing-Fragen zu Brand, Produkten und Zielgruppen; Abschnitte zu internen HR-Prozessen, Rechtskapiteln und Kapiteln älter als 2022 sind nicht relevant [Context]. Liefere eine Trimming-Empfehlungs-Tabelle mit Kapitel, Empfehlung (Behalten/Kürzen/Weglassen), Begründung [Format]."
+1. Extrahiere aus dem Kompendium einen 20-30-Seiten-Kern, atomisiert.
+2. Stimme die Trimming-Entscheidungen mit den Fach-Ownern ab.
+3. Fuehre ein Trimming-Protokoll (was entfernt, warum, wo das Original liegt).
+Vorlage: Dokument-Trimming (Kompendium):
+1. Kern extrahieren - aus 200 Seiten ein 20-30-Seiten-Kern, atomisiert nach Ein-Thema-pro-Datei.
+2. Fach-Owner-Abstimmung - vor dem Weglassen je Abschnitt mit dem Fach-Owner klaeren.
+3. Trimming-Protokoll - was entfernt wurde, warum, und wo das Original liegt.
 Artefakt: Ein getrimmtes Kern-Dokument (max. 30 Seiten gesamt, aufgeteilt in atomare MD-Dateien) mit einem Trimming-Protokoll das alle Entscheidungen dokumentiert.
 Fallstricke:
 - Trimming-Entscheidungen ohne Rücksprache mit Fachexperten treffen → ein Marketeer kann nicht beurteilen ob ein Rechtskapitel für Compliance-Anfragen relevant ist; Trimming immer mit dem jeweiligen Fach-Owner abstimmen bevor Abschnitte weggelassen werden.
 - "Weglassen" mit "Archivieren" verwechseln → weggelassene Kapitel müssen im Original-Dokument außerhalb des Wissensordners weiterhin auffindbar sein; Trimming-Protokoll muss den Speicherort des Originals nennen.
+Empfehlung: Stimme Trimming-Entscheidungen mit dem jeweiligen Fach-Owner ab - ein Marketeer kann nicht beurteilen, ob ein Rechtskapitel fuer Compliance-Anfragen relevant ist. Verwechsle 'Weglassen' nicht mit 'Archivieren'; das Trimming-Protokoll muss den Speicherort des vollstaendigen Originals ausserhalb des Wissensordners nennen.
 Anschluss: S-WR-059
 
 ### S-WR-059 Lokalisierungs-Glossare im Wissensordner für konsistente Übersetzungen
@@ -1275,16 +1317,18 @@ Ziel: Ein "WO-Lokalisierung" Library Folder mit Sprach-spezifischen Glossar-Date
 Ergebnis: Ein WO-Lokalisierung Library Folder mit 4 Sprach-Glossar-MD-Dateien (je 50-100 Begriffe), verbunden mit dem Übersetzungs-Agenten der bei jedem Übersetzungs-Auftrag zuerst das Glossar konsultiert.
 Fähigkeit: Library Folder + Agent-Konfiguration + System-Instructions
 Vorgehen:
-1. Erstelle die Glossar-Vorlage als MD-Tabelle: Spalten "Basis-Begriff (EN)", "DE-DE", "DE-AT", "DE-CH", "Kontext-Hinweis"; befülle mit den 50 häufigsten Marketing-Fachbegriffen, Produkt-Namen und Brand-Begriffen; jede Datei heißt `glossar-[sprach-markt]-v[N].md`.
-2. Lade die vier Glossar-Dateien in WO-Lokalisierung hoch; Versionsnummer im Dateinamen ermöglicht klare Update-Verfolgung; ältere Versionen werden beim Update aus dem Ordner entfernt (nicht archiviert — Glossare wachsen nicht historisch).
-3. Verbinde den Übersetzungs-Agenten mit WO-Lokalisierung; System-Instruction: "Konsultiere das Glossar für den Zielsprach-Markt bevor du Produktbegriffe, Marken-Termini oder regulatorische Fachbegriffe übersetzt; verwende immer den Glossar-Begriff statt einer eigenen Übersetzung; wenn ein Begriff nicht im Glossar ist, markiere ihn mit [GLOSSAR-LÜCKE]."
-4. Etabliere einen vierteljährlichen Glossar-Pflegeprozess: [GLOSSAR-LÜCKE]-Markierungen aus den letzten drei Monaten sammeln; mit Sprach-Owner und Brand-Team die fehlenden Einträge ergänzen; neue Version hochladen.
-Prompt:
-> "Du bist Lokalisierungsassistentin für den DACH-Markt [Persona]. Übersetze den folgenden Marketing-Text ins Schweizer Hochdeutsch (DE-CH) [Task]. Konsultiere das Glossar WO-Lokalisierung/glossar-de-ch für alle Produkt-Begriffe und Marken-Termini; markiere Begriffe die nicht im Glossar sind mit [GLOSSAR-LÜCKE] statt sie eigenständig zu übersetzen [Context]. Format: Übersetzter Text mit hervorgehobenen Glossar-Begriffen und Liste der [GLOSSAR-LÜCKE]-Markierungen am Ende [Format]."
+1. Erstelle 4 Sprach-Glossar-MD-Dateien (MD-Tabellen, max. 30 Zeilen).
+2. Binde den Uebersetzungs-Agenten an (Glossar zuerst konsultieren).
+3. Beschraenke den Scope auf Fachbegriffe, Produktnamen und regulatorische Termini.
+Vorlage: Lokalisierungs-Glossar-Wissensordner:
+1. 4 Sprach-Glossar-MD-Dateien - je 50-100 Begriffe als MD-Tabelle (max. 30 Zeilen/Tabelle, mehrere Tabellen je Datei wenn noetig).
+2. Anbindung - Uebersetzungs-Agent konsultiert bei jedem Auftrag zuerst das Glossar.
+3. Scope - Marketing-Fachbegriffe, Produktnamen, regulatorische Termini.
 Artefakt: Ein WO-Lokalisierung Library Folder mit 4 Sprach-Glossar-Dateien (DE-DE, DE-AT, DE-CH, EN-INTL), ein Übersetzungs-Agent der Glossar-Begriffe verbindlich anwendet und ein vierteljährlicher Glossar-Pflege-Prozess.
 Fallstricke:
 - Glossar als Fließtext statt als MD-Tabelle formatieren → Fließtext-Glossare erzeugen schlechte Chunks weil der Chunking-Algorithmus Begriff-Übersetzungs-Paare auseinanderreißt; Tabellen-Format ist für Glossare zwingend (max. 30 Zeilen pro Tabelle → mehrere Tabellen pro Datei wenn nötig).
 - Glossar mit zu vielen Allgemeinbegriffen überladen (500+ Einträge) → sehr große Glossar-Dateien nähern sich dem 8-Millionen-Zeichen-Limit; Glossar auf Marketing-spezifische Fachbegriffe, Produktnamen und regulatorische Termini beschränken; allgemeine Wörterbuch-Einträge weglassen.
+Empfehlung: Formatiere Glossare als MD-Tabelle, nicht als Fliesstext - der Chunking-Algorithmus reisst sonst Begriff-Uebersetzungs-Paare auseinander; bei >30 Zeilen mehrere Tabellen je Datei. Beschraenke das Glossar auf Marketing-spezifische Fachbegriffe, Produktnamen und regulatorische Termini; allgemeine Woerterbuch-Eintraege (500+) naehern sich dem 8-Millionen-Zeichen-Limit.
 Anschluss: S-WR-060
 
 ### S-WR-060 Wissensordner-Strategie für die nächste Skalierungsstufe planen
@@ -1294,17 +1338,19 @@ Ziel: Einen strukturierten Skalierungs-Plan für die Wissensordner-Infrastruktur
 Ergebnis: Ein Skalierungs-Plan als MD-Dokument mit Ist-Zustand-Analyse, Ziel-Architektur (Ordner-Namen, Kapazitätsgrenzen, Agenten-Zuordnung), Migrations-Schritte in drei Phasen und aktualisiertem Governance-RACI für das größere Team.
 Fähigkeit: Library Folder (Verwaltungsansicht) + Chat (Architektur-Planung) + Canvas (Skalierungs-Plan-Dokument)
 Vorgehen:
-1. Analysiere den Ist-Zustand: Anzahl Dateien pro Ordner, Agenten-Anbindungen, Retrieval-Qualität (Spot-Check S-WR-053), bekannte Schwachstellen; dokumentiere als Ist-Zustand-Tabelle.
-2. Ziel-Architektur für 25 Personen / 12 Agenten: 1 WO-Basis + 4–6 thematische Ordner (WO-Brand, WO-SEO, WO-PR, WO-Compliance, WO-Produkt, WO-Kampagnen), Kapazitätsobergrenzen je Ordner, Agenten-Zuordnungsmatrix.
-3. Migration in 3 Phasen: P1 (W1-2) Basis bereinigen + neue Struktur anlegen; P2 (W3-4) Dokumente migrieren + Agenten-Anbindungen aktualisieren; P3 (W5-6) Canary-Tests + Governance-RACI für neues Team.
-4. Aktualisiere das Governance-RACI (S-WR-039) für die neue Team-Größe: bei 25 Personen braucht jeder Ordner einen dedizierten Bereichs-Owner; Eskalationspfade und monatliche Review-Termine für alle neuen Ordner einrichten.
-5. Kommuniziere den Skalierungs-Plan aktiv an das Team: 30-Minuten-Briefing vor Phase 1 mit Erklärung der neuen Struktur und Antworten auf "Was ändert sich für mich?"
-Prompt:
-> "Du bist KI-Infrastruktur-Strategin für Marketing-Teams [Persona]. Erstelle einen Skalierungs-Plan für unsere Langdock-Wissensordner-Infrastruktur [Task]. Kontext: Wir wachsen von 8 auf 25 Personen und von 4 auf 12 Agenten; aktuell haben wir 80 Dateien in 3 Ordnern; Ziel sind 400 Dateien in 7-8 Ordnern; Library Folders fassen max. 1.000 Dateien, Synced Folders max. 200 Dateien [Context]. Liefere: Ist-Zustand-Tabelle, Ziel-Architektur-Übersicht, 3-Phasen-Migrations-Plan, aktualisiertes RACI für 25 Personen [Format]."
+1. Analysiere den Ist-Zustand und entwirf die Ziel-Architektur.
+2. Migriere in 3 Phasen mit Test-Gates zwischen den Phasen.
+3. Aktualisiere das Governance-RACI und kommuniziere die Struktur vor Phase 1.
+Vorlage: Wissensordner-Skalierungs-Plan:
+1. Ist-Analyse - aktuelle Ordner, Dateizahl, Agenten-Anbindung.
+2. Ziel-Architektur - Ordner-Namen, Kapazitaetsgrenzen, Agenten-Zuordnung.
+3. Migration in 3 Phasen - mit Test-Gates zwischen den Phasen.
+4. Governance-RACI fuers groessere Team aktualisieren.
 Artefakt: Ein vollständiger Skalierungs-Plan als MD-Dokument mit Ist-Zustand, Ziel-Architektur, 3-Phasen-Migrations-Plan und aktualisiertem Governance-RACI — als Canvas-Dokument erstellt und im WO-Basis-Ordner abgelegt.
 Fallstricke:
 - Migration auf einmal statt in Phasen durchführen → Big-Bang-Migration von 80 auf 400 Dateien in einer Woche verursacht Indexierungslatenz-Probleme (S-WR-045), unkontrollierten Qualitätsverlust und überfordert das Team; 3-Phasen-Plan mit Test-Gates zwischen den Phasen ist Pflicht.
 - Skalierungs-Plan ohne Team-Kommunikation ausrollen → eine neue Ordner-Struktur ohne Briefing des Teams führt zu Verwirrung, falschen Uploads in alte Ordner und Widerstand gegen die neue Governance; aktive Kommunikation vor Phase 1 ist kein optionaler Schritt.
+Empfehlung: Migriere in 3 Phasen mit Test-Gates statt als Big-Bang - 80 auf 400 Dateien in einer Woche verursacht Indexierungslatenz-Probleme (S-WR-045) und unkontrollierten Qualitaetsverlust. Kommuniziere die neue Ordner-Struktur aktiv vor Phase 1; ohne Briefing landen Uploads in alten Ordnern und es entsteht Widerstand gegen die Governance.
 Anschluss: S-WR-061
 
 ### S-WR-061 Retrieval-Evaluations-Harness als wiederholbares Testgerüst aufbauen
@@ -1318,12 +1364,15 @@ Vorgehen:
 2. Lege das Scoring-Schema fest: pro Item drei Dimensionen — Citation korrekt (0/1), Quelldatei stimmt (0/1), Antwort faktisch korrekt (0/1); Gesamt-Score als Prozentsatz der erreichten Punkte von Maximum.
 3. Führe den Harness als Baseline aus (vor jeder Änderung), dokumentiere den Baseline-Score; nach jeder Wissensordner-Änderung erneut ausführen und Score-Delta berechnen.
 4. Speichere jeden Lauf als `EVAL-HARNESS-[JJJJ-MM-TT].md` im WO-Basis-Ordner; nur Änderungen mit positivem oder neutralem Score-Delta werden produktiv übernommen, Regressionen zurückgerollt.
-Prompt:
-> "Du bist Retrieval-Evaluations-Ingenieurin [Persona]. Beantworte die folgende Evaluations-Frage und gib explizit Quelldatei und Abschnitt an [Task]. Kontext: Dies ist Teil eines Evaluations-Harness; die erwartete Quelldatei ist [Datei], die Soll-Antwort ist [Antwort]; bewerte selbst ob deine Antwort übereinstimmt; schreibe 'Kein Treffer' wenn nichts gefunden wird [Context]. Format: Antwort + Citation + drei Scores (Citation/Quelldatei/Korrektheit je 0 oder 1) [Format]."
+Vorlage: Evaluations-Harness:
+1. 15-20 Test-Items - Frage, erwartete Quelldatei, Soll-Antwort.
+2. Scoring-Bogen - standardisiert, vor und nach jeder Aenderung in <30 Min.
+3. Soll-Wert-Prioritaet - Inhalt vor Dateiname.
 Artefakt: Ein Retrieval-Evaluations-Harness als MD-Datei mit 15-20 gescorten Items, Baseline-Score und einem Score-Delta-Protokoll für jede Wissensordner-Änderung.
 Fallstricke:
 - Harness direkt nach einem Massen-Upload ausführen → Indexierungslatenz (S-WR-045) erzeugt falsch-negative Scores; mindestens 15 Minuten nach Upload warten bevor der Harness läuft, sonst werden Latenz-Effekte als Qualitätsverlust fehlinterpretiert.
 - Evaluations-Items zu eng an den aktuellen Dateinamen koppeln → wenn eine Datei umbenannt wird, schlägt der Quelldatei-Check fehl obwohl der Inhalt korrekt retrievt wurde; im Soll-Wert den Inhalt priorisieren und Dateinamen-Erwartung nach jeder Umbenennung nachziehen.
+Empfehlung: Warte mindestens 15 Minuten nach einem Massen-Upload, bevor der Harness laeuft (S-WR-045) - sonst erzeugt die Indexierungslatenz falsch-negative Scores, die als Qualitaetsverlust fehlinterpretiert werden. Priorisiere im Soll-Wert den Inhalt und zieh die Dateinamen-Erwartung nach jeder Umbenennung nach, sonst schlaegt der Quelldatei-Check fehl, obwohl der Inhalt korrekt retrievt wurde.
 Anschluss: S-WR-062
 
 ### S-WR-062 Chunk-Grenzen gezielt über Header-Tuning steuern
@@ -1337,12 +1386,15 @@ Vorgehen:
 2. Setze einen H2- oder H3-Header genau an die Stelle die der Chunk als Themengrenze haben sollte; halte die Faustregel ein, dass zwischen zwei H2-Headern nicht mehr als circa 2.000 Zeichen liegen, damit ein Thema in einen Chunk passt.
 3. Formuliere nach jedem Header einen keyword-reichen Eröffnungssatz, der das Thema des Abschnitts explizit benennt — dieser Satz wird zum semantischen Anker des Chunks.
 4. Canary-Test vor und nach dem Tuning: dieselbe Frage stellen und prüfen ob der Chunk jetzt sauber an der Header-Grenze beginnt und das vollständige Thema enthält.
-Prompt:
-> "Du bist RAG-Strukturoptimiererin [Persona]. Setze Markdown-Header so im folgenden Text, dass thematische Grenzen mit Chunk-Grenzen zusammenfallen [Task]. Kontext: Langdock schneidet bei ~2.000 Zeichen und bevorzugt Header als Schnittmarken; zwischen zwei H2 dürfen max. ~2.000 Zeichen liegen; nach jedem Header folgt ein keyword-reicher Eröffnungssatz [Context]. Format: überarbeiteter Text mit markierten neuen Headern und Begründung pro Header [Format]."
+Vorlage: Header-Tuning (Chunk-Kohaerenz):
+1. Header an Themengrenzen - nicht an Absatz-Mitten, kein zusammengehoeriges Argument zerteilen.
+2. Eroeffnungssatz - je neuer Header ein keyword-reicher Themen-Eroeffnungssatz.
+3. Tuning-Checkliste - wiederverwendbar; Chunk-Kohaerenz im Canary-Test nachweisen.
 Artefakt: Ein header-getuntes Dokument mit Canary-Nachweis für saubere Chunk-Grenzen und eine Header-Tuning-Checkliste als MD-Datei im WO-Basis-Ordner.
 Fallstricke:
 - Header rein optisch nach Lesbarkeit setzen statt nach Chunk-Logik → ein Header der ein zusammengehöriges Argument in zwei Chunks trennt zerstört die Antwort-Vollständigkeit; Header immer an echte Themengrenzen setzen, nicht an Absatz-Mitten.
 - Nach dem Tuning den Eröffnungssatz vergessen → ein Header ohne keyword-reichen Folgesatz erzeugt einen Chunk dessen erster Satz keinen Kontext trägt; jeder neue Header braucht einen expliziten Themen-Eröffnungssatz.
+Empfehlung: Setze Header an echte Themengrenzen, nicht rein optisch nach Lesbarkeit - ein Header, der ein zusammengehoeriges Argument in zwei Chunks trennt, zerstoert die Antwort-Vollstaendigkeit. Gib jedem neuen Header einen expliziten, keyword-reichen Eroeffnungssatz, sonst traegt der erste Satz des Chunks keinen Kontext.
 Anschluss: S-WR-063
 
 ### S-WR-063 Metadaten-Tagging-Strategie für gezieltes Retrieval einführen
@@ -1356,12 +1408,15 @@ Vorgehen:
 2. Lege die erlaubten Tag-Werte fest (kontrolliertes Vokabular): region = DE/AT/CH/DACH/INTL; status = entwurf/review/freigegeben; kanal = LinkedIn/Blog/Print/Mail — uneinheitliche Freitext-Tags zerstören die Filterwirkung.
 3. Tagge 5-10 Pilotdokumente; weise den Agenten in der System-Instruction an: "Berücksichtige die [TAGS:]-Zeile am Dokumentanfang; bevorzuge bei mehreren Treffern Dokumente mit status=freigegeben und passender region."
 4. Teste mit gefilterten Anfragen ("Nutze nur freigegebene DACH-Dokumente aus 2025") und prüfe ob der Agent die Tags korrekt für die Auswahl heranzieht.
-Prompt:
-> "Du bist Wissens-Taxonomie-Beraterin [Persona]. Entwirf eine Metadaten-Tagging-Konvention für unsere Wissensordner-Dokumente [Task]. Kontext: Langdock indiziert nur Volltext, es gibt keine separate Metadaten-Ebene; Tags müssen als Klartext-Zeile am Dokumentanfang stehen damit sie im Chunk landen; wir brauchen Region, Gültigkeit, Kanal und Freigabe-Status [Context]. Format: Tag-Schema mit kontrolliertem Vokabular pro Feld und drei Beispiel-Köpfen [Format]."
+Vorlage: Metadaten-Tagging-Konvention:
+1. Sichtbarer Klartext - Tags als Klartext am Dokumentanfang, nicht als YAML/versteckte Kommentare.
+2. Kontrolliertes Vokabular - verbindliches Werte-Set (z. B. 'Q2', nicht 'Q2/Quartal 2/2. Quartal').
+3. Pilot - 5-10 Dokumente nachtaggen; tag-basierte Suchanfragen vs. ungetaggt vergleichen.
 Artefakt: Eine Metadaten-Tagging-Konvention als MD-Datei und 5-10 getaggte Pilotdokumente mit nachgewiesener tag-basierter Filterwirkung.
 Fallstricke:
 - Tags als YAML-Frontmatter oder versteckte Kommentare setzen in der Annahme Langdock werte sie als echte Metadaten aus → Langdock kennt keine echte Metadaten-Ebene und filtert nicht hart über Tags; die Tags wirken nur als Text-Signal im Chunk, deshalb müssen sie als sichtbarer Klartext am Dokumentanfang stehen.
 - Freitext-Tags ohne kontrolliertes Vokabular zulassen → "Q2", "Quartal 2", "2. Quartal" als drei Schreibweisen desselben Werts machen die Filterung unbrauchbar; ein verbindliches Werte-Set ist Pflicht.
+Empfehlung: Setze Tags als sichtbaren Klartext am Dokumentanfang - Langdock kennt keine echte Metadaten-Ebene und filtert nicht hart ueber Tags; sie wirken nur als Text-Signal im Chunk. Erzwinge ein kontrolliertes Vokabular; drei Schreibweisen desselben Werts machen die Filterung unbrauchbar.
 Anschluss: S-WR-064
 
 ### S-WR-064 Mehrsprachige Wissensordner mit Sprach-Routing produktiv betreiben
@@ -1375,12 +1430,15 @@ Vorgehen:
 2. Konfiguriere den Agenten mit allen drei Sprach-Ordnern, aber gib in den System-Instructions eine harte Routing-Regel: "Erkenne die Sprache der Nutzeranfrage; rufe ausschließlich Dokumente aus dem Ordner der entsprechenden Sprache ab; antworte in derselben Sprache."
 3. Lege für sprachneutrale Fakten (Zahlen, Produktnamen, technische Specs) einen separaten WO-Basis-Ordner an, der allen Sprachen gemeinsam dient — diese Inhalte sind sprachunabhängig.
 4. Führe ein mehrsprachiges Canary-Test-Set aus: dieselbe Frage in DE, EN und FR; jede Antwort muss in der Anfragesprache erfolgen und aus dem korrekten Sprach-Ordner zitieren.
-Prompt:
-> "Du bist mehrsprachige Wissens-Assistentin [Persona]. Beantworte die folgende Anfrage in der Sprache in der sie gestellt wurde [Task]. Kontext: Es existieren getrennte Sprach-Ordner WO-DE, WO-EN, WO-FR; rufe ausschließlich Dokumente aus dem Ordner der Anfragesprache ab; sprachneutrale Fakten kommen aus WO-Basis [Context]. Format: Antwort in der Anfragesprache mit Citation und Angabe des verwendeten Sprach-Ordners [Format]."
+Vorlage: Sprach-getrennte Wissensordner (DE/EN/FR):
+1. Drei Ordner - WO-DE/WO-EN/WO-FR; jede Sprachversion physisch im eigenen Ordner.
+2. Routing-Logik - in den System-Instructions je Anfrage-Sprache.
+3. Mehrsprachiges Canary-Set - Sprach-Treue pro Sprache nachweisen.
 Artefakt: Sprach-getrennte Library Folders mit Routing-Regel in den System-Instructions und ein mehrsprachiges Canary-Test-Protokoll, das Sprach-Treue für DE, EN und FR nachweist.
 Fallstricke:
 - Sich darauf verlassen dass die System-Instruction das Cross-Language-Matching vollständig unterbindet → Vektor-Embeddings sind sprachübergreifend, deshalb kann ein deutscher Chunk auf eine französische Frage als semantisch ähnlich erscheinen; die physische Ordner-Trennung ist die eigentliche Absicherung, die Routing-Regel allein reicht nicht.
 - Übersetzte Dokumente nur in einem Sprach-Ordner ablegen → eine EN-Datei im WO-FR-Ordner erzeugt sprachgemischte Treffer; jede Sprachversion gehört physisch in ihren eigenen Ordner.
+Empfehlung: Verlass dich nicht allein auf die System-Instruction zur Sprach-Trennung - Vektor-Embeddings sind sprachuebergreifend, sodass ein deutscher Chunk auf eine franzoesische Frage matchen kann; die physische Ordner-Trennung ist die eigentliche Absicherung. Lege jede Sprachversion physisch in ihren eigenen Ordner; eine EN-Datei im WO-FR erzeugt sprachgemischte Treffer.
 Anschluss: S-WR-065
 
 ### S-WR-065 Knowledge-Freshness-SLA mit verbindlichen Reaktionszeiten definieren
@@ -1394,12 +1452,15 @@ Vorgehen:
 2. Schreibe pro Klasse eine SLA-Zusage: maximale Veraltungs-Frist, verantwortliche Rolle, Reaktionszeit bei Überschreitung (z.B. Klasse A: Update binnen 5 Werktagen nach Ablauf).
 3. Verankere die SLA-Information im "Stand:"-Header jeder Datei (aus S-WR-016): "Stand: [JJJJ-MM] | SLA-Klasse: A | Review fällig: [JJJJ-MM]".
 4. Erstelle monatlich einen SLA-Compliance-Report: Anteil der Dokumente je Klasse die innerhalb der Frist liegen; Dokumente außerhalb der Frist werden eskaliert.
-Prompt:
-> "Du bist Wissens-Service-Managerin [Persona]. Entwirf ein Freshness-SLA für unseren Marketing-Wissensordner [Task]. Kontext: Dokumente haben sehr unterschiedliche Aktualitäts-Kritikalität; Langdock zeigt das Upload-Datum aber kein inhaltliches Stand-Datum; wir brauchen verbindliche Update-Fristen je Dokumenttyp [Context]. Format: SLA-Tabelle mit Aktualitäts-Klasse, max. Veraltungs-Frist, verantwortliche Rolle, Reaktionszeit bei Überschreitung [Format]."
+Vorlage: Freshness-SLA:
+1. Aktualitaets-Klassen - je Klasse maximale Veraltungs-Frist.
+2. SLA-Owner - je Klasse eine konkrete Person/Rolle.
+3. Monats-Report - SLA-Compliance; Eskalation bei Verstoss (Praefix 'VERALTET-', S-WR-016).
 Artefakt: Ein Freshness-SLA-Dokument mit Aktualitäts-Klassen und Fristen sowie ein monatlicher SLA-Compliance-Report-Vorlage im WO-Basis-Ordner.
 Fallstricke:
 - SLA-Fristen definieren ohne sie an namentliche Rollen zu binden → ein SLA ohne klaren Verantwortlichen wird nicht eingehalten; je Aktualitäts-Klasse muss eine konkrete Person oder Rolle als SLA-Owner benannt sein.
 - SLA-Compliance nur intern messen ohne Eskalation bei Verstoß → ein gemessener aber folgenloser SLA-Bruch ändert nichts; Überschreitungen müssen ein dokumentiertes Eskalations-Verfahren auslösen (z.B. Präfix "VERALTET-" nach S-WR-016).
+Empfehlung: Binde jede Aktualitaets-Klasse an eine namentliche Rolle als SLA-Owner - ein SLA ohne klaren Verantwortlichen wird nicht eingehalten. Loese bei jedem SLA-Bruch ein dokumentiertes Eskalations-Verfahren aus (z. B. 'VERALTET-'-Praefix nach S-WR-016); ein gemessener, aber folgenloser Verstoss aendert nichts.
 Anschluss: S-WR-066
 
 ### S-WR-066 Embedding-Drift durch periodische Re-Indizierungs-Checks überwachen
@@ -1413,12 +1474,15 @@ Vorgehen:
 2. Führe das Referenz-Set monatlich aus und dokumentiere pro Frage die tatsächlich zitierte Quelldatei; vergleiche mit dem Vormonat.
 3. Interpretiere Abweichungen: ändert sich die Quelldatei bei unverändertem Dokumentenbestand, deutet das auf systemseitige Embedding- oder Indizierungs-Verschiebung hin (Drift), nicht auf ein Dokumenten-Problem.
 4. Bei festgestelltem Drift: re-validiere die betroffenen Antworten manuell, informiere das Team und prüfe ob betroffene Dokumente nach den RAG-Regeln (S-WR-011) robuster gemacht werden müssen.
-Prompt:
-> "Du bist Retrieval-Stabilitäts-Analystin [Persona]. Beantworte die folgende Referenz-Frage und nenne ausschließlich die zitierte Quelldatei [Task]. Kontext: Dies ist ein monatlicher Drift-Check; der Wissensordner ist seit letztem Monat unverändert; ich vergleiche ob dieselbe Frage weiterhin dieselbe Quelldatei zurückgibt [Context]. Format: nur Quelldatei + Abschnitt, keine ausführliche Antwort [Format]."
+Vorlage: Retrieval-Drift-Monitoring:
+1. Eingefrorenes Referenz-Frage-Set - bei unveraendertem Wissensordner.
+2. Vergleichs-Tabelle - monatlich: liefern dieselben Fragen weiterhin dieselben Quelldateien?
+3. Aenderungs-Protokoll - jede Dokument-Aenderung festhalten.
 Artefakt: Ein Drift-Monitoring-Protokoll mit eingefrorenem Referenz-Set und einer Monats-Vergleichstabelle der zitierten Quelldateien, archiviert im WO-Basis-Ordner.
 Fallstricke:
 - Drift-Verschiebung mit eigener Dokumenten-Änderung verwechseln → das Referenz-Set ist nur aussagekräftig wenn der Wissensordner zwischen zwei Läufen wirklich unverändert blieb; jede Dokument-Änderung muss protokolliert werden, sonst sind Drift und Eigenänderung nicht trennbar.
 - Drift-Check als Ersatz für den Evaluations-Harness (S-WR-061) behandeln → der Drift-Check misst Stabilität bei Nicht-Änderung, der Harness misst Qualität bei Änderung; beide Instrumente ergänzen sich und ersetzen einander nicht.
+Empfehlung: Protokolliere jede Dokument-Aenderung - das Referenz-Set ist nur aussagekraeftig, wenn der Wissensordner zwischen zwei Laeufen unveraendert blieb; sonst sind Drift und Eigenaenderung nicht trennbar. Behandle den Drift-Check nicht als Ersatz fuer den Evaluations-Harness (S-WR-061): der eine misst Stabilitaet bei Nicht-Aenderung, der andere Qualitaet bei Aenderung.
 Anschluss: S-WR-067
 
 ### S-WR-067 Granulares Folder-Access-Control nach Vertraulichkeitsstufen umsetzen
@@ -1432,12 +1496,15 @@ Vorgehen:
 2. Lege je Stufe einen eigenen Library Folder an (WO-Public, WO-Intern, WO-Vertraulich) und setze die Zugriffsrechte entsprechend restriktiv im Workspace-Admin — vertrauliche Ordner nur für den benannten Personenkreis.
 3. Binde Agenten gezielt an: ein team-weit nutzbarer Agent erhält ausschließlich WO-Public; ein Direktions-Agent darf zusätzlich WO-Vertraulich einbinden — kein breit freigegebener Agent sieht je vertrauliche Ordner.
 4. Dokumentiere die Zugriffs-Matrix als `ACCESS-CONTROL-[JJJJ].md`: Ordner, Vertraulichkeitsstufe, Personenkreis, welche Agenten den Ordner einbinden dürfen.
-Prompt:
-> "Du bist Informationssicherheits-Beraterin [Persona]. Erstelle ein Access-Control-Modell für unsere Wissensordner nach Vertraulichkeitsstufen [Task]. Kontext: Wir mischen aktuell öffentliche und vertrauliche Dokumente in einem Ordner; Agenten geben Inhalte an alle ihre Nutzer weiter; vertrauliche Margen-Daten dürfen nicht über team-weite Agenten abrufbar sein [Context]. Format: Klassifizierungs-Schema, Ordner-Struktur je Stufe und Agenten-Zugriffs-Matrix [Format]."
+Vorlage: Vertraulichkeits-getrennte Ordner-Struktur:
+1. Stufen - je Vertraulichkeitsstufe ein physisch getrennter, zugriffsbeschraenkter Ordner.
+2. Zugriffs-Matrix - dokumentiert, wer welche Stufe sieht.
+3. Agenten - binden je nach Nutzerkreis nur die freigegebene Stufe ein.
 Artefakt: Eine vertraulichkeits-getrennte Ordner-Struktur und eine Access-Control-Matrix als MD-Datei, die definiert welche Agenten welche Vertraulichkeitsstufe einbinden dürfen.
 Fallstricke:
 - Vertrauliche Dokumente im selben Ordner lassen und nur den Agenten anweisen sie nicht zu zitieren → eine Prompt-Anweisung ist keine Zugriffskontrolle; sobald ein Dokument im eingebundenen Ordner liegt, kann es im Retrieval auftauchen; echte Trennung erfolgt nur über physisch getrennte, zugriffsbeschränkte Ordner.
 - Access-Control-Matrix dokumentieren aber die Workspace-Admin-Rechte nicht tatsächlich setzen → Dokumentation ohne durchgesetzte Berechtigung schützt nicht; nach jeder Änderung prüfen ob die echten Ordner-Rechte mit der Matrix übereinstimmen.
+Empfehlung: Trenne vertrauliche Dokumente physisch in zugriffsbeschraenkte Ordner, statt den Agenten nur anzuweisen, sie nicht zu zitieren - eine Prompt-Anweisung ist keine Zugriffskontrolle; was im eingebundenen Ordner liegt, kann im Retrieval auftauchen. Setze die Workspace-Admin-Rechte tatsaechlich und pruefe nach jeder Aenderung, ob die echten Ordner-Rechte mit der Matrix uebereinstimmen.
 Anschluss: S-WR-068
 
 ### S-WR-068 Knowledge-Deduplication als wiederkehrenden Automatik-nahen Prozess etablieren
@@ -1451,12 +1518,15 @@ Vorgehen:
 2. Lade jedes Verdachtspaar als direkten Chat-Anhang und führe den standardisierten Vergleichs-Prompt aus: inhaltlich identisch / aktualisierte Version / thematisch verwandt aber verschieden.
 3. Wende die Entscheidungsregel aus S-WR-046 an (neuere behalten, ältere löschen bei Identität/Update; beide behalten bei echter Themenverschiedenheit mit klarerer Benennung) und entferne Duplikate physisch.
 4. Pflege eine Dedup-Historie: Datum, Anzahl geprüfter Paare, Anzahl entfernter Duplikate — ein steigender Trend signalisiert ein Governance-Problem im Upload-Prozess (S-WR-039).
-Prompt:
-> "Du bist Dedup-Prozess-Operatorin [Persona]. Vergleiche die zwei angehängten Dokumente und klassifiziere sie [Task]. Kontext: monatliche Dedup-Routine; das Per-Document-Cap liefert pro Datei nur einen Chunk, deshalb halbieren echte Duplikate die effektive Retrieval-Qualität; mögliche Klassen: inhaltlich identisch / aktualisierte Version / thematisch verwandt aber verschieden [Context]. Format: Klasse + inhaltliche Unterschiede + Empfehlung (behalten/löschen) je Datei [Format]."
+Vorlage: Dedup-Routine (monatlich):
+1. Monats-Trigger + standardisierter Vergleichs-Prompt.
+2. Menschliche Bestaetigung - jede Loeschentscheidung bestaetigen.
+3. Dedup-Historie - wie viele Duplikate je Periode entfernt.
 Artefakt: Ein wiederkehrendes Dedup-Routine-Protokoll mit monatlichem Trigger, standardisiertem Vergleichs-Prompt und einer Dedup-Historie als Trend-Indikator.
 Fallstricke:
 - "Automatik" wörtlich nehmen und auf menschliche Bestätigung verzichten → es gibt keine echte Auto-Dedup-Funktion in Langdock; der Prozess ist Chat-gestützt aber jede Löschentscheidung braucht menschliche Bestätigung, sonst droht Datenverlust durch falsch erkannte Duplikate.
 - Steigenden Dedup-Trend ignorieren statt die Ursache zu beheben → wenn jeden Monat mehr Duplikate entstehen, liegt das Problem im Upload-Verhalten; der Dedup-Prozess behandelt dann nur Symptome, die Governance-Regel (löschen vor neu hochladen) muss durchgesetzt werden.
+Empfehlung: Verlange fuer jede Loeschentscheidung menschliche Bestaetigung - es gibt keine echte Auto-Dedup-Funktion; ohne Bestaetigung droht Datenverlust durch falsch erkannte Duplikate. Behebe bei steigendem Dedup-Trend die Ursache im Upload-Verhalten (Governance-Regel 'loeschen vor neu hochladen'), statt nur Symptome zu behandeln.
 Anschluss: S-WR-069
 
 ### S-WR-069 Citation-Qualität systematisch auditieren
@@ -1470,12 +1540,15 @@ Vorgehen:
 2. Bewerte je Citation die Beleg-Stärke: 3 = Aussage wörtlich/eindeutig im Chunk belegt; 2 = sinngemäß belegt aber Interpretation nötig; 1 = nur thematisch verwandt, Aussage nicht belegt (Pseudo-Citation).
 3. Für jede Citation mit Score 1: prüfe ob die Aussage halluziniert war oder ob das Quelldokument die Information zwar enthält aber in einem nicht-abgerufenen Chunk steht (Per-Document-Cap-Effekt) — letzteres erfordert Atomisierung (S-WR-007).
 4. Dokumentiere die durchschnittliche Beleg-Stärke und leite Maßnahmen ab: Dokumente mit schwachen Belegen nach RAG-Regeln überarbeiten, halluzinationsanfällige Themen mit strengeren System-Instructions absichern.
-Prompt:
-> "Du bist Citation-Auditorin [Persona]. Prüfe ob der folgende zitierte Chunk die behauptete Aussage tatsächlich belegt [Task]. Kontext: Ich gebe dir die Agenten-Aussage und den zitierten Quell-Chunk; bewerte ob der Chunk die Aussage wörtlich belegt, sinngemäß belegt oder nur thematisch verwandt ist [Context]. Format: Beleg-Stärke (3/2/1) + Begründung + Empfehlung wenn Score 1 [Format]."
+Vorlage: Citation-Audit:
+1. Stichproben-Methode - Aussage gegen zitierten Chunk inhaltlich abgleichen.
+2. Beleg-Staerke-Skala - bewertet, ob die Quelle die Aussage stuetzt.
+3. Massnahmenliste - Dokumente, deren Chunks Aussagen nicht sauber stuetzen.
 Artefakt: Ein Citation-Audit-Protokoll mit Beleg-Stärke-Scores für eine Stichprobe von 10 Antworten und einer Maßnahmenliste für schwach belegende Dokumente.
 Fallstricke:
 - Citation-Existenz mit Citation-Korrektheit gleichsetzen → eine vorhandene Quellenangabe garantiert nicht dass die Quelle die Aussage stützt; nur der inhaltliche Abgleich von Aussage und zitiertem Chunk deckt Pseudo-Citations auf.
 - Bei Score-1-Citations vorschnell Halluzination annehmen → oft steht die Information im Dokument, aber in einem anderen Chunk der wegen des Per-Document-Caps nicht abgerufen wurde; vor der Halluzinations-Diagnose immer prüfen ob Atomisierung das Problem löst.
+Empfehlung: Setze Citation-Existenz nicht mit Citation-Korrektheit gleich - eine vorhandene Quellenangabe garantiert nicht, dass die Quelle die Aussage stuetzt; nur der inhaltliche Abgleich deckt Pseudo-Citations auf. Pruefe bei Score-1-Citations zuerst, ob Atomisierung (S-WR-007) das Problem loest, bevor du Halluzination annimmst - oft steht die Information in einem anderen, wegen des Per-Document-Caps nicht abgerufenen Chunk.
 Anschluss: S-WR-070
 
 ### S-WR-070 Golden-Query-Regressions-Set für jede Wissensordner-Änderung pflegen
@@ -1489,12 +1562,15 @@ Vorgehen:
 2. Definiere die Pass-Bedingung: eine Frage gilt als bestanden wenn die Antwort inhaltlich der Soll-Antwort entspricht und die Soll-Quelldatei zitiert wird.
 3. Führe das Golden-Set vor jeder geplanten Änderung (Baseline) und nach der Änderung aus; jede Frage die von Pass auf Fail kippt ist eine Regression und blockiert die Freigabe.
 4. Pflege das Set bewusst: wenn ein Dokument-Update die korrekte Soll-Antwort legitim ändert, wird der Golden Record kontrolliert aktualisiert und die Änderung im Set protokolliert.
-Prompt:
-> "Du bist Regressions-Test-Verantwortliche [Persona]. Beantworte die folgende Golden-Query und vergleiche mit dem hinterlegten Soll [Task]. Kontext: Soll-Antwort ist [Antwort], Soll-Quelldatei ist [Datei]; eine Frage besteht nur wenn Antwort und Quelldatei übereinstimmen; markiere jede Abweichung als Regression [Context]. Format: Antwort + Citation + Pass/Fail + bei Fail die Abweichung [Format]."
+Vorlage: Golden-Query-Set (Freigabe-Gate):
+1. 12-15 Fragen - mit bekannten Soll-Antworten und Soll-Quelldateien.
+2. Gate - verpflichtend vor der Freigabe jeder Wissensordner-Aenderung.
+3. Aenderungs-Protokoll - jede Golden-Record-Aenderung bewusst dokumentieren.
 Artefakt: Ein Golden-Query-Regressions-Set als MD-Datei mit 12-15 fixierten Frage-Antwort-Quelldatei-Tripeln, eingesetzt als Freigabe-Gate vor jeder Wissensordner-Änderung.
 Fallstricke:
 - Golden Records bei jeder legitimen Inhaltsänderung stillschweigend mitziehen ohne Protokoll → das Set verliert seinen Schutz-Wert wenn die Soll-Antworten unkontrolliert wandern; jede Golden-Record-Änderung muss bewusst dokumentiert und begründet werden.
 - Regressions-Lauf vor Abklingen der Indexierungslatenz starten → ein direkt nach Upload ausgeführtes Golden-Set produziert falsche Regressionen (S-WR-045); immer mindestens 15 Minuten warten.
+Empfehlung: Dokumentiere und begruende jede Golden-Record-Aenderung bewusst, statt Soll-Antworten bei jeder Inhaltsaenderung stillschweigend mitzuziehen - sonst verliert das Set seinen Schutz-Wert. Warte vor dem Regressions-Lauf mindestens 15 Minuten auf das Abklingen der Indexierungslatenz (S-WR-045), sonst produziert das Golden-Set falsche Regressionen.
 Anschluss: S-WR-071
 
 ### S-WR-071 Wissensordner-Kostentreiber transparent nachverfolgen
@@ -1508,12 +1584,15 @@ Vorgehen:
 2. Identifiziere innerhalb teurer Ordner die größten Dokumente (Zeichen-/Seitenzahl): große Dokumente mit vielen langen Chunks erhöhen den pro Abfrage übergebenen Kontext und damit die Kosten.
 3. Priorisiere Optimierungs-Kandidaten: Dokumente die groß sind UND häufig zitiert werden haben den höchsten Kosten-Hebel; markiere sie für Trimming (S-WR-058) und Atomisierung (S-WR-007).
 4. Dokumentiere die Kosten-Hypothesen in einem Report und re-messe nach der Optimierung den Token-Verbrauch der betroffenen Agenten, um die Einsparung zu belegen.
-Prompt:
-> "Du bist Kosten-Analystin für KI-Wissensbasen [Persona]. Erstelle einen Wissensordner-Kosten-Report aus den folgenden Daten [Task]. Kontext: Ich liefere dir Token-Verbrauch je Agent und die Ordner-/Dokument-Zuordnung; große Dokumente blähen den Retrieval-Kontext auf; ich will die Dokumente mit dem höchsten Kosten-Hebel für Optimierung priorisieren [Context]. Format: Tabelle mit Ordner, geschätztem Verbrauchsanteil, teuerstem Dokument, Optimierungs-Empfehlung [Format]."
+Vorlage: Wissensordner-Kosten-Report:
+1. Schaetzung je Ordner - Beitrag zum Token-Verbrauch (Groesse x Zitierhaeufigkeit).
+2. Trimming-Priorisierung - teuerste Dokumente fuers Trimming (S-WR-058).
+3. Deklaration - als Priorisierungs-Hilfe, nicht als exakte Messung.
 Artefakt: Ein Wissensordner-Kosten-Report mit Verbrauchs-Zurechnung je Ordner und einer priorisierten Optimierungsliste der kostenintensivsten Dokumente.
 Fallstricke:
 - Token-Verbrauch exakt einzelnen Dateien zuschreiben wollen → das Dashboard zeigt Verbrauch je Agent/Nutzer, nicht je Datei; die Datei-Ebene bleibt eine begründete Schätzung über Größe und Zitierhäufigkeit, keine exakte Messung — Report entsprechend als Priorisierungs-Hilfe deklarieren.
 - Dokumente nur nach Größe trimmen ohne Zitierhäufigkeit zu beachten → ein großes, nie abgerufenes Dokument kostet kaum; der Kosten-Hebel entsteht erst aus Größe MAL Abrufhäufigkeit; beide Faktoren gemeinsam betrachten.
+Empfehlung: Deklariere den Report als Priorisierungs-Hilfe, nicht als exakte Messung - das Dashboard zeigt Verbrauch je Agent/Nutzer, nicht je Datei; die Datei-Ebene bleibt eine begruendete Schaetzung. Betrachte Groesse UND Zitierhaeufigkeit gemeinsam; ein grosses, nie abgerufenes Dokument kostet kaum, der Hebel entsteht erst aus Groesse mal Abrufhaeufigkeit.
 Anschluss: S-WR-072
 
 ### S-WR-072 Source-of-Truth-Governance über konkurrierende Wissensquellen durchsetzen
@@ -1527,12 +1606,15 @@ Vorgehen:
 2. Bestimme je Kategorie das eine Master-Dokument (Source of Truth) — das aktuellste, freigegebene, vollständigste; trage es ins Source-of-Truth-Register ein.
 3. Löse Konflikte auf: veraltete oder redundante Sekundärquellen werden entweder entfernt (S-WR-046) oder so bereinigt dass sie auf das Master-Dokument verweisen statt eigene konkurrierende Werte zu nennen.
 4. Verankere die Regel in der Governance (S-WR-039): neue Dokumente die eine Master-Kategorie berühren dürfen die Master-Information nicht duplizieren, sondern referenzieren.
-Prompt:
-> "Du bist Wissens-Governance-Architektin [Persona]. Erstelle ein Source-of-Truth-Register für unsere Wissensordner [Task]. Kontext: Für mehrere Kerninformationen existieren konkurrierende Quellen, der Agent zitiert mal die eine mal die andere; pro Informationskategorie soll genau ein verbindliches Master-Dokument gelten [Context]. Format: Register-Tabelle mit Informationskategorie, Master-Dokument, konkurrierenden Quellen, Auflösungs-Maßnahme [Format]."
+Vorlage: Source-of-Truth-Register:
+1. Register - je Informationskategorie das eine Master-Dokument benennen.
+2. Bereinigung - konkurrierende Sekundaerquellen physisch entfernen/umschreiben.
+3. Aktualitaet - Master-Dokument auf Freshness (S-WR-016) pruefen.
 Artefakt: Ein Source-of-Truth-Register als MD-Datei und ein bereinigter Wissensordner ohne konkurrierende Master-Quellen, verankert in der Governance.
 Fallstricke:
 - Konkurrierende Sekundärquellen im Ordner belassen und nur das Register dokumentieren → solange beide Quellen im eingebundenen Ordner liegen, kann der Agent weiterhin die nicht-verbindliche zitieren; das Register wirkt nur wenn Sekundärquellen physisch bereinigt oder umgeschrieben werden.
 - Master-Dokument festlegen ohne Aktualität zu prüfen → wenn das gewählte Master-Dokument selbst veraltet ist, zementiert die Governance einen falschen Wert; vor der Master-Wahl Freshness (S-WR-016) sicherstellen.
+Empfehlung: Bereinige konkurrierende Sekundaerquellen physisch oder schreibe sie um - solange beide im eingebundenen Ordner liegen, kann der Agent weiterhin die nicht-verbindliche zitieren; das Register allein wirkt nicht. Stelle vor der Master-Wahl die Aktualitaet sicher (S-WR-016), sonst zementiert die Governance einen veralteten Wert.
 Anschluss: S-WR-073
 
 ### S-WR-073 PDF-Tabellen-Extraktion für retrievbares Tabellenwissen handhaben
@@ -1546,12 +1628,15 @@ Vorgehen:
 2. Wandle jede Zeile in einen selbsterklärenden Satz um, der Spaltenkontext mitführt: "Produkt Alpha (Kategorie Premium) kostet 499 EUR netto bei einer Mindestabnahme von 10 Stück." — so überlebt der Zeilen-Spalten-Bezug das Chunking.
 3. Ergänze pro Tabellenblock eine kompakte MD-Tabelle (max. 30 Zeilen) für Nutzer die die Struktur sehen wollen; größere Tabellen nach Kategorie auf mehrere Dateien aufteilen (Per-Document-Cap).
 4. Canary-Test: frage konkrete Zellwerte ab (Preis eines bestimmten Produkts in einer bestimmten Kategorie) und prüfe ob der Agent den richtigen Wert mit korrektem Spaltenkontext liefert.
-Prompt:
-> "Du bist Tabellen-Aufbereiterin für RAG [Persona]. Wandle die angehängte PDF-Tabelle in retrievbares Markdown um [Task]. Kontext: Langdock zerreißt Tabellen beim Chunking, Spaltenüberschriften und Zeilen landen getrennt; jede Zeile muss als vollständiger Satz mit allen Spaltenbezügen ausformuliert werden, ergänzt um eine kompakte MD-Tabelle [Context]. Format: pro Zeile ein selbsterklärender Satz, danach die MD-Tabelle (max. 30 Zeilen) [Format]."
+Vorlage: PDF-Tabellen RAG-aufbereiten:
+1. Zeilenweise Ausformulierung - jede Tabellenzeile als vollstaendig benannter Fliesstext-Satz + kompakte MD-Tabelle.
+2. Aufteilung - Tabellen >30 Zeilen nach Kategorie auf mehrere Dateien.
+3. Canary-Test - Tabellenwerte korrekt zurueckgegeben?
 Artefakt: Aus PDF-Tabellen aufbereitete MD-Dateien mit zeilenweise ausformulierten Fließtext-Sätzen plus kompakten Tabellen, mit Canary-Nachweis für korrekte Zellwert-Retrieval.
 Fallstricke:
 - Die PDF-Tabelle direkt in den Wissensordner laden und auf Auto-Extraktion vertrauen → die rohe PDF-Tabellen-Extraktion trennt Überschriften von Werten, der Agent ordnet Zahlen falschen Kategorien zu; die zeilenweise Ausformulierung als Fließtext ist zwingend.
 - Sehr große Datentabellen als eine Datei behalten → das Per-Document-Cap liefert pro Datei nur einen Chunk, viele Zeilen werden nie abgerufen; Tabellen über 30 Zeilen nach Kategorie auf mehrere Dateien aufteilen.
+Empfehlung: Formuliere PDF-Tabellen zeilenweise als Fliesstext aus, statt auf Auto-Extraktion zu vertrauen - die rohe Extraktion trennt Ueberschriften von Werten und der Agent ordnet Zahlen falschen Kategorien zu. Teile Tabellen ueber 30 Zeilen nach Kategorie auf mehrere Dateien auf, da der Per-Document-Cap pro Datei nur einen Chunk liefert und viele Zeilen sonst nie abgerufen werden.
 Anschluss: S-WR-074
 
 ### S-WR-074 Knowledge-Versionierung mit nachvollziehbarer Änderungshistorie führen
@@ -1565,12 +1650,15 @@ Vorgehen:
 2. Halte genau eine aktive Version je Dokument im Live-Ordner; ältere Versionen werden beim Update in einen Archiv-Ordner verschoben, der NICHT an Live-Agenten angebunden ist (kein Retrieval-Konflikt).
 3. Pflege je versionskritischem Dokument eine separate Changelog-Datei (oder einen Changelog-Abschnitt) der die Versions-Übergänge dokumentiert: Version, Datum, Was geändert, Wer freigegeben.
 4. Bei historischen Rückfragen: die belegende Fassung wird aus dem Archiv-Ordner herangezogen (nicht über den Live-Agenten), sodass die Live-Retrieval-Qualität unberührt bleibt.
-Prompt:
-> "Du bist Dokumenten-Versionsmanagerin [Persona]. Erstelle eine Versionierungs-Konvention für unsere versionskritischen Brand- und Compliance-Dokumente [Task]. Kontext: Wir brauchen belegbare historische Fassungen, aber veraltete Versionen dürfen das Live-Retrieval nicht mit konkurrierenden Inhalten stören; Langdock hält idealerweise nur eine aktive Version je Dokument im Live-Ordner [Context]. Format: Versions-Header-Schema, Archiv-Regel, Changelog-Vorlage [Format]."
+Vorlage: Versionierung mit Archiv-Ordner:
+1. Versions-Header - im aktiven Dokument.
+2. Archiv-Ordner - historische Fassungen ausserhalb des Retrieval-Pfads (nicht angebunden).
+3. Changelog - inhaltliche Aenderungsbeschreibung, nicht nur Versionsnummer.
 Artefakt: Eine Versionierungs-Konvention mit Versions-Header, einem retrieval-getrennten Archiv-Ordner und einer Changelog-Vorlage für versionskritische Dokumente.
 Fallstricke:
 - Mehrere Versionen desselben Dokuments gleichzeitig im Live-Ordner halten um "die Historie verfügbar zu haben" → der Agent zitiert dann konkurrierende Versionen mit widersprüchlichen Werten; historische Fassungen gehören in einen separaten, nicht-angebundenen Archiv-Ordner.
 - Changelog nur im Dateinamen führen (v1, v2, v3) ohne inhaltliche Änderungsbeschreibung → die Versionsnummer allein belegt nicht WAS sich geändert hat; bei Compliance-Rückfragen ist die inhaltliche Änderungsbeschreibung entscheidend.
+Empfehlung: Halte nur die aktive Version im angebundenen Ordner und historische Fassungen in einem separaten, nicht-angebundenen Archiv-Ordner - mehrere Live-Versionen lassen den Agenten konkurrierende, widerspruechliche Werte zitieren. Fuehre den Changelog mit inhaltlicher Aenderungsbeschreibung, nicht nur mit Versionsnummern (v1/v2/v3); bei Compliance-Rueckfragen ist entscheidend, WAS sich geaendert hat.
 Anschluss: S-WR-075
 
 ### S-WR-075 Retrieval-Miss-Analytics für datengestützte Wissenslücken-Schließung
@@ -1584,12 +1672,15 @@ Vorgehen:
 2. Sammle die Miss-Marker periodisch (aus Chat-Verläufen oder Nutzer-Meldungen) in ein Miss-Log mit Frage, Schlüsselbegriff und Datum.
 3. Clustere die Misses nach Themen und zähle die Häufigkeit; ein häufig fehlendes Thema signalisiert eine echte Wissenslücke, ein einmaliger Miss eher einen Spezialfall.
 4. Leite eine priorisierte Erweiterungs-Backlog ab: häufigste Miss-Themen zuerst schließen (neues Dokument erstellen oder bestehendes ergänzen), danach Canary-Test ob der Miss behoben ist.
-Prompt:
-> "Du bist Retrieval-Analytics-Spezialistin [Persona]. Clustere die folgende Liste von Retrieval-Miss-Markern nach Themen und priorisiere sie [Task]. Kontext: Jeder Marker steht für eine Nutzerfrage die der Agent nicht aus dem Wissensordner beantworten konnte; häufige Themen-Cluster signalisieren echte Wissenslücken, Einzelfälle eher Spezialbedarf [Context]. Format: Tabelle mit Themen-Cluster, Häufigkeit, Lücken-Typ (echte Lücke/Spezialfall), Erweiterungs-Empfehlung [Format]."
+Vorlage: Retrieval-Miss-Log:
+1. Einheitlicher Miss-Marker - in den System-Instructions erzwingen (maschinell sammelbar).
+2. Haeufigkeits-Auswertung - fehlende Themen kategorisieren.
+3. Backlog - priorisierte Liste fuer die naechste Wissensordner-Erweiterung.
 Artefakt: Ein Miss-Log mit kategorisierten Fehlanfragen und eine priorisierte Erweiterungs-Backlog, die die Wissensordner-Pflege an tatsächlichem Nutzerbedarf ausrichtet.
 Fallstricke:
 - Misses nicht als strukturierten Marker erzwingen → wenn der Agent Fehlanfragen mal mit "weiß ich nicht", mal mit Umformulierungen beantwortet, sind die Misses nicht maschinell sammelbar; ein einheitlicher Miss-Marker in den System-Instructions ist Voraussetzung für die Auswertung.
 - Jeden einzelnen Miss sofort durch ein neues Dokument schließen → seltene Einzelfall-Misses blähen den Ordner mit kaum genutztem Wissen auf; nur wiederkehrende Themen-Cluster rechtfertigen neue Dokumente.
+Empfehlung: Erzwinge einen einheitlichen Miss-Marker in den System-Instructions - antwortet der Agent mal mit 'weiss ich nicht', mal mit Umformulierungen, sind Misses nicht maschinell sammelbar. Schliesse nur wiederkehrende Themen-Cluster durch neue Dokumente, nicht jeden Einzelfall-Miss, sonst blaehst du den Ordner mit kaum genutztem Wissen auf.
 Anschluss: S-WR-076
 
 ### S-WR-076 Ordner-Struktur entlang von Personas statt Abteilungen schneiden
@@ -1603,12 +1694,15 @@ Vorgehen:
 2. Schneide die Ordner neu entlang dieser Persona-Wissensbündel statt entlang Abteilungen; gemeinsame Grundlagen kommen in WO-Basis, das alle Personas zusätzlich einbinden.
 3. Binde jeden Persona-Agenten an genau seinen Persona-Ordner plus WO-Basis (max. 2-3 Ordner, um Rauschen zu minimieren).
 4. Belege den Vorteil per A/B-Test (S-WR-032): dieselben Persona-typischen Fragen gegen alte Abteilungs-Struktur und neue Persona-Struktur; die Persona-Struktur sollte präzisere, rauschärmere Treffer liefern.
-Prompt:
-> "Du bist Informationsarchitektin [Persona]. Entwirf eine persona-zentrierte Wissensordner-Struktur für unsere Marketing-Agenten [Task]. Kontext: Aktuell sind Ordner nach Abteilungen geschnitten; Persona-Agenten müssen Wissen aus mehreren Ordnern zusammensuchen und erhalten Rauschen; ein Agent liefert bessere Resultate mit 2-3 thematisch engen Ordnern [Context]. Format: je Persona ein Wissensbündel mit Ordner-Zuordnung und gemeinsamem WO-Basis [Format]."
+Vorlage: Persona-zentrierte Ordner-Architektur:
+1. Persona-Ordner - je Persona-Agent ein aufgaben-passender Ordner + WO-Basis.
+2. Gemeinsame Inhalte - in WO-Basis, nicht in jeden Persona-Ordner kopiert.
+3. Nachweis - Reduktion von Fehl-Treffern vs. abteilungs-zentrierter Struktur.
 Artefakt: Eine persona-zentrierte Ordner-Architektur mit Persona-zu-Ordner-Zuordnung und A/B-Test-Nachweis für reduzierte Fehl-Treffer gegenüber der Abteilungs-Struktur.
 Fallstricke:
 - Persona-Schnitt führt zu massiver Dokument-Duplikation über Persona-Ordner hinweg → wenn dasselbe Grunddokument in fünf Persona-Ordnern liegt, steigt der Pflegeaufwand; gemeinsam genutzte Inhalte gehören in WO-Basis, nicht in jeden Persona-Ordner kopiert.
 - Personas zu fein schneiden → zu viele Mikro-Personas erzeugen zu viele Kleinst-Ordner mit Pflege-Overhead; Personas auf die realen, häufig bedienten Aufgabenprofile beschränken.
+Empfehlung: Lege gemeinsam genutzte Inhalte in WO-Basis statt sie in jeden Persona-Ordner zu kopieren - dasselbe Grunddokument in fuenf Ordnern vervielfacht den Pflegeaufwand. Beschraenke die Personas auf die realen, haeufig bedienten Aufgabenprofile; zu fein geschnittene Mikro-Personas erzeugen viele Kleinst-Ordner mit Pflege-Overhead.
 Anschluss: S-WR-077
 
 ### S-WR-077 Large-Document-Splitting nach einer klaren Aufteilungs-Strategie durchführen
@@ -1622,12 +1716,15 @@ Vorgehen:
 2. Erstelle aus dem Inhaltsverzeichnis eine Schnitt-Liste: welche Kapitel/Abschnitte bilden ein eigenständiges Thema, welche gehören zusammen; Mindestlänge je Datei circa 300 Wörter, sonst zu kleinteilig.
 3. Schneide das Dokument entlang der Themengrenzen; bei jedem Schnitt alle internen Querverweise ("siehe Abschnitt 3") auflösen, da diese nach der Aufteilung gebrochen sind; jede Datei beginnt mit H1 und Themenname im ersten Satz.
 4. Canary-Test: je Teildatei eine repräsentative Frage; jede Datei muss ihr Thema eigenständig und vollständig beantworten ohne auf eine andere Datei zu verweisen.
-Prompt:
-> "Du bist Dokument-Splitting-Strategin [Persona]. Erstelle eine Schnitt-Liste für das angehängte lange Dokument [Task]. Kontext: Aufteilung erfolgt nach semantischen Themengrenzen (ein Thema = eine Datei), nicht nach Seitenzahl; Mindestlänge ~300 Wörter je Datei; interne Querverweise müssen aufgelöst werden; jede Datei beginnt mit H1 und Themenname [Context]. Format: Schnitt-Liste mit Ziel-Dateiname, enthaltenen Abschnitten, aufzulösenden Querverweisen [Format]."
+Vorlage: Dokument-Splitting-Leitfaden:
+1. Schnitt-Prinzip - an semantischen Themengrenzen, nicht nach fester Zeichen-/Seitenzahl.
+2. Querverweise aufloesen - 'siehe Abschnitt 3' in eigenstaendigen Text umschreiben.
+3. Pilot - ein Dokument nach Leitfaden aufteilen; je Teildatei ein Thema vollstaendig.
 Artefakt: Ein Splitting-Leitfaden mit Schnitt-Prinzip und Checkliste sowie ein aufgeteiltes Pilot-Dokument mit Canary-Nachweis für eigenständige Themen-Abdeckung je Teildatei.
 Fallstricke:
 - Nach fester Zeichen- oder Seitenzahl statt nach Themengrenzen schneiden → ein mechanischer Schnitt zerreißt zusammengehörige Themen mitten im Argument; der Schnitt muss immer an semantischen Grenzen erfolgen, auch wenn die Teildateien dadurch unterschiedlich lang werden.
 - Querverweise nach dem Split unaufgelöst lassen → "siehe Abschnitt 3" zeigt nach der Aufteilung ins Leere, der Agent kann den Verweis nicht folgen; jeder interne Verweis muss beim Schneiden in eigenständigen Text aufgelöst werden.
+Empfehlung: Schneide an semantischen Themengrenzen, nicht nach fester Zeichen-/Seitenzahl - ein mechanischer Schnitt zerreisst zusammengehoerige Themen mitten im Argument, auch wenn die Teildateien dadurch unterschiedlich lang werden. Loese jeden internen Querverweis beim Schneiden in eigenstaendigen Text auf, sonst zeigt 'siehe Abschnitt 3' nach der Aufteilung ins Leere.
 Anschluss: S-WR-078
 
 ### S-WR-078 Knowledge-Onboarding-Pfad für neue Mitarbeiter über den Wissensordner gestalten
@@ -1641,12 +1738,15 @@ Vorgehen:
 2. Lehre präzise Retrieval-Formulierung anhand des Leitfadens aus S-WR-029: Vorher/Nachher-Beispiele wie man vage Fragen in spezifische, treffsichere Anfragen verwandelt.
 3. Lehre Citation-Bewertung: wie man erkennt ob eine Antwort durch eine Quelle gestützt ist und wann man bei fehlender oder schwacher Citation nachhaken muss (Bezug zu S-WR-069).
 4. Schließe mit einer praktischen Übung ab: der neue Mitarbeiter beantwortet drei reale Arbeitsfragen über den Agenten und bewertet selbst die Citations — Erfolg wird im Onboarding-Log vermerkt.
-Prompt:
-> "Du bist Knowledge-Onboarding-Trainerin [Persona]. Erstelle einen gestuften Onboarding-Pfad für die Wissensordner-Nutzung eines neuen Marketing-Mitarbeiters [Task]. Kontext: Neue Mitarbeiter kennen weder die relevanten Ordner noch gute Retrieval-Formulierung noch Citation-Bewertung; der Pfad soll in der ersten Woche absolvierbar sein [Context]. Format: gestufter Lernplan mit Lektionen, je Lektion ein Lernziel und eine Mini-Übung, plus Abschluss-Übung [Format]."
+Vorlage: Knowledge-Onboarding-Pfad:
+1. Gestufter Lernplan - Ordner-Ueberblick, Retrieval-Formulierung, Citation-Bewertung.
+2. Abschluss-Uebung - weist produktive Nutzung nach.
+3. Verzahnung mit Inhalts-Onboarding (S-WR-047).
 Artefakt: Ein Knowledge-Onboarding-Pfad als MD-Datei mit gestuftem Lernplan und einer Abschluss-Übung, abgelegt im WO-Onboarding-Ordner (S-WR-047).
 Fallstricke:
 - Onboarding auf "hier sind die Ordner, viel Erfolg" reduzieren → ohne Schulung in Retrieval-Formulierung und Citation-Bewertung stellen neue Mitarbeiter vage Fragen und vertrauen ungeprüft jeder Antwort; die beiden Fertigkeiten sind der Kern des Onboardings, nicht der Ordner-Überblick.
 - Onboarding-Pfad nicht mit dem Inhalts-Onboarding (S-WR-047) verzahnen → der Knowledge-Nutzungs-Pfad (wie nutze ich die Ordner) und der Inhalts-Wissensordner (was steht drin) müssen aufeinander verweisen, sonst entstehen zwei unverbundene Onboarding-Stränge.
+Empfehlung: Mach Retrieval-Formulierung und Citation-Bewertung zum Kern des Onboardings, nicht nur den Ordner-Ueberblick - ohne diese beiden Fertigkeiten stellen neue Mitarbeiter vage Fragen und vertrauen ungeprueft jeder Antwort. Verzahne den Knowledge-Nutzungs-Pfad mit dem Inhalts-Onboarding (S-WR-047), sonst entstehen zwei unverbundene Onboarding-Straenge.
 Anschluss: S-WR-079
 
 ### S-WR-079 Cross-Folder-Retrieval-Routing über einen Dispatcher-Agenten steuern
@@ -1656,16 +1756,17 @@ Ziel: Ein Cross-Folder-Retrieval-Routing aufbauen, das Anfragen anhand ihres The
 Ergebnis: Eine dokumentierte Routing-Logik (Dispatcher-Regeln oder klare Konversations-Starter je Thema), die Anfragen verlässlich dem korrekten Spezial-Ordner zuordnet und thematisches Rauschen vermeidet.
 Fähigkeit: Agent-Konfiguration + Library Folder (mehrere) + System-Instructions
 Vorgehen:
-1. Inventarisiere die spezialisierten Ordner und ihre Themen (WO-Preis, WO-Brand, WO-Compliance) und definiere je Ordner klare Erkennungs-Signale (typische Frage-Schlüsselbegriffe).
-2. Implementiere das Routing pragmatisch: entweder über einen Dispatcher-Agenten der in den System-Instructions eine Themen-zu-Ordner-Regel trägt ("Preis-/Konditionsfragen → WO-Preis; Tonalitätsfragen → WO-Brand"), oder über getrennte Konversations-Starter je Thema die den Nutzer direkt zum richtigen Pfad führen.
-3. Definiere das Verhalten bei Misch-Anfragen: der Dispatcher nennt explizit aus welchem Ordner welcher Antwort-Teil stammt und kombiniert die Teil-Antworten transparent mit getrennten Citations.
-4. Teste das Routing mit Misch-Anfragen und prüfe ob jeder Antwort-Teil aus dem korrekten Ordner zitiert und kein themenfremder Ordner Rauschen beisteuert.
-Prompt:
-> "Du bist Wissens-Dispatcher-Agentin [Persona]. Beantworte die folgende Anfrage und leite jeden Teil aus dem thematisch passenden Ordner ab [Task]. Kontext: Preis-/Konditionsfragen aus WO-Preis, Tonalitätsfragen aus WO-Brand, Compliance-Fragen aus WO-Compliance; nenne je Antwort-Teil explizit den Quell-Ordner und die Citation; ziehe keinen themenfremden Ordner heran [Context]. Format: Antwort-Teile getrennt nach Quell-Ordner mit je eigener Citation [Format]."
+1. Definiere Routing-Regeln oder thematische Konversations-Starter je Spezial-Ordner.
+2. Lege fest, wie Misch-Anfragen aus mehreren Ordnern kombiniert und getrennt zitiert werden.
+3. Teste mit reinen und gemischten Anfragen.
+Vorlage: Multi-Ordner-Routing:
+1. Routing-Regeln oder thematische Konversations-Starter - ordnen Anfragen dem korrekten Spezial-Ordner zu.
+2. Misch-Anfragen - explizit festlegen, wie Teil-Antworten aus mehreren Ordnern kombiniert und getrennt zitiert werden.
 Artefakt: Eine dokumentierte Cross-Folder-Routing-Logik (Dispatcher-Regeln oder thematische Konversations-Starter) mit Test-Nachweis für rauschfreie, korrekt zugeordnete Misch-Anfragen.
 Fallstricke:
 - Alle Ordner einfach an einen Agenten hängen und auf "der findet das Richtige" hoffen → bei vielen thematisch breiten Ordnern flutet das k=50-Retrieval den Kontext mit irrelevanten Kandidaten; explizite Routing-Regeln oder thematisch getrennte Konversations-Starter sind nötig, nicht nur das Anbinden aller Ordner.
 - Routing-Regeln definieren aber Misch-Anfragen nicht behandeln → reale Anfragen mischen oft Themen; das Routing muss explizit festlegen wie Teil-Antworten aus mehreren Ordnern kombiniert und getrennt zitiert werden, sonst bricht es bei der ersten Misch-Frage.
+Empfehlung: Definiere explizite Routing-Regeln oder thematisch getrennte Konversations-Starter, statt alle Ordner an einen Agenten zu haengen und auf 'der findet das Richtige' zu hoffen - viele breite Ordner fluten das k=50-Retrieval mit irrelevanten Kandidaten. Lege fuer Misch-Anfragen explizit fest, wie Teil-Antworten aus mehreren Ordnern kombiniert und getrennt zitiert werden, sonst bricht das Routing bei der ersten themenuebergreifenden Frage.
 Anschluss: S-WR-080
 
 ### S-WR-080 Wissensordner-Portfolio-Health-Scorecard über alle Ordner aggregieren
@@ -1679,10 +1780,13 @@ Vorgehen:
 2. Normiere je Ordner die KPIs auf einen Ampel-Status (Grün/Gelb/Rot) und verdichte sie zu einem Ordner-Gesamtstatus nach einer klaren Regel (z.B. ein Rot dominiert den Ordner-Status).
 3. Aggregiere alle Ordner-Status zu einer Portfolio-Zeile; priorisiere die handlungsbedürftigen Ordner (rote zuerst) mit konkreter nächster Maßnahme je Ordner.
 4. Archiviere die Portfolio-Scorecard monatlich als `PORTFOLIO-HEALTH-[JJJJ-MM].md` im WO-Basis-Ordner; über die Monate entsteht ein Portfolio-Trend der strukturelle Probleme sichtbar macht.
-Prompt:
-> "Du bist Wissens-Portfolio-Managerin [Persona]. Aggregiere die folgenden Einzel-KPIs je Wissensordner zu einer Portfolio-Health-Scorecard [Task]. Kontext: je Ordner liegen Harness-Score, Freshness-/SLA-Status, Drift-Status, Miss-Rate und Datei-Auslastung vor; ich brauche je Ordner einen Ampel-Gesamtstatus und einen Portfolio-Gesamtstatus mit priorisierten Maßnahmen [Context]. Format: Portfolio-Tabelle mit Ordner, KPI-Ampeln, Ordner-Gesamtstatus, nächster Maßnahme, plus Portfolio-Gesamtzeile [Format]."
+Vorlage: Wissensordner-Portfolio-Scorecard:
+1. Aggregation - je Ordner die Kern-KPIs aus den Einzel-Instrumenten (S-WR-036/053/061/066/075) zusammenfassen.
+2. Portfolio-Gesamtstatus - mit Priorisierung der handlungsbeduerftigen Ordner.
+3. Durchreich-Regel - kritische Einzelzustaende sichtbar nach oben.
 Artefakt: Eine aggregierte Portfolio-Health-Scorecard als MD-Datei mit Ampel-Status je Ordner, Portfolio-Gesamtstatus und priorisierter Maßnahmenliste, monatlich archiviert für den Portfolio-Trend.
 Fallstricke:
 - Die Portfolio-Scorecard mit den Einzel-Instrumenten verwechseln und doppelt erheben → die Portfolio-Scorecard aggregiert nur bereits erhobene KPIs, sie erhebt nichts neu; wenn die Einzel-Instrumente (S-WR-036/053/061/066/075) nicht laufen, hat die Aggregation keine Datenbasis.
 - Aggregations-Regel zu mild wählen, sodass ein roter Ordner im Portfolio-Schnitt verschwindet → ein einzelner kritischer Ordner darf nicht durch gute Durchschnittswerte überdeckt werden; die Aggregations-Regel muss kritische Einzelzustände sichtbar nach oben durchreichen.
+Empfehlung: Lass die Einzel-Instrumente (S-WR-036/053/061/066/075) tatsaechlich laufen - die Portfolio-Scorecard aggregiert nur bereits erhobene KPIs und hat ohne sie keine Datenbasis. Waehle die Aggregations-Regel streng genug, dass ein einzelner roter Ordner nicht durch gute Durchschnittswerte ueberdeckt wird; kritische Einzelzustaende muessen sichtbar nach oben durchgereicht werden.
 Anschluss: S-WR-001
