@@ -1063,6 +1063,7 @@ Artefakt: Tabelle mit 10 DACH-adaptierten Headlines (kategorisiert, mit Zeichena
 Fallstricke:
 - DACH-Nutzer reagieren sensibel auf Datenschutz-Implikationen in Werbetexten; Headlines die implizit Tracking suggerieren ("Wir wissen, was du brauchst") müssen gefiltert werden — explizit in die Negativ-Restriktionen aufnehmen.
 - Direkte Übersetzungen von englischen Idiomen ("game-changer") klingen auf Deutsch unnatürlich; den Agenten anweisen, ausschließlich idiomatisches Deutsch zu verwenden, keine Anglizismen in Claims.
+Empfehlung: DACH-Nutzer reagieren sensibel auf Datenschutz-Implikationen — Headlines, die Tracking suggerieren ('Wir wissen, was du brauchst'), in die Negativ-Restriktionen aufnehmen und herausfiltern. Ausschliesslich idiomatisches Deutsch verlangen, keine Anglizismen in Claims, da direkte Idiom-Uebersetzungen ('game-changer') auf Deutsch unnatuerlich klingen.
 Anschluss: S-PS-049
 
 ### S-PS-049 OKR-Dokumentation für das Marketing-Team generieren
@@ -1082,6 +1083,7 @@ Artefakt: `okr-marketing-q[X]-[Jahr].md` mit 3 Objectives + je 3–4 SMART Key R
 Fallstricke:
 - Modelle neigen dazu, Key Results als Aufgaben (Tasks) statt als Ergebnisse zu formulieren; im Prompt explizit fordern: "Key Results beschreiben den Zustand am Ende des Quartals, nicht die Aktivität."
 - Zu ambitionierte Key Results (Moonshots) ohne realistische Baseline demotivieren das Team; immer aktuelle Baseline-Daten mitgeben, damit das Modell Zielwerte realistisch kalibrieren kann.
+Empfehlung: 'Key Results beschreiben den Zustand am Ende des Quartals, nicht die Aktivitaet' explizit fordern — Modelle formulieren KRs sonst als Tasks statt als Ergebnisse. Aktuelle Baseline-Daten immer mitgeben, damit das Modell die Zielwerte realistisch kalibriert; Moonshots ohne Baseline demotivieren das Team.
 Anschluss: S-PS-050
 
 ### S-PS-050 FAQ aus Support-Tickets automatisch generieren
@@ -1101,6 +1103,7 @@ Artefakt: `faq-[produktname]-v[X].md` mit 10 FAQ-Paaren (kategorisiert, CTA-vers
 Fallstricke:
 - Support-Tickets enthalten oft kundenseitige Missverständnisse als "Fragen" — nicht alle Cluster ergeben gültige FAQs; im Review-Schritt explizit prüfen, ob die Frage ein reales, wiederkehrendes Nutzer-Bedürfnis abbildet.
 - Ticket-Texte enthalten häufig PII (Namen, E-Mails); CSV muss vor dem Upload pseudonymisiert werden — kein Klartext-PII in den Data Analyst laden (vgl. DSGVO-Hinweise S-PS-039).
+Empfehlung: Das Ticket-CSV vor dem Upload pseudonymisieren — kein Klartext-PII (Namen/E-Mails) in den Data Analyst laden (DSGVO). Im Review pruefen, ob jeder Frage-Cluster ein reales, wiederkehrendes Nutzer-Beduerfnis abbildet — nicht jedes Ticket-Cluster (oft kundenseitige Missverstaendnisse) ergibt eine gueltige FAQ.
 Anschluss: S-PS-051
 
 ### S-PS-051 Gehalts-Benchmark-Recherche für Marketing-Stellenausschreibungen
@@ -1119,6 +1122,7 @@ Artefakt: Gehalts-Benchmark-Tabelle (Region × Senioritätsstufe, Median + Quart
 Fallstricke:
 - Öffentliche Gehaltsdatenbanken haben oft eine 12–18-monatige Datenverzögerung; immer das Erhebungsdatum der Quelle angeben und Daten nicht älter als 18 Monate verwenden.
 - Schweizer Gehaltskorridore liegen strukturell 30–50% über deutschen Werten; AT und CH nie mit D aggregieren — immer als separate Spalten ausweisen, um Fehlinterpretationen zu vermeiden.
+Empfehlung: Das Erhebungsdatum jeder Gehaltsquelle angeben und keine Daten aelter als 18 Monate verwenden — oeffentliche Datenbanken haben 12–18 Monate Verzug. AT und CH nie mit D aggregieren, sondern als separate Spalten ausweisen, da Schweizer Korridore strukturell 30–50 % ueber deutschen Werten liegen.
 Anschluss: S-PS-052
 
 ### S-PS-052 Award-Bewerbung für Marketing-Kampagnen verfassen
@@ -1138,6 +1142,7 @@ Artefakt: Award-Einreichungsdokument (1 500 Wörter, 6 Sektionen) mit datengest�
 Fallstricke:
 - Awards-Jurys erkennen generische Superlative ("bahnbrechend", "einzigartig") sofort — im Prompt explizit verbieten und durch konkrete Benchmark-Vergleiche ersetzen ("28% über Branchen-CTR-Durchschnitt").
 - Unterschiedliche Awards haben unterschiedliche Wortlimits und Sektion-Strukturen; niemals eine Einreichung für mehrere Awards ohne Award-spezifische Anpassung verwenden.
+Empfehlung: Generische Superlative ('bahnbrechend', 'einzigartig') im Prompt verbieten und durch konkrete Benchmark-Vergleiche ersetzen ('28 % ueber Branchen-CTR-Durchschnitt') — Award-Jurys erkennen Floskeln sofort. Nie eine Einreichung fuer mehrere Awards ohne award-spezifische Anpassung verwenden, da Wortlimits und Sektion-Strukturen variieren.
 Anschluss: S-PS-053
 
 ### S-PS-053 Interne Kommunikation: Tonalitäts-Standardisierung für das Marketing-Team
@@ -1151,12 +1156,16 @@ Vorgehen:
 2. Hinterlege 3 Vorher/Nachher-Beispiele je Kanal (Slack / E-Mail / Slide) als Few-Shot-Referenzen im Guide.
 3. Erstelle einen "Internal Voice Check"-Konversations-Starter, der `@internal-voice-guide` einbindet und den Text-Kanal als Pflicht-Input abfragt.
 4. Validiere den Guide mit 3 echten Team-Mitgliedern: Erkennen sie den Unterschied zwischen vorher und nachher als Verbesserung?
-Prompt:
-> "Du bist Internal-Communications-Editor. Überarbeite den folgenden Text für den Kanal '{{Kanal: Slack / E-Mail / Slide}}' entsprechend unserem Internal Voice Guide in [@internal-voice-guide]. Längenregel: Slack max. 5 Zeilen, E-Mail max. 200 Wörter, Slide-Bullet max. 12 Wörter je Punkt. Entferne Passiv-Konstruktionen, Füllwörter und überflüssige Höflichkeitsfloskeln. Format: überarbeiteter Text + Liste der vorgenommenen Änderungen."
+Vorlage: Internal-Voice-Standardisierung (Guide + Check):
+1. Internal Voice — internal-voice-guide.md: 5 Do's (kurze Saetze, aktive Verben, konkrete Handlungsaufforderungen) + 5 Don'ts (kein Passiv, keine Fuellwoerter, keine unerklaerten Anglizismen).
+2. Few-Shot — je 3 Vorher/Nachher-Beispiele pro Kanal (Slack/E-Mail/Slide).
+3. Check-Starter — bindet @internal-voice-guide ein, fragt den Kanal als Pflicht-Input ab; Laengen: Slack max. 5 Zeilen, E-Mail max. 200 Woerter, Slide-Bullet max. 12 Woerter.
+4. Validierung — 3 Team-Mitglieder bestaetigen den Vorher/Nachher-Unterschied als Verbesserung.
 Artefakt: Überarbeiteter interner Kommunikations-Text im definierten Internal Voice; Liste der Änderungen als transparente Dokumentation für das Lerneffekt des Einsenders.
 Fallstricke:
 - Ein zu rigider Internal Voice kann den persönlichen Ausdruck von Teammitgliedern unterdrücken und Widerstand erzeugen; den Guide als Orientierung, nicht als Zensur positionieren — Abweichungen erlaubt, wenn sie begründet sind.
 - Slide-Bullets kürzen und gleichzeitig inhaltlich vollständig halten ist eine echte Optimierungs-Herausforderung; der Prompt sollte explizit erlauben: "Wenn eine 12-Wörter-Limitation den Inhalt verfälscht, halte den Inhalt und markiere die Stelle mit [[unsicher] zu lang]."
+Empfehlung: Den Internal Voice als Orientierung positionieren, nicht als Zensur — ein zu rigider Standard unterdrueckt persoenlichen Ausdruck und erzeugt Widerstand; begruendete Abweichungen erlauben. Wenn eine 12-Woerter-Slide-Limitation den Inhalt verfaelscht, den Inhalt halten und die Stelle als '[unsicher] zu lang' markieren, statt Substanz zu opfern.
 Anschluss: S-PS-054
 
 ### S-PS-054 UTM-Parameter-Schema für Kampagnen-Tracking generieren
@@ -1176,6 +1185,7 @@ Artefakt: Vollständiges UTM-Schema als Markdown-Tabelle und CSV-Block (copy-pas
 Fallstricke:
 - Modelle neigen dazu, UTM-Werte zu lang zu formulieren (>50 Zeichen), was in manchen Analytics-Tools abgeschnitten wird; Längenbeschränkung in der Format-Sektion explizit wiederholen und nach Generierung manuell prüfen.
 - UTM-Parameter unterscheiden Groß- und Kleinschreibung in Google Analytics 4 — "LinkedIn" und "linkedin" erscheinen als separate Quellen; die Konvention "ausschließlich Kleinbuchstaben" ist nicht optional, sondern kritisch für sauberes Reporting.
+Empfehlung: Die Konvention 'ausschliesslich Kleinbuchstaben' ist nicht optional — GA4 unterscheidet Gross-/Kleinschreibung, sodass 'LinkedIn' und 'linkedin' als getrennte Quellen erscheinen und das Reporting fragmentieren. Die 50-Zeichen-Laengenbeschraenkung je UTM-Wert in der Format-Sektion wiederholen und nach Generierung pruefen, da manche Tools laengere Werte abschneiden.
 Anschluss: S-PS-055
 
 ### S-PS-055 API-Dokumentations-Entwurf für Marketing-Integrationen
@@ -1194,6 +1204,7 @@ Artefakt: `api-doku-[integration-name].md` mit allen Pflicht-Sektionen; direkt i
 Fallstricke:
 - Modelle erfinden gelegentlich plausibel klingende aber falsche Beispiel-Responses; alle generierten Code-Blöcke müssen vor Veröffentlichung gegen die echte Integration getestet werden.
 - API-Dokumentation veraltet schnell bei Versionsupdates; das Dokument mit einem `Version: X.X | Stand: Datum`-Header versehen und den Update-Prozess im internen Wiki definieren.
+Empfehlung: Alle generierten Code-Bloecke vor der Veroeffentlichung gegen die echte Integration testen — Modelle erfinden gelegentlich plausibel klingende, aber falsche Beispiel-Responses. Das Dokument mit einem 'Version: X.X | Stand: Datum'-Header versehen und den Update-Prozess im internen Wiki definieren, da API-Doku bei Versionsupdates schnell veraltet.
 Anschluss: S-PS-056
 
 ### S-PS-056 Kunden-Onboarding-E-Mail-Sequenz erstellen
