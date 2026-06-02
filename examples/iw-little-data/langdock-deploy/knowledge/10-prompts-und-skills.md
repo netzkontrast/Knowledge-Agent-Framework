@@ -721,12 +721,16 @@ Vorgehen:
 2. Führe für jeden Prompt den PTCF-Checker (aus S-PS-005) durch und trage das Ergebnis (Pja/nein, Tja/nein, Cja/nein, Fja/nein) in die Inventar-Tabelle ein.
 3. Identifiziere mit einem Ähnlichkeits-Prompt alle Prompt-Paare, die >70% semantisch überlappen, und markiere diese als Redundanz-Kandidaten.
 4. Präsentiere die Audit-Ergebnisse im Quarterly-Prompt-Review-Meeting (vgl. S-PS-003) und entscheide kollektiv über Deprecation und Konsolidierung.
-Prompt:
-> "Du bist Prompt-Auditor. Prüfe jeden der folgenden Prompts [Prompts einfügen] auf PTCF-Vollständigkeit. Für jeden Prompt: (1) Tabelleneintrag mit P/T/C/F (ja oder nein), (2) Verbesserungsvorschlag für fehlendes Feld in 1 Satz, (3) Status-Empfehlung: Active / Überarbeitungsbedarf / Deprecated. Ausgabe: Markdown-Tabelle + Konsolidierungs-Hinweis bei semantischen Dopplungen."
+Vorlage: PTCF-Bestandsaudit (Library-Bereinigung):
+1. Inventar — alle Library-Prompts als Liste (Name + erste 100 Zeichen) in eine Arbeits-CSV.
+2. PTCF-Check — je Prompt der PTCF-Checker (S-PS-005); Ergebnis P/T/C/F (ja/nein) in die Inventar-Tabelle.
+3. Redundanz — Aehnlichkeits-Prompt findet Paare mit >70 % Ueberlappung als Konsolidierungs-Kandidaten.
+4. Beschluss — Ergebnisse im Quarterly-Prompt-Review (S-PS-003); Deprecation/Konsolidierung kollektiv entscheiden.
 Artefakt: `prompt-audit-report.md` mit vollständiger Inventar-Tabelle, Status-Labels und Konsolidierungsempfehlungen für alle geprüften Library-Prompts.
 Fallstricke:
 - Zu viele Prompts auf einmal auditieren überfordert das Kontextfenster — maximal 10 Prompts pro Audit-Run, bei größeren Libraries in Batches aufteilen.
 - Ohne Freigabe-Prozess durch einen Prompt-Owner werden Audit-Empfehlungen nicht umgesetzt; Audit-Report muss immer mit einem Aktions-Termin und Verantwortlichen enden.
+Empfehlung: Maximal 10 Prompts pro Audit-Run pruefen — mehr ueberfordert das Kontextfenster; bei groesseren Libraries in Batches aufteilen. Den Audit-Report immer mit einem Aktions-Termin und einem Verantwortlichen abschliessen, sonst werden die Empfehlungen nicht umgesetzt.
 Anschluss: S-PS-033
 
 ### S-PS-033 Brand Voice ohne Keyword-Stuffing in Prompts verankern
@@ -740,12 +744,16 @@ Vorgehen:
 2. Ergänze 2–3 Referenztexte als Few-Shot-Anker: "Schreibe im Stil des folgenden Referenz-Absatzes: [Text]."
 3. Füge den Verbots-Cluster (aus S-PS-029) mit brand-spezifischen Verboten ein.
 4. Teste den Brand-Voice-Prompt mit dem Persona-Match-Skill gegen 5 historische Top-Performer-Texte: Übereinstimmungsrate ≥70% = Freigabe.
-Prompt:
-> "Du bist Senior Texter bei [Unternehmensname]. Unsere Brand Voice: präzise, kollegial, faktenbasiert — kein Marketing-Buzz. Ton-Prinzipien: kurze Sätze (max. 20 Wörter), aktive Sprache, Zahlen statt Adjektive. Referenz-Stil: '[Referenz-Absatz einfügen]'. Vermeide: 'innovativ', 'führend', 'weltklasse', Passiv-Konstruktionen, mehr als 1 Adjektiv pro Satz. Schreibe jetzt einen LinkedIn-Post über [Thema] in diesem Stil."
+Vorlage: Brand-Voice-Encoding-Guide (4 Layer statt Keywords):
+1. Ton-Prinzipien (max. 5 Saetze) — 'wie ein erfahrener Kollege, nicht wie eine Broschuere; kurze Saetze, aktiv, Fakten vor Adjektiven'.
+2. Few-Shot-Referenztexte — 2–3 Anker im Marken-Stil.
+3. Verbots-Cluster (S-PS-029) — brand-spezifische Verbote.
+4. Validierung — Persona-Match gegen 5 Top-Performer-Texte, >=70 % = Freigabe.
 Artefakt: LinkedIn-Post in kalibrierter Brand Voice; dokumentierter `brand-voice-encoding-guide.md` als wiederverwendbarer Standard für neue Teammitglieder und Freiberufler-Briefings.
 Fallstricke:
 - Referenz-Texte aus unterschiedlichen Entstehungsjahren können widersprüchliche Ton-Signale senden; immer Referenz-Texte aus einem definierten, aktuellen Brand-Zeitraum wählen (max. 18 Monate alt).
 - "Fakten statt Adjektive" als alleinige Regel führt zu trockenen Texten ohne Emotionsanker; Ton-Prinzip muss ergänzt werden: "1 emotionaler Eröffnungssatz pro Abschnitt ist erlaubt."
+Empfehlung: Referenztexte nur aus einem aktuellen Brand-Zeitraum waehlen (max. 18 Monate alt) — Anker aus verschiedenen Jahren senden widerspruechliche Ton-Signale. 'Fakten statt Adjektive' um '1 emotionaler Eroeffnungssatz pro Abschnitt ist erlaubt' ergaenzen, sonst werden die Texte trocken und ohne Emotionsanker.
 Anschluss: S-PS-034
 
 ### S-PS-034 Prompt-Komplexitätsskalierung: Von simpel zu komplex graduell aufbauen
@@ -758,12 +766,15 @@ Vorgehen:
 1. Dokumentiere alle 5 Stufen am selben Beispiel-Use-Case (LinkedIn-Post für Produktlaunch): Stufe 1 = "Schreibe einen LinkedIn-Post über unser neues Produkt." bis Stufe 5 = vollständiger PTCF-Few-Shot-Multi-Step-Prompt.
 2. Zeige neben jeder Stufe den typischen Output und bewerte Qualität, Kontrolle und Zeitaufwand auf einer 1–5-Skala.
 3. Empfehle in der Stufen-Tabelle konkret, wann welche Stufe ausreicht: Stufe 2 für interne Drafts, Stufe 4–5 für publishable Content.
-Prompt:
-> "Du bist Prompt-Coach. Zeige mir, wie der folgende Prompt Stufe für Stufe von Minimal zu PTCF-Standard ausgebaut wird. Stufe 1 (Minimal): 'Schreibe über unser Produkt.' Füge zu jeder Stufe hinzu: (a) den verbesserten Prompt-Text, (b) was diese Stufe bringt, (c) welchen typischen Output-Verbesserungseffekt man erwarten kann. Stufen: Minimal → Basic (Aufgabe klar) → PTCF → Few-Shot ergänzt → Multi-Step-Chain. Format: 5 nummerierte Blöcke."
+Vorlage: Prompt-Complexity-Scaling-Leitfaden (5 Stufen):
+1. Stufen am selben Beispiel (LinkedIn-Post) — Minimal → Basic → PTCF → Few-Shot → Multi-Step.
+2. Je Stufe — verbesserter Prompt + typischer Output + Qualitaet/Kontrolle/Zeitaufwand (1–5).
+3. Empfehlung je Stufe — Stufe 2 fuer interne Drafts, Stufe 4–5 fuer publishable Content.
 Artefakt: 5-Stufen-Leitfaden am konkreten Beispiel; direkt im Onboarding einsetzbar als interaktives Lernformat mit dem Prompt-Coach-Konversations-Starter.
 Fallstricke:
 - Der Leitfaden darf keine Wertung implizieren, dass immer Stufe 5 optimal ist — explizit betonen: Mikro-Tasks brauchen Stufe 1–2, Stufe 5 ist für strategische Outputs reserviert.
 - Stufen-Leitfäden veralten mit Modell-Updates schneller als andere Library-Dokumente; halbjährliche Aktualisierung mit frischen Output-Beispielen einplanen.
+Empfehlung: Im Leitfaden nie implizieren, dass Stufe 5 immer optimal ist — Mikro-Tasks brauchen Stufe 1–2; Stufe 5 ist fuer strategische Outputs reserviert. Den Leitfaden halbjaehrlich mit frischen Output-Beispielen aktualisieren, da Stufen-Leitfaeden mit Modell-Updates schneller veralten als andere Library-Dokumente.
 Anschluss: S-PS-035
 
 ### S-PS-035 Kollaborative Prompt-Entwicklung im Team strukturieren
@@ -777,12 +788,16 @@ Vorgehen:
 2. Phase 2 — Peer-Review (1 Tag): Ein zweites Teammitglied führt den PTCF-Checker (aus S-PS-005) aus und kommentiert direkt im Canvas ("Edit with AI" → Kommentar-Modus).
 3. Phase 3 — Freigabe (30 Min.): Julia oder Team-Lead prüft den finalen Prompt gegen die Library-Aufnahme-Kriterien (aus S-PS-017) und ändert Status-Tag auf "Active".
 4. Nutze den "Prompt-Nominierung"-Konversations-Starter für die Übergabe von Phase 1 zu Phase 2, damit kein Prompt manuell weitergeleitet werden muss.
-Prompt:
-> "Du bist Prompt-Reviewer. Ich übergebe dir den folgenden Prompt-Draft zum Peer-Review: [Prompt einfügen]. Aufgabe: (1) PTCF-Vollständigkeits-Check, (2) identifiziere die wahrscheinlichste Fehlinterpretation durch den Agenten, (3) schlage eine konkrete Verbesserung für die schwächste Prompt-Sektion vor. Format: 3 nummerierte Abschnitte + überarbeiteter Prompt-Entwurf am Ende."
+Vorlage: Kollaborativer Prompt-Entwicklungs-Workflow (3 Phasen):
+1. Drafting (1–2 Tage) — Roh-Prompt im Canvas, PTCF befuellt, Library-Status 'Draft'.
+2. Peer-Review (1 Tag) — zweites Teammitglied: PTCF-Checker (S-PS-005) + Canvas-Kommentare.
+3. Freigabe (30 Min) — Reviewer prueft gegen Aufnahme-Kriterien (S-PS-017), Status 'Active'.
+4. Uebergabe Phase 1→2 ueber den Prompt-Nominierungs-Starter.
 Artefakt: Peer-Review-Protokoll mit PTCF-Check, Fehlinterpretations-Risiko und überarbeitetem Prompt-Entwurf; `prompt-collab-workflow.md` als Prozessreferenz für das gesamte Team.
 Fallstricke:
 - Peer-Review ohne definierten Zeitrahmen (1 Tag) wird verschoben — ein Kalender-Event für den Review-Slot ist Pflicht, nicht optional.
 - Canvas-Kommentare sind nicht persistent nach Agenten-Veröffentlichung; Review-Kommentare müssen vor der Freigabe in die Library-Datei übertragen werden, sonst gehen sie verloren.
+Empfehlung: Fuer den Peer-Review-Slot ein Kalender-Event setzen — ohne festen Zeitrahmen (1 Tag) wird der Review verschoben. Canvas-Review-Kommentare vor der Freigabe in die Library-Datei uebertragen, da sie nach Agenten-Veroeffentlichung nicht persistent sind und sonst verloren gehen.
 Anschluss: S-PS-036
 
 ### S-PS-036 Bildgenerierungs-Prompts für Kampagnen-Mockups in Langdock
@@ -802,6 +817,7 @@ Artefakt: Konzept-Mockup-Bild für Präsentationszwecke + WCAG-konformer Alt-Tex
 Fallstricke:
 - Bildgenerierungs-Outputs ohne Negative-Prompt-Sektionen enthalten häufig generische Stock-Photo-Klischees (Handshake, überbreites Lächeln) — die Negative-E-Sektion ist inhaltlich genauso wichtig wie die positive Beschreibung.
 - KI-generierte Bilder sind keine redaktionellen Endprodukte; jedes generierte Mockup muss mit dem Hinweis "Konzept — nicht zur Veröffentlichung" versehen werden, bis der offizielle Design-Freigabeprozess abgeschlossen ist.
+Empfehlung: Die Negative-Sektion (E) im SCENE-Bildprompt genauso ernst nehmen wie die positive Beschreibung — ohne sie liefert die Bildgenerierung generische Stock-Klischees (Handshake, ueberbreites Laecheln). Jedes KI-Mockup mit 'Konzept — nicht zur Veroeffentlichung' kennzeichnen, bis der offizielle Design-Freigabeprozess abgeschlossen ist.
 Anschluss: S-PS-037
 
 ### S-PS-037 Prompt-Latenz-Optimierung: Schnellere Outputs ohne Qualitätsverlust
@@ -815,12 +831,16 @@ Vorgehen:
 2. Diagnose-Iteration: Entferne nacheinander jede Prompt-Sektion und messe erneut — identifiziere die Sektion, die >40% der Latenz verursacht.
 3. Wende das passende Optimierungs-Rezept an: (a) Wechsel von Sonnet auf Flash für Latenz-sensitive Routine-Tasks, (b) komprimiere Context-Sektion auf <300 Wörter, (c) begrenze den Output mit "Antworte in max. 3 Sätzen / max. 5 Bullet-Points".
 4. Dokumentiere Baseline-Latenz und optimierte Latenz in `prompt-changelog.md` (vgl. S-PS-004) unter "Performance-Verbesserung".
-Prompt:
-> "Du bist Performance-Engineer. Analysiere den folgenden Prompt auf mögliche Latenz-Ursachen: [Prompt einfügen]. Bewerte jede Sektion (Persona, Task, Context, Format) nach Komplexität (1 = minimal / 5 = sehr komplex) und schätze ihren prozentualen Anteil an der Latenz. Empfehle für jede komplexe Sektion eine konkrete Vereinfachung ohne Qualitätsverlust. Format: Tabelle Sektion | Komplexität | Latenz-Anteil | Optimierungsvorschlag."
+Vorlage: Prompt-Latenz-Optimierungs-Checkliste:
+1. Baseline — Latenz mit 3 Standard-Inputs messen.
+2. Diagnose-Iteration — Sektionen nacheinander entfernen, neu messen; die Sektion mit >40 % Latenz-Anteil identifizieren.
+3. Rezepte — (a) Sonnet→Flash fuer Latenz-sensitive Routine, (b) Context auf <300 Woerter komprimieren, (c) Output begrenzen (max. 3 Saetze/5 Bullets).
+4. Dokumentation in prompt-changelog.md (S-PS-004) als 'Performance-Verbesserung'.
 Artefakt: Latenz-Diagnose-Tabelle mit Optimierungsvorschlägen; überarbeiteter Prompt mit dokumentierter Latenz-Verbesserung in `prompt-changelog.md`.
 Fallstricke:
 - Flash-Modell-Wechsel senkt Latenz, aber auch Qualität bei komplexen Reasoning-Aufgaben; niemals Modell-Wechsel ohne Qualitäts-Canary-Test (vgl. S-PS-018) — Latenz und Qualität gemeinsam bewerten.
 - Output-Beschränkungen ("max. 5 Bullets") können bei natürlich umfangreicheren Antworten zu Informationsverlust führen; Beschränkungen nur dort einsetzen, wo Vollständigkeit nicht geschäftskritisch ist.
+Empfehlung: Einen Modell-Wechsel auf Flash nie ohne Qualitaets-Canary-Test (S-PS-018) vornehmen — Flash senkt Latenz, aber auch die Qualitaet bei komplexem Reasoning; Latenz und Qualitaet gemeinsam bewerten. Output-Beschraenkungen nur dort einsetzen, wo Vollstaendigkeit nicht geschaeftskritisch ist, sonst droht Informationsverlust.
 Anschluss: S-PS-038
 
 ### S-PS-038 Automatische Alt-Text-Generierung für Bild-Outputs per Vision-Pass
@@ -840,6 +860,7 @@ Artefakt: Drei Alt-Text-Varianten (WCAG / Long Description / SEO-Bildunterschrif
 Fallstricke:
 - Alt-Texte dürfen keine "Bild von…"-Einleitung enthalten (WCAG-Fehler) — im Prompt explizit anweisen: "Beginne nie mit 'Bild von', 'Foto von' oder 'Grafik zeigt'."
 - Niedrig aufgelöste oder komprimierte Bilder führen zu unvollständiger Vision-Analyse; immer PNG-Originale für den Vision-Pass verwenden, nicht JPEG-Thumbnails (vgl. S-PS-012).
+Empfehlung: Im Alt-Text-Prompt 'beginne nie mit Bild von/Foto von/Grafik zeigt' erzwingen — solche Einleitungen sind ein WCAG-Fehler; der Alt-Text beschreibt Inhalt, nicht Aesthetik. PNG-Originale fuer den Vision-Pass verwenden, nicht JPEG-Thumbnails, da niedrige Aufloesung zu unvollstaendiger Bildanalyse fuehrt.
 Anschluss: S-PS-039
 
 ### S-PS-039 KI-Transparenz-Disclosure in Marketing-Content prompt-gestützt prüfen
@@ -853,12 +874,16 @@ Vorgehen:
 2. Mappe Antwort-Kombinationen auf 3 Outcomes: Pflicht-Disclosure (≥2 JA), Empfohlen-Disclosure (1 JA), Nicht nötig (0 JA mit explizitem Mensch-Review).
 3. Hinterlege 3 DACH-konforme Formulierungen: Pflicht-Version (DE, AT, CH), empfohlene Kurz-Version, Social-Media-Version (max. 1 Satz).
 4. Integriere den Checker als Konversations-Starter im Brand-Guardian-Agenten — jeder Content-Entwurf durchläuft ihn vor dem Freigabe-Step.
-Prompt:
-> "Du bist Legal-Compliance-Checker für KI-Transparenz. Prüfe den folgenden Content-Entwurf: [Content einfügen]. Beantworte 4 Fragen: (1) Ist der Inhalt vollständig KI-generiert (ohne wesentliche Mensch-Redaktion)? (2) Hat er direkte Kaufentscheidungsrelevanz für Verbraucher? (3) Gibt er vor, von einer Person zu stammen? (4) Betrifft er Finanzen, Gesundheit oder Recht? Outcome: Disclosure-Pflicht / Empfohlen / Nicht nötig — mit Begründung und passender Disclosure-Formulierung aus [@ki-disclosure-checker]."
+Vorlage: KI-Transparenz-Disclosure-Checker (DACH):
+1. Entscheidungsbaum (4 Fragen) → Disclosure Pflicht / Empfohlen / Nicht noetig.
+2. Rechtsrahmen — EU AI Act Art. 50, UWG §5a, interne Richtlinien.
+3. Standardformulierungen — Pflicht-Disclosure DE, Empfohlen-Disclosure DE, Short-Form fuer Social Media.
+4. Einsatz — als letzter Gate vor Veroeffentlichung.
 Artefakt: Disclosure-Entscheidung mit Begründung + gebrauchsfertiger DACH-konformer Formulierung; Entscheidungsbaum als dokumentierter Standard im Brand-Guardian-Agenten.
 Fallstricke:
 - Dieser Prompt liefert eine rechtliche Ersteinschätzung, keine Rechtsberatung — bei Zweifelsfällen (insbesondere für AT und CH spezifische Regulierungen) muss immer ein Rechtsanwalt konsultiert werden; den Hinweis "Keine Rechtsberatung" im Output verankern.
 - EU AI Act Art. 50 und DACH-Werberecht entwickeln sich 2026–2027 weiter; der Entscheidungsbaum muss halbjährlich gegen aktuelle Rechtsquellen abgeglichen werden — Datum des letzten Updates in der Library-Datei vermerken.
+Empfehlung: Den Disclosure-Checker als letzten Gate vor der Veroeffentlichung verankern, nicht als optionale Pruefung — eine versaeumte Pflicht-Disclosure nach EU AI Act Art. 50 / UWG §5a ist ein rechtliches Risiko. Die rechtsrelevanten Fristen und Formulierungen datums-sensitiv halten und bei Gesetzesaenderungen gegen die Primaerquelle verifizieren (Little Data liefert eine Ersteinschaetzung, keine Rechtsberatung).
 Anschluss: S-PS-040
 
 ### S-PS-040 Quarterly Prompt-Health-Review: Gesamtstatus der Prompt-Library sichern
