@@ -1181,12 +1181,16 @@ Vorgehen:
 2. Baue eine "Zeit-bis-erster-Call"-Garantie ein: ziel auf unter 30 Minuten vom Erhalt der Zugangsdaten bis zum ersten erfolgreichen API-Response; dokumentiere jeden Schritt mit Screenshots oder kopierbaren Code-Snippets.
 3. Füge einen Fehler-Debugging-Entscheidungsbaum hinzu: HTTP 401 → API-Key prüfen; HTTP 403 → Wissensordner-Berechtigungen prüfen; HTTP 429 → Rate-Limit-Dokumentation lesen; HTTP 500 → Langdock-Status-Page checken.
 4. Definiere den Eskalationspfad: wenn der Guide nicht reicht, wen kontaktieren (Slack-Channel, E-Mail, SLA für Antwortzeit) — verhindert, dass der Guide zur veralteten Einweg-Ressource wird.
-Prompt:
-> "Du bist ein technischer Writer. Erstelle einen API Consumer Onboarding Guide für externe Entwicklungsteams, die auf unsere interne Langdock-Integrationsschicht zugreifen. Der Guide muss in unter 30 Minuten zum ersten erfolgreichen API-Call führen. Strukturiere ihn mit: Voraussetzungen, Authentication, erstem Test-Call (cURL-Snippet), Fehler-Debugging-Entscheidungsbaum und Eskalationspfad. Liefere ein Dokument im Markdown-Format."
+Vorlage: API-Consumer-Onboarding-Guide (Markdown):
+1. Voraussetzungen — Zugangsdaten-Beantragung + Bearer-Token-Setup.
+2. Erster Test-Call — cURL/Postman-Snippet, Ziel <30 Min bis erster Response.
+3. Fehler-Debugging-Baum — 401→Key, 403→Wissensordner-Rechte, 429→Rate-Limit-Doku, 500→Status-Page.
+4. Eskalationspfad — Slack-Channel/E-Mail + SLA-Antwortzeit, damit der Guide nicht zur toten Ressource wird.
 Artefakt: Ein Markdown-Onboarding-Guide (Getting-Started-Checkliste, Auth-Setup, Test-Call, Debugging-Entscheidungsbaum, Eskalationspfad).
 Fallstricke:
 - Der Guide dokumentiert nur die Happy Path und ignoriert häufige Onboarding-Fehler (falsches Token-Format, fehlende CORS-Konfiguration) — neue Consumer verlieren Stunden beim Debugging vermeidbarer Fehler.
 - Der Guide wird einmalig geschrieben und nie aktualisiert — nach dem nächsten API-Update sind Beispiel-Responses veraltet und der Guide erzeugt mehr Verwirrung als er löst.
+Empfehlung: Den Guide nicht auf den Happy Path beschraenken — die haeufigsten Onboarding-Fehler (falsches Token-Format, fehlende CORS-Konfiguration) explizit mit Loesung dokumentieren, sonst verlieren neue Consumer Stunden. Beispiel-Responses bei jedem API-Update mitpflegen, sonst stiftet der Guide mehr Verwirrung als er loest.
 Anschluss: S-API-050
 
 ### S-API-050 Load-Testing der Langdock-API für Kampagnen-Spitzenlast
@@ -1200,12 +1204,16 @@ Vorgehen:
 2. Wähle das passende Load-Testing-Tool: k6 (JavaScript, Cloud-fähig) oder Locust (Python) für API-Last; wichtig ist, dass das Tool HTTP-Streaming (Server-Sent Events) für den Completion-Endpoint simulieren kann.
 3. Berücksichtige Langdock Rate Limits: Langdock begrenzt API-Calls pro Minute pro Workspace; ein Burst von 1.000 gleichzeitigen Requests ohne Backoff-Logik erzeugt sofort HTTP 429-Fehler; das Load-Testing-Skript muss exponentielles Retry-Backoff simulieren.
 4. Definiere Skalierungsmaßnahmen basierend auf Testergebnissen: horizontales Skalieren des eigenen BFF-Layers (mehr Instanzen); Request-Queuing vor dem Langdock-Call; Caching häufig gefragter Antworten (Cache-Control für identische Produktfragen).
-Prompt:
-> "Du bist ein Performance-Engineer. Wir erwarten am Black Friday einen 10x-Traffic-Peak auf unserem Langdock-gestützten Chatbot. Erstelle ein Load-Testing-Konzept: (1) vier Test-Szenarien (Baseline bis Spitzenlast), (2) Tool-Empfehlung (k6 vs. Locust) mit Begründung, (3) Umgang mit Langdock Rate Limits im Test, (4) Skalierungsmaßnahmen bei identifizierten Engpässen. Liefere ein praxistaugliches Konzept mit konkreten Schwellenwerten."
+Vorlage: Load-Testing-Konzept (Kampagnen-Spitzenlast):
+1. Szenarien — Baseline (10 User), Normallast (100), Spitzenlast (1.000 = 10× Black Friday), Soak (50 User/4 h).
+2. Tool — k6 (JS) oder Locust (Python); muss SSE-Streaming des Completion-Endpoints simulieren.
+3. Rate-Limit — Burst ohne Backoff erzeugt sofort 429; Skript muss Exponential-Backoff simulieren.
+4. Skalierung — BFF horizontal skalieren, Request-Queuing, Caching identischer Produktfragen.
 Artefakt: Ein Load-Testing-Konzept (Szenarien, Tool, Rate-Limit-Handling, Skalierungsmaßnahmen).
 Fallstricke:
 - Das Load-Testing-Skript sendet echte Produktanfragen mit realen Nutzerdaten — Load-Tests gegen Produktionssysteme mit Echtdaten verstoßen gegen DSGVO und verursachen reale Kosten; Testdaten müssen synthetisch sein.
 - Der Test ignoriert die Langdock Rate Limits und wertet 429-Fehler als Backend-Fehler des eigenen Systems — das Ergebnis ist eine falsch-negative Performance-Bewertung, die echte Engpässe verdeckt.
+Empfehlung: Ausschliesslich synthetische Testdaten verwenden — Load-Tests mit echten Nutzerdaten gegen Produktion verstossen gegen die DSGVO und verursachen reale Kosten. 429-Fehler im Test als Rate-Limit-Effekt werten, nicht als Backend-Fehler des eigenen Systems, sonst verdeckt eine falsch-negative Bewertung die echten Engpaesse.
 Anschluss: S-API-051
 
 ### S-API-051 API-Mocking für parallele Entwicklung
@@ -1219,12 +1227,16 @@ Vorgehen:
 2. Erstelle Response-Fixtures für typische Marketing-Szenarien: (a) kurze Produktbeschreibung (< 100 Tokens, schnelle Antwort), (b) langer Blogartikel-Draft (> 800 Tokens, simuliertes Streaming), (c) Fehlerfall HTTP 429 (Rate Limit), (d) Fehlerfall HTTP 500 (Server-Fehler) — alle vier Fixtures müssen das echte Langdock-Response-Schema replizieren.
 3. Integriere den Mock in die CI/CD-Pipeline: in der Test-Umgebung (`NODE_ENV=test`) zeigt die `BASE_URL`-Konfiguration auf den Mock-Server statt auf `api.langdock.com`; so laufen alle Integrationstests ohne echte API-Calls.
 4. Definiere die Synchronisations-Pflicht: sobald die echte Langdock-API eine Response-Schema-Änderung erfährt, muss der Mock innerhalb von 24 Stunden aktualisiert werden — andernfalls testen Entwickler gegen ein veraltetes Interface.
-Prompt:
-> "Du bist ein Backend-Entwickler. Unser Frontend-Team entwickelt parallel zu uns und braucht einen Langdock-API-Mock. Erkläre: (1) passende Mock-Server-Optionen (Mockoon, MSW, Express.js) mit Vor-/Nachteilen, (2) welche vier Response-Fixtures wir für Marketing-Szenarien brauchen (inkl. Fehlerszenarien), (3) wie wir den Mock in unsere CI/CD-Pipeline integrieren. Liefere ein Mocking-Konzept mit Empfehlung."
+Vorlage: API-Mocking-Konzept (parallele Entwicklung):
+1. Tool — Mockoon/MSW fuer statische Mocks; Express.js-Mock fuer SSE-Streaming-Simulation.
+2. Fixtures — (a) kurze Beschreibung, (b) langer Draft (Streaming), (c) 429, (d) 500 — alle im echten Langdock-Response-Schema.
+3. CI/CD — in NODE_ENV=test zeigt BASE_URL auf den Mock statt api.langdock.com.
+4. Sync-Pflicht — Mock binnen 24 h an jede echte Schema-Aenderung anpassen.
 Artefakt: Ein Mocking-Konzept (Tool-Empfehlung, vier Response-Fixtures, CI/CD-Integration, Synchronisationsprozess).
 Fallstricke:
 - Der Mock repliziert nur den Happy Path und hat keinen Fehlerfall — beim ersten echten 429-Fehler in Produktion ist das Frontend unvorbereitet, weil es diesen Fall nie getestet hat.
 - Der Mock-Server bleibt nach API-Schema-Änderungen unaktualisiert — Entwickler testen monatelang gegen ein veraltetes Interface und merken den Fehler erst beim Produktions-Deployment.
+Empfehlung: Fehlerfall-Fixtures (429/500) von Beginn an mitliefern — ein Mock mit nur Happy Path laesst das Frontend beim ersten echten Rate-Limit-Fehler unvorbereitet. Den Mock bei jeder API-Schema-Aenderung binnen 24 h aktualisieren, sonst testen Entwickler monatelang gegen ein veraltetes Interface und merken es erst beim Produktions-Deployment.
 Anschluss: S-API-052
 
 ### S-API-052 Canary-Deployment für API-Updates
@@ -1238,12 +1250,16 @@ Vorgehen:
 2. Definiere die Monitoring-Metriken für die Canary-Gruppe: (a) Response-Latenz (p95), (b) Fehlerrate (HTTP 4xx/5xx), (c) Output-Qualitäts-Proxy (Nutzer-Abbruchrate oder Daumen-hoch/runter-Feedback), (d) Token-Verbrauch pro Antwort (Kostenvergleich).
 3. Lege Rollout-Schwellenwerte fest: Fortschreiten zu Phase 2 nur, wenn: Fehlerrate Canary ≤ Fehlerrate Stable + 0,5 %; Latenz Canary ≤ Latenz Stable × 1,2; kein kritischer Output-Qualitäts-Einbruch.
 4. Schreibe ein Rollback-Playbook: Rollback-Entscheidung durch welche Rolle (DevOps-Lead + Marketing-Direktorin), Rollback-Mechanismus (Feature-Flag auf 0 % Canary), Kommunikationstemplate für betroffene Teams, Post-Mortem-Vorlage.
-Prompt:
-> "Du bist ein DevOps-Architekt. Wir wollen unsere Langdock-Integration schrittweise auf ein neues Sprachmodell migrieren. Erkläre das Canary-Deployment-Muster: (1) Traffic-Split-Phasen (5 % → 25 % → 100 %), (2) Monitoring-Metriken für die Canary-Gruppe, (3) quantitative Rollout-Schwellenwerte, (4) Rollback-Playbook mit Entscheidungspfad. Liefere ein vollständiges Deployment-Konzept."
+Vorlage: Canary-Deployment-Konzept (Modell-/Endpoint-Update):
+1. Traffic-Split — Phase 1: 5 % Canary/95 % Stable; Phase 2 (nach 48 h fehlerfrei): 25 %; Phase 3: 100 %; Routing per Feature-Flag im BFF.
+2. Metriken — p95-Latenz, Fehlerrate (4xx/5xx), Output-Qualitaets-Proxy (Abbruch/Daumen), Token-Verbrauch.
+3. Schwellen — Fortschritt nur wenn Canary-Fehlerrate ≤ Stable +0,5 % und Latenz ≤ Stable ×1,2 ohne Qualitaetseinbruch.
+4. Rollback-Playbook — Entscheider (DevOps-Lead + Direktorin), Mechanismus (Flag auf 0 %), Kommunikations- + Post-Mortem-Template.
 Artefakt: Ein Canary-Deployment-Konzept (Traffic-Split-Phasen, Monitoring-Metriken, Rollout-Schwellenwerte, Rollback-Playbook).
 Fallstricke:
 - Das Canary-Deployment wird ohne Feature-Flag im BFF-Layer implementiert und stattdessen direkt in der Langdock-Konfiguration gesteuert — ein Rollback erfordert dann ein Code-Deployment statt eines Konfigurations-Toggles.
 - Die Canary-Gruppe ist zu klein (< 1 % Traffic) und liefert keine statistisch belastbaren Daten — nach 48 Stunden gibt es noch keine aussagekräftigen Qualitätsmetriken für die Rollout-Entscheidung.
+Empfehlung: Den Traffic-Split per Feature-Flag im BFF steuern, nicht direkt in der Langdock-Konfiguration — sonst erfordert ein Rollback ein Code-Deployment statt eines Konfigurations-Toggles. Die Canary-Gruppe gross genug waehlen (nicht <1 % Traffic), damit nach 48 h statistisch belastbare Qualitaetsmetriken fuer die Rollout-Entscheidung vorliegen.
 Anschluss: S-API-053
 
 ### S-API-053 API-Nutzungs-Dashboard für Marketing-Ops
@@ -1257,12 +1273,16 @@ Vorgehen:
 2. Entwerfe die Metriken-Hierarchie: (a) Workspace-Ebene — Gesamtkosten vs. Budget; (b) Team-Ebene — Token-Kosten pro Team (via User-Gruppen-Mapping); (c) Agent-Ebene — teuerste Agenten nach Output-Tokens; (d) Kampagnen-Ebene — Kosten pro Kampagne via `conversation_tag`-Konvention.
 3. Baue die Alert-Logik: Budget-Alert bei 70 % Verbrauch (Frühwarnung), bei 90 % (Eskalation an Marketing-Direktorin), bei 100 % (automatischer Stopp neuer API-Calls für den teuersten Team-Account).
 4. Integriere in das bestehende BI-System: Power BI oder Looker Dashboard mit Refresh alle 4 Stunden; monatlicher PDF-Export für Finance-Controller automatisiert via geplanter Report-Versand.
-Prompt:
-> "Du bist ein Marketing-Ops-Analyst. Wir brauchen ein API-Nutzungs-Dashboard für unsere fünf Marketing-Teams. Erkläre: (1) welche Daten die Langdock Usage Export API liefert, (2) wie wir Kosten pro Team und Agent aufschlüsseln, (3) Alert-Logik bei Budget-Schwellenwerten, (4) Integration in Power BI oder Looker. Liefere ein Dashboard-Konzept mit Metrikenhierarchie und Alert-Konfiguration."
+Vorlage: API-Nutzungs-Dashboard-Konzept (5 Teams):
+1. Datengrundlage — Usage Export API (user_id/agent_id/model/tokens/timestamp) taeglich in ein Data Warehouse (BigQuery/Snowflake).
+2. Metrik-Hierarchie — Workspace (Kosten vs. Budget), Team (User-Gruppen-Mapping), Agent (teuerste nach Output-Tokens), Kampagne (conversation_tag).
+3. Alerts — 70 % Fruehwarnung, 90 % Eskalation an Direktorin, 100 % Stopp neuer Calls fuer den teuersten Team-Account.
+4. BI — Power BI/Looker, Refresh alle 4 h, monatlicher PDF-Export an Finance.
 Artefakt: Ein Dashboard-Konzept (Datenquellen, Metrikhierarchie, Alert-Logik, BI-Integration).
 Fallstricke:
 - Das Dashboard zeigt nur Gesamt-Token-Kosten ohne Team-Attribution — es ist weiterhin unmöglich, den Budget-Überschreiter zu identifizieren; das ist das ursprüngliche Problem, ungelöst.
 - Die Alert-Schwellenwerte sind nicht mit dem monatlichen Budget-Zyklus synchronisiert — ein Alert bei 70 % des Tagesverbrauchs ist nicht dasselbe wie 70 % des Monatsbudgets; die Berechnungslogik muss explizit definiert werden.
+Empfehlung: Token-Kosten zwingend per User-Gruppen-Mapping auf Teams attribuieren — ein Dashboard mit nur Gesamtkosten loest das urspruengliche Problem (Verursacher unbekannt) nicht. Die Alert-Schwellen explizit am Monatsbudget-Zyklus ausrichten: 70 % Tagesverbrauch ist nicht 70 % Monatsbudget, die Berechnungslogik muss definiert sein.
 Anschluss: S-API-054
 
 ### S-API-054 Dynamische System-Prompt-Injektion zur Laufzeit
@@ -1276,12 +1296,16 @@ Vorgehen:
 2. Baue den Injection-Mechanismus: beim API-Call liest der BFF-Layer das Nutzer-Locale aus dem JWT-Token; mappt es auf die passende Konfigurationsdatei (z. B. `de-DE.json`, `fr-FR.json`); füllt die Template-Variablen aus; sendet den fertigen System-Prompt als `system`-Feld im API-Request.
 3. Definiere das Locale-Mapping: ein zentrales `locale-config`-Repository mit Feldern: `tone` (formal/informal), `legal_disclaimer` (Länder-spezifischer Text), `available_products` (Array von Produkt-IDs), `currency` — gepflegt von Marketing, nicht von Entwicklung.
 4. Implementiere Sicherheits-Guardrails: Injection-Variablen werden serverseitig escapet, bevor sie in den Prompt eingesetzt werden; Nutzer-Input darf niemals direkt in den System-Prompt einfließen — nur in den User-Turn; maximale Länge der Injection-Variablen begrenzen.
-Prompt:
-> "Du bist ein Backend-Architekt. Wir betreiben einen Chatbot für 12 Länder und wollen dynamische System-Prompt-Injektion statt 12 separater Agenten. Erkläre: (1) Prompt-Template-Struktur mit Platzhaltern, (2) Injection-Mechanismus im BFF-Layer, (3) Locale-Mapping-Struktur für Marketing-Pflege, (4) Sicherheits-Guardrails gegen Prompt-Injection via Variablen. Liefere ein Architekturkonzept."
+Vorlage: Dynamische-System-Prompt-Injektion-Architektur (1 Agent, 12 Laender):
+1. Template — Master-System-Prompt mit Platzhaltern ({{locale}}/{{disclaimer}}/{{available_products}}); stabiler Kern + variable Slots, im BFF gespeichert.
+2. Injection — BFF liest Locale aus JWT, mappt auf Config (de-DE.json …), fuellt Template, sendet als system-Feld.
+3. Locale-Mapping — zentrales locale-config (tone/legal_disclaimer/available_products/currency), von Marketing gepflegt.
+4. Guardrails — Variablen serverseitig escapen, Nutzer-Input nie in den System-Prompt (nur User-Turn), Variablen-Laenge begrenzen.
 Artefakt: Ein Architekturkonzept für dynamische System-Prompt-Injektion (Template-Struktur, Injection-Mechanismus, Locale-Mapping, Sicherheits-Guardrails).
 Fallstricke:
 - Nutzer-Input wird direkt als Injection-Variable in den System-Prompt eingesetzt — das öffnet ein direktes Prompt-Injection-Angriffsvector; Variablen dürfen ausschließlich aus serverseitigen, validierten Konfigurationsdateien kommen.
 - Das Locale-Mapping wird direkt in den Anwendungscode eingepflegt statt in separate Konfigurationsdateien — Marketing kann legale Disclaimers nur noch durch ein Code-Deployment aktualisieren, was wochenlange Verzögerungen verursacht.
+Empfehlung: Nutzer-Input niemals als Injection-Variable in den System-Prompt einsetzen — Variablen duerfen ausschliesslich aus serverseitigen, validierten Konfigurationsdateien stammen, sonst entsteht ein direkter Prompt-Injection-Vektor. Das Locale-Mapping in separate Config-Dateien auslagern (nicht in den Code), damit Marketing legale Disclaimers ohne Code-Deployment aktualisieren kann.
 Anschluss: S-API-055
 
 ### S-API-055 Multimodale API-Anfragen (Text + Bild) für Campaign Asset Review
@@ -1295,12 +1319,16 @@ Vorgehen:
 2. Definiere den Review-Prompt-Template: "Prüfe diesen Werbebanner gegen folgende Kriterien: (1) Schriftart: nur Inter oder Helvetica Neue, (2) Primärfarbe: #E63946 ± 10 %, (3) Textanteil: unter 20 % der Bildfläche, (4) Logo: sichtbar und unverzerrt. Liefere für jedes Kriterium: PASS/FAIL + Begründung in maximal einem Satz."
 3. Strukturiere den Output: die API antwortet mit einem JSON-Objekt (vier Kriterien, je PASS/FAIL + Begründung + Gesamt-Score); bei zwei oder mehr FAILs wird der Banner automatisch in eine "Human-Review"-Queue verschoben.
 4. Integriere in den Asset-Workflow: die Agentur lädt Banner in einen freigegebenen Google Drive-Ordner; ein n8n-Workflow triggert bei neuen Dateien, ruft die multimodale API auf und schreibt das Review-Ergebnis als Kommentar in das Slack-Thread des Design-Koordinators.
-Prompt:
-> "Du bist ein Brand-Compliance-Automatisierer. Wir wollen täglich eingehende Werbebanner automatisch gegen unseren Brand Guide prüfen. Erkläre: (1) wie multimodale API-Anfragen (Text + Bild) technisch aufgebaut sind, (2) ein Review-Prompt-Template für vier Brand-Kriterien, (3) strukturiertes JSON-Ausgabeformat mit PASS/FAIL, (4) Integration in unseren Asset-Workflow via n8n. Liefere ein vollständiges Integrationskonzept."
+Vorlage: Campaign-Asset-Review-Integrationskonzept (Vision API):
+1. Request — Bild als Base64/URL im content-Array des User-Turns (OpenAI-Vision-kompatibel) + strukturierter Review-Prompt.
+2. Review-Prompt — Kriterien Schriftart/Primaerfarbe/Textanteil <20 %/Logo, je PASS/FAIL + 1-Satz-Begruendung.
+3. Output — JSON (4 Kriterien + Score); bei >=2 FAILs in Human-Review-Queue.
+4. Workflow — Agentur laedt in Drive-Ordner; n8n triggert, ruft Vision-API, schreibt Ergebnis in den Slack-Thread.
 Artefakt: Ein Integrationskonzept (API-Request-Struktur, Review-Prompt-Template, JSON-Ausgabeformat, Workflow-Integration).
 Fallstricke:
 - Das Vision-Modell wird für pixelgenaue Farbmessung eingesetzt — LLM-Vision-Modelle können keine präzisen Hex-Farbwerte messen; Farbprüfungen müssen durch ein dedizierten Bildverarbeitungs-Tool (z. B. PIL/Pillow) ergänzt werden.
 - Bilder werden als URL statt als Base64 gesendet, aber die URL liegt hinter einem Unternehmens-Proxy — das Vision-Modell kann die URL nicht abrufen; entweder Base64-Encoding oder öffentlich erreichbare URLs verwenden.
+Empfehlung: Pixelgenaue Farbmessung nicht dem Vision-Modell ueberlassen — LLM-Vision misst keine praezisen Hex-Werte; Farbpruefungen mit einem dedizierten Bildverarbeitungs-Tool (PIL/Pillow) ergaenzen. Bilder als Base64 senden oder oeffentlich erreichbare URLs verwenden — eine URL hinter dem Unternehmens-Proxy kann das Modell nicht abrufen.
 Anschluss: S-API-056
 
 ### S-API-056 API-Kostenzuordnung pro Kampagne (FinOps)
@@ -1314,12 +1342,16 @@ Vorgehen:
 2. Baue die Kostenauswertung: Langdock Usage Export CSV → Aggregation nach `campaign_tag` → Multiplikation mit aktuellen Token-Preisen (Input-Token-Preis × Input-Tokens + Output-Token-Preis × Output-Tokens) → Kampagnen-KI-Kosten in Euro.
 3. Integriere KI-Kosten in den Kampagnen-ROI-Kalkulator: KI-Produktionskosten werden als Linie im Campaign-Cost-Breakdown neben Media-Spend, Agentur-Fees und Toolkosten aufgeführt; ROI = (Umsatzattribution − Gesamtkosten inkl. KI) / Gesamtkosten.
 4. Erstelle das monatliche Finance-Reporting-Template: Tabelle mit Kampagnenname, KI-Kosten (EUR), Anteil am Gesamt-Token-Budget (%), Vergleich Budget vs. Ist.
-Prompt:
-> "Du bist ein Marketing-FinOps-Berater. Unser CFO will KI-API-Kosten pro Kampagne zugeordnet sehen. Erkläre: (1) Kampagnen-Tagging-Strategie im API-Call, (2) Auswertung des Langdock Usage Exports nach Kampagnen-Tag, (3) Integration der KI-Kosten in den Kampagnen-ROI-Kalkulator, (4) monatliches Finance-Reporting-Template. Liefere ein vollständiges FinOps-Konzept."
+Vorlage: Kampagnen-Kostenzuordnungs-Konzept (FinOps):
+1. Tagging — jeder API-Call traegt eine Kampagnen-ID (user-Feld/Conversation-Tag, z. B. campaign:blackfriday-2026) als Grouping-Key.
+2. Auswertung — Usage Export CSV nach campaign_tag aggregieren × aktuelle Token-Preise → Kampagnen-KI-Kosten in EUR.
+3. ROI — KI-Kosten als Linie neben Media-Spend/Agentur/Tools; ROI = (Umsatz − Gesamtkosten inkl. KI)/Gesamtkosten.
+4. Reporting — Monatstabelle: Kampagne, KI-Kosten, Budget-Anteil, Budget vs. Ist.
 Artefakt: Ein FinOps-Konzept (Tagging-Strategie, Kostenauswertung, ROI-Integration, Finance-Reporting-Template).
 Fallstricke:
 - Das Tagging wird nachträglich als optionales Feld eingeführt — Teams taggen inkonsistent, und 40 % der Kosten verbleiben in einer unzuordenbaren "Sonstiges"-Kategorie; Tagging muss Pflichtfeld im API-Wrapper sein, nicht optional.
 - Token-Preise werden einmalig konfiguriert und nie aktualisiert — bei Modell-Preisupdates (die zwei- bis dreimal jährlich vorkommen) werden Kosten systematisch falsch berechnet; Preis-Lookup muss automatisiert aus der Langdock-Billing-API oder einer gepflegten Preistabelle erfolgen.
+Empfehlung: Das Kampagnen-Tagging als Pflichtfeld im API-Wrapper erzwingen, nicht optional — sonst taggen Teams inkonsistent und 40 % der Kosten landen in 'Sonstiges'. Den Token-Preis-Lookup automatisieren (Billing-API oder gepflegte Preistabelle), da Modell-Preisupdates zwei- bis dreimal jaehrlich vorkommen und einmalig konfigurierte Preise sonst systematisch falsch rechnen.
 Anschluss: S-API-057
 
 ### S-API-057 Long-Polling für asynchrone Workflow-Status-Abfragen
