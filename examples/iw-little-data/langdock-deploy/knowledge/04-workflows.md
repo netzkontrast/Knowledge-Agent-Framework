@@ -563,12 +563,13 @@ Vorgehen:
 2. Einen AI-Node fehlende strategische Felder ergänzen lassen (z. B. fehlende KPI-Vorschläge auf Basis des Kampagnentyps) und das komplette Briefing als Structured Output ausgeben.
 3. Einen Condition-Node das Briefing nach Ressourcenbedarf klassifizieren lassen: Design → Design-Slack-Kanal, Text → Copy-Kanal, Performance → Media-Kanal.
 4. Einen HITL-Node das ergänzte Briefing dem Anfragenden zur Bestätigung vorlegen lassen, bevor es als Notion-Seite angelegt und das Team benachrichtigt wird.
-Prompt:
-> "Du bist Marketing-Ops-Workflow-Architect. Entwirf einen Form-Trigger-Intake-Workflow für Kampagnen-Briefings. Kontext: Pflichtfelder im Form, KI ergänzt fehlende KPIs, Routing nach Ressourcentyp, HITL-Bestätigung vor Notion-Anlage. Format: Form-Trigger mit Feldliste, AI-Briefing-Node, Condition-Routing, HITL, Notion-Action, Slack-Benachrichtigungen."
+Workflow: Form-Trigger (Pflichtfelder Kampagnentyp/Zielgruppe/Budget/Deadline/Anfragender) → AI-Node (fehlende KPIs ergaenzen, Structured Output) → Condition-Node (Routing Design/Copy/Media) → HITL-Node (Anfragender bestaetigt) → Action-Node (Notion-Seite + Slack-Benachrichtigung).
+Budget: Ein AI-Node pro Anfrage — kleines Modell genuegt fuer Feld-Ergaenzung, daher gering pro Lauf; da der Form-Trigger pro Anfrage feuert, das Monatsvolumen gegen das Workspace-Budget (€500/Monat) im Blick behalten. Warn-Schwelle 75 %.
 Artefakt: Ein Kampagnen-Intake-Workflow-Entwurf mit Form-Feldliste, KI-Ergänzungs-Logik, Routing-Matrix und HITL-Bestätigungs-Schritt.
 Fallstricke:
 - Der AI-Node halluziniert unrealistische KPIs, wenn der Kampagnentyp zu generisch ist → den Form-Trigger mit einer kontrollierten Auswahlliste für Kampagnentypen ausstatten.
 - Das Briefing wird ohne HITL-Bestätigung direkt an das Team gesendet → den Condition-Node erst nach HITL-Freigabe in die Routing-Actions übergehen lassen.
+Empfehlung: Kampagnentyp als kontrollierte Auswahlliste im Form erzwingen — das verhindert KI-KPI-Halluzination an der Wurzel. Routing-Actions erst NACH der HITL-Freigabe ausloesen, nie davor.
 Anschluss: S-WF-026
 
 ### S-WF-026 Content-Freigabe-Workflow-Kette (Entwurf → Review → Publish) (Manual Trigger)
@@ -582,12 +583,13 @@ Vorgehen:
 2. HITL-Gate 1 — Redaktions-Check: Reviewer prüft Inhalt und Fakten; bei Ablehnung Rückgabe an Autor ohne weiteres Fortschreiten.
 3. HITL-Gate 2 — Legal-Check: Reviewer prüft auf UWG/DSGVO-Risiken; nur bei Freigabe weiter.
 4. HITL-Gate 3 — Final-Publish-Gate: Letzte Freigabe vor der CMS-Action-Node, die den Artikel veröffentlicht.
-Prompt:
-> "Du bist Content-Pipeline-Architekt. Entwirf eine dreistufige Freigabe-Kette für Blog-Artikel. Kontext: Stufen Redaktion, Legal, Final-Publish; bei jeder Ablehnung Rückgabe ohne Weiterleitung. Format: Node-Liste mit HITL-Positionen, Prüf-Instruktion pro Gate und Bedingungslogik."
+Workflow: Manual-Trigger (Artikel-Entwurf) → AI-Node (Brand-Voice-Check) → HITL-Gate 1 Redaktion → HITL-Gate 2 Legal (UWG/DSGVO) → HITL-Gate 3 Final-Publish → CMS-Action; jedes Gate mit Ablehnungs-Branch zurueck an den Autor.
+Budget: Nur ein AI-Node (Brand-Voice-Check), Rest HITL — pro Lauf guenstig; die echten Kosten sind Reviewer-Zeit, nicht Tokens. Je Gate ein Zeitlimit (24 h) gegen Workflow-Stillstand (2.000-Schritt-Stopp).
 Artefakt: Ein Freigabe-Ketten-Entwurf mit drei HITL-Gates, Ablehnungs-Routing und CMS-Action am Ende.
 Fallstricke:
 - Zu viele Gates lähmem den Redaktionsbetrieb → drei Gates sind das Optimum; jedes Gate muss eine klare Prüfaufgabe und ein Zeitlimit (z. B. 24 h) haben.
 - Ein abgelehnter Artikel bleibt im Workflow hängen, weil kein Rückgabe-Branch definiert ist → jeden HITL-Node mit einem expliziten Ablehnungs-Pfad und Autor-Benachrichtigung versehen.
+Empfehlung: Genau drei Gates — mehr laehmen den Redaktionsbetrieb, weniger lassen Risiken durch. Jedes Gate braucht eine klare Pruefaufgabe, ein 24-h-Zeitlimit und einen expliziten Rueckgabe-Pfad an den Autor.
 Anschluss: S-WF-027
 
 ### S-WF-027 Newsletter-Personalisierungs-Pipeline nach Segment (Integration Trigger)
@@ -601,12 +603,13 @@ Vorgehen:
 2. Einen Loop-Node über die drei Segmente (z. B. Entscheider, Anwender, Partner) iterieren lassen und für jedes Segment einen AI-Node eine angepasste Variante erzeugen lassen.
 3. Alle drei Varianten als JSON-Array sammeln und dem HITL-Node zur Batch-Freigabe präsentieren — kein automatischer Versand.
 4. Nach Freigabe einen Action-Node die Varianten als Entwürfe in das E-Mail-Tool einspielen; Versand verbleibt beim Menschen.
-Prompt:
-> "Du bist Newsletter-Workflow-Architekt. Entwirf eine Segment-Personalisierungs-Pipeline für drei Zielgruppen. Kontext: Basis-Text aus CRM-Trigger, Brand-Voice aus Wissensordner, Batch-Freigabe vor E-Mail-Tool-Übergabe. Format: Integration-Trigger, Loop-Node mit Segment-Array, AI-Node-Konfiguration, HITL-Batch, E-Mail-Action."
+Workflow: Integration-Trigger (CRM-Event 'Newsletter-Kampagne erstellt') → Loop-Node (Segment-Array Entscheider/Anwender/Partner) → AI-Node je Iteration (Segment-Adaption, Brand-Voice aus Wissensordner) → Sammlung als JSON-Array → HITL-Node (Batch-Freigabe) → Action-Node (Entwuerfe ins E-Mail-Tool; Versand bleibt manuell).
+Budget: Drei AI-Node-Laeufe pro Lauf (Loop × 3 Segmente); Kosten skalieren mit der Segmentzahl — eine Loop-Obergrenze setzen. Warn-Schwelle 75 %.
 Artefakt: Ein Personalisierungs-Workflow-Entwurf mit Segment-Definitions-Tabelle und Batch-Freigabe-Schritt.
 Fallstricke:
 - Segment-Definitionen sind zu vage → der Wissensordner muss konkrete Segment-Profile (Jobtitel, Pain Points, Tonalität) enthalten, nicht nur Bezeichnungen.
 - Die drei Varianten sehen zu ähnlich aus, weil der AI-Node die Unterschiede nicht stark genug ausarbeitet → in jede Loop-Iteration eine explizite Differenzierungsanweisung pro Segment einbauen.
+Empfehlung: Segment-Profile im Wissensordner mit Jobtitel, Pain Points und Tonalitaet hinterlegen, nicht nur Bezeichnungen — sonst werden die drei Varianten ununterscheidbar. Je Loop-Iteration eine explizite Differenzierungsanweisung mitgeben.
 Anschluss: S-WF-028
 
 ### S-WF-028 ABM-Kampagnen-Trigger bei Account-Score-Anstieg (Integration Trigger)
@@ -620,12 +623,13 @@ Vorgehen:
 2. Einen Condition-Node prüfen lassen, ob der Score den Kampagnen-Auslösewert überschreitet — darunter nur Protokollierung.
 3. Einen AI-Node die Intent-Themen gegen den Content-Bibliotheks-Wissensordner matchen und eine priorisierte Asset-Liste erzeugen lassen.
 4. Drei parallele Action-Nodes: (a) Slack-Alert an Account-Executive mit Asset-Empfehlung, (b) CRM-Task "Outreach vorbereiten" anlegen, (c) Kalender-Reminder für Follow-up in 3 Tagen setzen — alle vor dem HITL-Gate für den finalen Outreach-Entwurf.
-Prompt:
-> "Du bist ABM-Workflow-Architekt. Entwirf eine dreistrangige Reaktionskette für Account-Score-Anstiege. Kontext: Integration-Trigger aus CRM, Score-Schwelle als Condition, Content-Matching gegen Wissensordner, HITL vor Kundenkontakt. Format: Trigger, Condition, AI-Node, drei parallele Actions, HITL."
+Workflow: Integration-Trigger (CRM 'Account-Score ≥ Schwelle') → Condition-Node (Schwelle pruefen) → AI-Node (Content-Matching gegen Bibliotheks-Wissensordner) → drei parallele Action-Nodes (Slack-Alert / CRM-Task / Kalender-Reminder) → HITL-Node (finaler Outreach-Entwurf vor Kundenkontakt).
+Budget: Ein AI-Node pro Ausloesung; das Hauptrisiko ist die Feuer-Frequenz, nicht der Token-Verbrauch — Score-Schwelle konservativ halten und einen Dedup-Condition gegen Doppel-Tasks vorschalten.
 Artefakt: Ein ABM-Reaktions-Workflow-Entwurf mit Score-Schwellenwert-Definition, paralleler Action-Architektur und HITL-Outreach-Gate.
 Fallstricke:
 - Ein zu niedriger Score-Schwellenwert lässt den Workflow zu häufig feuern und überhäuft das Sales-Team mit Signalen → den Schwellenwert initial konservativ setzen und erst nach 4 Wochen Daten kalibrieren.
 - CRM-Task und Kalender-Reminder entstehen doppelt, wenn derselbe Account erneut den Schwellenwert überschreitet → einen Condition-Node prüfen lassen, ob für diesen Account bereits ein offener Task existiert.
+Empfehlung: Score-Schwelle initial konservativ setzen und erst nach 4 Wochen Daten kalibrieren. Vor jeder Action-Anlage pruefen, ob fuer den Account bereits ein offener Task existiert — sonst entstehen Doppel-Reminder.
 Anschluss: S-WF-029
 
 ### S-WF-029 Onboarding-Sequenz bei CRM-Lifecycle-Stage-Wechsel (Integration Trigger)
@@ -639,12 +643,13 @@ Vorgehen:
 2. Einen AI-Node eine personalisierte Welcome-Nachricht auf Basis des Segment-Profils aus dem Wissensordner erstellen lassen — Structured Output mit Feldern: Betreff, Body, Ansprechpartner-Empfehlung.
 3. Parallele Actions: (a) Slack-Alert an Customer-Success-Manager, (b) Kalender-Link für Onboarding-Call als CRM-Feld hinterlegen, (c) Erstes Onboarding-To-do in CRM anlegen.
 4. HITL-Node: Customer-Success-Manager prüft die personalisierte Welcome-Nachricht und gibt sie frei — erst dann Übergabe an das E-Mail-Tool.
-Prompt:
-> "Du bist Lifecycle-Workflow-Architekt. Entwirf eine Onboarding-Pipeline, die bei einem CRM-Stage-Wechsel zu 'Onboarding' startet. Kontext: Personalisierung per Segment-Wissensordner, Slack-Alert an CS-Manager, HITL vor Welcome-E-Mail-Versand. Format: Integration-Trigger, AI-Personalisierungs-Node, parallele Actions, HITL-Gate."
+Workflow: Integration-Trigger (CRM 'Lifecycle-Stage = Onboarding') → Condition-Node (bereits aktive Sequenz?) → AI-Node (Welcome-Personalisierung aus Segment-Profil, Structured Output Betreff/Body/Ansprechpartner) → parallele Actions (Slack an CS / Kalender-Link / CRM-To-do) → HITL-Node (CS-Manager gibt Welcome frei) → E-Mail-Tool.
+Budget: Ein AI-Node pro Onboarding bei niedrigem Volumen (nur Closed-Won-Events) — gering pro Lauf; ein Dedup-Condition gegen Re-Trigger schuetzt vor unnoetigen Wiederholungslaeufen.
 Artefakt: Ein Onboarding-Pipeline-Entwurf mit Personalisierungs-Logik, parallelen Action-Strängen und CS-Manager-Freigabe-Schritt.
 Fallstricke:
 - Der Trigger feuert erneut, wenn das CRM-Feld kurzzeitig zurückgesetzt und wieder auf "Onboarding" gesetzt wird → einen Condition-Node prüfen lassen, ob für diesen Kontakt bereits eine Onboarding-Sequenz aktiv ist.
 - Der AI-Node generiert eine generische Welcome-Nachricht, weil das Segment-Profil im Wissensordner zu dünn ist → die Segment-Profile mit mindestens drei konkreten Differenzierungspunkten (Branche, Unternehmensgröße, Primär-Use-Case) ausstatten.
+Empfehlung: Einen Dedup-Condition-Node vorschalten, der prueft, ob bereits eine Onboarding-Sequenz aktiv ist — sonst feuert ein kurzzeitiges Feld-Reset die Sequenz doppelt. Segment-Profile mit mindestens drei Differenzierungspunkten ausstatten.
 Anschluss: S-WF-030
 
 ### S-WF-030 Retargeting-Signal-Verarbeitungs-Workflow (Webhook Trigger)
@@ -658,12 +663,13 @@ Vorgehen:
 2. Einen CRM-Lookup-Action-Node versuchen lassen, die Session-ID einer bekannten Kontakt-E-Mail zuzuordnen — bei keinem Match anonymes Signal protokollieren und Workflow beenden.
 3. Einen AI-Node Besuchs-Muster und CRM-Profil kombinieren und eine Signal-Stärke (hoch/mittel/niedrig) als Structured Output ausgeben lassen.
 4. Condition-Node: bei "hoch" → HITL-Node mit Outreach-Empfehlung an Account-Executive; bei "mittel" → automatische CRM-Task-Anlage; bei "niedrig" → stilles Protokoll.
-Prompt:
-> "Du bist Retargeting-Workflow-Architekt. Entwirf einen Signal-Verarbeitungs-Workflow für Pricing-Page-Besuche. Kontext: Webhook vom Pixel-Tool, CRM-Lookup, Signal-Stärke-Klassifizierung, HITL nur bei hoher Priorität. Format: Webhook-Trigger, CRM-Lookup-Action, AI-Bewertungs-Node, Condition mit drei Pfaden, HITL."
+Workflow: Webhook-Trigger (Pixel-Tool: Session-ID/Seite/Frequenz) → Bot-Filter-Condition → CRM-Lookup-Action (Session→E-Mail; kein Match → anonymes Protokoll, Stopp) → AI-Node (Signal-Staerke hoch/mittel/niedrig) → Condition mit drei Pfaden (hoch→HITL-Outreach / mittel→CRM-Task / niedrig→Protokoll).
+Budget: Der AI-Node feuert nur bei CRM-Match; die meisten Webhook-Ausloesungen enden im anonymen Protokoll vor dem AI-Node → guenstig pro Lauf. Bot-Filter zuerst, sonst zahlt man fuer Crawler-Traffic.
 Artefakt: Ein Retargeting-Signal-Workflow-Entwurf mit CRM-Lookup-Logik, Signal-Stärke-Schema und dreistufiger Condition-Architektur.
 Fallstricke:
 - Wiederholte Bot-Besuche derselben IP erzeugen falsche Hochprioritäts-Signale → einen Condition-Node für bekannte Bot-IPs oder Crawler-User-Agents vorschalten.
 - Der CRM-Lookup schlägt fehl, weil die Session-ID nicht mit E-Mail-Adressen verknüpft ist → die Logik von Beginn an auf "kein Match → anonymes Protokoll, kein Sales-Alert" ausrichten.
+Empfehlung: Bot-IP-/Crawler-Filter VOR den AI-Node stellen und die gesamte Logik auf 'kein CRM-Match → anonymes Protokoll, kein Sales-Alert' auslegen — sonst jagt das Sales-Team Phantom-Signale.
 Anschluss: S-WF-031
 
 ### S-WF-031 Content-Kalender-Automatisierung (Scheduled Trigger)
@@ -677,12 +683,13 @@ Vorgehen:
 2. Einen AI-Node aus dem Wissensordner (aktive Kampagnenziele, Saisonalitätskalender, Evergreen-Themen) einen Kalender-Entwurf für den Folgemonat generieren lassen — Structured Output: Titel, Kanal, Format, Deadline, verantwortliche Person.
 3. Einen HITL-Node den Entwurf dem Content-Lead zur Freigabe und Anpassung vorlegen lassen.
 4. Nach Freigabe einen Action-Node den Kalender als strukturierte Seite in Notion oder als Tabelle in Google Sheets anlegen lassen.
-Prompt:
-> "Du bist Content-Kalender-Architekt. Entwirf einen monatlichen Kalender-Vorschlags-Workflow. Kontext: Kampagnenziele und Saisonalität im Wissensordner, Structured Output mit Titel/Kanal/Deadline/Owner, HITL-Freigabe vor Notion-Export. Format: Scheduled-Trigger, AI-Kalender-Node, HITL, Notion-Action."
+Workflow: Scheduled-Trigger (erster Werktag/Monat) → AI-Node (Themenvorschlag aus Kampagnenzielen + Saisonalitaetskalender + Evergreen-Themen, Structured Output Titel/Kanal/Format/Deadline/Owner) → HITL-Node (Content-Lead kuratiert) → Action-Node (Notion-Seite / Sheets-Export).
+Budget: Ein AI-Node, einmal monatlich — pro Lauf vernachlaessigbar; der eigentliche Aufwand ist die monatliche Datenpflege im Wissensordner.
 Artefakt: Ein Content-Kalender-Workflow-Entwurf mit Structured-Output-Schema für Kalendereinträge und HITL-Freigabe-Schritt.
 Fallstricke:
 - Der AI-Node schlägt immer dieselben Evergreen-Themen vor, weil der Wissensordner nicht aktualisiert wird → den Saisonalitätskalender und die Kampagnenziele monatlich vor dem Trigger-Datum aktualisieren.
 - Der Kalender-Entwurf enthält zu viele Einträge und überfordert das Team → eine harte Obergrenze für Einträge pro Monat (z. B. 12–16) im AI-Node-Briefing vorgeben.
+Empfehlung: Saisonalitaetskalender und Kampagnenziele monatlich VOR dem Trigger-Datum aktualisieren, sonst recycelt die KI dieselben Evergreens. Eine harte Obergrenze (12–16 Eintraege/Monat) im Node-Briefing gegen Themen-Ueberflutung vorgeben.
 Anschluss: S-WF-032
 
 ### S-WF-032 Pressemitteilungs-Distributions-Pipeline (Manual Trigger)
@@ -696,12 +703,13 @@ Vorgehen:
 2. Parallele AI-Nodes für die fünf Kanäle: LinkedIn (300 Zeichen + Hashtags), X-Thread (5 Tweets), Blog-Teaser (150 Wörter), IR-Summary (100 Wörter sachlich), Journalisten-Pitch (150 Wörter mit News-Hook).
 3. Je Kanal einen HITL-Node einplanen — die PR-Leitung freigt jede Variante einzeln frei; eine abgelehnte Variante blockiert nur diesen Kanal, nicht die anderen.
 4. Nach Kanal-spezifischer Freigabe feuert je ein Action-Node — kein kanalübergreifender Automatismus.
-Prompt:
-> "Du bist PR-Distributions-Workflow-Architekt. Entwirf eine fünfkanalige Pressemitteilungs-Pipeline. Kontext: Manuelle Eingabe der PM, parallele Kanal-Adaptionen, je Kanal eigener HITL, keine kanalübergreifende Automatik. Format: Trigger, fünf parallele AI-Nodes, fünf HITL-Nodes, fünf Actions."
+Workflow: Manual-Trigger (PM-Text + Publikationsliste) → fuenf parallele AI-Nodes (LinkedIn 300 Z. / X-Thread 5 Tweets / Blog-Teaser 150 W. / IR-Summary 100 W. / Journalisten-Pitch 150 W.) → je Kanal ein HITL-Node (PR-Leitung, einzeln) → je Kanal ein Action-Node; eine Ablehnung blockiert nur ihren Kanal.
+Budget: Fuenf AI-Node-Laeufe pro Lauf — der teuerste Workflow der Datei; ein mittelgrosses Modell genuegt fuer Kanal-Adaption, Opus-Klasse ist nicht noetig. Warn-Schwelle 75 %.
 Artefakt: Ein Distributions-Pipeline-Entwurf mit Kanal-spezifischen AI-Node-Briefings, paralleler HITL-Architektur und Kanal-Freigabe-Matrix.
 Fallstricke:
 - Ein einziger AI-Node für alle Kanäle produziert uniform adaptierten Text → je Kanal einen eigenen Node mit eigenen Längen- und Formatvorgaben zwingend trennen.
 - Die Journalisten-Pitch-Variante enthält Corporate-Jargon, der Redakteure abschreckt → den Pitch-Node explizit auf journalistischen Nachrichtenwert (Wer, Was, Warum jetzt) optimieren lassen.
+Empfehlung: Pro Kanal einen eigenen AI-Node mit eigenen Laengen-/Formatvorgaben — ein Sammel-Node produziert uniformen Text. Den Journalisten-Pitch explizit auf Nachrichtenwert (Wer/Was/Warum jetzt) statt Corporate-Jargon optimieren.
 Anschluss: S-WF-033
 
 ### S-WF-033 Messe-Lead-Follow-up-Automatisierung (Manual Trigger + Loop)

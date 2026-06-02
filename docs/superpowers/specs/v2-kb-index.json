@@ -2619,8 +2619,8 @@
     {
       "name": "04-workflows.md",
       "kind": "content",
-      "lines": 1624,
-      "bytes": 201395,
+      "lines": 1632,
+      "bytes": 204526,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -2820,7 +2820,7 @@
           "noun": "Kampagnen-Anfragen",
           "anschluss": "S-WF-026",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-026",
@@ -2828,7 +2828,7 @@
           "noun": "Content-Freigabeprozess",
           "anschluss": "S-WF-027",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-027",
@@ -2836,7 +2836,7 @@
           "noun": "Newsletter",
           "anschluss": "S-WF-028",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-028",
@@ -2844,7 +2844,7 @@
           "noun": "Target-Account",
           "anschluss": "S-WF-029",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-029",
@@ -2852,7 +2852,7 @@
           "noun": "Closed",
           "anschluss": "S-WF-030",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-030",
@@ -2860,7 +2860,7 @@
           "noun": "Besucher",
           "anschluss": "S-WF-031",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-031",
@@ -2868,7 +2868,7 @@
           "noun": "Content-Kalender",
           "anschluss": "S-WF-032",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-032",
@@ -2876,7 +2876,7 @@
           "noun": "Pressemitteilung",
           "anschluss": "S-WF-033",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-033",
@@ -3267,9 +3267,9 @@
       "faq": [],
       "advice_style": 1,
       "types": {
-        "W": 23,
+        "W": 31,
         "D": 1,
-        "P": 56
+        "P": 48
       }
     },
     {
@@ -11784,8 +11784,8 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 962,
-    "W": 23,
+    "P": 954,
+    "W": 31,
     "D": 11,
     "K": 110
   },
