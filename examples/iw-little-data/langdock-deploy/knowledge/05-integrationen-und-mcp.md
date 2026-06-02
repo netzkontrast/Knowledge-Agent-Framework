@@ -224,12 +224,16 @@ Vorgehen:
 1. Du lässt Little Data klarstellen, dass LinkedIn-, Twitter-/X- und Instagram-Publishing sowie Buffer, Hootsuite und Canva nicht nativ sind.
 2. Du lässt pro Plattform den Weg bewerten: über einen passenden MCP-Server (z. B. Zapier-MCP) oder über eine HTTP-Request-Anbindung, deren Bau die Workflow-Beratung verantwortet.
 3. Du lässt das Compliance-Risiko jedes Wegs benennen (Drittanbieter-Zugriff, AGB der Plattform), damit die Direktorin bewusst entscheidet.
-Prompt:
-> "Du bist mein Integrations-Berater (Persona). Erstelle eine Gap-Analyse für unser geplantes Social-Publishing aus Langdock (Aufgabe). Kontext: Wir wollten LinkedIn und Instagram direkt bespielen, planen aber DSGVO-konform (Kontext). Format: Tabelle mit Plattform, nativ ja/nein, empfohlener Weg, Risiko (Format)."
+Vorlage: Social-Publishing-Gap-Analyse (Tabelle):
+1. Plattform — LinkedIn/Twitter-X/Instagram-Publishing, Buffer, Hootsuite, Canva.
+2. Nativ ja/nein — diese sind NICHT nativ.
+3. Empfohlener Weg — passender MCP-Server (z. B. Zapier-MCP) oder HTTP-Request-Anbindung (Bau via 04-workflows).
+4. Risiko — Drittanbieter-Zugriff, Plattform-AGB, Wartung/Bruchrisiko bei API-Aenderungen; Owner benennen.
 Artefakt: Eine Gap-Analyse-Tabelle mit Lösungsweg und Risiko je nicht-nativer Plattform.
 Fallstricke:
 - Annehmen, eine Brücke sei ebenso wartungsarm wie eine native Integration → Auf laufende Wartung und Bruchrisiko bei API-Änderungen der Plattform hinweisen und einen Owner benennen.
 - Über eine Brücke mehr Daten an Dritte geben als nötig → Den Datenfluss auf das Minimum (nur den freizugebenden Post) begrenzen und DSGVO-Konformität des Brücken-Anbieters prüfen lassen.
+Empfehlung: Eine Bruecke nie als ebenso wartungsarm wie eine native Integration darstellen — auf laufende Wartung und Bruchrisiko bei Plattform-API-Aenderungen hinweisen und einen Owner benennen. Den Datenfluss ueber die Bruecke auf das Minimum (nur den freizugebenden Post) begrenzen und die DSGVO-Konformitaet des Bruecken-Anbieters pruefen lassen.
 Anschluss: S-IM-010
 
 ### S-IM-010 Integrations-Audit vor einem Tool-Wechsel durchführen
@@ -243,12 +247,16 @@ Vorgehen:
 2. Du lässt je Eintrag bewerten, ob die Funktion bei einem CRM-Wechsel über eine andere native Integration ersetzbar ist oder eine Brücke braucht.
 3. Du lässt das Ausfallrisiko und die Reihenfolge der Umstellung priorisieren, damit Reporting nicht mitten in einer Kampagne abreißt.
 4. Du übergibst das Register an IT und Operations als Entscheidungsgrundlage; die Migration selbst ist deren Umsetzung.
-Prompt:
-> "Du bist mein Integrations-Berater (Persona). Erstelle ein Abhängigkeitsregister für einen möglichen CRM-Wechsel weg von Salesforce (Aufgabe). Kontext: mehrere Reporting- und Lead-Agenten nutzen Salesforce, Entscheidung steht im nächsten Quartal an (Kontext). Format: Tabelle mit Agent/Use-Case, genutztem Konnektor, Ersatzweg, Ausfallrisiko, Umstellungspriorität (Format)."
+Vorlage: Integrations-Abhaengigkeitsregister (priorisierte Tabelle):
+1. Agent/Use-Case — alle, die heute auf Salesforce zugreifen.
+2. Genutzter Konnektor — inkl. stiller Abhaengigkeiten (Synced Folder, MCP), nicht nur offensichtliche CRM-Agenten.
+3. Ersatzweg — andere native Integration oder Bruecke.
+4. Ausfallrisiko + Umstellungsprioritaet — Reihenfolge, damit kein laufendes Kampagnen-Reporting abreisst.
 Artefakt: Ein Integrations-Abhängigkeitsregister als priorisierte Tabelle.
 Fallstricke:
 - Stille Abhängigkeiten übersehen → Auch Synced Folder und MCP-Verbindungen einbeziehen, nicht nur offensichtliche CRM-Agenten, sonst fehlt im Register ein abreißender Datenfluss.
 - Migration als reines IT-Thema behandeln → Die fachliche Priorisierung (welcher Reporting-Pfad zuerst, welcher zuletzt) im Register verankern, damit kein laufendes Kampagnen-Reporting unkoordiniert ausfällt.
+Empfehlung: Auch stille Abhaengigkeiten (Synced Folder, MCP-Verbindungen) ins Register aufnehmen, nicht nur offensichtliche CRM-Agenten — sonst fehlt ein abreissender Datenfluss in der Migrationsplanung. Die fachliche Umstellungspriorisierung (welcher Reporting-Pfad zuerst/zuletzt) im Register verankern, damit kein laufendes Kampagnen-Reporting unkoordiniert ausfaellt.
 Anschluss: S-IM-011
 
 ### S-IM-011 SharePoint als Synced-Folder-Quelle für Marken-Dokumente einrichten
@@ -262,12 +270,16 @@ Vorgehen:
 2. Du lässt eine flache Ordner-Taxonomie vorschlagen, die Brand-Dokumente, Tone-of-Voice und Kampagnen-Briefings sauber trennt, ohne die Dateigrenze zu überschreiten.
 3. Du lässt das Admin-Briefing formulieren, das die OAuth-Verbindung an einen technischen Service-Account (nicht an einen Mitarbeiter-Account) bindet.
 4. Du übergibst Konzept und Briefing an den SharePoint-Administrator zur Umsetzung — Little Data berät, konfiguriert nicht.
-Prompt:
-> "Du bist mein Wissensarchitektur-Berater (Persona). Entwirf ein SharePoint-Synced-Folder-Konzept für unseren Brand-Agenten (Aufgabe). Kontext: ca. 120 Dokumente, teils PPTX und XLSX, SharePoint Online, Microsoft-365-Tenant (Kontext). Format: Baumstruktur mit Ordner-Namen, Ausschlussliste nicht indexierbarer Formate, drei Sätze Admin-Briefing zu Service-Account und OAuth (Format)."
+Vorlage: SharePoint-Synced-Folder-Konzept:
+1. Baumstruktur — flache Taxonomie, Brand/Tone-of-Voice/Kampagnen-Briefings getrennt, unter der Dateigrenze.
+2. Grenzen/Formate — max. 200 Dateien; nur DOCX/PDF/MD indexiert; PPTX/XLSX/Bilder ausschliessen (Ausschlussliste).
+3. Sync — 24-Stunden-Zyklus.
+4. Admin-Briefing — OAuth an einen technischen Service-Account binden (nicht an einen Mitarbeiter).
 Artefakt: Ein SharePoint-Synced-Folder-Konzept mit Taxonomie, Ausschlussliste und Admin-Briefing.
 Fallstricke:
 - PPTX und XLSX in den Synced Folder legen → Diese Formate werden von Langdock nicht indexiert; nur DOCX, PDF und MD gehören in den Sync-Ordner.
 - OAuth-Token an einen Mitarbeiter-Account binden → Bei Kündigung oder Passwort-Änderung bricht der Sync ab; immer einen Service-Account als Verbindungsinhaber empfehlen.
+Empfehlung: PPTX und XLSX nicht in den Synced Folder legen — Langdock indexiert sie nicht; nur DOCX, PDF und MD gehoeren in den Sync-Ordner. Den OAuth-Token an einen Service-Account binden statt an einen Mitarbeiter-Account, sonst bricht der Sync bei Kuendigung oder Passwort-Aenderung ab.
 Anschluss: S-IM-012
 
 ### S-IM-012 Google Analytics 4 direkt im Chat für Kampagnen-Reporting abfragen
@@ -280,12 +292,15 @@ Vorgehen:
 1. Du lässt Little Data die konkreten GA4-Metriken (z. B. Sessions, Cost-per-Lead, Conversion-Rate) benennen, die für den Jour-fixe tatsächlich nötig sind — nicht mehr.
 2. Du lässt ein Zugriffs-Briefing formulieren, das der IT nur Lese-Scopes auf die relevante GA4-Property übergibt und den Zeitraum (rollierende 30 Tage) vorschreibt.
 3. Du lässt einen Prompt-Rahmen ausarbeiten, der jede Zahl mit Metrik-Name, Property und Zeitraum ausweist, damit die Direktorin vor dem Jour-fixe sofort Belege hat.
-Prompt:
-> "Du bist mein Performance-Berater (Persona). Erstelle ein GA4-Zugriffs-Briefing für einen Marketing-Agenten und einen Muster-Prompt für die Kampagnen-Zusammenfassung (Aufgabe). Kontext: Kampagnen-Vergleich letzter Monat vs. Vormonat, Zielgruppe Marketing-Direktorin, keine technischen Begriffe (Kontext). Format: Briefing als Tabelle mit Metrik, GA4-Scope, Begründung; Muster-Prompt separat als Code-Block (Format)."
+Vorlage: GA4-Chat-Reporting-Setup (Briefing + Muster-Prompt):
+1. Metrik-Scope-Tabelle — je benoetigte GA4-Metrik (Sessions/Cost-per-Lead/Conversion-Rate): nur Read-Scope auf die relevante Property, Begruendung.
+2. Zeitraum — rollierende 30 Tage vorschreiben.
+3. Muster-Prompt — jede Zahl mit Metrik-Name, Property und Zeitraum ausweisen; fehlende Werte als 'keine Daten verfuegbar', nie schaetzen.
 Artefakt: Ein GA4-Zugriffs-Briefing (Tabelle) und ein einsatzbereiter Muster-Prompt für das Kampagnen-Reporting.
 Fallstricke:
 - Agent erfindet Zahlen, wenn ein GA4-Bericht leere Zellen zurückgibt → Im Prompt explizit anweisen: "Fehlende Werte als 'keine Daten verfügbar' ausweisen, niemals schätzen."
 - Schreib-Scopes mitbeantragen → GA4 hat in Langdock ausschließlich lesenden Zugriff; im Briefing klarstellen, dass kein Datenpunkt verändert werden darf.
+Empfehlung: Im Muster-Prompt explizit anweisen, fehlende Werte als 'keine Daten verfuegbar' auszuweisen statt zu schaetzen — ein GA4-Bericht mit leeren Zellen verfuehrt den Agenten sonst zu Erfindungen. Im Briefing klarstellen, dass GA4 in Langdock ausschliesslich lesenden Zugriff hat: keine Schreib-Scopes beantragen, kein Datenpunkt darf veraendert werden.
 Anschluss: S-IM-013
 
 ### S-IM-013 HubSpot-Lead-Anreicherung via MCP für Personalisierungs-Kampagne planen
@@ -299,12 +314,16 @@ Vorgehen:
 2. Du lässt die Architektur skizzieren: Agent liest HubSpot-Felder → generiert personalisierten Mail-Draft → Menschen im Marketing-Ops schreiben den CRM-Datensatz nach Freigabe.
 3. Du lässt das IT-Briefing formulieren, das die benötigten HubSpot-Read-Scopes und den Service-Account benennt.
 4. Du übergibst Architektur und Briefing an die IT; der Schreib-Pfad verbleibt bei Marketing-Operations — Beratung, keine Ausführung.
-Prompt:
-> "Du bist mein CRM-Integrations-Berater (Persona). Entwirf eine Lese-Architektur für HubSpot-Datenanreicherung in einem Webinar-Follow-up-Workflow (Aufgabe). Kontext: 50 Leads pro Webinar, Felder: Branche, Unternehmensgröße, letzter Touchpoint; Agent darf nie schreiben (Kontext). Format: Architektur-Skizze als nummerierter Datenpfad plus Tabelle mit Feld, HubSpot-Scope, Begründung (Format)."
+Vorlage: HubSpot-Lese-Anreicherungs-Architektur (Skizze + Scope-Briefing):
+1. Lese-Pfad — Agent liest HubSpot-Felder (Branche/Company-Size/letzter Touchpoint) → personalisierter Mail-Draft.
+2. Schreib-Pfad — Marketing-Ops schreibt den CRM-Datensatz erst nach Freigabe (kein Agent-Write).
+3. Scope-Briefing — benoetigte HubSpot-Read-Scopes + Service-Account; Write-Scopes explizit ausschliessen.
+4. Datensparsamkeit — nur personalisierungs-noetige, anonymisierbare Felder; PII minimieren.
 Artefakt: Eine Lese-Architektur-Skizze und ein HubSpot-Scope-Briefing für die IT.
 Fallstricke:
 - Agent erhält versehentlich Schreib-Scope → Im Briefing alle Write-Scopes explizit ausschließen und dies im IT-Ticket als "Muss-Bedingung" markieren.
 - PII (Name, E-Mail) unnötig in den Agent-Kontext laden → Nur die für Personalisierung nötigen anonymisierbaren Felder (Branche, Size) anfordern; personenbezogene Daten auf das Minimum begrenzen.
+Empfehlung: Alle Write-Scopes im IT-Briefing explizit ausschliessen und dies im Ticket als 'Muss-Bedingung' markieren — ein versehentlicher Schreib-Scope ist das Hauptrisiko. Nur die fuer Personalisierung noetigen, anonymisierbaren Felder (Branche, Size) anfordern und PII (Name, E-Mail) gar nicht erst in den Agent-Kontext laden.
 Anschluss: S-IM-014
 
 ### S-IM-014 Slack-Kanal-Benachrichtigung für freigabereife Inhalte konzipieren
@@ -317,12 +336,15 @@ Vorgehen:
 1. Du lässt Little Data das Nachrichtenformat für den Slack-Post entwerfen: Kampagnen-Name, Entwurfs-Link, kurze Kontext-Zusammenfassung, Freigabe-Deadline.
 2. Du lässt die Integrations-Grenze klar benennen: Die native Slack-Action postet die Nachricht; wann sie ausgelöst wird (Status-Wechsel, Cron, manuell), ist Workflow-Thema.
 3. Du übergibst das Format und die Schnittstellenbeschreibung an Marketing-Ops; die Workflow-Konfiguration wird separat in `04-workflows` beraten.
-Prompt:
-> "Du bist mein Integrations-Berater (Persona). Entwirf ein Slack-Benachrichtigungsformat für freigabereife Kampagnen-Entwürfe und beschreibe die Abgrenzung zur Workflow-Logik (Aufgabe). Kontext: Zielkanal #marketing-freigabe, Zielgruppe Marketingleitung, maximale Nachrichtenlänge drei kurze Sätze plus Link (Kontext). Format: Nachrichtenvorlage in Markdown plus zwei Sätze Schnittstellenbeschreibung Integration vs. Workflow (Format)."
+Vorlage: Slack-Freigabe-Benachrichtigungs-Konzept:
+1. Nachrichtenvorlage (Markdown) — Kampagnen-Name, Entwurfs-Link, kurze Kontext-Zusammenfassung, Freigabe-Deadline (max. drei Saetze + Link).
+2. Integrations-Grenze — die native Slack-Action postet die Nachricht.
+3. Workflow-Grenze — wann ausgeloest (Status-Wechsel/Cron/manuell) gehoert in 04-workflows.
 Artefakt: Eine Slack-Nachrichtenvorlage und eine Schnittstellen-Abgrenzung Integration vs. Workflow.
 Fallstricke:
 - Trigger-Bedingung in der Integrationsberatung mitlösen → Die Auslöselogik ("wann posten") gehört in die Workflow-Beratung (`04-workflows`); sie hier zu spezifizieren erzeugt Governance-Konflikte.
 - Slack-Action an persönlichen Account binden → Einen Bot-Token oder Team-Account verwenden, damit Benachrichtigungen bei Personalwechsel nicht abreißen.
+Empfehlung: Die Ausloeselogik ('wann posten') nicht in der Integrationsberatung mitloesen — sie gehoert in die Workflow-Beratung (04-workflows); sie hier zu spezifizieren erzeugt Governance-Konflikte. Die Slack-Action an einen Bot-Token oder Team-Account binden, nie an einen persoenlichen Account, damit Benachrichtigungen bei Personalwechsel nicht abreissen.
 Anschluss: S-IM-015
 
 ### S-IM-015 Salesforce-Daten für personalisierte Kampagnen lesen (Advisory)
@@ -336,12 +358,15 @@ Vorgehen:
 2. Du lässt das Berechtigungs-Konzept formulieren: Connected App mit Lese-Profil, Ausschluss von PII-schweren Feldern wie persönliche E-Mails und Mobilnummern.
 3. Du lässt den Datenschutz-Hinweis einarbeiten: Salesforce-Einträge mit personenbezogenen Daten dürfen den Agent-Kontext nur anonymisiert (User-IDs statt Namen) verlassen.
 4. Du übergibst das Konzept an Salesforce-Admin und Datenschutzbeauftragten; die Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein CRM-Datenschutz-Berater (Persona). Erstelle ein Salesforce-Berechtigungs-Konzept für einen Lese-Agenten in unserer ABM-Kampagne (Aufgabe). Kontext: Felder Account-Branche, ARR-Band, offene Opportunities; keine personenbezogenen Kontaktdaten; DSGVO-Konformität ist Pflicht (Kontext). Format: Tabelle mit Salesforce-Objekt, benötigtem Scope, PII-Risiko und Maßnahme; plus drei Sätze Datenschutz-Hinweis (Format)."
+Vorlage: Salesforce-Lese-Berechtigungs-Konzept (ABM):
+1. Objekt-Scope-Tabelle — Account/Opportunity (kein Contacts mit PII, wenn vermeidbar); je Objekt Scope, PII-Risiko, Massnahme.
+2. Connected App — Lese-Profil, PII-schwere Felder (private E-Mails/Mobilnummern) ausschliessen.
+3. Datenschutz-Hinweis — personenbezogene Eintraege nur anonymisiert (User-IDs statt Namen) in den Agent-Kontext.
 Artefakt: Ein Salesforce-Berechtigungs-Konzept (Tabelle) mit PII-Risikobewertung und Datenschutz-Hinweis.
 Fallstricke:
 - Contacts-Objekt mit E-Mail und Mobilnummer in den Agent-Kontext laden → Nur anonymisierbare Felder wie Account-ID und ARR-Band übergeben; personenbezogene Daten minimieren gemäß DSGVO-Datensparsamkeit.
 - Salesforce-Verbindung über ein Admin-Profil einrichten → Einen dedizierten Read-Only-Profile-User für die Langdock-Integration empfehlen, damit kein Privilege-Escalation-Risiko entsteht.
+Empfehlung: Das Contacts-Objekt mit E-Mail und Mobilnummer gar nicht erst in den Agent-Kontext laden — nur anonymisierbare Felder wie Account-ID und ARR-Band uebergeben (DSGVO-Datensparsamkeit). Einen dedizierten Read-Only-Profile-User fuer die Integration einrichten, nicht ein Admin-Profil, damit kein Privilege-Escalation-Risiko entsteht.
 Anschluss: S-IM-016
 
 ### S-IM-016 Tool-Stack-Konsolidierung mit Langdock als Orchestrator planen
@@ -355,12 +380,16 @@ Vorgehen:
 2. Du lässt für jeden Stack bestimmen, ob eine native Integration oder ein MCP-Server der geeignete Anbindungsweg ist und welche Lese-Scopes nötig sind.
 3. Du lässt die Governance-Grenze benennen: Schreib-Aktionen (z. B. Lead-Status in HubSpot ändern) verbleiben bei Marketing-Operations, nicht beim Agent.
 4. Du übergibst die Architektur-Skizze an IT und Marketing-Ops als Entscheidungsgrundlage für die Konsolidierung.
-Prompt:
-> "Du bist mein Integrations-Architekt (Persona). Entwirf eine Orchestrator-Architektur für Langdock über unseren drei Tool-Stacks HubSpot, Marketo und Klaviyo (Aufgabe). Kontext: Langdock ersetzt keinen Stack, soll aber Daten aus allen dreien für Personalisierung und Reporting lesend nutzen können (Kontext). Format: Tabelle mit Stack, Anbindungsweg (nativ/MCP), Lese-Scope, Governance-Verantwortung; plus zwei Sätze Abgrenzung was Langdock NICHT übernimmt (Format)."
+Vorlage: Langdock-Orchestrator-Architektur-Skizze (Multi-Stack):
+1. Positionierung — Langdock ersetzt kein MAP, operiert als Intelligence-/Orchestrator-Layer ueber den Stacks.
+2. Anbindungsweg je Stack — HubSpot/Marketo/Klaviyo: nativ oder MCP, benoetigte Lese-Scopes.
+3. Governance-Grenze — Schreib-Aktionen (z. B. Lead-Status aendern) bleiben bei Marketing-Ops, nicht beim Agent.
+4. Abgrenzung — was Langdock NICHT uebernimmt.
 Artefakt: Eine Orchestrator-Architektur-Tabelle mit Anbindungswegen, Scopes und Governance-Grenzen.
 Fallstricke:
 - Langdock als MAP-Ersatz framen → Klar kommunizieren, dass Kampagnen-Ausführung (E-Mail-Versand, A/B-Tests) im jeweiligen Stack verbleibt; Langdock übernimmt Analyse und Content-Generierung.
 - MCP-Server für alle Stacks gleichzeitig aufsetzen wollen → Priorisieren nach Business-Impact und einen Stack nach dem anderen anbinden, um Komplexität und Fehlerrisiko zu begrenzen.
+Empfehlung: Langdock klar als Intelligence-Layer ueber den bestehenden Stacks positionieren, nicht als MAP-Ersatz — diese Erwartung von Beginn an setzen, sonst entstehen Fehlinvestitionen. Schreib-Aktionen (CRM-/MAP-Writes) bei Marketing-Operations belassen und nur Lese-Scopes je Stack vergeben.
 Anschluss: S-IM-017
 
 ### S-IM-017 API-Key-Management für MCP-Verbindungen governance-konform aufsetzen
