@@ -115,3 +115,16 @@ After priorities 1+2+4 close → tag **v1.0-Beta**.
 
 Review subagent yields no remaining improvement potential; all gates green;
 rulebook + per-file rules current; AGENT_PROMPT ≤ 15 000 chars; release `v1.0-Beta`.
+
+
+### Loop-4 progress log
+
+- [x] **L4-0a** — R20 directive in rulebook; validators + kb_index evolved (verbose+terse markers, type-from-slot-6, per-type tally, sharpened noun stoplist). Commit ff6e7b2.
+- [x] **PILOT** — file 19 migrated to terse markers (D-type), full gate suite validated. Commit 74c9ec6.
+- [x] **R19 base-wide** — terse-marker sweep across all 17 scenario files; 179,466 B removed; all gates green. Commit 7b75946. Type baseline: P=986, K=110, D=10.
+- [ ] **L4-0b** — AGENT_PROMPT schema-definition section (~700 chars) + nav trim. (Do with first R20 file.)
+- [ ] **R20 best-type re-authoring** (per file): P → Workflow/MCP/Skill/Code/Config/Decision/Guide where genuinely better, source-grounded. Order: 04 (pure W) → 06 (G/D/A) → 05 (G-dominant) → 10 (S/P) → 00-03,07-09 → 14/16/17.
+- [ ] **R7a Empfehlung rollout** to the 13 remaining content files (combined with each R20 file touch).
+- [ ] **Critical-thinking scenarios (R20.3) + scenario chains (R20.4)** added opportunistically per file.
+- [ ] **File 08 chunk-trim** (22 scenarios 3200-3800 B) during its R20 pass.
+- [ ] **Loop-4 review subagent** → then v1.0-Beta.
