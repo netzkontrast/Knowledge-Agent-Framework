@@ -1283,12 +1283,16 @@ Vorgehen:
 2. Du lässt das Datenprinzip einarbeiten: Aggregierte Cohort-Metriken (Conversion-Rate, Median-Time-to-Convert, Drop-Off-Rate je Funnel-Schritt) statt individueller User-Events in den Agent-Kontext.
 3. Du lässt eine Query-Governance-Regel definieren: Abfragen ohne Zeitbereichs-Filter oder über alle historischen Daten erfordern eine Nutzerbestätigung, da sie ressourcenintensiv sein können.
 4. Du übergibst das Briefing an IT und Analytics-Team; Little Data berät, konfiguriert keine API-Verbindungen.
-Prompt:
-> "Du bist mein Product-Analytics-Integrations-Berater (Persona). Erstelle ein Amplitude-Anbindungs-Briefing für einen Marketing-Performance-Agenten, der Funnel-Conversion-Rates abfragt (Aufgabe). Kontext: B2B-SaaS-Funnel mit 5 Schritten; aggregierte Metriken, keine User-IDs; DSGVO-konformes EU-Hosting (Kontext). Format: Briefing mit Abschnitten Anbindungsweg, Datenprinzip, Query-Governance-Regel, Funnel-Analyse-Prompt-Template (Format)."
+Vorlage: Mixpanel/Amplitude-Funnel-Anbindungs-Briefing:
+1. Anbindungsweg — Amplitude Chart-/Data-Export-API bzw. Mixpanel Query-API; HTTP-Bruecke (Custom Builder) oder offizieller MCP-Server.
+2. Datenprinzip — aggregierte Cohort-Metriken (Conversion-Rate, Median-Time-to-Convert, Drop-Off je Schritt); keine individuellen User-Events.
+3. Query-Governance — Abfragen ohne Zeitbereichs-Filter/ueber alle Historie erfordern Nutzerbestaetigung.
+4. Funnel-Prompt-Template.
 Artefakt: Ein Mixpanel/Amplitude-Anbindungs-Briefing mit Datenprinzip, Query-Governance und Funnel-Analyse-Prompt-Template.
 Fallstricke:
 - Individuelle User-Event-Streams in den Agent-Kontext laden → Individuelle Nutzerdaten in Mixpanel/Amplitude sind oft DSGVO-relevant (User-IDs als pseudonyme Daten); ausschließlich aggregierte Cohort-Metriken übergeben.
 - Full-Historical-Data-Abfragen ohne Kostenwarnung freigeben → Amplitude-Abfragen über große Zeiträume können teuer sein; Zeitbereichs-Filter als Pflichtfeld im Prompt-Template einbauen und ressourcenintensive Abfragen mit Nutzerbestätigung versehen.
+Empfehlung: Ausschliesslich aggregierte Cohort-Metriken in den Agent-Kontext laden — individuelle Mixpanel/Amplitude-User-Events sind als pseudonyme Daten DSGVO-relevant. Einen Zeitbereichs-Filter als Pflichtfeld im Prompt-Template erzwingen und ressourcenintensive Full-Historical-Abfragen mit Nutzerbestaetigung versehen, da grosse Zeitraeume teuer sein koennen.
 Anschluss: S-IM-058
 
 ### S-IM-058 Data-Lake-Read-Only-Zugriff via MCP für Marketing-Daten-Analysten planen
@@ -1302,12 +1306,14 @@ Vorgehen:
 2. Du lässt die IAM-Rolle für den Marketing-Service-Account auf minimale Read-Only-Rechte beschränken: nur SELECT-Rechte auf freigegebene Schemas, keine DDL/DML-Operationen.
 3. Du lässt eine Query-Kostengrenze definieren: Abfragen, die mehr als 1 TB scannen (Athena) oder mehr als 100 DTUs verbrauchen (Synapse), erfordern eine Nutzerbestätigung im Chat.
 4. Du übergibst das Konzept an Data-Engineer und IT; die IAM- und Schema-Konfiguration liegt bei der IT, nicht bei Little Data.
-Prompt:
-> "Du bist mein Data-Lake-Governance-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Konzept für unseren AWS-Athena-Data-Lake für einen Marketing-Analyse-Agenten (Aufgabe). Kontext: freigegebene Schemas marketing_events und campaign_spend; Finance und HR sind gesperrt; Query-Kostengrenze 1 TB Scan; DSGVO-konformes EU-Hosting (Kontext). Format: Konzept mit Abschnitten Schema-Freigabeliste, gesperrte Schemas, IAM-Empfehlung, Query-Kostengrenze, verbotene SQL-Operationen (Format)."
+MCP: Data-Lake-MCP-Server (AWS Athena/Azure Synapse) als rein lesende Quelle; falls kein MCP, HTTP-Bruecke.
+Tool: SELECT-Tools nur auf freigegebene Schemas (marketing_events, campaign_spend, attribution); Finance/HR/Legal explizit gesperrt; kein DDL/DML.
+Scope: IAM-Service-Account minimal (nur SELECT auf freigegebene Schemas); Pflicht-Nutzerbestaetigung fuer Abfragen >1 TB Scan (Athena) bzw. >100 DTUs (Synapse).
 Artefakt: Ein Data-Lake-Read-Only-Anbindungs-Konzept mit Schema-Freigabeliste, IAM-Empfehlung und Query-Kostengrenze.
 Fallstricke:
 - Full-Table-Scans ohne WHERE-Klausel auf große Data-Lake-Tabellen erlauben → Unkontrollierte Scans auf einem Data Lake können schnell hohe Kosten verursachen; Abfragen ohne Zeitbereichs-Filter als Pflichtfeld im Prompt-Rahmen erzwingen und mit Nutzerbestätigung versehen.
 - Freigegebene Schemas zu weit fassen (z. B. gesamte Unternehmens-Datenbank) → Immer eine explizite Positivliste freigegebener Schemas anlegen; nicht freigegebene Schemas sind per IAM-Policy zu sperren, nicht durch Vertrauen in den Agent-Prompt.
+Empfehlung: Nicht freigegebene Schemas (Finance/HR/Legal) per IAM-Policy technisch sperren, nicht durch Vertrauen in den Agent-Prompt — immer eine explizite Positivliste freigegebener Schemas. Full-Table-Scans ohne WHERE-Klausel verhindern: einen Zeitbereichs-Filter als Pflichtfeld erzwingen und kostenintensive Abfragen mit Nutzerbestaetigung versehen, sonst entstehen schnell hohe Data-Lake-Kosten.
 Anschluss: S-IM-059
 
 ### S-IM-059 ERP-System (SAP oder Microsoft Dynamics) read-only für Preis- und Produktdaten anbinden
@@ -1321,12 +1327,14 @@ Vorgehen:
 2. Du lässt die Service-Account-Empfehlung formulieren: Ein dedizierter ERP-Lese-Service-Account mit minimalen Berechtigungen auf die freigegebenen Tabellen/Entitäten — kein Vollzugriff auf das ERP-System.
 3. Du lässt eine User-Confirmation-Regel für sensitive Preisabfragen einbauen: Abfragen, die mehr als 100 Produkte gleichzeitig liefern, erfordern eine Bestätigung, um unbeabsichtigte Massenexporte zu verhindern.
 4. Du übergibst das Briefing an ERP-Administrator und IT; die API-Konfiguration und Berechtigungsvergabe liegt ausschließlich bei der IT.
-Prompt:
-> "Du bist mein ERP-Integrations-Berater (Persona). Erstelle ein Read-Only-Anbindungs-Briefing für unser SAP-System an einen Marketing-Content-Agenten, der Listenpreise und Produktstammdaten abfragt (Aufgabe). Kontext: SAP S/4HANA Cloud, freigegebene Daten: Produktnamen, Beschreibungen, Listenpreise; gesperrt: Einkaufspreise, Finanzbuchhaltung, HR; Service-Account-Prinzip (Kontext). Format: Briefing mit Abschnitten freigegebene Endpunkte, gesperrte Bereiche, Service-Account-Empfehlung, Preis-Lookup-Prompt-Template (Format)."
+MCP: ERP-MCP-Server (SAP OData / Dynamics 365 REST) als rein lesende Preislistenquelle; HTTP-Bruecke als Alternative.
+Tool: Lese-Tools nur auf Produktstammdaten (Produktnummer/Name/Beschreibung) und Listenpreise; Einkaufspreise/Margen/Buchhaltung/HR gesperrt.
+Scope: Dedizierter ERP-Lese-Service-Account mit minimalen Berechtigungen (kein Vollzugriff); Pflichtbestaetigung fuer Abfragen >100 Produkte (Massenexport-Schutz).
 Artefakt: Ein ERP-Read-Only-Anbindungs-Briefing mit freigegebenen Endpunkten, gesperrten Bereichen und Preis-Lookup-Prompt-Template.
 Fallstricke:
 - Einkaufspreise oder Margen versehentlich freigeben → Einkaufspreise sind vertrauliche Geschäftsinformationen; im IT-Briefing explizit als gesperrte Felder dokumentieren und technisch per API-Berechtigungen sperren.
 - ERP-Preisdaten als immer aktuell behandeln → ERP-Listenpreise können durch Preisänderungs-Transaktionen unregelmäßig aktualisiert werden; im Prompt-Template einen Zeitstempel der letzten Preisänderung als Pflichtfeld ausgeben lassen.
+Empfehlung: Einkaufspreise und Margen explizit als gesperrte Felder dokumentieren UND technisch per API-Berechtigungen sperren — sie sind vertrauliche Geschaeftsinformationen, kein reiner Prompt-Schutz. Im Prompt-Template den Zeitstempel der letzten Preisaenderung als Pflichtfeld ausgeben lassen, da ERP-Listenpreise unregelmaessig aktualisiert werden und nicht automatisch aktuell sind.
 Anschluss: S-IM-060
 
 ### S-IM-060 Integration-Sicherheits-Review-Checkliste vor Go-Live jeder neuen Anbindung nutzen
@@ -1340,12 +1348,16 @@ Vorgehen:
 2. Du lässt die Checkliste als Go/No-Go-Entscheidungsformat aufbereiten: Jeder Prüfpunkt ist mit "bestanden / offen / nicht anwendbar" bewertbar; bei mehr als zwei offenen Punkten → kein Go-Live.
 3. Du lässt den Hinweis einarbeiten: Diese Checkliste ersetzt keine vollständige DSGVO-DPIA — bei Hochrisiko-Verarbeitungen verweist sie an `08-sicherheit-und-governance`.
 4. Du übergibst die Checkliste an IT und Workspace-Admin als Standard-Go-Live-Gate; sie wird im Integration-Governance-Playbook (S-IM-044) als Pflicht-Schritt verankert.
-Prompt:
-> "Du bist mein Integration-Sicherheits-Berater (Persona). Erstelle eine 12-Punkte-Sicherheits-Review-Checkliste für den Go-Live jeder neuen Langdock-Integration und eine einseitige Go/No-Go-Entscheidungsvorlage (Aufgabe). Kontext: drei Kategorien Zugriffsminimalität, Datenschutz, Betrieb; bei mehr als zwei offenen Punkten kein Go-Live; Verweis auf tiefergehende DSGVO-Prüfung in Schwesterdatei (Kontext). Format: Checkliste als nummerierte Liste mit Kategorie, Prüfpunkt, Bewertungsoptionen; Go/No-Go-Vorlage als Absatz (Format)."
+Vorlage: Integration-Sicherheits-Review-Checkliste (12 Punkte, Go/No-Go):
+1. (A) Zugriffsminimalitaet — nur noetige Scopes? Service-Account statt Person? Verbotene Operationen technisch gesperrt?
+2. (B) Datenschutz — PII-Minimierung sichergestellt? DSGVO-Rechtsgrundlage dokumentiert?
+3. (C) Betrieb — Owner benannt? Rotation-Policy definiert? Canary-Test eingeplant?
+4. Go/No-Go — je Punkt bestanden/offen/n.a.; >2 offene → kein Go-Live; Hochrisiko → 08-sicherheit-und-governance.
 Artefakt: Eine 12-Punkte-Integration-Sicherheits-Review-Checkliste (drei Kategorien) und eine einseitige Go/No-Go-Entscheidungsvorlage.
 Fallstricke:
 - Checkliste als Formalität ohne echte Prüfung abhaken → Jeder Prüfpunkt muss mit einem konkreten Nachweis belegt werden (z. B. Screenshot der API-Scope-Konfiguration, Name des Service-Accounts); reine Selbstauskunft ohne Nachweis ist kein Security-Review.
 - Sicherheits-Review nur bei neuen Integrationen durchführen → Bestehende Integrationen können durch Konfigurationsänderungen oder API-Versionsupdates Sicherheitslücken entwickeln; die Checkliste einmal jährlich auch auf bestehende Verbindungen anwenden.
+Empfehlung: Jeden Pruefpunkt mit einem konkreten Nachweis belegen (z. B. Screenshot der Scope-Konfiguration, Name des Service-Accounts) — reine Selbstauskunft ohne Nachweis ist kein Security-Review. Die Checkliste einmal jaehrlich auch auf bestehende Integrationen anwenden, da Konfigurationsaenderungen oder API-Versionsupdates neue Luecken oeffnen koennen.
 Anschluss: S-IM-061
 
 ### S-IM-061 HubSpot-CRM-Read-Sync für Lifecycle-Reporting governance-konform planen
@@ -1359,12 +1371,16 @@ Vorgehen:
 2. Du lässt das Read-Sync-Briefing formulieren, das ausschließlich Lese-Scopes anfordert und Schreib-Scopes explizit ausschließt.
 3. Du lässt einen Reporting-Prompt-Rahmen entwerfen, der jede Zahl mit HubSpot-Objekt und Zeitraum belegt und fehlende Werte als "keine Daten" ausweist.
 4. Du übergibst das Briefing an die IT; die Verbindung wird an einen Service-Account gebunden — Little Data berät, konfiguriert nicht.
-Prompt:
-> "Du bist mein CRM-Reporting-Berater (Persona). Erstelle ein HubSpot-Read-Sync-Briefing für einen Lifecycle-Reporting-Agenten (Aufgabe). Kontext: wöchentliches Funnel-Reporting MQL→SQL, nur Lesen, SCIM-synchronisierte Marketing-Gruppe, DSGVO-konformes EU-Hosting (Kontext). Format: Tabelle mit Feld, benötigtem Read-Scope, Begründung; plus Lifecycle-Stage-Mapping und drei Sätze Sicherheitshinweis (Format)."
+Vorlage: HubSpot-Read-Sync-Briefing (Lifecycle-Reporting):
+1. Scope-Tabelle — Feld (Lifecycle-Stage/Lead-Source/Deal-Stage) → Read-Scope (crm.objects.contacts.read, crm.objects.deals.read), Begruendung; keine PII ueber das Minimum.
+2. Lifecycle-Stage-Mapping — MQL→SQL-Uebergang.
+3. Reporting-Prompt-Rahmen — jede Zahl mit HubSpot-Objekt + Zeitraum; fehlende Werte als 'keine Daten'.
+4. Service-Owner als Verbindungsinhaber.
 Artefakt: Ein HubSpot-Read-Sync-Briefing (Tabelle) mit Lifecycle-Mapping und Quellenbindungs-Prompt.
 Fallstricke:
 - Schreib-Scopes mitbeantragen → Im Briefing ausschließlich `*.read`-Scopes anfordern und `*.write` als "explizit verboten" markieren; ein versehentlicher Write-Scope erlaubt dem Agenten, Lifecycle-Stages zu überschreiben.
 - Verbindung an einen Mitarbeiter-Account binden → Einen technischen Service-Owner als Verbindungsinhaber vorschlagen, damit der Read-Sync bei Personalwechsel nicht still abreißt.
+Empfehlung: Ausschliesslich *.read-Scopes anfordern und *.write als 'explizit verboten' markieren — ein versehentlicher Write-Scope erlaubt dem Agenten, Lifecycle-Stages zu ueberschreiben. Die Verbindung an einen technischen Service-Owner binden, nicht an einen Mitarbeiter-Account, damit der Read-Sync bei Personalwechsel nicht still abreisst.
 Anschluss: S-IM-062
 
 ### S-IM-062 Salesforce Campaign-Member-Read für Multi-Touch-Attribution anbinden
@@ -1378,12 +1394,15 @@ Vorgehen:
 2. Du lässt das Lese-Konzept über ein dediziertes Read-Only-Profil formulieren; die Anlage neuer Campaign Members (Q112) bleibt explizit bei Marketing-Operations.
 3. Du lässt einen PII-Hinweis einarbeiten: Lead-/Contact-Namen werden nur anonymisiert (IDs statt Namen) in den Agent-Kontext geladen.
 4. Du übergibst das Konzept an Salesforce-Admin und Datenschutzbeauftragten; die Konfiguration liegt bei der IT.
-Prompt:
-> "Du bist mein CRM-Attribution-Berater (Persona). Erstelle ein Salesforce-Read-Konzept für Campaign-Member-Attribution (Aufgabe). Kontext: Objekte Campaign, CampaignMember, Opportunity; nur Lesen; Anlage neuer Mitglieder bleibt bei Marketing-Ops; DSGVO-Pflicht (Kontext). Format: Tabelle mit Objekt, Read-Scope, PII-Risiko, Maßnahme; plus drei Sätze Lese-vs.-Schreib-Abgrenzung (Format)."
+Vorlage: Salesforce-Campaign-Member-Read-Konzept (Attribution):
+1. Objekt-Scope-Tabelle — Campaign, CampaignMember (Status/ResponseDate), Opportunity; je Read-Scope, PII-Risiko, Massnahme.
+2. Read-Only-Profil — dediziert; Anlage neuer Campaign Members (Q112) bleibt bei Marketing-Ops.
+3. PII — Lead-/Contact-Namen nur anonymisiert (IDs statt Namen) in den Kontext.
 Artefakt: Ein Salesforce-Read-Konzept (Tabelle) mit PII-Risikobewertung und Lese-/Schreib-Trennung.
 Fallstricke:
 - Erwarten, dass der Agent neue Campaign Members anlegt → Q112 beschreibt eine Schreib-Aktion; diese gehört in einen HITL-Workflow bei Marketing-Ops, nicht in den lesenden Reporting-Agenten.
 - Salesforce-Verbindung über ein Admin-Profil einrichten → Ein dediziertes Read-Only-Profil verwenden, damit kein Privilege-Escalation-Risiko über den KI-Proxy entsteht.
+Empfehlung: Die Anlage neuer Campaign Members ist eine Schreib-Aktion und gehoert in einen HITL-Workflow bei Marketing-Ops, nicht in den lesenden Reporting-Agenten — Lese- und Schreib-Pfad strikt trennen. Ein dediziertes Read-Only-Profil verwenden statt eines Admin-Profils, damit kein Privilege-Escalation-Risiko ueber den KI-Proxy entsteht.
 Anschluss: S-IM-063
 
 ### S-IM-063 Google Analytics 4 via MCP-Server für tiefere Funnel-Abfragen anbinden
@@ -1397,12 +1416,14 @@ Vorgehen:
 2. Du lässt den Read-Only-Scope (`analytics.readonly`) festschreiben und alle Admin-/Config-Tools des MCP-Servers in der Freigabe sperren.
 3. Du lässt einen Funnel-Query-Prompt-Rahmen entwerfen, der Property-ID, Metrik, Dimension und Zeitraum mitführt und leere Ergebnisse als "keine Daten" ausweist.
 4. Du übergibst das Briefing an die IT; Little Data berät, richtet keinen MCP-Server ein.
-Prompt:
-> "Du bist mein Analytics-Integrations-Berater (Persona). Erstelle ein GA4-MCP-Briefing für komplexe Funnel-Abfragen und grenze es zur nativen Integration ab (Aufgabe). Kontext: Abfragen über Quelle/Medium × Landingpage × Conversion, nur Lesen, eine GA4-Property (Kontext). Format: Briefing mit Abschnitten native-vs.-MCP-Abgrenzung, Read-Scope, Tool-Freigabe-Tabelle, Funnel-Query-Prompt-Rahmen (Format)."
+MCP: GA4-MCP-Server (read-only) als abfrageflexible Erweiterung der nativen Integration; Abgrenzung: native fuer Standard-Metriken, MCP fuer komplexe dimension-uebergreifende Abfragen.
+Tool: Nur Report-/Query-Tools (Funnel ueber Quelle/Medium × Landingpage × Conversion); Admin-/Config-Tools (Property/Ziele) gesperrt.
+Scope: analytics.readonly; Funnel-Query-Prompt-Rahmen mit Property-ID/Metrik/Dimension/Zeitraum; leere Ergebnisse als 'keine Daten'.
 Artefakt: Ein GA4-MCP-Briefing mit Read-Scope, Tool-Freigabe und Funnel-Query-Prompt-Rahmen.
 Fallstricke:
 - Admin-/Config-Tools des GA4-MCP-Servers ungeprüft freigeben → Nur Report- und Query-Tools kuratieren; Property-/Ziel-Konfiguration darf der Agent strukturell nicht erreichen.
 - MCP-Server parallel zur nativen Integration ohne klare Aufgabentrennung betreiben → Pro Abfragetyp festlegen, welcher Weg führt, damit Reporting-Zahlen nicht aus zwei Quellen mit abweichender Sampling-Logik stammen.
+Empfehlung: Nur Report- und Query-Tools kuratieren — Admin-/Config-Tools des GA4-MCP-Servers (Property-/Ziel-Konfiguration) darf der Agent strukturell nicht erreichen. Pro Abfragetyp festlegen, ob die native Integration oder der MCP-Server fuehrt, damit Reporting-Zahlen nicht aus zwei Quellen mit abweichender Sampling-Logik stammen.
 Anschluss: S-IM-064
 
 ### S-IM-064 Google Search Console via MCP für SEO-Performance-Reporting anbinden
@@ -1415,12 +1436,14 @@ Vorgehen:
 1. Du lässt Little Data die SEO-Reporting-Fragen bestimmen (Top-Queries, CTR-Drops, Position-Veränderungen) und daraus den minimalen Read-Scope ableiten.
 2. Du lässt eine Tool-Freigabe-Tabelle erstellen: Search-Analytics-Query und URL-Inspection (read) freigeben; Sitemap-Submit und Property-Verwaltung sperren.
 3. Du lässt einen Prompt-Rahmen entwerfen, der jede Kennzahl mit Property, Query/Page und Zeitraum belegt und auf das 16-Monats-Datenfenster der Search Console hinweist.
-Prompt:
-> "Du bist mein SEO-Analytics-Berater (Persona). Erstelle ein Search-Console-MCP-Briefing und einen wöchentlichen SEO-Reporting-Prompt-Rahmen (Aufgabe). Kontext: eine verifizierte Property, Fokus auf Top-Queries und Position-Drops, nur Lesen (Kontext). Format: Briefing mit Read-Scope, Tool-Freigabe-Tabelle, Datenfenster-Hinweis; Prompt-Rahmen separat als Code-Block (Format)."
+MCP: Search-Console-MCP-Server (read-only) fuer SEO-Performance.
+Tool: Search-Analytics-Query und URL-Inspection (read) freigeben; Sitemap-Submit und Property-Verwaltung sperren.
+Scope: webmasters.readonly; SEO-Prompt-Rahmen mit Property/Query/Page/Zeitraum; 16-Monats-Datenfenster der Search Console ausweisen.
 Artefakt: Ein Search-Console-MCP-Briefing mit Read-Scope, Tool-Freigabe und SEO-Reporting-Prompt-Rahmen.
 Fallstricke:
 - Sitemap-Submit- oder Property-Verwaltungs-Tools freigeben → Diese verändern die SEO-Konfiguration; ausschließlich Search-Analytics- und Inspection-Read-Tools kuratiert freigeben.
 - Das 16-Monats-Datenlimit der Search Console übersehen → Im Prompt-Rahmen ausweisen, dass Daten älter als 16 Monate nicht verfügbar sind, damit der Agent keine Langzeit-Trends erfindet.
+Empfehlung: Ausschliesslich Search-Analytics- und Inspection-Read-Tools kuratiert freigeben — Sitemap-Submit- oder Property-Verwaltungs-Tools veraendern die SEO-Konfiguration und gehoeren nicht in den Agenten. Im Prompt-Rahmen ausweisen, dass Daten aelter als 16 Monate nicht verfuegbar sind (Search-Console-Limit), damit der Agent keine Langzeit-Trends erfindet.
 Anschluss: S-IM-065
 
 ### S-IM-065 LinkedIn Ads Reporting via MCP für Pipeline-Beitrag anbinden
