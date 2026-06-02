@@ -7975,8 +7975,8 @@
     {
       "name": "19-iwmedien-zusammenarbeit.md",
       "kind": "iw-brand",
-      "lines": 151,
-      "bytes": 13207,
+      "lines": 265,
+      "bytes": 25926,
       "scenarios": [
         {
           "id": "S-MD-001",
@@ -8012,17 +8012,52 @@
           "noun": "",
           "anschluss": "",
           "advice_style": true
+        },
+        {
+          "id": "S-MD-006",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-007",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-008",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-009",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
+        },
+        {
+          "id": "S-MD-010",
+          "trigger": "",
+          "noun": "",
+          "anschluss": "",
+          "advice_style": true
         }
       ],
       "data_anweisungen": [],
       "faq": [],
-      "advice_style": 5
+      "advice_style": 10
     }
   ],
   "collisions": [],
   "reserved_violations": [],
-  "total_scenarios": 1101,
-  "total_advice": 5,
+  "total_scenarios": 1106,
+  "total_advice": 10,
   "file_count": 20,
   "file_cap": 30
 }

@@ -29,20 +29,46 @@ IW Medien ist die hauseigene Kommunikationsagentur des Instituts der deutschen W
 
 (Quelle: iwmedien.de/impressum; iwmedien.de; LinkedIn — alle Stand Juni 2026; bei Wartung gegenprüfen)
 
-## Leistungsspektrum
+## Leistungsspektrum (5-Kategorien-Taxonomie der /leistungen-Seite)
 
-Full-Service mit Fokus auf wirtschafts- und gesellschaftspolitische Themen. Verifizierter Katalog (Quelle: iwmedien.de):
+Full-Service mit Fokus auf wirtschafts- und gesellschaftspolitische Themen. Verifizierter Katalog (Quelle: iwmedien.de/leistungen, Stand Juni 2026):
 
-- **Kampagnen und Strategie** — Cross-Media-Kampagnen, Kommunikationsstrategien
-- **Wissenschaftskommunikation** — komplexe Forschung allgemeinverständlich
-- **Employer Branding**
-- **Content Marketing** — Content-Management, Performance-Marketing
-- **Experience Communication / Event-Kommunikation**
-- **Digital** — Social Media (inkl. TikTok), digitale Plattformen, Development
-- **Audiovisuell** — Video-Produktion
-- **Print** — klassischer Print, Magazin- und Studien-Layout
-- **Außenwerbung** — City-Light-Werbung
-- **Beratung** — über alle Phasen des Kommunikationsprozesses
+- **Corporate** — Corporate Newsroom & Publishing Workflows · Brand-Strategie & -Relaunch · Corporate Design & Identity · Interne Kommunikation · Stakeholder-Kommunikation · C-Level-Kommunikation · CSR-Strategie.
+- **Knowledge** — Wissenschaftskommunikation · Wirtschaftskommunikation · Wissensvermittlung und Change-Begleitung · E-Learning-Digitalisierung · Micro-Learning und Edutainment.
+- **Campaigning** — Online-Marketing-Strategie · Crossmediale Kampagnen · Thought Leadership & Agenda Setting · Content Marketing · Organic Content & SEO · Paid Social & SEA · Performance Marketing & Analytics.
+- **Experience** — Roadshow & Messen · Live-Kommunikation und Recrutainment · Guerilla-Marketing · Interaktive Exponate · Live-Marketing.
+- **Tech** — Website Development · Mobile- und Web-Apps · Hostings & Operations · Datenmanagement & Analytics.
+
+Die öffentliche Kurzfassung (Kampagnen, Wissenschaftskommunikation, Employer Branding, Content Marketing, Experience, Digital, Audiovisuell, Print, Außenwerbung, Beratung) ist äquivalent — die obige Taxonomie ist die formale Service-Gliederung.
+
+## Brand-Voice (Selbstformulierung)
+
+Belegt von iwmedien.de:
+- Positionierung: **„Agentur für den Wandel"**, **„Wir leben Veränderung."**, **„Zielgerichtet. Erfolgreich. Mit Wumms."**
+- Team-Selbstbezeichnung: **„150 Veränderungs-Enthusiast:innen"** (gender-inklusive Doppelpunkt-Form).
+- Themen-Selbstverortung: „Zukunfts-, Wirtschafts- und Gesellschaftsthemen, die das Land verändern".
+
+Tonal: energisch, vorwärtsgewandt, gender-inklusiv (Doppelpunkt), Mix aus Fachbegriff (Stakeholder, Thought Leadership) und umgangssprachlicher Verstärkung („Mit Wumms"). Beim Briefing an IW Medien dieses Register erwarten und gegebenenfalls in der Tonalität-Leitplanke explizit aufgreifen oder abgrenzen.
+
+## Referenz-Cases (Lehrbeispiele)
+
+| Kunde | Projekt | Disziplinen |
+|---|---|---|
+| aktiv | „Über 50 Jahre 'Meine Arbeit. Mein Leben. Meine Zukunft.'" | langlaufende Kampagne |
+| Bildungssektor | „#LieberLehramt" | Kampagne, Digital |
+| IW (Mutter) | „Der iwd: We call it a Klassiker" | Print/Magazin-Positionierung |
+| Gesamtmetall | „Zukunftsindustrie erleben" | Event/Erlebniskommunikation |
+| Make it in Germany | „10 Jahre Make it in Germany" | Digital/Kampagne |
+| Mecklenburg-Vorpommern | „Lehrer-in-MV.de" | Digital/Recruiting-Plattform |
+| Chemie-Industrie | „Wir.Hier." (mediaV-Award 2025) | Kampagne/Event |
+| MINT | „TouchTomorrow-Truck" | Erlebniskommunikation |
+| Google | „Der Design-Faktor" | Studie/Digital |
+| Waldorf | „100 Jahre Waldorfkindergärten" | Kampagne/Event |
+(Quelle: iwmedien.de/referenzen)
+
+## Zugang
+
+Einheitliches Kontaktformular mit Themen-Dropdown; intern wird nach **Verband** vs. **Unternehmen** geroutet — beide Pfade sind explizit benannt. Telefon: +49 221 4981-0.
 
 ## Eigene Medienplattformen
 
@@ -79,10 +105,10 @@ Diese Datei nutzt die Advice-Style-Form (R7): jedes Szenario liefert eine konkre
 **Hands-on Ergebnis:** Eine Disziplin-Zuordnung plus eine kurze Liste der mitlaufenden Disziplinen.
 **Eingesetzte Langdock-Fähigkeit(en):** Chat (Berater), Wissensordner (IW-Medien-Katalog)
 **Vorgehen (4 Schritte):**
-1. Aufgabe in eines der zehn Felder einordnen (Kampagnen, Wissenschaftskommunikation, Employer Branding, Content Marketing, Experience Communication, Digital, Audiovisuell, Print, Außenwerbung, Beratung).
-2. Mitlaufende Disziplinen identifizieren (eine Kampagne braucht meist Content + Digital + Audiovisuell zusätzlich).
-3. Schnittstellen prüfen: wo greift die Aufgabe auf eigene Plattformen (iwd, AKTIV, TouchTomorrow-Truck)?
-4. Zuordnung mit den mitlaufenden Disziplinen festhalten — vermeidet "nackte" Briefings.
+1. Aufgabe einer der fünf Kategorien zuordnen: **Corporate** (Newsroom, Brand-Relaunch, Interne/Stakeholder/C-Level/CSR), **Knowledge** (Wissenschafts-/Wirtschaftskommunikation, E-Learning, Micro-Learning), **Campaigning** (Crossmedial, Thought Leadership, Content Marketing, SEO/SEA/Performance), **Experience** (Roadshow, Live, Guerilla, Exponate, Recrutainment), **Tech** (Web/App-Development, Hosting, Datenmanagement & Analytics).
+2. Innerhalb der Kategorie die Sub-Disziplin benennen (z. B. Campaigning → „Crossmediale Kampagne" + „Paid Social & SEA").
+3. Mitlaufende Disziplinen aus anderen Kategorien identifizieren (eine Kampagne braucht typischerweise Tech-Hosting und Knowledge-Wissensvermittlung).
+4. Schnittstellen zu eigenen Plattformen (iwd, AKTIV, TouchTomorrow-Truck) prüfen; Zuordnung als Briefing-Kopf festhalten.
 **Konkrete Empfehlung:** Vor dem Briefing immer die zwei häufigsten mitlaufenden Disziplinen explizit benennen — sonst entsteht ein Loch zwischen Hauptdisziplin und Lieferleistung (klassisch: Kampagne ohne Content-Plan, Print ohne Layout-Briefing).
 **Erwartetes Artefakt:** Disziplin-Zuordnung (1 Hauptfeld + 2–3 mitlaufende).
 **Fallstricke (≥2 spezifisch):**
@@ -143,6 +169,94 @@ Diese Datei nutzt die Advice-Style-Form (R7): jedes Szenario liefert eine konkre
 **Fallstricke (≥2 spezifisch):**
 - Eine IW-Studie wird in einer Kunden-Kampagne zitiert und politisch zugespitzt — Mitigation: IW-Freigabe für die zitierte Stelle separat einholen.
 - Stilistische Modernisierung der iwd-Sprache wird mit Tonalitätswechsel verwechselt — Mitigation: Modernisierung ja, Position aufgeben nein.
+**Anschluss-Szenario:** S-MD-001
+
+### S-MD-006 Brand-Voice von IW Medien spiegeln oder bewusst abgrenzen
+
+**Wann nutzen (Trigger):** Eine Kommunikationsaufgabe soll an IW Medien gehen, und die Marketing-Direktorin will entscheiden, ob der eigene Auftritt deren energische "Mit Wumms"-Tonalität übernimmt oder bewusst ein anderes Register wählt. (Quelle: 15-iwmedien-verified-2026-06)
+**Strategisches Ziel:** Eine klare Tonalitäts-Entscheidung treffen, statt unbeabsichtigt zwischen IW-Wissenschaftssprache und IW-Medien-Kampagnensprache zu pendeln.
+**Hands-on Ergebnis:** Eine Ein-Satz-Tonalitäts-Direktive plus zwei abgegrenzte Beispiele (Do / Don't).
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Berater), Wissensordner (Brand-Voice-Marker)
+**Vorgehen (4 Schritte):**
+1. Ziel klären: Aufmerksamkeit / Aufbruch (→ "Mit Wumms"-Register spiegeln) oder analytische Glaubwürdigkeit (→ IW-Register halten).
+2. Inklusive Schreibung prüfen: IW Medien nutzt die Doppelpunkt-Form ("Enthusiast:innen"); übernehmen oder begründet abweichen.
+3. Lexikon-Ankerwörter setzen: maximal drei verbindliche Wörter aus dem IW-Medien-Set ("Wandel", "proaktiv", "Mit Wumms") oder explizit verbieten.
+4. Direktive in einem Satz festhalten und mit Do- und Don't-Beispiel verankern.
+**Konkrete Empfehlung:** Übernimm die IW-Medien-Tonalität nur dort, wo Veränderungs-Mobilisierung das Ziel ist (Kampagne, Event, Recrutainment). Bei Studien-, Methoden- oder Faktenkommunikation bleib im IW-Register — sonst entsteht eine Glaubwürdigkeitslücke zwischen Beleg und Verpackung.
+**Erwartetes Artefakt:** Tonalitäts-Direktive (1 Satz + Do/Don't-Paar) zur Aufnahme ins Briefing.
+**Fallstricke (≥2 spezifisch):**
+- Die "Mit Wumms"-Sprache auf eine wissenschaftliche IW-Studienmitteilung anwenden — Mitigation: jede Studie folgt dem IW-Register, auch wenn IW Medien produziert.
+- Die inklusive Schreibung situativ wechseln (mal Doppelpunkt, mal nicht) — Mitigation: pro Projekt eine Schreibweise verbindlich festlegen.
+**Anschluss-Szenario:** S-MD-004
+
+### S-MD-007 Service-Pfad nach Auftraggebertyp (Verband vs. Unternehmen)
+
+**Wann nutzen (Trigger):** Eine Anfrage an IW Medien wird vorbereitet, und die Marketing-Direktorin sieht im Kontaktformular die zwei Pfade "Leistungen für Verbände" und "Leistungen für Unternehmen" — der falsche Pfad führt zum falschen internen Team. (Quelle: 15-iwmedien-verified-2026-06)
+**Strategisches Ziel:** Den Routing-Pfad bewusst wählen, sodass die Anfrage direkt beim passenden Bereich landet und keine Übergaberunde nötig wird.
+**Hands-on Ergebnis:** Eine Ein-Zeilen-Routing-Notiz mit Begründung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Berater), Wissensordner (IW-Medien-Profil)
+**Vorgehen (3 Schritte):**
+1. Auftraggebertyp identifizieren: ist die anfragende Organisation ein Verband / eine Institution (→ Verbände-Pfad) oder ein Unternehmen / öffentliche Hand mit Markt-Logik (→ Unternehmen-Pfad)?
+2. Themen-Dropdown bedienen (Anfrage / Magazin/Post / Jobs / Sonstiges) — für eine Leistungsanfrage immer "Anfrage", nicht "Sonstiges".
+3. Im Freitext den Service-Pfad explizit benennen ("Pfad: Unternehmen, Disziplin Campaigning, Sub: Crossmediale Kampagne").
+**Konkrete Empfehlung:** Lass den Pfad nie das Formular für dich entscheiden — benenne ihn explizit im Freitext. Selbst wenn das Routing intern stimmt, beschleunigt diese Klarheit die erste Antwort spürbar; und wenn das Routing falsch wäre, fängt sie es vor der Übergabe ab.
+**Erwartetes Artefakt:** Routing-Notiz (Pfad + Disziplin + Sub-Service) als erste Zeile der Anfrage.
+**Fallstricke (≥2 spezifisch):**
+- Eine Unternehmens-Anfrage über den Verbände-Pfad einreichen, weil das Unternehmen Verbands-Mitglied ist — Mitigation: das anfragende Rechtsorgan zählt, nicht die Mitgliedschaft.
+- Den Themen-Dropdown auf "Sonstiges" stehen lassen — Mitigation: für Leistungsanfragen immer "Anfrage" wählen, sonst Routing-Verzögerung.
+**Anschluss-Szenario:** S-MD-004
+
+### S-MD-008 Referenz-Cases als Lehrbeispiele für eigene Briefings nutzen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin schreibt ein Briefing an IW Medien und will deren eigene Referenzen (z. B. „Wir.Hier." — mediaV-Award 2025, „#LieberLehramt", „TouchTomorrow-Truck") als Anker für Ton, Tiefe und Format heranziehen, ohne plump zu kopieren. (Quelle: 15-iwmedien-verified-2026-06)
+**Strategisches Ziel:** Aus der verifizierten Case-Liste die nächstliegende Referenz auswählen und sie als gerichtete Erwartung ins Briefing einbinden — nicht als Vorlage.
+**Hands-on Ergebnis:** Eine Referenz-Notiz mit drei Bullets (welcher Case, welcher Aspekt, welcher Unterschied zum eigenen Vorhaben).
+**Eingesetzte Langdock-Fähigkeit(en):** Wissensordner (Case-Tabelle), Chat (Berater), Canvas (Briefing-Edit)
+**Vorgehen (4 Schritte):**
+1. Eigenes Vorhaben in einer Zeile beschreiben (Zielgruppe + Format + Ergebnis).
+2. Im Case-Set den nächstliegenden Case finden (gleiche Disziplin oder gleicher Zielgruppen-Typ).
+3. Genau einen Case-Aspekt herausstellen ("die Tonalität von #LieberLehramt", "die Bühnen-Idee von Zukunftsindustrie erleben") — nicht den ganzen Case.
+4. Den Unterschied zum eigenen Vorhaben explizit benennen, damit IW Medien nicht eins-zu-eins kopiert.
+**Konkrete Empfehlung:** Einen Case zu zitieren spart eine halbe Briefing-Runde, weil er ein gemeinsames Bild herstellt. Aber zitiere immer mit Unterschied: "wie X, aber für Y und ohne Z". Sonst bekommst du eine Variante des Bestehenden statt der eigenen Idee.
+**Erwartetes Artefakt:** Referenz-Notiz (Case + Aspekt + Unterschied) als Briefing-Anhang.
+**Fallstricke (≥2 spezifisch):**
+- Einen Award-prämierten Case als Erwartung setzen ("wir wollen auch einen mediaV-Award") — Mitigation: Awards sind Folge, nicht Ziel; setze stattdessen messbares Wirkungs-Ziel.
+- Den Case-Kontext ignorieren — z. B. Recrutainment-Aufmerksamkeit auf eine B2B-Compliance-Aufgabe übertragen — Mitigation: Disziplin und Zielgruppe des Cases müssen zur eigenen Aufgabe passen.
+**Anschluss-Szenario:** S-MD-004
+
+### S-MD-009 Wissenschaftskommunikation: saubere Übergabe IW → IW Medien
+
+**Wann nutzen (Trigger):** Eine IW-Forschungsarbeit soll allgemeinverständlich vermittelt werden, und IW Medien (Knowledge-Kategorie) übernimmt die Übersetzung; die Marketing-Direktorin will sicherstellen, dass die Befunde nicht verzerrt oder politisch zugespitzt werden. (Quelle: 15-iwmedien-verified-2026-06)
+**Strategisches Ziel:** Die Übergabe so strukturieren, dass IW Medien für Verständlichkeit optimieren darf, ohne wissenschaftliche Aussagen zu verbiegen.
+**Hands-on Ergebnis:** Eine Übergabe-Checkliste mit drei verbindlichen Punkten plus einer Sperrliste ("Diese Formulierungen dürfen nicht erscheinen").
+**Eingesetzte Langdock-Fähigkeit(en):** Canvas (Checkliste), Wissensordner (Original-Studie + Glossar), Chat (Berater)
+**Vorgehen (4 Schritte):**
+1. Drei Kern-Aussagen der Studie als wörtliche Sätze festhalten (das ist die nicht-verhandelbare Substanz).
+2. Methoden-Kasten als separates Asset mitschicken (Limitationen, Stichprobe, Erhebungszeitraum) — die Kürzung darf nicht hier passieren.
+3. Sperrliste formulieren: Worte/Wendungen, die eine politische Aufladung tragen würden (z. B. "endlich", "längst überfällig", "Versagen der Politik").
+4. IW-internen Faktencheck als verbindlichen Schritt vor jeder Veröffentlichung im Briefing verankern.
+**Konkrete Empfehlung:** IW Medien darf die Sprache vereinfachen, die Beispiele zuspitzen und die Bühne wählen — aber die drei Kern-Aussagen und der Methoden-Kasten sind tabu. Wenn IW Medien Änderungen daran vorschlägt, geht der Vorschlag zurück ins IW, nicht direkt ins Publikum.
+**Erwartetes Artefakt:** Übergabe-Checkliste (3 Kern-Aussagen + Methoden-Kasten + Sperrliste + Faktencheck-Punkt).
+**Fallstricke (≥2 spezifisch):**
+- Die Methoden-Limitationen aus Platzgründen weglassen — Mitigation: lieber die Beispiel-Anekdote streichen, der Methoden-Kasten bleibt.
+- Eine politische Verstärkung im Brand-Voice-Register von IW Medien akzeptieren — Mitigation: die Sperrliste vor Freigabe gegen den finalen Text prüfen.
+**Anschluss-Szenario:** S-MD-005
+
+### S-MD-010 Awards und Auszeichnungen als Glaubwürdigkeits-Anker einsetzen
+
+**Wann nutzen (Trigger):** Die Marketing-Direktorin will einem internen Stakeholder begründen, warum IW Medien für ein anspruchsvolles Vorhaben (z. B. eine Crossmedia-Kampagne mit Branchenwirkung) der richtige Partner ist, und sucht belastbare Belege jenseits der Selbstdarstellung. (Quelle: 15-iwmedien-verified-2026-06)
+**Strategisches Ziel:** Belegbare Auszeichnungen und Referenz-Wirkung als Glaubwürdigkeits-Anker nutzen, ohne in Marketing-Sprech zu verfallen.
+**Hands-on Ergebnis:** Eine Drei-Zeilen-Begründungsnotiz mit Award, Referenz-Case und Disziplin-Passung.
+**Eingesetzte Langdock-Fähigkeit(en):** Chat (Berater), Wissensordner (Case- und Award-Tabelle)
+**Vorgehen (3 Schritte):**
+1. Den Award oder die prominente Referenz nennen ("Wir.Hier." — Chemie, mediaV-Award 2025) und kurz einordnen.
+2. Disziplin-Passung herstellen: der prämierte Case muss derselben Service-Disziplin angehören wie die eigene Aufgabe.
+3. Ein Wirkungs-Indiz aus dem Case ergänzen (Reichweite, Branchen-Resonanz) und die Eigen-Erwartung daran spiegeln.
+**Konkrete Empfehlung:** Nutze Awards als Glaubwürdigkeits-Anker, niemals als Erfolgsversprechen. Der Satz lautet "X hat in derselben Disziplin Y geliefert und dafür Z gewonnen" — nicht "wir bekommen auch einen Award". Awards beweisen Disziplin-Kompetenz, sie ersetzen kein eigenes Wirkungs-Ziel.
+**Erwartetes Artefakt:** Begründungsnotiz (Award + Case + Disziplin-Passung + Wirkungs-Indiz) für das interne Decision-Meeting.
+**Fallstricke (≥2 spezifisch):**
+- Einen Award aus einer anderen Disziplin als Beleg heranziehen — Mitigation: Disziplin-Identität vor Award-Glanz.
+- Den Award als Ergebnis-Garantie kommunizieren — Mitigation: Award-Sprache und Wirkungs-Ziel sauber trennen.
 **Anschluss-Szenario:** S-MD-001
 
 ## Hinweise
