@@ -2619,8 +2619,8 @@
     {
       "name": "04-workflows.md",
       "kind": "content",
-      "lines": 1610,
-      "bytes": 195485,
+      "lines": 1618,
+      "bytes": 198496,
       "scenarios": [
         {
           "id": "S-WF-001",
@@ -2692,7 +2692,7 @@
           "noun": "Performance-Reporting",
           "anschluss": "S-WF-007",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-010",
@@ -2700,7 +2700,7 @@
           "noun": "Webinar-Anmeldung",
           "anschluss": "S-WF-011",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-011",
@@ -2708,7 +2708,7 @@
           "noun": "CRM-Kontakt",
           "anschluss": "S-WF-012",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-012",
@@ -2716,7 +2716,7 @@
           "noun": "Webinar",
           "anschluss": "S-WF-013",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-013",
@@ -2724,7 +2724,7 @@
           "noun": "Produkt-Feature",
           "anschluss": "S-WF-014",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-014",
@@ -2732,7 +2732,7 @@
           "noun": "Briefing-Workflow",
           "anschluss": "S-WF-015",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-015",
@@ -2740,7 +2740,7 @@
           "noun": "Eingehende",
           "anschluss": "S-WF-016",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-016",
@@ -2748,7 +2748,7 @@
           "noun": "Autoren",
           "anschluss": "S-WF-017",
           "advice_style": false,
-          "type": "P"
+          "type": "W"
         },
         {
           "id": "S-WF-017",
@@ -3267,8 +3267,8 @@
       "faq": [],
       "advice_style": 0,
       "types": {
-        "W": 8,
-        "P": 72
+        "W": 16,
+        "P": 64
       }
     },
     {
@@ -11783,8 +11783,8 @@
   "file_count": 20,
   "file_cap": 30,
   "type_totals": {
-    "P": 978,
-    "W": 8,
+    "P": 970,
+    "W": 16,
     "K": 110,
     "D": 10
   },

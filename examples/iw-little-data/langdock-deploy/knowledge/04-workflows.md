@@ -247,12 +247,13 @@ Vorgehen:
 1. Den Scheduled-Trigger auf Montagmorgen setzen.
 2. Über Integrationen die Kennzahlen ziehen und einen AI-Node eine faktentreue Zusammenfassung mit benannten Veränderungen erstellen lassen.
 3. Einen HITL-Node einplanen, in dem die Leitung die Interpretation prüft, bevor der Report verteilt wird.
-Prompt:
-> "Persona: Marketing-Reporting-Architekt. Aufgabe: Skizziere einen wöchentlichen Reporting-Workflow aus mehreren Analytics-Quellen. Kontext: Zahlen faktentreu, Interpretation menschlich freigegeben. Format: Scheduled-Trigger, Integrations, AI-Summary-Node, HITL."
+Workflow: Scheduled-Trigger (Montagmorgen) → Integration-Nodes (Analytics/BI: Kennzahlen ziehen, auf gleichen Zeitraum normalisieren) → AI-Node (faktentreue Zusammenfassung mit benannten Veränderungen, Daten ≠ Deutung) → HITL-Node (Leitung prüft Interpretation) → Verteilung.
+Budget: Ein Lauf pro Woche; Strong-Generalist für saubere Synthese vertretbar; Auto Mode aus. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Ein Reporting-Workflow-Entwurf mit Datenquellen-Liste und Interpretations-Freigabepunkt.
 Fallstricke:
 - Der AI-Node interpretiert Zahlen eigenmächtig → Daten und Deutung trennen, Deutung dem HITL-Schritt überlassen.
 - Unterschiedliche Zeiträume der Quellen verfälschen die Aggregation → vorab auf denselben Zeitraum normalisieren.
+Empfehlung: Trenne Daten und Deutung strikt: der AI-Node liefert faktentreue Zahlen mit benannten Veränderungen, die Interpretation gehört in den HITL-Schritt. Normalisiere alle Quellen vorab auf denselben Zeitraum, sonst aggregierst du Äpfel und Birnen.
 Anschluss: S-WF-007
 
 ### S-WF-010 Personalisierte Follow-up-Sequenz nach Event-Anmeldung (Webhook Trigger)
@@ -265,12 +266,13 @@ Vorgehen:
 1. Den Webhook-Trigger an die Anmelde-Bestätigung koppeln.
 2. Einen AI-Node einen personalisierten Entwurf auf Basis des Segment-Kontexts aus dem Wissensordner erstellen lassen.
 3. Einen HITL-Node vor jedem externen Versand zwingend einplanen.
-Prompt:
-> "Persona: Lifecycle-Workflow-Architekt. Aufgabe: Entwirf eine Follow-up-Pipeline nach Event-Anmeldung. Kontext: Personalisierung pro Segment, kein automatischer Versand. Format: Webhook-Trigger, AI-Node mit Wissensordner, HITL vor Versand."
+Workflow: Webhook-Trigger (Anmelde-Bestätigung) → AI-Node (personalisierter Entwurf aus Segment-Kontext im Wissensordner) → HITL-Node (Freigabe vor Versand) → E-Mail-Tool.
+Budget: Pro Anmeldung ein kurzer AI-Aufruf; Efficient-Default genügt. (Quelle: 04-workflows)
 Artefakt: Ein Follow-up-Workflow-Entwurf mit Personalisierungs-Logik und verpflichtendem Freigabe-Schritt.
 Fallstricke:
 - Ein automatischer Versand ohne Freigabe verletzt die Kontrolle über Kunden-Kommunikation → HITL vor jeder externen Aktion.
 - Fehlender Segment-Kontext erzeugt generische Nachrichten → den Wissensordner mit Segment-Profilen verbinden.
+Empfehlung: Kein automatischer Versand an Kontakte — der HITL-Node vor jeder externen Aktion ist Pflicht. Verbinde den Wissensordner mit Segment-Profilen, sonst entstehen generische Nachrichten, die die Personalisierung aushebeln.
 Anschluss: S-WF-011
 
 ### S-WF-011 Reaktivierung dormanter CRM-Kontakte nach Klick-Ereignis (Webhook Trigger)
@@ -284,12 +286,13 @@ Vorgehen:
 2. Einen Condition-Node prüfen lassen, ob der Kontakt tatsächlich auf der Dormant-Liste steht und kein Bot-Flag gesetzt ist.
 3. Einen CRM-Action-Node den Kontakt aus der Dormant-Liste entfernen und zur Active-Liste hinzufügen lassen.
 4. Einen zweiten Action-Node eine interne Slack-Notification mit Kontaktname und Kampagne auslösen lassen — kein automatischer Folgeversand.
-Prompt:
-> "Du bist CRM-Workflow-Architekt. Entwirf einen Webhook-Workflow, der bei einem E-Mail-Klick einen Kontakt von 'Dormant' auf 'Active' umschaltet. Kontext: HubSpot als CRM, Bot-Klicks müssen herausgefiltert werden. Format: Node-Liste mit Trigger, Condition, CRM-Action und Slack-Benachrichtigung."
+Workflow: Webhook-Trigger (Klick-Event, Payload: Kontakt-ID + Kampagnen-ID) → Condition-Node (auf Dormant-Liste? kein Bot-Flag? DSGVO-Opt-out geprüft?) → CRM-Action (Dormant → Active) → Slack-Notification (intern). Kein automatischer Folgeversand.
+Budget: Logik-/Action-Workflow ohne teuren AI-Node; vernachlässigbare Kosten pro Lauf. (Quelle: sources/10 S-061)
 Artefakt: Ein Workflow-Entwurf mit Bot-Filter-Logik, CRM-Listenumschalt-Action und interner Benachrichtigung — ohne automatischen Kunden-Versand.
 Fallstricke:
 - Bot-Crawler lösen Klick-Events aus und reaktivieren Kontakte fälschlicherweise → den Condition-Node auf User-Agent-Prüfung oder Double-Klick-Logik auslegen.
 - Der Workflow reaktiviert einen Kontakt, der aus Datenschutzgründen explizit deaktiviert wurde → vor dem Listenumschalten eine DSGVO-Opt-out-Prüfung als zusätzlichen Condition-Node einplanen.
+Empfehlung: Filtere Bot-Klicks über einen Condition-Node (User-Agent / Double-Klick-Logik) — Crawler reaktivieren sonst falsch. Schalte einen DSGVO-Opt-out-Check vor das Listenumschalten: ein bewusst deaktivierter Kontakt darf nie automatisch reaktiviert werden.
 Anschluss: S-WF-012
 
 ### S-WF-012 Hyper-personalisierter Webinar-Follow-up per CRM-Trigger (Integration Trigger)
@@ -303,12 +306,13 @@ Vorgehen:
 2. Einen AI-Node die individuelle Frage analysieren und eine 2-Satz-Antwort als JSON-Feld ausgeben lassen — Structured Output erzwingen.
 3. Einen Action-Node den generierten Text als Custom-Property im CRM-Kontakt speichern lassen — kein direkter Versand.
 4. Einen HITL-Node aktivieren, der alle generierten Antworten zur Batch-Prüfung vorlegt, bevor das E-Mail-Tool die Injektion vornimmt.
-Prompt:
-> "Du bist Lifecycle-Workflow-Architekt. Entwirf einen Personalisierungs-Workflow für Webinar-Follow-ups. Kontext: 50 Teilnehmer, je eine offene Frage als CRM-Feld, kein automatischer Versand. Format: Integration-Trigger, AI-Node mit JSON-Schema (antwort_text), CRM-Action, HITL-Freigabe."
+Workflow: Integration-Trigger (CRM: Teilnehmer-Frage ausgefüllt) → Condition-Node (leere Inputs ausfiltern) → AI-Node (Structured Output: antwort_text als 2-Satz-JSON) → CRM-Action (Custom-Property speichern) → HITL-Node (Batch-Freigabe) → E-Mail-Injektion. Kein Direktversand.
+Budget: 50 kurze AI-Aufrufe pro Event; Efficient-Default; Structured Output spart Nacharbeit. (Quelle: sources/10 S-062)
 Artefakt: Ein Personalisierungs-Workflow-Entwurf mit JSON-Schema-Vorlage für das CRM-Feld und verpflichtendem Batch-Freigabe-Schritt.
 Fallstricke:
 - Ein leeres oder sinnloses Frage-Feld lässt den AI-Node halluzinieren → einen Condition-Node für leere Inputs vorschalten, der diese Datensätze ausfiltert.
 - Der AI-Node gibt Freitext statt maschinenlesbares JSON zurück → das Structured-Output-Schema direkt in der Node-Konfiguration hinterlegen, nicht nur im Prompt bitten.
+Empfehlung: Schalte einen Condition-Node für leere Frage-Felder vor — sonst halluziniert der AI-Node auf Leerinput. Hinterlege das JSON-Schema (antwort_text) in der Node-Konfiguration, nicht im Prompt, und lege alle Antworten dem HITL-Batch vor, bevor das E-Mail-Tool injiziert.
 Anschluss: S-WF-013
 
 ### S-WF-013 Bulk-Lokalisierungs-Pipeline für mehrere Zielmärkte (Manual Trigger + Loop)
@@ -322,12 +326,13 @@ Vorgehen:
 2. Einen Loop-Node über die Sprachliste iterieren lassen und für jede Sprache einen AI-Node mit Flash-Modell und Glossar-Wissensordner triggern.
 3. Die Outputs als JSON-Array sammeln und einen HITL-Node für die native Muttersprachler-Prüfung je Sprache einplanen.
 4. Vor dem Start eine Kostenschätzung gegen das Per-Execution-Limit prüfen und die Warn-Schwellen auf 75 % setzen.
-Prompt:
-> "Du bist Lokalisierungs-Workflow-Architekt. Entwirf eine Bulk-Lokalisierungs-Pipeline für 6 Sprachen aus einem Quelltext. Kontext: Flash-Modell für Kosteneffizienz, Glossar im Wissensordner, HITL vor Live-Gang. Format: Manual-Trigger, Loop-Node mit Sprach-Array, AI-Node-Konfiguration, HITL, Kostenschätzung."
+Workflow: Manual-Trigger (JSON-Array: Quelltext + Zielsprachen) → Loop-Node (≤100 Items, über Sprachliste) → AI-Node je Sprache (Efficient-Default/Flash + Glossar-Wissensordner, Structured Output) → Outputs als JSON-Array → HITL-Node (Muttersprachler-Prüfung je Sprache).
+Budget: Flash/Efficient-Default für Routine-Übersetzung; Warn-Schwellen auf 75 %; Kostenschätzung gegen Per-Execution-Limit vor Start. (Quelle: 04-workflows, 07-modelle-und-kosten)
 Artefakt: Ein Bulk-Lokalisierungs-Workflow-Entwurf mit Loop-Logik, Modell-Auswahl-Begründung und Kostenschätzung pro Lauf.
 Fallstricke:
 - Der Loop überschreitet 100 Items → die Sprachliste in Chargen aufteilen oder Loop-Limit vorab prüfen.
 - Das Flash-Modell liefert fehlerhafte Fachterminologie → ein Glossar als Pflicht-Wissensordner in jeden Sprach-Node einbinden.
+Empfehlung: Setze ein Flash-/Efficient-Default-Modell für Routine-Übersetzung — der Kostenvorteil gegenüber Einzelläufen rechtfertigt keinen Strong-Generalist. Binde ein Fachglossar als Pflicht-Wissensordner in jeden Sprach-Node, sonst kippt die Terminologie. Splitte bei mehr als 100 Items in Chargen.
 Anschluss: S-WF-014
 
 ### S-WF-014 HITL-Gate-Architektur für mehrstufige Briefing-Workflows (Manual Trigger)
@@ -341,12 +346,13 @@ Vorgehen:
 2. Gate 2 nach dem Brand-Voice-Pass einplanen: Tonalitäts-Check — der Mensch entscheidet, ob Stimme und Botschaft konsistent sind.
 3. Gate 3 vor jedem externen Output einplanen: Rechts-Check — der Mensch bestätigt, dass keine rechtlichen Risiken (UWG, DSGVO) im Text vorliegen.
 4. Jeden HITL-Node mit einer klaren Prüf-Instruktion ausstatten, damit der Reviewer weiß, welche Dimension er genehmigt.
-Prompt:
-> "Du bist Workflow-Architekt für Content-Pipelines. Entwirf eine Briefing-Pipeline mit drei HITL-Gates. Kontext: Stufen sind Recherche, Brand-Voice-Pass, Legal-Review; kein Output ohne menschliche Freigabe. Format: Node-Liste mit Gate-Positionen und je einer Prüf-Instruktion pro HITL-Node."
+Workflow: Manual-Trigger → AI-Recherche-Node → HITL-Gate 1 (Fakten-Check) → AI-Brand-Voice-Node → HITL-Gate 2 (Tonalitäts-Check) → AI-Legal-Node → HITL-Gate 3 (Rechts-Check: UWG/DSGVO) → externer Output. Jedes Gate mit eigener Prüf-Instruktion.
+Budget: Drei AI-Pässe pro Durchlauf; Modell je Phase wählen (Recherche günstig, Legal-Check sorgfältiger). (Quelle: A-32, 04-workflows)
 Artefakt: Ein Briefing-Workflow-Entwurf mit drei beschrifteten HITL-Gates und einer Prüf-Instruktions-Vorlage pro Gate.
 Fallstricke:
 - Zu viele HITL-Gates lähmem den Workflow → drei Gates sind das Optimum; mehr als fünf defeats den Automatisierungszweck.
 - Ein HITL-Node ohne klare Prüf-Instruktion wird vom Reviewer übersprungen → jede Gate-Node muss eine konkrete Entscheidungsfrage enthalten.
+Empfehlung: Drei HITL-Gates sind das Optimum — eines nach Recherche (Fakten), eines nach Brand-Voice (Tonalität), eines vor Output (Recht). Gib jedem Gate eine konkrete Entscheidungsfrage; ein Gate ohne Prüf-Instruktion wird übersprungen. Mehr als fünf Gates ersticken die Automatisierung.
 Anschluss: S-WF-015
 
 ### S-WF-015 Eingehende Leads per E-Mail-Trigger qualifizieren und routen (Email Trigger)
@@ -360,12 +366,13 @@ Vorgehen:
 2. Einen AI-Node die Anfrage klassifizieren lassen — Structured Output mit Enum-Feldern: Typ (Lead/Support/Spam), Priorität (hoch/mittel/niedrig), zuständiges Team.
 3. Condition-Nodes für jede Routing-Option aufsetzen: Lead → Slack-Nachricht an Sales, Support → Ticket-System, Spam → Archivierung ohne Aktion.
 4. Einen HITL-Node nur für hoch-priorisierte Leads einplanen, bevor die CRM-Übergabe erfolgt.
-Prompt:
-> "Du bist E-Mail-Workflow-Architekt. Entwirf einen Email-Trigger-Workflow für die Marketing-Inbox. Kontext: Klassifizierung in Lead/Support/Spam, Routing an Sales oder Ticket-System, HITL nur bei hoher Priorität. Format: Email-Trigger, AI-Node mit Enum-Schema, Condition-Nodes, Routing-Actions, HITL."
+Workflow: Email-Trigger (Marketing-Inbox, Body als Variable) → Vorfilter-Condition (Bounces/Out-of-Office aussortieren) → AI-Node (Structured Output, Enum: Typ Lead/Support/Spam, Priorität, Team) → Condition-Routing (Lead → Slack/Sales, Support → Ticket, Spam → Archiv) → HITL-Node (nur hoch-priorisierte Leads vor CRM-Übergabe).
+Budget: Ein kurzer Klassifikations-Aufruf pro Mail; Efficient-Default. (Quelle: 12 Q-111)
 Artefakt: Ein E-Mail-Routing-Workflow-Entwurf mit Enum-Klassifizierungs-Schema und bedingter HITL-Logik.
 Fallstricke:
 - Newsletter-Bounces und automatische Out-of-Office-Antworten triggern den Workflow unnötig → einen Vorfilter-Condition-Node für bekannte Absender-Muster einplanen.
 - Freitext-Klassifizierung ohne Enum-Schema liefert inkonsistente Routing-Entscheidungen → die erlaubten Kategorien als feste Enum-Werte im Structured Output erzwingen.
+Empfehlung: Schalte einen Vorfilter für Bounces und Out-of-Office vor den AI-Node, sonst feuert der Workflow auf Maschinen-Mails. Erzwinge Enum-Kategorien im Structured Output; HITL nur bei hoher Priorität, damit die Triage schlank bleibt.
 Anschluss: S-WF-016
 
 ### S-WF-016 Neuen CMS-Artikel per File-Watch-Trigger zur Freigabe routen (New File in Folder)
@@ -379,12 +386,13 @@ Vorgehen:
 2. Einen AI-Node den Entwurf gegen den Brand-Voice-Wissensordner prüfen lassen und einen strukturierten Review-Report (Tonalität, Fehler, Optimierungsvorschläge) als Structured Output erzeugen lassen.
 3. Einen HITL-Node den Report zusammen mit dem Originalentwurf dem designierten Freigeber präsentieren lassen.
 4. Nach Freigabe einen Slack-Action-Node den Autor über die Genehmigung benachrichtigen lassen — kein automatischer CMS-Upload.
-Prompt:
-> "Du bist Content-Freigabe-Workflow-Architekt. Entwirf einen File-Watch-Workflow für Blog-Artikel-Entwürfe. Kontext: Brand-Voice-Check per Wissensordner, strukturierter Review-Report, Freigabe durch Redaktionsleitung. Format: New-File-Trigger, AI-Review-Node, HITL mit Report, Slack-Benachrichtigung."
+Workflow: New-File-in-Folder-Trigger (geteilter Content-Ordner, Filter FINAL_) → AI-Node (Brand-Voice-Check gegen Wissensordner, Structured Review-Report: Tonalität/Fehler/Vorschläge) → HITL-Node (Report + Originalentwurf an Redaktionsleitung) → Slack-Action (Autor benachrichtigen). Kein automatischer CMS-Upload.
+Budget: Ein Review-Aufruf pro finalem Entwurf; Strong-Generalist nur bei kritischer Brand-Voice. (Quelle: sources/10 S-006)
 Artefakt: Ein Content-Freigabe-Workflow-Entwurf mit Brand-Voice-Check-Node, HITL-Präsentation und Benachrichtigungs-Action.
 Fallstricke:
 - Jede Dateiversion (Draft v2, v3 …) triggert den Workflow erneut → eine Namenskonvention für finale Entwürfe (z. B. "FINAL_") als Trigger-Filter definieren.
 - Der AI-Node bewertet zu hart und blockiert gute Artikel → den Brand-Voice-Check auf konkrete Prüfpunkte beschränken, nicht auf subjektive Qualitätsurteile.
+Empfehlung: Definiere eine Namenskonvention (z. B. FINAL_) als Trigger-Filter, sonst löst jede Zwischenversion den Workflow aus. Beschränke den Brand-Voice-Check auf konkrete Prüfpunkte, nicht auf subjektive Qualitätsurteile — sonst blockiert der Node gute Artikel.
 Anschluss: S-WF-017
 
 ### S-WF-017 Tägliche Performance-Anomalie-Erkennung mit automatischer Slack-Eskalation (Scheduled Trigger)
