@@ -7,6 +7,18 @@
 
 This spec is **the contract every knowledge-file author (subagent or in-session author) MUST follow** when writing a knowledge file for a RAG advisor agent. A shorter, action-oriented authoring digest can be kept alongside each agent build for in-session use.
 
+> **Schema evolution (R18–R20) — read this first.** The reference build has since moved to a
+> **terse 10-marker** scenario format (`Trigger:` · `Ziel:` · `Ergebnis:` · `Fähigkeit:` ·
+> `Vorgehen:` · **slot-6 payload** · `Artefakt:` · `Fallstricke:` · `Empfehlung:` · `Anschluss:`)
+> in which **slot-6 is the genuinely-best solution type** from the 9-type system
+> (Prompt/API/MCP/Skill/Code/Workflow/Config/Decision/Guide), and every content/persona scenario
+> carries a hand-crafted **`Empfehlung:`** (R7a). The verbose field names below describe the
+> original schema and remain valid as the *conceptual* contract (each terse marker maps 1:1 to a
+> verbose field). For the operative, current detail see the **9-type catalog**
+> (`docs/superpowers/specs/solution-chunk-schemata-catalog.md`) and the **central rulebook**
+> (`docs/superpowers/specs/knowledge-authoring-rulebook.md`); the validators in `tools/` enforce
+> the terse form.
+
 ---
 
 ## 1. The One Rule That Drives Every Other Rule

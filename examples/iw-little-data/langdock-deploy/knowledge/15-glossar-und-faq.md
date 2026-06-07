@@ -37,7 +37,7 @@
 
 **Memory (Memory):** Das systemübergreifende Gedächtnis des Chats, das Nutzerpräferenzen speichert (max. 50 Einträge pro Nutzer), in konfigurierten Agenten jedoch standardmäßig deaktiviert ist. Warum für die IW-Kommunikation relevant: schützt das deterministische, reproduzierbare Verhalten eines Fach-Agenten. (Quelle: 00-langdock-uebersicht)
 
-**Modell-Multiplikator (Cost Multiplier):** Die wirtschaftliche Gewichtung eines Modells relativ zum Plattform-Standard (GPT-5.2 = 1.0x), die belastbarer ist als der absolute Credit-Preis. Warum für die IW-Kommunikation relevant: erlaubt Kostenvergleiche, die unabhängig von schwankenden Preisangaben gültig bleiben. (Quelle: 07-modelle-und-kosten)
+**Modell-EUR-Preis (pro 1M Tokens):** Die direkte Abrechnungsgröße für Sprachmodelle in Langdock — getrennt nach Input- und Output-Tokens, in Euro je 1 Million Tokens (z. B. Gemini 2.5 Flash €0,26 Input / Sonnet 4.6 €2,58 Input / Opus 4.8 €4,30 Input). Es gibt keine veröffentlichten per-Modell-Multiplikatoren; die wirtschaftliche Einordnung erfolgt über Tier-Stufen (Light, Efficient Default, Balanced, Strong Generalist, Frontier). Warum für die IW-Kommunikation relevant: erlaubt belastbare Kostenrechnungen und faire Vergleiche zwischen Modellen ohne Umrechnungs-Annahmen. (Quelle: 07-modelle-und-kosten; Stand Juni 2026, gegen langdock.com/models gegenprüfen)
 
 **Per-Document-Cap (Per-Document-Cap):** Die Regel, dass pro Datei und Suchanfrage meist nur ein einziger Chunk abgerufen wird, um die Dominanz großer Dokumente zu verhindern. Warum für die IW-Kommunikation relevant: erzwingt das Prinzip „ein Thema pro Datei", damit jede Studienaussage zuverlässig auffindbar bleibt. (Quelle: 03-wissensordner-und-rag)
 
@@ -99,7 +99,17 @@
 
 **CTA (Call to Action):** Eine konkrete Handlungsaufforderung an die Zielgruppe, etwa „Studie herunterladen" oder „zum Standpunkt". Warum für die IW-Kommunikation relevant: lenkt Leser gezielt zur vertiefenden Publikation oder zum Kontakt. (Quelle: 10-prompts-und-skills)
 
+**Faktenblatt (Fact Sheet):** Eine ein- bis zweiseitige Verdichtung der wichtigsten Zahlen und Aussagen einer Studie für Presse und Entscheider. Warum für die IW-Kommunikation relevant: liefert Journalisten zitierfähige Kernfakten, ohne dass die Vollstudie gelesen werden muss. (Quelle: 14-iw-use-cases)
+
+**Gastbeitrag (Op-Ed / Guest Article):** Ein meinungsstarker, namentlich gezeichneter Fachbeitrag in einem externen Medium. Warum für die IW-Kommunikation relevant: positioniert IW-Expertise in der publizistischen Debatte, erfordert aber eine klare Trennung von Befund und Wertung. (Quelle: 17-branchen-think-tank-praxis)
+
+**Karussell-Post (Carousel Post):** Ein mehrteiliger Social-Media-Beitrag aus mehreren wischbaren Kacheln, der einen Befund Schritt für Schritt entfaltet. Warum für die IW-Kommunikation relevant: erhöht Verweildauer und Erklärtiefe auf LinkedIn und Instagram. (Quelle: 14-iw-use-cases)
+
 **KPI (Key Performance Indicator):** Eine messbare Leitkennzahl zur Bewertung des Kommunikationserfolgs, abzugrenzen von reinen Vanity-Metriken. Warum für die IW-Kommunikation relevant: zwingt zur Definition von Wirkung (z. B. Downloads, Medienaufnahme) statt bloßer Sichtbarkeit.
+
+**Leichte Sprache (Easy / Plain Language):** Eine regelbasierte, stark vereinfachte Sprachvariante für barrierearme Verständlichkeit, abzugrenzen von der weniger strengen Einfachen Sprache. Warum für die IW-Kommunikation relevant: erweitert die Reichweite von Forschungskommunikation auf breitere Zielgruppen. (Quelle: 17-branchen-think-tank-praxis)
+
+**Methodenkasten (Methodology Box):** Ein abgesetzter Textbaustein, der Datenbasis, Erhebung und Grenzen einer Studie transparent macht. Warum für die IW-Kommunikation relevant: stützt den Neutralitäts- und Transparenzanspruch und beugt Methodikkritik vor. (Quelle: 17-branchen-think-tank-praxis)
 
 **Medienresonanz (Media Coverage):** Der Umfang und die Art der Aufnahme einer Publikation oder Meldung in Medien und Fachöffentlichkeit. Warum für die IW-Kommunikation relevant: ein zentraler Wirkungsindikator für die Verbreitung von Forschungsergebnissen.
 
@@ -109,17 +119,25 @@
 
 **Pressemitteilung (Press Release):** Ein standardisierter, an Medien gerichteter Text, der eine Nachricht mit Kernaussage, Beleg und Zitat verdichtet. Warum für die IW-Kommunikation relevant: das zentrale Format, um Studienergebnisse pressegerecht zu verbreiten. (Quelle: 08-sicherheit-und-governance)
 
+**Pressespiegel (Press Review / Clipping):** Eine kuratierte Zusammenstellung der Medienberichterstattung zu einem Thema oder einer Publikation. Warum für die IW-Kommunikation relevant: dokumentiert Medienresonanz und liefert belastbare Argumente für die Wirkungsmessung. (Quelle: 17-branchen-think-tank-praxis)
+
 **Reichweite (Reach):** Die Anzahl erreichter Personen oder Kontakte über einen Kanal, ein früher Funnel-Indikator, aber kein Wirkungsnachweis. Warum für die IW-Kommunikation relevant: nützlich als Begleitgröße, ersetzt aber keine belastbare Wirkungsmetrik. (Quelle: 11-persona-core)
 
 **Redaktionsplan (Editorial Calendar):** Eine zeitliche Planung von Themen, Formaten und Kanälen über einen definierten Zeitraum. Warum für die IW-Kommunikation relevant: koordiniert Publikationen mit politischen Terminen und Fachveranstaltungen. (Quelle: 00-langdock-uebersicht)
 
 **SEO (Search Engine Optimization):** Die Optimierung von Inhalten für die organische Auffindbarkeit in Suchmaschinen über Keywords, Struktur und interne Verlinkung. Warum für die IW-Kommunikation relevant: erhöht die dauerhafte Auffindbarkeit von Online-Publikationen. (Quelle: 03-wissensordner-und-rag)
 
+**Sharepic (Social Graphic):** Eine geteilte Bild-Text-Kachel, die eine Kernaussage visuell zugespitzt für Social Media transportiert. Warum für die IW-Kommunikation relevant: macht eine einzelne Studienzahl schnell teilbar, darf den Befund dabei aber nicht verzerren. (Quelle: 14-iw-use-cases)
+
 **Sperrfrist (Embargo):** Eine zeitliche Vorgabe, bis zu der Medien eine vorab erhaltene Information nicht veröffentlichen dürfen. Warum für die IW-Kommunikation relevant: erlaubt Journalisten die Vorbereitung umfassender Berichterstattung zu Studien vor dem offiziellen Termin.
+
+**Sprechzettel (Talking Points / Speaking Notes):** Eine stichpunktartige Argumentationshilfe für Interviews, Reden oder Hintergrundgespräche. Warum für die IW-Kommunikation relevant: hält Sprecher faktentreu und auf die Kernbotschaften fokussiert. (Quelle: 14-iw-use-cases)
 
 **Tonalität (Tone of Voice):** Die situative sprachliche Färbung eines Textes, abgeleitet aus der übergeordneten Brand Voice und an Kanal sowie Publikum angepasst. Warum für die IW-Kommunikation relevant: differenziert zwischen nüchternem Fachton und zugänglicherer Pressesprache. (Quelle: 03-wissensordner-und-rag)
 
 **Touchpoint (Touchpoint):** Ein konkreter Kontaktpunkt zwischen Organisation und Zielgruppe entlang ihrer Customer Journey. Warum für die IW-Kommunikation relevant: hilft, die Wege von der Veröffentlichung bis zur Wahrnehmung durch Entscheider zu strukturieren. (Quelle: 11-persona-core)
+
+**Zitatkachel (Quote Card):** Eine Bildkachel, die ein prägnantes Zitat einer Expertin oder eines Experten visuell hervorhebt. Warum für die IW-Kommunikation relevant: erhöht die Sichtbarkeit zitierfähiger O-Töne in sozialen Medien. (Quelle: 14-iw-use-cases)
 
 ## Glossar — Recht und Compliance
 
@@ -149,19 +167,19 @@
 
 ## Glossar — Wirtschaftsforschung und Politik-Kommunikation (IW-Domäne)
 
-(Nur etablierte, öffentlich belegbare Begriffe. IW-spezifische Detailangaben — exakte Formate, Frequenzen — mit „Stand: 2026-06 — über IW-Recherche zu verifizieren" markieren, NICHT erfinden.)
+(Nur etablierte, öffentlich belegbare Begriffe. Die IW-Publikationsformate sind gegen iwkoeln.de verifiziert (Quelle: iwkoeln.de, Stand Juni 2026) und können ohne Unsicherheits-Flag zitiert werden. Weiterhin gilt: nur belegbare Begriffe, NICHT erfinden. Registerhinweis: iwd ist allgemeinverständlich-redaktionell, während IW-Trends, IW-Report und Gutachten wissenschaftlich-empirisch sind.)
 
 **Drittmittel-Transparenz (Third-Party Funding Transparency):** Die offene Ausweisung externer Finanzierungsquellen einer Studie oder eines Projekts. Warum für die IW-Kommunikation relevant: stützt die Glaubwürdigkeit und beugt dem Vorwurf interessengeleiteter Forschung vor.
 
 **Gutachten (Expert Report):** Eine systematische wissenschaftliche Bewertung einer Frage, häufig im Auftrag erstellt. Warum für die IW-Kommunikation relevant: ein Format, dessen Kernaussagen für Presse und Politik verdichtet werden müssen.
 
-**iwd (Informationsdienst der deutschen Wirtschaft):** Das publizistische Medium des IW zur allgemeinverständlichen Aufbereitung wirtschaftlicher Themen. Warum für die IW-Kommunikation relevant: typisches Zielformat, um Forschungsergebnisse einem breiteren Publikum zugänglich zu machen. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**iwd (Informationsdienst der deutschen Wirtschaft):** Das redaktionelle Nachrichtenprodukt des IW (Web und Magazin) zur allgemeinverständlichen Aufbereitung wirtschaftlicher Themen. Warum für die IW-Kommunikation relevant: typisches Zielformat, um Forschungsergebnisse allgemeinverständlich einem breiteren Publikum zugänglich zu machen. (Quelle: iwkoeln.de, Stand Juni 2026)
 
-**IW-Kurzbericht (IW-Kurzbericht):** Ein kompaktes Publikationsformat des IW zur knappen Darstellung eines Forschungsergebnisses. Warum für die IW-Kommunikation relevant: dichte Quelle, aus der sich Meldungen und Posts ableiten lassen. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**IW-Kurzbericht (IW-Kurzbericht):** Eine kompakte Kurzanalyse des IW zu einem aktuellen Thema. Warum für die IW-Kommunikation relevant: dichte Quelle, aus der sich Meldungen und Posts ableiten lassen. (Quelle: iwkoeln.de, Stand Juni 2026)
 
-**IW-Report (IW-Report):** Ein ausführlicheres Publikationsformat des IW zur Darstellung von Analysen und Befunden. Warum für die IW-Kommunikation relevant: häufige Ausgangsbasis für Pressemitteilungen und iwd-Artikel. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**IW-Report (IW-Report):** Die empirische Analyse-Reihe des IW (etwa IW-Verteilungsreport oder IW-Arbeitsmarktfortschreibung) zur Darstellung von Analysen und Befunden. Warum für die IW-Kommunikation relevant: häufige Ausgangsbasis für Pressemitteilungen und iwd-Artikel. (Quelle: iwkoeln.de, Stand Juni 2026)
 
-**IW-Trends (IW-Trends):** Eine Publikationsreihe des IW für empirisch fundierte Beiträge zur wirtschaftlichen Entwicklung. Warum für die IW-Kommunikation relevant: liefert belastbare Datenpunkte für die Fachkommunikation. (Stand: 2026-06 — über IW-Recherche zu verifizieren)
+**IW-Trends (IW-Trends):** Die wissenschaftliche Vierteljahresschrift des IW mit peer-orientierten, empirisch fundierten Fachbeiträgen zur wirtschaftlichen Entwicklung. Warum für die IW-Kommunikation relevant: liefert belastbare Datenpunkte für die Fachkommunikation. (Quelle: iwkoeln.de, Stand Juni 2026)
 
 **Neutralitätsanspruch (Claim to Neutrality):** Der Anspruch, Forschungsergebnisse sachlich und ohne parteipolitische Einfärbung darzustellen. Warum für die IW-Kommunikation relevant: prägt Tonalität und Formulierungsregeln aller nach außen gerichteten Texte.
 
@@ -179,7 +197,7 @@
 
 ### F-002 Welches Modell soll ich für welche Aufgabe wählen?
 **Frage:** "Wie entscheide ich zwischen einem günstigen und einem teuren Modell?"
-**Antwort:** Die Faustregel lautet: das günstigste Modell, das die Aufgabe zuverlässig löst. Routine-Drafts und Übersetzungen laufen auf Light- oder Efficient-Default-Modellen (z. B. Haiku 4.5), faktenkritische oder stilistisch anspruchsvolle Texte auf einem Strong Generalist wie Sonnet 4.6. Frontier-Reasoning-Modelle wie Opus 4.8 sind nur für seltene, komplexe Synthesen gerechtfertigt. Maßgeblich ist der Modell-Multiplikator, nicht der absolute Preis. (Quelle: 07-modelle-und-kosten)
+**Antwort:** Die Faustregel lautet: das günstigste Modell, das die Aufgabe zuverlässig löst. Routine-Drafts und Übersetzungen laufen auf Light- oder Efficient-Default-Modellen (z. B. Haiku 4.5), faktenkritische oder stilistisch anspruchsvolle Texte auf einem Strong Generalist wie Sonnet 4.6. Frontier-Reasoning-Modelle wie Opus 4.8 sind nur für seltene, komplexe Synthesen gerechtfertigt. Maßgeblich ist der direkte EUR-Preis pro 1M Tokens (Input und Output), nicht eine abstrakte Multiplikator-Annahme. (Quelle: 07-modelle-und-kosten)
 
 ### F-003 Welches Modell eignet sich für eine Pressemitteilung aus einem IW-Report?
 **Frage:** "Ich will aus einem IW-Report eine Pressemitteilung erstellen lassen — welches Modell?"

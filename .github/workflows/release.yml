@@ -1,9 +1,17 @@
 name: Release Knowledge Agents
 
-# Builds one release zip PER example agent in examples/. Each example that
-# contains a langdock-deploy/ package is assembled into <example-name>.zip
-# (e.g. examples/iw-little-data/ -> iw-little-data.zip) and published to the
-# GitHub Releases tab.
+# Builds the release assets and publishes them to the GitHub Releases tab:
+#   1. One zip PER example agent in examples/ that has a langdock-deploy/
+#      package (e.g. examples/iw-little-data/ -> iw-little-data.zip): the lean,
+#      upload-ready deploy package plus reference provenance.
+#   2. ONE framework + work-artefacts bundle (knowledge-agent-framework.zip):
+#      CLAUDE.md, README, LICENSE, the full docs/ tree (methodology + the
+#      docs/superpowers/ work record: plans, specs, rulebook, kb-index, review
+#      findings, per-file rules), templates/, and the tools/ validator suite —
+#      everything a maintainer, auditor, or builder of the next agent needs.
+#
+# Release notes: if docs/RELEASE_NOTES-<version>.md exists it is used verbatim;
+# otherwise docs/RELEASE_NOTES.md; otherwise a generated one-liner.
 #
 # Triggers:
 #   - push a tag matching v*           -> release named after the tag
@@ -54,6 +62,8 @@ jobs:
             echo "::group::Validate $NAME"
             ( cd "$EX" && bash tools/check_schema.sh --all )
             ( cd "$EX" && bash tools/check_prompt_size.sh )
+            ( cd "$EX" && bash tools/check_grounding.sh --all )
+            ( cd "$EX" && bash tools/check_coherence.sh --all )
             if grep -rlP '[\x{1F000}-\x{1FAFF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{2B00}-\x{2BFF}\x{FE0F}]' "$DEPLOY"/knowledge/*.md; then
               echo "::error::Pictographic emoji found in $NAME knowledge files — aborting."
               exit 1
@@ -85,6 +95,53 @@ jobs:
           echo "count=$built" >> "$GITHUB_OUTPUT"
           ls -la dist/
 
+      - name: Build framework + work-artefacts bundle
+        run: |
+          set -euo pipefail
+          FW="dist/knowledge-agent-framework"
+          rm -rf "$FW" && mkdir -p "$FW"
+          # Build playbook + top-level docs
+          for f in CLAUDE.md README.md LICENSE; do
+            [ -f "$f" ] && cp "$f" "$FW/"
+          done
+          # Methodology + the full superpowers work record (plans, specs, rulebook,
+          # kb-index, review findings, per-file rules) and the IW example design.
+          [ -d docs ]      && cp -r docs      "$FW/docs"
+          # Blanks to start a new agent.
+          [ -d templates ] && cp -r templates "$FW/templates"
+          # Validator suite so the release is independently re-checkable. Prefer the
+          # reference example's evolved validators (they match the shipped R18-R20
+          # terse-marker schema and add check_chunks/kb_index/format_marker_spacing);
+          # fall back to the repo-root tools/.
+          if [ -d examples/iw-little-data/tools ]; then
+            cp -r examples/iw-little-data/tools "$FW/tools"
+          elif [ -d tools ]; then
+            cp -r tools "$FW/tools"
+          fi
+          # Release notes (versioned if present) travel inside the bundle too.
+          VER="${{ steps.ver.outputs.version }}"
+          if [ -f "docs/RELEASE_NOTES-${VER}.md" ]; then
+            cp "docs/RELEASE_NOTES-${VER}.md" "$FW/RELEASE_NOTES.md"
+          elif [ -f docs/RELEASE_NOTES.md ]; then
+            cp docs/RELEASE_NOTES.md "$FW/RELEASE_NOTES.md"
+          fi
+          find "$FW" -name '*.bak' -delete
+          ( cd dist && zip -rq "knowledge-agent-framework.zip" "knowledge-agent-framework" && rm -rf "knowledge-agent-framework" )
+          echo "built dist/knowledge-agent-framework.zip"
+          ls -la dist/
+
+      - name: Resolve release notes file
+        id: notes
+        run: |
+          VER="${{ steps.ver.outputs.version }}"
+          if [ -f "docs/RELEASE_NOTES-${VER}.md" ]; then
+            echo "file=docs/RELEASE_NOTES-${VER}.md" >> "$GITHUB_OUTPUT"
+          elif [ -f docs/RELEASE_NOTES.md ]; then
+            echo "file=docs/RELEASE_NOTES.md" >> "$GITHUB_OUTPUT"
+          else
+            echo "file=" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Upload workflow artifacts (always)
         uses: actions/upload-artifact@v4
         with:
@@ -98,12 +155,19 @@ jobs:
         run: |
           set -euo pipefail
           VER="${{ steps.ver.outputs.version }}"
+          NOTES_FILE="${{ steps.notes.outputs.file }}"
+          if [ -n "$NOTES_FILE" ]; then
+            NOTES_ARGS=(--notes-file "$NOTES_FILE")
+          else
+            NOTES_ARGS=(--notes "Knowledge agent release $VER — deployable example zip(s) plus the knowledge-agent-framework bundle (docs, superpowers work-artefacts, templates, validators).")
+          fi
           if gh release view "$VER" >/dev/null 2>&1; then
-            echo "Release $VER exists — uploading assets (clobber)."
+            echo "Release $VER exists — refreshing notes and uploading assets (clobber)."
+            gh release edit "$VER" "${NOTES_ARGS[@]}" --title "Knowledge Agents $VER"
             gh release upload "$VER" dist/*.zip --clobber
           else
             echo "Creating release $VER."
             gh release create "$VER" dist/*.zip \
               --title "Knowledge Agents $VER" \
-              --notes "Knowledge agent release $VER — one zip per example in examples/."
+              "${NOTES_ARGS[@]}"
           fi

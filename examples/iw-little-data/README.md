@@ -1,6 +1,6 @@
 # little-data — Langdock Advisor Agent for Marketing Directors
 
-> **Little Data** is a German-language Langdock advisor agent modeled on Lt. Cmdr. Data from Star Trek: TNG. It helps a strategically-working, hands-on Marketing-Direktorin navigate Langdock features, choose AI models cost-effectively, and apply 1 400+ pre-rendered decision-ready scenarios to daily marketing work.
+> **Little Data** is a German-language Langdock advisor agent modeled on Lt. Cmdr. Data from Star Trek: TNG. It helps a strategically-working, hands-on Marketing-Direktorin navigate Langdock features, choose AI models cost-effectively, and apply 1,106 source-grounded, decision-ready scenarios to daily marketing work.
 >
 > **Status:** in active build (Phase 1 extracting, Phase 0.5 + Phase 2 + Phase 3-5 pending). Tracking branch: `claude/friendly-ride-eRsPr`.
 
@@ -24,7 +24,7 @@ examples/iw-little-data/
 │   ├── check_prompt_size.sh           char-budget validator (15K default)
 │   ├── check_prompt_tokens.py         tiktoken-based advisory
 │   ├── check_coverage.sh              matrix → knowledge-file heading verification
-│   ├── check_schema.sh                strict-schema spot-check (≥100 scenarios, mandatory fields)
+│   ├── check_schema.sh                strict-schema check (10 terse markers + best-fit slot-6 type)
 │   ├── check_overlap.py               cross-file embedding-similarity check (sentence-transformers)
 │   ├── jules-dispatch-knowledge-file.sh  Jules-session driver
 │   ├── render-jules-prompt.py         PyYAML-based prompt template renderer
@@ -36,7 +36,7 @@ examples/iw-little-data/
 └── langdock-deploy/                   the upload-ready package
     ├── AGENT_PROMPT.md                ≤15K chars system prompt (Phase 3)
     ├── CONVERSATION_STARTERS.md       10 starters in DE (Phase 3)
-    └── knowledge/                     the 14 knowledge files (Phases 0.5 + 2)
+    └── knowledge/                     the 20 knowledge files (00-19)
         ├── 00-langdock-uebersicht.md
         ├── 01-chat-und-prompts.md
         ├── 02-agenten-konfiguration.md
@@ -134,7 +134,7 @@ Each scenario is CONSTRUCTED using one (or more) of these methods as a structura
 
 - One topic per file. One H1 per file.
 - H2 blocks 1 200-1 800 chars (= 1 Langdock chunk).
-- H3 scenarios 1 200-1 800 chars (= 1 chunk), all 9 mandatory fields per scenario.
+- H3 scenarios ~2 000 chars (= 1 chunk); the 10-marker schema with a best-fit slot-6 payload (9-type system) and a hand-crafted Empfehlung per scenario.
 - Per-document cap: one chunk per file per query wins → distinct trigger nouns mandatory.
 - No "Phase 2" framing — agent describes scope as "Beratung, nicht Ausführung."
 - Reference prose tonality (NOT Data speaking; Data persona only in system prompt + files 11/12/13).

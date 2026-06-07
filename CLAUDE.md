@@ -61,15 +61,23 @@ Four file kinds, detected by filename, each validated differently:
 
 | Kind | Files | Unit |
 |---|---|---|
-| `content` | `00`–`10` thematic | `### S-XX-NNN` scenarios (9 mandatory fields) |
+| `content` | `00`–`10` thematic | `### S-XX-NNN` scenarios (10 terse markers; one typed slot-6 payload) |
 | `persona` | `11`, `12` | `### S-LC/S-JL` reaction/interaction patterns |
 | `anweisung` | `13` | `## Data-Anweisung <Thema>` communication directives |
 | `glossar` | `15` | `## Glossar` term entries + `### F-` FAQ |
 
-**Mandatory 9 fields per content/persona scenario (exact order):**
-`Wann nutzen (Trigger)` (must cite a source) · `Strategisches Ziel` · `Hands-on Ergebnis` ·
-`Eingesetzte Langdock-Fähigkeit(en)` · `Vorgehen (≤5 Schritte)` · `Beispiel-Prompt (DE, PTCF)` ·
-`Erwartetes Artefakt` · `Fallstricke (≥2 spezifisch)` · `Anschluss-Szenario`.
+**The 10 terse markers per content scenario (exact order):**
+`Trigger:` (must cite a source) · `Ziel:` · `Ergebnis:` · `Fähigkeit:` · `Vorgehen:` (≤5 steps) ·
+**slot-6 payload** · `Artefakt:` · `Fallstricke:` (≥2 specific) · `Empfehlung:` (R7a — a hand-crafted,
+source-grounded recommendation) · `Anschluss:`. Each marker starts its own paragraph (enforce with
+`tools/format_marker_spacing.py`).
+
+**Slot-6 is the genuinely-best solution type — the 9-type system, not a default prompt:**
+`Prompt:`(P) · `API:`+`RateLimit:`(A) · `MCP:`+`Tool:`+`Scope:`(M) · `Skill:`+`Trigger-Wörter:`(S) ·
+`Code:`+`IO:`(T) · `Workflow:`+`Budget:`(W) · `Pfad:`+`Diff:`+`Rollback:`(C) · `Empfehlung:` as the
+payload (D, no separate slot-9) · `Vorlage:` ≥3 sections (G). Type follows the deliverable/domain.
+Persona files (`11`, `12`) use `Konversation:` as slot-6. Full type detail + heuristics:
+`docs/superpowers/specs/solution-chunk-schemata-catalog.md`.
 
 ### Non-negotiable authoring disciplines
 
@@ -107,12 +115,17 @@ See the persona architecture in `docs/examples/iw-little-data-agent-design.md`; 
 ## Step 6 — Validate (gates)
 
 ```bash
-tools/check_schema.sh --all          # every file PASS for its kind
+tools/check_schema.sh    --all       # every file PASS for its kind (markers + slot-6 type)
+tools/check_grounding.sh --all       # every Trigger cites a real source; no ungrounded facts
+tools/check_chunks.sh    --all       # every scenario block in [600, 4096] bytes
+tools/check_coherence.sh --all       # cross-file trigger-noun / one-chunk-wins coherence
 tools/check_prompt_size.sh           # AGENT_PROMPT ≤ 15 000 chars
+python3 tools/format_marker_spacing.py --check --all   # every marker its own paragraph (0 needed)
 # emoji guard (must print nothing):
 grep -rlP '[\x{1F000}-\x{1FAFF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{FE0F}]' langdock-deploy/knowledge/
 ```
-Do not proceed to packaging until all gates are green.
+Run from inside an example dir (or set `KNOWLEDGE_DIR=examples/<name>/langdock-deploy/knowledge`).
+`tools/kb_index.py` regenerates the navigation index. Do not proceed to packaging until all gates are green.
 
 ## Step 7 — Package (lean)
 
@@ -124,9 +137,11 @@ Langdock Wissensordner) + `AGENT_PROMPT.md` + `CONVERSATION_STARTERS.md` +
 
 ## Step 8 — Release
 
-Tag `v*` (or run the workflow manually). `.github/workflows/release.yml` validates, then
-zips **every** `examples/<name>/` as `<name>.zip` (e.g. `iw-little-data.zip`) and publishes
-to the GitHub Releases tab.
+Tag `v*` (or run the workflow manually). `.github/workflows/release.yml` validates, then builds
+**every** `examples/<name>/` as `<name>.zip` (e.g. `iw-little-data.zip`) **plus** one
+`knowledge-agent-framework.zip` bundle (CLAUDE.md, `docs/` incl. the `docs/superpowers/` work-record,
+`templates/`, the validator suite) and publishes to the GitHub Releases tab. The release body uses
+`docs/RELEASE_NOTES-<version>.md` verbatim when present.
 
 ## Step 9 — Maintain
 
@@ -138,7 +153,10 @@ names 90 d, platform limits 180 d). Re-run the gates each review.
 ## Map of the repo
 
 - `templates/` — blanks to start a new agent (knowledge-file, AGENT_PROMPT, research-prompt).
-- `tools/` — the validators (canonical copies).
-- `docs/` — framework methodology: `knowledge-file-authoring-spec.md`, `knowledge-build-plan-design.md`, `knowledge-build-plan.md`, and the restructure record.
+- `tools/` — the validators (canonical copies): `check_schema`, `check_grounding`, `check_chunks`,
+  `check_coherence`, `check_prompt_size`, `kb_index`, `format_marker_spacing`, plus the upload-ready/coverage helpers.
+- `docs/building-knowledge-agents.md` — **the meta-playbook**: how to build, research, test, and optimize a knowledge agent end-to-end (the conceptual companion to this file's step-by-step pipeline).
+- `docs/` — framework methodology: `knowledge-file-authoring-spec.md`, `knowledge-build-plan-design.md`, `knowledge-build-plan.md`, the restructure record, and `RELEASE_NOTES-<version>.md`.
+- `docs/superpowers/` — the build work-record: revision `plans/`, and `specs/` (the authoring rulebook, the **9-type solution-chunk catalog**, kb-index, review findings, per-file rules).
 - `docs/examples/` — the IW reference example's design + critique.
-- `examples/iw-little-data/` — the full reference build (Institut der deutschen Wirtschaft).
+- `examples/iw-little-data/` — the full reference build (Institut der deutschen Wirtschaft): 20 knowledge files / 1 106 scenarios + the `GEMINI-RESEARCH-PROMPT-maxbuild-little-data.md` forward spec.
